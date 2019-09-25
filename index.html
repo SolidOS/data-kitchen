@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+
+
+    <table style="width:100%;">
+      <tr>Data browser</tr>
+      <tr style="font-size:100%">
+        <td style="padding:1em; width:5em;" id="icon">URI:</td>
+        <td><input id="uriField" type="text" style="font-size:100%; min-width:30em; padding:0.5em; width:95%;"/></td>
+        <td  style="width:5em;"><input type="button" id="goButton" value="Go" style="border-radius:1em; margin: 0;"/></td>
+      </tr>
+      <tr>
+        <div class="TabulatorOutline" id="DummyUUID">
+            <table id="outline"></table>
+        </div>
+      </tr>
+   </table>
+
+
+    <h1>Data Browser as an app!</h1>
+    <p>At last, we have th efull power of the soildpanes stack as a Mac app</p>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./mashlib.js"></script>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
