@@ -1,13 +1,13 @@
 // Modules to control application life and create native browser window
 
 // require("@babel/register"); // https://babeljs.io/docs/en/babel-register
-
+/*
 require("@babel/register")({
   // This will override `node_modules` ignoring - you can alternatively pass
   // an array of strings to be explicitly matched or a regex / glob
   ignore: [],
 });
-
+*/
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 // const panes = require('solid-panes')

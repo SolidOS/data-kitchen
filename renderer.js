@@ -5,6 +5,12 @@
 console.log('renderer.js')
 console.log('renderer.js panes ' + panes)
 
+const ele = document.getElementById('solid-panes-version')
+
+if (ele && panes.versionInfo) {
+  ele.textContent = panes.versionInfo.npmInfo['solid-panes']
+}
+
 // From browse.html in forms playground:
 // const panes = require('mashlib')
 const UI = panes.UI

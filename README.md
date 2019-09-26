@@ -16,3 +16,7 @@ Live your life in a read-write world of lined data.
 Use all your solid pods, including your local files as your zeroth pod.
 bring in all the stuff in your life shared by friends and colleagues.
 Bring in public data like dbpedia and wikidata and the LOD cloud.
+
+Things to test it on:
+
+`http://dbpedia.org/resource/John_Seely_Brown`
