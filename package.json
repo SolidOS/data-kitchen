@@ -5,6 +5,7 @@
   "description": "A Solid Electron application",
   "main": "main.js",
   "scripts": {
+    "package": "electron-packager --overwrite .",
     "start": "electron ."
   },
   "repository": "https://github.com/electron/electron-quick-start",
