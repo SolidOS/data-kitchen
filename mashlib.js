@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("window"), require("fetch"), require("null"), require("crypto"), require("TextEncoder"));
+		module.exports = factory(require("window"), require("fetch"), require("crypto"), require("null"), require("TextEncoder"));
 	else if(typeof define === 'function' && define.amd)
-		define(["window", "fetch", "null", "crypto", "TextEncoder"], factory);
+		define(["window", "fetch", "crypto", "null", "TextEncoder"], factory);
 	else if(typeof exports === 'object')
-		exports["Mashlib"] = factory(require("window"), require("fetch"), require("null"), require("crypto"), require("TextEncoder"));
+		exports["Mashlib"] = factory(require("window"), require("fetch"), require("crypto"), require("null"), require("TextEncoder"));
 	else
-		root["Mashlib"] = factory(root["window"], root["fetch"], root["null"], root["crypto"], root["TextEncoder"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE_xmldom__, __WEBPACK_EXTERNAL_MODULE_isomorphic_fetch__, __WEBPACK_EXTERNAL_MODULE_fs__, __WEBPACK_EXTERNAL_MODULE__trust_webcrypto__, __WEBPACK_EXTERNAL_MODULE_text_encoding__) {
+		root["Mashlib"] = factory(root["window"], root["fetch"], root["crypto"], root["null"], root["TextEncoder"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE_xmldom__, __WEBPACK_EXTERNAL_MODULE_isomorphic_fetch__, __WEBPACK_EXTERNAL_MODULE__trust_webcrypto__, __WEBPACK_EXTERNAL_MODULE_fs__, __WEBPACK_EXTERNAL_MODULE_text_encoding__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -13717,7 +13717,7 @@ module.exports.default = module.exports;
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(/*! buffer */ 10).Buffer;
+    Buffer = __webpack_require__(/*! buffer */ 8).Buffer;
   } catch (e) {
   }
 
@@ -17159,7 +17159,7 @@ if (typeof self === 'object') {
 } else {
   // Node.js or Web worker with no crypto support
   try {
-    var crypto = __webpack_require__(/*! crypto */ 11);
+    var crypto = __webpack_require__(/*! crypto */ 9);
     if (typeof crypto.randomBytes !== 'function')
       throw new Error('Not supported');
 
@@ -19014,7 +19014,7 @@ module.exports = bufferFrom
 
 var base64 = __webpack_require__(/*! base64-js */ "./node_modules/base64-js/index.js")
 var ieee754 = __webpack_require__(/*! ieee754 */ "./node_modules/ieee754/index.js")
-var isArray = __webpack_require__(/*! isarray */ "./node_modules/buffer/node_modules/isarray/index.js")
+var isArray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js")
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -20796,22 +20796,6 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ "./node_modules/buffer/node_modules/isarray/index.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/buffer/node_modules/isarray/index.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/builtin-status-codes/browser.js":
 /*!******************************************************!*\
   !*** ./node_modules/builtin-status-codes/browser.js ***!
@@ -21052,7 +21036,7 @@ module.exports = CipherBase
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var Writable = __webpack_require__(/*! readable-stream */ "./node_modules/readable-stream/readable-browser.js").Writable
+/* WEBPACK VAR INJECTION */(function(Buffer) {var Writable = __webpack_require__(/*! readable-stream */ "./node_modules/concat-stream/node_modules/readable-stream/readable-browser.js").Writable
 var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
 var bufferFrom = __webpack_require__(/*! buffer-from */ "./node_modules/buffer-from/index.js")
 
@@ -21198,6 +21182,3191 @@ function u8Concat (parts) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/errors-browser.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/errors-browser.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+var codes = {};
+
+function createErrorType(code, message, Base) {
+  if (!Base) {
+    Base = Error;
+  }
+
+  function getMessage(arg1, arg2, arg3) {
+    if (typeof message === 'string') {
+      return message;
+    } else {
+      return message(arg1, arg2, arg3);
+    }
+  }
+
+  var NodeError =
+  /*#__PURE__*/
+  function (_Base) {
+    _inheritsLoose(NodeError, _Base);
+
+    function NodeError(arg1, arg2, arg3) {
+      return _Base.call(this, getMessage(arg1, arg2, arg3)) || this;
+    }
+
+    return NodeError;
+  }(Base);
+
+  NodeError.prototype.name = Base.name;
+  NodeError.prototype.code = code;
+  codes[code] = NodeError;
+} // https://github.com/nodejs/node/blob/v10.8.0/lib/internal/errors.js
+
+
+function oneOf(expected, thing) {
+  if (Array.isArray(expected)) {
+    var len = expected.length;
+    expected = expected.map(function (i) {
+      return String(i);
+    });
+
+    if (len > 2) {
+      return "one of ".concat(thing, " ").concat(expected.slice(0, len - 1).join(', '), ", or ") + expected[len - 1];
+    } else if (len === 2) {
+      return "one of ".concat(thing, " ").concat(expected[0], " or ").concat(expected[1]);
+    } else {
+      return "of ".concat(thing, " ").concat(expected[0]);
+    }
+  } else {
+    return "of ".concat(thing, " ").concat(String(expected));
+  }
+} // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
+
+
+function startsWith(str, search, pos) {
+  return str.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+} // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
+
+
+function endsWith(str, search, this_len) {
+  if (this_len === undefined || this_len > str.length) {
+    this_len = str.length;
+  }
+
+  return str.substring(this_len - search.length, this_len) === search;
+} // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
+
+
+function includes(str, search, start) {
+  if (typeof start !== 'number') {
+    start = 0;
+  }
+
+  if (start + search.length > str.length) {
+    return false;
+  } else {
+    return str.indexOf(search, start) !== -1;
+  }
+}
+
+createErrorType('ERR_INVALID_OPT_VALUE', function (name, value) {
+  return 'The value "' + value + '" is invalid for option "' + name + '"';
+}, TypeError);
+createErrorType('ERR_INVALID_ARG_TYPE', function (name, expected, actual) {
+  // determiner: 'must be' or 'must not be'
+  var determiner;
+
+  if (typeof expected === 'string' && startsWith(expected, 'not ')) {
+    determiner = 'must not be';
+    expected = expected.replace(/^not /, '');
+  } else {
+    determiner = 'must be';
+  }
+
+  var msg;
+
+  if (endsWith(name, ' argument')) {
+    // For cases like 'first argument'
+    msg = "The ".concat(name, " ").concat(determiner, " ").concat(oneOf(expected, 'type'));
+  } else {
+    var type = includes(name, '.') ? 'property' : 'argument';
+    msg = "The \"".concat(name, "\" ").concat(type, " ").concat(determiner, " ").concat(oneOf(expected, 'type'));
+  }
+
+  msg += ". Received type ".concat(typeof actual);
+  return msg;
+}, TypeError);
+createErrorType('ERR_STREAM_PUSH_AFTER_EOF', 'stream.push() after EOF');
+createErrorType('ERR_METHOD_NOT_IMPLEMENTED', function (name) {
+  return 'The ' + name + ' method is not implemented';
+});
+createErrorType('ERR_STREAM_PREMATURE_CLOSE', 'Premature close');
+createErrorType('ERR_STREAM_DESTROYED', function (name) {
+  return 'Cannot call ' + name + ' after a stream was destroyed';
+});
+createErrorType('ERR_MULTIPLE_CALLBACK', 'Callback called multiple times');
+createErrorType('ERR_STREAM_CANNOT_PIPE', 'Cannot pipe, not readable');
+createErrorType('ERR_STREAM_WRITE_AFTER_END', 'write after end');
+createErrorType('ERR_STREAM_NULL_VALUES', 'May not write null values to stream', TypeError);
+createErrorType('ERR_UNKNOWN_ENCODING', function (arg) {
+  return 'Unknown encoding: ' + arg;
+}, TypeError);
+createErrorType('ERR_STREAM_UNSHIFT_AFTER_END_EVENT', 'stream.unshift() after end event');
+module.exports.codes = codes;
+
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/experimentalWarning.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/experimentalWarning.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+var experimentalWarnings = new Set();
+
+function emitExperimentalWarning(feature) {
+  if (experimentalWarnings.has(feature)) return;
+  var msg = feature + ' is an experimental feature. This feature could ' +
+       'change at any time';
+  experimentalWarnings.add(feature);
+  process.emitWarning(msg, 'ExperimentalWarning');
+}
+
+function noop() {}
+
+module.exports.emitExperimentalWarning = process.emitWarning
+  ? emitExperimentalWarning
+  : noop;
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_duplex.js":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_duplex.js ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+// a duplex stream is just a stream that is both readable and writable.
+// Since JS doesn't have multiple prototypal inheritance, this class
+// prototypally inherits from Readable, and then parasitically from
+// Writable.
+
+/*<replacement>*/
+
+var objectKeys = Object.keys || function (obj) {
+  var keys = [];
+
+  for (var key in obj) {
+    keys.push(key);
+  }
+
+  return keys;
+};
+/*</replacement>*/
+
+
+module.exports = Duplex;
+
+var Readable = __webpack_require__(/*! ./_stream_readable */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_readable.js");
+
+var Writable = __webpack_require__(/*! ./_stream_writable */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js");
+
+__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Duplex, Readable);
+
+{
+  // Allow the keys array to be GC'ed.
+  var keys = objectKeys(Writable.prototype);
+
+  for (var v = 0; v < keys.length; v++) {
+    var method = keys[v];
+    if (!Duplex.prototype[method]) Duplex.prototype[method] = Writable.prototype[method];
+  }
+}
+
+function Duplex(options) {
+  if (!(this instanceof Duplex)) return new Duplex(options);
+  Readable.call(this, options);
+  Writable.call(this, options);
+  this.allowHalfOpen = true;
+
+  if (options) {
+    if (options.readable === false) this.readable = false;
+    if (options.writable === false) this.writable = false;
+
+    if (options.allowHalfOpen === false) {
+      this.allowHalfOpen = false;
+      this.once('end', onend);
+    }
+  }
+}
+
+Object.defineProperty(Duplex.prototype, 'writableHighWaterMark', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._writableState.highWaterMark;
+  }
+});
+Object.defineProperty(Duplex.prototype, 'writableBuffer', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._writableState && this._writableState.getBuffer();
+  }
+});
+Object.defineProperty(Duplex.prototype, 'writableLength', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._writableState.length;
+  }
+}); // the no-half-open enforcer
+
+function onend() {
+  // If the writable side ended, then we're ok.
+  if (this._writableState.ended) return; // no more data can be written.
+  // But allow more writes to happen in this tick.
+
+  process.nextTick(onEndNT, this);
+}
+
+function onEndNT(self) {
+  self.end();
+}
+
+Object.defineProperty(Duplex.prototype, 'destroyed', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    if (this._readableState === undefined || this._writableState === undefined) {
+      return false;
+    }
+
+    return this._readableState.destroyed && this._writableState.destroyed;
+  },
+  set: function set(value) {
+    // we ignore the value if the stream
+    // has not been initialized yet
+    if (this._readableState === undefined || this._writableState === undefined) {
+      return;
+    } // backward compatibility, the user is explicitly
+    // managing destroyed
+
+
+    this._readableState.destroyed = value;
+    this._writableState.destroyed = value;
+  }
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_passthrough.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_passthrough.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+// a passthrough stream.
+// basically just the most minimal sort of Transform stream.
+// Every written chunk gets output as-is.
+
+
+module.exports = PassThrough;
+
+var Transform = __webpack_require__(/*! ./_stream_transform */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_transform.js");
+
+__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(PassThrough, Transform);
+
+function PassThrough(options) {
+  if (!(this instanceof PassThrough)) return new PassThrough(options);
+  Transform.call(this, options);
+}
+
+PassThrough.prototype._transform = function (chunk, encoding, cb) {
+  cb(null, chunk);
+};
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_readable.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_readable.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+module.exports = Readable;
+/*<replacement>*/
+
+var Duplex;
+/*</replacement>*/
+
+Readable.ReadableState = ReadableState;
+/*<replacement>*/
+
+var EE = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
+
+var EElistenerCount = function EElistenerCount(emitter, type) {
+  return emitter.listeners(type).length;
+};
+/*</replacement>*/
+
+/*<replacement>*/
+
+
+var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/stream-browser.js");
+/*</replacement>*/
+
+
+var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js").Buffer;
+
+var OurUint8Array = global.Uint8Array || function () {};
+
+function _uint8ArrayToBuffer(chunk) {
+  return Buffer.from(chunk);
+}
+
+function _isUint8Array(obj) {
+  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
+}
+/*<replacement>*/
+
+
+var debugUtil = __webpack_require__(/*! util */ 6);
+
+var debug;
+
+if (debugUtil && debugUtil.debuglog) {
+  debug = debugUtil.debuglog('stream');
+} else {
+  debug = function debug() {};
+}
+/*</replacement>*/
+
+
+var BufferList = __webpack_require__(/*! ./internal/streams/buffer_list */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/buffer_list.js");
+
+var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/destroy.js");
+
+var _require = __webpack_require__(/*! ./internal/streams/state */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/state.js"),
+    getHighWaterMark = _require.getHighWaterMark;
+
+var _require$codes = __webpack_require__(/*! ../errors */ "./node_modules/concat-stream/node_modules/readable-stream/errors-browser.js").codes,
+    ERR_INVALID_ARG_TYPE = _require$codes.ERR_INVALID_ARG_TYPE,
+    ERR_STREAM_PUSH_AFTER_EOF = _require$codes.ERR_STREAM_PUSH_AFTER_EOF,
+    ERR_METHOD_NOT_IMPLEMENTED = _require$codes.ERR_METHOD_NOT_IMPLEMENTED,
+    ERR_STREAM_UNSHIFT_AFTER_END_EVENT = _require$codes.ERR_STREAM_UNSHIFT_AFTER_END_EVENT;
+
+var _require2 = __webpack_require__(/*! ../experimentalWarning */ "./node_modules/concat-stream/node_modules/readable-stream/experimentalWarning.js"),
+    emitExperimentalWarning = _require2.emitExperimentalWarning; // Lazy loaded to improve the startup performance.
+
+
+var StringDecoder;
+var createReadableStreamAsyncIterator;
+
+__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Readable, Stream);
+
+var kProxyEvents = ['error', 'close', 'destroy', 'pause', 'resume'];
+
+function prependListener(emitter, event, fn) {
+  // Sadly this is not cacheable as some libraries bundle their own
+  // event emitter implementation with them.
+  if (typeof emitter.prependListener === 'function') return emitter.prependListener(event, fn); // This is a hack to make sure that our error handler is attached before any
+  // userland ones.  NEVER DO THIS. This is here only because this code needs
+  // to continue to work with older versions of Node.js that do not include
+  // the prependListener() method. The goal is to eventually remove this hack.
+
+  if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (Array.isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
+}
+
+function ReadableState(options, stream, isDuplex) {
+  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_duplex.js");
+  options = options || {}; // Duplex streams are both readable and writable, but share
+  // the same options object.
+  // However, some cases require setting options to different
+  // values for the readable and the writable sides of the duplex stream.
+  // These options can be provided separately as readableXXX and writableXXX.
+
+  if (typeof isDuplex !== 'boolean') isDuplex = stream instanceof Duplex; // object stream flag. Used to make read(n) ignore n and to
+  // make all the buffer merging and length checks go away
+
+  this.objectMode = !!options.objectMode;
+  if (isDuplex) this.objectMode = this.objectMode || !!options.readableObjectMode; // the point at which it stops calling _read() to fill the buffer
+  // Note: 0 is a valid value, means "don't call _read preemptively ever"
+
+  this.highWaterMark = getHighWaterMark(this, options, 'readableHighWaterMark', isDuplex); // A linked list is used to store data chunks instead of an array because the
+  // linked list can remove elements from the beginning faster than
+  // array.shift()
+
+  this.buffer = new BufferList();
+  this.length = 0;
+  this.pipes = null;
+  this.pipesCount = 0;
+  this.flowing = null;
+  this.ended = false;
+  this.endEmitted = false;
+  this.reading = false; // a flag to be able to tell if the event 'readable'/'data' is emitted
+  // immediately, or on a later tick.  We set this to true at first, because
+  // any actions that shouldn't happen until "later" should generally also
+  // not happen before the first read call.
+
+  this.sync = true; // whenever we return null, then we set a flag to say
+  // that we're awaiting a 'readable' event emission.
+
+  this.needReadable = false;
+  this.emittedReadable = false;
+  this.readableListening = false;
+  this.resumeScheduled = false;
+  this.paused = true; // Should close be emitted on destroy. Defaults to true.
+
+  this.emitClose = options.emitClose !== false; // has it been destroyed
+
+  this.destroyed = false; // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+
+  this.defaultEncoding = options.defaultEncoding || 'utf8'; // the number of writers that are awaiting a drain event in .pipe()s
+
+  this.awaitDrain = 0; // if true, a maybeReadMore has been scheduled
+
+  this.readingMore = false;
+  this.decoder = null;
+  this.encoding = null;
+
+  if (options.encoding) {
+    if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
+    this.decoder = new StringDecoder(options.encoding);
+    this.encoding = options.encoding;
+  }
+}
+
+function Readable(options) {
+  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_duplex.js");
+  if (!(this instanceof Readable)) return new Readable(options); // Checking for a Stream.Duplex instance is faster here instead of inside
+  // the ReadableState constructor, at least with V8 6.5
+
+  var isDuplex = this instanceof Duplex;
+  this._readableState = new ReadableState(options, this, isDuplex); // legacy
+
+  this.readable = true;
+
+  if (options) {
+    if (typeof options.read === 'function') this._read = options.read;
+    if (typeof options.destroy === 'function') this._destroy = options.destroy;
+  }
+
+  Stream.call(this);
+}
+
+Object.defineProperty(Readable.prototype, 'destroyed', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    if (this._readableState === undefined) {
+      return false;
+    }
+
+    return this._readableState.destroyed;
+  },
+  set: function set(value) {
+    // we ignore the value if the stream
+    // has not been initialized yet
+    if (!this._readableState) {
+      return;
+    } // backward compatibility, the user is explicitly
+    // managing destroyed
+
+
+    this._readableState.destroyed = value;
+  }
+});
+Readable.prototype.destroy = destroyImpl.destroy;
+Readable.prototype._undestroy = destroyImpl.undestroy;
+
+Readable.prototype._destroy = function (err, cb) {
+  cb(err);
+}; // Manually shove something into the read() buffer.
+// This returns true if the highWaterMark has not been hit yet,
+// similar to how Writable.write() returns true if you should
+// write() some more.
+
+
+Readable.prototype.push = function (chunk, encoding) {
+  var state = this._readableState;
+  var skipChunkCheck;
+
+  if (!state.objectMode) {
+    if (typeof chunk === 'string') {
+      encoding = encoding || state.defaultEncoding;
+
+      if (encoding !== state.encoding) {
+        chunk = Buffer.from(chunk, encoding);
+        encoding = '';
+      }
+
+      skipChunkCheck = true;
+    }
+  } else {
+    skipChunkCheck = true;
+  }
+
+  return readableAddChunk(this, chunk, encoding, false, skipChunkCheck);
+}; // Unshift should *always* be something directly out of read()
+
+
+Readable.prototype.unshift = function (chunk) {
+  return readableAddChunk(this, chunk, null, true, false);
+};
+
+function readableAddChunk(stream, chunk, encoding, addToFront, skipChunkCheck) {
+  debug('readableAddChunk', chunk);
+  var state = stream._readableState;
+
+  if (chunk === null) {
+    state.reading = false;
+    onEofChunk(stream, state);
+  } else {
+    var er;
+    if (!skipChunkCheck) er = chunkInvalid(state, chunk);
+
+    if (er) {
+      stream.emit('error', er);
+    } else if (state.objectMode || chunk && chunk.length > 0) {
+      if (typeof chunk !== 'string' && !state.objectMode && Object.getPrototypeOf(chunk) !== Buffer.prototype) {
+        chunk = _uint8ArrayToBuffer(chunk);
+      }
+
+      if (addToFront) {
+        if (state.endEmitted) stream.emit('error', new ERR_STREAM_UNSHIFT_AFTER_END_EVENT());else addChunk(stream, state, chunk, true);
+      } else if (state.ended) {
+        stream.emit('error', new ERR_STREAM_PUSH_AFTER_EOF());
+      } else if (state.destroyed) {
+        return false;
+      } else {
+        state.reading = false;
+
+        if (state.decoder && !encoding) {
+          chunk = state.decoder.write(chunk);
+          if (state.objectMode || chunk.length !== 0) addChunk(stream, state, chunk, false);else maybeReadMore(stream, state);
+        } else {
+          addChunk(stream, state, chunk, false);
+        }
+      }
+    } else if (!addToFront) {
+      state.reading = false;
+      maybeReadMore(stream, state);
+    }
+  } // We can push more data if we are below the highWaterMark.
+  // Also, if we have no data yet, we can stand some more bytes.
+  // This is to work around cases where hwm=0, such as the repl.
+
+
+  return !state.ended && (state.length < state.highWaterMark || state.length === 0);
+}
+
+function addChunk(stream, state, chunk, addToFront) {
+  if (state.flowing && state.length === 0 && !state.sync) {
+    state.awaitDrain = 0;
+    stream.emit('data', chunk);
+  } else {
+    // update the buffer info.
+    state.length += state.objectMode ? 1 : chunk.length;
+    if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);
+    if (state.needReadable) emitReadable(stream);
+  }
+
+  maybeReadMore(stream, state);
+}
+
+function chunkInvalid(state, chunk) {
+  var er;
+
+  if (!_isUint8Array(chunk) && typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
+    er = new ERR_INVALID_ARG_TYPE('chunk', ['string', 'Buffer', 'Uint8Array'], chunk);
+  }
+
+  return er;
+}
+
+Readable.prototype.isPaused = function () {
+  return this._readableState.flowing === false;
+}; // backwards compatibility.
+
+
+Readable.prototype.setEncoding = function (enc) {
+  if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
+  this._readableState.decoder = new StringDecoder(enc); // if setEncoding(null), decoder.encoding equals utf8
+
+  this._readableState.encoding = this._readableState.decoder.encoding;
+  return this;
+}; // Don't raise the hwm > 8MB
+
+
+var MAX_HWM = 0x800000;
+
+function computeNewHighWaterMark(n) {
+  if (n >= MAX_HWM) {
+    n = MAX_HWM;
+  } else {
+    // Get the next highest power of 2 to prevent increasing hwm excessively in
+    // tiny amounts
+    n--;
+    n |= n >>> 1;
+    n |= n >>> 2;
+    n |= n >>> 4;
+    n |= n >>> 8;
+    n |= n >>> 16;
+    n++;
+  }
+
+  return n;
+} // This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+
+
+function howMuchToRead(n, state) {
+  if (n <= 0 || state.length === 0 && state.ended) return 0;
+  if (state.objectMode) return 1;
+
+  if (n !== n) {
+    // Only flow one buffer at a time
+    if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;
+  } // If we're asking for more than the current hwm, then raise the hwm.
+
+
+  if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
+  if (n <= state.length) return n; // Don't have enough
+
+  if (!state.ended) {
+    state.needReadable = true;
+    return 0;
+  }
+
+  return state.length;
+} // you can override either this method, or the async _read(n) below.
+
+
+Readable.prototype.read = function (n) {
+  debug('read', n);
+  n = parseInt(n, 10);
+  var state = this._readableState;
+  var nOrig = n;
+  if (n !== 0) state.emittedReadable = false; // if we're doing read(0) to trigger a readable event, but we
+  // already have a bunch of data in the buffer, then just trigger
+  // the 'readable' event and move on.
+
+  if (n === 0 && state.needReadable && ((state.highWaterMark !== 0 ? state.length >= state.highWaterMark : state.length > 0) || state.ended)) {
+    debug('read: emitReadable', state.length, state.ended);
+    if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);
+    return null;
+  }
+
+  n = howMuchToRead(n, state); // if we've ended, and we're now clear, then finish it up.
+
+  if (n === 0 && state.ended) {
+    if (state.length === 0) endReadable(this);
+    return null;
+  } // All the actual chunk generation logic needs to be
+  // *below* the call to _read.  The reason is that in certain
+  // synthetic stream cases, such as passthrough streams, _read
+  // may be a completely synchronous operation which may change
+  // the state of the read buffer, providing enough data when
+  // before there was *not* enough.
+  //
+  // So, the steps are:
+  // 1. Figure out what the state of things will be after we do
+  // a read from the buffer.
+  //
+  // 2. If that resulting state will trigger a _read, then call _read.
+  // Note that this may be asynchronous, or synchronous.  Yes, it is
+  // deeply ugly to write APIs this way, but that still doesn't mean
+  // that the Readable class should behave improperly, as streams are
+  // designed to be sync/async agnostic.
+  // Take note if the _read call is sync or async (ie, if the read call
+  // has returned yet), so that we know whether or not it's safe to emit
+  // 'readable' etc.
+  //
+  // 3. Actually pull the requested chunks out of the buffer and return.
+  // if we need a readable event, then we need to do some reading.
+
+
+  var doRead = state.needReadable;
+  debug('need readable', doRead); // if we currently have less than the highWaterMark, then also read some
+
+  if (state.length === 0 || state.length - n < state.highWaterMark) {
+    doRead = true;
+    debug('length less than watermark', doRead);
+  } // however, if we've ended, then there's no point, and if we're already
+  // reading, then it's unnecessary.
+
+
+  if (state.ended || state.reading) {
+    doRead = false;
+    debug('reading or ended', doRead);
+  } else if (doRead) {
+    debug('do read');
+    state.reading = true;
+    state.sync = true; // if the length is currently zero, then we *need* a readable event.
+
+    if (state.length === 0) state.needReadable = true; // call internal read method
+
+    this._read(state.highWaterMark);
+
+    state.sync = false; // If _read pushed data synchronously, then `reading` will be false,
+    // and we need to re-evaluate how much data we can return to the user.
+
+    if (!state.reading) n = howMuchToRead(nOrig, state);
+  }
+
+  var ret;
+  if (n > 0) ret = fromList(n, state);else ret = null;
+
+  if (ret === null) {
+    state.needReadable = true;
+    n = 0;
+  } else {
+    state.length -= n;
+    state.awaitDrain = 0;
+  }
+
+  if (state.length === 0) {
+    // If we have nothing in the buffer, then we want to know
+    // as soon as we *do* get something into the buffer.
+    if (!state.ended) state.needReadable = true; // If we tried to read() past the EOF, then emit end on the next tick.
+
+    if (nOrig !== n && state.ended) endReadable(this);
+  }
+
+  if (ret !== null) this.emit('data', ret);
+  return ret;
+};
+
+function onEofChunk(stream, state) {
+  if (state.ended) return;
+
+  if (state.decoder) {
+    var chunk = state.decoder.end();
+
+    if (chunk && chunk.length) {
+      state.buffer.push(chunk);
+      state.length += state.objectMode ? 1 : chunk.length;
+    }
+  }
+
+  state.ended = true;
+
+  if (state.sync) {
+    // if we are sync, wait until next tick to emit the data.
+    // Otherwise we risk emitting data in the flow()
+    // the readable code triggers during a read() call
+    emitReadable(stream);
+  } else {
+    // emit 'readable' now to make sure it gets picked up.
+    state.needReadable = false;
+
+    if (!state.emittedReadable) {
+      state.emittedReadable = true;
+      emitReadable_(stream);
+    }
+  }
+} // Don't emit readable right away in sync mode, because this can trigger
+// another read() call => stack overflow.  This way, it might trigger
+// a nextTick recursion warning, but that's not so bad.
+
+
+function emitReadable(stream) {
+  var state = stream._readableState;
+  state.needReadable = false;
+
+  if (!state.emittedReadable) {
+    debug('emitReadable', state.flowing);
+    state.emittedReadable = true;
+    process.nextTick(emitReadable_, stream);
+  }
+}
+
+function emitReadable_(stream) {
+  var state = stream._readableState;
+  debug('emitReadable_', state.destroyed, state.length, state.ended);
+
+  if (!state.destroyed && (state.length || state.ended)) {
+    stream.emit('readable');
+  } // The stream needs another readable event if
+  // 1. It is not flowing, as the flow mechanism will take
+  //    care of it.
+  // 2. It is not ended.
+  // 3. It is below the highWaterMark, so we can schedule
+  //    another readable later.
+
+
+  state.needReadable = !state.flowing && !state.ended && state.length <= state.highWaterMark;
+  flow(stream);
+} // at this point, the user has presumably seen the 'readable' event,
+// and called read() to consume some data.  that may have triggered
+// in turn another _read(n) call, in which case reading = true if
+// it's in progress.
+// However, if we're not ended, or reading, and the length < hwm,
+// then go ahead and try to read some more preemptively.
+
+
+function maybeReadMore(stream, state) {
+  if (!state.readingMore) {
+    state.readingMore = true;
+    process.nextTick(maybeReadMore_, stream, state);
+  }
+}
+
+function maybeReadMore_(stream, state) {
+  // Attempt to read more data if we should.
+  //
+  // The conditions for reading more data are (one of):
+  // - Not enough data buffered (state.length < state.highWaterMark). The loop
+  //   is responsible for filling the buffer with enough data if such data
+  //   is available. If highWaterMark is 0 and we are not in the flowing mode
+  //   we should _not_ attempt to buffer any extra data. We'll get more data
+  //   when the stream consumer calls read() instead.
+  // - No data in the buffer, and the stream is in flowing mode. In this mode
+  //   the loop below is responsible for ensuring read() is called. Failing to
+  //   call read here would abort the flow and there's no other mechanism for
+  //   continuing the flow if the stream consumer has just subscribed to the
+  //   'data' event.
+  //
+  // In addition to the above conditions to keep reading data, the following
+  // conditions prevent the data from being read:
+  // - The stream has ended (state.ended).
+  // - There is already a pending 'read' operation (state.reading). This is a
+  //   case where the the stream has called the implementation defined _read()
+  //   method, but they are processing the call asynchronously and have _not_
+  //   called push() with new data. In this case we skip performing more
+  //   read()s. The execution ends in this method again after the _read() ends
+  //   up calling push() with more data.
+  while (!state.reading && !state.ended && (state.length < state.highWaterMark || state.flowing && state.length === 0)) {
+    var len = state.length;
+    debug('maybeReadMore read 0');
+    stream.read(0);
+    if (len === state.length) // didn't get any data, stop spinning.
+      break;
+  }
+
+  state.readingMore = false;
+} // abstract method.  to be overridden in specific implementation classes.
+// call cb(er, data) where data is <= n in length.
+// for virtual (non-string, non-buffer) streams, "length" is somewhat
+// arbitrary, and perhaps not very meaningful.
+
+
+Readable.prototype._read = function (n) {
+  this.emit('error', new ERR_METHOD_NOT_IMPLEMENTED('_read()'));
+};
+
+Readable.prototype.pipe = function (dest, pipeOpts) {
+  var src = this;
+  var state = this._readableState;
+
+  switch (state.pipesCount) {
+    case 0:
+      state.pipes = dest;
+      break;
+
+    case 1:
+      state.pipes = [state.pipes, dest];
+      break;
+
+    default:
+      state.pipes.push(dest);
+      break;
+  }
+
+  state.pipesCount += 1;
+  debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);
+  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
+  var endFn = doEnd ? onend : unpipe;
+  if (state.endEmitted) process.nextTick(endFn);else src.once('end', endFn);
+  dest.on('unpipe', onunpipe);
+
+  function onunpipe(readable, unpipeInfo) {
+    debug('onunpipe');
+
+    if (readable === src) {
+      if (unpipeInfo && unpipeInfo.hasUnpiped === false) {
+        unpipeInfo.hasUnpiped = true;
+        cleanup();
+      }
+    }
+  }
+
+  function onend() {
+    debug('onend');
+    dest.end();
+  } // when the dest drains, it reduces the awaitDrain counter
+  // on the source.  This would be more elegant with a .once()
+  // handler in flow(), but adding and removing repeatedly is
+  // too slow.
+
+
+  var ondrain = pipeOnDrain(src);
+  dest.on('drain', ondrain);
+  var cleanedUp = false;
+
+  function cleanup() {
+    debug('cleanup'); // cleanup event handlers once the pipe is broken
+
+    dest.removeListener('close', onclose);
+    dest.removeListener('finish', onfinish);
+    dest.removeListener('drain', ondrain);
+    dest.removeListener('error', onerror);
+    dest.removeListener('unpipe', onunpipe);
+    src.removeListener('end', onend);
+    src.removeListener('end', unpipe);
+    src.removeListener('data', ondata);
+    cleanedUp = true; // if the reader is waiting for a drain event from this
+    // specific writer, then it would cause it to never start
+    // flowing again.
+    // So, if this is awaiting a drain, then we just call it now.
+    // If we don't know, then assume that we are waiting for one.
+
+    if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
+  }
+
+  src.on('data', ondata);
+
+  function ondata(chunk) {
+    debug('ondata');
+    var ret = dest.write(chunk);
+    debug('dest.write', ret);
+
+    if (ret === false) {
+      // If the user unpiped during `dest.write()`, it is possible
+      // to get stuck in a permanently paused state if that write
+      // also returned false.
+      // => Check whether `dest` is still a piping destination.
+      if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
+        debug('false write response, pause', state.awaitDrain);
+        state.awaitDrain++;
+      }
+
+      src.pause();
+    }
+  } // if the dest has an error, then stop piping into it.
+  // however, don't suppress the throwing behavior for this.
+
+
+  function onerror(er) {
+    debug('onerror', er);
+    unpipe();
+    dest.removeListener('error', onerror);
+    if (EElistenerCount(dest, 'error') === 0) dest.emit('error', er);
+  } // Make sure our error handler is attached before userland ones.
+
+
+  prependListener(dest, 'error', onerror); // Both close and finish should trigger unpipe, but only once.
+
+  function onclose() {
+    dest.removeListener('finish', onfinish);
+    unpipe();
+  }
+
+  dest.once('close', onclose);
+
+  function onfinish() {
+    debug('onfinish');
+    dest.removeListener('close', onclose);
+    unpipe();
+  }
+
+  dest.once('finish', onfinish);
+
+  function unpipe() {
+    debug('unpipe');
+    src.unpipe(dest);
+  } // tell the dest that it's being piped to
+
+
+  dest.emit('pipe', src); // start the flow if it hasn't been started already.
+
+  if (!state.flowing) {
+    debug('pipe resume');
+    src.resume();
+  }
+
+  return dest;
+};
+
+function pipeOnDrain(src) {
+  return function pipeOnDrainFunctionResult() {
+    var state = src._readableState;
+    debug('pipeOnDrain', state.awaitDrain);
+    if (state.awaitDrain) state.awaitDrain--;
+
+    if (state.awaitDrain === 0 && EElistenerCount(src, 'data')) {
+      state.flowing = true;
+      flow(src);
+    }
+  };
+}
+
+Readable.prototype.unpipe = function (dest) {
+  var state = this._readableState;
+  var unpipeInfo = {
+    hasUnpiped: false
+  }; // if we're not piping anywhere, then do nothing.
+
+  if (state.pipesCount === 0) return this; // just one destination.  most common case.
+
+  if (state.pipesCount === 1) {
+    // passed in one, but it's not the right one.
+    if (dest && dest !== state.pipes) return this;
+    if (!dest) dest = state.pipes; // got a match.
+
+    state.pipes = null;
+    state.pipesCount = 0;
+    state.flowing = false;
+    if (dest) dest.emit('unpipe', this, unpipeInfo);
+    return this;
+  } // slow case. multiple pipe destinations.
+
+
+  if (!dest) {
+    // remove all.
+    var dests = state.pipes;
+    var len = state.pipesCount;
+    state.pipes = null;
+    state.pipesCount = 0;
+    state.flowing = false;
+
+    for (var i = 0; i < len; i++) {
+      dests[i].emit('unpipe', this, {
+        hasUnpiped: false
+      });
+    }
+
+    return this;
+  } // try to find the right one.
+
+
+  var index = indexOf(state.pipes, dest);
+  if (index === -1) return this;
+  state.pipes.splice(index, 1);
+  state.pipesCount -= 1;
+  if (state.pipesCount === 1) state.pipes = state.pipes[0];
+  dest.emit('unpipe', this, unpipeInfo);
+  return this;
+}; // set up data events if they are asked for
+// Ensure readable listeners eventually get something
+
+
+Readable.prototype.on = function (ev, fn) {
+  var res = Stream.prototype.on.call(this, ev, fn);
+  var state = this._readableState;
+
+  if (ev === 'data') {
+    // update readableListening so that resume() may be a no-op
+    // a few lines down. This is needed to support once('readable').
+    state.readableListening = this.listenerCount('readable') > 0; // Try start flowing on next tick if stream isn't explicitly paused
+
+    if (state.flowing !== false) this.resume();
+  } else if (ev === 'readable') {
+    if (!state.endEmitted && !state.readableListening) {
+      state.readableListening = state.needReadable = true;
+      state.flowing = false;
+      state.emittedReadable = false;
+      debug('on readable', state.length, state.reading);
+
+      if (state.length) {
+        emitReadable(this);
+      } else if (!state.reading) {
+        process.nextTick(nReadingNextTick, this);
+      }
+    }
+  }
+
+  return res;
+};
+
+Readable.prototype.addListener = Readable.prototype.on;
+
+Readable.prototype.removeListener = function (ev, fn) {
+  var res = Stream.prototype.removeListener.call(this, ev, fn);
+
+  if (ev === 'readable') {
+    // We need to check if there is someone still listening to
+    // readable and reset the state. However this needs to happen
+    // after readable has been emitted but before I/O (nextTick) to
+    // support once('readable', fn) cycles. This means that calling
+    // resume within the same tick will have no
+    // effect.
+    process.nextTick(updateReadableListening, this);
+  }
+
+  return res;
+};
+
+Readable.prototype.removeAllListeners = function (ev) {
+  var res = Stream.prototype.removeAllListeners.apply(this, arguments);
+
+  if (ev === 'readable' || ev === undefined) {
+    // We need to check if there is someone still listening to
+    // readable and reset the state. However this needs to happen
+    // after readable has been emitted but before I/O (nextTick) to
+    // support once('readable', fn) cycles. This means that calling
+    // resume within the same tick will have no
+    // effect.
+    process.nextTick(updateReadableListening, this);
+  }
+
+  return res;
+};
+
+function updateReadableListening(self) {
+  var state = self._readableState;
+  state.readableListening = self.listenerCount('readable') > 0;
+
+  if (state.resumeScheduled && !state.paused) {
+    // flowing needs to be set to true now, otherwise
+    // the upcoming resume will not flow.
+    state.flowing = true; // crude way to check if we should resume
+  } else if (self.listenerCount('data') > 0) {
+    self.resume();
+  }
+}
+
+function nReadingNextTick(self) {
+  debug('readable nexttick read 0');
+  self.read(0);
+} // pause() and resume() are remnants of the legacy readable stream API
+// If the user uses them, then switch into old mode.
+
+
+Readable.prototype.resume = function () {
+  var state = this._readableState;
+
+  if (!state.flowing) {
+    debug('resume'); // we flow only if there is no one listening
+    // for readable, but we still have to call
+    // resume()
+
+    state.flowing = !state.readableListening;
+    resume(this, state);
+  }
+
+  state.paused = false;
+  return this;
+};
+
+function resume(stream, state) {
+  if (!state.resumeScheduled) {
+    state.resumeScheduled = true;
+    process.nextTick(resume_, stream, state);
+  }
+}
+
+function resume_(stream, state) {
+  debug('resume', state.reading);
+
+  if (!state.reading) {
+    stream.read(0);
+  }
+
+  state.resumeScheduled = false;
+  stream.emit('resume');
+  flow(stream);
+  if (state.flowing && !state.reading) stream.read(0);
+}
+
+Readable.prototype.pause = function () {
+  debug('call pause flowing=%j', this._readableState.flowing);
+
+  if (this._readableState.flowing !== false) {
+    debug('pause');
+    this._readableState.flowing = false;
+    this.emit('pause');
+  }
+
+  this._readableState.paused = true;
+  return this;
+};
+
+function flow(stream) {
+  var state = stream._readableState;
+  debug('flow', state.flowing);
+
+  while (state.flowing && stream.read() !== null) {
+    ;
+  }
+} // wrap an old-style stream as the async data source.
+// This is *not* part of the readable stream interface.
+// It is an ugly unfortunate mess of history.
+
+
+Readable.prototype.wrap = function (stream) {
+  var _this = this;
+
+  var state = this._readableState;
+  var paused = false;
+  stream.on('end', function () {
+    debug('wrapped end');
+
+    if (state.decoder && !state.ended) {
+      var chunk = state.decoder.end();
+      if (chunk && chunk.length) _this.push(chunk);
+    }
+
+    _this.push(null);
+  });
+  stream.on('data', function (chunk) {
+    debug('wrapped data');
+    if (state.decoder) chunk = state.decoder.write(chunk); // don't skip over falsy values in objectMode
+
+    if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;
+
+    var ret = _this.push(chunk);
+
+    if (!ret) {
+      paused = true;
+      stream.pause();
+    }
+  }); // proxy all the other methods.
+  // important when wrapping filters and duplexes.
+
+  for (var i in stream) {
+    if (this[i] === undefined && typeof stream[i] === 'function') {
+      this[i] = function methodWrap(method) {
+        return function methodWrapReturnFunction() {
+          return stream[method].apply(stream, arguments);
+        };
+      }(i);
+    }
+  } // proxy certain important events.
+
+
+  for (var n = 0; n < kProxyEvents.length; n++) {
+    stream.on(kProxyEvents[n], this.emit.bind(this, kProxyEvents[n]));
+  } // when we try to consume some more bytes, simply unpause the
+  // underlying stream.
+
+
+  this._read = function (n) {
+    debug('wrapped _read', n);
+
+    if (paused) {
+      paused = false;
+      stream.resume();
+    }
+  };
+
+  return this;
+};
+
+if (typeof Symbol === 'function') {
+  Readable.prototype[Symbol.asyncIterator] = function () {
+    emitExperimentalWarning('Readable[Symbol.asyncIterator]');
+
+    if (createReadableStreamAsyncIterator === undefined) {
+      createReadableStreamAsyncIterator = __webpack_require__(/*! ./internal/streams/async_iterator */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/async_iterator.js");
+    }
+
+    return createReadableStreamAsyncIterator(this);
+  };
+}
+
+Object.defineProperty(Readable.prototype, 'readableHighWaterMark', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._readableState.highWaterMark;
+  }
+});
+Object.defineProperty(Readable.prototype, 'readableBuffer', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._readableState && this._readableState.buffer;
+  }
+});
+Object.defineProperty(Readable.prototype, 'readableFlowing', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._readableState.flowing;
+  },
+  set: function set(state) {
+    if (this._readableState) {
+      this._readableState.flowing = state;
+    }
+  }
+}); // exposed for testing purposes only.
+
+Readable._fromList = fromList;
+Object.defineProperty(Readable.prototype, 'readableLength', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._readableState.length;
+  }
+}); // Pluck off n bytes from an array of buffers.
+// Length is the combined lengths of all the buffers in the list.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+
+function fromList(n, state) {
+  // nothing buffered
+  if (state.length === 0) return null;
+  var ret;
+  if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
+    // read it all, truncate the list
+    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.first();else ret = state.buffer.concat(state.length);
+    state.buffer.clear();
+  } else {
+    // read part of list
+    ret = state.buffer.consume(n, state.decoder);
+  }
+  return ret;
+}
+
+function endReadable(stream) {
+  var state = stream._readableState;
+  debug('endReadable', state.endEmitted);
+
+  if (!state.endEmitted) {
+    state.ended = true;
+    process.nextTick(endReadableNT, state, stream);
+  }
+}
+
+function endReadableNT(state, stream) {
+  debug('endReadableNT', state.endEmitted, state.length); // Check that we didn't get one last unshift.
+
+  if (!state.endEmitted && state.length === 0) {
+    state.endEmitted = true;
+    stream.readable = false;
+    stream.emit('end');
+  }
+}
+
+function indexOf(xs, x) {
+  for (var i = 0, l = xs.length; i < l; i++) {
+    if (xs[i] === x) return i;
+  }
+
+  return -1;
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_transform.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_transform.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+// a transform stream is a readable/writable stream where you do
+// something with the data.  Sometimes it's called a "filter",
+// but that's not a great name for it, since that implies a thing where
+// some bits pass through, and others are simply ignored.  (That would
+// be a valid example of a transform, of course.)
+//
+// While the output is causally related to the input, it's not a
+// necessarily symmetric or synchronous transformation.  For example,
+// a zlib stream might take multiple plain-text writes(), and then
+// emit a single compressed chunk some time in the future.
+//
+// Here's how this works:
+//
+// The Transform stream has all the aspects of the readable and writable
+// stream classes.  When you write(chunk), that calls _write(chunk,cb)
+// internally, and returns false if there's a lot of pending writes
+// buffered up.  When you call read(), that calls _read(n) until
+// there's enough pending readable data buffered up.
+//
+// In a transform stream, the written data is placed in a buffer.  When
+// _read(n) is called, it transforms the queued up data, calling the
+// buffered _write cb's as it consumes chunks.  If consuming a single
+// written chunk would result in multiple output chunks, then the first
+// outputted bit calls the readcb, and subsequent chunks just go into
+// the read buffer, and will cause it to emit 'readable' if necessary.
+//
+// This way, back-pressure is actually determined by the reading side,
+// since _read has to be called to start processing a new chunk.  However,
+// a pathological inflate type of transform can cause excessive buffering
+// here.  For example, imagine a stream where every byte of input is
+// interpreted as an integer from 0-255, and then results in that many
+// bytes of output.  Writing the 4 bytes {ff,ff,ff,ff} would result in
+// 1kb of data being output.  In this case, you could write a very small
+// amount of input, and end up with a very large amount of output.  In
+// such a pathological inflating mechanism, there'd be no way to tell
+// the system to stop doing the transform.  A single 4MB write could
+// cause the system to run out of memory.
+//
+// However, even in such a pathological case, only a single written chunk
+// would be consumed, and then the rest would wait (un-transformed) until
+// the results of the previous transformed chunk were consumed.
+
+
+module.exports = Transform;
+
+var _require$codes = __webpack_require__(/*! ../errors */ "./node_modules/concat-stream/node_modules/readable-stream/errors-browser.js").codes,
+    ERR_METHOD_NOT_IMPLEMENTED = _require$codes.ERR_METHOD_NOT_IMPLEMENTED,
+    ERR_MULTIPLE_CALLBACK = _require$codes.ERR_MULTIPLE_CALLBACK,
+    ERR_TRANSFORM_ALREADY_TRANSFORMING = _require$codes.ERR_TRANSFORM_ALREADY_TRANSFORMING,
+    ERR_TRANSFORM_WITH_LENGTH_0 = _require$codes.ERR_TRANSFORM_WITH_LENGTH_0;
+
+var Duplex = __webpack_require__(/*! ./_stream_duplex */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_duplex.js");
+
+__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Transform, Duplex);
+
+function afterTransform(er, data) {
+  var ts = this._transformState;
+  ts.transforming = false;
+  var cb = ts.writecb;
+
+  if (cb === null) {
+    return this.emit('error', new ERR_MULTIPLE_CALLBACK());
+  }
+
+  ts.writechunk = null;
+  ts.writecb = null;
+  if (data != null) // single equals check for both `null` and `undefined`
+    this.push(data);
+  cb(er);
+  var rs = this._readableState;
+  rs.reading = false;
+
+  if (rs.needReadable || rs.length < rs.highWaterMark) {
+    this._read(rs.highWaterMark);
+  }
+}
+
+function Transform(options) {
+  if (!(this instanceof Transform)) return new Transform(options);
+  Duplex.call(this, options);
+  this._transformState = {
+    afterTransform: afterTransform.bind(this),
+    needTransform: false,
+    transforming: false,
+    writecb: null,
+    writechunk: null,
+    writeencoding: null
+  }; // start out asking for a readable event once data is transformed.
+
+  this._readableState.needReadable = true; // we have implemented the _read method, and done the other things
+  // that Readable wants before the first _read call, so unset the
+  // sync guard flag.
+
+  this._readableState.sync = false;
+
+  if (options) {
+    if (typeof options.transform === 'function') this._transform = options.transform;
+    if (typeof options.flush === 'function') this._flush = options.flush;
+  } // When the writable side finishes, then flush out anything remaining.
+
+
+  this.on('prefinish', prefinish);
+}
+
+function prefinish() {
+  var _this = this;
+
+  if (typeof this._flush === 'function' && !this._readableState.destroyed) {
+    this._flush(function (er, data) {
+      done(_this, er, data);
+    });
+  } else {
+    done(this, null, null);
+  }
+}
+
+Transform.prototype.push = function (chunk, encoding) {
+  this._transformState.needTransform = false;
+  return Duplex.prototype.push.call(this, chunk, encoding);
+}; // This is the part where you do stuff!
+// override this function in implementation classes.
+// 'chunk' is an input chunk.
+//
+// Call `push(newChunk)` to pass along transformed output
+// to the readable side.  You may call 'push' zero or more times.
+//
+// Call `cb(err)` when you are done with this chunk.  If you pass
+// an error, then that'll put the hurt on the whole operation.  If you
+// never call cb(), then you'll never get another chunk.
+
+
+Transform.prototype._transform = function (chunk, encoding, cb) {
+  cb(new ERR_METHOD_NOT_IMPLEMENTED('_transform()'));
+};
+
+Transform.prototype._write = function (chunk, encoding, cb) {
+  var ts = this._transformState;
+  ts.writecb = cb;
+  ts.writechunk = chunk;
+  ts.writeencoding = encoding;
+
+  if (!ts.transforming) {
+    var rs = this._readableState;
+    if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark) this._read(rs.highWaterMark);
+  }
+}; // Doesn't matter what the args are here.
+// _transform does all the work.
+// That we got here means that the readable side wants more data.
+
+
+Transform.prototype._read = function (n) {
+  var ts = this._transformState;
+
+  if (ts.writechunk !== null && !ts.transforming) {
+    ts.transforming = true;
+
+    this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);
+  } else {
+    // mark that we need a transform, so that any data that comes in
+    // will get processed, now that we've asked for it.
+    ts.needTransform = true;
+  }
+};
+
+Transform.prototype._destroy = function (err, cb) {
+  Duplex.prototype._destroy.call(this, err, function (err2) {
+    cb(err2);
+  });
+};
+
+function done(stream, er, data) {
+  if (er) return stream.emit('error', er);
+  if (data != null) // single equals check for both `null` and `undefined`
+    stream.push(data); // TODO(BridgeAR): Write a test for these two error cases
+  // if there's nothing in the write buffer, then that means
+  // that nothing more will ever be provided
+
+  if (stream._writableState.length) throw new ERR_TRANSFORM_WITH_LENGTH_0();
+  if (stream._transformState.transforming) throw new ERR_TRANSFORM_ALREADY_TRANSFORMING();
+  return stream.push(null);
+}
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+// A bit simpler than readable streams.
+// Implement an async ._write(chunk, encoding, cb), and it'll handle all
+// the drain event emission and buffering.
+
+
+module.exports = Writable;
+/* <replacement> */
+
+function WriteReq(chunk, encoding, cb) {
+  this.chunk = chunk;
+  this.encoding = encoding;
+  this.callback = cb;
+  this.next = null;
+} // It seems a linked list but it is not
+// there will be only 2 of these for each stream
+
+
+function CorkedRequest(state) {
+  var _this = this;
+
+  this.next = null;
+  this.entry = null;
+
+  this.finish = function () {
+    onCorkedFinish(_this, state);
+  };
+}
+/* </replacement> */
+
+/*<replacement>*/
+
+
+var Duplex;
+/*</replacement>*/
+
+Writable.WritableState = WritableState;
+/*<replacement>*/
+
+var internalUtil = {
+  deprecate: __webpack_require__(/*! util-deprecate */ "./node_modules/util-deprecate/browser.js")
+};
+/*</replacement>*/
+
+/*<replacement>*/
+
+var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/stream-browser.js");
+/*</replacement>*/
+
+
+var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js").Buffer;
+
+var OurUint8Array = global.Uint8Array || function () {};
+
+function _uint8ArrayToBuffer(chunk) {
+  return Buffer.from(chunk);
+}
+
+function _isUint8Array(obj) {
+  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
+}
+
+var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/destroy.js");
+
+var _require = __webpack_require__(/*! ./internal/streams/state */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/state.js"),
+    getHighWaterMark = _require.getHighWaterMark;
+
+var _require$codes = __webpack_require__(/*! ../errors */ "./node_modules/concat-stream/node_modules/readable-stream/errors-browser.js").codes,
+    ERR_INVALID_ARG_TYPE = _require$codes.ERR_INVALID_ARG_TYPE,
+    ERR_METHOD_NOT_IMPLEMENTED = _require$codes.ERR_METHOD_NOT_IMPLEMENTED,
+    ERR_MULTIPLE_CALLBACK = _require$codes.ERR_MULTIPLE_CALLBACK,
+    ERR_STREAM_CANNOT_PIPE = _require$codes.ERR_STREAM_CANNOT_PIPE,
+    ERR_STREAM_DESTROYED = _require$codes.ERR_STREAM_DESTROYED,
+    ERR_STREAM_NULL_VALUES = _require$codes.ERR_STREAM_NULL_VALUES,
+    ERR_STREAM_WRITE_AFTER_END = _require$codes.ERR_STREAM_WRITE_AFTER_END,
+    ERR_UNKNOWN_ENCODING = _require$codes.ERR_UNKNOWN_ENCODING;
+
+__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Writable, Stream);
+
+function nop() {}
+
+function WritableState(options, stream, isDuplex) {
+  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_duplex.js");
+  options = options || {}; // Duplex streams are both readable and writable, but share
+  // the same options object.
+  // However, some cases require setting options to different
+  // values for the readable and the writable sides of the duplex stream,
+  // e.g. options.readableObjectMode vs. options.writableObjectMode, etc.
+
+  if (typeof isDuplex !== 'boolean') isDuplex = stream instanceof Duplex; // object stream flag to indicate whether or not this stream
+  // contains buffers or objects.
+
+  this.objectMode = !!options.objectMode;
+  if (isDuplex) this.objectMode = this.objectMode || !!options.writableObjectMode; // the point at which write() starts returning false
+  // Note: 0 is a valid value, means that we always return false if
+  // the entire buffer is not flushed immediately on write()
+
+  this.highWaterMark = getHighWaterMark(this, options, 'writableHighWaterMark', isDuplex); // if _final has been called
+
+  this.finalCalled = false; // drain event flag.
+
+  this.needDrain = false; // at the start of calling end()
+
+  this.ending = false; // when end() has been called, and returned
+
+  this.ended = false; // when 'finish' is emitted
+
+  this.finished = false; // has it been destroyed
+
+  this.destroyed = false; // should we decode strings into buffers before passing to _write?
+  // this is here so that some node-core streams can optimize string
+  // handling at a lower level.
+
+  var noDecode = options.decodeStrings === false;
+  this.decodeStrings = !noDecode; // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+
+  this.defaultEncoding = options.defaultEncoding || 'utf8'; // not an actual buffer we keep track of, but a measurement
+  // of how much we're waiting to get pushed to some underlying
+  // socket or file.
+
+  this.length = 0; // a flag to see when we're in the middle of a write.
+
+  this.writing = false; // when true all writes will be buffered until .uncork() call
+
+  this.corked = 0; // a flag to be able to tell if the onwrite cb is called immediately,
+  // or on a later tick.  We set this to true at first, because any
+  // actions that shouldn't happen until "later" should generally also
+  // not happen before the first write call.
+
+  this.sync = true; // a flag to know if we're processing previously buffered items, which
+  // may call the _write() callback in the same tick, so that we don't
+  // end up in an overlapped onwrite situation.
+
+  this.bufferProcessing = false; // the callback that's passed to _write(chunk,cb)
+
+  this.onwrite = function (er) {
+    onwrite(stream, er);
+  }; // the callback that the user supplies to write(chunk,encoding,cb)
+
+
+  this.writecb = null; // the amount that is being written when _write is called.
+
+  this.writelen = 0;
+  this.bufferedRequest = null;
+  this.lastBufferedRequest = null; // number of pending user-supplied write callbacks
+  // this must be 0 before 'finish' can be emitted
+
+  this.pendingcb = 0; // emit prefinish if the only thing we're waiting for is _write cbs
+  // This is relevant for synchronous Transform streams
+
+  this.prefinished = false; // True if the error was already emitted and should not be thrown again
+
+  this.errorEmitted = false; // Should close be emitted on destroy. Defaults to true.
+
+  this.emitClose = options.emitClose !== false; // count buffered requests
+
+  this.bufferedRequestCount = 0; // allocate the first CorkedRequest, there is always
+  // one allocated and free to use, and we maintain at most two
+
+  this.corkedRequestsFree = new CorkedRequest(this);
+}
+
+WritableState.prototype.getBuffer = function getBuffer() {
+  var current = this.bufferedRequest;
+  var out = [];
+
+  while (current) {
+    out.push(current);
+    current = current.next;
+  }
+
+  return out;
+};
+
+(function () {
+  try {
+    Object.defineProperty(WritableState.prototype, 'buffer', {
+      get: internalUtil.deprecate(function writableStateBufferGetter() {
+        return this.getBuffer();
+      }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.', 'DEP0003')
+    });
+  } catch (_) {}
+})(); // Test _writableState for inheritance to account for Duplex streams,
+// whose prototype chain only points to Readable.
+
+
+var realHasInstance;
+
+if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.prototype[Symbol.hasInstance] === 'function') {
+  realHasInstance = Function.prototype[Symbol.hasInstance];
+  Object.defineProperty(Writable, Symbol.hasInstance, {
+    value: function value(object) {
+      if (realHasInstance.call(this, object)) return true;
+      if (this !== Writable) return false;
+      return object && object._writableState instanceof WritableState;
+    }
+  });
+} else {
+  realHasInstance = function realHasInstance(object) {
+    return object instanceof this;
+  };
+}
+
+function Writable(options) {
+  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_duplex.js"); // Writable ctor is applied to Duplexes, too.
+  // `realHasInstance` is necessary because using plain `instanceof`
+  // would return false, as no `_writableState` property is attached.
+  // Trying to use the custom `instanceof` for Writable here will also break the
+  // Node.js LazyTransform implementation, which has a non-trivial getter for
+  // `_writableState` that would lead to infinite recursion.
+  // Checking for a Stream.Duplex instance is faster here instead of inside
+  // the WritableState constructor, at least with V8 6.5
+
+  var isDuplex = this instanceof Duplex;
+  if (!isDuplex && !realHasInstance.call(Writable, this)) return new Writable(options);
+  this._writableState = new WritableState(options, this, isDuplex); // legacy.
+
+  this.writable = true;
+
+  if (options) {
+    if (typeof options.write === 'function') this._write = options.write;
+    if (typeof options.writev === 'function') this._writev = options.writev;
+    if (typeof options.destroy === 'function') this._destroy = options.destroy;
+    if (typeof options.final === 'function') this._final = options.final;
+  }
+
+  Stream.call(this);
+} // Otherwise people can pipe Writable streams, which is just wrong.
+
+
+Writable.prototype.pipe = function () {
+  this.emit('error', new ERR_STREAM_CANNOT_PIPE());
+};
+
+function writeAfterEnd(stream, cb) {
+  var er = new ERR_STREAM_WRITE_AFTER_END(); // TODO: defer error events consistently everywhere, not just the cb
+
+  stream.emit('error', er);
+  process.nextTick(cb, er);
+} // Checks that a user-supplied chunk is valid, especially for the particular
+// mode the stream is in. Currently this means that `null` is never accepted
+// and undefined/non-string values are only allowed in object mode.
+
+
+function validChunk(stream, state, chunk, cb) {
+  var er;
+
+  if (chunk === null) {
+    er = new ERR_STREAM_NULL_VALUES();
+  } else if (typeof chunk !== 'string' && !state.objectMode) {
+    er = new ERR_INVALID_ARG_TYPE('chunk', ['string', 'Buffer'], chunk);
+  }
+
+  if (er) {
+    stream.emit('error', er);
+    process.nextTick(cb, er);
+    return false;
+  }
+
+  return true;
+}
+
+Writable.prototype.write = function (chunk, encoding, cb) {
+  var state = this._writableState;
+  var ret = false;
+
+  var isBuf = !state.objectMode && _isUint8Array(chunk);
+
+  if (isBuf && !Buffer.isBuffer(chunk)) {
+    chunk = _uint8ArrayToBuffer(chunk);
+  }
+
+  if (typeof encoding === 'function') {
+    cb = encoding;
+    encoding = null;
+  }
+
+  if (isBuf) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;
+  if (typeof cb !== 'function') cb = nop;
+  if (state.ending) writeAfterEnd(this, cb);else if (isBuf || validChunk(this, state, chunk, cb)) {
+    state.pendingcb++;
+    ret = writeOrBuffer(this, state, isBuf, chunk, encoding, cb);
+  }
+  return ret;
+};
+
+Writable.prototype.cork = function () {
+  this._writableState.corked++;
+};
+
+Writable.prototype.uncork = function () {
+  var state = this._writableState;
+
+  if (state.corked) {
+    state.corked--;
+    if (!state.writing && !state.corked && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
+  }
+};
+
+Writable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {
+  // node::ParseEncoding() requires lower case.
+  if (typeof encoding === 'string') encoding = encoding.toLowerCase();
+  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new ERR_UNKNOWN_ENCODING(encoding);
+  this._writableState.defaultEncoding = encoding;
+  return this;
+};
+
+Object.defineProperty(Writable.prototype, 'writableBuffer', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._writableState && this._writableState.getBuffer();
+  }
+});
+
+function decodeChunk(state, chunk, encoding) {
+  if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {
+    chunk = Buffer.from(chunk, encoding);
+  }
+
+  return chunk;
+}
+
+Object.defineProperty(Writable.prototype, 'writableHighWaterMark', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._writableState.highWaterMark;
+  }
+}); // if we're already writing something, then just put this
+// in the queue, and wait our turn.  Otherwise, call _write
+// If we return false, then we need a drain event, so set that flag.
+
+function writeOrBuffer(stream, state, isBuf, chunk, encoding, cb) {
+  if (!isBuf) {
+    var newChunk = decodeChunk(state, chunk, encoding);
+
+    if (chunk !== newChunk) {
+      isBuf = true;
+      encoding = 'buffer';
+      chunk = newChunk;
+    }
+  }
+
+  var len = state.objectMode ? 1 : chunk.length;
+  state.length += len;
+  var ret = state.length < state.highWaterMark; // we must ensure that previous needDrain will not be reset to false.
+
+  if (!ret) state.needDrain = true;
+
+  if (state.writing || state.corked) {
+    var last = state.lastBufferedRequest;
+    state.lastBufferedRequest = {
+      chunk: chunk,
+      encoding: encoding,
+      isBuf: isBuf,
+      callback: cb,
+      next: null
+    };
+
+    if (last) {
+      last.next = state.lastBufferedRequest;
+    } else {
+      state.bufferedRequest = state.lastBufferedRequest;
+    }
+
+    state.bufferedRequestCount += 1;
+  } else {
+    doWrite(stream, state, false, len, chunk, encoding, cb);
+  }
+
+  return ret;
+}
+
+function doWrite(stream, state, writev, len, chunk, encoding, cb) {
+  state.writelen = len;
+  state.writecb = cb;
+  state.writing = true;
+  state.sync = true;
+  if (state.destroyed) state.onwrite(new ERR_STREAM_DESTROYED('write'));else if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
+  state.sync = false;
+}
+
+function onwriteError(stream, state, sync, er, cb) {
+  --state.pendingcb;
+
+  if (sync) {
+    // defer the callback if we are being called synchronously
+    // to avoid piling up things on the stack
+    process.nextTick(cb, er); // this can emit finish, and it will always happen
+    // after error
+
+    process.nextTick(finishMaybe, stream, state);
+    stream._writableState.errorEmitted = true;
+    stream.emit('error', er);
+  } else {
+    // the caller expect this to happen before if
+    // it is async
+    cb(er);
+    stream._writableState.errorEmitted = true;
+    stream.emit('error', er); // this can emit finish, but finish must
+    // always follow error
+
+    finishMaybe(stream, state);
+  }
+}
+
+function onwriteStateUpdate(state) {
+  state.writing = false;
+  state.writecb = null;
+  state.length -= state.writelen;
+  state.writelen = 0;
+}
+
+function onwrite(stream, er) {
+  var state = stream._writableState;
+  var sync = state.sync;
+  var cb = state.writecb;
+  if (typeof cb !== 'function') throw new ERR_MULTIPLE_CALLBACK();
+  onwriteStateUpdate(state);
+  if (er) onwriteError(stream, state, sync, er, cb);else {
+    // Check if we're actually ready to finish, but don't emit yet
+    var finished = needFinish(state) || stream.destroyed;
+
+    if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {
+      clearBuffer(stream, state);
+    }
+
+    if (sync) {
+      process.nextTick(afterWrite, stream, state, finished, cb);
+    } else {
+      afterWrite(stream, state, finished, cb);
+    }
+  }
+}
+
+function afterWrite(stream, state, finished, cb) {
+  if (!finished) onwriteDrain(stream, state);
+  state.pendingcb--;
+  cb();
+  finishMaybe(stream, state);
+} // Must force callback to be called on nextTick, so that we don't
+// emit 'drain' before the write() consumer gets the 'false' return
+// value, and has a chance to attach a 'drain' listener.
+
+
+function onwriteDrain(stream, state) {
+  if (state.length === 0 && state.needDrain) {
+    state.needDrain = false;
+    stream.emit('drain');
+  }
+} // if there's something in the buffer waiting, then process it
+
+
+function clearBuffer(stream, state) {
+  state.bufferProcessing = true;
+  var entry = state.bufferedRequest;
+
+  if (stream._writev && entry && entry.next) {
+    // Fast case, write everything using _writev()
+    var l = state.bufferedRequestCount;
+    var buffer = new Array(l);
+    var holder = state.corkedRequestsFree;
+    holder.entry = entry;
+    var count = 0;
+    var allBuffers = true;
+
+    while (entry) {
+      buffer[count] = entry;
+      if (!entry.isBuf) allBuffers = false;
+      entry = entry.next;
+      count += 1;
+    }
+
+    buffer.allBuffers = allBuffers;
+    doWrite(stream, state, true, state.length, buffer, '', holder.finish); // doWrite is almost always async, defer these to save a bit of time
+    // as the hot path ends with doWrite
+
+    state.pendingcb++;
+    state.lastBufferedRequest = null;
+
+    if (holder.next) {
+      state.corkedRequestsFree = holder.next;
+      holder.next = null;
+    } else {
+      state.corkedRequestsFree = new CorkedRequest(state);
+    }
+
+    state.bufferedRequestCount = 0;
+  } else {
+    // Slow case, write chunks one-by-one
+    while (entry) {
+      var chunk = entry.chunk;
+      var encoding = entry.encoding;
+      var cb = entry.callback;
+      var len = state.objectMode ? 1 : chunk.length;
+      doWrite(stream, state, false, len, chunk, encoding, cb);
+      entry = entry.next;
+      state.bufferedRequestCount--; // if we didn't call the onwrite immediately, then
+      // it means that we need to wait until it does.
+      // also, that means that the chunk and cb are currently
+      // being processed, so move the buffer counter past them.
+
+      if (state.writing) {
+        break;
+      }
+    }
+
+    if (entry === null) state.lastBufferedRequest = null;
+  }
+
+  state.bufferedRequest = entry;
+  state.bufferProcessing = false;
+}
+
+Writable.prototype._write = function (chunk, encoding, cb) {
+  cb(new ERR_METHOD_NOT_IMPLEMENTED('_write()'));
+};
+
+Writable.prototype._writev = null;
+
+Writable.prototype.end = function (chunk, encoding, cb) {
+  var state = this._writableState;
+
+  if (typeof chunk === 'function') {
+    cb = chunk;
+    chunk = null;
+    encoding = null;
+  } else if (typeof encoding === 'function') {
+    cb = encoding;
+    encoding = null;
+  }
+
+  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding); // .end() fully uncorks
+
+  if (state.corked) {
+    state.corked = 1;
+    this.uncork();
+  } // ignore unnecessary end() calls.
+
+
+  if (!state.ending) endWritable(this, state, cb);
+  return this;
+};
+
+Object.defineProperty(Writable.prototype, 'writableLength', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    return this._writableState.length;
+  }
+});
+
+function needFinish(state) {
+  return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;
+}
+
+function callFinal(stream, state) {
+  stream._final(function (err) {
+    state.pendingcb--;
+
+    if (err) {
+      stream.emit('error', err);
+    }
+
+    state.prefinished = true;
+    stream.emit('prefinish');
+    finishMaybe(stream, state);
+  });
+}
+
+function prefinish(stream, state) {
+  if (!state.prefinished && !state.finalCalled) {
+    if (typeof stream._final === 'function' && !state.destroyed) {
+      state.pendingcb++;
+      state.finalCalled = true;
+      process.nextTick(callFinal, stream, state);
+    } else {
+      state.prefinished = true;
+      stream.emit('prefinish');
+    }
+  }
+}
+
+function finishMaybe(stream, state) {
+  var need = needFinish(state);
+
+  if (need) {
+    prefinish(stream, state);
+
+    if (state.pendingcb === 0) {
+      state.finished = true;
+      stream.emit('finish');
+    }
+  }
+
+  return need;
+}
+
+function endWritable(stream, state, cb) {
+  state.ending = true;
+  finishMaybe(stream, state);
+
+  if (cb) {
+    if (state.finished) process.nextTick(cb);else stream.once('finish', cb);
+  }
+
+  state.ended = true;
+  stream.writable = false;
+}
+
+function onCorkedFinish(corkReq, state, err) {
+  var entry = corkReq.entry;
+  corkReq.entry = null;
+
+  while (entry) {
+    var cb = entry.callback;
+    state.pendingcb--;
+    cb(err);
+    entry = entry.next;
+  } // reuse the free corkReq.
+
+
+  state.corkedRequestsFree.next = corkReq;
+}
+
+Object.defineProperty(Writable.prototype, 'destroyed', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function get() {
+    if (this._writableState === undefined) {
+      return false;
+    }
+
+    return this._writableState.destroyed;
+  },
+  set: function set(value) {
+    // we ignore the value if the stream
+    // has not been initialized yet
+    if (!this._writableState) {
+      return;
+    } // backward compatibility, the user is explicitly
+    // managing destroyed
+
+
+    this._writableState.destroyed = value;
+  }
+});
+Writable.prototype.destroy = destroyImpl.destroy;
+Writable.prototype._undestroy = destroyImpl.undestroy;
+
+Writable.prototype._destroy = function (err, cb) {
+  cb(err);
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/async_iterator.js":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/async_iterator.js ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+var _Object$setPrototypeO;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var finished = __webpack_require__(/*! ./end-of-stream */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/end-of-stream.js");
+
+var kLastResolve = Symbol('lastResolve');
+var kLastReject = Symbol('lastReject');
+var kError = Symbol('error');
+var kEnded = Symbol('ended');
+var kLastPromise = Symbol('lastPromise');
+var kHandlePromise = Symbol('handlePromise');
+var kStream = Symbol('stream');
+
+function createIterResult(value, done) {
+  return {
+    value: value,
+    done: done
+  };
+}
+
+function readAndResolve(iter) {
+  var resolve = iter[kLastResolve];
+
+  if (resolve !== null) {
+    var data = iter[kStream].read(); // we defer if data is null
+    // we can be expecting either 'end' or
+    // 'error'
+
+    if (data !== null) {
+      iter[kLastPromise] = null;
+      iter[kLastResolve] = null;
+      iter[kLastReject] = null;
+      resolve(createIterResult(data, false));
+    }
+  }
+}
+
+function onReadable(iter) {
+  // we wait for the next tick, because it might
+  // emit an error with process.nextTick
+  process.nextTick(readAndResolve, iter);
+}
+
+function wrapForNext(lastPromise, iter) {
+  return function (resolve, reject) {
+    lastPromise.then(function () {
+      if (iter[kEnded]) {
+        resolve(createIterResult(undefined, true));
+        return;
+      }
+
+      iter[kHandlePromise](resolve, reject);
+    }, reject);
+  };
+}
+
+var AsyncIteratorPrototype = Object.getPrototypeOf(function () {});
+var ReadableStreamAsyncIteratorPrototype = Object.setPrototypeOf((_Object$setPrototypeO = {
+  get stream() {
+    return this[kStream];
+  },
+
+  next: function next() {
+    var _this = this;
+
+    // if we have detected an error in the meanwhile
+    // reject straight away
+    var error = this[kError];
+
+    if (error !== null) {
+      return Promise.reject(error);
+    }
+
+    if (this[kEnded]) {
+      return Promise.resolve(createIterResult(undefined, true));
+    }
+
+    if (this[kStream].destroyed) {
+      // We need to defer via nextTick because if .destroy(err) is
+      // called, the error will be emitted via nextTick, and
+      // we cannot guarantee that there is no error lingering around
+      // waiting to be emitted.
+      return new Promise(function (resolve, reject) {
+        process.nextTick(function () {
+          if (_this[kError]) {
+            reject(_this[kError]);
+          } else {
+            resolve(createIterResult(undefined, true));
+          }
+        });
+      });
+    } // if we have multiple next() calls
+    // we will wait for the previous Promise to finish
+    // this logic is optimized to support for await loops,
+    // where next() is only called once at a time
+
+
+    var lastPromise = this[kLastPromise];
+    var promise;
+
+    if (lastPromise) {
+      promise = new Promise(wrapForNext(lastPromise, this));
+    } else {
+      // fast path needed to support multiple this.push()
+      // without triggering the next() queue
+      var data = this[kStream].read();
+
+      if (data !== null) {
+        return Promise.resolve(createIterResult(data, false));
+      }
+
+      promise = new Promise(this[kHandlePromise]);
+    }
+
+    this[kLastPromise] = promise;
+    return promise;
+  }
+}, _defineProperty(_Object$setPrototypeO, Symbol.asyncIterator, function () {
+  return this;
+}), _defineProperty(_Object$setPrototypeO, "return", function _return() {
+  var _this2 = this;
+
+  // destroy(err, cb) is a private API
+  // we can guarantee we have that here, because we control the
+  // Readable class this is attached to
+  return new Promise(function (resolve, reject) {
+    _this2[kStream].destroy(null, function (err) {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      resolve(createIterResult(undefined, true));
+    });
+  });
+}), _Object$setPrototypeO), AsyncIteratorPrototype);
+
+var createReadableStreamAsyncIterator = function createReadableStreamAsyncIterator(stream) {
+  var _Object$create;
+
+  var iterator = Object.create(ReadableStreamAsyncIteratorPrototype, (_Object$create = {}, _defineProperty(_Object$create, kStream, {
+    value: stream,
+    writable: true
+  }), _defineProperty(_Object$create, kLastResolve, {
+    value: null,
+    writable: true
+  }), _defineProperty(_Object$create, kLastReject, {
+    value: null,
+    writable: true
+  }), _defineProperty(_Object$create, kError, {
+    value: null,
+    writable: true
+  }), _defineProperty(_Object$create, kEnded, {
+    value: stream._readableState.endEmitted,
+    writable: true
+  }), _defineProperty(_Object$create, kHandlePromise, {
+    value: function value(resolve, reject) {
+      var data = iterator[kStream].read();
+
+      if (data) {
+        iterator[kLastPromise] = null;
+        iterator[kLastResolve] = null;
+        iterator[kLastReject] = null;
+        resolve(createIterResult(data, false));
+      } else {
+        iterator[kLastResolve] = resolve;
+        iterator[kLastReject] = reject;
+      }
+    },
+    writable: true
+  }), _Object$create));
+  iterator[kLastPromise] = null;
+  finished(stream, function (err) {
+    if (err && err.code !== 'ERR_STREAM_PREMATURE_CLOSE') {
+      var reject = iterator[kLastReject]; // reject if we are waiting for data in the Promise
+      // returned by next() and store the error
+
+      if (reject !== null) {
+        iterator[kLastPromise] = null;
+        iterator[kLastResolve] = null;
+        iterator[kLastReject] = null;
+        reject(err);
+      }
+
+      iterator[kError] = err;
+      return;
+    }
+
+    var resolve = iterator[kLastResolve];
+
+    if (resolve !== null) {
+      iterator[kLastPromise] = null;
+      iterator[kLastResolve] = null;
+      iterator[kLastReject] = null;
+      resolve(createIterResult(undefined, true));
+    }
+
+    iterator[kEnded] = true;
+  });
+  stream.on('readable', onReadable.bind(null, iterator));
+  return iterator;
+};
+
+module.exports = createReadableStreamAsyncIterator;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/buffer_list.js":
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/buffer_list.js ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var _require = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js"),
+    Buffer = _require.Buffer;
+
+var _require2 = __webpack_require__(/*! util */ 7),
+    inspect = _require2.inspect;
+
+var custom = inspect && inspect.custom || 'inspect';
+
+function copyBuffer(src, target, offset) {
+  Buffer.prototype.copy.call(src, target, offset);
+}
+
+module.exports =
+/*#__PURE__*/
+function () {
+  function BufferList() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  var _proto = BufferList.prototype;
+
+  _proto.push = function push(v) {
+    var entry = {
+      data: v,
+      next: null
+    };
+    if (this.length > 0) this.tail.next = entry;else this.head = entry;
+    this.tail = entry;
+    ++this.length;
+  };
+
+  _proto.unshift = function unshift(v) {
+    var entry = {
+      data: v,
+      next: this.head
+    };
+    if (this.length === 0) this.tail = entry;
+    this.head = entry;
+    ++this.length;
+  };
+
+  _proto.shift = function shift() {
+    if (this.length === 0) return;
+    var ret = this.head.data;
+    if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;
+    --this.length;
+    return ret;
+  };
+
+  _proto.clear = function clear() {
+    this.head = this.tail = null;
+    this.length = 0;
+  };
+
+  _proto.join = function join(s) {
+    if (this.length === 0) return '';
+    var p = this.head;
+    var ret = '' + p.data;
+
+    while (p = p.next) {
+      ret += s + p.data;
+    }
+
+    return ret;
+  };
+
+  _proto.concat = function concat(n) {
+    if (this.length === 0) return Buffer.alloc(0);
+    var ret = Buffer.allocUnsafe(n >>> 0);
+    var p = this.head;
+    var i = 0;
+
+    while (p) {
+      copyBuffer(p.data, ret, i);
+      i += p.data.length;
+      p = p.next;
+    }
+
+    return ret;
+  } // Consumes a specified amount of bytes or characters from the buffered data.
+  ;
+
+  _proto.consume = function consume(n, hasStrings) {
+    var ret;
+
+    if (n < this.head.data.length) {
+      // `slice` is the same for buffers and strings.
+      ret = this.head.data.slice(0, n);
+      this.head.data = this.head.data.slice(n);
+    } else if (n === this.head.data.length) {
+      // First chunk is a perfect match.
+      ret = this.shift();
+    } else {
+      // Result spans more than one buffer.
+      ret = hasStrings ? this._getString(n) : this._getBuffer(n);
+    }
+
+    return ret;
+  };
+
+  _proto.first = function first() {
+    return this.head.data;
+  } // Consumes a specified amount of characters from the buffered data.
+  ;
+
+  _proto._getString = function _getString(n) {
+    var p = this.head;
+    var c = 1;
+    var ret = p.data;
+    n -= ret.length;
+
+    while (p = p.next) {
+      var str = p.data;
+      var nb = n > str.length ? str.length : n;
+      if (nb === str.length) ret += str;else ret += str.slice(0, n);
+      n -= nb;
+
+      if (n === 0) {
+        if (nb === str.length) {
+          ++c;
+          if (p.next) this.head = p.next;else this.head = this.tail = null;
+        } else {
+          this.head = p;
+          p.data = str.slice(nb);
+        }
+
+        break;
+      }
+
+      ++c;
+    }
+
+    this.length -= c;
+    return ret;
+  } // Consumes a specified amount of bytes from the buffered data.
+  ;
+
+  _proto._getBuffer = function _getBuffer(n) {
+    var ret = Buffer.allocUnsafe(n);
+    var p = this.head;
+    var c = 1;
+    p.data.copy(ret);
+    n -= p.data.length;
+
+    while (p = p.next) {
+      var buf = p.data;
+      var nb = n > buf.length ? buf.length : n;
+      buf.copy(ret, ret.length - n, 0, nb);
+      n -= nb;
+
+      if (n === 0) {
+        if (nb === buf.length) {
+          ++c;
+          if (p.next) this.head = p.next;else this.head = this.tail = null;
+        } else {
+          this.head = p;
+          p.data = buf.slice(nb);
+        }
+
+        break;
+      }
+
+      ++c;
+    }
+
+    this.length -= c;
+    return ret;
+  } // Make sure the linked list only shows the minimal necessary information.
+  ;
+
+  _proto[custom] = function (_, options) {
+    return inspect(this, _objectSpread({}, options, {
+      // Only inspect one level.
+      depth: 0,
+      // It should not recurse.
+      customInspect: false
+    }));
+  };
+
+  return BufferList;
+}();
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/destroy.js":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/destroy.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) { // undocumented cb() API, needed for core, not for public API
+
+function destroy(err, cb) {
+  var _this = this;
+
+  var readableDestroyed = this._readableState && this._readableState.destroyed;
+  var writableDestroyed = this._writableState && this._writableState.destroyed;
+
+  if (readableDestroyed || writableDestroyed) {
+    if (cb) {
+      cb(err);
+    } else if (err && (!this._writableState || !this._writableState.errorEmitted)) {
+      process.nextTick(emitErrorNT, this, err);
+    }
+
+    return this;
+  } // we set destroyed to true before firing error callbacks in order
+  // to make it re-entrance safe in case destroy() is called within callbacks
+
+
+  if (this._readableState) {
+    this._readableState.destroyed = true;
+  } // if this is a duplex stream mark the writable part as destroyed as well
+
+
+  if (this._writableState) {
+    this._writableState.destroyed = true;
+  }
+
+  this._destroy(err || null, function (err) {
+    if (!cb && err) {
+      process.nextTick(emitErrorAndCloseNT, _this, err);
+
+      if (_this._writableState) {
+        _this._writableState.errorEmitted = true;
+      }
+    } else if (cb) {
+      process.nextTick(emitCloseNT, _this);
+      cb(err);
+    } else {
+      process.nextTick(emitCloseNT, _this);
+    }
+  });
+
+  return this;
+}
+
+function emitErrorAndCloseNT(self, err) {
+  emitErrorNT(self, err);
+  emitCloseNT(self);
+}
+
+function emitCloseNT(self) {
+  if (self._writableState && !self._writableState.emitClose) return;
+  if (self._readableState && !self._readableState.emitClose) return;
+  self.emit('close');
+}
+
+function undestroy() {
+  if (this._readableState) {
+    this._readableState.destroyed = false;
+    this._readableState.reading = false;
+    this._readableState.ended = false;
+    this._readableState.endEmitted = false;
+  }
+
+  if (this._writableState) {
+    this._writableState.destroyed = false;
+    this._writableState.ended = false;
+    this._writableState.ending = false;
+    this._writableState.finalCalled = false;
+    this._writableState.prefinished = false;
+    this._writableState.finished = false;
+    this._writableState.errorEmitted = false;
+  }
+}
+
+function emitErrorNT(self, err) {
+  self.emit('error', err);
+}
+
+module.exports = {
+  destroy: destroy,
+  undestroy: undestroy
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/end-of-stream.js":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/end-of-stream.js ***!
+  \*******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Ported from https://github.com/mafintosh/end-of-stream with
+// permission from the author, Mathias Buus (@mafintosh).
+
+
+var ERR_STREAM_PREMATURE_CLOSE = __webpack_require__(/*! ../../../errors */ "./node_modules/concat-stream/node_modules/readable-stream/errors-browser.js").codes.ERR_STREAM_PREMATURE_CLOSE;
+
+function once(callback) {
+  var called = false;
+  return function () {
+    if (called) return;
+    called = true;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    callback.apply(this, args);
+  };
+}
+
+function noop() {}
+
+function isRequest(stream) {
+  return stream.setHeader && typeof stream.abort === 'function';
+}
+
+function eos(stream, opts, callback) {
+  if (typeof opts === 'function') return eos(stream, null, opts);
+  if (!opts) opts = {};
+  callback = once(callback || noop);
+  var readable = opts.readable || opts.readable !== false && stream.readable;
+  var writable = opts.writable || opts.writable !== false && stream.writable;
+
+  var onlegacyfinish = function onlegacyfinish() {
+    if (!stream.writable) onfinish();
+  };
+
+  var writableEnded = stream._writableState && stream._writableState.finished;
+
+  var onfinish = function onfinish() {
+    writable = false;
+    writableEnded = true;
+    if (!readable) callback.call(stream);
+  };
+
+  var readableEnded = stream._readableState && stream._readableState.endEmitted;
+
+  var onend = function onend() {
+    readable = false;
+    readableEnded = true;
+    if (!writable) callback.call(stream);
+  };
+
+  var onerror = function onerror(err) {
+    callback.call(stream, err);
+  };
+
+  var onclose = function onclose() {
+    var err;
+
+    if (readable && !readableEnded) {
+      if (!stream._readableState || !stream._readableState.ended) err = new ERR_STREAM_PREMATURE_CLOSE();
+      return callback.call(stream, err);
+    }
+
+    if (writable && !writableEnded) {
+      if (!stream._writableState || !stream._writableState.ended) err = new ERR_STREAM_PREMATURE_CLOSE();
+      return callback.call(stream, err);
+    }
+  };
+
+  var onrequest = function onrequest() {
+    stream.req.on('finish', onfinish);
+  };
+
+  if (isRequest(stream)) {
+    stream.on('complete', onfinish);
+    stream.on('abort', onclose);
+    if (stream.req) onrequest();else stream.on('request', onrequest);
+  } else if (writable && !stream._writableState) {
+    // legacy streams
+    stream.on('end', onlegacyfinish);
+    stream.on('close', onlegacyfinish);
+  }
+
+  stream.on('end', onend);
+  stream.on('finish', onfinish);
+  if (opts.error !== false) stream.on('error', onerror);
+  stream.on('close', onclose);
+  return function () {
+    stream.removeListener('complete', onfinish);
+    stream.removeListener('abort', onclose);
+    stream.removeListener('request', onrequest);
+    if (stream.req) stream.req.removeListener('finish', onfinish);
+    stream.removeListener('end', onlegacyfinish);
+    stream.removeListener('close', onlegacyfinish);
+    stream.removeListener('finish', onfinish);
+    stream.removeListener('end', onend);
+    stream.removeListener('error', onerror);
+    stream.removeListener('close', onclose);
+  };
+}
+
+module.exports = eos;
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/pipeline.js":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/pipeline.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Ported from https://github.com/mafintosh/pump with
+// permission from the author, Mathias Buus (@mafintosh).
+
+
+var eos;
+
+function once(callback) {
+  var called = false;
+  return function () {
+    if (called) return;
+    called = true;
+    callback.apply(void 0, arguments);
+  };
+}
+
+var _require$codes = __webpack_require__(/*! ../../../errors */ "./node_modules/concat-stream/node_modules/readable-stream/errors-browser.js").codes,
+    ERR_MISSING_ARGS = _require$codes.ERR_MISSING_ARGS,
+    ERR_STREAM_DESTROYED = _require$codes.ERR_STREAM_DESTROYED;
+
+function noop(err) {
+  // Rethrow the error if it exists to avoid swallowing it
+  if (err) throw err;
+}
+
+function isRequest(stream) {
+  return stream.setHeader && typeof stream.abort === 'function';
+}
+
+function destroyer(stream, reading, writing, callback) {
+  callback = once(callback);
+  var closed = false;
+  stream.on('close', function () {
+    closed = true;
+  });
+  if (eos === undefined) eos = __webpack_require__(/*! ./end-of-stream */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/end-of-stream.js");
+  eos(stream, {
+    readable: reading,
+    writable: writing
+  }, function (err) {
+    if (err) return callback(err);
+    closed = true;
+    callback();
+  });
+  var destroyed = false;
+  return function (err) {
+    if (closed) return;
+    if (destroyed) return;
+    destroyed = true; // request.destroy just do .end - .abort is what we want
+
+    if (isRequest(stream)) return stream.abort();
+    if (typeof stream.destroy === 'function') return stream.destroy();
+    callback(err || new ERR_STREAM_DESTROYED('pipe'));
+  };
+}
+
+function call(fn) {
+  fn();
+}
+
+function pipe(from, to) {
+  return from.pipe(to);
+}
+
+function popCallback(streams) {
+  if (!streams.length) return noop;
+  if (typeof streams[streams.length - 1] !== 'function') return noop;
+  return streams.pop();
+}
+
+function pipeline() {
+  for (var _len = arguments.length, streams = new Array(_len), _key = 0; _key < _len; _key++) {
+    streams[_key] = arguments[_key];
+  }
+
+  var callback = popCallback(streams);
+  if (Array.isArray(streams[0])) streams = streams[0];
+
+  if (streams.length < 2) {
+    throw new ERR_MISSING_ARGS('streams');
+  }
+
+  var error;
+  var destroys = streams.map(function (stream, i) {
+    var reading = i < streams.length - 1;
+    var writing = i > 0;
+    return destroyer(stream, reading, writing, function (err) {
+      if (!error) error = err;
+      if (err) destroys.forEach(call);
+      if (reading) return;
+      destroys.forEach(call);
+      callback(error);
+    });
+  });
+  return streams.reduce(pipe);
+}
+
+module.exports = pipeline;
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/state.js":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/state.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var ERR_INVALID_OPT_VALUE = __webpack_require__(/*! ../../../errors */ "./node_modules/concat-stream/node_modules/readable-stream/errors-browser.js").codes.ERR_INVALID_OPT_VALUE;
+
+function highWaterMarkFrom(options, isDuplex, duplexKey) {
+  return options.highWaterMark != null ? options.highWaterMark : isDuplex ? options[duplexKey] : null;
+}
+
+function getHighWaterMark(state, options, duplexKey, isDuplex) {
+  var hwm = highWaterMarkFrom(options, isDuplex, duplexKey);
+
+  if (hwm != null) {
+    if (!(isFinite(hwm) && Math.floor(hwm) === hwm) || hwm < 0) {
+      var name = isDuplex ? duplexKey : 'highWaterMark';
+      throw new ERR_INVALID_OPT_VALUE(name, hwm);
+    }
+
+    return Math.floor(hwm);
+  } // Default value
+
+
+  return state.objectMode ? 16 : 16 * 1024;
+}
+
+module.exports = {
+  getHighWaterMark: getHighWaterMark
+};
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/stream-browser.js":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/stream-browser.js ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
+
+
+/***/ }),
+
+/***/ "./node_modules/concat-stream/node_modules/readable-stream/readable-browser.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/concat-stream/node_modules/readable-stream/readable-browser.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_readable.js");
+exports.Stream = exports;
+exports.Readable = exports;
+exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js");
+exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_duplex.js");
+exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_transform.js");
+exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ "./node_modules/concat-stream/node_modules/readable-stream/lib/_stream_passthrough.js");
+exports.finished = __webpack_require__(/*! ./lib/internal/streams/end-of-stream.js */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/end-of-stream.js");
+exports.pipeline = __webpack_require__(/*! ./lib/internal/streams/pipeline.js */ "./node_modules/concat-stream/node_modules/readable-stream/lib/internal/streams/pipeline.js");
+
 
 /***/ }),
 
@@ -24358,9 +27527,8 @@ Point.prototype.getY = function getY() {
 
 Point.prototype.mul = function mul(k) {
   k = new BN(k, 16);
-  if (this.isInfinity())
-    return this;
-  else if (this._hasDoubles(k))
+
+  if (this._hasDoubles(k))
     return this.curve._fixedNafMul(this, k);
   else if (this.curve.endo)
     return this.curve._endoWnafMulAdd([ this ], [ k ]);
@@ -26864,10 +30032,10 @@ utils.intFromLE = intFromLE;
 /*!********************************************!*\
   !*** ./node_modules/elliptic/package.json ***!
   \********************************************/
-/*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, dependencies, deprecated, description, devDependencies, files, homepage, keywords, license, main, name, repository, scripts, version, default */
+/*! exports provided: _args, _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _spec, _where, author, bugs, dependencies, description, devDependencies, files, homepage, keywords, license, main, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"_from\":\"elliptic@^6.4.0\",\"_id\":\"elliptic@6.5.1\",\"_inBundle\":false,\"_integrity\":\"sha512-xvJINNLbTeWQjrl6X+7eQCrIy/YPv5XCpKW6kB5mKvtnGILoLDcySuwomfdzt0BMdLNVnuRNTuzKNHj0bva1Cg==\",\"_location\":\"/elliptic\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"range\",\"registry\":true,\"raw\":\"elliptic@^6.4.0\",\"name\":\"elliptic\",\"escapedName\":\"elliptic\",\"rawSpec\":\"^6.4.0\",\"saveSpec\":null,\"fetchSpec\":\"^6.4.0\"},\"_requiredBy\":[\"/@trust/keyto\",\"/@trust/webcrypto\",\"/browserify-sign\",\"/create-ecdh\"],\"_resolved\":\"https://registry.npmjs.org/elliptic/-/elliptic-6.5.1.tgz\",\"_shasum\":\"c380f5f909bf1b9b4428d028cd18d3b0efd6b52b\",\"_spec\":\"elliptic@^6.4.0\",\"_where\":\"/devel/github.com/solid/mashlib/node_modules/@trust/webcrypto\",\"author\":{\"name\":\"Fedor Indutny\",\"email\":\"fedor@indutny.com\"},\"bugs\":{\"url\":\"https://github.com/indutny/elliptic/issues\"},\"bundleDependencies\":false,\"dependencies\":{\"bn.js\":\"^4.4.0\",\"brorand\":\"^1.0.1\",\"hash.js\":\"^1.0.0\",\"hmac-drbg\":\"^1.0.0\",\"inherits\":\"^2.0.1\",\"minimalistic-assert\":\"^1.0.0\",\"minimalistic-crypto-utils\":\"^1.0.0\"},\"deprecated\":false,\"description\":\"EC cryptography\",\"devDependencies\":{\"brfs\":\"^1.4.3\",\"coveralls\":\"^3.0.4\",\"grunt\":\"^1.0.4\",\"grunt-browserify\":\"^5.0.0\",\"grunt-cli\":\"^1.2.0\",\"grunt-contrib-connect\":\"^1.0.0\",\"grunt-contrib-copy\":\"^1.0.0\",\"grunt-contrib-uglify\":\"^1.0.1\",\"grunt-mocha-istanbul\":\"^3.0.1\",\"grunt-saucelabs\":\"^9.0.1\",\"istanbul\":\"^0.4.2\",\"jscs\":\"^3.0.7\",\"jshint\":\"^2.6.0\",\"mocha\":\"^6.1.4\"},\"files\":[\"lib\"],\"homepage\":\"https://github.com/indutny/elliptic\",\"keywords\":[\"EC\",\"Elliptic\",\"curve\",\"Cryptography\"],\"license\":\"MIT\",\"main\":\"lib/elliptic.js\",\"name\":\"elliptic\",\"repository\":{\"type\":\"git\",\"url\":\"git+ssh://git@github.com/indutny/elliptic.git\"},\"scripts\":{\"jscs\":\"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js\",\"jshint\":\"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js\",\"lint\":\"npm run jscs && npm run jshint\",\"test\":\"npm run lint && npm run unit\",\"unit\":\"istanbul test _mocha --reporter=spec test/index.js\",\"version\":\"grunt dist && git add dist/\"},\"version\":\"6.5.1\"}");
+module.exports = JSON.parse("{\"_args\":[[\"elliptic@6.5.0\",\"/devel/github.com/solid/mashlib\"]],\"_from\":\"elliptic@6.5.0\",\"_id\":\"elliptic@6.5.0\",\"_inBundle\":false,\"_integrity\":\"sha512-eFOJTMyCYb7xtE/caJ6JJu+bhi67WCYNbkGSknu20pmM8Ke/bqOfdnZWxyoGN26JgfxTbXrsCkEw4KheCT/KGg==\",\"_location\":\"/elliptic\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"elliptic@6.5.0\",\"name\":\"elliptic\",\"escapedName\":\"elliptic\",\"rawSpec\":\"6.5.0\",\"saveSpec\":null,\"fetchSpec\":\"6.5.0\"},\"_requiredBy\":[\"/@trust/keyto\",\"/@trust/webcrypto\",\"/browserify-sign\",\"/create-ecdh\"],\"_resolved\":\"https://registry.npmjs.org/elliptic/-/elliptic-6.5.0.tgz\",\"_spec\":\"6.5.0\",\"_where\":\"/devel/github.com/solid/mashlib\",\"author\":{\"name\":\"Fedor Indutny\",\"email\":\"fedor@indutny.com\"},\"bugs\":{\"url\":\"https://github.com/indutny/elliptic/issues\"},\"dependencies\":{\"bn.js\":\"^4.4.0\",\"brorand\":\"^1.0.1\",\"hash.js\":\"^1.0.0\",\"hmac-drbg\":\"^1.0.0\",\"inherits\":\"^2.0.1\",\"minimalistic-assert\":\"^1.0.0\",\"minimalistic-crypto-utils\":\"^1.0.0\"},\"description\":\"EC cryptography\",\"devDependencies\":{\"brfs\":\"^1.4.3\",\"coveralls\":\"^2.11.3\",\"grunt\":\"^0.4.5\",\"grunt-browserify\":\"^5.0.0\",\"grunt-cli\":\"^1.2.0\",\"grunt-contrib-connect\":\"^1.0.0\",\"grunt-contrib-copy\":\"^1.0.0\",\"grunt-contrib-uglify\":\"^1.0.1\",\"grunt-mocha-istanbul\":\"^3.0.1\",\"grunt-saucelabs\":\"^8.6.2\",\"istanbul\":\"^0.4.2\",\"jscs\":\"^2.9.0\",\"jshint\":\"^2.6.0\",\"mocha\":\"^2.1.0\"},\"files\":[\"lib\"],\"homepage\":\"https://github.com/indutny/elliptic\",\"keywords\":[\"EC\",\"Elliptic\",\"curve\",\"Cryptography\"],\"license\":\"MIT\",\"main\":\"lib/elliptic.js\",\"name\":\"elliptic\",\"repository\":{\"type\":\"git\",\"url\":\"git+ssh://git@github.com/indutny/elliptic.git\"},\"scripts\":{\"jscs\":\"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js\",\"jshint\":\"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js\",\"lint\":\"npm run jscs && npm run jshint\",\"test\":\"npm run lint && npm run unit\",\"unit\":\"istanbul test _mocha --reporter=spec test/index.js\",\"version\":\"grunt dist && git add dist/\"},\"version\":\"6.5.0\"}");
 
 /***/ }),
 
@@ -29794,26 +32962,14 @@ function clone (obj) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process, global) {var fs = __webpack_require__(/*! fs */ "fs")
+/* WEBPACK VAR INJECTION */(function(process) {var fs = __webpack_require__(/*! fs */ "fs")
 var polyfills = __webpack_require__(/*! ./polyfills.js */ "./node_modules/graceful-fs/polyfills.js")
 var legacy = __webpack_require__(/*! ./legacy-streams.js */ "./node_modules/graceful-fs/legacy-streams.js")
 var clone = __webpack_require__(/*! ./clone.js */ "./node_modules/graceful-fs/clone.js")
 
+var queue = []
+
 var util = __webpack_require__(/*! util */ "./node_modules/util/util.js")
-
-/* istanbul ignore next - node 0.x polyfill */
-var gracefulQueue
-var previousSymbol
-
-/* istanbul ignore else - node 0.x polyfill */
-if (typeof Symbol === 'function' && typeof Symbol.for === 'function') {
-  gracefulQueue = Symbol.for('graceful-fs.queue')
-  // This is used in testing by future versions
-  previousSymbol = Symbol.for('graceful-fs.previous')
-} else {
-  gracefulQueue = '___graceful-fs.queue'
-  previousSymbol = '___graceful-fs.previous'
-}
 
 function noop () {}
 
@@ -29827,58 +32983,11 @@ else if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || ''))
     console.error(m)
   }
 
-// Once time initialization
-if (!global[gracefulQueue]) {
-  // This queue can be shared by multiple loaded instances
-  var queue = []
-  Object.defineProperty(global, gracefulQueue, {
-    get: function() {
-      return queue
-    }
+if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || '')) {
+  process.on('exit', function() {
+    debug(queue)
+    __webpack_require__(/*! assert */ "./node_modules/assert/assert.js").equal(queue.length, 0)
   })
-
-  // Patch fs.close/closeSync to shared queue version, because we need
-  // to retry() whenever a close happens *anywhere* in the program.
-  // This is essential when multiple graceful-fs instances are
-  // in play at the same time.
-  fs.close = (function (fs$close) {
-    function close (fd, cb) {
-      return fs$close.call(fs, fd, function (err) {
-        // This function uses the graceful-fs shared queue
-        if (!err) {
-          retry()
-        }
-
-        if (typeof cb === 'function')
-          cb.apply(this, arguments)
-      })
-    }
-
-    Object.defineProperty(close, previousSymbol, {
-      value: fs$close
-    })
-    return close
-  })(fs.close)
-
-  fs.closeSync = (function (fs$closeSync) {
-    function closeSync (fd) {
-      // This function uses the graceful-fs shared queue
-      fs$closeSync.apply(fs, arguments)
-      retry()
-    }
-
-    Object.defineProperty(closeSync, previousSymbol, {
-      value: fs$closeSync
-    })
-    return closeSync
-  })(fs.closeSync)
-
-  if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || '')) {
-    process.on('exit', function() {
-      debug(global[gracefulQueue])
-      __webpack_require__(/*! assert */ "./node_modules/assert/assert.js").equal(global[gracefulQueue].length, 0)
-    })
-  }
 }
 
 module.exports = patch(clone(fs))
@@ -29887,11 +32996,45 @@ if (process.env.TEST_GRACEFUL_FS_GLOBAL_PATCH && !fs.__patched) {
     fs.__patched = true;
 }
 
+// Always patch fs.close/closeSync, because we want to
+// retry() whenever a close happens *anywhere* in the program.
+// This is essential when multiple graceful-fs instances are
+// in play at the same time.
+module.exports.close = (function (fs$close) { return function (fd, cb) {
+  return fs$close.call(fs, fd, function (err) {
+    if (!err)
+      retry()
+
+    if (typeof cb === 'function')
+      cb.apply(this, arguments)
+  })
+}})(fs.close)
+
+module.exports.closeSync = (function (fs$closeSync) { return function (fd) {
+  // Note that graceful-fs also retries when fs.closeSync() fails.
+  // Looks like a bug to me, although it's probably a harmless one.
+  var rval = fs$closeSync.apply(fs, arguments)
+  retry()
+  return rval
+}})(fs.closeSync)
+
+// Only patch fs once, otherwise we'll run into a memory leak if
+// graceful-fs is loaded multiple times, such as in test environments that
+// reset the loaded modules between tests.
+// We look for the string `graceful-fs` from the comment above. This
+// way we are not adding any extra properties and it will detect if older
+// versions of graceful-fs are installed.
+if (!/\bgraceful-fs\b/.test(fs.closeSync.toString())) {
+  fs.closeSync = module.exports.closeSync;
+  fs.close = module.exports.close;
+}
+
 function patch (fs) {
   // Everything that references the open() function needs to be in here
   polyfills(fs)
   fs.gracefulify = patch
-
+  fs.FileReadStream = ReadStream;  // Legacy name.
+  fs.FileWriteStream = WriteStream;  // Legacy name.
   fs.createReadStream = createReadStream
   fs.createWriteStream = createWriteStream
   var fs$readFile = fs.readFile
@@ -30008,48 +33151,8 @@ function patch (fs) {
     WriteStream.prototype.open = WriteStream$open
   }
 
-  Object.defineProperty(fs, 'ReadStream', {
-    get: function () {
-      return ReadStream
-    },
-    set: function (val) {
-      ReadStream = val
-    },
-    enumerable: true,
-    configurable: true
-  })
-  Object.defineProperty(fs, 'WriteStream', {
-    get: function () {
-      return WriteStream
-    },
-    set: function (val) {
-      WriteStream = val
-    },
-    enumerable: true,
-    configurable: true
-  })
-
-  // legacy names
-  Object.defineProperty(fs, 'FileReadStream', {
-    get: function () {
-      return ReadStream
-    },
-    set: function (val) {
-      ReadStream = val
-    },
-    enumerable: true,
-    configurable: true
-  })
-  Object.defineProperty(fs, 'FileWriteStream', {
-    get: function () {
-      return WriteStream
-    },
-    set: function (val) {
-      WriteStream = val
-    },
-    enumerable: true,
-    configurable: true
-  })
+  fs.ReadStream = ReadStream
+  fs.WriteStream = WriteStream
 
   function ReadStream (path, options) {
     if (this instanceof ReadStream)
@@ -30095,11 +33198,11 @@ function patch (fs) {
   }
 
   function createReadStream (path, options) {
-    return new fs.ReadStream(path, options)
+    return new ReadStream(path, options)
   }
 
   function createWriteStream (path, options) {
-    return new fs.WriteStream(path, options)
+    return new WriteStream(path, options)
   }
 
   var fs$open = fs.open
@@ -30128,18 +33231,18 @@ function patch (fs) {
 
 function enqueue (elem) {
   debug('ENQUEUE', elem[0].name, elem[1])
-  global[gracefulQueue].push(elem)
+  queue.push(elem)
 }
 
 function retry () {
-  var elem = global[gracefulQueue].shift()
+  var elem = queue.shift()
   if (elem) {
     debug('RETRY', elem[0].name, elem[1])
     elem[0].apply(null, elem[1])
   }
 }
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -30397,26 +33500,20 @@ function patch (fs) {
   }
 
   // if read() returns EAGAIN, then just try it again.
-  fs.read = (function (fs$read) {
-    function read (fd, buffer, offset, length, position, callback_) {
-      var callback
-      if (callback_ && typeof callback_ === 'function') {
-        var eagCounter = 0
-        callback = function (er, _, __) {
-          if (er && er.code === 'EAGAIN' && eagCounter < 10) {
-            eagCounter ++
-            return fs$read.call(fs, fd, buffer, offset, length, position, callback)
-          }
-          callback_.apply(this, arguments)
+  fs.read = (function (fs$read) { return function (fd, buffer, offset, length, position, callback_) {
+    var callback
+    if (callback_ && typeof callback_ === 'function') {
+      var eagCounter = 0
+      callback = function (er, _, __) {
+        if (er && er.code === 'EAGAIN' && eagCounter < 10) {
+          eagCounter ++
+          return fs$read.call(fs, fd, buffer, offset, length, position, callback)
         }
+        callback_.apply(this, arguments)
       }
-      return fs$read.call(fs, fd, buffer, offset, length, position, callback)
     }
-
-    // This ensures `util.promisify` works as it does for native `fs.read`.
-    read.__proto__ = fs$read
-    return read
-  })(fs.read)
+    return fs$read.call(fs, fd, buffer, offset, length, position, callback)
+  }})(fs.read)
 
   fs.readSync = (function (fs$readSync) { return function (fd, buffer, offset, length, position) {
     var eagCounter = 0
@@ -32381,6 +35478,22 @@ if (typeof Object.create === 'function') {
     }
   }
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/isarray/index.js":
+/*!***************************************!*\
+  !*** ./node_modules/isarray/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
 
 
 /***/ }),
@@ -67034,172 +70147,15 @@ XSD.string = new _named_node__WEBPACK_IMPORTED_MODULE_0__["default"]('http://www
 
 /***/ }),
 
-/***/ "./node_modules/readable-stream/errors-browser.js":
+/***/ "./node_modules/readable-stream/duplex-browser.js":
 /*!********************************************************!*\
-  !*** ./node_modules/readable-stream/errors-browser.js ***!
+  !*** ./node_modules/readable-stream/duplex-browser.js ***!
   \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/readable-stream/lib/_stream_duplex.js");
 
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-var codes = {};
-
-function createErrorType(code, message, Base) {
-  if (!Base) {
-    Base = Error;
-  }
-
-  function getMessage(arg1, arg2, arg3) {
-    if (typeof message === 'string') {
-      return message;
-    } else {
-      return message(arg1, arg2, arg3);
-    }
-  }
-
-  var NodeError =
-  /*#__PURE__*/
-  function (_Base) {
-    _inheritsLoose(NodeError, _Base);
-
-    function NodeError(arg1, arg2, arg3) {
-      return _Base.call(this, getMessage(arg1, arg2, arg3)) || this;
-    }
-
-    return NodeError;
-  }(Base);
-
-  NodeError.prototype.name = Base.name;
-  NodeError.prototype.code = code;
-  codes[code] = NodeError;
-} // https://github.com/nodejs/node/blob/v10.8.0/lib/internal/errors.js
-
-
-function oneOf(expected, thing) {
-  if (Array.isArray(expected)) {
-    var len = expected.length;
-    expected = expected.map(function (i) {
-      return String(i);
-    });
-
-    if (len > 2) {
-      return "one of ".concat(thing, " ").concat(expected.slice(0, len - 1).join(', '), ", or ") + expected[len - 1];
-    } else if (len === 2) {
-      return "one of ".concat(thing, " ").concat(expected[0], " or ").concat(expected[1]);
-    } else {
-      return "of ".concat(thing, " ").concat(expected[0]);
-    }
-  } else {
-    return "of ".concat(thing, " ").concat(String(expected));
-  }
-} // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
-
-
-function startsWith(str, search, pos) {
-  return str.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
-} // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
-
-
-function endsWith(str, search, this_len) {
-  if (this_len === undefined || this_len > str.length) {
-    this_len = str.length;
-  }
-
-  return str.substring(this_len - search.length, this_len) === search;
-} // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
-
-
-function includes(str, search, start) {
-  if (typeof start !== 'number') {
-    start = 0;
-  }
-
-  if (start + search.length > str.length) {
-    return false;
-  } else {
-    return str.indexOf(search, start) !== -1;
-  }
-}
-
-createErrorType('ERR_INVALID_OPT_VALUE', function (name, value) {
-  return 'The value "' + value + '" is invalid for option "' + name + '"';
-}, TypeError);
-createErrorType('ERR_INVALID_ARG_TYPE', function (name, expected, actual) {
-  // determiner: 'must be' or 'must not be'
-  var determiner;
-
-  if (typeof expected === 'string' && startsWith(expected, 'not ')) {
-    determiner = 'must not be';
-    expected = expected.replace(/^not /, '');
-  } else {
-    determiner = 'must be';
-  }
-
-  var msg;
-
-  if (endsWith(name, ' argument')) {
-    // For cases like 'first argument'
-    msg = "The ".concat(name, " ").concat(determiner, " ").concat(oneOf(expected, 'type'));
-  } else {
-    var type = includes(name, '.') ? 'property' : 'argument';
-    msg = "The \"".concat(name, "\" ").concat(type, " ").concat(determiner, " ").concat(oneOf(expected, 'type'));
-  }
-
-  msg += ". Received type ".concat(typeof actual);
-  return msg;
-}, TypeError);
-createErrorType('ERR_STREAM_PUSH_AFTER_EOF', 'stream.push() after EOF');
-createErrorType('ERR_METHOD_NOT_IMPLEMENTED', function (name) {
-  return 'The ' + name + ' method is not implemented';
-});
-createErrorType('ERR_STREAM_PREMATURE_CLOSE', 'Premature close');
-createErrorType('ERR_STREAM_DESTROYED', function (name) {
-  return 'Cannot call ' + name + ' after a stream was destroyed';
-});
-createErrorType('ERR_MULTIPLE_CALLBACK', 'Callback called multiple times');
-createErrorType('ERR_STREAM_CANNOT_PIPE', 'Cannot pipe, not readable');
-createErrorType('ERR_STREAM_WRITE_AFTER_END', 'write after end');
-createErrorType('ERR_STREAM_NULL_VALUES', 'May not write null values to stream', TypeError);
-createErrorType('ERR_UNKNOWN_ENCODING', function (arg) {
-  return 'Unknown encoding: ' + arg;
-}, TypeError);
-createErrorType('ERR_STREAM_UNSHIFT_AFTER_END_EVENT', 'stream.unshift() after end event');
-module.exports.codes = codes;
-
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/experimentalWarning.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/readable-stream/experimentalWarning.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var experimentalWarnings = new Set();
-
-function emitExperimentalWarning(feature) {
-  if (experimentalWarnings.has(feature)) return;
-  var msg = feature + ' is an experimental feature. This feature could ' +
-       'change at any time';
-  experimentalWarnings.add(feature);
-  process.emitWarning(msg, 'ExperimentalWarning');
-}
-
-function noop() {}
-
-module.exports.emitExperimentalWarning = process.emitWarning
-  ? emitExperimentalWarning
-  : noop;
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -67211,7 +70167,7 @@ module.exports.emitExperimentalWarning = process.emitWarning
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
+// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -67231,37 +70187,43 @@ module.exports.emitExperimentalWarning = process.emitWarning
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
 // Writable.
 
+
+
 /*<replacement>*/
 
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
+/*</replacement>*/
+
+/*<replacement>*/
 var objectKeys = Object.keys || function (obj) {
   var keys = [];
-
   for (var key in obj) {
     keys.push(key);
-  }
-
-  return keys;
+  }return keys;
 };
 /*</replacement>*/
 
-
 module.exports = Duplex;
 
-var Readable = __webpack_require__(/*! ./_stream_readable */ "./node_modules/readable-stream/lib/_stream_readable.js");
+/*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
 
+var Readable = __webpack_require__(/*! ./_stream_readable */ "./node_modules/readable-stream/lib/_stream_readable.js");
 var Writable = __webpack_require__(/*! ./_stream_writable */ "./node_modules/readable-stream/lib/_stream_writable.js");
 
-__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Duplex, Readable);
+util.inherits(Duplex, Readable);
 
 {
-  // Allow the keys array to be GC'ed.
+  // avoid scope creep, the keys array can then be collected
   var keys = objectKeys(Writable.prototype);
-
   for (var v = 0; v < keys.length; v++) {
     var method = keys[v];
     if (!Duplex.prototype[method]) Duplex.prototype[method] = Writable.prototype[method];
@@ -67270,19 +70232,18 @@ __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js
 
 function Duplex(options) {
   if (!(this instanceof Duplex)) return new Duplex(options);
+
   Readable.call(this, options);
   Writable.call(this, options);
+
+  if (options && options.readable === false) this.readable = false;
+
+  if (options && options.writable === false) this.writable = false;
+
   this.allowHalfOpen = true;
+  if (options && options.allowHalfOpen === false) this.allowHalfOpen = false;
 
-  if (options) {
-    if (options.readable === false) this.readable = false;
-    if (options.writable === false) this.writable = false;
-
-    if (options.allowHalfOpen === false) {
-      this.allowHalfOpen = false;
-      this.once('end', onend);
-    }
-  }
+  this.once('end', onend);
 }
 
 Object.defineProperty(Duplex.prototype, 'writableHighWaterMark', {
@@ -67290,35 +70251,20 @@ Object.defineProperty(Duplex.prototype, 'writableHighWaterMark', {
   // because otherwise some prototype manipulation in
   // userland will fail
   enumerable: false,
-  get: function get() {
+  get: function () {
     return this._writableState.highWaterMark;
   }
 });
-Object.defineProperty(Duplex.prototype, 'writableBuffer', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
-    return this._writableState && this._writableState.getBuffer();
-  }
-});
-Object.defineProperty(Duplex.prototype, 'writableLength', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
-    return this._writableState.length;
-  }
-}); // the no-half-open enforcer
 
+// the no-half-open enforcer
 function onend() {
-  // If the writable side ended, then we're ok.
-  if (this._writableState.ended) return; // no more data can be written.
-  // But allow more writes to happen in this tick.
+  // if we allow half-open state, or if the writable side ended,
+  // then we're ok.
+  if (this.allowHalfOpen || this._writableState.ended) return;
 
-  process.nextTick(onEndNT, this);
+  // no more data can be written.
+  // But allow more writes to happen in this tick.
+  pna.nextTick(onEndNT, this);
 }
 
 function onEndNT(self) {
@@ -67326,31 +70272,32 @@ function onEndNT(self) {
 }
 
 Object.defineProperty(Duplex.prototype, 'destroyed', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
+  get: function () {
     if (this._readableState === undefined || this._writableState === undefined) {
       return false;
     }
-
     return this._readableState.destroyed && this._writableState.destroyed;
   },
-  set: function set(value) {
+  set: function (value) {
     // we ignore the value if the stream
     // has not been initialized yet
     if (this._readableState === undefined || this._writableState === undefined) {
       return;
-    } // backward compatibility, the user is explicitly
+    }
+
+    // backward compatibility, the user is explicitly
     // managing destroyed
-
-
     this._readableState.destroyed = value;
     this._writableState.destroyed = value;
   }
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+
+Duplex.prototype._destroy = function (err, cb) {
+  this.push(null);
+  this.end();
+
+  pna.nextTick(cb, err);
+};
 
 /***/ }),
 
@@ -67382,19 +70329,27 @@ Object.defineProperty(Duplex.prototype, 'destroyed', {
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
+
 
 
 module.exports = PassThrough;
 
 var Transform = __webpack_require__(/*! ./_stream_transform */ "./node_modules/readable-stream/lib/_stream_transform.js");
 
-__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(PassThrough, Transform);
+/*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
+
+util.inherits(PassThrough, Transform);
 
 function PassThrough(options) {
   if (!(this instanceof PassThrough)) return new PassThrough(options);
+
   Transform.call(this, options);
 }
 
@@ -67434,109 +70389,116 @@ PassThrough.prototype._transform = function (chunk, encoding, cb) {
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-module.exports = Readable;
+
 /*<replacement>*/
 
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
+/*</replacement>*/
+
+module.exports = Readable;
+
+/*<replacement>*/
+var isArray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js");
+/*</replacement>*/
+
+/*<replacement>*/
 var Duplex;
 /*</replacement>*/
 
 Readable.ReadableState = ReadableState;
-/*<replacement>*/
 
+/*<replacement>*/
 var EE = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
 
-var EElistenerCount = function EElistenerCount(emitter, type) {
+var EElistenerCount = function (emitter, type) {
   return emitter.listeners(type).length;
 };
 /*</replacement>*/
 
 /*<replacement>*/
-
-
 var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/readable-stream/lib/internal/streams/stream-browser.js");
 /*</replacement>*/
 
+/*<replacement>*/
 
-var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js").Buffer;
-
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
 var OurUint8Array = global.Uint8Array || function () {};
-
 function _uint8ArrayToBuffer(chunk) {
   return Buffer.from(chunk);
 }
-
 function _isUint8Array(obj) {
   return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
 }
+
+/*</replacement>*/
+
 /*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
 
-
-var debugUtil = __webpack_require__(/*! util */ 6);
-
-var debug;
-
+/*<replacement>*/
+var debugUtil = __webpack_require__(/*! util */ 4);
+var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
 } else {
-  debug = function debug() {};
+  debug = function () {};
 }
 /*</replacement>*/
 
-
-var BufferList = __webpack_require__(/*! ./internal/streams/buffer_list */ "./node_modules/readable-stream/lib/internal/streams/buffer_list.js");
-
+var BufferList = __webpack_require__(/*! ./internal/streams/BufferList */ "./node_modules/readable-stream/lib/internal/streams/BufferList.js");
 var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/readable-stream/lib/internal/streams/destroy.js");
-
-var _require = __webpack_require__(/*! ./internal/streams/state */ "./node_modules/readable-stream/lib/internal/streams/state.js"),
-    getHighWaterMark = _require.getHighWaterMark;
-
-var _require$codes = __webpack_require__(/*! ../errors */ "./node_modules/readable-stream/errors-browser.js").codes,
-    ERR_INVALID_ARG_TYPE = _require$codes.ERR_INVALID_ARG_TYPE,
-    ERR_STREAM_PUSH_AFTER_EOF = _require$codes.ERR_STREAM_PUSH_AFTER_EOF,
-    ERR_METHOD_NOT_IMPLEMENTED = _require$codes.ERR_METHOD_NOT_IMPLEMENTED,
-    ERR_STREAM_UNSHIFT_AFTER_END_EVENT = _require$codes.ERR_STREAM_UNSHIFT_AFTER_END_EVENT;
-
-var _require2 = __webpack_require__(/*! ../experimentalWarning */ "./node_modules/readable-stream/experimentalWarning.js"),
-    emitExperimentalWarning = _require2.emitExperimentalWarning; // Lazy loaded to improve the startup performance.
-
-
 var StringDecoder;
-var createReadableStreamAsyncIterator;
 
-__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Readable, Stream);
+util.inherits(Readable, Stream);
 
 var kProxyEvents = ['error', 'close', 'destroy', 'pause', 'resume'];
 
 function prependListener(emitter, event, fn) {
   // Sadly this is not cacheable as some libraries bundle their own
   // event emitter implementation with them.
-  if (typeof emitter.prependListener === 'function') return emitter.prependListener(event, fn); // This is a hack to make sure that our error handler is attached before any
+  if (typeof emitter.prependListener === 'function') return emitter.prependListener(event, fn);
+
+  // This is a hack to make sure that our error handler is attached before any
   // userland ones.  NEVER DO THIS. This is here only because this code needs
   // to continue to work with older versions of Node.js that do not include
   // the prependListener() method. The goal is to eventually remove this hack.
-
-  if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (Array.isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
+  if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
 }
 
-function ReadableState(options, stream, isDuplex) {
+function ReadableState(options, stream) {
   Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
-  options = options || {}; // Duplex streams are both readable and writable, but share
+
+  options = options || {};
+
+  // Duplex streams are both readable and writable, but share
   // the same options object.
   // However, some cases require setting options to different
   // values for the readable and the writable sides of the duplex stream.
   // These options can be provided separately as readableXXX and writableXXX.
+  var isDuplex = stream instanceof Duplex;
 
-  if (typeof isDuplex !== 'boolean') isDuplex = stream instanceof Duplex; // object stream flag. Used to make read(n) ignore n and to
+  // object stream flag. Used to make read(n) ignore n and to
   // make all the buffer merging and length checks go away
-
   this.objectMode = !!options.objectMode;
-  if (isDuplex) this.objectMode = this.objectMode || !!options.readableObjectMode; // the point at which it stops calling _read() to fill the buffer
-  // Note: 0 is a valid value, means "don't call _read preemptively ever"
 
-  this.highWaterMark = getHighWaterMark(this, options, 'readableHighWaterMark', isDuplex); // A linked list is used to store data chunks instead of an array because the
+  if (isDuplex) this.objectMode = this.objectMode || !!options.readableObjectMode;
+
+  // the point at which it stops calling _read() to fill the buffer
+  // Note: 0 is a valid value, means "don't call _read preemptively ever"
+  var hwm = options.highWaterMark;
+  var readableHwm = options.readableHighWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
+
+  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (readableHwm || readableHwm === 0)) this.highWaterMark = readableHwm;else this.highWaterMark = defaultHwm;
+
+  // cast to ints.
+  this.highWaterMark = Math.floor(this.highWaterMark);
+
+  // A linked list is used to store data chunks instead of an array because the
   // linked list can remove elements from the beginning faster than
   // array.shift()
-
   this.buffer = new BufferList();
   this.length = 0;
   this.pipes = null;
@@ -67544,34 +70506,37 @@ function ReadableState(options, stream, isDuplex) {
   this.flowing = null;
   this.ended = false;
   this.endEmitted = false;
-  this.reading = false; // a flag to be able to tell if the event 'readable'/'data' is emitted
+  this.reading = false;
+
+  // a flag to be able to tell if the event 'readable'/'data' is emitted
   // immediately, or on a later tick.  We set this to true at first, because
   // any actions that shouldn't happen until "later" should generally also
   // not happen before the first read call.
+  this.sync = true;
 
-  this.sync = true; // whenever we return null, then we set a flag to say
+  // whenever we return null, then we set a flag to say
   // that we're awaiting a 'readable' event emission.
-
   this.needReadable = false;
   this.emittedReadable = false;
   this.readableListening = false;
   this.resumeScheduled = false;
-  this.paused = true; // Should close be emitted on destroy. Defaults to true.
 
-  this.emitClose = options.emitClose !== false; // has it been destroyed
+  // has it been destroyed
+  this.destroyed = false;
 
-  this.destroyed = false; // Crypto is kind of old and crusty.  Historically, its default string
+  // Crypto is kind of old and crusty.  Historically, its default string
   // encoding is 'binary' so we have to make this configurable.
   // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
 
-  this.defaultEncoding = options.defaultEncoding || 'utf8'; // the number of writers that are awaiting a drain event in .pipe()s
+  // the number of writers that are awaiting a drain event in .pipe()s
+  this.awaitDrain = 0;
 
-  this.awaitDrain = 0; // if true, a maybeReadMore has been scheduled
-
+  // if true, a maybeReadMore has been scheduled
   this.readingMore = false;
+
   this.decoder = null;
   this.encoding = null;
-
   if (options.encoding) {
     if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
     this.decoder = new StringDecoder(options.encoding);
@@ -67581,16 +70546,17 @@ function ReadableState(options, stream, isDuplex) {
 
 function Readable(options) {
   Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
-  if (!(this instanceof Readable)) return new Readable(options); // Checking for a Stream.Duplex instance is faster here instead of inside
-  // the ReadableState constructor, at least with V8 6.5
 
-  var isDuplex = this instanceof Duplex;
-  this._readableState = new ReadableState(options, this, isDuplex); // legacy
+  if (!(this instanceof Readable)) return new Readable(options);
 
+  this._readableState = new ReadableState(options, this);
+
+  // legacy
   this.readable = true;
 
   if (options) {
     if (typeof options.read === 'function') this._read = options.read;
+
     if (typeof options.destroy === 'function') this._destroy = options.destroy;
   }
 
@@ -67598,40 +70564,36 @@ function Readable(options) {
 }
 
 Object.defineProperty(Readable.prototype, 'destroyed', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
+  get: function () {
     if (this._readableState === undefined) {
       return false;
     }
-
     return this._readableState.destroyed;
   },
-  set: function set(value) {
+  set: function (value) {
     // we ignore the value if the stream
     // has not been initialized yet
     if (!this._readableState) {
       return;
-    } // backward compatibility, the user is explicitly
+    }
+
+    // backward compatibility, the user is explicitly
     // managing destroyed
-
-
     this._readableState.destroyed = value;
   }
 });
+
 Readable.prototype.destroy = destroyImpl.destroy;
 Readable.prototype._undestroy = destroyImpl.undestroy;
-
 Readable.prototype._destroy = function (err, cb) {
+  this.push(null);
   cb(err);
-}; // Manually shove something into the read() buffer.
+};
+
+// Manually shove something into the read() buffer.
 // This returns true if the highWaterMark has not been hit yet,
 // similar to how Writable.write() returns true if you should
 // write() some more.
-
-
 Readable.prototype.push = function (chunk, encoding) {
   var state = this._readableState;
   var skipChunkCheck;
@@ -67639,12 +70601,10 @@ Readable.prototype.push = function (chunk, encoding) {
   if (!state.objectMode) {
     if (typeof chunk === 'string') {
       encoding = encoding || state.defaultEncoding;
-
       if (encoding !== state.encoding) {
         chunk = Buffer.from(chunk, encoding);
         encoding = '';
       }
-
       skipChunkCheck = true;
     }
   } else {
@@ -67652,24 +70612,21 @@ Readable.prototype.push = function (chunk, encoding) {
   }
 
   return readableAddChunk(this, chunk, encoding, false, skipChunkCheck);
-}; // Unshift should *always* be something directly out of read()
+};
 
-
+// Unshift should *always* be something directly out of read()
 Readable.prototype.unshift = function (chunk) {
   return readableAddChunk(this, chunk, null, true, false);
 };
 
 function readableAddChunk(stream, chunk, encoding, addToFront, skipChunkCheck) {
-  debug('readableAddChunk', chunk);
   var state = stream._readableState;
-
   if (chunk === null) {
     state.reading = false;
     onEofChunk(stream, state);
   } else {
     var er;
     if (!skipChunkCheck) er = chunkInvalid(state, chunk);
-
     if (er) {
       stream.emit('error', er);
     } else if (state.objectMode || chunk && chunk.length > 0) {
@@ -67678,14 +70635,11 @@ function readableAddChunk(stream, chunk, encoding, addToFront, skipChunkCheck) {
       }
 
       if (addToFront) {
-        if (state.endEmitted) stream.emit('error', new ERR_STREAM_UNSHIFT_AFTER_END_EVENT());else addChunk(stream, state, chunk, true);
+        if (state.endEmitted) stream.emit('error', new Error('stream.unshift() after end event'));else addChunk(stream, state, chunk, true);
       } else if (state.ended) {
-        stream.emit('error', new ERR_STREAM_PUSH_AFTER_EOF());
-      } else if (state.destroyed) {
-        return false;
+        stream.emit('error', new Error('stream.push() after EOF'));
       } else {
         state.reading = false;
-
         if (state.decoder && !encoding) {
           chunk = state.decoder.write(chunk);
           if (state.objectMode || chunk.length !== 0) addChunk(stream, state, chunk, false);else maybeReadMore(stream, state);
@@ -67695,56 +70649,59 @@ function readableAddChunk(stream, chunk, encoding, addToFront, skipChunkCheck) {
       }
     } else if (!addToFront) {
       state.reading = false;
-      maybeReadMore(stream, state);
     }
-  } // We can push more data if we are below the highWaterMark.
-  // Also, if we have no data yet, we can stand some more bytes.
-  // This is to work around cases where hwm=0, such as the repl.
+  }
 
-
-  return !state.ended && (state.length < state.highWaterMark || state.length === 0);
+  return needMoreData(state);
 }
 
 function addChunk(stream, state, chunk, addToFront) {
   if (state.flowing && state.length === 0 && !state.sync) {
-    state.awaitDrain = 0;
     stream.emit('data', chunk);
+    stream.read(0);
   } else {
     // update the buffer info.
     state.length += state.objectMode ? 1 : chunk.length;
     if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);
+
     if (state.needReadable) emitReadable(stream);
   }
-
   maybeReadMore(stream, state);
 }
 
 function chunkInvalid(state, chunk) {
   var er;
-
   if (!_isUint8Array(chunk) && typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
-    er = new ERR_INVALID_ARG_TYPE('chunk', ['string', 'Buffer', 'Uint8Array'], chunk);
+    er = new TypeError('Invalid non-string/buffer chunk');
   }
-
   return er;
+}
+
+// if it's past the high water mark, we can push in some more.
+// Also, if we have no data yet, we can stand some
+// more bytes.  This is to work around cases where hwm=0,
+// such as the repl.  Also, if the push() triggered a
+// readable event, and the user called read(largeNumber) such that
+// needReadable was set, then we ought to push more, so that another
+// 'readable' event will be triggered.
+function needMoreData(state) {
+  return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);
 }
 
 Readable.prototype.isPaused = function () {
   return this._readableState.flowing === false;
-}; // backwards compatibility.
+};
 
-
+// backwards compatibility.
 Readable.prototype.setEncoding = function (enc) {
   if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
-  this._readableState.decoder = new StringDecoder(enc); // if setEncoding(null), decoder.encoding equals utf8
-
-  this._readableState.encoding = this._readableState.decoder.encoding;
+  this._readableState.decoder = new StringDecoder(enc);
+  this._readableState.encoding = enc;
   return this;
-}; // Don't raise the hwm > 8MB
+};
 
-
+// Don't raise the hwm > 8MB
 var MAX_HWM = 0x800000;
-
 function computeNewHighWaterMark(n) {
   if (n >= MAX_HWM) {
     n = MAX_HWM;
@@ -67759,55 +70716,56 @@ function computeNewHighWaterMark(n) {
     n |= n >>> 16;
     n++;
   }
-
   return n;
-} // This function is designed to be inlinable, so please take care when making
+}
+
+// This function is designed to be inlinable, so please take care when making
 // changes to the function body.
-
-
 function howMuchToRead(n, state) {
   if (n <= 0 || state.length === 0 && state.ended) return 0;
   if (state.objectMode) return 1;
-
   if (n !== n) {
     // Only flow one buffer at a time
     if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;
-  } // If we're asking for more than the current hwm, then raise the hwm.
-
-
+  }
+  // If we're asking for more than the current hwm, then raise the hwm.
   if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
-  if (n <= state.length) return n; // Don't have enough
-
+  if (n <= state.length) return n;
+  // Don't have enough
   if (!state.ended) {
     state.needReadable = true;
     return 0;
   }
-
   return state.length;
-} // you can override either this method, or the async _read(n) below.
+}
 
-
+// you can override either this method, or the async _read(n) below.
 Readable.prototype.read = function (n) {
   debug('read', n);
   n = parseInt(n, 10);
   var state = this._readableState;
   var nOrig = n;
-  if (n !== 0) state.emittedReadable = false; // if we're doing read(0) to trigger a readable event, but we
+
+  if (n !== 0) state.emittedReadable = false;
+
+  // if we're doing read(0) to trigger a readable event, but we
   // already have a bunch of data in the buffer, then just trigger
   // the 'readable' event and move on.
-
-  if (n === 0 && state.needReadable && ((state.highWaterMark !== 0 ? state.length >= state.highWaterMark : state.length > 0) || state.ended)) {
+  if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {
     debug('read: emitReadable', state.length, state.ended);
     if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);
     return null;
   }
 
-  n = howMuchToRead(n, state); // if we've ended, and we're now clear, then finish it up.
+  n = howMuchToRead(n, state);
 
+  // if we've ended, and we're now clear, then finish it up.
   if (n === 0 && state.ended) {
     if (state.length === 0) endReadable(this);
     return null;
-  } // All the actual chunk generation logic needs to be
+  }
+
+  // All the actual chunk generation logic needs to be
   // *below* the call to _read.  The reason is that in certain
   // synthetic stream cases, such as passthrough streams, _read
   // may be a completely synchronous operation which may change
@@ -67828,34 +70786,33 @@ Readable.prototype.read = function (n) {
   // 'readable' etc.
   //
   // 3. Actually pull the requested chunks out of the buffer and return.
+
   // if we need a readable event, then we need to do some reading.
-
-
   var doRead = state.needReadable;
-  debug('need readable', doRead); // if we currently have less than the highWaterMark, then also read some
+  debug('need readable', doRead);
 
+  // if we currently have less than the highWaterMark, then also read some
   if (state.length === 0 || state.length - n < state.highWaterMark) {
     doRead = true;
     debug('length less than watermark', doRead);
-  } // however, if we've ended, then there's no point, and if we're already
+  }
+
+  // however, if we've ended, then there's no point, and if we're already
   // reading, then it's unnecessary.
-
-
   if (state.ended || state.reading) {
     doRead = false;
     debug('reading or ended', doRead);
   } else if (doRead) {
     debug('do read');
     state.reading = true;
-    state.sync = true; // if the length is currently zero, then we *need* a readable event.
-
-    if (state.length === 0) state.needReadable = true; // call internal read method
-
+    state.sync = true;
+    // if the length is currently zero, then we *need* a readable event.
+    if (state.length === 0) state.needReadable = true;
+    // call internal read method
     this._read(state.highWaterMark);
-
-    state.sync = false; // If _read pushed data synchronously, then `reading` will be false,
+    state.sync = false;
+    // If _read pushed data synchronously, then `reading` will be false,
     // and we need to re-evaluate how much data we can return to the user.
-
     if (!state.reading) n = howMuchToRead(nOrig, state);
   }
 
@@ -67867,137 +70824,87 @@ Readable.prototype.read = function (n) {
     n = 0;
   } else {
     state.length -= n;
-    state.awaitDrain = 0;
   }
 
   if (state.length === 0) {
     // If we have nothing in the buffer, then we want to know
     // as soon as we *do* get something into the buffer.
-    if (!state.ended) state.needReadable = true; // If we tried to read() past the EOF, then emit end on the next tick.
+    if (!state.ended) state.needReadable = true;
 
+    // If we tried to read() past the EOF, then emit end on the next tick.
     if (nOrig !== n && state.ended) endReadable(this);
   }
 
   if (ret !== null) this.emit('data', ret);
+
   return ret;
 };
 
 function onEofChunk(stream, state) {
   if (state.ended) return;
-
   if (state.decoder) {
     var chunk = state.decoder.end();
-
     if (chunk && chunk.length) {
       state.buffer.push(chunk);
       state.length += state.objectMode ? 1 : chunk.length;
     }
   }
-
   state.ended = true;
 
-  if (state.sync) {
-    // if we are sync, wait until next tick to emit the data.
-    // Otherwise we risk emitting data in the flow()
-    // the readable code triggers during a read() call
-    emitReadable(stream);
-  } else {
-    // emit 'readable' now to make sure it gets picked up.
-    state.needReadable = false;
+  // emit 'readable' now to make sure it gets picked up.
+  emitReadable(stream);
+}
 
-    if (!state.emittedReadable) {
-      state.emittedReadable = true;
-      emitReadable_(stream);
-    }
-  }
-} // Don't emit readable right away in sync mode, because this can trigger
+// Don't emit readable right away in sync mode, because this can trigger
 // another read() call => stack overflow.  This way, it might trigger
 // a nextTick recursion warning, but that's not so bad.
-
-
 function emitReadable(stream) {
   var state = stream._readableState;
   state.needReadable = false;
-
   if (!state.emittedReadable) {
     debug('emitReadable', state.flowing);
     state.emittedReadable = true;
-    process.nextTick(emitReadable_, stream);
+    if (state.sync) pna.nextTick(emitReadable_, stream);else emitReadable_(stream);
   }
 }
 
 function emitReadable_(stream) {
-  var state = stream._readableState;
-  debug('emitReadable_', state.destroyed, state.length, state.ended);
-
-  if (!state.destroyed && (state.length || state.ended)) {
-    stream.emit('readable');
-  } // The stream needs another readable event if
-  // 1. It is not flowing, as the flow mechanism will take
-  //    care of it.
-  // 2. It is not ended.
-  // 3. It is below the highWaterMark, so we can schedule
-  //    another readable later.
-
-
-  state.needReadable = !state.flowing && !state.ended && state.length <= state.highWaterMark;
+  debug('emit readable');
+  stream.emit('readable');
   flow(stream);
-} // at this point, the user has presumably seen the 'readable' event,
+}
+
+// at this point, the user has presumably seen the 'readable' event,
 // and called read() to consume some data.  that may have triggered
 // in turn another _read(n) call, in which case reading = true if
 // it's in progress.
 // However, if we're not ended, or reading, and the length < hwm,
 // then go ahead and try to read some more preemptively.
-
-
 function maybeReadMore(stream, state) {
   if (!state.readingMore) {
     state.readingMore = true;
-    process.nextTick(maybeReadMore_, stream, state);
+    pna.nextTick(maybeReadMore_, stream, state);
   }
 }
 
 function maybeReadMore_(stream, state) {
-  // Attempt to read more data if we should.
-  //
-  // The conditions for reading more data are (one of):
-  // - Not enough data buffered (state.length < state.highWaterMark). The loop
-  //   is responsible for filling the buffer with enough data if such data
-  //   is available. If highWaterMark is 0 and we are not in the flowing mode
-  //   we should _not_ attempt to buffer any extra data. We'll get more data
-  //   when the stream consumer calls read() instead.
-  // - No data in the buffer, and the stream is in flowing mode. In this mode
-  //   the loop below is responsible for ensuring read() is called. Failing to
-  //   call read here would abort the flow and there's no other mechanism for
-  //   continuing the flow if the stream consumer has just subscribed to the
-  //   'data' event.
-  //
-  // In addition to the above conditions to keep reading data, the following
-  // conditions prevent the data from being read:
-  // - The stream has ended (state.ended).
-  // - There is already a pending 'read' operation (state.reading). This is a
-  //   case where the the stream has called the implementation defined _read()
-  //   method, but they are processing the call asynchronously and have _not_
-  //   called push() with new data. In this case we skip performing more
-  //   read()s. The execution ends in this method again after the _read() ends
-  //   up calling push() with more data.
-  while (!state.reading && !state.ended && (state.length < state.highWaterMark || state.flowing && state.length === 0)) {
-    var len = state.length;
+  var len = state.length;
+  while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {
     debug('maybeReadMore read 0');
     stream.read(0);
-    if (len === state.length) // didn't get any data, stop spinning.
-      break;
+    if (len === state.length)
+      // didn't get any data, stop spinning.
+      break;else len = state.length;
   }
-
   state.readingMore = false;
-} // abstract method.  to be overridden in specific implementation classes.
+}
+
+// abstract method.  to be overridden in specific implementation classes.
 // call cb(er, data) where data is <= n in length.
 // for virtual (non-string, non-buffer) streams, "length" is somewhat
 // arbitrary, and perhaps not very meaningful.
-
-
 Readable.prototype._read = function (n) {
-  this.emit('error', new ERR_METHOD_NOT_IMPLEMENTED('_read()'));
+  this.emit('error', new Error('_read() is not implemented'));
 };
 
 Readable.prototype.pipe = function (dest, pipeOpts) {
@@ -68008,26 +70915,24 @@ Readable.prototype.pipe = function (dest, pipeOpts) {
     case 0:
       state.pipes = dest;
       break;
-
     case 1:
       state.pipes = [state.pipes, dest];
       break;
-
     default:
       state.pipes.push(dest);
       break;
   }
-
   state.pipesCount += 1;
   debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);
-  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
-  var endFn = doEnd ? onend : unpipe;
-  if (state.endEmitted) process.nextTick(endFn);else src.once('end', endFn);
-  dest.on('unpipe', onunpipe);
 
+  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
+
+  var endFn = doEnd ? onend : unpipe;
+  if (state.endEmitted) pna.nextTick(endFn);else src.once('end', endFn);
+
+  dest.on('unpipe', onunpipe);
   function onunpipe(readable, unpipeInfo) {
     debug('onunpipe');
-
     if (readable === src) {
       if (unpipeInfo && unpipeInfo.hasUnpiped === false) {
         unpipeInfo.hasUnpiped = true;
@@ -68039,19 +70944,19 @@ Readable.prototype.pipe = function (dest, pipeOpts) {
   function onend() {
     debug('onend');
     dest.end();
-  } // when the dest drains, it reduces the awaitDrain counter
+  }
+
+  // when the dest drains, it reduces the awaitDrain counter
   // on the source.  This would be more elegant with a .once()
   // handler in flow(), but adding and removing repeatedly is
   // too slow.
-
-
   var ondrain = pipeOnDrain(src);
   dest.on('drain', ondrain);
+
   var cleanedUp = false;
-
   function cleanup() {
-    debug('cleanup'); // cleanup event handlers once the pipe is broken
-
+    debug('cleanup');
+    // cleanup event handlers once the pipe is broken
     dest.removeListener('close', onclose);
     dest.removeListener('finish', onfinish);
     dest.removeListener('drain', ondrain);
@@ -68060,71 +70965,75 @@ Readable.prototype.pipe = function (dest, pipeOpts) {
     src.removeListener('end', onend);
     src.removeListener('end', unpipe);
     src.removeListener('data', ondata);
-    cleanedUp = true; // if the reader is waiting for a drain event from this
+
+    cleanedUp = true;
+
+    // if the reader is waiting for a drain event from this
     // specific writer, then it would cause it to never start
     // flowing again.
     // So, if this is awaiting a drain, then we just call it now.
     // If we don't know, then assume that we are waiting for one.
-
     if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
   }
 
+  // If the user pushes more data while we're writing to dest then we'll end up
+  // in ondata again. However, we only want to increase awaitDrain once because
+  // dest will only emit one 'drain' event for the multiple writes.
+  // => Introduce a guard on increasing awaitDrain.
+  var increasedAwaitDrain = false;
   src.on('data', ondata);
-
   function ondata(chunk) {
     debug('ondata');
+    increasedAwaitDrain = false;
     var ret = dest.write(chunk);
-    debug('dest.write', ret);
-
-    if (ret === false) {
+    if (false === ret && !increasedAwaitDrain) {
       // If the user unpiped during `dest.write()`, it is possible
       // to get stuck in a permanently paused state if that write
       // also returned false.
       // => Check whether `dest` is still a piping destination.
       if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
-        debug('false write response, pause', state.awaitDrain);
-        state.awaitDrain++;
+        debug('false write response, pause', src._readableState.awaitDrain);
+        src._readableState.awaitDrain++;
+        increasedAwaitDrain = true;
       }
-
       src.pause();
     }
-  } // if the dest has an error, then stop piping into it.
+  }
+
+  // if the dest has an error, then stop piping into it.
   // however, don't suppress the throwing behavior for this.
-
-
   function onerror(er) {
     debug('onerror', er);
     unpipe();
     dest.removeListener('error', onerror);
     if (EElistenerCount(dest, 'error') === 0) dest.emit('error', er);
-  } // Make sure our error handler is attached before userland ones.
+  }
 
+  // Make sure our error handler is attached before userland ones.
+  prependListener(dest, 'error', onerror);
 
-  prependListener(dest, 'error', onerror); // Both close and finish should trigger unpipe, but only once.
-
+  // Both close and finish should trigger unpipe, but only once.
   function onclose() {
     dest.removeListener('finish', onfinish);
     unpipe();
   }
-
   dest.once('close', onclose);
-
   function onfinish() {
     debug('onfinish');
     dest.removeListener('close', onclose);
     unpipe();
   }
-
   dest.once('finish', onfinish);
 
   function unpipe() {
     debug('unpipe');
     src.unpipe(dest);
-  } // tell the dest that it's being piped to
+  }
 
+  // tell the dest that it's being piped to
+  dest.emit('pipe', src);
 
-  dest.emit('pipe', src); // start the flow if it hasn't been started already.
-
+  // start the flow if it hasn't been started already.
   if (!state.flowing) {
     debug('pipe resume');
     src.resume();
@@ -68134,11 +71043,10 @@ Readable.prototype.pipe = function (dest, pipeOpts) {
 };
 
 function pipeOnDrain(src) {
-  return function pipeOnDrainFunctionResult() {
+  return function () {
     var state = src._readableState;
     debug('pipeOnDrain', state.awaitDrain);
     if (state.awaitDrain) state.awaitDrain--;
-
     if (state.awaitDrain === 0 && EElistenerCount(src, 'data')) {
       state.flowing = true;
       flow(src);
@@ -68148,24 +71056,27 @@ function pipeOnDrain(src) {
 
 Readable.prototype.unpipe = function (dest) {
   var state = this._readableState;
-  var unpipeInfo = {
-    hasUnpiped: false
-  }; // if we're not piping anywhere, then do nothing.
+  var unpipeInfo = { hasUnpiped: false };
 
-  if (state.pipesCount === 0) return this; // just one destination.  most common case.
+  // if we're not piping anywhere, then do nothing.
+  if (state.pipesCount === 0) return this;
 
+  // just one destination.  most common case.
   if (state.pipesCount === 1) {
     // passed in one, but it's not the right one.
     if (dest && dest !== state.pipes) return this;
-    if (!dest) dest = state.pipes; // got a match.
 
+    if (!dest) dest = state.pipes;
+
+    // got a match.
     state.pipes = null;
     state.pipesCount = 0;
     state.flowing = false;
     if (dest) dest.emit('unpipe', this, unpipeInfo);
     return this;
-  } // slow case. multiple pipe destinations.
+  }
 
+  // slow case. multiple pipe destinations.
 
   if (!dest) {
     // remove all.
@@ -68176,139 +71087,80 @@ Readable.prototype.unpipe = function (dest) {
     state.flowing = false;
 
     for (var i = 0; i < len; i++) {
-      dests[i].emit('unpipe', this, {
-        hasUnpiped: false
-      });
-    }
+      dests[i].emit('unpipe', this, unpipeInfo);
+    }return this;
+  }
 
-    return this;
-  } // try to find the right one.
-
-
+  // try to find the right one.
   var index = indexOf(state.pipes, dest);
   if (index === -1) return this;
+
   state.pipes.splice(index, 1);
   state.pipesCount -= 1;
   if (state.pipesCount === 1) state.pipes = state.pipes[0];
+
   dest.emit('unpipe', this, unpipeInfo);
+
   return this;
-}; // set up data events if they are asked for
+};
+
+// set up data events if they are asked for
 // Ensure readable listeners eventually get something
-
-
 Readable.prototype.on = function (ev, fn) {
   var res = Stream.prototype.on.call(this, ev, fn);
-  var state = this._readableState;
 
   if (ev === 'data') {
-    // update readableListening so that resume() may be a no-op
-    // a few lines down. This is needed to support once('readable').
-    state.readableListening = this.listenerCount('readable') > 0; // Try start flowing on next tick if stream isn't explicitly paused
-
-    if (state.flowing !== false) this.resume();
+    // Start flowing on next tick if stream isn't explicitly paused
+    if (this._readableState.flowing !== false) this.resume();
   } else if (ev === 'readable') {
+    var state = this._readableState;
     if (!state.endEmitted && !state.readableListening) {
       state.readableListening = state.needReadable = true;
-      state.flowing = false;
       state.emittedReadable = false;
-      debug('on readable', state.length, state.reading);
-
-      if (state.length) {
+      if (!state.reading) {
+        pna.nextTick(nReadingNextTick, this);
+      } else if (state.length) {
         emitReadable(this);
-      } else if (!state.reading) {
-        process.nextTick(nReadingNextTick, this);
       }
     }
   }
 
   return res;
 };
-
 Readable.prototype.addListener = Readable.prototype.on;
-
-Readable.prototype.removeListener = function (ev, fn) {
-  var res = Stream.prototype.removeListener.call(this, ev, fn);
-
-  if (ev === 'readable') {
-    // We need to check if there is someone still listening to
-    // readable and reset the state. However this needs to happen
-    // after readable has been emitted but before I/O (nextTick) to
-    // support once('readable', fn) cycles. This means that calling
-    // resume within the same tick will have no
-    // effect.
-    process.nextTick(updateReadableListening, this);
-  }
-
-  return res;
-};
-
-Readable.prototype.removeAllListeners = function (ev) {
-  var res = Stream.prototype.removeAllListeners.apply(this, arguments);
-
-  if (ev === 'readable' || ev === undefined) {
-    // We need to check if there is someone still listening to
-    // readable and reset the state. However this needs to happen
-    // after readable has been emitted but before I/O (nextTick) to
-    // support once('readable', fn) cycles. This means that calling
-    // resume within the same tick will have no
-    // effect.
-    process.nextTick(updateReadableListening, this);
-  }
-
-  return res;
-};
-
-function updateReadableListening(self) {
-  var state = self._readableState;
-  state.readableListening = self.listenerCount('readable') > 0;
-
-  if (state.resumeScheduled && !state.paused) {
-    // flowing needs to be set to true now, otherwise
-    // the upcoming resume will not flow.
-    state.flowing = true; // crude way to check if we should resume
-  } else if (self.listenerCount('data') > 0) {
-    self.resume();
-  }
-}
 
 function nReadingNextTick(self) {
   debug('readable nexttick read 0');
   self.read(0);
-} // pause() and resume() are remnants of the legacy readable stream API
+}
+
+// pause() and resume() are remnants of the legacy readable stream API
 // If the user uses them, then switch into old mode.
-
-
 Readable.prototype.resume = function () {
   var state = this._readableState;
-
   if (!state.flowing) {
-    debug('resume'); // we flow only if there is no one listening
-    // for readable, but we still have to call
-    // resume()
-
-    state.flowing = !state.readableListening;
+    debug('resume');
+    state.flowing = true;
     resume(this, state);
   }
-
-  state.paused = false;
   return this;
 };
 
 function resume(stream, state) {
   if (!state.resumeScheduled) {
     state.resumeScheduled = true;
-    process.nextTick(resume_, stream, state);
+    pna.nextTick(resume_, stream, state);
   }
 }
 
 function resume_(stream, state) {
-  debug('resume', state.reading);
-
   if (!state.reading) {
+    debug('resume read 0');
     stream.read(0);
   }
 
   state.resumeScheduled = false;
+  state.awaitDrain = 0;
   stream.emit('resume');
   flow(stream);
   if (state.flowing && !state.reading) stream.read(0);
@@ -68316,37 +71168,31 @@ function resume_(stream, state) {
 
 Readable.prototype.pause = function () {
   debug('call pause flowing=%j', this._readableState.flowing);
-
-  if (this._readableState.flowing !== false) {
+  if (false !== this._readableState.flowing) {
     debug('pause');
     this._readableState.flowing = false;
     this.emit('pause');
   }
-
-  this._readableState.paused = true;
   return this;
 };
 
 function flow(stream) {
   var state = stream._readableState;
   debug('flow', state.flowing);
+  while (state.flowing && stream.read() !== null) {}
+}
 
-  while (state.flowing && stream.read() !== null) {
-    ;
-  }
-} // wrap an old-style stream as the async data source.
+// wrap an old-style stream as the async data source.
 // This is *not* part of the readable stream interface.
 // It is an ugly unfortunate mess of history.
-
-
 Readable.prototype.wrap = function (stream) {
   var _this = this;
 
   var state = this._readableState;
   var paused = false;
+
   stream.on('end', function () {
     debug('wrapped end');
-
     if (state.decoder && !state.ended) {
       var chunk = state.decoder.end();
       if (chunk && chunk.length) _this.push(chunk);
@@ -68354,41 +71200,42 @@ Readable.prototype.wrap = function (stream) {
 
     _this.push(null);
   });
+
   stream.on('data', function (chunk) {
     debug('wrapped data');
-    if (state.decoder) chunk = state.decoder.write(chunk); // don't skip over falsy values in objectMode
+    if (state.decoder) chunk = state.decoder.write(chunk);
 
+    // don't skip over falsy values in objectMode
     if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;
 
     var ret = _this.push(chunk);
-
     if (!ret) {
       paused = true;
       stream.pause();
     }
-  }); // proxy all the other methods.
-  // important when wrapping filters and duplexes.
+  });
 
+  // proxy all the other methods.
+  // important when wrapping filters and duplexes.
   for (var i in stream) {
     if (this[i] === undefined && typeof stream[i] === 'function') {
-      this[i] = function methodWrap(method) {
-        return function methodWrapReturnFunction() {
+      this[i] = function (method) {
+        return function () {
           return stream[method].apply(stream, arguments);
         };
       }(i);
     }
-  } // proxy certain important events.
+  }
 
-
+  // proxy certain important events.
   for (var n = 0; n < kProxyEvents.length; n++) {
     stream.on(kProxyEvents[n], this.emit.bind(this, kProxyEvents[n]));
-  } // when we try to consume some more bytes, simply unpause the
+  }
+
+  // when we try to consume some more bytes, simply unpause the
   // underlying stream.
-
-
   this._read = function (n) {
     debug('wrapped _read', n);
-
     if (paused) {
       paused = false;
       stream.resume();
@@ -68398,93 +71245,134 @@ Readable.prototype.wrap = function (stream) {
   return this;
 };
 
-if (typeof Symbol === 'function') {
-  Readable.prototype[Symbol.asyncIterator] = function () {
-    emitExperimentalWarning('Readable[Symbol.asyncIterator]');
-
-    if (createReadableStreamAsyncIterator === undefined) {
-      createReadableStreamAsyncIterator = __webpack_require__(/*! ./internal/streams/async_iterator */ "./node_modules/readable-stream/lib/internal/streams/async_iterator.js");
-    }
-
-    return createReadableStreamAsyncIterator(this);
-  };
-}
-
 Object.defineProperty(Readable.prototype, 'readableHighWaterMark', {
   // making it explicit this property is not enumerable
   // because otherwise some prototype manipulation in
   // userland will fail
   enumerable: false,
-  get: function get() {
+  get: function () {
     return this._readableState.highWaterMark;
   }
 });
-Object.defineProperty(Readable.prototype, 'readableBuffer', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
-    return this._readableState && this._readableState.buffer;
-  }
-});
-Object.defineProperty(Readable.prototype, 'readableFlowing', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
-    return this._readableState.flowing;
-  },
-  set: function set(state) {
-    if (this._readableState) {
-      this._readableState.flowing = state;
-    }
-  }
-}); // exposed for testing purposes only.
 
+// exposed for testing purposes only.
 Readable._fromList = fromList;
-Object.defineProperty(Readable.prototype, 'readableLength', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
-    return this._readableState.length;
-  }
-}); // Pluck off n bytes from an array of buffers.
+
+// Pluck off n bytes from an array of buffers.
 // Length is the combined lengths of all the buffers in the list.
 // This function is designed to be inlinable, so please take care when making
 // changes to the function body.
-
 function fromList(n, state) {
   // nothing buffered
   if (state.length === 0) return null;
+
   var ret;
   if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
     // read it all, truncate the list
-    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.first();else ret = state.buffer.concat(state.length);
+    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);
     state.buffer.clear();
   } else {
     // read part of list
-    ret = state.buffer.consume(n, state.decoder);
+    ret = fromListPartial(n, state.buffer, state.decoder);
   }
+
+  return ret;
+}
+
+// Extracts only enough buffered data to satisfy the amount requested.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function fromListPartial(n, list, hasStrings) {
+  var ret;
+  if (n < list.head.data.length) {
+    // slice is the same for buffers and strings
+    ret = list.head.data.slice(0, n);
+    list.head.data = list.head.data.slice(n);
+  } else if (n === list.head.data.length) {
+    // first chunk is a perfect match
+    ret = list.shift();
+  } else {
+    // result spans more than one buffer
+    ret = hasStrings ? copyFromBufferString(n, list) : copyFromBuffer(n, list);
+  }
+  return ret;
+}
+
+// Copies a specified amount of characters from the list of buffered data
+// chunks.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function copyFromBufferString(n, list) {
+  var p = list.head;
+  var c = 1;
+  var ret = p.data;
+  n -= ret.length;
+  while (p = p.next) {
+    var str = p.data;
+    var nb = n > str.length ? str.length : n;
+    if (nb === str.length) ret += str;else ret += str.slice(0, n);
+    n -= nb;
+    if (n === 0) {
+      if (nb === str.length) {
+        ++c;
+        if (p.next) list.head = p.next;else list.head = list.tail = null;
+      } else {
+        list.head = p;
+        p.data = str.slice(nb);
+      }
+      break;
+    }
+    ++c;
+  }
+  list.length -= c;
+  return ret;
+}
+
+// Copies a specified amount of bytes from the list of buffered data chunks.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function copyFromBuffer(n, list) {
+  var ret = Buffer.allocUnsafe(n);
+  var p = list.head;
+  var c = 1;
+  p.data.copy(ret);
+  n -= p.data.length;
+  while (p = p.next) {
+    var buf = p.data;
+    var nb = n > buf.length ? buf.length : n;
+    buf.copy(ret, ret.length - n, 0, nb);
+    n -= nb;
+    if (n === 0) {
+      if (nb === buf.length) {
+        ++c;
+        if (p.next) list.head = p.next;else list.head = list.tail = null;
+      } else {
+        list.head = p;
+        p.data = buf.slice(nb);
+      }
+      break;
+    }
+    ++c;
+  }
+  list.length -= c;
   return ret;
 }
 
 function endReadable(stream) {
   var state = stream._readableState;
-  debug('endReadable', state.endEmitted);
+
+  // If we get here before consuming all the bytes, then that is a
+  // bug in node.  Should never happen.
+  if (state.length > 0) throw new Error('"endReadable()" called on non-empty stream');
 
   if (!state.endEmitted) {
     state.ended = true;
-    process.nextTick(endReadableNT, state, stream);
+    pna.nextTick(endReadableNT, state, stream);
   }
 }
 
 function endReadableNT(state, stream) {
-  debug('endReadableNT', state.endEmitted, state.length); // Check that we didn't get one last unshift.
-
+  // Check that we didn't get one last unshift.
   if (!state.endEmitted && state.length === 0) {
     state.endEmitted = true;
     stream.readable = false;
@@ -68496,7 +71384,6 @@ function indexOf(xs, x) {
   for (var i = 0, l = xs.length; i < l; i++) {
     if (xs[i] === x) return i;
   }
-
   return -1;
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
@@ -68531,6 +71418,7 @@ function indexOf(xs, x) {
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -68574,35 +71462,38 @@ function indexOf(xs, x) {
 // the results of the previous transformed chunk were consumed.
 
 
-module.exports = Transform;
 
-var _require$codes = __webpack_require__(/*! ../errors */ "./node_modules/readable-stream/errors-browser.js").codes,
-    ERR_METHOD_NOT_IMPLEMENTED = _require$codes.ERR_METHOD_NOT_IMPLEMENTED,
-    ERR_MULTIPLE_CALLBACK = _require$codes.ERR_MULTIPLE_CALLBACK,
-    ERR_TRANSFORM_ALREADY_TRANSFORMING = _require$codes.ERR_TRANSFORM_ALREADY_TRANSFORMING,
-    ERR_TRANSFORM_WITH_LENGTH_0 = _require$codes.ERR_TRANSFORM_WITH_LENGTH_0;
+module.exports = Transform;
 
 var Duplex = __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
 
-__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Transform, Duplex);
+/*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
+
+util.inherits(Transform, Duplex);
 
 function afterTransform(er, data) {
   var ts = this._transformState;
   ts.transforming = false;
+
   var cb = ts.writecb;
 
-  if (cb === null) {
-    return this.emit('error', new ERR_MULTIPLE_CALLBACK());
+  if (!cb) {
+    return this.emit('error', new Error('write callback called multiple times'));
   }
 
   ts.writechunk = null;
   ts.writecb = null;
+
   if (data != null) // single equals check for both `null` and `undefined`
     this.push(data);
+
   cb(er);
+
   var rs = this._readableState;
   rs.reading = false;
-
   if (rs.needReadable || rs.length < rs.highWaterMark) {
     this._read(rs.highWaterMark);
   }
@@ -68610,7 +71501,9 @@ function afterTransform(er, data) {
 
 function Transform(options) {
   if (!(this instanceof Transform)) return new Transform(options);
+
   Duplex.call(this, options);
+
   this._transformState = {
     afterTransform: afterTransform.bind(this),
     needTransform: false,
@@ -68618,27 +71511,30 @@ function Transform(options) {
     writecb: null,
     writechunk: null,
     writeencoding: null
-  }; // start out asking for a readable event once data is transformed.
+  };
 
-  this._readableState.needReadable = true; // we have implemented the _read method, and done the other things
+  // start out asking for a readable event once data is transformed.
+  this._readableState.needReadable = true;
+
+  // we have implemented the _read method, and done the other things
   // that Readable wants before the first _read call, so unset the
   // sync guard flag.
-
   this._readableState.sync = false;
 
   if (options) {
     if (typeof options.transform === 'function') this._transform = options.transform;
+
     if (typeof options.flush === 'function') this._flush = options.flush;
-  } // When the writable side finishes, then flush out anything remaining.
+  }
 
-
+  // When the writable side finishes, then flush out anything remaining.
   this.on('prefinish', prefinish);
 }
 
 function prefinish() {
   var _this = this;
 
-  if (typeof this._flush === 'function' && !this._readableState.destroyed) {
+  if (typeof this._flush === 'function') {
     this._flush(function (er, data) {
       done(_this, er, data);
     });
@@ -68650,7 +71546,9 @@ function prefinish() {
 Transform.prototype.push = function (chunk, encoding) {
   this._transformState.needTransform = false;
   return Duplex.prototype.push.call(this, chunk, encoding);
-}; // This is the part where you do stuff!
+};
+
+// This is the part where you do stuff!
 // override this function in implementation classes.
 // 'chunk' is an input chunk.
 //
@@ -68660,10 +71558,8 @@ Transform.prototype.push = function (chunk, encoding) {
 // Call `cb(err)` when you are done with this chunk.  If you pass
 // an error, then that'll put the hurt on the whole operation.  If you
 // never call cb(), then you'll never get another chunk.
-
-
 Transform.prototype._transform = function (chunk, encoding, cb) {
-  cb(new ERR_METHOD_NOT_IMPLEMENTED('_transform()'));
+  throw new Error('_transform() is not implemented');
 };
 
 Transform.prototype._write = function (chunk, encoding, cb) {
@@ -68671,22 +71567,20 @@ Transform.prototype._write = function (chunk, encoding, cb) {
   ts.writecb = cb;
   ts.writechunk = chunk;
   ts.writeencoding = encoding;
-
   if (!ts.transforming) {
     var rs = this._readableState;
     if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark) this._read(rs.highWaterMark);
   }
-}; // Doesn't matter what the args are here.
+};
+
+// Doesn't matter what the args are here.
 // _transform does all the work.
 // That we got here means that the readable side wants more data.
-
-
 Transform.prototype._read = function (n) {
   var ts = this._transformState;
 
-  if (ts.writechunk !== null && !ts.transforming) {
+  if (ts.writechunk !== null && ts.writecb && !ts.transforming) {
     ts.transforming = true;
-
     this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);
   } else {
     // mark that we need a transform, so that any data that comes in
@@ -68696,20 +71590,26 @@ Transform.prototype._read = function (n) {
 };
 
 Transform.prototype._destroy = function (err, cb) {
+  var _this2 = this;
+
   Duplex.prototype._destroy.call(this, err, function (err2) {
     cb(err2);
+    _this2.emit('close');
   });
 };
 
 function done(stream, er, data) {
   if (er) return stream.emit('error', er);
+
   if (data != null) // single equals check for both `null` and `undefined`
-    stream.push(data); // TODO(BridgeAR): Write a test for these two error cases
+    stream.push(data);
+
   // if there's nothing in the write buffer, then that means
   // that nothing more will ever be provided
+  if (stream._writableState.length) throw new Error('Calling transform done when ws.length != 0');
 
-  if (stream._writableState.length) throw new ERR_TRANSFORM_WITH_LENGTH_0();
-  if (stream._transformState.transforming) throw new ERR_TRANSFORM_ALREADY_TRANSFORMING();
+  if (stream._transformState.transforming) throw new Error('Calling transform done when still transforming');
+
   return stream.push(null);
 }
 
@@ -68723,7 +71623,7 @@ function done(stream, er, data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
+/* WEBPACK VAR INJECTION */(function(process, setImmediate, global) {// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -68743,29 +71643,35 @@ function done(stream, er, data) {
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
 // the drain event emission and buffering.
 
 
-module.exports = Writable;
-/* <replacement> */
 
+/*<replacement>*/
+
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
+/*</replacement>*/
+
+module.exports = Writable;
+
+/* <replacement> */
 function WriteReq(chunk, encoding, cb) {
   this.chunk = chunk;
   this.encoding = encoding;
   this.callback = cb;
   this.next = null;
-} // It seems a linked list but it is not
+}
+
+// It seems a linked list but it is not
 // there will be only 2 of these for each stream
-
-
 function CorkedRequest(state) {
   var _this = this;
 
   this.next = null;
   this.entry = null;
-
   this.finish = function () {
     onCorkedFinish(_this, state);
   };
@@ -68773,243 +71679,266 @@ function CorkedRequest(state) {
 /* </replacement> */
 
 /*<replacement>*/
+var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : pna.nextTick;
+/*</replacement>*/
 
-
+/*<replacement>*/
 var Duplex;
 /*</replacement>*/
 
 Writable.WritableState = WritableState;
-/*<replacement>*/
 
+/*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
+
+/*<replacement>*/
 var internalUtil = {
   deprecate: __webpack_require__(/*! util-deprecate */ "./node_modules/util-deprecate/browser.js")
 };
 /*</replacement>*/
 
 /*<replacement>*/
-
 var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/readable-stream/lib/internal/streams/stream-browser.js");
 /*</replacement>*/
 
+/*<replacement>*/
 
-var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js").Buffer;
-
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
 var OurUint8Array = global.Uint8Array || function () {};
-
 function _uint8ArrayToBuffer(chunk) {
   return Buffer.from(chunk);
 }
-
 function _isUint8Array(obj) {
   return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
 }
 
+/*</replacement>*/
+
 var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/readable-stream/lib/internal/streams/destroy.js");
 
-var _require = __webpack_require__(/*! ./internal/streams/state */ "./node_modules/readable-stream/lib/internal/streams/state.js"),
-    getHighWaterMark = _require.getHighWaterMark;
-
-var _require$codes = __webpack_require__(/*! ../errors */ "./node_modules/readable-stream/errors-browser.js").codes,
-    ERR_INVALID_ARG_TYPE = _require$codes.ERR_INVALID_ARG_TYPE,
-    ERR_METHOD_NOT_IMPLEMENTED = _require$codes.ERR_METHOD_NOT_IMPLEMENTED,
-    ERR_MULTIPLE_CALLBACK = _require$codes.ERR_MULTIPLE_CALLBACK,
-    ERR_STREAM_CANNOT_PIPE = _require$codes.ERR_STREAM_CANNOT_PIPE,
-    ERR_STREAM_DESTROYED = _require$codes.ERR_STREAM_DESTROYED,
-    ERR_STREAM_NULL_VALUES = _require$codes.ERR_STREAM_NULL_VALUES,
-    ERR_STREAM_WRITE_AFTER_END = _require$codes.ERR_STREAM_WRITE_AFTER_END,
-    ERR_UNKNOWN_ENCODING = _require$codes.ERR_UNKNOWN_ENCODING;
-
-__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Writable, Stream);
+util.inherits(Writable, Stream);
 
 function nop() {}
 
-function WritableState(options, stream, isDuplex) {
+function WritableState(options, stream) {
   Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
-  options = options || {}; // Duplex streams are both readable and writable, but share
+
+  options = options || {};
+
+  // Duplex streams are both readable and writable, but share
   // the same options object.
   // However, some cases require setting options to different
-  // values for the readable and the writable sides of the duplex stream,
-  // e.g. options.readableObjectMode vs. options.writableObjectMode, etc.
+  // values for the readable and the writable sides of the duplex stream.
+  // These options can be provided separately as readableXXX and writableXXX.
+  var isDuplex = stream instanceof Duplex;
 
-  if (typeof isDuplex !== 'boolean') isDuplex = stream instanceof Duplex; // object stream flag to indicate whether or not this stream
+  // object stream flag to indicate whether or not this stream
   // contains buffers or objects.
-
   this.objectMode = !!options.objectMode;
-  if (isDuplex) this.objectMode = this.objectMode || !!options.writableObjectMode; // the point at which write() starts returning false
+
+  if (isDuplex) this.objectMode = this.objectMode || !!options.writableObjectMode;
+
+  // the point at which write() starts returning false
   // Note: 0 is a valid value, means that we always return false if
   // the entire buffer is not flushed immediately on write()
+  var hwm = options.highWaterMark;
+  var writableHwm = options.writableHighWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
 
-  this.highWaterMark = getHighWaterMark(this, options, 'writableHighWaterMark', isDuplex); // if _final has been called
+  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (writableHwm || writableHwm === 0)) this.highWaterMark = writableHwm;else this.highWaterMark = defaultHwm;
 
-  this.finalCalled = false; // drain event flag.
+  // cast to ints.
+  this.highWaterMark = Math.floor(this.highWaterMark);
 
-  this.needDrain = false; // at the start of calling end()
+  // if _final has been called
+  this.finalCalled = false;
 
-  this.ending = false; // when end() has been called, and returned
+  // drain event flag.
+  this.needDrain = false;
+  // at the start of calling end()
+  this.ending = false;
+  // when end() has been called, and returned
+  this.ended = false;
+  // when 'finish' is emitted
+  this.finished = false;
 
-  this.ended = false; // when 'finish' is emitted
+  // has it been destroyed
+  this.destroyed = false;
 
-  this.finished = false; // has it been destroyed
-
-  this.destroyed = false; // should we decode strings into buffers before passing to _write?
+  // should we decode strings into buffers before passing to _write?
   // this is here so that some node-core streams can optimize string
   // handling at a lower level.
-
   var noDecode = options.decodeStrings === false;
-  this.decodeStrings = !noDecode; // Crypto is kind of old and crusty.  Historically, its default string
+  this.decodeStrings = !noDecode;
+
+  // Crypto is kind of old and crusty.  Historically, its default string
   // encoding is 'binary' so we have to make this configurable.
   // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
 
-  this.defaultEncoding = options.defaultEncoding || 'utf8'; // not an actual buffer we keep track of, but a measurement
+  // not an actual buffer we keep track of, but a measurement
   // of how much we're waiting to get pushed to some underlying
   // socket or file.
+  this.length = 0;
 
-  this.length = 0; // a flag to see when we're in the middle of a write.
+  // a flag to see when we're in the middle of a write.
+  this.writing = false;
 
-  this.writing = false; // when true all writes will be buffered until .uncork() call
+  // when true all writes will be buffered until .uncork() call
+  this.corked = 0;
 
-  this.corked = 0; // a flag to be able to tell if the onwrite cb is called immediately,
+  // a flag to be able to tell if the onwrite cb is called immediately,
   // or on a later tick.  We set this to true at first, because any
   // actions that shouldn't happen until "later" should generally also
   // not happen before the first write call.
+  this.sync = true;
 
-  this.sync = true; // a flag to know if we're processing previously buffered items, which
+  // a flag to know if we're processing previously buffered items, which
   // may call the _write() callback in the same tick, so that we don't
   // end up in an overlapped onwrite situation.
+  this.bufferProcessing = false;
 
-  this.bufferProcessing = false; // the callback that's passed to _write(chunk,cb)
-
+  // the callback that's passed to _write(chunk,cb)
   this.onwrite = function (er) {
     onwrite(stream, er);
-  }; // the callback that the user supplies to write(chunk,encoding,cb)
+  };
 
+  // the callback that the user supplies to write(chunk,encoding,cb)
+  this.writecb = null;
 
-  this.writecb = null; // the amount that is being written when _write is called.
-
+  // the amount that is being written when _write is called.
   this.writelen = 0;
+
   this.bufferedRequest = null;
-  this.lastBufferedRequest = null; // number of pending user-supplied write callbacks
+  this.lastBufferedRequest = null;
+
+  // number of pending user-supplied write callbacks
   // this must be 0 before 'finish' can be emitted
+  this.pendingcb = 0;
 
-  this.pendingcb = 0; // emit prefinish if the only thing we're waiting for is _write cbs
+  // emit prefinish if the only thing we're waiting for is _write cbs
   // This is relevant for synchronous Transform streams
+  this.prefinished = false;
 
-  this.prefinished = false; // True if the error was already emitted and should not be thrown again
+  // True if the error was already emitted and should not be thrown again
+  this.errorEmitted = false;
 
-  this.errorEmitted = false; // Should close be emitted on destroy. Defaults to true.
+  // count buffered requests
+  this.bufferedRequestCount = 0;
 
-  this.emitClose = options.emitClose !== false; // count buffered requests
-
-  this.bufferedRequestCount = 0; // allocate the first CorkedRequest, there is always
+  // allocate the first CorkedRequest, there is always
   // one allocated and free to use, and we maintain at most two
-
   this.corkedRequestsFree = new CorkedRequest(this);
 }
 
 WritableState.prototype.getBuffer = function getBuffer() {
   var current = this.bufferedRequest;
   var out = [];
-
   while (current) {
     out.push(current);
     current = current.next;
   }
-
   return out;
 };
 
 (function () {
   try {
     Object.defineProperty(WritableState.prototype, 'buffer', {
-      get: internalUtil.deprecate(function writableStateBufferGetter() {
+      get: internalUtil.deprecate(function () {
         return this.getBuffer();
       }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.', 'DEP0003')
     });
   } catch (_) {}
-})(); // Test _writableState for inheritance to account for Duplex streams,
+})();
+
+// Test _writableState for inheritance to account for Duplex streams,
 // whose prototype chain only points to Readable.
-
-
 var realHasInstance;
-
 if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.prototype[Symbol.hasInstance] === 'function') {
   realHasInstance = Function.prototype[Symbol.hasInstance];
   Object.defineProperty(Writable, Symbol.hasInstance, {
-    value: function value(object) {
+    value: function (object) {
       if (realHasInstance.call(this, object)) return true;
       if (this !== Writable) return false;
+
       return object && object._writableState instanceof WritableState;
     }
   });
 } else {
-  realHasInstance = function realHasInstance(object) {
+  realHasInstance = function (object) {
     return object instanceof this;
   };
 }
 
 function Writable(options) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js"); // Writable ctor is applied to Duplexes, too.
+  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
+
+  // Writable ctor is applied to Duplexes, too.
   // `realHasInstance` is necessary because using plain `instanceof`
   // would return false, as no `_writableState` property is attached.
+
   // Trying to use the custom `instanceof` for Writable here will also break the
   // Node.js LazyTransform implementation, which has a non-trivial getter for
   // `_writableState` that would lead to infinite recursion.
-  // Checking for a Stream.Duplex instance is faster here instead of inside
-  // the WritableState constructor, at least with V8 6.5
+  if (!realHasInstance.call(Writable, this) && !(this instanceof Duplex)) {
+    return new Writable(options);
+  }
 
-  var isDuplex = this instanceof Duplex;
-  if (!isDuplex && !realHasInstance.call(Writable, this)) return new Writable(options);
-  this._writableState = new WritableState(options, this, isDuplex); // legacy.
+  this._writableState = new WritableState(options, this);
 
+  // legacy.
   this.writable = true;
 
   if (options) {
     if (typeof options.write === 'function') this._write = options.write;
+
     if (typeof options.writev === 'function') this._writev = options.writev;
+
     if (typeof options.destroy === 'function') this._destroy = options.destroy;
+
     if (typeof options.final === 'function') this._final = options.final;
   }
 
   Stream.call(this);
-} // Otherwise people can pipe Writable streams, which is just wrong.
+}
 
-
+// Otherwise people can pipe Writable streams, which is just wrong.
 Writable.prototype.pipe = function () {
-  this.emit('error', new ERR_STREAM_CANNOT_PIPE());
+  this.emit('error', new Error('Cannot pipe, not readable'));
 };
 
 function writeAfterEnd(stream, cb) {
-  var er = new ERR_STREAM_WRITE_AFTER_END(); // TODO: defer error events consistently everywhere, not just the cb
-
+  var er = new Error('write after end');
+  // TODO: defer error events consistently everywhere, not just the cb
   stream.emit('error', er);
-  process.nextTick(cb, er);
-} // Checks that a user-supplied chunk is valid, especially for the particular
+  pna.nextTick(cb, er);
+}
+
+// Checks that a user-supplied chunk is valid, especially for the particular
 // mode the stream is in. Currently this means that `null` is never accepted
 // and undefined/non-string values are only allowed in object mode.
-
-
 function validChunk(stream, state, chunk, cb) {
-  var er;
+  var valid = true;
+  var er = false;
 
   if (chunk === null) {
-    er = new ERR_STREAM_NULL_VALUES();
-  } else if (typeof chunk !== 'string' && !state.objectMode) {
-    er = new ERR_INVALID_ARG_TYPE('chunk', ['string', 'Buffer'], chunk);
+    er = new TypeError('May not write null values to stream');
+  } else if (typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
+    er = new TypeError('Invalid non-string/buffer chunk');
   }
-
   if (er) {
     stream.emit('error', er);
-    process.nextTick(cb, er);
-    return false;
+    pna.nextTick(cb, er);
+    valid = false;
   }
-
-  return true;
+  return valid;
 }
 
 Writable.prototype.write = function (chunk, encoding, cb) {
   var state = this._writableState;
   var ret = false;
-
   var isBuf = !state.objectMode && _isUint8Array(chunk);
 
   if (isBuf && !Buffer.isBuffer(chunk)) {
@@ -69022,16 +71951,21 @@ Writable.prototype.write = function (chunk, encoding, cb) {
   }
 
   if (isBuf) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;
+
   if (typeof cb !== 'function') cb = nop;
-  if (state.ending) writeAfterEnd(this, cb);else if (isBuf || validChunk(this, state, chunk, cb)) {
+
+  if (state.ended) writeAfterEnd(this, cb);else if (isBuf || validChunk(this, state, chunk, cb)) {
     state.pendingcb++;
     ret = writeOrBuffer(this, state, isBuf, chunk, encoding, cb);
   }
+
   return ret;
 };
 
 Writable.prototype.cork = function () {
-  this._writableState.corked++;
+  var state = this._writableState;
+
+  state.corked++;
 };
 
 Writable.prototype.uncork = function () {
@@ -69039,33 +71973,23 @@ Writable.prototype.uncork = function () {
 
   if (state.corked) {
     state.corked--;
-    if (!state.writing && !state.corked && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
+
+    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
   }
 };
 
 Writable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {
   // node::ParseEncoding() requires lower case.
   if (typeof encoding === 'string') encoding = encoding.toLowerCase();
-  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new ERR_UNKNOWN_ENCODING(encoding);
+  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new TypeError('Unknown encoding: ' + encoding);
   this._writableState.defaultEncoding = encoding;
   return this;
 };
-
-Object.defineProperty(Writable.prototype, 'writableBuffer', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
-    return this._writableState && this._writableState.getBuffer();
-  }
-});
 
 function decodeChunk(state, chunk, encoding) {
   if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {
     chunk = Buffer.from(chunk, encoding);
   }
-
   return chunk;
 }
 
@@ -69074,28 +71998,29 @@ Object.defineProperty(Writable.prototype, 'writableHighWaterMark', {
   // because otherwise some prototype manipulation in
   // userland will fail
   enumerable: false,
-  get: function get() {
+  get: function () {
     return this._writableState.highWaterMark;
   }
-}); // if we're already writing something, then just put this
+});
+
+// if we're already writing something, then just put this
 // in the queue, and wait our turn.  Otherwise, call _write
 // If we return false, then we need a drain event, so set that flag.
-
 function writeOrBuffer(stream, state, isBuf, chunk, encoding, cb) {
   if (!isBuf) {
     var newChunk = decodeChunk(state, chunk, encoding);
-
     if (chunk !== newChunk) {
       isBuf = true;
       encoding = 'buffer';
       chunk = newChunk;
     }
   }
-
   var len = state.objectMode ? 1 : chunk.length;
-  state.length += len;
-  var ret = state.length < state.highWaterMark; // we must ensure that previous needDrain will not be reset to false.
 
+  state.length += len;
+
+  var ret = state.length < state.highWaterMark;
+  // we must ensure that previous needDrain will not be reset to false.
   if (!ret) state.needDrain = true;
 
   if (state.writing || state.corked) {
@@ -69107,13 +72032,11 @@ function writeOrBuffer(stream, state, isBuf, chunk, encoding, cb) {
       callback: cb,
       next: null
     };
-
     if (last) {
       last.next = state.lastBufferedRequest;
     } else {
       state.bufferedRequest = state.lastBufferedRequest;
     }
-
     state.bufferedRequestCount += 1;
   } else {
     doWrite(stream, state, false, len, chunk, encoding, cb);
@@ -69127,7 +72050,7 @@ function doWrite(stream, state, writev, len, chunk, encoding, cb) {
   state.writecb = cb;
   state.writing = true;
   state.sync = true;
-  if (state.destroyed) state.onwrite(new ERR_STREAM_DESTROYED('write'));else if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
+  if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
   state.sync = false;
 }
 
@@ -69137,10 +72060,10 @@ function onwriteError(stream, state, sync, er, cb) {
   if (sync) {
     // defer the callback if we are being called synchronously
     // to avoid piling up things on the stack
-    process.nextTick(cb, er); // this can emit finish, and it will always happen
+    pna.nextTick(cb, er);
+    // this can emit finish, and it will always happen
     // after error
-
-    process.nextTick(finishMaybe, stream, state);
+    pna.nextTick(finishMaybe, stream, state);
     stream._writableState.errorEmitted = true;
     stream.emit('error', er);
   } else {
@@ -69148,9 +72071,9 @@ function onwriteError(stream, state, sync, er, cb) {
     // it is async
     cb(er);
     stream._writableState.errorEmitted = true;
-    stream.emit('error', er); // this can emit finish, but finish must
+    stream.emit('error', er);
+    // this can emit finish, but finish must
     // always follow error
-
     finishMaybe(stream, state);
   }
 }
@@ -69166,18 +72089,21 @@ function onwrite(stream, er) {
   var state = stream._writableState;
   var sync = state.sync;
   var cb = state.writecb;
-  if (typeof cb !== 'function') throw new ERR_MULTIPLE_CALLBACK();
+
   onwriteStateUpdate(state);
+
   if (er) onwriteError(stream, state, sync, er, cb);else {
     // Check if we're actually ready to finish, but don't emit yet
-    var finished = needFinish(state) || stream.destroyed;
+    var finished = needFinish(state);
 
     if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {
       clearBuffer(stream, state);
     }
 
     if (sync) {
-      process.nextTick(afterWrite, stream, state, finished, cb);
+      /*<replacement>*/
+      asyncWrite(afterWrite, stream, state, finished, cb);
+      /*</replacement>*/
     } else {
       afterWrite(stream, state, finished, cb);
     }
@@ -69189,19 +72115,19 @@ function afterWrite(stream, state, finished, cb) {
   state.pendingcb--;
   cb();
   finishMaybe(stream, state);
-} // Must force callback to be called on nextTick, so that we don't
+}
+
+// Must force callback to be called on nextTick, so that we don't
 // emit 'drain' before the write() consumer gets the 'false' return
 // value, and has a chance to attach a 'drain' listener.
-
-
 function onwriteDrain(stream, state) {
   if (state.length === 0 && state.needDrain) {
     state.needDrain = false;
     stream.emit('drain');
   }
-} // if there's something in the buffer waiting, then process it
+}
 
-
+// if there's something in the buffer waiting, then process it
 function clearBuffer(stream, state) {
   state.bufferProcessing = true;
   var entry = state.bufferedRequest;
@@ -69212,30 +72138,29 @@ function clearBuffer(stream, state) {
     var buffer = new Array(l);
     var holder = state.corkedRequestsFree;
     holder.entry = entry;
+
     var count = 0;
     var allBuffers = true;
-
     while (entry) {
       buffer[count] = entry;
       if (!entry.isBuf) allBuffers = false;
       entry = entry.next;
       count += 1;
     }
-
     buffer.allBuffers = allBuffers;
-    doWrite(stream, state, true, state.length, buffer, '', holder.finish); // doWrite is almost always async, defer these to save a bit of time
-    // as the hot path ends with doWrite
 
+    doWrite(stream, state, true, state.length, buffer, '', holder.finish);
+
+    // doWrite is almost always async, defer these to save a bit of time
+    // as the hot path ends with doWrite
     state.pendingcb++;
     state.lastBufferedRequest = null;
-
     if (holder.next) {
       state.corkedRequestsFree = holder.next;
       holder.next = null;
     } else {
       state.corkedRequestsFree = new CorkedRequest(state);
     }
-
     state.bufferedRequestCount = 0;
   } else {
     // Slow case, write chunks one-by-one
@@ -69244,13 +72169,14 @@ function clearBuffer(stream, state) {
       var encoding = entry.encoding;
       var cb = entry.callback;
       var len = state.objectMode ? 1 : chunk.length;
+
       doWrite(stream, state, false, len, chunk, encoding, cb);
       entry = entry.next;
-      state.bufferedRequestCount--; // if we didn't call the onwrite immediately, then
+      state.bufferedRequestCount--;
+      // if we didn't call the onwrite immediately, then
       // it means that we need to wait until it does.
       // also, that means that the chunk and cb are currently
       // being processed, so move the buffer counter past them.
-
       if (state.writing) {
         break;
       }
@@ -69264,7 +72190,7 @@ function clearBuffer(stream, state) {
 }
 
 Writable.prototype._write = function (chunk, encoding, cb) {
-  cb(new ERR_METHOD_NOT_IMPLEMENTED('_write()'));
+  cb(new Error('_write() is not implemented'));
 };
 
 Writable.prototype._writev = null;
@@ -69281,52 +72207,38 @@ Writable.prototype.end = function (chunk, encoding, cb) {
     encoding = null;
   }
 
-  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding); // .end() fully uncorks
+  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding);
 
+  // .end() fully uncorks
   if (state.corked) {
     state.corked = 1;
     this.uncork();
-  } // ignore unnecessary end() calls.
-
-
-  if (!state.ending) endWritable(this, state, cb);
-  return this;
-};
-
-Object.defineProperty(Writable.prototype, 'writableLength', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
-    return this._writableState.length;
   }
-});
+
+  // ignore unnecessary end() calls.
+  if (!state.ending && !state.finished) endWritable(this, state, cb);
+};
 
 function needFinish(state) {
   return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;
 }
-
 function callFinal(stream, state) {
   stream._final(function (err) {
     state.pendingcb--;
-
     if (err) {
       stream.emit('error', err);
     }
-
     state.prefinished = true;
     stream.emit('prefinish');
     finishMaybe(stream, state);
   });
 }
-
 function prefinish(stream, state) {
   if (!state.prefinished && !state.finalCalled) {
-    if (typeof stream._final === 'function' && !state.destroyed) {
+    if (typeof stream._final === 'function') {
       state.pendingcb++;
       state.finalCalled = true;
-      process.nextTick(callFinal, stream, state);
+      pna.nextTick(callFinal, stream, state);
     } else {
       state.prefinished = true;
       stream.emit('prefinish');
@@ -69336,27 +72248,22 @@ function prefinish(stream, state) {
 
 function finishMaybe(stream, state) {
   var need = needFinish(state);
-
   if (need) {
     prefinish(stream, state);
-
     if (state.pendingcb === 0) {
       state.finished = true;
       stream.emit('finish');
     }
   }
-
   return need;
 }
 
 function endWritable(stream, state, cb) {
   state.ending = true;
   finishMaybe(stream, state);
-
   if (cb) {
-    if (state.finished) process.nextTick(cb);else stream.once('finish', cb);
+    if (state.finished) pna.nextTick(cb);else stream.once('finish', cb);
   }
-
   state.ended = true;
   stream.writable = false;
 }
@@ -69364,329 +72271,92 @@ function endWritable(stream, state, cb) {
 function onCorkedFinish(corkReq, state, err) {
   var entry = corkReq.entry;
   corkReq.entry = null;
-
   while (entry) {
     var cb = entry.callback;
     state.pendingcb--;
     cb(err);
     entry = entry.next;
-  } // reuse the free corkReq.
-
-
-  state.corkedRequestsFree.next = corkReq;
+  }
+  if (state.corkedRequestsFree) {
+    state.corkedRequestsFree.next = corkReq;
+  } else {
+    state.corkedRequestsFree = corkReq;
+  }
 }
 
 Object.defineProperty(Writable.prototype, 'destroyed', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function get() {
+  get: function () {
     if (this._writableState === undefined) {
       return false;
     }
-
     return this._writableState.destroyed;
   },
-  set: function set(value) {
+  set: function (value) {
     // we ignore the value if the stream
     // has not been initialized yet
     if (!this._writableState) {
       return;
-    } // backward compatibility, the user is explicitly
+    }
+
+    // backward compatibility, the user is explicitly
     // managing destroyed
-
-
     this._writableState.destroyed = value;
   }
 });
+
 Writable.prototype.destroy = destroyImpl.destroy;
 Writable.prototype._undestroy = destroyImpl.undestroy;
-
 Writable.prototype._destroy = function (err, cb) {
+  this.end();
   cb(err);
 };
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
-/***/ "./node_modules/readable-stream/lib/internal/streams/async_iterator.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/readable-stream/lib/internal/streams/async_iterator.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var _Object$setPrototypeO;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var finished = __webpack_require__(/*! ./end-of-stream */ "./node_modules/readable-stream/lib/internal/streams/end-of-stream.js");
-
-var kLastResolve = Symbol('lastResolve');
-var kLastReject = Symbol('lastReject');
-var kError = Symbol('error');
-var kEnded = Symbol('ended');
-var kLastPromise = Symbol('lastPromise');
-var kHandlePromise = Symbol('handlePromise');
-var kStream = Symbol('stream');
-
-function createIterResult(value, done) {
-  return {
-    value: value,
-    done: done
-  };
-}
-
-function readAndResolve(iter) {
-  var resolve = iter[kLastResolve];
-
-  if (resolve !== null) {
-    var data = iter[kStream].read(); // we defer if data is null
-    // we can be expecting either 'end' or
-    // 'error'
-
-    if (data !== null) {
-      iter[kLastPromise] = null;
-      iter[kLastResolve] = null;
-      iter[kLastReject] = null;
-      resolve(createIterResult(data, false));
-    }
-  }
-}
-
-function onReadable(iter) {
-  // we wait for the next tick, because it might
-  // emit an error with process.nextTick
-  process.nextTick(readAndResolve, iter);
-}
-
-function wrapForNext(lastPromise, iter) {
-  return function (resolve, reject) {
-    lastPromise.then(function () {
-      if (iter[kEnded]) {
-        resolve(createIterResult(undefined, true));
-        return;
-      }
-
-      iter[kHandlePromise](resolve, reject);
-    }, reject);
-  };
-}
-
-var AsyncIteratorPrototype = Object.getPrototypeOf(function () {});
-var ReadableStreamAsyncIteratorPrototype = Object.setPrototypeOf((_Object$setPrototypeO = {
-  get stream() {
-    return this[kStream];
-  },
-
-  next: function next() {
-    var _this = this;
-
-    // if we have detected an error in the meanwhile
-    // reject straight away
-    var error = this[kError];
-
-    if (error !== null) {
-      return Promise.reject(error);
-    }
-
-    if (this[kEnded]) {
-      return Promise.resolve(createIterResult(undefined, true));
-    }
-
-    if (this[kStream].destroyed) {
-      // We need to defer via nextTick because if .destroy(err) is
-      // called, the error will be emitted via nextTick, and
-      // we cannot guarantee that there is no error lingering around
-      // waiting to be emitted.
-      return new Promise(function (resolve, reject) {
-        process.nextTick(function () {
-          if (_this[kError]) {
-            reject(_this[kError]);
-          } else {
-            resolve(createIterResult(undefined, true));
-          }
-        });
-      });
-    } // if we have multiple next() calls
-    // we will wait for the previous Promise to finish
-    // this logic is optimized to support for await loops,
-    // where next() is only called once at a time
-
-
-    var lastPromise = this[kLastPromise];
-    var promise;
-
-    if (lastPromise) {
-      promise = new Promise(wrapForNext(lastPromise, this));
-    } else {
-      // fast path needed to support multiple this.push()
-      // without triggering the next() queue
-      var data = this[kStream].read();
-
-      if (data !== null) {
-        return Promise.resolve(createIterResult(data, false));
-      }
-
-      promise = new Promise(this[kHandlePromise]);
-    }
-
-    this[kLastPromise] = promise;
-    return promise;
-  }
-}, _defineProperty(_Object$setPrototypeO, Symbol.asyncIterator, function () {
-  return this;
-}), _defineProperty(_Object$setPrototypeO, "return", function _return() {
-  var _this2 = this;
-
-  // destroy(err, cb) is a private API
-  // we can guarantee we have that here, because we control the
-  // Readable class this is attached to
-  return new Promise(function (resolve, reject) {
-    _this2[kStream].destroy(null, function (err) {
-      if (err) {
-        reject(err);
-        return;
-      }
-
-      resolve(createIterResult(undefined, true));
-    });
-  });
-}), _Object$setPrototypeO), AsyncIteratorPrototype);
-
-var createReadableStreamAsyncIterator = function createReadableStreamAsyncIterator(stream) {
-  var _Object$create;
-
-  var iterator = Object.create(ReadableStreamAsyncIteratorPrototype, (_Object$create = {}, _defineProperty(_Object$create, kStream, {
-    value: stream,
-    writable: true
-  }), _defineProperty(_Object$create, kLastResolve, {
-    value: null,
-    writable: true
-  }), _defineProperty(_Object$create, kLastReject, {
-    value: null,
-    writable: true
-  }), _defineProperty(_Object$create, kError, {
-    value: null,
-    writable: true
-  }), _defineProperty(_Object$create, kEnded, {
-    value: stream._readableState.endEmitted,
-    writable: true
-  }), _defineProperty(_Object$create, kHandlePromise, {
-    value: function value(resolve, reject) {
-      var data = iterator[kStream].read();
-
-      if (data) {
-        iterator[kLastPromise] = null;
-        iterator[kLastResolve] = null;
-        iterator[kLastReject] = null;
-        resolve(createIterResult(data, false));
-      } else {
-        iterator[kLastResolve] = resolve;
-        iterator[kLastReject] = reject;
-      }
-    },
-    writable: true
-  }), _Object$create));
-  iterator[kLastPromise] = null;
-  finished(stream, function (err) {
-    if (err && err.code !== 'ERR_STREAM_PREMATURE_CLOSE') {
-      var reject = iterator[kLastReject]; // reject if we are waiting for data in the Promise
-      // returned by next() and store the error
-
-      if (reject !== null) {
-        iterator[kLastPromise] = null;
-        iterator[kLastResolve] = null;
-        iterator[kLastReject] = null;
-        reject(err);
-      }
-
-      iterator[kError] = err;
-      return;
-    }
-
-    var resolve = iterator[kLastResolve];
-
-    if (resolve !== null) {
-      iterator[kLastPromise] = null;
-      iterator[kLastResolve] = null;
-      iterator[kLastReject] = null;
-      resolve(createIterResult(undefined, true));
-    }
-
-    iterator[kEnded] = true;
-  });
-  stream.on('readable', onReadable.bind(null, iterator));
-  return iterator;
-};
-
-module.exports = createReadableStreamAsyncIterator;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/lib/internal/streams/buffer_list.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/readable-stream/lib/internal/streams/buffer_list.js ***!
-  \**************************************************************************/
+/***/ "./node_modules/readable-stream/lib/internal/streams/BufferList.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/internal/streams/BufferList.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var _require = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js"),
-    Buffer = _require.Buffer;
-
-var _require2 = __webpack_require__(/*! util */ 7),
-    inspect = _require2.inspect;
-
-var custom = inspect && inspect.custom || 'inspect';
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
+var util = __webpack_require__(/*! util */ 5);
 
 function copyBuffer(src, target, offset) {
-  Buffer.prototype.copy.call(src, target, offset);
+  src.copy(target, offset);
 }
 
-module.exports =
-/*#__PURE__*/
-function () {
+module.exports = function () {
   function BufferList() {
+    _classCallCheck(this, BufferList);
+
     this.head = null;
     this.tail = null;
     this.length = 0;
   }
 
-  var _proto = BufferList.prototype;
-
-  _proto.push = function push(v) {
-    var entry = {
-      data: v,
-      next: null
-    };
+  BufferList.prototype.push = function push(v) {
+    var entry = { data: v, next: null };
     if (this.length > 0) this.tail.next = entry;else this.head = entry;
     this.tail = entry;
     ++this.length;
   };
 
-  _proto.unshift = function unshift(v) {
-    var entry = {
-      data: v,
-      next: this.head
-    };
+  BufferList.prototype.unshift = function unshift(v) {
+    var entry = { data: v, next: this.head };
     if (this.length === 0) this.tail = entry;
     this.head = entry;
     ++this.length;
   };
 
-  _proto.shift = function shift() {
+  BufferList.prototype.shift = function shift() {
     if (this.length === 0) return;
     var ret = this.head.data;
     if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;
@@ -69694,138 +72364,43 @@ function () {
     return ret;
   };
 
-  _proto.clear = function clear() {
+  BufferList.prototype.clear = function clear() {
     this.head = this.tail = null;
     this.length = 0;
   };
 
-  _proto.join = function join(s) {
+  BufferList.prototype.join = function join(s) {
     if (this.length === 0) return '';
     var p = this.head;
     var ret = '' + p.data;
-
     while (p = p.next) {
       ret += s + p.data;
-    }
-
-    return ret;
+    }return ret;
   };
 
-  _proto.concat = function concat(n) {
+  BufferList.prototype.concat = function concat(n) {
     if (this.length === 0) return Buffer.alloc(0);
+    if (this.length === 1) return this.head.data;
     var ret = Buffer.allocUnsafe(n >>> 0);
     var p = this.head;
     var i = 0;
-
     while (p) {
       copyBuffer(p.data, ret, i);
       i += p.data.length;
       p = p.next;
     }
-
     return ret;
-  } // Consumes a specified amount of bytes or characters from the buffered data.
-  ;
-
-  _proto.consume = function consume(n, hasStrings) {
-    var ret;
-
-    if (n < this.head.data.length) {
-      // `slice` is the same for buffers and strings.
-      ret = this.head.data.slice(0, n);
-      this.head.data = this.head.data.slice(n);
-    } else if (n === this.head.data.length) {
-      // First chunk is a perfect match.
-      ret = this.shift();
-    } else {
-      // Result spans more than one buffer.
-      ret = hasStrings ? this._getString(n) : this._getBuffer(n);
-    }
-
-    return ret;
-  };
-
-  _proto.first = function first() {
-    return this.head.data;
-  } // Consumes a specified amount of characters from the buffered data.
-  ;
-
-  _proto._getString = function _getString(n) {
-    var p = this.head;
-    var c = 1;
-    var ret = p.data;
-    n -= ret.length;
-
-    while (p = p.next) {
-      var str = p.data;
-      var nb = n > str.length ? str.length : n;
-      if (nb === str.length) ret += str;else ret += str.slice(0, n);
-      n -= nb;
-
-      if (n === 0) {
-        if (nb === str.length) {
-          ++c;
-          if (p.next) this.head = p.next;else this.head = this.tail = null;
-        } else {
-          this.head = p;
-          p.data = str.slice(nb);
-        }
-
-        break;
-      }
-
-      ++c;
-    }
-
-    this.length -= c;
-    return ret;
-  } // Consumes a specified amount of bytes from the buffered data.
-  ;
-
-  _proto._getBuffer = function _getBuffer(n) {
-    var ret = Buffer.allocUnsafe(n);
-    var p = this.head;
-    var c = 1;
-    p.data.copy(ret);
-    n -= p.data.length;
-
-    while (p = p.next) {
-      var buf = p.data;
-      var nb = n > buf.length ? buf.length : n;
-      buf.copy(ret, ret.length - n, 0, nb);
-      n -= nb;
-
-      if (n === 0) {
-        if (nb === buf.length) {
-          ++c;
-          if (p.next) this.head = p.next;else this.head = this.tail = null;
-        } else {
-          this.head = p;
-          p.data = buf.slice(nb);
-        }
-
-        break;
-      }
-
-      ++c;
-    }
-
-    this.length -= c;
-    return ret;
-  } // Make sure the linked list only shows the minimal necessary information.
-  ;
-
-  _proto[custom] = function (_, options) {
-    return inspect(this, _objectSpread({}, options, {
-      // Only inspect one level.
-      depth: 0,
-      // It should not recurse.
-      customInspect: false
-    }));
   };
 
   return BufferList;
 }();
+
+if (util && util.inspect && util.inspect.custom) {
+  module.exports.prototype[util.inspect.custom] = function () {
+    var obj = util.inspect({ length: this.length });
+    return this.constructor.name + ' ' + obj;
+  };
+}
 
 /***/ }),
 
@@ -69837,8 +72412,14 @@ function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) { // undocumented cb() API, needed for core, not for public API
 
+
+/*<replacement>*/
+
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
+/*</replacement>*/
+
+// undocumented cb() API, needed for core, not for public API
 function destroy(err, cb) {
   var _this = this;
 
@@ -69849,50 +72430,35 @@ function destroy(err, cb) {
     if (cb) {
       cb(err);
     } else if (err && (!this._writableState || !this._writableState.errorEmitted)) {
-      process.nextTick(emitErrorNT, this, err);
+      pna.nextTick(emitErrorNT, this, err);
     }
-
     return this;
-  } // we set destroyed to true before firing error callbacks in order
-  // to make it re-entrance safe in case destroy() is called within callbacks
+  }
 
+  // we set destroyed to true before firing error callbacks in order
+  // to make it re-entrance safe in case destroy() is called within callbacks
 
   if (this._readableState) {
     this._readableState.destroyed = true;
-  } // if this is a duplex stream mark the writable part as destroyed as well
+  }
 
-
+  // if this is a duplex stream mark the writable part as destroyed as well
   if (this._writableState) {
     this._writableState.destroyed = true;
   }
 
   this._destroy(err || null, function (err) {
     if (!cb && err) {
-      process.nextTick(emitErrorAndCloseNT, _this, err);
-
+      pna.nextTick(emitErrorNT, _this, err);
       if (_this._writableState) {
         _this._writableState.errorEmitted = true;
       }
     } else if (cb) {
-      process.nextTick(emitCloseNT, _this);
       cb(err);
-    } else {
-      process.nextTick(emitCloseNT, _this);
     }
   });
 
   return this;
-}
-
-function emitErrorAndCloseNT(self, err) {
-  emitErrorNT(self, err);
-  emitCloseNT(self);
-}
-
-function emitCloseNT(self) {
-  if (self._writableState && !self._writableState.emitClose) return;
-  if (self._readableState && !self._readableState.emitClose) return;
-  self.emit('close');
 }
 
 function undestroy() {
@@ -69907,8 +72473,6 @@ function undestroy() {
     this._writableState.destroyed = false;
     this._writableState.ended = false;
     this._writableState.ending = false;
-    this._writableState.finalCalled = false;
-    this._writableState.prefinished = false;
     this._writableState.finished = false;
     this._writableState.errorEmitted = false;
   }
@@ -69922,268 +72486,6 @@ module.exports = {
   destroy: destroy,
   undestroy: undestroy
 };
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/lib/internal/streams/end-of-stream.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/readable-stream/lib/internal/streams/end-of-stream.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Ported from https://github.com/mafintosh/end-of-stream with
-// permission from the author, Mathias Buus (@mafintosh).
-
-
-var ERR_STREAM_PREMATURE_CLOSE = __webpack_require__(/*! ../../../errors */ "./node_modules/readable-stream/errors-browser.js").codes.ERR_STREAM_PREMATURE_CLOSE;
-
-function once(callback) {
-  var called = false;
-  return function () {
-    if (called) return;
-    called = true;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    callback.apply(this, args);
-  };
-}
-
-function noop() {}
-
-function isRequest(stream) {
-  return stream.setHeader && typeof stream.abort === 'function';
-}
-
-function eos(stream, opts, callback) {
-  if (typeof opts === 'function') return eos(stream, null, opts);
-  if (!opts) opts = {};
-  callback = once(callback || noop);
-  var readable = opts.readable || opts.readable !== false && stream.readable;
-  var writable = opts.writable || opts.writable !== false && stream.writable;
-
-  var onlegacyfinish = function onlegacyfinish() {
-    if (!stream.writable) onfinish();
-  };
-
-  var writableEnded = stream._writableState && stream._writableState.finished;
-
-  var onfinish = function onfinish() {
-    writable = false;
-    writableEnded = true;
-    if (!readable) callback.call(stream);
-  };
-
-  var readableEnded = stream._readableState && stream._readableState.endEmitted;
-
-  var onend = function onend() {
-    readable = false;
-    readableEnded = true;
-    if (!writable) callback.call(stream);
-  };
-
-  var onerror = function onerror(err) {
-    callback.call(stream, err);
-  };
-
-  var onclose = function onclose() {
-    var err;
-
-    if (readable && !readableEnded) {
-      if (!stream._readableState || !stream._readableState.ended) err = new ERR_STREAM_PREMATURE_CLOSE();
-      return callback.call(stream, err);
-    }
-
-    if (writable && !writableEnded) {
-      if (!stream._writableState || !stream._writableState.ended) err = new ERR_STREAM_PREMATURE_CLOSE();
-      return callback.call(stream, err);
-    }
-  };
-
-  var onrequest = function onrequest() {
-    stream.req.on('finish', onfinish);
-  };
-
-  if (isRequest(stream)) {
-    stream.on('complete', onfinish);
-    stream.on('abort', onclose);
-    if (stream.req) onrequest();else stream.on('request', onrequest);
-  } else if (writable && !stream._writableState) {
-    // legacy streams
-    stream.on('end', onlegacyfinish);
-    stream.on('close', onlegacyfinish);
-  }
-
-  stream.on('end', onend);
-  stream.on('finish', onfinish);
-  if (opts.error !== false) stream.on('error', onerror);
-  stream.on('close', onclose);
-  return function () {
-    stream.removeListener('complete', onfinish);
-    stream.removeListener('abort', onclose);
-    stream.removeListener('request', onrequest);
-    if (stream.req) stream.req.removeListener('finish', onfinish);
-    stream.removeListener('end', onlegacyfinish);
-    stream.removeListener('close', onlegacyfinish);
-    stream.removeListener('finish', onfinish);
-    stream.removeListener('end', onend);
-    stream.removeListener('error', onerror);
-    stream.removeListener('close', onclose);
-  };
-}
-
-module.exports = eos;
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/lib/internal/streams/pipeline.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/readable-stream/lib/internal/streams/pipeline.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Ported from https://github.com/mafintosh/pump with
-// permission from the author, Mathias Buus (@mafintosh).
-
-
-var eos;
-
-function once(callback) {
-  var called = false;
-  return function () {
-    if (called) return;
-    called = true;
-    callback.apply(void 0, arguments);
-  };
-}
-
-var _require$codes = __webpack_require__(/*! ../../../errors */ "./node_modules/readable-stream/errors-browser.js").codes,
-    ERR_MISSING_ARGS = _require$codes.ERR_MISSING_ARGS,
-    ERR_STREAM_DESTROYED = _require$codes.ERR_STREAM_DESTROYED;
-
-function noop(err) {
-  // Rethrow the error if it exists to avoid swallowing it
-  if (err) throw err;
-}
-
-function isRequest(stream) {
-  return stream.setHeader && typeof stream.abort === 'function';
-}
-
-function destroyer(stream, reading, writing, callback) {
-  callback = once(callback);
-  var closed = false;
-  stream.on('close', function () {
-    closed = true;
-  });
-  if (eos === undefined) eos = __webpack_require__(/*! ./end-of-stream */ "./node_modules/readable-stream/lib/internal/streams/end-of-stream.js");
-  eos(stream, {
-    readable: reading,
-    writable: writing
-  }, function (err) {
-    if (err) return callback(err);
-    closed = true;
-    callback();
-  });
-  var destroyed = false;
-  return function (err) {
-    if (closed) return;
-    if (destroyed) return;
-    destroyed = true; // request.destroy just do .end - .abort is what we want
-
-    if (isRequest(stream)) return stream.abort();
-    if (typeof stream.destroy === 'function') return stream.destroy();
-    callback(err || new ERR_STREAM_DESTROYED('pipe'));
-  };
-}
-
-function call(fn) {
-  fn();
-}
-
-function pipe(from, to) {
-  return from.pipe(to);
-}
-
-function popCallback(streams) {
-  if (!streams.length) return noop;
-  if (typeof streams[streams.length - 1] !== 'function') return noop;
-  return streams.pop();
-}
-
-function pipeline() {
-  for (var _len = arguments.length, streams = new Array(_len), _key = 0; _key < _len; _key++) {
-    streams[_key] = arguments[_key];
-  }
-
-  var callback = popCallback(streams);
-  if (Array.isArray(streams[0])) streams = streams[0];
-
-  if (streams.length < 2) {
-    throw new ERR_MISSING_ARGS('streams');
-  }
-
-  var error;
-  var destroys = streams.map(function (stream, i) {
-    var reading = i < streams.length - 1;
-    var writing = i > 0;
-    return destroyer(stream, reading, writing, function (err) {
-      if (!error) error = err;
-      if (err) destroys.forEach(call);
-      if (reading) return;
-      destroys.forEach(call);
-      callback(error);
-    });
-  });
-  return streams.reduce(pipe);
-}
-
-module.exports = pipeline;
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/lib/internal/streams/state.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/readable-stream/lib/internal/streams/state.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var ERR_INVALID_OPT_VALUE = __webpack_require__(/*! ../../../errors */ "./node_modules/readable-stream/errors-browser.js").codes.ERR_INVALID_OPT_VALUE;
-
-function highWaterMarkFrom(options, isDuplex, duplexKey) {
-  return options.highWaterMark != null ? options.highWaterMark : isDuplex ? options[duplexKey] : null;
-}
-
-function getHighWaterMark(state, options, duplexKey, isDuplex) {
-  var hwm = highWaterMarkFrom(options, isDuplex, duplexKey);
-
-  if (hwm != null) {
-    if (!(isFinite(hwm) && Math.floor(hwm) === hwm) || hwm < 0) {
-      var name = isDuplex ? duplexKey : 'highWaterMark';
-      throw new ERR_INVALID_OPT_VALUE(name, hwm);
-    }
-
-    return Math.floor(hwm);
-  } // Default value
-
-
-  return state.objectMode ? 16 : 16 * 1024;
-}
-
-module.exports = {
-  getHighWaterMark: getHighWaterMark
-};
 
 /***/ }),
 
@@ -70195,6 +72497,18 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
+
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/passthrough.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/readable-stream/passthrough.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./readable */ "./node_modules/readable-stream/readable-browser.js").PassThrough
 
 
 /***/ }),
@@ -70213,8 +72527,30 @@ exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_
 exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/readable-stream/lib/_stream_duplex.js");
 exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ "./node_modules/readable-stream/lib/_stream_transform.js");
 exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ "./node_modules/readable-stream/lib/_stream_passthrough.js");
-exports.finished = __webpack_require__(/*! ./lib/internal/streams/end-of-stream.js */ "./node_modules/readable-stream/lib/internal/streams/end-of-stream.js");
-exports.pipeline = __webpack_require__(/*! ./lib/internal/streams/pipeline.js */ "./node_modules/readable-stream/lib/internal/streams/pipeline.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/transform.js":
+/*!***************************************************!*\
+  !*** ./node_modules/readable-stream/transform.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./readable */ "./node_modules/readable-stream/readable-browser.js").Transform
+
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/writable-browser.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/readable-stream/writable-browser.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/readable-stream/lib/_stream_writable.js");
 
 
 /***/ }),
@@ -71159,8 +73495,6 @@ if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow)
 function SafeBuffer (arg, encodingOrOffset, length) {
   return Buffer(arg, encodingOrOffset, length)
 }
-
-SafeBuffer.prototype = Object.create(Buffer.prototype)
 
 // Copy static methods from Buffer
 copyProps(Buffer, SafeBuffer)
@@ -85832,7 +88166,7 @@ module.exports=function(e){var n={};function t(a){if(n[a])return n[a].exports;va
  * Copyright(c) 2014 Jonathan Ong
  * Copyright(c) 2015 Douglas Christopher Wilson
  * MIT Licensed
- */var a,i,o,r=t(21),s=t(23).extname,c=/^\s*([^;\s]*)(?:;|\s|$)/,l=/^text\//i;function p(e){if(!e||"string"!=typeof e)return!1;var n=c.exec(e),t=n&&r[n[1].toLowerCase()];return t&&t.charset?t.charset:!(!n||!l.test(n[1]))&&"UTF-8"}n.charset=p,n.charsets={lookup:p},n.contentType=function(e){if(!e||"string"!=typeof e)return!1;var t=-1===e.indexOf("/")?n.lookup(e):e;if(!t)return!1;if(-1===t.indexOf("charset")){var a=n.charset(t);a&&(t+="; charset="+a.toLowerCase())}return t},n.extension=function(e){if(!e||"string"!=typeof e)return!1;var t=c.exec(e),a=t&&n.extensions[t[1].toLowerCase()];if(!a||!a.length)return!1;return a[0]},n.extensions=Object.create(null),n.lookup=function(e){if(!e||"string"!=typeof e)return!1;var t=s("x."+e).toLowerCase().substr(1);if(!t)return!1;return n.types[t]||!1},n.types=Object.create(null),a=n.extensions,i=n.types,o=["nginx","apache",void 0,"iana"],Object.keys(r).forEach(function(e){var n=r[e],t=n.extensions;if(t&&t.length){a[e]=t;for(var s=0;s<t.length;s++){var c=t[s];if(i[c]){var l=o.indexOf(r[i[c]].source),p=o.indexOf(n.source);if("application/octet-stream"!==i[c]&&(l>p||l===p&&"application/"===i[c].substr(0,12)))continue}i[c]=e}}})},function(e,n){e.exports=__webpack_require__(/*! solid-namespace */ "./node_modules/solid-namespace/index.js")},function(e,n,t){var a=t(1);if(e.exports=a,a.versionInfo=t(6),a.UI=t(0),a.OutlineManager=t(7),a.getOutliner=function(e){return e.outlineManager||(e.outlineManager=a.OutlineManager(e)),e.outlineManager},"undefined"!=typeof window){var i=window.document;a.getOutliner(i)}var o=a.register;o(t(13)),o(t(15)),o(t(16)),o(t(17)),o(t(18)),o(t(20)),o(t(28)),o(t(30)),o(t(31));var r=t(32);o(r.longChatPane),o(r.shortChatPane),o(t(35)),o(t(37)),o(t(38)),o(t(40)),o(t(41)),o(t(42)),o(t(43)),o(t(44)),o(t(45)),o(t(47)),o(t(48)),o(t(49)),o(t(51)),o(t(52)),o(t(53)),o(t(54)),o(t(55)),o(t(56)),o(t(57)),o(t(58)),o(t(59)),o(t(60)),o(t(61)),o(t(62)),o(t(63)),o(t(65))},function(e,n){e.exports={buildTime:"2019-09-23T11:04:38Z",commit:"92dddaa5476a309fa6008fd9fcaada6e211413d1",npmInfo:{"solid-panes":"2.0.1",npm:"6.10.0",ares:"1.15.0",brotli:"1.0.7",cldr:"35.1",http_parser:"2.8.0",icu:"64.2",llhttp:"1.1.4",modules:"72",napi:"4",nghttp2:"1.39.1",node:"12.7.0",openssl:"1.1.1c",tz:"2019a",unicode:"12.1",uv:"1.30.1",v8:"7.5.288.22-node.16",zlib:"1.2.11"}}},function(e,n,t){(function(n){function a(e,n){return function(e){if(Array.isArray(e))return e}(e)||function(e,n){var t=[],a=!0,i=!1,o=void 0;try{for(var r,s=e[Symbol.iterator]();!(a=(r=s.next()).done)&&(t.push(r.value),!n||t.length!==n);a=!0);}catch(e){i=!0,o=e}finally{try{a||null==s.return||s.return()}finally{if(i)throw o}}return t}(e,n)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}()}function i(e,n,t,a,i,o,r){try{var s=e[o](r),c=s.value}catch(e){return void t(e)}s.done?n(c):Promise.resolve(c).then(a,i)}function o(e){return function(){var n=this,t=arguments;return new Promise(function(a,o){var r=e.apply(n,t);function s(e){i(r,a,o,s,c,"next",e)}function c(e){i(r,a,o,s,c,"throw",e)}s(void 0)})}}var r=t(1),s=t(2),c=t(9),l=t(10),p=t(11),d=t(0),u=t(12);e.exports=function(e){var t=e;this.document=e,this.outlineIcons=l,this.labeller=this.labeller||{},this.labeller.LanguagePreference="";var i=this,m=this,f=[];this.selection=f,this.ancestor=d.utils.ancestor,this.sparql=d.rdf.UpdateManager,this.kb=d.store;var h=d.store,v=d.store.fetcher;t.outline=this,this.qs=new u.QuerySource,this.UserInput=new p(this),this.clipboardAddress="tabulator:clipboard",this.UserInput.clipboardInit(this.clipboardAddress);var g=this.outlineElement;function b(){return w.apply(this,arguments)}function w(){return(w=o(regeneratorRuntime.mark(function e(){var n,a,i,o,s,c,l=arguments;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(c=function(e,n){var a=r.byName(n.paneName);e.innerHTML="";var i=e.appendChild(t.createElement("table")),o=d.authn.currentUser();m.GotoSubject(n.subject||o,!0,a,!1,void 0,i)},s=function(e,n){e.dataset.globalPaneName=n.tabName||n.paneName,e.textContent=n.label},n=l.length>0&&void 0!==l[0]?l[0]:{},console.log("globalAppTabs @@"),a=t.createElement("div"),i=d.authn.currentUser()){e.next=9;break}throw alert("Must be logged in for this"),new Error("Not logged in");case 9:return e.next=11,x();case 11:return o=e.sent,a.appendChild(d.tabs.tabWidget({dom:t,subject:i,items:o,renderMain:c,renderTab:s,ordered:!0,orientation:0,backgroundColor:"#eeeeee",selectedTab:n.selectedTab,onClose:n.onClose})),e.abrupt("return",a);case 14:case"end":return e.stop()}},e)}))).apply(this,arguments)}function x(){return y.apply(this,arguments)}function y(){return(y=o(regeneratorRuntime.mark(function e(){var n,i,r,s,c,l,p,u,m,f;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return f=function(){return(f=o(regeneratorRuntime.mark(function e(){var a;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.prev=0,e.next=3,d.authn.findAppInstances({me:n,div:i,dom:t},Z.vcard("AddressBook"));case 3:return a=e.sent,e.abrupt("return",(a.instances||[]).map(function(e,n){return{paneName:"contact",tabName:"contact-".concat(n),label:"Contacts",subject:e,icon:d.icons.iconBase+"noun_15695.svg"}}));case 7:e.prev=7,e.t0=e.catch(0),console.error("oops in globalAppTabs AddressBook");case 10:return e.abrupt("return",[]);case 11:case"end":return e.stop()}},e,null,[[0,7]])}))).apply(this,arguments)},m=function(){return f.apply(this,arguments)},u=function(){return(u=o(regeneratorRuntime.mark(function e(){var t;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.prev=0,e.next=3,h.fetcher.load(n.doc());case 3:e.next=9;break;case 5:return e.prev=5,e.t0=e.catch(0),console.error("Unable to load profile",e.t0),e.abrupt("return",[]);case 9:return t=h.each(n,Z.space("storage"),null,n.doc()),e.abrupt("return",t.map(function(e,n){var a=t.length>1?e.uri.split("//")[1].slice(0,-1):"Your storage";return{paneName:"folder",tabName:"folder-".concat(n),label:a,subject:e,icon:d.icons.iconBase+"noun_Cabinet_251723.svg"}}));case 11:case"end":return e.stop()}},e,null,[[0,5]])}))).apply(this,arguments)},p=function(){return u.apply(this,arguments)},n=d.authn.currentUser(),i=t.createElement("div"),e.next=8,Promise.all([m(),p()]);case 8:return r=e.sent,s=a(r,2),c=s[0],l=s[1],e.abrupt("return",[{paneName:"home",label:"Your stuff",icon:d.icons.iconBase+"noun_547570.svg"},{paneName:"basicPreferences",label:"Preferences",icon:d.icons.iconBase+"noun_Sliders_341315_00000.svg"},{paneName:"editProfile",label:"Edit your profile",icon:d.icons.iconBase+"noun_492246.svg"}].concat(c).concat(l));case 13:case"end":return e.stop()}},e)}))).apply(this,arguments)}function C(){return(C=o(regeneratorRuntime.mark(function e(){var n,t,a,i,o,r,s,c=arguments;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(s=function(e){e||r()},r=function(){t.style.display="none",a.style.display="inherit"},n=c.length>0&&void 0!==c[0]?c[0]:{},t=k(),a=T(),!(t.childNodes.length>0&&n.pane)){e.next=13;break}if(a.style.display="none",t.style.display="inherit",!(i=t.querySelector('[data-global-pane-name="'.concat(n.pane,'"]')))){e.next=12;break}return i.click(),e.abrupt("return");case 12:console.warn("Did not find the referred tab in global dashboard, will open first one");case 13:return e.next=15,b({selectedTab:n.pane,onClose:r});case 15:o=e.sent,d.authn.solidAuthClient.trackSession(s),a.style.display="none",t.appendChild(o);case 19:case"end":return e.stop()}},e)}))).apply(this,arguments)}function k(){return E("GlobalDashboard")}function T(){return E("outline")}function E(e){return document.getElementById(e)||((n=document.createElement("div")).id=e,(document.querySelector('[role="main"]')||document.body).appendChild(n));var n}function A(e,n,t){return I.apply(this,arguments)}function I(){return(I=o(regeneratorRuntime.mark(function e(n,t,a){var i,o,r,s;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(0!==(i=n.list.filter(function(e){return e.label(t,a)&&!e.global})).length){e.next=3;break}return e.abrupt("return",[n.internal]);case 3:return e.next=5,d.authn.filterAvailablePanes(i);case 5:if(0!==(o=e.sent).length){e.next=8;break}return e.abrupt("return",[i[0]]);case 8:return r=n.list.indexOf(i[0]),s=n.list.indexOf(o[0]),e.abrupt("return",r<s?[i[0]].concat(o):o);case 11:case"end":return e.stop()}},e)}))).apply(this,arguments)}function j(e,n){return e.find(function(e){return e.shouldGetFocus&&e.shouldGetFocus(n)})||e[0]}function N(){return(N=o(regeneratorRuntime.mark(function e(n,a,i){var s,c,l,p,u,m,f;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return c=function(){return(c=o(regeneratorRuntime.mark(function e(i){var o,s,c,p,u,m,f=arguments;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(o=f.length>1&&void 0!==f[1]?f[1]:{},s="width: 24px; border-radius: 0.5em; border-top: solid #222 1px; border-left: solid #222 0.1em; border-bottom: solid #eee 0.1em; border-right: solid #eee 0.1em; margin-left: 1em; padding: 3px; background-color:   #ffd;",c="width: 24px; border-radius: 0.5em; margin-left: 1em; padding: 3px",(p=i.appendChild(t.createElement("nav"))).style="display:flex; justify-content: flex-start; align-items: center;",!o.hideList){e.next=9;break}e.t0=[],e.next=12;break;case 9:return e.next=11,A(r,n,t);case 11:e.t0=e.sent;case 12:return u=e.t0,l.firstPane=a||j(u,n),m=u.indexOf(l.firstPane),1!==u.length&&u.forEach(function(e,a){var r=e.label(n,t),u=d.utils.AJARImage(e.icon,r,r,t);u.style=e===l.firstPane?s:c;!function(e,a){e.addEventListener("click",function(r){for(var l=i;l.parentNode&&"TABLE"!==l.nodeName;l=l.parentNode);if("TABLE"!==l.nodeName)throw new Error("outline: internal error.");var p=function(e){for(var n=l.firstChild;n;n=n.nextSibling)void 0!==n.pane&&(e&&n.pane!==e||(n.paneButton&&(n.paneButton.setAttribute("class","paneHidden"),n.paneButton.style=c),P(n),n.pane.requireQueryButton&&l.parentNode.className&&1===u&&t.getElementById("queryButton")&&t.getElementById("queryButton").setAttribute("style","display:none;")))};"paneHidden"===e.getAttribute("class")?(r.shiftKey||p(),function(a){var i;if(d.log.info("outline: Rendering pane (2): "+a.name),d.no_catch_pane_errors)i=a.render(n,t,o);else try{i=a.render(n,t,o)}catch(e){(i=t.createElement("div")).setAttribute("class","exceptionPane");var r=t.createElement("pre");i.appendChild(r),r.appendChild(t.createTextNode(d.utils.stackString(e)))}a.requireQueryButton&&t.getElementById("queryButton")&&t.getElementById("queryButton").removeAttribute("style");var s=l.firstChild.nextSibling,c=t.createElement("tr");c.appendChild(t.createElement("td")).appendChild(i),s?l.insertBefore(c,s):l.appendChild(c),c.pane=a,c.paneButton=e}(a),e.setAttribute("class","paneShown"),e.style=s):(p(a),e.setAttribute("class","paneHidden"),e.style=c);for(var u=0,m=l.firstChild;m;m=m.nextSibling)m.pane&&m.pane.requireQueryButton&&u++},!1)}(u,e),u.setAttribute("class",a!==m?"paneHidden":"paneShown"),a===m&&(l.paneButton=u),p.appendChild(u)}),e.abrupt("return",p);case 17:case"end":return e.stop()}},e)}))).apply(this,arguments)},s=function(e){return c.apply(this,arguments)},l=t.createElement("tr"),i.hover&&l.setAttribute("class","hoverControl"),(p=l.appendChild(t.createElement("td"))).setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;display:flex; justify-content: space-between; flex-direction: row;"),p.setAttribute("notSelectable","true"),p.setAttribute("about",n.toNT()),p.setAttribute("colspan","2"),(u=p.appendChild(t.createElement("div"))).style="display:flex; justify-content: flex-start; align-items: center; flex-wrap: wrap;",m=!!a,i.solo||m||(u.appendChild(d.utils.AJARImage(d.icons.originalIconBase+"tbl-collapse.png","collapse",void 0,t)).addEventListener("click",q),(f=u.appendChild(t.createElement("h1"))).appendChild(t.createTextNode(d.utils.label(n))),f.style="font-size: 150%; margin: 0 0.6em 0 0; padding: 0.1em 0.4em;",d.widgets.makeDraggable(f,n)),e.t0=u,e.next=16,s(p,{hideList:m});case 16:return e.t1=e.sent,e.t0.appendChild.call(e.t0,e.t1),l.firstChild.tabulatorSelect=function(){_(this,!0)},l.firstChild.tabulatorDeselect=function(){_(this,!1)},e.abrupt("return",l);case 21:case"end":return e.stop()}},e)}))).apply(this,arguments)}function P(e){var n=e.parentNode,a=n.parentNode,i=t.createElement("table");i.setAttribute("style","width: 100%;"),a.replaceChild(i,n),n.removeChild(e),a.replaceChild(n,i)}this.init=function(){T().outline=this},this.appendAccessIcons=function(e,n,t){if("NamedNode"===t.termType){var a=e.uris(t);a.sort();for(var i=null,o=0;o<a.length;o++)a[o]!==i&&(i=a[o],m.appendAccessIcon(n,i))}},this.appendAccessIcon=function(e,n){if(!n)return"";var a=d.rdf.uri.docpart(n);if("http:"!==a.slice(0,5))return"";var o,r,s,c=v.getState(a);switch(c){case"unrequested":o=l.src.icon_unrequested,r="fetch",s=W;break;case"requested":o=l.src.icon_requested,r="fetching",s=z;break;case"fetched":o=l.src.icon_fetched,s=H,r="loaded";break;case"failed":o=l.src.icon_failed,r="failed",s=z;break;case"unpermitted":o=l.src.icon_failed,s=z,r="no perm";break;case"unfetchable":o=l.src.icon_failed,s=z,r="cannot fetch";break;default:d.log.error("?? state = "+c)}var p=d.utils.AJARImage(o,r,l.tooltips[o].replace(/[Tt]his resource/,a),t);return p.setAttribute("uri",n),p.addEventListener("click",s),function(e,n){d.log.debug("Button callbacks for "+n+" added");var t=function(t){return function(a){return a.indexOf("#")>=0&&console.log("@@ makeIconCallback: Not expecting # in URI whose state changed: "+a),!!e&&(!!i.ancestor(e,"DIV")&&(a===n&&(e.src=t,e.title=l.tooltips[t]),!0))}};v.addCallback("request",t(l.src.icon_requested)),v.addCallback("done",t(l.src.icon_fetched)),v.addCallback("fail",t(l.src.icon_failed))}(p,a),e.appendChild(p),p},this.outlineObjectTD=function(e,n,a,i){var o=t.createElement("td");o.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),o.setAttribute("notSelectable","false");var r,s,c,p,u="obj";if(i&&i.why&&d.licenceOptions&&d.licenceOptions.checkLicence()&&(u+=" licOkay"),("NamedNode"===e.termType||"BlankNode"===e.termType||"Literal"===e.termType&&e.value.slice&&("ftp://"===e.value.slice(0,6)||"https://"===e.value.slice(0,8)||"http://"===e.value.slice(0,7)))&&(o.setAttribute("about",e.toNT()),o.appendChild(d.utils.AJARImage(d.icons.originalIconBase+"tbl-expand-trans.png","expand",void 0,t)).addEventListener("click",F)),o.setAttribute("class",u),h.whether(e,d.ns.rdf("type"),d.ns.link("Request"))&&(o.className="undetermined"),n||(n=ee),o.appendChild(n(e)),a&&(r=o,s=e,c=a,(p=d.utils.AJARImage(l.src.icon_remove_node,"remove",void 0,t)).addEventListener("click",G),p.node=c,p.setAttribute("about",s.toNT()),p.style.marginLeft="5px",p.style.marginRight="10px",r.appendChild(p)),o.tabulatorSelect=function(){_(this,!0)},o.tabulatorDeselect=function(){_(this,!1)},i){var m=new d.rdf.IndexedFormula;m.statements.push(i);var f=h.each(m,h.sym("http://dig.csail.mit.edu/TAMI/2007/amord/tms#justification"));if(f.length){var v=t.createElement("span");f.length>1&&(v.innerHTML=" &times; "+f.length),v.setAttribute("class","inquiry"),v.insertBefore(d.utils.AJARImage(l.src.icon_display_reasons,"explain",void 0,t),v.firstChild),o.appendChild(v)}}return o.addEventListener("click",$),o},this.outlinePredicateTD=function(e,n,a,i){var o=t.createElement("TD");switch(o.setAttribute("about",e.toNT()),o.setAttribute("class",i?"pred internal":"pred"),e.termType){case"BlankNode":o.className="undetermined";break;case"NamedNode":var r=d.utils.predicateLabelForXML(e,a);break;case"Collection":r=d.utils.predicateLabelForXML(e.elements[0],a)}r=r.slice(0,1).toUpperCase()+r.slice(1);var s=t.createElement("TD");for(var c in s.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),s.setAttribute("notSelectable","true"),s.appendChild(t.createTextNode(r)),o.appendChild(s),s.style.width="100%",o.appendChild(M.construct(t)),l.termWidgets){if(!n||!n.AJAR_statement)break;l.termWidgets[c].filter&&l.termWidgets[c].filter(n.AJAR_statement,"pred",a)&&M.addIcon(o,l.termWidgets[c])}return o.tabulatorSelect=function(){_(this,!0)},o.tabulatorDeselect=function(){_(this,!1)},o.addEventListener("click",$),o},this.getDashboard=b,this.getDashboardItems=x,this.showDashboard=function(){return C.apply(this,arguments)};var D=this.propertyTable=function(e,n,a,i){return d.log.debug("Property table for: "+e),e=h.canon(e),n?(d.log.info("Re-expand: "+n),n):((n=t.createElement("table")).setAttribute("style","width: 100%;"),function(e,n,t){return N.apply(this,arguments)}(e,a,i).then(function(a){if(n.appendChild(a),a.firstPane){var o;try{d.log.info("outline: Rendering pane (1): "+a.firstPane.name),o=a.firstPane.render(e,t,i)}catch(e){(o=t.createElement("div")).setAttribute("class","exceptionPane");var r=t.createElement("pre");o.appendChild(r),r.appendChild(t.createTextNode(d.utils.stackString(e)))}var s=t.createElement("tr");s.appendChild(t.createElement("td")).appendChild(o),a.firstPane.requireQueryButton&&t.getElementById("queryButton")&&t.getElementById("queryButton").removeAttribute("style"),n.appendChild(s),s.pane=a.firstPane,s.paneButton=a.paneButton}}),n)};function B(e,n,t){var a=e.createElement("TR");a.AJAR_statement=n,a.AJAR_inverse=t,a.setAttribute("predTR","true");var i=m.outlinePredicateTD(n.predicate,a,t);return a.appendChild(i),a}this.propertyTR=B,this.appendPropertyTRs=function(e,n,a,o){if(d.log.debug("Property list length = "+n.length),0===n.length)return"";var r,s,c;a?(r=function(e){return e.subject},n=n.sort(d.utils.RDFComparePredicateSubject)):(r=function(e){return e.object},n=n.sort(d.utils.RDFComparePredicateObject));var l=n.length;for(s=0;s<l;s++){var p=n[s];if(!o||o(p.predicate,a)){var u=B(t,p,a);e.appendChild(u);var f=u.firstChild,v=X.defaults[p.predicate.uri],g=0,b=0,w=0;for(c=0;c+s<l&&n[s+c].predicate.sameTerm(p.predicate);c++)c>0&&r(n[s+c]).sameTerm(r(n[s+c-1]))&&g++,r(n[s+c]).lang&&i.labeller.LanguagePreference&&(b+=1,r(n[s+c]).lang.indexOf(i.labeller.LanguagePreference)>=0&&w++);if(w>0&&b===g+1){for(var x=s;x<=s+g;x++)if(i.labeller.LanguagePreference&&r(n[x]).lang.indexOf(i.labeller.LanguagePreference)>=0){u.appendChild(m.outlineObjectTD(r(n[x]),v,void 0,p));break}s+=g}else u.appendChild(m.outlineObjectTD(r(p),v,void 0,p)),u.showNobj=function(i){var o=c-g,l=2*i<o?i:o,u=[];if(1!==o){var b;f.setAttribute("rowspan",l===o?o:i+1),l<o&&1===l&&f.setAttribute("rowspan",2);var w=0;for(b=1;b<c;b++)if(h.canon(r(n[s+b])).sameTerm(h.canon(r(n[s+b-1]))))d.log.info("there are duplicates here: %s",n[s+b-1]);else{w++,p=n[s+b],v=X.defaults[p.predicate.uri];var x=t.createElement("tr");x.style.colspan="1",x.appendChild(m.outlineObjectTD(r(n[s+b]),v,void 0,p)),x.AJAR_statement=p,x.AJAR_inverse=a,e.appendChild(x),w>=l&&(x.style.display="none",u.push(x))}l===o&&f.setAttribute("rowspan",w+1)}if(l<o){var y=t.createElement("tr"),C=y.appendChild(t.createElement("td"));if(C.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),C.setAttribute("notSelectable","false"),o>i){var k=t.createElement("a");C.appendChild(k);var T=function(e,n,a,i){return function(n){k.innerHTML="","none"===n?(k.appendChild(d.utils.AJARImage(d.icons.originalIconBase+"tbl-more-trans.png","more","See all",t)),k.appendChild(t.createTextNode(o-i+" more...")),e.setAttribute("rowspan",i+1)):(k.appendChild(d.utils.AJARImage(d.icons.originalIconBase+"tbl-shrink.png","(less)",void 0,t)),e.setAttribute("rowspan",o+1));for(var a=0;a<u.length;a++)u[a].style.display=n}}(f,0,0,i),E="none",A=function(e){return T(E),E="none"===E?"":"none",e&&e.stopPropagation(),!1};A(),k.addEventListener("click",A,!1)}e.appendChild(y)}},u.showAllobj=function(){u.showNobj(c-g)},u.showNobj(10),s+=c-1}}};var M={};n.termWidget=M,M.construct=function(e){var n=(e=e||document).createElement("TD");return n.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),n.setAttribute("class","iconTD"),n.setAttribute("notSelectable","true"),n.style.width="0px",n},M.addIcon=function(e,n,a){var i=e.childNodes[1];if(i){var o=i.style.width,r=d.utils.AJARImage(n.src,n.alt,n.tooltip,t);o=parseInt(o),o+=n.width,i.style.width=o+"px",i.appendChild(r),a&&r.addEventListener("click",a)}},M.removeIcon=function(e,n){var a,i=e.childNodes[1];if(i){var o=i.style.width;o=parseInt(o),o-=n.width,i.style.width=o+"px";for(var r=0;r<i.childNodes.length;r++){var s=i.childNodes[r],c=s.src;try{a=t.location.href.split("?")[0]}catch(e){console.log(e),a=""}c===d.rdf.uri.join(n.src,a)&&i.removeChild(s)}}},M.replaceIcon=function(e,n,t,a){M.removeIcon(e,n),M.addIcon(e,t,a)};function O(e){var n=e.getAttribute("class");return!!(n&&n.indexOf("selected")>=0)}function L(e){var n=m.targetOf(e).parentNode;M.replaceIcon(n.parentNode,l.termWidgets.optOn,l.termWidgets.optOff,R),n.parentNode.parentNode.removeAttribute("optional")}function R(e){var n=m.targetOf(e).parentNode;M.replaceIcon(n.parentNode,l.termWidgets.optOff,l.termWidgets.optOn,L),n.parentNode.parentNode.setAttribute("optional","true")}function S(e,n){for(var t=l.termWidgets.optOn,a=l.termWidgets.optOff,i=e;i.parentNode;i=i.parentNode)for(;;){if(i.getAttribute("predTR")){var o=i.getAttribute("parentOfSelected");0===(o=o?parseInt(o):0)&&n>0&&M.addIcon(i.childNodes[0],i.getAttribute("optional")?t:a,i.getAttribute("optional")?L:R),o+=n,i.setAttribute("parentOfSelected",o),0===o&&(i.removeAttribute("parentOfSelected"),M.removeIcon(i.childNodes[0],i.getAttribute("optional")?t:a));break}if(!i.previousSibling||"TR"!==i.previousSibling.nodeName)break;i=i.previousSibling}}function _(e,n){if("TD"!==e.nodeName)throw d.log.debug("down"+e.nodeName),new Error("Expected TD in setSelected: "+e.nodeName+" : "+e.textContent);d.log.debug("pass");var t=e.getAttribute("class");if(t||(t=""),n){((t+=" selected").indexOf("pred")>=0||t.indexOf("obj")>=0)&&S(e,1),f.push(e);var a=d.utils.getTerm(e);m.showURI(a);var i=e.AJAR_statement;if(void 0===i&&(i=e.parentNode.AJAR_statement),i){var o=i.why,r=d.store.updater.editable(o.uri,h);r&&t.indexOf("pred")>=0&&M.addIcon(e,l.termWidgets.addTri)}}else d.log.debug("cla=$"+t+"$"),"selected"===t&&(t=""),((t=t.replace(" selected","")).indexOf("pred")>=0||t.indexOf("obj")>=0)&&S(e,-1),t.indexOf("pred")>=0&&M.removeIcon(e,l.termWidgets.addTri),f=f.filter(function(n){return n===e}),d.log.info("Deselecting "+e.textContent);"undefined"!=typeof sourceWidget&&m.showSource(),e.setAttribute("class",t)}function U(){for(var e=f.length-1;e>=0;e--)_(f[e],!1);f=[]}function F(e){var n=m.targetOf(e),t=n.parentNode,a=d.utils.getAbout(h,n);e.altKey&&r.internalPane;e.shiftKey?K(t,a):e.altKey?V(t,a,{pane:r.internalPane,immediate:!0}):V(t,a)}function q(e){var n=m.targetOf(e),t=d.utils.getAbout(h,n);e.altKey&&r.internalPane;Y(n.parentNode.parentNode,t)}function z(e){var n=m.targetOf(e).getAttribute("uri");e.altKey?v.fetch(d.rdf.uri.docpart(n),{force:!0}):v.refresh(h.sym(d.rdf.uri.docpart(n)))}function H(e){var n=m.targetOf(e).getAttribute("uri");e.altKey?v.fetch(d.rdf.uri.docpart(n),{force:!0}):v.refresh(h.sym(d.rdf.uri.docpart(n)))}function W(e){var n=m.targetOf(e).getAttribute("uri");v.fetch(d.rdf.uri.docpart(n))}function G(e){var n=m.targetOf(e),t=n.node;t.childNodes.length>1&&(t=n.parentNode),P(t)}function $(e){if(m.UserInput._tabulatorMode)return m.UserInput.Click(e);var n,t=m.targetOf(e);for(n=d.utils.ancestor(t,"TD");n&&"false"!==n.getAttribute("notSelectable");n=d.utils.ancestor(n.parentNode,"TD"));if(n){var a=O(n);if(d.log.debug("Was node selected before: "+a),e.altKey)_(n,!O(n));else if(e.shiftKey)_(n,!0);else{if(U(),m.UserInput.clearInputAndSave(e),_(n,!0),2===e.detail)return void e.stopPropagation();var i=n.parentNode.AJAR_statement;if(!i)return;var o=i.why,r=d.store.updater.editable(o.uri,h);a&&r&&m.UserInput.Click(e,f[0])}d.log.debug("Was node selected after: "+O(n)+", count="+f.length),e.stopPropagation()}}function J(e){t.title=d.utils.label(e),t.location.href.startsWith(e.site().uri)}function V(e,n,a){var i=(a=a||{}).pane,o=!!a.already,r=a.immediate;d.log.info("@outlineExpand, dom is now "+t.location),v.removeCallback("done","expand"),v.removeCallback("fail","expand");var l=h.canon(n);function p(){if(l=h.canon(l),!e||!e.parentNode||!e.parentNode.parentNode)return!1;var n;if(d.log.info("@@ REPAINTING "),o){for(d.log.info(" ... p is  "+e),n=e.firstChild;n.nextSibling&&(d.log.info(" ... checking node "+n),"table"!==n.nodeName);n=n.nextSibling);n=D(l,n,i,a)}else n=D(l,void 0,i,a);o=!0,d.utils.ancestor(e,"TABLE")&&"white"===d.utils.ancestor(e,"TABLE").style.backgroundColor?n.style.backgroundColor="#eee":n.style.backgroundColor="white";try{c.util.Event.off&&c.util.Event.off(e,"mousedown","dragMouseDown")}catch(e){console.log("YAHOO "+e)}d.utils.emptyNode(e).appendChild(n),m.focusTd=e,d.log.debug("expand: Node for "+l+" expanded");for(var t=h.each(l,d.ns.rdfs("seeAlso")),r=0;r<t.length;r++)25===r&&d.log.warn("expand: Warning: many ("+t.length+") seeAlso links for "+l),v.lookUpThing(t[r],l)}function u(e){if(arguments[3])return!0;var n=h.canon(l);d.log.info("@@ expand: relevant subject="+n+", uri="+e+", already="+o);var t=h.sym(d.rdf.uri.docpart(e));if(e.indexOf("#")>=0)throw new Error("Internal error: hash in "+e);return!function(){if(!n.uri)return!0;var a=h.uris(n);if(!a)return!1;for(var i=0;i<a.length;i++)for(var o=d.rdf.uri.docpart(a[i]);o;o=h.HTTPRedirects[o])if(e===o)return!0;return!!h.anyStatementMatching(n,void 0,void 0,t)}()||(d.log.success("@@ expand OK: relevant subject="+n+", uri="+e+", source="+o),p(),!1)}a.solo&&J(l),d.log.debug("outlineExpand: dereferencing "+l);var f=t.createElement("span");e.appendChild(f),v.addCallback("done",u),v.addCallback("fail",u);var b=[];if(l.uri&&"rdf"===l.uri.split(":")[0])p();else{for(var w=0;w<b.length;w++){if(void 0===b[w](l))return p(),d.log.debug("outline 1815"),void((void 0)[1]&&g.removeChild(g.lastChild))}!l.uri||r||d.widgets.isAudio(l)||d.widgets.isVideo(l)||h.holds(l,d.ns.rdf("type"),s.Util.mediaTypeClass("application/pdf"))?p():v.nowOrWhenFetched(l.doc(),void 0,function(n,i){if(n)v.lookUpThing(l),p(),a.solo&&J(l);else{var o=t.createElement("pre");o.textContent=i,o.setAttribute("style","background-color: #fee;"),o.textContent="Outline.expand: Unable to fetch "+l.doc()+": "+i,e.appendChild(o)}})}}function Y(e,n){var t,a,i=d.utils.ancestor(e,"TR");if(i=d.utils.ancestor(i.parentNode,"TR"))var o=i.AJAR_statement;for(t=e.parentNode;"TD"!==t.tagName;t=t.parentNode)if(void 0===t)return void alert("Not enclosed in TD!");if(d.log.debug("Collapsing subject "+n),o&&(d.log.debug("looking up pred "+o.predicate.uri+"in defaults"),a=X.defaults[o.predicate.uri]),d.log.debug("view= "+a),"outline"===t.parentNode.parentNode.id)var r=t.parentNode;m.replaceTD(m.outlineObjectTD(n,a,r,o),t)}function K(e,n){for(var t=null,a=e.parentNode;a;a=a.parentNode)d.log.debug("level "+a.tagName),"TD"===a.tagName&&(t=a);d.utils.emptyNode(t).appendChild(D(n)),J(n),t.setAttribute("about",n.toNT())}new function(){this.pat=h.formula(),this.vars=[]},this.statusBarClick=function(e){var n=d.utils.getTarget(e);n.label&&(window.content.location=n.label)},this.showURI=function(e){e&&t.getElementById("UserURI")&&(t.getElementById("UserURI").value="NamedNode"===e.termType?e.uri:"")},this.showSource=function(){if("undefined"!=typeof sourceWidget){for(var e in sourceWidget.sources)sourceWidget.sources[e].setAttribute("class","");for(var n=0;n<f.length;n++)if(f[n].parentNode){var t=f[n].parentNode.AJAR_statement;if(t){var a=t.why;a&&a.uri&&sourceWidget.highlight(a,!0)}}else console.log("showSource: EH? no parentNode? "+f[n]+"\n")}},this.getSelection=function(){return f},this.targetOf=function(e){var n;if(e||(e=window.event),e.target)n=e.target;else{if(!e.srcElement)return d.log.error("can't get target for event "+e),!1;n=e.srcElement}return 3===n.nodeType&&(n=n.parentNode),n},this.walk=function(e,n){var a,i=n||f[0];switch(e){case"down":try{a=i.parentNode.nextSibling.lastChild}catch(e){return void this.walk("up")}U(),_(a,!0);break;case"up":try{a=i.parentNode.previousSibling.lastChild}catch(e){return}U(),_(a,!0);break;case"right":if(U(),i.nextSibling||"strong"===i.lastChild.tagName)_(i.nextSibling,!0);else _(t.evaluate("table/div/tr/td[2]",i,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue,!0);break;case"left":if(U(),i.previousSibling&&"undetermined"===i.previousSibling.className)return _(i.previousSibling,!0),!0;_(d.utils.ancestor(i.parentNode,"TD"),!0);break;case"moveTo":U(),_(n,!0)}"down"!==e&&"up"!==e||a.tabulatorSelect||this.walk(e)},this.OutlinerKeypressPanel=function(e){function n(e){e&&t.getElementById("UserURI")&&(t.getElementById("UserURI").value="NamedNode"===e.termType?e.uri:"")}function a(e){return!!arguments[3]||(g("right",c),n(d.utils.getAbout(h,f[0])),!0)}var o,s;if(d.log.info("Key "+e.keyCode+" pressed"),"TEXTAREA"!==d.utils.getTarget(e).tagName&&"UserURI"!==d.utils.getTarget(e).id&&!(f.length>1))if(0!==f.length){var c=f[0];switch(v.removeCallback("done","setSelectedAfterward"),v.removeCallback("fail","setSelectedAfterward"),e.keyCode){case 13:if("HTML"===d.utils.getTarget(e).tagName){var l=d.utils.getAbout(h,c);o=c.parentNode.AJAR_statement.why,s=d.store.updater.editable(o.uri,h),l?i.GotoSubject(l,!0):s&&m.UserInput.Enter(c)}else this.UserInput.Keypress(e),this.walk("down"),e.stopPropagation();return;case 38:this.walk("up"),e.stopPropagation(),e.preventDefault();break;case 40:this.walk("down"),e.stopPropagation(),e.preventDefault()}if("INPUT"!==d.utils.getTarget(e).tagName){switch(e.keyCode){case 46:case 8:o=c.parentNode.AJAR_statement.why,(s=d.store.updater.editable(o.uri,h))&&(e.preventDefault(),this.UserInput.Delete(c));break;case 37:if(this.walk("left"))return;var p=d.utils.ancestor(c.parentNode,"TD");Y(c,d.utils.getAbout(h,p));break;case 39:var u=d.utils.getAbout(h,c);if(u){var g=this.walk;if(c.nextSibling)return void this.walk("right");"TABLE"!==c.firstChild.tagName&&(v.addCallback("done",a),v.addCallback("fail",a),V(c,u,{pane:r.defaultPane})),a()}break;case 38:case 40:break;default:switch(e.charCode){case 99:if(e.ctrlKey){m.UserInput.copyToClipboard(m.clipboardAddress,c);break}break;case 118:case 112:if(e.ctrlKey){m.UserInput.pasteFromClipboard(m.clipboardAddress,c);break}break;default:d.utils.getTarget(e).tagName}}if(n(d.utils.getAbout(h,f[0])),f[0]){var b=d.utils.findPos(f[0])[1];b+f[0].clientHeight>window.scrollY+window.innerHeight&&d.utils.getEyeFocus(f[0],!0,!0,window),b<window.scrollY+54&&d.utils.getEyeFocus(f[0],!0,void 0,window)}}}else 13!==e.keyCode&&38!==e.keyCode&&40!==e.keyCode&&37!==e.keyCode&&39!==e.keyCode||(this.walk("right",m.focusTd),n(d.utils.getAbout(h,f[0])))},this.OutlinerMouseclickPanel=function(e){switch(m.UserInput._tabulatorMode){case 0:!function(e){d.log.info("@TabulatorMousedown, dom.location is now "+t.location);var n=m.targetOf(e);if(!n)return;var a=n.tagName;if("INPUT"===a||"TEXTAREA"===a)return;m.UserInput.clearMenu(),m.UserInput.lastModified&&m.UserInput.lastModified.parentNode.nextSibling&&m.UserInput.backOut();(!n.src||n.src.slice(n.src.indexOf("/icons/")+1)!==l.src.icon_show_choices&&n.src.slice(n.src.indexOf("/icons/")+1)!==l.src.icon_add_triple)&&m.UserInput.clearInputAndSave(e);n.src&&n.src.slice(n.src.indexOf("/icons/")+1)===l.src.icon_show_choices||m.UserInput.clearMenu();e&&e.stopPropagation()}(e);break;case 1:m.UserInput.Click(e)}},this.replaceTD=function(e,n){var t;O(n)&&(t=!0);for(var a=f.length-1;a>-1;a--)for(var i=f[a];i.parentNode;i=i.parentNode)i===n&&_(f[a],!1);n.parentNode.replaceChild(e,n),t&&_(e,!0)},i.outlineRefocus=K,this.GotoFormURI_enterKey=function(e){13===e.keyCode&&i.GotoFormURI(e)},this.GotoFormURI=function(e){!function(e){var n=h.sym(e);this.GotoSubject(n,!0)}(t.getElementById("UserURI").value)},this.GotoURIinit=function(e){var n=h.sym(e);this.GotoSubject(n)},this.GotoSubject=function(e,n,a,i,o,r){r=r||t.getElementById("outline"),i&&(d.utils.emptyNode(r),r.style.width="100%");var s=function(){var n=t.createElement("TR");n.style.verticalAlign="top",r.appendChild(n);var a=m.outlineObjectTD(e,void 0,n);return n.appendChild(a),a}();if(i&&J(e),n){V(s,e,{pane:a,solo:i});var c=s.parentNode;d.utils.getEyeFocus(c,!1,void 0,window)}if(i&&t&&t.defaultView&&t.defaultView.history&&document.location.href!==e.uri){var l=a?{paneName:a.name}:{};try{t.defaultView.history.pushState(l,e.uri,e.uri)}catch(e){console.log(e)}}return e};var X={properties:[],defaults:[],classes:[]};function Q(e,n,t){X.properties[e]||(X.properties[e]=[]),X.properties[e].push(n),t&&(X.defaults[e]=n)}var Z=d.ns;function ee(e){var n;if("Literal"===e.termType){(n=t.createElement("span")).textContent=e.value;var a="";if(e.datatype&&e.datatype.uri){var i=d.ns.xsd("").uri;e.datatype.uri.slice(0,i.length)===i&&(a={integer:"text-align: right;",decimal:"text-align: '.';",double:"text-align: '.';"}[e.datatype.uri.slice(i.length)])}n.setAttribute("style",a||"white-space: pre-wrap;")}else if("NamedNode"===e.termType||"BlankNode"===e.termType)if((n=t.createElement("span")).setAttribute("about",e.toNT()),m.appendAccessIcons(h,n,e),"NamedNode"===e.termType)if("tel:"===e.uri.slice(0,4)){var o=e.uri.slice(4),s=t.createElement("a");n.appendChild(t.createTextNode(o)),s.setAttribute("href",e.uri),s.appendChild(d.utils.AJARImage(l.src.icon_telephone,"phone","phone "+o,t)),n.appendChild(s),s.firstChild.setAttribute("class","phoneIcon")}else n.appendChild(t.createTextNode(d.utils.label(e))),d.widgets.makeDraggable(n,e);else n.appendChild(t.createTextNode(d.utils.label(e)));else if("Collection"===e.termType){(n=t.createElement("table")).setAttribute("style","width: 100%;"),n.setAttribute("about",e.toNT());for(var c=0;c<e.elements.length;c++){var p=e.elements[c],u=n.appendChild(t.createElement("tr")),f=u.appendChild(t.createElement("td"));f.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),f.setAttribute("notSelectable","false"),f.setAttribute("about",e.toNT()),f.innerHTML=c+1+")",u.appendChild(m.outlineObjectTD(p))}}else"Graph"===e.termType?(n=r.dataContentPane.statementsAsTables(e.statements,t)).setAttribute("class","nestedFormula"):(d.log.error("Object "+e+" has unknown term type: "+e.termType),n=t.createTextNode("[unknownTermType:"+e.termType+"]"));return d.log.debug("contents: "+n.innerHTML),n}function ne(e){var n=d.utils.AJARImage(e.uri,d.utils.label(e),d.utils.label(e),t);return n.setAttribute("class","outlineImage"),n}return Q(Z.foaf("depiction").uri,ne,!0),Q(Z.foaf("img").uri,ne,!0),Q(Z.foaf("thumbnail").uri,ne,!0),Q(Z.foaf("logo").uri,ne,!0),Q(Z.foaf("mbox").uri,function(e){var n=t.createElement("a"),a="NamedNode"===e.termType?e.uri:e.value;if(!a)return ee(e);var i=a.indexOf("mailto:");return a=i>=0?a.slice(i+7):a,n.setAttribute("href","mailto:"+a),n.appendChild(t.createTextNode(a)),n},!0),this.createTabURI=function(){t.getElementById("UserURI").value=t.URL+"?uri="+t.getElementById("UserURI").value},this.UserInput.setSelected=_,this.UserInput.deselectAll=U,this.UserInput.views=X,this.outlineExpand=V,this}}).call(this,t(8))},function(e,n){var t;t=function(){return this}();try{t=t||new Function("return this")()}catch(e){"object"==typeof window&&(t=window)}e.exports=t},function(e,n,t){var a,i=t(0),o=e.exports={};o.util={},o.util.Event=(a=[],{on:function(e,n,t,i,o){var r=function(e){return t.call(i,e,i)};e.addEventListener(n,r,!1);var s=[e,n,o,r];a.push(s)},off:function(e,n,t){var i=this._getCacheIndex(e,n,t);if(-1===i)return!1;var o=a[i];return e.removeEventListener(n,o[this.WFN],!1),delete a[i][this.WFN],delete a[i][this.FN],a.splice(i,1),!0},EL:0,TYPE:1,FNID:2,WFN:3,_getCacheIndex:function(e,n,t){for(var i=0,o=a.length;i<o;++i){var r=a[i];if(r&&r[this.FNID]===t&&r[this.EL]===e&&r[this.TYPE]===n)return i}return-1}}),o.util.DDExternalProxy=function(e){this.initTarget(e)},o.util.DDExternalProxy.prototype={initTarget:function(e){this.DDM=o.util.DDM,this.el=e},b4StartDrag:function(e,n){r.onDragStart(e,n,this.el)},b4Drag:function(e){},handleMouseDown:function(e,n){(e.which||e.button)>1||this.DDM.handleMouseDown(e,this)}},o.util.DDM={handleMouseDown:function(e,n){this.dragCurrent=n;var t=n.el;this.startX=e.pageX,this.startY=e.pageY,this.deltaX=this.startX-t.offsetLeft,this.deltaY=this.startY-t.offsetTop,this.dragThreshMet=!1},handleMouseMove:function(e){if(!this.dragCurrent)return!0;if(o.util.Event.isIE&&!e.button)return o.log("button failure","info","DragDropMgr"),this.stopEvent(e),this.handleMouseUp(e);if(!this.dragThreshMet){var n=Math.abs(this.startX-e.pageX),t=Math.abs(this.startY-e.pageY);(n>this.clickPixelThresh||t>this.clickPixelThresh)&&this.startDrag(this.startX,this.startY)}return this.dragThreshMet,e.preventDefault(),!0},handleMouseUp:function(e){this.dragCurrent&&(o.util.Event.off(this.dragCurrent.el,"mousemove","dragMouseMove"),o.util.Event.off(this.dragCurrent.el,"mouseup","dragMouseUp"),o.util.Event.off(this.dragCurrent.el,"mouseup","dragMouseUp"),this.dragThreshMet&&(r.onDropInside(e.target),this.dragThreshMet=!1),this.dragCurrent=null)},startDrag:function(e,n){this.dragCurrent&&this.dragCurrent.b4StartDrag(e,n),this.dragThreshMet=!0},clickPixelThresh:3};var r={onDrop:function(e,n,t){var a=i.utils.ancestor(i.utils.ancestor(e.originalTarget,"TABLE").parentNode,"TABLE").outline.selection,o=n.flavour.contentType,r=transferUtils.retrieveURLFromData(n.data,o);if(r){if("application/x-moz-file"===o&&0===n.data.fileSize){var s=$rdf.sym("chrome://tabulator/content/internalKnowledge.n3#defaultNew");i.store.copyTo(s,$rdf.sym(r))}var c=a[0];i.utils.ancestor(i.utils.ancestor(c,"TABLE").parentNode,"TABLE").outline.UserInput.insertTermTo(c,$rdf.sym(r))}},onDragEnter:function(e,n){try{var t=i.utils.ancestor(i.utils.ancestor(e.originalTarget,"TABLE").parentNode,"TABLE").outline.selection}catch(e){return}for(var a=e.originalTarget;a;a=a.parentNode)if(a.tabulatorSelect){if(t[0]){try{t[0].tabulatorDeselect()}catch(e){throw new Error(t[0]+" causes "+e)}o.util.Event.off(a,"mouseup","dragMouseUp")}a.tabulatorSelect();break}},onDragExit:function(e,n){},onDropInside:function(e){e.ownerDocument.getElementById("outline").outline.UserInput.insertTermTo(e,i.utils.getAbout(i.store,this.dragTarget))},onDragStart:function(e,n,t){this.dragTarget=t;var a=Components.interfaces.nsIDragService,o={action:a.DRAGDROP_ACTION_COPY+a.DRAGDROP_ACTION_MOVE+a.DRAGDROP_ACTION_LINK},r=t.ownerDocument.getBoxObjectFor(t),s=Components.classes["@mozilla.org/gfx/region;1"].createInstance(Components.interfaces.nsIScriptableRegion);s.init(),s.unionRect(r.screenX,r.screenY,r.width,r.height);var c={data:null},l=i.Util.getTerm(t);switch(l.termType){case"NamedNode":c.data=this.URItoTransferDataSet(l.uri);break;case"BlankNode":c.data=this.URItoTransferDataSet(l.toNT());break;case"Literal":c.data=this.URItoTransferDataSet(l.value)}c=c.data;var p=Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray),d=nsTransferable.set(c.dataList[0]);p.AppendElement(d.QueryInterface(Components.interfaces.nsISupports)),this.mDragService.invokeDragSession(t,p,s,o.action)},getSupportedFlavours:function(){var e=new FlavourSet;return e.appendFlavour("text/x-moz-url"),e.appendFlavour("text/unicode"),e.appendFlavour("application/x-moz-file","nsIFile"),e},URItoTransferDataSet:function(e){var n=new TransferDataSet,t=new TransferData;return t.addDataForFlavour("text/x-moz-url",e),t.addDataForFlavour("text/unicode",e),n.push(t),n},_mDS:null,get_mDragService:function(){if(!this._mDS){var e=Components.interfaces.nsIDragService;this._mDS=Components.classes["@mozilla.org/widget/dragservice;1"].getService(e)}return this._mDS},DDM:o.util.DDM}},function(e,n,t){var a=e.exports={},i=t(0);a.src=[],a.tooltips=[],a.src.icon_expand=i.icons.originalIconBase+"tbl-expand-trans.png",a.src.icon_more=i.icons.originalIconBase+"tbl-more-trans.png",a.src.icon_collapse=i.icons.originalIconBase+"tbl-collapse.png",a.src.icon_internals=i.icons.originalIconBase+"tango/22-emblem-system.png",a.src.icon_instances=i.icons.originalIconBase+"tango/22-folder-open.png",a.src.icon_foaf=i.icons.originalIconBase+"foaf/foafTiny.gif",a.src.icon_social=i.icons.originalIconBase+"social/social.gif",a.src.icon_mb=i.icons.originalIconBase+"microblog/microblog.png",a.src.icon_shrink=i.icons.originalIconBase+"tbl-shrink.png",a.src.icon_rows=i.icons.originalIconBase+"tbl-rows.png",a.src.icon_unrequested=i.icons.originalIconBase+"16dot-blue.gif",a.src.icon_fetched=i.icons.originalIconBase+"16dot-green.gif",a.src.icon_failed=i.icons.originalIconBase+"16dot-red.gif",a.src.icon_requested=i.icons.originalIconBase+"16dot-yellow.gif",a.src.icon_CVPane=i.icons.originalIconBase+"CV.png",a.src.icon_defaultPane=i.icons.originalIconBase+"about.png",a.src.icon_visit=i.icons.originalIconBase+"tango/22-text-x-generic.png",a.src.icon_dataContents=i.icons.originalIconBase+"rdf_flyer.24.gif",a.src.icon_n3Pane=i.icons.originalIconBase+"w3c/n3_smaller.png",a.src.icon_RDFXMLPane=i.icons.originalIconBase+"22-text-xml4.png",a.src.icon_imageContents=i.icons.originalIconBase+"tango/22-image-x-generic.png",a.src.icon_airPane=i.icons.originalIconBase+"1pt5a.gif",a.src.icon_LawPane=i.icons.originalIconBase+"law.jpg",a.src.icon_pushbackPane=i.icons.originalIconBase+"pb-logo.png",a.src.icon_photoPane=i.icons.originalIconBase+"photo_small.png",a.src.icon_tagPane=i.icons.originalIconBase+"tag_small.png",a.src.icon_TinyTag=i.icons.originalIconBase+"tag_tiny.png",a.src.icon_photoBegin=i.icons.originalIconBase+"photo_begin.png",a.src.icon_photoNext=i.icons.originalIconBase+"photo_next.png",a.src.icon_photoBack=i.icons.originalIconBase+"photo_back.png",a.src.icon_photoEnd=i.icons.originalIconBase+"photo_end.png",a.src.icon_photoImportPane=i.icons.originalIconBase+"flickr_small.png",a.src.icon_retract=i.icons.originalIconBase+"retract.gif",a.src.icon_refresh=i.icons.originalIconBase+"refresh.gif",a.src.icon_optoff=i.icons.originalIconBase+"optional_off.PNG",a.src.icon_opton=i.icons.originalIconBase+"optional_on.PNG",a.src.icon_map=i.icons.originalIconBase+"compassrose.png",a.src.icon_retracted=a.src.icon_unrequested,a.src.icon_retracted=a.src.icon_unrequested,a.src.icon_time=i.icons.originalIconBase+"icons/Wclocksmall.png",a.src.icon_telephone=i.icons.originalIconBase+"silk/telephone.png",a.src.icon_time=i.icons.originalIconBase+"Wclocksmall.png",a.src.icon_remove_node=i.icons.originalIconBase+"tbl-x-small.png",a.src.icon_add_triple=i.icons.originalIconBase+"tango/22-list-add.png",a.src.icon_add_new_triple=i.icons.originalIconBase+"tango/22-list-add-new.png",a.src.icon_show_choices=i.icons.originalIconBase+"userinput_show_choices_temp.png",a.src.icon_display_reasons=i.icons.originalIconBase+"tango/22-help-browser.png",a.tooltips[a.src.icon_display_reasons]="Display explanations",a.tooltips[a.src.icon_add_triple]="Add more",a.tooltips[a.src.icon_add_new_triple]="Add one",a.tooltips[a.src.icon_remove_node]="Remove",a.tooltips[a.src.icon_expand]="View details.",a.tooltips[a.src.icon_collapse]="Hide details.",a.tooltips[a.src.icon_shrink]="Shrink list.",a.tooltips[a.src.icon_internals]="Under the hood",a.tooltips[a.src.icon_instances]="List",a.tooltips[a.src.icon_foaf]="Friends",a.tooltips[a.src.icon_rows]="Make a table of data like this",a.tooltips[a.src.icon_unrequested]="Fetch this.",a.tooltips[a.src.icon_fetched]="Fetched successfully.",a.tooltips[a.src.icon_failed]="Failed to load. Click to retry.",a.tooltips[a.src.icon_requested]="This is being fetched. Please wait...",a.tooltips[a.src.icon_visit]="View document",a.tooltips[a.src.icon_retract]="Remove this source and all its data from tabulator.",a.tooltips[a.src.icon_refresh]="Refresh this source and reload its triples.",a.OutlinerIcon=function(e,n,t,a,i){return this.src=e,this.alt=t,this.width=n,this.tooltip=a,this.filter=i,this},a.termWidgets={},a.termWidgets.optOn=new a.OutlinerIcon(a.src.icon_opton,20,"opt on","Make this branch of your query mandatory."),a.termWidgets.optOff=new a.OutlinerIcon(a.src.icon_optoff,20,"opt off","Make this branch of your query optional."),a.termWidgets.addTri=new a.OutlinerIcon(a.src.icon_add_triple,18,"add tri","Add one")},function(e,n,t){function a(e){return(a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var i,o,r=t(0),s=t(1);e.exports=function e(n){var t=r.store,c=n.document;this.menuId="predicateMenu1";var l=function(e){console.log(e+"\n")},p=r.ns.rdf,d=r.rdf.Namespace("http://purl.org/ontology/bibo/"),u=r.rdf.Namespace("http://purl.org/dc/elements/1.1/"),m=!1;return i||((i=new r.rdf.Formula).superFormula=t),o||(o=new r.rdf.IndexedFormula),o.name="TempFormula",r.store.updater||(r.store.updater=new r.rdf.UpdateManager(t)),{sparqler:r.store.updater,lastModified:null,lastModifiedStat:null,statIsInverse:!1,addNewPredicateObject:function(e){if("bottom-border-active"===r.utils.getTarget(e).className){var a=n.UserInput,i=r.utils.getTarget(e),o=c.createElement("tr");r.utils.ancestor(i,"DIV").insertBefore(o,r.utils.ancestor(i,"TR"));var s=c.createElement("tr"),l=a.generateRequest("(TBD)",s,!0);o.appendChild(s.firstChild);var p=a.generateRequest("(Enter text or drag an object onto this field)",s,!1);if(o.appendChild(s.firstChild),r.utils.ancestor(i,"TR").previousSibling&&r.utils.ancestor(i,"TR").previousSibling.AJAR_statement){var d=r.utils.ancestor(i,"TR").previousSibling.AJAR_statement;a.formUndetStat(o,d.subject,l,p,d.why,!1)}else{var u=r.utils.getAbout(t,r.utils.ancestor(i.parentNode.parentNode,"TD")),m=t.sym(r.rdf.Util.uri.docpart(u.uri));a.formUndetStat(o,u,l,p,m,!1)}n.walk("moveTo",o.firstChild),r.log.info("addNewPredicateObject: selection = "+n.getSelection().map(function(e){return e.textContent}).join(", ")),this.startFillInText(n.getSelection()[0])}},addNewObject:function(e){var t=r.utils.getTarget(e).parentNode.parentNode,a=t.parentNode.AJAR_inverse;this.lastModifiedStat=t.parentNode.AJAR_statement;var i=this.appendToPredicate(t),o=this.generateRequest(" (Error) ",i,!1),s=i.previousSibling.AJAR_statement;a?this.formUndetStat(i,o,s.predicate,s.object,s.why,!0):this.formUndetStat(i,s.subject,s.predicate,o,s.why,!1),n.walk("moveTo",i.lastChild),this.startFillInText(i.lastChild)},Delete:function(e){this.deleteTriple(e,!1)},Enter:function(e){this.literalModification(e)},Click:function(e){var n=r.utils.getTarget(e);"Literal"===r.utils.getTerm(n).termType&&(this.literalModification(n),e.preventDefault(),e.stopPropagation())},pasteFromClipboard:function(e,t){function a(e){var t=n.clipboard[e].shift();if(null!==t){switch(e){case"predicates":case"objects":for(var a=n.clipboard.all,i=0;;i++)if(t.sameTerm(a[i])){a.splice(i,1);break}break;case"all":throw new Error("hostorical code not understood - what is theCollection?")}return t}r.log.warn("no more element in clipboard!")}var i;switch(t.className){case"undetermined selected":if(!(i=t.nextSibling?a("predicates"):a("objects")))return;break;case"pred selected":if(!(i=a("objects")))return;break;case"selected":var o=a("all");if(!o)return;return i=o[0],void this.insertTermTo(t,i,o[1])}this.insertTermTo(t,i)},startFillInText:function(e){switch(this.whatSortOfEditCell(e)){case"DatatypeProperty-like":r.utils.emptyNode(e),this.lastModified=this.createInputBoxIn(e," (Please Input) "),this.lastModified.isNew=!1,this.lastModified.select();break;case"predicate":this.performAutoCompleteEdit(e,"PredicateAutoComplete");break;case"ObjectProperty-like":case"no-idea":this.performAutoCompleteEdit(e,"GeneralAutoComplete")}},literalModification:function(e){if(r.log.debug("entering literal Modification with "+e+e.textContent),-1!==e.className.indexOf(" pendingedit"))return r.log.warn("The node you attempted to edit has a request still pending.\nPlease wait for the request to finish (the text will turn black)\nbefore editing this node again."),!0;var n=e;if(this.getStatementAbout(n)){try{var a=r.utils.getTerm(n),i=r.utils.ancestor(n,"TR")}catch(a){r.log.warn("userinput.js: "+a+r.utils.getAbout(t,e)),r.log.error(n+" getStatement Error:"+a)}try{var o=i.lastChild}catch(e){r.log.error(e+"@"+n)}if("Literal"===a.termType){if(o.removeChild(o.firstChild),a.value.match("\n")){var s=c.createElement("textarea");s.appendChild(c.createTextNode(a.value)),s.setAttribute("rows",(a.value.match(/\n/g).length+1).toString()),s.setAttribute("cols","100"),s.setAttribute("class","textinput"),o.appendChild(s),this.lastModified=s}else this.lastModified=this.createInputBoxIn(o,a.value);this.lastModified.isNew=!1,this.lastModified.select()}return!0}},performAutoCompleteEdit:function(e,n){r.utils.emptyNode(e),l("perform AutoCompleteEdit. THIS IS="+this),this.lastModified=this.createInputBoxIn(e,""),this.lastModified.select(),this.lastModified.addEventListener("keypress",this.getAutoCompleteHandler(n),!1),this.getAutoCompleteHandler(n)(1)},backOut:function(){this.deleteTriple(this.lastModified.parentNode,!0),this.lastModified=null},clearMenu:function(){var e=c.getElementById(this.menuID);e&&e.parentNode.removeChild(e)},clearInputAndSave:function(e){if(this.lastModified){if(!this.lastModified.isNew)try{var a=this.getStatementAbout(this.lastModified).object}catch(e){return}var i=this.lastModifiedStat;if(this.lastModified.value!==this.lastModified.defaultValue){if(""===this.lastModified.value)return this.lastModified.value=this.lastModified.defaultValue,void this.clearInputAndSave();if(this.lastModified.isNew){i=new r.rdf.Statement(i.subject,i.predicate,t.literal(this.lastModified.value),i.why);var o=this.views.defaults[i.predicate.uri],c=r.utils.ancestor(this.lastModified,"TR");try{r.store.updater.update([],[i],function(e,t,a){t||(r.log.error("Error occurs while inserting "+i+"\n\n"+a+"\n"),n.UserInput.deleteTriple(c.lastChild,!0))})}catch(e){return void r.log.error("Error inserting fact "+i+":\n\t"+e+"\n")}i=t.add(i.subject,i.predicate,t.literal(this.lastModified.value),i.why)}else{if(this.statIsInverse)return r.log.error("Invalid Input: a literal can't be a subject in RDF/XML"),void this.backOut();var l,d,u;switch(a.termType){case"Literal":var m=this.lastModified.value;c=r.utils.ancestor(this.lastModified,"TR");var f=this.lastModified.defaultValue;d=$rdf.st(i.subject,i.predicate,t.literal(this.lastModified.value),i.why);try{r.store.updater.update([i],[d],function(e,n,t){n?a.value=m:(r.log.warn("Error occurs while editing "+i+"\n\n"+t),c.lastChild.textContent=f),c.lastChild.className=c.lastChild.className.replace(/ pendingedit/g,"")})}catch(e){return void r.log.warn("Error occurs while editing "+i+":\n\t"+e)}break;case"BlankNode":var h=t.literal(this.lastModified.value,"");if("Collection"!==i.predicate.termType)return void this.fillInRequest("object",this.lastModified.parentNode,t.literal(this.lastModified.value));var v=i.predicate.elements[0];if(t.any(void 0,v,h)){if(!e){var g=this.lastModified.parentNode;(e={}).pageX=r.utils.findPos(g)[0],e.pageY=r.utils.findPos(g)[1]+g.clientHeight}this.showMenu(e,"DidYouMeanDialog",void 0,{dialogTerm:t.any(void 0,v,h),bnodeTerm:i.subject})}else{l=r.utils.ancestor(r.utils.ancestor(this.lastModified,"TR").parentNode,"TR").AJAR_statement,d=$rdf.st(i.subject,v,h,i.why);var b=t.the(i.subject,p("type"));u=t.anyStatementMatching(i.subject,p("type"),b,i.why),c=r.utils.ancestor(r.utils.ancestor(this.lastModified,"TR"),"TD").parentNode;try{r.store.updater.update([],[l,d,u],function(e,t,a){t||(console.log("Error occurs while editing "+l+"\n\n"+a),n.UserInput.deleteTriple(c.lastChild,!0))})}catch(e){return void console.log("Error occurs while editing "+l+":\n\t"+e)}t.remove(i),t.add(i.subject,v,h,i.why)}var w=r.utils.ancestor(this.lastModified.parentNode.parentNode,"TD"),x=s.default;n.outlineExpand(w,i.subject,{pane:x,already:!0}),n.walk("right",n.focusTd)}}}else{if(this.lastModified.isNew){var y=r.utils.ancestor(this.lastModified,"TR"),C=this.generateRequest("(To be determined. Re-type of drag an object onto this field)"),k=y.previousSibling.AJAR_statement;return this.formUndetStat(y,k.subject,k.predicate,C,k.why,!1),void(this.lastModified=null)}if("Collection"===i.predicate.termType){t.removeMany(i.subject);var T=r.utils.ancestor(r.utils.ancestor(this.lastModified,"TR").parentNode,"TR");return k=T.AJAR_statement,C=this.generateRequest("(To be determined. Re-type of drag an object onto this field)"),this.formUndetStat(T,k.subject,k.predicate,C,k.why,!1),n.replaceTD(n.outlineObjectTD(C,o),T.lastChild),void(this.lastModified=null)}if(this.statIsInverse){if("BlankNode"===i.subject.termType)return void this.backOut()}else if("BlankNode"===i.object.termType)return void this.backOut()}y=r.utils.ancestor(this.lastModified,"TR"),this.statIsInverse?n.replaceTD(n.outlineObjectTD(i.subject,o),y.lastChild):n.replaceTD(n.outlineObjectTD(t.literal(this.lastModified.value),o),y.lastChild),this.lastModified.value!==this.lastModified.defaultValue&&(y.lastChild.className+=" pendingedit"),this.lastModified=null}},deleteTriple:function(e,a){if(r.log.debug("deleteTriple entered"),!a&&-1!==e.className.indexOf(" pendingedit"))return console.log("The node you attempted to edit has a request still pending.\nPlease wait for the request to finish (the text will turn black)\nbefore editing this node again."),void n.walk("up");var i,o=this.getStatementAbout(e);if(!(a||t.whether(o.object,p("type"),r.ns.link("Request"))||t.whether(o.predicate,p("type"),r.ns.link("Request"))||t.whether(o.subject,p("type"),r.ns.link("Request")))){r.log.debug("about to send SPARQLUpdate");try{r.store.updater.update([o],[],function(n,t,a){t?s():(console.log("Error occurs while deleting "+o+"\n\n"+a),e.className=e.className.replace(/ pendingedit/g,""))}),e.className+=" pendingedit"}catch(e){return r.log.error(e),void r.log.warn("Error deleting statement "+o+":\n\t"+e)}r.log.debug("SPARQLUpdate sent")}function s(){var e;for(e=i;1===e.childNodes.length;e=e.previousSibling);if(e===i){var n=e.nextSibling;if(n.nextSibling&&1===n.childNodes.length){var t=e.firstChild;t.setAttribute("rowspan",parseInt(t.getAttribute("rowspan"))-1),n.insertBefore(e.firstChild,n.firstChild)}i.parentNode.removeChild(i)}else(t=e.firstChild).setAttribute("rowspan",parseInt(t.getAttribute("rowspan"))-1),i.parentNode.removeChild(i)}r.log.debug("about to remove "+o),r.log.debug("removed"),n.walk("up"),i=e.parentNode,a&&s()},clipboardInit:function(){n.clipboard={},n.clipboard.objects=[],n.clipboard.predicates=[],n.clipboard.all=[]},copyToClipboard:function(e,t){var a=r.utils.getTerm(t);switch(t.className){case"selected":case"obj selected":n.clipboard.objects.unshift(a);break;case"pred selected":case"pred internal selected":n.clipboard.predicates.unshift(a)}n.clipboard.all.unshift(a)},insertTermTo:function(e,a,o){switch(e.className){case"undetermined selected":var s=this.views.defaults[e.parentNode.AJAR_statement.predicate.uri];this.fillInRequest(e.nextSibling?"predicate":"object",e,a);break;case"pred selected":var l=this.appendToPredicate(e),p=e.parentNode.AJAR_statement;s=this.views.defaults[p.predicate.uri],l.appendChild(n.outlineObjectTD(a,s));var d=e.parentNode.AJAR_inverse;d?l.AJAR_statemnet=t.add(a,p.predicate,p.object,p.why):l.AJAR_statement=t.add(p.subject,p.predicate,a,p.why);try{r.store.updater.update([],[l.AJAR_statement],function(e,n,t){n||r.log.error("userinput.js (pred selected): Fail trying to insert statement "+l.AJAR_statement+": "+t)})}catch(e){return void r.log.error("Exception trying to insert statement "+l.AJAR_statement+": "+r.utils.stackString(e))}l.AJAR_inverse=d,i.statements.push(l.AJAR_statement);break;case"selected":var u=r.utils.ancestor(e,"TABLE").lastChild,m=u.insertBefore(c.createElement("tr"),u.lastChild);if(p=m.previousSibling.AJAR_statement,void 0===o&&(o=!0),o)this.formUndetStat(m,p.subject,this.generateRequest("(TBD)",m,!0),a,p.why,!1),m.appendChild(n.outlineObjectTD(a)),n.walk("moveTo",m.firstChild),this.startFillInText(m.firstChild);else{var f=this.generateRequest("(To be determined. Re-type of drag an object onto this field)",m);this.formUndetStat(m,p.subject,a,f,p.why,!1),m.insertBefore(n.outlinePredicateTD(a,m,!1,!1),m.firstChild),n.walk("moveTo",m.lastChild),this.startFillInText(m.lastChild)}}},Refill:function(e,n){r.log.info("Refill"+n.textContent);var a,i=n.nextSibling;if(i){if("undetermined"===n.nextSibling.className){var o=r.utils.getAbout(t,r.utils.ancestor(n,"TABLE").parentNode),s=t.any(o,p("type")),c=[];c[0]="SELECT ?pred WHERE{\n?pred "+p("type")+p("Property")+".\n?pred "+r.ns.rdfs("domain")+s+".}",c[1]="SELECT ?pred ?class\nWHERE{\n?pred "+p("type")+p("Property")+".\n"+s+r.ns.rdfs("subClassOf")+" ?class.\n?pred "+r.ns.rdfs("domain")+" ?class.\n}",c[2]="SELECT ?pred WHERE{\n"+o+p("type")+t.variable("subjectClass")+".\n"+t.variable("pred")+r.ns.rdfs("domain")+t.variable("subjectClass")+".\n}",a=c.map($rdf.SPARQLToQuery)}else{o=r.utils.getAbout(t,r.utils.ancestor(n,"TABLE").parentNode),s=t.any(o,p("type"));var l=n.parentNode.AJAR_statement.object;c="SELECT ?pred WHERE{"+o+p("type")+"?subjectClass.\n"+l+p("type")+"?objectClass.\n?pred "+r.ns.rdfs("domain")+"?subjectClass.\n?pred "+r.ns.rdfs("range")+"?objectClass.\n}",a=$rdf.SPARQLToQuery(c)}this.showMenu(e,"GeneralPredicateChoice",a,{isPredicate:i,selectedTd:n})}else{var d=n.parentNode.AJAR_statement.predicate;if((t.whether(d,p("type"),r.ns.owl("DatatypeProperty"))||"Collection"===d.termType||t.whether(d,r.ns.rdfs("range"),r.ns.rdfs("Literal")))&&(n.className="",r.utils.emptyNode(n),this.lastModified=this.createInputBoxIn(n," (Please Input) "),this.lastModified.isNew=!1,this.lastModified.select()),n.parentNode.AJAR_statement.predicate.sameTerm(p("type"))){var u="SELECT ?class WHERE{?class "+p("type")+r.ns.rdfs("Class")+".}",m=$rdf.SPARQLToQuery(u);this.showMenu(e,"TypeChoice",m,{isPredicate:i,selectedTd:n})}}},getAutoCompleteHandler:function(e){var i;return l("\n\n***** In getAutoCompleteHandler ****** mode = "+e),"PredicateAutoComplete"===e?e="predicate":"JournalTAC"!==e&&(e="all"),i="JournalTAC"===e?c.getElementById("inpid_journal_title"):this.lastModified||n.getSelection()[0].firstChild,l("InputBox="+i),l("InputBox.value="+i.value),function(o){l("ENTER EVENT="+o),l("1. outside (if eneterEvent)");var s={},p=i.parentNode;e||(e=p.nextSibling?"predicate":"all"),s.pageX=r.utils.findPos(p)[0],s.pageY=r.utils.findPos(p)[1]+p.clientHeight,l("epX="+s.pageX+", epY="+s.pageY+", mode="+e);var d=c.getElementById(n.UserInput.menuID);function u(e){e&&(d.lastHighlight&&(d.lastHighlight.className=""),d.lastHighlight=e,d.lastHighlight.className="activeItem",n.showURI(r.utils.getAbout(t,d.lastHighlight)))}if(o){l("2. in (if enterEvent).  with type = "+a(o));var f=i.value;if("object"===a(o))switch(l("3. in typeof enterEvent is object, will switch to keys, arrows, etc. keycode = "+o.keyCode),o.stopPropagation(),d&&!d.lastHighlight&&u(d.firstChild.firstChild),o.keyCode){case 13:case 9:if(l("handler: Enter or Tab"),!d)return void n.UserInput.clearInputAndSave();if(!d.lastHighlight)return"JournalTAC"===e?(n.UserInput.clearMenu(),l("no lastH"),"no lastH"):void 0;if("INPUT"===d.lastHighlight.tagName)switch(d.lastHighlight.value){case"New...":l("subcase New"),n.UserInput.createNew();break;case"GiveURI":l("subcase GiveURI"),n.UserInput.inputURI()}else{if("JournalTAC"===e){if(l("movedArrow? "+m),m&&d.lastHighlight){var h=d.lastHighlight.firstChild.firstChild.innerHTML,v=d.lastHighlight.firstChild.nextSibling.innerHTML;return["gotdptitle",h,v=v.slice(4,-4)]}return"asGivenTxt"}var g=r.utils.getAbout(t,d.lastHighlight),b="predicate"===e?"predicate":"object";n.UserInput.clearMenu(),n.UserInput.fillInRequest(b,i.parentNode,g)}return void l("outside");case 38:return l("handler: Arrow UP"),m=!0,""!==f||"TR"!==d.lastHighlight.tagName||d.lastHighlight.previousSibling?u(d.lastHighlight.previousSibling):u(d.firstChild.firstChild),"I'm a little Arrow Up";case 40:return l("handler: Arrow Down"),m=!0,"INPUT"===d.lastHighlight.tagName?u(d.childNodes[1].firstChild):u(d.lastHighlight.nextSibling),"I'm a little Down Arrow";case 37:case 39:return l("handler: Arrow left, right"),void("INPUT"===d.lastHighlight.tagName&&(37===o.keyCode?u(d.lastHighlight.previousSibling):u(d.lastHighlight.nextSibling)));case 8:l("handler: Backspace"),f=f.slice(0,-1);break;case 27:return l("handler: Esc"),d?void n.UserInput.clearMenu():void n.UserInput.backOut();default:l("handler: Default"),m=!1,l("oldtext="+f),f+=String.fromCharCode(o.charCode),l("charcodent="+o.charCode),l("strcharcod="+String.fromCharCode(o.charCode)),console.log("DEFAULT txtstr="+f+"\n")}return"all"===e?(l("generalAC after switch, newText="+f+"mode is all"),n.UserInput.clearMenu(),n.UserInput.showMenu(s,"GeneralAutoComplete",void 0,{inputText:f,selectedTd:p}),0===f.length&&n.UserInput.WildCardButtons()):"predicate"===e?(l("predicateAC after switch, newText="+f+"mode is predicate"),n.UserInput.clearMenu(),n.UserInput.showMenu(s,"PredicateAutoComplete",void 0,{inputText:f,isPredicate:!0,selectedTd:p})):"JournalTAC"===e&&(l("JouralTAC after switch, newText="+f),n.UserInput.clearMenu(),n.UserInput.showMenu(s,"JournalTitleAutoComplete",void 0,{inputText:f},"orderisuseless")),(d=c.getElementById(n.UserInput.menuID))?(l("at end of handler\n^^^^^^^^^^^^^^^^^\n\n"),u(d.firstChild.firstChild),n.showURI(r.utils.getAbout(t,d.lastHighlight)),"nothing to return"):void l("No menu element.  Do not show menu.")}}},WildCardButtons:function(){var e=c.getElementById(n.UserInput.menuID),t=e.insertBefore(c.createElement("div"),e.firstChild),a=t.appendChild(c.createElement("input")),i=t.appendChild(c.createElement("input"));a.type="button",a.value="New...",i.type="button",i.value="Know its URI",t.addEventListener("mouseover",function(e){var t=c.getElementById(n.UserInput.menuID);t.lastHighlight&&(t.lastHighlight.className=""),t.lastHighlight=r.utils.ancestor(r.utils.getTarget(e),"INPUT"),t.lastHighlight&&(t.lastHighlight.className="activeItem")},!1),a.addEventListener("click",this.createNew,!1),i.addEventListener("click",this.inputURI,!1)},Keypress:function(e){if(13===e.keyCode)if("TEXTAREA"!==n.targetOf(e).tagName)this.clearInputAndSave();else{var t=parseInt(this.lastModified.getAttribute("rows"));this.lastModified.setAttribute("rows",(t+1).toString()),e.stopPropagation()}},Mousedown:function(n){l("MOUSING DOWN"),window.addEventListener("keypress",function(n){!n.ctrlKey||115!==n.charCode&&113!==n.charCode||e.switchMode()},!1),window.addEventListener("mousedown",e.Mousedown,!1),document.getElementById("outline").oncontextmenu=function(){return!1},2===n.button&&(e.switchMode(),n&&(n.preventDefault(),n.stopPropagation()))},Mouseover:function(e){if(this.className="bottom-border-active",1===this._tabulatorMode)switch(r.utils.getTarget(e).tagName){case"TD":var n=r.utils.getTarget(e);"pred"===n.className&&(n.style.cursor="copy");break;case"DIV":var t=r.utils.getTarget(e);"bottom-border"===r.utils.getTarget(e).className&&(t.style.borderColor="rgb(100%,65%,0%)",t.style.cursor="copy")}},Mouseout:function(e){if(this.className="bottom-border",1===this._tabulatorMode){var n=r.utils.getTarget(e);"bottom-border"===r.utils.getTarget(e).className&&(n.style.borderColor="transparent",n.style.cursor="auto")}},whatSortOfEditCell:function(e){if(e.nextSibling)return"predicate";var n=this.getStatementAbout(e).predicate;return t.whether(n,r.ns.rdf("type"),r.ns.owl("DatatypeProperty"))||t.whether(n,r.ns.rdfs("range"),r.ns.rdfs("Literal"))||"Collection"===n.termType?"DatatypeProperty-like":t.whether(n,p("type"),r.ns.owl("ObjectProperty"))?"ObjectProperty-like":"no-idea"},getStatementAbout:function(e){var n=r.utils.ancestor(e,"TR");if(!n)throw new Error("No ancestor TR for the TD we clicked on:"+e);try{var t=n.AJAR_statement}catch(t){throw new Error("No AJAR_statement!"+e+e.textContent+" has ancestor "+n)}return this.lastModifiedStat=n.AJAR_statement,this.statIsInverse=n.AJAR_inverse,t},createInputBoxIn:function(e,t){r.log.info("myDocument in createInputBoxIn is now "+c.location),r.log.info("outline.document is now "+n.document.location);var a=c.createElement("input");return a.setAttribute("value",t),a.setAttribute("class","textinput"),"undetermined selected"!==e.className&&(a.setAttribute("size","100"),a.addEventListener("keypress",function(e){38!==e.keyCode&&40!==e.keyCode||(n.OutlinerKeypressPanel(e),n.UserInput.clearInputAndSave())},!1)),e.appendChild(a),a},createNew:function(e){n.UserInput.clearMenu();var a=n.getSelection()[0],i=a.parentNode.AJAR_statement.why,o=t.nextSymbol(i);n.UserInput.fillInRequest("object",a,o),n.outlineExpand(n.getSelection()[0],o)},inputURI:function(e){var a=n.UserInput;a.clearMenu();var i=n.getSelection()[0];r.utils.emptyNode(i);var o=" (Type a URI) ";a.lastModified=a.createInputBoxIn(i,o),a.lastModified.select(),a.lastModified.addEventListener("keypress",function(e){switch(e.stopPropagation(),e.keyCode){case 13:case 9:if(this.value!==o){var n=this.value;a.fillInRequest("object",i,t.sym(n))}}},!1)},appendToPredicate:function(e){var n,t=!1;try{for(n=e.parentNode.nextSibling;1===n.childNodes.length&&n.AJAR_statement;n=n.nextSibling);}catch(e){t=!0}var a=c.createElement("tr");if(a.style.colspan="1",a.style.display="block",a.style.display="",e.hasAttribute("rowspan")&&e.setAttribute("rowspan",parseInt(e.getAttribute("rowspan"))+1),e.hasAttribute("rowspan")||e.setAttribute("rowspan","2"),t){var i=e.parentNode.parentNode;"defaultPane"===i.className?i.insertBefore(a,i.lastChild):i.appendChild(a)}else n.parentNode.insertBefore(a,n);return a},bnode2symbol:function(e,n){t.copyTo(e,n,["two-direction","delete"])},generateRequest:function(e,t,a,i){var s;i||(s=t||r.utils.ancestor(this.lastModified,"TR"),r.utils.emptyNode(s));var c,l=o,p=l.bnode();(l.add(p,r.ns.rdf("type"),r.ns.link("Request")),e.length,l.add(p,r.ns.link("message"),l.literal(e)),l.add(p,r.ns.link("to"),l.literal("The User")),l.add(p,r.ns.link("from"),l.literal("The User")),i)||((c=a?s.appendChild(n.outlinePredicateTD(p,s,!1,!1)):s.appendChild(n.outlineObjectTD(p))).className="undetermined",c.textContent=e);return p},showMenu:function(e,a,i,o,s){r.log.info("myDocument is now "+c.location),r.log.info("outline.doucment is now "+n.document.location);var m=this,f=c.createElement("div");if(l("\n**** In showMenu, menuType = "+a+"\n"),o)for(var h in o)console.log("\t extra "+h+": "+o[h]+"\n");console.log("CREATED MENU\n"),f.id=this.menuID,f.className="outlineMenu",f.style.top=e.pageY+"px",f.style.left=e.pageX+"px";if("JournalTitleAutoComplete"===a){var v=function(e){for(var n=0,t=0,a=0,i=0,o=0,r=0;e&&!isNaN(e.offsetLeft)&&!isNaN(e.offsetTop);)o=e.offsetLeft,r=e.offsetTop,o!==a&&(n+=e.offsetLeft-e.scrollLeft),r!==i&&(t+=e.offsetTop-e.scrollTop),a=o,i=r,e=e.parentNode;return{top:t+54,left:n-38}}(c.getElementById("inpid_journal_title"));v.left-=c.getElementById("inpid_journal_title").scrollTop,f.style.top=v.top+"px",f.style.left=v.left+"px"}console.log("menu at top="+f.style.top+" left="+f.style.left+"\n"),c.body.appendChild(f);var g=f.appendChild(c.createElement("table"));switch(f.lastHighlight=null,g.addEventListener("mouseover",function(e){f.lastHighlight&&(f.lastHighlight.className=""),f.lastHighlight=r.utils.ancestor(r.utils.getTarget(e),"TR"),f.lastHighlight&&(f.lastHighlight.className="activeItem")},!1),a){case"DidYouMeanDialog":var b=function(e){l("DID YOU MEAN SELECT ITEM!!!!!");var a=r.utils.ancestor(r.utils.getTarget(e),"TR");2===a.childNodes.length&&a.nextSibling?(t.add(I,D,B),n.UserInput.clearMenu()):2===a.childNodes.length&&n.UserInput.clearMenu()};break;case"LimitedPredicateChoice":var w=o.clickedTd;b=function(e){l("LIMITED P SELECT ITEM!!!!");for(var a=r.utils.getAbout(t,r.utils.getTarget(e)),i=w.parentNode.AJAR_statement.predicate.elements,o=0;o<i.length;o++)i[o].sameTerm(a)&&i.unshift(i.splice(o,1)[0]);n.UserInput.clearMenu();var s=w.parentNode,c=n.outlinePredicateTD(s.AJAR_statement.predicate,s);s.insertBefore(c,w),s.removeChild(w),m.lastModified.select()};break;case"PredicateAutoComplete":case"GeneralAutoComplete":case"GeneralPredicateChoice":case"JournalTitleAutoComplete":case"TypeChoice":var x=o.isPredicate,y=o.selectedTd;b=function(e){l("WOOHOO");var a=r.utils.getAbout(t,r.utils.getTarget(e));l("GENERAL SELECT ITEM!!!!!!="+a),l("target="+r.utils.getTarget(e)),x?(l("1"),n.UserInput.fillInRequest("predicate",y,a)&&(l("2"),n.UserInput.clearMenu())):(l("3"),n.UserInput.fillInRequest("object",y,a)&&(l("4"),n.UserInput.clearMenu()))};break;default:throw new Error("userinput: unexpected mode")}g.addEventListener("click",b,!1);var C,k={};function T(e){g.firstChild&&"no-suggest"===g.firstChild.className&&g.removeChild(g.firstChild);var n=r.utils.predicateLabelForXML(e,!1);if(e.uri){var t="??";for(var a in k)if(r.log.debug(k[a]),r.rdf.Util.string_startswith(e.uri,k[a])){t=a;break}var i=g.appendChild(c.createElement("tr"));i.setAttribute("about",e),i.appendChild(c.createElement("th")).appendChild(c.createElement("div")).appendChild(c.createTextNode(n)),i.appendChild(c.createElement("td")).appendChild(c.createTextNode(t.toUpperCase()))}}function E(e){return function(n){T(n[e.vars[0]])}}switch(t.each(void 0,r.ns.rdf("type"),r.ns.owl("Ontology")).map(function(e){var n=r.utils.label(e);if(n){var t=n.value.match(/\((.+?)\)/);t?k[t[1]]=e.uri:k[n.value]=e.uri}}),a){case"DidYouMeanDialog":var A=o.dialogTerm,I=o.bnodeTerm;f.style.width="auto";var j=g.appendChild(c.createElement("tr")).appendChild(c.createElement("th"));j.appendChild(c.createTextNode("Did you mean..."));var N,P=t.statementsMatching(A);for(N=0;N<P.length&&!t.whether(P[N].predicate,p("type"),r.ns.owl("InverseFunctionalProperty"));N++);var D=P[N].predicate,B=t.any(A,P[N].predicate),M=r.utils.label(A)+" who has "+r.utils.label(D)+" "+B+"?",O=g.appendChild(c.createElement("tr")).appendChild(c.createElement("th"));O.appendChild(c.createTextNode(M)),j.setAttribute("colspan","2"),O.setAttribute("colspan","2");var L=g.appendChild(c.createElement("tr"));L.appendChild(c.createElement("th")).appendChild(c.createTextNode("Yes")),L.appendChild(c.createElement("td")).appendChild(c.createTextNode("BOOLEAN"));var R=g.appendChild(c.createElement("tr"));R.appendChild(c.createElement("th")).appendChild(c.createTextNode("No")),R.appendChild(c.createElement("td")).appendChild(c.createTextNode("BOOLEAN"));break;case"PredicateAutoComplete":C=o.inputText;for(var S=n.labeller.searchAdv(C,void 0,"predicate"),_=[],U=0;U<S.length;U++){var F={vars:[]};F.vars.push("Kenny");var q={};q.Kenny=t.fromNT(S[U].NT);try{E(F)(q)}catch(e){throw new Error("I'll deal with bnodes later...[Kenny]"+e)}}var z=_[0];if(0===z.length)return console.log("cm length 0\n"),void this.clearMenu();for(var H=0;H<z.length&&H<10;H++)T(z[H][1]);break;case"GeneralAutoComplete":C=o.inputText;try{_=n.labeller.search(C)}catch(e){console.log("GeneralAutoComplete: debug me "+o.selectedTd.textContent+"\n"+e+"\n")}z=_[0];var W=_[1];if(0===z.length)return console.log("cm length 0\n"),void this.clearMenu();for(var G=0;G<z.length&&G<10;G++){var $=z[G][1].toNT(),J=g.appendChild(c.createElement("tr"));J.setAttribute("about",$);var V=J.appendChild(c.createElement("th"));V.appendChild(c.createElement("div")).appendChild(c.createTextNode(z[G][0]));var Y=W[G],K=Y?r.utils.label(Y):"";J.appendChild(c.createElement("td")).appendChild(c.createTextNode(K))}break;case"JournalTitleAutoComplete":C=o.inputText,console.log("testing searching text= "+C+" =====\n"),console.log("\n===start JournalTitleAutoComplete\n");for(var X=t.each(void 0,p("type"),d("Journal")),Q=[],Z=0;Z<X.length;Z++){var ee=X[Z],ne=t.each(ee,u("title"),void 0),te=ne+"",ae=C.toLowerCase();if(-1!==te.toLowerCase().search(ae)){l("FOUND A Journal Title Match!!!!!!"),Q.push(ne);var ie=g.appendChild(c.createElement("tr"));ie.setAttribute("about","journalTitle"),ie.appendChild(c.createElement("th")).appendChild(c.createElement("div")).appendChild(c.createTextNode(ne)),ie.appendChild(c.createElement("td")).appendChild(c.createTextNode(ee))}}console.log("matched: "+Q+"\n"),console.log("\\\\done showMenu's JTAutocomplete\n");break;case"LimitedPredicateChoice":var oe=r.utils.getAbout(t,o.clickedTd);oe.termType="Collection";for(var re=t.each(oe,r.ns.link("element")),se=0;se<re.length;se++)T(re[se]);break;default:(J=g.appendChild(c.createElement("tr"))).className="no-suggest",(V=J.appendChild(c.createElement("th"))).appendChild(c.createElement("div")).appendChild(c.createTextNode("No suggested choices. Try to type instead.")),J.appendChild(c.createElement("td")).appendChild(c.createTextNode("OK")),J.addEventListener("click",function(e){m.clearMenu(),e.stopPropagation()},"false");var ce=function(){};switch(i.constructor.name){case"Array":for(var le=0;le<i.length;le++)t.query(i[le],E(i[le]),ce);break;case"undefined":throw new Error("addPredicateChoice: query is not defined");default:t.query(i,E(i),ce)}}},fillInRequest:function(e,a,s){var c,l,p=a.parentNode;c=p.AJAR_statement,l=p.AJAR_inverse;var d,u="object"===e?c.object:c.predicate,m=!1;if(t.any(u,r.ns.link("onfillin")),"predicate"===e){var f=n.outlinePredicateTD(s,p,!1,!1);if("undetermined"!==a.nextSibling.className){var h=new r.rdf.Statement(c.subject,s,c.object,c.why);try{r.store.updater.update([],[h],function(e,n,a){n?(d=t.anyStatementMatching(c.subject,s,c.object,c.why),p.AJAR_statement=d,f.className=f.className.replace(/ pendingedit/g,"")):r.log.warn("Failure occurs (#2) while inserting "+p.AJAR_statement+"\n\n"+a)})}catch(e){return r.log.error(e),void r.log.warn("Error when insert (#2) of statement "+h+":\n\t"+e)}f.className+=" pendingedit",this.lastModified=null}else this.formUndetStat(p,c.subject,s,c.object,c.why,!1),n.walk("right"),m=!0;n.replaceTD(f,a),o.remove(c)}else if("object"===e){var v=n.outlineObjectTD(s);if(n.replaceTD(v,a),a.previousSibling&&"undetermined"===a.previousSibling.className)n.walk("left"),m=!0;else{var g;g=l?new r.rdf.Statement(s,c.predicate,c.object,c.why):new r.rdf.Statement(c.subject,c.predicate,s,c.why);try{r.store.updater.update([],[g],function(e,n,a){var i;r.log.info("@@ usinput.js (object) callback ok="+n+" for statement:"+g+"\n "),n?(v.className=v.className.replace(/ pendingedit/g,""),(i=l?t.statementsMatching(s,c.predicate,c.object,c.why):t.statementsMatching(c.subject,c.predicate,s,c.why)).length||r.log.error("userinput.js 1711: Can't find statememt!"),p.AJAR_statement=i[0]):r.log.warn("userinput.js (object): Fail trying to insert statement "+g)})}catch(e){return r.log.error("userinput.js (object): exception trying to insert statement "+g+": "+r.utils.stackString(e)),void r.log.warn("Error trying to insert statement "+g+":\n"+e)}this.lastModified=null,v.className+=" pendingedit"}o.remove(c)}if(i.statements.push(d),!m)return!0;this.startFillInText(n.getSelection()[0])},formUndetStat:function(e,n,t,a,i,r){return e.AJAR_inverse=r,e.AJAR_statement=o.add(n,t,a,i),e.AJAR_statement}}}},function(e,n,t){var a=t(0);e.exports={makeQueryRow:r,QuerySource:function(){this.queries=[],this.listeners=[],this.addQuery=function(e){var n;for(null!==e.name&&""!==e.name||(e.name="Query #"+(this.queries.length+1)),e.id=this.queries.length,this.queries.push(e),n=0;n<this.listeners.length;n++)null!==this.listeners[n]&&this.listeners[n].addQuery(e)},this.removeQuery=function(e){var n;for(n=0;n<this.listeners.length;n++)null!==this.listeners[n]&&this.listeners[n].removeQuery(e);null!==this.queries[e.id]&&delete this.queries[e.id]},this.addListener=function(e){var n;for(this.listeners.push(e),n=0;n<this.queries.length;n++)null!==this.queries[n]&&e.addQuery(this.queries[n])},this.removeListener=function(e){var n;for(n=0;n<this.queries.length;n++)null!==this.queries[n]&&e.removeQuery(this.queries[n]);for(n=0;n<this.listeners.length;n++)this.listeners[n]===e&&delete this.listeners[n]}},viewAndSaveQuery:function(e,n){var t=e.qs;a.log.info("outline.doucment is now "+e.document.location);for(var i=function(e,n){var t,i,o,s,c=new a.rdf.Query,l=e.length;for(t=0;t<l;t++)i=e[t],s=i.parentNode,o=s.AJAR_statement,a.log.debug("Statement "+o),i.getAttribute("class").indexOf("pred")>=0&&(a.log.info("   We have a predicate"),r(c,s)),i.getAttribute("class").indexOf("obj")>=0&&(a.log.info("   We have an object"),r(c,s,!0));return n.addQuery(c),function e(n){var t=n.statements.length;var a,i;for(var o=0;o<t;o++)a=n.statements[o],void 0!==(i=a.tr)&&(i.AJAR_pattern=null,i.AJAR_variable=null);for(var r in n.optional)e(n.optional[r])}(c.pat),c}(n,t),o=0;o<t.listeners.length;o++)t.listeners[o].getActiveView().view.drawQuery(i),t.listeners[o].updateQueryControls(t.listeners[o].getActiveView())}};var i=[];function o(e){for(var n=e;;){if(n.getAttribute("predTR"))return n;if(!n.previousSibling||"TR"!==n.previousSibling.nodeName)return console.log("Could not find predParent"),e;n=n.previousSibling}}function r(e,n,t){var s,c,l,p,d,u=a.store,m=n.AJAR_inverse;var f=null;for(p=n.parentNode;p;p=p.parentNode)if(void 0!==p.AJAR_statement){p.setAttribute("bla",p.AJAR_statement),p.AJAR_variable||r(e,p),l=p.AJAR_variable;var h=o(p);h.getAttribute("optionalSubqueriesIndex")&&(f=h.getAttribute("optionalSubqueriesIndex"),d=i[f]);break}d||(d=e.pat);var v=o(n),g=v.getAttribute("optional");if(g||(f?v.setAttribute("optionalSubqueriesIndex",f):v.removeAttribute("optionalSubqueriesIndex")),g){var b=u.formula();i.push(b),v.setAttribute("optionalSubqueriesIndex",i.length-1),d.optional.push(b),d=b}var w,x,y=n.AJAR_statement,C=n.AJAR_inverse?y.subject:y.object,k=!0;return C.isBlank&&t&&window.alert("You cannot constrain a query with a blank node. No constraint will be added."),l||(k=!1,l=m?y.object:y.subject),c=n.AJAR_variable?n.AJAR_variable:u.variable(a.utils.newVariableName()),e.vars.push(c),c.label=k?l.label:a.utils.label(l),c.label+=" "+a.utils.predicateLabelForXML(y.predicate,m),w=c,x=l,s=m?new a.rdf.Statement(w,y.predicate,x):new a.rdf.Statement(x,y.predicate,w),c.label=c.label.slice(0,1).toUpperCase()+c.label.slice(1),t&&(d.constraints[c]=new function(e){return this.describe=function(n){return n+" = "+e.toNT()},this.test=function(n){return e.sameTerm(n)},this}(C)),a.log.info("Pattern: "+s),s.tr=n,n.AJAR_pattern=s,n.AJAR_variable=c,a.log.debug("Query pattern: "+s),d.statements.push(s),c}},function(e,n,t){e.exports=t(14).default},function(e,n,t){"use strict";t.r(n);var a=t(0),i=t.n(a),o=t(1),r=t.n(o);function s(e,n,t,a,i,o,r){try{var s=e[o](r),c=s.value}catch(e){return void t(e)}s.done?n(c):Promise.resolve(c).then(a,i)}var c=i.a.store,l=i.a.ns,p={global:!1,icon:i.a.icons.iconBase+"noun_15059.svg",name:"profile",label:function(e){var n=c.findTypeURIs(e);return n[l.vcard("Individual").uri]||n[l.vcard("Organization").uri]||n[l.foaf("Person").uri]||n[l.schema("Person").uri]?"Profile":null},render:function(e,n){function t(e,n,t){var a=r.a.byName(t).render(n,e);return a.setAttribute("style","border: 0.3em solid #444; border-radius: 0.5em"),a}function a(){var e;return e=regeneratorRuntime.mark(function e(n,a,o){var r,s,p,d,u,m,f,h;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(f=function(e){var n=m.appendChild(o.createElement("h3"));return n.setAttribute("style","font-size: 120%; color:"+d+";"),n.textContent=e,n},a){e.next=3;break}throw new Error("subject missing");case 3:if(r=a.doc(),!((s=c.each(a,l.rdfs("seeAlso"),null,r)).length>0)){e.next=14;break}return e.prev=6,e.next=9,c.fetcher.load(s);case 9:e.next=14;break;case 11:e.prev=11,e.t0=e.catch(6),n.appendChild(i.a.widgets.errorMessageBlock(e.t0));case 14:p=c.anyValue(a,l.solid("profileBackgroundColor"),null,a.doc())||"#ffffff",n.style.backgroundColor=p,d=c.anyValue(a,l.solid("profileHighlightColor",null,a.doc()))||"#090",n.style.border="0.3em solid ".concat(d),n.style.borderRadius="0.5em",n.style.padding="0.7em",n.style.marginTop="0.7em",u=n.appendChild(o.createElement("table")),m=u.appendChild(o.createElement("tr")),u.appendChild(o.createElement("tr")).appendChild(o.createElement("div")).setAttribute("style","padding: 0.7em;"),f("Contact"),(h=t(o,a,"contact")).border="0em",m.appendChild(h),c.holds(a,l.foaf("knows"))&&(f("Solid Friends"),i.a.widgets.attachmentList(o,a,n,{doc:r,modify:!1,predicate:l.foaf("knows"),noun:"friend"}));case 31:case"end":return e.stop()}},e,null,[[6,11]])}),(a=function(){var n=this,t=arguments;return new Promise(function(a,i){var o=e.apply(n,t);function r(e){s(o,a,i,r,c,"next",e)}function c(e){s(o,a,i,r,c,"throw",e)}r(void 0)})}).apply(this,arguments)}var o=n.createElement("div");return function(e,n,t){a.apply(this,arguments)}(o,e,n),o}};n.default=p},function(e,n,t){e.exports=t(68).default},function(e,n,t){e.exports=t(69).default},function(e,n,t){e.exports=t(67).default},function(e,n,t){const a=t(0),i=t(1),o=a.ns,r=!1;e.exports={icon:a.icons.iconBase+"noun_97839.svg",name:"issue",audience:[o.solid("PowerUser")],label:function(e){var n=a.store,t=n.findTypeURIs(e);return t["http://www.w3.org/2005/01/wf/flow#Task"]||n.holds(e,a.ns.wf("tracker"))?"issue":t["http://www.w3.org/2005/01/wf/flow#Tracker"]?"tracker":null},render:function(e,n){var o=a.store,s=a.ns,c=$rdf.Namespace("http://www.w3.org/2005/01/wf/flow#"),l=$rdf.Namespace("http://purl.org/dc/elements/1.1/"),p=$rdf.Namespace("http://purl.org/dc/terms/"),d=i.getOutliner(n),u=n.createElement("div");function m(n,t,a){if(r){if(!b(g,"trackLastModified"))return;var i=t.statementsMatching(e,p("modified"));i=i.concat(t.statementsMatching(e,c("modifiedBy")));var o=[$rdf.st(e,p("modified"),new Date,a)];E&&o.push($rdf.st(e,c("modifiedBy"),E,a)),k.update(i,o,function(e,n,t){})}}function f(e,t){var a=n.createElement("pre");return a.setAttribute("style",t||"color: grey"),u.appendChild(a),a.appendChild(n.createTextNode(e)),a}function h(e){console.warn(e),u.appendChild(a.widgets.errorMessageBlock(n,e))}function v(e,n){e||h("Sorry, failed to save your change:\n"+n)}u.setAttribute("class","issuePane");var g,b=function(e,n){var t=o.any(e,s.ui(n));return!(!t||!t.value)},w=this,x=function(t){var a=t.parentNode,i=w.render(e,n);a.replaceChild(i,t)},y=function(){return""+(new Date).getTime()},C=function(e,n,t,i){var o=e.createElement("div"),r=n.any(t,c("stateStore"));a.store.fetcher.removeCallback("done","expand"),a.store.fetcher.removeCallback("fail","expand");var m=n.any(t,c("issueClass")),f=a.utils.label(m);o.innerHTML="<h2>Add new "+(i?"sub ":"")+f+"</h2><p>Title of new "+f+":</p>";var h=e.createElement("input");return h.setAttribute("type","text"),h.setAttribute("style","margin: 0.5em; font-size: 100%; padding: 0.3em;"),h.setAttribute("size","100"),h.setAttribute("maxLength","2048"),h.select(),h.addEventListener("keyup",function(e){13===e.keyCode&&function(){h.setAttribute("class","pendingedit"),h.disabled=!0;var e,a,m=[],f=n.anyValue(t,c("issueURITemplate"));f?(f=$rdf.uri.join(f,r.uri),e=n.sym(function(e){const n=new $rdf.Literal(new Date),t=""+(new Date).getTime();let a=n.value.slice(0,4);var i=n.value.slice(5,7),o=n.value.slice(8,10);return e.replace("{N}",t).replace("{YYYY}",a).replace("{MM}",i).replace("{DD}",o)}(f))):e=n.sym(r.uri+"#Iss"+y()),a=e.doc();var v=n.literal(h.value);m.push(new $rdf.Statement(e,c("tracker"),t,r)),m.push(new $rdf.Statement(e,l("title"),v,r)),m.push(new $rdf.Statement(e,p("created"),new Date,r));var g=n.each(t,c("initialState"));0===g.length&&console.log("This tracker has no initialState");for(var b=0;b<g.length;b++)m.push(new $rdf.Statement(e,s.rdf("type"),g[b],r));i&&m.push(new $rdf.Statement(i,c("dependent"),e,r)),f&&(m.push(new $rdf.Statement(e,c("tracker"),t,a)),m.push(new $rdf.Statement(e,s.rdfs("seeAlso"),r,a)));k.update([],m,function(n,t,a){t?(o.parentNode.removeChild(o),x(u),d.GotoSubject(e,!0,void 0,!0,void 0)):console.log("Error: can't save new issue:"+a)})}()},!1),o.appendChild(h),o},k=o.updater,T=o.findTypeURIs(e),E=a.authn.currentUser(),A=function(e){if(e.refresh)e.refresh();else for(var n=0;n<e.children.length;n++)A(e.children[n])};function I(e,t){var i=a.ns,r={},s=function(e){r[e.uri]=!0};s(i.rdf("type")),s(i.dc("title"));!function(){var n=o.findTypeURIs(e),a="padding: 0.5em 1.5em 1em 1.5em; ",i=null;for(var r in n)if(i=o.any(o.sym(r),o.sym("http://www.w3.org/ns/ui#backgroundColor")))break;a+="background-color: "+(i=i?i.value:"#eee")+"; ",t.setAttribute("style",a)}();var l=o.any(g,c("stateStore")),p=o.sym(e.uri.split("#")[0]);a.authn.checkUser();var u=o.any(g,c("issueClass"));if(!u)throw new Error("This tracker "+g+" has no issueClass");var w=a.widgets.makeSelectForCategory(n,o,e,u,l,function(e,n){e?(m(0,o,p),A(t)):console.log("Failed to change state:\n"+n)});t.appendChild(w);for(var x=o.each(g,c("issueCategory")),T=0;T<x.length;T++)t.appendChild(a.widgets.makeSelectForCategory(n,o,e,x[T],l,function(e,n){e?(m(0,o,p),A(t)):console.log("Failed to change category:\n"+n)}));let E=n.createElement("a");E.setAttribute("href",g.uri),E.setAttribute("style","float:right"),t.appendChild(E).textContent=a.utils.label(g),E.addEventListener("click",a.widgets.openHrefInOutlineMode,!0),s(i.wf("tracker")),t.appendChild(a.widgets.makeDescription(n,o,e,c("description"),p,function(e,n){e?m(0,o,p):console.log("Failed to change description:\n"+n)})),s(c("description"));var I=o.statementsMatching(e,i.wf("assignee"));if(I.length>1){f("Weird, was assigned to more than one person. Fixing ..");var j=I.slice(1);k.update(j,[],function(e,n,t){n?f("Now fixed."):h("Fixed failed: "+t)})}var N=o.statementsMatching(e),P=o.statementsMatching(void 0,void 0,e);if(async function(){var n=[],t=o.each(e,i.wf("assigneeGroup"));for(let e=0;e<t.length;e++){let a=t[e];await o.fetcher.load(),n=n.concat(o.each(a,i.vcard("member")))}var a=o.any(null,i.doap("bug-database"),g);return a&&(await o.fetcher.load(a),n=n.concat(o.each(a,i.doap("developer")))),n}().then(r=>{if(r.length){r.map(function(e){o.fetcher.lookUpThing(e)});t.appendChild(a.widgets.makeSelectForOptions(n,o,e,i.wf("assignee"),r,{nullLabel:"(unassigned)"},p,function(e,n){e?m(0,o,p):console.log("Failed to change assignee:\n"+n)}))}}),s(i.wf("assignee")),b(g,"allowSubIssues")&&(d.appendPropertyTRs(t,N,!1,function(e,n){return!(n||!e.sameTerm(c("dependent")))}),d.appendPropertyTRs(t,P,!0,function(e,n){return!(!n||!e.sameTerm(c("dependent")))}),s(c("dependent"))),t.appendChild(n.createElement("br")),b(g,"allowSubIssues")){var D=n.createElement("button");D.setAttribute("type","button"),t.appendChild(D);var B=a.utils.label(u);D.innerHTML="New sub "+B,D.setAttribute("style","float: right; margin: 0.5em 1em;"),D.addEventListener("click",function(a){t.appendChild(C(n,o,g,e))},!1)}var M=o.any(g,i.wf("extrasEntryForm"));M&&(a.widgets.appendForm(n,t,{},e,M,l,v),o.each(M,i.ui("part")).map(function(e){var n=o.any(e,i.ui("property"));n&&s(n)}));var O,L=t.appendChild(n.createElement("tr"));L.setAttribute("style","height: 1em"),o.anyValue(g,c("issueURITemplate"))?O=e.doc():((O=o.any(g,i.wf("messageStore")))||(O=o.any(g,c("stateStore"))),o.sym(O.uri+"#Chat"+y())),o.fetcher.nowOrWhenFetched(O,function(i,r,s){if(i){var c=a.messageArea(n,o,e,O);t.insertBefore(c,L)}else{var l=n.createElement("p");l.textContent=r,t.insertBefore(l,L)}}),s(i.wf("message")),a.widgets.attachmentList(n,e,t,{doc:l,promptIcon:a.icons.iconBase+"noun_25830.svg",predicate:i.wf("attachment")}),s(i.wf("attachment")),d.appendPropertyTRs(t,N,!1,function(e,n){return!(e.uri in r)}),d.appendPropertyTRs(t,P,!0,function(e,n){return!(e.uri in r)});var R=n.createElement("button");R.textContent="refresh",R.addEventListener("click",function(e){a.store.fetcher.unload(O),a.store.fetcher.nowOrWhenFetched(O.uri,void 0,function(e,n){e?A(t):console.log("Cant refresh messages"+n)})},!1),R.setAttribute("style","margin: 0.5em 1em;"),t.appendChild(R)}var j,N=a.ns.wf("").doc();if(o.holds(void 0,void 0,void 0,N)||$rdf.parse(t(19),o,N.uri,"text/turtle"),T["http://www.w3.org/2005/01/wf/flow#Task"]||o.holds(e,a.ns.wf("tracker"))){if(!(g=o.any(e,c("tracker"))))throw new Error("This issue "+e+"has no tracker");var P=g.uri.split("#")[0];a.store.fetcher.load(g.doc()).then(function(n){var t=o.any(g,c("stateStore"));a.store.fetcher.nowOrWhenFetched(t,e,function(n,a){if(!n)return console.log("Failed to load state "+t+" "+a);I(e,u),k.addDownstreamChangeListener(t,function(){A(u)})})}).catch(e=>{return h("Failed to load config "+P+" "+e)}),a.store.fetcher.nowOrWhenFetched(P,e,function(e,n){if(!e)return console.log("Failed to load config "+P+" "+n)})}else if(T["http://www.w3.org/2005/01/wf/flow#Tracker"]){var D;g=e;var B=o.any(e,c("issueClass"));if(!B)throw new Error("This tracker has no issueClass");var M=o.any(e,c("stateStore"));if(!M)throw new Error("This tracker has no stateStore");a.authn.checkUser();var O=n.createElement("h2");O.setAttribute("style","font-size: 150%"),u.appendChild(O);var L=a.utils.label(B);O.appendChild(n.createTextNode(L+" list"));var R=n.createElement("button"),S=n.createElement("div");R.setAttribute("type","button"),R.setAttribute("style","padding: 0.3em; font-size: 100%; margin: 0.5em;"),S.appendChild(R),u.appendChild(S);var _=n.createElement("img");_.setAttribute("src",a.icons.iconBase+"noun_19460_green.svg"),_.setAttribute("style","width: 1em; height: 1em; margin: 0.2em;"),R.appendChild(_);var U=n.createElement("span");U.innerHTML="New "+L,R.appendChild(U),R.addEventListener("click",function(t){R.setAttribute("disabled","true"),S.appendChild(C(n,o,e))},!1),a.store.fetcher.load([M]).then(function(t){var i=new $rdf.Query(a.utils.label(e)),r=o.each(g,c("issueCategory")),l=["issue","state","created"];for(let e=0;e<r.length;e++)l.push("_cat_"+e);var p={};l.map(function(e){i.vars.push(p[e]=$rdf.variable(e))}),i.pat.add(p.issue,c("tracker"),g),i.pat.add(p.issue,s.dct("created"),p.created),i.pat.add(p.issue,s.rdf("type"),p.state),i.pat.add(p.state,s.rdfs("subClassOf"),B);for(let e=0;e<r.length;e++)i.pat.add(p.issue,s.rdf("type"),p["_cat_"+e]),i.pat.add(p["_cat_"+e],s.rdfs("subClassOf"),r[e]);i.pat.optional=[];var d=o.any(g,c("propertyList"));if(d)for(var m=d.elements,f=0;f<m.length;f++){var h=m[f],v="_prop_"+f;h.uri.indexOf("#")>=0&&(v=h.uri.split("#")[1]);var b=new $rdf.IndexedFormula;i.pat.optional.push(b),i.vars.push(p[v]=$rdf.variable(v)),b.add(p.issue,h,p[v])}var w,x={};o.each(void 0,s.rdfs("subClassOf"),B).map(function(e){(o.holds(e,s.rdfs("subClassOf"),c("Open"))||e.sameTerm(c("Open")))&&(x[e.uri]=!0)});var C,T,E=a.table(n,{query:i,keyVariable:"?issue",hints:{"?issue":{linkFunction:function(e){D.innerHTML="";var t=D.appendChild(n.createElement("button"));t.textContent="X",t.addEventListener("click",function(e){D.innerHTML=""}),I(o.sym(e),D)}},"?created":{cellFormat:"shortDate"},"?state":{initialSelection:x}}});if(u.appendChild(E),(w=u.appendChild(n.createElement("div"))).setAttribute("style"," position: absolute; top: 100px; right: 20px; margin: 1em white;"),D=w.appendChild(n.createElement("div")),E.refresh){var A=n.createElement("button");A.textContent="refresh",A.addEventListener("click",function(e){a.store.fetcher.unload(M),a.store.fetcher.nowOrWhenFetched(M.uri,void 0,function(e,n){e?E.refresh():console.log("Cant refresh data:"+n)})},!1),u.appendChild(A)}else console.log("No refresh function?!");u.appendChild((C=e,(T=a.authn.newAppInstance(n,{noun:"tracker"},function(e,n){var t=a.ns.space,i=a.store;if(n||("/"!==(n=i.any(e,t("uriPrefix")).value).slice(-1)&&($rdf.log.error("issuetracker.w3.org: No / at end of uriPrefix "+n),n+="/"),n+="issuetracker.w3.org/"+y()+"/",confirm("Make new tracker at "+n+"?"))){for(var o=i.any(g,c("stateStore")),r=i.sym(n+"store.ttl"),s=C.doc(),l=s.uri.slice(0,s.uri.lastIndexOf("/")+1),p=function(e){if(void 0!==e.elements)return e.elements.map(p);if(void 0===e.uri)return e;var t=e.uri;return t===o.uri?r:(t.slice(0,l.length)===l&&(t=n+t.slice(l.length),$rdf.log.debug(" Map "+e.uri+" to "+t)),i.sym(t))},d=p(s),u=p(C),m=i.statementsMatching(void 0,void 0,void 0,s),f=0;f<m.length;f++){var h=m[f];i.add(p(h.subject),p(h.predicate),p(h.object),d)}i.add(u,a.ns.space("inspiration"),C,o),i.add(u,a.ns.space("inspiration"),C,d),k.put(d,i.statementsMatching(void 0,void 0,void 0,d),"text/turtle",function(e,n,t){n?k.put(r,[],"text/turtle",function(e,n,t){n?console.info("Ok The tracker created OK at: "+u.uri+"\nMake a note of it, bookmark it. "):console.log("FAILED to set up new store at: "+r.uri+" : "+t)}):console.log("FAILED to save new tracker at: "+d.uri+" : "+t)})}})).setAttribute("style","margin: 0.5em 1em;"),T)),k.addDownstreamChangeListener(M,E.refresh)}).catch(function(e){return console.log("Cannot load state store: "+e)})}else console.log("Error: Issue pane: No evidence that "+e+" is either a bug or a tracker.");return a.authn.checkUser().then(e=>{if(e)return console.log("Web ID set already: "+e),void(E=e);(j=a.authn.loginStatusBox(n,e=>{e?(E=o.sym(e),console.log("Web ID set from login button: "+e),u.removeChild(j)):E=null})).setAttribute("style","margin: 0.5em 1em;"),u.appendChild(j)}),u}}},function(e,n){e.exports='\n#   Issue tracking - Worksflow application definiion ontology\n#\n# Finite state automaton ontology\n#\n# See requirements for tracking tools http://www.w3.org/2005/01/06-tool-req.html\n#\n@keywords a, is, of.\n\n@prefix :    <http://www.w3.org/2005/01/wf/flow#>.\n@prefix wf:    <http://www.w3.org/2005/01/wf/flow#>.\n\n@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix s: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix owl: <http://www.w3.org/2002/07/owl#>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n\n@prefix doc: <http://www.w3.org/2000/10/swap/pim/doc#> .\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/>.\n@prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#> .\n@prefix doap: <http://usefulinc.com/ns/doap#>.\n@prefix dc: <http://purl.org/dc/elements/1.1/>.\n@prefix dct: <http://purl.org/dc/terms/>.\n\n<> dc:title "Issue Tracking Ontology";\n\n    dct:creator <http://www.w3.org/People/Berners-Lee/card#i>;\n\n    s:comment """This ontology defines a very general class (Task)\n    which can used for any kind of bug tracking, issue tracking,\n    to-do-list management, action items, goal depednency, and so on.\n    It captures the state of a task as a subclass, so that\n    subsumption can be used.\n    It captures a discussion thread about a task.\n    It captures subtasks structure if necessary.\n    A "Tracker" defines actual set of states, categories, etc.,\n    which  a task can be in. The data about the tracker\n    guides the software managing the task.\n\n    There is some workflow modeling finite state machine\n    terms which are optional for  more complex definition\n    of the transitions allowed.\n    """.\n\nTask a s:Class;\n    s:label "task"@en; owl:disjointUnionOf (Open Closed);\n    s:comment """Something to be done in a wide sense,\n    an agenda item at a meeting is one example, but any\n    issue, task, action item, goal, product, deliverable, milestone, can such a thing.\n    The requirement for this framework was that it would allow\n    one to customize ontologies for things such as agenda items,\n    action items, working group issues with a spec, w3c Last Call issues,\n    software bugs and administrative requests.\n    In π-calculus, a process.\n    Make your type of issue a subclass of Task.\n    """.\n\nOpen a s:Class; s:subClassOf Task;\n    s:label "open"@en, "ouvert"@fr;\n    s:comment """A task which needs attention. The very crude states of Open and Closed all\n        interoperatbility between different systems if the states for a given\n        application are made subclasses of either Open or Closed. This allows\n        tasks from different systems to be mixed and treatd together with\n        limited but valuable functionality.\n    """.\n\nClosed a s:Class; s:subClassOf Task;\n    s:label "closed"@en, "fermé"@fr;\n    s:comment """A task which does not neeed attention. It may be closed because\n        has been abandonned or completed, for example.\n    """.\n\n\n\ndescription a rdf:Property;\n        s:label "description";\n        s:comment """The description, definition,\n        or abstract. Information explaining what this is.\n        Not arbitrary comment about anything, only about the subject.\n        (Use this property for anything. There is no domain restriction.).""".\n\ndependent a rdf:Property;\n        s:label "how";  owl:inverseOf [ s:label "why"];\n        s:domain Task; s:range Task;\n        s:comment """Another task upon which this depends, in the sense that\n        this task cannot be completed without that task being done.\n        You can\'t use this for dependencies on anything other than other tasks.\n        (Note the US spelling of the URI. In the UK, a dependant is a something\n        which is dependent on somehing else.)""".\n\nassignee    a        rdf:Property;\n        s:label        "assigned to"; owl:inverseOf [s:label "assignment"];\n#        s:domain    Task;\n        s:range        foaf:Agent;\n        s:comment    """The person or group to whom this has been assigned.""".\n\n# use dct:modified\n#modified        a               rdf:Property;\n#                s:label         "last changed".\n\nmodifiedBy      a               rdf:Property;\n                s:range         foaf:Agent;\n                s:label         "changed by".\n\n# use dct:created instead\n#created         a               rdf:Property;\n#                s:range         xsd:dateTime;\n#\n# Use foaf:maker instead\n#creator         a               rdf:Property;\n#                s:range         foaf:Agent;\n#                s:label         "changed by".\n\nsubscriber      a               rdf:Property;\n                s:label         "subscriber";\n                s:range         foaf:Agent.\n\n\n################## Products\n#\n#\n# History:  The Tracker system included a cocept of a product,\n# such that an action  could be associated with *either* an issue *or* a product.\n# Noah Mendelsohn for the TAG needed to be able make\n# and to give products: Goals, scuuess criteria,\n#  deliverables with dates, schedules, TAG members assigned, related issues.\n#\n\n\nProduct         a s:Class; s:subClassOf Task;\n                s:label "product";\n                s:comment """A product is a task which monitors something\n                which must be produced.""".\n\ndeliverable     a rdf:Property; s:subPropertyOf dependent;\n                s:range Product;\n                s:label "deliverable"@en;\n                s:comment """Something which must be deliverered to accomplish this""".\n\n\ngoalDescription a rdf:Property, owl:DatatypeProperty;\n                s:domain Task; s:range xsd:string;\n                s:label "goals";\n                s:comment """A textual description of the goals of this product, etc.""".\n\nsuccessCriteria a rdf:Property, owl:DatatypeProperty;\n                s:domain Task; s:range xsd:string;\n                s:label "success criteria";\n                s:comment """A textual description of the successs critera.\n                How when we know this is done?""".\n\ndateDue         a rdf:Property, owl:DatatypeProperty;\n                s:domain Task; s:range xsd:date;\n                s:label "due"@en;\n                s:comment """The date this task is due.\n                """.\n\n##################  Attachments\n\nattachment      a rdf:Property;\n                s:label "attachment";\n                s:comment """Something related is attached for information.""".\n\nscreenShot      a rdf:Property; s:subPropertyOf attachment;\n                s:label "screen shot"@en;\n                s:comment """An image taken by capturing the state of a\n                 computer screen, for example to demonstrate a problem""".\n\ntestData        a rdf:Property; s:subPropertyOf attachment;\n                s:label "test data"@en;\n                s:comment """A file which can be used as inpiut to a test\n                or to demonstrate a problem. """.\n\n\nterminalOutput      a rdf:Property; s:subPropertyOf attachment;\n                s:label "terminal output"@en;\n                s:comment """A file showing user interaction from a\n                text terminal or console etc. """.\n\n\nmessage         a rdf:Property; s:subPropertyOf attachment;\n                s:label "message"@en;\n                s:comment """A message about this. Attached for information.""".\n\n\nMessage         a s:Class; s:label "message"@en.\nrecipent a rdf:Property; s:label "to"; s:domain Message; s:range foaf:Agent.\nsender a rdf:Property; s:label "from"; s:domain Message; s:range foaf:Agent.\n\n############################# A Tracker connects and manages issues\n\ntracker         a rdf:Property;\n                s:label "tracker";\n                owl:inverseOf [ s:label "issue"];\n                s:domain Task;\n                s:range Tracker.\n\nTracker         a s:Class;\n                s:label "tracker";\n                s:comment """A set of issues and\n                the constraints on how they evolve.\n                To use this ontology, craete a new tracker.\n                Copy an existing one or make up your own.""".\n\nissueClass      a rdf:Property;\n                s:label "all issues must be in";\n                s:domain Tracker;\n                s:range s:Class, State;\n                s:comment """The class of issues which are allowed in this tracker.\n                This is essemtial to the operation of the tracker,\n                as it defines which states an issue can be in.\n                (The issueClass must be a disjointUnionOf the state classes)""".\n\nissueCategory   a rdf:Property;\n                s:label "issue category";\n                s:domain Tracker;\n                s:range s:Class;\n                s:comment """Issues may be categorized according to the\n                subclasses of this class""".\n\nstateStore      a rdf:Property;\n                s:label "state store";\n                s:domain Tracker;\n                s:range doc:Document;\n                s:comment """A read-write document.\n                The state of the issues is modified here.\n                When you set up a trcaker, thgis must be set to point\n                to a writeble data resource on the web.""".\n\ntransactionStore\n                a rdf:Property;\n                s:label "transaction store";\n                s:domain Tracker;\n                s:range doc:Document;\n                s:comment """An appendable document. Transactions and messsages\n                    can be written into here""".\n\nasigneeClass\n                a rdf:Property;\n                s:label "assignees must be";\n                s:domain Tracker;\n                s:range s:Class;  # Subclass of foaf:Agent\n                s:comment """When an issue is assigned, the assignee must be from this class""".\n\ninitialState\n                a rdf:Property;\n                s:label "initial state"@en;\n                s:label "état initial"@fr;\n                s:domain Tracker;\n                s:range State;\n                s:comment """The initial state for a new issue""".\n\n# Use this to link a project to a tracker\ndoap:bug-database owl:inverseOf [ s:label "project"@en ].\n\n\n\n\n############################################################\n#\n#           Finite state machines\n#\nChange        a s:Class;\n        s:label "change";\n        s:comment """The universal class of things which\nchange the state of a task.\nIncluded now: Creation, Transition. (Maybe in the future\nmore π-calculus constructions such as splitting & merging tasks,\nand import/export of obligations to a foreign opaque system.)\n""".\n\nTransition     a s:Class; s:subClassOf Change;\n        s:label        "transition";\n        s:comment """A transition is a change of state of\na task. Typical properties include date and/or source\n(a document causing the transition), and a final state.""".\n\nCreation     a s:Class; s:subClassOf Change;\n        s:label        "creation";\n        s:comment """A creation is a change from existence\nto non-existence\na task. Typical properties include date and/or source\n(a document causing the transition), and a final state.""".\n\n\ndate    s:range    DateTime.\n\nfinal    a         rdf:Property;\n        s:label        "to";\n        s:domain    Transition;\n        s:range    State.\n\ntask        a        rdf:Property;\n        s:range        Task;\n        s:label        "task".\n\nrequires    a rdf:Property;\n        s:label "requires";\n        s:domain    Transition;\n        s:range        rdf:List; # Of properties for validation\n        s:comment    """To be a valid transition,\n        a necessary (but not necessarily sufficuent) condition\n        is that there be recorded these properties for the record""".\n\naffects        a rdf:Property;\n        s:label "affects";\n        s:domain    doc:Work;\n        s:range        Task.\n\n\n# { ?x a Transition; task ?t; source ?doc } => { ?doc affects ?t }.\n\n\ncreates        a rdf:Property;\n        s:label "creates";\n        s:domain    doc:Work;\n        s:range        Task.\n\n\nallowedTransitions a rdf:Property;\n        s:domain    State;\n        s:range        rdf:List; # @@@ of Action\n        s:label        "allowed transitions";\n        s:comment    """The state machine is defined\n    by these lists of transition allowed for each issue.\n    (An interesting option in the Web is to make an allowed transition\n    to a state in soemone else\'s ontology, which in turn allows\n    transitions into many ontologies.  So a finite state maxchine\n    may become very large. In practice this means that a task handed\n    off to another organization may be processed on all kinds of ways.)""".\n\n#    { ?x a TerminalState} => { ?x allowedTransitions () }.\n\nfinal         a rdf:Property;\n        s:label        "to";\n        s:range    State.\n\nissue        a        rdf:Property;\n        s:label        "issue";\n        s:comment\n        """A transition changes the state of the given issue.""".\n\nsource    a        rdf:Property;\n        s:label        "source";\n        s:comment    """The source of a transition is\n                the document by which it happened""";\n        s:range        doc:Work.\nTerminalState a s:Class;\n    s:subClassOf State;\n    s:label "terminal state";\n    s:comment """A state from which there are no transisions.""".\n\nNonTerminalState a s:Class;\n    s:label "non-terminal state";\n    owl:disjointWith TerminalState;\n    s:comment """A state from which there are transisions.""".\n\n######################################################\n\n#ends\n'},function(e,n,t){const a=t(0),i=t(1);var o=t(3),r=t(25).toolsPane;const s=a.rdf,c=a.ns,l=a.store;e.exports={icon:a.icons.iconBase+"noun_99101.svg",name:"contact",label:function(e){var n=l.findTypeURIs(e);return n[c.vcard("Individual").uri]?"Contact":n[c.vcard("Organization").uri]?"contact":n[c.foaf("Person").uri]?"Person":n[c.schema("Person").uri]?"Person":n[c.vcard("Group").uri]?"Group":n[c.vcard("AddressBook").uri]?"Address book":null},mintClass:a.ns.vcard("AddressBook"),mintNew:function(e){return new Promise(function(n,t){a.authn.logInLoadProfile(e).then(e=>{console.log("Logged in as "+e.me);var i=e.me,o=e.dom,r=e.div,c=a.store,l=a.ns,p=e.newBase||e.newInstance.dir().uri;if((e.instanceClass||l.vcard("AddressBook")).sameTerm(l.vcard("Group"))){var d=e.newInstance||c.sym(e.newBase+"index.ttl#this"),u=d.doc();return c.add(d,l.rdf("type"),l.vcard("Group"),u),c.add(d,l.vcard("fn"),e.instanceName||"untitled group",u),void c.fetcher.putBack(u,{contentType:"text/turtle"}).then(function(t){n(e)}).catch(function(e){t(new Error("Error creating document for new group "+e))})}function m(e){r.appendChild(a.widgets.errorMessageBlock(o,e,"pink"))}var f='@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.\n    @prefix ab: <http://www.w3.org/ns/pim/ab#>.\n    @prefix dc: <http://purl.org/dc/elements/1.1/>.\n    @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n\n    <#this> a vcard:AddressBook;\n        dc:title "New address Book";\n        vcard:nameEmailIndex <people.ttl>;\n        vcard:groupIndex <groups.ttl>.\n  ',h=[{to:"index.ttl",content:f+="<#this> <http://www.w3.org/ns/auth/acl#owner> <"+i.uri+">.\n\n",contentType:"text/turtle"},{to:"groups.ttl",content:"",contentType:"text/turtle"},{to:"people.ttl",content:"",contentType:"text/turtle"},{to:"",existing:!0,aclOptions:{defaultForNew:!0}}],v=p+"index.html";a.authn.offlineTestID()&&(h.push({to:"local.html",from:"local.html",contentType:"text/html"}),v=p+"local.html");var g=function(){if(0===h.length)!function(t,a){console.log("Files created. App ready at "+t);var i=r.appendChild(o.createElement("p"));i.setAttribute("style","font-size: 140%;"),i.innerHTML="Your <a href='"+t+"'><b>new "+a+"</b></a> is ready. <br/><br/><a href='"+t+"'>Go to new "+a+"</a>";var s=Object.assign({newInstance:c.sym(t)},e);n(s)}(v,"address book");else{var l=h.shift();console.log("Creating new file "+l.to+" in new instance ");var d=s.uri.join(l.to,p),u=l.aclOptions||{},f=function(e,n){if(!n)return m("Error writing new file "+l.to),t(new Error("Error writing new file "+l.to));a.authn.setACLUserPublic(d,i,u).then(()=>g()).catch(e=>{let n="Error setting access permissions for "+l.to+" : "+e.message;return m(n),t(new Error(n))})};"content"in l?c.fetcher.webOperation("PUT",d,{data:l.content,saveMetadata:!0,contentType:l.contentType}).then(()=>f(0,!0)):"existing"in l?f(0,!0):t(new Error("copy not expected buiding new app"))}};g()},n=>{e.div.appendChild(a.widgets.errorMessageBlock(n))})})},render:function(e,n,p){p=p||{};var d=n.createElement("div"),u=e.doc();a.aclControl.preventBrowserDropEvents(n),d.setAttribute("class","contactPane");var m=function(e){console.log(e),d.appendChild(a.widgets.errorMessageBlock(n,e,"pink"))},f=function(e,n){e||m("Error: "+n)},h=this,v=a.store.updater;a.aclControl.preventBrowserDropEvents(n);var g=l.findTypeURIs(e),b=a.authn.currentUser(),w={target:e,me:b,noun:"address book",div:d,dom:n},x=function(e,n,t){l.fetcher.load(e).then(function(a){y(e,n,t)}).catch(function(e){m(e)})},y=function(e,t,o){var u=a.utils.label(c.vcard("AddressBook")),g=e[0],w=l.any(g,c.vcard("groupIndex")),x={},y={},C=o.foreignGroup||g,k=l.any(C,c.dc("title"))||l.any(C,c.vcard("fn"));p.solo&&k&&"undefined"!=typeof document&&(document.title=k.value),k=k?k.value:u;var T=function(e){if(e)return e;var n;for(let e in x){n=l.sym(e);let t=l.any(void 0,c.vcard("includesGroup"),n);if(t)return t}throw new Error("findBookFromGroups: Cant find address book which this group is part of")},E=function(e){var n=l.any(e,c.vcard("fn"))||l.any(e,c.foaf("name"))||l.any(e,c.vcard("organization-name"));return n?n.value:"???"},A=function(e){var n=X.value.trim().toLowerCase();if(0===n.length)return!0;for(var t=n.split(" "),a=0;a<t.length;a++){var i=t[a];if(e.toLowerCase().indexOf(i)<0)return!1}return!0};function I(e){Q.innerHTML="loading...",(y={})[e.uri]=!0,j();var t=g?M(e):e;a.store.fetcher.nowOrWhenFetched(t.doc(),void 0,function(i,o){if(Q.innerHTML="",!i)return f(i,"Can't load card: "+t+": "+o);Q.appendChild(P(n,t,"contact")),Q.appendChild(n.createElement("br")),Q.appendChild(a.widgets.linkIcon(n,t)),a.widgets.deleteButtonWithCheck(n,Q,"contact",function(){let n=e.dir();alert("Conatiner to delete is "+n);let t=l.any(e,c.vcard("fn"));confirm("Delete contact "+t+" completely?? "+n)&&(console.log("Deleting a contact "+t),B(e),function e(n,t){return new Promise(function(a,i){n.fetcher.load(t).then(function(){let i=n.each(t,c.ldp("contains")).map(t=>{if(n.holds(t,c.rdf("type"),c.ldp("BasicContainer")))return e(n,t);if(console.log("deleteRecirsive file: "+t),!confirm(" Really DELETE File "+t))throw new Error("User aborted delete file");return n.fetcher.webOperation("DELETE",t.uri)});if(console.log("deleteRecirsive folder: "+t),!confirm(" Really DELETE folder "+t))throw new Error("User aborted delete file");i.push(n.fetcher.webOperation("DELETE",t.uri)),Promise.all(i).then(e=>{a()})})})}(l,n).then(e=>{O(),Q.innerHTML="Contact Data Deleted."}))}).style="height: 2em;"})}function j(e){for(var n=0,t=null,a=0;a<J.children.length;a++){var i=J.children[a];let e=A(E(i.subject));e&&(n++,t=i),i.setAttribute("style",e?y[i.subject.uri]?"background-color: #cce;":"":"display: none;")}if(1===n&&e){I(t.subject)}}var N=function(e,n,t){for(var a=n.children.length,i=[],o=0;o<n.children.length;o++){var r=n.children[o];!function(n,o){o.setAttribute("style","background-color: #ffe;"),l.fetcher.nowOrWhenFetched(n.doc(),void 0,function(r,s){if(!r){var c="Can't load group file: "+n+": "+s;return i.push(c),f(r,c)}o.setAttribute("style","background-color: #cce;"),e[n.uri]=!0,L(),O(),(a-=1)||t&&t(0===i.length,i)})}(r.subject,r)}},P=function(e,n,t){var a=i.byName(t).render(n,e);return a.setAttribute("style","border: 0.1em solid #444; border-radius: 0.5em"),a},D=function(e,n){var t=E(e),a=E(n);if(t&&a){if((t=t.toLowerCase())>(a=a.toLowerCase()))return 1;if(t<a)return-1}return e.uri>n.uri?1:e.uri<n.uri?-1:0};function B(e){console.log("deleteThing: "+e);var n=l.statementsMatching(e).concat(l.statementsMatching(void 0,void 0,e)),t={};n.map(function(e){t[e.why.uri]=e});var a=[];for(var i in t)a.push(n.filter(function(e){return e.why.uri===i})),console.log("   Deleting "+a[a.length-1].length+" triples from "+i);!function n(){a.length>0?v.update(a.shift(),[],function(t,a,i){a?n():m("Error deleting all trace of: "+e+": "+i)}):(console.log("Deleting resoure "+e.doc()),l.fetcher.delete(e.doc()).then(function(){console.log("Delete thing "+e+": complete.")}).catch(function(n){m("Error deleting thing "+e+": "+n)}))}()}var M=function(e,n){for(var t=l.allAliases(e),a=g.dir().uri,i=0;i<t.length;i++)if(t[i].uri.slice(0,a.length)===a)return t[i];throw new Error("No local URI for "+e)},O=function(){var e=[];for(var t in x)if(x[t]){var i=l.each(l.sym(t),c.vcard("hasMember"));e=e.concat(i)}e.sort(D);for(var o=0;o<e.length-1;)e[o].uri===e[o+1].uri?e.splice(o,1):o++;J.innerHTML="",z.textContent=e.length>5?e.length+" contacts":"contact";for(var r=0;r<e.length;r++){var s=J.appendChild(n.createElement("tr")),p=s.appendChild(n.createElement("td"));p.setAttribute("style",Z);var d=e[r];s.subject=d;var u=E(d);p.textContent=u,s.subject=d,a.widgets.makeDraggable(s,d);!function(e,n){s.addEventListener("click",function(e){e.preventDefault(),I(n)})}(0,d)}j()};function L(){return function(e,n){for(var t=0;t<e.children.length;t++){var a=e.children[t];a.subject&&a.setAttribute("style",n[a.subject.uri]?"background-color: #cce;":"")}}(G,x)}var R=function(){var t,i;for(ee=[],o.foreignGroup&&ee.push(["",l.any(o.foreignGroup,c.vcard("fn")),o.foreignGroup]),g&&(e.map(function(e){var n=(e?l.each(e,c.vcard("includesGroup")):[]).map(function(n){return[e,l.any(n,c.vcard("fn")),n]});ee=ee.concat(n)}),ee.sort()),i=0;i<G.children.length;i++){G.children[i].trashMe=!0}for(var r=0;r<ee.length;r++){var p=ee[r][1],d=ee[r][2];for(t=!1,i=0;i<G.children.length;i++){let e=G.children[i];if(e.subject&&e.subject.sameTerm(d)){e.trashMe=!1,t=!0;break}}if(!t){var u=G.appendChild(n.createElement("tr"));u.subject=d,a.widgets.makeDraggable(u,d),u.setAttribute("style",Z),u.textContent=p;!function(e,t,i){a.widgets.makeDropTarget(e,function(e){e.forEach(function(e){console.log("Dropped on group: "+e);var n=l.sym(e),a=[n.doc(),t.doc()];l.fetcher.load(a).then(function(e){var a=l.findTypeURIs(n);for(var o in a)console.log("    drop object type includes: "+o);if(c.vcard("Individual").uri in a||c.vcard("Organization").uri in a){var r=l.any(n,c.vcard("fn"));if(!r)return alert("No vcard name known for "+n);if(l.holds(t,c.vcard("hasMember"),n,t.doc()))return alert("ALREADY added "+r+" to group "+i);if(confirm("Add "+r+" to group "+i+"?")){var p=[s.st(t,c.vcard("hasMember"),n,t.doc()),s.st(n,c.vcard("fn"),r,t.doc())];l.updater.update([],p,function(e,n,a){if(!n)return m("Error adding member to group "+t+": "+a);console.log("Added "+r+" to group "+i)})}}}).catch(function(e){m("Error looking up dropped thing "+n+" and group: "+e)})})}),a.widgets.deleteButtonWithCheck(n,e,"group "+i,function(){B(t),R()}),e.addEventListener("click",function(e){e.preventDefault();var i=l.sym(t.uri.split("#")[0]);e.metaKey||(x={}),x[t.uri]=!x[t.uri],L(),J.innerHTML="",l.fetcher.nowOrWhenFetched(i.uri,void 0,function(o,r){if(!o)return f(o,"Can't load group file: "+i+": "+r);if(O(),!e.metaKey){Q.innerHTML="";var s=!1,c=a.aclControl.ACLControlBox5(t,n,"group",l,function(e,n){e||(Q.innerHTML="Failed: "+n)}),p=Q.appendChild(n.createElement("button"));p.style.cssText="padding: 1em; margin: 1em";var d=p.appendChild(n.createElement("img"));d.style.cssText="width: 1.5em; height: 1.5em",d.setAttribute("src",a.icons.iconBase+"noun_123691.svg"),p.addEventListener("click",function(){(s=!s)?Q.appendChild(c):Q.removeChild(c)})}})},!0)}(u,d,p)}}for(i=0;i<G.children.length;i++){let e=G.children[i];e.trashMe&&G.removeChild(e)}L()},S=n.createElement("table");S.setAttribute("style","border-collapse: collapse; margin-right: 0; max-height: 9in;"),d.appendChild(S);var _=S.appendChild(n.createElement("tr")),U=S.appendChild(n.createElement("tr")),F=S.appendChild(n.createElement("tr")),q=_.appendChild(n.createElement("td")),z=_.appendChild(n.createElement("td")),H=_.appendChild(n.createElement("td")),W=U.appendChild(n.createElement("td")),G=W.appendChild(n.createElement("table")),$=U.appendChild(n.createElement("td")),J=$.appendChild(n.createElement("table")),V=F.appendChild(n.createElement("td")),Y=F.appendChild(n.createElement("td")),K=F.appendChild(n.createElement("td"));H.appendChild(n.createElement("div"));var X=H.appendChild(n.createElement("input"));X.setAttribute("type","text"),X.setAttribute("style","border: 0.1em solid #444; border-radius: 0.5em; width: 100%; font-size: 100%; padding: 0.1em 0.6em"),X.addEventListener("input",function(e){j(!0)});var Q=U.appendChild(n.createElement("td"));Q.setAttribute("style","margin: 0;");var Z="padding: 0.1em;";q.textContent="groups",q.setAttribute("style","min-width: 10em; padding-bottom 0.2em;");var ee,ne=function(e){var n=e?"":"display: none;";q.setAttribute("style","min-width: 10em; padding-bottom 0.2em;"+n);W.setAttribute("style","padding: 0.1em;"+n),V.setAttribute("style","padding: 0.1em;"+n)};if(ne(!0),o.foreignGroup&&(x[o.foreignGroup.uri]=!0),g){var te=q.appendChild(n.createElement("button"));te.textContent="All";var ae="margin-left: 1em; font-size: 100%;";te.setAttribute("style",ae),te.addEventListener("click",function(e){te.state=te.state?0:1,J.innerHTML="",te.state?(te.setAttribute("style",ae+"background-color: #ff8;"),N(x,G,function(e,n){if(!e)return m(n);te.setAttribute("style",ae+"background-color: black; color: white"),L()})):(te.setAttribute("style",ae+"background-color: #cfc;"),x={},L())}),a.store.fetcher.nowOrWhenFetched(w.uri,g,function(e,n){if(!e)return console.log("Cannot load group index: "+n);R(),O()})}else R(),O(),console.log("No book, only one group -> hide list of groups"),ne(!1);z.textContent="name",z.setAttribute("style","min-width: 18em;"),$.setAttribute("style","overflow:scroll;");var ie,oe=n.createElement("button"),re=n.createElement("div");if(oe.setAttribute("type","button"),b||oe.setAttribute("disabled","true"),a.authn.checkUser().then(e=>{e&&(b=e,oe.removeAttribute("disabled"))}),re.appendChild(oe),oe.innerHTML="New Contact",Y.appendChild(re),oe.addEventListener("click",function(e){Q.innerHTML="";var t=T(g);l.fetcher.load(t).then(function(e){if(!e.ok)throw new Error("Book won't load:"+t);var n=l.any(t,c.vcard("nameEmailIndex"));if(!n)throw new Error("Wot no nameEmailIndex?");return l.fetcher.load(n)}).then(function(e){console.log("Name index loaded async"+e.url)}),a.widgets.askName(n,l,Q,a.ns.foaf("name"),c.vcard("Individual"),"person").then(function(e){e&&function(e,n,t,i){e=T(e);var o=l.any(e,c.vcard("nameEmailIndex")),r=a.utils.genUuid(),p=l.sym(e.dir().uri+"Person/"+r+"/index.ttl#this"),d=p.doc(),u=[[s.st(p,c.vcard("inAddressBook"),e,o),s.st(p,c.vcard("fn"),n,o)]];for(var m in t){var f=l.sym(m),h=f.doc();u.push([s.st(f,c.vcard("hasMember"),p,h),s.st(p,c.vcard("fn"),n,h)])}var g=function(e,n,t){n?u.length>0?(console.log("Patching "+u[0]+"\n"),v.update([],u.shift(),g)):(console.log("Done patching. Now reading back in.\n"),a.store.fetcher.nowOrWhenFetched(d,void 0,function(e,n){e?(console.log("Read back in OK.\n"),i(!0,p)):(console.log("Read back in FAILED: "+n+"\n"),i(!1,n))})):(console.log("Error: can't update "+e+" for new contact:"+t+"\n"),i(!1,"Error: can't update "+e+" for new contact:"+t))};a.store.fetcher.nowOrWhenFetched(o,void 0,function(e,t){e?(console.log(" People index must be loaded\n"),v.put(d,[s.st(p,c.vcard("fn"),n,d),s.st(p,c.rdf("type"),c.vcard("Individual"),d)],"text/turtle",g)):(console.log("Error loading people index!"+o.uri+": "+t),i(!1,"Error loading people index!"+o.uri+": "+t+"\n"))})}(g,e,x,function(e,t){if(e){let e=t;Q.innerHTML="indexing...",(y={})[e.uri]=!0,O(),Q.appendChild(P(n,e,"contact"))}else console.log("Error: can't save new contact:"+t)})})},!1),g){var se=V.appendChild(n.createElement("button"));se.setAttribute("type","button"),se.innerHTML="New Group",se.addEventListener("click",function(e){Q.innerHTML="";var t=l.any(g,c.vcard("groupIndex"));a.store.fetcher.nowOrWhenFetched(t,void 0,function(e,n){e?console.log(" Group index has been loaded\n"):console.log("Error: Group index has NOT been loaded"+n+"\n")}),a.widgets.askName(n,l,Q,a.ns.foaf("name"),c.vcard("Group"),"group").then(function(e){e&&function(e,n,t){var i=l.any(e,c.vcard("groupIndex")),o=e.uri.split("#")[0],r=n.replace(" ","_"),p=l.sym(o.slice(0,o.lastIndexOf("/")+1)+"Group/"+r+".ttl"),d=l.sym(p.uri+"#this");console.log(" New group will be: "+d+"\n"),a.store.fetcher.nowOrWhenFetched(i,function(a,o){if(a){console.log(" Group index must be loaded\n");var r=[s.st(e,c.vcard("includesGroup"),d,i),s.st(d,c.rdf("type"),c.vcard("Group"),i),s.st(d,c.vcard("fn"),n,i)];v.update([],r,function(o,r,l){if(a){var u=[s.st(e,c.vcard("includesGroup"),d,i),s.st(d,c.rdf("type"),c.vcard("Group"),p),s.st(d,c.vcard("fn"),n,p)];v.put(p,u,"text/turtle",function(e,n,a){t(n,n?d:"Can't save new group file "+p+a)})}else t(a,"Could not update group index "+l)})}else console.log("Error loading people index!"+i.uri+": "+o),t(!1,"Error loading people index!"+i.uri+": "+o+"\n")})}(g,e,function(e,t){e?((x={})[t.uri]=!0,R(),Q.innerHTML="",Q.appendChild(a.aclControl.ACLControlBox5(t,n,"group",l,function(e,n){e||(Q.innerHTML="Group sharing setup failed: "+n)}))):(console.log("Error: can't save new group:"+t),Q.innerHTML="Failed to save group"+t)})})},!1);var ce=K.appendChild(n.createElement("button"));ce.setAttribute("type","button"),ce.innerHTML="Tools",ce.addEventListener("click",function(e){Q.innerHTML="",Q.appendChild(r(N,x,G,g,n,b))})}K.appendChild((ie=g,a.authn.newAppInstance(n,{noun:"address book",appPathSegment:"contactorator.timbl.com"},function(e,t){h.clone(ie,t,{me:b,div:d,dom:n})}))),d.appendChild(n.createElement("hr"))};return g[c.vcard("Individual").uri]||g[c.vcard("Organization").uri]||g[c.foaf("Person").uri]||g[c.schema("Person").uri]?function(e){var i,r=e,p=function(n,t,a){var s=o.extension(t);let p,d;t!==o.lookup(n)&&(n+="_."+s,console.log("MIME TYPE MISMATCH -- adding extension: "+n));let u=t.startsWith("image");var f,h;for(u?(p="image_",d=c.vcard("hasPhoto")):(p="attachment_",d=c.wf("attachment")),f=0;h=l.sym(r.dir().uri+n),l.holds(e,c.vcard("hasPhoto"),h);f++)n=p+f+"."+s;console.log("Putting "+a.byteLength+" bytes of "+t+" to "+h),l.fetcher.webOperation("PUT",h.uri,{data:a,contentType:t}).then(function(n){n.ok?(console.log(" Upload: put OK: "+h),l.add(e,d,h,e.doc()),l.fetcher.putBack(e.doc(),{contentType:"text/turtle"}).then(function(e){u&&i.refresh()},function(e){console.log(" Write back image link FAIL "+h+", Error: "+e)})):m("Error uploading "+h+":"+n.status)})},h=function(e){e.map(function(e){var n=s.sym(e);console.log("Dropped on mugshot thing "+n),e.startsWith("http")&&e.indexOf("#")<0?l.fetcher.webOperation("GET",n.uri).then(e=>{let t=e.headers.get("Content-Type"),a=n.uri.split("/").slice(-1)[0];a=a.split("?")[0],e.arrayBuffer().then(function(i){e.ok?p(a,t,i):m("Error downloading "+n+":"+e.status)})}):(console.log("Not a web document URI, cannot copy as picture: "+n),function(e){l.fetcher.nowOrWhenFetched(e.doc(),function(n,t){if(n){var a=l.findTypeURIs(e);for(var i in a)console.log("    drop object type includes: "+i);console.log("Default: assume web page  "+e),l.add(r,c.wf("attachment"),e,r.doc())}else console.log("Error looking up dropped thing "+e+": "+t)})}(n))})},v=function(e){for(var n=0;n<e.length;n++){let a=e[n];console.log(" meeting: Filename: "+a.name+", type: "+(a.type||"n/a")+" size: "+a.size+" bytes, last modified: "+(a.lastModifiedDate?a.lastModifiedDate.toLocaleDateString():"n/a"));var t=new FileReader;t.onload=function(e){return function(n){var t=n.target.result;console.log(" File read byteLength : "+t.byteLength);var a=encodeURIComponent(e.name),i=e.type;p(a,i,t)}}(a),t.readAsArrayBuffer(a)}},g=l.sym("https://solid.github.io/solid-panes/contact/individualForm.ttl#form1"),b=g.doc();if(!l.holds(void 0,void 0,void 0,b)){var w=t(26);s.parse(w,l,b.uri,"text/turtle")}var x=a.ns.vcard("Type").doc();l.holds(void 0,void 0,void 0,x)||s.parse(t(27),l,x.uri,"text/turtle");var y=[e.doc()];a.store.fetcher.load(y).catch(function(e){console.log("Error: Failed to load subject: "+e)}).then(function(t){function o(e){let t=n.createElement("img");return t.setAttribute("style","max-height: 10em; border-radius: 1em; margin: 0.7em;"),a.widgets.makeDropTarget(t,h,v),e&&t.setAttribute("src",e.uri),t}!function(){var n=l.findTypeURIs(e),t="padding: 0.5em 1.5em 1em 1.5em; ",a=null;for(var i in n)if(a=l.anyValue(l.sym(i),c.solid("profileHighlightColor")))break;t+="background-color: "+(a=a||"transparent")+"; ",d.setAttribute("style",t)}(),a.authn.checkUser(),i=d.appendChild(n.createElement("div"));var r=o();function p(){let n=l.each(e,c.vcard("hasPhoto"));n.sort(),0===(n=n.slice(0,5)).length?(i.innerHTML="",i.appendChild(r)):a.utils.syncTableToArray(i,n,o)}a.widgets.setImage(r,e),p(),i.refresh=p,a.widgets.appendForm(n,d,{},e,g,u,f),d.appendChild(n.createElement("tr")).setAttribute("style","height: 1em");var b=function(e,n,t){var i=w.appendChild(e.createElement("tr"));i.setAttribute("style","margin-top: 0.1em solid #ccc;");var o=i.appendChild(e.createElement("td")),r=i.appendChild(e.createElement("td"));o.textContent=t.uri.split("/")[2],l.fetcher.load(t).then(function(e){o.textContent=t.uri.split("/")[2]+" ("+l.statementsMatching(void 0,void 0,void 0,t.doc()).length+")"}).catch(function(n){r.appendChild(a.widgets.errorMessageBlock(e,n,"pink"))}),r.appendChild(a.widgets.linkIcon(e,t))},w=d.appendChild(n.createElement("table")),x=l.allAliases(e);if(x.length>1)for(var y=0;y<x.length;y++){var C=x[y];C.sameTerm(e)||b(n,0,C)}a.widgets.attachmentList(n,e,d,{predicate:a.ns.vcard("url")}),d.appendChild(n.createElement("hr")),l.each(e,c.vcard("url")).forEach(function(e){var t=l.any(e,c.rdf("type")),i=l.any(e,c.vcard("value"));if(i){var o=w.appendChild(n.createElement("tr"));o.setAttribute("style","margin-top: 0.1em solid #ccc;"),o.appendChild(n.createElement("td")).textContent=a.utils.label(t);var r=o.appendChild(n.createElement("td")).appendChild(n.createElement("a"));r.setAttribute("href",i.uri),r.appendChild(n.createElement("span")).textContent=i.uri}}),d.appendChild(n.createElement("hr"));var k=function(e,n){var t=l.any(e,c.vcard("fn")),a=l.any(n,c.vcard("fn"));if(l.each(null,c.vcard("hasMember"),e).length<2)alert("Must be a member of at least one group.  Add to another group first.");else if(confirm("Remove "+t+" from group "+a+"?")){var i=[s.st(n,c.vcard("hasMember"),e,n.doc()),s.st(e,c.vcard("fn"),t,n.doc())];l.updater.update(i,[],function(e,i,o){if(!i)return m("Error removing member from group "+n+": "+o);console.log("Removed "+t+" from group "+a),A()})}};function T(t){var i={deleteFunction:function(){k(e,t)},noun:"membership"};return a.widgets.personTR(n,null,t,i)}var E=d.appendChild(n.createElement("table"));function A(){var n=l.each(null,c.vcard("hasMember"),e);a.utils.syncTableToArray(E,n,T)}E.refresh=A,A()})}(e):g[c.vcard("Group").uri]?a.authn.findAppInstances(w,c.vcard("AddressBook")).then(function(n){var t=n.instances,a={foreignGroup:e};t.length>0?x(t,n,a):x([],n,a)}).catch(function(e){a.widgets.complain(w,e)}):g[c.vcard("AddressBook").uri]?x([e],w,{}):console.log("Error: Contact pane: No evidence that "+e+" is anything to do with contacts."),(b=a.authn.currentUser())||(console.log("(You do not have your Web Id set. Sign in or sign up to make changes.)"),a.authn.logInLoadProfile(w).then(e=>{console.log("Logged in as "+e.me),b=e.me},e=>{d.appendChild(a.widgets.errorMessageBlock(e))})),"undefined"!=typeof document&&document.location&&"http://localhost"===(""+document.location).slice(0,16)&&(b=l.any(e,a.ns.acl("owner")),console.log("Assuming user is "+b)),d}}},function(e,n,t){
+ */var a,i,o,r=t(21),s=t(23).extname,c=/^\s*([^;\s]*)(?:;|\s|$)/,l=/^text\//i;function p(e){if(!e||"string"!=typeof e)return!1;var n=c.exec(e),t=n&&r[n[1].toLowerCase()];return t&&t.charset?t.charset:!(!n||!l.test(n[1]))&&"UTF-8"}n.charset=p,n.charsets={lookup:p},n.contentType=function(e){if(!e||"string"!=typeof e)return!1;var t=-1===e.indexOf("/")?n.lookup(e):e;if(!t)return!1;if(-1===t.indexOf("charset")){var a=n.charset(t);a&&(t+="; charset="+a.toLowerCase())}return t},n.extension=function(e){if(!e||"string"!=typeof e)return!1;var t=c.exec(e),a=t&&n.extensions[t[1].toLowerCase()];if(!a||!a.length)return!1;return a[0]},n.extensions=Object.create(null),n.lookup=function(e){if(!e||"string"!=typeof e)return!1;var t=s("x."+e).toLowerCase().substr(1);if(!t)return!1;return n.types[t]||!1},n.types=Object.create(null),a=n.extensions,i=n.types,o=["nginx","apache",void 0,"iana"],Object.keys(r).forEach(function(e){var n=r[e],t=n.extensions;if(t&&t.length){a[e]=t;for(var s=0;s<t.length;s++){var c=t[s];if(i[c]){var l=o.indexOf(r[i[c]].source),p=o.indexOf(n.source);if("application/octet-stream"!==i[c]&&(l>p||l===p&&"application/"===i[c].substr(0,12)))continue}i[c]=e}}})},function(e,n){e.exports=__webpack_require__(/*! solid-namespace */ "./node_modules/solid-namespace/index.js")},function(e,n,t){var a=t(1);if(e.exports=a,a.versionInfo=t(6),a.UI=t(0),a.OutlineManager=t(7),a.getOutliner=function(e){return e.outlineManager||(e.outlineManager=a.OutlineManager(e)),e.outlineManager},"undefined"!=typeof window){var i=window.document;a.getOutliner(i)}var o=a.register;o(t(13)),o(t(15)),o(t(16)),o(t(17)),o(t(18)),o(t(20)),o(t(28)),o(t(30)),o(t(31));var r=t(32);o(r.longChatPane),o(r.shortChatPane),o(t(35)),o(t(37)),o(t(38)),o(t(40)),o(t(41)),o(t(42)),o(t(43)),o(t(44)),o(t(45)),o(t(47)),o(t(48)),o(t(49)),o(t(51)),o(t(52)),o(t(53)),o(t(54)),o(t(55)),o(t(56)),o(t(57)),o(t(58)),o(t(59)),o(t(60)),o(t(61)),o(t(62)),o(t(63)),o(t(65))},function(e,n){e.exports={buildTime:"2019-09-24T15:02:42Z",commit:"e97a3c894e971d01c5194ac0ad10948f6da3069e",npmInfo:{"solid-panes":"2.0.2",npm:"6.10.0",ares:"1.15.0",brotli:"1.0.7",cldr:"35.1",http_parser:"2.8.0",icu:"64.2",llhttp:"1.1.4",modules:"72",napi:"4",nghttp2:"1.39.1",node:"12.7.0",openssl:"1.1.1c",tz:"2019a",unicode:"12.1",uv:"1.30.1",v8:"7.5.288.22-node.16",zlib:"1.2.11"}}},function(e,n,t){(function(n){function a(e,n){return function(e){if(Array.isArray(e))return e}(e)||function(e,n){var t=[],a=!0,i=!1,o=void 0;try{for(var r,s=e[Symbol.iterator]();!(a=(r=s.next()).done)&&(t.push(r.value),!n||t.length!==n);a=!0);}catch(e){i=!0,o=e}finally{try{a||null==s.return||s.return()}finally{if(i)throw o}}return t}(e,n)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}()}function i(e,n,t,a,i,o,r){try{var s=e[o](r),c=s.value}catch(e){return void t(e)}s.done?n(c):Promise.resolve(c).then(a,i)}function o(e){return function(){var n=this,t=arguments;return new Promise(function(a,o){var r=e.apply(n,t);function s(e){i(r,a,o,s,c,"next",e)}function c(e){i(r,a,o,s,c,"throw",e)}s(void 0)})}}var r=t(1),s=t(2),c=t(9),l=t(10),p=t(11),d=t(0),u=t(12);e.exports=function(e){var t=e;this.document=e,this.outlineIcons=l,this.labeller=this.labeller||{},this.labeller.LanguagePreference="";var i=this,m=this,f=[];this.selection=f,this.ancestor=d.utils.ancestor,this.sparql=d.rdf.UpdateManager,this.kb=d.store;var h=d.store,v=d.store.fetcher;t.outline=this,this.qs=new u.QuerySource,this.UserInput=new p(this),this.clipboardAddress="tabulator:clipboard",this.UserInput.clipboardInit(this.clipboardAddress);var g=this.outlineElement;function b(){return w.apply(this,arguments)}function w(){return(w=o(regeneratorRuntime.mark(function e(){var n,a,i,o,s,c,l=arguments;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(c=function(e,n){var a=r.byName(n.paneName);e.innerHTML="";var i=e.appendChild(t.createElement("table")),o=d.authn.currentUser();m.GotoSubject(n.subject||o,!0,a,!1,void 0,i)},s=function(e,n){e.dataset.globalPaneName=n.tabName||n.paneName,e.textContent=n.label},n=l.length>0&&void 0!==l[0]?l[0]:{},console.log("globalAppTabs @@"),a=t.createElement("div"),i=d.authn.currentUser()){e.next=9;break}throw alert("Must be logged in for this"),new Error("Not logged in");case 9:return e.next=11,x();case 11:return o=e.sent,a.appendChild(d.tabs.tabWidget({dom:t,subject:i,items:o,renderMain:c,renderTab:s,ordered:!0,orientation:0,backgroundColor:"#eeeeee",selectedTab:n.selectedTab,onClose:n.onClose})),e.abrupt("return",a);case 14:case"end":return e.stop()}},e)}))).apply(this,arguments)}function x(){return y.apply(this,arguments)}function y(){return(y=o(regeneratorRuntime.mark(function e(){var n,i,r,s,c,l,p,u,m,f;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return f=function(){return(f=o(regeneratorRuntime.mark(function e(){var a;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.prev=0,e.next=3,d.authn.findAppInstances({me:n,div:i,dom:t},Z.vcard("AddressBook"));case 3:return a=e.sent,e.abrupt("return",(a.instances||[]).map(function(e,n){return{paneName:"contact",tabName:"contact-".concat(n),label:"Contacts",subject:e,icon:d.icons.iconBase+"noun_15695.svg"}}));case 7:e.prev=7,e.t0=e.catch(0),console.error("oops in globalAppTabs AddressBook");case 10:return e.abrupt("return",[]);case 11:case"end":return e.stop()}},e,null,[[0,7]])}))).apply(this,arguments)},m=function(){return f.apply(this,arguments)},u=function(){return(u=o(regeneratorRuntime.mark(function e(){var t;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.prev=0,e.next=3,h.fetcher.load(n.doc());case 3:e.next=9;break;case 5:return e.prev=5,e.t0=e.catch(0),console.error("Unable to load profile",e.t0),e.abrupt("return",[]);case 9:return t=h.each(n,Z.space("storage"),null,n.doc()),e.abrupt("return",t.map(function(e,n){var a=t.length>1?e.uri.split("//")[1].slice(0,-1):"Your storage";return{paneName:"folder",tabName:"folder-".concat(n),label:a,subject:e,icon:d.icons.iconBase+"noun_Cabinet_251723.svg"}}));case 11:case"end":return e.stop()}},e,null,[[0,5]])}))).apply(this,arguments)},p=function(){return u.apply(this,arguments)},n=d.authn.currentUser(),i=t.createElement("div"),e.next=8,Promise.all([m(),p()]);case 8:return r=e.sent,s=a(r,2),c=s[0],l=s[1],e.abrupt("return",[{paneName:"home",label:"Your stuff",icon:d.icons.iconBase+"noun_547570.svg"},{paneName:"basicPreferences",label:"Preferences",icon:d.icons.iconBase+"noun_Sliders_341315_00000.svg"},{paneName:"editProfile",label:"Edit your profile",icon:d.icons.iconBase+"noun_492246.svg"}].concat(c).concat(l));case 13:case"end":return e.stop()}},e)}))).apply(this,arguments)}function C(){return(C=o(regeneratorRuntime.mark(function e(){var n,t,a,i,o,r,s,c=arguments;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(s=function(e){e||r()},r=function(){t.style.display="none",a.style.display="inherit"},n=c.length>0&&void 0!==c[0]?c[0]:{},t=k(),a=T(),!(t.childNodes.length>0&&n.pane)){e.next=13;break}if(a.style.display="none",t.style.display="inherit",!(i=t.querySelector('[data-global-pane-name="'.concat(n.pane,'"]')))){e.next=12;break}return i.click(),e.abrupt("return");case 12:console.warn("Did not find the referred tab in global dashboard, will open first one");case 13:return e.next=15,b({selectedTab:n.pane,onClose:r});case 15:o=e.sent,d.authn.solidAuthClient.trackSession(s),a.style.display="none",t.appendChild(o);case 19:case"end":return e.stop()}},e)}))).apply(this,arguments)}function k(){return E("GlobalDashboard")}function T(){return E("outline")}function E(e){return document.getElementById(e)||((n=document.createElement("div")).id=e,(document.querySelector('[role="main"]')||document.body).appendChild(n));var n}function A(e,n,t){return I.apply(this,arguments)}function I(){return(I=o(regeneratorRuntime.mark(function e(n,t,a){var i,o,r,s;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(0!==(i=n.list.filter(function(e){return e.label(t,a)&&!e.global})).length){e.next=3;break}return e.abrupt("return",[n.internal]);case 3:return e.next=5,d.authn.filterAvailablePanes(i);case 5:if(0!==(o=e.sent).length){e.next=8;break}return e.abrupt("return",[i[0]]);case 8:return r=n.list.indexOf(i[0]),s=n.list.indexOf(o[0]),e.abrupt("return",r<s?[i[0]].concat(o):o);case 11:case"end":return e.stop()}},e)}))).apply(this,arguments)}function j(e,n){return e.find(function(e){return e.shouldGetFocus&&e.shouldGetFocus(n)})||e[0]}function N(){return(N=o(regeneratorRuntime.mark(function e(n,a,i){var s,c,l,p,u,m,f;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return c=function(){return(c=o(regeneratorRuntime.mark(function e(i){var o,s,c,p,u,m,f=arguments;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(o=f.length>1&&void 0!==f[1]?f[1]:{},s="width: 24px; border-radius: 0.5em; border-top: solid #222 1px; border-left: solid #222 0.1em; border-bottom: solid #eee 0.1em; border-right: solid #eee 0.1em; margin-left: 1em; padding: 3px; background-color:   #ffd;",c="width: 24px; border-radius: 0.5em; margin-left: 1em; padding: 3px",(p=i.appendChild(t.createElement("nav"))).style="display:flex; justify-content: flex-start; align-items: center;",!o.hideList){e.next=9;break}e.t0=[],e.next=12;break;case 9:return e.next=11,A(r,n,t);case 11:e.t0=e.sent;case 12:return u=e.t0,l.firstPane=a||j(u,n),m=u.indexOf(l.firstPane),1!==u.length&&u.forEach(function(e,a){var r=e.label(n,t),u=d.utils.AJARImage(e.icon,r,r,t);u.style=e===l.firstPane?s:c;!function(e,a){e.addEventListener("click",function(r){for(var l=i;l.parentNode&&"TABLE"!==l.nodeName;l=l.parentNode);if("TABLE"!==l.nodeName)throw new Error("outline: internal error.");var p=function(e){for(var n=l.firstChild;n;n=n.nextSibling)void 0!==n.pane&&(e&&n.pane!==e||(n.paneButton&&(n.paneButton.setAttribute("class","paneHidden"),n.paneButton.style=c),P(n),n.pane.requireQueryButton&&l.parentNode.className&&1===u&&t.getElementById("queryButton")&&t.getElementById("queryButton").setAttribute("style","display:none;")))};"paneHidden"===e.getAttribute("class")?(r.shiftKey||p(),function(a){var i;if(d.log.info("outline: Rendering pane (2): "+a.name),d.no_catch_pane_errors)i=a.render(n,t,o);else try{i=a.render(n,t,o)}catch(e){(i=t.createElement("div")).setAttribute("class","exceptionPane");var r=t.createElement("pre");i.appendChild(r),r.appendChild(t.createTextNode(d.utils.stackString(e)))}a.requireQueryButton&&t.getElementById("queryButton")&&t.getElementById("queryButton").removeAttribute("style");var s=l.firstChild.nextSibling,c=t.createElement("tr");c.appendChild(t.createElement("td")).appendChild(i),s?l.insertBefore(c,s):l.appendChild(c),c.pane=a,c.paneButton=e}(a),e.setAttribute("class","paneShown"),e.style=s):(p(a),e.setAttribute("class","paneHidden"),e.style=c);for(var u=0,m=l.firstChild;m;m=m.nextSibling)m.pane&&m.pane.requireQueryButton&&u++},!1)}(u,e),u.setAttribute("class",a!==m?"paneHidden":"paneShown"),a===m&&(l.paneButton=u),p.appendChild(u)}),e.abrupt("return",p);case 17:case"end":return e.stop()}},e)}))).apply(this,arguments)},s=function(e){return c.apply(this,arguments)},l=t.createElement("tr"),i.hover&&l.setAttribute("class","hoverControl"),(p=l.appendChild(t.createElement("td"))).setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;display:flex; justify-content: space-between; flex-direction: row;"),p.setAttribute("notSelectable","true"),p.setAttribute("about",n.toNT()),p.setAttribute("colspan","2"),(u=p.appendChild(t.createElement("div"))).style="display:flex; justify-content: flex-start; align-items: center; flex-wrap: wrap;",m=!!a,i.solo||m||(u.appendChild(d.utils.AJARImage(d.icons.originalIconBase+"tbl-collapse.png","collapse",void 0,t)).addEventListener("click",q),(f=u.appendChild(t.createElement("h1"))).appendChild(t.createTextNode(d.utils.label(n))),f.style="font-size: 150%; margin: 0 0.6em 0 0; padding: 0.1em 0.4em;",d.widgets.makeDraggable(f,n)),e.t0=u,e.next=16,s(p,{hideList:m});case 16:return e.t1=e.sent,e.t0.appendChild.call(e.t0,e.t1),l.firstChild.tabulatorSelect=function(){_(this,!0)},l.firstChild.tabulatorDeselect=function(){_(this,!1)},e.abrupt("return",l);case 21:case"end":return e.stop()}},e)}))).apply(this,arguments)}function P(e){var n=e.parentNode,a=n.parentNode,i=t.createElement("table");i.setAttribute("style","width: 100%;"),a.replaceChild(i,n),n.removeChild(e),a.replaceChild(n,i)}this.init=function(){T().outline=this},this.appendAccessIcons=function(e,n,t){if("NamedNode"===t.termType){var a=e.uris(t);a.sort();for(var i=null,o=0;o<a.length;o++)a[o]!==i&&(i=a[o],m.appendAccessIcon(n,i))}},this.appendAccessIcon=function(e,n){if(!n)return"";var a=d.rdf.uri.docpart(n);if("http:"!==a.slice(0,5))return"";var o,r,s,c=v.getState(a);switch(c){case"unrequested":o=l.src.icon_unrequested,r="fetch",s=W;break;case"requested":o=l.src.icon_requested,r="fetching",s=z;break;case"fetched":o=l.src.icon_fetched,s=H,r="loaded";break;case"failed":o=l.src.icon_failed,r="failed",s=z;break;case"unpermitted":o=l.src.icon_failed,s=z,r="no perm";break;case"unfetchable":o=l.src.icon_failed,s=z,r="cannot fetch";break;default:d.log.error("?? state = "+c)}var p=d.utils.AJARImage(o,r,l.tooltips[o].replace(/[Tt]his resource/,a),t);return p.setAttribute("uri",n),p.addEventListener("click",s),function(e,n){d.log.debug("Button callbacks for "+n+" added");var t=function(t){return function(a){return a.indexOf("#")>=0&&console.log("@@ makeIconCallback: Not expecting # in URI whose state changed: "+a),!!e&&(!!i.ancestor(e,"DIV")&&(a===n&&(e.src=t,e.title=l.tooltips[t]),!0))}};v.addCallback("request",t(l.src.icon_requested)),v.addCallback("done",t(l.src.icon_fetched)),v.addCallback("fail",t(l.src.icon_failed))}(p,a),e.appendChild(p),p},this.outlineObjectTD=function(e,n,a,i){var o=t.createElement("td");o.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),o.setAttribute("notSelectable","false");var r,s,c,p,u="obj";if(i&&i.why&&d.licenceOptions&&d.licenceOptions.checkLicence()&&(u+=" licOkay"),("NamedNode"===e.termType||"BlankNode"===e.termType||"Literal"===e.termType&&e.value.slice&&("ftp://"===e.value.slice(0,6)||"https://"===e.value.slice(0,8)||"http://"===e.value.slice(0,7)))&&(o.setAttribute("about",e.toNT()),o.appendChild(d.utils.AJARImage(d.icons.originalIconBase+"tbl-expand-trans.png","expand",void 0,t)).addEventListener("click",F)),o.setAttribute("class",u),h.whether(e,d.ns.rdf("type"),d.ns.link("Request"))&&(o.className="undetermined"),n||(n=ee),o.appendChild(n(e)),a&&(r=o,s=e,c=a,(p=d.utils.AJARImage(l.src.icon_remove_node,"remove",void 0,t)).addEventListener("click",G),p.node=c,p.setAttribute("about",s.toNT()),p.style.marginLeft="5px",p.style.marginRight="10px",r.appendChild(p)),o.tabulatorSelect=function(){_(this,!0)},o.tabulatorDeselect=function(){_(this,!1)},i){var m=new d.rdf.IndexedFormula;m.statements.push(i);var f=h.each(m,h.sym("http://dig.csail.mit.edu/TAMI/2007/amord/tms#justification"));if(f.length){var v=t.createElement("span");f.length>1&&(v.innerHTML=" &times; "+f.length),v.setAttribute("class","inquiry"),v.insertBefore(d.utils.AJARImage(l.src.icon_display_reasons,"explain",void 0,t),v.firstChild),o.appendChild(v)}}return o.addEventListener("click",$),o},this.outlinePredicateTD=function(e,n,a,i){var o=t.createElement("TD");switch(o.setAttribute("about",e.toNT()),o.setAttribute("class",i?"pred internal":"pred"),e.termType){case"BlankNode":o.className="undetermined";break;case"NamedNode":var r=d.utils.predicateLabelForXML(e,a);break;case"Collection":r=d.utils.predicateLabelForXML(e.elements[0],a)}r=r.slice(0,1).toUpperCase()+r.slice(1);var s=t.createElement("TD");for(var c in s.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),s.setAttribute("notSelectable","true"),s.appendChild(t.createTextNode(r)),o.appendChild(s),s.style.width="100%",o.appendChild(M.construct(t)),l.termWidgets){if(!n||!n.AJAR_statement)break;l.termWidgets[c].filter&&l.termWidgets[c].filter(n.AJAR_statement,"pred",a)&&M.addIcon(o,l.termWidgets[c])}return o.tabulatorSelect=function(){_(this,!0)},o.tabulatorDeselect=function(){_(this,!1)},o.addEventListener("click",$),o},this.getDashboard=b,this.getDashboardItems=x,this.showDashboard=function(){return C.apply(this,arguments)};var D=this.propertyTable=function(e,n,a,i){return d.log.debug("Property table for: "+e),e=h.canon(e),n?(d.log.info("Re-expand: "+n),n):((n=t.createElement("table")).setAttribute("style","width: 100%;"),function(e,n,t){return N.apply(this,arguments)}(e,a,i).then(function(a){if(n.appendChild(a),a.firstPane){var o;try{d.log.info("outline: Rendering pane (1): "+a.firstPane.name),o=a.firstPane.render(e,t,i)}catch(e){(o=t.createElement("div")).setAttribute("class","exceptionPane");var r=t.createElement("pre");o.appendChild(r),r.appendChild(t.createTextNode(d.utils.stackString(e)))}var s=t.createElement("tr");s.appendChild(t.createElement("td")).appendChild(o),a.firstPane.requireQueryButton&&t.getElementById("queryButton")&&t.getElementById("queryButton").removeAttribute("style"),n.appendChild(s),s.pane=a.firstPane,s.paneButton=a.paneButton}}),n)};function B(e,n,t){var a=e.createElement("TR");a.AJAR_statement=n,a.AJAR_inverse=t,a.setAttribute("predTR","true");var i=m.outlinePredicateTD(n.predicate,a,t);return a.appendChild(i),a}this.propertyTR=B,this.appendPropertyTRs=function(e,n,a,o){if(d.log.debug("Property list length = "+n.length),0===n.length)return"";var r,s,c;a?(r=function(e){return e.subject},n=n.sort(d.utils.RDFComparePredicateSubject)):(r=function(e){return e.object},n=n.sort(d.utils.RDFComparePredicateObject));var l=n.length;for(s=0;s<l;s++){var p=n[s];if(!o||o(p.predicate,a)){var u=B(t,p,a);e.appendChild(u);var f=u.firstChild,v=X.defaults[p.predicate.uri],g=0,b=0,w=0;for(c=0;c+s<l&&n[s+c].predicate.sameTerm(p.predicate);c++)c>0&&r(n[s+c]).sameTerm(r(n[s+c-1]))&&g++,r(n[s+c]).lang&&i.labeller.LanguagePreference&&(b+=1,r(n[s+c]).lang.indexOf(i.labeller.LanguagePreference)>=0&&w++);if(w>0&&b===g+1){for(var x=s;x<=s+g;x++)if(i.labeller.LanguagePreference&&r(n[x]).lang.indexOf(i.labeller.LanguagePreference)>=0){u.appendChild(m.outlineObjectTD(r(n[x]),v,void 0,p));break}s+=g}else u.appendChild(m.outlineObjectTD(r(p),v,void 0,p)),u.showNobj=function(i){var o=c-g,l=2*i<o?i:o,u=[];if(1!==o){var b;f.setAttribute("rowspan",l===o?o:i+1),l<o&&1===l&&f.setAttribute("rowspan",2);var w=0;for(b=1;b<c;b++)if(h.canon(r(n[s+b])).sameTerm(h.canon(r(n[s+b-1]))))d.log.info("there are duplicates here: %s",n[s+b-1]);else{w++,p=n[s+b],v=X.defaults[p.predicate.uri];var x=t.createElement("tr");x.style.colspan="1",x.appendChild(m.outlineObjectTD(r(n[s+b]),v,void 0,p)),x.AJAR_statement=p,x.AJAR_inverse=a,e.appendChild(x),w>=l&&(x.style.display="none",u.push(x))}l===o&&f.setAttribute("rowspan",w+1)}if(l<o){var y=t.createElement("tr"),C=y.appendChild(t.createElement("td"));if(C.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),C.setAttribute("notSelectable","false"),o>i){var k=t.createElement("a");C.appendChild(k);var T=function(e,n,a,i){return function(n){k.innerHTML="","none"===n?(k.appendChild(d.utils.AJARImage(d.icons.originalIconBase+"tbl-more-trans.png","more","See all",t)),k.appendChild(t.createTextNode(o-i+" more...")),e.setAttribute("rowspan",i+1)):(k.appendChild(d.utils.AJARImage(d.icons.originalIconBase+"tbl-shrink.png","(less)",void 0,t)),e.setAttribute("rowspan",o+1));for(var a=0;a<u.length;a++)u[a].style.display=n}}(f,0,0,i),E="none",A=function(e){return T(E),E="none"===E?"":"none",e&&e.stopPropagation(),!1};A(),k.addEventListener("click",A,!1)}e.appendChild(y)}},u.showAllobj=function(){u.showNobj(c-g)},u.showNobj(10),s+=c-1}}};var M={};n.termWidget=M,M.construct=function(e){var n=(e=e||document).createElement("TD");return n.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),n.setAttribute("class","iconTD"),n.setAttribute("notSelectable","true"),n.style.width="0px",n},M.addIcon=function(e,n,a){var i=e.childNodes[1];if(i){var o=i.style.width,r=d.utils.AJARImage(n.src,n.alt,n.tooltip,t);o=parseInt(o),o+=n.width,i.style.width=o+"px",i.appendChild(r),a&&r.addEventListener("click",a)}},M.removeIcon=function(e,n){var a,i=e.childNodes[1];if(i){var o=i.style.width;o=parseInt(o),o-=n.width,i.style.width=o+"px";for(var r=0;r<i.childNodes.length;r++){var s=i.childNodes[r],c=s.src;try{a=t.location.href.split("?")[0]}catch(e){console.log(e),a=""}c===d.rdf.uri.join(n.src,a)&&i.removeChild(s)}}},M.replaceIcon=function(e,n,t,a){M.removeIcon(e,n),M.addIcon(e,t,a)};function O(e){var n=e.getAttribute("class");return!!(n&&n.indexOf("selected")>=0)}function L(e){var n=m.targetOf(e).parentNode;M.replaceIcon(n.parentNode,l.termWidgets.optOn,l.termWidgets.optOff,R),n.parentNode.parentNode.removeAttribute("optional")}function R(e){var n=m.targetOf(e).parentNode;M.replaceIcon(n.parentNode,l.termWidgets.optOff,l.termWidgets.optOn,L),n.parentNode.parentNode.setAttribute("optional","true")}function S(e,n){for(var t=l.termWidgets.optOn,a=l.termWidgets.optOff,i=e;i.parentNode;i=i.parentNode)for(;;){if(i.getAttribute("predTR")){var o=i.getAttribute("parentOfSelected");0===(o=o?parseInt(o):0)&&n>0&&M.addIcon(i.childNodes[0],i.getAttribute("optional")?t:a,i.getAttribute("optional")?L:R),o+=n,i.setAttribute("parentOfSelected",o),0===o&&(i.removeAttribute("parentOfSelected"),M.removeIcon(i.childNodes[0],i.getAttribute("optional")?t:a));break}if(!i.previousSibling||"TR"!==i.previousSibling.nodeName)break;i=i.previousSibling}}function _(e,n){if("TD"!==e.nodeName)throw d.log.debug("down"+e.nodeName),new Error("Expected TD in setSelected: "+e.nodeName+" : "+e.textContent);d.log.debug("pass");var t=e.getAttribute("class");if(t||(t=""),n){((t+=" selected").indexOf("pred")>=0||t.indexOf("obj")>=0)&&S(e,1),f.push(e);var a=d.utils.getTerm(e);m.showURI(a);var i=e.AJAR_statement;if(void 0===i&&(i=e.parentNode.AJAR_statement),i){var o=i.why,r=d.store.updater.editable(o.uri,h);r&&t.indexOf("pred")>=0&&M.addIcon(e,l.termWidgets.addTri)}}else d.log.debug("cla=$"+t+"$"),"selected"===t&&(t=""),((t=t.replace(" selected","")).indexOf("pred")>=0||t.indexOf("obj")>=0)&&S(e,-1),t.indexOf("pred")>=0&&M.removeIcon(e,l.termWidgets.addTri),f=f.filter(function(n){return n===e}),d.log.info("Deselecting "+e.textContent);"undefined"!=typeof sourceWidget&&m.showSource(),e.setAttribute("class",t)}function U(){for(var e=f.length-1;e>=0;e--)_(f[e],!1);f=[]}function F(e){var n=m.targetOf(e),t=n.parentNode,a=d.utils.getAbout(h,n);e.altKey&&r.internalPane;e.shiftKey?K(t,a):e.altKey?V(t,a,{pane:r.internalPane,immediate:!0}):V(t,a)}function q(e){var n=m.targetOf(e),t=d.utils.getAbout(h,n);e.altKey&&r.internalPane;Y(n.parentNode.parentNode,t)}function z(e){var n=m.targetOf(e).getAttribute("uri");e.altKey?v.fetch(d.rdf.uri.docpart(n),{force:!0}):v.refresh(h.sym(d.rdf.uri.docpart(n)))}function H(e){var n=m.targetOf(e).getAttribute("uri");e.altKey?v.fetch(d.rdf.uri.docpart(n),{force:!0}):v.refresh(h.sym(d.rdf.uri.docpart(n)))}function W(e){var n=m.targetOf(e).getAttribute("uri");v.fetch(d.rdf.uri.docpart(n))}function G(e){var n=m.targetOf(e),t=n.node;t.childNodes.length>1&&(t=n.parentNode),P(t)}function $(e){if(m.UserInput._tabulatorMode)return m.UserInput.Click(e);var n,t=m.targetOf(e);for(n=d.utils.ancestor(t,"TD");n&&"false"!==n.getAttribute("notSelectable");n=d.utils.ancestor(n.parentNode,"TD"));if(n){var a=O(n);if(d.log.debug("Was node selected before: "+a),e.altKey)_(n,!O(n));else if(e.shiftKey)_(n,!0);else{if(U(),m.UserInput.clearInputAndSave(e),_(n,!0),2===e.detail)return void e.stopPropagation();var i=n.parentNode.AJAR_statement;if(!i)return;var o=i.why,r=d.store.updater.editable(o.uri,h);a&&r&&m.UserInput.Click(e,f[0])}d.log.debug("Was node selected after: "+O(n)+", count="+f.length),e.stopPropagation()}}function J(e){t.title=d.utils.label(e),t.location.href.startsWith(e.site().uri)}function V(e,n,a){var i=(a=a||{}).pane,o=!!a.already,r=a.immediate;d.log.info("@outlineExpand, dom is now "+t.location),v.removeCallback("done","expand"),v.removeCallback("fail","expand");var l=h.canon(n);function p(){if(l=h.canon(l),!e||!e.parentNode||!e.parentNode.parentNode)return!1;var n;if(d.log.info("@@ REPAINTING "),o){for(d.log.info(" ... p is  "+e),n=e.firstChild;n.nextSibling&&(d.log.info(" ... checking node "+n),"table"!==n.nodeName);n=n.nextSibling);n=D(l,n,i,a)}else n=D(l,void 0,i,a);o=!0,d.utils.ancestor(e,"TABLE")&&"white"===d.utils.ancestor(e,"TABLE").style.backgroundColor?n.style.backgroundColor="#eee":n.style.backgroundColor="white";try{c.util.Event.off&&c.util.Event.off(e,"mousedown","dragMouseDown")}catch(e){console.log("YAHOO "+e)}d.utils.emptyNode(e).appendChild(n),m.focusTd=e,d.log.debug("expand: Node for "+l+" expanded");for(var t=h.each(l,d.ns.rdfs("seeAlso")),r=0;r<t.length;r++)25===r&&d.log.warn("expand: Warning: many ("+t.length+") seeAlso links for "+l),v.lookUpThing(t[r],l)}function u(e){if(arguments[3])return!0;var n=h.canon(l);d.log.info("@@ expand: relevant subject="+n+", uri="+e+", already="+o);var t=h.sym(d.rdf.uri.docpart(e));if(e.indexOf("#")>=0)throw new Error("Internal error: hash in "+e);return!function(){if(!n.uri)return!0;var a=h.uris(n);if(!a)return!1;for(var i=0;i<a.length;i++)for(var o=d.rdf.uri.docpart(a[i]);o;o=h.HTTPRedirects[o])if(e===o)return!0;return!!h.anyStatementMatching(n,void 0,void 0,t)}()||(d.log.success("@@ expand OK: relevant subject="+n+", uri="+e+", source="+o),p(),!1)}a.solo&&J(l),d.log.debug("outlineExpand: dereferencing "+l);var f=t.createElement("span");e.appendChild(f),v.addCallback("done",u),v.addCallback("fail",u);var b=[];if(l.uri&&"rdf"===l.uri.split(":")[0])p();else{for(var w=0;w<b.length;w++){if(void 0===b[w](l))return p(),d.log.debug("outline 1815"),void((void 0)[1]&&g.removeChild(g.lastChild))}!l.uri||r||d.widgets.isAudio(l)||d.widgets.isVideo(l)||h.holds(l,d.ns.rdf("type"),s.Util.mediaTypeClass("application/pdf"))?p():v.nowOrWhenFetched(l.doc(),void 0,function(n,i){if(n)v.lookUpThing(l),p(),a.solo&&J(l);else{var o=t.createElement("pre");o.textContent=i,o.setAttribute("style","background-color: #fee;"),o.textContent="Outline.expand: Unable to fetch "+l.doc()+": "+i,e.appendChild(o)}})}}function Y(e,n){var t,a,i=d.utils.ancestor(e,"TR");if(i=d.utils.ancestor(i.parentNode,"TR"))var o=i.AJAR_statement;for(t=e.parentNode;"TD"!==t.tagName;t=t.parentNode)if(void 0===t)return void alert("Not enclosed in TD!");if(d.log.debug("Collapsing subject "+n),o&&(d.log.debug("looking up pred "+o.predicate.uri+"in defaults"),a=X.defaults[o.predicate.uri]),d.log.debug("view= "+a),"outline"===t.parentNode.parentNode.id)var r=t.parentNode;m.replaceTD(m.outlineObjectTD(n,a,r,o),t)}function K(e,n){for(var t=null,a=e.parentNode;a;a=a.parentNode)d.log.debug("level "+a.tagName),"TD"===a.tagName&&(t=a);d.utils.emptyNode(t).appendChild(D(n)),J(n),t.setAttribute("about",n.toNT())}new function(){this.pat=h.formula(),this.vars=[]},this.statusBarClick=function(e){var n=d.utils.getTarget(e);n.label&&(window.content.location=n.label)},this.showURI=function(e){e&&t.getElementById("UserURI")&&(t.getElementById("UserURI").value="NamedNode"===e.termType?e.uri:"")},this.showSource=function(){if("undefined"!=typeof sourceWidget){for(var e in sourceWidget.sources)sourceWidget.sources[e].setAttribute("class","");for(var n=0;n<f.length;n++)if(f[n].parentNode){var t=f[n].parentNode.AJAR_statement;if(t){var a=t.why;a&&a.uri&&sourceWidget.highlight(a,!0)}}else console.log("showSource: EH? no parentNode? "+f[n]+"\n")}},this.getSelection=function(){return f},this.targetOf=function(e){var n;if(e||(e=window.event),e.target)n=e.target;else{if(!e.srcElement)return d.log.error("can't get target for event "+e),!1;n=e.srcElement}return 3===n.nodeType&&(n=n.parentNode),n},this.walk=function(e,n){var a,i=n||f[0];switch(e){case"down":try{a=i.parentNode.nextSibling.lastChild}catch(e){return void this.walk("up")}U(),_(a,!0);break;case"up":try{a=i.parentNode.previousSibling.lastChild}catch(e){return}U(),_(a,!0);break;case"right":if(U(),i.nextSibling||"strong"===i.lastChild.tagName)_(i.nextSibling,!0);else _(t.evaluate("table/div/tr/td[2]",i,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue,!0);break;case"left":if(U(),i.previousSibling&&"undetermined"===i.previousSibling.className)return _(i.previousSibling,!0),!0;_(d.utils.ancestor(i.parentNode,"TD"),!0);break;case"moveTo":U(),_(n,!0)}"down"!==e&&"up"!==e||a.tabulatorSelect||this.walk(e)},this.OutlinerKeypressPanel=function(e){function n(e){e&&t.getElementById("UserURI")&&(t.getElementById("UserURI").value="NamedNode"===e.termType?e.uri:"")}function a(e){return!!arguments[3]||(g("right",c),n(d.utils.getAbout(h,f[0])),!0)}var o,s;if(d.log.info("Key "+e.keyCode+" pressed"),"TEXTAREA"!==d.utils.getTarget(e).tagName&&"UserURI"!==d.utils.getTarget(e).id&&!(f.length>1))if(0!==f.length){var c=f[0];switch(v.removeCallback("done","setSelectedAfterward"),v.removeCallback("fail","setSelectedAfterward"),e.keyCode){case 13:if("HTML"===d.utils.getTarget(e).tagName){var l=d.utils.getAbout(h,c);o=c.parentNode.AJAR_statement.why,s=d.store.updater.editable(o.uri,h),l?i.GotoSubject(l,!0):s&&m.UserInput.Enter(c)}else this.UserInput.Keypress(e),this.walk("down"),e.stopPropagation();return;case 38:this.walk("up"),e.stopPropagation(),e.preventDefault();break;case 40:this.walk("down"),e.stopPropagation(),e.preventDefault()}if("INPUT"!==d.utils.getTarget(e).tagName){switch(e.keyCode){case 46:case 8:o=c.parentNode.AJAR_statement.why,(s=d.store.updater.editable(o.uri,h))&&(e.preventDefault(),this.UserInput.Delete(c));break;case 37:if(this.walk("left"))return;var p=d.utils.ancestor(c.parentNode,"TD");Y(c,d.utils.getAbout(h,p));break;case 39:var u=d.utils.getAbout(h,c);if(u){var g=this.walk;if(c.nextSibling)return void this.walk("right");"TABLE"!==c.firstChild.tagName&&(v.addCallback("done",a),v.addCallback("fail",a),V(c,u,{pane:r.defaultPane})),a()}break;case 38:case 40:break;default:switch(e.charCode){case 99:if(e.ctrlKey){m.UserInput.copyToClipboard(m.clipboardAddress,c);break}break;case 118:case 112:if(e.ctrlKey){m.UserInput.pasteFromClipboard(m.clipboardAddress,c);break}break;default:d.utils.getTarget(e).tagName}}if(n(d.utils.getAbout(h,f[0])),f[0]){var b=d.utils.findPos(f[0])[1];b+f[0].clientHeight>window.scrollY+window.innerHeight&&d.utils.getEyeFocus(f[0],!0,!0,window),b<window.scrollY+54&&d.utils.getEyeFocus(f[0],!0,void 0,window)}}}else 13!==e.keyCode&&38!==e.keyCode&&40!==e.keyCode&&37!==e.keyCode&&39!==e.keyCode||(this.walk("right",m.focusTd),n(d.utils.getAbout(h,f[0])))},this.OutlinerMouseclickPanel=function(e){switch(m.UserInput._tabulatorMode){case 0:!function(e){d.log.info("@TabulatorMousedown, dom.location is now "+t.location);var n=m.targetOf(e);if(!n)return;var a=n.tagName;if("INPUT"===a||"TEXTAREA"===a)return;m.UserInput.clearMenu(),m.UserInput.lastModified&&m.UserInput.lastModified.parentNode.nextSibling&&m.UserInput.backOut();(!n.src||n.src.slice(n.src.indexOf("/icons/")+1)!==l.src.icon_show_choices&&n.src.slice(n.src.indexOf("/icons/")+1)!==l.src.icon_add_triple)&&m.UserInput.clearInputAndSave(e);n.src&&n.src.slice(n.src.indexOf("/icons/")+1)===l.src.icon_show_choices||m.UserInput.clearMenu();e&&e.stopPropagation()}(e);break;case 1:m.UserInput.Click(e)}},this.replaceTD=function(e,n){var t;O(n)&&(t=!0);for(var a=f.length-1;a>-1;a--)for(var i=f[a];i.parentNode;i=i.parentNode)i===n&&_(f[a],!1);n.parentNode.replaceChild(e,n),t&&_(e,!0)},i.outlineRefocus=K,this.GotoFormURI_enterKey=function(e){13===e.keyCode&&i.GotoFormURI(e)},this.GotoFormURI=function(e){!function(e){var n=h.sym(e);this.GotoSubject(n,!0)}(t.getElementById("UserURI").value)},this.GotoURIinit=function(e){var n=h.sym(e);this.GotoSubject(n)},this.GotoSubject=function(e,n,a,i,o,r){r=r||t.getElementById("outline"),i&&(d.utils.emptyNode(r),r.style.width="100%");var s=function(){var n=t.createElement("TR");n.style.verticalAlign="top",r.appendChild(n);var a=m.outlineObjectTD(e,void 0,n);return n.appendChild(a),a}();if(i&&J(e),n){V(s,e,{pane:a,solo:i});var c=s.parentNode;d.utils.getEyeFocus(c,!1,void 0,window)}if(i&&t&&t.defaultView&&t.defaultView.history&&document.location.href!==e.uri){var l=a?{paneName:a.name}:{};try{t.defaultView.history.pushState(l,e.uri,e.uri)}catch(e){console.log(e)}}return e};var X={properties:[],defaults:[],classes:[]};function Q(e,n,t){X.properties[e]||(X.properties[e]=[]),X.properties[e].push(n),t&&(X.defaults[e]=n)}var Z=d.ns;function ee(e){var n;if("Literal"===e.termType){(n=t.createElement("span")).textContent=e.value;var a="";if(e.datatype&&e.datatype.uri){var i=d.ns.xsd("").uri;e.datatype.uri.slice(0,i.length)===i&&(a={integer:"text-align: right;",decimal:"text-align: '.';",double:"text-align: '.';"}[e.datatype.uri.slice(i.length)])}n.setAttribute("style",a||"white-space: pre-wrap;")}else if("NamedNode"===e.termType||"BlankNode"===e.termType)if((n=t.createElement("span")).setAttribute("about",e.toNT()),m.appendAccessIcons(h,n,e),"NamedNode"===e.termType)if("tel:"===e.uri.slice(0,4)){var o=e.uri.slice(4),s=t.createElement("a");n.appendChild(t.createTextNode(o)),s.setAttribute("href",e.uri),s.appendChild(d.utils.AJARImage(l.src.icon_telephone,"phone","phone "+o,t)),n.appendChild(s),s.firstChild.setAttribute("class","phoneIcon")}else n.appendChild(t.createTextNode(d.utils.label(e))),d.widgets.makeDraggable(n,e);else n.appendChild(t.createTextNode(d.utils.label(e)));else if("Collection"===e.termType){(n=t.createElement("table")).setAttribute("style","width: 100%;"),n.setAttribute("about",e.toNT());for(var c=0;c<e.elements.length;c++){var p=e.elements[c],u=n.appendChild(t.createElement("tr")),f=u.appendChild(t.createElement("td"));f.setAttribute("style","margin: 0.2em; border: none; padding: 0; vertical-align: top;"),f.setAttribute("notSelectable","false"),f.setAttribute("about",e.toNT()),f.innerHTML=c+1+")",u.appendChild(m.outlineObjectTD(p))}}else"Graph"===e.termType?(n=r.dataContentPane.statementsAsTables(e.statements,t)).setAttribute("class","nestedFormula"):(d.log.error("Object "+e+" has unknown term type: "+e.termType),n=t.createTextNode("[unknownTermType:"+e.termType+"]"));return d.log.debug("contents: "+n.innerHTML),n}function ne(e){var n=d.utils.AJARImage(e.uri,d.utils.label(e),d.utils.label(e),t);return n.setAttribute("class","outlineImage"),n}return Q(Z.foaf("depiction").uri,ne,!0),Q(Z.foaf("img").uri,ne,!0),Q(Z.foaf("thumbnail").uri,ne,!0),Q(Z.foaf("logo").uri,ne,!0),Q(Z.foaf("mbox").uri,function(e){var n=t.createElement("a"),a="NamedNode"===e.termType?e.uri:e.value;if(!a)return ee(e);var i=a.indexOf("mailto:");return a=i>=0?a.slice(i+7):a,n.setAttribute("href","mailto:"+a),n.appendChild(t.createTextNode(a)),n},!0),this.createTabURI=function(){t.getElementById("UserURI").value=t.URL+"?uri="+t.getElementById("UserURI").value},this.UserInput.setSelected=_,this.UserInput.deselectAll=U,this.UserInput.views=X,this.outlineExpand=V,this}}).call(this,t(8))},function(e,n){var t;t=function(){return this}();try{t=t||new Function("return this")()}catch(e){"object"==typeof window&&(t=window)}e.exports=t},function(e,n,t){var a,i=t(0),o=e.exports={};o.util={},o.util.Event=(a=[],{on:function(e,n,t,i,o){var r=function(e){return t.call(i,e,i)};e.addEventListener(n,r,!1);var s=[e,n,o,r];a.push(s)},off:function(e,n,t){var i=this._getCacheIndex(e,n,t);if(-1===i)return!1;var o=a[i];return e.removeEventListener(n,o[this.WFN],!1),delete a[i][this.WFN],delete a[i][this.FN],a.splice(i,1),!0},EL:0,TYPE:1,FNID:2,WFN:3,_getCacheIndex:function(e,n,t){for(var i=0,o=a.length;i<o;++i){var r=a[i];if(r&&r[this.FNID]===t&&r[this.EL]===e&&r[this.TYPE]===n)return i}return-1}}),o.util.DDExternalProxy=function(e){this.initTarget(e)},o.util.DDExternalProxy.prototype={initTarget:function(e){this.DDM=o.util.DDM,this.el=e},b4StartDrag:function(e,n){r.onDragStart(e,n,this.el)},b4Drag:function(e){},handleMouseDown:function(e,n){(e.which||e.button)>1||this.DDM.handleMouseDown(e,this)}},o.util.DDM={handleMouseDown:function(e,n){this.dragCurrent=n;var t=n.el;this.startX=e.pageX,this.startY=e.pageY,this.deltaX=this.startX-t.offsetLeft,this.deltaY=this.startY-t.offsetTop,this.dragThreshMet=!1},handleMouseMove:function(e){if(!this.dragCurrent)return!0;if(o.util.Event.isIE&&!e.button)return o.log("button failure","info","DragDropMgr"),this.stopEvent(e),this.handleMouseUp(e);if(!this.dragThreshMet){var n=Math.abs(this.startX-e.pageX),t=Math.abs(this.startY-e.pageY);(n>this.clickPixelThresh||t>this.clickPixelThresh)&&this.startDrag(this.startX,this.startY)}return this.dragThreshMet,e.preventDefault(),!0},handleMouseUp:function(e){this.dragCurrent&&(o.util.Event.off(this.dragCurrent.el,"mousemove","dragMouseMove"),o.util.Event.off(this.dragCurrent.el,"mouseup","dragMouseUp"),o.util.Event.off(this.dragCurrent.el,"mouseup","dragMouseUp"),this.dragThreshMet&&(r.onDropInside(e.target),this.dragThreshMet=!1),this.dragCurrent=null)},startDrag:function(e,n){this.dragCurrent&&this.dragCurrent.b4StartDrag(e,n),this.dragThreshMet=!0},clickPixelThresh:3};var r={onDrop:function(e,n,t){var a=i.utils.ancestor(i.utils.ancestor(e.originalTarget,"TABLE").parentNode,"TABLE").outline.selection,o=n.flavour.contentType,r=transferUtils.retrieveURLFromData(n.data,o);if(r){if("application/x-moz-file"===o&&0===n.data.fileSize){var s=$rdf.sym("chrome://tabulator/content/internalKnowledge.n3#defaultNew");i.store.copyTo(s,$rdf.sym(r))}var c=a[0];i.utils.ancestor(i.utils.ancestor(c,"TABLE").parentNode,"TABLE").outline.UserInput.insertTermTo(c,$rdf.sym(r))}},onDragEnter:function(e,n){try{var t=i.utils.ancestor(i.utils.ancestor(e.originalTarget,"TABLE").parentNode,"TABLE").outline.selection}catch(e){return}for(var a=e.originalTarget;a;a=a.parentNode)if(a.tabulatorSelect){if(t[0]){try{t[0].tabulatorDeselect()}catch(e){throw new Error(t[0]+" causes "+e)}o.util.Event.off(a,"mouseup","dragMouseUp")}a.tabulatorSelect();break}},onDragExit:function(e,n){},onDropInside:function(e){e.ownerDocument.getElementById("outline").outline.UserInput.insertTermTo(e,i.utils.getAbout(i.store,this.dragTarget))},onDragStart:function(e,n,t){this.dragTarget=t;var a=Components.interfaces.nsIDragService,o={action:a.DRAGDROP_ACTION_COPY+a.DRAGDROP_ACTION_MOVE+a.DRAGDROP_ACTION_LINK},r=t.ownerDocument.getBoxObjectFor(t),s=Components.classes["@mozilla.org/gfx/region;1"].createInstance(Components.interfaces.nsIScriptableRegion);s.init(),s.unionRect(r.screenX,r.screenY,r.width,r.height);var c={data:null},l=i.Util.getTerm(t);switch(l.termType){case"NamedNode":c.data=this.URItoTransferDataSet(l.uri);break;case"BlankNode":c.data=this.URItoTransferDataSet(l.toNT());break;case"Literal":c.data=this.URItoTransferDataSet(l.value)}c=c.data;var p=Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray),d=nsTransferable.set(c.dataList[0]);p.AppendElement(d.QueryInterface(Components.interfaces.nsISupports)),this.mDragService.invokeDragSession(t,p,s,o.action)},getSupportedFlavours:function(){var e=new FlavourSet;return e.appendFlavour("text/x-moz-url"),e.appendFlavour("text/unicode"),e.appendFlavour("application/x-moz-file","nsIFile"),e},URItoTransferDataSet:function(e){var n=new TransferDataSet,t=new TransferData;return t.addDataForFlavour("text/x-moz-url",e),t.addDataForFlavour("text/unicode",e),n.push(t),n},_mDS:null,get_mDragService:function(){if(!this._mDS){var e=Components.interfaces.nsIDragService;this._mDS=Components.classes["@mozilla.org/widget/dragservice;1"].getService(e)}return this._mDS},DDM:o.util.DDM}},function(e,n,t){var a=e.exports={},i=t(0);a.src=[],a.tooltips=[],a.src.icon_expand=i.icons.originalIconBase+"tbl-expand-trans.png",a.src.icon_more=i.icons.originalIconBase+"tbl-more-trans.png",a.src.icon_collapse=i.icons.originalIconBase+"tbl-collapse.png",a.src.icon_internals=i.icons.originalIconBase+"tango/22-emblem-system.png",a.src.icon_instances=i.icons.originalIconBase+"tango/22-folder-open.png",a.src.icon_foaf=i.icons.originalIconBase+"foaf/foafTiny.gif",a.src.icon_social=i.icons.originalIconBase+"social/social.gif",a.src.icon_mb=i.icons.originalIconBase+"microblog/microblog.png",a.src.icon_shrink=i.icons.originalIconBase+"tbl-shrink.png",a.src.icon_rows=i.icons.originalIconBase+"tbl-rows.png",a.src.icon_unrequested=i.icons.originalIconBase+"16dot-blue.gif",a.src.icon_fetched=i.icons.originalIconBase+"16dot-green.gif",a.src.icon_failed=i.icons.originalIconBase+"16dot-red.gif",a.src.icon_requested=i.icons.originalIconBase+"16dot-yellow.gif",a.src.icon_CVPane=i.icons.originalIconBase+"CV.png",a.src.icon_defaultPane=i.icons.originalIconBase+"about.png",a.src.icon_visit=i.icons.originalIconBase+"tango/22-text-x-generic.png",a.src.icon_dataContents=i.icons.originalIconBase+"rdf_flyer.24.gif",a.src.icon_n3Pane=i.icons.originalIconBase+"w3c/n3_smaller.png",a.src.icon_RDFXMLPane=i.icons.originalIconBase+"22-text-xml4.png",a.src.icon_imageContents=i.icons.originalIconBase+"tango/22-image-x-generic.png",a.src.icon_airPane=i.icons.originalIconBase+"1pt5a.gif",a.src.icon_LawPane=i.icons.originalIconBase+"law.jpg",a.src.icon_pushbackPane=i.icons.originalIconBase+"pb-logo.png",a.src.icon_photoPane=i.icons.originalIconBase+"photo_small.png",a.src.icon_tagPane=i.icons.originalIconBase+"tag_small.png",a.src.icon_TinyTag=i.icons.originalIconBase+"tag_tiny.png",a.src.icon_photoBegin=i.icons.originalIconBase+"photo_begin.png",a.src.icon_photoNext=i.icons.originalIconBase+"photo_next.png",a.src.icon_photoBack=i.icons.originalIconBase+"photo_back.png",a.src.icon_photoEnd=i.icons.originalIconBase+"photo_end.png",a.src.icon_photoImportPane=i.icons.originalIconBase+"flickr_small.png",a.src.icon_retract=i.icons.originalIconBase+"retract.gif",a.src.icon_refresh=i.icons.originalIconBase+"refresh.gif",a.src.icon_optoff=i.icons.originalIconBase+"optional_off.PNG",a.src.icon_opton=i.icons.originalIconBase+"optional_on.PNG",a.src.icon_map=i.icons.originalIconBase+"compassrose.png",a.src.icon_retracted=a.src.icon_unrequested,a.src.icon_retracted=a.src.icon_unrequested,a.src.icon_time=i.icons.originalIconBase+"icons/Wclocksmall.png",a.src.icon_telephone=i.icons.originalIconBase+"silk/telephone.png",a.src.icon_time=i.icons.originalIconBase+"Wclocksmall.png",a.src.icon_remove_node=i.icons.originalIconBase+"tbl-x-small.png",a.src.icon_add_triple=i.icons.originalIconBase+"tango/22-list-add.png",a.src.icon_add_new_triple=i.icons.originalIconBase+"tango/22-list-add-new.png",a.src.icon_show_choices=i.icons.originalIconBase+"userinput_show_choices_temp.png",a.src.icon_display_reasons=i.icons.originalIconBase+"tango/22-help-browser.png",a.tooltips[a.src.icon_display_reasons]="Display explanations",a.tooltips[a.src.icon_add_triple]="Add more",a.tooltips[a.src.icon_add_new_triple]="Add one",a.tooltips[a.src.icon_remove_node]="Remove",a.tooltips[a.src.icon_expand]="View details.",a.tooltips[a.src.icon_collapse]="Hide details.",a.tooltips[a.src.icon_shrink]="Shrink list.",a.tooltips[a.src.icon_internals]="Under the hood",a.tooltips[a.src.icon_instances]="List",a.tooltips[a.src.icon_foaf]="Friends",a.tooltips[a.src.icon_rows]="Make a table of data like this",a.tooltips[a.src.icon_unrequested]="Fetch this.",a.tooltips[a.src.icon_fetched]="Fetched successfully.",a.tooltips[a.src.icon_failed]="Failed to load. Click to retry.",a.tooltips[a.src.icon_requested]="This is being fetched. Please wait...",a.tooltips[a.src.icon_visit]="View document",a.tooltips[a.src.icon_retract]="Remove this source and all its data from tabulator.",a.tooltips[a.src.icon_refresh]="Refresh this source and reload its triples.",a.OutlinerIcon=function(e,n,t,a,i){return this.src=e,this.alt=t,this.width=n,this.tooltip=a,this.filter=i,this},a.termWidgets={},a.termWidgets.optOn=new a.OutlinerIcon(a.src.icon_opton,20,"opt on","Make this branch of your query mandatory."),a.termWidgets.optOff=new a.OutlinerIcon(a.src.icon_optoff,20,"opt off","Make this branch of your query optional."),a.termWidgets.addTri=new a.OutlinerIcon(a.src.icon_add_triple,18,"add tri","Add one")},function(e,n,t){function a(e){return(a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var i,o,r=t(0),s=t(1);e.exports=function e(n){var t=r.store,c=n.document;this.menuId="predicateMenu1";var l=function(e){console.log(e+"\n")},p=r.ns.rdf,d=r.rdf.Namespace("http://purl.org/ontology/bibo/"),u=r.rdf.Namespace("http://purl.org/dc/elements/1.1/"),m=!1;return i||((i=new r.rdf.Formula).superFormula=t),o||(o=new r.rdf.IndexedFormula),o.name="TempFormula",r.store.updater||(r.store.updater=new r.rdf.UpdateManager(t)),{sparqler:r.store.updater,lastModified:null,lastModifiedStat:null,statIsInverse:!1,addNewPredicateObject:function(e){if("bottom-border-active"===r.utils.getTarget(e).className){var a=n.UserInput,i=r.utils.getTarget(e),o=c.createElement("tr");r.utils.ancestor(i,"DIV").insertBefore(o,r.utils.ancestor(i,"TR"));var s=c.createElement("tr"),l=a.generateRequest("(TBD)",s,!0);o.appendChild(s.firstChild);var p=a.generateRequest("(Enter text or drag an object onto this field)",s,!1);if(o.appendChild(s.firstChild),r.utils.ancestor(i,"TR").previousSibling&&r.utils.ancestor(i,"TR").previousSibling.AJAR_statement){var d=r.utils.ancestor(i,"TR").previousSibling.AJAR_statement;a.formUndetStat(o,d.subject,l,p,d.why,!1)}else{var u=r.utils.getAbout(t,r.utils.ancestor(i.parentNode.parentNode,"TD")),m=t.sym(r.rdf.Util.uri.docpart(u.uri));a.formUndetStat(o,u,l,p,m,!1)}n.walk("moveTo",o.firstChild),r.log.info("addNewPredicateObject: selection = "+n.getSelection().map(function(e){return e.textContent}).join(", ")),this.startFillInText(n.getSelection()[0])}},addNewObject:function(e){var t=r.utils.getTarget(e).parentNode.parentNode,a=t.parentNode.AJAR_inverse;this.lastModifiedStat=t.parentNode.AJAR_statement;var i=this.appendToPredicate(t),o=this.generateRequest(" (Error) ",i,!1),s=i.previousSibling.AJAR_statement;a?this.formUndetStat(i,o,s.predicate,s.object,s.why,!0):this.formUndetStat(i,s.subject,s.predicate,o,s.why,!1),n.walk("moveTo",i.lastChild),this.startFillInText(i.lastChild)},Delete:function(e){this.deleteTriple(e,!1)},Enter:function(e){this.literalModification(e)},Click:function(e){var n=r.utils.getTarget(e);"Literal"===r.utils.getTerm(n).termType&&(this.literalModification(n),e.preventDefault(),e.stopPropagation())},pasteFromClipboard:function(e,t){function a(e){var t=n.clipboard[e].shift();if(null!==t){switch(e){case"predicates":case"objects":for(var a=n.clipboard.all,i=0;;i++)if(t.sameTerm(a[i])){a.splice(i,1);break}break;case"all":throw new Error("hostorical code not understood - what is theCollection?")}return t}r.log.warn("no more element in clipboard!")}var i;switch(t.className){case"undetermined selected":if(!(i=t.nextSibling?a("predicates"):a("objects")))return;break;case"pred selected":if(!(i=a("objects")))return;break;case"selected":var o=a("all");if(!o)return;return i=o[0],void this.insertTermTo(t,i,o[1])}this.insertTermTo(t,i)},startFillInText:function(e){switch(this.whatSortOfEditCell(e)){case"DatatypeProperty-like":r.utils.emptyNode(e),this.lastModified=this.createInputBoxIn(e," (Please Input) "),this.lastModified.isNew=!1,this.lastModified.select();break;case"predicate":this.performAutoCompleteEdit(e,"PredicateAutoComplete");break;case"ObjectProperty-like":case"no-idea":this.performAutoCompleteEdit(e,"GeneralAutoComplete")}},literalModification:function(e){if(r.log.debug("entering literal Modification with "+e+e.textContent),-1!==e.className.indexOf(" pendingedit"))return r.log.warn("The node you attempted to edit has a request still pending.\nPlease wait for the request to finish (the text will turn black)\nbefore editing this node again."),!0;var n=e;if(this.getStatementAbout(n)){try{var a=r.utils.getTerm(n),i=r.utils.ancestor(n,"TR")}catch(a){r.log.warn("userinput.js: "+a+r.utils.getAbout(t,e)),r.log.error(n+" getStatement Error:"+a)}try{var o=i.lastChild}catch(e){r.log.error(e+"@"+n)}if("Literal"===a.termType){if(o.removeChild(o.firstChild),a.value.match("\n")){var s=c.createElement("textarea");s.appendChild(c.createTextNode(a.value)),s.setAttribute("rows",(a.value.match(/\n/g).length+1).toString()),s.setAttribute("cols","100"),s.setAttribute("class","textinput"),o.appendChild(s),this.lastModified=s}else this.lastModified=this.createInputBoxIn(o,a.value);this.lastModified.isNew=!1,this.lastModified.select()}return!0}},performAutoCompleteEdit:function(e,n){r.utils.emptyNode(e),l("perform AutoCompleteEdit. THIS IS="+this),this.lastModified=this.createInputBoxIn(e,""),this.lastModified.select(),this.lastModified.addEventListener("keypress",this.getAutoCompleteHandler(n),!1),this.getAutoCompleteHandler(n)(1)},backOut:function(){this.deleteTriple(this.lastModified.parentNode,!0),this.lastModified=null},clearMenu:function(){var e=c.getElementById(this.menuID);e&&e.parentNode.removeChild(e)},clearInputAndSave:function(e){if(this.lastModified){if(!this.lastModified.isNew)try{var a=this.getStatementAbout(this.lastModified).object}catch(e){return}var i=this.lastModifiedStat;if(this.lastModified.value!==this.lastModified.defaultValue){if(""===this.lastModified.value)return this.lastModified.value=this.lastModified.defaultValue,void this.clearInputAndSave();if(this.lastModified.isNew){i=new r.rdf.Statement(i.subject,i.predicate,t.literal(this.lastModified.value),i.why);var o=this.views.defaults[i.predicate.uri],c=r.utils.ancestor(this.lastModified,"TR");try{r.store.updater.update([],[i],function(e,t,a){t||(r.log.error("Error occurs while inserting "+i+"\n\n"+a+"\n"),n.UserInput.deleteTriple(c.lastChild,!0))})}catch(e){return void r.log.error("Error inserting fact "+i+":\n\t"+e+"\n")}i=t.add(i.subject,i.predicate,t.literal(this.lastModified.value),i.why)}else{if(this.statIsInverse)return r.log.error("Invalid Input: a literal can't be a subject in RDF/XML"),void this.backOut();var l,d,u;switch(a.termType){case"Literal":var m=this.lastModified.value;c=r.utils.ancestor(this.lastModified,"TR");var f=this.lastModified.defaultValue;d=$rdf.st(i.subject,i.predicate,t.literal(this.lastModified.value),i.why);try{r.store.updater.update([i],[d],function(e,n,t){n?a.value=m:(r.log.warn("Error occurs while editing "+i+"\n\n"+t),c.lastChild.textContent=f),c.lastChild.className=c.lastChild.className.replace(/ pendingedit/g,"")})}catch(e){return void r.log.warn("Error occurs while editing "+i+":\n\t"+e)}break;case"BlankNode":var h=t.literal(this.lastModified.value,"");if("Collection"!==i.predicate.termType)return void this.fillInRequest("object",this.lastModified.parentNode,t.literal(this.lastModified.value));var v=i.predicate.elements[0];if(t.any(void 0,v,h)){if(!e){var g=this.lastModified.parentNode;(e={}).pageX=r.utils.findPos(g)[0],e.pageY=r.utils.findPos(g)[1]+g.clientHeight}this.showMenu(e,"DidYouMeanDialog",void 0,{dialogTerm:t.any(void 0,v,h),bnodeTerm:i.subject})}else{l=r.utils.ancestor(r.utils.ancestor(this.lastModified,"TR").parentNode,"TR").AJAR_statement,d=$rdf.st(i.subject,v,h,i.why);var b=t.the(i.subject,p("type"));u=t.anyStatementMatching(i.subject,p("type"),b,i.why),c=r.utils.ancestor(r.utils.ancestor(this.lastModified,"TR"),"TD").parentNode;try{r.store.updater.update([],[l,d,u],function(e,t,a){t||(console.log("Error occurs while editing "+l+"\n\n"+a),n.UserInput.deleteTriple(c.lastChild,!0))})}catch(e){return void console.log("Error occurs while editing "+l+":\n\t"+e)}t.remove(i),t.add(i.subject,v,h,i.why)}var w=r.utils.ancestor(this.lastModified.parentNode.parentNode,"TD"),x=s.default;n.outlineExpand(w,i.subject,{pane:x,already:!0}),n.walk("right",n.focusTd)}}}else{if(this.lastModified.isNew){var y=r.utils.ancestor(this.lastModified,"TR"),C=this.generateRequest("(To be determined. Re-type of drag an object onto this field)"),k=y.previousSibling.AJAR_statement;return this.formUndetStat(y,k.subject,k.predicate,C,k.why,!1),void(this.lastModified=null)}if("Collection"===i.predicate.termType){t.removeMany(i.subject);var T=r.utils.ancestor(r.utils.ancestor(this.lastModified,"TR").parentNode,"TR");return k=T.AJAR_statement,C=this.generateRequest("(To be determined. Re-type of drag an object onto this field)"),this.formUndetStat(T,k.subject,k.predicate,C,k.why,!1),n.replaceTD(n.outlineObjectTD(C,o),T.lastChild),void(this.lastModified=null)}if(this.statIsInverse){if("BlankNode"===i.subject.termType)return void this.backOut()}else if("BlankNode"===i.object.termType)return void this.backOut()}y=r.utils.ancestor(this.lastModified,"TR"),this.statIsInverse?n.replaceTD(n.outlineObjectTD(i.subject,o),y.lastChild):n.replaceTD(n.outlineObjectTD(t.literal(this.lastModified.value),o),y.lastChild),this.lastModified.value!==this.lastModified.defaultValue&&(y.lastChild.className+=" pendingedit"),this.lastModified=null}},deleteTriple:function(e,a){if(r.log.debug("deleteTriple entered"),!a&&-1!==e.className.indexOf(" pendingedit"))return console.log("The node you attempted to edit has a request still pending.\nPlease wait for the request to finish (the text will turn black)\nbefore editing this node again."),void n.walk("up");var i,o=this.getStatementAbout(e);if(!(a||t.whether(o.object,p("type"),r.ns.link("Request"))||t.whether(o.predicate,p("type"),r.ns.link("Request"))||t.whether(o.subject,p("type"),r.ns.link("Request")))){r.log.debug("about to send SPARQLUpdate");try{r.store.updater.update([o],[],function(n,t,a){t?s():(console.log("Error occurs while deleting "+o+"\n\n"+a),e.className=e.className.replace(/ pendingedit/g,""))}),e.className+=" pendingedit"}catch(e){return r.log.error(e),void r.log.warn("Error deleting statement "+o+":\n\t"+e)}r.log.debug("SPARQLUpdate sent")}function s(){var e;for(e=i;1===e.childNodes.length;e=e.previousSibling);if(e===i){var n=e.nextSibling;if(n.nextSibling&&1===n.childNodes.length){var t=e.firstChild;t.setAttribute("rowspan",parseInt(t.getAttribute("rowspan"))-1),n.insertBefore(e.firstChild,n.firstChild)}i.parentNode.removeChild(i)}else(t=e.firstChild).setAttribute("rowspan",parseInt(t.getAttribute("rowspan"))-1),i.parentNode.removeChild(i)}r.log.debug("about to remove "+o),r.log.debug("removed"),n.walk("up"),i=e.parentNode,a&&s()},clipboardInit:function(){n.clipboard={},n.clipboard.objects=[],n.clipboard.predicates=[],n.clipboard.all=[]},copyToClipboard:function(e,t){var a=r.utils.getTerm(t);switch(t.className){case"selected":case"obj selected":n.clipboard.objects.unshift(a);break;case"pred selected":case"pred internal selected":n.clipboard.predicates.unshift(a)}n.clipboard.all.unshift(a)},insertTermTo:function(e,a,o){switch(e.className){case"undetermined selected":var s=this.views.defaults[e.parentNode.AJAR_statement.predicate.uri];this.fillInRequest(e.nextSibling?"predicate":"object",e,a);break;case"pred selected":var l=this.appendToPredicate(e),p=e.parentNode.AJAR_statement;s=this.views.defaults[p.predicate.uri],l.appendChild(n.outlineObjectTD(a,s));var d=e.parentNode.AJAR_inverse;d?l.AJAR_statemnet=t.add(a,p.predicate,p.object,p.why):l.AJAR_statement=t.add(p.subject,p.predicate,a,p.why);try{r.store.updater.update([],[l.AJAR_statement],function(e,n,t){n||r.log.error("userinput.js (pred selected): Fail trying to insert statement "+l.AJAR_statement+": "+t)})}catch(e){return void r.log.error("Exception trying to insert statement "+l.AJAR_statement+": "+r.utils.stackString(e))}l.AJAR_inverse=d,i.statements.push(l.AJAR_statement);break;case"selected":var u=r.utils.ancestor(e,"TABLE").lastChild,m=u.insertBefore(c.createElement("tr"),u.lastChild);if(p=m.previousSibling.AJAR_statement,void 0===o&&(o=!0),o)this.formUndetStat(m,p.subject,this.generateRequest("(TBD)",m,!0),a,p.why,!1),m.appendChild(n.outlineObjectTD(a)),n.walk("moveTo",m.firstChild),this.startFillInText(m.firstChild);else{var f=this.generateRequest("(To be determined. Re-type of drag an object onto this field)",m);this.formUndetStat(m,p.subject,a,f,p.why,!1),m.insertBefore(n.outlinePredicateTD(a,m,!1,!1),m.firstChild),n.walk("moveTo",m.lastChild),this.startFillInText(m.lastChild)}}},Refill:function(e,n){r.log.info("Refill"+n.textContent);var a,i=n.nextSibling;if(i){if("undetermined"===n.nextSibling.className){var o=r.utils.getAbout(t,r.utils.ancestor(n,"TABLE").parentNode),s=t.any(o,p("type")),c=[];c[0]="SELECT ?pred WHERE{\n?pred "+p("type")+p("Property")+".\n?pred "+r.ns.rdfs("domain")+s+".}",c[1]="SELECT ?pred ?class\nWHERE{\n?pred "+p("type")+p("Property")+".\n"+s+r.ns.rdfs("subClassOf")+" ?class.\n?pred "+r.ns.rdfs("domain")+" ?class.\n}",c[2]="SELECT ?pred WHERE{\n"+o+p("type")+t.variable("subjectClass")+".\n"+t.variable("pred")+r.ns.rdfs("domain")+t.variable("subjectClass")+".\n}",a=c.map($rdf.SPARQLToQuery)}else{o=r.utils.getAbout(t,r.utils.ancestor(n,"TABLE").parentNode),s=t.any(o,p("type"));var l=n.parentNode.AJAR_statement.object;c="SELECT ?pred WHERE{"+o+p("type")+"?subjectClass.\n"+l+p("type")+"?objectClass.\n?pred "+r.ns.rdfs("domain")+"?subjectClass.\n?pred "+r.ns.rdfs("range")+"?objectClass.\n}",a=$rdf.SPARQLToQuery(c)}this.showMenu(e,"GeneralPredicateChoice",a,{isPredicate:i,selectedTd:n})}else{var d=n.parentNode.AJAR_statement.predicate;if((t.whether(d,p("type"),r.ns.owl("DatatypeProperty"))||"Collection"===d.termType||t.whether(d,r.ns.rdfs("range"),r.ns.rdfs("Literal")))&&(n.className="",r.utils.emptyNode(n),this.lastModified=this.createInputBoxIn(n," (Please Input) "),this.lastModified.isNew=!1,this.lastModified.select()),n.parentNode.AJAR_statement.predicate.sameTerm(p("type"))){var u="SELECT ?class WHERE{?class "+p("type")+r.ns.rdfs("Class")+".}",m=$rdf.SPARQLToQuery(u);this.showMenu(e,"TypeChoice",m,{isPredicate:i,selectedTd:n})}}},getAutoCompleteHandler:function(e){var i;return l("\n\n***** In getAutoCompleteHandler ****** mode = "+e),"PredicateAutoComplete"===e?e="predicate":"JournalTAC"!==e&&(e="all"),i="JournalTAC"===e?c.getElementById("inpid_journal_title"):this.lastModified||n.getSelection()[0].firstChild,l("InputBox="+i),l("InputBox.value="+i.value),function(o){l("ENTER EVENT="+o),l("1. outside (if eneterEvent)");var s={},p=i.parentNode;e||(e=p.nextSibling?"predicate":"all"),s.pageX=r.utils.findPos(p)[0],s.pageY=r.utils.findPos(p)[1]+p.clientHeight,l("epX="+s.pageX+", epY="+s.pageY+", mode="+e);var d=c.getElementById(n.UserInput.menuID);function u(e){e&&(d.lastHighlight&&(d.lastHighlight.className=""),d.lastHighlight=e,d.lastHighlight.className="activeItem",n.showURI(r.utils.getAbout(t,d.lastHighlight)))}if(o){l("2. in (if enterEvent).  with type = "+a(o));var f=i.value;if("object"===a(o))switch(l("3. in typeof enterEvent is object, will switch to keys, arrows, etc. keycode = "+o.keyCode),o.stopPropagation(),d&&!d.lastHighlight&&u(d.firstChild.firstChild),o.keyCode){case 13:case 9:if(l("handler: Enter or Tab"),!d)return void n.UserInput.clearInputAndSave();if(!d.lastHighlight)return"JournalTAC"===e?(n.UserInput.clearMenu(),l("no lastH"),"no lastH"):void 0;if("INPUT"===d.lastHighlight.tagName)switch(d.lastHighlight.value){case"New...":l("subcase New"),n.UserInput.createNew();break;case"GiveURI":l("subcase GiveURI"),n.UserInput.inputURI()}else{if("JournalTAC"===e){if(l("movedArrow? "+m),m&&d.lastHighlight){var h=d.lastHighlight.firstChild.firstChild.innerHTML,v=d.lastHighlight.firstChild.nextSibling.innerHTML;return["gotdptitle",h,v=v.slice(4,-4)]}return"asGivenTxt"}var g=r.utils.getAbout(t,d.lastHighlight),b="predicate"===e?"predicate":"object";n.UserInput.clearMenu(),n.UserInput.fillInRequest(b,i.parentNode,g)}return void l("outside");case 38:return l("handler: Arrow UP"),m=!0,""!==f||"TR"!==d.lastHighlight.tagName||d.lastHighlight.previousSibling?u(d.lastHighlight.previousSibling):u(d.firstChild.firstChild),"I'm a little Arrow Up";case 40:return l("handler: Arrow Down"),m=!0,"INPUT"===d.lastHighlight.tagName?u(d.childNodes[1].firstChild):u(d.lastHighlight.nextSibling),"I'm a little Down Arrow";case 37:case 39:return l("handler: Arrow left, right"),void("INPUT"===d.lastHighlight.tagName&&(37===o.keyCode?u(d.lastHighlight.previousSibling):u(d.lastHighlight.nextSibling)));case 8:l("handler: Backspace"),f=f.slice(0,-1);break;case 27:return l("handler: Esc"),d?void n.UserInput.clearMenu():void n.UserInput.backOut();default:l("handler: Default"),m=!1,l("oldtext="+f),f+=String.fromCharCode(o.charCode),l("charcodent="+o.charCode),l("strcharcod="+String.fromCharCode(o.charCode)),console.log("DEFAULT txtstr="+f+"\n")}return"all"===e?(l("generalAC after switch, newText="+f+"mode is all"),n.UserInput.clearMenu(),n.UserInput.showMenu(s,"GeneralAutoComplete",void 0,{inputText:f,selectedTd:p}),0===f.length&&n.UserInput.WildCardButtons()):"predicate"===e?(l("predicateAC after switch, newText="+f+"mode is predicate"),n.UserInput.clearMenu(),n.UserInput.showMenu(s,"PredicateAutoComplete",void 0,{inputText:f,isPredicate:!0,selectedTd:p})):"JournalTAC"===e&&(l("JouralTAC after switch, newText="+f),n.UserInput.clearMenu(),n.UserInput.showMenu(s,"JournalTitleAutoComplete",void 0,{inputText:f},"orderisuseless")),(d=c.getElementById(n.UserInput.menuID))?(l("at end of handler\n^^^^^^^^^^^^^^^^^\n\n"),u(d.firstChild.firstChild),n.showURI(r.utils.getAbout(t,d.lastHighlight)),"nothing to return"):void l("No menu element.  Do not show menu.")}}},WildCardButtons:function(){var e=c.getElementById(n.UserInput.menuID),t=e.insertBefore(c.createElement("div"),e.firstChild),a=t.appendChild(c.createElement("input")),i=t.appendChild(c.createElement("input"));a.type="button",a.value="New...",i.type="button",i.value="Know its URI",t.addEventListener("mouseover",function(e){var t=c.getElementById(n.UserInput.menuID);t.lastHighlight&&(t.lastHighlight.className=""),t.lastHighlight=r.utils.ancestor(r.utils.getTarget(e),"INPUT"),t.lastHighlight&&(t.lastHighlight.className="activeItem")},!1),a.addEventListener("click",this.createNew,!1),i.addEventListener("click",this.inputURI,!1)},Keypress:function(e){if(13===e.keyCode)if("TEXTAREA"!==n.targetOf(e).tagName)this.clearInputAndSave();else{var t=parseInt(this.lastModified.getAttribute("rows"));this.lastModified.setAttribute("rows",(t+1).toString()),e.stopPropagation()}},Mousedown:function(n){l("MOUSING DOWN"),window.addEventListener("keypress",function(n){!n.ctrlKey||115!==n.charCode&&113!==n.charCode||e.switchMode()},!1),window.addEventListener("mousedown",e.Mousedown,!1),document.getElementById("outline").oncontextmenu=function(){return!1},2===n.button&&(e.switchMode(),n&&(n.preventDefault(),n.stopPropagation()))},Mouseover:function(e){if(this.className="bottom-border-active",1===this._tabulatorMode)switch(r.utils.getTarget(e).tagName){case"TD":var n=r.utils.getTarget(e);"pred"===n.className&&(n.style.cursor="copy");break;case"DIV":var t=r.utils.getTarget(e);"bottom-border"===r.utils.getTarget(e).className&&(t.style.borderColor="rgb(100%,65%,0%)",t.style.cursor="copy")}},Mouseout:function(e){if(this.className="bottom-border",1===this._tabulatorMode){var n=r.utils.getTarget(e);"bottom-border"===r.utils.getTarget(e).className&&(n.style.borderColor="transparent",n.style.cursor="auto")}},whatSortOfEditCell:function(e){if(e.nextSibling)return"predicate";var n=this.getStatementAbout(e).predicate;return t.whether(n,r.ns.rdf("type"),r.ns.owl("DatatypeProperty"))||t.whether(n,r.ns.rdfs("range"),r.ns.rdfs("Literal"))||"Collection"===n.termType?"DatatypeProperty-like":t.whether(n,p("type"),r.ns.owl("ObjectProperty"))?"ObjectProperty-like":"no-idea"},getStatementAbout:function(e){var n=r.utils.ancestor(e,"TR");if(!n)throw new Error("No ancestor TR for the TD we clicked on:"+e);try{var t=n.AJAR_statement}catch(t){throw new Error("No AJAR_statement!"+e+e.textContent+" has ancestor "+n)}return this.lastModifiedStat=n.AJAR_statement,this.statIsInverse=n.AJAR_inverse,t},createInputBoxIn:function(e,t){r.log.info("myDocument in createInputBoxIn is now "+c.location),r.log.info("outline.document is now "+n.document.location);var a=c.createElement("input");return a.setAttribute("value",t),a.setAttribute("class","textinput"),"undetermined selected"!==e.className&&(a.setAttribute("size","100"),a.addEventListener("keypress",function(e){38!==e.keyCode&&40!==e.keyCode||(n.OutlinerKeypressPanel(e),n.UserInput.clearInputAndSave())},!1)),e.appendChild(a),a},createNew:function(e){n.UserInput.clearMenu();var a=n.getSelection()[0],i=a.parentNode.AJAR_statement.why,o=t.nextSymbol(i);n.UserInput.fillInRequest("object",a,o),n.outlineExpand(n.getSelection()[0],o)},inputURI:function(e){var a=n.UserInput;a.clearMenu();var i=n.getSelection()[0];r.utils.emptyNode(i);var o=" (Type a URI) ";a.lastModified=a.createInputBoxIn(i,o),a.lastModified.select(),a.lastModified.addEventListener("keypress",function(e){switch(e.stopPropagation(),e.keyCode){case 13:case 9:if(this.value!==o){var n=this.value;a.fillInRequest("object",i,t.sym(n))}}},!1)},appendToPredicate:function(e){var n,t=!1;try{for(n=e.parentNode.nextSibling;1===n.childNodes.length&&n.AJAR_statement;n=n.nextSibling);}catch(e){t=!0}var a=c.createElement("tr");if(a.style.colspan="1",a.style.display="block",a.style.display="",e.hasAttribute("rowspan")&&e.setAttribute("rowspan",parseInt(e.getAttribute("rowspan"))+1),e.hasAttribute("rowspan")||e.setAttribute("rowspan","2"),t){var i=e.parentNode.parentNode;"defaultPane"===i.className?i.insertBefore(a,i.lastChild):i.appendChild(a)}else n.parentNode.insertBefore(a,n);return a},bnode2symbol:function(e,n){t.copyTo(e,n,["two-direction","delete"])},generateRequest:function(e,t,a,i){var s;i||(s=t||r.utils.ancestor(this.lastModified,"TR"),r.utils.emptyNode(s));var c,l=o,p=l.bnode();(l.add(p,r.ns.rdf("type"),r.ns.link("Request")),e.length,l.add(p,r.ns.link("message"),l.literal(e)),l.add(p,r.ns.link("to"),l.literal("The User")),l.add(p,r.ns.link("from"),l.literal("The User")),i)||((c=a?s.appendChild(n.outlinePredicateTD(p,s,!1,!1)):s.appendChild(n.outlineObjectTD(p))).className="undetermined",c.textContent=e);return p},showMenu:function(e,a,i,o,s){r.log.info("myDocument is now "+c.location),r.log.info("outline.doucment is now "+n.document.location);var m=this,f=c.createElement("div");if(l("\n**** In showMenu, menuType = "+a+"\n"),o)for(var h in o)console.log("\t extra "+h+": "+o[h]+"\n");console.log("CREATED MENU\n"),f.id=this.menuID,f.className="outlineMenu",f.style.top=e.pageY+"px",f.style.left=e.pageX+"px";if("JournalTitleAutoComplete"===a){var v=function(e){for(var n=0,t=0,a=0,i=0,o=0,r=0;e&&!isNaN(e.offsetLeft)&&!isNaN(e.offsetTop);)o=e.offsetLeft,r=e.offsetTop,o!==a&&(n+=e.offsetLeft-e.scrollLeft),r!==i&&(t+=e.offsetTop-e.scrollTop),a=o,i=r,e=e.parentNode;return{top:t+54,left:n-38}}(c.getElementById("inpid_journal_title"));v.left-=c.getElementById("inpid_journal_title").scrollTop,f.style.top=v.top+"px",f.style.left=v.left+"px"}console.log("menu at top="+f.style.top+" left="+f.style.left+"\n"),c.body.appendChild(f);var g=f.appendChild(c.createElement("table"));switch(f.lastHighlight=null,g.addEventListener("mouseover",function(e){f.lastHighlight&&(f.lastHighlight.className=""),f.lastHighlight=r.utils.ancestor(r.utils.getTarget(e),"TR"),f.lastHighlight&&(f.lastHighlight.className="activeItem")},!1),a){case"DidYouMeanDialog":var b=function(e){l("DID YOU MEAN SELECT ITEM!!!!!");var a=r.utils.ancestor(r.utils.getTarget(e),"TR");2===a.childNodes.length&&a.nextSibling?(t.add(I,D,B),n.UserInput.clearMenu()):2===a.childNodes.length&&n.UserInput.clearMenu()};break;case"LimitedPredicateChoice":var w=o.clickedTd;b=function(e){l("LIMITED P SELECT ITEM!!!!");for(var a=r.utils.getAbout(t,r.utils.getTarget(e)),i=w.parentNode.AJAR_statement.predicate.elements,o=0;o<i.length;o++)i[o].sameTerm(a)&&i.unshift(i.splice(o,1)[0]);n.UserInput.clearMenu();var s=w.parentNode,c=n.outlinePredicateTD(s.AJAR_statement.predicate,s);s.insertBefore(c,w),s.removeChild(w),m.lastModified.select()};break;case"PredicateAutoComplete":case"GeneralAutoComplete":case"GeneralPredicateChoice":case"JournalTitleAutoComplete":case"TypeChoice":var x=o.isPredicate,y=o.selectedTd;b=function(e){l("WOOHOO");var a=r.utils.getAbout(t,r.utils.getTarget(e));l("GENERAL SELECT ITEM!!!!!!="+a),l("target="+r.utils.getTarget(e)),x?(l("1"),n.UserInput.fillInRequest("predicate",y,a)&&(l("2"),n.UserInput.clearMenu())):(l("3"),n.UserInput.fillInRequest("object",y,a)&&(l("4"),n.UserInput.clearMenu()))};break;default:throw new Error("userinput: unexpected mode")}g.addEventListener("click",b,!1);var C,k={};function T(e){g.firstChild&&"no-suggest"===g.firstChild.className&&g.removeChild(g.firstChild);var n=r.utils.predicateLabelForXML(e,!1);if(e.uri){var t="??";for(var a in k)if(r.log.debug(k[a]),r.rdf.Util.string_startswith(e.uri,k[a])){t=a;break}var i=g.appendChild(c.createElement("tr"));i.setAttribute("about",e),i.appendChild(c.createElement("th")).appendChild(c.createElement("div")).appendChild(c.createTextNode(n)),i.appendChild(c.createElement("td")).appendChild(c.createTextNode(t.toUpperCase()))}}function E(e){return function(n){T(n[e.vars[0]])}}switch(t.each(void 0,r.ns.rdf("type"),r.ns.owl("Ontology")).map(function(e){var n=r.utils.label(e);if(n){var t=n.value.match(/\((.+?)\)/);t?k[t[1]]=e.uri:k[n.value]=e.uri}}),a){case"DidYouMeanDialog":var A=o.dialogTerm,I=o.bnodeTerm;f.style.width="auto";var j=g.appendChild(c.createElement("tr")).appendChild(c.createElement("th"));j.appendChild(c.createTextNode("Did you mean..."));var N,P=t.statementsMatching(A);for(N=0;N<P.length&&!t.whether(P[N].predicate,p("type"),r.ns.owl("InverseFunctionalProperty"));N++);var D=P[N].predicate,B=t.any(A,P[N].predicate),M=r.utils.label(A)+" who has "+r.utils.label(D)+" "+B+"?",O=g.appendChild(c.createElement("tr")).appendChild(c.createElement("th"));O.appendChild(c.createTextNode(M)),j.setAttribute("colspan","2"),O.setAttribute("colspan","2");var L=g.appendChild(c.createElement("tr"));L.appendChild(c.createElement("th")).appendChild(c.createTextNode("Yes")),L.appendChild(c.createElement("td")).appendChild(c.createTextNode("BOOLEAN"));var R=g.appendChild(c.createElement("tr"));R.appendChild(c.createElement("th")).appendChild(c.createTextNode("No")),R.appendChild(c.createElement("td")).appendChild(c.createTextNode("BOOLEAN"));break;case"PredicateAutoComplete":C=o.inputText;for(var S=n.labeller.searchAdv(C,void 0,"predicate"),_=[],U=0;U<S.length;U++){var F={vars:[]};F.vars.push("Kenny");var q={};q.Kenny=t.fromNT(S[U].NT);try{E(F)(q)}catch(e){throw new Error("I'll deal with bnodes later...[Kenny]"+e)}}var z=_[0];if(0===z.length)return console.log("cm length 0\n"),void this.clearMenu();for(var H=0;H<z.length&&H<10;H++)T(z[H][1]);break;case"GeneralAutoComplete":C=o.inputText;try{_=n.labeller.search(C)}catch(e){console.log("GeneralAutoComplete: debug me "+o.selectedTd.textContent+"\n"+e+"\n")}z=_[0];var W=_[1];if(0===z.length)return console.log("cm length 0\n"),void this.clearMenu();for(var G=0;G<z.length&&G<10;G++){var $=z[G][1].toNT(),J=g.appendChild(c.createElement("tr"));J.setAttribute("about",$);var V=J.appendChild(c.createElement("th"));V.appendChild(c.createElement("div")).appendChild(c.createTextNode(z[G][0]));var Y=W[G],K=Y?r.utils.label(Y):"";J.appendChild(c.createElement("td")).appendChild(c.createTextNode(K))}break;case"JournalTitleAutoComplete":C=o.inputText,console.log("testing searching text= "+C+" =====\n"),console.log("\n===start JournalTitleAutoComplete\n");for(var X=t.each(void 0,p("type"),d("Journal")),Q=[],Z=0;Z<X.length;Z++){var ee=X[Z],ne=t.each(ee,u("title"),void 0),te=ne+"",ae=C.toLowerCase();if(-1!==te.toLowerCase().search(ae)){l("FOUND A Journal Title Match!!!!!!"),Q.push(ne);var ie=g.appendChild(c.createElement("tr"));ie.setAttribute("about","journalTitle"),ie.appendChild(c.createElement("th")).appendChild(c.createElement("div")).appendChild(c.createTextNode(ne)),ie.appendChild(c.createElement("td")).appendChild(c.createTextNode(ee))}}console.log("matched: "+Q+"\n"),console.log("\\\\done showMenu's JTAutocomplete\n");break;case"LimitedPredicateChoice":var oe=r.utils.getAbout(t,o.clickedTd);oe.termType="Collection";for(var re=t.each(oe,r.ns.link("element")),se=0;se<re.length;se++)T(re[se]);break;default:(J=g.appendChild(c.createElement("tr"))).className="no-suggest",(V=J.appendChild(c.createElement("th"))).appendChild(c.createElement("div")).appendChild(c.createTextNode("No suggested choices. Try to type instead.")),J.appendChild(c.createElement("td")).appendChild(c.createTextNode("OK")),J.addEventListener("click",function(e){m.clearMenu(),e.stopPropagation()},"false");var ce=function(){};switch(i.constructor.name){case"Array":for(var le=0;le<i.length;le++)t.query(i[le],E(i[le]),ce);break;case"undefined":throw new Error("addPredicateChoice: query is not defined");default:t.query(i,E(i),ce)}}},fillInRequest:function(e,a,s){var c,l,p=a.parentNode;c=p.AJAR_statement,l=p.AJAR_inverse;var d,u="object"===e?c.object:c.predicate,m=!1;if(t.any(u,r.ns.link("onfillin")),"predicate"===e){var f=n.outlinePredicateTD(s,p,!1,!1);if("undetermined"!==a.nextSibling.className){var h=new r.rdf.Statement(c.subject,s,c.object,c.why);try{r.store.updater.update([],[h],function(e,n,a){n?(d=t.anyStatementMatching(c.subject,s,c.object,c.why),p.AJAR_statement=d,f.className=f.className.replace(/ pendingedit/g,"")):r.log.warn("Failure occurs (#2) while inserting "+p.AJAR_statement+"\n\n"+a)})}catch(e){return r.log.error(e),void r.log.warn("Error when insert (#2) of statement "+h+":\n\t"+e)}f.className+=" pendingedit",this.lastModified=null}else this.formUndetStat(p,c.subject,s,c.object,c.why,!1),n.walk("right"),m=!0;n.replaceTD(f,a),o.remove(c)}else if("object"===e){var v=n.outlineObjectTD(s);if(n.replaceTD(v,a),a.previousSibling&&"undetermined"===a.previousSibling.className)n.walk("left"),m=!0;else{var g;g=l?new r.rdf.Statement(s,c.predicate,c.object,c.why):new r.rdf.Statement(c.subject,c.predicate,s,c.why);try{r.store.updater.update([],[g],function(e,n,a){var i;r.log.info("@@ usinput.js (object) callback ok="+n+" for statement:"+g+"\n "),n?(v.className=v.className.replace(/ pendingedit/g,""),(i=l?t.statementsMatching(s,c.predicate,c.object,c.why):t.statementsMatching(c.subject,c.predicate,s,c.why)).length||r.log.error("userinput.js 1711: Can't find statememt!"),p.AJAR_statement=i[0]):r.log.warn("userinput.js (object): Fail trying to insert statement "+g)})}catch(e){return r.log.error("userinput.js (object): exception trying to insert statement "+g+": "+r.utils.stackString(e)),void r.log.warn("Error trying to insert statement "+g+":\n"+e)}this.lastModified=null,v.className+=" pendingedit"}o.remove(c)}if(i.statements.push(d),!m)return!0;this.startFillInText(n.getSelection()[0])},formUndetStat:function(e,n,t,a,i,r){return e.AJAR_inverse=r,e.AJAR_statement=o.add(n,t,a,i),e.AJAR_statement}}}},function(e,n,t){var a=t(0);e.exports={makeQueryRow:r,QuerySource:function(){this.queries=[],this.listeners=[],this.addQuery=function(e){var n;for(null!==e.name&&""!==e.name||(e.name="Query #"+(this.queries.length+1)),e.id=this.queries.length,this.queries.push(e),n=0;n<this.listeners.length;n++)null!==this.listeners[n]&&this.listeners[n].addQuery(e)},this.removeQuery=function(e){var n;for(n=0;n<this.listeners.length;n++)null!==this.listeners[n]&&this.listeners[n].removeQuery(e);null!==this.queries[e.id]&&delete this.queries[e.id]},this.addListener=function(e){var n;for(this.listeners.push(e),n=0;n<this.queries.length;n++)null!==this.queries[n]&&e.addQuery(this.queries[n])},this.removeListener=function(e){var n;for(n=0;n<this.queries.length;n++)null!==this.queries[n]&&e.removeQuery(this.queries[n]);for(n=0;n<this.listeners.length;n++)this.listeners[n]===e&&delete this.listeners[n]}},viewAndSaveQuery:function(e,n){var t=e.qs;a.log.info("outline.doucment is now "+e.document.location);for(var i=function(e,n){var t,i,o,s,c=new a.rdf.Query,l=e.length;for(t=0;t<l;t++)i=e[t],s=i.parentNode,o=s.AJAR_statement,a.log.debug("Statement "+o),i.getAttribute("class").indexOf("pred")>=0&&(a.log.info("   We have a predicate"),r(c,s)),i.getAttribute("class").indexOf("obj")>=0&&(a.log.info("   We have an object"),r(c,s,!0));return n.addQuery(c),function e(n){var t=n.statements.length;var a,i;for(var o=0;o<t;o++)a=n.statements[o],void 0!==(i=a.tr)&&(i.AJAR_pattern=null,i.AJAR_variable=null);for(var r in n.optional)e(n.optional[r])}(c.pat),c}(n,t),o=0;o<t.listeners.length;o++)t.listeners[o].getActiveView().view.drawQuery(i),t.listeners[o].updateQueryControls(t.listeners[o].getActiveView())}};var i=[];function o(e){for(var n=e;;){if(n.getAttribute("predTR"))return n;if(!n.previousSibling||"TR"!==n.previousSibling.nodeName)return console.log("Could not find predParent"),e;n=n.previousSibling}}function r(e,n,t){var s,c,l,p,d,u=a.store,m=n.AJAR_inverse;var f=null;for(p=n.parentNode;p;p=p.parentNode)if(void 0!==p.AJAR_statement){p.setAttribute("bla",p.AJAR_statement),p.AJAR_variable||r(e,p),l=p.AJAR_variable;var h=o(p);h.getAttribute("optionalSubqueriesIndex")&&(f=h.getAttribute("optionalSubqueriesIndex"),d=i[f]);break}d||(d=e.pat);var v=o(n),g=v.getAttribute("optional");if(g||(f?v.setAttribute("optionalSubqueriesIndex",f):v.removeAttribute("optionalSubqueriesIndex")),g){var b=u.formula();i.push(b),v.setAttribute("optionalSubqueriesIndex",i.length-1),d.optional.push(b),d=b}var w,x,y=n.AJAR_statement,C=n.AJAR_inverse?y.subject:y.object,k=!0;return C.isBlank&&t&&window.alert("You cannot constrain a query with a blank node. No constraint will be added."),l||(k=!1,l=m?y.object:y.subject),c=n.AJAR_variable?n.AJAR_variable:u.variable(a.utils.newVariableName()),e.vars.push(c),c.label=k?l.label:a.utils.label(l),c.label+=" "+a.utils.predicateLabelForXML(y.predicate,m),w=c,x=l,s=m?new a.rdf.Statement(w,y.predicate,x):new a.rdf.Statement(x,y.predicate,w),c.label=c.label.slice(0,1).toUpperCase()+c.label.slice(1),t&&(d.constraints[c]=new function(e){return this.describe=function(n){return n+" = "+e.toNT()},this.test=function(n){return e.sameTerm(n)},this}(C)),a.log.info("Pattern: "+s),s.tr=n,n.AJAR_pattern=s,n.AJAR_variable=c,a.log.debug("Query pattern: "+s),d.statements.push(s),c}},function(e,n,t){e.exports=t(14).default},function(e,n,t){"use strict";t.r(n);var a=t(0),i=t.n(a),o=t(1),r=t.n(o);function s(e,n,t,a,i,o,r){try{var s=e[o](r),c=s.value}catch(e){return void t(e)}s.done?n(c):Promise.resolve(c).then(a,i)}var c=i.a.store,l=i.a.ns,p={global:!1,icon:i.a.icons.iconBase+"noun_15059.svg",name:"profile",label:function(e){var n=c.findTypeURIs(e);return n[l.vcard("Individual").uri]||n[l.vcard("Organization").uri]||n[l.foaf("Person").uri]||n[l.schema("Person").uri]?"Profile":null},render:function(e,n){function t(e,n,t){var a=r.a.byName(t).render(n,e);return a.setAttribute("style","border: 0.3em solid #444; border-radius: 0.5em"),a}function a(){var e;return e=regeneratorRuntime.mark(function e(n,a,o){var r,s,p,d,u,m,f,h;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(f=function(e){var n=m.appendChild(o.createElement("h3"));return n.setAttribute("style","font-size: 120%; color:"+d+";"),n.textContent=e,n},a){e.next=3;break}throw new Error("subject missing");case 3:if(r=a.doc(),!((s=c.each(a,l.rdfs("seeAlso"),null,r)).length>0)){e.next=14;break}return e.prev=6,e.next=9,c.fetcher.load(s);case 9:e.next=14;break;case 11:e.prev=11,e.t0=e.catch(6),n.appendChild(i.a.widgets.errorMessageBlock(e.t0));case 14:p=c.anyValue(a,l.solid("profileBackgroundColor"),null,a.doc())||"#ffffff",n.style.backgroundColor=p,d=c.anyValue(a,l.solid("profileHighlightColor",null,a.doc()))||"#090",n.style.border="0.3em solid ".concat(d),n.style.borderRadius="0.5em",n.style.padding="0.7em",n.style.marginTop="0.7em",u=n.appendChild(o.createElement("table")),m=u.appendChild(o.createElement("tr")),u.appendChild(o.createElement("tr")).appendChild(o.createElement("div")).setAttribute("style","padding: 0.7em;"),f("Contact"),(h=t(o,a,"contact")).border="0em",m.appendChild(h),c.holds(a,l.foaf("knows"))&&(f("Solid Friends"),i.a.widgets.attachmentList(o,a,n,{doc:r,modify:!1,predicate:l.foaf("knows"),noun:"friend"}));case 31:case"end":return e.stop()}},e,null,[[6,11]])}),(a=function(){var n=this,t=arguments;return new Promise(function(a,i){var o=e.apply(n,t);function r(e){s(o,a,i,r,c,"next",e)}function c(e){s(o,a,i,r,c,"throw",e)}r(void 0)})}).apply(this,arguments)}var o=n.createElement("div");return function(e,n,t){a.apply(this,arguments)}(o,e,n),o}};n.default=p},function(e,n,t){e.exports=t(68).default},function(e,n,t){e.exports=t(69).default},function(e,n,t){e.exports=t(67).default},function(e,n,t){const a=t(0),i=t(1),o=a.ns,r=!1;e.exports={icon:a.icons.iconBase+"noun_97839.svg",name:"issue",audience:[o.solid("PowerUser")],label:function(e){var n=a.store,t=n.findTypeURIs(e);return t["http://www.w3.org/2005/01/wf/flow#Task"]||n.holds(e,a.ns.wf("tracker"))?"issue":t["http://www.w3.org/2005/01/wf/flow#Tracker"]?"tracker":null},render:function(e,n){var o=a.store,s=a.ns,c=$rdf.Namespace("http://www.w3.org/2005/01/wf/flow#"),l=$rdf.Namespace("http://purl.org/dc/elements/1.1/"),p=$rdf.Namespace("http://purl.org/dc/terms/"),d=i.getOutliner(n),u=n.createElement("div");function m(n,t,a){if(r){if(!b(g,"trackLastModified"))return;var i=t.statementsMatching(e,p("modified"));i=i.concat(t.statementsMatching(e,c("modifiedBy")));var o=[$rdf.st(e,p("modified"),new Date,a)];E&&o.push($rdf.st(e,c("modifiedBy"),E,a)),k.update(i,o,function(e,n,t){})}}function f(e,t){var a=n.createElement("pre");return a.setAttribute("style",t||"color: grey"),u.appendChild(a),a.appendChild(n.createTextNode(e)),a}function h(e){console.warn(e),u.appendChild(a.widgets.errorMessageBlock(n,e))}function v(e,n){e||h("Sorry, failed to save your change:\n"+n)}u.setAttribute("class","issuePane");var g,b=function(e,n){var t=o.any(e,s.ui(n));return!(!t||!t.value)},w=this,x=function(t){var a=t.parentNode,i=w.render(e,n);a.replaceChild(i,t)},y=function(){return""+(new Date).getTime()},C=function(e,n,t,i){var o=e.createElement("div"),r=n.any(t,c("stateStore"));a.store.fetcher.removeCallback("done","expand"),a.store.fetcher.removeCallback("fail","expand");var m=n.any(t,c("issueClass")),f=a.utils.label(m);o.innerHTML="<h2>Add new "+(i?"sub ":"")+f+"</h2><p>Title of new "+f+":</p>";var h=e.createElement("input");return h.setAttribute("type","text"),h.setAttribute("style","margin: 0.5em; font-size: 100%; padding: 0.3em;"),h.setAttribute("size","100"),h.setAttribute("maxLength","2048"),h.select(),h.addEventListener("keyup",function(e){13===e.keyCode&&function(){h.setAttribute("class","pendingedit"),h.disabled=!0;var e,a,m=[],f=n.anyValue(t,c("issueURITemplate"));f?(f=$rdf.uri.join(f,r.uri),e=n.sym(function(e){const n=new $rdf.Literal(new Date),t=""+(new Date).getTime();let a=n.value.slice(0,4);var i=n.value.slice(5,7),o=n.value.slice(8,10);return e.replace("{N}",t).replace("{YYYY}",a).replace("{MM}",i).replace("{DD}",o)}(f))):e=n.sym(r.uri+"#Iss"+y()),a=e.doc();var v=n.literal(h.value);m.push(new $rdf.Statement(e,c("tracker"),t,r)),m.push(new $rdf.Statement(e,l("title"),v,r)),m.push(new $rdf.Statement(e,p("created"),new Date,r));var g=n.each(t,c("initialState"));0===g.length&&console.log("This tracker has no initialState");for(var b=0;b<g.length;b++)m.push(new $rdf.Statement(e,s.rdf("type"),g[b],r));i&&m.push(new $rdf.Statement(i,c("dependent"),e,r)),f&&(m.push(new $rdf.Statement(e,c("tracker"),t,a)),m.push(new $rdf.Statement(e,s.rdfs("seeAlso"),r,a)));k.update([],m,function(n,t,a){t?(o.parentNode.removeChild(o),x(u),d.GotoSubject(e,!0,void 0,!0,void 0)):console.log("Error: can't save new issue:"+a)})}()},!1),o.appendChild(h),o},k=o.updater,T=o.findTypeURIs(e),E=a.authn.currentUser(),A=function(e){if(e.refresh)e.refresh();else for(var n=0;n<e.children.length;n++)A(e.children[n])};function I(e,t){var i=a.ns,r={},s=function(e){r[e.uri]=!0};s(i.rdf("type")),s(i.dc("title"));!function(){var n=o.findTypeURIs(e),a="padding: 0.5em 1.5em 1em 1.5em; ",i=null;for(var r in n)if(i=o.any(o.sym(r),o.sym("http://www.w3.org/ns/ui#backgroundColor")))break;a+="background-color: "+(i=i?i.value:"#eee")+"; ",t.setAttribute("style",a)}();var l=o.any(g,c("stateStore")),p=o.sym(e.uri.split("#")[0]);a.authn.checkUser();var u=o.any(g,c("issueClass"));if(!u)throw new Error("This tracker "+g+" has no issueClass");var w=a.widgets.makeSelectForCategory(n,o,e,u,l,function(e,n){e?(m(0,o,p),A(t)):console.log("Failed to change state:\n"+n)});t.appendChild(w);for(var x=o.each(g,c("issueCategory")),T=0;T<x.length;T++)t.appendChild(a.widgets.makeSelectForCategory(n,o,e,x[T],l,function(e,n){e?(m(0,o,p),A(t)):console.log("Failed to change category:\n"+n)}));let E=n.createElement("a");E.setAttribute("href",g.uri),E.setAttribute("style","float:right"),t.appendChild(E).textContent=a.utils.label(g),E.addEventListener("click",a.widgets.openHrefInOutlineMode,!0),s(i.wf("tracker")),t.appendChild(a.widgets.makeDescription(n,o,e,c("description"),p,function(e,n){e?m(0,o,p):console.log("Failed to change description:\n"+n)})),s(c("description"));var I=o.statementsMatching(e,i.wf("assignee"));if(I.length>1){f("Weird, was assigned to more than one person. Fixing ..");var j=I.slice(1);k.update(j,[],function(e,n,t){n?f("Now fixed."):h("Fixed failed: "+t)})}var N=o.statementsMatching(e),P=o.statementsMatching(void 0,void 0,e);if(async function(){var n=[],t=o.each(e,i.wf("assigneeGroup"));for(let e=0;e<t.length;e++){let a=t[e];await o.fetcher.load(),n=n.concat(o.each(a,i.vcard("member")))}var a=o.any(null,i.doap("bug-database"),g);return a&&(await o.fetcher.load(a),n=n.concat(o.each(a,i.doap("developer")))),n}().then(r=>{if(r.length){r.map(function(e){o.fetcher.lookUpThing(e)});t.appendChild(a.widgets.makeSelectForOptions(n,o,e,i.wf("assignee"),r,{nullLabel:"(unassigned)"},p,function(e,n){e?m(0,o,p):console.log("Failed to change assignee:\n"+n)}))}}),s(i.wf("assignee")),b(g,"allowSubIssues")&&(d.appendPropertyTRs(t,N,!1,function(e,n){return!(n||!e.sameTerm(c("dependent")))}),d.appendPropertyTRs(t,P,!0,function(e,n){return!(!n||!e.sameTerm(c("dependent")))}),s(c("dependent"))),t.appendChild(n.createElement("br")),b(g,"allowSubIssues")){var D=n.createElement("button");D.setAttribute("type","button"),t.appendChild(D);var B=a.utils.label(u);D.innerHTML="New sub "+B,D.setAttribute("style","float: right; margin: 0.5em 1em;"),D.addEventListener("click",function(a){t.appendChild(C(n,o,g,e))},!1)}var M=o.any(g,i.wf("extrasEntryForm"));M&&(a.widgets.appendForm(n,t,{},e,M,l,v),o.each(M,i.ui("part")).map(function(e){var n=o.any(e,i.ui("property"));n&&s(n)}));var O,L=t.appendChild(n.createElement("tr"));L.setAttribute("style","height: 1em"),o.anyValue(g,c("issueURITemplate"))?O=e.doc():((O=o.any(g,i.wf("messageStore")))||(O=o.any(g,c("stateStore"))),o.sym(O.uri+"#Chat"+y())),o.fetcher.nowOrWhenFetched(O,function(i,r,s){if(i){var c=a.messageArea(n,o,e,O);t.insertBefore(c,L)}else{var l=n.createElement("p");l.textContent=r,t.insertBefore(l,L)}}),s(i.wf("message")),a.widgets.attachmentList(n,e,t,{doc:l,promptIcon:a.icons.iconBase+"noun_25830.svg",predicate:i.wf("attachment")}),s(i.wf("attachment")),d.appendPropertyTRs(t,N,!1,function(e,n){return!(e.uri in r)}),d.appendPropertyTRs(t,P,!0,function(e,n){return!(e.uri in r)});var R=n.createElement("button");R.textContent="refresh",R.addEventListener("click",function(e){a.store.fetcher.unload(O),a.store.fetcher.nowOrWhenFetched(O.uri,void 0,function(e,n){e?A(t):console.log("Cant refresh messages"+n)})},!1),R.setAttribute("style","margin: 0.5em 1em;"),t.appendChild(R)}var j,N=a.ns.wf("").doc();if(o.holds(void 0,void 0,void 0,N)||$rdf.parse(t(19),o,N.uri,"text/turtle"),T["http://www.w3.org/2005/01/wf/flow#Task"]||o.holds(e,a.ns.wf("tracker"))){if(!(g=o.any(e,c("tracker"))))throw new Error("This issue "+e+"has no tracker");var P=g.uri.split("#")[0];a.store.fetcher.load(g.doc()).then(function(n){var t=o.any(g,c("stateStore"));a.store.fetcher.nowOrWhenFetched(t,e,function(n,a){if(!n)return console.log("Failed to load state "+t+" "+a);I(e,u),k.addDownstreamChangeListener(t,function(){A(u)})})}).catch(e=>{return h("Failed to load config "+P+" "+e)}),a.store.fetcher.nowOrWhenFetched(P,e,function(e,n){if(!e)return console.log("Failed to load config "+P+" "+n)})}else if(T["http://www.w3.org/2005/01/wf/flow#Tracker"]){var D;g=e;var B=o.any(e,c("issueClass"));if(!B)throw new Error("This tracker has no issueClass");var M=o.any(e,c("stateStore"));if(!M)throw new Error("This tracker has no stateStore");a.authn.checkUser();var O=n.createElement("h2");O.setAttribute("style","font-size: 150%"),u.appendChild(O);var L=a.utils.label(B);O.appendChild(n.createTextNode(L+" list"));var R=n.createElement("button"),S=n.createElement("div");R.setAttribute("type","button"),R.setAttribute("style","padding: 0.3em; font-size: 100%; margin: 0.5em;"),S.appendChild(R),u.appendChild(S);var _=n.createElement("img");_.setAttribute("src",a.icons.iconBase+"noun_19460_green.svg"),_.setAttribute("style","width: 1em; height: 1em; margin: 0.2em;"),R.appendChild(_);var U=n.createElement("span");U.innerHTML="New "+L,R.appendChild(U),R.addEventListener("click",function(t){R.setAttribute("disabled","true"),S.appendChild(C(n,o,e))},!1),a.store.fetcher.load([M]).then(function(t){var i=new $rdf.Query(a.utils.label(e)),r=o.each(g,c("issueCategory")),l=["issue","state","created"];for(let e=0;e<r.length;e++)l.push("_cat_"+e);var p={};l.map(function(e){i.vars.push(p[e]=$rdf.variable(e))}),i.pat.add(p.issue,c("tracker"),g),i.pat.add(p.issue,s.dct("created"),p.created),i.pat.add(p.issue,s.rdf("type"),p.state),i.pat.add(p.state,s.rdfs("subClassOf"),B);for(let e=0;e<r.length;e++)i.pat.add(p.issue,s.rdf("type"),p["_cat_"+e]),i.pat.add(p["_cat_"+e],s.rdfs("subClassOf"),r[e]);i.pat.optional=[];var d=o.any(g,c("propertyList"));if(d)for(var m=d.elements,f=0;f<m.length;f++){var h=m[f],v="_prop_"+f;h.uri.indexOf("#")>=0&&(v=h.uri.split("#")[1]);var b=new $rdf.IndexedFormula;i.pat.optional.push(b),i.vars.push(p[v]=$rdf.variable(v)),b.add(p.issue,h,p[v])}var w,x={};o.each(void 0,s.rdfs("subClassOf"),B).map(function(e){(o.holds(e,s.rdfs("subClassOf"),c("Open"))||e.sameTerm(c("Open")))&&(x[e.uri]=!0)});var C,T,E=a.table(n,{query:i,keyVariable:"?issue",hints:{"?issue":{linkFunction:function(e){D.innerHTML="";var t=D.appendChild(n.createElement("button"));t.textContent="X",t.addEventListener("click",function(e){D.innerHTML=""}),I(o.sym(e),D)}},"?created":{cellFormat:"shortDate"},"?state":{initialSelection:x}}});if(u.appendChild(E),(w=u.appendChild(n.createElement("div"))).setAttribute("style"," position: absolute; top: 100px; right: 20px; margin: 1em white;"),D=w.appendChild(n.createElement("div")),E.refresh){var A=n.createElement("button");A.textContent="refresh",A.addEventListener("click",function(e){a.store.fetcher.unload(M),a.store.fetcher.nowOrWhenFetched(M.uri,void 0,function(e,n){e?E.refresh():console.log("Cant refresh data:"+n)})},!1),u.appendChild(A)}else console.log("No refresh function?!");u.appendChild((C=e,(T=a.authn.newAppInstance(n,{noun:"tracker"},function(e,n){var t=a.ns.space,i=a.store;if(n||("/"!==(n=i.any(e,t("uriPrefix")).value).slice(-1)&&($rdf.log.error("issuetracker.w3.org: No / at end of uriPrefix "+n),n+="/"),n+="issuetracker.w3.org/"+y()+"/",confirm("Make new tracker at "+n+"?"))){for(var o=i.any(g,c("stateStore")),r=i.sym(n+"store.ttl"),s=C.doc(),l=s.uri.slice(0,s.uri.lastIndexOf("/")+1),p=function(e){if(void 0!==e.elements)return e.elements.map(p);if(void 0===e.uri)return e;var t=e.uri;return t===o.uri?r:(t.slice(0,l.length)===l&&(t=n+t.slice(l.length),$rdf.log.debug(" Map "+e.uri+" to "+t)),i.sym(t))},d=p(s),u=p(C),m=i.statementsMatching(void 0,void 0,void 0,s),f=0;f<m.length;f++){var h=m[f];i.add(p(h.subject),p(h.predicate),p(h.object),d)}i.add(u,a.ns.space("inspiration"),C,o),i.add(u,a.ns.space("inspiration"),C,d),k.put(d,i.statementsMatching(void 0,void 0,void 0,d),"text/turtle",function(e,n,t){n?k.put(r,[],"text/turtle",function(e,n,t){n?console.info("Ok The tracker created OK at: "+u.uri+"\nMake a note of it, bookmark it. "):console.log("FAILED to set up new store at: "+r.uri+" : "+t)}):console.log("FAILED to save new tracker at: "+d.uri+" : "+t)})}})).setAttribute("style","margin: 0.5em 1em;"),T)),k.addDownstreamChangeListener(M,E.refresh)}).catch(function(e){return console.log("Cannot load state store: "+e)})}else console.log("Error: Issue pane: No evidence that "+e+" is either a bug or a tracker.");return a.authn.checkUser().then(e=>{if(e)return console.log("Web ID set already: "+e),void(E=e);(j=a.authn.loginStatusBox(n,e=>{e?(E=o.sym(e),console.log("Web ID set from login button: "+e),u.removeChild(j)):E=null})).setAttribute("style","margin: 0.5em 1em;"),u.appendChild(j)}),u}}},function(e,n){e.exports='\n#   Issue tracking - Worksflow application definiion ontology\n#\n# Finite state automaton ontology\n#\n# See requirements for tracking tools http://www.w3.org/2005/01/06-tool-req.html\n#\n@keywords a, is, of.\n\n@prefix :    <http://www.w3.org/2005/01/wf/flow#>.\n@prefix wf:    <http://www.w3.org/2005/01/wf/flow#>.\n\n@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix s: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix owl: <http://www.w3.org/2002/07/owl#>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n\n@prefix doc: <http://www.w3.org/2000/10/swap/pim/doc#> .\n@prefix log: <http://www.w3.org/2000/10/swap/log#> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/>.\n@prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#> .\n@prefix doap: <http://usefulinc.com/ns/doap#>.\n@prefix dc: <http://purl.org/dc/elements/1.1/>.\n@prefix dct: <http://purl.org/dc/terms/>.\n\n<> dc:title "Issue Tracking Ontology";\n\n    dct:creator <http://www.w3.org/People/Berners-Lee/card#i>;\n\n    s:comment """This ontology defines a very general class (Task)\n    which can used for any kind of bug tracking, issue tracking,\n    to-do-list management, action items, goal depednency, and so on.\n    It captures the state of a task as a subclass, so that\n    subsumption can be used.\n    It captures a discussion thread about a task.\n    It captures subtasks structure if necessary.\n    A "Tracker" defines actual set of states, categories, etc.,\n    which  a task can be in. The data about the tracker\n    guides the software managing the task.\n\n    There is some workflow modeling finite state machine\n    terms which are optional for  more complex definition\n    of the transitions allowed.\n    """.\n\nTask a s:Class;\n    s:label "task"@en; owl:disjointUnionOf (Open Closed);\n    s:comment """Something to be done in a wide sense,\n    an agenda item at a meeting is one example, but any\n    issue, task, action item, goal, product, deliverable, milestone, can such a thing.\n    The requirement for this framework was that it would allow\n    one to customize ontologies for things such as agenda items,\n    action items, working group issues with a spec, w3c Last Call issues,\n    software bugs and administrative requests.\n    In π-calculus, a process.\n    Make your type of issue a subclass of Task.\n    """.\n\nOpen a s:Class; s:subClassOf Task;\n    s:label "open"@en, "ouvert"@fr;\n    s:comment """A task which needs attention. The very crude states of Open and Closed all\n        interoperatbility between different systems if the states for a given\n        application are made subclasses of either Open or Closed. This allows\n        tasks from different systems to be mixed and treatd together with\n        limited but valuable functionality.\n    """.\n\nClosed a s:Class; s:subClassOf Task;\n    s:label "closed"@en, "fermé"@fr;\n    s:comment """A task which does not neeed attention. It may be closed because\n        has been abandonned or completed, for example.\n    """.\n\n\n\ndescription a rdf:Property;\n        s:label "description";\n        s:comment """The description, definition,\n        or abstract. Information explaining what this is.\n        Not arbitrary comment about anything, only about the subject.\n        (Use this property for anything. There is no domain restriction.).""".\n\ndependent a rdf:Property;\n        s:label "how";  owl:inverseOf [ s:label "why"];\n        s:domain Task; s:range Task;\n        s:comment """Another task upon which this depends, in the sense that\n        this task cannot be completed without that task being done.\n        You can\'t use this for dependencies on anything other than other tasks.\n        (Note the US spelling of the URI. In the UK, a dependant is a something\n        which is dependent on somehing else.)""".\n\nassignee    a        rdf:Property;\n        s:label        "assigned to"; owl:inverseOf [s:label "assignment"];\n#        s:domain    Task;\n        s:range        foaf:Agent;\n        s:comment    """The person or group to whom this has been assigned.""".\n\n# use dct:modified\n#modified        a               rdf:Property;\n#                s:label         "last changed".\n\nmodifiedBy      a               rdf:Property;\n                s:range         foaf:Agent;\n                s:label         "changed by".\n\n# use dct:created instead\n#created         a               rdf:Property;\n#                s:range         xsd:dateTime;\n#\n# Use foaf:maker instead\n#creator         a               rdf:Property;\n#                s:range         foaf:Agent;\n#                s:label         "changed by".\n\nsubscriber      a               rdf:Property;\n                s:label         "subscriber";\n                s:range         foaf:Agent.\n\n\n################## Products\n#\n#\n# History:  The Tracker system included a cocept of a product,\n# such that an action  could be associated with *either* an issue *or* a product.\n# Noah Mendelsohn for the TAG needed to be able make\n# and to give products: Goals, scuuess criteria,\n#  deliverables with dates, schedules, TAG members assigned, related issues.\n#\n\n\nProduct         a s:Class; s:subClassOf Task;\n                s:label "product";\n                s:comment """A product is a task which monitors something\n                which must be produced.""".\n\ndeliverable     a rdf:Property; s:subPropertyOf dependent;\n                s:range Product;\n                s:label "deliverable"@en;\n                s:comment """Something which must be deliverered to accomplish this""".\n\n\ngoalDescription a rdf:Property, owl:DatatypeProperty;\n                s:domain Task; s:range xsd:string;\n                s:label "goals";\n                s:comment """A textual description of the goals of this product, etc.""".\n\nsuccessCriteria a rdf:Property, owl:DatatypeProperty;\n                s:domain Task; s:range xsd:string;\n                s:label "success criteria";\n                s:comment """A textual description of the successs critera.\n                How when we know this is done?""".\n\ndateDue         a rdf:Property, owl:DatatypeProperty;\n                s:domain Task; s:range xsd:date;\n                s:label "due"@en;\n                s:comment """The date this task is due.\n                """.\n\n##################  Attachments\n\nattachment      a rdf:Property;\n                s:label "attachment";\n                s:comment """Something related is attached for information.""".\n\nscreenShot      a rdf:Property; s:subPropertyOf attachment;\n                s:label "screen shot"@en;\n                s:comment """An image taken by capturing the state of a\n                 computer screen, for example to demonstrate a problem""".\n\ntestData        a rdf:Property; s:subPropertyOf attachment;\n                s:label "test data"@en;\n                s:comment """A file which can be used as inpiut to a test\n                or to demonstrate a problem. """.\n\n\nterminalOutput      a rdf:Property; s:subPropertyOf attachment;\n                s:label "terminal output"@en;\n                s:comment """A file showing user interaction from a\n                text terminal or console etc. """.\n\n\nmessage         a rdf:Property; s:subPropertyOf attachment;\n                s:label "message"@en;\n                s:comment """A message about this. Attached for information.""".\n\n\nMessage         a s:Class; s:label "message"@en.\nrecipent a rdf:Property; s:label "to"; s:domain Message; s:range foaf:Agent.\nsender a rdf:Property; s:label "from"; s:domain Message; s:range foaf:Agent.\n\n############################# A Tracker connects and manages issues\n\ntracker         a rdf:Property;\n                s:label "tracker";\n                owl:inverseOf [ s:label "issue"];\n                s:domain Task;\n                s:range Tracker.\n\nTracker         a s:Class;\n                s:label "tracker";\n                s:comment """A set of issues and\n                the constraints on how they evolve.\n                To use this ontology, craete a new tracker.\n                Copy an existing one or make up your own.""".\n\nissueClass      a rdf:Property;\n                s:label "all issues must be in";\n                s:domain Tracker;\n                s:range s:Class, State;\n                s:comment """The class of issues which are allowed in this tracker.\n                This is essemtial to the operation of the tracker,\n                as it defines which states an issue can be in.\n                (The issueClass must be a disjointUnionOf the state classes)""".\n\nissueCategory   a rdf:Property;\n                s:label "issue category";\n                s:domain Tracker;\n                s:range s:Class;\n                s:comment """Issues may be categorized according to the\n                subclasses of this class""".\n\nstateStore      a rdf:Property;\n                s:label "state store";\n                s:domain Tracker;\n                s:range doc:Document;\n                s:comment """A read-write document.\n                The state of the issues is modified here.\n                When you set up a trcaker, thgis must be set to point\n                to a writeble data resource on the web.""".\n\ntransactionStore\n                a rdf:Property;\n                s:label "transaction store";\n                s:domain Tracker;\n                s:range doc:Document;\n                s:comment """An appendable document. Transactions and messsages\n                    can be written into here""".\n\nasigneeClass\n                a rdf:Property;\n                s:label "assignees must be";\n                s:domain Tracker;\n                s:range s:Class;  # Subclass of foaf:Agent\n                s:comment """When an issue is assigned, the assignee must be from this class""".\n\ninitialState\n                a rdf:Property;\n                s:label "initial state"@en;\n                s:label "état initial"@fr;\n                s:domain Tracker;\n                s:range State;\n                s:comment """The initial state for a new issue""".\n\n# Use this to link a project to a tracker\ndoap:bug-database owl:inverseOf [ s:label "project"@en ].\n\n\n\n\n############################################################\n#\n#           Finite state machines\n#\nChange        a s:Class;\n        s:label "change";\n        s:comment """The universal class of things which\nchange the state of a task.\nIncluded now: Creation, Transition. (Maybe in the future\nmore π-calculus constructions such as splitting & merging tasks,\nand import/export of obligations to a foreign opaque system.)\n""".\n\nTransition     a s:Class; s:subClassOf Change;\n        s:label        "transition";\n        s:comment """A transition is a change of state of\na task. Typical properties include date and/or source\n(a document causing the transition), and a final state.""".\n\nCreation     a s:Class; s:subClassOf Change;\n        s:label        "creation";\n        s:comment """A creation is a change from existence\nto non-existence\na task. Typical properties include date and/or source\n(a document causing the transition), and a final state.""".\n\n\ndate    s:range    DateTime.\n\nfinal    a         rdf:Property;\n        s:label        "to";\n        s:domain    Transition;\n        s:range    State.\n\ntask        a        rdf:Property;\n        s:range        Task;\n        s:label        "task".\n\nrequires    a rdf:Property;\n        s:label "requires";\n        s:domain    Transition;\n        s:range        rdf:List; # Of properties for validation\n        s:comment    """To be a valid transition,\n        a necessary (but not necessarily sufficuent) condition\n        is that there be recorded these properties for the record""".\n\naffects        a rdf:Property;\n        s:label "affects";\n        s:domain    doc:Work;\n        s:range        Task.\n\n\n# { ?x a Transition; task ?t; source ?doc } => { ?doc affects ?t }.\n\n\ncreates        a rdf:Property;\n        s:label "creates";\n        s:domain    doc:Work;\n        s:range        Task.\n\n\nallowedTransitions a rdf:Property;\n        s:domain    State;\n        s:range        rdf:List; # @@@ of Action\n        s:label        "allowed transitions";\n        s:comment    """The state machine is defined\n    by these lists of transition allowed for each issue.\n    (An interesting option in the Web is to make an allowed transition\n    to a state in soemone else\'s ontology, which in turn allows\n    transitions into many ontologies.  So a finite state maxchine\n    may become very large. In practice this means that a task handed\n    off to another organization may be processed on all kinds of ways.)""".\n\n#    { ?x a TerminalState} => { ?x allowedTransitions () }.\n\nfinal         a rdf:Property;\n        s:label        "to";\n        s:range    State.\n\nissue        a        rdf:Property;\n        s:label        "issue";\n        s:comment\n        """A transition changes the state of the given issue.""".\n\nsource    a        rdf:Property;\n        s:label        "source";\n        s:comment    """The source of a transition is\n                the document by which it happened""";\n        s:range        doc:Work.\nTerminalState a s:Class;\n    s:subClassOf State;\n    s:label "terminal state";\n    s:comment """A state from which there are no transisions.""".\n\nNonTerminalState a s:Class;\n    s:label "non-terminal state";\n    owl:disjointWith TerminalState;\n    s:comment """A state from which there are transisions.""".\n\n######################################################\n\n#ends\n'},function(e,n,t){const a=t(0),i=t(1);var o=t(3),r=t(25).toolsPane;const s=a.rdf,c=a.ns,l=a.store;e.exports={icon:a.icons.iconBase+"noun_99101.svg",name:"contact",label:function(e){var n=l.findTypeURIs(e);return n[c.vcard("Individual").uri]?"Contact":n[c.vcard("Organization").uri]?"contact":n[c.foaf("Person").uri]?"Person":n[c.schema("Person").uri]?"Person":n[c.vcard("Group").uri]?"Group":n[c.vcard("AddressBook").uri]?"Address book":null},mintClass:a.ns.vcard("AddressBook"),mintNew:function(e){return new Promise(function(n,t){a.authn.logInLoadProfile(e).then(e=>{console.log("Logged in as "+e.me);var i=e.me,o=e.dom,r=e.div,c=a.store,l=a.ns,p=e.newBase||e.newInstance.dir().uri;if((e.instanceClass||l.vcard("AddressBook")).sameTerm(l.vcard("Group"))){var d=e.newInstance||c.sym(e.newBase+"index.ttl#this"),u=d.doc();return c.add(d,l.rdf("type"),l.vcard("Group"),u),c.add(d,l.vcard("fn"),e.instanceName||"untitled group",u),void c.fetcher.putBack(u,{contentType:"text/turtle"}).then(function(t){n(e)}).catch(function(e){t(new Error("Error creating document for new group "+e))})}function m(e){r.appendChild(a.widgets.errorMessageBlock(o,e,"pink"))}var f='@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.\n    @prefix ab: <http://www.w3.org/ns/pim/ab#>.\n    @prefix dc: <http://purl.org/dc/elements/1.1/>.\n    @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n\n    <#this> a vcard:AddressBook;\n        dc:title "New address Book";\n        vcard:nameEmailIndex <people.ttl>;\n        vcard:groupIndex <groups.ttl>.\n  ',h=[{to:"index.ttl",content:f+="<#this> <http://www.w3.org/ns/auth/acl#owner> <"+i.uri+">.\n\n",contentType:"text/turtle"},{to:"groups.ttl",content:"",contentType:"text/turtle"},{to:"people.ttl",content:"",contentType:"text/turtle"},{to:"",existing:!0,aclOptions:{defaultForNew:!0}}],v=p+"index.html";a.authn.offlineTestID()&&(h.push({to:"local.html",from:"local.html",contentType:"text/html"}),v=p+"local.html");var g=function(){if(0===h.length)!function(t,a){console.log("Files created. App ready at "+t);var i=r.appendChild(o.createElement("p"));i.setAttribute("style","font-size: 140%;"),i.innerHTML="Your <a href='"+t+"'><b>new "+a+"</b></a> is ready. <br/><br/><a href='"+t+"'>Go to new "+a+"</a>";var s=Object.assign({newInstance:c.sym(t)},e);n(s)}(v,"address book");else{var l=h.shift();console.log("Creating new file "+l.to+" in new instance ");var d=s.uri.join(l.to,p),u=l.aclOptions||{},f=function(e,n){if(!n)return m("Error writing new file "+l.to),t(new Error("Error writing new file "+l.to));a.authn.setACLUserPublic(d,i,u).then(()=>g()).catch(e=>{let n="Error setting access permissions for "+l.to+" : "+e.message;return m(n),t(new Error(n))})};"content"in l?c.fetcher.webOperation("PUT",d,{data:l.content,saveMetadata:!0,contentType:l.contentType}).then(()=>f(0,!0)):"existing"in l?f(0,!0):t(new Error("copy not expected buiding new app"))}};g()},n=>{e.div.appendChild(a.widgets.errorMessageBlock(n))})})},render:function(e,n,p){p=p||{};var d=n.createElement("div"),u=e.doc();a.aclControl.preventBrowserDropEvents(n),d.setAttribute("class","contactPane");var m=function(e){console.log(e),d.appendChild(a.widgets.errorMessageBlock(n,e,"pink"))},f=function(e,n){e||m("Error: "+n)},h=this,v=a.store.updater;a.aclControl.preventBrowserDropEvents(n);var g=l.findTypeURIs(e),b=a.authn.currentUser(),w={target:e,me:b,noun:"address book",div:d,dom:n},x=function(e,n,t){l.fetcher.load(e).then(function(a){y(e,n,t)}).catch(function(e){m(e)})},y=function(e,t,o){var u=a.utils.label(c.vcard("AddressBook")),g=e[0],w=l.any(g,c.vcard("groupIndex")),x={},y={},C=o.foreignGroup||g,k=l.any(C,c.dc("title"))||l.any(C,c.vcard("fn"));p.solo&&k&&"undefined"!=typeof document&&(document.title=k.value),k=k?k.value:u;var T=function(e){if(e)return e;var n;for(let e in x){n=l.sym(e);let t=l.any(void 0,c.vcard("includesGroup"),n);if(t)return t}throw new Error("findBookFromGroups: Cant find address book which this group is part of")},E=function(e){var n=l.any(e,c.vcard("fn"))||l.any(e,c.foaf("name"))||l.any(e,c.vcard("organization-name"));return n?n.value:"???"},A=function(e){var n=X.value.trim().toLowerCase();if(0===n.length)return!0;for(var t=n.split(" "),a=0;a<t.length;a++){var i=t[a];if(e.toLowerCase().indexOf(i)<0)return!1}return!0};function I(e){Q.innerHTML="loading...",(y={})[e.uri]=!0,j();var t=g?M(e):e;a.store.fetcher.nowOrWhenFetched(t.doc(),void 0,function(i,o){if(Q.innerHTML="",!i)return f(i,"Can't load card: "+t+": "+o);Q.appendChild(P(n,t,"contact")),Q.appendChild(n.createElement("br")),Q.appendChild(a.widgets.linkIcon(n,t)),a.widgets.deleteButtonWithCheck(n,Q,"contact",function(){let n=e.dir();alert("Conatiner to delete is "+n);let t=l.any(e,c.vcard("fn"));confirm("Delete contact "+t+" completely?? "+n)&&(console.log("Deleting a contact "+t),B(e),function e(n,t){return new Promise(function(a,i){n.fetcher.load(t).then(function(){let i=n.each(t,c.ldp("contains")).map(t=>{if(n.holds(t,c.rdf("type"),c.ldp("BasicContainer")))return e(n,t);if(console.log("deleteRecirsive file: "+t),!confirm(" Really DELETE File "+t))throw new Error("User aborted delete file");return n.fetcher.webOperation("DELETE",t.uri)});if(console.log("deleteRecirsive folder: "+t),!confirm(" Really DELETE folder "+t))throw new Error("User aborted delete file");i.push(n.fetcher.webOperation("DELETE",t.uri)),Promise.all(i).then(e=>{a()})})})}(l,n).then(e=>{O(),Q.innerHTML="Contact Data Deleted."}))}).style="height: 2em;"})}function j(e){for(var n=0,t=null,a=0;a<J.children.length;a++){var i=J.children[a];let e=A(E(i.subject));e&&(n++,t=i),i.setAttribute("style",e?y[i.subject.uri]?"background-color: #cce;":"":"display: none;")}if(1===n&&e){I(t.subject)}}var N=function(e,n,t){for(var a=n.children.length,i=[],o=0;o<n.children.length;o++){var r=n.children[o];!function(n,o){o.setAttribute("style","background-color: #ffe;"),l.fetcher.nowOrWhenFetched(n.doc(),void 0,function(r,s){if(!r){var c="Can't load group file: "+n+": "+s;return i.push(c),f(r,c)}o.setAttribute("style","background-color: #cce;"),e[n.uri]=!0,L(),O(),(a-=1)||t&&t(0===i.length,i)})}(r.subject,r)}},P=function(e,n,t){var a=i.byName(t).render(n,e);return a.setAttribute("style","border: 0.1em solid #444; border-radius: 0.5em"),a},D=function(e,n){var t=E(e),a=E(n);if(t&&a){if((t=t.toLowerCase())>(a=a.toLowerCase()))return 1;if(t<a)return-1}return e.uri>n.uri?1:e.uri<n.uri?-1:0};function B(e){console.log("deleteThing: "+e);var n=l.statementsMatching(e).concat(l.statementsMatching(void 0,void 0,e)),t={};n.map(function(e){t[e.why.uri]=e});var a=[];for(var i in t)a.push(n.filter(function(e){return e.why.uri===i})),console.log("   Deleting "+a[a.length-1].length+" triples from "+i);!function n(){a.length>0?v.update(a.shift(),[],function(t,a,i){a?n():m("Error deleting all trace of: "+e+": "+i)}):(console.log("Deleting resoure "+e.doc()),l.fetcher.delete(e.doc()).then(function(){console.log("Delete thing "+e+": complete.")}).catch(function(n){m("Error deleting thing "+e+": "+n)}))}()}var M=function(e,n){for(var t=l.allAliases(e),a=g.dir().uri,i=0;i<t.length;i++)if(t[i].uri.slice(0,a.length)===a)return t[i];throw new Error("No local URI for "+e)},O=function(){var e=[];for(var t in x)if(x[t]){var i=l.each(l.sym(t),c.vcard("hasMember"));e=e.concat(i)}e.sort(D);for(var o=0;o<e.length-1;)e[o].uri===e[o+1].uri?e.splice(o,1):o++;J.innerHTML="",z.textContent=e.length>5?e.length+" contacts":"contact";for(var r=0;r<e.length;r++){var s=J.appendChild(n.createElement("tr")),p=s.appendChild(n.createElement("td"));p.setAttribute("style",Z);var d=e[r];s.subject=d;var u=E(d);p.textContent=u,s.subject=d,a.widgets.makeDraggable(s,d);!function(e,n){s.addEventListener("click",function(e){e.preventDefault(),I(n)})}(0,d)}j()};function L(){return function(e,n){for(var t=0;t<e.children.length;t++){var a=e.children[t];a.subject&&a.setAttribute("style",n[a.subject.uri]?"background-color: #cce;":"")}}(G,x)}var R=function(){var t,i;for(ee=[],o.foreignGroup&&ee.push(["",l.any(o.foreignGroup,c.vcard("fn")),o.foreignGroup]),g&&(e.map(function(e){var n=(e?l.each(e,c.vcard("includesGroup")):[]).map(function(n){return[e,l.any(n,c.vcard("fn")),n]});ee=ee.concat(n)}),ee.sort()),i=0;i<G.children.length;i++){G.children[i].trashMe=!0}for(var r=0;r<ee.length;r++){var p=ee[r][1],d=ee[r][2];for(t=!1,i=0;i<G.children.length;i++){let e=G.children[i];if(e.subject&&e.subject.sameTerm(d)){e.trashMe=!1,t=!0;break}}if(!t){var u=G.appendChild(n.createElement("tr"));u.subject=d,a.widgets.makeDraggable(u,d),u.setAttribute("style",Z),u.textContent=p;!function(e,t,i){a.widgets.makeDropTarget(e,function(e){e.forEach(function(e){console.log("Dropped on group: "+e);var n=l.sym(e),a=[n.doc(),t.doc()];l.fetcher.load(a).then(function(e){var a=l.findTypeURIs(n);for(var o in a)console.log("    drop object type includes: "+o);if(c.vcard("Individual").uri in a||c.vcard("Organization").uri in a){var r=l.any(n,c.vcard("fn"));if(!r)return alert("No vcard name known for "+n);if(l.holds(t,c.vcard("hasMember"),n,t.doc()))return alert("ALREADY added "+r+" to group "+i);if(confirm("Add "+r+" to group "+i+"?")){var p=[s.st(t,c.vcard("hasMember"),n,t.doc()),s.st(n,c.vcard("fn"),r,t.doc())];l.updater.update([],p,function(e,n,a){if(!n)return m("Error adding member to group "+t+": "+a);console.log("Added "+r+" to group "+i)})}}}).catch(function(e){m("Error looking up dropped thing "+n+" and group: "+e)})})}),a.widgets.deleteButtonWithCheck(n,e,"group "+i,function(){B(t),R()}),e.addEventListener("click",function(e){e.preventDefault();var i=l.sym(t.uri.split("#")[0]);e.metaKey||(x={}),x[t.uri]=!x[t.uri],L(),J.innerHTML="",l.fetcher.nowOrWhenFetched(i.uri,void 0,function(o,r){if(!o)return f(o,"Can't load group file: "+i+": "+r);if(O(),!e.metaKey){Q.innerHTML="";var s=!1,c=a.aclControl.ACLControlBox5(t,n,"group",l,function(e,n){e||(Q.innerHTML="Failed: "+n)}),p=Q.appendChild(n.createElement("button"));p.style.cssText="padding: 1em; margin: 1em";var d=p.appendChild(n.createElement("img"));d.style.cssText="width: 1.5em; height: 1.5em",d.setAttribute("src",a.icons.iconBase+"noun_123691.svg"),p.addEventListener("click",function(){(s=!s)?Q.appendChild(c):Q.removeChild(c)})}})},!0)}(u,d,p)}}for(i=0;i<G.children.length;i++){let e=G.children[i];e.trashMe&&G.removeChild(e)}L()},S=n.createElement("table");S.setAttribute("style","border-collapse: collapse; margin-right: 0; max-height: 9in;"),d.appendChild(S);var _=S.appendChild(n.createElement("tr")),U=S.appendChild(n.createElement("tr")),F=S.appendChild(n.createElement("tr")),q=_.appendChild(n.createElement("td")),z=_.appendChild(n.createElement("td")),H=_.appendChild(n.createElement("td")),W=U.appendChild(n.createElement("td")),G=W.appendChild(n.createElement("table")),$=U.appendChild(n.createElement("td")),J=$.appendChild(n.createElement("table")),V=F.appendChild(n.createElement("td")),Y=F.appendChild(n.createElement("td")),K=F.appendChild(n.createElement("td"));H.appendChild(n.createElement("div"));var X=H.appendChild(n.createElement("input"));X.setAttribute("type","text"),X.setAttribute("style","border: 0.1em solid #444; border-radius: 0.5em; width: 100%; font-size: 100%; padding: 0.1em 0.6em"),X.addEventListener("input",function(e){j(!0)});var Q=U.appendChild(n.createElement("td"));Q.setAttribute("style","margin: 0;");var Z="padding: 0.1em;";q.textContent="groups",q.setAttribute("style","min-width: 10em; padding-bottom 0.2em;");var ee,ne=function(e){var n=e?"":"display: none;";q.setAttribute("style","min-width: 10em; padding-bottom 0.2em;"+n);W.setAttribute("style","padding: 0.1em;"+n),V.setAttribute("style","padding: 0.1em;"+n)};if(ne(!0),o.foreignGroup&&(x[o.foreignGroup.uri]=!0),g){var te=q.appendChild(n.createElement("button"));te.textContent="All";var ae="margin-left: 1em; font-size: 100%;";te.setAttribute("style",ae),te.addEventListener("click",function(e){te.state=te.state?0:1,J.innerHTML="",te.state?(te.setAttribute("style",ae+"background-color: #ff8;"),N(x,G,function(e,n){if(!e)return m(n);te.setAttribute("style",ae+"background-color: black; color: white"),L()})):(te.setAttribute("style",ae+"background-color: #cfc;"),x={},L())}),a.store.fetcher.nowOrWhenFetched(w.uri,g,function(e,n){if(!e)return console.log("Cannot load group index: "+n);R(),O()})}else R(),O(),console.log("No book, only one group -> hide list of groups"),ne(!1);z.textContent="name",z.setAttribute("style","min-width: 18em;"),$.setAttribute("style","overflow:scroll;");var ie,oe=n.createElement("button"),re=n.createElement("div");if(oe.setAttribute("type","button"),b||oe.setAttribute("disabled","true"),a.authn.checkUser().then(e=>{e&&(b=e,oe.removeAttribute("disabled"))}),re.appendChild(oe),oe.innerHTML="New Contact",Y.appendChild(re),oe.addEventListener("click",function(e){Q.innerHTML="";var t=T(g);l.fetcher.load(t).then(function(e){if(!e.ok)throw new Error("Book won't load:"+t);var n=l.any(t,c.vcard("nameEmailIndex"));if(!n)throw new Error("Wot no nameEmailIndex?");return l.fetcher.load(n)}).then(function(e){console.log("Name index loaded async"+e.url)}),a.widgets.askName(n,l,Q,a.ns.foaf("name"),c.vcard("Individual"),"person").then(function(e){e&&function(e,n,t,i){e=T(e);var o=l.any(e,c.vcard("nameEmailIndex")),r=a.utils.genUuid(),p=l.sym(e.dir().uri+"Person/"+r+"/index.ttl#this"),d=p.doc(),u=[[s.st(p,c.vcard("inAddressBook"),e,o),s.st(p,c.vcard("fn"),n,o)]];for(var m in t){var f=l.sym(m),h=f.doc();u.push([s.st(f,c.vcard("hasMember"),p,h),s.st(p,c.vcard("fn"),n,h)])}var g=function(e,n,t){n?u.length>0?(console.log("Patching "+u[0]+"\n"),v.update([],u.shift(),g)):(console.log("Done patching. Now reading back in.\n"),a.store.fetcher.nowOrWhenFetched(d,void 0,function(e,n){e?(console.log("Read back in OK.\n"),i(!0,p)):(console.log("Read back in FAILED: "+n+"\n"),i(!1,n))})):(console.log("Error: can't update "+e+" for new contact:"+t+"\n"),i(!1,"Error: can't update "+e+" for new contact:"+t))};a.store.fetcher.nowOrWhenFetched(o,void 0,function(e,t){e?(console.log(" People index must be loaded\n"),v.put(d,[s.st(p,c.vcard("fn"),n,d),s.st(p,c.rdf("type"),c.vcard("Individual"),d)],"text/turtle",g)):(console.log("Error loading people index!"+o.uri+": "+t),i(!1,"Error loading people index!"+o.uri+": "+t+"\n"))})}(g,e,x,function(e,t){if(e){let e=t;Q.innerHTML="indexing...",(y={})[e.uri]=!0,O(),Q.appendChild(P(n,e,"contact"))}else console.log("Error: can't save new contact:"+t)})})},!1),g){var se=V.appendChild(n.createElement("button"));se.setAttribute("type","button"),se.innerHTML="New Group",se.addEventListener("click",function(e){Q.innerHTML="";var t=l.any(g,c.vcard("groupIndex"));a.store.fetcher.nowOrWhenFetched(t,void 0,function(e,n){e?console.log(" Group index has been loaded\n"):console.log("Error: Group index has NOT been loaded"+n+"\n")}),a.widgets.askName(n,l,Q,a.ns.foaf("name"),c.vcard("Group"),"group").then(function(e){e&&function(e,n,t){var i=l.any(e,c.vcard("groupIndex")),o=e.uri.split("#")[0],r=n.replace(" ","_"),p=l.sym(o.slice(0,o.lastIndexOf("/")+1)+"Group/"+r+".ttl"),d=l.sym(p.uri+"#this");console.log(" New group will be: "+d+"\n"),a.store.fetcher.nowOrWhenFetched(i,function(a,o){if(a){console.log(" Group index must be loaded\n");var r=[s.st(e,c.vcard("includesGroup"),d,i),s.st(d,c.rdf("type"),c.vcard("Group"),i),s.st(d,c.vcard("fn"),n,i)];v.update([],r,function(o,r,l){if(a){var u=[s.st(e,c.vcard("includesGroup"),d,i),s.st(d,c.rdf("type"),c.vcard("Group"),p),s.st(d,c.vcard("fn"),n,p)];v.put(p,u,"text/turtle",function(e,n,a){t(n,n?d:"Can't save new group file "+p+a)})}else t(a,"Could not update group index "+l)})}else console.log("Error loading people index!"+i.uri+": "+o),t(!1,"Error loading people index!"+i.uri+": "+o+"\n")})}(g,e,function(e,t){e?((x={})[t.uri]=!0,R(),Q.innerHTML="",Q.appendChild(a.aclControl.ACLControlBox5(t,n,"group",l,function(e,n){e||(Q.innerHTML="Group sharing setup failed: "+n)}))):(console.log("Error: can't save new group:"+t),Q.innerHTML="Failed to save group"+t)})})},!1);var ce=K.appendChild(n.createElement("button"));ce.setAttribute("type","button"),ce.innerHTML="Tools",ce.addEventListener("click",function(e){Q.innerHTML="",Q.appendChild(r(N,x,G,g,n,b))})}K.appendChild((ie=g,a.authn.newAppInstance(n,{noun:"address book",appPathSegment:"contactorator.timbl.com"},function(e,t){h.clone(ie,t,{me:b,div:d,dom:n})}))),d.appendChild(n.createElement("hr"))};return g[c.vcard("Individual").uri]||g[c.vcard("Organization").uri]||g[c.foaf("Person").uri]||g[c.schema("Person").uri]?function(e){var i,r=e,p=function(n,t,a){var s=o.extension(t);let p,d;t!==o.lookup(n)&&(n+="_."+s,console.log("MIME TYPE MISMATCH -- adding extension: "+n));let u=t.startsWith("image");var f,h;for(u?(p="image_",d=c.vcard("hasPhoto")):(p="attachment_",d=c.wf("attachment")),f=0;h=l.sym(r.dir().uri+n),l.holds(e,c.vcard("hasPhoto"),h);f++)n=p+f+"."+s;console.log("Putting "+a.byteLength+" bytes of "+t+" to "+h),l.fetcher.webOperation("PUT",h.uri,{data:a,contentType:t}).then(function(n){n.ok?(console.log(" Upload: put OK: "+h),l.add(e,d,h,e.doc()),l.fetcher.putBack(e.doc(),{contentType:"text/turtle"}).then(function(e){u&&i.refresh()},function(e){console.log(" Write back image link FAIL "+h+", Error: "+e)})):m("Error uploading "+h+":"+n.status)})},h=function(e){e.map(function(e){var n=s.sym(e);console.log("Dropped on mugshot thing "+n),e.startsWith("http")&&e.indexOf("#")<0?l.fetcher.webOperation("GET",n.uri).then(e=>{let t=e.headers.get("Content-Type"),a=n.uri.split("/").slice(-1)[0];a=a.split("?")[0],e.arrayBuffer().then(function(i){e.ok?p(a,t,i):m("Error downloading "+n+":"+e.status)})}):(console.log("Not a web document URI, cannot copy as picture: "+n),function(e){l.fetcher.nowOrWhenFetched(e.doc(),function(n,t){if(n){var a=l.findTypeURIs(e);for(var i in a)console.log("    drop object type includes: "+i);console.log("Default: assume web page  "+e),l.add(r,c.wf("attachment"),e,r.doc())}else console.log("Error looking up dropped thing "+e+": "+t)})}(n))})},v=function(e){for(var n=0;n<e.length;n++){let a=e[n];console.log(" meeting: Filename: "+a.name+", type: "+(a.type||"n/a")+" size: "+a.size+" bytes, last modified: "+(a.lastModifiedDate?a.lastModifiedDate.toLocaleDateString():"n/a"));var t=new FileReader;t.onload=function(e){return function(n){var t=n.target.result;console.log(" File read byteLength : "+t.byteLength);var a=encodeURIComponent(e.name),i=e.type;p(a,i,t)}}(a),t.readAsArrayBuffer(a)}},g=l.sym("https://solid.github.io/solid-panes/contact/individualForm.ttl#form1"),b=g.doc();if(!l.holds(void 0,void 0,void 0,b)){var w=t(26);s.parse(w,l,b.uri,"text/turtle")}var x=a.ns.vcard("Type").doc();l.holds(void 0,void 0,void 0,x)||s.parse(t(27),l,x.uri,"text/turtle");var y=[e.doc()];a.store.fetcher.load(y).catch(function(e){console.log("Error: Failed to load subject: "+e)}).then(function(t){function o(e){let t=n.createElement("img");return t.setAttribute("style","max-height: 10em; border-radius: 1em; margin: 0.7em;"),a.widgets.makeDropTarget(t,h,v),e&&t.setAttribute("src",e.uri),t}!function(){var n=l.findTypeURIs(e),t="padding: 0.5em 1.5em 1em 1.5em; ",a=null;for(var i in n)if(a=l.anyValue(l.sym(i),c.solid("profileHighlightColor")))break;t+="background-color: "+(a=a||"transparent")+"; ",d.setAttribute("style",t)}(),a.authn.checkUser(),i=d.appendChild(n.createElement("div"));var r=o();function p(){let n=l.each(e,c.vcard("hasPhoto"));n.sort(),0===(n=n.slice(0,5)).length?(i.innerHTML="",i.appendChild(r)):a.utils.syncTableToArray(i,n,o)}a.widgets.setImage(r,e),p(),i.refresh=p,a.widgets.appendForm(n,d,{},e,g,u,f),d.appendChild(n.createElement("tr")).setAttribute("style","height: 1em");var b=function(e,n,t){var i=w.appendChild(e.createElement("tr"));i.setAttribute("style","margin-top: 0.1em solid #ccc;");var o=i.appendChild(e.createElement("td")),r=i.appendChild(e.createElement("td"));o.textContent=t.uri.split("/")[2],l.fetcher.load(t).then(function(e){o.textContent=t.uri.split("/")[2]+" ("+l.statementsMatching(void 0,void 0,void 0,t.doc()).length+")"}).catch(function(n){r.appendChild(a.widgets.errorMessageBlock(e,n,"pink"))}),r.appendChild(a.widgets.linkIcon(e,t))},w=d.appendChild(n.createElement("table")),x=l.allAliases(e);if(x.length>1)for(var y=0;y<x.length;y++){var C=x[y];C.sameTerm(e)||b(n,0,C)}a.widgets.attachmentList(n,e,d,{predicate:a.ns.vcard("url")}),d.appendChild(n.createElement("hr")),l.each(e,c.vcard("url")).forEach(function(e){var t=l.any(e,c.rdf("type")),i=l.any(e,c.vcard("value"));if(i){var o=w.appendChild(n.createElement("tr"));o.setAttribute("style","margin-top: 0.1em solid #ccc;"),o.appendChild(n.createElement("td")).textContent=a.utils.label(t);var r=o.appendChild(n.createElement("td")).appendChild(n.createElement("a"));r.setAttribute("href",i.uri),r.appendChild(n.createElement("span")).textContent=i.uri}}),d.appendChild(n.createElement("hr"));var k=function(e,n){var t=l.any(e,c.vcard("fn")),a=l.any(n,c.vcard("fn"));if(l.each(null,c.vcard("hasMember"),e).length<2)alert("Must be a member of at least one group.  Add to another group first.");else if(confirm("Remove "+t+" from group "+a+"?")){var i=[s.st(n,c.vcard("hasMember"),e,n.doc()),s.st(e,c.vcard("fn"),t,n.doc())];l.updater.update(i,[],function(e,i,o){if(!i)return m("Error removing member from group "+n+": "+o);console.log("Removed "+t+" from group "+a),A()})}};function T(t){var i={deleteFunction:function(){k(e,t)},noun:"membership"};return a.widgets.personTR(n,null,t,i)}var E=d.appendChild(n.createElement("table"));function A(){var n=l.each(null,c.vcard("hasMember"),e);a.utils.syncTableToArray(E,n,T)}E.refresh=A,A()})}(e):g[c.vcard("Group").uri]?a.authn.findAppInstances(w,c.vcard("AddressBook")).then(function(n){var t=n.instances,a={foreignGroup:e};t.length>0?x(t,n,a):x([],n,a)}).catch(function(e){a.widgets.complain(w,e)}):g[c.vcard("AddressBook").uri]?x([e],w,{}):console.log("Error: Contact pane: No evidence that "+e+" is anything to do with contacts."),(b=a.authn.currentUser())||(console.log("(You do not have your Web Id set. Sign in or sign up to make changes.)"),a.authn.logInLoadProfile(w).then(e=>{console.log("Logged in as "+e.me),b=e.me},e=>{d.appendChild(a.widgets.errorMessageBlock(e))})),"undefined"!=typeof document&&document.location&&"http://localhost"===(""+document.location).slice(0,16)&&(b=l.any(e,a.ns.acl("owner")),console.log("Assuming user is "+b)),d}}},function(e,n,t){
 /*!
  * mime-db
  * Copyright(c) 2014 Jonathan Ong
@@ -95377,6 +97711,7 @@ function complain(context, err) {
   console.log('Complaint: ' + err);
   if (ele) ele.appendChild(error.errorMessageBlock(context.dom, err));else alert(err);
 }
+buttons.complain = complain;
 
 // var UI.ns = require('./ns.js')
 // var utilsModule = require('./utils')
@@ -97681,6 +100016,7 @@ function buildCheckboxForm(dom, kb, lab, del, ins, form, store, tristate) {
   input.addEventListener('click', boxHandler, false);
   return box;
 }
+forms.buildCheckboxForm = buildCheckboxForm;
 
 forms.fieldLabel = function (dom, property, form) {
   var lab = UI.store.any(form, UI.ns.ui('label'));
@@ -98616,11 +100952,11 @@ var EE = __webpack_require__(/*! events */ "./node_modules/events/events.js").Ev
 var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
 
 inherits(Stream, EE);
-Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js");
-Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/writable-browser.js");
-Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ "./node_modules/stream-browserify/node_modules/readable-stream/duplex-browser.js");
-Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ "./node_modules/stream-browserify/node_modules/readable-stream/transform.js");
-Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ "./node_modules/stream-browserify/node_modules/readable-stream/passthrough.js");
+Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ "./node_modules/readable-stream/readable-browser.js");
+Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ "./node_modules/readable-stream/writable-browser.js");
+Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ "./node_modules/readable-stream/duplex-browser.js");
+Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ "./node_modules/readable-stream/transform.js");
+Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ "./node_modules/readable-stream/passthrough.js");
 
 // Backwards-compat with node 0.4.x
 Stream.Stream = Stream;
@@ -98716,2503 +101052,6 @@ Stream.prototype.pipe = function(dest, options) {
   // Allow for unix-like usage: A.pipe(B).pipe(C)
   return dest;
 };
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/isarray/index.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/isarray/index.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/duplex-browser.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/duplex-browser.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// a duplex stream is just a stream that is both readable and writable.
-// Since JS doesn't have multiple prototypal inheritance, this class
-// prototypally inherits from Readable, and then parasitically from
-// Writable.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var objectKeys = Object.keys || function (obj) {
-  var keys = [];
-  for (var key in obj) {
-    keys.push(key);
-  }return keys;
-};
-/*</replacement>*/
-
-module.exports = Duplex;
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-var Readable = __webpack_require__(/*! ./_stream_readable */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_readable.js");
-var Writable = __webpack_require__(/*! ./_stream_writable */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js");
-
-util.inherits(Duplex, Readable);
-
-{
-  // avoid scope creep, the keys array can then be collected
-  var keys = objectKeys(Writable.prototype);
-  for (var v = 0; v < keys.length; v++) {
-    var method = keys[v];
-    if (!Duplex.prototype[method]) Duplex.prototype[method] = Writable.prototype[method];
-  }
-}
-
-function Duplex(options) {
-  if (!(this instanceof Duplex)) return new Duplex(options);
-
-  Readable.call(this, options);
-  Writable.call(this, options);
-
-  if (options && options.readable === false) this.readable = false;
-
-  if (options && options.writable === false) this.writable = false;
-
-  this.allowHalfOpen = true;
-  if (options && options.allowHalfOpen === false) this.allowHalfOpen = false;
-
-  this.once('end', onend);
-}
-
-Object.defineProperty(Duplex.prototype, 'writableHighWaterMark', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function () {
-    return this._writableState.highWaterMark;
-  }
-});
-
-// the no-half-open enforcer
-function onend() {
-  // if we allow half-open state, or if the writable side ended,
-  // then we're ok.
-  if (this.allowHalfOpen || this._writableState.ended) return;
-
-  // no more data can be written.
-  // But allow more writes to happen in this tick.
-  pna.nextTick(onEndNT, this);
-}
-
-function onEndNT(self) {
-  self.end();
-}
-
-Object.defineProperty(Duplex.prototype, 'destroyed', {
-  get: function () {
-    if (this._readableState === undefined || this._writableState === undefined) {
-      return false;
-    }
-    return this._readableState.destroyed && this._writableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (this._readableState === undefined || this._writableState === undefined) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._readableState.destroyed = value;
-    this._writableState.destroyed = value;
-  }
-});
-
-Duplex.prototype._destroy = function (err, cb) {
-  this.push(null);
-  this.end();
-
-  pna.nextTick(cb, err);
-};
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_passthrough.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_passthrough.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// a passthrough stream.
-// basically just the most minimal sort of Transform stream.
-// Every written chunk gets output as-is.
-
-
-
-module.exports = PassThrough;
-
-var Transform = __webpack_require__(/*! ./_stream_transform */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_transform.js");
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-util.inherits(PassThrough, Transform);
-
-function PassThrough(options) {
-  if (!(this instanceof PassThrough)) return new PassThrough(options);
-
-  Transform.call(this, options);
-}
-
-PassThrough.prototype._transform = function (chunk, encoding, cb) {
-  cb(null, chunk);
-};
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_readable.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_readable.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-module.exports = Readable;
-
-/*<replacement>*/
-var isArray = __webpack_require__(/*! isarray */ "./node_modules/stream-browserify/node_modules/isarray/index.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var Duplex;
-/*</replacement>*/
-
-Readable.ReadableState = ReadableState;
-
-/*<replacement>*/
-var EE = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
-
-var EElistenerCount = function (emitter, type) {
-  return emitter.listeners(type).length;
-};
-/*</replacement>*/
-
-/*<replacement>*/
-var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/stream-browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/stream-browserify/node_modules/safe-buffer/index.js").Buffer;
-var OurUint8Array = global.Uint8Array || function () {};
-function _uint8ArrayToBuffer(chunk) {
-  return Buffer.from(chunk);
-}
-function _isUint8Array(obj) {
-  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
-}
-
-/*</replacement>*/
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 4);
-var debug = void 0;
-if (debugUtil && debugUtil.debuglog) {
-  debug = debugUtil.debuglog('stream');
-} else {
-  debug = function () {};
-}
-/*</replacement>*/
-
-var BufferList = __webpack_require__(/*! ./internal/streams/BufferList */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/BufferList.js");
-var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/destroy.js");
-var StringDecoder;
-
-util.inherits(Readable, Stream);
-
-var kProxyEvents = ['error', 'close', 'destroy', 'pause', 'resume'];
-
-function prependListener(emitter, event, fn) {
-  // Sadly this is not cacheable as some libraries bundle their own
-  // event emitter implementation with them.
-  if (typeof emitter.prependListener === 'function') return emitter.prependListener(event, fn);
-
-  // This is a hack to make sure that our error handler is attached before any
-  // userland ones.  NEVER DO THIS. This is here only because this code needs
-  // to continue to work with older versions of Node.js that do not include
-  // the prependListener() method. The goal is to eventually remove this hack.
-  if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
-}
-
-function ReadableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  options = options || {};
-
-  // Duplex streams are both readable and writable, but share
-  // the same options object.
-  // However, some cases require setting options to different
-  // values for the readable and the writable sides of the duplex stream.
-  // These options can be provided separately as readableXXX and writableXXX.
-  var isDuplex = stream instanceof Duplex;
-
-  // object stream flag. Used to make read(n) ignore n and to
-  // make all the buffer merging and length checks go away
-  this.objectMode = !!options.objectMode;
-
-  if (isDuplex) this.objectMode = this.objectMode || !!options.readableObjectMode;
-
-  // the point at which it stops calling _read() to fill the buffer
-  // Note: 0 is a valid value, means "don't call _read preemptively ever"
-  var hwm = options.highWaterMark;
-  var readableHwm = options.readableHighWaterMark;
-  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
-
-  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (readableHwm || readableHwm === 0)) this.highWaterMark = readableHwm;else this.highWaterMark = defaultHwm;
-
-  // cast to ints.
-  this.highWaterMark = Math.floor(this.highWaterMark);
-
-  // A linked list is used to store data chunks instead of an array because the
-  // linked list can remove elements from the beginning faster than
-  // array.shift()
-  this.buffer = new BufferList();
-  this.length = 0;
-  this.pipes = null;
-  this.pipesCount = 0;
-  this.flowing = null;
-  this.ended = false;
-  this.endEmitted = false;
-  this.reading = false;
-
-  // a flag to be able to tell if the event 'readable'/'data' is emitted
-  // immediately, or on a later tick.  We set this to true at first, because
-  // any actions that shouldn't happen until "later" should generally also
-  // not happen before the first read call.
-  this.sync = true;
-
-  // whenever we return null, then we set a flag to say
-  // that we're awaiting a 'readable' event emission.
-  this.needReadable = false;
-  this.emittedReadable = false;
-  this.readableListening = false;
-  this.resumeScheduled = false;
-
-  // has it been destroyed
-  this.destroyed = false;
-
-  // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is 'binary' so we have to make this configurable.
-  // Everything else in the universe uses 'utf8', though.
-  this.defaultEncoding = options.defaultEncoding || 'utf8';
-
-  // the number of writers that are awaiting a drain event in .pipe()s
-  this.awaitDrain = 0;
-
-  // if true, a maybeReadMore has been scheduled
-  this.readingMore = false;
-
-  this.decoder = null;
-  this.encoding = null;
-  if (options.encoding) {
-    if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
-    this.decoder = new StringDecoder(options.encoding);
-    this.encoding = options.encoding;
-  }
-}
-
-function Readable(options) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  if (!(this instanceof Readable)) return new Readable(options);
-
-  this._readableState = new ReadableState(options, this);
-
-  // legacy
-  this.readable = true;
-
-  if (options) {
-    if (typeof options.read === 'function') this._read = options.read;
-
-    if (typeof options.destroy === 'function') this._destroy = options.destroy;
-  }
-
-  Stream.call(this);
-}
-
-Object.defineProperty(Readable.prototype, 'destroyed', {
-  get: function () {
-    if (this._readableState === undefined) {
-      return false;
-    }
-    return this._readableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (!this._readableState) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._readableState.destroyed = value;
-  }
-});
-
-Readable.prototype.destroy = destroyImpl.destroy;
-Readable.prototype._undestroy = destroyImpl.undestroy;
-Readable.prototype._destroy = function (err, cb) {
-  this.push(null);
-  cb(err);
-};
-
-// Manually shove something into the read() buffer.
-// This returns true if the highWaterMark has not been hit yet,
-// similar to how Writable.write() returns true if you should
-// write() some more.
-Readable.prototype.push = function (chunk, encoding) {
-  var state = this._readableState;
-  var skipChunkCheck;
-
-  if (!state.objectMode) {
-    if (typeof chunk === 'string') {
-      encoding = encoding || state.defaultEncoding;
-      if (encoding !== state.encoding) {
-        chunk = Buffer.from(chunk, encoding);
-        encoding = '';
-      }
-      skipChunkCheck = true;
-    }
-  } else {
-    skipChunkCheck = true;
-  }
-
-  return readableAddChunk(this, chunk, encoding, false, skipChunkCheck);
-};
-
-// Unshift should *always* be something directly out of read()
-Readable.prototype.unshift = function (chunk) {
-  return readableAddChunk(this, chunk, null, true, false);
-};
-
-function readableAddChunk(stream, chunk, encoding, addToFront, skipChunkCheck) {
-  var state = stream._readableState;
-  if (chunk === null) {
-    state.reading = false;
-    onEofChunk(stream, state);
-  } else {
-    var er;
-    if (!skipChunkCheck) er = chunkInvalid(state, chunk);
-    if (er) {
-      stream.emit('error', er);
-    } else if (state.objectMode || chunk && chunk.length > 0) {
-      if (typeof chunk !== 'string' && !state.objectMode && Object.getPrototypeOf(chunk) !== Buffer.prototype) {
-        chunk = _uint8ArrayToBuffer(chunk);
-      }
-
-      if (addToFront) {
-        if (state.endEmitted) stream.emit('error', new Error('stream.unshift() after end event'));else addChunk(stream, state, chunk, true);
-      } else if (state.ended) {
-        stream.emit('error', new Error('stream.push() after EOF'));
-      } else {
-        state.reading = false;
-        if (state.decoder && !encoding) {
-          chunk = state.decoder.write(chunk);
-          if (state.objectMode || chunk.length !== 0) addChunk(stream, state, chunk, false);else maybeReadMore(stream, state);
-        } else {
-          addChunk(stream, state, chunk, false);
-        }
-      }
-    } else if (!addToFront) {
-      state.reading = false;
-    }
-  }
-
-  return needMoreData(state);
-}
-
-function addChunk(stream, state, chunk, addToFront) {
-  if (state.flowing && state.length === 0 && !state.sync) {
-    stream.emit('data', chunk);
-    stream.read(0);
-  } else {
-    // update the buffer info.
-    state.length += state.objectMode ? 1 : chunk.length;
-    if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);
-
-    if (state.needReadable) emitReadable(stream);
-  }
-  maybeReadMore(stream, state);
-}
-
-function chunkInvalid(state, chunk) {
-  var er;
-  if (!_isUint8Array(chunk) && typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
-    er = new TypeError('Invalid non-string/buffer chunk');
-  }
-  return er;
-}
-
-// if it's past the high water mark, we can push in some more.
-// Also, if we have no data yet, we can stand some
-// more bytes.  This is to work around cases where hwm=0,
-// such as the repl.  Also, if the push() triggered a
-// readable event, and the user called read(largeNumber) such that
-// needReadable was set, then we ought to push more, so that another
-// 'readable' event will be triggered.
-function needMoreData(state) {
-  return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);
-}
-
-Readable.prototype.isPaused = function () {
-  return this._readableState.flowing === false;
-};
-
-// backwards compatibility.
-Readable.prototype.setEncoding = function (enc) {
-  if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
-  this._readableState.decoder = new StringDecoder(enc);
-  this._readableState.encoding = enc;
-  return this;
-};
-
-// Don't raise the hwm > 8MB
-var MAX_HWM = 0x800000;
-function computeNewHighWaterMark(n) {
-  if (n >= MAX_HWM) {
-    n = MAX_HWM;
-  } else {
-    // Get the next highest power of 2 to prevent increasing hwm excessively in
-    // tiny amounts
-    n--;
-    n |= n >>> 1;
-    n |= n >>> 2;
-    n |= n >>> 4;
-    n |= n >>> 8;
-    n |= n >>> 16;
-    n++;
-  }
-  return n;
-}
-
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function howMuchToRead(n, state) {
-  if (n <= 0 || state.length === 0 && state.ended) return 0;
-  if (state.objectMode) return 1;
-  if (n !== n) {
-    // Only flow one buffer at a time
-    if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;
-  }
-  // If we're asking for more than the current hwm, then raise the hwm.
-  if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
-  if (n <= state.length) return n;
-  // Don't have enough
-  if (!state.ended) {
-    state.needReadable = true;
-    return 0;
-  }
-  return state.length;
-}
-
-// you can override either this method, or the async _read(n) below.
-Readable.prototype.read = function (n) {
-  debug('read', n);
-  n = parseInt(n, 10);
-  var state = this._readableState;
-  var nOrig = n;
-
-  if (n !== 0) state.emittedReadable = false;
-
-  // if we're doing read(0) to trigger a readable event, but we
-  // already have a bunch of data in the buffer, then just trigger
-  // the 'readable' event and move on.
-  if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {
-    debug('read: emitReadable', state.length, state.ended);
-    if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);
-    return null;
-  }
-
-  n = howMuchToRead(n, state);
-
-  // if we've ended, and we're now clear, then finish it up.
-  if (n === 0 && state.ended) {
-    if (state.length === 0) endReadable(this);
-    return null;
-  }
-
-  // All the actual chunk generation logic needs to be
-  // *below* the call to _read.  The reason is that in certain
-  // synthetic stream cases, such as passthrough streams, _read
-  // may be a completely synchronous operation which may change
-  // the state of the read buffer, providing enough data when
-  // before there was *not* enough.
-  //
-  // So, the steps are:
-  // 1. Figure out what the state of things will be after we do
-  // a read from the buffer.
-  //
-  // 2. If that resulting state will trigger a _read, then call _read.
-  // Note that this may be asynchronous, or synchronous.  Yes, it is
-  // deeply ugly to write APIs this way, but that still doesn't mean
-  // that the Readable class should behave improperly, as streams are
-  // designed to be sync/async agnostic.
-  // Take note if the _read call is sync or async (ie, if the read call
-  // has returned yet), so that we know whether or not it's safe to emit
-  // 'readable' etc.
-  //
-  // 3. Actually pull the requested chunks out of the buffer and return.
-
-  // if we need a readable event, then we need to do some reading.
-  var doRead = state.needReadable;
-  debug('need readable', doRead);
-
-  // if we currently have less than the highWaterMark, then also read some
-  if (state.length === 0 || state.length - n < state.highWaterMark) {
-    doRead = true;
-    debug('length less than watermark', doRead);
-  }
-
-  // however, if we've ended, then there's no point, and if we're already
-  // reading, then it's unnecessary.
-  if (state.ended || state.reading) {
-    doRead = false;
-    debug('reading or ended', doRead);
-  } else if (doRead) {
-    debug('do read');
-    state.reading = true;
-    state.sync = true;
-    // if the length is currently zero, then we *need* a readable event.
-    if (state.length === 0) state.needReadable = true;
-    // call internal read method
-    this._read(state.highWaterMark);
-    state.sync = false;
-    // If _read pushed data synchronously, then `reading` will be false,
-    // and we need to re-evaluate how much data we can return to the user.
-    if (!state.reading) n = howMuchToRead(nOrig, state);
-  }
-
-  var ret;
-  if (n > 0) ret = fromList(n, state);else ret = null;
-
-  if (ret === null) {
-    state.needReadable = true;
-    n = 0;
-  } else {
-    state.length -= n;
-  }
-
-  if (state.length === 0) {
-    // If we have nothing in the buffer, then we want to know
-    // as soon as we *do* get something into the buffer.
-    if (!state.ended) state.needReadable = true;
-
-    // If we tried to read() past the EOF, then emit end on the next tick.
-    if (nOrig !== n && state.ended) endReadable(this);
-  }
-
-  if (ret !== null) this.emit('data', ret);
-
-  return ret;
-};
-
-function onEofChunk(stream, state) {
-  if (state.ended) return;
-  if (state.decoder) {
-    var chunk = state.decoder.end();
-    if (chunk && chunk.length) {
-      state.buffer.push(chunk);
-      state.length += state.objectMode ? 1 : chunk.length;
-    }
-  }
-  state.ended = true;
-
-  // emit 'readable' now to make sure it gets picked up.
-  emitReadable(stream);
-}
-
-// Don't emit readable right away in sync mode, because this can trigger
-// another read() call => stack overflow.  This way, it might trigger
-// a nextTick recursion warning, but that's not so bad.
-function emitReadable(stream) {
-  var state = stream._readableState;
-  state.needReadable = false;
-  if (!state.emittedReadable) {
-    debug('emitReadable', state.flowing);
-    state.emittedReadable = true;
-    if (state.sync) pna.nextTick(emitReadable_, stream);else emitReadable_(stream);
-  }
-}
-
-function emitReadable_(stream) {
-  debug('emit readable');
-  stream.emit('readable');
-  flow(stream);
-}
-
-// at this point, the user has presumably seen the 'readable' event,
-// and called read() to consume some data.  that may have triggered
-// in turn another _read(n) call, in which case reading = true if
-// it's in progress.
-// However, if we're not ended, or reading, and the length < hwm,
-// then go ahead and try to read some more preemptively.
-function maybeReadMore(stream, state) {
-  if (!state.readingMore) {
-    state.readingMore = true;
-    pna.nextTick(maybeReadMore_, stream, state);
-  }
-}
-
-function maybeReadMore_(stream, state) {
-  var len = state.length;
-  while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {
-    debug('maybeReadMore read 0');
-    stream.read(0);
-    if (len === state.length)
-      // didn't get any data, stop spinning.
-      break;else len = state.length;
-  }
-  state.readingMore = false;
-}
-
-// abstract method.  to be overridden in specific implementation classes.
-// call cb(er, data) where data is <= n in length.
-// for virtual (non-string, non-buffer) streams, "length" is somewhat
-// arbitrary, and perhaps not very meaningful.
-Readable.prototype._read = function (n) {
-  this.emit('error', new Error('_read() is not implemented'));
-};
-
-Readable.prototype.pipe = function (dest, pipeOpts) {
-  var src = this;
-  var state = this._readableState;
-
-  switch (state.pipesCount) {
-    case 0:
-      state.pipes = dest;
-      break;
-    case 1:
-      state.pipes = [state.pipes, dest];
-      break;
-    default:
-      state.pipes.push(dest);
-      break;
-  }
-  state.pipesCount += 1;
-  debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);
-
-  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
-
-  var endFn = doEnd ? onend : unpipe;
-  if (state.endEmitted) pna.nextTick(endFn);else src.once('end', endFn);
-
-  dest.on('unpipe', onunpipe);
-  function onunpipe(readable, unpipeInfo) {
-    debug('onunpipe');
-    if (readable === src) {
-      if (unpipeInfo && unpipeInfo.hasUnpiped === false) {
-        unpipeInfo.hasUnpiped = true;
-        cleanup();
-      }
-    }
-  }
-
-  function onend() {
-    debug('onend');
-    dest.end();
-  }
-
-  // when the dest drains, it reduces the awaitDrain counter
-  // on the source.  This would be more elegant with a .once()
-  // handler in flow(), but adding and removing repeatedly is
-  // too slow.
-  var ondrain = pipeOnDrain(src);
-  dest.on('drain', ondrain);
-
-  var cleanedUp = false;
-  function cleanup() {
-    debug('cleanup');
-    // cleanup event handlers once the pipe is broken
-    dest.removeListener('close', onclose);
-    dest.removeListener('finish', onfinish);
-    dest.removeListener('drain', ondrain);
-    dest.removeListener('error', onerror);
-    dest.removeListener('unpipe', onunpipe);
-    src.removeListener('end', onend);
-    src.removeListener('end', unpipe);
-    src.removeListener('data', ondata);
-
-    cleanedUp = true;
-
-    // if the reader is waiting for a drain event from this
-    // specific writer, then it would cause it to never start
-    // flowing again.
-    // So, if this is awaiting a drain, then we just call it now.
-    // If we don't know, then assume that we are waiting for one.
-    if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
-  }
-
-  // If the user pushes more data while we're writing to dest then we'll end up
-  // in ondata again. However, we only want to increase awaitDrain once because
-  // dest will only emit one 'drain' event for the multiple writes.
-  // => Introduce a guard on increasing awaitDrain.
-  var increasedAwaitDrain = false;
-  src.on('data', ondata);
-  function ondata(chunk) {
-    debug('ondata');
-    increasedAwaitDrain = false;
-    var ret = dest.write(chunk);
-    if (false === ret && !increasedAwaitDrain) {
-      // If the user unpiped during `dest.write()`, it is possible
-      // to get stuck in a permanently paused state if that write
-      // also returned false.
-      // => Check whether `dest` is still a piping destination.
-      if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
-        debug('false write response, pause', src._readableState.awaitDrain);
-        src._readableState.awaitDrain++;
-        increasedAwaitDrain = true;
-      }
-      src.pause();
-    }
-  }
-
-  // if the dest has an error, then stop piping into it.
-  // however, don't suppress the throwing behavior for this.
-  function onerror(er) {
-    debug('onerror', er);
-    unpipe();
-    dest.removeListener('error', onerror);
-    if (EElistenerCount(dest, 'error') === 0) dest.emit('error', er);
-  }
-
-  // Make sure our error handler is attached before userland ones.
-  prependListener(dest, 'error', onerror);
-
-  // Both close and finish should trigger unpipe, but only once.
-  function onclose() {
-    dest.removeListener('finish', onfinish);
-    unpipe();
-  }
-  dest.once('close', onclose);
-  function onfinish() {
-    debug('onfinish');
-    dest.removeListener('close', onclose);
-    unpipe();
-  }
-  dest.once('finish', onfinish);
-
-  function unpipe() {
-    debug('unpipe');
-    src.unpipe(dest);
-  }
-
-  // tell the dest that it's being piped to
-  dest.emit('pipe', src);
-
-  // start the flow if it hasn't been started already.
-  if (!state.flowing) {
-    debug('pipe resume');
-    src.resume();
-  }
-
-  return dest;
-};
-
-function pipeOnDrain(src) {
-  return function () {
-    var state = src._readableState;
-    debug('pipeOnDrain', state.awaitDrain);
-    if (state.awaitDrain) state.awaitDrain--;
-    if (state.awaitDrain === 0 && EElistenerCount(src, 'data')) {
-      state.flowing = true;
-      flow(src);
-    }
-  };
-}
-
-Readable.prototype.unpipe = function (dest) {
-  var state = this._readableState;
-  var unpipeInfo = { hasUnpiped: false };
-
-  // if we're not piping anywhere, then do nothing.
-  if (state.pipesCount === 0) return this;
-
-  // just one destination.  most common case.
-  if (state.pipesCount === 1) {
-    // passed in one, but it's not the right one.
-    if (dest && dest !== state.pipes) return this;
-
-    if (!dest) dest = state.pipes;
-
-    // got a match.
-    state.pipes = null;
-    state.pipesCount = 0;
-    state.flowing = false;
-    if (dest) dest.emit('unpipe', this, unpipeInfo);
-    return this;
-  }
-
-  // slow case. multiple pipe destinations.
-
-  if (!dest) {
-    // remove all.
-    var dests = state.pipes;
-    var len = state.pipesCount;
-    state.pipes = null;
-    state.pipesCount = 0;
-    state.flowing = false;
-
-    for (var i = 0; i < len; i++) {
-      dests[i].emit('unpipe', this, unpipeInfo);
-    }return this;
-  }
-
-  // try to find the right one.
-  var index = indexOf(state.pipes, dest);
-  if (index === -1) return this;
-
-  state.pipes.splice(index, 1);
-  state.pipesCount -= 1;
-  if (state.pipesCount === 1) state.pipes = state.pipes[0];
-
-  dest.emit('unpipe', this, unpipeInfo);
-
-  return this;
-};
-
-// set up data events if they are asked for
-// Ensure readable listeners eventually get something
-Readable.prototype.on = function (ev, fn) {
-  var res = Stream.prototype.on.call(this, ev, fn);
-
-  if (ev === 'data') {
-    // Start flowing on next tick if stream isn't explicitly paused
-    if (this._readableState.flowing !== false) this.resume();
-  } else if (ev === 'readable') {
-    var state = this._readableState;
-    if (!state.endEmitted && !state.readableListening) {
-      state.readableListening = state.needReadable = true;
-      state.emittedReadable = false;
-      if (!state.reading) {
-        pna.nextTick(nReadingNextTick, this);
-      } else if (state.length) {
-        emitReadable(this);
-      }
-    }
-  }
-
-  return res;
-};
-Readable.prototype.addListener = Readable.prototype.on;
-
-function nReadingNextTick(self) {
-  debug('readable nexttick read 0');
-  self.read(0);
-}
-
-// pause() and resume() are remnants of the legacy readable stream API
-// If the user uses them, then switch into old mode.
-Readable.prototype.resume = function () {
-  var state = this._readableState;
-  if (!state.flowing) {
-    debug('resume');
-    state.flowing = true;
-    resume(this, state);
-  }
-  return this;
-};
-
-function resume(stream, state) {
-  if (!state.resumeScheduled) {
-    state.resumeScheduled = true;
-    pna.nextTick(resume_, stream, state);
-  }
-}
-
-function resume_(stream, state) {
-  if (!state.reading) {
-    debug('resume read 0');
-    stream.read(0);
-  }
-
-  state.resumeScheduled = false;
-  state.awaitDrain = 0;
-  stream.emit('resume');
-  flow(stream);
-  if (state.flowing && !state.reading) stream.read(0);
-}
-
-Readable.prototype.pause = function () {
-  debug('call pause flowing=%j', this._readableState.flowing);
-  if (false !== this._readableState.flowing) {
-    debug('pause');
-    this._readableState.flowing = false;
-    this.emit('pause');
-  }
-  return this;
-};
-
-function flow(stream) {
-  var state = stream._readableState;
-  debug('flow', state.flowing);
-  while (state.flowing && stream.read() !== null) {}
-}
-
-// wrap an old-style stream as the async data source.
-// This is *not* part of the readable stream interface.
-// It is an ugly unfortunate mess of history.
-Readable.prototype.wrap = function (stream) {
-  var _this = this;
-
-  var state = this._readableState;
-  var paused = false;
-
-  stream.on('end', function () {
-    debug('wrapped end');
-    if (state.decoder && !state.ended) {
-      var chunk = state.decoder.end();
-      if (chunk && chunk.length) _this.push(chunk);
-    }
-
-    _this.push(null);
-  });
-
-  stream.on('data', function (chunk) {
-    debug('wrapped data');
-    if (state.decoder) chunk = state.decoder.write(chunk);
-
-    // don't skip over falsy values in objectMode
-    if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;
-
-    var ret = _this.push(chunk);
-    if (!ret) {
-      paused = true;
-      stream.pause();
-    }
-  });
-
-  // proxy all the other methods.
-  // important when wrapping filters and duplexes.
-  for (var i in stream) {
-    if (this[i] === undefined && typeof stream[i] === 'function') {
-      this[i] = function (method) {
-        return function () {
-          return stream[method].apply(stream, arguments);
-        };
-      }(i);
-    }
-  }
-
-  // proxy certain important events.
-  for (var n = 0; n < kProxyEvents.length; n++) {
-    stream.on(kProxyEvents[n], this.emit.bind(this, kProxyEvents[n]));
-  }
-
-  // when we try to consume some more bytes, simply unpause the
-  // underlying stream.
-  this._read = function (n) {
-    debug('wrapped _read', n);
-    if (paused) {
-      paused = false;
-      stream.resume();
-    }
-  };
-
-  return this;
-};
-
-Object.defineProperty(Readable.prototype, 'readableHighWaterMark', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function () {
-    return this._readableState.highWaterMark;
-  }
-});
-
-// exposed for testing purposes only.
-Readable._fromList = fromList;
-
-// Pluck off n bytes from an array of buffers.
-// Length is the combined lengths of all the buffers in the list.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function fromList(n, state) {
-  // nothing buffered
-  if (state.length === 0) return null;
-
-  var ret;
-  if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
-    // read it all, truncate the list
-    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);
-    state.buffer.clear();
-  } else {
-    // read part of list
-    ret = fromListPartial(n, state.buffer, state.decoder);
-  }
-
-  return ret;
-}
-
-// Extracts only enough buffered data to satisfy the amount requested.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function fromListPartial(n, list, hasStrings) {
-  var ret;
-  if (n < list.head.data.length) {
-    // slice is the same for buffers and strings
-    ret = list.head.data.slice(0, n);
-    list.head.data = list.head.data.slice(n);
-  } else if (n === list.head.data.length) {
-    // first chunk is a perfect match
-    ret = list.shift();
-  } else {
-    // result spans more than one buffer
-    ret = hasStrings ? copyFromBufferString(n, list) : copyFromBuffer(n, list);
-  }
-  return ret;
-}
-
-// Copies a specified amount of characters from the list of buffered data
-// chunks.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function copyFromBufferString(n, list) {
-  var p = list.head;
-  var c = 1;
-  var ret = p.data;
-  n -= ret.length;
-  while (p = p.next) {
-    var str = p.data;
-    var nb = n > str.length ? str.length : n;
-    if (nb === str.length) ret += str;else ret += str.slice(0, n);
-    n -= nb;
-    if (n === 0) {
-      if (nb === str.length) {
-        ++c;
-        if (p.next) list.head = p.next;else list.head = list.tail = null;
-      } else {
-        list.head = p;
-        p.data = str.slice(nb);
-      }
-      break;
-    }
-    ++c;
-  }
-  list.length -= c;
-  return ret;
-}
-
-// Copies a specified amount of bytes from the list of buffered data chunks.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function copyFromBuffer(n, list) {
-  var ret = Buffer.allocUnsafe(n);
-  var p = list.head;
-  var c = 1;
-  p.data.copy(ret);
-  n -= p.data.length;
-  while (p = p.next) {
-    var buf = p.data;
-    var nb = n > buf.length ? buf.length : n;
-    buf.copy(ret, ret.length - n, 0, nb);
-    n -= nb;
-    if (n === 0) {
-      if (nb === buf.length) {
-        ++c;
-        if (p.next) list.head = p.next;else list.head = list.tail = null;
-      } else {
-        list.head = p;
-        p.data = buf.slice(nb);
-      }
-      break;
-    }
-    ++c;
-  }
-  list.length -= c;
-  return ret;
-}
-
-function endReadable(stream) {
-  var state = stream._readableState;
-
-  // If we get here before consuming all the bytes, then that is a
-  // bug in node.  Should never happen.
-  if (state.length > 0) throw new Error('"endReadable()" called on non-empty stream');
-
-  if (!state.endEmitted) {
-    state.ended = true;
-    pna.nextTick(endReadableNT, state, stream);
-  }
-}
-
-function endReadableNT(state, stream) {
-  // Check that we didn't get one last unshift.
-  if (!state.endEmitted && state.length === 0) {
-    state.endEmitted = true;
-    stream.readable = false;
-    stream.emit('end');
-  }
-}
-
-function indexOf(xs, x) {
-  for (var i = 0, l = xs.length; i < l; i++) {
-    if (xs[i] === x) return i;
-  }
-  return -1;
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_transform.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_transform.js ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// a transform stream is a readable/writable stream where you do
-// something with the data.  Sometimes it's called a "filter",
-// but that's not a great name for it, since that implies a thing where
-// some bits pass through, and others are simply ignored.  (That would
-// be a valid example of a transform, of course.)
-//
-// While the output is causally related to the input, it's not a
-// necessarily symmetric or synchronous transformation.  For example,
-// a zlib stream might take multiple plain-text writes(), and then
-// emit a single compressed chunk some time in the future.
-//
-// Here's how this works:
-//
-// The Transform stream has all the aspects of the readable and writable
-// stream classes.  When you write(chunk), that calls _write(chunk,cb)
-// internally, and returns false if there's a lot of pending writes
-// buffered up.  When you call read(), that calls _read(n) until
-// there's enough pending readable data buffered up.
-//
-// In a transform stream, the written data is placed in a buffer.  When
-// _read(n) is called, it transforms the queued up data, calling the
-// buffered _write cb's as it consumes chunks.  If consuming a single
-// written chunk would result in multiple output chunks, then the first
-// outputted bit calls the readcb, and subsequent chunks just go into
-// the read buffer, and will cause it to emit 'readable' if necessary.
-//
-// This way, back-pressure is actually determined by the reading side,
-// since _read has to be called to start processing a new chunk.  However,
-// a pathological inflate type of transform can cause excessive buffering
-// here.  For example, imagine a stream where every byte of input is
-// interpreted as an integer from 0-255, and then results in that many
-// bytes of output.  Writing the 4 bytes {ff,ff,ff,ff} would result in
-// 1kb of data being output.  In this case, you could write a very small
-// amount of input, and end up with a very large amount of output.  In
-// such a pathological inflating mechanism, there'd be no way to tell
-// the system to stop doing the transform.  A single 4MB write could
-// cause the system to run out of memory.
-//
-// However, even in such a pathological case, only a single written chunk
-// would be consumed, and then the rest would wait (un-transformed) until
-// the results of the previous transformed chunk were consumed.
-
-
-
-module.exports = Transform;
-
-var Duplex = __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-util.inherits(Transform, Duplex);
-
-function afterTransform(er, data) {
-  var ts = this._transformState;
-  ts.transforming = false;
-
-  var cb = ts.writecb;
-
-  if (!cb) {
-    return this.emit('error', new Error('write callback called multiple times'));
-  }
-
-  ts.writechunk = null;
-  ts.writecb = null;
-
-  if (data != null) // single equals check for both `null` and `undefined`
-    this.push(data);
-
-  cb(er);
-
-  var rs = this._readableState;
-  rs.reading = false;
-  if (rs.needReadable || rs.length < rs.highWaterMark) {
-    this._read(rs.highWaterMark);
-  }
-}
-
-function Transform(options) {
-  if (!(this instanceof Transform)) return new Transform(options);
-
-  Duplex.call(this, options);
-
-  this._transformState = {
-    afterTransform: afterTransform.bind(this),
-    needTransform: false,
-    transforming: false,
-    writecb: null,
-    writechunk: null,
-    writeencoding: null
-  };
-
-  // start out asking for a readable event once data is transformed.
-  this._readableState.needReadable = true;
-
-  // we have implemented the _read method, and done the other things
-  // that Readable wants before the first _read call, so unset the
-  // sync guard flag.
-  this._readableState.sync = false;
-
-  if (options) {
-    if (typeof options.transform === 'function') this._transform = options.transform;
-
-    if (typeof options.flush === 'function') this._flush = options.flush;
-  }
-
-  // When the writable side finishes, then flush out anything remaining.
-  this.on('prefinish', prefinish);
-}
-
-function prefinish() {
-  var _this = this;
-
-  if (typeof this._flush === 'function') {
-    this._flush(function (er, data) {
-      done(_this, er, data);
-    });
-  } else {
-    done(this, null, null);
-  }
-}
-
-Transform.prototype.push = function (chunk, encoding) {
-  this._transformState.needTransform = false;
-  return Duplex.prototype.push.call(this, chunk, encoding);
-};
-
-// This is the part where you do stuff!
-// override this function in implementation classes.
-// 'chunk' is an input chunk.
-//
-// Call `push(newChunk)` to pass along transformed output
-// to the readable side.  You may call 'push' zero or more times.
-//
-// Call `cb(err)` when you are done with this chunk.  If you pass
-// an error, then that'll put the hurt on the whole operation.  If you
-// never call cb(), then you'll never get another chunk.
-Transform.prototype._transform = function (chunk, encoding, cb) {
-  throw new Error('_transform() is not implemented');
-};
-
-Transform.prototype._write = function (chunk, encoding, cb) {
-  var ts = this._transformState;
-  ts.writecb = cb;
-  ts.writechunk = chunk;
-  ts.writeencoding = encoding;
-  if (!ts.transforming) {
-    var rs = this._readableState;
-    if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark) this._read(rs.highWaterMark);
-  }
-};
-
-// Doesn't matter what the args are here.
-// _transform does all the work.
-// That we got here means that the readable side wants more data.
-Transform.prototype._read = function (n) {
-  var ts = this._transformState;
-
-  if (ts.writechunk !== null && ts.writecb && !ts.transforming) {
-    ts.transforming = true;
-    this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);
-  } else {
-    // mark that we need a transform, so that any data that comes in
-    // will get processed, now that we've asked for it.
-    ts.needTransform = true;
-  }
-};
-
-Transform.prototype._destroy = function (err, cb) {
-  var _this2 = this;
-
-  Duplex.prototype._destroy.call(this, err, function (err2) {
-    cb(err2);
-    _this2.emit('close');
-  });
-};
-
-function done(stream, er, data) {
-  if (er) return stream.emit('error', er);
-
-  if (data != null) // single equals check for both `null` and `undefined`
-    stream.push(data);
-
-  // if there's nothing in the write buffer, then that means
-  // that nothing more will ever be provided
-  if (stream._writableState.length) throw new Error('Calling transform done when ws.length != 0');
-
-  if (stream._transformState.transforming) throw new Error('Calling transform done when still transforming');
-
-  return stream.push(null);
-}
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, setImmediate, global) {// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// A bit simpler than readable streams.
-// Implement an async ._write(chunk, encoding, cb), and it'll handle all
-// the drain event emission and buffering.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-module.exports = Writable;
-
-/* <replacement> */
-function WriteReq(chunk, encoding, cb) {
-  this.chunk = chunk;
-  this.encoding = encoding;
-  this.callback = cb;
-  this.next = null;
-}
-
-// It seems a linked list but it is not
-// there will be only 2 of these for each stream
-function CorkedRequest(state) {
-  var _this = this;
-
-  this.next = null;
-  this.entry = null;
-  this.finish = function () {
-    onCorkedFinish(_this, state);
-  };
-}
-/* </replacement> */
-
-/*<replacement>*/
-var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : pna.nextTick;
-/*</replacement>*/
-
-/*<replacement>*/
-var Duplex;
-/*</replacement>*/
-
-Writable.WritableState = WritableState;
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var internalUtil = {
-  deprecate: __webpack_require__(/*! util-deprecate */ "./node_modules/util-deprecate/browser.js")
-};
-/*</replacement>*/
-
-/*<replacement>*/
-var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/stream-browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/stream-browserify/node_modules/safe-buffer/index.js").Buffer;
-var OurUint8Array = global.Uint8Array || function () {};
-function _uint8ArrayToBuffer(chunk) {
-  return Buffer.from(chunk);
-}
-function _isUint8Array(obj) {
-  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
-}
-
-/*</replacement>*/
-
-var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/destroy.js");
-
-util.inherits(Writable, Stream);
-
-function nop() {}
-
-function WritableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  options = options || {};
-
-  // Duplex streams are both readable and writable, but share
-  // the same options object.
-  // However, some cases require setting options to different
-  // values for the readable and the writable sides of the duplex stream.
-  // These options can be provided separately as readableXXX and writableXXX.
-  var isDuplex = stream instanceof Duplex;
-
-  // object stream flag to indicate whether or not this stream
-  // contains buffers or objects.
-  this.objectMode = !!options.objectMode;
-
-  if (isDuplex) this.objectMode = this.objectMode || !!options.writableObjectMode;
-
-  // the point at which write() starts returning false
-  // Note: 0 is a valid value, means that we always return false if
-  // the entire buffer is not flushed immediately on write()
-  var hwm = options.highWaterMark;
-  var writableHwm = options.writableHighWaterMark;
-  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
-
-  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (writableHwm || writableHwm === 0)) this.highWaterMark = writableHwm;else this.highWaterMark = defaultHwm;
-
-  // cast to ints.
-  this.highWaterMark = Math.floor(this.highWaterMark);
-
-  // if _final has been called
-  this.finalCalled = false;
-
-  // drain event flag.
-  this.needDrain = false;
-  // at the start of calling end()
-  this.ending = false;
-  // when end() has been called, and returned
-  this.ended = false;
-  // when 'finish' is emitted
-  this.finished = false;
-
-  // has it been destroyed
-  this.destroyed = false;
-
-  // should we decode strings into buffers before passing to _write?
-  // this is here so that some node-core streams can optimize string
-  // handling at a lower level.
-  var noDecode = options.decodeStrings === false;
-  this.decodeStrings = !noDecode;
-
-  // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is 'binary' so we have to make this configurable.
-  // Everything else in the universe uses 'utf8', though.
-  this.defaultEncoding = options.defaultEncoding || 'utf8';
-
-  // not an actual buffer we keep track of, but a measurement
-  // of how much we're waiting to get pushed to some underlying
-  // socket or file.
-  this.length = 0;
-
-  // a flag to see when we're in the middle of a write.
-  this.writing = false;
-
-  // when true all writes will be buffered until .uncork() call
-  this.corked = 0;
-
-  // a flag to be able to tell if the onwrite cb is called immediately,
-  // or on a later tick.  We set this to true at first, because any
-  // actions that shouldn't happen until "later" should generally also
-  // not happen before the first write call.
-  this.sync = true;
-
-  // a flag to know if we're processing previously buffered items, which
-  // may call the _write() callback in the same tick, so that we don't
-  // end up in an overlapped onwrite situation.
-  this.bufferProcessing = false;
-
-  // the callback that's passed to _write(chunk,cb)
-  this.onwrite = function (er) {
-    onwrite(stream, er);
-  };
-
-  // the callback that the user supplies to write(chunk,encoding,cb)
-  this.writecb = null;
-
-  // the amount that is being written when _write is called.
-  this.writelen = 0;
-
-  this.bufferedRequest = null;
-  this.lastBufferedRequest = null;
-
-  // number of pending user-supplied write callbacks
-  // this must be 0 before 'finish' can be emitted
-  this.pendingcb = 0;
-
-  // emit prefinish if the only thing we're waiting for is _write cbs
-  // This is relevant for synchronous Transform streams
-  this.prefinished = false;
-
-  // True if the error was already emitted and should not be thrown again
-  this.errorEmitted = false;
-
-  // count buffered requests
-  this.bufferedRequestCount = 0;
-
-  // allocate the first CorkedRequest, there is always
-  // one allocated and free to use, and we maintain at most two
-  this.corkedRequestsFree = new CorkedRequest(this);
-}
-
-WritableState.prototype.getBuffer = function getBuffer() {
-  var current = this.bufferedRequest;
-  var out = [];
-  while (current) {
-    out.push(current);
-    current = current.next;
-  }
-  return out;
-};
-
-(function () {
-  try {
-    Object.defineProperty(WritableState.prototype, 'buffer', {
-      get: internalUtil.deprecate(function () {
-        return this.getBuffer();
-      }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.', 'DEP0003')
-    });
-  } catch (_) {}
-})();
-
-// Test _writableState for inheritance to account for Duplex streams,
-// whose prototype chain only points to Readable.
-var realHasInstance;
-if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.prototype[Symbol.hasInstance] === 'function') {
-  realHasInstance = Function.prototype[Symbol.hasInstance];
-  Object.defineProperty(Writable, Symbol.hasInstance, {
-    value: function (object) {
-      if (realHasInstance.call(this, object)) return true;
-      if (this !== Writable) return false;
-
-      return object && object._writableState instanceof WritableState;
-    }
-  });
-} else {
-  realHasInstance = function (object) {
-    return object instanceof this;
-  };
-}
-
-function Writable(options) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  // Writable ctor is applied to Duplexes, too.
-  // `realHasInstance` is necessary because using plain `instanceof`
-  // would return false, as no `_writableState` property is attached.
-
-  // Trying to use the custom `instanceof` for Writable here will also break the
-  // Node.js LazyTransform implementation, which has a non-trivial getter for
-  // `_writableState` that would lead to infinite recursion.
-  if (!realHasInstance.call(Writable, this) && !(this instanceof Duplex)) {
-    return new Writable(options);
-  }
-
-  this._writableState = new WritableState(options, this);
-
-  // legacy.
-  this.writable = true;
-
-  if (options) {
-    if (typeof options.write === 'function') this._write = options.write;
-
-    if (typeof options.writev === 'function') this._writev = options.writev;
-
-    if (typeof options.destroy === 'function') this._destroy = options.destroy;
-
-    if (typeof options.final === 'function') this._final = options.final;
-  }
-
-  Stream.call(this);
-}
-
-// Otherwise people can pipe Writable streams, which is just wrong.
-Writable.prototype.pipe = function () {
-  this.emit('error', new Error('Cannot pipe, not readable'));
-};
-
-function writeAfterEnd(stream, cb) {
-  var er = new Error('write after end');
-  // TODO: defer error events consistently everywhere, not just the cb
-  stream.emit('error', er);
-  pna.nextTick(cb, er);
-}
-
-// Checks that a user-supplied chunk is valid, especially for the particular
-// mode the stream is in. Currently this means that `null` is never accepted
-// and undefined/non-string values are only allowed in object mode.
-function validChunk(stream, state, chunk, cb) {
-  var valid = true;
-  var er = false;
-
-  if (chunk === null) {
-    er = new TypeError('May not write null values to stream');
-  } else if (typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
-    er = new TypeError('Invalid non-string/buffer chunk');
-  }
-  if (er) {
-    stream.emit('error', er);
-    pna.nextTick(cb, er);
-    valid = false;
-  }
-  return valid;
-}
-
-Writable.prototype.write = function (chunk, encoding, cb) {
-  var state = this._writableState;
-  var ret = false;
-  var isBuf = !state.objectMode && _isUint8Array(chunk);
-
-  if (isBuf && !Buffer.isBuffer(chunk)) {
-    chunk = _uint8ArrayToBuffer(chunk);
-  }
-
-  if (typeof encoding === 'function') {
-    cb = encoding;
-    encoding = null;
-  }
-
-  if (isBuf) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;
-
-  if (typeof cb !== 'function') cb = nop;
-
-  if (state.ended) writeAfterEnd(this, cb);else if (isBuf || validChunk(this, state, chunk, cb)) {
-    state.pendingcb++;
-    ret = writeOrBuffer(this, state, isBuf, chunk, encoding, cb);
-  }
-
-  return ret;
-};
-
-Writable.prototype.cork = function () {
-  var state = this._writableState;
-
-  state.corked++;
-};
-
-Writable.prototype.uncork = function () {
-  var state = this._writableState;
-
-  if (state.corked) {
-    state.corked--;
-
-    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
-  }
-};
-
-Writable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {
-  // node::ParseEncoding() requires lower case.
-  if (typeof encoding === 'string') encoding = encoding.toLowerCase();
-  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new TypeError('Unknown encoding: ' + encoding);
-  this._writableState.defaultEncoding = encoding;
-  return this;
-};
-
-function decodeChunk(state, chunk, encoding) {
-  if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {
-    chunk = Buffer.from(chunk, encoding);
-  }
-  return chunk;
-}
-
-Object.defineProperty(Writable.prototype, 'writableHighWaterMark', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function () {
-    return this._writableState.highWaterMark;
-  }
-});
-
-// if we're already writing something, then just put this
-// in the queue, and wait our turn.  Otherwise, call _write
-// If we return false, then we need a drain event, so set that flag.
-function writeOrBuffer(stream, state, isBuf, chunk, encoding, cb) {
-  if (!isBuf) {
-    var newChunk = decodeChunk(state, chunk, encoding);
-    if (chunk !== newChunk) {
-      isBuf = true;
-      encoding = 'buffer';
-      chunk = newChunk;
-    }
-  }
-  var len = state.objectMode ? 1 : chunk.length;
-
-  state.length += len;
-
-  var ret = state.length < state.highWaterMark;
-  // we must ensure that previous needDrain will not be reset to false.
-  if (!ret) state.needDrain = true;
-
-  if (state.writing || state.corked) {
-    var last = state.lastBufferedRequest;
-    state.lastBufferedRequest = {
-      chunk: chunk,
-      encoding: encoding,
-      isBuf: isBuf,
-      callback: cb,
-      next: null
-    };
-    if (last) {
-      last.next = state.lastBufferedRequest;
-    } else {
-      state.bufferedRequest = state.lastBufferedRequest;
-    }
-    state.bufferedRequestCount += 1;
-  } else {
-    doWrite(stream, state, false, len, chunk, encoding, cb);
-  }
-
-  return ret;
-}
-
-function doWrite(stream, state, writev, len, chunk, encoding, cb) {
-  state.writelen = len;
-  state.writecb = cb;
-  state.writing = true;
-  state.sync = true;
-  if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
-  state.sync = false;
-}
-
-function onwriteError(stream, state, sync, er, cb) {
-  --state.pendingcb;
-
-  if (sync) {
-    // defer the callback if we are being called synchronously
-    // to avoid piling up things on the stack
-    pna.nextTick(cb, er);
-    // this can emit finish, and it will always happen
-    // after error
-    pna.nextTick(finishMaybe, stream, state);
-    stream._writableState.errorEmitted = true;
-    stream.emit('error', er);
-  } else {
-    // the caller expect this to happen before if
-    // it is async
-    cb(er);
-    stream._writableState.errorEmitted = true;
-    stream.emit('error', er);
-    // this can emit finish, but finish must
-    // always follow error
-    finishMaybe(stream, state);
-  }
-}
-
-function onwriteStateUpdate(state) {
-  state.writing = false;
-  state.writecb = null;
-  state.length -= state.writelen;
-  state.writelen = 0;
-}
-
-function onwrite(stream, er) {
-  var state = stream._writableState;
-  var sync = state.sync;
-  var cb = state.writecb;
-
-  onwriteStateUpdate(state);
-
-  if (er) onwriteError(stream, state, sync, er, cb);else {
-    // Check if we're actually ready to finish, but don't emit yet
-    var finished = needFinish(state);
-
-    if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {
-      clearBuffer(stream, state);
-    }
-
-    if (sync) {
-      /*<replacement>*/
-      asyncWrite(afterWrite, stream, state, finished, cb);
-      /*</replacement>*/
-    } else {
-      afterWrite(stream, state, finished, cb);
-    }
-  }
-}
-
-function afterWrite(stream, state, finished, cb) {
-  if (!finished) onwriteDrain(stream, state);
-  state.pendingcb--;
-  cb();
-  finishMaybe(stream, state);
-}
-
-// Must force callback to be called on nextTick, so that we don't
-// emit 'drain' before the write() consumer gets the 'false' return
-// value, and has a chance to attach a 'drain' listener.
-function onwriteDrain(stream, state) {
-  if (state.length === 0 && state.needDrain) {
-    state.needDrain = false;
-    stream.emit('drain');
-  }
-}
-
-// if there's something in the buffer waiting, then process it
-function clearBuffer(stream, state) {
-  state.bufferProcessing = true;
-  var entry = state.bufferedRequest;
-
-  if (stream._writev && entry && entry.next) {
-    // Fast case, write everything using _writev()
-    var l = state.bufferedRequestCount;
-    var buffer = new Array(l);
-    var holder = state.corkedRequestsFree;
-    holder.entry = entry;
-
-    var count = 0;
-    var allBuffers = true;
-    while (entry) {
-      buffer[count] = entry;
-      if (!entry.isBuf) allBuffers = false;
-      entry = entry.next;
-      count += 1;
-    }
-    buffer.allBuffers = allBuffers;
-
-    doWrite(stream, state, true, state.length, buffer, '', holder.finish);
-
-    // doWrite is almost always async, defer these to save a bit of time
-    // as the hot path ends with doWrite
-    state.pendingcb++;
-    state.lastBufferedRequest = null;
-    if (holder.next) {
-      state.corkedRequestsFree = holder.next;
-      holder.next = null;
-    } else {
-      state.corkedRequestsFree = new CorkedRequest(state);
-    }
-    state.bufferedRequestCount = 0;
-  } else {
-    // Slow case, write chunks one-by-one
-    while (entry) {
-      var chunk = entry.chunk;
-      var encoding = entry.encoding;
-      var cb = entry.callback;
-      var len = state.objectMode ? 1 : chunk.length;
-
-      doWrite(stream, state, false, len, chunk, encoding, cb);
-      entry = entry.next;
-      state.bufferedRequestCount--;
-      // if we didn't call the onwrite immediately, then
-      // it means that we need to wait until it does.
-      // also, that means that the chunk and cb are currently
-      // being processed, so move the buffer counter past them.
-      if (state.writing) {
-        break;
-      }
-    }
-
-    if (entry === null) state.lastBufferedRequest = null;
-  }
-
-  state.bufferedRequest = entry;
-  state.bufferProcessing = false;
-}
-
-Writable.prototype._write = function (chunk, encoding, cb) {
-  cb(new Error('_write() is not implemented'));
-};
-
-Writable.prototype._writev = null;
-
-Writable.prototype.end = function (chunk, encoding, cb) {
-  var state = this._writableState;
-
-  if (typeof chunk === 'function') {
-    cb = chunk;
-    chunk = null;
-    encoding = null;
-  } else if (typeof encoding === 'function') {
-    cb = encoding;
-    encoding = null;
-  }
-
-  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding);
-
-  // .end() fully uncorks
-  if (state.corked) {
-    state.corked = 1;
-    this.uncork();
-  }
-
-  // ignore unnecessary end() calls.
-  if (!state.ending && !state.finished) endWritable(this, state, cb);
-};
-
-function needFinish(state) {
-  return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;
-}
-function callFinal(stream, state) {
-  stream._final(function (err) {
-    state.pendingcb--;
-    if (err) {
-      stream.emit('error', err);
-    }
-    state.prefinished = true;
-    stream.emit('prefinish');
-    finishMaybe(stream, state);
-  });
-}
-function prefinish(stream, state) {
-  if (!state.prefinished && !state.finalCalled) {
-    if (typeof stream._final === 'function') {
-      state.pendingcb++;
-      state.finalCalled = true;
-      pna.nextTick(callFinal, stream, state);
-    } else {
-      state.prefinished = true;
-      stream.emit('prefinish');
-    }
-  }
-}
-
-function finishMaybe(stream, state) {
-  var need = needFinish(state);
-  if (need) {
-    prefinish(stream, state);
-    if (state.pendingcb === 0) {
-      state.finished = true;
-      stream.emit('finish');
-    }
-  }
-  return need;
-}
-
-function endWritable(stream, state, cb) {
-  state.ending = true;
-  finishMaybe(stream, state);
-  if (cb) {
-    if (state.finished) pna.nextTick(cb);else stream.once('finish', cb);
-  }
-  state.ended = true;
-  stream.writable = false;
-}
-
-function onCorkedFinish(corkReq, state, err) {
-  var entry = corkReq.entry;
-  corkReq.entry = null;
-  while (entry) {
-    var cb = entry.callback;
-    state.pendingcb--;
-    cb(err);
-    entry = entry.next;
-  }
-  if (state.corkedRequestsFree) {
-    state.corkedRequestsFree.next = corkReq;
-  } else {
-    state.corkedRequestsFree = corkReq;
-  }
-}
-
-Object.defineProperty(Writable.prototype, 'destroyed', {
-  get: function () {
-    if (this._writableState === undefined) {
-      return false;
-    }
-    return this._writableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (!this._writableState) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._writableState.destroyed = value;
-  }
-});
-
-Writable.prototype.destroy = destroyImpl.destroy;
-Writable.prototype._undestroy = destroyImpl.undestroy;
-Writable.prototype._destroy = function (err, cb) {
-  this.end();
-  cb(err);
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../../../timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/BufferList.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/BufferList.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/stream-browserify/node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 5);
-
-function copyBuffer(src, target, offset) {
-  src.copy(target, offset);
-}
-
-module.exports = function () {
-  function BufferList() {
-    _classCallCheck(this, BufferList);
-
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
-
-  BufferList.prototype.push = function push(v) {
-    var entry = { data: v, next: null };
-    if (this.length > 0) this.tail.next = entry;else this.head = entry;
-    this.tail = entry;
-    ++this.length;
-  };
-
-  BufferList.prototype.unshift = function unshift(v) {
-    var entry = { data: v, next: this.head };
-    if (this.length === 0) this.tail = entry;
-    this.head = entry;
-    ++this.length;
-  };
-
-  BufferList.prototype.shift = function shift() {
-    if (this.length === 0) return;
-    var ret = this.head.data;
-    if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;
-    --this.length;
-    return ret;
-  };
-
-  BufferList.prototype.clear = function clear() {
-    this.head = this.tail = null;
-    this.length = 0;
-  };
-
-  BufferList.prototype.join = function join(s) {
-    if (this.length === 0) return '';
-    var p = this.head;
-    var ret = '' + p.data;
-    while (p = p.next) {
-      ret += s + p.data;
-    }return ret;
-  };
-
-  BufferList.prototype.concat = function concat(n) {
-    if (this.length === 0) return Buffer.alloc(0);
-    if (this.length === 1) return this.head.data;
-    var ret = Buffer.allocUnsafe(n >>> 0);
-    var p = this.head;
-    var i = 0;
-    while (p) {
-      copyBuffer(p.data, ret, i);
-      i += p.data.length;
-      p = p.next;
-    }
-    return ret;
-  };
-
-  return BufferList;
-}();
-
-if (util && util.inspect && util.inspect.custom) {
-  module.exports.prototype[util.inspect.custom] = function () {
-    var obj = util.inspect({ length: this.length });
-    return this.constructor.name + ' ' + obj;
-  };
-}
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/destroy.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/destroy.js ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-// undocumented cb() API, needed for core, not for public API
-function destroy(err, cb) {
-  var _this = this;
-
-  var readableDestroyed = this._readableState && this._readableState.destroyed;
-  var writableDestroyed = this._writableState && this._writableState.destroyed;
-
-  if (readableDestroyed || writableDestroyed) {
-    if (cb) {
-      cb(err);
-    } else if (err && (!this._writableState || !this._writableState.errorEmitted)) {
-      pna.nextTick(emitErrorNT, this, err);
-    }
-    return this;
-  }
-
-  // we set destroyed to true before firing error callbacks in order
-  // to make it re-entrance safe in case destroy() is called within callbacks
-
-  if (this._readableState) {
-    this._readableState.destroyed = true;
-  }
-
-  // if this is a duplex stream mark the writable part as destroyed as well
-  if (this._writableState) {
-    this._writableState.destroyed = true;
-  }
-
-  this._destroy(err || null, function (err) {
-    if (!cb && err) {
-      pna.nextTick(emitErrorNT, _this, err);
-      if (_this._writableState) {
-        _this._writableState.errorEmitted = true;
-      }
-    } else if (cb) {
-      cb(err);
-    }
-  });
-
-  return this;
-}
-
-function undestroy() {
-  if (this._readableState) {
-    this._readableState.destroyed = false;
-    this._readableState.reading = false;
-    this._readableState.ended = false;
-    this._readableState.endEmitted = false;
-  }
-
-  if (this._writableState) {
-    this._writableState.destroyed = false;
-    this._writableState.ended = false;
-    this._writableState.ending = false;
-    this._writableState.finished = false;
-    this._writableState.errorEmitted = false;
-  }
-}
-
-function emitErrorNT(self, err) {
-  self.emit('error', err);
-}
-
-module.exports = {
-  destroy: destroy,
-  undestroy: undestroy
-};
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/stream-browser.js":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/stream-browser.js ***!
-  \************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/passthrough.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/passthrough.js ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./readable */ "./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js").PassThrough
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_readable.js");
-exports.Stream = exports;
-exports.Readable = exports;
-exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js");
-exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_transform.js");
-exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_passthrough.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/transform.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/transform.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./readable */ "./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js").Transform
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/writable-browser.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/writable-browser.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/safe-buffer/index.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/safe-buffer/index.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* eslint-disable node/no-deprecated-api */
-var buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")
-var Buffer = buffer.Buffer
-
-// alternative to using Object.keys for old browsers
-function copyProps (src, dst) {
-  for (var key in src) {
-    dst[key] = src[key]
-  }
-}
-if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
-  module.exports = buffer
-} else {
-  // Copy properties from require('buffer')
-  copyProps(buffer, exports)
-  exports.Buffer = SafeBuffer
-}
-
-function SafeBuffer (arg, encodingOrOffset, length) {
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-// Copy static methods from Buffer
-copyProps(Buffer, SafeBuffer)
-
-SafeBuffer.from = function (arg, encodingOrOffset, length) {
-  if (typeof arg === 'number') {
-    throw new TypeError('Argument must not be a number')
-  }
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-SafeBuffer.alloc = function (size, fill, encoding) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  var buf = Buffer(size)
-  if (fill !== undefined) {
-    if (typeof encoding === 'string') {
-      buf.fill(fill, encoding)
-    } else {
-      buf.fill(fill)
-    }
-  } else {
-    buf.fill(0)
-  }
-  return buf
-}
-
-SafeBuffer.allocUnsafe = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return Buffer(size)
-}
-
-SafeBuffer.allocUnsafeSlow = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return buffer.SlowBuffer(size)
-}
 
 
 /***/ }),
@@ -101408,7 +101247,7 @@ xhr = null // Help gc
 /* WEBPACK VAR INJECTION */(function(Buffer, global, process) {var capability = __webpack_require__(/*! ./capability */ "./node_modules/stream-http/lib/capability.js")
 var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
 var response = __webpack_require__(/*! ./response */ "./node_modules/stream-http/lib/response.js")
-var stream = __webpack_require__(/*! readable-stream */ "./node_modules/stream-http/node_modules/readable-stream/readable-browser.js")
+var stream = __webpack_require__(/*! readable-stream */ "./node_modules/readable-stream/readable-browser.js")
 var toArrayBuffer = __webpack_require__(/*! to-arraybuffer */ "./node_modules/to-arraybuffer/index.js")
 
 var IncomingMessage = response.IncomingMessage
@@ -101746,7 +101585,7 @@ var unsafeHeaders = [
 
 /* WEBPACK VAR INJECTION */(function(process, Buffer, global) {var capability = __webpack_require__(/*! ./capability */ "./node_modules/stream-http/lib/capability.js")
 var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
-var stream = __webpack_require__(/*! readable-stream */ "./node_modules/stream-http/node_modules/readable-stream/readable-browser.js")
+var stream = __webpack_require__(/*! readable-stream */ "./node_modules/readable-stream/readable-browser.js")
 
 var rStates = exports.readyStates = {
 	UNSENT: 0,
@@ -101970,2455 +101809,6 @@ IncomingMessage.prototype._onXHRProgress = function () {
 }
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/isarray/index.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/isarray/index.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// a duplex stream is just a stream that is both readable and writable.
-// Since JS doesn't have multiple prototypal inheritance, this class
-// prototypally inherits from Readable, and then parasitically from
-// Writable.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var objectKeys = Object.keys || function (obj) {
-  var keys = [];
-  for (var key in obj) {
-    keys.push(key);
-  }return keys;
-};
-/*</replacement>*/
-
-module.exports = Duplex;
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-var Readable = __webpack_require__(/*! ./_stream_readable */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js");
-var Writable = __webpack_require__(/*! ./_stream_writable */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js");
-
-util.inherits(Duplex, Readable);
-
-{
-  // avoid scope creep, the keys array can then be collected
-  var keys = objectKeys(Writable.prototype);
-  for (var v = 0; v < keys.length; v++) {
-    var method = keys[v];
-    if (!Duplex.prototype[method]) Duplex.prototype[method] = Writable.prototype[method];
-  }
-}
-
-function Duplex(options) {
-  if (!(this instanceof Duplex)) return new Duplex(options);
-
-  Readable.call(this, options);
-  Writable.call(this, options);
-
-  if (options && options.readable === false) this.readable = false;
-
-  if (options && options.writable === false) this.writable = false;
-
-  this.allowHalfOpen = true;
-  if (options && options.allowHalfOpen === false) this.allowHalfOpen = false;
-
-  this.once('end', onend);
-}
-
-Object.defineProperty(Duplex.prototype, 'writableHighWaterMark', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function () {
-    return this._writableState.highWaterMark;
-  }
-});
-
-// the no-half-open enforcer
-function onend() {
-  // if we allow half-open state, or if the writable side ended,
-  // then we're ok.
-  if (this.allowHalfOpen || this._writableState.ended) return;
-
-  // no more data can be written.
-  // But allow more writes to happen in this tick.
-  pna.nextTick(onEndNT, this);
-}
-
-function onEndNT(self) {
-  self.end();
-}
-
-Object.defineProperty(Duplex.prototype, 'destroyed', {
-  get: function () {
-    if (this._readableState === undefined || this._writableState === undefined) {
-      return false;
-    }
-    return this._readableState.destroyed && this._writableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (this._readableState === undefined || this._writableState === undefined) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._readableState.destroyed = value;
-    this._writableState.destroyed = value;
-  }
-});
-
-Duplex.prototype._destroy = function (err, cb) {
-  this.push(null);
-  this.end();
-
-  pna.nextTick(cb, err);
-};
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_passthrough.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/readable-stream/lib/_stream_passthrough.js ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// a passthrough stream.
-// basically just the most minimal sort of Transform stream.
-// Every written chunk gets output as-is.
-
-
-
-module.exports = PassThrough;
-
-var Transform = __webpack_require__(/*! ./_stream_transform */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js");
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-util.inherits(PassThrough, Transform);
-
-function PassThrough(options) {
-  if (!(this instanceof PassThrough)) return new PassThrough(options);
-
-  Transform.call(this, options);
-}
-
-PassThrough.prototype._transform = function (chunk, encoding, cb) {
-  cb(null, chunk);
-};
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-module.exports = Readable;
-
-/*<replacement>*/
-var isArray = __webpack_require__(/*! isarray */ "./node_modules/stream-http/node_modules/isarray/index.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var Duplex;
-/*</replacement>*/
-
-Readable.ReadableState = ReadableState;
-
-/*<replacement>*/
-var EE = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
-
-var EElistenerCount = function (emitter, type) {
-  return emitter.listeners(type).length;
-};
-/*</replacement>*/
-
-/*<replacement>*/
-var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/stream-http/node_modules/safe-buffer/index.js").Buffer;
-var OurUint8Array = global.Uint8Array || function () {};
-function _uint8ArrayToBuffer(chunk) {
-  return Buffer.from(chunk);
-}
-function _isUint8Array(obj) {
-  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
-}
-
-/*</replacement>*/
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 8);
-var debug = void 0;
-if (debugUtil && debugUtil.debuglog) {
-  debug = debugUtil.debuglog('stream');
-} else {
-  debug = function () {};
-}
-/*</replacement>*/
-
-var BufferList = __webpack_require__(/*! ./internal/streams/BufferList */ "./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/BufferList.js");
-var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js");
-var StringDecoder;
-
-util.inherits(Readable, Stream);
-
-var kProxyEvents = ['error', 'close', 'destroy', 'pause', 'resume'];
-
-function prependListener(emitter, event, fn) {
-  // Sadly this is not cacheable as some libraries bundle their own
-  // event emitter implementation with them.
-  if (typeof emitter.prependListener === 'function') return emitter.prependListener(event, fn);
-
-  // This is a hack to make sure that our error handler is attached before any
-  // userland ones.  NEVER DO THIS. This is here only because this code needs
-  // to continue to work with older versions of Node.js that do not include
-  // the prependListener() method. The goal is to eventually remove this hack.
-  if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
-}
-
-function ReadableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  options = options || {};
-
-  // Duplex streams are both readable and writable, but share
-  // the same options object.
-  // However, some cases require setting options to different
-  // values for the readable and the writable sides of the duplex stream.
-  // These options can be provided separately as readableXXX and writableXXX.
-  var isDuplex = stream instanceof Duplex;
-
-  // object stream flag. Used to make read(n) ignore n and to
-  // make all the buffer merging and length checks go away
-  this.objectMode = !!options.objectMode;
-
-  if (isDuplex) this.objectMode = this.objectMode || !!options.readableObjectMode;
-
-  // the point at which it stops calling _read() to fill the buffer
-  // Note: 0 is a valid value, means "don't call _read preemptively ever"
-  var hwm = options.highWaterMark;
-  var readableHwm = options.readableHighWaterMark;
-  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
-
-  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (readableHwm || readableHwm === 0)) this.highWaterMark = readableHwm;else this.highWaterMark = defaultHwm;
-
-  // cast to ints.
-  this.highWaterMark = Math.floor(this.highWaterMark);
-
-  // A linked list is used to store data chunks instead of an array because the
-  // linked list can remove elements from the beginning faster than
-  // array.shift()
-  this.buffer = new BufferList();
-  this.length = 0;
-  this.pipes = null;
-  this.pipesCount = 0;
-  this.flowing = null;
-  this.ended = false;
-  this.endEmitted = false;
-  this.reading = false;
-
-  // a flag to be able to tell if the event 'readable'/'data' is emitted
-  // immediately, or on a later tick.  We set this to true at first, because
-  // any actions that shouldn't happen until "later" should generally also
-  // not happen before the first read call.
-  this.sync = true;
-
-  // whenever we return null, then we set a flag to say
-  // that we're awaiting a 'readable' event emission.
-  this.needReadable = false;
-  this.emittedReadable = false;
-  this.readableListening = false;
-  this.resumeScheduled = false;
-
-  // has it been destroyed
-  this.destroyed = false;
-
-  // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is 'binary' so we have to make this configurable.
-  // Everything else in the universe uses 'utf8', though.
-  this.defaultEncoding = options.defaultEncoding || 'utf8';
-
-  // the number of writers that are awaiting a drain event in .pipe()s
-  this.awaitDrain = 0;
-
-  // if true, a maybeReadMore has been scheduled
-  this.readingMore = false;
-
-  this.decoder = null;
-  this.encoding = null;
-  if (options.encoding) {
-    if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
-    this.decoder = new StringDecoder(options.encoding);
-    this.encoding = options.encoding;
-  }
-}
-
-function Readable(options) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  if (!(this instanceof Readable)) return new Readable(options);
-
-  this._readableState = new ReadableState(options, this);
-
-  // legacy
-  this.readable = true;
-
-  if (options) {
-    if (typeof options.read === 'function') this._read = options.read;
-
-    if (typeof options.destroy === 'function') this._destroy = options.destroy;
-  }
-
-  Stream.call(this);
-}
-
-Object.defineProperty(Readable.prototype, 'destroyed', {
-  get: function () {
-    if (this._readableState === undefined) {
-      return false;
-    }
-    return this._readableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (!this._readableState) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._readableState.destroyed = value;
-  }
-});
-
-Readable.prototype.destroy = destroyImpl.destroy;
-Readable.prototype._undestroy = destroyImpl.undestroy;
-Readable.prototype._destroy = function (err, cb) {
-  this.push(null);
-  cb(err);
-};
-
-// Manually shove something into the read() buffer.
-// This returns true if the highWaterMark has not been hit yet,
-// similar to how Writable.write() returns true if you should
-// write() some more.
-Readable.prototype.push = function (chunk, encoding) {
-  var state = this._readableState;
-  var skipChunkCheck;
-
-  if (!state.objectMode) {
-    if (typeof chunk === 'string') {
-      encoding = encoding || state.defaultEncoding;
-      if (encoding !== state.encoding) {
-        chunk = Buffer.from(chunk, encoding);
-        encoding = '';
-      }
-      skipChunkCheck = true;
-    }
-  } else {
-    skipChunkCheck = true;
-  }
-
-  return readableAddChunk(this, chunk, encoding, false, skipChunkCheck);
-};
-
-// Unshift should *always* be something directly out of read()
-Readable.prototype.unshift = function (chunk) {
-  return readableAddChunk(this, chunk, null, true, false);
-};
-
-function readableAddChunk(stream, chunk, encoding, addToFront, skipChunkCheck) {
-  var state = stream._readableState;
-  if (chunk === null) {
-    state.reading = false;
-    onEofChunk(stream, state);
-  } else {
-    var er;
-    if (!skipChunkCheck) er = chunkInvalid(state, chunk);
-    if (er) {
-      stream.emit('error', er);
-    } else if (state.objectMode || chunk && chunk.length > 0) {
-      if (typeof chunk !== 'string' && !state.objectMode && Object.getPrototypeOf(chunk) !== Buffer.prototype) {
-        chunk = _uint8ArrayToBuffer(chunk);
-      }
-
-      if (addToFront) {
-        if (state.endEmitted) stream.emit('error', new Error('stream.unshift() after end event'));else addChunk(stream, state, chunk, true);
-      } else if (state.ended) {
-        stream.emit('error', new Error('stream.push() after EOF'));
-      } else {
-        state.reading = false;
-        if (state.decoder && !encoding) {
-          chunk = state.decoder.write(chunk);
-          if (state.objectMode || chunk.length !== 0) addChunk(stream, state, chunk, false);else maybeReadMore(stream, state);
-        } else {
-          addChunk(stream, state, chunk, false);
-        }
-      }
-    } else if (!addToFront) {
-      state.reading = false;
-    }
-  }
-
-  return needMoreData(state);
-}
-
-function addChunk(stream, state, chunk, addToFront) {
-  if (state.flowing && state.length === 0 && !state.sync) {
-    stream.emit('data', chunk);
-    stream.read(0);
-  } else {
-    // update the buffer info.
-    state.length += state.objectMode ? 1 : chunk.length;
-    if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);
-
-    if (state.needReadable) emitReadable(stream);
-  }
-  maybeReadMore(stream, state);
-}
-
-function chunkInvalid(state, chunk) {
-  var er;
-  if (!_isUint8Array(chunk) && typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
-    er = new TypeError('Invalid non-string/buffer chunk');
-  }
-  return er;
-}
-
-// if it's past the high water mark, we can push in some more.
-// Also, if we have no data yet, we can stand some
-// more bytes.  This is to work around cases where hwm=0,
-// such as the repl.  Also, if the push() triggered a
-// readable event, and the user called read(largeNumber) such that
-// needReadable was set, then we ought to push more, so that another
-// 'readable' event will be triggered.
-function needMoreData(state) {
-  return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);
-}
-
-Readable.prototype.isPaused = function () {
-  return this._readableState.flowing === false;
-};
-
-// backwards compatibility.
-Readable.prototype.setEncoding = function (enc) {
-  if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
-  this._readableState.decoder = new StringDecoder(enc);
-  this._readableState.encoding = enc;
-  return this;
-};
-
-// Don't raise the hwm > 8MB
-var MAX_HWM = 0x800000;
-function computeNewHighWaterMark(n) {
-  if (n >= MAX_HWM) {
-    n = MAX_HWM;
-  } else {
-    // Get the next highest power of 2 to prevent increasing hwm excessively in
-    // tiny amounts
-    n--;
-    n |= n >>> 1;
-    n |= n >>> 2;
-    n |= n >>> 4;
-    n |= n >>> 8;
-    n |= n >>> 16;
-    n++;
-  }
-  return n;
-}
-
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function howMuchToRead(n, state) {
-  if (n <= 0 || state.length === 0 && state.ended) return 0;
-  if (state.objectMode) return 1;
-  if (n !== n) {
-    // Only flow one buffer at a time
-    if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;
-  }
-  // If we're asking for more than the current hwm, then raise the hwm.
-  if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
-  if (n <= state.length) return n;
-  // Don't have enough
-  if (!state.ended) {
-    state.needReadable = true;
-    return 0;
-  }
-  return state.length;
-}
-
-// you can override either this method, or the async _read(n) below.
-Readable.prototype.read = function (n) {
-  debug('read', n);
-  n = parseInt(n, 10);
-  var state = this._readableState;
-  var nOrig = n;
-
-  if (n !== 0) state.emittedReadable = false;
-
-  // if we're doing read(0) to trigger a readable event, but we
-  // already have a bunch of data in the buffer, then just trigger
-  // the 'readable' event and move on.
-  if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {
-    debug('read: emitReadable', state.length, state.ended);
-    if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);
-    return null;
-  }
-
-  n = howMuchToRead(n, state);
-
-  // if we've ended, and we're now clear, then finish it up.
-  if (n === 0 && state.ended) {
-    if (state.length === 0) endReadable(this);
-    return null;
-  }
-
-  // All the actual chunk generation logic needs to be
-  // *below* the call to _read.  The reason is that in certain
-  // synthetic stream cases, such as passthrough streams, _read
-  // may be a completely synchronous operation which may change
-  // the state of the read buffer, providing enough data when
-  // before there was *not* enough.
-  //
-  // So, the steps are:
-  // 1. Figure out what the state of things will be after we do
-  // a read from the buffer.
-  //
-  // 2. If that resulting state will trigger a _read, then call _read.
-  // Note that this may be asynchronous, or synchronous.  Yes, it is
-  // deeply ugly to write APIs this way, but that still doesn't mean
-  // that the Readable class should behave improperly, as streams are
-  // designed to be sync/async agnostic.
-  // Take note if the _read call is sync or async (ie, if the read call
-  // has returned yet), so that we know whether or not it's safe to emit
-  // 'readable' etc.
-  //
-  // 3. Actually pull the requested chunks out of the buffer and return.
-
-  // if we need a readable event, then we need to do some reading.
-  var doRead = state.needReadable;
-  debug('need readable', doRead);
-
-  // if we currently have less than the highWaterMark, then also read some
-  if (state.length === 0 || state.length - n < state.highWaterMark) {
-    doRead = true;
-    debug('length less than watermark', doRead);
-  }
-
-  // however, if we've ended, then there's no point, and if we're already
-  // reading, then it's unnecessary.
-  if (state.ended || state.reading) {
-    doRead = false;
-    debug('reading or ended', doRead);
-  } else if (doRead) {
-    debug('do read');
-    state.reading = true;
-    state.sync = true;
-    // if the length is currently zero, then we *need* a readable event.
-    if (state.length === 0) state.needReadable = true;
-    // call internal read method
-    this._read(state.highWaterMark);
-    state.sync = false;
-    // If _read pushed data synchronously, then `reading` will be false,
-    // and we need to re-evaluate how much data we can return to the user.
-    if (!state.reading) n = howMuchToRead(nOrig, state);
-  }
-
-  var ret;
-  if (n > 0) ret = fromList(n, state);else ret = null;
-
-  if (ret === null) {
-    state.needReadable = true;
-    n = 0;
-  } else {
-    state.length -= n;
-  }
-
-  if (state.length === 0) {
-    // If we have nothing in the buffer, then we want to know
-    // as soon as we *do* get something into the buffer.
-    if (!state.ended) state.needReadable = true;
-
-    // If we tried to read() past the EOF, then emit end on the next tick.
-    if (nOrig !== n && state.ended) endReadable(this);
-  }
-
-  if (ret !== null) this.emit('data', ret);
-
-  return ret;
-};
-
-function onEofChunk(stream, state) {
-  if (state.ended) return;
-  if (state.decoder) {
-    var chunk = state.decoder.end();
-    if (chunk && chunk.length) {
-      state.buffer.push(chunk);
-      state.length += state.objectMode ? 1 : chunk.length;
-    }
-  }
-  state.ended = true;
-
-  // emit 'readable' now to make sure it gets picked up.
-  emitReadable(stream);
-}
-
-// Don't emit readable right away in sync mode, because this can trigger
-// another read() call => stack overflow.  This way, it might trigger
-// a nextTick recursion warning, but that's not so bad.
-function emitReadable(stream) {
-  var state = stream._readableState;
-  state.needReadable = false;
-  if (!state.emittedReadable) {
-    debug('emitReadable', state.flowing);
-    state.emittedReadable = true;
-    if (state.sync) pna.nextTick(emitReadable_, stream);else emitReadable_(stream);
-  }
-}
-
-function emitReadable_(stream) {
-  debug('emit readable');
-  stream.emit('readable');
-  flow(stream);
-}
-
-// at this point, the user has presumably seen the 'readable' event,
-// and called read() to consume some data.  that may have triggered
-// in turn another _read(n) call, in which case reading = true if
-// it's in progress.
-// However, if we're not ended, or reading, and the length < hwm,
-// then go ahead and try to read some more preemptively.
-function maybeReadMore(stream, state) {
-  if (!state.readingMore) {
-    state.readingMore = true;
-    pna.nextTick(maybeReadMore_, stream, state);
-  }
-}
-
-function maybeReadMore_(stream, state) {
-  var len = state.length;
-  while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {
-    debug('maybeReadMore read 0');
-    stream.read(0);
-    if (len === state.length)
-      // didn't get any data, stop spinning.
-      break;else len = state.length;
-  }
-  state.readingMore = false;
-}
-
-// abstract method.  to be overridden in specific implementation classes.
-// call cb(er, data) where data is <= n in length.
-// for virtual (non-string, non-buffer) streams, "length" is somewhat
-// arbitrary, and perhaps not very meaningful.
-Readable.prototype._read = function (n) {
-  this.emit('error', new Error('_read() is not implemented'));
-};
-
-Readable.prototype.pipe = function (dest, pipeOpts) {
-  var src = this;
-  var state = this._readableState;
-
-  switch (state.pipesCount) {
-    case 0:
-      state.pipes = dest;
-      break;
-    case 1:
-      state.pipes = [state.pipes, dest];
-      break;
-    default:
-      state.pipes.push(dest);
-      break;
-  }
-  state.pipesCount += 1;
-  debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);
-
-  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
-
-  var endFn = doEnd ? onend : unpipe;
-  if (state.endEmitted) pna.nextTick(endFn);else src.once('end', endFn);
-
-  dest.on('unpipe', onunpipe);
-  function onunpipe(readable, unpipeInfo) {
-    debug('onunpipe');
-    if (readable === src) {
-      if (unpipeInfo && unpipeInfo.hasUnpiped === false) {
-        unpipeInfo.hasUnpiped = true;
-        cleanup();
-      }
-    }
-  }
-
-  function onend() {
-    debug('onend');
-    dest.end();
-  }
-
-  // when the dest drains, it reduces the awaitDrain counter
-  // on the source.  This would be more elegant with a .once()
-  // handler in flow(), but adding and removing repeatedly is
-  // too slow.
-  var ondrain = pipeOnDrain(src);
-  dest.on('drain', ondrain);
-
-  var cleanedUp = false;
-  function cleanup() {
-    debug('cleanup');
-    // cleanup event handlers once the pipe is broken
-    dest.removeListener('close', onclose);
-    dest.removeListener('finish', onfinish);
-    dest.removeListener('drain', ondrain);
-    dest.removeListener('error', onerror);
-    dest.removeListener('unpipe', onunpipe);
-    src.removeListener('end', onend);
-    src.removeListener('end', unpipe);
-    src.removeListener('data', ondata);
-
-    cleanedUp = true;
-
-    // if the reader is waiting for a drain event from this
-    // specific writer, then it would cause it to never start
-    // flowing again.
-    // So, if this is awaiting a drain, then we just call it now.
-    // If we don't know, then assume that we are waiting for one.
-    if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
-  }
-
-  // If the user pushes more data while we're writing to dest then we'll end up
-  // in ondata again. However, we only want to increase awaitDrain once because
-  // dest will only emit one 'drain' event for the multiple writes.
-  // => Introduce a guard on increasing awaitDrain.
-  var increasedAwaitDrain = false;
-  src.on('data', ondata);
-  function ondata(chunk) {
-    debug('ondata');
-    increasedAwaitDrain = false;
-    var ret = dest.write(chunk);
-    if (false === ret && !increasedAwaitDrain) {
-      // If the user unpiped during `dest.write()`, it is possible
-      // to get stuck in a permanently paused state if that write
-      // also returned false.
-      // => Check whether `dest` is still a piping destination.
-      if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
-        debug('false write response, pause', src._readableState.awaitDrain);
-        src._readableState.awaitDrain++;
-        increasedAwaitDrain = true;
-      }
-      src.pause();
-    }
-  }
-
-  // if the dest has an error, then stop piping into it.
-  // however, don't suppress the throwing behavior for this.
-  function onerror(er) {
-    debug('onerror', er);
-    unpipe();
-    dest.removeListener('error', onerror);
-    if (EElistenerCount(dest, 'error') === 0) dest.emit('error', er);
-  }
-
-  // Make sure our error handler is attached before userland ones.
-  prependListener(dest, 'error', onerror);
-
-  // Both close and finish should trigger unpipe, but only once.
-  function onclose() {
-    dest.removeListener('finish', onfinish);
-    unpipe();
-  }
-  dest.once('close', onclose);
-  function onfinish() {
-    debug('onfinish');
-    dest.removeListener('close', onclose);
-    unpipe();
-  }
-  dest.once('finish', onfinish);
-
-  function unpipe() {
-    debug('unpipe');
-    src.unpipe(dest);
-  }
-
-  // tell the dest that it's being piped to
-  dest.emit('pipe', src);
-
-  // start the flow if it hasn't been started already.
-  if (!state.flowing) {
-    debug('pipe resume');
-    src.resume();
-  }
-
-  return dest;
-};
-
-function pipeOnDrain(src) {
-  return function () {
-    var state = src._readableState;
-    debug('pipeOnDrain', state.awaitDrain);
-    if (state.awaitDrain) state.awaitDrain--;
-    if (state.awaitDrain === 0 && EElistenerCount(src, 'data')) {
-      state.flowing = true;
-      flow(src);
-    }
-  };
-}
-
-Readable.prototype.unpipe = function (dest) {
-  var state = this._readableState;
-  var unpipeInfo = { hasUnpiped: false };
-
-  // if we're not piping anywhere, then do nothing.
-  if (state.pipesCount === 0) return this;
-
-  // just one destination.  most common case.
-  if (state.pipesCount === 1) {
-    // passed in one, but it's not the right one.
-    if (dest && dest !== state.pipes) return this;
-
-    if (!dest) dest = state.pipes;
-
-    // got a match.
-    state.pipes = null;
-    state.pipesCount = 0;
-    state.flowing = false;
-    if (dest) dest.emit('unpipe', this, unpipeInfo);
-    return this;
-  }
-
-  // slow case. multiple pipe destinations.
-
-  if (!dest) {
-    // remove all.
-    var dests = state.pipes;
-    var len = state.pipesCount;
-    state.pipes = null;
-    state.pipesCount = 0;
-    state.flowing = false;
-
-    for (var i = 0; i < len; i++) {
-      dests[i].emit('unpipe', this, unpipeInfo);
-    }return this;
-  }
-
-  // try to find the right one.
-  var index = indexOf(state.pipes, dest);
-  if (index === -1) return this;
-
-  state.pipes.splice(index, 1);
-  state.pipesCount -= 1;
-  if (state.pipesCount === 1) state.pipes = state.pipes[0];
-
-  dest.emit('unpipe', this, unpipeInfo);
-
-  return this;
-};
-
-// set up data events if they are asked for
-// Ensure readable listeners eventually get something
-Readable.prototype.on = function (ev, fn) {
-  var res = Stream.prototype.on.call(this, ev, fn);
-
-  if (ev === 'data') {
-    // Start flowing on next tick if stream isn't explicitly paused
-    if (this._readableState.flowing !== false) this.resume();
-  } else if (ev === 'readable') {
-    var state = this._readableState;
-    if (!state.endEmitted && !state.readableListening) {
-      state.readableListening = state.needReadable = true;
-      state.emittedReadable = false;
-      if (!state.reading) {
-        pna.nextTick(nReadingNextTick, this);
-      } else if (state.length) {
-        emitReadable(this);
-      }
-    }
-  }
-
-  return res;
-};
-Readable.prototype.addListener = Readable.prototype.on;
-
-function nReadingNextTick(self) {
-  debug('readable nexttick read 0');
-  self.read(0);
-}
-
-// pause() and resume() are remnants of the legacy readable stream API
-// If the user uses them, then switch into old mode.
-Readable.prototype.resume = function () {
-  var state = this._readableState;
-  if (!state.flowing) {
-    debug('resume');
-    state.flowing = true;
-    resume(this, state);
-  }
-  return this;
-};
-
-function resume(stream, state) {
-  if (!state.resumeScheduled) {
-    state.resumeScheduled = true;
-    pna.nextTick(resume_, stream, state);
-  }
-}
-
-function resume_(stream, state) {
-  if (!state.reading) {
-    debug('resume read 0');
-    stream.read(0);
-  }
-
-  state.resumeScheduled = false;
-  state.awaitDrain = 0;
-  stream.emit('resume');
-  flow(stream);
-  if (state.flowing && !state.reading) stream.read(0);
-}
-
-Readable.prototype.pause = function () {
-  debug('call pause flowing=%j', this._readableState.flowing);
-  if (false !== this._readableState.flowing) {
-    debug('pause');
-    this._readableState.flowing = false;
-    this.emit('pause');
-  }
-  return this;
-};
-
-function flow(stream) {
-  var state = stream._readableState;
-  debug('flow', state.flowing);
-  while (state.flowing && stream.read() !== null) {}
-}
-
-// wrap an old-style stream as the async data source.
-// This is *not* part of the readable stream interface.
-// It is an ugly unfortunate mess of history.
-Readable.prototype.wrap = function (stream) {
-  var _this = this;
-
-  var state = this._readableState;
-  var paused = false;
-
-  stream.on('end', function () {
-    debug('wrapped end');
-    if (state.decoder && !state.ended) {
-      var chunk = state.decoder.end();
-      if (chunk && chunk.length) _this.push(chunk);
-    }
-
-    _this.push(null);
-  });
-
-  stream.on('data', function (chunk) {
-    debug('wrapped data');
-    if (state.decoder) chunk = state.decoder.write(chunk);
-
-    // don't skip over falsy values in objectMode
-    if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;
-
-    var ret = _this.push(chunk);
-    if (!ret) {
-      paused = true;
-      stream.pause();
-    }
-  });
-
-  // proxy all the other methods.
-  // important when wrapping filters and duplexes.
-  for (var i in stream) {
-    if (this[i] === undefined && typeof stream[i] === 'function') {
-      this[i] = function (method) {
-        return function () {
-          return stream[method].apply(stream, arguments);
-        };
-      }(i);
-    }
-  }
-
-  // proxy certain important events.
-  for (var n = 0; n < kProxyEvents.length; n++) {
-    stream.on(kProxyEvents[n], this.emit.bind(this, kProxyEvents[n]));
-  }
-
-  // when we try to consume some more bytes, simply unpause the
-  // underlying stream.
-  this._read = function (n) {
-    debug('wrapped _read', n);
-    if (paused) {
-      paused = false;
-      stream.resume();
-    }
-  };
-
-  return this;
-};
-
-Object.defineProperty(Readable.prototype, 'readableHighWaterMark', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function () {
-    return this._readableState.highWaterMark;
-  }
-});
-
-// exposed for testing purposes only.
-Readable._fromList = fromList;
-
-// Pluck off n bytes from an array of buffers.
-// Length is the combined lengths of all the buffers in the list.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function fromList(n, state) {
-  // nothing buffered
-  if (state.length === 0) return null;
-
-  var ret;
-  if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
-    // read it all, truncate the list
-    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);
-    state.buffer.clear();
-  } else {
-    // read part of list
-    ret = fromListPartial(n, state.buffer, state.decoder);
-  }
-
-  return ret;
-}
-
-// Extracts only enough buffered data to satisfy the amount requested.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function fromListPartial(n, list, hasStrings) {
-  var ret;
-  if (n < list.head.data.length) {
-    // slice is the same for buffers and strings
-    ret = list.head.data.slice(0, n);
-    list.head.data = list.head.data.slice(n);
-  } else if (n === list.head.data.length) {
-    // first chunk is a perfect match
-    ret = list.shift();
-  } else {
-    // result spans more than one buffer
-    ret = hasStrings ? copyFromBufferString(n, list) : copyFromBuffer(n, list);
-  }
-  return ret;
-}
-
-// Copies a specified amount of characters from the list of buffered data
-// chunks.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function copyFromBufferString(n, list) {
-  var p = list.head;
-  var c = 1;
-  var ret = p.data;
-  n -= ret.length;
-  while (p = p.next) {
-    var str = p.data;
-    var nb = n > str.length ? str.length : n;
-    if (nb === str.length) ret += str;else ret += str.slice(0, n);
-    n -= nb;
-    if (n === 0) {
-      if (nb === str.length) {
-        ++c;
-        if (p.next) list.head = p.next;else list.head = list.tail = null;
-      } else {
-        list.head = p;
-        p.data = str.slice(nb);
-      }
-      break;
-    }
-    ++c;
-  }
-  list.length -= c;
-  return ret;
-}
-
-// Copies a specified amount of bytes from the list of buffered data chunks.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function copyFromBuffer(n, list) {
-  var ret = Buffer.allocUnsafe(n);
-  var p = list.head;
-  var c = 1;
-  p.data.copy(ret);
-  n -= p.data.length;
-  while (p = p.next) {
-    var buf = p.data;
-    var nb = n > buf.length ? buf.length : n;
-    buf.copy(ret, ret.length - n, 0, nb);
-    n -= nb;
-    if (n === 0) {
-      if (nb === buf.length) {
-        ++c;
-        if (p.next) list.head = p.next;else list.head = list.tail = null;
-      } else {
-        list.head = p;
-        p.data = buf.slice(nb);
-      }
-      break;
-    }
-    ++c;
-  }
-  list.length -= c;
-  return ret;
-}
-
-function endReadable(stream) {
-  var state = stream._readableState;
-
-  // If we get here before consuming all the bytes, then that is a
-  // bug in node.  Should never happen.
-  if (state.length > 0) throw new Error('"endReadable()" called on non-empty stream');
-
-  if (!state.endEmitted) {
-    state.ended = true;
-    pna.nextTick(endReadableNT, state, stream);
-  }
-}
-
-function endReadableNT(state, stream) {
-  // Check that we didn't get one last unshift.
-  if (!state.endEmitted && state.length === 0) {
-    state.endEmitted = true;
-    stream.readable = false;
-    stream.emit('end');
-  }
-}
-
-function indexOf(xs, x) {
-  for (var i = 0, l = xs.length; i < l; i++) {
-    if (xs[i] === x) return i;
-  }
-  return -1;
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// a transform stream is a readable/writable stream where you do
-// something with the data.  Sometimes it's called a "filter",
-// but that's not a great name for it, since that implies a thing where
-// some bits pass through, and others are simply ignored.  (That would
-// be a valid example of a transform, of course.)
-//
-// While the output is causally related to the input, it's not a
-// necessarily symmetric or synchronous transformation.  For example,
-// a zlib stream might take multiple plain-text writes(), and then
-// emit a single compressed chunk some time in the future.
-//
-// Here's how this works:
-//
-// The Transform stream has all the aspects of the readable and writable
-// stream classes.  When you write(chunk), that calls _write(chunk,cb)
-// internally, and returns false if there's a lot of pending writes
-// buffered up.  When you call read(), that calls _read(n) until
-// there's enough pending readable data buffered up.
-//
-// In a transform stream, the written data is placed in a buffer.  When
-// _read(n) is called, it transforms the queued up data, calling the
-// buffered _write cb's as it consumes chunks.  If consuming a single
-// written chunk would result in multiple output chunks, then the first
-// outputted bit calls the readcb, and subsequent chunks just go into
-// the read buffer, and will cause it to emit 'readable' if necessary.
-//
-// This way, back-pressure is actually determined by the reading side,
-// since _read has to be called to start processing a new chunk.  However,
-// a pathological inflate type of transform can cause excessive buffering
-// here.  For example, imagine a stream where every byte of input is
-// interpreted as an integer from 0-255, and then results in that many
-// bytes of output.  Writing the 4 bytes {ff,ff,ff,ff} would result in
-// 1kb of data being output.  In this case, you could write a very small
-// amount of input, and end up with a very large amount of output.  In
-// such a pathological inflating mechanism, there'd be no way to tell
-// the system to stop doing the transform.  A single 4MB write could
-// cause the system to run out of memory.
-//
-// However, even in such a pathological case, only a single written chunk
-// would be consumed, and then the rest would wait (un-transformed) until
-// the results of the previous transformed chunk were consumed.
-
-
-
-module.exports = Transform;
-
-var Duplex = __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js");
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-util.inherits(Transform, Duplex);
-
-function afterTransform(er, data) {
-  var ts = this._transformState;
-  ts.transforming = false;
-
-  var cb = ts.writecb;
-
-  if (!cb) {
-    return this.emit('error', new Error('write callback called multiple times'));
-  }
-
-  ts.writechunk = null;
-  ts.writecb = null;
-
-  if (data != null) // single equals check for both `null` and `undefined`
-    this.push(data);
-
-  cb(er);
-
-  var rs = this._readableState;
-  rs.reading = false;
-  if (rs.needReadable || rs.length < rs.highWaterMark) {
-    this._read(rs.highWaterMark);
-  }
-}
-
-function Transform(options) {
-  if (!(this instanceof Transform)) return new Transform(options);
-
-  Duplex.call(this, options);
-
-  this._transformState = {
-    afterTransform: afterTransform.bind(this),
-    needTransform: false,
-    transforming: false,
-    writecb: null,
-    writechunk: null,
-    writeencoding: null
-  };
-
-  // start out asking for a readable event once data is transformed.
-  this._readableState.needReadable = true;
-
-  // we have implemented the _read method, and done the other things
-  // that Readable wants before the first _read call, so unset the
-  // sync guard flag.
-  this._readableState.sync = false;
-
-  if (options) {
-    if (typeof options.transform === 'function') this._transform = options.transform;
-
-    if (typeof options.flush === 'function') this._flush = options.flush;
-  }
-
-  // When the writable side finishes, then flush out anything remaining.
-  this.on('prefinish', prefinish);
-}
-
-function prefinish() {
-  var _this = this;
-
-  if (typeof this._flush === 'function') {
-    this._flush(function (er, data) {
-      done(_this, er, data);
-    });
-  } else {
-    done(this, null, null);
-  }
-}
-
-Transform.prototype.push = function (chunk, encoding) {
-  this._transformState.needTransform = false;
-  return Duplex.prototype.push.call(this, chunk, encoding);
-};
-
-// This is the part where you do stuff!
-// override this function in implementation classes.
-// 'chunk' is an input chunk.
-//
-// Call `push(newChunk)` to pass along transformed output
-// to the readable side.  You may call 'push' zero or more times.
-//
-// Call `cb(err)` when you are done with this chunk.  If you pass
-// an error, then that'll put the hurt on the whole operation.  If you
-// never call cb(), then you'll never get another chunk.
-Transform.prototype._transform = function (chunk, encoding, cb) {
-  throw new Error('_transform() is not implemented');
-};
-
-Transform.prototype._write = function (chunk, encoding, cb) {
-  var ts = this._transformState;
-  ts.writecb = cb;
-  ts.writechunk = chunk;
-  ts.writeencoding = encoding;
-  if (!ts.transforming) {
-    var rs = this._readableState;
-    if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark) this._read(rs.highWaterMark);
-  }
-};
-
-// Doesn't matter what the args are here.
-// _transform does all the work.
-// That we got here means that the readable side wants more data.
-Transform.prototype._read = function (n) {
-  var ts = this._transformState;
-
-  if (ts.writechunk !== null && ts.writecb && !ts.transforming) {
-    ts.transforming = true;
-    this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);
-  } else {
-    // mark that we need a transform, so that any data that comes in
-    // will get processed, now that we've asked for it.
-    ts.needTransform = true;
-  }
-};
-
-Transform.prototype._destroy = function (err, cb) {
-  var _this2 = this;
-
-  Duplex.prototype._destroy.call(this, err, function (err2) {
-    cb(err2);
-    _this2.emit('close');
-  });
-};
-
-function done(stream, er, data) {
-  if (er) return stream.emit('error', er);
-
-  if (data != null) // single equals check for both `null` and `undefined`
-    stream.push(data);
-
-  // if there's nothing in the write buffer, then that means
-  // that nothing more will ever be provided
-  if (stream._writableState.length) throw new Error('Calling transform done when ws.length != 0');
-
-  if (stream._transformState.transforming) throw new Error('Calling transform done when still transforming');
-
-  return stream.push(null);
-}
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, setImmediate, global) {// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// A bit simpler than readable streams.
-// Implement an async ._write(chunk, encoding, cb), and it'll handle all
-// the drain event emission and buffering.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-module.exports = Writable;
-
-/* <replacement> */
-function WriteReq(chunk, encoding, cb) {
-  this.chunk = chunk;
-  this.encoding = encoding;
-  this.callback = cb;
-  this.next = null;
-}
-
-// It seems a linked list but it is not
-// there will be only 2 of these for each stream
-function CorkedRequest(state) {
-  var _this = this;
-
-  this.next = null;
-  this.entry = null;
-  this.finish = function () {
-    onCorkedFinish(_this, state);
-  };
-}
-/* </replacement> */
-
-/*<replacement>*/
-var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : pna.nextTick;
-/*</replacement>*/
-
-/*<replacement>*/
-var Duplex;
-/*</replacement>*/
-
-Writable.WritableState = WritableState;
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var internalUtil = {
-  deprecate: __webpack_require__(/*! util-deprecate */ "./node_modules/util-deprecate/browser.js")
-};
-/*</replacement>*/
-
-/*<replacement>*/
-var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/stream-http/node_modules/safe-buffer/index.js").Buffer;
-var OurUint8Array = global.Uint8Array || function () {};
-function _uint8ArrayToBuffer(chunk) {
-  return Buffer.from(chunk);
-}
-function _isUint8Array(obj) {
-  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
-}
-
-/*</replacement>*/
-
-var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js");
-
-util.inherits(Writable, Stream);
-
-function nop() {}
-
-function WritableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  options = options || {};
-
-  // Duplex streams are both readable and writable, but share
-  // the same options object.
-  // However, some cases require setting options to different
-  // values for the readable and the writable sides of the duplex stream.
-  // These options can be provided separately as readableXXX and writableXXX.
-  var isDuplex = stream instanceof Duplex;
-
-  // object stream flag to indicate whether or not this stream
-  // contains buffers or objects.
-  this.objectMode = !!options.objectMode;
-
-  if (isDuplex) this.objectMode = this.objectMode || !!options.writableObjectMode;
-
-  // the point at which write() starts returning false
-  // Note: 0 is a valid value, means that we always return false if
-  // the entire buffer is not flushed immediately on write()
-  var hwm = options.highWaterMark;
-  var writableHwm = options.writableHighWaterMark;
-  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
-
-  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (writableHwm || writableHwm === 0)) this.highWaterMark = writableHwm;else this.highWaterMark = defaultHwm;
-
-  // cast to ints.
-  this.highWaterMark = Math.floor(this.highWaterMark);
-
-  // if _final has been called
-  this.finalCalled = false;
-
-  // drain event flag.
-  this.needDrain = false;
-  // at the start of calling end()
-  this.ending = false;
-  // when end() has been called, and returned
-  this.ended = false;
-  // when 'finish' is emitted
-  this.finished = false;
-
-  // has it been destroyed
-  this.destroyed = false;
-
-  // should we decode strings into buffers before passing to _write?
-  // this is here so that some node-core streams can optimize string
-  // handling at a lower level.
-  var noDecode = options.decodeStrings === false;
-  this.decodeStrings = !noDecode;
-
-  // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is 'binary' so we have to make this configurable.
-  // Everything else in the universe uses 'utf8', though.
-  this.defaultEncoding = options.defaultEncoding || 'utf8';
-
-  // not an actual buffer we keep track of, but a measurement
-  // of how much we're waiting to get pushed to some underlying
-  // socket or file.
-  this.length = 0;
-
-  // a flag to see when we're in the middle of a write.
-  this.writing = false;
-
-  // when true all writes will be buffered until .uncork() call
-  this.corked = 0;
-
-  // a flag to be able to tell if the onwrite cb is called immediately,
-  // or on a later tick.  We set this to true at first, because any
-  // actions that shouldn't happen until "later" should generally also
-  // not happen before the first write call.
-  this.sync = true;
-
-  // a flag to know if we're processing previously buffered items, which
-  // may call the _write() callback in the same tick, so that we don't
-  // end up in an overlapped onwrite situation.
-  this.bufferProcessing = false;
-
-  // the callback that's passed to _write(chunk,cb)
-  this.onwrite = function (er) {
-    onwrite(stream, er);
-  };
-
-  // the callback that the user supplies to write(chunk,encoding,cb)
-  this.writecb = null;
-
-  // the amount that is being written when _write is called.
-  this.writelen = 0;
-
-  this.bufferedRequest = null;
-  this.lastBufferedRequest = null;
-
-  // number of pending user-supplied write callbacks
-  // this must be 0 before 'finish' can be emitted
-  this.pendingcb = 0;
-
-  // emit prefinish if the only thing we're waiting for is _write cbs
-  // This is relevant for synchronous Transform streams
-  this.prefinished = false;
-
-  // True if the error was already emitted and should not be thrown again
-  this.errorEmitted = false;
-
-  // count buffered requests
-  this.bufferedRequestCount = 0;
-
-  // allocate the first CorkedRequest, there is always
-  // one allocated and free to use, and we maintain at most two
-  this.corkedRequestsFree = new CorkedRequest(this);
-}
-
-WritableState.prototype.getBuffer = function getBuffer() {
-  var current = this.bufferedRequest;
-  var out = [];
-  while (current) {
-    out.push(current);
-    current = current.next;
-  }
-  return out;
-};
-
-(function () {
-  try {
-    Object.defineProperty(WritableState.prototype, 'buffer', {
-      get: internalUtil.deprecate(function () {
-        return this.getBuffer();
-      }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.', 'DEP0003')
-    });
-  } catch (_) {}
-})();
-
-// Test _writableState for inheritance to account for Duplex streams,
-// whose prototype chain only points to Readable.
-var realHasInstance;
-if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.prototype[Symbol.hasInstance] === 'function') {
-  realHasInstance = Function.prototype[Symbol.hasInstance];
-  Object.defineProperty(Writable, Symbol.hasInstance, {
-    value: function (object) {
-      if (realHasInstance.call(this, object)) return true;
-      if (this !== Writable) return false;
-
-      return object && object._writableState instanceof WritableState;
-    }
-  });
-} else {
-  realHasInstance = function (object) {
-    return object instanceof this;
-  };
-}
-
-function Writable(options) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  // Writable ctor is applied to Duplexes, too.
-  // `realHasInstance` is necessary because using plain `instanceof`
-  // would return false, as no `_writableState` property is attached.
-
-  // Trying to use the custom `instanceof` for Writable here will also break the
-  // Node.js LazyTransform implementation, which has a non-trivial getter for
-  // `_writableState` that would lead to infinite recursion.
-  if (!realHasInstance.call(Writable, this) && !(this instanceof Duplex)) {
-    return new Writable(options);
-  }
-
-  this._writableState = new WritableState(options, this);
-
-  // legacy.
-  this.writable = true;
-
-  if (options) {
-    if (typeof options.write === 'function') this._write = options.write;
-
-    if (typeof options.writev === 'function') this._writev = options.writev;
-
-    if (typeof options.destroy === 'function') this._destroy = options.destroy;
-
-    if (typeof options.final === 'function') this._final = options.final;
-  }
-
-  Stream.call(this);
-}
-
-// Otherwise people can pipe Writable streams, which is just wrong.
-Writable.prototype.pipe = function () {
-  this.emit('error', new Error('Cannot pipe, not readable'));
-};
-
-function writeAfterEnd(stream, cb) {
-  var er = new Error('write after end');
-  // TODO: defer error events consistently everywhere, not just the cb
-  stream.emit('error', er);
-  pna.nextTick(cb, er);
-}
-
-// Checks that a user-supplied chunk is valid, especially for the particular
-// mode the stream is in. Currently this means that `null` is never accepted
-// and undefined/non-string values are only allowed in object mode.
-function validChunk(stream, state, chunk, cb) {
-  var valid = true;
-  var er = false;
-
-  if (chunk === null) {
-    er = new TypeError('May not write null values to stream');
-  } else if (typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
-    er = new TypeError('Invalid non-string/buffer chunk');
-  }
-  if (er) {
-    stream.emit('error', er);
-    pna.nextTick(cb, er);
-    valid = false;
-  }
-  return valid;
-}
-
-Writable.prototype.write = function (chunk, encoding, cb) {
-  var state = this._writableState;
-  var ret = false;
-  var isBuf = !state.objectMode && _isUint8Array(chunk);
-
-  if (isBuf && !Buffer.isBuffer(chunk)) {
-    chunk = _uint8ArrayToBuffer(chunk);
-  }
-
-  if (typeof encoding === 'function') {
-    cb = encoding;
-    encoding = null;
-  }
-
-  if (isBuf) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;
-
-  if (typeof cb !== 'function') cb = nop;
-
-  if (state.ended) writeAfterEnd(this, cb);else if (isBuf || validChunk(this, state, chunk, cb)) {
-    state.pendingcb++;
-    ret = writeOrBuffer(this, state, isBuf, chunk, encoding, cb);
-  }
-
-  return ret;
-};
-
-Writable.prototype.cork = function () {
-  var state = this._writableState;
-
-  state.corked++;
-};
-
-Writable.prototype.uncork = function () {
-  var state = this._writableState;
-
-  if (state.corked) {
-    state.corked--;
-
-    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
-  }
-};
-
-Writable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {
-  // node::ParseEncoding() requires lower case.
-  if (typeof encoding === 'string') encoding = encoding.toLowerCase();
-  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new TypeError('Unknown encoding: ' + encoding);
-  this._writableState.defaultEncoding = encoding;
-  return this;
-};
-
-function decodeChunk(state, chunk, encoding) {
-  if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {
-    chunk = Buffer.from(chunk, encoding);
-  }
-  return chunk;
-}
-
-Object.defineProperty(Writable.prototype, 'writableHighWaterMark', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function () {
-    return this._writableState.highWaterMark;
-  }
-});
-
-// if we're already writing something, then just put this
-// in the queue, and wait our turn.  Otherwise, call _write
-// If we return false, then we need a drain event, so set that flag.
-function writeOrBuffer(stream, state, isBuf, chunk, encoding, cb) {
-  if (!isBuf) {
-    var newChunk = decodeChunk(state, chunk, encoding);
-    if (chunk !== newChunk) {
-      isBuf = true;
-      encoding = 'buffer';
-      chunk = newChunk;
-    }
-  }
-  var len = state.objectMode ? 1 : chunk.length;
-
-  state.length += len;
-
-  var ret = state.length < state.highWaterMark;
-  // we must ensure that previous needDrain will not be reset to false.
-  if (!ret) state.needDrain = true;
-
-  if (state.writing || state.corked) {
-    var last = state.lastBufferedRequest;
-    state.lastBufferedRequest = {
-      chunk: chunk,
-      encoding: encoding,
-      isBuf: isBuf,
-      callback: cb,
-      next: null
-    };
-    if (last) {
-      last.next = state.lastBufferedRequest;
-    } else {
-      state.bufferedRequest = state.lastBufferedRequest;
-    }
-    state.bufferedRequestCount += 1;
-  } else {
-    doWrite(stream, state, false, len, chunk, encoding, cb);
-  }
-
-  return ret;
-}
-
-function doWrite(stream, state, writev, len, chunk, encoding, cb) {
-  state.writelen = len;
-  state.writecb = cb;
-  state.writing = true;
-  state.sync = true;
-  if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
-  state.sync = false;
-}
-
-function onwriteError(stream, state, sync, er, cb) {
-  --state.pendingcb;
-
-  if (sync) {
-    // defer the callback if we are being called synchronously
-    // to avoid piling up things on the stack
-    pna.nextTick(cb, er);
-    // this can emit finish, and it will always happen
-    // after error
-    pna.nextTick(finishMaybe, stream, state);
-    stream._writableState.errorEmitted = true;
-    stream.emit('error', er);
-  } else {
-    // the caller expect this to happen before if
-    // it is async
-    cb(er);
-    stream._writableState.errorEmitted = true;
-    stream.emit('error', er);
-    // this can emit finish, but finish must
-    // always follow error
-    finishMaybe(stream, state);
-  }
-}
-
-function onwriteStateUpdate(state) {
-  state.writing = false;
-  state.writecb = null;
-  state.length -= state.writelen;
-  state.writelen = 0;
-}
-
-function onwrite(stream, er) {
-  var state = stream._writableState;
-  var sync = state.sync;
-  var cb = state.writecb;
-
-  onwriteStateUpdate(state);
-
-  if (er) onwriteError(stream, state, sync, er, cb);else {
-    // Check if we're actually ready to finish, but don't emit yet
-    var finished = needFinish(state);
-
-    if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {
-      clearBuffer(stream, state);
-    }
-
-    if (sync) {
-      /*<replacement>*/
-      asyncWrite(afterWrite, stream, state, finished, cb);
-      /*</replacement>*/
-    } else {
-      afterWrite(stream, state, finished, cb);
-    }
-  }
-}
-
-function afterWrite(stream, state, finished, cb) {
-  if (!finished) onwriteDrain(stream, state);
-  state.pendingcb--;
-  cb();
-  finishMaybe(stream, state);
-}
-
-// Must force callback to be called on nextTick, so that we don't
-// emit 'drain' before the write() consumer gets the 'false' return
-// value, and has a chance to attach a 'drain' listener.
-function onwriteDrain(stream, state) {
-  if (state.length === 0 && state.needDrain) {
-    state.needDrain = false;
-    stream.emit('drain');
-  }
-}
-
-// if there's something in the buffer waiting, then process it
-function clearBuffer(stream, state) {
-  state.bufferProcessing = true;
-  var entry = state.bufferedRequest;
-
-  if (stream._writev && entry && entry.next) {
-    // Fast case, write everything using _writev()
-    var l = state.bufferedRequestCount;
-    var buffer = new Array(l);
-    var holder = state.corkedRequestsFree;
-    holder.entry = entry;
-
-    var count = 0;
-    var allBuffers = true;
-    while (entry) {
-      buffer[count] = entry;
-      if (!entry.isBuf) allBuffers = false;
-      entry = entry.next;
-      count += 1;
-    }
-    buffer.allBuffers = allBuffers;
-
-    doWrite(stream, state, true, state.length, buffer, '', holder.finish);
-
-    // doWrite is almost always async, defer these to save a bit of time
-    // as the hot path ends with doWrite
-    state.pendingcb++;
-    state.lastBufferedRequest = null;
-    if (holder.next) {
-      state.corkedRequestsFree = holder.next;
-      holder.next = null;
-    } else {
-      state.corkedRequestsFree = new CorkedRequest(state);
-    }
-    state.bufferedRequestCount = 0;
-  } else {
-    // Slow case, write chunks one-by-one
-    while (entry) {
-      var chunk = entry.chunk;
-      var encoding = entry.encoding;
-      var cb = entry.callback;
-      var len = state.objectMode ? 1 : chunk.length;
-
-      doWrite(stream, state, false, len, chunk, encoding, cb);
-      entry = entry.next;
-      state.bufferedRequestCount--;
-      // if we didn't call the onwrite immediately, then
-      // it means that we need to wait until it does.
-      // also, that means that the chunk and cb are currently
-      // being processed, so move the buffer counter past them.
-      if (state.writing) {
-        break;
-      }
-    }
-
-    if (entry === null) state.lastBufferedRequest = null;
-  }
-
-  state.bufferedRequest = entry;
-  state.bufferProcessing = false;
-}
-
-Writable.prototype._write = function (chunk, encoding, cb) {
-  cb(new Error('_write() is not implemented'));
-};
-
-Writable.prototype._writev = null;
-
-Writable.prototype.end = function (chunk, encoding, cb) {
-  var state = this._writableState;
-
-  if (typeof chunk === 'function') {
-    cb = chunk;
-    chunk = null;
-    encoding = null;
-  } else if (typeof encoding === 'function') {
-    cb = encoding;
-    encoding = null;
-  }
-
-  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding);
-
-  // .end() fully uncorks
-  if (state.corked) {
-    state.corked = 1;
-    this.uncork();
-  }
-
-  // ignore unnecessary end() calls.
-  if (!state.ending && !state.finished) endWritable(this, state, cb);
-};
-
-function needFinish(state) {
-  return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;
-}
-function callFinal(stream, state) {
-  stream._final(function (err) {
-    state.pendingcb--;
-    if (err) {
-      stream.emit('error', err);
-    }
-    state.prefinished = true;
-    stream.emit('prefinish');
-    finishMaybe(stream, state);
-  });
-}
-function prefinish(stream, state) {
-  if (!state.prefinished && !state.finalCalled) {
-    if (typeof stream._final === 'function') {
-      state.pendingcb++;
-      state.finalCalled = true;
-      pna.nextTick(callFinal, stream, state);
-    } else {
-      state.prefinished = true;
-      stream.emit('prefinish');
-    }
-  }
-}
-
-function finishMaybe(stream, state) {
-  var need = needFinish(state);
-  if (need) {
-    prefinish(stream, state);
-    if (state.pendingcb === 0) {
-      state.finished = true;
-      stream.emit('finish');
-    }
-  }
-  return need;
-}
-
-function endWritable(stream, state, cb) {
-  state.ending = true;
-  finishMaybe(stream, state);
-  if (cb) {
-    if (state.finished) pna.nextTick(cb);else stream.once('finish', cb);
-  }
-  state.ended = true;
-  stream.writable = false;
-}
-
-function onCorkedFinish(corkReq, state, err) {
-  var entry = corkReq.entry;
-  corkReq.entry = null;
-  while (entry) {
-    var cb = entry.callback;
-    state.pendingcb--;
-    cb(err);
-    entry = entry.next;
-  }
-  if (state.corkedRequestsFree) {
-    state.corkedRequestsFree.next = corkReq;
-  } else {
-    state.corkedRequestsFree = corkReq;
-  }
-}
-
-Object.defineProperty(Writable.prototype, 'destroyed', {
-  get: function () {
-    if (this._writableState === undefined) {
-      return false;
-    }
-    return this._writableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (!this._writableState) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._writableState.destroyed = value;
-  }
-});
-
-Writable.prototype.destroy = destroyImpl.destroy;
-Writable.prototype._undestroy = destroyImpl.undestroy;
-Writable.prototype._destroy = function (err, cb) {
-  this.end();
-  cb(err);
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../../../timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/BufferList.js":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/BufferList.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/stream-http/node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 9);
-
-function copyBuffer(src, target, offset) {
-  src.copy(target, offset);
-}
-
-module.exports = function () {
-  function BufferList() {
-    _classCallCheck(this, BufferList);
-
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
-
-  BufferList.prototype.push = function push(v) {
-    var entry = { data: v, next: null };
-    if (this.length > 0) this.tail.next = entry;else this.head = entry;
-    this.tail = entry;
-    ++this.length;
-  };
-
-  BufferList.prototype.unshift = function unshift(v) {
-    var entry = { data: v, next: this.head };
-    if (this.length === 0) this.tail = entry;
-    this.head = entry;
-    ++this.length;
-  };
-
-  BufferList.prototype.shift = function shift() {
-    if (this.length === 0) return;
-    var ret = this.head.data;
-    if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;
-    --this.length;
-    return ret;
-  };
-
-  BufferList.prototype.clear = function clear() {
-    this.head = this.tail = null;
-    this.length = 0;
-  };
-
-  BufferList.prototype.join = function join(s) {
-    if (this.length === 0) return '';
-    var p = this.head;
-    var ret = '' + p.data;
-    while (p = p.next) {
-      ret += s + p.data;
-    }return ret;
-  };
-
-  BufferList.prototype.concat = function concat(n) {
-    if (this.length === 0) return Buffer.alloc(0);
-    if (this.length === 1) return this.head.data;
-    var ret = Buffer.allocUnsafe(n >>> 0);
-    var p = this.head;
-    var i = 0;
-    while (p) {
-      copyBuffer(p.data, ret, i);
-      i += p.data.length;
-      p = p.next;
-    }
-    return ret;
-  };
-
-  return BufferList;
-}();
-
-if (util && util.inspect && util.inspect.custom) {
-  module.exports.prototype[util.inspect.custom] = function () {
-    var obj = util.inspect({ length: this.length });
-    return this.constructor.name + ' ' + obj;
-  };
-}
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-// undocumented cb() API, needed for core, not for public API
-function destroy(err, cb) {
-  var _this = this;
-
-  var readableDestroyed = this._readableState && this._readableState.destroyed;
-  var writableDestroyed = this._writableState && this._writableState.destroyed;
-
-  if (readableDestroyed || writableDestroyed) {
-    if (cb) {
-      cb(err);
-    } else if (err && (!this._writableState || !this._writableState.errorEmitted)) {
-      pna.nextTick(emitErrorNT, this, err);
-    }
-    return this;
-  }
-
-  // we set destroyed to true before firing error callbacks in order
-  // to make it re-entrance safe in case destroy() is called within callbacks
-
-  if (this._readableState) {
-    this._readableState.destroyed = true;
-  }
-
-  // if this is a duplex stream mark the writable part as destroyed as well
-  if (this._writableState) {
-    this._writableState.destroyed = true;
-  }
-
-  this._destroy(err || null, function (err) {
-    if (!cb && err) {
-      pna.nextTick(emitErrorNT, _this, err);
-      if (_this._writableState) {
-        _this._writableState.errorEmitted = true;
-      }
-    } else if (cb) {
-      cb(err);
-    }
-  });
-
-  return this;
-}
-
-function undestroy() {
-  if (this._readableState) {
-    this._readableState.destroyed = false;
-    this._readableState.reading = false;
-    this._readableState.ended = false;
-    this._readableState.endEmitted = false;
-  }
-
-  if (this._writableState) {
-    this._writableState.destroyed = false;
-    this._writableState.ended = false;
-    this._writableState.ending = false;
-    this._writableState.finished = false;
-    this._writableState.errorEmitted = false;
-  }
-}
-
-function emitErrorNT(self, err) {
-  self.emit('error', err);
-}
-
-module.exports = {
-  destroy: destroy,
-  undestroy: undestroy
-};
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/readable-stream/readable-browser.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/readable-stream/readable-browser.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js");
-exports.Stream = exports;
-exports.Readable = exports;
-exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js");
-exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js");
-exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js");
-exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ "./node_modules/stream-http/node_modules/readable-stream/lib/_stream_passthrough.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-http/node_modules/safe-buffer/index.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/stream-http/node_modules/safe-buffer/index.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* eslint-disable node/no-deprecated-api */
-var buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")
-var Buffer = buffer.Buffer
-
-// alternative to using Object.keys for old browsers
-function copyProps (src, dst) {
-  for (var key in src) {
-    dst[key] = src[key]
-  }
-}
-if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
-  module.exports = buffer
-} else {
-  // Copy properties from require('buffer')
-  copyProps(buffer, exports)
-  exports.Buffer = SafeBuffer
-}
-
-function SafeBuffer (arg, encodingOrOffset, length) {
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-// Copy static methods from Buffer
-copyProps(Buffer, SafeBuffer)
-
-SafeBuffer.from = function (arg, encodingOrOffset, length) {
-  if (typeof arg === 'number') {
-    throw new TypeError('Argument must not be a number')
-  }
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-SafeBuffer.alloc = function (size, fill, encoding) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  var buf = Buffer(size)
-  if (fill !== undefined) {
-    if (typeof encoding === 'string') {
-      buf.fill(fill, encoding)
-    } else {
-      buf.fill(fill)
-    }
-  } else {
-    buf.fill(0)
-  }
-  return buf
-}
-
-SafeBuffer.allocUnsafe = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return Buffer(size)
-}
-
-SafeBuffer.allocUnsafeSlow = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return buffer.SlowBuffer(size)
-}
-
 
 /***/ }),
 
@@ -108136,18 +105526,24 @@ global.panes.runDataBrowser = function () {
     return Promise.all([Object(_global_header__WEBPACK_IMPORTED_MODULE_3__["initHeader"])(kb), Object(_global_footer__WEBPACK_IMPORTED_MODULE_4__["initFooter"])(kb, kb.fetcher)]);
   });
 };
-
+/*  This messes up using require() within an electron app
 if (typeof global.require === 'undefined') {
   //  Allow require('mashlib') in the databrowser
-  global.require = function require(lib) {
+  global.require = function require (lib: string) {
     if (lib === 'mashlib') {
-      console.warn("Warning: mashlib's custom implementation of `require` will be deprecated in the future. Please import mashlib using a build-time bundler, or access the global `panes` variable when including it as a script.");
-      return solid_panes__WEBPACK_IMPORTED_MODULE_1___default.a;
+      console.warn(
+        "Warning: mashlib's custom implementation of `require` will be deprecated in the future. Please import mashlib using a build-time bundler, or access the global `panes` variable when including it as a script."
+      )
+      return panes
     } else {
-      throw new Error('Cannot require (this is a Mashlib-specific require stub)');
+      throw new Error(
+        'Cannot require (this is a Mashlib-specific require stub)'
+      )
     }
-  };
+  }
 }
+*/
+
 
 window.onpopstate = function (event) {
   global.document.outline.GotoSubject(rdflib__WEBPACK_IMPORTED_MODULE_0__["sym"](window.document.location.href), true, undefined, true, undefined);
@@ -108189,28 +105585,6 @@ module.exports = __webpack_require__(/*! ./src/index.ts */"./src/index.ts");
 /*!*************************************!*\
   !*** rdf-canonize-native (ignored) ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 10:
-/*!************************!*\
-  !*** buffer (ignored) ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 11:
-/*!************************!*\
-  !*** crypto (ignored) ***!
-  \************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -108285,9 +105659,9 @@ module.exports = __webpack_require__(/*! ./src/index.ts */"./src/index.ts");
 /***/ }),
 
 /***/ 8:
-/*!**********************!*\
-  !*** util (ignored) ***!
-  \**********************/
+/*!************************!*\
+  !*** buffer (ignored) ***!
+  \************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -108296,9 +105670,9 @@ module.exports = __webpack_require__(/*! ./src/index.ts */"./src/index.ts");
 /***/ }),
 
 /***/ 9:
-/*!**********************!*\
-  !*** util (ignored) ***!
-  \**********************/
+/*!************************!*\
+  !*** crypto (ignored) ***!
+  \************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

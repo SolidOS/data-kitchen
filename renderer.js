@@ -11,14 +11,17 @@ if (ele && panes.versionInfo) {
   ele.textContent = panes.versionInfo.npmInfo['solid-panes']
 }
 
-// From browse.html in forms playground:
-// const panes = require('mashlib')
+var remote = require('electron').remote // a la https://stackoverflow.com/questions/30815446/how-to-pass-command-line-argument-in-electron
+var arguments = remote.getGlobal('commandlineArgs')
+console.log(' @@ renderer.js arguments ', arguments);
+
 const UI = panes.UI
 const $rdf = UI.rdf
 const dom = document
-$rdf.Fetcher.crossSiteProxyTemplate = self.origin + '/xss?uri={uri}';
+// $rdf.Fetcher.crossSiteProxyTemplate = self.origin + '/xss?uri={uri}';
+
 var uri = window.location.href;
-window.document.title = 'Data browser: ' + uri;
+window.document.title = uri;
 var kb = UI.store;
 var outliner = panes.getOutliner(dom)
 
@@ -27,9 +30,9 @@ function go ( event ) {
   console.log("User field " + uriField.value)
   console.log("User requests " + uri)
 
-  const params = new URLSearchParams(location.search)
-  params.set('uri', uri);
-  window.history.replaceState({}, '', `${location.pathname}?${params}`);
+  // const params = new URLSearchParams(location.search)
+  // params.set('uri', uri);
+  // window.history.replaceState({}, '', `${location.pathname}?${params}`);
 
   var subject = kb.sym(uri);
   // UI.widgets.makeDraggable(icon, subject) // beware many handlers piling up
@@ -45,7 +48,11 @@ uriField.addEventListener('keyup', function (e) {
 }, false)
 
 goButton.addEventListener('click', go, false);
-let initial = new URLSearchParams(self.location.search).get("uri")
+let initial
+if (arguments && arguments[2]) { // Electron command line
+  initial = arguments[2]
+}
+// initial = new URLSearchParams(self.location.search).get("uri")
 if (initial) {
   uriField.value = initial
   go()

@@ -2,12 +2,13 @@
 
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
-// const panes = require('solid-panes')
-// const mashlib = require('mashlib')
+
+console.log('@@ main.js argv[2] ' + process.argv[2])
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+
 
 function createWindow () {
   // Create the browser window.
@@ -15,9 +16,15 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true
     }
   })
+
+  if (process.argv) {
+    global.commandlineArgs = process.argv.slice()
+    console.log('main.js: saved args in various places: ' + global.commandlineArgs.join(', '))
+  }
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
