@@ -13,15 +13,16 @@ npm start
 ```
 npm install
 sudo npm install -g electron-packager
-npm package
+npm run package
 
 ```
 See the many other options of electron-packager.
+
 ## Goals
 The goal of this project is to provide a kitchen where the user is cook, and
 the power user is chef.
 
-Live your life in a read-write world of lined data.
+Live your life in a read-write world of linked data.
 
 Use all your solid pods, including your local files as your zeroth pod.
 bring in all the stuff in your life shared by friends and colleagues.
