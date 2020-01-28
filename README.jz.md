@@ -9,7 +9,7 @@
 
 * display of source and other panes - currently behaves as not logged in or not authorized ... maybe I should create a simulated login for local? or have panes-ui behave as if logged in for local (but where do that?)
 
-### Here's how my fork differs from the master
+### Here's how my fork differs from solid/data-kitchen
 
 * uses mashlib from panes 3.0.1 rather 2.0.2
 * uses an updated (and not yet npm'd) solid-rest
