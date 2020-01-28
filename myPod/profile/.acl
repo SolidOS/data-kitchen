@@ -5,7 +5,7 @@
 # The owner has all permissions
 <#owner>
     a acl:Authorization;
-    acl:agent <https://jeffz.solid.community/profile/card#me>;
+    acl:agent </profile/card#me>;
     acl:accessTo <./>;
     acl:defaultForNew <./>;
     acl:mode acl:Read, acl:Write, acl:Control.

@@ -7,7 +7,7 @@
     a acl:Authorization;
 
     acl:agent
-        <https://jeffz.solid.community/profile/card#me>;
+        </profile/card#me>;
 
     acl:accessTo <./publicTypeIndex.ttl>;
 
