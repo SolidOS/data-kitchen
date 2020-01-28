@@ -1,0 +1,19 @@
+# Root ACL resource for the local file system
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#owner>
+    a acl:Authorization;
+
+    acl:agentClass foaf:Agent;
+    # acl:agent </profile/card#me>;
+
+    # Set the access to the root storage folder itself
+    acl:accessTo </>;
+
+    # All resources will inherit this authorization, by default
+    acl:defaultForNew </>;
+
+    # The owner has all of the access modes allowed
+    acl:mode
+        acl:Read, acl:Write, acl:Control.

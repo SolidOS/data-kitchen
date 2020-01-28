@@ -1,0 +1,5 @@
+@prefix : <#>.
+
+<> a :testDocument; :label "First Test".
+
+<> :maker <./card#me>.

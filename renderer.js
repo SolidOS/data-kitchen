@@ -2,6 +2,8 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
+const path=require('path')
+
 console.log('renderer.js')
 console.log('renderer.js panes ' + panes)
 
@@ -48,14 +50,47 @@ uriField.addEventListener('keyup', function (e) {
 }, false)
 
 goButton.addEventListener('click', go, false);
-let initial
-if (arguments && arguments[2]) { // Electron command line
-  initial = arguments[2]
-}
-// initial = new URLSearchParams(self.location.search).get("uri")
-if (initial) {
-  uriField.value = initial
+
+async function init(){
+  const SolidFileStorage=require('./bundles/solid-rest/src/file.js')
+  window.solidRestInstance = new SolidRest(
+    [
+      new SolidBrowserFS(),
+      new SolidFileStorage(),
+      // could add other solid-rest backend plugins here
+    ],
+    {
+      /* this defines where file:/// points to
+       * it should contain profile and settings files like a pod
+       */
+      "fileRoot" : path.join(__dirname,"/myPod")
+    }
+  )
+  /* Solid Rest backends intialization
+    - localStorage is included by default
+    - one could add other browserFS backend plugins here
+    - ./bundles has a Dropbox SDK that could be used for a backend
+    - once initialized, address these spaces with the mountpoints like this:
+        app://bfs/IndexedDB/  app://bfs/HTML5FS/  app://bfs/Dropbox/, etc.
+    - HTML5FS is the native file API currently only implemented in chrome
+        and requires enabling in chrome://flags
+  */
+  window.solidRestInstance.storage("bfs").initBackends({
+      '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
+      '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"}}
+      //  '/Dropbox' : { fs: "Dropbox", options:{client: dropCli} }
+  })
+  // initial = new URLSearchParams(self.location.search).get("uri")
+  let initial
+  if (arguments && arguments[2]) { // Electron command line
+    initial = arguments[2]
+  }
+  initial = initial || "file:///public/"
+  if (initial) {
+    uriField.value = initial
+  } else {
+    console.log('ready for user input')
+  }
   go()
-} else {
-  console.log('ready for user input')
 }
+init()
