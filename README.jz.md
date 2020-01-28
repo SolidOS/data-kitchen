@@ -7,11 +7,11 @@
 
 ### These things currenlty do NOT work in file: and app: spaces
 
-* display of source and other panes - currently behaves as not logged in or not authorized ... maybe I should create a simulated login for local? or have panes-ui behave as if logged in for local (but where do that?)
+* display of source and other panes - currently behaves as not logged in or not authorized ... maybe I should create a simulated login for local? or have panes-ui behave as if logged in for local (but where do that?).  Note : the green plus shows all panes and supports creating resources & containers in the file: and app: spaces.
 
 ### Question
 
-* Do we want to lift the requirement in rdflib.updateManaer that a localfile needs to have a "machineEditable" triple?
+* Do we want to lift the requirement in rdflib.updateManager that a localfile needs to have a "machineEditable" triple?
 
 ### Here's how my fork differs from solid/data-kitchen
 
