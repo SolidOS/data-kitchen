@@ -17,6 +17,9 @@ npm package
 
 ```
 See the many other options of electron-packager.
+
+**Note :** see [README.js](./README.jz.md) for details of this fork
+
 ## Goals
 The goal of this project is to provide a kitchen where the user is cook, and
 the power user is chef.
