@@ -1,9 +1,9 @@
 ### Change in interface
 
 * Viewing local files is now relative to a fileRoot which defaults to
-  the "myPod" folder in your local install.  So if your install is
+  the myPod folder in your local install.  So if your install is
   in /home/me/data-kitchen/ the default fileRoot will be 
-  "/home/me/data-kitchen/myPod" and the public folder and a request
+  "/home/me/data-kitchen/myPod" and a request
   for file:///public/ will look in /home/me/data-kitchen/myPod/public/.
   If you modify the fileRoot in renderer.js to "/home/me" a request
   for file:///public/ will look in /home/me/public.  (TBD - read this 
