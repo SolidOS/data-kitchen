@@ -62,3 +62,9 @@ typings/
 
 # notes and drafts
 drafts
+
+# emacs backups
+*~
+
+# testing with other front-end
+bundles/solid-ide/*
