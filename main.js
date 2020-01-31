@@ -115,7 +115,14 @@ const TEMPLATE = [
         }
       },
       { type: 'separator' },
-      { label: 'TBD : support one-click add bookmark, for now edit bookmarks in main.js ',
+      { label: 'Manage Bookmarks',
+        click: async () => {
+          // This is how to load a local file in the web browser
+          // file location (not a URL) is relative to install folder
+          mainWindow.webContents.send(
+            'go2web', 'bookmarks.html'
+          )
+        }
       },
      ]
   },
