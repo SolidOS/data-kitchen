@@ -2,13 +2,38 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <link rel="stylesheet" src="./mash.css"/>
-    <!-- <meta http-equiv="Content-Security-Policy" content="script-src self">  -->
+    <title>Solid Data Browser</title>
+<link rel="stylesheet" src="./mash.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+   <!-- <meta http-equiv="Content-Security-Policy" content="script-src self">  -->
+
+<style>
+iframe#webBrowser {
+  margin-left:-1.5em !important;
+  display:none;
+  height:100vh;
+  width:100vw;
+  border:none;
+  margin:0;
+  padding:0;
+}
+#footer {
+  font-size:0.9em;
+  font-weight:italic;
+  text-align:right;
+  margin-top:2em;
+}
+#uriField {
+margin-bottom:1em;
+margin-top:1em;
+}
+</style>
   </head>
   <body>
+    <iframe id="webBrowser" name="webBrowser" src=""></iframe>
     <header class="db-layout__header header" id="PageHeader"></header>
-
+  <div id="dataBrowser">
     <table style="width:100%;">
       <tr style="font-size:100%">
         <td style="padding:1em; width:5em;" id="icon">URI:</td>
@@ -19,16 +44,16 @@
         <div class="TabulatorOutline" id="DummyUUID">
             <table id="outline"></table>
         </div>
+        <div id="localBrowser"></div>
       </tr>
    </table>
-
-    <p>
+    <p id="footer">
     We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
-    Electron <span id="electron-version"></span>,  and solid-panes <span id="solid-panes-version"></span>.
+    Electron <span id="electron-version"></span>, Solid Panes <span id="solid-panes-version"></span> and Data Kitchen <span id="kitchen-version"></span>.
   </p>
-
-    <!-- You can also require other files to run in this process -->
+</div><!-- dataBrowser screen -->
+<!-- You can also require other files to run in this process -->
 <!-- mashlib --><script src="./mashlib.js"></script>
 <!-- browserfs --> <script src="./bundles/browserfs.min.js"></script>
 <!-- solid-rest --><script src="./bundles/solid-rest/dist/main.js"></script>

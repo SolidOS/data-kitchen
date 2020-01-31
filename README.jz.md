@@ -1,4 +1,8 @@
-### Change in interface
+
+### Changes in interface
+
+* There are now help screens and configurable menus available. The app now
+starts with  a help page showing what is included and how to use it.
 
 * Viewing local files is now relative to a fileRoot which defaults to
   the myPod folder in your local install.  So if your install is
