@@ -1,0 +1,33 @@
+<h1>How to customize the Solid Data Kitchen</h1>
+
+<h2>Start Page</h2>
+
+<blockquote>
+Edit the START_PAGE variable in the renderer.js file in the installation folder.
+This defaults to the Data Kitchen intro page, but you can set it to any URI.
+</blockquote>
+
+<h2>Menus & Bookmarks</h2>
+
+<blockquote>
+Edit the TEMPLATE array in the main.js file in the installation folder
+</blockquote>
+
+<h2>File Root</h2>
+<blockquote><p>
+Edit the FILE_ROOT variable in the rendererer.js file in the installation folder.
+</p><p>
+This is the document root of the local fileSystem, similar to an HTTPD 
+document root - if fileRoot is "/home/me/", then a URL of file:///public/
+will be mapped onto the folder at /home/me/public/.  The default
+fileRoot is the myPod folder of the installation. You can change it to
+any folder on your filesystem, including, if you wish and are able, the 
+root folder "/".
+</p><p>
+The fileRoot is not only the root folder for browsing, it is where Data
+Kitchen will look for your profile and preferences exactly as it does on
+a pod.  So you should recursively copy all of the files and folders in
+the myPod folder to your new fileRoot. So if you set the fileRoot to /home/me/, 
+copy ${installation folder}/myPod/* to /home/me/.
+</p></blockquote>
+

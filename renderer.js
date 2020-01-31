@@ -8,7 +8,7 @@ const fs=require('fs')
 console.log('renderer.js')
 console.log('renderer.js panes ' + panes)
 
-const START_PAGE = "about.html"
+const START_PAGE = "assets/about.html"
 const FILE_ROOT = path.join(__dirname,"/myPod")
 
 var ele = document.getElementById('solid-panes-version')
@@ -55,17 +55,19 @@ let tb = document.getElementById('outline')
 // local files don't like to be served in an iframe
 // so we use a different way to display them
 function go2web( uri ){
-//    db.style.display ="none"
     wb.style.display ="none"
     tb.style.display ="none"
     lb.style.display ="none"
     if( !uri.match(/^(http|file|app)/) ){
+      document.body.style.overflowY="auto"
+//      lb.style.overflow="auto"
       let newContent = fs.readFileSync(uri)      
       lb.style.display ="block"
       lb.innerHTML = newContent
     }
     else {
-      document.body.style.overflow="hidden"
+      document.body.style.overflowY="hidden"
+      wb.style.overflowY="hidden"
       wb.style.display ="block"
       wb.src = uri
     }

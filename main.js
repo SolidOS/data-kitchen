@@ -1,3 +1,59 @@
+const {app, BrowserWindow, Menu} = require('electron')
+const path = require('path')
+const jsonfile = require('jsonfile');
+
+console.log('@@ main.js argv[2] ' + process.argv[2])
+
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let mainWindow
+
+
+function createWindow () {
+  // Create the browser window.
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    icon:path.join(__dirname,"myPod/favicon.png"),
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nativeWindowOpen: true,
+      nodeIntegration: true
+    }
+  })
+
+  if (process.argv) {
+    global.commandlineArgs = process.argv.slice()
+    console.log('main.js: saved args in various places: ' + global.commandlineArgs.join(', '))
+  }
+
+  // and load the index.html of the app.
+  mainWindow.loadFile('index.html')
+
+  // Open the DevTools.
+  // mainWindow.webContents.openDevTools()
+
+  // Emitted when the window is closed.
+  mainWindow.on('closed', function () {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    mainWindow = null
+  })
+}
+
+    app.on('ready', createWindow)
+    app.on('window-all-closed', function () {
+        // On macOS it is common for applications and their menu bar
+        // to stay active until the user quits explicitly with Cmd + Q
+        if (process.platform !== 'darwin') app.quit()
+    })
+    app.on('activate', function () {
+        // On macOS it's common to re-create a window in the app when the
+        // dock icon is clicked and there are no other windows open.
+        if (mainWindow === null) createWindow()
+    })
+
 const isMac = process.platform === 'darwin'
 
 // The TEMPLATE variable holds the top level menu options
@@ -114,32 +170,15 @@ const TEMPLATE = [
           )
         }
       },
-      { type: 'separator' },
-      { label: 'Manage Bookmarks',
-        click: async () => {
-          // This is how to load a local file in the web browser
-          // file location (not a URL) is relative to install folder
-          mainWindow.webContents.send(
-            'go2web', 'bookmarks.html'
-          )
-        }
-      },
      ]
   },
   // { role: 'customizeMenu' }
-  {
-    label: 'Customize',
-    submenu: [
-      {
-        label: 'Customize menus : TBD, for now, edit TEMPLATE in main.js',
-      },
-      {
-        label: 'Customize start page : TBD, for now, edit START_PAGE in renderer.js',
-      },
-      {
-        label: 'Customize file Root : TBD, for now, edit FILE_ROOT in renderer.js',
-      },
-    ]
+  { label: 'Customize',
+     click: async () => {
+       mainWindow.webContents.send(
+         'go2web', 'assets/config.html'
+       )
+     }
   },
   // { role: 'help' }
   {
@@ -160,80 +199,13 @@ const TEMPLATE = [
           // This is how to load a local file in the web browser
           // file location (not a URL) is relative to install folder
           mainWindow.webContents.send(
-            'go2web', 'about.html'
+            'go2web', 'assets/about.html'
           )
         }
       },
     ]
   }
 ]
-
-
-// Modules to control application life and create native browser window
-
-const {app, BrowserWindow, Menu} = require('electron')
-const path = require('path')
-
-console.log('@@ main.js argv[2] ' + process.argv[2])
-
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
-
-
-function createWindow () {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    icon:path.join(__dirname,"myPod/favicon.png"),
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-      nativeWindowOpen: true,
-      nodeIntegration: true
-    }
-  })
-
-  if (process.argv) {
-    global.commandlineArgs = process.argv.slice()
-    console.log('main.js: saved args in various places: ' + global.commandlineArgs.join(', '))
-  }
-
-  // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
-
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
-
-  // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    mainWindow = null
-  })
-}
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
-
-// Quit when all windows are closed.
-app.on('window-all-closed', function () {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') app.quit()
-})
-
-app.on('activate', function () {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) createWindow()
-})
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
 
 const menu = Menu.buildFromTemplate(TEMPLATE)
 Menu.setApplicationMenu(menu)
