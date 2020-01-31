@@ -1,0 +1,85 @@
+<style>
+#fileManager {
+//  margin:1em;
+  width : 700px;
+}
+#fileManager table {
+  width:100%;
+//  margin-left:1em;
+  margin-top:1em;
+  padding:1em;
+  padding-bottom:0;
+//  border:1px solid grey;   
+//  border-bottom:1px solid grey !important;   
+}
+#fileManager th {
+  vertical-align:top;
+  text-align:right;
+  border-bottom:1em solid transparent;
+  border-right:1em solid transparent;
+}
+#fileManager td {
+  border-bottom:1em solid transparent;
+}
+#fileManager p {
+}
+#fileManager input[type=text] {
+  width:100%;
+  minwidth: 30em;
+}
+#fileManager .buttonContainer {
+  width:100%;
+  text-align:right;
+}
+</style>
+<h1>Data Kitchen File Manager</h1>
+<form id="fileManager">
+<p style="color:red;font-weight:bold">
+In progress, not functional yet ...
+</p>
+<p>
+Use this form to manage files and folders in a pod or local file
+system or transfer them between one and the other.  
+<b>Caution :</b> actions on folders are recursive.  So, for example,
+you can backup your entire pod by specifiying the source as 
+http://you.example.org/ and the target as file://somepath/.
+Folders always end in "/", files never do.
+</p>
+<table>
+  <tr>
+    <th>action</th>
+    <td>
+      <input type="radio">move &nbsp;
+      <input type="radio">copy &nbsp;
+      <input type="radio">delete
+    </td>
+  </tr>
+  <tr>
+    <th>source</th>
+    <td><input type="text" placeholder=" full URI of file or folder"></td>
+  </tr>
+  <tr>
+    <th>target</th>
+    <td><input type="text" placeholder=" full URI of file or folder"></td>
+  </tr>
+  <tr>
+    <th>include .acl?</th>
+    <td>
+      <input type="radio" checked>yes&nbsp;
+      <input type="radio">no
+    </td>
+  </tr>
+  <tr>
+    <th>merge style</th>
+    <td>
+      <input type="radio" checked>target becomes same as source<br>
+      <input type="radio">target beomces source plus items only in target<br>
+      <input type="radio">target beomces target plus items only in source
+<div class="buttonContainer">
+  <button id="submitFileManager"> Go </button>
+</div>
+    </td>
+  </tr>
+</table>   
+
+</form>

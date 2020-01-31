@@ -79,6 +79,14 @@ const TEMPLATE = [
   {
     label: 'File',
     submenu: [
+      {
+        label: 'Manage files',
+        click: async () => {
+          mainWindow.webContents.send(
+            'go2web', 'assets/file.html'
+          )
+        }
+      },
       isMac ? { role: 'close' } : { role: 'quit' },
     ]
   },
@@ -171,6 +179,15 @@ const TEMPLATE = [
         }
       },
      ]
+  },
+  // { role: 'sparqlMenu' }
+  {
+    label: 'SPARQL',
+    click: async () => {
+      mainWindow.webContents.send(
+        'go2web', 'assets/sparql.html'
+      )
+    },
   },
   // { role: 'help' }
   {
