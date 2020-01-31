@@ -172,14 +172,6 @@ const TEMPLATE = [
       },
      ]
   },
-  // { role: 'customizeMenu' }
-  { label: 'Customize',
-     click: async () => {
-       mainWindow.webContents.send(
-         'go2web', 'assets/config.html'
-       )
-     }
-  },
   // { role: 'help' }
   {
     label: "Help",
@@ -202,6 +194,11 @@ const TEMPLATE = [
             'go2web', 'assets/about.html'
           )
         }
+      },
+      { label: 'How to customize Data Kitchen',
+          click: async () => {
+              mainWindow.webContents.send('go2web', 'assets/config.html')
+          }
       },
     ]
   }
