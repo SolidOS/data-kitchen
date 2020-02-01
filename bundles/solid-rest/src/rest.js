@@ -158,7 +158,8 @@ async fetch(uri, options) {
     })
     if (!pathname.endsWith("/")) pathname += "/"
     let str2 = ""
-    let str = "@prefix : <#>. @prefix ldp: <http://www.w3.org/ns/ldp#>.\n"
+    let str = "@prefix : <#>.\n"
+            + "@prefix ldp: <http://www.w3.org/ns/ldp#>.\n"
             + "<> a ldp:BasicContainer, ldp:Container"
     if(filenames.length){
       str = str + "; ldp:contains\n";
@@ -170,9 +171,11 @@ async fetch(uri, options) {
         if(fn.match(/\s/)) fn = encodeURIComponent(fn)
         str = str + `  <${fn}>,\n`
         let ctype = _getContentType(_getExtension(fn),ftype)
+        ctype = ctype.replace(/; .*/,'')
+        ctype = "http://www.w3.org/ns/iana/media-types/"+ctype
         ftype = ftype==="Container" ? "ldp:Container; a ldp:BasicContainer" : "ldp:Resource"
         str2 = str2 + `<${fn}> a ${ftype}.\n`
-        str2 = str2 + `<${fn}> :type "${ctype}".\n`
+        str2 = str2 + `<${fn}> a <${ctype}#Resource>.\n`
       }
       str = str.replace(/,\n$/,"")
     }
