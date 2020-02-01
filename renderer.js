@@ -9,7 +9,7 @@ console.log('renderer.js')
 console.log('renderer.js panes ' + panes)
 
 const START_PAGE = "assets/about.html"
-const FILE_ROOT = path.join(__dirname,"/myPod")
+window.FILE_ROOT = path.join(__dirname,"/myPod")
 
 var ele = document.getElementById('solid-panes-version')
 if (ele && panes.versionInfo) {
@@ -122,7 +122,7 @@ async function init(){
       /* this defines where file:/// points to
        * it should contain profile and settings files like a pod
        */
-      "fileRoot" : FILE_ROOT
+      "fileRoot" : window.FILE_ROOT
     }
   )
   /* Solid Rest backends intialization

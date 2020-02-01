@@ -7,7 +7,7 @@
 @prefix mee: <http://www.w3.org/ns/pim/meeting#>.
 
 c:me
-    a terms:PowerUser;
+    a terms:Developer;
     terms:privateTypeIndex <privateTypeIndex.ttl>;
     terms:publicTypeIndex <publicTypeIndex.ttl>.
 
