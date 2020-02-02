@@ -2,7 +2,7 @@ body {
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 textarea {
-   min-width:10em !important;
+   min-width:20em !important;
 }
 #localBrowser,#webBrowser,#dataBrowser,#fileManager,#queryForm  {
   display:none;
