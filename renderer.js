@@ -1,13 +1,14 @@
-const path=require('path')
-const fs=require('fs')
+const path                 = require('path')
+const fs                   = require('fs')
+const jsonfile             = require('jsonfile');
+const {ipcRenderer,remote} = require('electron')
+const BrowserFS            = require("./bundles/browserfs.min.js")
+const SolidRest            = require("./bundles/solid-rest/dist/main.js")
+const SolidFileStorage     = require('./bundles/solid-rest/src/file.js')
+const SolidBrowserFS       = require('./bundles/solid-rest/src/browserFS.js')
 
-/* Define startup page and file root
-   - see the Help/How-to Customize menu in the app for details
-*/
-const START_PAGE = "assets/about.html"
-window.FILE_ROOT = path.join(__dirname,"/myPod")
-
-/* Handle requests for pages
+/*
+   Handle requests for pages
    pageType = dataBrowser  - the mashlib dataBrowser
               webBrowser   - a remote or localhost web page
               localBroswer - a local page not served from localhost or dataBrowser
@@ -78,7 +79,20 @@ async function showKitchenPage(uri,pageType){
 /* Initialize Solid-Rest and friends, go to START_PAGE
 */
 async function init(){
-  const SolidFileStorage=require('./bundles/solid-rest/src/file.js')
+  const configFile = path.join(__dirname,"config.json")
+  const defaultConfigFile = path.join(__dirname,"config.default.json")
+  let cfg
+  try{ cfg = await jsonfile.readFileSync( configFile ) }
+  catch(e){if(!e.toString().match("ENOENT"))console.log(e)}
+  if(typeof cfg ==="undefined"){
+     try{  cfg = await jsonfile.readFileSync( defaultConfigFile ) }
+     catch(e){console.log(e)}
+  }
+  cfg=cfg||{}
+  cfg.startPage = cfg.startPage || "assets/about.html"
+  cfg.fileRoot = cfg.fileRoot || path.join(__dirname,"/myPod")
+
+  window.FILE_ROOT = cfg.fileRoot
   window.solidRestInstance = new SolidRest(
     [
       new SolidBrowserFS(),
@@ -106,7 +120,7 @@ async function init(){
       '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"}}
       //  '/Dropbox' : { fs: "Dropbox", options:{client: dropCli} }
   })
-  showKitchenPage(START_PAGE)
+  showKitchenPage(cfg.startPage)
 }
 
 /* Set up The Tabulator
@@ -142,8 +156,9 @@ uriField.addEventListener('keyup', function (e) {
 }, false)
 goButton.addEventListener('click', showKitchenPage, false);
 window.document.title = "Solid Data Kitchen"
-// get menu slection from main.js top menu and dispatch it
-var ipcRenderer = require('electron').ipcRenderer
+/*
+  get menu slection from main.js top menu and dispatch it
+*/
 ipcRenderer.on('showKitchenPage', (event, uri, pageType) => {
     return showKitchenPage(uri,pageType)
 })
@@ -152,7 +167,6 @@ ipcRenderer.on('showKitchenPage', (event, uri, pageType) => {
 /* Get command line arguements, intitialize uriField
 */
 // get command=line arguments a la https://stackoverflow.com/questions/30815446/how-to-pass-command-line-argument-in-electron
-var remote = require('electron').remote  
 var arguments = remote.getGlobal('commandlineArgs')
 console.log(' @@ renderer.js arguments ', arguments);
 // initial = new URLSearchParams(self.location.search).get("uri")

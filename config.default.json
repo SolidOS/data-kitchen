@@ -1,0 +1,26 @@
+{
+  "windowX"      : "center",  
+  "windowY"      : "center",  
+  "windowWidth"  : 800,
+  "windowHeight" : 600,
+  "startPage"    : "",
+  "fileRoot"     : "",
+  "bookmarks"    : [
+    {"label":"My local files",
+       "uri":"file:///public/" 
+    },
+    {"label":"My in-browser IndexedDB",
+       "uri":"app://bfs/IndexedDB/"
+    },
+    {"label":"My solid.community pod",
+       "uri":"https://timbl.solid.community/public/" 
+    },
+    {"label":"My inrupt.net pod",
+       "uri":"https://timbl.inrupt.net/public/"
+    },
+    {"label":"Sample DBPEDIA search",
+       "uri":"http://dbpedia.org/data/Tim_Berners_Lee"
+    }
+  ]
+}
+

@@ -8,14 +8,33 @@ console.log('@@ main.js argv[2] ' + process.argv[2])
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+async function createWindow () {
 
-function createWindow () {
-  // Create the browser window.
+  /* get configs
+  */
+  const configFile = path.join(__dirname,"config.json")
+  const defaultConfigFile = path.join(__dirname,"config.default.json")
+  let cfg
+  try{ cfg = await jsonfile.readFileSync( configFile ) }
+  catch(e){if(!e.toString().match("ENOENT"))console.log(e)}
+  if(typeof cfg ==="undefined"){
+     try{  cfg = await jsonfile.readFileSync( defaultConfigFile ) }
+     catch(e){console.log(e)}
+  }
+  console.log(cfg)
+  cfg = cfg || {}
+  cfg.width  = cfg.windowWidth  || 800
+  cfg.height = cfg.windowHeight || 600
+  cfg.windowX = typeof cfg.windowX==="string" ? undefined : cfg.windowX
+  cfg.windowy = typeof cfg.windowY==="string" ? undefined : cfg.windowY
+
+  /* Create the browser window.
+  */
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    // x:0,
-    // y:0,
+    width: cfg.width,
+    height: cfg.height,
+    x: cfg.windowX,
+    y: cfg.windowY,
     icon:path.join(__dirname,"myPod/favicon.png"),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -29,17 +48,10 @@ function createWindow () {
     console.log('main.js: saved args in various places: ' + global.commandlineArgs.join(', '))
   }
 
-  // and load the index.html of the app.
+  /* load the main page */
   mainWindow.loadFile('index.html')
-
-  // Open the DevTools.
   // mainWindow.webContents.openDevTools()
-
-  // Emitted when the window is closed.
   mainWindow.on('closed', function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     mainWindow = null
   })
 }

@@ -287,7 +287,8 @@ if(typeof window==="undefined") {
      removeItem : (key) => { delete localStorage[key] },
      setItem    : (key,val) => { localStorage[key]=val },
   }
-  module.exports = SolidBrowserFS
 }
+
+module.exports = SolidBrowserFS
 
 /* END FILE */

@@ -68,3 +68,6 @@ drafts
 
 # testing with other front-end
 bundles/solid-ide/*
+
+# don't overwrite user's config
+config.json

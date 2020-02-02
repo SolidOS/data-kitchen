@@ -1,30 +1,28 @@
 <h1>How to customize the Solid Data Kitchen</h1>
 
-Note: Eventually these should all be managed via RDF.
+Copy <em>installFolder/config.default.json</em> to <em>installFolder/config.json</em>. Then edit the following fields:
 
 <h2>Window size and position</h2>
 
 <blockquote>
-Edit the relevant keys in the createWindow function in main.js.
+Position can be either "center"  or an integer (no quotes).
 </blockquote>
 
 <h2>Start Page</h2>
 
 <blockquote>
-Edit the START_PAGE variable in the renderer.js file in the installation folder.
-This defaults to the Data Kitchen intro page, but you can set it to any URI.
+Leave as an empty sting to start with the Data Kitchen intro page or set it to any URI.
 </blockquote>
 
-<h2>Menus & Bookmarks</h2>
+<h2>Bookmarks</h2>
 
 <blockquote>
-Edit the TEMPLATE array in the main.js file in the installation folder
+Add as many as you wish.  The URIs you supply will be opened in the dataBrowser.
 </blockquote>
 
 <h2>File Root</h2>
-<blockquote><p>
-Edit the FILE_ROOT variable in the rendererer.js file in the installation folder.
-</p><p>
+<blockquote>
+<p>
 This is the document root of the local fileSystem, similar to an HTTPD 
 document root - if fileRoot is "/home/me/", then a URL of file:///public/
 will be mapped onto the folder at /home/me/public/.  The default
