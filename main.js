@@ -14,6 +14,8 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    // x:0,
+    // y:0,
     icon:path.join(__dirname,"myPod/favicon.png"),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
