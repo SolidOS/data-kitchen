@@ -1,0 +1,75 @@
+body {
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+textarea {
+   min-width:20em !important;
+}
+#localBrowser,#webBrowser,#dataBrowser,#fileManager,#queryForm  {
+  display:none;
+}
+iframe#webBrowser {
+  display:none;
+  height:100vh;
+  width:100vw;
+  border:none;
+  margin:0;
+  padding:0;
+}
+#versionsFooter {
+  font-size:0.8em;
+  font-weight:italic;
+  text-align:right;
+  margin-top:2em;
+  margin-right:1em;
+}
+#localBrowser {
+  margin-left:1em;
+  margin-right:1em;
+  overflow:auto !important;
+}
+#localBrowser h1, #localBrowser h2,
+.kitchenForm h1, .kitchenForm h2 
+{
+  font-weight:400 !important;
+}
+#localBrowser em {
+  color:brown;
+}
+#localBrowser i {
+  font-weight:300 !important;
+}
+#localBrowser ul {
+  padding-left:1em;  
+  margin-left:1em;
+  line-height:1.5em;  
+}
+.kitchenForm {
+  margin-left:1em;
+  margin-right:1em;
+//  width : 700px;
+}
+.kitchenForm table {
+  width:100%;
+  margin-top:1em;
+  padding:1em;
+  padding-bottom:0;
+}
+.kitchenForm th {
+  vertical-align:top;
+  text-align:right;
+  border-bottom:1em solid transparent;
+  border-right:1em solid transparent;
+}
+.kitchenForm td {
+  border-bottom:1em solid transparent;
+}
+.kitchenForm input[type=text] {
+  width:100%;
+  minwidth: 25em;
+  height:2.5em;
+}
+.kitchenForm .buttonContainer {
+  margin-top:1em;
+  width:100%;
+  text-align:right;
+}

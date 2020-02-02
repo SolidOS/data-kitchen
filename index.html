@@ -2,56 +2,86 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Solid Data Browser</title>
+    <title>Solid Data Kitchen</title>
     <link rel="stylesheet" src="./mash.css"/>
-<!-- <meta http-equiv="Content-Security-Policy" content="script-src self">  -->
+    <link rel="stylesheet" href="assets/kitchen.css">
+    <script src="assets/kitchen.js"></script>
+    <!--
+      <meta http-equiv="Content-Security-Policy" content="script-src self">  
+    -->
 <style>
-body {
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-textarea {
-   min-width:25em !important;
-}
-iframe.doc {
-   width:30em !important;
-   border : none !important;
-}
-iframe#webBrowser {
-  margin-left:-1.5em !important;
-  display:none;
-  height:100vh;
-  width:100vw;
-  border:none;
-  margin:0;
-  padding:0;
-}
-#footer {
-  font-size:0.8em;
-  font-weight:italic;
-  text-align:right;
-  margin-top:2em;
-  margin-right:1em;
-}
-#localBrowser {
-  margin-left:1em;
-  margin-right:1em;
-  overflow:auto !important;
-}
-#localBrowser h1, #localBrowser h2 {
-  font-weight:400 !important;
-}
-#localBrowser em {
-  color:brown;
-}
-#localBrowser i {
-  font-weight:300 !important;
-}
 </style>
   </head>
   <body>
-    <iframe id="webBrowser" name="webBrowser" src=""></iframe>
-    <header class="db-layout__header header" id="PageHeader"></header>
+<!-- QUERY FORM -->
+<div id="queryForm" class="kitchenForm">
+<h1>Data Kitchen SPARQL Query Form</h1>
+
+<h3>coming soon...</h3>
+
+</div>
+<!-- FILE-MANAGER -->
+<form id="fileManager" action="#" onsubmit="" class="kitchenForm">
+<h1>Data Kitchen File Manager</h1>
+Use this form to manage files and folders in a pod or local file
+system or transfer them between one and the other.  
+<b>Caution :</b> actions on folders are recursive.  if you
+put your pod root as source and delete, it will recursively delete
+your pod.  This alos means you can backup your entire pod by 
+specifiying the source as  http://you.example.org/ and the target
+as file://somepath/. Folders always end in "/", files never do.
+<span style="color:red;font-weight:bold">
+In progress, not functional yet ...</span>
+</p>
+<table>
+  <tr>
+    <th>action</th>
+    <td>
+      <input type="radio" name="action" value="move" checked>move &nbsp;
+      <input type="radio" name="action" value="copy">copy &nbsp;
+      <input type="radio" name="action" value="delete">delete
+    </td>
+  </tr>
+  <tr>
+    <th>source</th>
+    <td>
+      <input id="sourceUri" type="text" placeholder=" full URI of file or folder">
+    </td>
+  </tr>
+  <tr>
+    <th>target</th>
+    <td><input id="targetUri" type="text" placeholder=" full URI of file or folder"></td>
+  </tr>
+  <tr>
+    <th>include .acl?</th>
+    <td>
+      <input name="acl" value="yes" type="radio" checked>yes&nbsp;
+      <input name="acl" value="no" type="radio">no
+    </td>
+  </tr>
+  <tr>
+    <th>merge style</th>
+    <td>
+      <input  name="merge" value="replace" type="radio" checked>
+        target becomes same as source<br>
+      <input name="merge" value="target" type="radio">
+        target beomces source plus items only in target<br>
+      <input name="merge" value="source" type="radio">
+        target beomces target plus items only in source
+      <div class="buttonContainer">
+        <button id="submitFileManager" onclick="manageFiles(event)">
+          Execute file commands
+        </button>
+      </div>
+    </td>
+  </tr>
+</table>   
+</form>
+<!-- END OF FILE-MANAGER -->
+
+  <iframe id="webBrowser" name="webBrowser" src=""></iframe>
   <div id="dataBrowser">
+    <header class="db-layout__header header" id="PageHeader"></header>
     <table style="width:100%;">
       <tr style="font-size:100%">
         <td style="padding:1em; width:5em;" id="icon">URI:</td>
@@ -62,13 +92,13 @@ iframe#webBrowser {
         <div class="TabulatorOutline" id="DummyUUID">
             <table id="outline"></table>
         </div>
-        <div id="localBrowser"></div>
       </tr>
    </table>
-    <p id="footer">
-    We are using Node.js <span id="node-version"></span>,
+   <div id="localBrowser"></div>
+    <p id="versionsFooter">
+    Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
-    Electron <span id="electron-version"></span>, Solid Panes <span id="solid-panes-version"></span> and Data Kitchen <span id="kitchen-version"></span>.
+    Electron <span id="electron-version"></span>, Solid Panes <span id="solid-panes-version"></span>, Data Kitchen <span id="kitchen-version"></span>.
   </p>
 </div><!-- dataBrowser screen -->
 <!-- You can also require other files to run in this process -->

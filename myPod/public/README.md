@@ -1,0 +1,1 @@
+This is a dataBrowser view of local files in the installation folder of data- kitchen.  If you want to use the dataBrowser on other local files either copy the files into the installation myPod folder, or see the Help menu page on customizing data-kitchen to repoint the local files to any other folder on your computer.

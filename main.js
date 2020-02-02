@@ -83,7 +83,7 @@ const TEMPLATE = [
         label: 'Manage files',
         click: async () => {
           mainWindow.webContents.send(
-            'go2web', 'assets/file.html'
+            'showKitchenPage', 'assets/file.html', 'fileManager'
           )
         }
       },
@@ -142,7 +142,7 @@ const TEMPLATE = [
         click: async () => {
           // This is how to load a local file in the dataBrowser
           mainWindow.webContents.send(
-            'go2','file:///public/' 
+            'showKitchenPage','file:///public/','dataBrowser'
           )
         }
       },
@@ -150,7 +150,7 @@ const TEMPLATE = [
         click: async () => {
           // This is how to load a browserFS storage area in the dataBrowser
           mainWindow.webContents.send(
-            'go2','app://bfs/IndexedDB/' 
+            'showKitchenPage','app://bfs/IndexedDB/', 'dataBrowser'
           )
         }
       },
@@ -158,7 +158,7 @@ const TEMPLATE = [
         click: async () => {
           // This is how to load a remote web page in the dataBrowser
           mainWindow.webContents.send(
-            'go2','https://timbl.solid.community/' 
+            'showKitchenPage','https://timbl.solid.community/','dataBrowser'
           )
         }
       },
@@ -166,7 +166,7 @@ const TEMPLATE = [
         click: async () => {
           // This is how to load a remote web page in the dataBrowser
           mainWindow.webContents.send(
-            'go2','https://timbl.inrupt.net/'
+            'showKitchenPage','https://timbl.inrupt.net/','dataBrowser'
           )
         }
       },
@@ -174,18 +174,27 @@ const TEMPLATE = [
         click: async () => {
           // This is how to search dbpedia
           mainWindow.webContents.send(
-            'go2','http://dbpedia.org/data/Tim_Berners_Lee'
+            'showKitchenPage','http://dbpedia.org/data/Tim_Berners_Lee','dataBrowser'
           )
         }
       },
      ]
   },
-  // { role: 'sparqlMenu' }
+  // { role: 'dataBrowserMenu' }
   {
-    label: 'SPARQL',
+    label: 'DataBrowser',
     click: async () => {
       mainWindow.webContents.send(
-        'go2web', 'assets/sparql.html'
+            'showKitchenPage', "none" , 'dataBrowser'
+      )
+    },
+  },
+  // { role: 'sparqlMenu' }
+  {
+    label: 'Query',
+    click: async () => {
+      mainWindow.webContents.send(
+            'showKitchenPage','assets/sparql.html','queryForm'
       )
     },
   },
@@ -198,7 +207,7 @@ const TEMPLATE = [
         click: async () => {
           // This is how to load a remote web page in the web browser
           mainWindow.webContents.send(
-            'go2web','https://solidproject.org/'
+            'showKitchenPage','https://solidproject.org/', 'webBrowser'
           )
         }
       },
@@ -208,13 +217,15 @@ const TEMPLATE = [
           // This is how to load a local file in the web browser
           // file location (not a URL) is relative to install folder
           mainWindow.webContents.send(
-            'go2web', 'assets/about.html'
+            'showKitchenPage', 'assets/about.html'
           )
         }
       },
       { label: 'How to customize Data Kitchen',
           click: async () => {
-              mainWindow.webContents.send('go2web', 'assets/config.html')
+            mainWindow.webContents.send(
+              'showKitchenPage', 'assets/config.html'
+            )
           }
       },
     ]
