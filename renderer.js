@@ -18,6 +18,7 @@ let REMOTE_BASE
               queryForm    - form to send SPARQL queries
 */
 async function showKitchenPage(uri,pageType){
+  document.getElementById("versionsFooter").style.display="none"
   if(typeof uri != "string"){
     uri = uriField.value
   }
@@ -41,6 +42,7 @@ async function showKitchenPage(uri,pageType){
   // 
   else if( uri !="none" && !uri.match(/^(http|file|app)/) ){
     document.body.style.overflowY="auto"
+    document.getElementById("versionsFooter").style.display="block"
     let newContent = fs.readFileSync(uri)      
     pages.localBrowser.innerHTML = newContent
     pages.localBrowser.style.display = "block"

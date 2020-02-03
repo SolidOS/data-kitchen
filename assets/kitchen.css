@@ -19,13 +19,16 @@ iframe#webBrowser {
   margin:0;
   padding:0;
 }
+#outline {
+  min-height:200px;
+}
 #versionsFooter {
+  display:none;
   font-size:0.8em;
   font-weight:italic;
   text-align:right;
   margin-top:2em;
-  position:absolute;
-  bottom:1em;
+  margin-bottom:1em;
   right:1em;
 }
 #localBrowser {
