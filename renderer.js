@@ -7,6 +7,7 @@ const BrowserFS            = require("./bundles/browserfs.min.js")
 const SolidRest            = require("./bundles/solid-rest/dist/main.js")
 const SolidFileStorage     = require('./bundles/solid-rest/src/file.js')
 const SolidBrowserFS       = require('./bundles/solid-rest/src/browserFS.js')
+const SolidFileClient      = require("./bundles/solid-file-client.bundle.js")
 let LOCAL_BASE
 let REMOTE_BASE
 /*
@@ -77,6 +78,7 @@ async function showKitchenPage(uri,pageType){
 /* URI shortcuts
 */
 function mungeURI(uri){
+  uri === uri || ""
   if( uri.startsWith("./") && LOCAL_BASE ){
     uri = uri.replace(/^\.\//,'')
     return `${LOCAL_BASE}${uri}`
@@ -98,6 +100,68 @@ function mungeURI(uri){
   }
   return uri
 }  
+
+/* Manage Files
+*/
+async function manageFiles(e) {
+  const fc = new SolidFileClient(SolidAuthClient,{enableLogging:true})
+  let r;
+  e.preventDefault()
+  let c={} 
+  c.action = getRadioVal( document.getElementById('fileManager'), 'action' );
+  c.acl = getRadioVal( document.getElementById('fileManager'), 'acl' );
+  c.merge = getRadioVal( document.getElementById('fileManager'), 'merge' );
+  c.sourceUri = document.getElementById('sourceUri').value
+  c.targetUri = document.getElementById('targetUri').value
+  if(!c.sourceUri){
+    alert("Sorry, you must specify a source URI!")
+    return false;
+  }
+  else {
+    c.sourceUri = mungeURI(c.sourceUri)
+  }
+  if(c.action==="delete"){
+    r = window.confirm(`Are you sure you want to delete ${c.sourceUri}?`)
+    if(!r) return false
+    r = await fc.delete(c.sourceUri)
+    alert(r.status+" "+r.statusText)
+  }
+  else if(c.action==="copy"||c.action==="move"){
+    if(!c.targetUri ){
+      alert("Sorry, you must specify a source and a target!")
+    }
+    else {
+      c.targetUri = mungeURI(c.targetUri)
+      r = window.confirm(
+        `Are you sure you want to ${c.action} ${c.sourceUri} to ${c.targetUri}?`
+      )
+      if(!r) return false
+      let opts = {}
+      if(c.merge==="source") opts.merge = "keep_source"
+      if(c.merge==="target") opts.merge = "keep_target"
+      if(c.acl==="no") opts.withAcl = false
+      console.log( opts )
+      try {
+        r = await fc[c.action](c.sourceUri,c.targetUri,opts)
+      }
+      catch(e){alert(e)}
+      alert(r.status+" "+r.statusText)
+    }
+  }
+  return false;
+  function getRadioVal(form, name) {
+    var val;
+    var radios = form.elements[name];
+    for (var i=0, len=radios.length; i<len; i++) {
+      if ( radios[i].checked ) {
+        val = radios[i].value;
+        break;
+      }
+    }
+    return val;
+  }
+}
+
 
 /* Initialize Solid-Rest and friends, go to START_PAGE
 */

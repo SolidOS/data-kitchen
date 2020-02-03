@@ -51,7 +51,14 @@ async getResource(pathname,options,objectType){
 }
 
 async putResource(pathname,options){
-    return new Promise((resolve) => {
+    return new Promise(async (resolve) => {
+        let body = options.body ? options.body.toString() : ""
+        try {
+          await fs.writeFileSync(pathname,body)
+          return resolve([201])
+        }
+        catch(e){console.log(e); return resolve([500])}
+/*
         options.body = this._makeStream( options.body );
         options.body.pipe(fs.createWriteStream(pathname)).on('finish',()=>{
           resolve( [201] )
@@ -60,6 +67,7 @@ async putResource(pathname,options){
             resolve( [405] )
           resolve( [500] )
         })
+*/
     })
 }
 async deleteResource(fn){

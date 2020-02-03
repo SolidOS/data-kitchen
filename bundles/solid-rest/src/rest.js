@@ -184,6 +184,8 @@ async fetch(uri, options) {
     return  ([200,str])
   }
 
+
+
   /* treats filename ".acl" and ".meta" as extensions
   */
   function _getExtension(pathname) {

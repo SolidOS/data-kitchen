@@ -5,7 +5,6 @@
     <title>Solid Data Kitchen</title>
     <link rel="stylesheet" src="./mash.css"/>
     <link rel="stylesheet" href="assets/kitchen.css">
-    <script src="assets/kitchen.js"></script>
     <!--
       <meta http-equiv="Content-Security-Policy" content="script-src self">  
     -->
@@ -25,13 +24,8 @@
 <h1>Data Kitchen File Manager</h1>
 Use this form to manage files and folders in a pod or local file
 system or transfer them between one and the other.  
-<b>Caution :</b> actions on folders are recursive.  if you
-put your pod root as source and delete, it will recursively delete
-your pod.  This alos means you can backup your entire pod by 
-specifiying the source as  http://you.example.org/ and the target
-as file://somepath/. Folders always end in "/", files never do.
-<span style="color:red;font-weight:bold">
-In progress, not functional yet ...</span>
+<b>Caution :</b> actions on folders are recursive. URIs follow the same rules
+as in the dataBrowser, see help on URI shortcuts for info.
 </p>
 <table>
   <tr>
