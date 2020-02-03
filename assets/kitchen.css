@@ -4,6 +4,10 @@ body {
 textarea {
    min-width:20em !important;
 }
+#uriBarHelp {
+  font-size:small;
+  text-align:center;
+}
 #localBrowser,#webBrowser,#dataBrowser,#fileManager,#queryForm  {
   display:none;
 }
