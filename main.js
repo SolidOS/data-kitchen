@@ -156,7 +156,7 @@ const TEMPLATE = [
         click: async () => {
           // This is how to load a local file in the dataBrowser
           mainWindow.webContents.send(
-            'showKitchenPage','file:///public/','dataBrowser'
+            'showKitchenPage','./public/','dataBrowser'
           )
         }
       },
@@ -225,22 +225,27 @@ const TEMPLATE = [
           )
         }
       },
-      {
-        label: 'About the Solid Data Kitchen',
-        click: async () => {
-          // This is how to load a local file in the web browser
-          // file location (not a URL) is relative to install folder
-          mainWindow.webContents.send(
-            'showKitchenPage', 'assets/about.html'
-          )
-        }
-      },
       { label: 'How to customize Data Kitchen',
           click: async () => {
             mainWindow.webContents.send(
               'showKitchenPage', 'assets/config.html'
             )
           }
+      },
+      { label: 'Using URI shortcuts',
+          click: async () => {
+            mainWindow.webContents.send(
+              'showKitchenPage', 'assets/uri.html'
+            )
+          }
+      },
+      {
+        label: 'About the Solid Data Kitchen',
+        click: async () => {
+          mainWindow.webContents.send(
+            'showKitchenPage', 'assets/about.html'
+          )
+        }
       },
     ]
   }

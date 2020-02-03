@@ -14,26 +14,29 @@ Position can be either "center"  or an integer (no quotes).
 Leave as an empty sting to start with the Data Kitchen intro page or set it to any URI.
 </blockquote>
 
-<h2>Bookmarks</h2>
-
+<h2>LOCAL_BASE</h2>
 <blockquote>
-Add as many as you wish.  The URIs you supply will be opened in the dataBrowser.
+This variable allows you to use "./" as a shortcut in the dataBrowser.
+If LOCAL_BASE is set to "/home/me/", a request in the dataBrowser URI 
+bar for ./foo.txt will find the file "file:///home/me/foo.txt". You
+could have gotten to the same place by using that full URI.  If this
+variable is missing or empty, it will default to the "myPod" folder of your
+installation folder.
 </blockquote>
 
-<h2>File Root</h2>
+<h2>REMOTE_BASE</h2>
 <blockquote>
-<p>
-This is the document root of the local fileSystem, similar to an HTTPD 
-document root - if fileRoot is "/home/me/", then a URL of file:///public/
-will be mapped onto the folder at /home/me/public/.  The default
-fileRoot is the myPod folder of the installation. You can change it to
-any folder on your filesystem, including, if you wish and are able, the 
-root folder "/".
-</p><p>
-The fileRoot is not only the root folder for browsing, it is where Data
-Kitchen will look for your profile and preferences exactly as it does on
-a pod.  So you should recursively copy all of the files and folders in
-the myPod folder to your new fileRoot. So if you set the fileRoot to /home/me/, 
-copy ${installation folder}/myPod/* to /home/me/.
-</p></blockquote>
+This variable allows you to use "/" as a shortcut in the dataBrowser.
+If REMOTE_BASE is set to "https://me.example.org/public/", a request 
+in the dataBrowser URI bar for "/foo.txt" will look for the resource
+at "https://me.example.org/public/foo.txt". You could have gotten to
+the same place by using that full URI.  If this variable is missing 
+or empty, you will not be able to use this shortcut.
+</blockquote>
+
+<h2>Customize Bookmarks and Menus</h2>
+<blockquote>
+In progress. For now, you can edit it in main.js if you wish.
+</blockquote>
+
 

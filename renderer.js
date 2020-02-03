@@ -6,7 +6,8 @@ const BrowserFS            = require("./bundles/browserfs.min.js")
 const SolidRest            = require("./bundles/solid-rest/dist/main.js")
 const SolidFileStorage     = require('./bundles/solid-rest/src/file.js')
 const SolidBrowserFS       = require('./bundles/solid-rest/src/browserFS.js')
-
+let LOCAL_BASE
+let REMOTE_BASE
 /*
    Handle requests for pages
    pageType = dataBrowser  - the mashlib dataBrowser
@@ -16,16 +17,10 @@ const SolidBrowserFS       = require('./bundles/solid-rest/src/browserFS.js')
               queryForm    - form to send SPARQL queries
 */
 async function showKitchenPage(uri,pageType){
-/*
-  if(typeof uri!="string") {
- uri = ""
-//    uri = uriField.value || ""
-    pageType = 'dataBrowser'
-  }
-*/
   if(typeof uri != "string"){
     uri = uriField.value
   }
+  uri = mungeURI(uri)
   let pages = {
     fileManager  : document.getElementById('fileManager'),
     queryForm    : document.getElementById('queryForm'),
@@ -74,7 +69,19 @@ async function showKitchenPage(uri,pageType){
     // UI.widgets.makeDraggable(icon, subject) // beware many handlers piling up
     outliner.GotoSubject(subject, true, undefined, true, undefined);
   }
+  function mungeURI(uri){
+    if( uri.startsWith("./") && LOCAL_BASE ){
+      uri = uri.replace(/^\.\//,'')
+      return `${LOCAL_BASE}${uri}`
+    }
+    else if ( uri.startsWith("/") && REMOTE_BASE ){
+      uri = uri.replace(/^\//,'')
+      return `${REMOTE_BASE}${uri}`
+    }
+    return uri
+  }  
 }
+
 
 /* Initialize Solid-Rest and friends, go to START_PAGE
 */
@@ -89,10 +96,14 @@ async function init(){
      catch(e){console.log(e)}
   }
   cfg=cfg||{}
-  cfg.startPage = cfg.startPage || "assets/about.html"
-  cfg.fileRoot = cfg.fileRoot || path.join(__dirname,"/myPod")
+  LOCAL_BASE = cfg.LOCAL_BASE 
+  if(!LOCAL_BASE){
+    LOCAL_BASE = "file://" + path.join(__dirname,"/myPod/")
+  }
+  REMOTE_BASE = cfg.REMOTE_BASE
 
-  window.FILE_ROOT = cfg.fileRoot
+  cfg.startPage = cfg.startPage || "assets/about.html"
+
   window.solidRestInstance = new SolidRest(
     [
       new SolidBrowserFS(),
@@ -103,7 +114,7 @@ async function init(){
       /* this defines where file:/// points to
        * it should contain profile and settings files like a pod
        */
-      "fileRoot" : window.FILE_ROOT
+//      "fileRoot" : window.FILE_ROOT
     }
   )
   /* Solid Rest backends intialization
@@ -174,7 +185,7 @@ let initial
 if (arguments && arguments[2]) { // Electron command line
   initial = arguments[2]
 }
-initial = initial || "file:///public/"
+initial = initial || "./public/"
 uriField.value = initial
 
 init()

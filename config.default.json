@@ -4,7 +4,8 @@
   "windowWidth"  : 800,
   "windowHeight" : 600,
   "startPage"    : "",
-  "fileRoot"     : "",
+  "LOCAL_BASE"   : "",
+  "REMOTE_BASE"  : "https://timbl.solid.community/public/",
   "bookmarks"    : [
     {"label":"My local files",
        "uri":"file:///public/" 
