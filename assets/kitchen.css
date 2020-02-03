@@ -24,7 +24,9 @@ iframe#webBrowser {
   font-weight:italic;
   text-align:right;
   margin-top:2em;
-  margin-right:1em;
+  position:absolute;
+  bottom:1em;
+  right:1em;
 }
 #localBrowser {
   margin-left:1em;
