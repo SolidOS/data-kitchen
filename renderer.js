@@ -2,6 +2,7 @@ const path                 = require('path')
 const fs                   = require('fs')
 const jsonfile             = require('jsonfile');
 const {ipcRenderer,remote} = require('electron')
+const ns                   = require('solid-namespace')
 const BrowserFS            = require("./bundles/browserfs.min.js")
 const SolidRest            = require("./bundles/solid-rest/dist/main.js")
 const SolidFileStorage     = require('./bundles/solid-rest/src/file.js')
@@ -69,19 +70,32 @@ async function showKitchenPage(uri,pageType){
     // UI.widgets.makeDraggable(icon, subject) // beware many handlers piling up
     outliner.GotoSubject(subject, true, undefined, true, undefined);
   }
-  function mungeURI(uri){
-    if( uri.startsWith("./") && LOCAL_BASE ){
-      uri = uri.replace(/^\.\//,'')
-      return `${LOCAL_BASE}${uri}`
-    }
-    else if ( uri.startsWith("/") && REMOTE_BASE ){
-      uri = uri.replace(/^\//,'')
-      return `${REMOTE_BASE}${uri}`
-    }
-    return uri
-  }  
 }
 
+/* URI shortcuts
+*/
+function mungeURI(uri){
+  if( uri.startsWith("./") && LOCAL_BASE ){
+    uri = uri.replace(/^\.\//,'')
+    return `${LOCAL_BASE}${uri}`
+  }
+  else if ( uri.startsWith("/") && REMOTE_BASE ){
+    uri = uri.replace(/^\//,'')
+    return `${REMOTE_BASE}${uri}`
+  }
+  else if ( uri.startsWith("@") ){
+    let ary = uri.split(/:/)
+    let prefix = ary[0].replace(/@/,'')
+    let term = ary[1] ? ary[1] : ""
+    try{
+      uri = UI.ns[prefix](term).uri
+      if(!term)  uri = uri.replace(/#$/,'')
+      return uri
+    }
+    catch(e) {alert("Sorry, couldn't expand "+uri)}
+  }
+  return uri
+}  
 
 /* Initialize Solid-Rest and friends, go to START_PAGE
 */

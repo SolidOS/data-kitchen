@@ -18,9 +18,9 @@ li em {
   <li><em>http</em> - absolute remote or localhost web address</li>
   <li><em>file</em> - absolute local file system address</li>
   <li><em>app</em> - absolute in-browser address (e.g. IndexedDB)</li>
-  <li><em>/</em> - (slash) - remote address relative to REMOTE_BASE</li>
-  <li><em>./</em> - (dot slash) - local file system address relative to LOCAL_BASE</li>
-  <li><em>:</em> - (colon) - address of an ontology (see below)</li>
+  <li><em>/</em> - remote address relative to REMOTE_BASE</li>
+  <li><em>./</em> - local file system address relative to LOCAL_BASE</li>
+  <li><em>@</em> - address of an ontology (see below)</li>
 </ul>
 
 URI ends with
@@ -33,10 +33,11 @@ URI ends with
 Ontology shortcuts
 <ul>
  <li>
- If the URI is in the form :prefix:term, where prefix is an RDF prefix
+ If the URI is in the form @prefix:term where prefix is an RDF prefix
  known to the Solid namespace, it will be expanded to the full URI.
- For example, :ldp:Container will bring you to http://www.w3.org/ns/ldp#Container.
- (note:in progress, not yet implemented)
+ For example, @ldp:Container will bring you to http://www.w3.org/ns/ldp#Container.
+ If you want to start out at the top level of the ontology, leave off
+ the colon and term.  For example, "@ldp" brings you to http://www.w3.org/ns/ldp
  </li>
 </ul>
 </p>
@@ -46,7 +47,6 @@ Some examples
   <li>if REMOTE_BASE is set to "https://you.example.org/public/"
   the URI "/foo" will expand to  "https://you.example.org/public/foo"
   </li>
-
   <li>
    if LOCAL_BASE is set to "file:///home/me/data/"
    the URI "./foo" will expand to  "file:///home/me/data/foo"

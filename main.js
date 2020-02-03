@@ -239,6 +239,13 @@ const TEMPLATE = [
             )
           }
       },
+      { label: 'Setting up a local profile',
+          click: async () => {
+            mainWindow.webContents.send(
+              'showKitchenPage', 'assets/setup.html'
+            )
+          }
+      },
       {
         label: 'About the Solid Data Kitchen',
         click: async () => {
