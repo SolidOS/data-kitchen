@@ -42,7 +42,8 @@ async  getObjectType(fn,options){
 }
 
 async getResource(pathname,options,objectType){
-  //  const bodyData = await fs.createReadStream(pathname)
+  // rdflib won't accept this Readable Stream
+  // const bodyData = await fs.createReadStream(pathname)
   const bodyData = await fs.readFile(pathname)
   return [
     200,
@@ -50,16 +51,74 @@ async getResource(pathname,options,objectType){
   ]
 }
 
-async putResource(pathname,options){
-    return new Promise(async (resolve) => {
-        let body = options.body ? options.body.toString() : ""
+/*
+    options.body = options.body || ""
+//    if(!options.body.pipe){
         try {
-          await fs.writeFileSync(pathname,body)
+//          var opts = {encoding:'utf-8', flag:'w'};
+//          var opts = {encoding:'base64', flag:'w'};
+//          await fs.writeFileSync(pathname,options.body,opts)
+          await fs.writeFileSync(pathname,options.body)
           return resolve([201])
         }
         catch(e){console.log(e); return resolve([500])}
+//    }
+*/
+
+async putResource(pathname,options){
+    let successCode = (options.objectExists) ? 200 : 201;
+    let failureCode = 
+        ( options.method==="PUT" && options.objectType==="Container" )
+        ? 409 : 500
+    return new Promise(async (resolve) => {
+        if(failureCode===409) return resolve( [failureCode] )
+        if(typeof options.body==="string"){
+            try {
+              await fs.writeFile(pathname,options.body)
+              return resolve([successCode])
+            }
+            catch(e){ console.log(e); return resolve([failureCode])}
+        }
+        if(options.body && !options.body.pipe 
+         && typeof FileReader !="undefined" 
+         ){
+            var fileReader = new FileReader();
+            fileReader.onload = function() {
+                fs.writeFileSync(pathname, Buffer.from(
+                    new Uint8Array(this.result))
+                )
+            }
+            fileReader.onloadend = () => {return resolve([successCode])}
+            fileReader.onerror = (err) => {console.log(err);return resolve([failureCode])}
+            fileReader.readAsArrayBuffer(options.body);
+            
+        }
+        else {
+            options.body = options.body || ""
+            options.body = this._makeStream( options.body );
+            options.body.pipe(fs.createWriteStream(pathname)).on('finish',()=>{
+                return resolve( [successCode] )
+            }).on('error', (err) => { 
+                console.log(err)
+                return resolve( [failureCode] )
+           })
+        }
+    })
+}
 /*
-        options.body = this._makeStream( options.body );
+async putResource(pathname,options){
+  return new Promise(async (resolve) => {
+    options.body = this._makeStream( options.body );
+    if(options.body.pipeTo){
+      let response=await options.body.pipeTo(fs.createWriteStream(pathname))
+      console.log(response)
+      if(response.ok) resolve( [201] )
+      else { resolve ( [500] ) }
+    }
+  })
+}
+*/
+/*
         options.body.pipe(fs.createWriteStream(pathname)).on('finish',()=>{
           resolve( [201] )
         }).on('error', (err) => { 
@@ -68,8 +127,7 @@ async putResource(pathname,options){
           resolve( [500] )
         })
 */
-    })
-}
+
 async deleteResource(fn){
     return new Promise(function(resolve) {
         fs.unlink( fn, function(err) {

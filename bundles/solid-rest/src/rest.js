@@ -1,6 +1,7 @@
 const Url      = require('url')
 const path     = require("path");
-const { Response }  = require('node-fetch')
+//const { Response }  = require('node-fetch')
+const { Response }  = require('cross-fetch')
 const contentTypeLookup = require('mime-types').contentType
 
 class SolidRest {
@@ -105,8 +106,9 @@ async fetch(uri, options) {
   if( options.method==="POST"){
     if( !objectExists ) return _response(notFoundMessage, resOptions, 404)
     let link = options.headers.Link || options.headers.link
+    options.link=link
     let slug = options.headers.Slug || options.headers.slug || options.slug
-    if(slug.match(/\//)) return _response(null, resOptions, 400) // Now returns 400 instead of 404
+    if(slug.match(/\//)) return _response(null, resOptions, 400)
     pathname = path.join(pathname,slug);
     if( link && link.match("Container") ) {
       const [status, , headers] =  await self.storage(options).postContainer(pathname,options)

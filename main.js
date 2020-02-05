@@ -172,7 +172,7 @@ const TEMPLATE = [
         click: async () => {
           // This is how to load a remote web page in the dataBrowser
           mainWindow.webContents.send(
-            'showKitchenPage','https://timbl.solid.community/','dataBrowser'
+            'showKitchenPage','https://timbl.solid.community/public/','dataBrowser'
           )
         }
       },
@@ -180,7 +180,14 @@ const TEMPLATE = [
         click: async () => {
           // This is how to load a remote web page in the dataBrowser
           mainWindow.webContents.send(
-            'showKitchenPage','https://timbl.inrupt.net/','dataBrowser'
+            'showKitchenPage','https://timbl.inrupt.net/public/','dataBrowser'
+          )
+        }
+      },
+      { label: 'A sample Ontology search',
+        click: async () => {
+          mainWindow.webContents.send(
+            'showKitchenPage','@ldp','dataBrowser'
           )
         }
       },
@@ -208,7 +215,7 @@ const TEMPLATE = [
     label: 'Query',
     click: async () => {
       mainWindow.webContents.send(
-            'showKitchenPage','assets/sparql.html','queryForm'
+            'showKitchenPage','','queryForm'
       )
     },
   },

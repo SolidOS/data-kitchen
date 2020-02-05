@@ -13,38 +13,73 @@
   </head>
   <body>
 <!-- QUERY FORM -->
-<div id="queryForm" class="kitchenForm">
+<form id="queryForm" action="#" onsubmit="" class="kitchenForm">
 <h1>Data Kitchen SPARQL Query Form</h1>
+<p>
+Use the rdflib subset of SPARQL to query one or more sources.  Mix and  match 
+local and remote sources using kitchen shortcuts or full URIs.
+</p>
+<p><b>This form is in progress ... not yet functional.</b></p>
+<table>
+  <tr>
+    <th>SELECT</th>
+    <td>
+      <textarea id="sparqlFields" type="text" placeholder=
+       " space-separated list of fields to return" /></textarea>
+    </td>
+  </tr>
+  <tr>
+    <th>FROM</th>
+    <td>
+      <textarea id="sparqlEndpoint" type="text" placeholder=
+       " space-separated list of endpoints" /></textarea>
+    </td>
+  </tr>
+  <tr>
+    <th>WHERE</th>
+    <td>
+      <textarea id="sparqlEndpoint" type="text" placeholder=
+       " SPARQL where clause in rdflib dialect" /></textarea>
+      <div class="buttonContainer">
+        <button id="submitFileManager" onclick="manageFiles(event)">
+          Run Query
+        </button>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th></th>
+    <td></td>
+  </tr>
+</table>
 
-<h3>coming soon...</h3>
+</form>
 
-</div>
 <!-- FILE-MANAGER -->
 <form id="fileManager" action="#" onsubmit="" class="kitchenForm">
 <h1>Data Kitchen File Manager</h1>
 Use this form to manage files and folders in a pod or local file
 system or transfer them between one and the other.  
-<b>Caution :</b> actions on folders are recursive. URIs follow the same rules
-as in the dataBrowser, see help on URI shortcuts for info.
+<b>Caution :</b> actions on folders are recursive. 
 </p>
 <table>
   <tr>
     <th>action</th>
     <td>
-      <input type="radio" name="action" value="move" checked>move &nbsp;
-      <input type="radio" name="action" value="copy">copy &nbsp;
+      <input type="radio" name="action" value="copy" checked>copy &nbsp;
+      <input type="radio" name="action" value="move">move &nbsp;
       <input type="radio" name="action" value="delete">delete
     </td>
   </tr>
   <tr>
     <th>source</th>
     <td>
-      <input id="sourceUri" type="text" placeholder=" full URI of file or folder">
+      <input id="sourceUri" type="text" placeholder=" URI of local or remote source file or folder; shortcuts ok">
     </td>
   </tr>
   <tr>
     <th>target</th>
-    <td><input id="targetUri" type="text" placeholder=" full URI of file or folder"></td>
+    <td><input id="targetUri" type="text" placeholder=" URI of local or remote target file or folder; shortcuts ok"></td>
   </tr>
   <tr>
     <th>include .acl?</th>

@@ -41,7 +41,7 @@ iframe#webBrowser {
 {
   font-weight:400 !important;
 }
-#localBrowser em {
+#localBrowser em, .kitchenForm em {
   color:brown;
 }
 #localBrowser i {
@@ -76,6 +76,12 @@ iframe#webBrowser {
   width:100%;
   minwidth: 25em;
   height:2.5em;
+  font-size:1rem;
+}
+.kitchenForm textarea {
+  width:100%;
+  minwidth: 25em;
+  height:80px;
 }
 .kitchenForm .buttonContainer {
   margin-top:1em;
