@@ -21,7 +21,7 @@ let REMOTE_BASE
 */
 async function showKitchenPage(uri,pageType){
   document.getElementById("versionsFooter").style.display="none"
-  document.getElementById("loginButtons").style.display="none"
+  document.getElementById("kitchenMenu").style.display="none"
   if(typeof uri != "string"){
     uri = uriField.value
   }
@@ -64,7 +64,9 @@ async function showKitchenPage(uri,pageType){
   // 
   else {
     pages['dataBrowser'].style.display="block"
-    document.getElementById("loginButtons").style.display="block"
+    document.getElementById("kitchenMenu").style.display="block"
+    document.getElementById("saveButton").style.display="inline-block"
+    document.getElementById("logoutButton").style.display="inline-block"
     if(uri==="none") return
     uriField.value = uri
     console.log("User field " + uriField.value)
@@ -170,6 +172,11 @@ async function manageFiles(e) {
     logoutButton : document.getElementById('logoutButton'),
   }
 
+  async function kitchenSave () {
+    await showKitchenPage("none","fileManager");
+    document.getElementById("sourceUri").value = uriField.value
+    document.getElementById("targetUri").value = ""
+  }
   async function kitchenLogin () {
     await solid.auth.logout()
     const popupUri = 'https://solid.community/common/popup.html'

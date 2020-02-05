@@ -7,7 +7,10 @@ textarea {
 #dataBrowser {
   margin-top:2em;
 }
-#loginButton, #logoutButton {
+#kitchenMenu button{
+  display:inline-block;
+}
+#kitchenMenu {
   display:none;
   position:absolute;
   top:0;
