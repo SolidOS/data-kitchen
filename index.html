@@ -108,9 +108,18 @@ folders end in slashes, files do not!
 </table>   
 </form>
 <!-- END OF FILE-MANAGER -->
-<div id="kitchenMenu" width="100%">
-    <button id="saveButton" onclick="kitchenSave()">Save</button><button id="loginButton" onclick="kitchenLogin()">Login</button><button id="logoutButton" onclick="kitchenLogout()">Logout</button>
 
+<div id="kitchenMenu" width="100%">
+    <button id="queryButton" onclick="kitchenQuery()" title=
+      "Run SPARQL with current document as endpoint"
+    >Query</button>
+    <button id="saveButton" onclick="kitchenSave()" title=
+      "Save current document to a pod or local file"
+    >Save</button>
+    <button id="loginButton" onclick="kitchenLogin()" title=
+      "not needed for local or public files"
+    >Login</button>
+    <button id="logoutButton" onclick="kitchenLogout()">Logout</button>
 </div>
 
   <iframe id="webBrowser" name="webBrowser" src=""></iframe>

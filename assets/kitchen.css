@@ -60,7 +60,9 @@ iframe#webBrowser {
   font-weight:400 !important;
 }
 #localBrowser em, .kitchenForm em {
-  color:brown;
+//  color:brown;
+font-weight:600;
+
 }
 #localBrowser i {
   font-weight:300 !important;
@@ -68,7 +70,7 @@ iframe#webBrowser {
 #localBrowser ul {
   padding-left:1em;  
   margin-left:1em;
-  line-height:1.5em;  
+  line-height:1.75em;  
 }
 .kitchenForm {
   margin-left:1em;
