@@ -1,6 +1,10 @@
 # data-kitchen
 The solid databrowser technology as a stand-alone electron app
 
+**Note: many additions and changes, run the app and use the help menu to learn
+about them**
+
+
 ## To run
 
 ```
@@ -17,8 +21,6 @@ npm package
 
 ```
 See the many other options of electron-packager.
-
-## see [README.jz](./README.jz.md) for details of this fork
 
 ## Goals
 The goal of this project is to provide a kitchen where the user is cook, and
