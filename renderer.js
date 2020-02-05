@@ -10,6 +10,7 @@ const SolidBrowserFS       = require('./bundles/solid-rest/src/browserFS.js')
 const SolidFileClient      = require("./bundles/solid-file-client.bundle.js")
 let LOCAL_BASE
 let REMOTE_BASE
+
 /*
    Handle requests for pages
    pageType = dataBrowser  - the mashlib dataBrowser
@@ -20,6 +21,7 @@ let REMOTE_BASE
 */
 async function showKitchenPage(uri,pageType){
   document.getElementById("versionsFooter").style.display="none"
+  document.getElementById("loginButtons").style.display="none"
   if(typeof uri != "string"){
     uri = uriField.value
   }
@@ -62,6 +64,7 @@ async function showKitchenPage(uri,pageType){
   // 
   else {
     pages['dataBrowser'].style.display="block"
+    document.getElementById("loginButtons").style.display="block"
     if(uri==="none") return
     uriField.value = uri
     console.log("User field " + uriField.value)
@@ -162,6 +165,27 @@ async function manageFiles(e) {
   }
 }
 
+  let button = {
+    loginButton  : document.getElementById('loginButton'),
+    logoutButton : document.getElementById('logoutButton'),
+  }
+
+  async function kitchenLogin () {
+    await solid.auth.logout()
+    const popupUri = 'https://solid.community/common/popup.html'
+    const session = await solid.auth.popupLogin({popupUri:popupUri})
+    if (session) {
+      // Make authenticated request to the server to establish a session cookie
+      const {status} = await solid.auth.fetch(location)
+      if (status === 401) {
+        alert(`Invalid login.`)
+        await solid.auth.logout()
+      }
+    }
+  }
+  async function kitchenLogout () {
+    await solid.auth.logout()
+  }
 
 /* Initialize Solid-Rest and friends, go to START_PAGE
 */
@@ -184,18 +208,25 @@ async function init(){
 
   cfg.startPage = cfg.startPage || "assets/about.html"
 
-  window.solidRestInstance = new SolidRest(
+  if(typeof solid === "undefined") solid = {}
+  solid.auth = solid.auth || SolidAuthClient
+  solid.auth.trackSession(async session => {
+    if (!session) {
+      button.logoutButton.style.display="none"
+      button.loginButton.style.display="block"
+    }
+    else {
+      button.loginButton.style.display="none"
+      button.logoutButton.style.display="block"
+      button.logoutButton.title = session.webId
+    }
+  })
+  solid.rest = new SolidRest(
     [
       new SolidBrowserFS(),
       new SolidFileStorage(),
       // could add other solid-rest backend plugins here
-    ],
-    {
-      /* this defines where file:/// points to
-       * it should contain profile and settings files like a pod
-       */
-//      "fileRoot" : window.FILE_ROOT
-    }
+    ]
   )
   /* Solid Rest backends intialization
     - localStorage is included by default
@@ -206,7 +237,7 @@ async function init(){
     - HTML5FS is the native file API currently only implemented in chrome
         and requires enabling in chrome://flags
   */
-  window.solidRestInstance.storage("bfs").initBackends({
+  solid.rest.storage("bfs").initBackends({
       '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
       '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"}}
       //  '/Dropbox' : { fs: "Dropbox", options:{client: dropCli} }

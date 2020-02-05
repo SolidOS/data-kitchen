@@ -4,6 +4,21 @@ body {
 textarea {
    min-width:20em !important;
 }
+#dataBrowser {
+  margin-top:2em;
+}
+#loginButton, #logoutButton {
+  display:none;
+  position:absolute;
+  top:0;
+  right:0;
+}
+#uriField {
+  font-size:100%;
+  min-width:30em; 
+  padding:0.5em;
+  width:95%;
+}
 #uriBarHelp {
   display:none;
   font-size:small;
