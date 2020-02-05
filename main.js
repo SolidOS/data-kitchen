@@ -1,7 +1,6 @@
 const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const jsonfile = require('jsonfile');
-const KitchenMenu = require(path.join(__dirname,"assets/menu.js"))
 
 let mainWindow
 let MENU
