@@ -1,35 +1,25 @@
 const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const jsonfile = require('jsonfile');
+const KitchenMenu = require(path.join(__dirname,"assets/menu.js"))
+
+let mainWindow
+let MENU
 
 console.log('@@ main.js argv[2] ' + process.argv[2])
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+app.on('ready', createWindow)
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit()
+})
+app.on('activate', function () {
+  if (mainWindow === null) createWindow()
+})
 
+/* Create the browser window and load the startup file
+*/
 async function createWindow () {
-
-  /* get configs
-  */
-  const configFile = path.join(__dirname,"config.json")
-  const defaultConfigFile = path.join(__dirname,"config.default.json")
-  let cfg
-  try{ cfg = await jsonfile.readFileSync( configFile ) }
-  catch(e){if(!e.toString().match("ENOENT"))console.log(e)}
-  if(typeof cfg ==="undefined"){
-     try{  cfg = await jsonfile.readFileSync( defaultConfigFile ) }
-     catch(e){console.log(e)}
-  }
-  console.log(cfg)
-  cfg = cfg || {}
-  cfg.width  = cfg.windowWidth  || 800
-  cfg.height = cfg.windowHeight || 600
-  cfg.windowX = typeof cfg.windowX==="string" ? undefined : cfg.windowX
-  cfg.windowy = typeof cfg.windowY==="string" ? undefined : cfg.windowY
-
-  /* Create the browser window.
-  */
+  let cfg = getWindowConfig()
   mainWindow = new BrowserWindow({
     width: cfg.width,
     height: cfg.height,
@@ -42,12 +32,12 @@ async function createWindow () {
       nodeIntegration: true
     }
   })
-
   if (process.argv) {
     global.commandlineArgs = process.argv.slice()
-    console.log('main.js: saved args in various places: ' + global.commandlineArgs.join(', '))
+    console.log(
+      'main.js: saved args in various places: '+global.commandlineArgs.join(', ')
+    )
   }
-
   /* load the main page */
   mainWindow.loadFile('index.html')
   // mainWindow.webContents.openDevTools()
@@ -56,24 +46,55 @@ async function createWindow () {
   })
 }
 
-    app.on('ready', createWindow)
-    app.on('window-all-closed', function () {
-        // On macOS it is common for applications and their menu bar
-        // to stay active until the user quits explicitly with Cmd + Q
-        if (process.platform !== 'darwin') app.quit()
-    })
-    app.on('activate', function () {
-        // On macOS it's common to re-create a window in the app when the
-        // dock icon is clicked and there are no other windows open.
-        if (mainWindow === null) createWindow()
-    })
+async function getWindowConfig(){
+  const configFile        = path.join(__dirname,"config.json")
+  const defaultConfigFile = path.join(__dirname,"config.default.json")
+  let cfg
+  try{ 
+    cfg = await jsonfile.readFileSync( configFile ) 
+  }
+  catch(e){
+    if(!e.toString().match("ENOENT"))console.log(e)
+  }
+  if(typeof cfg ==="undefined"){
+    try{
+      cfg = await jsonfile.readFileSync( defaultConfigFile ) 
+    }
+    catch(e){console.log(e)}
+  }
+  cfg = cfg || {}
+  cfg.width  = cfg.windowWidth  || 800
+  cfg.height = cfg.windowHeight || 600
+  cfg.windowX = typeof cfg.windowX==="string" ? undefined : cfg.windowX
+  cfg.windowy = typeof cfg.windowY==="string" ? undefined : cfg.windowY
+  if( cfg.bookmarks ){
+    let newBM = []
+    for(var b=0;b<cfg.bookmarks.length;b++){
+      let uri = cfg.bookmarks[b].uri
+      newBM.push({
+        label : cfg.bookmarks[b].label,
+        click : async () => {
+          mainWindow.webContents.send( 'showKitchenPage', uri )
+        },
+      })
+    }
+    MENU = getMenu()
+    for(var i=0;i<MENU.length;i++){
+      if(MENU[i].label==="Bookmarks"){
+        MENU[i].submenu=newBM
+      }
+    }
+const menu = Menu.buildFromTemplate(MENU)
+Menu.setApplicationMenu(menu)
 
-const isMac = process.platform === 'darwin'
+//    cfg.bookmarks = newBM
+  }
+  return cfg
+}
 
-// The TEMPLATE variable holds the top level menu options
-// Edit as you wish
-//
-const TEMPLATE = [
+function getMenu() {
+  const isMac = process.platform === 'darwin'
+  return [
   // { role: 'appMenu' }
   ...(isMac ? [{
     label: app.name,
@@ -265,5 +286,21 @@ const TEMPLATE = [
   }
 ]
 
-const menu = Menu.buildFromTemplate(TEMPLATE)
-Menu.setApplicationMenu(menu)
+}
+
+
+
+
+/*
+function openExternal(path,program){
+  var child = require('child_process').execFile;
+  var executablePath = "/usr/bin/emacs24"
+  var parameters = ["-nw",path];
+  child( executablePath, parameters, (err,data)=>{
+     console.log(err)
+     console.log(data.toString());
+  });
+}
+*/
+
+

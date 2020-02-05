@@ -5,8 +5,9 @@ textarea {
    min-width:20em !important;
 }
 #uriBarHelp {
+  display:none;
   font-size:small;
-  text-align:center;
+  text-align:right;
 }
 #localBrowser,#webBrowser,#dataBrowser,#fileManager,#queryForm  {
   display:none;
@@ -27,13 +28,12 @@ iframe#webBrowser {
   font-size:0.8em;
   font-weight:italic;
   text-align:right;
-  margin-top:2em;
-  margin-bottom:1em;
-  right:1em;
+  margin:2em;
 }
 #localBrowser {
-  margin-left:1em;
-  margin-right:1em;
+  margin-left:2em;
+  margin-right:2em;
+  max-width:780px;
   overflow:auto !important;
 }
 #localBrowser h1, #localBrowser h2,
@@ -81,7 +81,7 @@ iframe#webBrowser {
 .kitchenForm textarea {
   width:100%;
   minwidth: 25em;
-  height:80px;
+  height:50px;
 }
 .kitchenForm .buttonContainer {
   margin-top:1em;
