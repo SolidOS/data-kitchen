@@ -67,7 +67,10 @@ async function showKitchenPage(uri,pageType){
     pages['dataBrowser'].style.display="block"
     document.getElementById("kitchenMenu").style.display="block"
     document.getElementById("saveButton").style.display="inline-block"
+/*
     document.getElementById("logoutButton").style.display="inline-block"
+    document.getElementById("loginButton").style.display="inline-block"
+*/
     if(uri==="none") return
     uriField.value = uri
     console.log("User field " + uriField.value)
@@ -288,11 +291,11 @@ async function init(){
   solid.auth.trackSession(async session => {
     if (!session) {
       button.logoutButton.style.display="none"
-      button.loginButton.style.display="block"
+      button.loginButton.style.display="inline-block"
     }
     else {
       button.loginButton.style.display="none"
-      button.logoutButton.style.display="block"
+      button.logoutButton.style.display="inline-block"
       button.logoutButton.title = session.webId
     }
   })
