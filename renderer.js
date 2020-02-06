@@ -246,8 +246,11 @@ async function manageFiles(e) {
 /* Initialize Solid-Rest and friends, go to START_PAGE
 */
 async function init(){
-  const configFile = path.join(__dirname,"config.json")
-  const defaultConfigFile = path.join(__dirname,"config.default.json")
+  let installDir = process.platform.match(/^win/) 
+    ? __dirname.replace(/^.:/,'')
+    : __dirname
+  const configFile = path.join(installDir,"config.json")
+  const defaultConfigFile = path.join(installDir,"config.default.json")
   let cfg
   try{ cfg = await jsonfile.readFileSync( configFile ) }
   catch(e){if(!e.toString().match("ENOENT"))console.log(e)}
@@ -258,7 +261,7 @@ async function init(){
   cfg=cfg||{}
   LOCAL_BASE = cfg.LOCAL_BASE 
   if(!LOCAL_BASE){
-    LOCAL_BASE = "file://" + path.join(__dirname,"/myPod/")
+    LOCAL_BASE = "file://" + path.join(installDir,"/myPod/")
   }
   REMOTE_BASE = cfg.REMOTE_BASE
 
