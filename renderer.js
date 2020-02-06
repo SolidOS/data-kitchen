@@ -8,6 +8,7 @@ const SolidRest            = require("./bundles/solid-rest/dist/main.js")
 const SolidFileStorage     = require('./bundles/solid-rest/src/file.js')
 const SolidBrowserFS       = require('./bundles/solid-rest/src/browserFS.js')
 const SolidFileClient      = require("./bundles/solid-file-client.bundle.js")
+const SparqlFiddle         = require("./bundles/rdf-easy.js")
 let LOCAL_BASE
 let REMOTE_BASE
 
@@ -106,6 +107,47 @@ function mungeURI(uri){
   return uri
 }  
 
+async function handleQuery(evemt){
+  event.preventDefault()
+  const sparql = new SparqlFiddle( solid.auth )
+  let endpoint = mungeURI(document.getElementById('sparqlEndpoint').value)
+  let query    = document.getElementById('sparqlQuery').value
+  if(!endpoint||!query){return alert("You must supply an endpoint and a query.")}
+  let results
+  try {
+    results  = await sparql.query(endpoint,query)
+  }
+  catch(e){
+    alert(e);return false
+  }
+  console.log(`querying ${endpoint} ${query} `)
+  let columnHeads = Object.keys(results[0]).reverse()
+  let table = "<table>"
+  let topRow = ""
+  for(c in columnHeads){
+    topRow += `<th>${columnHeads[c]}</th>`
+  }
+  table += `<tr>${topRow}</tr>`
+  for(r in results){
+    let row = ""
+    for(k in columnHeads){
+      let uri = results[r][columnHeads[k]]
+      if(typeof uri === "undefined") uri = "";
+      if(row.length===0 && uri.startsWith("n")) { row+="none";continue }
+      let ary = uri.split(/#/)
+      let term = ary[1] || uri
+      term = term.replace(LOCAL_BASE,'./').replace(REMOTE_BASE,'/').replace("http://www.iana.org/assignments/link-relations/",'')
+      let title = uri
+      uri = `showKitchenPage('${uri}','dataBrowser')`
+      row += `<td><a href="#" onclick="${uri}" title="${title}">${term}</a></td>`
+    }
+    if(row.startsWith("none")) continue
+    table += `<tr>${row}</tr>`
+  }
+  table += "</table>"
+  document.getElementById('queryResults').innerHTML = table
+  return false
+}
 /* Manage Files
 */
 async function manageFiles(e) {
@@ -177,6 +219,10 @@ async function manageFiles(e) {
     document.getElementById("sourceUri").value = uriField.value
     document.getElementById("targetUri").value = ""
   }
+  async function kitchenQuery () {
+    await showKitchenPage("none","queryForm");
+    document.getElementById("sparqlEndpoint").value = uriField.value
+  }
   async function kitchenLogin () {
     await solid.auth.logout()
     const popupUri = 'https://solid.community/common/popup.html'
@@ -216,19 +262,9 @@ async function init(){
   cfg.startPage = cfg.startPage || "assets/about.html"
 
   if(typeof solid === "undefined") solid = {}
-  solid.auth = solid.auth || SolidAuthClient
-  solid.auth.trackSession(async session => {
-    if (!session) {
-      button.logoutButton.style.display="none"
-      button.loginButton.style.display="block"
-    }
-    else {
-      button.loginButton.style.display="none"
-      button.logoutButton.style.display="block"
-      button.logoutButton.title = session.webId
-    }
-  })
-  solid.rest = new SolidRest(
+  solid.auth   = solid.auth || SolidAuthClient
+
+  solid.rest   = new SolidRest(
     [
       new SolidBrowserFS(),
       new SolidFileStorage(),
@@ -249,9 +285,20 @@ async function init(){
       '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"}}
       //  '/Dropbox' : { fs: "Dropbox", options:{client: dropCli} }
   })
+  solid.auth.trackSession(async session => {
+    if (!session) {
+      button.logoutButton.style.display="none"
+      button.loginButton.style.display="block"
+    }
+    else {
+      button.loginButton.style.display="none"
+      button.logoutButton.style.display="block"
+      button.logoutButton.title = session.webId
+    }
+  })
   showKitchenPage(cfg.startPage)
 }
-
+// SELECT ?uri WHERE (<> ldp:contains ?uri)
 /* Set up The Tabulator
 */
 const UI = panes.UI

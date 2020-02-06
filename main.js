@@ -7,6 +7,8 @@ let MENU
 
 console.log('@@ main.js argv[2] ' + process.argv[2])
 
+app.commandLine.appendSwitch('restore-last-session', 'true');
+
 app.on('ready', createWindow)
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
@@ -252,6 +254,7 @@ function getMenu() {
           )
         }
       },
+/*
       { label: 'How to customize Data Kitchen',
           click: async () => {
             mainWindow.webContents.send(
@@ -273,6 +276,7 @@ function getMenu() {
             )
           }
       },
+*/
       {
         label: 'About the Solid Data Kitchen',
         click: async () => {

@@ -13,45 +13,38 @@
   </head>
   <body>
 <!-- QUERY FORM -->
-<form id="queryForm" action="#" onsubmit="" class="kitchenForm">
+<form id="queryForm" action="" onsubmit="" class="kitchenForm">
 <h1>Data Kitchen SPARQL Query Form</h1>
+<!--
 <p>
 Use the rdflib subset of SPARQL to query one or more sources.  Mix and  match 
 local and remote sources using kitchen shortcuts or full URIs.
 </p>
 <p><b>This form is in progress ... not yet functional.</b></p>
+-->
 <table>
   <tr>
-    <th>SELECT</th>
-    <td>
-      <textarea id="sparqlFields" type="text" placeholder=
-       " space-separated list of fields to return" /></textarea>
-    </td>
-  </tr>
-  <tr>
-    <th>FROM</th>
+    <th>Endpoint</th>
     <td>
       <textarea id="sparqlEndpoint" type="text" placeholder=
-       " space-separated list of endpoints" /></textarea>
+       " SPARQL endpoint, shortcuts okay" /></textarea>
     </td>
-  </tr>
-  <tr>
-    <th>WHERE</th>
-    <td>
-      <textarea id="sparqlEndpoint" type="text" placeholder=
-       " SPARQL where clause in rdflib dialect" /></textarea>
-      <div class="buttonContainer">
-        <button id="submitFileManager" onclick="manageFiles(event)">
-          Run Query
-        </button>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <th></th>
     <td></td>
   </tr>
+  <tr>
+    <th>Query</th>
+    <td>
+      <textarea id="sparqlQuery" type="text" placeholder=
+       " SPARQL query" /></textarea>
+    </td>
+    <td>
+        <button id="queryFormButton" onclick="handleQuery(event)">
+          Run Query</button>
+    </td>
+  </tr>
 </table>
+
+<div id="queryResults"></div>
 
 </form>
 

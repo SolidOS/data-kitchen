@@ -8,7 +8,7 @@
 <div id="page">
 <h1>Solid Data Kitchen</h1>
 
-<p><em>A stand-alone data browser for everyone and everything</em></p>
+<p><b>A stand-alone data browser for everyone and everything</b></p>
 
 <p>
 This project provides a kitchen where the user is cook, and
@@ -22,24 +22,144 @@ Bring in public data like dbpedia and wikidata and the LOD cloud.
 </p>
 <h2>How to cook</h2>
 <ul>
-<li><em>DataBrowser</em> - explore pods and other linked data sources</li>
+<li><b>DataBrowser</b> - explore pods and other linked data sources</li>
 <ul>
-<li><em>Query button</em> - use current DataBrowser location as a SPARQL endpoint</li>
-<li><em>Save button</em> - save documents from the DataBrowser to a local file or to a pod</li>
-<li><em>URI shortcuts</em> - quick links to pods, files, and ontologies</li>
+<li><b>Query button</b> - query current DataBrowser location as a SPARQL endpoint</li>
+<li><b>Save button</b> - save documents from the DataBrowser to a local file or to a pod</li>
+<li><b>URI shortcuts</b> - quick links to pods, files, and ontologies</li>
 </ul>
-<li><em>File menu</em> - copy/move files in a pod, between pods; between pods and local file system</li>
-<li><em>Query form</em> - search multiple sources at once, results link back to DataBrowser
-<li><em>Bookmarks menu</em> - comes pre-loaded with samples, see below on how to customize</li>
-<li><em>See also :</em>
-<a href="#customize">customizin the kitchen</a> |
-<a href="#">URI shortcuts</a>  |
-<a href="#">setting up a local profile</a>
-</li>
-
+<li><b>File menu</b> - copy/move files in a pod, between pods; between pods and local file system</li>
+<li><b>Query form</b> - use SPARQL to query local files or remote data, results link back to DataBrowser
+<li><b>Bookmarks menu</b> - comes pre-loaded with samples, see below on how to customize</li>
 </ul>
 
-<h2><a name="customize">Customizing the Data Kitchen</a></h2>
+<h2>Customizing the Data Kitchen</h2>
+
+<p>
+Copy <em>installFolder/config.default.json</em> to <em>installFolder/config.json</em>. Then edit the following fields:
+</p>
+
+<p><b>Window size and position</b></p>
+<blockquote>
+Position can be either "center"  or an integer (no quotes).
+</blockquote>
+
+<b>Start Page</b>
+
+<blockquote>
+Leave as an empty sting to start with the Data Kitchen intro page or set it to any URI.
+</blockquote>
+
+<b>LOCAL_BASE</b>
+<blockquote>
+This variable allows you to use "./" as a shortcut in the dataBrowser.
+If LOCAL_BASE is set to "file:///home/me/", a request in the dataBrowser URI 
+bar for ./foo.txt will find the file "file:///home/me/foo.txt". You
+could have gotten to the same place by using that full URI.  If this
+variable is missing or empty, it will default to the "myPod" folder of your
+installation folder.
+</blockquote>
+
+<b>REMOTE_BASE</b>
+<blockquote>
+This variable allows you to use "/" as a shortcut in the dataBrowser.
+If REMOTE_BASE is set to "https://me.example.org/public/", a request 
+in the dataBrowser URI bar for "/foo.txt" will look for the resource
+at "https://me.example.org/public/foo.txt". You could have gotten to
+the same place by using that full URI.  If this variable is missing 
+or empty, you will not be able to use this shortcut.
+</blockquote>
+
+<b>Customize Bookmarks and Menus</b>
+<blockquote>
+Edit the bookmarks as you wish.  URIs will open in the DataBrowser. Shortcuts
+like ./, /, and @ are okay.
+</blockquote>
+
+
+<h2>Using URI shortcuts</h2>
+
+<p>
+In the dataBrowser URI bar, the start of the URI and the end of the
+URI determine how the URI will be interpreted.  Shortcuts use the
+LOCAL_BASE and REMOTE_BASE variables, see "How to customize Data Kitchen"
+for details on how to set them.
+</p>
+<p>
+URI starts with
+<style>
+li em {
+ display:inline-block;
+ width:3em;
+}
+</style>
+<ul>
+  <li><em>http</em> - absolute remote or localhost web address</li>
+  <li><em>file</em> - absolute local file system address</li>
+  <li><em>app</em> - absolute in-browser address (e.g. IndexedDB)</li>
+  <li><em>/</em> - remote address relative to REMOTE_BASE</li>
+  <li><em>./</em> - local file system address relative to LOCAL_BASE</li>
+  <li><em>@</em> - address of an ontology (see below)</li>
+</ul>
+
+URI ends with
+<ul>
+  <li><em>/</em> - URI is a container (folder,directory)</li>
+  <li><em>anything else</em> - URI is a resource (file,document)</li>
+</ul>
+</p>
+<p>
+Ontology shortcuts
+<ul>
+ <li>
+ If the URI is in the form @prefix:term where prefix is an RDF prefix
+ known to the Solid namespace, it will be expanded to the full URI.
+ For example, @ldp:Container will bring you to http://www.w3.org/ns/ldp#Container.
+ If you want to start out at the top level of the ontology, leave off
+ the colon and term.  For example, "@ldp" brings you to http://www.w3.org/ns/ldp
+ </li>
+</ul>
+</p>
+<p>
+Some examples
+<ul>
+  <li>if REMOTE_BASE is set to "https://you.example.org/public/"
+  the URI "/foo" will expand to  "https://you.example.org/public/foo"
+  </li>
+  <li>
+   if LOCAL_BASE is set to "file:///home/me/data/"
+   the URI "./foo" will expand to  "file:///home/me/data/foo"
+  </li>
+</ul>
+</p>
+
+
+<h2>Setting up a local profile</h2>
+
+<p>
+The dataBrowser expects to find key Solid resources (profile, settings, etc.)
+in the root folder of your file system.  If it does not find them, the 
+dataBrowser will behave differently.  If you want your preferences to be 
+honored (e.g. are you a Developer or PowerUser?), copy the following folders
+from the kitchen-data/myPod folder:
+<ul>
+<li>common (folder and contents)</li>
+<li>profile (folder and contents)</li>
+<li>settings (folder and contents)</li>
+<li>.well-known (folder and contents)</li>
+<li>.acl (file)</li>
+</ul>
+</p>
+<p>
+You can, if you wish use your profile and other resources from a remote pod instead of the supplied items.  If you do this, make sure that addresses are relative.  Also, make sure that the top level .acl gives access to </profile/card#me>.
+</p>
+<p>
+You can also edit these files as you would on a pod.
+</p>
+<p>
+You can also add other items (e.g. inbox) for special purposes.
+</p>
+
 
 </div><!-- page -->
 </body>

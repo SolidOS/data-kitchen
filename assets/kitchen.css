@@ -1,3 +1,9 @@
+/*
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../myPod/common/fonts/HelveticaNeue.ttf");
+}
+*/
 body {
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -59,11 +65,6 @@ iframe#webBrowser {
 {
   font-weight:400 !important;
 }
-#localBrowser em, .kitchenForm em {
-//  color:brown;
-font-weight:600;
-
-}
 #localBrowser i {
   font-weight:300 !important;
 }
@@ -94,17 +95,37 @@ font-weight:600;
 }
 .kitchenForm input[type=text] {
   width:100%;
-  minwidth: 25em;
+  min-width: 25em;
   height:2.5em;
   font-size:1rem;
 }
 .kitchenForm textarea {
   width:100%;
-  minwidth: 25em;
+  min-width: 25em;
   height:50px;
 }
 .kitchenForm .buttonContainer {
   margin-top:1em;
   width:100%;
   text-align:right;
+}
+#queryForm.kitchenForm #queryResults table {
+  margin:0 !important;
+  padding:0 !important;
+  border:1px solid black;  
+  border-collapse:collapse;
+  width:100%;
+}
+#queryFormButton {
+  margin-left:1em;
+}
+#queryResults th,
+#queryResults td
+{
+  border:1px solid black;  
+  padding:0.25em;
+}
+#queryResults th {
+  background-color:#c0c0c0;
+  text-align:center;  
 }
