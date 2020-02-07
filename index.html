@@ -34,11 +34,14 @@ local and remote sources using kitchen shortcuts or full URIs.
   <tr>
     <th>Query</th>
     <td>
-      <textarea id="sparqlQuery" type="text" placeholder=
-       " SPARQL query" /></textarea>
+      <textarea id="sparqlQuery" type="text">
+SELECT * WHERE (?subject ?object ?predicate. ) # find all triples 
+      </textarea>
+<!--        placeholder=" SPARQL query" 
+-->
     </td>
     <td>
-        <button id="queryFormButton" onclick="handleQuery(event)">
+        <button id="queryFormButton" onclick="kitchen.handleQuery(event)">
           Run Query</button>
     </td>
   </tr>
@@ -92,7 +95,7 @@ folders end in slashes, files do not!
       <input name="merge" value="source" type="radio">
         target beomces target plus items only in source
       <div class="buttonContainer">
-        <button id="submitFileManager" onclick="manageFiles(event)">
+        <button id="submitFileManager" onclick="kitchen.manageFiles(event)">
           Execute file commands
         </button>
       </div>
@@ -103,16 +106,18 @@ folders end in slashes, files do not!
 <!-- END OF FILE-MANAGER -->
 
 <div id="kitchenMenu" width="100%">
-    <button id="queryButton" onclick="kitchenQuery()" title=
+<!--
+    <button id="queryButton" onclick="kitchen.kitchenQuery()" title=
       "Run SPARQL with current document as endpoint"
     >Query</button>
-    <button id="saveButton" onclick="kitchenSave()" title=
+    <button id="saveButton" onclick="kitchen.kitchenSave()" title=
       "Save current document to a pod or local file"
     >Save</button>
-    <button id="loginButton" onclick="kitchenLogin()" title=
+-->
+    <button id="loginButton" onclick="kitchen.kitchenLogin()" title=
       "not needed for local or public files"
     >Login</button>
-    <button id="logoutButton" onclick="kitchenLogout()">Logout</button>
+    <button id="logoutButton" onclick="kitchen.kitchenLogout()">Logout</button>
 </div>
 
   <iframe id="webBrowser" name="webBrowser" src=""></iframe>

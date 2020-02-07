@@ -1,27 +1,42 @@
 const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const jsonfile = require('jsonfile');
-
 let mainWindow
-let MENU
 
-console.log('@@ main.js argv[2] ' + process.argv[2])
-
-app.commandLine.appendSwitch('restore-last-session', 'true');
-
-app.on('ready', createWindow)
+app.on('ready', async ()=>{
+  cfg = await getConfig()
+  Menu.setApplicationMenu(
+      Menu.buildFromTemplate( mungeMenu(cfg) )
+  )
+  createWindow(cfg)
+})
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
 app.on('activate', function () {
   if (mainWindow === null) createWindow()
 })
-
-/* Create the browser window and load the startup file
+async function createWindow (cfg) {
+  mainWindow = new BrowserWindow(await getWindow(cfg))
+  mainWindow.loadFile('index.html')
+  mainWindow.webContents.openDevTools() /* DEV-TOOLS */
+  mainWindow.on('closed', function () { mainWindow = null })
+}
+/* THIS IS THE END OF THE ELECTRON METHODS
+ * BELOW HERE JUST GETS DATA FOR THEM
 */
-async function createWindow () {
-  let cfg = getWindowConfig()
-  mainWindow = new BrowserWindow({
+
+
+if (process.argv) {
+  console.log('@@ main.js argv[2] ' + process.argv[2])
+  global.commandlineArgs = process.argv.slice()
+  console.log(
+    'main.js: saved args in various places: '+global.commandlineArgs.join(', ')
+  )
+}
+async function getWindow (cfg) {
+  cfg = cfg || await getConfig()
+  return {
     width: cfg.width,
     height: cfg.height,
     x: cfg.windowX,
@@ -32,22 +47,30 @@ async function createWindow () {
       nativeWindowOpen: true,
       nodeIntegration: true
     }
-  })
-  if (process.argv) {
-    global.commandlineArgs = process.argv.slice()
-    console.log(
-      'main.js: saved args in various places: '+global.commandlineArgs.join(', ')
-    )
   }
-  /* load the main page */
-  mainWindow.loadFile('index.html')
-     mainWindow.webContents.openDevTools()
-  mainWindow.on('closed', function () {
-    mainWindow = null
-  })
 }
-
-async function getWindowConfig(){
+function mungeMenu(cfg){
+  let newBM = []
+  if( cfg.bookmarks ){
+    for(var b=0;b<cfg.bookmarks.length;b++){
+      let uri = cfg.bookmarks[b].uri
+      newBM.push({
+        label : cfg.bookmarks[b].label,
+        click : async () => {
+          mainWindow.webContents.send( 'kitchen.showKitchenPage', uri, 'dataBrowser' )
+        }
+      })
+    }
+  }
+  let myMenu = getMenu()
+  for(var i=0;i<myMenu.length;i++){
+    if(myMenu[i].label==="Bookmarks"){
+      myMenu[i].submenu=newBM
+    }
+  }
+  return myMenu
+}
+async function getConfig(){
   const configFile        = path.join(__dirname,"config.json")
   const defaultConfigFile = path.join(__dirname,"config.default.json")
   let cfg
@@ -68,31 +91,8 @@ async function getWindowConfig(){
   cfg.height = cfg.windowHeight || 600
   cfg.windowX = typeof cfg.windowX==="string" ? undefined : cfg.windowX
   cfg.windowy = typeof cfg.windowY==="string" ? undefined : cfg.windowY
-  if( cfg.bookmarks ){
-    let newBM = []
-    for(var b=0;b<cfg.bookmarks.length;b++){
-      let uri = cfg.bookmarks[b].uri
-      newBM.push({
-        label : cfg.bookmarks[b].label,
-        click : async () => {
-          mainWindow.webContents.send( 'showKitchenPage', uri )
-        },
-      })
-    }
-    MENU = getMenu()
-    for(var i=0;i<MENU.length;i++){
-      if(MENU[i].label==="Bookmarks"){
-        MENU[i].submenu=newBM
-      }
-    }
-const menu = Menu.buildFromTemplate(MENU)
-Menu.setApplicationMenu(menu)
-
-//    cfg.bookmarks = newBM
-  }
   return cfg
 }
-
 function getMenu() {
   const isMac = process.platform === 'darwin'
   return [
@@ -119,7 +119,7 @@ function getMenu() {
         label: 'Manage files',
         click: async () => {
           mainWindow.webContents.send(
-            'showKitchenPage', 'assets/file.html', 'fileManager'
+            'kitchen.showKitchenPage', 'assets/file.html', 'fileManager'
           )
         }
       },
@@ -178,7 +178,7 @@ function getMenu() {
         click: async () => {
           // This is how to load a local file in the dataBrowser
           mainWindow.webContents.send(
-            'showKitchenPage','./public/','dataBrowser'
+            'kitchen.showKitchenPage','./public/','dataBrowser'
           )
         }
       },
@@ -186,7 +186,7 @@ function getMenu() {
         click: async () => {
           // This is how to load a browserFS storage area in the dataBrowser
           mainWindow.webContents.send(
-            'showKitchenPage','app://bfs/IndexedDB/', 'dataBrowser'
+            'kitchen.showKitchenPage','app://bfs/IndexedDB/', 'dataBrowser'
           )
         }
       },
@@ -194,7 +194,7 @@ function getMenu() {
         click: async () => {
           // This is how to load a remote web page in the dataBrowser
           mainWindow.webContents.send(
-            'showKitchenPage','https://timbl.solid.community/public/','dataBrowser'
+            'kitchen.showKitchenPage','https://timbl.solid.community/public/','dataBrowser'
           )
         }
       },
@@ -202,14 +202,14 @@ function getMenu() {
         click: async () => {
           // This is how to load a remote web page in the dataBrowser
           mainWindow.webContents.send(
-            'showKitchenPage','https://timbl.inrupt.net/public/','dataBrowser'
+            'kitchen.showKitchenPage','https://timbl.inrupt.net/public/','dataBrowser'
           )
         }
       },
       { label: 'A sample Ontology search',
         click: async () => {
           mainWindow.webContents.send(
-            'showKitchenPage','@ldp','dataBrowser'
+            'kitchen.showKitchenPage','@ldp','dataBrowser'
           )
         }
       },
@@ -217,7 +217,7 @@ function getMenu() {
         click: async () => {
           // This is how to search dbpedia
           mainWindow.webContents.send(
-            'showKitchenPage','http://dbpedia.org/data/Tim_Berners_Lee','dataBrowser'
+            'kitchen.showKitchenPage','http://dbpedia.org/data/Tim_Berners_Lee','dataBrowser'
           )
         }
       },
@@ -228,7 +228,7 @@ function getMenu() {
     label: 'DataBrowser',
     click: async () => {
       mainWindow.webContents.send(
-            'showKitchenPage', "none" , 'dataBrowser'
+            'kitchen.showKitchenPage', "none" , 'dataBrowser'
       )
     },
   },
@@ -237,7 +237,7 @@ function getMenu() {
     label: 'Query',
     click: async () => {
       mainWindow.webContents.send(
-            'showKitchenPage','','queryForm'
+            'kitchen.showKitchenPage','','queryForm'
       )
     },
   },
@@ -250,38 +250,15 @@ function getMenu() {
         click: async () => {
           // This is how to load a remote web page in the web browser
           mainWindow.webContents.send(
-            'showKitchenPage','https://solidproject.org/', 'webBrowser'
+            'kitchen.showKitchenPage','https://solidproject.org/', 'webBrowser'
           )
         }
       },
-/*
-      { label: 'How to customize Data Kitchen',
-          click: async () => {
-            mainWindow.webContents.send(
-              'showKitchenPage', 'assets/config.html'
-            )
-          }
-      },
-      { label: 'Using URI shortcuts',
-          click: async () => {
-            mainWindow.webContents.send(
-              'showKitchenPage', 'assets/uri.html'
-            )
-          }
-      },
-      { label: 'Setting up a local profile',
-          click: async () => {
-            mainWindow.webContents.send(
-              'showKitchenPage', 'assets/setup.html'
-            )
-          }
-      },
-*/
       {
         label: 'About the Solid Data Kitchen',
         click: async () => {
           mainWindow.webContents.send(
-            'showKitchenPage', 'assets/about.html'
+            'kitchen.showKitchenPage', 'assets/about.html'
           )
         }
       },

@@ -8,149 +8,8 @@ const SolidRest            = require("./bundles/solid-rest/dist/main.js")
 const SolidFileStorage     = require('./bundles/solid-rest/src/file.js')
 const SolidBrowserFS       = require('./bundles/solid-rest/src/browserFS.js')
 const SolidFileClient      = require("./bundles/solid-file-client.bundle.js")
-const SparqlFiddle         = require("./bundles/rdf-easy.js")
-let LOCAL_BASE
-let REMOTE_BASE
+const kitchen              = require('./assets/Kitchen.js')
 
-/*
-   Handle requests for pages
-   pageType = dataBrowser  - the mashlib dataBrowser
-              webBrowser   - a remote or localhost web page
-              localBroswer - a local page not served from localhost or dataBrowser
-              fileManager  - form to copy/move/delete files
-              queryForm    - form to send SPARQL queries
-*/
-async function showKitchenPage(uri,pageType){
-  document.getElementById("versionsFooter").style.display="none"
-  document.getElementById("kitchenMenu").style.display="none"
-  if(typeof uri != "string"){
-    uri = uriField.value
-  }
-  uri = mungeURI(uri)
-  let pages = {
-    fileManager  : document.getElementById('fileManager'),
-    queryForm    : document.getElementById('queryForm'),
-    webBrowser   : document.getElementById('webBrowser'),
-    dataBrowser  : document.getElementById('dataBrowser'),
-    localBrowser : document.getElementById('localBrowser'),
-  }
-  for(p in pages){
-    pages[p].style.display = "none"
-  }
-  // an embedded form
-  // 
-  if(pageType==="fileManager"||pageType==="queryForm"){
-    pages[pageType].style.display="block"
-  }
-  // an installation HTML file like assets/about.html (not localhost)
-  // 
-  else if( uri !="none" && !uri.match(/^(http|file|app)/) ){
-    document.body.style.overflowY="auto"
-    document.getElementById("versionsFooter").style.display="block"
-    let newContent = fs.readFileSync(uri)      
-    pages.localBrowser.innerHTML = newContent
-    pages.localBrowser.style.display = "block"
-
-  }
-  // a web page from a remote site or localhost
-  // 
-  else if(pageType==="webBrowser"){
-    document.body.style.overflowY="hidden"
-    document.body.style.margin=0
-    pages.webBrowser.style.overflowY="hidden"
-    pages.webBrowser.style.display ="block"
-    pages.webBrowser.src = uri
-  }
-  // a databrowser location
-  // 
-  else {
-    pages['dataBrowser'].style.display="block"
-    document.getElementById("kitchenMenu").style.display="block"
-    document.getElementById("saveButton").style.display="inline-block"
-/*
-    document.getElementById("logoutButton").style.display="inline-block"
-    document.getElementById("loginButton").style.display="inline-block"
-*/
-    if(uri==="none") return
-    uriField.value = uri
-    console.log("User field " + uriField.value)
-    console.log("User requests " + uri)
-    // const params = new URLSearchParams(location.search)
-    // params.set('uri', uri);
-    // window.history.replaceState({}, '', `${location.pathname}?${params}`);
-    var subject = kb.sym(uri);
-    // UI.widgets.makeDraggable(icon, subject) // beware many handlers piling up
-    outliner.GotoSubject(subject, true, undefined, true, undefined);
-  }
-}
-
-/* URI shortcuts
-*/
-function mungeURI(uri){
-  uri === uri || ""
-  if( uri.startsWith("./") && LOCAL_BASE ){
-    uri = uri.replace(/^\.\//,'')
-    return `${LOCAL_BASE}${uri}`
-  }
-  else if ( uri.startsWith("/") && REMOTE_BASE ){
-    uri = uri.replace(/^\//,'')
-    return `${REMOTE_BASE}${uri}`
-  }
-  else if ( uri.startsWith("@") ){
-    let ary = uri.split(/:/)
-    let prefix = ary[0].replace(/@/,'')
-    let term = ary[1] ? ary[1] : ""
-    try{
-      uri = UI.ns[prefix](term).uri
-      if(!term)  uri = uri.replace(/#$/,'')
-      return uri
-    }
-    catch(e) {alert("Sorry, couldn't expand "+uri)}
-  }
-  return uri
-}  
-
-async function handleQuery(evemt){
-  event.preventDefault()
-  const sparql = new SparqlFiddle( solid.auth )
-  let endpoint = mungeURI(document.getElementById('sparqlEndpoint').value)
-  let query    = document.getElementById('sparqlQuery').value
-  if(!endpoint||!query){return alert("You must supply an endpoint and a query.")}
-  let results
-  try {
-    results  = await sparql.query(endpoint,query)
-  }
-  catch(e){
-    alert(e);return false
-  }
-  console.log(`querying ${endpoint} ${query} `)
-  let columnHeads = Object.keys(results[0]).reverse()
-  let table = "<table>"
-  let topRow = ""
-  for(c in columnHeads){
-    topRow += `<th>${columnHeads[c]}</th>`
-  }
-  table += `<tr>${topRow}</tr>`
-  for(r in results){
-    let row = ""
-    for(k in columnHeads){
-      let uri = results[r][columnHeads[k]]
-      if(typeof uri === "undefined") uri = "";
-      if(row.length===0 && uri.startsWith("n")) { row+="none";continue }
-      let ary = uri.split(/#/)
-      let term = ary[1] || uri
-      term = term.replace(LOCAL_BASE,'./').replace(REMOTE_BASE,'/').replace("http://www.iana.org/assignments/link-relations/",'')
-      let title = uri
-      uri = `showKitchenPage('${uri}','dataBrowser')`
-      row += `<td><a href="#" onclick="${uri}" title="${title}">${term}</a></td>`
-    }
-    if(row.startsWith("none")) continue
-    table += `<tr>${row}</tr>`
-  }
-  table += "</table>"
-  document.getElementById('queryResults').innerHTML = table
-  return false
-}
 /* Manage Files
 */
 async function manageFiles(e) {
@@ -212,60 +71,11 @@ async function manageFiles(e) {
   }
 }
 
-  let button = {
-    loginButton  : document.getElementById('loginButton'),
-    logoutButton : document.getElementById('logoutButton'),
-  }
-
-  async function kitchenSave () {
-    await showKitchenPage("none","fileManager");
-    document.getElementById("sourceUri").value = uriField.value
-    document.getElementById("targetUri").value = ""
-  }
-  async function kitchenQuery () {
-    await showKitchenPage("none","queryForm");
-    document.getElementById("sparqlEndpoint").value = uriField.value
-  }
-  async function kitchenLogin () {
-    await solid.auth.logout()
-    const popupUri = 'https://solid.community/common/popup.html'
-    const session = await solid.auth.popupLogin({popupUri:popupUri})
-    if (session) {
-      // Make authenticated request to the server to establish a session cookie
-      const {status} = await solid.auth.fetch(location)
-      if (status === 401) {
-        alert(`Invalid login.`)
-        await solid.auth.logout()
-      }
-    }
-  }
-  async function kitchenLogout () {
-    await solid.auth.logout()
-  }
-
 /* Initialize Solid-Rest and friends, go to START_PAGE
 */
 async function init(){
-  let installDir = process.platform.match(/^win/) 
-    ? __dirname.replace(/^.:/,'')
-    : __dirname
-  const configFile = path.join(installDir,"config.json")
-  const defaultConfigFile = path.join(installDir,"config.default.json")
-  let cfg
-  try{ cfg = await jsonfile.readFileSync( configFile ) }
-  catch(e){if(!e.toString().match("ENOENT"))console.log(e)}
-  if(typeof cfg ==="undefined"){
-     try{  cfg = await jsonfile.readFileSync( defaultConfigFile ) }
-     catch(e){console.log(e)}
-  }
-  cfg=cfg||{}
-  LOCAL_BASE = cfg.LOCAL_BASE 
-  if(!LOCAL_BASE){
-    LOCAL_BASE = "file://" + path.join(installDir,"/myPod/")
-  }
-  REMOTE_BASE = cfg.REMOTE_BASE
 
-  cfg.startPage = cfg.startPage || "assets/about.html"
+  let cfg = await kitchen.getConfig()
 
   if(typeof solid === "undefined") solid = {}
   solid.auth   = solid.auth || SolidAuthClient
@@ -292,19 +102,22 @@ async function init(){
       //  '/Dropbox' : { fs: "Dropbox", options:{client: dropCli} }
   })
   solid.auth.trackSession(async session => {
+    let loginButton  = document.getElementById('loginButton')
+    let logoutButton = document.getElementById('logoutButton')
     if (!session) {
-      button.logoutButton.style.display="none"
-      button.loginButton.style.display="inline-block"
+      logoutButton.style.display="none"
+      loginButton.style.display="inline-block"
     }
     else {
-      button.loginButton.style.display="none"
-      button.logoutButton.style.display="inline-block"
-      button.logoutButton.title = session.webId
+      loginButton.style.display="none"
+      logoutButton.style.display="inline-block"
+      logoutButton.title = session.webId
     }
   })
-  showKitchenPage(cfg.startPage)
+  kitchen.makeContextMenu()
+  kitchen.showKitchenPage(cfg.startPage)
 }
-// SELECT ?uri WHERE (<> ldp:contains ?uri)
+
 /* Set up The Tabulator
 */
 const UI = panes.UI
@@ -333,16 +146,16 @@ const uriField = dom.getElementById('uriField')
 const goButton = dom.getElementById('goButton')
 uriField.addEventListener('keyup', function (e) {
   if (e.keyCode === 13) {
-    showKitchenPage(uriField.value,'dataBrowser')
+    kitchen.showKitchenPage(uriField.value,'dataBrowser')
   }
 }, false)
-goButton.addEventListener('click', showKitchenPage, false);
+goButton.addEventListener('click', ()=>{kitchen.showKitchenPage()}, false);
 window.document.title = "Solid Data Kitchen"
 /*
   get menu slection from main.js top menu and dispatch it
 */
-ipcRenderer.on('showKitchenPage', (event, uri, pageType) => {
-    return showKitchenPage(uri,pageType)
+ipcRenderer.on('kitchen.showKitchenPage', (event, uri, pageType) => {
+    return kitchen.showKitchenPage(uri,pageType)
 })
 
 
