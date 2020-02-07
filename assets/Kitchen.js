@@ -1,9 +1,59 @@
-const SparqlFiddle = require("../bundles/rdf-easy.js")
+const path             = require('path')
+const fs               = require('fs')
+const jsonfile         = require('jsonfile');
+const ns               = require('solid-namespace')
+const SparqlFiddle     = require("../bundles/rdf-easy.js")
+const SolidFileClient  = require("../bundles/solid-file-client.bundle.js")
+const SolidRest        = require("../bundles/solid-rest/dist/main.js")
+const SolidFileStorage = require('../bundles/solid-rest/src/file.js')
+const SolidBrowserFS   = require('../bundles/solid-rest/src/browserFS.js')
 
 class Kitchen {
 
-  constructor(){
+  constructor() {
     this.clickedOn = null
+  }
+
+  /* Initialize Solid-Rest and friends, go to START_PAGE
+  */
+  async init(){
+    let cfg = await this.getConfig()
+    solid.rest   = new SolidRest(
+      [
+        new SolidBrowserFS(),
+        new SolidFileStorage(),
+        // could add other solid-rest backend plugins here
+      ]
+    )
+    /* Solid Rest backends intialization
+    - localStorage is included by default
+    - one could add other browserFS backend plugins here
+    - ./bundles has a Dropbox SDK that could be used for a backend
+    - once initialized, address these spaces with the mountpoints like this:
+        app://bfs/IndexedDB/  app://bfs/HTML5FS/  app://bfs/Dropbox/, etc.
+    - HTML5FS is the native file API currently only implemented in chrome
+        and requires enabling in chrome://flags
+    */
+    solid.rest.storage("bfs").initBackends({
+        '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
+        '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"}}
+        //  '/Dropbox' : { fs: "Dropbox", options:{client: dropCli} }
+    })
+    solid.auth.trackSession(async session => {
+      let loginButton  = document.getElementById('loginButton')
+      let logoutButton = document.getElementById('logoutButton')
+      if (!session) {
+        logoutButton.style.display="none"
+        loginButton.style.display="inline-block"
+      }
+      else {
+        loginButton.style.display="none"
+        logoutButton.style.display="inline-block"
+        logoutButton.title = session.webId
+      }
+    })
+    this.makeContextMenu()
+    this.showKitchenPage(cfg.startPage)
   }
 
   /* URI shortcuts
@@ -38,6 +88,7 @@ class Kitchen {
     installDir = process.platform.match(/^win/) 
       ? installDir.replace(/^.:/,'')
       : installDir
+    this.installDir = installDir
     const configFile = path.join(installDir,"config.json")
     const defaultConfigFile = path.join(installDir,"config.default.json")
     let cfg
@@ -48,7 +99,7 @@ class Kitchen {
       catch(e){console.log(e)}
     }
     cfg = cfg || {}
-    cfg.startPage = cfg.startPage || "assets/about.html"
+    cfg.startPage = cfg.startPage || "assets/quick-tour.html"
     this.REMOTE_BASE = cfg.REMOTE_BASE
     this.LOCAL_BASE 
         =  cfg.LOCAL_BASE 
@@ -60,19 +111,19 @@ class Kitchen {
     const {Menu, MenuItem} = remote
     const menu = new Menu()
     menu.append(new MenuItem ({
-      label: 'Save to pod or local file',
+      label: 'Save this item to pod or local file',
       click() { 
           self.kitchenSave( self.clickedOn )
       }
     }))
     menu.append(new MenuItem ({
-      label: 'Query as a SPARQL endpoint',
+      label: 'Query this item as a SPARQL endpoint',
       click() { 
           self.kitchenQuery( self.clickedOn )
       }
     }))
     menu.append(new MenuItem ({
-      label: 'Rebase DataBrowser here',
+      label: 'Rebase DataBrowser to this item',
       click() { 
         self.showKitchenPage( self.clickedOn, 'dataBrowser' )
       }
@@ -80,7 +131,19 @@ class Kitchen {
     menu.append(new MenuItem (
       { type: 'separator' }
     ))
+    menu.append(new MenuItem ({
+      label: `Move up a level from current URI`,
+      click: ()=>{self.moveUp()}
+    }))
     menu.append(new MenuItem (
+      { role: 'toggledevtools' }
+    ))
+    const menu2 = new Menu()
+    menu2.append(new MenuItem ({
+      label: `Move up a level (from current URI)`,
+      click: ()=>{self.moveUp()}
+    }))
+    menu2.append(new MenuItem (
       { role: 'toggledevtools' }
     ))
     window.addEventListener('contextmenu', (e) => {
@@ -92,12 +155,13 @@ class Kitchen {
       if(attrs.href) clickedOn = attrs.href.nodeValue    // link
       else if(attrs.about) clickedOn=attrs.about.nodeValue  // dataBrowser item
       else {
-        console.warn(attrs); return false
+        menu2.popup(remote.getCurrentWindow())
+        return false
       }
       if(clickedOn) {
         self.clickedOn = clickedOn.replace(/</,'').replace(/>/,'')
-        menu.popup(remote.getCurrentWindow())
       }
+      menu.popup(remote.getCurrentWindow())
     }, false)
   } 
 /*
@@ -135,6 +199,7 @@ async showKitchenPage(uri,pageType){
   else if( uri !="none" && !uri.match(/^(http|file|app)/) ){
     document.body.style.overflowY="auto"
     document.getElementById("versionsFooter").style.display="block"
+    uri = path.join(this.installDir,uri)
     let newContent = fs.readFileSync(uri)      
     pages.localBrowser.innerHTML = newContent
     pages.localBrowser.style.display = "block"
@@ -167,6 +232,19 @@ async showKitchenPage(uri,pageType){
   }
 }
 
+  moveUp() { 
+    let parent = uriField.value.match(/#/)
+      ? uriField.value.replace(/#.*$/,'')
+      : uriField.value.replace(/\/$/,'').replace(/[^\/]*$/,'')
+    this.showKitchenPage( parent, 'dataBrowser' )
+    return false
+  }
+  async clearQuery (event) {
+    event.preventDefault()
+    document.getElementById("sparqlEndpoint").innerText = ""
+    document.getElementById("sparqlQuery").value = ""
+    return false
+  }
   async kitchenSave (uri) {
     uri = uri || uriField.value
     await this.showKitchenPage("none","fileManager");
@@ -195,11 +273,15 @@ async showKitchenPage(uri,pageType){
     await solid.auth.logout()
   }
 
-async handleQuery(event){
+async handleQuery(event,all){
   event.preventDefault()
   const sparql = new SparqlFiddle( solid.auth )
   let endpoint = this.mungeURI(document.getElementById('sparqlEndpoint').value)
   let query    = document.getElementById('sparqlQuery').value
+  if(all){
+    query = "SELECT * WHERE ( ?subject ?predicate ?object. )"
+    document.getElementById('sparqlQuery').value = query
+  }
   if(!endpoint||!query){return alert("You must supply an endpoint and a query.")}
   let results
   try {
@@ -208,7 +290,7 @@ async handleQuery(event){
   catch(e){
     alert(e);return false
   }
-  alert(`querying ${endpoint} ${query} `)
+  console.log(`querying ${endpoint} ${query} `)
   let columnHeads = Object.keys(results[0]).reverse()
   let table = "<table>"
   let topRow = ""
@@ -216,25 +298,92 @@ async handleQuery(event){
     topRow += `<th>${columnHeads[c]}</th>`
   }
   table += `<tr>${topRow}</tr>`
+  let addRow = true
   for(var r in results){
     let row = ""
+    addRow = true;
     for(var k in columnHeads){
       let uri = results[r][columnHeads[k]]
       if(typeof uri === "undefined") uri = "";
-      if(row.length===0 && uri.startsWith("n")) { row+="none";continue }
       let ary = uri.split(/#/)
       let term = ary[1] || uri
       term = term.replace(this.LOCAL_BASE,'./').replace(this.REMOTE_BASE,'/').replace("http://www.iana.org/assignments/link-relations/",'')
       let title = uri
-      uri = `kitchen.showKitchenPage('${uri}','dataBrowser')`
-      row += `<td><a href="#" onclick="${uri}" title="${title}">${term}</a></td>`
+      let click = `kitchen.showKitchenPage('${uri}','dataBrowser')`
+      if( !uri.match(/^(http|file|app)/) ){
+        if(term.match(/^n/)) { console.warn(term); addRow=false}
+        row += `<td title="${title}">${term}</td>`      }
+      else {
+        row += 
+         `<td><a href="#" onclick="${click}" title="${title}">${term}</a></td>`
+      }
     }
-    if(row.startsWith("none")) continue
-    table += `<tr>${row}</tr>`
+    if(addRow) table += `<tr>${row}</tr>`
   }
   table += "</table>"
   document.getElementById('queryResults').innerHTML = table
   return false
+}
+
+/* Manage Files
+*/
+async manageFiles(e) {
+  const fc = new SolidFileClient(solid.auth,{enableLogging:true})
+  let r;
+  e.preventDefault()
+  let c={} 
+  c.action = getRadioVal( document.getElementById('fileManager'), 'action' );
+  c.acl = getRadioVal( document.getElementById('fileManager'), 'acl' );
+  c.merge = getRadioVal( document.getElementById('fileManager'), 'merge' );
+  c.sourceUri = document.getElementById('sourceUri').value
+  c.targetUri = document.getElementById('targetUri').value
+  if(!c.sourceUri){
+    alert("Sorry, you must specify a source URI!")
+    return false;
+  }
+  else {
+    c.sourceUri = this.mungeURI(c.sourceUri)
+  }
+  if(c.action==="delete"){
+    r = window.confirm(`Are you sure you want to delete ${c.sourceUri}?`)
+    if(!r) return false
+    r = await fc.delete(c.sourceUri)
+    alert(r.status+" "+r.statusText)
+  }
+  else if(c.action==="copy"||c.action==="move"){
+    if(!c.targetUri ){
+      alert("Sorry, you must specify a source and a target!")
+    }
+    else {
+      c.targetUri = this.mungeURI(c.targetUri)
+      r = window.confirm(
+        `Are you sure you want to ${c.action} ${c.sourceUri} to ${c.targetUri}?`
+      )
+      if(!r) return false
+      let opts = {}
+      if(c.merge==="source") opts.merge = "keep_source"
+      if(c.merge==="target") opts.merge = "keep_target"
+      if(c.acl==="no") opts.withAcl = false
+      console.log( opts )
+      try {
+        r = await fc[c.action](c.sourceUri,c.targetUri,opts)
+      }
+      catch(e){alert(e)}
+      alert(r.status+" "+r.statusText)
+    }
+  }
+  return false;
+  function getRadioVal(form, name) {
+    var val;
+    var radios = form.elements[name];
+    for (var i=0, len=radios.length; i<len; i++) {
+      if ( radios[i].checked ) {
+        val = radios[i].value;
+        break;
+      }
+    }
+    return val;
+  }
 }
 
 }

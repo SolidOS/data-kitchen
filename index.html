@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Solid Data Kitchen</title>
     <link rel="stylesheet" src="./mash.css"/>
-    <link rel="stylesheet" href="assets/kitchen.css">
+    <link rel="stylesheet" href="./assets/kitchen.css">
     <!--
       <meta http-equiv="Content-Security-Policy" content="script-src self">  
     -->
@@ -24,25 +24,39 @@ local and remote sources using kitchen shortcuts or full URIs.
 -->
 <table>
   <tr>
-    <th>Endpoint</th>
     <td>
+    <b>Endpoint</b>
       <textarea id="sparqlEndpoint" type="text" placeholder=
-       " SPARQL endpoint, shortcuts okay" /></textarea>
+        " enter a SPARQL endpoint"
+      ></textarea>
     </td>
-    <td></td>
-  </tr>
-  <tr>
-    <th>Query</th>
     <td>
-      <textarea id="sparqlQuery" type="text">
-SELECT * WHERE (?subject ?object ?predicate. ) # find all triples 
-      </textarea>
-<!--        placeholder=" SPARQL query" 
+       <br><input class="queryButton" type="reset" value="Clear Form" />
+<!--
+        <select class="queryButton">
+          <option>&nbsp; &nbsp; &nbsp; &nbsp; Sample Queries</option>
+          <option>Sample1</option>
+          <option>Sample2</option>
+          <option>...</option>
+        </select>
 -->
     </td>
+  </tr>
+  <tr>
     <td>
-        <button id="queryFormButton" onclick="kitchen.handleQuery(event)">
-          Run Query</button>
+    <b>Query</b>
+      <textarea id="sparqlQuery" type="text" placeholder=
+          " enter a SPARQL query or select 'show all' to see all triples"
+      ></textarea>
+    </td>
+    <td>
+        <br><button class="queryButton" onclick="kitchen.handleQuery(event,'all')">
+          Show All
+        </button>
+
+        <button class="queryButton" onclick="kitchen.handleQuery(event)">
+          Run Query
+        </button>
     </td>
   </tr>
 </table>
@@ -126,11 +140,7 @@ folders end in slashes, files do not!
     <table style="width:100%;">
       <tr style="font-size:100%">
         <td>URI:</td>
-        <td><input id="uriField" type="text"/>
-<div id="uriBarHelp">
-may be absolute or use shortcuts like ./ for local files and @ for ontologies (see help)
-</div>
-</td>
+        <td><input id="uriField" type="text"/></td>
 <td>
   <input type="button" id="goButton" value="Go" />
 </td>

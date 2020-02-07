@@ -18,8 +18,8 @@ app.on('activate', function () {
 })
 async function createWindow (cfg) {
   mainWindow = new BrowserWindow(await getWindow(cfg))
+  // mainWindow.webContents.openDevTools() /* DEV-TOOLS */
   mainWindow.loadFile('index.html')
-  mainWindow.webContents.openDevTools() /* DEV-TOOLS */
   mainWindow.on('closed', function () { mainWindow = null })
 }
 /* THIS IS THE END OF THE ELECTRON METHODS
@@ -246,19 +246,38 @@ function getMenu() {
     label: "Help",
     submenu: [
       {
+        label: 'Welcome to the Kitchen',
+        click: async () => {
+          mainWindow.webContents.send(
+            'kitchen.showKitchenPage', 'assets/quick-tour.html'
+          )
+        }
+      },
+      {
+        label: 'Using the Data Kitchen',
+        click: async () => {
+          mainWindow.webContents.send(
+            'kitchen.showKitchenPage', 'assets/about.html'
+          )
+        }
+      },
+/*
+Github won't let itself be displayed in a frame :-(
+      {
+        label: 'Using the DataBrowser',
+        click: async () => {
+          mainWindow.webContents.send(
+            'kitchen.showKitchenPage','https://solid.github.io/userguide', 'webBrowser'
+          )
+        }
+      },
+*/
+      {
         label: 'About Solid',
         click: async () => {
           // This is how to load a remote web page in the web browser
           mainWindow.webContents.send(
             'kitchen.showKitchenPage','https://solidproject.org/', 'webBrowser'
-          )
-        }
-      },
-      {
-        label: 'About the Solid Data Kitchen',
-        click: async () => {
-          mainWindow.webContents.send(
-            'kitchen.showKitchenPage', 'assets/about.html'
           )
         }
       },

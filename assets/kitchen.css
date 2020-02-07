@@ -1,14 +1,21 @@
-/*
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("../myPod/common/fonts/HelveticaNeue.ttf");
-}
-*/
 body {
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:16px;
+  margin-left:1em;
+  margin-right:1em;
 }
 textarea {
    min-width:20em !important;
+}
+.queryButton {
+ width:100%;
+ margin:0.5em;
+ margin-left:1em;
+ height:2em;
+ text-align:center;
+}
+#queryAllButton {
+  margin-top:-3em;
 }
 #dataBrowser {
   margin-top:2em;
@@ -27,11 +34,6 @@ textarea {
   min-width:30em; 
   padding:0.5em;
   width:95%;
-}
-#uriBarHelp {
-  display:none;
-  font-size:small;
-  text-align:right;
 }
 #localBrowser,#webBrowser,#dataBrowser,#fileManager,#queryForm  {
   display:none;
@@ -55,10 +57,20 @@ iframe#webBrowser {
   margin:2em;
 }
 #localBrowser {
-  margin-left:2em;
+  margin-left:1em;
   margin-right:2em;
   max-width:780px;
   overflow:auto !important;
+}
+.kitchenTourP {
+    border:1px solid orange;
+    padding:0.5em;
+    font-size:100%;
+    margin-top:1.5em;
+    margin-bottom:1.5em;
+}
+.kitchenTourP.hasImage {
+    margin-bottom:0.25em;
 }
 #localBrowser h1, #localBrowser h2,
 .kitchenForm h1, .kitchenForm h2 
@@ -81,6 +93,7 @@ iframe#webBrowser {
 .kitchenForm table {
   width:100%;
   margin-top:1em;
+  margin-right:1em;
   padding:1em;
   padding-bottom:0;
 }
@@ -99,10 +112,13 @@ iframe#webBrowser {
   height:2.5em;
   font-size:1rem;
 }
-.kitchenForm textarea {
+#queryRadio {
+  margin-left:2em;
+}
+#queryForm.kitchenForm textarea {
   width:100%;
-  min-width: 25em;
-  height:50px;
+  min-width:66vw !important;
+  height:5em;
 }
 .kitchenForm .buttonContainer {
   margin-top:1em;
@@ -116,8 +132,8 @@ iframe#webBrowser {
   border-collapse:collapse;
   width:100%;
 }
-#queryFormButton {
-  margin-left:1em;
+#queryForm.kitchenForm #queryResults td {
+  width:auto !imporant;
 }
 #queryResults th,
 #queryResults td
