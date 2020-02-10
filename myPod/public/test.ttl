@@ -1,3 +1,26 @@
 @prefix : <#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/#>.
+@prefix schema: <http://schema.org/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix link: <http://www.w3.org/2007/ont/link>.
+@prefix text: <http://www.w3.org/ns/iana/media-types/text/>.
+@prefix image: <http://www.w3.org/ns/iana/media-types/image/>.
 
-<> a :testDocument; :label "First Successful Test"; :maker </profile/card#me>.
+<> a link:Document, text:turtle#Resource 
+; rdfs:label "Sample Turtle File" 
+; foaf:primaryTopic :myComment
+; foaf:maker </profile/card#me>
+.
+
+:myComment a schema:Comment
+; rdfs:label "My Comment"
+; schema:comment "Hello Turtle World!"
+; schema:image :myImage
+.
+
+:myImage a image:jpeg#Resource
+; rdfs:label "a flower"
+; schema:url <test.jpeg>
+.
+

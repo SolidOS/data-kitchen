@@ -72,6 +72,7 @@ async putResource(pathname,options){
         ? 409 : 500
     return new Promise(async (resolve) => {
         if(failureCode===409) return resolve( [failureCode] )
+        if(options.body && options.body.text) options.body = await options.body.text()
         if(typeof options.body==="string"){
             try {
               await fs.writeFile(pathname,options.body)

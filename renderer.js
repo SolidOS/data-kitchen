@@ -1,11 +1,8 @@
 const {ipcRenderer,remote} = require('electron')
-const BrowserFS            = require("./bundles/browserfs.min.js")
-const kitchen              = require('./assets/Kitchen.js')
+//const kitchen              = require('./assets/Kitchen.js')
 
 /* Set up The Tabulator
 */
-if(typeof solid === "undefined") solid = {}
-solid.auth = solid.auth || SolidAuthClient
 const UI = panes.UI
 const $rdf = UI.rdf
 const dom = document
@@ -57,6 +54,6 @@ if (arguments && arguments[2]) { // Electron command line
 initial = initial || "./public/"
 uriField.value = initial
 
-kitchen.init()
+// kitchen.init()
 
 /* END */

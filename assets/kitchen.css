@@ -4,8 +4,10 @@ body {
   margin-left:1em;
   margin-right:1em;
 }
-textarea {
-   min-width:20em !important;
+.sourcePane tr textarea {
+   max-width:80vw;
+   min-width:80vw !important;
+   height:10em;
 }
 .queryButton {
  width:100%;
@@ -20,23 +22,60 @@ textarea {
 #dataBrowser {
   margin-top:2em;
 }
-#kitchenMenu button{
-  display:inline-block;
-}
-#kitchenMenu {
+.kitchenForm {
   display:none;
+}
+#kitchenMenu *,#kitchenMenu button {
+  font-size:small;
+  color:#444;
+}
+
+/* hide all pageTypes except when the body.class is that pageType
+*/
+#webBrowser,#dataBrowser,#fileManager,#queryForm,#sessionForm,#localBrowser {
+  display:none;
+}
+body.dataBrowser #dataBrowser { display:block !important; }
+body.fileManager #fileManager { display:block !important; }
+body.webBrowser #webBrowser { display:block !important; }
+body.queryForm #queryForm { display:block !important; }
+body.sessionForm #sessionForm { display:block !important; }
+body.localBrowser #localBrowser { display:block !important; }
+
+
+body.webBrowser {
+  overflow-y:"hidden";
+  margin:0;
+}
+body.webBrowser #webBrowser {
+  overflow-y:"hidden";
+}
+
+/* hide Change-login button, on local pages, web pages, session manger
+*/
+#kitchenMenu button { display:none; }
+.dataBrowser #kitchenMenu button { display:inline-block; }
+.fileManager #kitchenMenu button { display:inline-block; }
+.queryForm #kitchenMenu button { display:inline-block; }
+
+/* hide webId on local pages and web pages
+*/
+#kitchenMenu { display:block; }
+.localBrowser #kitchenMenu { display:none; }
+.webBrowser #kitchenMenu { display:none; }
+
+
+#kitchenMenu {
   position:absolute;
   top:0;
   right:0;
 }
+
 #uriField {
   font-size:100%;
   min-width:30em; 
   padding:0.5em;
   width:95%;
-}
-#localBrowser,#webBrowser,#dataBrowser,#fileManager,#queryForm  {
-  display:none;
 }
 iframe#webBrowser {
   display:none;

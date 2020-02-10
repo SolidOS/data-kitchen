@@ -15,13 +15,6 @@
 <!-- QUERY FORM -->
 <form id="queryForm" action="" onsubmit="" class="kitchenForm">
 <h1>Data Kitchen SPARQL Query Form</h1>
-<!--
-<p>
-Use the rdflib subset of SPARQL to query one or more sources.  Mix and  match 
-local and remote sources using kitchen shortcuts or full URIs.
-</p>
-<p><b>This form is in progress ... not yet functional.</b></p>
--->
 <table>
   <tr>
     <td>
@@ -32,14 +25,6 @@ local and remote sources using kitchen shortcuts or full URIs.
     </td>
     <td>
        <br><input class="queryButton" type="reset" value="Clear Form" />
-<!--
-        <select class="queryButton">
-          <option>&nbsp; &nbsp; &nbsp; &nbsp; Sample Queries</option>
-          <option>Sample1</option>
-          <option>Sample2</option>
-          <option>...</option>
-        </select>
--->
     </td>
   </tr>
   <tr>
@@ -119,20 +104,50 @@ folders end in slashes, files do not!
 </form>
 <!-- END OF FILE-MANAGER -->
 
+<!-- SESSION-MANAGER -->
+<form id="sessionForm" action="#" onsubmit="" class="kitchenForm">
+<h1>Data Kitchen Session Manager</h1>
+<p>
+Note: You do not need to login to access local files or remote files accessible
+to the public.
+</p>
+<table>
+  <tr>
+    <th>Login as</th>
+    <td>
+      <div id="kitchenStoredIdentities"></div>
+    </td>
+  <tr>
+  <tr>
+    <th>User Name</th>
+    <td>
+      <input type="text" id="kitchenUsername" />
+    </td>
+  <tr>
+  <tr>
+    <th>Identity Provider</th>
+    <td>
+      <input type="text" id="kitchenIDP" placeholder=" IDP, e.g. https://solid.community" />
+    </td>
+  <tr>
+  <tr>
+    <th>Password</th>
+    <td>
+      <input type="password" id="kitchenPassword" />
+      <button onclick="kitchen.handleSessionForm(event,'cancel')">Cancel</button>
+      <button onclick="kitchen.handleSessionForm(event,'reset')">Clear Form</button>
+      <button onclick="kitchen.handleSessionForm(event,'logout')">Logout</button>
+      <button onclick="kitchen.handleSessionForm(event,'login')">Login</button>
+    </td>
+  <tr>
+</table>
+<p style="text-align:center;border:2px solid orange; padding:1em; font-weight:bold; font-size:1.2em; display:none" id="loggingInNotice">Logging In ...</p>
+</form><!-- END SESSION MANAGEMENT FORM -->
 <div id="kitchenMenu" width="100%">
-<!--
-    <button id="queryButton" onclick="kitchen.kitchenQuery()" title=
-      "Run SPARQL with current document as endpoint"
-    >Query</button>
-    <button id="saveButton" onclick="kitchen.kitchenSave()" title=
-      "Save current document to a pod or local file"
-    >Save</button>
--->
-    <button id="loginButton" onclick="kitchen.kitchenLogin()" title=
-      "not needed for local or public files"
-    >Login</button>
-    <button id="logoutButton" onclick="kitchen.kitchenLogout()">Logout</button>
+  <span>webId : </span> <span id="kitchenWebId"></span>&nbsp;&nbsp;
+  <button onclick="kitchen.showKitchenPage('none','sessionForm')">Change</button>
 </div>
+<!-- END SESSION MANAGEMENT -->
 
   <iframe id="webBrowser" name="webBrowser" src=""></iframe>
   <div id="dataBrowser">
@@ -161,8 +176,23 @@ folders end in slashes, files do not!
     Electron <span id="electron-version"></span>, Solid Panes <span id="solid-panes-version"></span>, Data Kitchen <span id="kitchen-version"></span>.
   </p>
 </div><!-- dataBrowser screen -->
-<!-- You can also require other files to run in this process -->
+
+<script>
+  const BrowserFS = require("./bundles/browserfs.min.js")
+  const kitchen = require('./assets/Kitchen.js')
+  async function login(){
+    await kitchen.init()
+//    fetch = kitchen.auth.fetch
+  }
+  login()
+</script>
 <!-- mashlib --><script src="./mashlib.js"></script>
 <!-- renderer --><script src="./renderer.js"></script>
+<script>
+kitchen.makeContextMenu()
+kitchen.showKitchenPage(kitchen.cfg.startPage)
+</script>
+
+
   </body>
 </html>

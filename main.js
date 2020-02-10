@@ -18,7 +18,7 @@ app.on('activate', function () {
 })
 async function createWindow (cfg) {
   mainWindow = new BrowserWindow(await getWindow(cfg))
-  // mainWindow.webContents.openDevTools() /* DEV-TOOLS */
+  mainWindow.webContents.openDevTools() /* DEV-TOOLS */
   mainWindow.loadFile('index.html')
   mainWindow.on('closed', function () { mainWindow = null })
 }

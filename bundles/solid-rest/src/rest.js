@@ -1,16 +1,14 @@
 const Url      = require('url')
 const path     = require("path");
 const { Response }  = require('node-fetch')
-// const { Response }  = require('cross-fetch')
 const contentTypeLookup = require('mime-types').contentType
 
 class SolidRest {
 
-constructor( handlers,options ) {
-  this.fileRoot = (options&&options.fileRoot) ? options.fileRoot : ""
+constructor( handlers ) {
   this.storageHandlers = {}
   handlers.forEach( handler => {
-     this.storageHandlers[handler.prefix] = handler
+    this.storageHandlers[handler.prefix] = handler
   })
 }
 
@@ -19,21 +17,12 @@ storage(options){
   if(!this.storageHandlers[prefix]) throw "Did not recognize prefix "+prefix
   return this.storageHandlers[prefix]
 }
-toUrlString(url){
-  if (typeof url !== 'string') {
-    url = 'url' in url ? url.url : url.toString()
-  }
-  return new URL(url).toString()
-}
+
 async fetch(uri, options) {
   let self = this
   options = options || {}
-  uri = this.toUrlString(uri)
-  let scheme = Url.parse(uri).protocol
   let pathname = decodeURIComponent(Url.parse(uri).pathname)
-  if(scheme.match("file")){
-      pathname = this.fileRoot + pathname
-  }
+  let scheme = Url.parse(uri).protocol
   let prefix = scheme.match("file") ? 'file' : uri.replace(scheme+'//','').replace(/\/.*/,'')
   options.scheme = scheme
   options.rest_prefix = prefix
@@ -48,7 +37,6 @@ async fetch(uri, options) {
   options = Object.assign({}, options)
   options.headers = options.headers || {}
   options.url = decodeURIComponent(uri)
-  
   const [objectType,objectExists] = 
     await self.storage(options).getObjectType(pathname,options)
   options.objectType = objectType
@@ -60,6 +48,7 @@ async fetch(uri, options) {
 
   /* GET
   */
+
   if (options.method === 'GET') {
     if(!objectExists) return _response(notFoundMessage, resOptions, 404)
     if( objectType==="Container"){
@@ -106,9 +95,8 @@ async fetch(uri, options) {
   if( options.method==="POST"){
     if( !objectExists ) return _response(notFoundMessage, resOptions, 404)
     let link = options.headers.Link || options.headers.link
-    options.link=link
     let slug = options.headers.Slug || options.headers.slug || options.slug
-    if(slug.match(/\//)) return _response(null, resOptions, 400)
+    if(slug.match(/\//)) return _response(null, resOptions, 400) // Now returns 400 instead of 404
     pathname = path.join(pathname,slug);
     if( link && link.match("Container") ) {
       const [status, , headers] =  await self.storage(options).postContainer(pathname,options)
@@ -160,8 +148,7 @@ async fetch(uri, options) {
     })
     if (!pathname.endsWith("/")) pathname += "/"
     let str2 = ""
-    let str = "@prefix : <#>.\n"
-            + "@prefix ldp: <http://www.w3.org/ns/ldp#>.\n"
+    let str = "@prefix : <#>. @prefix ldp: <http://www.w3.org/ns/ldp#>.\n"
             + "<> a ldp:BasicContainer, ldp:Container"
     if(filenames.length){
       str = str + "; ldp:contains\n";
@@ -169,15 +156,13 @@ async fetch(uri, options) {
         let fn = filenames[i]
         let [ftype,e] =  await self.storage(options).getObjectType(pathname + fn)
         if(ftype==="Container" && !fn.endsWith("/")) fn = fn + "/"
-        // if we allow spaces, the container turtle will be invalid
-        if(fn.match(/\s/)) fn = encodeURIComponent(fn)
+//        let prefix = options.rest_prefix==="file" ? "" : options.rest_prefix
+//        fn = options.scheme+"//"+prefix+pathname + fn
         str = str + `  <${fn}>,\n`
-        let ctype = _getContentType(_getExtension(fn),ftype)
-        ctype = ctype.replace(/; .*/,'')
-        ctype = "http://www.w3.org/ns/iana/media-types/"+ctype
+        let ctype = _getContentType(_getExtension(fn),options.objectType)
         ftype = ftype==="Container" ? "ldp:Container; a ldp:BasicContainer" : "ldp:Resource"
         str2 = str2 + `<${fn}> a ${ftype}.\n`
-        str2 = str2 + `<${fn}> a <${ctype}#Resource>.\n`
+        str2 = str2 + `<${fn}> :type "${ctype}".\n`
       }
       str = str.replace(/,\n$/,"")
     }
@@ -185,8 +170,6 @@ async fetch(uri, options) {
     // str = _makeStream(str);
     return  ([200,str])
   }
-
-
 
   /* treats filename ".acl" and ".meta" as extensions
   */
@@ -197,7 +180,8 @@ async fetch(uri, options) {
     return ext
   }
   function _getContentType(ext,type) {
-    if( ext==='.ttl'
+    if( !ext
+     || ext==='.ttl'
      || ext==='.acl'
      || ext==='.meta'
      || type==="Container"
@@ -205,9 +189,7 @@ async fetch(uri, options) {
       return 'text/turtle'
     }
     else {
-      ext = ext.replace(/~$/,'')
-      ext = contentTypeLookup(ext)
-      return ext || "text/turtle"
+      return contentTypeLookup(ext)
     }
   }
   /* DEFAULT HEADER

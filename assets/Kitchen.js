@@ -2,11 +2,6 @@ const path             = require('path')
 const fs               = require('fs')
 const jsonfile         = require('jsonfile');
 const ns               = require('solid-namespace')
-const SparqlFiddle     = require("../bundles/rdf-easy.js")
-const SolidFileClient  = require("../bundles/solid-file-client.bundle.js")
-const SolidRest        = require("../bundles/solid-rest/dist/main.js")
-const SolidFileStorage = require('../bundles/solid-rest/src/file.js')
-const SolidBrowserFS   = require('../bundles/solid-rest/src/browserFS.js')
 
 class Kitchen {
 
@@ -14,17 +9,8 @@ class Kitchen {
     this.clickedOn = null
   }
 
-  /* Initialize Solid-Rest and friends, go to START_PAGE
+  /* Initialize Solid-Rest and friends
   */
-  async init(){
-    let cfg = await this.getConfig()
-    solid.rest   = new SolidRest(
-      [
-        new SolidBrowserFS(),
-        new SolidFileStorage(),
-        // could add other solid-rest backend plugins here
-      ]
-    )
     /* Solid Rest backends intialization
     - localStorage is included by default
     - one could add other browserFS backend plugins here
@@ -33,12 +19,40 @@ class Kitchen {
         app://bfs/IndexedDB/  app://bfs/HTML5FS/  app://bfs/Dropbox/, etc.
     - HTML5FS is the native file API currently only implemented in chrome
         and requires enabling in chrome://flags
+        //  '/Dropbox' : { fs: "Dropbox", options:{client: dropCli} }
     */
-    solid.rest.storage("bfs").initBackends({
+  async init(){
+    this.cfg = await this.getConfig()
+/*
+    this.rest   = new SolidRest([
+        new SolidBrowserFS(),
+        new SolidFileStorage(),
+    ])
+    this.rest.storage("bfs").initBackends({
         '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
         '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"}}
-        //  '/Dropbox' : { fs: "Dropbox", options:{client: dropCli} }
     })
+    rest = this.rest
+*/
+
+
+    const Auth    = require('../bundles/solid-auth-cli/')
+    const Rest    = require('../bundles/solid-rest/')
+    const File    = require('../bundles/solid-rest/src/file.js')
+    const Bfs     = require('../bundles/solid-rest/src/browserFS.js')
+    const Sparql  = require("../bundles/rdf-easy.js")
+    const FileCli = require("../bundles/solid-file-client.bundle.js")
+
+    this.auth = new Auth( new Rest([ new File(), new Bfs() ]) )
+    this.auth.rest.storage("bfs").initBackends({
+        '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
+        '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"}}
+    })
+    this.fc = new FileCli(this.auth,{enableLogging:true})
+    this.sparql = new Sparql( this.auth )
+    window.SolidRest = this.auth.rest
+  }
+/*
     solid.auth.trackSession(async session => {
       let loginButton  = document.getElementById('loginButton')
       let logoutButton = document.getElementById('logoutButton')
@@ -55,6 +69,7 @@ class Kitchen {
     this.makeContextMenu()
     this.showKitchenPage(cfg.startPage)
   }
+*/
 
   /* URI shortcuts
   */
@@ -140,15 +155,16 @@ class Kitchen {
     ))
     const menu2 = new Menu()
     menu2.append(new MenuItem ({
-      label: `Move up a level (from current URI)`,
+      label: `Move up a level from current URI`,
       click: ()=>{self.moveUp()}
     }))
     menu2.append(new MenuItem (
       { role: 'toggledevtools' }
     ))
     window.addEventListener('contextmenu', (e) => {
-      let self = this
       e.preventDefault()
+      // e.g. if(e.srcElement.nodeName==="TEXTAREA"){}
+      let self = this
       let attrs = e.path[0].attributes
       if( attrs.length===0 ) return false // not link or item
       let clickedOn = null
@@ -173,52 +189,50 @@ class Kitchen {
               queryForm    - form to send SPARQL queries
 */
 async showKitchenPage(uri,pageType){
+  this.refreshLoginStatus()
   document.getElementById("versionsFooter").style.display="none"
-  document.getElementById("kitchenMenu").style.display="none"
   if(typeof uri != "string"){
     uri = uriField.value
   }
   uri = this.mungeURI(uri)
-  let pages = {
-    fileManager  : document.getElementById('fileManager'),
-    queryForm    : document.getElementById('queryForm'),
-    webBrowser   : document.getElementById('webBrowser'),
-    dataBrowser  : document.getElementById('dataBrowser'),
-    localBrowser : document.getElementById('localBrowser'),
-  }
-  for(var p in pages){
-    pages[p].style.display = "none"
+  let pages = [
+    'fileManager','queryForm', 'sessionForm',
+    'dataBrowser','localBrowser','webBrowser'
+  ]
+  for(var p of pages){
+    if( document.body.classList.contains(p) ){
+      this.lastPageType = p  // so we can backup
+      document.body.classList.remove(p)
+    }
   }
   // an embedded form
   // 
   if(pageType==="fileManager"||pageType==="queryForm"){
-    pages[pageType].style.display="block"
+    document.body.classList.add(pageType)
+  }
+  else if(pageType==="sessionForm"){
+    document.body.classList.add("sessionForm")
+    await this.createSessionForm()
   }
   // an installation HTML file like assets/about.html (not localhost)
   // 
   else if( uri !="none" && !uri.match(/^(http|file|app)/) ){
-    document.body.style.overflowY="auto"
-    document.getElementById("versionsFooter").style.display="block"
     uri = path.join(this.installDir,uri)
     let newContent = fs.readFileSync(uri)      
-    pages.localBrowser.innerHTML = newContent
-    pages.localBrowser.style.display = "block"
+    document.body.classList.add('localBrowser')
+    document.getElementById('localBrowser').innerHTML = newContent
 
   }
   // a web page from a remote site or localhost
   // 
   else if(pageType==="webBrowser"){
-    document.body.style.overflowY="hidden"
-    document.body.style.margin=0
-    pages.webBrowser.style.overflowY="hidden"
-    pages.webBrowser.style.display ="block"
-    pages.webBrowser.src = uri
+    document.body.classList.add('webBrowser')
+    document.getElementById('webBrowser').src = uri
   }
   // a databrowser location
   // 
   else {
-    pages['dataBrowser'].style.display="block"
-    document.getElementById("kitchenMenu").style.display="block"
+    document.body.classList.add('dataBrowser')
     if(uri==="none") return
     uriField.value = uri
     console.log("User field " + uriField.value)
@@ -230,7 +244,101 @@ async showKitchenPage(uri,pageType){
     // UI.widgets.makeDraggable(icon, subject) // beware many handlers piling up
     outliner.GotoSubject(subject, true, undefined, true, undefined);
   }
+  return false
 }
+
+/* LOGIN &  SESSION MANAGEMENT
+*/
+  async login (credentials) {
+    document.getElementById("loggingInNotice").style.display="block"
+    await this.auth.login( credentials )
+    await this.refreshLoginStatus()
+    document.getElementById("loggingInNotice").style.display="none"
+    this.returnFromSessionForm()
+  }
+  async logout () {
+    await this.auth.logout()
+    await this.refreshLoginStatus()
+    this.returnFromSessionForm()
+  }
+  async refreshLoginStatus(){
+    let session = await this.auth.currentSession() 
+    this.webId = (session) ? session.webId : null
+    let displayId = (this.webId) ? this.webId : "none"
+    document.getElementById("kitchenWebId").innerHTML = "&lt;"+displayId+"&gt;"
+  }
+  async createSessionForm(){
+    let self = this
+    let form   = document.getElementById("sessionForm")
+    if( this.cfg.identities ) {
+      let idArea = document.getElementById("kitchenStoredIdentities")
+      idArea.innerHTML = ""
+      let newIds = [];
+      for(var c of this.cfg.identities){
+        newIds.push({
+          username : c.username,
+          idp : c.idp,
+          password : c.password
+        })  
+      }
+      for(var i=0;i<newIds.length;i++){
+          let id = newIds[i]
+          idArea.innerHTML = idArea.innerHTML + 
+          `<button onclick="kitchen.useStoredIdentity(event,`+i+`)">`
+         +`${id.username}.${id.idp}</button> `
+      }
+      self.identities = newIds
+    }
+    else {
+       idArea.innerHTML=`store identities in config.json to autofill this form`
+    }
+  }
+  returnFromSessionForm(){
+    document.body.classList.remove("sessionForm")
+    document.body.classList.add(this.lastPageType)
+  }
+  async handleSessionForm(event,type){
+    event.preventDefault()
+    let u = document.getElementById("kitchenUsername")
+    let i = document.getElementById("kitchenIDP")
+    let p = document.getElementById("kitchenPassword")
+    if(type==="cancel"){
+      this.returnFromSessionForm()
+      return false
+    }
+    if(type==="logout"){
+      this.logout()
+      return false
+    }
+    if(type==="reset"){
+      u.value=""; i.value=""; p.value=""
+      return false
+    }
+    if( !u.value || !i.value || !p.value ) {
+      alert("You must fill in all fields!")
+      return false
+    }
+    await this.login({
+      username : u.value,
+           idp : i.value,
+      password : p.value
+    })   
+    return false
+  }
+  async useStoredIdentity(event,idNum){
+    event.preventDefault()
+    let id = this.identities[idNum]
+    if(!id || !id.username || !id.idp) return false
+    document.getElementById("kitchenUsername").value = id.username || ""
+    document.getElementById("kitchenIDP").value = id.idp || ""
+    document.getElementById("kitchenPassword").value = id.password || ""
+    if( id.password ) {
+      await this.login(id)
+      return false
+    }
+    return false
+  }
+/* END OF SESSION MANAGEMENT */
 
   moveUp() { 
     let parent = uriField.value.match(/#/)
@@ -256,26 +364,8 @@ async showKitchenPage(uri,pageType){
     await this.showKitchenPage("none","queryForm");
     document.getElementById("sparqlEndpoint").value = uri
   }
-  async kitchenLogin () {
-    await solid.auth.logout()
-    const popupUri = 'https://solid.community/common/popup.html'
-    const session = await solid.auth.popupLogin({popupUri:popupUri})
-    if (session) {
-      // Make authenticated request to the server to establish a session cookie
-      const {status} = await solid.auth.fetch(location)
-      if (status === 401) {
-        alert(`Invalid login.`)
-        await solid.auth.logout()
-      }
-    }
-  }
-  async kitchenLogout () {
-    await solid.auth.logout()
-  }
-
 async handleQuery(event,all){
   event.preventDefault()
-  const sparql = new SparqlFiddle( solid.auth )
   let endpoint = this.mungeURI(document.getElementById('sparqlEndpoint').value)
   let query    = document.getElementById('sparqlQuery').value
   if(all){
@@ -284,13 +374,13 @@ async handleQuery(event,all){
   }
   if(!endpoint||!query){return alert("You must supply an endpoint and a query.")}
   let results
+  alert(`querying ${endpoint} ${query} `)
   try {
-    results  = await sparql.query(endpoint,query)
+    results  = await this.sparql.query(endpoint,query)
   }
   catch(e){
-    alert(e);return false
+    alert("Error querying SPARQL : "+e);return false
   }
-  console.log(`querying ${endpoint} ${query} `)
   let columnHeads = Object.keys(results[0]).reverse()
   let table = "<table>"
   let topRow = ""
@@ -328,7 +418,6 @@ async handleQuery(event,all){
 /* Manage Files
 */
 async manageFiles(e) {
-  const fc = new SolidFileClient(solid.auth,{enableLogging:true})
   let r;
   e.preventDefault()
   let c={} 
@@ -347,7 +436,7 @@ async manageFiles(e) {
   if(c.action==="delete"){
     r = window.confirm(`Are you sure you want to delete ${c.sourceUri}?`)
     if(!r) return false
-    r = await fc.delete(c.sourceUri)
+    r = await this.fc.delete(c.sourceUri)
     alert(r.status+" "+r.statusText)
   }
   else if(c.action==="copy"||c.action==="move"){
@@ -366,7 +455,7 @@ async manageFiles(e) {
       if(c.acl==="no") opts.withAcl = false
       console.log( opts )
       try {
-        r = await fc[c.action](c.sourceUri,c.targetUri,opts)
+        r = await this.fc[c.action](c.sourceUri,c.targetUri,opts)
       }
       catch(e){alert(e)}
       alert(r.status+" "+r.statusText)
