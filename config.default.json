@@ -6,9 +6,11 @@
   "startPage"    : "",
   "LOCAL_BASE"   : "",
   "REMOTE_BASE"  : "https://timbl.solid.community/public/",
+  "identities"   : [
+  ],
   "bookmarks"    : [
     {"label":"My local files",
-       "uri":"file:///public/" 
+       "uri":"./public/" 
     },
     {"label":"My in-browser IndexedDB",
        "uri":"app://bfs/IndexedDB/"

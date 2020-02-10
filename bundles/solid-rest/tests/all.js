@@ -88,6 +88,7 @@ async function run(storageType){
 
   // rest.storageHandlers["ls"].dump()
 
+  console.log(`For ${cfg.folder} ...`)
   console.log(`${passes}/${tests} tests passed, ${fails} failed\n`)
 
 }

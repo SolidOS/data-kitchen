@@ -116,7 +116,8 @@ class Kitchen {
     cfg = cfg || {}
     cfg.startPage = cfg.startPage || "assets/quick-tour.html"
     this.REMOTE_BASE = cfg.REMOTE_BASE
-    this.LOCAL_BASE 
+    cfg.LOCAL_BASE = (cfg.LOCAL_BASE && cfg.LOCAL_BASE.length===0) ? null : cfg.LOCAL_BASE
+    cfg.LOCAL_BASE = this.LOCAL_BASE 
         =  cfg.LOCAL_BASE 
         || "file://" + path.join( installDir,"/myPod/" )
     return cfg
@@ -217,11 +218,9 @@ async showKitchenPage(uri,pageType){
   // an installation HTML file like assets/about.html (not localhost)
   // 
   else if( uri !="none" && !uri.match(/^(http|file|app)/) ){
+    document.body.classList.add('webBrowser')
     uri = path.join(this.installDir,uri)
-    let newContent = fs.readFileSync(uri)      
-    document.body.classList.add('localBrowser')
-    document.getElementById('localBrowser').innerHTML = newContent
-
+    document.getElementById('webBrowser').src = uri
   }
   // a web page from a remote site or localhost
   // 
@@ -270,8 +269,8 @@ async showKitchenPage(uri,pageType){
   async createSessionForm(){
     let self = this
     let form   = document.getElementById("sessionForm")
-    if( this.cfg.identities ) {
-      let idArea = document.getElementById("kitchenStoredIdentities")
+    let idArea = document.getElementById("kitchenStoredIdentities")
+    if( this.cfg.identities && this.cfg.identities.length > 0) {
       idArea.innerHTML = ""
       let newIds = [];
       for(var c of this.cfg.identities){
