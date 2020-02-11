@@ -18,11 +18,16 @@ Bring in public data like dbpedia and wikidata and the LOD cloud.
 <p class="kitchenTourP hasImage">
 A context menu integrates the DataBrowser with file management and SPARQL querying and provides extra DataBrowser navigation.  Right-click (ctrl-click for Mac) on any DataBrowser item or link.
 </p>
-
 <p style="text-align:center">
 <img src="context-menu.png" />
 </p>
 
+<p class="kitchenTourP">
+Logging in is not needed for read/write of local resources or read of public resources. For writing to protected pods, use the "change status" button. If you configure identities in config.json, you can auto-fill the login form from your pre-defined identites. Change identities on the fly, or even open two different data-kitchen windows with two identites simultaneously.  Chat with yourself!
+</p>
+<p style="text-align:center">
+<img src="login.png" />
+</p>
 
 <p class="kitchenTourP">
 Use SPARQL to query your own local files, pods, or any linked data source.  Results are shown in a table.  Clicking on a term in the table opens that term in the DataBrowser.
@@ -33,21 +38,17 @@ Use SPARQL to query your own local files, pods, or any linked data source.  Resu
 </p>
 <p>
 
-
 <p class="kitchenTourP">
 Copy, move, or delete files and folder trees between any spaces you have access to.  Copy from pod to pod.  Or between your pod and your local file system.  Backup and restore. Save remote files locally.
 </p>
-
 
 <p class="kitchenTourP">
 Shortcuts save keystrokes, For example, <em>@ldp:Container</em> brings you to the LDP ontology entry for "Container".
 </p>
 
-
 <p class="kitchenTourP">
-Logging in is not needed for read/write of local resources or read of public resources. To write and visit protected resources, use the login button.  When you are logged in, hovering over the logout button will show your webId.
+<b>Important Note about panes :</b> Data-kitchen mostly adds things on top of the mashlib dataBrowser rather than changing how the dataBrowser operates.  The one area where this isn't the case is the login/session mangegement.  An artifact of this is that you will always see editing and control panes even if you don't have access to edit or control.  Login with a webId that has access to edit or control, otherwise you'll fail with 401.
 </p>
-
 
 See <em>Help - Using the Kitchen</em> for more details.
 

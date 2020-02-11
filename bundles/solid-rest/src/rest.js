@@ -1,6 +1,7 @@
 const Url      = require('url')
 const path     = require("path");
-const { Response }  = require('node-fetch')
+// const { Response }  = require('node-fetch')
+const { Response }  = require('cross-fetch')
 const contentTypeLookup = require('mime-types').contentType
 
 class SolidRest {

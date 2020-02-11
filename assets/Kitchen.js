@@ -35,7 +35,6 @@ class Kitchen {
     rest = this.rest
 */
 
-
     const Auth    = require('../bundles/solid-auth-cli/')
     const Rest    = require('../bundles/solid-rest/')
     const File    = require('../bundles/solid-rest/src/file.js')
@@ -219,7 +218,7 @@ async showKitchenPage(uri,pageType){
   // 
   else if( uri !="none" && !uri.match(/^(http|file|app)/) ){
     document.body.classList.add('webBrowser')
-    uri = path.join(this.installDir,uri)
+    uri = "file://" + path.join(this.installDir,uri)
     document.getElementById('webBrowser').src = uri
   }
   // a web page from a remote site or localhost
@@ -265,6 +264,7 @@ async showKitchenPage(uri,pageType){
     this.webId = (session) ? session.webId : null
     let displayId = (this.webId) ? this.webId : "none"
     document.getElementById("kitchenWebId").innerHTML = "&lt;"+displayId+"&gt;"
+    document.getElementById("kitchenLoginButton").innerHTML = this.webId ? "Change" : "Login"
   }
   async createSessionForm(){
     let self = this
@@ -394,9 +394,19 @@ async handleQuery(event,all){
     for(var k in columnHeads){
       let uri = results[r][columnHeads[k]]
       if(typeof uri === "undefined") uri = "";
-      let ary = uri.split(/#/)
-      let term = ary[1] || uri
-      term = term.replace(this.LOCAL_BASE,'./').replace(this.REMOTE_BASE,'/').replace("http://www.iana.org/assignments/link-relations/",'')
+//      let ary = uri.split(/#/)
+//      let term = ary[1] || uri
+let term = uri
+      if(term.match('http://www.w3.org/ns/iana/media-types/')){
+        term = term.replace('http://www.w3.org/ns/iana/media-types/','')
+      }
+      if(term.match('#')){
+        term = term.replace(/.*\//,'')
+      }
+      term = term.replace('#',':')
+      term = term.replace(this.LOCAL_BASE,'./').replace(this.REMOTE_BASE,'/')
+      term = term.replace('22-rdf-syntax-ns','rdf')
+      term = term.replace("http://www.iana.org/assignments/link-relations/",'link:')
       let title = uri
       let click = `kitchen.showKitchenPage('${uri}','dataBrowser')`
       if( !uri.match(/^(http|file|app)/) ){

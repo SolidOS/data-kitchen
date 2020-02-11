@@ -1,6 +1,7 @@
 const SolidRest         = require('../src/rest.js')
 const SolidLocalStorage = require('../src/localStorage.js')
 const SolidFileStorage  = require('../src/file.js')
+const fs = require('fs')
 
 let [tests,fails,passes] = [0,0,0]
 
@@ -58,7 +59,14 @@ async function run(storageType){
   ok( '404 on attempt to get non-existant resource', res.status==404 ) 
 
   res = await rest.fetch( cfg.image1 )
-  res = rest.fetch( cfg.image2,{method:"PUT",body:res.body} )
+  res = await rest.fetch( cfg.image2,{method:"PUT",body:res.body} )
+  if(storageType.match('file')) {
+    let i1 = cfg.image1.replace('file://','')
+    let i2 = cfg.image2.replace('file://','')
+    ok( 'copy binary file',
+      fs.lstatSync(i1).size===fs.lstatSync(i2).size
+    )
+  }
 
   res = await rest.fetch( cfg.noC ) 
   ok( '404 on attempt to get non-existant container', res.status==404 ) 

@@ -42,8 +42,7 @@ async  getObjectType(fn,options){
 }
 
 async getResource(pathname,options,objectType){
-  // rdflib won't accept this Readable Stream
-  // const bodyData = await fs.createReadStream(pathname)
+//   const bodyData = await fs.createReadStream(pathname)
   const bodyData = await fs.readFile(pathname)
   return [
     200,
@@ -71,28 +70,37 @@ async putResource(pathname,options){
         ( options.method==="PUT" && options.objectType==="Container" )
         ? 409 : 500
     return new Promise(async (resolve) => {
+        let writeIt=false
         if(failureCode===409) return resolve( [failureCode] )
-        if(options.body && options.body.text) options.body = await options.body.text()
-        if(typeof options.body==="string"){
+        if(options.body && options.body.stream){
+            options.body = await options.body.stream()
+            options.body = await options.body.read()
+            writeIt=true
+        }
+        else if(options.body && options.body.text){
+            options.body = await options.body.text()
+            writeIt=true
+        }
+        if(writeIt){
             try {
-              await fs.writeFile(pathname,options.body)
-              return resolve([successCode])
+                await fs.writeFile(pathname,options.body)
+                return resolve([successCode])
             }
             catch(e){ console.log(e); return resolve([failureCode])}
         }
-        if(options.body && !options.body.pipe 
-         && typeof FileReader !="undefined" 
-         ){
+        if(options.body && !options.body.pipe && typeof FileReader !="undefined"){
             var fileReader = new FileReader();
             fileReader.onload = function() {
                 fs.writeFileSync(pathname, Buffer.from(
-                    new Uint8Array(this.result))
+                     new Uint8Array(this.result))
                 )
             }
             fileReader.onloadend = () => {return resolve([successCode])}
-            fileReader.onerror = (err) => {console.log(err);return resolve([failureCode])}
+            fileReader.onerror = (err) => {
+                console.log(err);
+                return resolve([failureCode])
+            }
             fileReader.readAsArrayBuffer(options.body);
-            
         }
         else {
             options.body = options.body || ""
@@ -102,7 +110,7 @@ async putResource(pathname,options){
             }).on('error', (err) => { 
                 console.log(err)
                 return resolve( [failureCode] )
-           })
+            })
         }
     })
 }

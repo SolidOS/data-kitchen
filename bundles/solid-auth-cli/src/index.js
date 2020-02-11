@@ -1,6 +1,7 @@
 "use strict";
 
-const nodeFetch       = require('node-fetch');
+//const nodeFetch       = require('node-fetch');
+const nodeFetch       = require('cross-fetch');
 const SolidClient     = require('@solid/cli/src/SolidClient');
 const IdentityManager = require('@solid/cli/src/IdentityManager');
 const fs              = require('fs');

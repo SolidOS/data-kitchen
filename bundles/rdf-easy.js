@@ -9,7 +9,8 @@ class RDFeasy {
 
   async _multiQuery(sources,query){
     this.store = $rdf.graph()
-    this.fetcher = $rdf.fetcher(this.store,{fetch:this._auth.fetch})
+//    this.fetcher = $rdf.fetcher(this.store,{fetch:this._auth.fetch})
+    this.fetcher = $rdf.fetcher(this.store)
     for(var source of sources){
       await this.fetcher.load(source)
     }
@@ -29,7 +30,10 @@ class RDFeasy {
   }
 
   async _runQuery(dataUrl,sparqlStr,outputFormat){
-    if(dataUrl) await this._load(dataUrl)
+    try {
+      if(dataUrl) await this._load(dataUrl)
+    }
+    catch(e){console.warn("SPARQL Fetch Error : "+dataUrl+" "+e);return []}
     let results = await this._execute(sparqlStr)
     if(outputFormat.match(/array/i)){ return results }
     else if(outputFormat.match(/value/i)) {
@@ -41,17 +45,17 @@ class RDFeasy {
 
   async _execute(sparql){ 
     let self = this
-    return new Promise(async(resolve, reject)=>{
-    let preparedQuery = $rdf.SPARQLToQuery(sparql,false,self.store)
-    let wanted = preparedQuery.vars
-    let resultAry = []
-    self.store.query(preparedQuery, async(results) =>  {
-      if(typeof(results)==="undefined") { reject("No results.") }
-      let row = await this._rowHandler(wanted,results) 
-      if(row) resultAry.push(row)
-    }, {} , function(){return resolve(resultAry)} )
-  })
-}
+    return new Promise(async(resolve, reject)=>{ try{
+      let preparedQuery = $rdf.SPARQLToQuery(sparql,false,self.store)
+      let wanted = preparedQuery.vars
+      let resultAry = []
+      self.store.query(preparedQuery, async(results) =>  {
+        if(typeof(results)==="undefined") { reject("No results.") }
+        let row = await this._rowHandler(wanted,results) 
+        if(row) resultAry.push(row)
+      }, {} , function(){return resolve(resultAry)} )
+    }catch(e){console.warn("SPARQL Parse Error : "+e)}})
+  }
 
   async _rowHandler(wanted,results){
     let row = {}
@@ -78,7 +82,8 @@ class RDFeasy {
 
   async _load(url){
     this.store = $rdf.graph()
-    this.fetcher = $rdf.fetcher(this.store,{fetch:this._auth.fetch})
+//    this.fetcher = $rdf.fetcher(this.store,{fetch:this._auth.fetch})
+    this.fetcher = $rdf.fetcher(this.store)
     await this.fetcher.load(url)
   }
 
