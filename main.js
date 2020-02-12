@@ -237,7 +237,7 @@ function getMenu() {
     label: 'Query',
     click: async () => {
       mainWindow.webContents.send(
-            'kitchen.showKitchenPage','','queryForm'
+            'kitchen.showKitchenPage','none','queryForm'
       )
     },
   },

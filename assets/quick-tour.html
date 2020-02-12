@@ -1,55 +1,58 @@
+<Link rel="stylesheet" href="../myPod/common/css/bootstrap.min.css">
 <link rel="stylesheet" href="kitchen.css" />
 
 <body class="kitchenTour">
 <h1>Welcome to the Solid Data Kitchen!</h1>
 
 <p class="kitchenTourP">
-Live your life in a read-write world of linked data!
-Use all your solid pods, including your local files as your zeroth pod.
-Bring in all the stuff in your life shared by friends and colleagues.
-Bring in public data like dbpedia and wikidata and the LOD cloud.
+The Data Kitchen is a stand-alone version of the mashlib DataBrowser.
+It has a number of features and a few differences in interface not found 
+in the standard version.  Please at least skim this quick tour to get an 
+idea of the differenenes.
 </p>
 
-<p style="text-align:center">
+
+<p class="kitchenTourP">
+The Data Kitchen, unlike the standard version, supoorts using the DataBrowser
+to create, view, edit, and delte local files and browserFS storage files
+without a server.
+</p>
+<p style="margin-left:4em;">
 <img src="bookmarks.png" />
 </p>
 
 
 <p class="kitchenTourP hasImage">
-A context menu integrates the DataBrowser with file management and SPARQL querying and provides extra DataBrowser navigation.  Right-click (ctrl-click for Mac) on any DataBrowser item or link.
+A context menu integrates the DataBrowser with file management and SPARQL querying and provides extra DataBrowser navigation.  Right-click (ctrl-click for Mac) on any DataBrowser item or link. The file manager supports saving or moving documents between your local file system and remote pods. SPARQL Query results are displayed as a table in which each term links back to a DataBrowser view of that term.
 </p>
-<p style="text-align:center">
+<p style="margin-left:4em;">
 <img src="context-menu.png" />
 </p>
 
 <p class="kitchenTourP">
 Logging in is not needed for read/write of local resources or read of public resources. For writing to protected pods, use the "change status" button. If you configure identities in config.json, you can auto-fill the login form from your pre-defined identites. Change identities on the fly, or even open two different data-kitchen windows with two identites simultaneously.  Chat with yourself!
 </p>
-<p style="text-align:center">
+<p style="margin-left:4em;">
 <img src="login.png" />
 </p>
 
 <p class="kitchenTourP">
-Use SPARQL to query your own local files, pods, or any linked data source.  Results are shown in a table.  Clicking on a term in the table opens that term in the DataBrowser.
+You can use shortcuts in the DataBrowser, file manager, and query form. Shortcuts allow you to quickly specify local and remote files relative to a URL of your choosing.  Vocabulary shortcuts support quick searches, for example :
 </p>
-
-<p style="text-align:center">
-<img src="sparql.png" />
-</p>
-<p>
-
+<blockquote><code>@ldp ----> http://www.w3.org/ns/ldp<br />
+@ldp:Container ----> http://www.w3.org/ns/ldp#Container
+</code></blockquote>
 <p class="kitchenTourP">
-Copy, move, or delete files and folder trees between any spaces you have access to.  Copy from pod to pod.  Or between your pod and your local file system.  Backup and restore. Save remote files locally.
+Unlike in the standard version, in the Data Kitchen you will always see a full set of pane icons including  editing and control panes even if you don't have access to edit or control. If you try to edit or delete, you will get a 401 error unless you first login with a webId that has access.
 </p>
-
-<p class="kitchenTourP">
-Shortcuts save keystrokes, For example, <em>@ldp:Container</em> brings you to the LDP ontology entry for "Container".
+<p style="margin-left:4em;">
+<img src="panes.png" />
 </p>
 
 <p class="kitchenTourP">
-<b>Important Note about panes :</b> Data-kitchen mostly adds things on top of the mashlib dataBrowser rather than changing how the dataBrowser operates.  The one area where this isn't the case is the login/session mangegement.  An artifact of this is that you will always see editing and control panes even if you don't have access to edit or control.  Login with a webId that has access to edit or control, otherwise you'll fail with 401.
+<b>Bug warning : </b> Currently, after you delete a resource, it will still be listed until you close and reopen the kitchen.
 </p>
 
-See <em>Help - Using the Kitchen</em> for more details.
+<p style="text-align:center;"><b>See Help - Using the Kitchen for more details.</b></p>
 
 </body>

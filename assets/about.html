@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Solid Data Kitchen</title>
     <link rel="stylesheet" href="../myPod/common/css/bootstrap.min.css">
+    <link rel="stylesheet" href="kitchen.css">
   </head>
 <body>
 <div id="page">
@@ -16,7 +17,7 @@
   <li><a href="#profile">Setting up a local profile</a><br></li>
 </ul>
 
-<h2><a name="customizing">Customizing the Data Kitchen</a></h2>
+<h2><a name="customizing">Customizing the Kitchen</a></h2>
 
 <p>
 Copy <em>installFolder/config.default.json</em> to <em>installFolder/config.json</em>. Then edit the following fields:
@@ -53,10 +54,28 @@ the same place by using that full URI.  If this variable is missing
 or empty, you will not be able to use this shortcut.
 </blockquote>
 
-<b>Customize Bookmarks and Menus</b>
+<b>Identities</b>
+<blockquote>
+If you add one or more identities here, they will show up as buttons
+on the login form, allowing you to autofill the form.  Each identity
+must have a username and idp, and may optionally (at your own risk)
+include a password.  If a password is included, the button on the login
+form will allow one-click login.  The identities should look like this:
+<blockquote><code style="font-size:small">
+    "identitities" : [<br />
+        { "username":"name1", "idp":"idp1", "password":"optionalPassword1" },<br />
+        { "username":"name2", "idp":"idp2", "password":"optionalPassword2" }<br />
+    ]</code></blockquote></blockquote>
+
+<b>Bookmarks</b>
 <blockquote>
 Edit the bookmarks as you wish.  URIs will open in the DataBrowser. Shortcuts
 like ./, /, and @ are okay.
+<blockquote><code style="font-size:small">
+    "bookmarks" : [<br />
+        { "label":"label1", "uri":"uri1" },<br />
+        { "label":"label2", "uri":"uri2" }<br />
+    ]</code></blockquote></blockquote>
 </blockquote>
 
 
