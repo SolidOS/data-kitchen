@@ -177,22 +177,8 @@ to the public.
   </p>
 </div><!-- dataBrowser screen -->
 
-<script>
-  const BrowserFS = require("./bundles/browserfs.min.js")
-  const kitchen = require('./assets/Kitchen.js')
-  async function login(){
-    await kitchen.init()
-//    fetch = kitchen.auth.fetch
-  }
-  login()
-</script>
 <!-- mashlib --><script src="./mashlib.js"></script>
 <!-- renderer --><script src="./renderer.js"></script>
-<script>
-kitchen.makeContextMenu()
-kitchen.showKitchenPage(kitchen.cfg.startPage)
-</script>
-
 
   </body>
 </html>

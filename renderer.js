@@ -1,5 +1,6 @@
 const {ipcRenderer,remote} = require('electron')
-//const kitchen              = require('./assets/Kitchen.js')
+const BrowserFS            = require("./bundles/browserfs.min.js")
+const kitchen              = require('./assets/Kitchen.js')
 
 /* Set up The Tabulator
 */
@@ -54,6 +55,7 @@ if (arguments && arguments[2]) { // Electron command line
 initial = initial || "./public/"
 uriField.value = initial
 
-// kitchen.init()
+/* initialize and start the kitchen */
+kitchen.init()
 
 /* END */

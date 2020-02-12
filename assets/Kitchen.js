@@ -1,7 +1,14 @@
-const path             = require('path')
-const fs               = require('fs')
-const jsonfile         = require('jsonfile');
-const ns               = require('solid-namespace')
+const path     = require('path')
+const fs       = require('fs')
+const jsonfile = require('jsonfile');
+
+const Auth     = require('../bundles/solid-auth-cli/')
+const Rest     = require('../bundles/solid-rest/')
+const File     = require('../bundles/solid-rest/src/file.js')
+const Bfs      = require('../bundles/solid-rest/src/browserFS.js')
+const Sparql   = require("../bundles/rdf-easy.js")
+const FileCli  = require("../bundles/solid-file-client.bundle.js")
+
 
 class Kitchen {
 
@@ -10,65 +17,35 @@ class Kitchen {
   }
 
   /* Initialize Solid-Rest and friends
+     - localStorage is included by default
+     - one could add other browserFS backend plugins here
+     - ./bundles has a Dropbox SDK that could be used for a backend
+     - once initialized, address these spaces with the mountpoints like this:
+           app://bfs/IndexedDB/  app://bfs/HTML5FS/  app://bfs/Dropbox/, etc.
+     - HTML5FS is the native file API currently only implemented in chrome
+       and requires enabling in chrome://flags
+     Here's the flow:
+       We instantiate solid-rest with solid-rest-file and solid-rest-browserFS
+       Then we initialize the browserFS backends
+       Then we instantiate solid-auth-cli with that rest 
+       Then we instantiate solid-file-client and sparql-fiddle with that auth
+    
   */
-    /* Solid Rest backends intialization
-    - localStorage is included by default
-    - one could add other browserFS backend plugins here
-    - ./bundles has a Dropbox SDK that could be used for a backend
-    - once initialized, address these spaces with the mountpoints like this:
-        app://bfs/IndexedDB/  app://bfs/HTML5FS/  app://bfs/Dropbox/, etc.
-    - HTML5FS is the native file API currently only implemented in chrome
-        and requires enabling in chrome://flags
-        //  '/Dropbox' : { fs: "Dropbox", options:{client: dropCli} }
-    */
   async init(){
-    this.cfg = await this.getConfig()
-/*
-    this.rest   = new SolidRest([
-        new SolidBrowserFS(),
-        new SolidFileStorage(),
-    ])
-    this.rest.storage("bfs").initBackends({
-        '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
-        '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"}}
+    this.auth   = new Auth( new Rest([ new File(), new Bfs() ]) )
+    this.auth.rest.storage("bfs").initBackends({ 
+      '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
+      '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"} }
     })
-    rest = this.rest
-*/
-
-    const Auth    = require('../bundles/solid-auth-cli/')
-    const Rest    = require('../bundles/solid-rest/')
-    const File    = require('../bundles/solid-rest/src/file.js')
-    const Bfs     = require('../bundles/solid-rest/src/browserFS.js')
-    const Sparql  = require("../bundles/rdf-easy.js")
-    const FileCli = require("../bundles/solid-file-client.bundle.js")
-
-    this.auth = new Auth( new Rest([ new File(), new Bfs() ]) )
-    this.auth.rest.storage("bfs").initBackends({
-        '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
-        '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"}}
-    })
-    this.fc = new FileCli(this.auth,{enableLogging:true})
+    this.fc     = new FileCli(this.auth,{enableLogging:true})
     this.sparql = new Sparql( this.auth )
+
     window.SolidRest = this.auth.rest
-  }
-/*
-    solid.auth.trackSession(async session => {
-      let loginButton  = document.getElementById('loginButton')
-      let logoutButton = document.getElementById('logoutButton')
-      if (!session) {
-        logoutButton.style.display="none"
-        loginButton.style.display="inline-block"
-      }
-      else {
-        loginButton.style.display="none"
-        logoutButton.style.display="inline-block"
-        logoutButton.title = session.webId
-      }
-    })
+    this.cfg = await this.getConfig()
     this.makeContextMenu()
-    this.showKitchenPage(cfg.startPage)
+    this.showKitchenPage(this.cfg.startPage)
   }
-*/
+
 
   /* URI shortcuts
   */
@@ -85,14 +62,14 @@ class Kitchen {
     else if ( uri.startsWith("@") ){
       let ary = uri.split(/:/)
       let prefix = ary[0].replace(/@/,'')
-      let term = ary[1] ? ary[1] : ""
-      try{
-        uri = UI.ns[prefix](term).uri
-        if(!term)  uri = uri.replace(/#$/,'')
-        return uri
+      let term = ary[1]
+      prefix = this.sparql.expand[prefix]
+      if(!prefix) {
+        alert("Sorry, couldn't expand "+uri)
+        return false
       }
-      catch(e) {alert("Sorry, couldn't expand "+uri)}
-    }
+      return (term) ? prefix + term : prefix.replace(/#$/,'')
+    }  
     return uri
   }  
 
@@ -195,6 +172,7 @@ async showKitchenPage(uri,pageType){
     uri = uriField.value
   }
   uri = this.mungeURI(uri)
+  if(!uri) return
   let pages = [
     'fileManager','queryForm', 'sessionForm',
     'dataBrowser','localBrowser','webBrowser'
@@ -441,6 +419,7 @@ async manageFiles(e) {
   }
   else {
     c.sourceUri = this.mungeURI(c.sourceUri)
+    if(!c.sourceUri) return
   }
   if(c.action==="delete"){
     r = window.confirm(`Are you sure you want to delete ${c.sourceUri}?`)
@@ -454,6 +433,7 @@ async manageFiles(e) {
     }
     else {
       c.targetUri = this.mungeURI(c.targetUri)
+      if(!c.targetUri) return
       r = window.confirm(
         `Are you sure you want to ${c.action} ${c.sourceUri} to ${c.targetUri}?`
       )
