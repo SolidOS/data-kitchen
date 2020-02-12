@@ -1,19 +1,21 @@
 "use strict";
 
-//const nodeFetch       = require('node-fetch');
 const nodeFetch       = require('cross-fetch');
 const SolidClient     = require('@solid/cli/src/SolidClient');
 const IdentityManager = require('@solid/cli/src/IdentityManager');
 const fs              = require('fs');
 const path            = require('path');
+/*
 const Rest            = require('solid-rest');
 const File            = require('solid-rest/src/file.js');
 const Mem             = require('solid-rest/src/localStorage.js');
+*/
 
 module.exports = class SolidAuthCli {
 
   constructor( restObject ){
-    this.rest = restObject || new Rest([ new File(), new Mem() ])
+    // this.rest = restObject || new Rest([ new File(), new Mem() ])
+    this.rest = restObject
     this.session = null
     this.client = new SolidClient({ identityManager : new IdentityManager() });
     return this
@@ -21,6 +23,9 @@ module.exports = class SolidAuthCli {
 
   async fetch(url,request){
     if( url.match(/^(file:|app:)/) ){
+        if(!this.rest){
+          return console.warn("To use file: or app: URIs, you must instantiate solid-auth-cli with the appropriate storage managers.")
+        }
         return await this.rest.fetch(url,request)        
     }
     request = request || {};
@@ -40,8 +45,9 @@ module.exports = class SolidAuthCli {
   }
 
   async currentSession(){
-    if (this.session && !this.client.isExpired(this.session)) return(this.session)
-    else { return null; }
+    return ( this.session && !this.client.isExpired(this.session) )
+        ? this.session
+        : null
   }
 
   async login( cfg ) {
