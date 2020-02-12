@@ -204,6 +204,7 @@ async showKitchenPage(uri,pageType){
   else if(pageType==="webBrowser"){
     document.body.classList.add('webBrowser')
     document.getElementById('webBrowser').src = uri
+//    remote.getCurrentWindow().loadURL(uri)
   }
   // a databrowser location
   // 
