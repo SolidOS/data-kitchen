@@ -72,7 +72,7 @@ async putResource(pathname,options){
     return new Promise(async (resolve) => {
         let writeIt=false
         if(failureCode===409) return resolve( [failureCode] )
-        if(typeof options.body==="undefined") option.body = ""
+        if(typeof options.body==="undefined") options.body = ""
         if(typeof options.body==="string"){
           writeIt=true
         }

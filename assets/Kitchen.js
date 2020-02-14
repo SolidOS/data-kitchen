@@ -130,6 +130,7 @@ class Kitchen {
     menu.append(new MenuItem (
       { role: 'toggledevtools' }
     ))
+
     const menu2 = new Menu()
     menu2.append(new MenuItem ({
       label: `Move up a level from current URI`,
@@ -195,9 +196,16 @@ async showKitchenPage(uri,pageType){
   // an installation HTML file like assets/about.html (not localhost)
   // 
   else if( uri !="none" && !uri.match(/^(http|file|app)/) ){
-    document.body.classList.add('webBrowser')
+    document.body.classList.add('localBrowser')
     uri = "file://" + path.join(this.installDir,uri)
-    document.getElementById('webBrowser').src = uri
+    // document.getElementById('localBrowser').src = uri // old iframe way
+    let content = await this.auth.fetch(uri)
+    content=content.body.toString().replace(/src="/g,'src="file://'+this.installDir)
+    content=content.replace(/href="/g,'href="file://'+this.installDir)
+    var doc = document.getElementById('localBrowser').contentWindow.document;
+    doc.open();
+    doc.write(content);
+    doc.close();
   }
   // a web page from a remote site or localhost
   // 

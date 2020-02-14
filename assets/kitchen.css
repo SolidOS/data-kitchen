@@ -9,16 +9,14 @@ body {
    min-width:80vw !important;
    height:10em;
 }
-.queryButton {
- width:100%;
- margin:0.5em;
- margin-left:1em;
- height:2em;
- text-align:center;
+/* Dokeli & HumanReadable iframe
+.docView iframe {
+   max-width:80vw;
+   min-width:80vw !important;
+   max-height:80vh;
+   border:1px solid gray;
 }
-#queryAllButton {
-  margin-top:-3em;
-}
+*/
 #dataBrowser {
   margin-top:2em;
 }
@@ -43,14 +41,6 @@ body.sessionForm #sessionForm { display:block !important; }
 body.localBrowser #localBrowser { display:block !important; }
 
 
-body.webBrowser {
-  overflow-y:"hidden";
-  margin:0;
-}
-body.webBrowser #webBrowser {
-  overflow-y:"hidden";
-}
-
 /* hide Change-login button, on local pages, web pages, session manger
 */
 #kitchenMenu button { display:none; }
@@ -70,20 +60,11 @@ body.webBrowser #webBrowser {
   top:0;
   right:0;
 }
-
 #uriField {
   font-size:100%;
   min-width:30em; 
   padding:0.5em;
   width:95%;
-}
-iframe#webBrowser {
-  display:none;
-  height:100vh;
-  width:100vw;
-  border:none;
-  margin:0;
-  padding:0;
 }
 #outline {
   min-height:200px;
@@ -95,37 +76,10 @@ iframe#webBrowser {
   text-align:right;
   margin:2em;
 }
-#localBrowser {
-  margin-left:1em;
-  margin-right:2em;
-  max-width:780px;
-  overflow:auto !important;
-}
-.kitchenTour img {
-    border:1px solid orange;
-    padding:1em;
-    margin:1em;
-}
-.kitchenTourP.hasImage {
-    margin-bottom:0.25em;
-}
-#localBrowser h1, #localBrowser h2,
-.kitchenForm h1, .kitchenForm h2 
-{
-  font-weight:400 !important;
-}
-#localBrowser i {
-  font-weight:300 !important;
-}
-#localBrowser ul {
-  padding-left:1em;  
-  margin-left:1em;
-  line-height:1.75em;  
-}
+
 .kitchenForm {
   margin-left:1em;
   margin-right:1em;
-//  width : 700px;
 }
 .kitchenForm table {
   width:100%;
@@ -149,18 +103,82 @@ iframe#webBrowser {
   height:2.5em;
   font-size:1rem;
 }
-#queryRadio {
-  margin-left:2em;
+.kitchenForm .buttonContainer {
+  margin-top:1em;
+  width:100%;
+  text-align:right;
+}
+
+
+body.webBrowser,
+body.localBrowser
+{
+  overflow-y:"hidden";
+  margin:0;
+}
+body.webBrowser #webBrowser,
+body.localBrowser #localBrowser
+ {
+  overflow-y:"hidden";
+}
+iframe#webBrowser,
+iframe#localBrowser
+ {
+  display:none;
+  height:100vh;
+  width:100vw;
+  border:none;
+  margin:0;
+  padding:0;
+}
+#localBrowser {
+  margin-left:1em;
+  overflow:auto !important;
+}
+#localBrowser h1, #localBrowser h2,
+.kitchenForm h1, .kitchenForm h2 
+{
+  font-weight:400 !important;
+}
+#localBrowser i {
+  font-weight:300 !important;
+}
+#localBrowser ul {
+  padding-left:1em;  
+  margin-left:1em;
+  line-height:1.75em;  
+}
+
+
+/* KITCHEN TOUR
+*/
+.kitchenTour img {
+    border:1px solid green;
+    padding:1em;
+    margin:1em;
+}
+.kitchenTourP.hasImage {
+    margin-bottom:0.25em;
+}
+/* QUERY FORM
+*/
+.queryButton {
+ width:100%;
+ margin:0.5em;
+ margin-left:1em;
+ height:2em;
+ text-align:center;
+}
+#queryAllButton {
+  margin-top:-3em;
 }
 #queryForm.kitchenForm textarea {
   width:100%;
   min-width:66vw !important;
   height:5em;
 }
-.kitchenForm .buttonContainer {
-  margin-top:1em;
-  width:100%;
-  text-align:right;
+#queryRadio {
+  margin-left:2em;
 }
 #queryForm.kitchenForm #queryResults table {
   margin:0 !important;
@@ -172,6 +190,8 @@ iframe#webBrowser {
 #queryForm.kitchenForm #queryResults td {
   width:auto !imporant;
 }
+/* QUERY RESULTS
+*/
 #queryResults th,
 #queryResults td
 {
