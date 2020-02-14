@@ -7,7 +7,7 @@
     a acl:Authorization;
 
     acl:agent
-        </profile/card#me>;
+        <../profile/card#me>;
 
     acl:accessTo <./publicTypeIndex.ttl>;
 

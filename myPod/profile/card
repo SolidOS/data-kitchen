@@ -7,7 +7,7 @@
 @prefix n1: <http://www.w3.org/ns/auth/acl#>.
 @prefix n2: <http://>.
 @prefix ldp: <http://www.w3.org/ns/ldp#>.
-@prefix inbox: </inbox/>.
+@prefix inbox: <../inbox/>.
 @prefix sp: <http://www.w3.org/ns/pim/space#>.
 @prefix usr: </>.
 
@@ -22,9 +22,9 @@ pro:card a n0:PersonalProfileDocument; n0:maker :me; n0:primaryTopic :me.
                 n1:origin <http://example.org>
             ];
     ldp:inbox inbox:;
-    sp:preferencesFile </settings/prefs.ttl>;
+    sp:preferencesFile <../settings/prefs.ttl>;
     sp:storage usr:;
     solid:account usr:;
-    solid:privateTypeIndex </settings/privateTypeIndex.ttl>;
-    solid:publicTypeIndex </settings/publicTypeIndex.ttl>;
+    solid:privateTypeIndex <../settings/privateTypeIndex.ttl>;
+    solid:publicTypeIndex <../settings/publicTypeIndex.ttl>;
     n0:name "Local Data Kitchen User".

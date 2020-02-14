@@ -140,26 +140,11 @@ Some examples
 
 <p>
 The dataBrowser expects to find key Solid resources (profile, settings, etc.)
-in the root folder of your file system.  If it does not find them, the 
-dataBrowser will behave differently.  If you want your preferences to be 
-honored (e.g. are you a Developer or PowerUser?), copy the following folders
-from the kitchen-data/myPod folder:
-<ul>
-<li>common (folder and contents)</li>
-<li>profile (folder and contents)</li>
-<li>settings (folder and contents)</li>
-<li>.well-known (folder and contents)</li>
-<li>.acl (file)</li>
-</ul>
-</p>
-<p>
-You can, if you wish use your profile and other resources from a remote pod instead of the supplied items.  If you do this, make sure that addresses are relative.  Also, make sure that the top level .acl gives access to </profile/card#me>.
-</p>
-<p>
-You can also edit these files as you would on a pod.
-</p>
-<p>
-You can also add other items (e.g. inbox) for special purposes.
+in the "myPod" folder of the data kitchen installation folder.  You may edit 
+these resources, but make sure that, at a minimum, your profile is located in
+the myPod/profile folder and it points to a preference file in myPod/settings.
+These profile settings (for example, your role as a PowerUser or Developer)
+will inform your DataBrowser experiences when browsing local files.  If you browse remote files, your experience will depend on your profile (or lack of one) on the site you are visiting.
 </p>
 
 

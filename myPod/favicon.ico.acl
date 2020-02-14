@@ -9,9 +9,9 @@
     a acl:Authorization;
 
     acl:agent
-        </profile/card#me>;
+        <../profile/card#me>;
 
-    acl:accessTo </favicon.ico>;
+    acl:accessTo <./favicon.ico>,<./favicon.png>;
 
     acl:mode
         acl:Read, acl:Write, acl:Control.
@@ -21,6 +21,6 @@
 
     acl:agentClass foaf:Agent;  # everyone
 
-    acl:accessTo </favicon.ico>;
+    acl:accessTo <./favicon.ico>,<./favicon.png>;
 
     acl:mode acl:Read.

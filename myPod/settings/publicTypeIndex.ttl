@@ -9,4 +9,4 @@
 :Bookmark
     a ter:TypeRegistration;
     ter:forClass bookm:Bookmark;
-    ter:instance </public/bookmarks.ttl>.
+    ter:instance <../bookmarks.ttl>.

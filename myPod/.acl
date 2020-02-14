@@ -5,7 +5,7 @@
 <#owner>
     a acl:Authorization;
 
-    acl:agent </profile/card#me>;
+    acl:agent <./profile/card#me>;
     # acl:agentClass foaf:Agent;
 
     # Set the access to the root storage folder itself

@@ -7,7 +7,7 @@
     a acl:Authorization;
 
     acl:agent
-        </profile/card#me>;
+        <./card#me>;
 
     acl:accessTo <./card>;
 

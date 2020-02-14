@@ -72,12 +72,16 @@ async putResource(pathname,options){
     return new Promise(async (resolve) => {
         let writeIt=false
         if(failureCode===409) return resolve( [failureCode] )
-        if(options.body && options.body.stream){
+        if(typeof options.body==="undefined") option.body = ""
+        if(typeof options.body==="string"){
+          writeIt=true
+        }
+        else if(options.body.stream){
             options.body = await options.body.stream()
             options.body = await options.body.read()
             writeIt=true
         }
-        else if(options.body && options.body.text){
+        else if(options.body.text){
             options.body = await options.body.text()
             writeIt=true
         }
@@ -88,7 +92,7 @@ async putResource(pathname,options){
             }
             catch(e){ console.log(e); return resolve([failureCode])}
         }
-        if(options.body && !options.body.pipe && typeof FileReader !="undefined"){
+        if(!options.body.pipe && typeof FileReader !="undefined"){
             var fileReader = new FileReader();
             fileReader.onload = function() {
                 fs.writeFileSync(pathname, Buffer.from(

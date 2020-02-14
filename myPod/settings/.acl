@@ -5,7 +5,7 @@
     a acl:Authorization;
 
     acl:agent
-        </profile/card#me>;
+        <../profile/card#me>;
 
     # Set the access to the root storage folder itself
     acl:accessTo <./>;
