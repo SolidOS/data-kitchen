@@ -211,7 +211,13 @@ async showKitchenPage(uri,pageType){
   // 
   else if(pageType==="webBrowser"){
     document.body.classList.add('webBrowser')
-    document.getElementById('webBrowser').src = uri
+//    document.getElementById('webBrowser').src = uri
+    let content = await this.auth.fetch(uri)
+    content = `<BASE href="${uri}" />`+await content.text()
+    var doc = document.getElementById('webBrowser').contentWindow.document;
+    doc.open();
+    doc.write(content);
+    doc.close();
   }
   // a databrowser location
   // 

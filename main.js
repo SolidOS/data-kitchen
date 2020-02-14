@@ -261,17 +261,13 @@ function getMenu() {
           )
         }
       },
-/*
-Github won't let itself be displayed in a frame :-(
       {
-        label: 'Using the DataBrowser',
+        label: 'DataBrowser User Guide',
         click: async () => {
           mainWindow.webContents.send(
-            'kitchen.showKitchenPage','https://solid.github.io/userguide', 'webBrowser'
-          )
+            'kitchen.showKitchenPage','https://github.com/solid/userguide', 'webBrowser' )
         }
       },
-*/
       {
         label: 'About Solid',
         click: async () => {
