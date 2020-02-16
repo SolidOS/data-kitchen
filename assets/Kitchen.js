@@ -1,6 +1,8 @@
+const {Menu, MenuItem,BrowserView} = remote
 const path     = require('path')
 const fs       = require('fs')
 const jsonfile = require('jsonfile');
+const TabGroup = require("electron-tabs")
 
 const Auth     = require('../bundles/solid-auth-cli/')
 const Rest     = require('../bundles/solid-rest/')
@@ -8,7 +10,6 @@ const File     = require('../bundles/solid-rest/src/file.js')
 const Bfs      = require('../bundles/solid-rest/src/browserFS.js')
 const Sparql   = require("../bundles/rdf-easy.js")
 const FileCli  = require("../bundles/solid-file-client.bundle.js")
-
 
 class Kitchen {
 
@@ -42,8 +43,22 @@ class Kitchen {
 
     window.SolidRest = this.auth.rest
     this.cfg = await this.getConfig()
-    this.makeContextMenu()
-    this.showKitchenPage(this.cfg.startPage)
+
+  window.SolidAuthClient.trackSession( (session) => {
+    if (!session) {
+      kitchen.webId = null
+    }
+    else {
+      kitchen.webId = session.webId
+    }
+    let displayId = (this.webId) ? this.webId : "none"
+    document.getElementById("kitchenWebId").innerHTML = "&lt;"+displayId+"&gt;"
+
+  })
+
+    await this.makeContextMenu()
+    await this.makeTabs()
+    await this.showKitchenPage(this.cfg.startPage)
   }
 
 
@@ -74,8 +89,10 @@ class Kitchen {
   }  
 
   async getConfig(){
-    let upDir = process.platform.match(/^win/) ? "..\\" : "../"
-    let installDir = path.join(__dirname,upDir)
+    //    let upDir = process.platform.match(/^win/) ? "..\\" : "../"
+    //    let installDir = path.join(__dirname,upDir)
+    let installDir = path.join(__dirname,"../")
+    installDir = installDir.replace(/\\/g,"/")
     installDir = process.platform.match(/^win/) 
       ? installDir.replace(/^.:/,'')
       : installDir
@@ -98,9 +115,42 @@ class Kitchen {
         || "file://" + path.join( installDir,"/myPod/" )
     return cfg
   }
+
+/* TABS
+*/
+  makeTabs() {
+    let tabGroup = new TabGroup()
+    tabGroup.addTab({
+      title: "WebView",
+      src: this.cfg.startPage,
+      visible:true,
+      closable:false,
+      active:false,
+    })
+    this.tabGroup = tabGroup
+//    let tab = this.tabGroup.getTabByPosition(1)
+//    tab.activate()
+    // this.hideTabs()
+  }
+  showTab(uri){
+    document.body.classList.add('webview')
+    document.getElementById("kitchenTabContent").style.display="block"
+    let tab = this.tabGroup.getTabByPosition(1)
+//    tab.on("webview-ready",(tab)=>{
+//alert(9)
+      tab.activate()
+      let wb = tab.webview
+      wb.src=uri
+//    })
+  }
+  hideTabs(){
+    document.getElementById("kitchenTabContent").style.display="none"
+  }
+
+/* CONTEXT MENUS
+*/
   makeContextMenu() {
     let self = this
-    const {Menu, MenuItem} = remote
     const menu = new Menu()
     menu.append(new MenuItem ({
       label: 'Save this item to pod or local file',
@@ -157,7 +207,7 @@ class Kitchen {
       }
       menu.popup(remote.getCurrentWindow())
     }, false)
-  } 
+  }
 /*
    Handle requests for pages
    pageType = dataBrowser  - the mashlib dataBrowser
@@ -168,14 +218,13 @@ class Kitchen {
 */
 async showKitchenPage(uri,pageType){
   this.refreshLoginStatus()
-  document.getElementById("versionsFooter").style.display="none"
   if(typeof uri != "string"){
     uri = uriField.value
   }
   uri = this.mungeURI(uri)
   if(!uri) return
   let pages = [
-    'fileManager','queryForm', 'sessionForm',
+    'fileManager','queryForm', 'sessionForm', 'webview',
     'dataBrowser','localBrowser','webBrowser'
   ]
   for(var p of pages){
@@ -184,6 +233,7 @@ async showKitchenPage(uri,pageType){
       document.body.classList.remove(p)
     }
   }
+  this.hideTabs()
   // an embedded form
   // 
   if(pageType==="fileManager"||pageType==="queryForm"){
@@ -196,28 +246,13 @@ async showKitchenPage(uri,pageType){
   // an installation HTML file like assets/about.html (not localhost)
   // 
   else if( uri !="none" && !uri.match(/^(http|file|app)/) ){
-    document.body.classList.add('localBrowser')
     uri = "file://" + path.join(this.installDir,uri)
-    // document.getElementById('localBrowser').src = uri // old iframe way
-    let content = await this.auth.fetch(uri)
-    content=content.body.toString().replace(/src="/g,'src="file://'+this.installDir)
-    content=content.replace(/href="/g,'href="file://'+this.installDir)
-    var doc = document.getElementById('localBrowser').contentWindow.document;
-    doc.open();
-    doc.write(content);
-    doc.close();
+    this.showTab(uri)
   }
   // a web page from a remote site or localhost
   // 
   else if(pageType==="webBrowser"){
-    document.body.classList.add('webBrowser')
-//    document.getElementById('webBrowser').src = uri
-    let content = await this.auth.fetch(uri)
-    content = `<BASE href="${uri}" />`+await content.text()
-    var doc = document.getElementById('webBrowser').contentWindow.document;
-    doc.open();
-    doc.write(content);
-    doc.close();
+    this.showTab(uri);
   }
   // a databrowser location
   // 
@@ -239,11 +274,14 @@ async showKitchenPage(uri,pageType){
 
 /* LOGIN &  SESSION MANAGEMENT
 */
+
+
   async login (credentials) {
     document.getElementById("loggingInNotice").style.display="block"
     await this.auth.login( credentials )
     await this.refreshLoginStatus()
     document.getElementById("loggingInNotice").style.display="none"
+//    await SolidAuthClient.popupLogin()
     this.returnFromSessionForm()
   }
   async logout () {
@@ -253,6 +291,7 @@ async showKitchenPage(uri,pageType){
   }
   async refreshLoginStatus(){
     let session = await this.auth.currentSession() 
+//    let session = await SolidAuthClient.currentSession() 
     this.webId = (session) ? session.webId : null
     let displayId = (this.webId) ? this.webId : "none"
     document.getElementById("kitchenWebId").innerHTML = "&lt;"+displayId+"&gt;"
@@ -365,7 +404,7 @@ async handleQuery(event,all){
   }
   if(!endpoint||!query){return alert("You must supply an endpoint and a query.")}
   let results
-  alert(`querying ${endpoint} ${query} `)
+  // alert(`querying ${endpoint} ${query} `)
   try {
     results  = await this.sparql.query(endpoint,query)
   }

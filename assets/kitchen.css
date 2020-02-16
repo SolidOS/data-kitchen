@@ -1,9 +1,16 @@
+html, body {
+//   width: 100%;
+//   height: 100%;
+   margin: 0;
+   padding: 0;
+}
 body {
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:16px;
-  margin-left:1em;
-  margin-right:1em;
+//  padding-left:1em;
+//  padding-right:1em;
 }
+
 .sourcePane tr textarea {
    max-width:80vw;
    min-width:80vw !important;
@@ -17,15 +24,15 @@ body {
    border:1px solid gray;
 }
 */
+
+#kitchenTabs,#kitchenTabContent {
+  display:none;
+}
 #dataBrowser {
   margin-top:2em;
 }
 .kitchenForm {
   display:none;
-}
-#kitchenMenu *,#kitchenMenu button {
-  font-size:small;
-  color:#444;
 }
 
 /* hide all pageTypes except when the body.class is that pageType
@@ -40,26 +47,27 @@ body.queryForm #queryForm { display:block !important; }
 body.sessionForm #sessionForm { display:block !important; }
 body.localBrowser #localBrowser { display:block !important; }
 
-
-/* hide Change-login button, on local pages, web pages, session manger
+/* webId and Login Button (#kitchenLoginPanel)
+ *
+ *   - hide webId on webview pages
+ *   - hide login button on webview pages and session form
 */
-#kitchenMenu button { display:none; }
-.dataBrowser #kitchenMenu button { display:inline-block; }
-.fileManager #kitchenMenu button { display:inline-block; }
-.queryForm #kitchenMenu button { display:inline-block; }
+  #kitchenLoginPanel { display:block; }
+  #kitchenLoginPanel button { display:inline-block; }
+  body.webview #kitchenLoginPanel { display:none; }
+  body.sessionForm #kitchenLoginPanel button { display:none; }
 
-/* hide webId on local pages and web pages
-*/
-#kitchenMenu { display:block; }
-.localBrowser #kitchenMenu { display:none; }
-.webBrowser #kitchenMenu { display:none; }
+  #kitchenLoginPanel *,#kitchenLoginPanel button {
+    font-size:small;
+    color:#444;
+  }
+  #kitchenLoginPanel {
+    position:absolute;
+    top:0;
+    right:0;
+  }
 
 
-#kitchenMenu {
-  position:absolute;
-  top:0;
-  right:0;
-}
 #uriField {
   font-size:100%;
   min-width:30em; 
@@ -75,6 +83,9 @@ body.localBrowser #localBrowser { display:block !important; }
   font-weight:italic;
   text-align:right;
   margin:2em;
+}
+body.dataBrowser #versionsFooter {
+  display:block;
 }
 
 .kitchenForm {
@@ -108,21 +119,15 @@ body.localBrowser #localBrowser { display:block !important; }
   width:100%;
   text-align:right;
 }
-
-
-body.webBrowser,
-body.localBrowser
-{
-  overflow-y:"hidden";
-  margin:0;
+body.webview {
+  overflow:hidden;
 }
-body.webBrowser #webBrowser,
-body.localBrowser #localBrowser
- {
-  overflow-y:"hidden";
+webview {
+    height:100vh !important;
 }
-iframe#webBrowser,
-iframe#localBrowser
+
+#webBrowser,
+#localBrowser
  {
   display:none;
   height:100vh;
@@ -131,9 +136,22 @@ iframe#localBrowser
   margin:0;
   padding:0;
 }
+body.webBrowser,
+body.localBrowser
+{
+  overflow:hidden;
+  margin:0;
+}
+#webBrowser,
+#localBrowser
+{
+  overflow:hidden;
+  margin-right:1em;
+}
 #localBrowser {
-  margin-left:1em;
-  overflow:auto !important;
+//  padding-right:2em;
+//  padding-left:1em;
+  // overflow:auto !important;
 }
 #localBrowser h1, #localBrowser h2,
 .kitchenForm h1, .kitchenForm h2 
@@ -152,6 +170,11 @@ iframe#localBrowser
 
 /* KITCHEN TOUR
 */
+body.kitchenTour {
+  padding-left:1em;
+  padding-right:1em;
+  
+}
 .kitchenTour img {
     border:1px solid green;
     padding:1em;

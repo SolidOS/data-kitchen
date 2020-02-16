@@ -2,9 +2,16 @@
   <title>Solid Data Kitchen</title>
   <!-- <link rel="stylesheet" href="./myPod/common/css/bootstrap.min.css">-->
   <link rel="stylesheet" src="./mash.css"/>
+  <link rel="stylesheet" href="node_modules/electron-tabs/electron-tabs.css">
   <link rel="stylesheet" href="./assets/kitchen.css">
   <!--<meta http-equiv="Content-Security-Policy" content="script-src self">-->
 </head><body>
+
+<div id="kitchenTabs" class="etabs-tabgroup">
+  <div class="etabs-tabs"></div>
+  <div class="etabs-buttons"></div>
+</div>
+<div id="kitchenTabContent" class="etabs-views"></div>
 
 <!-- QUERY FORM -->
 <form id="queryForm" action="" onsubmit="" class="kitchenForm">
@@ -137,14 +144,18 @@ to the public.
 </table>
 <p style="text-align:center;border:2px solid orange; padding:1em; font-weight:bold; font-size:1.2em; display:none" id="loggingInNotice">Logging In ...</p>
 </form><!-- END SESSION MANAGEMENT FORM -->
-<div id="kitchenMenu" width="100%">
+
+<div id="kitchenLoginPanel" width="100%">
   <span>webId : </span> <span id="kitchenWebId"></span>&nbsp;&nbsp;
-  <button id="kitchenLoginButton" onclick="kitchen.showKitchenPage('none','sessionForm')">Login</button>
+  <button id="kitchenLoginButton" onclick="kitchen.showKitchenPage('none','sessionForm')">Login</button> 
+<!-- <button id="kitchenLoginButton" onclick="kitchen.login()">Login</button>-->
 </div>
 <!-- END SESSION MANAGEMENT -->
 
   <iframe id="localBrowser" name="localBrowser" src="" sandbox="allow-same-origin">  </iframe>
-  <iframe id="webBrowser" name="webBrowser" src="" sandbox="allow-same-origin">  </iframe>
+
+  <iframe id="webBrowser" name="webBrowser" src="" sandbox="allow-same-origin"></iframe>
+
   <div id="dataBrowser">
     <header class="db-layout__header header" id="PageHeader"></header>
     <table style="width:100%;">

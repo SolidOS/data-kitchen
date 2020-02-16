@@ -18,7 +18,9 @@
   ],
   "author": "GitHub",
   "license": "CC0-1.0",
-  "dependencies": {},
+  "dependencies": {
+    "electron-tabs": "^0.12.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/register": "^7.6.2",

@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, BrowserView, Menu} = require('electron')
 const path = require('path')
 const jsonfile = require('jsonfile');
 let mainWindow
@@ -22,6 +22,7 @@ async function createWindow (cfg) {
   mainWindow.loadFile('index.html')
   mainWindow.on('closed', function () { mainWindow = null })
 }
+
 /* THIS IS THE END OF THE ELECTRON METHODS
  * BELOW HERE JUST GETS DATA FOR THEM
 */
@@ -45,6 +46,7 @@ async function getWindow (cfg) {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nativeWindowOpen: true,
+      webviewTag: true,
       nodeIntegration: true
     }
   }
@@ -268,19 +270,59 @@ function getMenu() {
             'kitchen.showKitchenPage','https://github.com/solid/userguide', 'webBrowser' )
         }
       },
+/*
       {
-        label: 'About Solid',
+        label: 'Submit an issue on this fork of the kitchen',
         click: async () => {
-          // This is how to load a remote web page in the web browser
           mainWindow.webContents.send(
-            'kitchen.showKitchenPage','https://solidproject.org/', 'webBrowser'
-          )
+            'kitchen.showKitchenPage','https://github.com/solid/userguide', 'webBrowser' )
         }
       },
+*/
+      {
+        label: 'About Solid',
+        submenu: [
+          { label: 'Solid : solidproject.org',
+            click: async () => {
+              mainWindow.webContents.send(
+                'kitchen.showKitchenPage',
+                'https://solidproject.org/',
+                'webBrowser'      
+              )
+            }
+          },
+          { label: 'This Week in Solid',
+            click: async () => {
+              mainWindow.webContents.send(
+                'kitchen.showKitchenPage',
+                'https://solidproject.org/this-week-in-solid',
+                'webBrowser'      
+              )
+            }
+          },
+          { label: 'Solid Gitter Chat',
+            click: async () => {
+              mainWindow.webContents.send(
+                'kitchen.showKitchenPage',
+                'https://gitter.im/solid/chat',
+                'webBrowser'      
+              )
+            }
+          },
+          { label: 'Solid Forum',
+            click: async () => {
+              mainWindow.webContents.send(
+                'kitchen.showKitchenPage',
+                'https://forum.solidproject.org/latest',
+                'webBrowser'      
+              )
+            }
+          },
+        ]
+      } 
     ]
   }
 ]
-
 }
 
 
