@@ -1,4 +1,5 @@
 const {Menu, MenuItem,BrowserView} = remote
+const exec = require('child_process').exec;
 const path     = require('path')
 const fs       = require('fs')
 const jsonfile = require('jsonfile');
@@ -151,7 +152,7 @@ class Kitchen {
 */
   makeContextMenu() {
     let self = this
-    const menu = new Menu()
+    let menu = new Menu()
     menu.append(new MenuItem ({
       label: 'Save this item to pod or local file',
       click() { 
@@ -170,17 +171,10 @@ class Kitchen {
         self.showKitchenPage( self.clickedOn, 'dataBrowser' )
       }
     }))
-    menu.append(new MenuItem (
-      { type: 'separator' }
-    ))
     menu.append(new MenuItem ({
       label: `Move up a level from current URI`,
       click: ()=>{self.moveUp()}
     }))
-    menu.append(new MenuItem (
-      { role: 'toggledevtools' }
-    ))
-
     const menu2 = new Menu()
     menu2.append(new MenuItem ({
       label: `Move up a level from current URI`,
@@ -189,6 +183,29 @@ class Kitchen {
     menu2.append(new MenuItem (
       { role: 'toggledevtools' }
     ))
+    function getEditors(menu){
+      let newBM = []
+      if( self.cfg.editors ){
+        for(var b=0;b<self.cfg.editors.length;b++){
+          let com = self.cfg.editors[b].com
+          newBM.push({
+            label : self.cfg.editors[b].label,
+            click : async () => {
+              let fn = self.clickedOn.replace("file://","")
+              self.execute( com+' '+fn, (output)=>{
+                console.log(output)
+              })
+            }
+          })
+        }
+      }
+      menu.append(new MenuItem ({
+        label: `Edit with`,
+        submenu:newBM
+      }))
+      return menu
+    }
+    menu = getEditors(menu)
     window.addEventListener('contextmenu', (e) => {
       e.preventDefault()
       // e.g. if(e.srcElement.nodeName==="TEXTAREA"){}
@@ -208,6 +225,14 @@ class Kitchen {
       menu.popup(remote.getCurrentWindow())
     }, false)
   }
+
+       execute(command, params, callback) {
+          exec(command, params, (error, stdout, stderr) => { 
+            if(error) alert(error)
+            else callback(stdout); 
+          });
+        };
+
 /*
    Handle requests for pages
    pageType = dataBrowser  - the mashlib dataBrowser

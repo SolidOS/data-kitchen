@@ -62,9 +62,20 @@ must have a username and idp, and may optionally (at your own risk)
 include a password.  If a password is included, the button on the login
 form will allow one-click login.  The identities should look like this:
 <blockquote><code style="font-size:small">
-    "identitities" : [<br />
+    "identities" : [<br />
         { "username":"name1", "idp":"idp1", "password":"optionalPassword1" },<br />
         { "username":"name2", "idp":"idp2", "password":"optionalPassword2" }<br />
+    ]</code></blockquote></blockquote>
+
+<b>External Editors</b>
+<blockquote>
+Any editors you list here will be displayed in the DataBrowser context menu.
+The editor must be installed on your local computer and you must use the 
+full commands appropriate for your OS.  You do not need to add the parameter for the file being edited, that will be supplied automagically by the kitchen.
+<blockquote><code style="font-size:small">
+    "editors" : [<br />
+        { "label":"protege", "com":"/usr/local/bin/protege" }
+
     ]</code></blockquote></blockquote>
 
 <b>Bookmarks</b>

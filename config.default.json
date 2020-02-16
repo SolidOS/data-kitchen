@@ -8,6 +8,24 @@
   "REMOTE_BASE"  : "https://timbl.solid.community/public/",
   "identities"   : [
   ],
+  "editors":[
+     {
+       "label":"Protege",
+       "com":"/usr/local/bin/Protege-5.5.0/run.sh"
+     },
+     {
+       "label":"Emacs",
+       "com": "/usr/bin/emacs24"
+     },
+     {
+       "label":"Gimp",
+       "com": "/usr/bin/gimp"
+     },
+     {
+       "label":"Audacity",
+       "com": "/usr/bin/audacity"
+     }
+  ], 
   "bookmarks"    : [
     {"label":"My local files",
        "uri":"./public/" 
