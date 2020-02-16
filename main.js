@@ -270,6 +270,13 @@ function getMenu() {
             'kitchen.showKitchenPage','https://github.com/solid/userguide', 'webBrowser' )
         }
       },
+      {
+        label: 'Reporting Issues on this fork of the kitchen',
+        click: async () => {
+          mainWindow.webContents.send(
+            'kitchen.showKitchenPage','https://github.com/jeff-zucker/data-kitchen/issues', 'webBrowser' )
+        }
+      },
 /*
       {
         label: 'Submit an issue on this fork of the kitchen',
