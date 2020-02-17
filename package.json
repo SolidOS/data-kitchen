@@ -19,9 +19,11 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "dependencies": {
-    "electron-tabs": "^0.12.0"
+    "solid-auth-cli": "^1.0.10"
   },
   "devDependencies": {
+    "electron-tabs": "^0.12.0",
+    "n3": "^1.3.5",
     "@babel/core": "^7.6.2",
     "@babel/register": "^7.6.2",
     "@solid/cli": "^0.1.1",

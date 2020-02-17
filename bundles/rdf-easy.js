@@ -82,9 +82,11 @@ class RDFeasy {
 
   async _load(url){
     this.store = $rdf.graph()
-//    this.fetcher = $rdf.fetcher(this.store,{fetch:this._auth.fetch})
     this.fetcher = $rdf.fetcher(this.store)
-    await this.fetcher.load(url)
+    try {
+      await this.fetcher.load(url)
+    }
+    catch(e) { console.warn(e) }
   }
 
   async createOrReplace(url,turtle,rdfType="text/turtle"){

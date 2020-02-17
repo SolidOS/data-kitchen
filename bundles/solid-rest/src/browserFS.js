@@ -5,10 +5,11 @@
 
 class SolidBrowserFS {
 
-  constructor() {
+  constructor(backends) {
     this.prefix = "bfs"
     this.name = "solid-rest-browserFS-1.0.0"
     BrowserFS.install(window);
+    if(typeof backend !="undefined") this.initBackends( backends )    
   }
 
   async initBackends( backends ){

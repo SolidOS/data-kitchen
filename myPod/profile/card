@@ -20,6 +20,10 @@ pro:card a n0:PersonalProfileDocument; n0:maker :me; n0:primaryTopic :me.
             [
                 n1:mode n1:Append, n1:Control, n1:Read, n1:Write;
                 n1:origin <http://example.org>
+            ],
+            [
+                n1:mode n1:Read, n1:Write;
+                n1:origin <http://example2.org>
             ];
     ldp:inbox inbox:;
     sp:preferencesFile <../settings/prefs.ttl>;

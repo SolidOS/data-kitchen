@@ -5,11 +5,12 @@ const fs       = require('fs')
 const jsonfile = require('jsonfile');
 const TabGroup = require("electron-tabs")
 
-const Auth     = require('../bundles/solid-auth-cli/')
+//const Auth     = require('../bundles/solid-auth-cli/')
 const Rest     = require('../bundles/solid-rest/')
 const File     = require('../bundles/solid-rest/src/file.js')
 const Bfs      = require('../bundles/solid-rest/src/browserFS.js')
-const Sparql   = require("../bundles/rdf-easy.js")
+// const Sparql   = require("../bundles/rdf-easy.js")
+const Sparql   = require("../bundles/sparql-wizard")
 const FileCli  = require("../bundles/solid-file-client.bundle.js")
 
 class Kitchen {
@@ -34,11 +35,16 @@ class Kitchen {
     
   */
   async init(){
-    this.auth   = new Auth( new Rest([ new File(), new Bfs() ]) )
+    /*
+      this.auth   = new Auth( new Rest([ new File(), new Bfs() ]) )
+    */
+    this.auth = require('../bundles/solid-auth-cli.js')
+    this.auth.rest = this.auth.setRestHandlers([ new File(), new Bfs() ])
     this.auth.rest.storage("bfs").initBackends({ 
       '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
       '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"} }
     })
+
     this.fc     = new FileCli(this.auth,{enableLogging:true})
     this.sparql = new Sparql( this.auth )
 
@@ -303,10 +309,12 @@ async showKitchenPage(uri,pageType){
 
   async login (credentials) {
     document.getElementById("loggingInNotice").style.display="block"
-    await this.auth.login( credentials )
-    await this.refreshLoginStatus()
+    try {
+      await this.auth.login( credentials )
+      await this.refreshLoginStatus()
+    }
+    catch(e){ alert(e) }
     document.getElementById("loggingInNotice").style.display="none"
-//    await SolidAuthClient.popupLogin()
     this.returnFromSessionForm()
   }
   async logout () {
@@ -424,7 +432,7 @@ async handleQuery(event,all){
   let endpoint = this.mungeURI(document.getElementById('sparqlEndpoint').value)
   let query    = document.getElementById('sparqlQuery').value
   if(all){
-    query = "SELECT * WHERE ( ?subject ?predicate ?object. )"
+    query = "SELECT ?subject ?predicate ?object WHERE { ?subject ?predicate ?object. }"
     document.getElementById('sparqlQuery').value = query
   }
   if(!endpoint||!query){return alert("You must supply an endpoint and a query.")}
@@ -436,7 +444,12 @@ async handleQuery(event,all){
   catch(e){
     alert("Error querying SPARQL : "+e);return false
   }
-  let columnHeads = Object.keys(results[0]).reverse()
+  if(!results || !results.length) {
+    document.getElementById('queryResults').innerHTML = "no results found"
+    return false
+  }
+  let columnHeads = Object.keys(results[0])
+  // columnHeads = columnHeads.reverse() // only for rdflib
   let table = "<table>"
   let topRow = ""
   for(var c in columnHeads){

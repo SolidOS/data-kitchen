@@ -1,0 +1,13 @@
+@prefix :       <#>.
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix mo:     <http://purl.org/ontology/mo/>.
+@prefix schema: <http://schema.org/>.
+
+<> a schema:ItemList; rdfs:label "Artists of the World"; 
+   schema:itemListElement
+
+[ a mo:MusicArtist; rdfs:label "Jah Wobble";
+    mo:origin "UK";
+    schema:gender "male";
+]
+.
