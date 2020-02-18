@@ -9,9 +9,11 @@ const TabGroup = require("electron-tabs")
 const Rest     = require('../bundles/solid-rest/')
 const File     = require('../bundles/solid-rest/src/file.js')
 const Bfs      = require('../bundles/solid-rest/src/browserFS.js')
-// const Sparql   = require("../bundles/rdf-easy.js")
-const Sparql   = require("../bundles/sparql-wizard")
+ const Sparql   = require("../bundles/rdf-easy.js")
+// const Sparql   = require("../bundles/sparql-wizard")
 const FileCli  = require("../bundles/solid-file-client.bundle.js")
+
+let tab
 
 class Kitchen {
 
@@ -46,7 +48,7 @@ class Kitchen {
     })
 
     this.fc     = new FileCli(this.auth,{enableLogging:true})
-    this.sparql = new Sparql( this.auth )
+    this.sparql = new Sparql( this.auth, $rdf )
 
     window.SolidRest = this.auth.rest
     this.cfg = await this.getConfig()
@@ -85,7 +87,7 @@ class Kitchen {
       let ary = uri.split(/:/)
       let prefix = ary[0].replace(/@/,'')
       let term = ary[1]
-      prefix = this.sparql.expand[prefix]
+      prefix = this.sparql.expand(prefix)
       if(!prefix) {
         alert("Sorry, couldn't expand "+uri)
         return false
@@ -430,6 +432,7 @@ async showKitchenPage(uri,pageType){
 async handleQuery(event,all){
   event.preventDefault()
   let endpoint = this.mungeURI(document.getElementById('sparqlEndpoint').value)
+  document.getElementById('sparqlEndpoint').value=endpoint
   let query    = document.getElementById('sparqlQuery').value
   if(all){
     query = "SELECT ?subject ?predicate ?object WHERE { ?subject ?predicate ?object. }"
@@ -449,7 +452,7 @@ async handleQuery(event,all){
     return false
   }
   let columnHeads = Object.keys(results[0])
-  // columnHeads = columnHeads.reverse() // only for rdflib
+  columnHeads = columnHeads.reverse() // only for rdflib
   let table = "<table>"
   let topRow = ""
   for(var c in columnHeads){

@@ -117,7 +117,7 @@ class RDFeasy {
   *  lifted from solid-namespace package
   */
  _getPrefixes(){
-  this.expand = {
+  let  aliases = {
   acl: 'http://www.w3.org/ns/auth/acl#',
   arg: 'http://www.w3.org/ns/pim/arg#',
   cal: 'http://www.w3.org/2002/12/cal/ical#',
@@ -158,12 +158,15 @@ class RDFeasy {
   xsd: 'http://www.w3.org/2001/XMLSchema#',
 }
   let prefixStr=""
-  for(var a in this.exapnd){
-    prefixStr = prefixStr+`PREFIX ${a}: <${this.expand[a]}>\n`
+  for(var a in aliases){
+    prefixStr = prefixStr+`PREFIX ${a}: <${aliases[a]}>\n`
   }
+  this.prefix=aliases
   return prefixStr
 }
-
+  expand (prefix) {
+    return this.prefix[prefix]
+  }
 }
 
 module.exports = exports = RDFeasy

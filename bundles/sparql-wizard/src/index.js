@@ -2,17 +2,23 @@
 const N3 = require('n3')
 const newEngine   = require('@comunica/actor-init-sparql-rdfjs').newEngine;
 
-const { DataFactory } = N3;
-const { namedNode, literal, defaultGraph, quad } = DataFactory;
+// const { DataFactory } = N3;
+// const { namedNode, literal, defaultGraph, quad } = DataFactory;
 
-class RdfQuery {
+class SparqlWizard {
 
   constructor(auth) {
     this._fetch = auth.fetch
+/*
     this.parser = new N3.Parser()
-    this.store   = new N3.Store()
+*/
+    this.n3store   = new N3.Store()
     this._prefixStr = this._getPrefixes()
     this.comunica = newEngine();
+  }
+
+  expand(pref){
+    return this.prefix[pref]
   }
 
   setPrefix(prefix,url){
@@ -28,7 +34,7 @@ class RdfQuery {
 
   _prepSparql(source,sparql){
     if(!sparql) sparql = "SELECT * WHERE {?subject ?predicate ?object.}"
-    console.log("  "+sparql)
+    console.warn(`Querying <${source}> for ${sparql}`)
     sparql=sparql.replace(/\<\>/,"<"+source+">")
     sparql = `PREFIX : <${source}#>\n` + this._prefixStr + sparql
     return sparql
@@ -40,23 +46,30 @@ class RdfQuery {
       return await this._multiQuery(dataUrl,sparqlStr,wanted) 
     }
     let store = this.store
+    console.warn(`Loading ...`)
     if(dataUrl){
       dataUrl = dataUrl.replace(/#[^#]*$/,'')
-      this.store = new N3.Store()
-      store = await this.loadFromUrl(dataUrl)
-      if(!store) return
+      // this.store = new N3.Store()
+      // store = await this.loadFromUrl(dataUrl)
+      this.store = $rdf.graph()
+      await this._load(dataUrl)      
+//      if(!this.store) return
+// console.warn(this.store)
+       let quads = this.store.match()
+       this.n3store.addQuads(quads)
     }
+    console.warn(`Running query ...`)
     const queryCfg = {
-      sources:[{type:"rdfjsSource",value:this.store}],
+      sources:[{type:"rdfjsSource",value:this.n3store}],
       baseIRI:dataUrl
     }
-//    sparqlStr = `PREFIX : <#>\n` + this._prefixStr + sparqlStr
     let result;
     try {
       result = await this.comunica.query( sparqlStr, queryCfg )
     }
     catch(e) { console.log("Query Error"+e) }
     if(!result) { return [] }
+    console.warn(`Handling results ...`)
     var allData = []
     result.bindingsStream.on('data', (data) => {
       let rec = {}
@@ -69,8 +82,7 @@ class RdfQuery {
       allData.push(rec)
     });
     result.bindingsStream.on('abort', (err) => {
-      console.log("BindingStream Error ")
-      console.log(err)
+      console.warn("BindingStream Error ")
       return reject(err)
     })
     result.bindingsStream.on('end', (data) => {
@@ -80,6 +92,15 @@ class RdfQuery {
    });
   }
 
+  async _load(url){
+    let fetcher = $rdf.fetcher(this.store)
+    try {
+      await fetcher.load(url)
+    }
+    catch(e) { alert("Fetcher Load Error : "+e) }
+  }
+
+/*
   async loadFromString(string,url){
     return new Promise( async(resolve)=>{
       await this._load(string,url)
@@ -119,7 +140,7 @@ class RdfQuery {
         return resolve(this.store)
       }
       catch(e){
-        console.log(e)
+        alert(e)
         return resolve(this.store)
       }
     })
@@ -127,8 +148,20 @@ class RdfQuery {
 
   async _parse(string,url){
     let store =[]
-    const parser = new N3.Parser({ baseIRI: url });
+    let parser
+    let self = this
     return new Promise( async(resolve)=>{
+      if(string.startsWith("<?xml")) {
+        let kb = self.rdf.graph()
+        let fetcher = self.rdf.fetcher(kb)
+        try {
+          fetcher.load(url)
+          console.warn(kb)
+        }
+        catch(e){ alert(e) }
+        resolve(kb)
+      }
+      parser = new N3.Parser({ baseIRI: url });
       parser.parse( string, (err, quad, prefixes) => {
         if(quad) {
            store.push(quad)        
@@ -138,7 +171,7 @@ class RdfQuery {
       })
     })
   }
-
+*/
   async createOrReplace(url,turtle,rdfType="text/turtle"){
     try {
       await this._fetch(url,{
@@ -217,6 +250,6 @@ class RdfQuery {
 
 }
 
-module.exports = RdfQuery
+module.exports = SparqlWizard
 // export default RdfQuery
 
