@@ -152,12 +152,11 @@ async fetch(uri, options) {
     let str = "@prefix : <#>. @prefix ldp: <http://www.w3.org/ns/ldp#>.\n"
             + "<> a ldp:BasicContainer, ldp:Container"
     // cowardly refuse to include filename with spaces
-    filenames = filenames.filter(f=>{if(!f.match(/ /)) return f})
+//    filenames = filenames.filter(f=>{if(!f.match(/ /)) return f})
     if(filenames.length){
       str = str + "; ldp:contains\n";
       for(var i=0;i<filenames.length;i++){
-        let fn = filenames[i]
-//        if(fn.match(/\S/)) continue
+        let fn = encodeURI(filenames[i])
         let [ftype,e] =  await self.storage(options).getObjectType(pathname + fn)
         if(ftype==="Container" && !fn.endsWith("/")) fn = fn + "/"
 //        let prefix = options.rest_prefix==="file" ? "" : options.rest_prefix
@@ -202,7 +201,7 @@ async fetch(uri, options) {
        date from nodejs Date
   */
   function _getHeaders(pathname,options){    
-    let fn = pathname.replace(/.*\//,'');    
+    let fn = encodeURI(pathname.replace(/.*\//,''))  
     let headers = (typeof self.storage(options).getHeaders != "undefined")
       ? self.storage(options).getHeaders(pathname,options)
       : {}
