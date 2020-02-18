@@ -1,6 +1,6 @@
 const {ipcRenderer,remote} = require('electron')
 const BrowserFS            = require("./bundles/browserfs.min.js")
-const kitchen              = require('./assets/Kitchen.js')
+window.kitchen             = require('./assets/Kitchen.js')
 
 /* Set up The Tabulator
 */
