@@ -9,6 +9,7 @@ class SolidRest {
 constructor( handlers ) {
   this.storageHandlers = {}
   handlers.forEach( handler => {
+    console.log(`Installing Rest Handler ${handler.name} using prefix ${handler.prefix}`)
     this.storageHandlers[handler.prefix] = handler
   })
 }

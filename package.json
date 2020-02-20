@@ -2,21 +2,32 @@
   "name": "data-kitchen",
   "productName": "Data Kitchen",
   "version": "1.0.0",
-  "description": "A Solid Electron application",
+  "description": "The solid databrowser technology as a stand-alone electron app",
   "main": "main.js",
   "scripts": {
     "package": "electron-packager --overwrite .",
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/jeff-zucker/data-kitchen",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "solid",
+    "linked data",
+    "Electron"
   ],
-  "author": "Tim Berners-Lee",
+  "author": {
+    "name": "Tim BL",
+    "email": "timbl@w3.org"
+  },
+  "contributors": [
+    {
+      "name": "Ruben Verborgh",
+      "url": "https://github.com/RubenVerborgh"
+    },
+    {
+      "name": "Jeff Zucker",
+      "url": "https://github.com/jeff-zucker"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "solid-auth-cli": "^1.0.10",

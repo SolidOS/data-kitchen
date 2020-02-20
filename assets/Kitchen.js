@@ -129,7 +129,7 @@ class Kitchen {
 */
   makeTabs() {
     let tabGroup = new TabGroup()
-    tabGroup.addTab({
+    let tab = tabGroup.addTab({
       title: "WebView",
       src: this.cfg.startPage,
       visible:true,

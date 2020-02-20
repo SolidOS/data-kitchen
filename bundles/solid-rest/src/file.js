@@ -87,7 +87,7 @@ async putResource(pathname,options){
         }
         if(writeIt){
             try {
-                await fs.writeFile(pathname,options.body)
+                await fs.writeFileSync(pathname,options.body)
                 return resolve([successCode])
             }
             catch(e){ console.log(e); return resolve([failureCode])}
@@ -181,6 +181,7 @@ async makeContainers(pathname,options){
       let reg = new RegExp(filename+"\$")
       let foldername = pathname.replace(reg,'');
       let [t,exists] = await this.getObjectType(foldername);
+      if(t==="Resource") return Promise.resolve([200])
       if(exists) return Promise.resolve([200])
       foldername = foldername.replace(/\/$/,'');
       await fs.mkdirpSync( foldername, {}, (err) => {
