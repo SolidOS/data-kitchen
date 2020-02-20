@@ -1,0 +1,2 @@
+@prefix : <#>. @prefix ldp: <http://www.w3.org/ns/ldp#>.
+<> a ldp:BasicContainer, ldp:Container.
