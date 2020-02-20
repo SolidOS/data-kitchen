@@ -81,7 +81,8 @@ const client = new SolidClient({ identityManager : new IdentityManager() });
         else { throw new Error("could not log in") }
 }
 /*cjs*/ async function getCredentials(fn){
-        fn = fn || path.join(process.env.HOME,".solid-auth-cli-config.json")
+        let home = process.env.HOME || ""
+        fn = fn || path.join( home,".solid-auth-cli-config.json")
         var creds={};
         if(fs.existsSync(fn))  {
             try {
@@ -96,7 +97,8 @@ const client = new SolidClient({ identityManager : new IdentityManager() });
             creds = {
                 idp      : process.env.SOLID_IDP,
                 username : process.env.SOLID_USERNAME,
-                password : process.env.SOLID_PASSWORD
+                password : process.env.SOLID_PASSWORD,
+                base     : process.env.SOLID_BASE
             } 
         }
         return(creds)
