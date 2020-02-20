@@ -1,16 +1,14 @@
 const {Menu, MenuItem,BrowserView} = remote
-const exec = require('child_process').exec;
+const exec     = require('child_process').exec;
 const path     = require('path')
 const fs       = require('fs')
 const jsonfile = require('jsonfile');
 const TabGroup = require("electron-tabs")
 
-//const Auth     = require('../bundles/solid-auth-cli/')
 const Rest     = require('../bundles/solid-rest/')
 const File     = require('../bundles/solid-rest/src/file.js')
 const Bfs      = require('../bundles/solid-rest/src/browserFS.js')
- const Sparql   = require("../bundles/rdf-easy.js")
-// const Sparql   = require("../bundles/sparql-wizard")
+const Sparql   = require("../bundles/rdf-easy.js")
 const FileCli  = require("../bundles/solid-file-client.bundle.js")
 
 let tab
@@ -70,18 +68,17 @@ class Kitchen {
     await this.showKitchenPage(this.cfg.startPage)
   }
 
-
   /* URI shortcuts
   */
   mungeURI(uri){
     uri === uri || ""
     if( uri.startsWith("./") && this.LOCAL_BASE ){
       uri = uri.replace(/^\.\//,'')
-      return `${this.LOCAL_BASE}${uri}`
+      uri = `${this.LOCAL_BASE}${uri}`
     }
     else if ( uri.startsWith("/") && this.REMOTE_BASE ){
       uri = uri.replace(/^\//,'')
-      return `${this.REMOTE_BASE}${uri}`
+      uri = `${this.REMOTE_BASE}${uri}`
     }
     else if ( uri.startsWith("@") ){
       let ary = uri.split(/:/)
@@ -94,6 +91,15 @@ class Kitchen {
       }
       return (term) ? prefix + term : prefix.replace(/#$/,'')
     }  
+    try {
+      let urlObj = new URL (uri)
+      uri = urlObj.href
+    }
+    catch(e){
+      if( uri.match(/^(http|file|app)/) ){
+        alert("Bad URI"+e.code)
+      }
+    }
     return uri
   }  
 
@@ -300,7 +306,10 @@ async showKitchenPage(uri,pageType){
     // window.history.replaceState({}, '', `${location.pathname}?${params}`);
     var subject = kb.sym(uri);
     // UI.widgets.makeDraggable(icon, subject) // beware many handlers piling up
-    outliner.GotoSubject(subject, true, undefined, true, undefined);
+    try {
+      outliner.GotoSubject(subject, true, undefined, true, undefined);
+    }
+    catch(e) { alert(e) }
   }
   return false
 }
