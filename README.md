@@ -5,22 +5,9 @@ The solid databrowser technology as a stand-alone electron app
 about them**
 
 
-## To run
+## To install & run see <a href="https://jeff-zucker.github.io/data-kitchen.html">Download & Install Instructions</a>
 
-```
-npm install
-npm start
-```
 
-## To make a packaged version
-
-```
-npm install
-sudo npm install -g electron-packager
-npm package
-
-```
-See the many other options of electron-packager.
 
 ## Goals
 The goal of this project is to provide a kitchen where the user is cook, and
