@@ -1,26 +1,21 @@
 @prefix : <#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/#>.
-@prefix schema: <http://schema.org/>.
-@prefix ldp: <http://www.w3.org/ns/ldp#>.
-@prefix link: <http://www.w3.org/2007/ont/link>.
+@prefix ont: <http://www.w3.org/2007/ont/>.
 @prefix text: <http://www.w3.org/ns/iana/media-types/text/>.
-@prefix image: <http://www.w3.org/ns/iana/media-types/image/>.
+@prefix n0: <http://xmlns.com/foaf/0.1/#>.
+@prefix c: </profile/card#>.
+@prefix schem: <http://schema.org/>.
+@prefix im: <http://www.w3.org/ns/iana/media-types/image/>.
 
-<> a link:Document, text:turtle#Resource 
-; rdfs:label "Sample Turtle File" 
-; foaf:primaryTopic :myComment
-; foaf:maker </profile/card#me>
-.
-
-:myComment a schema:Comment
-; rdfs:label "My Comment"
-; schema:comment "Hello Turtle World!"
-; schema:image :myImage
-.
-
-:myImage a image:jpeg#Resource
-; rdfs:label "a flower"
-; schema:url <test.jpeg>
-.
+<>
+    a ont:linkDocument, text:turtle;
+    rdfs:label "Sample Turtle File";
+    n0:maker c:me;
+    n0:primaryTopic :myComment.
+:myComment
+    a schem:Comment;
+    schem:comment "Hello Turtle World!";
+    schem:image :myImage;
+    rdfs:label "My Comment".
+:myImage a im:jpeg; schem:url <test.jpeg>; rdfs:label "a flower".
 

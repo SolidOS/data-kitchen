@@ -2,7 +2,6 @@ const {Menu, MenuItem,BrowserView} = remote
 const exec     = require('child_process').exec;
 const path     = require('path')
 const fs       = require('fs')
-const jsonfile = require('jsonfile');
 const TabGroup = require("electron-tabs")
 
 const Rest     = require('../bundles/solid-rest/')
@@ -10,12 +9,12 @@ const File     = require('../bundles/solid-rest/src/file.js')
 const Bfs      = require('../bundles/solid-rest/src/browserFS.js')
 const Sparql   = require("../bundles/rdf-easy.js")
 const FileCli  = require("../bundles/solid-file-client.bundle.js")
-
 let tab
 
 class Kitchen {
 
   constructor() {
+    this.version = "1.0.1"
     this.clickedOn = null
   }
 
@@ -33,52 +32,94 @@ class Kitchen {
        Then we instantiate solid-auth-cli with that rest 
        Then we instantiate solid-file-client and sparql-fiddle with that auth
     
+      this.auth   = new Auth( new Rest([ new File(), new Bfs() ]) )
   */
   async init(){
-    /*
-      this.auth   = new Auth( new Rest([ new File(), new Bfs() ]) )
-    */
     this.auth = require('../bundles/solid-auth-cli.js')
     this.auth.rest = this.auth.setRestHandlers([ new File(), new Bfs() ])
     this.auth.rest.storage("bfs").initBackends({ 
       '/HTML5FS'   : { fs: "HTML5FS"  , options:{size:5} },
       '/IndexedDB' : { fs: "IndexedDB", options:{storeName:"bfs"} }
     })
-
     this.fc     = new FileCli(this.auth,{enableLogging:true})
     this.sparql = new Sparql( this.auth, $rdf )
 
     window.SolidRest = this.auth.rest
     this.cfg = await this.getConfig()
-
-  window.SolidAuthClient.trackSession( (session) => {
-    if (!session) {
-      kitchen.webId = null
-    }
-    else {
-      kitchen.webId = session.webId
-    }
-    let displayId = (this.webId) ? this.webId : "none"
-    document.getElementById("kitchenWebId").innerHTML = "&lt;"+displayId+"&gt;"
-
-  })
-
     await this.makeContextMenu()
     await this.makeTabs()
-    await this.showKitchenPage(this.cfg.startPage)
+    if(this.lastVisited)
+      await this.showKitchenPage(this.lastVisited,'dataBrowser')
+    else
+      await this.showKitchenPage(this.cfg.startPage)
+    this.checkForUpdates()
+  }
+  async checkForUpdates(){
+    let body = await this.auth.fetch(
+      "https://jeff-zucker.github.io/data-kitchen-version.txt"
+    )
+    let latestVersion = await body.text()
+    let thisVersion = Number(this.version.replace(/.*\./,''))
+    latestVersion = latestVersion.replace(/\s/g,'')
+    console.log(`latest kitchen : <${latestVersion}>`)
+    console.log(`this kitchen   : <${this.version}>`)
+    latestVersion = Number(latestVersion.replace(/.*\./,''))
+    if( thisVersion < latestVersion ){
+       alert("There is a newer version of Data Kitchen. Use the Tools menu to read more or install.")
+    }
+  }
+  async getConfig(){
+    this.lastVisited = window.localStorage.getItem('kitchenLastVisited')
+    let installDir = path.join(__dirname,"../")
+    installDir = installDir.replace(/\\/g,"/")
+    installDir = process.platform.match(/^win/) 
+      ? installDir.replace(/^.:/,'')
+      : installDir
+    this.installDir = installDir
+    this.configFile = "file://"+path.join( this.installDir, "config.ttl" )
+    this.configAlt  = "file://"+path.join( this.installDir, "../data-kitchen-config.ttl" )
+    this.configAltJSON = path.join( this.installDir, "../data-kitchen-config.json" )
+    this.configJSON = path.join( this.installDir, "config.json" )
+    
+    let cfg = await this.loadSettings()
+    cfg.startPage = cfg.startPage && cfg.startPage.length>1 ? cfg.startPage :
+      "assets/quick-tour.html"
+    cfg.localBase=cfg.localBase && cfg.localBase.length>1 ? cfg.localBase : 
+      "file://"+path.join(this.installDir,"/myPod/")
+    this.cfg=cfg
+    return cfg
+  }
+  async loadSettings(){
+    this.rconf = require('../bundles/rdf-config.js')
+    let res = await this.auth.fetch(this.configAlt)
+    if(res.status==200){
+      this.configFile = this.configAlt
+      this.configJSON = this.configAltJSON
+    }
+    return await this.rconf.loadSettings(this.configFile)
+  }
+  async manageSettings(){
+    await this.rconf.editSettings(this.configFile)
+  }
+  async settings2json() {
+    const cfg = await this.rconf.loadSettings(this.rconf.formDoc.uri)
+    try {
+      await require('jsonfile').writeFileSync( this.configJSON, cfg )    
+    }
+    catch(e) { alert("Error saving as JSON : "+e) }
   }
 
   /* URI shortcuts
   */
   mungeURI(uri){
     uri === uri || ""
-    if( uri.startsWith("./") && this.LOCAL_BASE ){
+    if( uri.startsWith("./") && this.cfg.localBase ){
       uri = uri.replace(/^\.\//,'')
-      uri = `${this.LOCAL_BASE}${uri}`
+      uri = `${this.cfg.localBase}${uri}`
     }
-    else if ( uri.startsWith("/") && this.REMOTE_BASE ){
+    else if ( uri.startsWith("/") && this.cfg.remoteBase ){
       uri = uri.replace(/^\//,'')
-      uri = `${this.REMOTE_BASE}${uri}`
+      uri = `${this.cfg.remoteBase}${uri}`
     }
     else if ( uri.startsWith("@") ){
       let ary = uri.split(/:/)
@@ -102,34 +143,6 @@ class Kitchen {
     }
     return uri
   }  
-
-  async getConfig(){
-    //    let upDir = process.platform.match(/^win/) ? "..\\" : "../"
-    //    let installDir = path.join(__dirname,upDir)
-    let installDir = path.join(__dirname,"../")
-    installDir = installDir.replace(/\\/g,"/")
-    installDir = process.platform.match(/^win/) 
-      ? installDir.replace(/^.:/,'')
-      : installDir
-    this.installDir = installDir
-    const configFile = path.join(installDir,"config.json")
-    const defaultConfigFile = path.join(installDir,"config.default.json")
-    let cfg
-    try{ cfg = await jsonfile.readFileSync( configFile ) }
-    catch(e){if(!e.toString().match("ENOENT"))console.log(e)}
-    if(typeof cfg ==="undefined"){
-      try{  cfg = await jsonfile.readFileSync( defaultConfigFile ) }
-      catch(e){console.log(e)}
-    }
-    cfg = cfg || {}
-    cfg.startPage = cfg.startPage || "assets/quick-tour.html"
-    this.REMOTE_BASE = cfg.REMOTE_BASE
-    cfg.LOCAL_BASE = (cfg.LOCAL_BASE && cfg.LOCAL_BASE.length===0) ? null : cfg.LOCAL_BASE
-    cfg.LOCAL_BASE = this.LOCAL_BASE 
-        =  cfg.LOCAL_BASE 
-        || "file://" + path.join( installDir,"/myPod/" )
-    return cfg
-  }
 
 /* TABS
 */
@@ -201,9 +214,9 @@ class Kitchen {
       let newBM = []
       if( self.cfg.editors ){
         for(var b=0;b<self.cfg.editors.length;b++){
-          let com = self.cfg.editors[b].com
+          let com = self.cfg.editors[b].path
           newBM.push({
-            label : self.cfg.editors[b].label,
+            label : self.cfg.editors[b].name,
             click : async () => {
               let fn = self.clickedOn.replace("file://","")
               self.execute( com+' '+fn, (output)=>{
@@ -225,7 +238,7 @@ class Kitchen {
       // e.g. if(e.srcElement.nodeName==="TEXTAREA"){}
       let self = this
       let attrs = e.path[0].attributes
-      if( attrs.length===0 ) return false // not link or item
+      if( attrs.length===0 ) attrs = {} // not link or item
       let clickedOn = null
       if(attrs.href) clickedOn = attrs.href.nodeValue    // link
       else if(attrs.about) clickedOn=attrs.about.nodeValue  // dataBrowser item
@@ -264,19 +277,21 @@ async showKitchenPage(uri,pageType){
   if(!uri) return
   let pages = [
     'fileManager','queryForm', 'sessionForm', 'webview',
-    'dataBrowser','localBrowser','webBrowser'
+    'dataBrowser','localBrowser','webBrowser', 'settingsForm'
   ]
   for(var p of pages){
     if( document.body.classList.contains(p) ){
       this.lastPageType = p  // so we can backup
+      if(p==="settingsForm") this.settings2json()
       document.body.classList.remove(p)
     }
   }
   this.hideTabs()
   // an embedded form
   // 
-  if(pageType==="fileManager"||pageType==="queryForm"){
+  if(pageType==="fileManager"||pageType==="queryForm"||pageType==="settingsForm"){
     document.body.classList.add(pageType)
+    if(pageType==="settingsForm") await this.manageSettings()
   }
   else if(pageType==="sessionForm"){
     document.body.classList.add("sessionForm")
@@ -299,6 +314,7 @@ async showKitchenPage(uri,pageType){
     document.body.classList.add('dataBrowser')
     if(uri==="none") return
     uriField.value = uri
+    window.localStorage.setItem('kitchenLastVisited',uri)
     console.log("User field " + uriField.value)
     console.log("User requests " + uri)
     // const params = new URLSearchParams(location.search)
@@ -346,6 +362,7 @@ async showKitchenPage(uri,pageType){
     let form   = document.getElementById("sessionForm")
     let idArea = document.getElementById("kitchenStoredIdentities")
     if( this.cfg.identities && this.cfg.identities.length > 0) {
+console.warn(this.cfg)
       idArea.innerHTML = ""
       let newIds = [];
       for(var c of this.cfg.identities){
@@ -485,7 +502,7 @@ let term = uri
         term = term.replace(/.*\//,'')
       }
       term = term.replace('#',':')
-      term = term.replace(this.LOCAL_BASE,'./').replace(this.REMOTE_BASE,'/')
+      term = term.replace(this.cfg.localBase,'./').replace(this.cfg.remoteBase,'/')
       term = term.replace('22-rdf-syntax-ns','rdf')
       term = term.replace("http://www.iana.org/assignments/link-relations/",'link:')
       let title = uri
@@ -504,6 +521,20 @@ let term = uri
   document.getElementById('queryResults').innerHTML = table
   return false
 }
+
+/* FORMS
+
+// load settings from a Turtle file into a Javascript array
+//
+   const rconf = require('rdf-config.js')
+   const settings = rconf.loadSettings('http://example.org/settings.ttl')
+   console.log( settings.windowHeight ) // or other settings
+
+// present an HTML form to edit settings, automatically save edits
+//
+   const rconfig = require('rdf-config.js')
+   rconfig.editForm('http://example.org/settings.ttl')
+*/
 
 /* Manage Files
 */

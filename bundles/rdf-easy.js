@@ -18,7 +18,10 @@ class RDFeasy {
   }
 
   async query(dataUrl,sparqlStr){
+    let originalSparql = sparqlStr
     sparqlStr = this._prepSparql(dataUrl,sparqlStr)
+    if(!originalSparql.match(/^\s*SELECT/i))
+      return this.update(dataUrl,sparqlStr)
     if(Array.isArray(dataUrl)) { 
       return await this._multiQuery(dataUrl,sparqlStr) 
     }
@@ -102,15 +105,37 @@ class RDFeasy {
   }
 
   async update(url,sparql){
+    if(url.match(/^http/)) return updateViaPatch(url,sparql)
     try {
-      return await this._auth.fetch(url,{
+      const myStore = $rdf.graph()
+      const myFetcher = $rdf.fetcher(myStore)
+      await myFetcher.load(url)
+      console.log("fetched "+url)
+      let preparedQuery = $rdf.SPARQLToQuery(sparql,false,myStore)
+      console.log("prepared query "+preparedQuery)
+      myStore.query(preparedQuery, async(results) =>  {
+        console.log("Got response "+results)
+        myFetcher.putBack(url)
+      })
+    }
+    catch (err) { console.log( err )  }
+  }
+/*
+load file into store
+apply sparql to store
+putback store
+*/
+
+  async updateViaPatch(url,sparql){
+    try {
+      const response = await this._auth.fetch(url,{
         method: 'PATCH',
         headers: { 'Content-Type': 'application/sparql-update' },
         body: sparql
       })
-    } catch (err) {
-       throw err
-    }
+      console.log(response); return response
+    } 
+    catch (err) { console.log( err )  }
   }
 
  /**

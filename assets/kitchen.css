@@ -45,7 +45,7 @@ body {
 
 /* hide all pageTypes except when the body.class is that pageType
 */
-#webBrowser,#dataBrowser,#fileManager,#queryForm,#sessionForm,#localBrowser {
+#webBrowser,#dataBrowser,#fileManager,#queryForm,#sessionForm,#localBrowser,#settingsForm {
   display:none;
 }
 body.dataBrowser #dataBrowser { display:block !important; }
@@ -54,15 +54,17 @@ body.webBrowser #webBrowser { display:block !important; }
 body.queryForm #queryForm { display:block !important; }
 body.sessionForm #sessionForm { display:block !important; }
 body.localBrowser #localBrowser { display:block !important; }
+body.settingsForm #settingsForm { display:block !important; }
 
 /* webId and Login Button (#kitchenLoginPanel)
  *
- *   - hide webId on webview pages
+ *   - hide webId on webview pages & settings page
  *   - hide login button on webview pages and session form
 */
   #kitchenLoginPanel { display:block; }
   #kitchenLoginPanel button { display:inline-block; }
   body.webview #kitchenLoginPanel { display:none; }
+  body.settingsForm #kitchenLoginPanel { display:none; }
   body.sessionForm #kitchenLoginPanel button { display:none; }
 
   #kitchenLoginPanel *,#kitchenLoginPanel button {

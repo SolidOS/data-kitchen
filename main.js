@@ -18,7 +18,8 @@ app.on('activate', function () {
 })
 async function createWindow (cfg) {
   mainWindow = new BrowserWindow(await getWindow(cfg))
-  // mainWindow.webContents.openDevTools() /* DEV-TOOLS */
+  if(cfg.devTools==1)
+    mainWindow.webContents.openDevTools() /* DEV-TOOLS */
   mainWindow.loadFile('index.html')
   mainWindow.on('closed', function () { mainWindow = null })
 }
@@ -38,10 +39,10 @@ if (process.argv) {
 async function getWindow (cfg) {
   cfg = cfg || await getConfig()
   return {
-    width: cfg.width,
-    height: cfg.height,
-    x: cfg.windowX,
-    y: cfg.windowY,
+    width: cfg.windowWidth,
+    height: cfg.windowHeight,
+    x: cfg.windowLeft,
+    y: cfg.windowTop,
     icon:path.join(__dirname,"myPod/favicon.png"),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -73,8 +74,8 @@ function mungeMenu(cfg){
   return myMenu
 }
 async function getConfig(){
-  const configFile        = path.join(__dirname,"config.json")
-  const defaultConfigFile = path.join(__dirname,"config.default.json")
+  const configFile        = path.join(__dirname,"../data-kitchen-config.json")
+  const defaultConfigFile = path.join(__dirname,"config.json")
   let cfg
   try{ 
     cfg = await jsonfile.readFileSync( configFile ) 
@@ -86,90 +87,73 @@ async function getConfig(){
     try{
       cfg = await jsonfile.readFileSync( defaultConfigFile ) 
     }
-    catch(e){console.log(e)}
+    catch(e){console.log(e); return {} }
   }
   cfg = cfg || {}
-  cfg.width  = cfg.windowWidth  || 800
-  cfg.height = cfg.windowHeight || 600
-  cfg.windowX = typeof cfg.windowX==="string" ? undefined : cfg.windowX
-  cfg.windowy = typeof cfg.windowY==="string" ? undefined : cfg.windowY
+  cfg.windowWidth  = Number(cfg.windowWidth)  || 800
+  cfg.windowHeight = Number(cfg.windowHeight) || 600
+  cfg.windowLeft   = cfg.windowLeft==="0" ? 0 : Number(cfg.windowLeft)
+  cfg.windowTop    = cfg.windowTop==="0" ? 0  : Number(cfg.windowTop)
+  cfg.windowLeft = cfg.windowLeft<0 ? null : cfg.windowLeft
+  cfg.windowTop = cfg.windowTop<0 ? null : cfg.windowTop
   return cfg
 }
 function getMenu() {
   const isMac = process.platform === 'darwin'
   return [
-  // { role: 'appMenu' }
-  ...(isMac ? [{
-    label: app.name,
-    submenu: [
-      { role: 'about' },
-      { type: 'separator' },
-      { role: 'services' },
-      { type: 'separator' },
-      { role: 'hide' },
-      { role: 'hideothers' },
-      { role: 'unhide' },
-      { type: 'separator' },
-      { role: 'quit' }
-    ]
-  }] : []),
-  // { role: 'fileMenu' }
+  // { role: 'dataBrowserMenu' }
   {
-    label: 'File',
+    label: 'The Kitchen',
     submenu: [
-      {
-        label: 'Manage files',
+      { label: 'DataBrowser',
         click: async () => {
           mainWindow.webContents.send(
-            'kitchen.showKitchenPage', 'assets/file.html', 'fileManager'
+            'kitchen.showKitchenPage', "none" , 'dataBrowser'
           )
         }
       },
-      isMac ? { role: 'close' } : { role: 'quit' },
-    ]
-  },
-  // { role: 'editMenu' }
-  {
-    label: 'Edit',
-    submenu: [
-      { role: 'undo' },
-      { role: 'redo' },
-      { type: 'separator' },
-      { role: 'cut' },
-      { role: 'copy' },
-      { role: 'paste' },
-      ...(isMac ? [
-        { role: 'pasteAndMatchStyle' },
-        { role: 'delete' },
-        { role: 'selectAll' },
-        { type: 'separator' },
-        {
-          label: 'Speech',
-          submenu: [
-            { role: 'startspeaking' },
-            { role: 'stopspeaking' }
-          ]
+      { label: 'SPARQL Query',
+        click: async () => {
+          mainWindow.webContents.send(
+            'kitchen.showKitchenPage','none','queryForm'
+          )
         }
-      ] : [
-        { role: 'delete' },
-        { type: 'separator' },
-        { role: 'selectAll' }
-      ])
+      },
+      { label: 'Manage files',
+        click: async () => {
+          mainWindow.webContents.send(
+            'kitchen.showKitchenPage', 'none', 'fileManager'
+          )
+        }
+      },
+      { label: 'Manage Login',
+        click: async () => {
+          mainWindow.webContents.send(
+            'kitchen.showKitchenPage', 'none', 'sessionForm'
+          )
+        }
+      },
+      { label: 'Manage Settings',
+        click: async () => {
+          mainWindow.webContents.send(
+            'kitchen.showKitchenPage', 'none', 'settingsForm'
+          )
+        }
+      },
     ]
   },
-  // { role: 'viewMenu' }
+  // { role: 'toolsMenu' }
   {
-    label: 'View',
+    label: 'Tools',
     submenu: [
-      { role: 'reload' },
-      { role: 'forcereload' },
+      { label: 'Install kitchen updates',
+        click: async () => {
+          mainWindow.webContents.send(
+            'kitchen.showKitchenPage','https://jeff-zucker.github.io/data-kitchen.html','webBrowser'
+          )
+        }
+      },
       { role: 'toggledevtools' },
-      { type: 'separator' },
-      { role: 'resetzoom' },
-      { role: 'zoomin' },
-      { role: 'zoomout' },
-      { type: 'separator' },
-      { role: 'togglefullscreen' }
     ]
   },
   // { role: 'bookmarksMenu' }
@@ -225,24 +209,6 @@ function getMenu() {
       },
      ]
   },
-  // { role: 'dataBrowserMenu' }
-  {
-    label: 'DataBrowser',
-    click: async () => {
-      mainWindow.webContents.send(
-            'kitchen.showKitchenPage', "none" , 'dataBrowser'
-      )
-    },
-  },
-  // { role: 'sparqlMenu' }
-  {
-    label: 'Query',
-    click: async () => {
-      mainWindow.webContents.send(
-            'kitchen.showKitchenPage','none','queryForm'
-      )
-    },
-  },
   // { role: 'help' }
   {
     label: "Help",
@@ -271,7 +237,7 @@ function getMenu() {
         }
       },
       {
-        label: 'Reporting Issues on this fork of the kitchen',
+        label: 'Report Issues on this fork of the kitchen',
         click: async () => {
           mainWindow.webContents.send(
             'kitchen.showKitchenPage','https://github.com/jeff-zucker/data-kitchen/issues', 'webBrowser' )
