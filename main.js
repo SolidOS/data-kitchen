@@ -119,21 +119,21 @@ function getMenu() {
           )
         }
       },
-      { label: 'Manage files',
+      { label: 'File Manager',
         click: async () => {
           mainWindow.webContents.send(
             'kitchen.showKitchenPage', 'none', 'fileManager'
           )
         }
       },
-      { label: 'Manage Login',
+      { label: 'Session/Login Manager',
         click: async () => {
           mainWindow.webContents.send(
             'kitchen.showKitchenPage', 'none', 'sessionForm'
           )
         }
       },
-      { label: 'Manage Settings',
+      { label: 'Settings Manager',
         click: async () => {
           mainWindow.webContents.send(
             'kitchen.showKitchenPage', 'none', 'settingsForm'
@@ -217,15 +217,7 @@ function getMenu() {
         label: 'Welcome to the Kitchen',
         click: async () => {
           mainWindow.webContents.send(
-            'kitchen.showKitchenPage', 'assets/quick-tour.html'
-          )
-        }
-      },
-      {
-        label: 'Using the Data Kitchen',
-        click: async () => {
-          mainWindow.webContents.send(
-            'kitchen.showKitchenPage', 'assets/about.html'
+            'kitchen.showKitchenPage', 'assets/welcome.html'
           )
         }
       },

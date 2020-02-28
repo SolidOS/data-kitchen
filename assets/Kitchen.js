@@ -83,7 +83,7 @@ class Kitchen {
     
     let cfg = await this.loadSettings()
     cfg.startPage = cfg.startPage && cfg.startPage.length>1 ? cfg.startPage :
-      "assets/quick-tour.html"
+      "assets/welcome.html"
     cfg.localBase=cfg.localBase && cfg.localBase.length>1 ? cfg.localBase : 
       "file://"+path.join(this.installDir,"/myPod/")
     this.cfg=cfg

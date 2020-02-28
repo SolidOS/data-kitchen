@@ -1,24 +1,26 @@
+#dataBrowser {
+  margin-top:2em;
+}
+#dataBrowser table {
+  margin-left:1em !important;
+  margin-right:2em !important;
+}
+#dataBrowser table#outline {
+  margin-left:-1em !important;
+  margin-right:0 !important;
+}
 #dataBrowser div.dataContentPane td {
   padding-bottom:2em;
-//  border-bottom:4px solid #c0c0c0;
 }
 #dataBrowser div.dataContentPane table table tr td {
   padding-bottom:0;
-//  border-bottom:none;
 }
 html, body {
-//   width: 100%;
-//   height: 100%;
-   margin: 0;
-   padding: 0;
-}
-body {
+  margin: 0;
+  padding: 0;
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:16px;
-//  padding-left:1em;
-//  padding-right:1em;
 }
-
 .sourcePane tr textarea {
    max-width:80vw;
    min-width:80vw !important;
@@ -36,12 +38,7 @@ body {
 #kitchenTabs,#kitchenTabContent {
   display:none;
 }
-#dataBrowser {
-  margin-top:2em;
-}
-.kitchenForm {
-  display:none;
-}
+
 
 /* hide all pageTypes except when the body.class is that pageType
 */
@@ -177,22 +174,6 @@ body.localBrowser
   line-height:1.75em;  
 }
 
-
-/* KITCHEN TOUR
-*/
-body.kitchenTour {
-  padding-left:1em;
-  padding-right:1em;
-  
-}
-.kitchenTour img {
-    border:1px solid green;
-    padding:1em;
-    margin:1em;
-}
-.kitchenTourP.hasImage {
-    margin-bottom:0.25em;
-}
 /* QUERY FORM
 */
 .queryButton {
