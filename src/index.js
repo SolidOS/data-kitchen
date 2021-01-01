@@ -1,28 +1,16 @@
-/*
-import SolidRest from '/home/jeff/Public/solid/solid-rest/2.0.0/src/index.js';
-import SolidRestFile from '/home/jeff/Public/solid/solid-rest/2.0.0/plugins/solid-rest-file/src/index.js';
-import SolidRestDropbox from '/home/jeff/Public/solid/solid-rest/2.0.0/plugins/dropbox/src/index.js';
-const fileFetcher = new SolidRest({
-  plugin:new SolidRestFile(),
-  parser: $rdf
-});
-const dropboxFetcher = new SolidRest({
-  plugin:new SolidRestDropbox(),
-});
-*/
-import { SolidRestFile } from '@solid-rest/file';
-import { SolidRestDropbox } from '@solid-rest/dropbox';
-const fetcher = {
-  'file' : new SolidRestFile(),
-  'dropbox' :  new SolidRestDropbox(),
-};
-
 import express from 'express';
 import {URL} from "url";
 import fs from 'fs';
 import bodyParser from 'body-parser';
 import libPath from 'path'
 import * as $rdf from 'rdflib';
+
+import { SolidRestFile } from '@solid-rest/file';
+import { SolidRestDropbox } from '@solid-rest/dropbox';
+const fetcher = {
+  'file' : new SolidRestFile(),
+  'dropbox' :  new SolidRestDropbox(),
+};
 
 const port = process.argv[2] || 7000;    // PORT
 const host = "http://127.0.0.1:" + port  // HOSTNAME
@@ -43,9 +31,10 @@ app.use( '/', express.static( base,{
 }));
 
 const isSpecialUrl = { "/private/":1, "/profile/":1, "/profile/card":1, "/public/":1, "/settings/":1, "/.well-known/":1, "/.acl":1,"/favicon.ico":1, };
-const dkTemplate = await getTemplate('data-kitchen.tmpl',port,'core');
+//const dkTemplate = await getTemplate('data-kitchen.tmpl',port,'core');
 
 app.all('/*', async function (req, res,next) {
+  //
   // DENY ALL EXTERNAL REQUESTS BASED ON SOCKET CONNECTION
   // SHOULD ALREADY BE BLOCKED IN HOSTS FILE, BUT JUST IN CASE
   var origin = req.connection.remoteAddress;
@@ -66,10 +55,7 @@ app.all('/*', async function (req, res,next) {
   if(path === '/profile/card')  path = path + ".ttl";
   if( isSpecialUrl[req.path] )      path = base + path
   if( req.path.startsWith('/common') ) path = base + path
-//  if( req.path.match(/\.tmpl$/) ) handleTemplate( req, res ); else
-//  if(!type || type==='file' || type==="text") {
-    return restRequest(type,path,req,res);
-//  }
+  return restRequest(type,path,req,res);
 })
 
 app.listen(port, () => {
@@ -87,7 +73,6 @@ async function doRoot( req, res ){
     res.send();
     return;
   }
-  //  return sendTemplate( dkTemplate, res );
   return res.sendFile( base + '/common/html/data-kitchen.html' );
 }
 
@@ -129,48 +114,3 @@ function restResponse(response,path,req,res,url) {
   res.set("Connection", "close");
   res.send( response.body );
 }
-
-// TEMPLATE HANDLING
-//
-
-async function handleTemplate( req,res ){
-//  let templateName = req.path.replace('/templates/','');
-  let templateName = req.path
-  let templateContent = await getTemplate(templateName,port);
-  if(!templateContent ){
-    console.log('No template!');
-    res.append('status',500);
-    res.append('statusText','No template!');
-    res.send()
-  }
-  else return sendTemplate( templateContent, res )
-}
-
-async function getTemplate( templateName, port ){
-  // console.log('getting template '+templateName);
-  let templateType;
-  try {
-/*
-    if( templateName.match('Browser') ){
-      templateType = templateName.substr(1,4)
-      templateType = templateType==="file" ?`{username:"${host}/profile/card#me"}` : null;
-      templateName = 'fileBrowser.tmpl'
-    }
-*/
-    let path = base + "/../templates/" + templateName //+ ".tmpl";
-    // console.log( 'as '+path );
-    let content;
-    try { content = await fs.readFileSync(path,'utf-8') } catch(e){}
-    if(!content) return null;
-    content = content.replace(/\$\{host\}/g,'http://localhost:' + port);
-    content = content.replace(/\$\{browserType\}/g,templateType);
-    return content
-  } catch(e) { console.log(e) }
-}
-function sendTemplate( content, res ){
-    res.append('status',200);
-    res.append('content-type','text/html');
-    res.set("connection", "close");
-    res.send(content)
-}
-
