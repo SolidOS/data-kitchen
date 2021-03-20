@@ -1,0 +1,24 @@
+{
+  "port": "9119",
+  "serverUri": "https://localhost:9119",
+  "webid": true,
+  "multiuser": true,
+  "mount": "/",
+  "root": "./myPod",
+  "configPath": "./server/nss-config",
+  "configFile": "./server/nss-config.json",
+  "dbPath": "./server/nss-db",
+  "sslKey": "./server/nss-privkey.pem",
+  "sslCert": "./server/nss-fullchain.pem",
+  "corsProxy": "/proxy",
+  "server": {
+    "name": "Data Kitchen",
+    "description": "SolidOS as a stand-alone desktop app for private data",
+    "logo": ""
+  },
+  "enforceToc": true,
+  "disablePasswordChecks": false,
+  "tocUri": "https://your-toc",
+  "supportEmail": "Your support email address"
+}
+
