@@ -4,7 +4,7 @@
   "webid": true,
   "multiuser": true,
   "mount": "/",
-  "root": "./myPod",
+  "root": "./pods",
   "configPath": "./server/nss-config",
   "configFile": "./server/nss-config.json",
   "dbPath": "./server/nss-db",
