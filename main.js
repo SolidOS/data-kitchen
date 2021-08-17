@@ -2,6 +2,7 @@
 
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const { setInterval } = require('timers')
 
 console.log('@@ main.js argv[2] ' + process.argv[2])
 
@@ -40,6 +41,15 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  mainWindow.webContents.on('will-redirect', async (e, url) => {
+    if (new URL(url).protocol === "file:") {
+      global.redirectUrl = url
+      mainWindow.loadFile('index.html')
+    }
+  })
+
+
 }
 
 // This method will be called when Electron has finished

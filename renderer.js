@@ -13,6 +13,7 @@ if (ele && panes.versionInfo) {
 
 var remote = require('electron').remote // a la https://stackoverflow.com/questions/30815446/how-to-pass-command-line-argument-in-electron
 var arguments = remote.getGlobal('commandlineArgs')
+const redirectUrl = remote.getGlobal('redirectUrl')
 console.log(' @@ renderer.js arguments ', arguments);
 
 const UI = panes.UI
@@ -59,3 +60,30 @@ if (initial) {
 } else {
   console.log('ready for user input')
 }
+
+// Add the Login Buttons
+const loginButtonArea = document.getElementById("loginButtonArea");
+UI.authn.authSession.handleIncomingRedirect({
+  url: redirectUrl,
+  restorePreviousSession: true,
+}).then(() => {
+  if (!UI.authn.authSession.info.isLoggedIn) {
+    // HACK This is a really ugly way to add a login box.
+    // TODO make it prettier
+    loginButtonArea.appendChild(UI.authn.loginStatusBox(document, null, {}))
+  }
+})
+UI.authn.authSession.onLogin(() => {
+  loginButtonArea.innerHTML = '';
+  loginButtonArea.appendChild(UI.authn.loginStatusBox(document, null, {}))
+  // HACK doing this doesn't automatically refresh pages. But, it doesn't work
+  // in the previous version of the data browser, so for now I'm moving on
+  // To test this, navigate to a folder view, then log in. It will not automatically
+  // redirect
+  go()
+})
+UI.authn.authSession.onSessionRestore(() => {
+  loginButtonArea.innerHTML = '';
+  loginButtonArea.appendChild(UI.authn.loginStatusBox(document, null, {}))
+  go()
+})
