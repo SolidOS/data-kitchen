@@ -1,0 +1,22 @@
+{
+  "rootFilePath": "./",
+          "port": 3000,
+   "windowWidth": 1900,
+  "windowHeight": 768,
+    "windowLeft": "center",
+     "windowTop": "center",
+     "bookmarks": [
+        {
+          "label":"My local files (CSS)",
+          "url":"http://localhost:3000"
+        },
+        {
+          "label":"My solidcommunity pod (NSS)",
+          "url":"https://jeff-zucker.solidcommunity.net/public/"
+        },
+        {
+          "label":"My inrupt.com pod (ESS)",
+           "url":"https://pod.inrupt.com/jeff-zucker/public/"
+        }
+     ]
+}

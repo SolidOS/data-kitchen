@@ -1,0 +1,23 @@
+  #inputArea {
+    left:0px;
+    width:100%;
+    padding:0.5em;
+    padding-top:1.5em;
+    background-color:#d0d0d0;
+  }
+  #loginButtonArea {
+    display:inline-block;
+    margin-left:3em;
+    padding:0 !important;
+    margin:0 !important;
+  }
+  #loginButtonArea input {
+    display:inline-block;
+    margin:0.25em !important;
+    padding:0.25em !important;
+  }
+  #webId {
+    display:inline-block;
+    padding-top:0.6em;
+    padding-bottom:0.6em;
+  }

@@ -1,27 +1,17 @@
 {
-  "name": "data-kitchen",
-  "productName": "Data Kitchen",
+  "name": "dk-css",
   "version": "1.0.0",
-  "description": "A Solid Electron application",
-  "main": "main.js",
+  "description": "",
+  "main": "src/electron-main.js",
   "scripts": {
-    "package": "electron-packager --overwrite .",
-    "start": "electron ."
+    "start": "electron . start &&  ./src/css-stop.sh"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
-  "dependencies": {},
-  "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/register": "^7.6.2",
-    "electron": "^6.0.10"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solid/community-server": "^1.0.0",
+    "electron": "^13.1.9",
+    "yargs": "^17.1.1"
   }
 }
