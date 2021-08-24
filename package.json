@@ -1,17 +1,17 @@
 {
-  "name": "dk-css",
-  "version": "1.0.0",
+  "name": "Data-Kitchen",
+  "version": "1.3.0",
   "description": "",
   "main": "src/electron-main.js",
   "scripts": {
     "start": "electron . start &&  ./src/css-stop.sh"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Jeff Zucker",
+  "license": "MIT",
   "dependencies": {
     "@solid/community-server": "^1.0.0",
     "electron": "^13.1.9",
-    "yargs": "^17.1.1"
+    "electron-clear-data": "^1.0.5"
   }
 }

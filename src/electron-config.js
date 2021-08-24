@@ -79,6 +79,24 @@ function getMenu(cfg,mainWindow) {
   {
     label: 'Tools',
     submenu: [
+     { label: 'Reload Data Kitchen',
+        accelerator: "CmdOrCtrl+R", 
+        click() {
+          mainWindow.reload();
+          mainWindow.loadURL(
+            cfg.startPage
+          )
+        } 
+      },
+      { label: 'Clear Cache',
+        click: async () => {
+          // alert('clearing cache ...')
+          mainWindow.webContents.session.clearCache(() => {
+            // alert('cache is cleared')
+            mainWindow.webContents.session.clearStorageData()
+          });
+        }
+      },
       { label: 'Install Kitchen Updates',
         enabled : false,
         click: async () => {
