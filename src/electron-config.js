@@ -18,6 +18,7 @@ module.exports.getUserConfig = async function(configFile){
   cfg.port = cfg.port || 3000;
   let parent = path.join(__dirname,"../");
   if(!cfg.rootFilePath.startsWith("/")) cfg.rootFilePath = path.join(parent,cfg.rootFilePath);
+  
   return cfg;
 }
 

@@ -9,8 +9,6 @@
     <script type="text/javascript" src="/common/mashlib.js"></script>
 <script>
 let go; // good advice :-)
-    const panes = require('mashlib')
-    const UI = panes.UI
 document.addEventListener('DOMContentLoaded', function() {
     const $rdf = UI.rdf
     const dom = document
@@ -76,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false)
 
     goButton.addEventListener('click', go, false);
-    let initial = new URLSearchParams(self.location.search).get("uri") || host;
+    let initial = new URLSearchParams(self.location.search).get("uri") || host + "/";
     if (initial) {
       uriField.value = initial
       go()
@@ -89,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
       go()
     })
     UI.authn.authSession.onLogout(() => {
-      UI.authn.authSession.info.webId=null;;
+      document.cookie = "nssidp.sid=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
       mungeLoginArea();
       webIdArea.innerHTML = "Local Data-Kitchen User";
       go()

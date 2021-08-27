@@ -1,4 +1,5 @@
-var port = '3000';
+var port =3100;
+
 var host = `http://localhost:${port}`;
 
 window.SolidAppContext = {
@@ -10,4 +11,3 @@ window.$SolidTestEnvironment = {
   iconBase : "/common/icons/",
   originalIconBase : "/common/originalIcons/",
 }
-

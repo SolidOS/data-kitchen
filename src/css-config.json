@@ -54,14 +54,6 @@
       "@type": "StaticAssetHandler",
       "assets": [
         {
-          "StaticAssetHandler:_assets_key": "/common/mash.css",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/common/mash.css"
-        },
-        {
-          "StaticAssetHandler:_assets_key": "/common/mashlib.js",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/common/mashlib.js"
-        },
-        {
           "StaticAssetHandler:_assets_key": "/common/",
           "StaticAssetHandler:_assets_value": "./ServerRoot/common"
         },
@@ -75,6 +67,10 @@
         },
         {
           "StaticAssetHandler:_assets_key": "/LocalKitchenUser/profile/card",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/profile/card$.ttl"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/profile/card",
           "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/profile/card$.ttl"
         },
         {

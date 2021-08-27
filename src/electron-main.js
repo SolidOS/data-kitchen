@@ -1,10 +1,16 @@
 const {app, BrowserWindow, BrowserView, Menu} = require('electron');
 const fs = require('fs/promises')
 const path = require('path')
+const electronReload = require('electron-reload')
 const jsonfile = require('jsonfile');
 const {getUserConfig,mungeMenu} = require('./electron-config.js');
 let mainWindow;
 var cfg,css;
+
+let installDir = path.join(__dirname,"../");
+
+// during development, live reload on change of any file
+electronReload( installDir,{forceHardReset:true} );
 
 async function getConfig(){
   cfg = await getUserConfig( path.join(__dirname,"../kitchen.json") ) || {};
@@ -29,6 +35,18 @@ async function prepRootFilePath(cfg){
   let acl = path.join(tmplDir,"acl.tmpl");
   let meta = path.join(tmplDir,"meta.tmpl");
   let root = cfg.rootFilePath;
+  let port = cfg.port;
+  let jsFrom = path.join(tmplDir,'kitchen.js.tmpl')
+  let jsTo = path.join(tmplDir,'kitchen.js')
+  try {
+    let jsString = await fs.readFile( jsFrom,{encoding:'utf8'} );
+    jsString =  "var port ="+cfg.port+";\n"+jsString ;
+    await fs.writeFile( jsTo, jsString );
+  }
+  catch(e){
+    console.log("Could not create kitchen.js from "+js,e);
+    process.exit();
+  }
   try {
     await fs.copyFile( acl, path.join(root,".acl") );
     await fs.copyFile( meta, path.join(root,".meta") );
@@ -73,6 +91,11 @@ async function createWindow (cfg,css) {
   //  mainWindow.removeMenu(); // NO TOP MENU
   if(cfg.devTools==1) mainWindow.webContents.openDevTools() /* DEV-TOOLS */
   mainWindow.loadURL(cfg.startPage)
+/*
+  mainwindow.webContents.session.clearStorageData([], function (data) {
+    console.log(data);
+  })
+*/
   mainWindow.on('closed', function () { mainWindow = null })
 }
 

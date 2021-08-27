@@ -1,18 +1,26 @@
 {
   "rootFilePath": "./",
-          "port": 3000,
-   "windowWidth": 1900,
-  "windowHeight": 768,
+          "port": 3100,
+   "width": 800,
+  "height": 600,
     "windowLeft": "center",
      "windowTop": "center",
      "bookmarks": [
         {
-          "label":"My local files (CSS)",
-          "url":"http://localhost:3000"
+          "label":"My local files (no-auth CSS)",
+          "url":"http://localhost:3100/"
+        },
+        {
+          "label":"My local files (auth CSS)",
+          "url":"http://localhost:3200/"
         },
         {
           "label":"My solidcommunity pod (NSS)",
           "url":"https://jeff-zucker.solidcommunity.net/public/"
+        },
+        {
+          "label":"My solidweb pod (NSS)",
+          "url":"https://jeffz.solidweb.org/public/"
         },
         {
           "label":"My inrupt.com pod (ESS)",
