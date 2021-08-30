@@ -1,0 +1,26 @@
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix pim: <http://www.w3.org/ns/pim/space#>.
+@prefix schema: <http://schema.org/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix me: </LocalKitchenUser/profile/card#me>.
+
+<>
+    a foaf:PersonalProfileDocument ;
+    foaf:maker me: ;
+    foaf:primaryTopic me: .
+
+<#me>
+    a foaf:Person ;
+    a schema:Person ;
+
+    foaf:name "Local Kitchen User" ;
+
+    solid:account </> ;  # link to the account uri
+    pim:storage </> ;    # root storage
+
+    ldp:inbox </inbox/> ;
+
+    pim:preferencesFile </LocalKitchenUser/settings/prefs.ttl> ;  # private settings/preferences
+    solid:publicTypeIndex </LocalKitchenUser/settings/publicTypeIndex.ttl> ;
+    solid:privateTypeIndex </LocalKitchenUser/settings/privateTypeIndex.ttl> .

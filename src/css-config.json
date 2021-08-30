@@ -1,0 +1,126 @@
+{
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^1.0.0/components/context.jsonld",
+  "import": [
+    "files-scs:config/app/main/default.json",
+    "files-scs:config/app/init/default.json",
+    "files-scs:config/http/handler/default.json",
+    "files-scs:config/http/middleware/websockets.json",
+    "files-scs:config/http/server-factory/websockets.json",
+    "files-scs:config/http/static/default.json",
+    "files-scs:config/identity/email/default.json",
+    "files-scs:config/identity/handler/default.json",
+    "files-scs:config/identity/ownership/unsafe-no-check.json",
+    "files-scs:config/identity/pod/static.json",
+    "files-scs:config/ldp/authentication/dpop-bearer.json",
+    "files-scs:config/ldp/authorization/webacl.json",
+    "files-scs:config/ldp/handler/default.json",
+    "files-scs:config/ldp/metadata-parser/default.json",
+    "files-scs:config/ldp/metadata-writer/default.json",
+    "files-scs:config/ldp/permissions/acl.json",
+    "files-scs:config/storage/backend/file.json",
+    "files-scs:config/storage/key-value/memory.json",
+    "files-scs:config/storage/middleware/default.json",
+    "files-scs:config/util/auxiliary/acl.json",
+    "files-scs:config/util/identifiers/suffix.json",
+    "files-scs:config/util/logging/winston.json",
+    "files-scs:config/util/representation-conversion/converters/content-type-replacer.json",
+    "files-scs:config/util/representation-conversion/converters/errors.json",
+    "files-scs:config/util/representation-conversion/converters/markdown.json",
+    "files-scs:config/util/representation-conversion/converters/quad-to-rdf.json",
+    "files-scs:config/util/representation-conversion/converters/rdf-to-quad.json",
+    "files-scs:config/util/resource-locker/memory.json",
+    "files-scs:config/util/variables/default.json"
+  ],
+  "@graph": [
+    {
+      "comment": "Serve index.html within containers",
+      "@id": "urn:solid-server:default:ResourceStore_Index",
+      "@type": "IndexRepresentationStore"
+    },
+
+    {
+      "comment": "Serve the Mashlib Data Browser as default container representation",
+      "@id": "urn:solid-server:default:DefaultUiConverter",
+      "@type": "ConstantConverter",
+      "filePath": "./ServerRoot/common/kitchen.html",
+      "contentType": "text/html",
+      "options_minQuality": 1,
+      "options_container": true,
+      "options_document": false
+    },
+    {
+      "comment": "Serve Mashlib && other static files.",
+      "@id": "urn:solid-server:default:StaticAssetHandler",
+      "@type": "StaticAssetHandler",
+      "assets": [
+        {
+          "StaticAssetHandler:_assets_key": "/common/",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/common"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/LocalKitchenUser/settings/",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/settings"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/LocalKitchenUser/",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/LocalKitchenUser/profile/card",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/profile/card$.ttl"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/profile/card",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/profile/card$.ttl"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/LocalKitchenUser/settings/prefs.ttl",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/settings/prefs.ttl"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/favicon.ico/",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/favicon.ico"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/.acl",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/common/acl.tmpl"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/.meta",
+          "StaticAssetHandler:_assets_value": "./ServerRoot/common/meta.tmpl"
+        }
+      ]
+    },
+    {
+      "comment": "Handles data conversion when required.",
+      "@id": "urn:solid-server:default:RepresentationConverter",
+      "@type": "WaterfallHandler",
+      "handlers": [
+        { "@id": "urn:solid-server:default:DefaultUiConverter" },
+        { "@id": "urn:solid-server:default:MarkdownToHtmlConverter" },
+        {
+          "@type": "IfNeededConverter",
+          "comment": "Only continue converting if the requester cannot accept the available content type"
+        },
+        { "@id": "urn:solid-server:default:ContentTypeReplacer" },
+        {
+          "comment": "Automatically finds a path through a set of converters from one type to another.",
+          "@id": "urn:solid-server:default:ChainedConverter",
+          "@type": "ChainedConverter",
+          "converters": [
+            { "@id": "urn:solid-server:default:RdfToQuadConverter" },
+            { "@id": "urn:solid-server:default:QuadToRdfConverter" },
+            { "@id": "urn:solid-server:default:ContainerToTemplateConverter" },
+            { "@id": "urn:solid-server:default:ErrorToQuadConverter" },
+            { "@id": "urn:solid-server:default:ErrorToTemplateConverter" },
+            { "@id": "urn:solid-server:default:MarkdownToHtmlConverter" }
+          ]
+        },
+        {
+          "@id": "urn:solid-server:default:ErrorToQuadConverter",
+          "@type": "ErrorToQuadConverter",
+        },
+      ]
+    }
+  ]
+}
