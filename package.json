@@ -12,6 +12,7 @@
   "dependencies": {
     "@solid/community-server": "^1.0.0",
     "electron": "^13.2.2",
-    "electron-reload": "^2.0.0-alpha.1"
+    "electron-reload": "^2.0.0-alpha.1",
+    "jsonfile": "^6.1.0"
   }
 }
