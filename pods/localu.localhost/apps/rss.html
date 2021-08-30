@@ -1,0 +1,79 @@
+<body>
+
+  <div id="leftColumn">
+    <select id="feedsList" onchange="listFeedItems()">
+      <option value="dummy">Select a News Feed</option>
+      <option value="dummy">--------------------</option>
+      <option value="https://www.techradar.com/rss/news/computing">Tech Radar</option>
+      <option value="https://www.techmeme.com/feed.xml">Techmeme</option>
+      <option value="https://www.wired.com/feed/rss">Wired</option>
+
+      <option value="dummy">--------------------</option>
+      <option value="edit">Edit Feeds</option>
+    <select>
+    <div id="itemsList"></div>
+  </div>
+  <iframe id="display" name="display" src=""></iframe>
+
+<script>
+
+  const proxy = "https://localhost:9119/proxy?uri=";
+  const domParser = new window.DOMParser();
+
+  async function listFeedItems(){
+    let feedsList = document.getElementById('feedsList');
+    let feedUri = feedsList[feedsList.selectedIndex].value;
+    if( feedUri === "dummy" ) return;
+    feedUri = encodeURI( feedsList[feedsList.selectedIndex].value );
+    let response = await fetch( proxy + feedUri )
+    let feedContent = await response.text();
+    let feedDom = domParser.parseFromString(feedContent, "text/xml")
+    console.log(feedDom)
+    const items = feedDom.querySelectorAll("item");
+    let html = ``;
+    items.forEach( el => {
+      let link = el.querySelector("link").innerHTML;
+      let title = el.querySelector("title").innerHTML;
+      title = title.replace(/^\<\!\[CDATA\[/,'');
+      title = title.replace(/\]\].*\>/,'');
+      html += `
+          <a href="${link}" target="display">
+            ${title}
+          </a>
+      `;
+    });
+    document.getElementById('itemsList').innerHTML = html;
+  }  
+</script>
+
+<style>
+  body {
+    overflow:hidden;
+  }
+  #leftColumn {
+    width : 25vw;
+    height : 99vh;
+    overflow-y:scroll;
+  }
+  #itemsList a {
+    display : block;
+    padding:0.5em;
+    padding-bottom:0;
+    border-bottom:1px solid gray;
+    text-decoration : none;
+  }
+  #feedsList {
+    padding:0.25em;
+    width : 95%;
+  }
+  #display {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:25vw;
+    width:75vw;
+    height:100%;
+    border:none;
+  }
+</style>
+</body>

@@ -22,9 +22,11 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "electron": "^12.0.1",
+    "electron": "^12.0.2",
     "express": "^4.17.1",
     "penny-pod-inspector": "^0.273522919.1113363993",
+    "rss-to-json": "^1.1.2",
+    "shelljs": "^0.8.4",
     "solid-server": "^5.6.6"
   },
   "devDependencies": {

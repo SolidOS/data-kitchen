@@ -1,0 +1,105 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <title>Solid Data Kitchen - Desktop</title>
+</head><body class="dataKitchen">
+  <div id="dkMenu">
+    <button onClick="show(0)">Desktop</button>
+    <button onClick="show(1)">Pod #1</button>
+    <button onClick="show(2)">Pod #2</button>
+    <select id="toolsMenu" onChange="openTool()">
+       <option>Tools</option>
+       <optgroup label="">
+       <option value="rss.html">RSS Reader</option>
+       <option value="hello.js">Desktop Search</option>
+    </select>
+    <span id="prompt">URI :</span>
+    <input type="text" onchange="go()" />
+    <button onclick="go()">Go!</button>
+    <select>
+       <option>Open With ...</option>
+       <option>Emacs</option>
+       <option>Protege</option>
+    </select>
+  </div>
+  <iframe src="https://localuser.localhost:9119/"></iframe>
+  <iframe src="newSource.html"></iframe>
+  <iframe src="https://localuser.localhost:9119/apps"></iframe>
+  <iframe id="toolsFrame" src="newSource.html"></iframe>
+  <script>
+
+    let currentFrame = 0;
+    let frames = document.getElementsByTagName('iframe');
+    let buttons = document.getElementsByTagName('button');
+    let curFrame =  localStorage.getItem("dataKitchenFrame");
+    let frame1 =  localStorage.getItem("dataKitchen1URL");
+    let frame2 =  localStorage.getItem("dataKitchen2URL");
+    if( frame1 ) frames[1].src = frame1;
+    if( frame2 ) frames[2].src = frame2;
+    show(curFrame || 0);
+
+    function openTool(){
+      let toolElm = document.getElementById('toolsMenu')
+      let toolFrame = document.getElementById('toolsFrame')
+      let tool = toolElm[toolElm.selectedIndex].value;
+      let url = 'https://localuser.localhost:9119/apps/' + tool;
+      frames[3].src = url;      
+      show(3);
+    }
+
+    function show(newFrame){
+      frames[currentFrame].style.display="none";
+      frames[newFrame].style.display="block";
+      buttons[currentFrame].style.backgroundColor="#dde";
+      buttons[newFrame].style.backgroundColor="white";
+      currentFrame = newFrame;
+      localStorage.setItem("dataKitchenFrame",newFrame);
+      let curUrl = frames[currentFrame].src;
+      curUrl = curUrl.match(/^file/) ? "" : " -  "+curUrl
+      document.title = "Data Kitchen" + curUrl;
+    }
+
+    function go(){
+      const url = document.getElementsByTagName('input')[0].value
+      localStorage.setItem("dataKitchen"+currentFrame.toString()+"URL",url);
+      frames[currentFrame].src = url;
+    }
+
+  </script>
+  <style>
+    body.dataKitchen {
+      margin:0;
+      padding:0;
+      overflow:hidden;
+    }
+    button, select {
+      background-color:#dde;
+      padding:0.20em;
+      border:1px solid gray !important;
+      border-radius:2px;
+    }
+    #dkMenu {
+      padding:0;
+      margin:4px;
+      margin-bottom:0;
+      width:100%;
+      height:5vh;
+    }
+    iframe {
+      margin:0;
+      padding:0;
+      border:none;
+      width:100%;
+      height:95vh;
+      display:hidden;
+    }
+    input {
+      padding:0.25em;
+      width:30em;
+      border-radius:2px;
+    }
+    #prompt {
+      margin-left:2em;
+    }
+    
+  </div>
+  </style>
+</body></html>
