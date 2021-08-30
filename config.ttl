@@ -1,0 +1,120 @@
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix dct: <http://purl.org/dc/elements/1.1/>.
+
+:Form
+    a ui:Form;
+    dct:title "Data Kitchen Settings Form";
+    ui:parts ( 
+      :mainComment
+      :utilsHeading :updates
+      :shortcutsHeading :shortcutsComment :localBase  :remoteBase 
+      :windowHeading
+      :windowComment      :windowTop  :windowLeft :windowWidth :windowHeight 
+      :editorHeading     :editors
+      :identitiesHeading :identities 
+      :bookmarksHeading  :bookmarks 
+    ).
+
+:Settings
+    :updates      true;
+    :windowWidth  800;
+    :windowHeight 600;
+    :windowLeft    -1;
+    :windowTop     -1;
+    :bookmarks    :bmark1, :bmark2, :bmark3, :bmark4, :bmark5, :bmark6.
+ 
+:mainComment a ui:Comment; ui:contents 
+"Settings are saved automatically but will not take effect until the next time you start the kitchen.".
+
+:shortcutsHeading a ui:Heading; ui:contents 
+"Base URIs for shortcuts".
+
+:windowComment a ui:Comment; ui:contents 
+"set top and/or left to a negative number to center".
+
+### URIs
+:shortcutsComment a ui:Comment; ui:contents 
+"If localBase is 'file:///foo', then './bar' will  expand to 'file:///foo/bar'.If remoteBase is 'https://example.org', then '/bar' will expand to 'https://example.org/bar'.".
+:localBase
+    a ui:SingleLineTextField;
+    ui:label "Local Base"; 
+    ui:property :localBase.
+:remoteBase
+    a ui:SingleLineTextField;
+    ui:label "Remote Base"; 
+    ui:property :remoteBase.
+
+### WINDOW DIMENSIONS
+:windowHeading a ui:Heading; ui:contents "Window dimensions".
+:windowLeft
+  a ui:IntegerField;
+  ui:label "Window Left";
+  ui:property :windowLeft.
+:windowTop    
+  a ui:IntegerField;
+  ui:label "Window Top";
+  ui:property :windowTop.
+:windowHeight
+  a ui:IntegerField; 
+  ui:label "Window Height"; 
+  ui:property :windowHeight.
+:windowWidth 
+  a ui:IntegerField;
+  ui:label "Window Width";
+  ui:property :windowWidth.
+
+### IDENTITIES
+:identitiesHeading a ui:Heading; ui:contents "Login Identities".
+:identities        a ui:Multiple; ui:part :oneIdentity;ui:property :identities.
+:oneIdentity       a ui:Group; ui:parts ( :username :idp :password ).
+:idp               a ui:SingleLineTextField; ui:label "IDP"; ui:property :idp.
+:username        
+  a ui:SingleLineTextField; 
+  ui:label "User Name";
+  ui:property :username.
+:password          
+  a ui:SingleLineTextField;
+  ui:label "Password (optional)"; 
+  ui:property :password.
+
+### EDITORS
+:editorHeading a ui:Heading; ui:contents "External Editors".
+:editors       a ui:Multiple; ui:part :oneEditor; ui:property :editors.
+:oneEditor     a ui:Group; ui:parts ( :editorName :editorPath ).
+:editorName    a ui:SingleLineTextField; ui:label "Name"; ui:property :name.
+:editorPath    a ui:SingleLineTextField; ui:label "Path"; ui:property :path.
+
+### BOOK MARKS
+:bookmarksHeading a ui:Heading; ui:contents "Bookmarks".
+:bookmarks        a ui:Multiple; ui:part :oneBookmark; ui:property :bookmarks.
+:oneBookmark      a ui:Group; ui:parts ( :bookmarkLabel :bookmarkURI ).
+:bookmarkLabel    a ui:SingleLineTextField;ui:label "Label";ui:property :label.
+:bookmarkURI      a ui:SingleLineTextField; ui:label "URI"; ui:property :uri.
+
+:bmark1
+  :label "My local files"; :uri "./public/". 
+:bmark2
+  :label "My in-browser IndexedDB"; :uri "app://bfs/IndexedDB/".
+:bmark3 
+  :label "My solid.community pod"; 
+  :uri "https://timbl.solid.community/public/".
+:bmark4 
+  :label "My inrupt.net pod"; 
+  :uri "https://timbl.inrupt.net/public/".
+:bmark5
+  :label "Sample Ontology search"; :uri "@ldp".
+:bmark6
+ :label "Sample DBPEDIA search";:uri "http://dbpedia.org/data/Tim_Berners_Lee".
+
+:utilsHeading
+  a ui:Heading;
+  ui:contents "Startup Options".
+:devTools
+  a ui:BooleanField;
+  ui:label "Open Dev-Tools";
+  ui:property :devTools.
+:updates
+  a ui:BooleanField;
+  ui:label "Check for updates";
+  ui:property :updates.

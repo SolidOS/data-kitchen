@@ -1,0 +1,36 @@
+#UIformContainer div {
+  border:none !important;
+  margin-bottom:1em !important;
+}
+#UIformContainer button {
+  margin-left:1em !important;
+}
+#UIformContainer input {
+  font-size:100% !important;
+  margin-left:1em !important;
+  margin-bottom:1em !important;
+  padding:0.4em !important;
+}
+#UIformContainer input[type="text"] {
+  width:60vw;
+}
+#UIformContainer td {
+  vertical-align:top !important;
+}
+#UIformContainer .hoverControl {
+  background-color:#d0d0d0;
+  margin-bottom:0.25em;
+}
+#UIformContainer h2{
+  margin-left:1em !important;
+}
+#UIformContainer p{
+  max-width:75vw !important;
+  color:gray !important;
+}
+#UIformContainer h3{
+  color:black !important;
+  margin-bottom:0.5em !important;
+  padding-bottom:0 !important;
+  text-decoration:underline;
+}

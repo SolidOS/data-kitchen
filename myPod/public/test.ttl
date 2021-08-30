@@ -1,0 +1,21 @@
+@prefix : <#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ont: <http://www.w3.org/2007/ont/>.
+@prefix text: <http://www.w3.org/ns/iana/media-types/text/>.
+@prefix n0: <http://xmlns.com/foaf/0.1/#>.
+@prefix c: </profile/card#>.
+@prefix schem: <http://schema.org/>.
+@prefix im: <http://www.w3.org/ns/iana/media-types/image/>.
+
+<>
+    a ont:linkDocument, text:turtle;
+    rdfs:label "Sample Turtle File";
+    n0:maker c:me;
+    n0:primaryTopic :myComment.
+:myComment
+    a schem:Comment;
+    schem:comment "Hello Turtle World!";
+    schem:image :myImage;
+    rdfs:label "My Comment".
+:myImage a im:jpeg; schem:url <test.jpeg>; rdfs:label "a flower".
+

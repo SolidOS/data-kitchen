@@ -1,61 +1,61 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
+const {ipcRenderer,remote} = require('electron')
+const BrowserFS            = require("./bundles/browserfs.min.js")
+window.kitchen             = require('./assets/Kitchen.js')
 
-console.log('renderer.js')
-console.log('renderer.js panes ' + panes)
-
-const ele = document.getElementById('solid-panes-version')
-
-if (ele && panes.versionInfo) {
-  ele.textContent = panes.versionInfo.npmInfo['solid-panes']
-}
-
-var remote = require('electron').remote // a la https://stackoverflow.com/questions/30815446/how-to-pass-command-line-argument-in-electron
-var arguments = remote.getGlobal('commandlineArgs')
-console.log(' @@ renderer.js arguments ', arguments);
-
+/* Set up The Tabulator
+*/
 const UI = panes.UI
 const $rdf = UI.rdf
 const dom = document
-// $rdf.Fetcher.crossSiteProxyTemplate = self.origin + '/xss?uri={uri}';
-
-var uri = window.location.href;
-window.document.title = uri;
 var kb = UI.store;
 var outliner = panes.getOutliner(dom)
+// $rdf.Fetcher.crossSiteProxyTemplate = self.origin + '/xss?uri={uri}';
+console.log('renderer.js')
+console.log('renderer.js panes ' + panes)
 
-function go ( event ) {
-  let uri = $rdf.uri.join(uriField.value, window.location.href)
-  console.log("User field " + uriField.value)
-  console.log("User requests " + uri)
-
-  // const params = new URLSearchParams(location.search)
-  // params.set('uri', uri);
-  // window.history.replaceState({}, '', `${location.pathname}?${params}`);
-
-  var subject = kb.sym(uri);
-  // UI.widgets.makeDraggable(icon, subject) // beware many handlers piling up
-  outliner.GotoSubject(subject, true, undefined, true, undefined);
+/* Fill in version info 
+*/
+var ele = document.getElementById('solid-panes-version')
+if (ele && panes.versionInfo) {
+  ele.textContent = panes.versionInfo.npmInfo['solid-panes']
+}
+ele = document.getElementById('kitchen-version')
+if (ele) {
+  ele.textContent = "1.0.0, jz-fork"
 }
 
+/* define window : buttons, listeners, title
+*/
 const uriField = dom.getElementById('uriField')
 const goButton = dom.getElementById('goButton')
 uriField.addEventListener('keyup', function (e) {
   if (e.keyCode === 13) {
-    go(e)
+    kitchen.showKitchenPage(uriField.value,'dataBrowser')
   }
 }, false)
+goButton.addEventListener('click', ()=>{kitchen.showKitchenPage()}, false);
+window.document.title = "Solid Data Kitchen"
+/*
+  get menu slection from main.js top menu and dispatch it
+*/
+ipcRenderer.on('kitchen.showKitchenPage', (event, uri, pageType) => {
+    return kitchen.showKitchenPage(uri,pageType)
+})
 
-goButton.addEventListener('click', go, false);
+/* Get command line arguements, intitialize uriField
+*/
+// get command=line arguments a la https://stackoverflow.com/questions/30815446/how-to-pass-command-line-argument-in-electron
+var arguments = remote.getGlobal('commandlineArgs')
+console.log(' @@ renderer.js arguments ', arguments);
+// initial = new URLSearchParams(self.location.search).get("uri")
 let initial
 if (arguments && arguments[2]) { // Electron command line
   initial = arguments[2]
 }
-// initial = new URLSearchParams(self.location.search).get("uri")
-if (initial) {
-  uriField.value = initial
-  go()
-} else {
-  console.log('ready for user input')
-}
+initial = initial || "./public/"
+uriField.value = initial
+
+/* initialize and start the kitchen */
+kitchen.init()
+
+/* END */
