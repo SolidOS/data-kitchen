@@ -40,6 +40,6 @@
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/register": "^7.6.2",
-    "electron": "^6.0.10"
+    "electron": "^9.4.0"
   }
 }
