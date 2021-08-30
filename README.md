@@ -1,28 +1,22 @@
-# data-kitchen
-The solid databrowser technology as a stand-alone electron app
+# Data-Kitchen
 
-**Note: many additions and changes, run the app and use the help menu to learn
-about them**
+SolidOS as a personal desktop tool
 
+## Work-In-Progress!
 
-## To install & run see <a href="https://jeff-zucker.github.io/data-kitchen.html">Download & Install Instructions</a>
+### Short Term Goals
 
+  * authenticated read/write databrowser access to NSS, ESS, CSS
+  * read/write databrowser access to local file system
+  * read/write databrowser access to Dropbox & other cloud
+  * works on any OS that supports nodejs (min. Linux/Mac/Windows)
 
+### Longer Term Goals
 
-## Goals
-The goal of this project is to provide a kitchen where the user is cook, and
-the power user is chef.
+  * sync, copy, move, search across information spaces
+  * a notifier for online chats and inboxen
+  * a documentation menu
+  * a tools menu
+  * links to existing apps
+  
 
-Live your life in a read-write world of lined data.
-
-Use all your solid pods, including your local files as your zeroth pod.
-bring in all the stuff in your life shared by friends and colleagues.
-Bring in public data like dbpedia and wikidata and the LOD cloud.
-
-Things to test it on:
-
- - `http://dbpedia.org/resource/John_Seely_Brown`
-
- - a local turtle file on your computer with a URI starting with `file:///`
-
- - your own webid
