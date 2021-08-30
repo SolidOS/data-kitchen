@@ -8,7 +8,7 @@ Please ping me (@jeff-zucker) in the chat or via issue with any problems or sugg
 
 ## Installing
 ```text
-git clone --branch dk-css https://github.com/solid/data-kitchen.git
+git clone https://github.com/solid/data-kitchen.git
 change into the data-kitchen folder
 npm ci
 ```

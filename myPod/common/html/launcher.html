@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html id="docHTML">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <link type="text/css" rel="stylesheet" href="/common/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="/common/css/mash.css" />
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', function() {
+    const dom = document
+    const prompt = dom.getElementById('prompt')
+    const tokenField = dom.getElementById('token')
+    const loginButton = dom.getElementById('loginButton')
+    const mainInput = dom.getElementById('mainInput')
+    const dropboxLogin = dom.getElementById('dropboxLogin')
+    const uriField = dom.getElementById('uriField')
+    const goButton = dom.getElementById('goButton')
+    const displayFrame = dom.getElementById('display')
+    const params = new URLSearchParams(window.location.search)
+    let type = params.get('type');
+    if(type==='dropbox') {
+      mainInput.style.display="none";
+      dropboxLogin.style.display="block";
+    }
+    else {
+      mainInput.style.display="block";
+      dropboxLogin.style.display="none";
+    }
+    let passedInUrl = params.get('url');
+//let passedInUrl =window.location.href.replace('/common/html/launcher.html?type=dropbox&url=','/common/html/mashlib.html?url=')
+    uriField.placeholder = window.top.dkv().getSpaceVar(type,'holder');
+    prompt.innerHTML = window.top.dkv().getSpaceVar(type,'prompt');
+    if(passedInUrl) displayFrame.src = uriField.value = passedInUrl
+
+    uriField.addEventListener('keyup', function (e) {
+      if (e.keyCode === 13) {
+        launchUrl(e)
+      }
+    }, false)
+
+    goButton.addEventListener('click',(e)=>launchUrl(),false);
+
+    function launchUrl (event) {
+      let enteredUrl = uriField.value;
+      if( !enteredUrl ) return;
+      if( window.top.dkv().getSpaceVar('selected').startsWith('pod') ) {
+        if( !enteredUrl.startsWith('http') ) {
+          alert("You entered a file path, a URI is wanted");
+          return;
+        }
+      }
+      else if( enteredUrl.startsWith('http') ) {
+        alert("You entered a URI, a file path is wanted");
+        return;
+      }
+      console.log("User requests " + enteredUrl)
+      let urlToLaunch = window.top.dkv().dispatchUrl( type, enteredUrl );
+      if(!type.match('pod')&&!type.match('text')) urlToLaunch = `/common/html/mashlib.html?url=${urlToLaunch}`;
+      console.log("Fetching " + urlToLaunch);
+      displayFrame.src = urlToLaunch;
+    }
+
+    loginButton.addEventListener('click',(e)=>{
+      uriField.value = "/login/" + tokenField.value;
+      launchUrl()
+    },false);
+
+  });
+</script>
+</head><body>
+
+  <div id="mainInput">
+    <span id="prompt"></span> : 
+    <input id="uriField" type="text" />
+    <input id="goButton" type="button" value="Go" />
+  </div>
+
+  <div id="dropboxLogin">
+    <h2>Dropbox</h2>
+    <p>
+      If you have a Dropbox account, you can access it with the Solid data-browser.<br> Follow these <a target="__BLANK" href="https://dropbox.tech/developers/generate-an-access-token-for-your-own-account">instructions</a> to get a token, then paste it into the form below.
+    </p>
+    <input type="text" id="token" placeholder="dropbox access token" /> 
+    <input id="loginButton" type="button" value="Login" />
+  </div>
+
+  <table><tr><td>
+    <iframe id="display" src=""></iframe>
+  </td></tr></table>
+
+
+  <style>
+    #dropboxLogin {
+      margin-left:1em;
+      display:none;
+    }
+    #token {
+      font-size:100%; min-width:30em; padding:0.5em; width:20em;
+    }
+    body {
+      overflow:hidden;
+    }
+    table {
+      width:100%;
+      height:100%;
+    }
+    #display {
+      width:100%;
+      height:100%;
+      border:none;
+    }
+    #uriField {
+      font-size:100%; min-width:30em; padding:0.5em; width:20em;
+    }
+    #mainInput {
+      margin:1em;
+    }
+  </style>
+
+</body></html>
+

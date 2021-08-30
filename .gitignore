@@ -64,3 +64,15 @@ typings/
 
 # next.js build output
 .next
+
+# notes and drafts
+drafts
+
+# emacs backups
+*~
+
+# testing with other front-end
+bundles/solid-ide/*
+
+# don't overwrite user's config
+config.json

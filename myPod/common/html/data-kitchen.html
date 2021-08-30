@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title> Data Kitchen </title>
+  <link rel="stylesheet" href="/common/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/common/css/mash.css" />
+  <link rel="stylesheet" href="/common/css/data-kitchen.css" />
+  <script src="/common/js/data-kitchen.js"></script>
+</head><body class="dk-menu">
+
+  <table>
+    <tr class='oneRow'><th>
+      <ul class="nav nav-tabs" id="tabs-list"></ul>
+    </th></tr>
+    <tr><td>
+      <div id="frames-list"></div>
+    </td></tr>
+  </table>
+
+  <script>
+    const dk = new DataKitchen();
+    function dkv(){ return dk; }
+    dkv().switchSpaces( 'text' );
+  </script>
+
+</body></html>
