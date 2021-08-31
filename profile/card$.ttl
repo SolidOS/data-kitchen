@@ -3,7 +3,7 @@
 @prefix pim: <http://www.w3.org/ns/pim/space#>.
 @prefix schema: <http://schema.org/>.
 @prefix ldp: <http://www.w3.org/ns/ldp#>.
-@prefix me: </LocalKitchenUser/profile/card#me>.
+@prefix me: <#me>.
 
 <>
     a foaf:PersonalProfileDocument ;
@@ -19,8 +19,7 @@
     solid:account </> ;  # link to the account uri
     pim:storage </> ;    # root storage
 
-    ldp:inbox </inbox/> ;
+    pim:preferencesFile <./settings/prefs.ttl> ; # private settings/preferences
+    solid:publicTypeIndex <./settings/publicTypeIndex.ttl> ;
+    solid:privateTypeIndex <./settings/privateTypeIndex.ttl> .
 
-    pim:preferencesFile </LocalKitchenUser/settings/prefs.ttl> ;  # private settings/preferences
-    solid:publicTypeIndex </LocalKitchenUser/settings/publicTypeIndex.ttl> ;
-    solid:privateTypeIndex </LocalKitchenUser/settings/privateTypeIndex.ttl> .

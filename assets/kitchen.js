@@ -1,11 +1,12 @@
+var port =3101;
 
 var host = `http://localhost:${port}`;
 
 window.SolidAppContext = {
   noAuth : host,
-  webId : host + "/LocalKitchenUser/profile/card#me",
+  webId : host + "/profile/card#me",
   app : host,
-  webid : host + "/LocalKitchenUser/profile/card#me",
+  webid : host + "/profile/card#me",
   scroll : 130 // for eyeFocus, should be height of top banner
 }
 window.$SolidTestEnvironment = {

@@ -8,17 +8,28 @@ let mainWindow;
 var cfg,css;
 
 let installDir = path.join(__dirname,"../");
+let tmplDir = path.join(installDir,"templates");
+let assetsDir = path.join(installDir,"assets");
 
 // during development, live reload on change of any file
 electronReload( installDir,{forceHardReset:true} );
 
 async function getConfig(){
-  cfg = await getUserConfig( path.join(__dirname,"../kitchen.json") ) || {};
+  let kFrom = path.join(tmplDir,'kitchen.json.tmpl')
+  let kTo = path.join(installDir,'kitchen.json')
+  try {
+    await fs.copyFile( kFrom, kTo );
+  }
+  catch(e){
+    console.log("Could not create kitchen.js from "+js,e);
+    process.exit();
+  }
+  cfg = await getUserConfig( path.join(installDir,"kitchen.json") ) || {};
   cfg.port ||= 3000;
   cfg.startPage = `http://localhost:${cfg.port}/`;
-  cfg.icon = path.join(__dirname,"../ServerRoot/common/favicon.ico");
+  cfg.icon = path.join(installDir,"assets/favicon.ico");
   cfg.webPreferences = {
-    preload: path.join(__dirname, 'electron-preload.js'),
+    preload: path.join(installDir, 'configs/electron-preload.js'),
     nativeWindowOpen: true,
     nodeIntegration: false,
     contextIsolation: true,
@@ -31,13 +42,19 @@ getConfig().then( async (cfg)=>{
 });
 
 async function prepRootFilePath(cfg){
-  let tmplDir = path.join(__dirname,"../ServerRoot/common");
-  let acl = path.join(tmplDir,"acl.tmpl");
-  let meta = path.join(tmplDir,"meta.tmpl");
   let root = cfg.rootFilePath;
   let port = cfg.port;
+  let rootProfile = path.join(root,"profile") ;
+
+  let aclFrom = path.join(tmplDir,"acl.tmpl");
+  let aclTo   = path.join(root,".acl");
+  let metaFrom = path.join(tmplDir,"meta.tmpl");
+  let metaTo = path.join(root,".meta");
   let jsFrom = path.join(tmplDir,'kitchen.js.tmpl')
-  let jsTo = path.join(tmplDir,'kitchen.js')
+  let pFrom = path.join(tmplDir,'profile')
+  let jsTo = path.join(assetsDir,'kitchen.js')
+  let profileFrom = path.join(tmplDir,"profile/card$.ttl");
+  // copy munged kitchen.js templates to assets
   try {
     let jsString = await fs.readFile( jsFrom,{encoding:'utf8'} );
     jsString =  "var port ="+cfg.port+";\n"+jsString ;
@@ -47,13 +64,19 @@ async function prepRootFilePath(cfg){
     console.log("Could not create kitchen.js from "+js,e);
     process.exit();
   }
+  // copy acl & meta templates to rootFilePath
+  // and kitchen.json to installDir
   try {
-    await fs.copyFile( acl, path.join(root,".acl") );
-    await fs.copyFile( meta, path.join(root,".meta") );
+    await fs.copyFile( aclFrom, aclTo );
+    await fs.copyFile( metaFrom, metaTo );
+    await fs.mkdir( rootProfile );
+  }
+  catch(e){}
+  try {
+    if( await fs.access(path.join(rootProfile,"card$.ttl")) ) {}
   }
   catch(e){
-    console.log("Could not create "+path.join(root,".acl"),e);
-    process.exit();
+      await fs.copyFile( profileFrom, rootProfile+"/card$.ttl" );
   }
 }
 

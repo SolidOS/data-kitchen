@@ -42,7 +42,7 @@
       "comment": "Serve the Mashlib Data Browser as default container representation",
       "@id": "urn:solid-server:default:DefaultUiConverter",
       "@type": "ConstantConverter",
-      "filePath": "./ServerRoot/common/kitchen.html",
+      "filePath": "./assets/kitchen.html",
       "contentType": "text/html",
       "options_minQuality": 1,
       "options_container": true,
@@ -55,39 +55,18 @@
       "assets": [
         {
           "StaticAssetHandler:_assets_key": "/common/",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/common"
-        },
+          "StaticAssetHandler:_assets_value": "./assets"
+        }
+      ]
+    },
+    {
+      "comment": "Serve Mashlib && other static files.",
+      "@id": "urn:solid-server:default:StaticAssetHandler",
+      "@type": "StaticAssetHandler",
+      "assets": [
         {
-          "StaticAssetHandler:_assets_key": "/LocalKitchenUser/settings/",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/settings"
-        },
-        {
-          "StaticAssetHandler:_assets_key": "/LocalKitchenUser/",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser"
-        },
-        {
-          "StaticAssetHandler:_assets_key": "/LocalKitchenUser/profile/card",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/profile/card$.ttl"
-        },
-        {
-          "StaticAssetHandler:_assets_key": "/profile/card",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/profile/card$.ttl"
-        },
-        {
-          "StaticAssetHandler:_assets_key": "/LocalKitchenUser/settings/prefs.ttl",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/LocalKitchenUser/settings/prefs.ttl"
-        },
-        {
-          "StaticAssetHandler:_assets_key": "/favicon.ico/",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/favicon.ico"
-        },
-        {
-          "StaticAssetHandler:_assets_key": "/.acl",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/common/acl.tmpl"
-        },
-        {
-          "StaticAssetHandler:_assets_key": "/.meta",
-          "StaticAssetHandler:_assets_value": "./ServerRoot/common/meta.tmpl"
+          "StaticAssetHandler:_assets_key": "/profile/settings/",
+          "StaticAssetHandler:_assets_value": "./templates/profile/settings"
         }
       ]
     },
