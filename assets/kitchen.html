@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         banner.style.backgroundColor="#bbbbcc";
       }
       else {
-        if(UI.authn.authSession.info.isLoggedIn){
+        if(UI.authn.authSession && UI.authn.authSession.info.isLoggedIn){
            const logoutButton = loginButtonArea.querySelector('input');
            logoutButton.value = "Logout";
            let displayId = UI.authn.authSession.info.webId.replace(/https:\/\//,'').replace(/\/profile\/card#me/,'');
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('ready for user input')
     }
 
+if( UI.authn.authSession ) {
     UI.authn.authSession.onLogin(() => {
       mungeLoginArea();
       go()
@@ -96,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
       mungeLoginArea();
       go()
     })
+}
 });
 </script>
 </head>

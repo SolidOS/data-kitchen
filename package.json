@@ -1,6 +1,6 @@
 {
   "name": "Data-Kitchen",
-  "version": "1.3.0",
+  "version": "1.3.0-alpha",
   "description": "",
   "main": "configs/electron-main.js",
   "scripts": {

@@ -54,6 +54,10 @@ async function prepRootFilePath(cfg){
   let pFrom = path.join(tmplDir,'profile')
   let jsTo = path.join(assetsDir,'kitchen.js')
   let profileFrom = path.join(tmplDir,"profile/card$.ttl");
+
+  let settingsFrom = path.join(pFrom,"settings") ;
+  let settingsTo = path.join(rootProfile,"settings") ;
+
   // copy munged kitchen.js templates to assets
   try {
     let jsString = await fs.readFile( jsFrom,{encoding:'utf8'} );
@@ -73,10 +77,22 @@ async function prepRootFilePath(cfg){
   }
   catch(e){}
   try {
+    await fs.mkdir( settingsTo );
+  }
+  catch(e){}
+  try {
     if( await fs.access(path.join(rootProfile,"card$.ttl")) ) {}
   }
   catch(e){
       await fs.copyFile( profileFrom, rootProfile+"/card$.ttl" );
+  }
+  try {
+    if( await fs.access( path.join(settingsTo,"prefs.ttl") ) ) {}
+  }
+  catch(e){
+      await fs.copyFile( path.join(settingsFrom,'prefs.ttl'), path.join(settingsTo,"prefs.ttl" ) );
+      await fs.copyFile( path.join(settingsFrom,'privateTypeIndex.ttl'), path.join(settingsTo,"privateTypeIndex.ttl" ) );
+      await fs.copyFile( path.join(settingsFrom,'publicTypeIndex.ttl'), path.join(settingsTo,"publicTypeIndex.ttl" ) );
   }
 }
 

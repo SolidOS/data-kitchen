@@ -54,8 +54,8 @@
       "@type": "StaticAssetHandler",
       "assets": [
         {
-          "StaticAssetHandler:_assets_key": "/common/",
-          "StaticAssetHandler:_assets_value": "./assets"
+          "StaticAssetHandler:_assets_key": "/mashlib/",
+          "StaticAssetHandler:_assets_value": "./node_modules/mashlib/dist"
         }
       ]
     },
@@ -65,8 +65,8 @@
       "@type": "StaticAssetHandler",
       "assets": [
         {
-          "StaticAssetHandler:_assets_key": "/profile/settings/",
-          "StaticAssetHandler:_assets_value": "./templates/profile/settings"
+          "StaticAssetHandler:_assets_key": "/common/",
+          "StaticAssetHandler:_assets_value": "./assets"
         }
       ]
     },
