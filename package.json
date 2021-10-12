@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "@solid/community-server": "^1.0.0",
-    "electron": "^13.2.2",
+    "electron": "^13.3.0",
     "electron-reload": "^2.0.0-alpha.1",
     "jsonfile": "^6.1.0"
   }
