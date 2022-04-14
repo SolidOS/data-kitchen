@@ -1,6 +1,6 @@
 {
   "name": "Data-Kitchen",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "main": "configs/electron-main.js",
   "scripts": {
@@ -10,8 +10,9 @@
   "author": "Jeff Zucker",
   "license": "MIT",
   "dependencies": {
-    "@solid/community-server": "^1.0.0",
-    "electron": "^13.2.2",
+    "@solid/community-server": "^3.0.0",
+    "@solid/community-server-metadata-extender": "^3.0.0",
+    "electron": "^18.0.4",
     "electron-reload": "^2.0.0-alpha.1",
     "jsonfile": "^6.1.0",
     "mashlib": "^1.8.1"

@@ -1,66 +1,84 @@
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^1.0.0/components/context.jsonld",
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server-metadata-extender/^3.0.0/components/context.jsonld"
+  ],
   "import": [
     "files-scs:config/app/main/default.json",
-    "files-scs:config/app/init/default.json",
+    "files-scs:config/app/init/initialize-root.json",
+    "files-scs:config/app/setup/disabled.json",
+    "files-scs:config/app/variables/default.json",
     "files-scs:config/http/handler/default.json",
     "files-scs:config/http/middleware/websockets.json",
     "files-scs:config/http/server-factory/websockets.json",
     "files-scs:config/http/static/default.json",
+    "files-scs:config/identity/access/public.json",
     "files-scs:config/identity/email/default.json",
     "files-scs:config/identity/handler/default.json",
-    "files-scs:config/identity/ownership/unsafe-no-check.json",
+    "files-scs:config/identity/ownership/token.json",
     "files-scs:config/identity/pod/static.json",
+    "files-scs:config/identity/registration/enabled.json",
     "files-scs:config/ldp/authentication/dpop-bearer.json",
     "files-scs:config/ldp/authorization/webacl.json",
     "files-scs:config/ldp/handler/default.json",
     "files-scs:config/ldp/metadata-parser/default.json",
     "files-scs:config/ldp/metadata-writer/default.json",
-    "files-scs:config/ldp/permissions/acl.json",
-    "files-scs:config/storage/backend/file.json",
-    "files-scs:config/storage/key-value/memory.json",
+    "files-scs:config/ldp/modes/default.json",
+    "files-scs:config/storage/backend/data-accessors/file.json",
+    "files-scs:config/storage/key-value/resource-store.json",
     "files-scs:config/storage/middleware/default.json",
     "files-scs:config/util/auxiliary/acl.json",
     "files-scs:config/util/identifiers/suffix.json",
+
     "files-scs:config/util/logging/winston.json",
-    "files-scs:config/util/representation-conversion/converters/content-type-replacer.json",
-    "files-scs:config/util/representation-conversion/converters/errors.json",
-    "files-scs:config/util/representation-conversion/converters/markdown.json",
-    "files-scs:config/util/representation-conversion/converters/quad-to-rdf.json",
-    "files-scs:config/util/representation-conversion/converters/rdf-to-quad.json",
+    "files-scs:config/util/representation-conversion/default.json",
     "files-scs:config/util/resource-locker/memory.json",
     "files-scs:config/util/variables/default.json"
   ],
   "@graph": [
     {
-      "comment": "Serve index.html within containers",
-      "@id": "urn:solid-server:default:ResourceStore_Index",
-      "@type": "IndexRepresentationStore"
+      "comment": [
+        "A filesystem-based server with Databrowser as UI.",
+        "Derived from config/file-no-setup.json"
+      ]
     },
 
     {
-      "comment": "Serve the Mashlib Data Browser as default container representation",
+      "comment": "Serve Databrowser as default representation",
       "@id": "urn:solid-server:default:DefaultUiConverter",
       "@type": "ConstantConverter",
-      "filePath": "./assets/kitchen.html",
       "contentType": "text/html",
-      "options_minQuality": 1,
+      "filePath": "./assets/kitchen.html",
       "options_container": true,
-      "options_document": false
+      "options_document": true,
+      "options_minQuality": 1,
+      "options_disabledMediaRanges": [
+        "image/*",
+        "application/pdf"
+      ]
     },
+
     {
-      "comment": "Serve Mashlib && other static files.",
+      "comment": "Serve Mashlib static files.",
       "@id": "urn:solid-server:default:StaticAssetHandler",
       "@type": "StaticAssetHandler",
       "assets": [
         {
-          "StaticAssetHandler:_assets_key": "/mashlib/",
-          "StaticAssetHandler:_assets_value": "./node_modules/mashlib/dist"
+          "StaticAssetHandler:_assets_key": "/mash.css",
+          "StaticAssetHandler:_assets_value": "./node_modules/mashlib/dist/mash.css"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/mashlib.min.js",
+          "StaticAssetHandler:_assets_value": "./node_modules/mashlib/dist/mashlib.min.js"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/mashlib.min.js.map",
+          "StaticAssetHandler:_assets_value": "./node_modules/mashlib/dist/mashlib.min.js.map"
         }
       ]
     },
     {
-      "comment": "Serve Mashlib && other static files.",
+      "comment": "Serve static files. (DATA-KITCHEN)",
       "@id": "urn:solid-server:default:StaticAssetHandler",
       "@type": "StaticAssetHandler",
       "assets": [
@@ -70,36 +88,25 @@
         }
       ]
     },
+
     {
-      "comment": "Handles data conversion when required.",
-      "@id": "urn:solid-server:default:RepresentationConverter",
-      "@type": "WaterfallHandler",
-      "handlers": [
-        { "@id": "urn:solid-server:default:DefaultUiConverter" },
-        { "@id": "urn:solid-server:default:MarkdownToHtmlConverter" },
-        {
-          "@type": "IfNeededConverter",
-          "comment": "Only continue converting if the requester cannot accept the available content type"
-        },
-        { "@id": "urn:solid-server:default:ContentTypeReplacer" },
-        {
-          "comment": "Automatically finds a path through a set of converters from one type to another.",
-          "@id": "urn:solid-server:default:ChainedConverter",
-          "@type": "ChainedConverter",
-          "converters": [
-            { "@id": "urn:solid-server:default:RdfToQuadConverter" },
-            { "@id": "urn:solid-server:default:QuadToRdfConverter" },
-            { "@id": "urn:solid-server:default:ContainerToTemplateConverter" },
-            { "@id": "urn:solid-server:default:ErrorToQuadConverter" },
-            { "@id": "urn:solid-server:default:ErrorToTemplateConverter" },
-            { "@id": "urn:solid-server:default:MarkdownToHtmlConverter" }
-          ]
-        },
-        {
-          "@id": "urn:solid-server:default:ErrorToQuadConverter",
-          "@type": "ErrorToQuadConverter",
-        },
-      ]
+      "comment": "A default store setup with a file system backend.",
+      "@id": "urn:solid-server:default:ResourceStore_Backend",
+      "@type": "DataAccessorBasedStore",
+      "identifierStrategy": { "@id": "urn:solid-server:default:IdentifierStrategy" },
+      "auxiliaryStrategy": { "@id": "urn:solid-server:default:AuxiliaryStrategy" },
+      "accessor": { "@id": "urn:solid-server:default:MetadataExtender" }
+    },
+
+    {
+      "comment": "Extend files with extra metadata.",
+      "@id": "urn:solid-server:default:MetadataExtender",
+      "@type": "MetadataExtender",
+      "options_ianaType":    true,
+      "options_statSize":    true,
+      "options_dctModified": true,
+      "options_statMtime":   true,
+      "source": { "@id": "urn:solid-server:default:FileDataAccessor" }
     }
   ]
 }
