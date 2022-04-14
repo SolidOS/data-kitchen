@@ -3,10 +3,10 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <!-- was https://solid.github.io/solid-panes/style/tabbedtab.css   -->
-    <link type="text/css" rel="stylesheet" href="/common/mash.css" />
+    <link type="text/css" rel="stylesheet" href="../node_modules/mashlib/dist/mash.css" />
     <link type="text/css" rel="stylesheet" href="/common/kitchen.css" />
     <script type="text/javascript" src="/common/kitchen.js"></script>
-    <script type="text/javascript" src="/common/mashlib.js"></script>
+    <script type="text/javascript" src="../node_modules/mashlib/dist/mashlib.js"></script>
 <script>
 let go; // good advice :-)
 document.addEventListener('DOMContentLoaded', function() {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function mungeLoginArea(){
       loginButtonArea.innerHTML="";
-      loginButtonArea.appendChild(UI.authn.loginStatusBox(document, null, {}))
+      loginButtonArea.appendChild(UI.login.loginStatusBox(document, null, {}))
       if( uriField.value.startsWith(host) ){
         loginButtonArea.style.display="none";
         webIdArea.innerHTML = "Local Data-Kitchen User";
