@@ -146,7 +146,7 @@ function getMenu(cfg,mainWindow) {
         label: 'DataBrowser User Guide',
         click: async () => {
           mainWindow.webContents.send(
-            'gotoSubject','https://github.com/solid/userguide', 'webBrowser' )
+            'gotoSubject','https://github.com/SolidoS/userguide', 'webBrowser' )
         }
       },
       {
