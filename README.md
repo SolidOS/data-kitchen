@@ -1,6 +1,6 @@
 # Data-Kitchen over CSS (WiP)
 
-The Data Kitchen is a stand-alone desktop app that provides the user with a SolidOS (mashlib) Databrowser capable of private no-auth access to their own file system and also authenticated access to pods on any kind of Solid server. The current impelementation is an electron app that serves the local file system via a pre-provisioned Community-Solid-Server (CSS) with the SolidOS Databrowser as front end. See [pretty picture](./Data-Kitchen.png) if you like visuals.
+The Data Kitchen is a stand-alone desktop app that provides the user with a SolidOS (mashlib) Databrowser capable of private no-auth access to their own file system and also authenticated access to pods on any kind of Solid server. The current impelementation is an electron app that serves the local file system via a pre-provisioned Community-Solid-Server (CSS) with the SolidOS Databrowser as front end. See [pretty picture](./assets/Data-Kitchen.png) if you like visuals.
 
 **Note Bene** : This is using an unfinished, not yet fully tested branch of SolidOS that @jaxoncreed is updating to spec-compliant authentication flow. So expect (and please [report](https://github.com/solid/solidos/issues/40)) glitches.
 
@@ -31,6 +31,6 @@ There are many more features in the works, see [checklist of currently supported
 
 ## Dirty Details
 
-If you want to look under the hood, see [kitchen.html](./ServerRoot/common/kitchen.html) (which is a version of *mashlib/dist/browse.html*) and the  [electron and CSS specific modifications](./src/).
+If you want to look under the hood, see [kitchen.html](./assets/kitchen.html) (which is a version of *mashlib/dist/browse.html*) and the  [electron and CSS specific modifications](./src/).
 
 copyright (c) 2021 Jeff Zucker, MIT license.
