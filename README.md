@@ -29,6 +29,6 @@ There are many more features in the works, see [checklist of currently supported
 
 ## Dirty Details
 
-If you want to look under the hood, see [kitchen.html](./assets/kitchen.html) (which is a version of *mashlib/dist/browse.html*) and the  [electron and CSS specific modifications](./src/).
+If you want to look under the hood, see [kitchen.html](./assets/kitchen.html) (which is a version of *mashlib/dist/browse.html*) and the  [electron and CSS specific modifications](./configs/).
 
 copyright (c) 2021 Jeff Zucker, MIT license.
