@@ -12,7 +12,7 @@
   "dependencies": {
     "@solid/community-server": "^3.0.0",
     "@solid/community-server-metadata-extender": "^3.0.0",
-    "electron": "^18.0.4",
+    "electron": "^18.3.7",
     "electron-reload": "^2.0.0-alpha.1",
     "jsonfile": "^6.1.0",
     "mashlib": "^1.8.1"
