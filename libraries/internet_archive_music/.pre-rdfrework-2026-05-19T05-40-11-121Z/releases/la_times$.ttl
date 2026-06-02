@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:f3fb8874-7b65-4e9a-bd5f-b05b244d910a> a mo:Release;
+    dcterms:title "LA Times";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/flylo-la-times>;
+    mo:track <urn:uuid:28b3d924-e7d1-476c-b51d-51fa1e641e10>, <urn:uuid:a0d7e442-4438-4a71-abbf-83d681e728e4>, <urn:uuid:5a05328a-391e-490c-a00f-27912de15a99>, <urn:uuid:4aff2cc2-c24f-4a91-b4dc-b3a759e6c48b>, <urn:uuid:aa224ce5-e46d-45b1-84c9-ca54ffe1953f>, <urn:uuid:9a89b230-cce9-4b4b-9508-4cead4393dfb>, <urn:uuid:7a5b73c6-c0a2-4cda-99a3-6f8ff7cc6ebd>, <urn:uuid:1e5f8052-90fb-47df-af31-7decf946755a>.
+<urn:uuid:28b3d924-e7d1-476c-b51d-51fa1e641e10> a mo:Track; dcterms:title "Backpack Caviar"; mo:duration "200"; dcat:downloadUrl <https://archive.org/download/flylo-la-times/02%20Backpack%20Caviar.mp3>.
+<urn:uuid:a0d7e442-4438-4a71-abbf-83d681e728e4> a mo:Track; dcterms:title "Blank Blue (Feat. Niki Randa)"; mo:duration "212"; dcat:downloadUrl <https://archive.org/download/flylo-la-times/05%20Blank%20Blue%20(Feat%20Niki%20Randa).mp3>.
+<urn:uuid:5a05328a-391e-490c-a00f-27912de15a99> a mo:Track; dcterms:title "Flylo's Like Woe (Feat Laura Darlington)"; mo:duration "185"; dcat:downloadUrl <https://archive.org/download/flylo-la-times/07%20Flylo's%20Like%20Woe.mp3>.
+<urn:uuid:4aff2cc2-c24f-4a91-b4dc-b3a759e6c48b> a mo:Track; dcterms:title "Tronix"; mo:duration "223"; dcat:downloadUrl <https://archive.org/download/flylo-la-times/15%20Tronix.mp3>.
+<urn:uuid:aa224ce5-e46d-45b1-84c9-ca54ffe1953f> a mo:Track; dcterms:title "Blank Blue (Instrumental)"; mo:duration "210"; dcat:downloadUrl <https://archive.org/download/flylo-la-times/18%20Blank%20Blue%20(Instrumental).mp3>.
+<urn:uuid:9a89b230-cce9-4b4b-9508-4cead4393dfb> a mo:Track; dcterms:title "Break Face//Recoiled"; mo:duration "316"; dcat:downloadUrl <https://archive.org/download/flylo-la-times/19%20Break%20Face.mp3>.
+<urn:uuid:7a5b73c6-c0a2-4cda-99a3-6f8ff7cc6ebd> a mo:Track; dcterms:title "Glendale Galleria"; mo:duration "184"; dcat:downloadUrl <https://archive.org/download/flylo-la-times/23%20Glendale%20Galleria.mp3>.
+<urn:uuid:1e5f8052-90fb-47df-af31-7decf946755a> a mo:Track; dcterms:title "Glendale Galleria (Original Version)"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/flylo-la-times/24%20glendale%20galleria%20original%20version.mp3>.

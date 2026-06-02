@@ -1,0 +1,201 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/agents.ttl#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Madlib> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Madlib";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:05dfa569-8af8-486c-9d82-90bd5788dbf9>, <urn:uuid:3b8a78ef-72cd-45d8-99ce-ddbc047cca93>, <urn:uuid:aa90e544-6b61-4c60-96f8-f57e81c5e69f>, <urn:uuid:1d96e24f-65e6-4d76-983d-068b053afa09>, <urn:uuid:2564a824-12b3-415f-9fff-8ab5e6f7ad2e>, <urn:uuid:14a888e6-8f9d-431c-a042-0bd1af802f49>, <urn:uuid:02293df2-a556-4807-9f00-17b301254d4a>, <urn:uuid:e7c4a71f-da1f-49f8-8b6c-89ca3a6dda90>, <urn:uuid:26491fcc-2743-4a89-9190-e6ec830be28f>, <urn:uuid:ca9bf5b2-cbb4-4c75-9157-94d84e53479f>, <urn:uuid:5d1a9229-b1ae-4a21-b4ec-f9305e2a50c5>, <urn:uuid:ebeaf315-cee0-45f6-80bd-85d31cfeacc1>, <urn:uuid:6f7ca6cf-0df1-4b00-bda7-33e2a45545e6>, <urn:uuid:11a62618-07f0-4b8e-b309-7776f69d4df4>, <urn:uuid:b19dcdc6-ef6e-44a3-9cf3-c70dfb6b6a63>, <urn:uuid:ac46cdbc-8330-414e-ad0a-c25de6aa3dff>, <urn:uuid:8c03c477-8b09-47b0-a707-e38a83caa70c>, <urn:uuid:d8c479a5-d5ba-4163-8bba-12f099383bf9>, <urn:uuid:35b3bd1b-a7e4-4f97-a787-a7ac45cdcea4>, <urn:uuid:5435e76d-e998-46ba-a3e2-a022860523d8>, <urn:uuid:ae3362b7-b917-449d-97e8-7362af76e68f>, <urn:uuid:13593e80-e330-4793-ab8e-d716ee12c603>, <urn:uuid:d14a6623-9e79-4e9d-a3ad-9cfbc6d6115a>, <urn:uuid:a7c57daa-1080-4957-aa1a-34308d14e018>, <urn:uuid:7cb93aff-7120-443e-a32f-43efc6c0c861>, <urn:uuid:666224c6-4d0a-4744-8885-7f69c75467a7>, <urn:uuid:cd523f85-108e-4f7c-a092-8835ac2428e1>, <urn:uuid:e5ad4d9a-26df-4c36-b13d-106cb285a300>, <urn:uuid:21d24b0b-4cb2-4b9f-b41d-baaa2ed220b2>, <urn:uuid:12b11f4e-5e83-4ad8-b516-052bd4f5bf0a>, <urn:uuid:36b5a40b-4579-4cac-9086-48400833f11a>, <urn:uuid:0571a364-9b7a-4fe5-a87e-60b64d7c8244>, <urn:uuid:94caf1b6-7a20-4719-86a7-06d7c3ab38f1>, <urn:uuid:58882575-d905-4f96-9766-1b39e444038e>, <urn:uuid:e1cd440a-c8da-4268-b4c0-7d59ff34f673>, <urn:uuid:74c64189-f1d1-49a5-bba9-0d1940a4cf95>, <urn:uuid:c6fe5251-7a04-4cbf-ae84-069e52c7c219>, <urn:uuid:1e317539-2bf2-413c-a38b-bf8c1046f443>.
+<urn:uuid:05dfa569-8af8-486c-9d82-90bd5788dbf9> a mo:Track;
+    dcterms:title "Bonus R";
+    dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-3-beat-konducta-in-africa/Madlib%20-%20Madlib%20Medicine%20Show%203-%20Beat%20Konducta%20In%20Africa%20-%2040%20-%20Bonus%20R.mp3>;
+    mo:duration "354".
+<urn:uuid:3b8a78ef-72cd-45d8-99ce-ddbc047cca93> a mo:Track;
+    dcterms:title "Bonus I";
+    dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-3-beat-konducta-in-africa/Madlib%20-%20Madlib%20Medicine%20Show%203-%20Beat%20Konducta%20In%20Africa%20-%2041%20-%20Bonus%20I.mp3>;
+    mo:duration "198".
+<urn:uuid:aa90e544-6b61-4c60-96f8-f57e81c5e69f> a mo:Track;
+    dcterms:title "I Must Love You (OJ Simpson Remix)";
+    dcat:downloadUrl <https://archive.org/download/medicine-show-1-before-the-verdict-flac/13.%20Madlib%20-%20I%20Must%20Love%20You%20(OJ%20Simpson%20Remix)%20(Explicit).mp3>;
+    mo:duration "354".
+<urn:uuid:1d96e24f-65e6-4d76-983d-068b053afa09> a mo:Track;
+    dcterms:title "America’s Most Blunted";
+    dcat:downloadUrl <https://archive.org/download/Madvillainy-madvillain/06.%20America's%20Most%20Blunted.mp3>;
+    mo:duration "234".
+<urn:uuid:2564a824-12b3-415f-9fff-8ab5e6f7ad2e> a mo:Track;
+    dcterms:title "Money Folder";
+    dcat:downloadUrl <https://archive.org/download/Madvillainy-madvillain/11.%20Money%20Folder.mp3>;
+    mo:duration "183".
+<urn:uuid:14a888e6-8f9d-431c-a042-0bd1af802f49> a mo:Track;
+    dcterms:title "America's Most Blunted";
+    dcat:downloadUrl <https://archive.org/download/tagmp3_tagmp3_one-false-move-intro-song-1/tagmp3_tagmp3_Americas-most-blunted-(song-2).mp3>;
+    mo:duration "234".
+<urn:uuid:02293df2-a556-4807-9f00-17b301254d4a> a mo:Track;
+    dcterms:title "Fancy Clown";
+    dcat:downloadUrl <https://archive.org/download/tagmp3_tagmp3_one-false-move-intro-song-1/tagmp3_tagmp3_Fancy-Clown-(song-7).mp3>;
+    mo:duration "210".
+<urn:uuid:e7c4a71f-da1f-49f8-8b6c-89ca3a6dda90> a mo:Track;
+    dcterms:title "One False Move";
+    dcat:downloadUrl <https://archive.org/download/tagmp3_tagmp3_one-false-move-intro-song-1/tagmp3_tagmp3_One-False-Move-(intro)-(song-1).mp3>;
+    mo:duration "295".
+<urn:uuid:26491fcc-2743-4a89-9190-e6ec830be28f> a mo:Track;
+    dcterms:title "Rainbow";
+    dcat:downloadUrl <https://archive.org/download/tagmp3_tagmp3_one-false-move-intro-song-1/tagmp3_tagmp3_Rainbow-(song-5).mp3>;
+    mo:duration "183".
+<urn:uuid:ca9bf5b2-cbb4-4c75-9157-94d84e53479f> a mo:Track;
+    dcterms:title "Road Of The Lonely Ones";
+    dcat:downloadUrl <https://archive.org/download/sound-ancestors-flac/04.%20Madlib%20-%20Road%20Of%20The%20Lonely%20Ones.mp3>;
+    mo:duration "218".
+<urn:uuid:5d1a9229-b1ae-4a21-b4ec-f9305e2a50c5> a mo:Track;
+    dcterms:title "Hopprock";
+    dcat:downloadUrl <https://archive.org/download/sound-ancestors-flac/07.%20Madlib%20-%20Hopprock.mp3>;
+    mo:duration "207".
+<urn:uuid:ebeaf315-cee0-45f6-80bd-85d31cfeacc1> a mo:Track;
+    dcterms:title "Latino Negro";
+    dcat:downloadUrl <https://archive.org/download/sound-ancestors-flac/13.%20Madlib%20-%20Latino%20Negro.mp3>;
+    mo:duration "217".
+<urn:uuid:6f7ca6cf-0df1-4b00-bda7-33e2a45545e6> a mo:Track;
+    dcterms:title "Duumbiyay";
+    dcat:downloadUrl <https://archive.org/download/sound-ancestors-flac/16.%20Madlib%20-%20Duumbiyay.mp3>;
+    mo:duration "193".
+<urn:uuid:11a62618-07f0-4b8e-b309-7776f69d4df4> a mo:Track;
+    dcterms:title "Julani";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./02%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Julani%7BFreeMusic.com%7D.mp3>;
+    mo:duration "186".
+<urn:uuid:b19dcdc6-ef6e-44a3-9cf3-c70dfb6b6a63> a mo:Track;
+    dcterms:title "Papa";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./03%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Papa%7BFreeMusic.com%7D.mp3>;
+    mo:duration "274".
+<urn:uuid:ac46cdbc-8330-414e-ad0a-c25de6aa3dff> a mo:Track;
+    dcterms:title "Keeper of My Soul";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./04%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Keeper%20of%20My%20Soul%7BFreeMusic.com%7D.mp3>;
+    mo:duration "258".
+<urn:uuid:8c03c477-8b09-47b0-a707-e38a83caa70c> a mo:Track;
+    dcterms:title "The One Who Knows";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./05%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20The%20One%20Who%20Knows%7BFreeMusic.com%7D.mp3>;
+    mo:duration "223".
+<urn:uuid:d8c479a5-d5ba-4163-8bba-12f099383bf9> a mo:Track;
+    dcterms:title "Paladium";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./07%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Paladium%7BFreeMusic.com%7D.mp3>;
+    mo:duration "335".
+<urn:uuid:35b3bd1b-a7e4-4f97-a787-a7ac45cdcea4> a mo:Track;
+    dcterms:title "Life's Angles";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./08%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Life's%20Angles%7BFreeMusic.com%7D.mp3>;
+    mo:duration "187".
+<urn:uuid:5435e76d-e998-46ba-a3e2-a022860523d8> a mo:Track;
+    dcterms:title "Thinking Of You";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./09%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Thinking%20Of%20You%7BFreeMusic.com%7D.mp3>;
+    mo:duration "195".
+<urn:uuid:ae3362b7-b917-449d-97e8-7362af76e68f> a mo:Track;
+    dcterms:title "Uno Esta";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./10%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Uno%20Esta%7BFreeMusic.com%7D.mp3>;
+    mo:duration "224".
+<urn:uuid:13593e80-e330-4793-ab8e-d716ee12c603> a mo:Track;
+    dcterms:title "Rugged Tranquility";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./11%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Rugged%20Tranquility%7BFreeMusic.com%7D.mp3>;
+    mo:duration "247".
+<urn:uuid:d14a6623-9e79-4e9d-a3ad-9cfbc6d6115a> a mo:Track;
+    dcterms:title "Daylight";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./12%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Daylight%7BFreeMusic.com%7D.mp3>;
+    mo:duration "235".
+<urn:uuid:a7c57daa-1080-4957-aa1a-34308d14e018> a mo:Track;
+    dcterms:title "Hot Water";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./13%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Hot%20Water%7BFreeMusic.com%7D.mp3>;
+    mo:duration "220".
+<urn:uuid:7cb93aff-7120-443e-a32f-43efc6c0c861> a mo:Track;
+    dcterms:title "Mestizo Eyes";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./14%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Mestizo%20Eyes%7BFreeMusic.com%7D.mp3>;
+    mo:duration "235".
+<urn:uuid:666224c6-4d0a-4744-8885-7f69c75467a7> a mo:Track;
+    dcterms:title "Sun Goddess";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./15%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Sun%20Goddess%7BFreeMusic.com%7D.mp3>;
+    mo:duration "237".
+<urn:uuid:cd523f85-108e-4f7c-a092-8835ac2428e1> a mo:Track;
+    dcterms:title "Broken Dreams";
+    dcat:downloadUrl <https://archive.org/download/yesterdays-new-quintet./18%20-%20Yesterday's%20New%20Quintet%20%26%20Madlib%20-%20Broken%20Dreams%7BFreeMusic.com%7D.mp3>;
+    mo:duration "336".
+<urn:uuid:e5ad4d9a-26df-4c36-b13d-106cb285a300> a mo:Track;
+    dcterms:title "Slim's Return";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/002.%20Madlib%20-%20Slim's%20Return%20(2003).mp3>;
+    mo:duration "238".
+<urn:uuid:21d24b0b-4cb2-4b9f-b41d-baaa2ed220b2> a mo:Track;
+    dcterms:title "Distant Land";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/003.%20Madlib%20-%20Distant%20Land%20(2003).mp3>;
+    mo:duration "238".
+<urn:uuid:12b11f4e-5e83-4ad8-b516-052bd4f5bf0a> a mo:Track;
+    dcterms:title "Mystic Bounce";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/004.%20Madlib%20-%20Mystic%20Bounce%20(2003).mp3>;
+    mo:duration "236".
+<urn:uuid:36b5a40b-4579-4cac-9086-48400833f11a> a mo:Track;
+    dcterms:title "Stormy";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/005.%20Madlib%20-%20Stormy%20(2003).mp3>;
+    mo:duration "221".
+<urn:uuid:0571a364-9b7a-4fe5-a87e-60b64d7c8244> a mo:Track;
+    dcterms:title "Please Set Me At Ease";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/007.%20Madlib%20-%20Please%20Set%20Me%20At%20Ease%20(2003).m4a>;
+    mo:duration "302".
+<urn:uuid:94caf1b6-7a20-4719-86a7-06d7c3ab38f1> a mo:Track;
+    dcterms:title "Funky Blue Note";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/008.%20Madlib%20-%20Funky%20Blue%20Note%20(2003).mp3>;
+    mo:duration "187".
+<urn:uuid:58882575-d905-4f96-9766-1b39e444038e> a mo:Track;
+    dcterms:title "Stepping Into Tomorrow";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/010.%20Madlib%20-%20Stepping%20Into%20Tomorrow%20(2003).m4a>;
+    mo:duration "456".
+<urn:uuid:e1cd440a-c8da-4268-b4c0-7d59ff34f673> a mo:Track;
+    dcterms:title "Montara";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/012.%20Madlib%20-%20Montara%20(2003).m4a>;
+    mo:duration "354".
+<urn:uuid:74c64189-f1d1-49a5-bba9-0d1940a4cf95> a mo:Track;
+    dcterms:title "Song For My Father";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/013.%20Madlib%20-%20Song%20For%20My%20Father%20(2003).mp3>;
+    mo:duration "346".
+<urn:uuid:c6fe5251-7a04-4cbf-ae84-069e52c7c219> a mo:Track;
+    dcterms:title "Footprints";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/014.%20Madlib%20-%20Footprints%20(2003).m4a>;
+    mo:duration "298".
+<urn:uuid:1e317539-2bf2-413c-a38b-bf8c1046f443> a mo:Track;
+    dcterms:title "Peace/Dolphin Dance";
+    dcat:downloadUrl <https://archive.org/download/shades-of-blue/015.%20Madlib%20-%20Peace%20Dolphin%20Dance%20(2003).m4a>;
+    mo:duration "338".
+<urn:uuid:fa303be0-a4bc-46ce-af17-d33cfba26943> a mo:Release;
+    dcterms:title "Madlib Medicine Show #3 - Beat Konducta in Africa";
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a>;
+    dcat:landingPage <https://archive.org/details/madlib-medicine-show-3-beat-konducta-in-africa>;
+    mo:track <urn:uuid:05dfa569-8af8-486c-9d82-90bd5788dbf9>, <urn:uuid:3b8a78ef-72cd-45d8-99ce-ddbc047cca93>.
+<urn:uuid:0ad8c736-6d7e-449f-9d36-f94c7a38b389> a mo:Release;
+    dcterms:title "Medicine Show #1: Before the Verdict";
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a>;
+    dcat:landingPage <https://archive.org/details/medicine-show-1-before-the-verdict-flac>;
+    mo:track <urn:uuid:aa90e544-6b61-4c60-96f8-f57e81c5e69f>.
+<urn:uuid:a67caa9a-2837-472c-8edf-d9269bccc8f4> a mo:Release;
+    dcterms:title "Madvillainy";
+    foaf:maker "Madvillain feat. Lord Quas";
+    dcat:landingPage <https://archive.org/details/Madvillainy-madvillain>;
+    mo:track <urn:uuid:1d96e24f-65e6-4d76-983d-068b053afa09>, <urn:uuid:2564a824-12b3-415f-9fff-8ab5e6f7ad2e>.
+<urn:uuid:597e85fb-a263-4f00-a19c-8a371bbf335a> a mo:Release;
+    dcterms:title "Madvilliany [Demo Tape]";
+    foaf:maker "MF DOOM";
+    dcat:landingPage <https://archive.org/details/tagmp3_tagmp3_one-false-move-intro-song-1>;
+    mo:track <urn:uuid:14a888e6-8f9d-431c-a042-0bd1af802f49>, <urn:uuid:02293df2-a556-4807-9f00-17b301254d4a>, <urn:uuid:e7c4a71f-da1f-49f8-8b6c-89ca3a6dda90>, <urn:uuid:26491fcc-2743-4a89-9190-e6ec830be28f>.
+<urn:uuid:41288369-f184-4493-8639-3041d279e00a> a mo:Release;
+    dcterms:title "Sound Ancestors";
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a>;
+    dcat:landingPage <https://archive.org/details/sound-ancestors-flac>;
+    mo:track <urn:uuid:ca9bf5b2-cbb4-4c75-9157-94d84e53479f>, <urn:uuid:5d1a9229-b1ae-4a21-b4ec-f9305e2a50c5>, <urn:uuid:ebeaf315-cee0-45f6-80bd-85d31cfeacc1>, <urn:uuid:6f7ca6cf-0df1-4b00-bda7-33e2a45545e6>.
+<urn:uuid:93b3173a-5fc7-4585-b652-fe2a294e4f42> a mo:Release;
+    dcterms:title "Angles Without Edges.";
+    foaf:maker "Yesterday's New Quintet & Madlib";
+    dcat:landingPage <https://archive.org/details/yesterdays-new-quintet.>;
+    mo:track <urn:uuid:11a62618-07f0-4b8e-b309-7776f69d4df4>, <urn:uuid:b19dcdc6-ef6e-44a3-9cf3-c70dfb6b6a63>, <urn:uuid:ac46cdbc-8330-414e-ad0a-c25de6aa3dff>, <urn:uuid:8c03c477-8b09-47b0-a707-e38a83caa70c>, <urn:uuid:d8c479a5-d5ba-4163-8bba-12f099383bf9>, <urn:uuid:35b3bd1b-a7e4-4f97-a787-a7ac45cdcea4>, <urn:uuid:5435e76d-e998-46ba-a3e2-a022860523d8>, <urn:uuid:ae3362b7-b917-449d-97e8-7362af76e68f>, <urn:uuid:13593e80-e330-4793-ab8e-d716ee12c603>, <urn:uuid:d14a6623-9e79-4e9d-a3ad-9cfbc6d6115a>, <urn:uuid:a7c57daa-1080-4957-aa1a-34308d14e018>, <urn:uuid:7cb93aff-7120-443e-a32f-43efc6c0c861>, <urn:uuid:666224c6-4d0a-4744-8885-7f69c75467a7>, <urn:uuid:cd523f85-108e-4f7c-a092-8835ac2428e1>.
+<urn:uuid:de989c33-41b9-4814-9976-5916523c5604> a mo:Release;
+    dcterms:title "Shades of Blue";
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a>;
+    dcat:landingPage <https://archive.org/details/shades-of-blue>;
+    mo:track <urn:uuid:e5ad4d9a-26df-4c36-b13d-106cb285a300>, <urn:uuid:21d24b0b-4cb2-4b9f-b41d-baaa2ed220b2>, <urn:uuid:12b11f4e-5e83-4ad8-b516-052bd4f5bf0a>, <urn:uuid:36b5a40b-4579-4cac-9086-48400833f11a>, <urn:uuid:0571a364-9b7a-4fe5-a87e-60b64d7c8244>, <urn:uuid:94caf1b6-7a20-4719-86a7-06d7c3ab38f1>, <urn:uuid:58882575-d905-4f96-9766-1b39e444038e>, <urn:uuid:e1cd440a-c8da-4268-b4c0-7d59ff34f673>, <urn:uuid:74c64189-f1d1-49a5-bba9-0d1940a4cf95>, <urn:uuid:c6fe5251-7a04-4cbf-ae84-069e52c7c219>, <urn:uuid:1e317539-2bf2-413c-a38b-bf8c1046f443>.

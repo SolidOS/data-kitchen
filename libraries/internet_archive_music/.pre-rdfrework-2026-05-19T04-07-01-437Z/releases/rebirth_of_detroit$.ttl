@@ -1,0 +1,22 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:79d83bc2-7200-43aa-8f9b-98080736e5c9> a mo:Release;
+    dcterms:title "Rebirth Of Detroit";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    dcat:landingPage <https://archive.org/details/rebirth-of-detroit>;
+    mo:track <urn:uuid:8f0b342f-c4d5-44ef-a534-db31eaf39ceb>, <urn:uuid:605dc7ac-8f09-4e89-baf9-06f7cfa6fb83>, <urn:uuid:673e6e07-96d9-4eb9-b600-dd50ff7cfc71>, <urn:uuid:aec487fb-8b39-4718-9ef9-116a0be8f2a1>, <urn:uuid:bfbf17cf-0268-44e8-b291-2371e7d6f519>, <urn:uuid:5a6ace5c-4c87-4973-911b-581abcd08b0a>, <urn:uuid:30f8b2e8-e21c-4b0c-8206-667e48078281>, <urn:uuid:914f019e-b358-48d3-a3e3-9a12c92c900c>, <urn:uuid:98bd8ea3-2425-4da7-ba97-446182ba8e65>, <urn:uuid:80cfe52b-6b0d-4e9f-935b-3148a17c43f9>, <urn:uuid:dad0834b-0dcb-4334-b1ec-19edb4eba954>, <urn:uuid:52301098-6c3d-480e-9137-ae745bf36d6b>.
+<urn:uuid:8f0b342f-c4d5-44ef-a534-db31eaf39ceb> a mo:Track; dcterms:title "Detroit Madness"; mo:duration "223"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/02%20-%20J%20Dilla%20-%20Detroit%20Madness.mp3>.
+<urn:uuid:605dc7ac-8f09-4e89-baf9-06f7cfa6fb83> a mo:Track; dcterms:title "Big Thangs"; mo:duration "204"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/03%20-%20J%20Dilla%20-%20Big%20Thangs.mp3>.
+<urn:uuid:673e6e07-96d9-4eb9-b600-dd50ff7cfc71> a mo:Track; dcterms:title "Ride With It"; mo:duration "253"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/04%20-%20J%20Dilla%20-%20Ride%20With%20It.mp3>.
+<urn:uuid:aec487fb-8b39-4718-9ef9-116a0be8f2a1> a mo:Track; dcterms:title "Say My Name"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/05%20-%20J%20Dilla%20-%20Say%20My%20Name.mp3>.
+<urn:uuid:bfbf17cf-0268-44e8-b291-2371e7d6f519> a mo:Track; dcterms:title "City Of Boom"; mo:duration "200"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/08%20-%20J%20Dilla%20-%20City%20Of%20Boom.mp3>.
+<urn:uuid:5a6ace5c-4c87-4973-911b-581abcd08b0a> a mo:Track; dcterms:title "Let's Pray Together"; mo:duration "225"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/09%20-%20J%20Dilla%20-%20Let's%20Pray%20Together.mp3>.
+<urn:uuid:30f8b2e8-e21c-4b0c-8206-667e48078281> a mo:Track; dcterms:title "Do It Right"; mo:duration "184"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/11%20-%20J%20Dilla%20-%20Do%20It%20Right.mp3>.
+<urn:uuid:914f019e-b358-48d3-a3e3-9a12c92c900c> a mo:Track; dcterms:title "Rebirth Is Necessary"; mo:duration "198"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/13%20-%20J%20Dilla%20-%20Rebirth%20Is%20Necessary.mp3>.
+<urn:uuid:98bd8ea3-2425-4da7-ba97-446182ba8e65> a mo:Track; dcterms:title "Dillatroit"; mo:duration "268"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/14%20-%20J%20Dilla%20-%20Dillatroit.mp3>.
+<urn:uuid:80cfe52b-6b0d-4e9f-935b-3148a17c43f9> a mo:Track; dcterms:title "Center Of The Movement"; mo:duration "206"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/15%20-%20J%20Dilla%20-%20Center%20Of%20The%20Movement.mp3>.
+<urn:uuid:dad0834b-0dcb-4334-b1ec-19edb4eba954> a mo:Track; dcterms:title "Pitfalls"; mo:duration "270"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/16%20-%20J%20Dilla%20-%20Pitfalls.mp3>.
+<urn:uuid:52301098-6c3d-480e-9137-ae745bf36d6b> a mo:Track; dcterms:title "The Best That Ever Did It"; mo:duration "228"; dcat:downloadUrl <https://archive.org/download/rebirth-of-detroit/21%20-%20J%20Dilla%20-%20The%20Best%20That%20Ever%20Did%20It.mp3>.

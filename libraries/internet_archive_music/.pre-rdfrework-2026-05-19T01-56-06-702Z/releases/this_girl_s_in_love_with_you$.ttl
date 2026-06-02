@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:10d7c991-a3c6-45c6-9255-81de1dad3f19> a mo:Release;
+    dcterms:title "This Girl's in Love with You";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/lp_this-girls-in-love-with-you_aretha-franklin_item>;
+    mo:track <urn:uuid:cfc21ddc-f235-4276-8ad3-8706902038e8>, <urn:uuid:5f074f79-39ec-48e2-86c2-3a91c66eee82>, <urn:uuid:3431fdb6-0512-4358-9b9f-8cbadf8cac25>, <urn:uuid:f07d58d9-258a-4d31-b12f-e5ce40a3b2bd>, <urn:uuid:8d3c638d-d785-427f-a8f2-84c9c32c718a>, <urn:uuid:fb67562c-7c7e-4df7-a439-8e0c38558c1f>, <urn:uuid:08665cda-9ffd-4aa5-83aa-44ca5b7c060c>, <urn:uuid:7076ddf0-175f-482c-9bee-d819d219ba6b>.
+<urn:uuid:cfc21ddc-f235-4276-8ad3-8706902038e8> a mo:Track; dcterms:title "Call Me"; mo:duration "237"; dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/09%20-%20Call%20Me.mp3>.
+<urn:uuid:5f074f79-39ec-48e2-86c2-3a91c66eee82> a mo:Track; dcterms:title "Dark End of the Street"; mo:duration "284"; dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/03%20-%20Dark%20End%20of%20the%20Street.mp3>.
+<urn:uuid:3431fdb6-0512-4358-9b9f-8cbadf8cac25> a mo:Track; dcterms:title "It Ain't Fair"; mo:duration "203"; dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/07%20-%20It%20Ain't%20Fair.mp3>.
+<urn:uuid:f07d58d9-258a-4d31-b12f-e5ce40a3b2bd> a mo:Track; dcterms:title "Let It Be"; mo:duration "212"; dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/04%20-%20Let%20It%20Be.mp3>.
+<urn:uuid:8d3c638d-d785-427f-a8f2-84c9c32c718a> a mo:Track; dcterms:title "Share Your Love With Me"; mo:duration "202"; dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/02%20-%20Share%20Your%20Love%20With%20Me.mp3>.
+<urn:uuid:fb67562c-7c7e-4df7-a439-8e0c38558c1f> a mo:Track; dcterms:title "Sit Down and Cry"; mo:duration "232"; dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/10%20-%20Sit%20Down%20and%20Cry.mp3>.
+<urn:uuid:08665cda-9ffd-4aa5-83aa-44ca5b7c060c> a mo:Track; dcterms:title "Son of a Preacher Man"; mo:duration "199"; dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/01%20-%20Son%20of%20a%20Preacher%20Man.mp3>.
+<urn:uuid:7076ddf0-175f-482c-9bee-d819d219ba6b> a mo:Track; dcterms:title "This Girl's in Love With You"; mo:duration "241"; dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/06%20-%20This%20Girl's%20in%20Love%20With%20You.mp3>.

@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:b1c8c951-89ca-42a3-aab3-4d287b28a3ca> a mo:Release;
+    dcterms:title "Old Tunes Vol. 2";
+    foaf:maker "Boards of Canada";
+    dcat:landingPage <https://archive.org/details/boards-of-canada-old-tunes-volume-2>;
+    mo:track <urn:uuid:e9d752e6-4f97-4792-bfea-1901aa1425e5>, <urn:uuid:402a1c6b-325b-4c9f-ba64-cb24ec3af0f3>, <urn:uuid:246bb2d5-ae04-4dd0-86c2-da23bf026882>, <urn:uuid:d2dffceb-c44a-4989-8a78-3be37ff53e74>, <urn:uuid:3cd3b692-2d0a-46ef-a56e-9aaff3b600a5>, <urn:uuid:3261d2ab-35eb-4944-a11b-08e0b3c31716>, <urn:uuid:7c843eb0-88b8-4675-802c-a7784952304e>, <urn:uuid:82ab03a3-750a-4f26-a353-6c7245b66c92>.
+<urn:uuid:e9d752e6-4f97-4792-bfea-1901aa1425e5> a mo:Track; dcterms:title "We've Started Up"; mo:duration "339"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2001%20We've%20Started%20Up.mp3>.
+<urn:uuid:402a1c6b-325b-4c9f-ba64-cb24ec3af0f3> a mo:Track; dcterms:title "David Came To Mahana'Im"; mo:duration "279"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2012%20David%20Came%20To%20Mahana'Im.mp3>.
+<urn:uuid:246bb2d5-ae04-4dd0-86c2-da23bf026882> a mo:Track; dcterms:title "Mukinabaht"; mo:duration "302"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2018%20Mukinabaht.mp3>.
+<urn:uuid:d2dffceb-c44a-4989-8a78-3be37ff53e74> a mo:Track; dcterms:title "BMX Track"; mo:duration "305"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2021%20BMX%20Track.mp3>.
+<urn:uuid:3cd3b692-2d0a-46ef-a56e-9aaff3b600a5> a mo:Track; dcterms:title "Hiscores"; mo:duration "218"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2022%20Hiscores.mp3>.
+<urn:uuid:3261d2ab-35eb-4944-a11b-08e0b3c31716> a mo:Track; dcterms:title "Zander Two"; mo:duration "239"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2024%20Zander%20Two.mp3>.
+<urn:uuid:7c843eb0-88b8-4675-802c-a7784952304e> a mo:Track; dcterms:title "Buckie High"; mo:duration "316"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2030%20Buckie%20High.mp3>.
+<urn:uuid:82ab03a3-750a-4f26-a353-6c7245b66c92> a mo:Track; dcterms:title "I Love My New Shears"; mo:duration "190"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2031%20I%20Love%20My%20New%20Shears.mp3>.

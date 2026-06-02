@@ -1,0 +1,48 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Penguin Cafe Orchestra LIVE 1988-01-17 @Zeche Bochum, Germany" ;
+    dct:identifier "penguincafeorchestra17011988" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra17011988> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05> ;
+    foaf:maker "Penguin Cafe Orchestra" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Isle of View (Music for Helicopter Pilots)" ;
+    mo:duration "328" ;
+    mo:item <https://archive.org/download/penguincafeorchestra17011988/2-09%20-%20Isle%20of%20View%20(Music%20for%20Helicopter%20Pilots).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Paul's Dance" ;
+    mo:duration "193" ;
+    mo:item <https://archive.org/download/penguincafeorchestra17011988/2-05%20-%20Paul's%20Dance.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Surface Tension/Oscar Tango" ;
+    mo:duration "373" ;
+    mo:item <https://archive.org/download/penguincafeorchestra17011988/2-06%20-%20Surface%20Tension-Oscar%20Tango.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "The Ecstasy of Dancing Fleas" ;
+    mo:duration "261" ;
+    mo:item <https://archive.org/download/penguincafeorchestra17011988/1-01%20-%20The%20Ecstasy%20of%20Dancing%20Fleas.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Yodel 1" ;
+    mo:duration "383" ;
+    mo:item <https://archive.org/download/penguincafeorchestra17011988/1-04%20-%20Yodel%201.mp3> ;
+    dct:isPartOf <#it> .

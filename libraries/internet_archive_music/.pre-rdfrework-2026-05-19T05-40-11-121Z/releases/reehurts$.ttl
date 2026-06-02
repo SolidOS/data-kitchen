@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c5f6f381-cee5-404c-82a4-5f34ec99f2c4> a mo:Release;
+    dcterms:title "reehurts";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/reehurts>;
+    mo:track <urn:uuid:94564c13-883c-4211-ae7c-7742e9a8cfc4>.
+<urn:uuid:94564c13-883c-4211-ae7c-7742e9a8cfc4> a mo:Track; dcterms:title "It Hurts Like Hell"; mo:duration "259"; dcat:downloadUrl <https://archive.org/download/reehurts/reehurts.mp3>.

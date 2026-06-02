@@ -1,0 +1,19 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:1b2562c8-5f90-4559-a019-aecaea12a177> a mo:Release;
+    dcterms:title "Cinemascope";
+    foaf:maker <urn:uuid:7c2420d2-5190-4d6a-8b9d-1fb37bf4125b>;
+    dcat:landingPage <https://archive.org/details/2001-monolake-cinemascope>;
+    mo:track <urn:uuid:e84871e3-966c-43e1-bb69-baf277a02ab8>, <urn:uuid:16aa8ca1-6c45-4cdb-ad16-edc8b5a1d875>, <urn:uuid:7f6bc3ae-2a12-4a96-a931-c7fb1857b7c9>, <urn:uuid:f001c505-0a5c-40b2-9169-a620ef2b7407>, <urn:uuid:f432817f-24b6-41d2-9ca0-8d833760959a>, <urn:uuid:17a47537-0e1d-4b57-b5ec-4fd80252d71c>, <urn:uuid:634ab215-7472-4331-aa5f-b8b50b0f08c5>, <urn:uuid:fd6abd6e-f279-4599-8bbb-1649bf9e6007>, <urn:uuid:ff5fe9c8-23d9-44c9-ba01-fb884390bc7a>.
+<urn:uuid:e84871e3-966c-43e1-bb69-baf277a02ab8> a mo:Track; dcterms:title "Bicom"; mo:duration "574"; dcat:downloadUrl <https://archive.org/download/2001-monolake-cinemascope/02.%20Bicom.mp3>.
+<urn:uuid:16aa8ca1-6c45-4cdb-ad16-edc8b5a1d875> a mo:Track; dcterms:title "Cubicle"; mo:duration "414"; dcat:downloadUrl <https://archive.org/download/2001-monolake-cinemascope/03.%20Cubicle.mp3>.
+<urn:uuid:7f6bc3ae-2a12-4a96-a931-c7fb1857b7c9> a mo:Track; dcterms:title "Ping"; mo:duration "338"; dcat:downloadUrl <https://archive.org/download/2001-monolake-cinemascope/04.%20Ping.mp3>.
+<urn:uuid:f001c505-0a5c-40b2-9169-a620ef2b7407> a mo:Track; dcterms:title "Ionized"; mo:duration "678"; dcat:downloadUrl <https://archive.org/download/2001-monolake-cinemascope/05.%20Ionized.mp3>.
+<urn:uuid:f432817f-24b6-41d2-9ca0-8d833760959a> a mo:Track; dcterms:title "Remoteable"; mo:duration "340"; dcat:downloadUrl <https://archive.org/download/2001-monolake-cinemascope/06.%20Remoteable.mp3>.
+<urn:uuid:17a47537-0e1d-4b57-b5ec-4fd80252d71c> a mo:Track; dcterms:title "Television Tower"; mo:duration "368"; dcat:downloadUrl <https://archive.org/download/2001-monolake-cinemascope/07.%20Television%20tower.mp3>.
+<urn:uuid:634ab215-7472-4331-aa5f-b8b50b0f08c5> a mo:Track; dcterms:title "Cut"; mo:duration "295"; dcat:downloadUrl <https://archive.org/download/2001-monolake-cinemascope/08.%20Cut.mp3>.
+<urn:uuid:fd6abd6e-f279-4599-8bbb-1649bf9e6007> a mo:Track; dcterms:title "Alpenrausch"; mo:duration "435"; dcat:downloadUrl <https://archive.org/download/2001-monolake-cinemascope/09.%20Alpenrausch.mp3>.
+<urn:uuid:ff5fe9c8-23d9-44c9-ba01-fb884390bc7a> a mo:Track; dcterms:title "Indigo"; mo:duration "518"; dcat:downloadUrl <https://archive.org/download/2001-monolake-cinemascope/10.%20Indigo.mp3>.

@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:45aea9e0-e7ed-4894-92a7-0995e1414cbb> a mo:Release;
+    dcterms:title "Animal Collective Live at Ogden Theatre on 2018-07-25";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    dcat:landingPage <https://archive.org/details/acollective2018-07-25>;
+    mo:track <urn:uuid:a2867860-c79f-42ec-b64c-beaa50ae2ac6>, <urn:uuid:98cb3da8-870e-4849-8cdc-75552b5d5fbe>.
+<urn:uuid:a2867860-c79f-42ec-b64c-beaa50ae2ac6> a mo:Track; dcterms:title "Visiting Friends"; mo:duration "742"; dcat:downloadUrl <https://archive.org/download/acollective2018-07-25/Visiting%20Friends.mp3>.
+<urn:uuid:98cb3da8-870e-4849-8cdc-75552b5d5fbe> a mo:Track; dcterms:title "Tuvin"; mo:duration "672"; dcat:downloadUrl <https://archive.org/download/acollective2018-07-25/Tuvin.mp3>.

@@ -1,0 +1,37 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:03ea2060-bdd5-4e19-a816-2c505a18374c>
+    a mo:Track;
+    dct:title "Verses from the Abstract (feat. Vinia Mojica & Ron Carter)";
+    mo:duration "239";
+    dcat:downloadUrl
+        <https://archive.org/download/thelowendtheory1991/05.%20A%20Tribe%20Called%20Quest%20-%20Verses%20from%20the%20Abstract%20(feat.%20Vinia%20Mojica%20%26%20Ron%20Carter).mp3>.
+<urn:uuid:3c64bc70-da3a-43a9-9bed-37877437b62f>
+    a mo:Release;
+    dct:title "The Low End Theory";
+    mo:track
+        <urn:uuid:03ea2060-bdd5-4e19-a816-2c505a18374c>,
+        <urn:uuid:50787f76-0e3c-45bf-88bd-b5e9383033e0>,
+        <urn:uuid:7c31af7f-3eff-4eb0-b953-cf575aec50c1>;
+    dcat:landingPage det:thelowendtheory1991;
+    foaf:maker
+        <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>,
+        <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>,
+        <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>.
+<urn:uuid:50787f76-0e3c-45bf-88bd-b5e9383033e0>
+    a mo:Track;
+    dct:title "Show Business (feat. Diamond D, Lord Jamar & Sadat X)";
+    mo:duration "233";
+    dcat:downloadUrl
+        <https://archive.org/download/thelowendtheory1991/06.%20A%20Tribe%20Called%20Quest%20-%20Show%20Business%20(feat.%20Diamond%20D%2C%20Lord%20Jamar%20%26%20Sadat%20X).mp3>.
+<urn:uuid:7c31af7f-3eff-4eb0-b953-cf575aec50c1>
+    a mo:Track;
+    dct:title "Scenario (feat. Busta Rhymes, Dinco D & Charlie Brown) (LP Mix)";
+    mo:duration "250";
+    dcat:downloadUrl
+        <https://archive.org/download/thelowendtheory1991/14.%20A%20Tribe%20Called%20Quest%20-%20Scenario%20(feat.%20Busta%20Rhymes%2C%20Dinco%20D%20%26%20Charlie%20Brown)%20(LP%20Mix).mp3>.

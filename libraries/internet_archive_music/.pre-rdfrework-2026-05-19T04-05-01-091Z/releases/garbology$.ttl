@@ -1,0 +1,21 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:5efe5c4c-7203-4c62-ae96-07c414191ff8> a mo:Release;
+    dcterms:title "Garbology";
+    foaf:maker "Aesop Rock";
+    dcat:landingPage <https://archive.org/details/Garbology>;
+    mo:track <urn:uuid:5f4b2054-26c5-4d1d-9bcd-693ad0a6f7c5>, <urn:uuid:d0b22ce3-98f3-47c7-93bc-5c13d69615d4>, <urn:uuid:9c338a66-7266-4e2f-88c5-fd5c28120fd9>, <urn:uuid:04a929f6-06f0-4fa9-a0e1-d837f6426434>, <urn:uuid:ee23baba-2b50-431d-9bb0-ac3f377ef5fa>, <urn:uuid:819188a4-da75-49f5-abd7-74160029d6d3>, <urn:uuid:c04a0995-b2f6-4ad7-9b83-e5af89ba0868>, <urn:uuid:14690941-caba-47d7-aa57-a754b53e64d1>, <urn:uuid:f339eeae-c4d9-4e67-961f-70c09c142417>, <urn:uuid:c1835911-3daa-4476-a849-d0bd85b37336>, <urn:uuid:0348f4de-30a4-477d-a0ef-cc5577326e30>.
+<urn:uuid:5f4b2054-26c5-4d1d-9bcd-693ad0a6f7c5> a mo:Track; dcterms:title "Abandoned Malls"; mo:duration "304"; dcat:downloadUrl <https://archive.org/download/Garbology/Abandoned%20Malls.mp3>.
+<urn:uuid:d0b22ce3-98f3-47c7-93bc-5c13d69615d4> a mo:Track; dcterms:title "Difficult"; mo:duration "245"; dcat:downloadUrl <https://archive.org/download/Garbology/Difficult.mp3>.
+<urn:uuid:9c338a66-7266-4e2f-88c5-fd5c28120fd9> a mo:Track; dcterms:title "Fizz"; mo:duration "277"; dcat:downloadUrl <https://archive.org/download/Garbology/Fizz.mp3>.
+<urn:uuid:04a929f6-06f0-4fa9-a0e1-d837f6426434> a mo:Track; dcterms:title "Flamingo Pink"; mo:duration "235"; dcat:downloadUrl <https://archive.org/download/Garbology/Flamingo%20Pink.mp3>.
+<urn:uuid:ee23baba-2b50-431d-9bb0-ac3f377ef5fa> a mo:Track; dcterms:title "Jazz Hands"; mo:duration "204"; dcat:downloadUrl <https://archive.org/download/Garbology/Jazz%20Hands.mp3>.
+<urn:uuid:819188a4-da75-49f5-abd7-74160029d6d3> a mo:Track; dcterms:title "Legerdemain"; mo:duration "272"; dcat:downloadUrl <https://archive.org/download/Garbology/Legerdemain.mp3>.
+<urn:uuid:c04a0995-b2f6-4ad7-9b83-e5af89ba0868> a mo:Track; dcterms:title "More Cycles"; mo:duration "248"; dcat:downloadUrl <https://archive.org/download/Garbology/More%20Cycles.mp3>.
+<urn:uuid:14690941-caba-47d7-aa57-a754b53e64d1> a mo:Track; dcterms:title "Oh Fudge"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/Garbology/Oh%20Fudge.mp3>.
+<urn:uuid:f339eeae-c4d9-4e67-961f-70c09c142417> a mo:Track; dcterms:title "That is Not a Wizard"; mo:duration "271"; dcat:downloadUrl <https://archive.org/download/Garbology/That%20is%20Not%20a%20Wizard.mp3>.
+<urn:uuid:c1835911-3daa-4476-a849-d0bd85b37336> a mo:Track; dcterms:title "The Sea"; mo:duration "249"; dcat:downloadUrl <https://archive.org/download/Garbology/The%20Sea.mp3>.
+<urn:uuid:0348f4de-30a4-477d-a0ef-cc5577326e30> a mo:Track; dcterms:title "Wolf Piss"; mo:duration "212"; dcat:downloadUrl <https://archive.org/download/Garbology/Wolf%20Piss.mp3>.

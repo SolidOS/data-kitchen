@@ -1,0 +1,30 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:9bea361a-924a-41b1-811d-a73b880b2707>
+    a mo:Track;
+    dct:title "Spillin off tha tongue";
+    mo:duration "218";
+    dcat:downloadUrl
+        <https://archive.org/download/more-low-end-theories/01%20Spillin%20off%20tha%20tongue.mp3>.
+<urn:uuid:c3cfe71a-dd40-4bcc-95e5-8818e823a539>
+    a mo:Track;
+    dct:title "11. Scenario (Less Muffled, Stereo)";
+    mo:duration "247";
+    dcat:downloadUrl
+        <https://archive.org/download/more-low-end-theories/11.%20Scenario%20(Less%20Muffled%2C%20Stereo).mp3>.
+<urn:uuid:d3501286-eba3-414a-95e6-12479eb14c69>
+    a mo:Release;
+    dct:title "More Low End theories";
+    mo:track
+        <urn:uuid:9bea361a-924a-41b1-811d-a73b880b2707>,
+        <urn:uuid:c3cfe71a-dd40-4bcc-95e5-8818e823a539>;
+    dcat:landingPage det:more-low-end-theories;
+    foaf:maker
+        <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>,
+        <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>,
+        <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>.

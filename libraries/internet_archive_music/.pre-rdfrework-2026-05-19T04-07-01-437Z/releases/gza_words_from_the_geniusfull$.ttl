@@ -1,0 +1,118 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:1118badb-7f22-4c87-ad49-3f624aef5a6c>
+    a mo:Track;
+    dct:title "What Are Silly Girls Made Of";
+    mo:duration "271";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F14.%20GZA%20-%20What%20Are%20Silly%20Girls%20Made%20Of.mp3>.
+<urn:uuid:535952d3-6ff2-4e7f-8ff8-0f317214da48>
+    a mo:Track;
+    dct:title "Words From A Genius";
+    mo:duration "305";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F05.%20GZA%20-%20Words%20From%20A%20Genius.mp3>.
+<urn:uuid:6e807a71-9c0d-46fa-9a8b-b689575bac3c>
+    a mo:Release;
+    dct:title "GZA - Words from the Genius(full)";
+    mo:track
+        <urn:uuid:1118badb-7f22-4c87-ad49-3f624aef5a6c>,
+        <urn:uuid:535952d3-6ff2-4e7f-8ff8-0f317214da48>,
+        <urn:uuid:7c074584-7316-450f-a5d9-8ff4c05f050a>,
+        <urn:uuid:85c0c9c3-39ef-49ee-ba23-b3bd9235d6e2>,
+        <urn:uuid:9426ef2e-114d-4551-bf69-a6243260f68c>,
+        <urn:uuid:9c3dd2be-cfa7-4463-8064-ddf3c0ba5fca>,
+        <urn:uuid:9fef7bb4-55d1-4251-be75-b8bd66d90858>,
+        <urn:uuid:c4e5a22b-d090-4b19-8c85-9c650b024b34>,
+        <urn:uuid:cc44fccf-8778-4874-857c-5042f05a10d8>,
+        <urn:uuid:cc883761-1c6a-4e47-9ff9-d0d05dabf36c>,
+        <urn:uuid:d09eedca-39c5-4083-99bf-8a3913ef3f3b>,
+        <urn:uuid:e627cd83-266f-4c6c-9e19-8fcfe9b5b096>,
+        <urn:uuid:e6c510b5-84d4-47c4-9530-fb73093bcab7>,
+        <urn:uuid:e7556e2a-f5a6-451b-80d7-0fc626092a99>,
+        <urn:uuid:ec8b474a-6aed-4c11-ab56-04f59ec38c68>;
+    dcat:landingPage det:words-from-the-genius_202503;
+    foaf:maker "Gza", <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:7c074584-7316-450f-a5d9-8ff4c05f050a>
+    a mo:Track;
+    dct:title "Stay Out Of Bars";
+    mo:duration "235";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F13.%20GZA%20-%20Stay%20Out%20Of%20Bars.mp3>.
+<urn:uuid:85c0c9c3-39ef-49ee-ba23-b3bd9235d6e2>
+    a mo:Track;
+    dct:title "Drama";
+    mo:duration "239";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F12.%20GZA%20-%20Drama.mp3>.
+<urn:uuid:9426ef2e-114d-4551-bf69-a6243260f68c>
+    a mo:Track;
+    dct:title "Feel The Pain";
+    mo:duration "220";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F07.%20GZA%20-%20Feel%20The%20Pain.mp3>.
+<urn:uuid:9c3dd2be-cfa7-4463-8064-ddf3c0ba5fca>
+    a mo:Track;
+    dct:title "Life Of A Drug Dealer";
+    mo:duration "219";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F09.%20GZA%20-%20Life%20Of%20A%20Drug%20Dealer.mp3>.
+<urn:uuid:9fef7bb4-55d1-4251-be75-b8bd66d90858>
+    a mo:Track;
+    dct:title "True Fresh M.C.";
+    mo:duration "218";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F03.%20GZA%20-%20True%20Fresh%20M.C..mp3>.
+<urn:uuid:c4e5a22b-d090-4b19-8c85-9c650b024b34>
+    a mo:Track;
+    dct:title "Superfreak";
+    mo:duration "278";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F15.%20GZA%20-%20Superfreak.mp3>.
+<urn:uuid:cc44fccf-8778-4874-857c-5042f05a10d8>
+    a mo:Track;
+    dct:title "Phony As Ya Wanna Be";
+    mo:duration "304";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F02.%20GZA%20-%20Phony%20As%20Ya%20Wanna%20Be.mp3>.
+<urn:uuid:cc883761-1c6a-4e47-9ff9-d0d05dabf36c>
+    a mo:Track;
+    dct:title "Come Do Me";
+    mo:duration "287";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F01.%20GZA%20-%20Come%20Do%20Me.mp3>.
+<urn:uuid:d09eedca-39c5-4083-99bf-8a3913ef3f3b>
+    a mo:Track;
+    dct:title "The Genius Is Slammin'";
+    mo:duration "262";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F04.%20GZA%20-%20The%20Genius%20Is%20Slammin'.mp3>.
+<urn:uuid:e627cd83-266f-4c6c-9e19-8fcfe9b5b096>
+    a mo:Track;
+    dct:title "Stop The Nonsense";
+    mo:duration "221";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F10.%20GZA%20-%20Stop%20The%20Nonsense.mp3>.
+<urn:uuid:e6c510b5-84d4-47c4-9530-fb73093bcab7>
+    a mo:Track;
+    dct:title "Living Foul";
+    mo:duration "261";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F11.%20GZA%20-%20Living%20Foul.mp3>.
+<urn:uuid:e7556e2a-f5a6-451b-80d7-0fc626092a99>
+    a mo:Track;
+    dct:title "Those Were The Days";
+    mo:duration "277";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F08.%20GZA%20-%20Those%20Were%20The%20Days.mp3>.
+<urn:uuid:ec8b474a-6aed-4c11-ab56-04f59ec38c68>
+    a mo:Track;
+    dct:title "Who's Your Rhyme Hero";
+    mo:duration "273";
+    dcat:downloadUrl
+        <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F06.%20GZA%20-%20Who's%20Your%20Rhyme%20Hero.mp3>.

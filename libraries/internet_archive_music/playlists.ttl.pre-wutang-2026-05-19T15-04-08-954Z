@@ -1,0 +1,37 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+<./playlists.ttl#it>
+    a dcat:Catalog ;
+    dct:title "Internet Archive Music — playlists" ;
+    dcat:dataset <./playlists/A_Tribe_Called_Quest>,
+                 <./playlists/Aesop_Rock>,
+                 <./playlists/Animal_Collective>,
+                 <./playlists/Aphex_Twin>,
+                 <./playlists/Aretha_Franklin>,
+                 <./playlists/Billie_Holiday>,
+                 <./playlists/Boards_of_Canada>,
+                 <./playlists/Bonobo>,
+                 <./playlists/Flying_Lotus>,
+                 <./playlists/Four_Tet>,
+                 <./playlists/J_Dilla>,
+                 <./playlists/James_Brown>,
+                 <./playlists/Kendrick_Lamar>,
+                 <./playlists/King_Curtis>,
+                 <./playlists/Kronos_Quartet>,
+                 <./playlists/Madlib>,
+                 <./playlists/Madlib_more>,
+                 <./playlists/Memphis_Slim>,
+                 <./playlists/Monolake>,
+                 <./playlists/Nosaj_Thing>,
+                 <./playlists/Nujabes>,
+                 <./playlists/Otis_Spann>,
+                 <./playlists/Parliament_Funkadelic>,
+                 <./playlists/Penguin_Cafe_Orchestra>,
+                 <./playlists/Stevie_Wonder>,
+                 <./playlists/Talvin_Singh>,
+                 <./playlists/Tipper>,
+                 <./playlists/Tupac_Shakur>,
+                 <./playlists/Tycho>,
+                 <./playlists/Various_Blues_Artists>,
+                 <./playlists/Wilson_Pickett> .

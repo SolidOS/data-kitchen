@@ -1,0 +1,27 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:17a97a33-2b7c-466d-9122-f400895b90ed> a mo:Release;
+    dcterms:title "Black Hole Superette";
+    foaf:maker "Aesop Rock";
+    dcat:landingPage <https://archive.org/details/black-hole-superette>;
+    mo:track <urn:uuid:08cf6e59-0051-4394-ad70-82f7236b8ffc>, <urn:uuid:94542a70-f7e1-4d2b-8c08-338678523a07>, <urn:uuid:fe89609d-1762-42d9-8ef0-cac5719694af>, <urn:uuid:e9ec076e-b91c-4bc4-8940-3d5aff359ae2>, <urn:uuid:e8b32421-a54d-406f-b941-57cd7a79b8cf>, <urn:uuid:a473cc11-2cbb-415b-96fc-3ad6b9d6ab2d>, <urn:uuid:f237fdb8-8be7-41e1-ab3d-a15b7c766a7f>, <urn:uuid:0c5bfb07-4387-4233-afea-6d0d7ad16baf>, <urn:uuid:d9ea5dd8-a5fc-4515-bf29-135156accf0b>, <urn:uuid:28e3e8e8-d325-48bf-abcd-05a93aff8db9>, <urn:uuid:f4f8ad39-704e-4dec-879a-5428008a0856>, <urn:uuid:17620c07-1870-4548-a878-9b56055fdf6f>, <urn:uuid:a4348ed4-b612-421b-af23-dd850fe971d7>, <urn:uuid:400a6ddf-cee4-48a9-af44-2353c438da87>, <urn:uuid:1a72f510-c56d-44cd-8f5e-84cb58d56bd2>, <urn:uuid:517451ff-68df-4a3c-a4ec-747dcd58e08e>, <urn:uuid:0caddf5a-297d-42b0-8298-15cb143d2dc3>.
+<urn:uuid:08cf6e59-0051-4394-ad70-82f7236b8ffc> a mo:Track; dcterms:title "1010WINS"; mo:duration "235"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/1010WINS.mp3>.
+<urn:uuid:94542a70-f7e1-4d2b-8c08-338678523a07> a mo:Track; dcterms:title "Bird School"; mo:duration "224"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Bird%20School.mp3>.
+<urn:uuid:fe89609d-1762-42d9-8ef0-cac5719694af> a mo:Track; dcterms:title "Black Plums"; mo:duration "205"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Black%20Plums.mp3>.
+<urn:uuid:e9ec076e-b91c-4bc4-8940-3d5aff359ae2> a mo:Track; dcterms:title "Charlie Horse"; mo:duration "364"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Charlie%20Horse.mp3>.
+<urn:uuid:e8b32421-a54d-406f-b941-57cd7a79b8cf> a mo:Track; dcterms:title "Checkers"; mo:duration "237"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Checkers.mp3>.
+<urn:uuid:a473cc11-2cbb-415b-96fc-3ad6b9d6ab2d> a mo:Track; dcterms:title "Costco"; mo:duration "200"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Costco.mp3>.
+<urn:uuid:f237fdb8-8be7-41e1-ab3d-a15b7c766a7f> a mo:Track; dcterms:title "EWR - Terminal A, Gate 20"; mo:duration "228"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/EWR%20-%20Terminal%20A%2C%20Gate%2020.mp3>.
+<urn:uuid:0c5bfb07-4387-4233-afea-6d0d7ad16baf> a mo:Track; dcterms:title "Himalayan Yak Chew"; mo:duration "243"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Himalayan%20Yak%20Chew.mp3>.
+<urn:uuid:d9ea5dd8-a5fc-4515-bf29-135156accf0b> a mo:Track; dcterms:title "John Something"; mo:duration "257"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/John%20Something.mp3>.
+<urn:uuid:28e3e8e8-d325-48bf-abcd-05a93aff8db9> a mo:Track; dcterms:title "Movie Night"; mo:duration "200"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Movie%20Night.mp3>.
+<urn:uuid:f4f8ad39-704e-4dec-879a-5428008a0856> a mo:Track; dcterms:title "Secret Knock"; mo:duration "212"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Secret%20Knock.mp3>.
+<urn:uuid:17620c07-1870-4548-a878-9b56055fdf6f> a mo:Track; dcterms:title "Send Help"; mo:duration "227"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Send%20Help.mp3>.
+<urn:uuid:a4348ed4-b612-421b-af23-dd850fe971d7> a mo:Track; dcterms:title "Snail Zero"; mo:duration "196"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Snail%20Zero.mp3>.
+<urn:uuid:400a6ddf-cee4-48a9-af44-2353c438da87> a mo:Track; dcterms:title "So Be It"; mo:duration "215"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/So%20Be%20It.mp3>.
+<urn:uuid:1a72f510-c56d-44cd-8f5e-84cb58d56bd2> a mo:Track; dcterms:title "Steel Wool"; mo:duration "196"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Steel%20Wool.mp3>.
+<urn:uuid:517451ff-68df-4a3c-a4ec-747dcd58e08e> a mo:Track; dcterms:title "The Red Phone"; mo:duration "258"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/The%20Red%20Phone.mp3>.
+<urn:uuid:0caddf5a-297d-42b0-8298-15cb143d2dc3> a mo:Track; dcterms:title "Unbelievable Shenanigans"; mo:duration "256"; dcat:downloadUrl <https://archive.org/download/black-hole-superette/Unbelievable%20Shenanigans.mp3>.

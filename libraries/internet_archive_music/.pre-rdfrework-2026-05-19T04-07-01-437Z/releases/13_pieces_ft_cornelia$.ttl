@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:447c0580-69f5-4892-a804-a4c57842b79a> a mo:Release;
+    dcterms:title "13 Pieces ( Ft. Cornelia)";
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0>;
+    dcat:landingPage <https://archive.org/details/13PiecesFt.Cornelia>;
+    mo:track <urn:uuid:dee260b0-ce38-42f4-a048-e58039d8828d>.
+<urn:uuid:dee260b0-ce38-42f4-a048-e58039d8828d> a mo:Track; dcterms:title "Pieces (Ft. Cornelia)"; mo:duration "267"; dcat:downloadUrl <https://archive.org/download/13PiecesFt.Cornelia/13%20Pieces%20(Ft.%20Cornelia).mp3>.

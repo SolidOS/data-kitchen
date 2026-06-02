@@ -1,0 +1,24 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:be2749aa-160f-4a45-90f0-d05806e372af> a mo:Release;
+    dcterms:title "Sweetness";
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0>;
+    dcat:landingPage <https://archive.org/details/BonoboSweetness>;
+    mo:track <urn:uuid:993f4c54-8b41-4543-9577-adf1b858107b>, <urn:uuid:e0db32b5-6ad0-4d49-a30c-f5cc3fd049ff>, <urn:uuid:f3c774af-50d0-4dce-8247-2b703c6b31b2>, <urn:uuid:dd0d6530-ef23-41fc-8b11-723f3f1e7e58>, <urn:uuid:45272207-b463-46a8-bea0-490d54dad09f>, <urn:uuid:79cc4f59-c0e5-45e9-b5aa-cfe84d08f0f1>, <urn:uuid:ad5d23ec-2017-49e3-9b3f-c395d6749f5e>, <urn:uuid:0d5580d6-b479-440d-8e77-d4030526ff65>, <urn:uuid:10af34fd-8279-4af3-95b0-96661588eb2c>, <urn:uuid:8fd36ebc-8dc7-4e11-a27a-a66efc08327b>, <urn:uuid:bc210889-285f-4063-bd72-f4bcc29db32b>, <urn:uuid:da1b5796-f264-47b7-97aa-2580f92c53e7>, <urn:uuid:b42658aa-e598-45ef-8acf-949f893b4602>, <urn:uuid:655bd7c8-4a38-44f8-b568-264147d14701>.
+<urn:uuid:993f4c54-8b41-4543-9577-adf1b858107b> a mo:Track; dcterms:title "Terrapin (Sonorous Star mix)"; mo:duration "296"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/01%20Bonobo%20-%20Terrapin%20(Sonorous%20Star%20mix).mp3>.
+<urn:uuid:e0db32b5-6ad0-4d49-a30c-f5cc3fd049ff> a mo:Track; dcterms:title "Super 8"; mo:duration "322"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/02%20Bonobo%20-%20Super%208.mp3>.
+<urn:uuid:f3c774af-50d0-4dce-8247-2b703c6b31b2> a mo:Track; dcterms:title "Dismantling Frank"; mo:duration "209"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/03%20Bonobo%20-%20Dismantling%20Frank.mp3>.
+<urn:uuid:dd0d6530-ef23-41fc-8b11-723f3f1e7e58> a mo:Track; dcterms:title "Kota (Bonobo rework)"; mo:duration "344"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/04%20Bonobo%20-%20Kota%20(Bonobo%20rework).mp3>.
+<urn:uuid:45272207-b463-46a8-bea0-490d54dad09f> a mo:Track; dcterms:title "Never (Bonobo mix)"; mo:duration "324"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/05%20Bushy%20-%20Never%20(Bonobo%20mix).mp3>.
+<urn:uuid:79cc4f59-c0e5-45e9-b5aa-cfe84d08f0f1> a mo:Track; dcterms:title "Scuba"; mo:duration "258"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/06%20Bonobo%20-%20Scuba.mp3>.
+<urn:uuid:ad5d23ec-2017-49e3-9b3f-c395d6749f5e> a mo:Track; dcterms:title "Dinosaurs (Jon Kennedy mix)"; mo:duration "244"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/07%20Bonobo%20-%20Dinosaurs%20(Jon%20Kennedy%20mix).mp3>.
+<urn:uuid:0d5580d6-b479-440d-8e77-d4030526ff65> a mo:Track; dcterms:title "The Sicilian"; mo:duration "256"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/08%20Bonobo%20-%20The%20Sicilian.mp3>.
+<urn:uuid:10af34fd-8279-4af3-95b0-96661588eb2c> a mo:Track; dcterms:title "The Turtle (Bonobo mix)"; mo:duration "307"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/09%20Pilote%20-%20The%20Turtle%20(Bonobo%20mix).mp3>.
+<urn:uuid:8fd36ebc-8dc7-4e11-a27a-a66efc08327b> a mo:Track; dcterms:title "The Shark"; mo:duration "284"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/10%20Bonobo%20-%20The%20Shark.mp3>.
+<urn:uuid:bc210889-285f-4063-bd72-f4bcc29db32b> a mo:Track; dcterms:title "The Plug (Quantic mix)"; mo:duration "373"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/11%20Bonobo%20-%20The%20Plug%20(Quantic%20mix).mp3>.
+<urn:uuid:da1b5796-f264-47b7-97aa-2580f92c53e7> a mo:Track; dcterms:title "Terrapin (Mr Scruff mix)"; mo:duration "477"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/12%20Bonobo%20-%20Terrapin%20(Mr%20Scruff%20mix).mp3>.
+<urn:uuid:b42658aa-e598-45ef-8acf-949f893b4602> a mo:Track; dcterms:title "Scuba (Amon Tobin remix)"; mo:duration "366"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/13%20Bonobo%20-%20Scuba%20(Amon%20Tobin%20remix).mp3>.
+<urn:uuid:655bd7c8-4a38-44f8-b568-264147d14701> a mo:Track; dcterms:title "Tell Me How You Feel (Bonobo mix)"; mo:duration "299"; dcat:downloadUrl <https://archive.org/download/BonoboSweetness/14%20Jon%20Kennedy%20-%20Tell%20Me%20How%20You%20Feel%20(Bonobo%20mix).mp3>.

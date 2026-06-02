@@ -1,0 +1,25 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:06d23607-eca6-4974-8ac4-1ede6e289fe0> a mo:Release;
+    dcterms:title "Metaphorical Music";
+    foaf:maker <urn:uuid:a5f679b6-aef4-43d9-9ea5-57ca3758d0da>;
+    dcat:landingPage <https://archive.org/details/nujabes-metaphorical-music>;
+    mo:track <urn:uuid:b3ea22db-71b4-40db-a267-5973a5ed8086>, <urn:uuid:acedf2df-8efc-432d-815b-ca6620062e62>, <urn:uuid:8f2f68bb-f48d-4969-b564-bfbf802a4897>, <urn:uuid:41fcc068-8597-415a-92c5-e2b726f4ca32>, <urn:uuid:92db34bd-e845-4f4f-9040-bf798dce1053>, <urn:uuid:598fdf4b-5b53-4475-8c47-494ae9c7795a>, <urn:uuid:fb74b028-5962-44d8-ab14-27fe4232bdc9>, <urn:uuid:88ef5e76-c7ca-490e-83c9-61512fba66c3>, <urn:uuid:7b2a1db7-1e43-4773-ac62-ed2de2778650>, <urn:uuid:94a11c0c-d2aa-4ba2-b877-b44eca6107ad>, <urn:uuid:266dc9fe-ed38-4a00-9f36-86c852e28bcc>, <urn:uuid:aa99531d-ec05-41fe-b198-e6b54bb35de1>, <urn:uuid:536e9f48-3ee3-4901-a2eb-b9ac1cef5dbc>, <urn:uuid:ca2ea660-c918-4ef5-8d13-9730346d7e73>, <urn:uuid:8508db8a-168c-478f-86f5-ee307e1a5779>.
+<urn:uuid:b3ea22db-71b4-40db-a267-5973a5ed8086> a mo:Track; dcterms:title "Blessing It (Feat. Substantial & Pase Rock)"; mo:duration "203"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/1%20Blessing%20It.mp3>.
+<urn:uuid:acedf2df-8efc-432d-815b-ca6620062e62> a mo:Track; dcterms:title "Next View (Feat. Uyama Hiroto)"; mo:duration "275"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/10%20Next%20View.mp3>.
+<urn:uuid:8f2f68bb-f48d-4969-b564-bfbf802a4897> a mo:Track; dcterms:title "Latitude - Remix (Feat. Five Deez)"; mo:duration "236"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/11%20Latitude%20-%20Remix.mp3>.
+<urn:uuid:41fcc068-8597-415a-92c5-e2b726f4ca32> a mo:Track; dcterms:title "F.I.L.O. (Feat. Shing02)"; mo:duration "211"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/12%20F.I.L.O..mp3>.
+<urn:uuid:92db34bd-e845-4f4f-9040-bf798dce1053> a mo:Track; dcterms:title "Summer Gypsy"; mo:duration "259"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/13%20Summer%20Gypsy.mp3>.
+<urn:uuid:598fdf4b-5b53-4475-8c47-494ae9c7795a> a mo:Track; dcterms:title "The Final View"; mo:duration "214"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/14%20The%20Final%20View.mp3>.
+<urn:uuid:fb74b028-5962-44d8-ab14-27fe4232bdc9> a mo:Track; dcterms:title "Peaceland"; mo:duration "499"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/15%20Peaceland.mp3>.
+<urn:uuid:88ef5e76-c7ca-490e-83c9-61512fba66c3> a mo:Track; dcterms:title "Horn in the Middle"; mo:duration "248"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/2%20Horn%20in%20the%20Middle.mp3>.
+<urn:uuid:7b2a1db7-1e43-4773-ac62-ed2de2778650> a mo:Track; dcterms:title "Lady Brown (Feat. Cise Starr)"; mo:duration "199"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/3%20Lady%20Brown.mp3>.
+<urn:uuid:94a11c0c-d2aa-4ba2-b877-b44eca6107ad> a mo:Track; dcterms:title "Kunomi"; mo:duration "286"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/4%20Kunomi.mp3>.
+<urn:uuid:266dc9fe-ed38-4a00-9f36-86c852e28bcc> a mo:Track; dcterms:title "Highs 2 Lows (Feat. Cise Starr)"; mo:duration "277"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/5%20Highs%202%20Lows.mp3>.
+<urn:uuid:aa99531d-ec05-41fe-b198-e6b54bb35de1> a mo:Track; dcterms:title "Beat Laments the World"; mo:duration "263"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/6%20Beat%20Laments%20the%20World.mp3>.
+<urn:uuid:536e9f48-3ee3-4901-a2eb-b9ac1cef5dbc> a mo:Track; dcterms:title "Letter from Yokosuka"; mo:duration "189"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/7%20Letter%20from%20Yokosuka.mp3>.
+<urn:uuid:ca2ea660-c918-4ef5-8d13-9730346d7e73> a mo:Track; dcterms:title "Think Different (Feat. Substantial)"; mo:duration "197"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/8%20Think%20Different.mp3>.
+<urn:uuid:8508db8a-168c-478f-86f5-ee307e1a5779> a mo:Track; dcterms:title "A Day by Atmosphere Supreme"; mo:duration "240"; dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/9%20A%20Day%20by%20Atmosphere%20Supreme.mp3>.

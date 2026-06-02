@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:075c5521-98cc-45fb-8ee5-7801c8d9574e> a mo:Release;
+    dcterms:title "They Say - Teddy Wilson - Billie Holiday";
+    foaf:maker "Teddy Wilson - Billie Holiday";
+    dcat:landingPage <https://archive.org/details/TheySayTeddyWilsonBillieHoliday>;
+    mo:track <urn:uuid:f44d69e4-8146-45da-93ed-422bdf91ffeb>.
+<urn:uuid:f44d69e4-8146-45da-93ed-422bdf91ffeb> a mo:Track; dcterms:title "They Say - Teddy Wilson - Billie Holiday"; mo:duration "190"; dcat:downloadUrl <https://archive.org/download/TheySayTeddyWilsonBillieHoliday/They%20Say%20-%20Teddy%20Wilson%20-%20Billie%20Holiday.mp3>.

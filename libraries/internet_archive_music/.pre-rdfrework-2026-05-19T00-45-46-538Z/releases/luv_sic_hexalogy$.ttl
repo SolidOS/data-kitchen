@@ -1,0 +1,23 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:9c6eb227-1be6-4645-8dab-1392742ae922> a mo:Release;
+    dcterms:title "Luv(sic) Hexalogy";
+    foaf:maker "Nujabes & Shing02";
+    dcat:landingPage <https://archive.org/details/1-8-luvsic-part-2-acoustica>;
+    mo:track <urn:uuid:4141ad90-02ef-418f-872c-44922f27cd97>, <urn:uuid:001cfabf-ce7c-4f1b-b666-8e0244341346>, <urn:uuid:4f801968-7849-4a3d-b794-9b5d9bb7217e>, <urn:uuid:52fda95e-709e-40a0-8df3-b95ef26fbfd1>, <urn:uuid:67ecc9f7-6d14-42fb-9882-639b3659aaf1>, <urn:uuid:b9a5acf2-6343-4bcb-99d5-763984ec553b>, <urn:uuid:f346c342-c6c2-44a1-963c-7d86948eaf99>, <urn:uuid:f1ea9861-6eae-4e1a-b849-31b4027bcda3>, <urn:uuid:c0d4e793-4990-4b4e-ac05-4bc004b4985b>, <urn:uuid:72431cdf-308d-4257-9363-dd543de57b37>, <urn:uuid:70147d70-ae23-4ce2-aa04-adc1aa1eb996>, <urn:uuid:3782ad01-f8ae-4c2d-857c-93b34f0e12ef>, <urn:uuid:83470ca0-37ff-418e-a0a6-336af8c7fa8a>.
+<urn:uuid:4141ad90-02ef-418f-872c-44922f27cd97> a mo:Track; dcterms:title "Perfect Circle"; mo:duration "240"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F1-13%20Perfect%20Circle.mp3>.
+<urn:uuid:001cfabf-ce7c-4f1b-b666-8e0244341346> a mo:Track; dcterms:title "Luv(sic) Grand Finale"; mo:duration "310"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F1-6%20Luv(sic)%20Grand%20Finale.mp3>.
+<urn:uuid:4f801968-7849-4a3d-b794-9b5d9bb7217e> a mo:Track; dcterms:title "Luv(sic) Part 2 (Acoustica)"; mo:duration "390"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F1-8%20Luv(sic)%20Part%202%20Acoustica.mp3>.
+<urn:uuid:52fda95e-709e-40a0-8df3-b95ef26fbfd1> a mo:Track; dcterms:title "Luv(sic) pt1 Instrumental"; mo:duration "286"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-1%20Luv(sic)%20Instrumental.mp3>.
+<urn:uuid:67ecc9f7-6d14-42fb-9882-639b3659aaf1> a mo:Track; dcterms:title "Luv(sic) pt4 (LASTorder Remix) Instrumental"; mo:duration "278"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-10%20Luv(sic)%20pt4%20LASTorder%20Remix%20Instrumental.mp3>.
+<urn:uuid:b9a5acf2-6343-4bcb-99d5-763984ec553b> a mo:Track; dcterms:title "Luv(sic) pt5 (Jumpster Remix) Instrumental"; mo:duration "279"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-11%20Luv(sic)%20pt5%20Jumpster%20Remix%20Instrumental.mp3>.
+<urn:uuid:f346c342-c6c2-44a1-963c-7d86948eaf99> a mo:Track; dcterms:title "Luv(sic) pt6 (Uyama Hiroto Remix) Instrumental"; mo:duration "278"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-12%20Luv(sic)%20pt6%20Uyama%20Hiroto%20Remix%20Instrumental.mp3>.
+<urn:uuid:f1ea9861-6eae-4e1a-b849-31b4027bcda3> a mo:Track; dcterms:title "Perfect Circle Instrumental"; mo:duration "240"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-13%20Perfect%20Circle%20Instrumental.mp3>.
+<urn:uuid:c0d4e793-4990-4b4e-ac05-4bc004b4985b> a mo:Track; dcterms:title "Luv(sic) pt2 Instrumental"; mo:duration "273"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-2%20Luv(sic)%20pt2%20Instrumental.mp3>.
+<urn:uuid:72431cdf-308d-4257-9363-dd543de57b37> a mo:Track; dcterms:title "Luv(sic) pt3 Instrumental"; mo:duration "374"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-3%20Luv(sic.)%20pt%203%20Instrumental.mp3>.
+<urn:uuid:70147d70-ae23-4ce2-aa04-adc1aa1eb996> a mo:Track; dcterms:title "Luv(sic) pt4 Instrumental"; mo:duration "310"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-4%20Luv(sic)%20pt4%20Instrumental.mp3>.
+<urn:uuid:3782ad01-f8ae-4c2d-857c-93b34f0e12ef> a mo:Track; dcterms:title "Luv(sic) pt5 Instrumental"; mo:duration "349"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-5%20Luv(sic)%20pt5%20Instrumental.mp3>.
+<urn:uuid:83470ca0-37ff-418e-a0a6-336af8c7fa8a> a mo:Track; dcterms:title "Luv(sic) pt3 (Ta-ku Remix) Instrumental"; mo:duration "296"; dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-9%20Luv(sic)%20pt3%20Ta-ku%20Remix%20Instrumental.mp3>.

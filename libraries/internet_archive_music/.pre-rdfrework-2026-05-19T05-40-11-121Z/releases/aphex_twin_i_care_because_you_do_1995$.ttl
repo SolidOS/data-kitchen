@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:13c802ed-70e3-4e77-bd3a-ff76d8fb30b9> a mo:Release;
+    dcterms:title "Aphex Twin - ...I Care Because You Do [1995]";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/ICBYD>;
+    mo:track <urn:uuid:00243a88-35ac-46b1-9ef3-1efcf4d0f037>, <urn:uuid:70a49a05-64bb-40f1-b611-6c0aa613640d>, <urn:uuid:65a6e83c-447d-4bf9-9f47-372567628590>, <urn:uuid:64519dd3-cb7f-4ea0-9941-1c5e731e8a80>, <urn:uuid:bb22e6e1-9b51-4375-b572-02ad36efe521>, <urn:uuid:a465cb31-b53f-440e-8dc2-3fa655651922>, <urn:uuid:086b3e4f-3d83-4cf4-808e-762ec811b518>, <urn:uuid:85e98c26-cccc-40f2-9551-0948775ffbf3>.
+<urn:uuid:00243a88-35ac-46b1-9ef3-1efcf4d0f037> a mo:Track; dcterms:title "Acrid Avid Jam Shred"; mo:duration "459"; dcat:downloadUrl <https://archive.org/download/ICBYD/01.%20Acrid%20Avid%20Jam%20Shred.mp3>.
+<urn:uuid:70a49a05-64bb-40f1-b611-6c0aa613640d> a mo:Track; dcterms:title "The Waxen Pith"; mo:duration "289"; dcat:downloadUrl <https://archive.org/download/ICBYD/02.%20The%20Waxen%20Pith.mp3>.
+<urn:uuid:65a6e83c-447d-4bf9-9f47-372567628590> a mo:Track; dcterms:title "Wax The Nip"; mo:duration "258"; dcat:downloadUrl <https://archive.org/download/ICBYD/03.%20Wax%20The%20Nip.mp3>.
+<urn:uuid:64519dd3-cb7f-4ea0-9941-1c5e731e8a80> a mo:Track; dcterms:title "Start As You Mean To Go On"; mo:duration "365"; dcat:downloadUrl <https://archive.org/download/ICBYD/07.%20Start%20As%20You%20Mean%20To%20Go%20On.mp3>.
+<urn:uuid:bb22e6e1-9b51-4375-b572-02ad36efe521> a mo:Track; dcterms:title "Wet Tip Hen Ax"; mo:duration "317"; dcat:downloadUrl <https://archive.org/download/ICBYD/08.%20Wet%20Tip%20Hen%20Ax.mp3>.
+<urn:uuid:a465cb31-b53f-440e-8dc2-3fa655651922> a mo:Track; dcterms:title "Mookid"; mo:duration "231"; dcat:downloadUrl <https://archive.org/download/ICBYD/09.%20Mookid.mp3>.
+<urn:uuid:086b3e4f-3d83-4cf4-808e-762ec811b518> a mo:Track; dcterms:title "Alberto Balsalm"; mo:duration "310"; dcat:downloadUrl <https://archive.org/download/ICBYD/10.%20Alberto%20Balsalm.mp3>.
+<urn:uuid:85e98c26-cccc-40f2-9551-0948775ffbf3> a mo:Track; dcterms:title "Cow Cud Is A Twin"; mo:duration "333"; dcat:downloadUrl <https://archive.org/download/ICBYD/11.%20Cow%20Cud%20Is%20A%20Twin.mp3>.

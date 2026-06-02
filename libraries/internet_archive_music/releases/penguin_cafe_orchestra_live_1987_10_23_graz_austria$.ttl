@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Penguin Cafe Orchestra LIVE 1987-10-23 @Graz, Austria" ;
+    dct:identifier "penguincafeorchestra23101987" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra23101987> ;
+    mo:track <#t01> ;
+    foaf:maker "Penguin Cafe Orchestra" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Prelude and Yodel" ;
+    mo:duration "236" ;
+    mo:item <https://archive.org/download/penguincafeorchestra23101987/16%20Prelude%20and%20Yodel.mp3> ;
+    dct:isPartOf <#it> .

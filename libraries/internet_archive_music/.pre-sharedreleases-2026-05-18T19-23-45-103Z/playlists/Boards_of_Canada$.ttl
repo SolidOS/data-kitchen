@@ -1,0 +1,337 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Boards_of_Canada#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Boards_of_Canada> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Boards of Canada";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:5a8dc958-a313-4750-b784-22745cc1a971>, <urn:uuid:20e7b797-5cfc-4925-b179-e92a0db80595>, <urn:uuid:2ac572e4-504c-4d6d-a9c9-5a009d50579d>, <urn:uuid:f61b2e3b-3807-4892-a7a9-6010ff8a8928>, <urn:uuid:fd67327b-ff9f-4077-a9aa-cf79ed47d8f6>, <urn:uuid:b4badac1-7782-4b03-a5c1-d92b21be6c28>, <urn:uuid:58ea74a2-bfe7-4b16-9455-c563dc384394>, <urn:uuid:4c3f22fd-787a-4221-a902-f43fc990d2f3>, <urn:uuid:28390265-a912-44ce-abb3-1a8162974cd8>, <urn:uuid:fe706ce0-3678-4b10-a9f6-b57bc7939c2c>, <urn:uuid:b3226f12-a9d7-4b0b-a963-c2e2540671d8>, <urn:uuid:77259d9d-3040-460a-98fd-f1aa04314929>, <urn:uuid:6f4b76cb-a7e3-42e5-b729-d51befcac542>, <urn:uuid:f85b848e-b5ba-4235-bbcd-73fbb903bb64>, <urn:uuid:f52c6c6d-481a-4c15-bdab-e2357cf55474>, <urn:uuid:31f54491-b80e-4b50-bafa-607d78653187>, <urn:uuid:cd7979bb-2c2c-4f48-b0b5-a5c2d3f14e69>, <urn:uuid:a12ddf70-fcd4-4eff-9c52-b88339c8cc5a>, <urn:uuid:85ab4a06-8453-48fc-8350-daf2cd6545d4>, <urn:uuid:829fb5cf-31ab-43c7-89b8-95f24f8c65e5>, <urn:uuid:a16eb7f0-d2f4-4453-824d-91c7a938777f>, <urn:uuid:7dc723c4-e032-49dc-adf3-e251d6438250>, <urn:uuid:b629d4ce-5fe8-4fd0-a48a-0991bbab2552>, <urn:uuid:28f0b957-785a-4bc5-9419-77cd9a2ea293>, <urn:uuid:2378345c-4a05-4a9e-972a-8acd9a631377>, <urn:uuid:e66907a3-6b9b-48f9-9100-90901e8d1293>, <urn:uuid:d36ec1d4-f3d6-48f7-9863-67db5102da0d>, <urn:uuid:a6ebabd0-5347-4d4d-9438-8e66343f76ca>, <urn:uuid:4b491246-5c0c-43a7-9ec8-e98e3e283576>, <urn:uuid:e9d752e6-4f97-4792-bfea-1901aa1425e5>, <urn:uuid:402a1c6b-325b-4c9f-ba64-cb24ec3af0f3>, <urn:uuid:246bb2d5-ae04-4dd0-86c2-da23bf026882>, <urn:uuid:d2dffceb-c44a-4989-8a78-3be37ff53e74>, <urn:uuid:3cd3b692-2d0a-46ef-a56e-9aaff3b600a5>, <urn:uuid:3261d2ab-35eb-4944-a11b-08e0b3c31716>, <urn:uuid:7c843eb0-88b8-4675-802c-a7784952304e>, <urn:uuid:82ab03a3-750a-4f26-a353-6c7245b66c92>, <urn:uuid:5f737b28-4964-4bcc-b637-d75b34c46935>, <urn:uuid:6cfb7098-d44e-45c5-969c-a38fb25d3ac4>, <urn:uuid:ef5f1336-4f25-43ec-849e-6bbe474d2e43>, <urn:uuid:7d11eda2-2751-41bc-bee3-8245fe6af9dc>, <urn:uuid:81f44549-0322-4541-ac3d-75156186d728>, <urn:uuid:4653d57b-b8c2-49a2-9163-11309aa7198b>, <urn:uuid:ac823932-fa52-4f32-bc08-3a6c74693b1b>, <urn:uuid:dcd45708-9517-46bb-8dfc-7dd13dc1279f>, <urn:uuid:86a1a0be-ad4e-47cb-8451-357c97c1f259>, <urn:uuid:095fb2b7-e62f-48c5-a561-88f73702d7df>, <urn:uuid:688be533-2d35-4498-bd6d-42c1d4cead55>, <urn:uuid:a824d607-3771-4768-8683-6ec35b1fcd11>, <urn:uuid:f1e4f8be-f0d9-47e8-88be-cc8360e0a896>, <urn:uuid:72d83d02-ccad-44a3-a348-2bab0b299696>, <urn:uuid:640d68f5-8f9e-4092-8fd3-c067390d0510>, <urn:uuid:e078b7c9-2cb3-403e-a846-06ad0f8e8898>, <urn:uuid:2eb68c8d-a31b-4b12-8f77-b771ab3b3f1c>, <urn:uuid:af4745ef-9931-4643-9189-a93f008b3467>, <urn:uuid:dac414a2-3ed7-4b3e-a79b-c1dd85f6cda4>, <urn:uuid:943514cc-ad0e-4b37-900c-4949ed1fc4cb>, <urn:uuid:e50532a7-cde6-45bc-b912-eda48f4275f1>, <urn:uuid:c1c7d25d-4ea0-47c8-a864-5c09cdb36c3b>, <urn:uuid:c8851e35-f288-4ce1-a43e-739202900df7>, <urn:uuid:72c4afc7-99e3-4c05-ba73-a3fd00708e18>, <urn:uuid:51a3ad45-184a-47e0-9d36-58228b521708>, <urn:uuid:310b6e92-3a91-4cfa-9d2b-b853350161b8>, <urn:uuid:380f3db3-dfc4-4eed-8be6-6e85da759e17>, <urn:uuid:f6335c04-db6a-4a56-bd52-de243627bfed>, <urn:uuid:b60048e0-97fe-4414-a638-7fb8b850fe8e>, <urn:uuid:4fbc074f-816b-47e7-8ef7-7fc481daba5c>, <urn:uuid:daf658d1-0c55-40af-b260-47346bd9a983>, <urn:uuid:4da3bca4-5bd2-43a8-9dad-b467969c7bc6>;
+    <http://open-media-player.org/ns#hidePlaylist> "true".
+<urn:uuid:5a8dc958-a313-4750-b784-22745cc1a971> a mo:Track;
+    dcterms:title "Sixtyniner";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/01%20-%20Sixtyniner.mp3>;
+    mo:duration "312".
+<urn:uuid:20e7b797-5cfc-4925-b179-e92a0db80595> a mo:Track;
+    dcterms:title "Oirectine";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/02%20-%20Oirectine.mp3>;
+    mo:duration "330".
+<urn:uuid:2ac572e4-504c-4d6d-a9c9-5a009d50579d> a mo:Track;
+    dcterms:title "Basefree";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/04%20-%20Basefree.mp3>;
+    mo:duration "353".
+<urn:uuid:f61b2e3b-3807-4892-a7a9-6010ff8a8928> a mo:Track;
+    dcterms:title "Twoism";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/05%20-%20Twoism.mp3>;
+    mo:duration "334".
+<urn:uuid:fd67327b-ff9f-4077-a9aa-cf79ed47d8f6> a mo:Track;
+    dcterms:title "Seeya Later";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/06%20-%20Seeya%20Later.mp3>;
+    mo:duration "244".
+<urn:uuid:b4badac1-7782-4b03-a5c1-d92b21be6c28> a mo:Track;
+    dcterms:title "Smokes Quantity";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/08%20-%20Smokes%20Quantity.mp3>;
+    mo:duration "187".
+<urn:uuid:58ea74a2-bfe7-4b16-9455-c563dc384394> a mo:Track;
+    dcterms:title "Wouldn't You Like To Be Free?";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1994EpPlayByNumbers/02%20-%20Wouldn't%20You%20Like%20to%20Be%20Free.mp3>;
+    mo:duration "305".
+<urn:uuid:4c3f22fd-787a-4221-a902-f43fc990d2f3> a mo:Track;
+    dcterms:title "Infinite Lines of Colourful Sevens";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1994EpPlayByNumbers/03%20-%20Infinite%20Lines%20of%20Colourful%20Sevens.mp3>;
+    mo:duration "394".
+<urn:uuid:28390265-a912-44ce-abb3-1a8162974cd8> a mo:Track;
+    dcterms:title "Numerator";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1994EpPlayByNumbers/04%20-%20Numerator.mp3>;
+    mo:duration "279".
+<urn:uuid:fe706ce0-3678-4b10-a9f6-b57bc7939c2c> a mo:Track;
+    dcterms:title "Echelon";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/BoardsOfCanada-1994EpPlayByNumbers/05%20-%20Echelon.mp3>;
+    mo:duration "339".
+<urn:uuid:b3226f12-a9d7-4b0b-a963-c2e2540671d8> a mo:Track;
+    dcterms:title "Trapped";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-a-few-old-tunes-09-forest-moon/%5B1996%5D%20Boards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%2FBoards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%20-%2004%20-%20Trapped.mp3>;
+    mo:duration "228".
+<urn:uuid:77259d9d-3040-460a-98fd-f1aa04314929> a mo:Track;
+    dcterms:title "Finity";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-a-few-old-tunes-09-forest-moon/%5B1996%5D%20Boards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%2FBoards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%20-%2008%20-%20Finity.mp3>;
+    mo:duration "298".
+<urn:uuid:6f4b76cb-a7e3-42e5-b729-d51befcac542> a mo:Track;
+    dcterms:title "Forest Moon";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-a-few-old-tunes-09-forest-moon/%5B1996%5D%20Boards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%2FBoards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%20-%2009%20-%20Forest%20Moon.mp3>;
+    mo:duration "398".
+<urn:uuid:f85b848e-b5ba-4235-bbcd-73fbb903bb64> a mo:Track;
+    dcterms:title "Mansel";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-a-few-old-tunes-09-forest-moon/%5B1996%5D%20Boards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%2FBoards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%20-%2013%20-%20Mansel.mp3>;
+    mo:duration "337".
+<urn:uuid:f52c6c6d-481a-4c15-bdab-e2357cf55474> a mo:Track;
+    dcterms:title "King Of Carnival";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-a-few-old-tunes-09-forest-moon/%5B1996%5D%20Boards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%2FBoards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%20-%2021%20-%20King%20Of%20Carnival.mp3>;
+    mo:duration "261".
+<urn:uuid:31f54491-b80e-4b50-bafa-607d78653187> a mo:Track;
+    dcterms:title "M9";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-a-few-old-tunes-09-forest-moon/%5B1996%5D%20Boards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%2FBoards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%20-%2022%20-%20M9.mp3>;
+    mo:duration "210".
+<urn:uuid:cd7979bb-2c2c-4f48-b0b5-a5c2d3f14e69> a mo:Track;
+    dcterms:title "Sequoia";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-a-few-old-tunes-09-forest-moon/%5B1996%5D%20Boards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%2FBoards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%20-%2024%20-%20Sequoia.mp3>;
+    mo:duration "284".
+<urn:uuid:a12ddf70-fcd4-4eff-9c52-b88339c8cc5a> a mo:Track;
+    dcterms:title "5-9-78";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-a-few-old-tunes-09-forest-moon/%5B1996%5D%20Boards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%2FBoards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%20-%2026%20-%205-9-78.mp3>;
+    mo:duration "249".
+<urn:uuid:85ab4a06-8453-48fc-8350-daf2cd6545d4> a mo:Track;
+    dcterms:title "Up The March Bank";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-a-few-old-tunes-09-forest-moon/%5B1996%5D%20Boards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%2FBoards%20of%20Canada%20-%20A%20Few%20Old%20Tunes%20-%2029%20-%20Up%20The%20March%20Bank.mp3>;
+    mo:duration "202".
+<urn:uuid:829fb5cf-31ab-43c7-89b8-95f24f8c65e5> a mo:Track;
+    dcterms:title "Music Is Math";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F02.Music%20Is%20Math.mp3>;
+    mo:duration "321".
+<urn:uuid:a16eb7f0-d2f4-4453-824d-91c7a938777f> a mo:Track;
+    dcterms:title "Gyroscope";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F04.Gyroscope.mp3>;
+    mo:duration "215".
+<urn:uuid:7dc723c4-e032-49dc-adf3-e251d6438250> a mo:Track;
+    dcterms:title "Sunshine Recorder";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F06.Sunshine%20Recorder.mp3>;
+    mo:duration "371".
+<urn:uuid:b629d4ce-5fe8-4fd0-a48a-0991bbab2552> a mo:Track;
+    dcterms:title "Julie And Candy";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F08.Julie%20And%20Candy.mp3>;
+    mo:duration "330".
+<urn:uuid:28f0b957-785a-4bc5-9419-77cd9a2ea293> a mo:Track;
+    dcterms:title "1969";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F10.1969.mp3>;
+    mo:duration "260".
+<urn:uuid:2378345c-4a05-4a9e-972a-8acd9a631377> a mo:Track;
+    dcterms:title "The Beach At Redpoint";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F12.The%20Beach%20At%20Redpoint.mp3>;
+    mo:duration "258".
+<urn:uuid:e66907a3-6b9b-48f9-9100-90901e8d1293> a mo:Track;
+    dcterms:title "Alpha And Omega";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F14.Alpha%20And%20Omega.mp3>;
+    mo:duration "422".
+<urn:uuid:d36ec1d4-f3d6-48f7-9863-67db5102da0d> a mo:Track;
+    dcterms:title "The Devil Is In The Details";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F16.The%20Devil%20Is%20In%20The%20Details.mp3>;
+    mo:duration "233".
+<urn:uuid:a6ebabd0-5347-4d4d-9438-8e66343f76ca> a mo:Track;
+    dcterms:title "Dawn Chorus";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F19.Dawn%20Chorus.mp3>;
+    mo:duration "235".
+<urn:uuid:4b491246-5c0c-43a7-9ec8-e98e3e283576> a mo:Track;
+    dcterms:title "You Could Feel The Sky";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F21.You%20Could%20Feel%20The%20Sky.mp3>;
+    mo:duration "312".
+<urn:uuid:e9d752e6-4f97-4792-bfea-1901aa1425e5> a mo:Track;
+    dcterms:title "We've Started Up";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2001%20We've%20Started%20Up.mp3>;
+    mo:duration "339".
+<urn:uuid:402a1c6b-325b-4c9f-ba64-cb24ec3af0f3> a mo:Track;
+    dcterms:title "David Came To Mahana'Im";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2012%20David%20Came%20To%20Mahana'Im.mp3>;
+    mo:duration "279".
+<urn:uuid:246bb2d5-ae04-4dd0-86c2-da23bf026882> a mo:Track;
+    dcterms:title "Mukinabaht";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2018%20Mukinabaht.mp3>;
+    mo:duration "302".
+<urn:uuid:d2dffceb-c44a-4989-8a78-3be37ff53e74> a mo:Track;
+    dcterms:title "BMX Track";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2021%20BMX%20Track.mp3>;
+    mo:duration "305".
+<urn:uuid:3cd3b692-2d0a-46ef-a56e-9aaff3b600a5> a mo:Track;
+    dcterms:title "Hiscores";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2022%20Hiscores.mp3>;
+    mo:duration "218".
+<urn:uuid:3261d2ab-35eb-4944-a11b-08e0b3c31716> a mo:Track;
+    dcterms:title "Zander Two";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2024%20Zander%20Two.mp3>;
+    mo:duration "239".
+<urn:uuid:7c843eb0-88b8-4675-802c-a7784952304e> a mo:Track;
+    dcterms:title "Buckie High";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2030%20Buckie%20High.mp3>;
+    mo:duration "316".
+<urn:uuid:82ab03a3-750a-4f26-a353-6c7245b66c92> a mo:Track;
+    dcterms:title "I Love My New Shears";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-old-tunes-volume-2/Boards%20of%20Canada%20-%20Old%20Tunes%20(Volume%202)%20-%2031%20I%20Love%20My%20New%20Shears.mp3>;
+    mo:duration "190".
+<urn:uuid:5f737b28-4964-4bcc-b637-d75b34c46935> a mo:Track;
+    dcterms:title "An Eagle in Your Mind";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/02%20An%20Eagle%20in%20Your%20Mind.mp3>;
+    mo:duration "386".
+<urn:uuid:6cfb7098-d44e-45c5-969c-a38fb25d3ac4> a mo:Track;
+    dcterms:title "Telephasic Workshop";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/04%20Telephasic%20Workshop.mp3>;
+    mo:duration "396".
+<urn:uuid:ef5f1336-4f25-43ec-849e-6bbe474d2e43> a mo:Track;
+    dcterms:title "Sixtyten";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/06%20Sixtyten.mp3>;
+    mo:duration "348".
+<urn:uuid:7d11eda2-2751-41bc-bee3-8245fe6af9dc> a mo:Track;
+    dcterms:title "Turquoise Hexagon Sun";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/07%20Turquoise%20Hexagon%20Sun.mp3>;
+    mo:duration "308".
+<urn:uuid:81f44549-0322-4541-ac3d-75156186d728> a mo:Track;
+    dcterms:title "Rue the Whirl";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/11%20Rue%20the%20Whirl.mp3>;
+    mo:duration "400".
+<urn:uuid:4653d57b-b8c2-49a2-9163-11309aa7198b> a mo:Track;
+    dcterms:title "Aquarius";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/12%20Aquarius.mp3>;
+    mo:duration "358".
+<urn:uuid:ac823932-fa52-4f32-bc08-3a6c74693b1b> a mo:Track;
+    dcterms:title "Pete Standing Alone";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/14%20Pete%20Standing%20Alone.mp3>;
+    mo:duration "368".
+<urn:uuid:dcd45708-9517-46bb-8dfc-7dd13dc1279f> a mo:Track;
+    dcterms:title "Smokes Quantity";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/15%20Smokes%20Quantity.mp3>;
+    mo:duration "187".
+<urn:uuid:86a1a0be-ad4e-47cb-8451-357c97c1f259> a mo:Track;
+    dcterms:title "Open the Light";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/16%20Open%20the%20Light.mp3>;
+    mo:duration "265".
+<urn:uuid:095fb2b7-e62f-48c5-a561-88f73702d7df> a mo:Track;
+    dcterms:title "Happy Cycling";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/18%20Happy%20Cycling.mp3>;
+    mo:duration "473".
+<urn:uuid:688be533-2d35-4498-bd6d-42c1d4cead55> a mo:Track;
+    dcterms:title "True Map";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/closes-vol-1-cd-r-rip/03%20-%20True%20Map.mp3>;
+    mo:duration "322".
+<urn:uuid:a824d607-3771-4768-8683-6ec35b1fcd11> a mo:Track;
+    dcterms:title "5d";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/closes-vol-1-cd-r-rip/05%20-%205d.mp3>;
+    mo:duration "322".
+<urn:uuid:f1e4f8be-f0d9-47e8-88be-cc8360e0a896> a mo:Track;
+    dcterms:title "Tends Towards";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/closes-vol-1-cd-r-rip/07%20-%20Tends%20Towards.mp3>;
+    mo:duration "528".
+<urn:uuid:72d83d02-ccad-44a3-a348-2bab0b299696> a mo:Track;
+    dcterms:title "Eye / Ear";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/closes-vol-1-cd-r-rip/09%20-%20Eye%20Ear.mp3>;
+    mo:duration "418".
+<urn:uuid:640d68f5-8f9e-4092-8fd3-c067390d0510> a mo:Track;
+    dcterms:title "Found The Way";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/closes-vol-1-cd-r-rip/12%20-%20Found%20The%20Way.mp3>;
+    mo:duration "366".
+<urn:uuid:e078b7c9-2cb3-403e-a846-06ad0f8e8898> a mo:Track;
+    dcterms:title "Bubbah's Tum - Dirty Great Mable (Boards of Canada Mix)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Bubbah's%20Tum%20-%20Dirty%20Great%20Mable%20(Boards%20of%20Canada%20Mix).mp3>;
+    mo:duration "318".
+<urn:uuid:2eb68c8d-a31b-4b12-8f77-b771ab3b3f1c> a mo:Track;
+    dcterms:title "Meat Beat Manifesto - Prime Audio Soup (Vegetarian Soup)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Meat%20Beat%20Manifesto%20-%20Prime%20Audio%20Soup%20(Vegetarian%20Soup).mp3>;
+    mo:duration "426".
+<urn:uuid:af4745ef-9931-4643-9189-a93f008b3467> a mo:Track;
+    dcterms:title "Michael Fakesch - Surfaise (Trade Winds Mix)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Michael%20Fakesch%20-%20Surfaise%20(Trade%20Winds%20Mix).mp3>;
+    mo:duration "370".
+<urn:uuid:dac414a2-3ed7-4b3e-a79b-c1dd85f6cda4> a mo:Track;
+    dcterms:title "Mira Calix - Sandsings (Boards of Canada Mix)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Mira%20Calix%20-%20Sandsings%20(Boards%20of%20Canada%20Mix).mp3>;
+    mo:duration "382".
+<urn:uuid:943514cc-ad0e-4b37-900c-4949ed1fc4cb> a mo:Track;
+    dcterms:title "Slag Boom Van Loon - Poppy Seed (Boards of Canada Mix)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Slag%20Boom%20Van%20Loon%20-%20Poppy%20Seed%20(Boards%20of%20Canada%20Mix).mp3>;
+    mo:duration "416".
+<urn:uuid:e50532a7-cde6-45bc-b912-eda48f4275f1> a mo:Track;
+    dcterms:title "Slag Boom Van Loon - Poppy Seed (Reprise)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Slag%20Boom%20Van%20Loon%20-%20Poppy%20Seed%20(Reprise).mp3>;
+    mo:duration "182".
+<urn:uuid:c1c7d25d-4ea0-47c8-a864-5c09cdb36c3b> a mo:Track;
+    dcterms:title "Chinook";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2002%20-%20Chinook.mp3>;
+    mo:duration "279".
+<urn:uuid:c8851e35-f288-4ce1-a43e-739202900df7> a mo:Track;
+    dcterms:title "Everything You Do Is A Balloon";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2004%20-%20Everything%20You%20Do%20Is%20A%20Balloon.mp3>;
+    mo:duration "415".
+<urn:uuid:72c4afc7-99e3-4c05-ba73-a3fd00708e18> a mo:Track;
+    dcterms:title "June 9th";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2008%20-%20June%209th.mp3>;
+    mo:duration "315".
+<urn:uuid:51a3ad45-184a-47e0-9d36-58228b521708> a mo:Track;
+    dcterms:title "Sixtyniner";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2011%20-%20Sixtyniner.mp3>;
+    mo:duration "310".
+<urn:uuid:310b6e92-3a91-4cfa-9d2b-b853350161b8> a mo:Track;
+    dcterms:title "Red Moss";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2012%20-%20Red%20Moss.mp3>;
+    mo:duration "382".
+<urn:uuid:380f3db3-dfc4-4eed-8be6-6e85da759e17> a mo:Track;
+    dcterms:title "Nlogax";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2015%20-%20Nlogax.mp3>;
+    mo:duration "313".
+<urn:uuid:f6335c04-db6a-4a56-bd52-de243627bfed> a mo:Track;
+    dcterms:title "M9";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2016%20-%20M9.mp3>;
+    mo:duration "220".
+<urn:uuid:b60048e0-97fe-4414-a638-7fb8b850fe8e> a mo:Track;
+    dcterms:title "Turquoise Hexagon Sun";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2018%20-%20Turquoise%20Hexagon%20Sun.mp3>;
+    mo:duration "312".
+<urn:uuid:4fbc074f-816b-47e7-8ef7-7fc481daba5c> a mo:Track;
+    dcterms:title "Whitewater";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2019%20-%20Whitewater.mp3>;
+    mo:duration "376".
+<urn:uuid:daf658d1-0c55-40af-b260-47346bd9a983> a mo:Track;
+    dcterms:title "Boc Maxima A";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boc-maxima-a/Boc%20Maxima%20A.mp3>;
+    mo:duration "2454".
+<urn:uuid:4da3bca4-5bd2-43a8-9dad-b467969c7bc6> a mo:Track;
+    dcterms:title "Boc Maxima B";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/boc-maxima-a/Boc%20Maxima%20B.mp3>;
+    mo:duration "1472".
+<urn:uuid:b715e9dc-4c7a-4cc4-8654-c500b8b9611e> a mo:Release;
+    dcterms:title "Boards Of Canada - (1995) Twoism ‎(LP, Album, Ltd)";
+    foaf:maker "Boards Of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/BoardsOfCanada-1995TwoismLPAlbumLtd>;
+    mo:track <urn:uuid:5a8dc958-a313-4750-b784-22745cc1a971>, <urn:uuid:20e7b797-5cfc-4925-b179-e92a0db80595>, <urn:uuid:2ac572e4-504c-4d6d-a9c9-5a009d50579d>, <urn:uuid:f61b2e3b-3807-4892-a7a9-6010ff8a8928>, <urn:uuid:fd67327b-ff9f-4077-a9aa-cf79ed47d8f6>, <urn:uuid:b4badac1-7782-4b03-a5c1-d92b21be6c28>.
+<urn:uuid:727d70fd-25fa-4170-be4f-d50f071324a4> a mo:Release;
+    dcterms:title "Boards Of Canada - (1994) (Ep) Play By Numbers";
+    foaf:maker "Boards Of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/BoardsOfCanada-1994EpPlayByNumbers>;
+    mo:track <urn:uuid:58ea74a2-bfe7-4b16-9455-c563dc384394>, <urn:uuid:4c3f22fd-787a-4221-a902-f43fc990d2f3>, <urn:uuid:28390265-a912-44ce-abb3-1a8162974cd8>, <urn:uuid:fe706ce0-3678-4b10-a9f6-b57bc7939c2c>.
+<urn:uuid:55c60634-b3d7-42fb-8792-9e9fae67e7b5> a mo:Release;
+    dcterms:title "Boards Of Canada - A Few Old Tunes (1996)";
+    foaf:maker "Boards of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/boards-of-canada-a-few-old-tunes-09-forest-moon>;
+    mo:track <urn:uuid:b3226f12-a9d7-4b0b-a963-c2e2540671d8>, <urn:uuid:77259d9d-3040-460a-98fd-f1aa04314929>, <urn:uuid:6f4b76cb-a7e3-42e5-b729-d51befcac542>, <urn:uuid:f85b848e-b5ba-4235-bbcd-73fbb903bb64>, <urn:uuid:f52c6c6d-481a-4c15-bdab-e2357cf55474>, <urn:uuid:31f54491-b80e-4b50-bafa-607d78653187>, <urn:uuid:cd7979bb-2c2c-4f48-b0b5-a5c2d3f14e69>, <urn:uuid:a12ddf70-fcd4-4eff-9c52-b88339c8cc5a>, <urn:uuid:85ab4a06-8453-48fc-8350-daf2cd6545d4>.
+<urn:uuid:863444a2-9943-4b9c-a82f-dce1e8797a82> a mo:Release;
+    dcterms:title "Boards of Canada - Geogaddi (2002)";
+    foaf:maker "Boards of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/14.-alpha-and-omega>;
+    mo:track <urn:uuid:829fb5cf-31ab-43c7-89b8-95f24f8c65e5>, <urn:uuid:a16eb7f0-d2f4-4453-824d-91c7a938777f>, <urn:uuid:7dc723c4-e032-49dc-adf3-e251d6438250>, <urn:uuid:b629d4ce-5fe8-4fd0-a48a-0991bbab2552>, <urn:uuid:28f0b957-785a-4bc5-9419-77cd9a2ea293>, <urn:uuid:2378345c-4a05-4a9e-972a-8acd9a631377>, <urn:uuid:e66907a3-6b9b-48f9-9100-90901e8d1293>, <urn:uuid:d36ec1d4-f3d6-48f7-9863-67db5102da0d>, <urn:uuid:a6ebabd0-5347-4d4d-9438-8e66343f76ca>, <urn:uuid:4b491246-5c0c-43a7-9ec8-e98e3e283576>.
+<urn:uuid:b1c8c951-89ca-42a3-aab3-4d287b28a3ca> a mo:Release;
+    dcterms:title "Old Tunes Vol. 2";
+    foaf:maker "Boards of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/boards-of-canada-old-tunes-volume-2>;
+    mo:track <urn:uuid:e9d752e6-4f97-4792-bfea-1901aa1425e5>, <urn:uuid:402a1c6b-325b-4c9f-ba64-cb24ec3af0f3>, <urn:uuid:246bb2d5-ae04-4dd0-86c2-da23bf026882>, <urn:uuid:d2dffceb-c44a-4989-8a78-3be37ff53e74>, <urn:uuid:3cd3b692-2d0a-46ef-a56e-9aaff3b600a5>, <urn:uuid:3261d2ab-35eb-4944-a11b-08e0b3c31716>, <urn:uuid:7c843eb0-88b8-4675-802c-a7784952304e>, <urn:uuid:82ab03a3-750a-4f26-a353-6c7245b66c92>.
+<urn:uuid:0170e2d6-62e6-48c1-82cc-325321eaa7c1> a mo:Release;
+    dcterms:title "Music Has the Right to Children";
+    foaf:maker "Boards of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/1998-boards-of-canada-music-has-the-right-to-children>;
+    mo:track <urn:uuid:5f737b28-4964-4bcc-b637-d75b34c46935>, <urn:uuid:6cfb7098-d44e-45c5-969c-a38fb25d3ac4>, <urn:uuid:ef5f1336-4f25-43ec-849e-6bbe474d2e43>, <urn:uuid:7d11eda2-2751-41bc-bee3-8245fe6af9dc>, <urn:uuid:81f44549-0322-4541-ac3d-75156186d728>, <urn:uuid:4653d57b-b8c2-49a2-9163-11309aa7198b>, <urn:uuid:ac823932-fa52-4f32-bc08-3a6c74693b1b>, <urn:uuid:dcd45708-9517-46bb-8dfc-7dd13dc1279f>, <urn:uuid:86a1a0be-ad4e-47cb-8451-357c97c1f259>, <urn:uuid:095fb2b7-e62f-48c5-a561-88f73702d7df>.
+<urn:uuid:69a11a8c-e605-4e3d-992c-5c29549c182f> a mo:Release;
+    dcterms:title "Closes vol. 1 (cd-r rip)";
+    foaf:maker "Boards of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/closes-vol-1-cd-r-rip>;
+    mo:track <urn:uuid:688be533-2d35-4498-bd6d-42c1d4cead55>, <urn:uuid:a824d607-3771-4768-8683-6ec35b1fcd11>, <urn:uuid:f1e4f8be-f0d9-47e8-88be-cc8360e0a896>, <urn:uuid:72d83d02-ccad-44a3-a348-2bab0b299696>, <urn:uuid:640d68f5-8f9e-4092-8fd3-c067390d0510>.
+<urn:uuid:e6d317e4-39fc-4094-bee6-a0504a42b6d5> a mo:Release;
+    dcterms:title "Boc Remii Vol. 1";
+    foaf:maker "Boards of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/meat-beat-manifesto-prime-audio-soup-vegetarian-soup>;
+    mo:track <urn:uuid:e078b7c9-2cb3-403e-a846-06ad0f8e8898>, <urn:uuid:2eb68c8d-a31b-4b12-8f77-b771ab3b3f1c>, <urn:uuid:af4745ef-9931-4643-9189-a93f008b3467>, <urn:uuid:dac414a2-3ed7-4b3e-a79b-c1dd85f6cda4>, <urn:uuid:943514cc-ad0e-4b37-900c-4949ed1fc4cb>, <urn:uuid:e50532a7-cde6-45bc-b912-eda48f4275f1>.
+<urn:uuid:fe524bfd-489d-48e9-84ea-c2b751da1df1> a mo:Release;
+    dcterms:title "Boc Maxima";
+    foaf:maker "Boards of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/boards-of-canada-boc-maxima>;
+    mo:track <urn:uuid:c1c7d25d-4ea0-47c8-a864-5c09cdb36c3b>, <urn:uuid:c8851e35-f288-4ce1-a43e-739202900df7>, <urn:uuid:72c4afc7-99e3-4c05-ba73-a3fd00708e18>, <urn:uuid:51a3ad45-184a-47e0-9d36-58228b521708>, <urn:uuid:310b6e92-3a91-4cfa-9d2b-b853350161b8>, <urn:uuid:380f3db3-dfc4-4eed-8be6-6e85da759e17>, <urn:uuid:f6335c04-db6a-4a56-bd52-de243627bfed>, <urn:uuid:b60048e0-97fe-4414-a638-7fb8b850fe8e>, <urn:uuid:4fbc074f-816b-47e7-8ef7-7fc481daba5c>.
+<urn:uuid:394c7cec-012e-4700-b425-c35278b645a8> a mo:Release;
+    dcterms:title "Boc Maxima";
+    foaf:maker "Boards of Canada";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/boc-maxima-a>;
+    mo:track <urn:uuid:daf658d1-0c55-40af-b260-47346bd9a983>, <urn:uuid:4da3bca4-5bd2-43a8-9dad-b467969c7bc6>.

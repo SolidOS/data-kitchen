@@ -1,0 +1,108 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:12638957-a5e2-429b-8452-ba6ab912f1f9>
+    a mo:Release;
+    dct:title "Pac's Life";
+    mo:track
+        <urn:uuid:188e88bd-5a0c-4826-ab7d-e77474cef8f5>,
+        <urn:uuid:37a6e1e0-c978-4c8b-b9b5-14d54f214559>,
+        <urn:uuid:47dab522-2d59-430f-b8d7-ad77296d81da>,
+        <urn:uuid:4a403eb9-7623-489d-a040-74e2d0076da1>,
+        <urn:uuid:56d14f54-9774-4bc2-9f4e-2b66981e5a2c>,
+        <urn:uuid:6a405c2c-a9fd-42e1-9e41-e2ac5e145a6d>,
+        <urn:uuid:a3d21a35-3fc9-4e1a-a939-396b63e5c41f>,
+        <urn:uuid:a4a663a1-e5e0-498a-ac8d-83cf127fd3d3>,
+        <urn:uuid:a8ababd0-2613-4c80-bbb5-c2f89c9ddf2f>,
+        <urn:uuid:ad150f06-7500-4497-80d1-de5745db3c6f>,
+        <urn:uuid:b816b8c1-2f72-4dda-b51f-4f56eb67f5e5>,
+        <urn:uuid:e1cff091-e8ae-4853-b7d0-1e2f38e3b75c>,
+        <urn:uuid:f5c4e62a-92fa-440b-90c8-9466de69a9ef>;
+    dcat:landingPage det:pacs-life_202511;
+    foaf:maker
+        "2Pac Feat. Bone Thugs-N-Harmony",
+        <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:188e88bd-5a0c-4826-ab7d-e77474cef8f5>
+    a mo:Track;
+    dct:title "Soon As I Get Home";
+    mo:duration "220";
+    dcat:downloadUrl
+        <https://archive.org/download/pacs-life_202511/09.%20Soon%20As%20I%20Get%20Home.mp3>.
+<urn:uuid:37a6e1e0-c978-4c8b-b9b5-14d54f214559>
+    a mo:Track;
+    dct:title "Untouchables (Swizz Beatz Remix)";
+    mo:duration "256";
+    dcat:downloadUrl
+        <https://archive.org/download/pacs-life_202511/01.%20Untouchable%20Swizz%20Beatz%20Remix.mp3>.
+<urn:uuid:47dab522-2d59-430f-b8d7-ad77296d81da>
+    a mo:Track;
+    dct:title "Don't Sleep";
+    mo:duration "215";
+    dcat:downloadUrl
+    <https://archive.org/download/pacs-life_202511/08.%20Don't%20Sleep.mp3>.
+<urn:uuid:4a403eb9-7623-489d-a040-74e2d0076da1>
+    a mo:Track;
+    dct:title "Playa Cardz Right (Female)";
+    mo:duration "273";
+    dcat:downloadUrl
+        <https://archive.org/download/pacs-life_202511/04.%20Playa%20Cardz%20Right%20(Female).mp3>.
+<urn:uuid:56d14f54-9774-4bc2-9f4e-2b66981e5a2c>
+    a mo:Track;
+    dct:title "Untouchable";
+    mo:duration "270";
+    dcat:downloadUrl
+    <https://archive.org/download/pacs-life_202511/13.%20Untouchable.mp3>.
+<urn:uuid:6a405c2c-a9fd-42e1-9e41-e2ac5e145a6d>
+    a mo:Track;
+    dct:title "Dumpin'";
+    mo:duration "267";
+    dcat:downloadUrl
+    <https://archive.org/download/pacs-life_202511/03.%20Dumpin'.mp3>.
+<urn:uuid:a3d21a35-3fc9-4e1a-a939-396b63e5c41f>
+    a mo:Track;
+    dct:title "Don't Stop";
+    mo:duration "324";
+    dcat:downloadUrl
+    <https://archive.org/download/pacs-life_202511/11.%20Don't%20Stop.mp3>.
+<urn:uuid:a4a663a1-e5e0-498a-ac8d-83cf127fd3d3>
+    a mo:Track;
+    dct:title "Playa Cardz Right (Male)";
+    mo:duration "294";
+    dcat:downloadUrl
+        <https://archive.org/download/pacs-life_202511/10.%20Playa%20Cardz%20Right%20(Male).mp3>.
+<urn:uuid:a8ababd0-2613-4c80-bbb5-c2f89c9ddf2f>
+    a mo:Track;
+    dct:title "Pac's Life (Remix)";
+    mo:duration "218";
+    dcat:downloadUrl
+        <https://archive.org/download/pacs-life_202511/12.%20Pac's%20Life%20Remix.mp3>.
+<urn:uuid:ad150f06-7500-4497-80d1-de5745db3c6f>
+    a mo:Track;
+    dct:title "Pac's Life";
+    mo:duration "217";
+    dcat:downloadUrl
+    <https://archive.org/download/pacs-life_202511/02.%20Pac's%20Life.mp3>.
+<urn:uuid:b816b8c1-2f72-4dda-b51f-4f56eb67f5e5>
+    a mo:Track;
+    dct:title "International";
+    mo:duration "243";
+    dcat:downloadUrl
+    <https://archive.org/download/pacs-life_202511/07.%20International.mp3>.
+<urn:uuid:e1cff091-e8ae-4853-b7d0-1e2f38e3b75c>
+    a mo:Track;
+    dct:title "Sleep";
+    mo:duration "249";
+    dcat:downloadUrl
+    <https://archive.org/download/pacs-life_202511/06.%20Sleep.mp3>.
+<urn:uuid:f5c4e62a-92fa-440b-90c8-9466de69a9ef>
+    a mo:Track;
+    dct:title "Whatz Next";
+    mo:duration "258";
+    dcat:downloadUrl
+    <https://archive.org/download/pacs-life_202511/05.%20Whatz%20Next.mp3>.

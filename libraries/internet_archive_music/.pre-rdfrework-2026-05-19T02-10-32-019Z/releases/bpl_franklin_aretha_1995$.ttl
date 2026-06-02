@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:37fc4d39-4e67-4d57-a28b-a9044239a419> a mo:Release;
+    dcterms:title "bpl-franklin-aretha-1995";
+    foaf:maker "Franklin, Aretha";
+    dcat:landingPage <https://archive.org/details/bpl-franklin-aretha-1995>;
+    mo:track <urn:uuid:e7ee792f-33cf-4012-ba4d-46abfa367d63>.
+<urn:uuid:e7ee792f-33cf-4012-ba4d-46abfa367d63> a mo:Track; dcterms:title "Franklin_Aretha_1995/Preservation Master/Franklin_Aretha_1995_01"; mo:duration "1222"; dcat:downloadUrl <https://archive.org/download/bpl-franklin-aretha-1995/Franklin_Aretha_1995%2FPreservation%20Master%2FFranklin_Aretha_1995_01.mp3>.

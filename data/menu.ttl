@@ -1,0 +1,21 @@
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix acl:    <http://www.w3.org/ns/auth/acl#> .
+
+# The ⋮ "More" menu, rendered by <sol-dropdown-button source="…#More">. Every
+# item is a command: a ui:Component whose ui:name is a bare registry key (no
+# hyphen, so not an element tag) that dispatches sol-command for omp's COMMANDS
+# registry to resolve. Items that need write access declare it with the standard
+# WAC term `acl:mode acl:Write`; the dropdown surfaces them as
+# part="requires-write" and the app (omp) hides them when the user can't write.
+
+<#More> a ui:Menu ; ui:label "More" ;
+  ui:parts ( <#guestView> <#filters> <#viewDeleted> <#installPod> <#updateApp> ) .
+
+# Every item now requires write, so in guest mode the menu is empty and the
+# whole ⋮ button is hidden (see .omp-chrome.guest .omp-more in omp.css). To
+# return from "View as guest", reload the page (dev: window.SolidKitchen).
+<#guestView>  a ui:Component ; ui:label "View as guest"      ; ui:name "guestView"   ; acl:mode acl:Write .
+<#filters>    a ui:Component ; ui:label "Filters…"           ; ui:name "filters"     ; acl:mode acl:Write .
+<#viewDeleted> a ui:Component ; ui:label "View deleted"      ; ui:name "viewDeleted" ; acl:mode acl:Write .
+<#installPod> a ui:Component ; ui:label "Install on my Pod…" ; ui:name "installPod"  ; acl:mode acl:Write .
+<#updateApp>  a ui:Component ; ui:label "Update app on Pod…" ; ui:name "updateApp"   ; acl:mode acl:Write .

@@ -1,0 +1,111 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Kendrick Lamar EP (dubcnn)" ;
+    dct:identifier "kendrick-lamar-ep" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/kendrick-lamar-ep> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14> ;
+    foaf:maker "Kendrick Lamar" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Is It Love ft. Angela McCluskey" ;
+    mo:duration "239" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/01%20Is%20It%20Love%20ft.%20Angela%20McCluskey.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Celebration" ;
+    mo:duration "230" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/02%20Celebration.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "P & P - ft. Ab Soul" ;
+    mo:duration "282" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/03%20P%20%26%20P%20-%20ft.%20Ab%20Soul.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "She Needs Me ft. Javonte" ;
+    mo:duration "210" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/04%20She%20Needs%20Me%20ft.%20Javonte.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Wanna Be Heard" ;
+    mo:duration "277" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/06%20Wanna%20Be%20Heard.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "I Do This ft. Jay Rock" ;
+    mo:duration "248" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/07%20I%20Do%20This%20ft.%20Jay%20Rock.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Uncle Bobby & Jason Keaton ft. Javonte" ;
+    mo:duration "239" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/08%20Uncle%20Bobby%20%26%20Jason%20Keaton%20ft.%20Javonte.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Faith ft. Bj The Chicago Kid & Punch" ;
+    mo:duration "291" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/09%20Faith%20ft.%20Bj%20The%20Chicago%20Kid%20%26%20Punch.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Trip" ;
+    mo:duration "230" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/10%20Trip.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Vanity Slaves" ;
+    mo:duration "254" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/11%20Vanity%20Slaves.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Far From Here ft. Schoolboy Q" ;
+    mo:duration "233" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/12%20Far%20From%20Here%20ft.%20Schoolboy%20Q.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "Thanksgiving ft. Big Pooh" ;
+    mo:duration "219" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/13%20Thanksgiving%20ft.%20Big%20Pooh.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "Let Me Be Me" ;
+    mo:duration "439" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/14%20Let%20Me%20Be%20Me.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "Determined (ft. Ash Riser) BOUNS TRACK" ;
+    mo:duration "270" ;
+    mo:item <https://archive.org/download/kendrick-lamar-ep/15%20Determined%20(ft.%20Ash%20Riser)%20BOUNS%20TRACK.mp3> ;
+    dct:isPartOf <#it> .

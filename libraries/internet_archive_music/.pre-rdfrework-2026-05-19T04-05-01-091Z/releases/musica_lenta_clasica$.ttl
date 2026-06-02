@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:5cc60d99-d258-4913-a5b9-a570141e5c49> a mo:Release;
+    dcterms:title "Musica lenta clasica";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/MusicaLentaClasica>;
+    mo:track <urn:uuid:6a685d55-e173-4396-a7d1-e98531c6241e>.
+<urn:uuid:6a685d55-e173-4396-a7d1-e98531c6241e> a mo:Track; dcterms:title "I Say a Little Prayer For You - Aretha Franklin"; mo:duration "214"; dcat:downloadUrl <https://archive.org/download/MusicaLentaClasica/ISayALittlePrayerForYou-ArethaFranklin.mp3>.

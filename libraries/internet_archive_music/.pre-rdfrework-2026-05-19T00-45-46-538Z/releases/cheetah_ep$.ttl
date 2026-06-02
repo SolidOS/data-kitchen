@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:39182ca5-523b-4707-a65d-d6eb8d25a856> a mo:Release;
+    dcterms:title "Cheetah EP";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/cheetaht-2-ld-spectrum>;
+    mo:track <urn:uuid:142d8f99-83be-4e94-bcfd-1fd4786068f1>, <urn:uuid:4a5baf63-1086-4a63-a623-36e456f3ca73>, <urn:uuid:c3088b79-254e-4fed-bb3c-ef029f4fa75a>, <urn:uuid:84526df2-7c28-4134-96c1-c86373cd9529>, <urn:uuid:4c2f4775-831a-44f8-bbd1-e4555764ec33>.
+<urn:uuid:142d8f99-83be-4e94-bcfd-1fd4786068f1> a mo:Track; dcterms:title "2X202-ST5"; mo:duration "279"; dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/2X202-ST5.mp3>.
+<urn:uuid:4a5baf63-1086-4a63-a623-36e456f3ca73> a mo:Track; dcterms:title "CHEETAHT7b"; mo:duration "403"; dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/CHEETAHT7b.mp3>.
+<urn:uuid:c3088b79-254e-4fed-bb3c-ef029f4fa75a> a mo:Track; dcterms:title "CIRKLON3 (Kolkhoznaya Mix)"; mo:duration "493"; dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/CIRKLON3%20(Kolkhoznaya%20Mix).mp3>.
+<urn:uuid:84526df2-7c28-4134-96c1-c86373cd9529> a mo:Track; dcterms:title "Cheetaht2 [Ld Spectrum]"; mo:duration "353"; dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/Cheetaht2%20%5BLd%20Spectrum%5D.mp3>.
+<urn:uuid:4c2f4775-831a-44f8-bbd1-e4555764ec33> a mo:Track; dcterms:title "Cirklon 1"; mo:duration "437"; dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/Cirklon%201.mp3>.

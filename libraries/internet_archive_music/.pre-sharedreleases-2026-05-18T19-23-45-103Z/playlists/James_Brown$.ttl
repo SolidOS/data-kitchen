@@ -1,0 +1,143 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/James_Brown#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/James_Brown> a dctypes:Collection, mo:Playlist;
+    dcterms:title "James Brown";
+    foaf:maker "jeffz";
+    dcterms:description "Soul";
+    dcterms:hasPart <urn:uuid:5d0ee363-6ea0-40b0-8590-440c6e0bb07c>, <urn:uuid:496aa6bf-211c-4fd7-b444-a47fa34459b0>, <urn:uuid:f1048134-49b4-4338-8943-da2622725387>, <urn:uuid:766c02d4-a937-4b90-86c1-88d79efbc6bd>, <urn:uuid:55e9d7b6-6160-4452-85de-89839ac763d8>, <urn:uuid:95b7cbd7-0d4c-4531-9d0e-275ba3389eef>, <urn:uuid:fdbbb8af-ef74-4330-97c9-b9474954b35c>, <urn:uuid:84acdb40-c29d-43f8-8399-98dc754fc7be>, <urn:uuid:cb47bb6f-30e5-40f5-bad4-6f0817a34e82>, <urn:uuid:03d3ba33-115e-47e7-b65c-ebb4af86c513>, <urn:uuid:ec18df04-5cdd-4869-902b-40bc5a01b0fc>, <urn:uuid:382da656-558b-4ce8-a390-dc69dcc965ea>, <urn:uuid:a447ac18-dafe-4979-889f-ed865ed6c84b>, <urn:uuid:28aaa220-50f5-418f-b1d1-6c9c6e55d142>, <urn:uuid:d046a5ab-a525-4549-9d2a-d5baa5d671ca>, <urn:uuid:e2c83e0f-2372-46ab-a4f3-59b7f394974b>, <urn:uuid:64ce5de4-d628-442c-bd1c-500973a04219>, <urn:uuid:78365c8c-7d5c-4a37-926c-a66b61b87c32>, <urn:uuid:4ceee88d-c78d-45c3-8745-a46fcadf1194>, <urn:uuid:0901e03c-69b3-4e38-9b47-5cd91e9c981f>, <urn:uuid:36540e4d-4a87-47ac-a533-ad7e0b5b58ca>, <urn:uuid:4a6bffc4-3acd-43dc-9576-08a9c8101aea>, <urn:uuid:060819c8-0698-4739-b712-3fa94bd5d2db>, <urn:uuid:e006806f-2d25-4965-ae10-fcdbd907de38>, <urn:uuid:1cdd54b3-ee58-4baf-8b56-504631ebcb9b>, <urn:uuid:aeb79f27-0a1f-454b-a9ad-2cbe68186770>, <urn:uuid:2b7563b8-1ca4-49ea-bb54-5394995b56f0>, <urn:uuid:05ab7a81-c410-4dba-921a-84e931ba5f3c>, <urn:uuid:178d47c7-98b6-4224-ade5-c1d4b7e8dc6c>;
+    <http://open-media-player.org/ns#hidePlaylist> "true".
+<urn:uuid:5d0ee363-6ea0-40b0-8590-440c6e0bb07c> a mo:Track;
+    dcterms:title " 01_Say It Loud-I'm Black & I'm Proud";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/03-goodbye-my-love-pts.-1-2/%2001_Say%20It%20Loud-I'm%20Black%20%26%20I'm%20Proud.mp3>;
+    mo:duration "286".
+<urn:uuid:496aa6bf-211c-4fd7-b444-a47fa34459b0> a mo:Track;
+    dcterms:title "02_Guess I'll Have to Cry, Cry, Cry";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/03-goodbye-my-love-pts.-1-2/02_Guess%20I'll%20Have%20to%20Cry%2C%20Cry%2C%20Cry.mp3>;
+    mo:duration "213".
+<urn:uuid:f1048134-49b4-4338-8943-da2622725387> a mo:Track;
+    dcterms:title "03_Goodbye My Love, Pts. 1 & 2";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/03-goodbye-my-love-pts.-1-2/03_Goodbye%20My%20Love%2C%20Pts.%201%20%26%202.mp3>;
+    mo:duration "331".
+<urn:uuid:766c02d4-a937-4b90-86c1-88d79efbc6bd> a mo:Track;
+    dcterms:title "06_I Love You";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/03-goodbye-my-love-pts.-1-2/06_I%20Love%20You.mp3>;
+    mo:duration "213".
+<urn:uuid:55e9d7b6-6160-4452-85de-89839ac763d8> a mo:Track;
+    dcterms:title "07_ Then You Can Tell Me Goodbye";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/03-goodbye-my-love-pts.-1-2/07_%20Then%20You%20Can%20Tell%20Me%20Goodbye.mp3>;
+    mo:duration "232".
+<urn:uuid:95b7cbd7-0d4c-4531-9d0e-275ba3389eef> a mo:Track;
+    dcterms:title "08_ Let Them Talk";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/03-goodbye-my-love-pts.-1-2/08_%20Let%20Them%20Talk.mp3>;
+    mo:duration "241".
+<urn:uuid:fdbbb8af-ef74-4330-97c9-b9474954b35c> a mo:Track;
+    dcterms:title "09_Maybe I'll Understand";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/03-goodbye-my-love-pts.-1-2/09_Maybe%20I'll%20Understand.mp3>;
+    mo:duration "197".
+<urn:uuid:84acdb40-c29d-43f8-8399-98dc754fc7be> a mo:Track;
+    dcterms:title "Doing The Best I Can";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1973-james-brown-the-payback/02-Doing%20The%20Best%20I%20Can.mp3>;
+    mo:duration "462".
+<urn:uuid:cb47bb6f-30e5-40f5-bad4-6f0817a34e82> a mo:Track;
+    dcterms:title "Forever Suffering";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1973-james-brown-the-payback/05-Forever%20Suffering.mp3>;
+    mo:duration "352".
+<urn:uuid:03d3ba33-115e-47e7-b65c-ebb4af86c513> a mo:Track;
+    dcterms:title "Mind Power";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1973-james-brown-the-payback/08-Mind%20Power.mp3>;
+    mo:duration "724".
+<urn:uuid:ec18df04-5cdd-4869-902b-40bc5a01b0fc> a mo:Track;
+    dcterms:title "Shoot Your Shot";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1973-james-brown-the-payback/04-Shoot%20Your%20Shot.mp3>;
+    mo:duration "489".
+<urn:uuid:382da656-558b-4ce8-a390-dc69dcc965ea> a mo:Track;
+    dcterms:title "Stone To The Bone";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1973-james-brown-the-payback/07-Stone%20To%20The%20Bone.mp3>;
+    mo:duration "614".
+<urn:uuid:a447ac18-dafe-4979-889f-ed865ed6c84b> a mo:Track;
+    dcterms:title "Take Some - Leave Some";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1973-james-brown-the-payback/03-Take%20Some%2C%20Leave%20some.mp3>;
+    mo:duration "513".
+<urn:uuid:28aaa220-50f5-418f-b1d1-6c9c6e55d142> a mo:Track;
+    dcterms:title "The Payback";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1973-james-brown-the-payback/01-The%20Payback.mp3>;
+    mo:duration "459".
+<urn:uuid:d046a5ab-a525-4549-9d2a-d5baa5d671ca> a mo:Track;
+    dcterms:title "Time Is Running Out Fast";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/1973-james-brown-the-payback/06-Time%20Is%20Running%20Out%20Fast.mp3>;
+    mo:duration "767".
+<urn:uuid:e2c83e0f-2372-46ab-a4f3-59b7f394974b> a mo:Track;
+    dcterms:title "The Payback (Pt. 1)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/02%20The%20Payback%20(Pt.%201).m4a>;
+    mo:duration "212".
+<urn:uuid:64ce5de4-d628-442c-bd1c-500973a04219> a mo:Track;
+    dcterms:title "Give It Up Or Turnit A Loose (Remix)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/04%20Give%20It%20Up%20Or%20Turnit%20A%20Loose%20(Remix).m4a>;
+    mo:duration "369".
+<urn:uuid:78365c8c-7d5c-4a37-926c-a66b61b87c32> a mo:Track;
+    dcterms:title "Talkin' Loud And Sayin' Nothing (Remix)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/05%20Talkin'%20Loud%20And%20Sayin'%20Nothing%20(Remix).m4a>;
+    mo:duration "463".
+<urn:uuid:4ceee88d-c78d-45c3-8745-a46fcadf1194> a mo:Track;
+    dcterms:title "People Get Up And Drive Your Funky Soul (Remix)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/07%20People%20Get%20Up%20And%20Drive%20Your%20Funky%20Soul%20(Remix).m4a>;
+    mo:duration "544".
+<urn:uuid:0901e03c-69b3-4e38-9b47-5cd91e9c981f> a mo:Track;
+    dcterms:title "Cold Sweat (Live At The Apollo/2001)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/10%20Cold%20Sweat%20(Live%20At%20The%20Apollo_2001).m4a>;
+    mo:duration "362".
+<urn:uuid:36540e4d-4a87-47ac-a533-ad7e0b5b58ca> a mo:Track;
+    dcterms:title "Sex Machine (Live At The Apollo Theater/1971)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/11%20Sex%20Machine%20(Live%20At%20The%20Apollo%20Theater_1971).m4a>;
+    mo:duration "309".
+<urn:uuid:4a6bffc4-3acd-43dc-9576-08a9c8101aea> a mo:Track;
+    dcterms:title "Get Up, Get Into It, Get Involved (Live At The Apollo Theater/1971)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/12%20Get%20Up%2C%20Get%20Into%20It%2C%20Get%20Involved%20(Live%20At%20The%20Apollo%20Theater_1971).m4a>;
+    mo:duration "207".
+<urn:uuid:060819c8-0698-4739-b712-3fa94bd5d2db> a mo:Track;
+    dcterms:title "My Thang (Single Version)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/14%20My%20Thang%20(Single%20Version).m4a>;
+    mo:duration "262".
+<urn:uuid:e006806f-2d25-4965-ae10-fcdbd907de38> a mo:Track;
+    dcterms:title "I Can't Stand It \"76\"";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/15%20I%20Can't%20Stand%20It%20_76_.m4a>;
+    mo:duration "492".
+<urn:uuid:1cdd54b3-ee58-4baf-8b56-504631ebcb9b> a mo:Track;
+    dcterms:title "All For One";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/17%20All%20For%20One.m4a>;
+    mo:duration "398".
+<urn:uuid:aeb79f27-0a1f-454b-a9ad-2cbe68186770> a mo:Track;
+    dcterms:title "Intro/ It's A New Day (So Let A Man Come In And Do The Popcorn) (Live At The Apollo Theater/1971)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/20%20Intro_%20It's%20A%20New%20Day%20(So%20Let%20A%20Man%20Come%20In%20And%20Do%20The%20Popcorn)%20(Live%20At%20The%20Apollo%20Theater_1971).m4a>;
+    mo:duration "230".
+<urn:uuid:2b7563b8-1ca4-49ea-bb54-5394995b56f0> a mo:Track;
+    dcterms:title "For Goodness Sakes, Look At Those Cakes";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/21%20For%20Goodness%20Sakes%2C%20Look%20At%20Those%20Cakes.m4a>;
+    mo:duration "664".
+<urn:uuid:05ab7a81-c410-4dba-921a-84e931ba5f3c> a mo:Track;
+    dcterms:title "I Refuse To Lose";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/22%20I%20Refuse%20To%20Lose.m4a>;
+    mo:duration "453".
+<urn:uuid:178d47c7-98b6-4224-ade5-c1d4b7e8dc6c> a mo:Track;
+    dcterms:title "People Who Criticize";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/lp_time-for-payback_james-brown_0/24%20People%20Who%20Criticize.m4a>;
+    mo:duration "266".
+<urn:uuid:f2603faa-f14f-4a75-92bf-7b6fc78700ed> a mo:Release;
+    dcterms:title "312_James Brown - Say It Loud I'm Black and I'm Proud СD";
+    foaf:maker "James Brown";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/03-goodbye-my-love-pts.-1-2>;
+    mo:track <urn:uuid:5d0ee363-6ea0-40b0-8590-440c6e0bb07c>, <urn:uuid:496aa6bf-211c-4fd7-b444-a47fa34459b0>, <urn:uuid:f1048134-49b4-4338-8943-da2622725387>, <urn:uuid:766c02d4-a937-4b90-86c1-88d79efbc6bd>, <urn:uuid:55e9d7b6-6160-4452-85de-89839ac763d8>, <urn:uuid:95b7cbd7-0d4c-4531-9d0e-275ba3389eef>, <urn:uuid:fdbbb8af-ef74-4330-97c9-b9474954b35c>.
+<urn:uuid:d99dfec6-d3fa-48af-9fe6-16b6219e4420> a mo:Release;
+    dcterms:title "The Payback";
+    foaf:maker "James Brown";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/1973-james-brown-the-payback>;
+    mo:track <urn:uuid:84acdb40-c29d-43f8-8399-98dc754fc7be>, <urn:uuid:cb47bb6f-30e5-40f5-bad4-6f0817a34e82>, <urn:uuid:03d3ba33-115e-47e7-b65c-ebb4af86c513>, <urn:uuid:ec18df04-5cdd-4869-902b-40bc5a01b0fc>, <urn:uuid:382da656-558b-4ce8-a390-dc69dcc965ea>, <urn:uuid:a447ac18-dafe-4979-889f-ed865ed6c84b>, <urn:uuid:28aaa220-50f5-418f-b1d1-6c9c6e55d142>, <urn:uuid:d046a5ab-a525-4549-9d2a-d5baa5d671ca>.
+<urn:uuid:13ab3b63-e4d6-4c99-9ec8-d54c364afc06> a mo:Release;
+    dcterms:title "Time for Payback";
+    foaf:maker "James Brown";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/lp_time-for-payback_james-brown_0>;
+    mo:track <urn:uuid:e2c83e0f-2372-46ab-a4f3-59b7f394974b>, <urn:uuid:64ce5de4-d628-442c-bd1c-500973a04219>, <urn:uuid:78365c8c-7d5c-4a37-926c-a66b61b87c32>, <urn:uuid:4ceee88d-c78d-45c3-8745-a46fcadf1194>, <urn:uuid:0901e03c-69b3-4e38-9b47-5cd91e9c981f>, <urn:uuid:36540e4d-4a87-47ac-a533-ad7e0b5b58ca>, <urn:uuid:4a6bffc4-3acd-43dc-9576-08a9c8101aea>, <urn:uuid:060819c8-0698-4739-b712-3fa94bd5d2db>, <urn:uuid:e006806f-2d25-4965-ae10-fcdbd907de38>, <urn:uuid:1cdd54b3-ee58-4baf-8b56-504631ebcb9b>, <urn:uuid:aeb79f27-0a1f-454b-a9ad-2cbe68186770>, <urn:uuid:2b7563b8-1ca4-49ea-bb54-5394995b56f0>, <urn:uuid:05ab7a81-c410-4dba-921a-84e931ba5f3c>, <urn:uuid:178d47c7-98b6-4224-ade5-c1d4b7e8dc6c>.

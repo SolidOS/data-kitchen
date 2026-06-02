@@ -1,0 +1,101 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:07af0a42-b6b0-46cd-8963-2980cbfa5728>
+    a mo:Track;
+    dct:title "Hell's Killah Hills 10304 (feat. Rza & Ol' Dirty Bastard)";
+    mo:duration "308";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F09%20GZAGenius%20-%20Hell's%20Killah%20Hills%2010304%20(Feat.%20Rza%20%26%20Ol'%20Dirty%20Bastard).mp3>.
+<urn:uuid:3003d958-926d-41dc-acbb-dbf3d11a218d>
+    a mo:Track;
+    dct:title
+    "Investigative Reports (feat. Raekwon & Ghostface Killah And U-God)";
+    mo:duration "229";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F10%20GZAGenius%20-%20Investigative%20Reports%20(Feat.%20Raekwon%20%26%20Ghostface%20Killah%20and%20U-God).mp3>.
+<urn:uuid:31dffdf7-27b7-485d-bc96-8607bc289f92>
+    a mo:Track;
+    dct:title
+        "Duel Of The Iron Mic (feat. Ol' Dirty Bastard & Inspectah Deck And Masta Killa)";
+    mo:duration "246";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F02%20GZAGenius%20-%20Duel%20Of%20The%20Iron%20Mic%20(Feat.%20Ol'%20Dirty%20Bastard%20%26%20Inspectah%20Deck%20and%20Masta%20Killa).mp3>.
+<urn:uuid:57abeefe-514a-436c-aacb-29975c358154>
+    a mo:Track;
+    dct:title "4th Chamber (feat. Ghostface Killah & Killah Priest And Rza)";
+    mo:duration "277";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F07%20GZAGenius%20-%204th%20Chamber%20(Feat.%20Ghostface%20Killah%20%26%20Killah%20Priest%20and%20RZA).mp3>.
+<urn:uuid:624af1c6-9fb0-472a-9506-fbf7d4c2830e>
+    a mo:Track;
+    dct:title "Gold (feat. Method Man)";
+    mo:duration "237";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F04%20GZAGenius%20-%20Gold%20(Feat.%20Method%20Man).mp3>.
+<urn:uuid:75c586a8-a2fa-4b01-a6b3-9b46653d3c7a>
+    a mo:Track;
+    dct:title "Cold World (feat. Inspectah Deck & Life)";
+    mo:duration "331";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F05%20GZAGenius%20-%20Cold%20World%20(Feat.%20Inspectah%20Deck%20%26%20Life).mp3>.
+<urn:uuid:7f7cf6c1-f901-4833-8b92-bd78cda27efc>
+    a mo:Track;
+    dct:title
+        "B.I.B.L.E. (Basic Instructions Before Leaving Earth) (feat. Killah Priest)";
+    mo:duration "270";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F13%20GZAGenius%20-%20B.I.B.L.E.%20(Basic%20Instructions%20Before%20Leaving%20Earth)%20(Feat.%20Killah%20Priest).mp3>.
+<urn:uuid:93543947-c0fb-4750-a987-c5dc233bfeff>
+    a mo:Track;
+    dct:title "Living In The World Today (feat. Rza & Method Man)";
+    mo:duration "262";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F03%20GZAGenius%20-%20Living%20In%20The%20World%20Today%20(Feat.%20RZA%20%26%20Method%20Man).mp3>.
+<urn:uuid:c6f17e50-c553-43e0-905c-5a2ad3e8fb68>
+    a mo:Track;
+    dct:title "Shadowboxin' (feat. Method Man)";
+    mo:duration "210";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F08%20GZAGenius%20-%20Shadowboxin'%20(Feat.%20Method%20Man).mp3>.
+<urn:uuid:c816ee01-14f5-43f0-ae14-007fab227a12>
+    a mo:Release;
+    dct:title "GZA- Liquid Swords 1995(full 2nd press)";
+    mo:track
+        <urn:uuid:07af0a42-b6b0-46cd-8963-2980cbfa5728>,
+        <urn:uuid:3003d958-926d-41dc-acbb-dbf3d11a218d>,
+        <urn:uuid:31dffdf7-27b7-485d-bc96-8607bc289f92>,
+        <urn:uuid:57abeefe-514a-436c-aacb-29975c358154>,
+        <urn:uuid:624af1c6-9fb0-472a-9506-fbf7d4c2830e>,
+        <urn:uuid:75c586a8-a2fa-4b01-a6b3-9b46653d3c7a>,
+        <urn:uuid:7f7cf6c1-f901-4833-8b92-bd78cda27efc>,
+        <urn:uuid:93543947-c0fb-4750-a987-c5dc233bfeff>,
+        <urn:uuid:c6f17e50-c553-43e0-905c-5a2ad3e8fb68>,
+        <urn:uuid:d54cb302-71f7-4978-817d-dce9c3dbb159>,
+        <urn:uuid:df7aeae1-4924-4852-b678-51e22b4a4a33>,
+        <urn:uuid:e3268fa2-0ca6-4c0b-bc4e-c0ff73b493af>;
+    dcat:landingPage
+    det:05-gzagenius-cold-world-feat.-inspectah-deck-life_202503;
+    foaf:maker "Gza/Genius", <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:d54cb302-71f7-4978-817d-dce9c3dbb159>
+    a mo:Track;
+    dct:title "Swordsman";
+    mo:duration "201";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F11%20GZAGenius%20-%20Swordsman.mp3>.
+<urn:uuid:df7aeae1-4924-4852-b678-51e22b4a4a33>
+    a mo:Track;
+    dct:title "Liquid Swords (feat. Rza)";
+    mo:duration "270";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F01%20GZAGenius%20-%20Liquid%20Swords%20(Feat.%20RZA).mp3>.
+<urn:uuid:e3268fa2-0ca6-4c0b-bc4e-c0ff73b493af>
+    a mo:Track;
+    dct:title "I Gotcha Back (feat. Rza)";
+    mo:duration "301";
+    dcat:downloadUrl
+        <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F12%20GZAGenius%20-%20I%20Gotcha%20Back%20(Feat.%20RZA).mp3>.

@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:db63059f-460a-4355-900c-7a2d23298027> a mo:Release;
+    dcterms:title "Penguin Cafe Orchestra LIVE 1994-06-26 @Glastonbury Festival, England";
+    foaf:maker "Penguin Cafe Orchestra";
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra1994glastonbury>;
+    mo:track <urn:uuid:32f6bc27-675d-4d41-a99d-36ac28e35455>.
+<urn:uuid:32f6bc27-675d-4d41-a99d-36ac28e35455> a mo:Track; dcterms:title "Numbers 1 - 4"; mo:duration "477"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra1994glastonbury/01%20-%20Numbers%201%20-%204.mp3>.

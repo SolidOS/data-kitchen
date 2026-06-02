@@ -1,0 +1,93 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:147ed57a-6c68-4432-a225-e202bd41ae4b>
+    a mo:Track;
+    dct:title "Crooked Ass Nigga";
+    mo:duration "257";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_2pac-2pacalypse-now/08%20Crooked%20Ass%20Nigga.mp3>.
+<urn:uuid:1b56675f-e2de-4234-a7d2-10cb3cff5369>
+    a mo:Track;
+    dct:title "Brenda's Got A Baby";
+    mo:duration "234";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_2pac-2pacalypse-now/10%20Brenda's%20Got%20A%20Baby.mp3>.
+<urn:uuid:25abdf19-eea0-4ece-8c29-14acc16ce839>
+    a mo:Track;
+    dct:title "I Don't Give A Fuck";
+    mo:duration "260";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_2pac-2pacalypse-now/04%20I%20Don't%20Give%20A%20Fuck.mp3>.
+<urn:uuid:55611f13-78f0-46eb-b1d0-f4467b838811>
+    a mo:Track;
+    dct:title "If My Homie Calls";
+    mo:duration "258";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_2pac-2pacalypse-now/09%20If%20My%20Homie%20Calls.mp3>.
+<urn:uuid:61d007ea-7dcc-4483-9f4b-8d97f4740e33>
+    a mo:Track;
+    dct:title "Rebel Of The Underground";
+    mo:duration "197";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_2pac-2pacalypse-now/12%20Rebel%20Of%20The%20Underground.mp3>.
+<urn:uuid:68b86203-25c1-4437-8187-c18d5c4802d2>
+    a mo:Track;
+    dct:title "Part Time Mutha";
+    mo:duration "314";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_2pac-2pacalypse-now/13%20Part%20Time%20Mutha.mp3>.
+<urn:uuid:70e2d4e2-2143-41cf-9172-8c21a9b8b746>
+    a mo:Release;
+    dct:title "2Pacalypse Now";
+    mo:track
+        <urn:uuid:147ed57a-6c68-4432-a225-e202bd41ae4b>,
+        <urn:uuid:1b56675f-e2de-4234-a7d2-10cb3cff5369>,
+        <urn:uuid:25abdf19-eea0-4ece-8c29-14acc16ce839>,
+        <urn:uuid:55611f13-78f0-46eb-b1d0-f4467b838811>,
+        <urn:uuid:61d007ea-7dcc-4483-9f4b-8d97f4740e33>,
+        <urn:uuid:68b86203-25c1-4437-8187-c18d5c4802d2>,
+        <urn:uuid:760ba94f-f3d7-4d23-b848-8312f4dcf7df>,
+        <urn:uuid:a82a0167-f37a-4f94-a67a-c27313e10c73>,
+        <urn:uuid:b25d5d74-394a-4a7a-82aa-dc10befe93de>,
+        <urn:uuid:dd3ac34a-a82c-4426-b19a-09c04673e696>,
+        <urn:uuid:f71ac3fc-6552-48c1-bb78-bcc30d6e359c>;
+    dcat:landingPage det:gs_2pac-2pacalypse-now;
+    foaf:maker
+        "2Pac", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:760ba94f-f3d7-4d23-b848-8312f4dcf7df>
+    a mo:Track;
+    dct:title "Words Of Wisdom";
+    mo:duration "294";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_2pac-2pacalypse-now/06%20Words%20Of%20Wisdom.mp3>.
+<urn:uuid:a82a0167-f37a-4f94-a67a-c27313e10c73>
+    a mo:Track;
+    dct:title "Tha' Lunatic";
+    mo:duration "209";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_2pac-2pacalypse-now/11%20Tha'%20Lunatic.mp3>.
+<urn:uuid:b25d5d74-394a-4a7a-82aa-dc10befe93de>
+    a mo:Track;
+    dct:title "Trapped";
+    mo:duration "285";
+    dcat:downloadUrl
+    <https://archive.org/download/gs_2pac-2pacalypse-now/02%20Trapped.mp3>.
+<urn:uuid:dd3ac34a-a82c-4426-b19a-09c04673e696>
+    a mo:Track;
+    dct:title "Soulja's Story";
+    mo:duration "306";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_2pac-2pacalypse-now/03%20Soulja's%20Story.mp3>.
+<urn:uuid:f71ac3fc-6552-48c1-bb78-bcc30d6e359c>
+    a mo:Track;
+    dct:title "Violent";
+    mo:duration "386";
+    dcat:downloadUrl
+    <https://archive.org/download/gs_2pac-2pacalypse-now/05%20Violent.mp3>.

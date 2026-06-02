@@ -1,0 +1,106 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:072a21d2-da6c-44c9-a55a-dc9b43039264>
+    a mo:Track;
+    dct:title "Chrome Wheels";
+    mo:duration "256";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/03%20Chrome%20Wheels.m4a>.
+<urn:uuid:13cf843e-4ad5-47a5-88fd-d4477e746a32>
+    a mo:Track;
+    dct:title "Soul Power (Black Jungle)";
+    mo:duration "294";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/04%20Soul%20Power%20(Black%20Jungle).m4a>.
+<urn:uuid:2425edff-f33b-42fe-ade6-4769de6adca1>
+    a mo:Track;
+    dct:title "Uzi (Pinky Ring)";
+    mo:duration "322";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/05%20Uzi%20(Pinky%20Ring).m4a>.
+<urn:uuid:259e96bd-9928-450c-b538-c2d5b0e6cd0b>
+    a mo:Track;
+    dct:title "Y'all Been Warned";
+    mo:duration "257";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/07%20Y'all%20Been%20Warned.m4a>.
+<urn:uuid:3d03595f-c4ee-4035-8561-dabe72423887>
+    a mo:Track;
+    dct:title "Back In The Game";
+    mo:duration "276";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/10%20Back%20In%20The%20Game.m4a>.
+<urn:uuid:4ccc8f10-5949-455d-b0d0-97d48373639a>
+    a mo:Track;
+    dct:title "The W";
+    mo:duration "221";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/13%20The%20W.m4a>.
+<urn:uuid:5cb1b44f-37dc-4d3e-bedd-750479a4dd00>
+    a mo:Track;
+    dct:title "One Of These Days";
+    mo:duration "255";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/06%20One%20Of%20These%20Days.m4a>.
+<urn:uuid:727307ab-3da0-492a-9907-9edc2bbe1718>
+    a mo:Track;
+    dct:title "Dashing (Reasons)";
+    mo:duration "287";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/12%20Dashing%20(Reasons).m4a>.
+<urn:uuid:8c8deaec-e028-4798-823c-4aaabadb9afc>
+    a mo:Track;
+    dct:title "Rules";
+    mo:duration "235";
+    dcat:downloadUrl
+    <https://archive.org/download/wu-tang-clan-iron-flag_202510/02%20Rules.m4a>.
+<urn:uuid:942a722f-d663-4635-be7b-2222aa82a94f>
+    a mo:Track;
+    dct:title "Babies";
+    mo:duration "310";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/08%20Babies.m4a>.
+<urn:uuid:abf6384f-0bc5-4596-917f-d8bc257cdef5>
+    a mo:Release;
+    dct:title "Wu-Tang Clan - Iron Flag";
+    mo:track
+        <urn:uuid:072a21d2-da6c-44c9-a55a-dc9b43039264>,
+        <urn:uuid:13cf843e-4ad5-47a5-88fd-d4477e746a32>,
+        <urn:uuid:2425edff-f33b-42fe-ade6-4769de6adca1>,
+        <urn:uuid:259e96bd-9928-450c-b538-c2d5b0e6cd0b>,
+        <urn:uuid:3d03595f-c4ee-4035-8561-dabe72423887>,
+        <urn:uuid:4ccc8f10-5949-455d-b0d0-97d48373639a>,
+        <urn:uuid:5cb1b44f-37dc-4d3e-bedd-750479a4dd00>,
+        <urn:uuid:727307ab-3da0-492a-9907-9edc2bbe1718>,
+        <urn:uuid:8c8deaec-e028-4798-823c-4aaabadb9afc>,
+        <urn:uuid:942a722f-d663-4635-be7b-2222aa82a94f>,
+        <urn:uuid:b877a544-4453-4c26-aeb3-aceb57bd59d4>,
+        <urn:uuid:b8ce41b3-a40c-4300-a825-3fc7561d2d7e>,
+        <urn:uuid:c2622c1a-dd18-47d2-9744-c52228900310>;
+    dcat:landingPage det:wu-tang-clan-iron-flag_202510;
+    foaf:maker
+        <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>,
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:b877a544-4453-4c26-aeb3-aceb57bd59d4>
+    a mo:Track;
+    dct:title "Iron Flag";
+    mo:duration "388";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/11%20Iron%20Flag.m4a>.
+<urn:uuid:b8ce41b3-a40c-4300-a825-3fc7561d2d7e>
+    a mo:Track;
+    dct:title "In The Hood";
+    mo:duration "253";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/01%20In%20The%20Hood.m4a>.
+<urn:uuid:c2622c1a-dd18-47d2-9744-c52228900310>
+    a mo:Track;
+    dct:title "Radioactive (Four Assasins)";
+    mo:duration "212";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-iron-flag_202510/09%20Radioactive%20(Four%20Assasins).m4a>.

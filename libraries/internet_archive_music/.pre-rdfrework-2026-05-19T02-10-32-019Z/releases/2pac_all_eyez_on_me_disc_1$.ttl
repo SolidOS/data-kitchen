@@ -1,0 +1,114 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:0d086ac3-72eb-4662-a515-ba817565cd3e>
+    a mo:Track;
+    dct:title "Life Goes On";
+    mo:duration "301";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/09%20Life%20Goes%20On.mp3>.
+<urn:uuid:1df29423-a5f6-4093-a450-6f88ac4a7a28>
+    a mo:Track;
+    dct:title "Only God Can Judge Me";
+    mo:duration "296";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/10%20Only%20God%20Can%20Judge%20Me.mp3>.
+<urn:uuid:1fde4ed7-4822-4b1f-9add-14d8cbf19079>
+    a mo:Track;
+    dct:title "How Do U Want It";
+    mo:duration "287";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/05%20How%20Do%20U%20Want%20It.mp3>.
+<urn:uuid:2c64f4b0-867c-4071-8a2b-bc10401f9629>
+    a mo:Track;
+    dct:title "2 Of Amerikaz Most Wanted";
+    mo:duration "246";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/06%202%20Of%20Amerikaz%20Most%20Wanted.mp3>.
+<urn:uuid:336a5804-76f0-40e0-8b18-dfafcd05258c>
+    a mo:Release;
+    dct:title "2Pac - All Eyez On Me [Disc 1]";
+    mo:track
+        <urn:uuid:0d086ac3-72eb-4662-a515-ba817565cd3e>,
+        <urn:uuid:1df29423-a5f6-4093-a450-6f88ac4a7a28>,
+        <urn:uuid:1fde4ed7-4822-4b1f-9add-14d8cbf19079>,
+        <urn:uuid:2c64f4b0-867c-4071-8a2b-bc10401f9629>,
+        <urn:uuid:367a3538-014d-49e0-a820-66dc43f46804>,
+        <urn:uuid:47ccec82-467f-4297-a1b4-fc32eada6f93>,
+        <urn:uuid:63648efd-7fcf-42ed-96f7-4452753e276e>,
+        <urn:uuid:727f67fe-c1e8-4c9c-bce6-3e4d8d53f23d>,
+        <urn:uuid:7dc31782-1fb7-4b9d-ab29-f88d4d488f76>,
+        <urn:uuid:85a7591c-b512-4bc8-bc3d-cb2f1f95e1f5>,
+        <urn:uuid:a5057a5d-48f3-49f1-b00e-0d70418830b2>,
+        <urn:uuid:cf9a2ab4-3a29-4010-ac2c-87a105ba77b6>,
+        <urn:uuid:ddb8e16a-27ef-4bc9-92ef-44ae3da61e98>,
+        <urn:uuid:e3e8db66-cadc-49c6-a007-da773ad3fc86>;
+    dcat:landingPage det:12-california-love-remix;
+    foaf:maker
+        "2Pac", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:367a3538-014d-49e0-a820-66dc43f46804>
+    a mo:Track;
+    dct:title "Heartz Of Men";
+    mo:duration "283";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/08%20Heartz%20Of%20Men.mp3>.
+<urn:uuid:47ccec82-467f-4297-a1b4-fc32eada6f93>
+    a mo:Track;
+    dct:title "Tradin' War Stories";
+    mo:duration "329";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/11%20Tradin'%20War%20Stories.mp3>.
+<urn:uuid:63648efd-7fcf-42ed-96f7-4452753e276e>
+    a mo:Track;
+    dct:title "I Ain't Mad At Cha";
+    mo:duration "293";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/13%20I%20Ain't%20Mad%20At%20Cha.mp3>.
+<urn:uuid:727f67fe-c1e8-4c9c-bce6-3e4d8d53f23d>
+    a mo:Track;
+    dct:title "No More Pain";
+    mo:duration "373";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/07%20No%20More%20Pain.mp3>.
+<urn:uuid:7dc31782-1fb7-4b9d-ab29-f88d4d488f76>
+    a mo:Track;
+    dct:title "Ambitionz Az A Ridah";
+    mo:duration "278";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/01%20Ambitionz%20Az%20A%20Ridah.mp3>.
+<urn:uuid:85a7591c-b512-4bc8-bc3d-cb2f1f95e1f5>
+    a mo:Track;
+    dct:title "All About U";
+    mo:duration "276";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/02%20All%20About%20U.mp3>.
+<urn:uuid:a5057a5d-48f3-49f1-b00e-0d70418830b2>
+    a mo:Track;
+    dct:title "Got My Mind Made Up";
+    mo:duration "312";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/04%20Got%20My%20Mind%20Made%20Up.mp3>.
+<urn:uuid:cf9a2ab4-3a29-4010-ac2c-87a105ba77b6>
+    a mo:Track;
+    dct:title "Whatz Ya Phone #";
+    mo:duration "308";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/14%20Whatz%20Ya%20Phone%20%23.mp3>.
+<urn:uuid:ddb8e16a-27ef-4bc9-92ef-44ae3da61e98>
+    a mo:Track;
+    dct:title "Skandalouz";
+    mo:duration "248";
+    dcat:downloadUrl
+    <https://archive.org/download/12-california-love-remix/03%20Skandalouz.mp3>.
+<urn:uuid:e3e8db66-cadc-49c6-a007-da773ad3fc86>
+    a mo:Track;
+    dct:title "California Love (Remix)";
+    mo:duration "385";
+    dcat:downloadUrl
+        <https://archive.org/download/12-california-love-remix/12%20California%20Love%20(Remix).mp3>.

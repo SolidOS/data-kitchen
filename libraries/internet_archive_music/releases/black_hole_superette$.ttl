@@ -1,0 +1,132 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Black Hole Superette" ;
+    dct:identifier "black-hole-superette" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/black-hole-superette> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15>, <#t16>, <#t17> ;
+    foaf:maker "Aesop Rock" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "1010WINS" ;
+    mo:duration "235" ;
+    mo:item <https://archive.org/download/black-hole-superette/1010WINS.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Bird School" ;
+    mo:duration "224" ;
+    mo:item <https://archive.org/download/black-hole-superette/Bird%20School.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Black Plums" ;
+    mo:duration "205" ;
+    mo:item <https://archive.org/download/black-hole-superette/Black%20Plums.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Charlie Horse" ;
+    mo:duration "364" ;
+    mo:item <https://archive.org/download/black-hole-superette/Charlie%20Horse.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Checkers" ;
+    mo:duration "237" ;
+    mo:item <https://archive.org/download/black-hole-superette/Checkers.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Costco" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/black-hole-superette/Costco.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "EWR - Terminal A, Gate 20" ;
+    mo:duration "228" ;
+    mo:item <https://archive.org/download/black-hole-superette/EWR%20-%20Terminal%20A%2C%20Gate%2020.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Himalayan Yak Chew" ;
+    mo:duration "243" ;
+    mo:item <https://archive.org/download/black-hole-superette/Himalayan%20Yak%20Chew.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "John Something" ;
+    mo:duration "257" ;
+    mo:item <https://archive.org/download/black-hole-superette/John%20Something.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Movie Night" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/black-hole-superette/Movie%20Night.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Secret Knock" ;
+    mo:duration "212" ;
+    mo:item <https://archive.org/download/black-hole-superette/Secret%20Knock.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "Send Help" ;
+    mo:duration "227" ;
+    mo:item <https://archive.org/download/black-hole-superette/Send%20Help.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "Snail Zero" ;
+    mo:duration "196" ;
+    mo:item <https://archive.org/download/black-hole-superette/Snail%20Zero.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "So Be It" ;
+    mo:duration "215" ;
+    mo:item <https://archive.org/download/black-hole-superette/So%20Be%20It.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "Steel Wool" ;
+    mo:duration "196" ;
+    mo:item <https://archive.org/download/black-hole-superette/Steel%20Wool.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t16>
+    a mo:Track ;
+    dct:title "The Red Phone" ;
+    mo:duration "258" ;
+    mo:item <https://archive.org/download/black-hole-superette/The%20Red%20Phone.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t17>
+    a mo:Track ;
+    dct:title "Unbelievable Shenanigans" ;
+    mo:duration "256" ;
+    mo:item <https://archive.org/download/black-hole-superette/Unbelievable%20Shenanigans.mp3> ;
+    dct:isPartOf <#it> .

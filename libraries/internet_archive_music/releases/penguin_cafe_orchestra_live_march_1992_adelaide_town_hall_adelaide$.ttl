@@ -1,0 +1,62 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Penguin Cafe Orchestra LIVE March 1992 @Adelaide Town Hall, Adelaide" ;
+    dct:identifier "penguincafeorchestra1992adelaide" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra1992adelaide> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07> ;
+    foaf:maker "Penguin Cafe Orchestra" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Beanfields" ;
+    mo:duration "267" ;
+    mo:item <https://archive.org/download/penguincafeorchestra1992adelaide/04%20-%20Beanfields.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Isle of View" ;
+    mo:duration "311" ;
+    mo:item <https://archive.org/download/penguincafeorchestra1992adelaide/07%20-%20Isle%20of%20View.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Medley: Surface Tension/Oscar Tango/Music for a Found Harmonium" ;
+    mo:duration "484" ;
+    mo:item <https://archive.org/download/penguincafeorchestra1992adelaide/06%20-%20Medley%20-%20Surface%20Tension-Oscar%20Tango-Music%20for%20a%20Found%20Harmonium.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Pythagoras's Trousers" ;
+    mo:duration "222" ;
+    mo:item <https://archive.org/download/penguincafeorchestra1992adelaide/08%20-%20Pythagoras's%20Trousers.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Salty Bean Fumble" ;
+    mo:duration "255" ;
+    mo:item <https://archive.org/download/penguincafeorchestra1992adelaide/11%20-%20Salty%20Bean%20Fumble.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Scherzo and Trio" ;
+    mo:duration "426" ;
+    mo:item <https://archive.org/download/penguincafeorchestra1992adelaide/09%20-%20Scherzo%20and%20Trio.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "White Mischief" ;
+    mo:duration "333" ;
+    mo:item <https://archive.org/download/penguincafeorchestra1992adelaide/05%20-%20White%20Mischief.mp3> ;
+    dct:isPartOf <#it> .

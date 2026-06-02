@@ -1,0 +1,69 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Otis Rush Chicago 1985 Biddy Mulligan's WXRT" ;
+    dct:identifier "otis-rush-chicago-1985-biddy-mulligans-wxrt" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/otis-rush-chicago-1985-biddy-mulligans-wxrt> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08> ;
+    foaf:maker "Otis Rush" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "2. Instrumental #1" ;
+    mo:duration "379" ;
+    mo:item <https://archive.org/download/otis-rush-chicago-1985-biddy-mulligans-wxrt/2.%20Instrumental%20%231.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "3. Feel So Bad" ;
+    mo:duration "460" ;
+    mo:item <https://archive.org/download/otis-rush-chicago-1985-biddy-mulligans-wxrt/3.%20Feel%20So%20Bad.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "4. Double Trouble" ;
+    mo:duration "251" ;
+    mo:item <https://archive.org/download/otis-rush-chicago-1985-biddy-mulligans-wxrt/4.%20Double%20Trouble.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "5. That Will Never Do" ;
+    mo:duration "543" ;
+    mo:item <https://archive.org/download/otis-rush-chicago-1985-biddy-mulligans-wxrt/5.%20That%20Will%20Never%20Do.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "6. Right Place Wrong Time" ;
+    mo:duration "400" ;
+    mo:item <https://archive.org/download/otis-rush-chicago-1985-biddy-mulligans-wxrt/6.%20Right%20Place%20Wrong%20Time.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "7. Instrumental #2" ;
+    mo:duration "274" ;
+    mo:item <https://archive.org/download/otis-rush-chicago-1985-biddy-mulligans-wxrt/7.%20Instrumental%20%232.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "8. Trying To Be Nice" ;
+    mo:duration "236" ;
+    mo:item <https://archive.org/download/otis-rush-chicago-1985-biddy-mulligans-wxrt/8.%20Trying%20To%20Be%20Nice.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "9. It's My Own Fault Baby" ;
+    mo:duration "760" ;
+    mo:item <https://archive.org/download/otis-rush-chicago-1985-biddy-mulligans-wxrt/9.%20It's%20My%20Own%20Fault%20Baby.mp3> ;
+    dct:isPartOf <#it> .

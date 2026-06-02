@@ -1,0 +1,22 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:fa0adac6-1f14-4da5-b280-fbd978466761> a mo:Release;
+    dcterms:title "Soundz of the Asian Underground - Talvin Singh";
+    foaf:maker "Talvin Singh";
+    dcat:landingPage <https://archive.org/details/Soundz-of-the-asian-underground-talvin-singh>;
+    mo:track <urn:uuid:ba20b4bb-b107-4608-b2d9-f311f0b3c915>, <urn:uuid:f69227cc-a882-444a-b5eb-74118f85632f>, <urn:uuid:e00653da-3a70-422f-bde6-c692f52c1729>, <urn:uuid:97b23e9f-6a8b-4ae9-b416-f8e144e578ad>, <urn:uuid:d8a3f225-878b-43a4-8fa7-a4e10b4604d6>, <urn:uuid:0f3b4e21-ca44-4453-8dd5-eae3b94f68d7>, <urn:uuid:46a66742-8dcf-4da6-adb7-c1128d460a6c>, <urn:uuid:300f0975-a019-42db-8085-abc37c22dfc2>, <urn:uuid:5dc50e24-8b0d-4d52-a25b-d1646679f583>, <urn:uuid:ee27f47c-b8e3-4b40-b464-ade0a02ba8d1>, <urn:uuid:2404695f-5597-4f82-9609-6b3363e6ae63>, <urn:uuid:00c36668-c5d2-4324-8103-6aeec1ad13e0>.
+<urn:uuid:ba20b4bb-b107-4608-b2d9-f311f0b3c915> a mo:Track; dcterms:title "Jaan"; mo:duration "362"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/01%20Jaan%20Talvin%20Singh.mp3>.
+<urn:uuid:f69227cc-a882-444a-b5eb-74118f85632f> a mo:Track; dcterms:title "Flight IC408"; mo:duration "441"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/02%20Flight%20IC408%20Talvin%20Singh.mp3>.
+<urn:uuid:e00653da-3a70-422f-bde6-c692f52c1729> a mo:Track; dcterms:title "Kizmet"; mo:duration "316"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/03%20Kizmet%20Talvin%20Singh.mp3>.
+<urn:uuid:97b23e9f-6a8b-4ae9-b416-f8e144e578ad> a mo:Track; dcterms:title "Shang High"; mo:duration "352"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/04%20Shang%20High%20Talvin%20Singh.mp3>.
+<urn:uuid:d8a3f225-878b-43a4-8fa7-a4e10b4604d6> a mo:Track; dcterms:title "Chittagong Chill"; mo:duration "505"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/05%20Chittagong%20Chill%20Talvin%20Singh.mp3>.
+<urn:uuid:0f3b4e21-ca44-4453-8dd5-eae3b94f68d7> a mo:Track; dcterms:title "Mumbai Theme Tune"; mo:duration "315"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/06%20Mumbai%20Theme%20Tune%20Talvin%20Singh.mp3>.
+<urn:uuid:46a66742-8dcf-4da6-adb7-c1128d460a6c> a mo:Track; dcterms:title "Distant God"; mo:duration "377"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/07%20Distant%20God%20Talvin%20Singh.mp3>.
+<urn:uuid:300f0975-a019-42db-8085-abc37c22dfc2> a mo:Track; dcterms:title "Heavy Intro"; mo:duration "188"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/08%20Heavy%20Intro%20Talvin%20Singh.mp3>.
+<urn:uuid:5dc50e24-8b0d-4d52-a25b-d1646679f583> a mo:Track; dcterms:title "Equation"; mo:duration "359"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/09%20Equation%20Talvin%20Singh.mp3>.
+<urn:uuid:ee27f47c-b8e3-4b40-b464-ade0a02ba8d1> a mo:Track; dcterms:title "Spiritual Master Key"; mo:duration "314"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/10%20Spiritual%20Master%20Key%20Talvin%20Singh.mp3>.
+<urn:uuid:2404695f-5597-4f82-9609-6b3363e6ae63> a mo:Track; dcterms:title "Accepting Trankuility"; mo:duration "519"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/11%20Accepting%20Trankuility%20Talvin%20Singh.mp3>.
+<urn:uuid:00c36668-c5d2-4324-8103-6aeec1ad13e0> a mo:Track; dcterms:title "K-Ascendant"; mo:duration "272"; dcat:downloadUrl <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/12%20K-Ascendant%20Talvin%20Singh.mp3>.

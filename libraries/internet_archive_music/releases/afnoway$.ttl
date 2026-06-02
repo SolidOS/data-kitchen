@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "afnoway" ;
+    dct:identifier "afnoway" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/afnoway> ;
+    mo:track <#t01> ;
+    foaf:maker "BlackMusicMonth" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Ain't No Way (Live At The Jamaica World Music Festival) – Aretha Franklin" ;
+    mo:duration "365" ;
+    mo:item <https://archive.org/download/afnoway/afnoway.mp3> ;
+    dct:isPartOf <#it> .

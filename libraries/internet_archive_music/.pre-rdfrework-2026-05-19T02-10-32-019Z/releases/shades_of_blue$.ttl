@@ -1,0 +1,21 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:de989c33-41b9-4814-9976-5916523c5604> a mo:Release;
+    dcterms:title "Shades of Blue";
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a>;
+    dcat:landingPage <https://archive.org/details/shades-of-blue>;
+    mo:track <urn:uuid:e5ad4d9a-26df-4c36-b13d-106cb285a300>, <urn:uuid:21d24b0b-4cb2-4b9f-b41d-baaa2ed220b2>, <urn:uuid:12b11f4e-5e83-4ad8-b516-052bd4f5bf0a>, <urn:uuid:36b5a40b-4579-4cac-9086-48400833f11a>, <urn:uuid:0571a364-9b7a-4fe5-a87e-60b64d7c8244>, <urn:uuid:94caf1b6-7a20-4719-86a7-06d7c3ab38f1>, <urn:uuid:58882575-d905-4f96-9766-1b39e444038e>, <urn:uuid:e1cd440a-c8da-4268-b4c0-7d59ff34f673>, <urn:uuid:74c64189-f1d1-49a5-bba9-0d1940a4cf95>, <urn:uuid:c6fe5251-7a04-4cbf-ae84-069e52c7c219>, <urn:uuid:1e317539-2bf2-413c-a38b-bf8c1046f443>.
+<urn:uuid:e5ad4d9a-26df-4c36-b13d-106cb285a300> a mo:Track; dcterms:title "Slim's Return"; mo:duration "238"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/002.%20Madlib%20-%20Slim's%20Return%20(2003).mp3>.
+<urn:uuid:21d24b0b-4cb2-4b9f-b41d-baaa2ed220b2> a mo:Track; dcterms:title "Distant Land"; mo:duration "238"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/003.%20Madlib%20-%20Distant%20Land%20(2003).mp3>.
+<urn:uuid:12b11f4e-5e83-4ad8-b516-052bd4f5bf0a> a mo:Track; dcterms:title "Mystic Bounce"; mo:duration "236"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/004.%20Madlib%20-%20Mystic%20Bounce%20(2003).mp3>.
+<urn:uuid:36b5a40b-4579-4cac-9086-48400833f11a> a mo:Track; dcterms:title "Stormy"; mo:duration "221"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/005.%20Madlib%20-%20Stormy%20(2003).mp3>.
+<urn:uuid:0571a364-9b7a-4fe5-a87e-60b64d7c8244> a mo:Track; dcterms:title "Please Set Me At Ease"; mo:duration "302"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/007.%20Madlib%20-%20Please%20Set%20Me%20At%20Ease%20(2003).m4a>.
+<urn:uuid:94caf1b6-7a20-4719-86a7-06d7c3ab38f1> a mo:Track; dcterms:title "Funky Blue Note"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/008.%20Madlib%20-%20Funky%20Blue%20Note%20(2003).mp3>.
+<urn:uuid:58882575-d905-4f96-9766-1b39e444038e> a mo:Track; dcterms:title "Stepping Into Tomorrow"; mo:duration "456"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/010.%20Madlib%20-%20Stepping%20Into%20Tomorrow%20(2003).m4a>.
+<urn:uuid:e1cd440a-c8da-4268-b4c0-7d59ff34f673> a mo:Track; dcterms:title "Montara"; mo:duration "354"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/012.%20Madlib%20-%20Montara%20(2003).m4a>.
+<urn:uuid:74c64189-f1d1-49a5-bba9-0d1940a4cf95> a mo:Track; dcterms:title "Song For My Father"; mo:duration "346"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/013.%20Madlib%20-%20Song%20For%20My%20Father%20(2003).mp3>.
+<urn:uuid:c6fe5251-7a04-4cbf-ae84-069e52c7c219> a mo:Track; dcterms:title "Footprints"; mo:duration "298"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/014.%20Madlib%20-%20Footprints%20(2003).m4a>.
+<urn:uuid:1e317539-2bf2-413c-a38b-bf8c1046f443> a mo:Track; dcterms:title "Peace/Dolphin Dance"; mo:duration "338"; dcat:downloadUrl <https://archive.org/download/shades-of-blue/015.%20Madlib%20-%20Peace%20Dolphin%20Dance%20(2003).m4a>.

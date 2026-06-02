@@ -1,0 +1,279 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:05f813ef-7487-4ae3-a245-9b16fb8a3cb9>
+    a mo:Track;
+    dct:title "So Far to Go";
+    mo:duration "336";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20So%20Far%20to%20Go.mp3>.
+<urn:uuid:0f45149e-6d49-4a8c-9cbd-f2b76d0a6998>
+    a mo:Track;
+    dct:title "Keep It On";
+    mo:duration "214";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Keep%20It%20On.mp3>.
+<urn:uuid:0f82d999-0f64-4e33-9547-ce712d4055f2>
+    a mo:Track;
+    dct:title "The Look of Love (Pt. 2)";
+    mo:duration "186";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Look%20of%20Love%20(Pt.%202).mp3>.
+<urn:uuid:100133af-7598-43ec-a2cd-14d88bea7953>
+    a mo:Track;
+    dct:title "The Wind";
+    mo:duration "248";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Wind.mp3>.
+<urn:uuid:1e5c056b-5f4a-4db0-b52d-5edd93385f79>
+    a mo:Track;
+    dct:title "She Said";
+    mo:duration "249";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20She%20Said.mp3>.
+<urn:uuid:204c66e1-c550-4765-879d-24fcf0fd0877>
+    a mo:Track;
+    dct:title "Tomorrow Never Knows";
+    mo:duration "181";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Tomorrow%20Never%20Knows.mp3>.
+<urn:uuid:25864791-bb38-4678-880b-afa7b6ab7a0c>
+    a mo:Track;
+    dct:title "Life";
+    mo:duration "280";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Life.mp3>.
+<urn:uuid:29048c07-3c43-4703-affa-cfff8a26fe85>
+    a mo:Track;
+    dct:title "Forth & Back";
+    mo:duration "279";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Forth%20%26%20Back.mp3>.
+<urn:uuid:3a864d60-32e6-49d5-a338-8b3f7f508ed5>
+    a mo:Track;
+    dct:title "865";
+    mo:duration "187";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20865.mp3>.
+<urn:uuid:3bcd8d6d-59a4-428c-a48f-4bc65e351a36>
+    a mo:Track;
+    dct:title "R U Listenin'?";
+    mo:duration "260";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20R%20U%20Listenin'%3B.mp3>.
+<urn:uuid:3dc2ed4e-5fc8-4679-9453-5a0ad787ce41>
+    a mo:Track;
+    dct:title "Illasoul";
+    mo:duration "227";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Illasoul.mp3>.
+<urn:uuid:40be0a25-cc3f-4b7c-925e-a1948831e48f>
+    a mo:Track;
+    dct:title "Beat #27";
+    mo:duration "249";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Beat%20%2327.mp3>.
+<urn:uuid:4779d0bd-fc56-428d-b396-582292e79406>
+    a mo:Track;
+    dct:title "All I Do";
+    mo:duration "301";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20All%20I%20Do.mp3>.
+<urn:uuid:489481aa-0c0f-442c-8ba2-a60c5b3bcb14>
+    a mo:Track;
+    dct:title "Earl";
+    mo:duration "189";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Earl.mp3>.
+<urn:uuid:52bd2d20-4fbf-4ab1-b578-5c991fb101c6>
+    a mo:Track;
+    dct:title "Dukes";
+    mo:duration "276";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Dukes.mp3>.
+<urn:uuid:5c6cc872-185d-41a9-b73e-6839b77664e7>
+    a mo:Track;
+    dct:title "Show Me What You Got";
+    mo:duration "238";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Show%20Me%20What%20You%20Got.mp3>.
+<urn:uuid:66a8a967-92be-4008-aa66-19ba7ce63b75>
+    a mo:Track;
+    dct:title "Beat #51";
+    mo:duration "257";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Beat%20%2351.mp3>.
+<urn:uuid:71cdc2dc-0682-4221-8b98-0b1d59dfde66>
+    a mo:Track;
+    dct:title "Smooth";
+    mo:duration "242";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Smooth.mp3>.
+<urn:uuid:738034aa-c071-4301-9595-166f8e6df672>
+    a mo:Track;
+    dct:title "Can't Hold the Torch";
+    mo:duration "223";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Can't%20Hold%20the%20Torch.mp3>.
+<urn:uuid:7aacd199-9e3e-43d1-b0e9-4145d6f5e3cb>
+    a mo:Track;
+    dct:title "The Look of Love (Pt. 1)";
+    mo:duration "207";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Look%20of%20Love%20(Pt.%201).mp3>.
+<urn:uuid:88b3bb9a-1870-4bde-8f83-c829c56071fa>
+    a mo:Track;
+    dct:title "Always Find a Way";
+    mo:duration "225";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Always%20Find%20a%20Way.mp3>.
+<urn:uuid:8981ed2d-0b57-47d9-a230-2ef5a7b053e8>
+    a mo:Track;
+    dct:title "Fallin' in Lust";
+    mo:duration "267";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Fallin'%20in%20Lust.mp3>.
+<urn:uuid:8c3925b0-309b-4a69-89cb-a4b027adb101>
+    a mo:Track;
+    dct:title "Dilla Plugged-In";
+    mo:duration "190";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Dilla%20Plugged-In.mp3>.
+<urn:uuid:8fbdfb30-4903-425a-b0ff-c69a59d48049>
+    a mo:Track;
+    dct:title "In Space";
+    mo:duration "343";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20In%20Space.mp3>.
+<urn:uuid:91153637-bc07-4fa3-8f0c-ad2047e36509>
+    a mo:Track;
+    dct:title "All Good";
+    mo:duration "185";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20All%20Good.mp3>.
+<urn:uuid:9fe2b70d-679d-4f89-888a-04f863c2c3f0>
+    a mo:Track;
+    dct:title "A Day Wit the Homies";
+    mo:duration "183";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20A%20Day%20Wit%20the%20Homies.mp3>.
+<urn:uuid:a030a1ad-2bb5-4ff7-bdbc-4d69620bac04>
+    a mo:Track;
+    dct:title "Didn't Cha' Know?";
+    mo:duration "238";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Didn't%20Cha'%20Know%3B.mp3>.
+<urn:uuid:a490b286-180b-47f3-906c-b26652c60166>
+    a mo:Release;
+    dct:title "J. Dilla - Dilladayz";
+    mo:track
+        <urn:uuid:05f813ef-7487-4ae3-a245-9b16fb8a3cb9>,
+        <urn:uuid:0f45149e-6d49-4a8c-9cbd-f2b76d0a6998>,
+        <urn:uuid:0f82d999-0f64-4e33-9547-ce712d4055f2>,
+        <urn:uuid:100133af-7598-43ec-a2cd-14d88bea7953>,
+        <urn:uuid:1e5c056b-5f4a-4db0-b52d-5edd93385f79>,
+        <urn:uuid:204c66e1-c550-4765-879d-24fcf0fd0877>,
+        <urn:uuid:25864791-bb38-4678-880b-afa7b6ab7a0c>,
+        <urn:uuid:29048c07-3c43-4703-affa-cfff8a26fe85>,
+        <urn:uuid:3a864d60-32e6-49d5-a338-8b3f7f508ed5>,
+        <urn:uuid:3bcd8d6d-59a4-428c-a48f-4bc65e351a36>,
+        <urn:uuid:3dc2ed4e-5fc8-4679-9453-5a0ad787ce41>,
+        <urn:uuid:40be0a25-cc3f-4b7c-925e-a1948831e48f>,
+        <urn:uuid:4779d0bd-fc56-428d-b396-582292e79406>,
+        <urn:uuid:489481aa-0c0f-442c-8ba2-a60c5b3bcb14>,
+        <urn:uuid:52bd2d20-4fbf-4ab1-b578-5c991fb101c6>,
+        <urn:uuid:5c6cc872-185d-41a9-b73e-6839b77664e7>,
+        <urn:uuid:66a8a967-92be-4008-aa66-19ba7ce63b75>,
+        <urn:uuid:71cdc2dc-0682-4221-8b98-0b1d59dfde66>,
+        <urn:uuid:738034aa-c071-4301-9595-166f8e6df672>,
+        <urn:uuid:7aacd199-9e3e-43d1-b0e9-4145d6f5e3cb>,
+        <urn:uuid:88b3bb9a-1870-4bde-8f83-c829c56071fa>,
+        <urn:uuid:8981ed2d-0b57-47d9-a230-2ef5a7b053e8>,
+        <urn:uuid:8c3925b0-309b-4a69-89cb-a4b027adb101>,
+        <urn:uuid:8fbdfb30-4903-425a-b0ff-c69a59d48049>,
+        <urn:uuid:91153637-bc07-4fa3-8f0c-ad2047e36509>,
+        <urn:uuid:9fe2b70d-679d-4f89-888a-04f863c2c3f0>,
+        <urn:uuid:a030a1ad-2bb5-4ff7-bdbc-4d69620bac04>,
+        <urn:uuid:aa068446-3ab8-4ed4-9c01-21aace825560>,
+        <urn:uuid:aecbe2bb-adca-46a0-ba9b-98e2f1ff977f>,
+        <urn:uuid:bbfd3b34-426e-4618-9e55-38d2fa470875>,
+        <urn:uuid:bd33fd25-cf4c-4ba1-b6d0-5afb8e8e8a24>,
+        <urn:uuid:ca333d91-c16b-406a-b9fd-e642ae10d2f1>,
+        <urn:uuid:ce8a7346-c793-480c-b0a4-d377a548d41b>,
+        <urn:uuid:cf4e2596-dd72-410d-9009-309b12d6ef00>,
+        <urn:uuid:d4fa3585-5b3c-475a-8adf-76c572828704>,
+        <urn:uuid:e83eba82-181c-4a66-835d-733771c1d7c9>,
+        <urn:uuid:e9956b6c-ac23-4c1a-838d-8fe5347771e9>,
+        <urn:uuid:ed1438ba-61cb-417e-a4c8-6ec31c21e97b>;
+    dcat:landingPage det:dilladayz_j_dilla_20181120;
+    foaf:maker "J Dilla", <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>.
+<urn:uuid:aa068446-3ab8-4ed4-9c01-21aace825560>
+    a mo:Track;
+    dct:title "Flowers";
+    mo:duration "280";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Flowers.mp3>.
+<urn:uuid:aecbe2bb-adca-46a0-ba9b-98e2f1ff977f>
+    a mo:Track;
+    dct:title "Enjoy da Ride";
+    mo:duration "245";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Enjoy%20da%20Ride.mp3>.
+<urn:uuid:bbfd3b34-426e-4618-9e55-38d2fa470875>
+    a mo:Track;
+    dct:title "The Ex";
+    mo:duration "210";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Ex.mp3>.
+<urn:uuid:bd33fd25-cf4c-4ba1-b6d0-5afb8e8e8a24>
+    a mo:Track;
+    dct:title "I Try";
+    mo:duration "337";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20I%20Try.mp3>.
+<urn:uuid:ca333d91-c16b-406a-b9fd-e642ae10d2f1>
+    a mo:Track;
+    dct:title "Bass in the D (Town)";
+    mo:duration "334";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Bass%20in%20the%20D.mp3>.
+<urn:uuid:ce8a7346-c793-480c-b0a4-d377a548d41b>
+    a mo:Track;
+    dct:title "Kamaal";
+    mo:duration "424";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Kamaal.mp3>.
+<urn:uuid:cf4e2596-dd72-410d-9009-309b12d6ef00>
+    a mo:Track;
+    dct:title "Climax Girl Shit";
+    mo:duration "204";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Climax%20Girl%20Shit.mp3>.
+<urn:uuid:d4fa3585-5b3c-475a-8adf-76c572828704>
+    a mo:Track;
+    dct:title "The Light";
+    mo:duration "294";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Light.mp3>.
+<urn:uuid:e83eba82-181c-4a66-835d-733771c1d7c9>
+    a mo:Track;
+    dct:title "Quicksand";
+    mo:duration "281";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Quicksand.mp3>.
+<urn:uuid:e9956b6c-ac23-4c1a-838d-8fe5347771e9>
+    a mo:Track;
+    dct:title "Runnin'";
+    mo:duration "302";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Runnin'.mp3>.
+<urn:uuid:ed1438ba-61cb-417e-a4c8-6ec31c21e97b>
+    a mo:Track;
+    dct:title "One Two";
+    mo:duration "186";
+    dcat:downloadUrl
+        <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20One%20Two.mp3>.

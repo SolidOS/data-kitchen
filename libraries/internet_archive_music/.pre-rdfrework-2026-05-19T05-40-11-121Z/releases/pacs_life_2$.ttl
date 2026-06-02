@@ -1,0 +1,107 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:021d3b22-dd63-4fd0-abc0-83b4e871bfb5>
+    a mo:Track;
+    dct:title "Untouchables (Swizz Beatz Remix)";
+    mo:duration "256";
+    dcat:downloadUrl
+        <https://archive.org/download/11-dont-stop/01%20Untouchables%20(Swizz%20Beatz%20Remix).mp3>.
+<urn:uuid:0894e8a4-0f61-4280-b521-3fbc81aaea41>
+    a mo:Track;
+    dct:title "Dumpin'";
+    mo:duration "267";
+    dcat:downloadUrl
+    <https://archive.org/download/11-dont-stop/03%20Dumpin'.mp3>.
+<urn:uuid:09abb003-9675-4099-bd2d-e53e5a3390b3>
+    a mo:Track;
+    dct:title "Sleep";
+    mo:duration "249";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/06%20Sleep.mp3>.
+<urn:uuid:12d009d1-816c-4ecb-a7ff-2e24175ced63>
+    a mo:Track;
+    dct:title "Untouchable";
+    mo:duration "270";
+    dcat:downloadUrl
+    <https://archive.org/download/11-dont-stop/13%20Untouchable.mp3>.
+<urn:uuid:1364fe77-99a5-40bc-83d5-c3976c3a4ded>
+    a mo:Track;
+    dct:title "International";
+    mo:duration "243";
+    dcat:downloadUrl
+    <https://archive.org/download/11-dont-stop/07%20International.mp3>.
+<urn:uuid:196e3385-96d8-449e-bef6-55a34638fcbb>
+    a mo:Track;
+    dct:title "Playa Cardz Right (Male)";
+    mo:duration "294";
+    dcat:downloadUrl
+        <https://archive.org/download/11-dont-stop/10%20Playa%20Cardz%20Right%20(Male).mp3>.
+<urn:uuid:56ed1f52-b8e0-4c28-be8d-01be2401aa5b>
+    a mo:Track;
+    dct:title "Whatz Next";
+    mo:duration "258";
+    dcat:downloadUrl
+    <https://archive.org/download/11-dont-stop/05%20Whatz%20Next.mp3>.
+<urn:uuid:5a3a94bb-2307-4da4-a15c-d8abdff6ee49>
+    a mo:Release;
+    dct:title "Pac's Life";
+    mo:track
+        <urn:uuid:021d3b22-dd63-4fd0-abc0-83b4e871bfb5>,
+        <urn:uuid:0894e8a4-0f61-4280-b521-3fbc81aaea41>,
+        <urn:uuid:09abb003-9675-4099-bd2d-e53e5a3390b3>,
+        <urn:uuid:12d009d1-816c-4ecb-a7ff-2e24175ced63>,
+        <urn:uuid:1364fe77-99a5-40bc-83d5-c3976c3a4ded>,
+        <urn:uuid:196e3385-96d8-449e-bef6-55a34638fcbb>,
+        <urn:uuid:56ed1f52-b8e0-4c28-be8d-01be2401aa5b>,
+        <urn:uuid:7053fb34-f628-4fa2-8874-1978a21e732d>,
+        <urn:uuid:75e5b206-0375-42c7-b414-9dde39c2e42e>,
+        <urn:uuid:7dbf80e0-8d86-4a3e-96f3-7646e2216811>,
+        <urn:uuid:81da06b8-1ff3-45c5-8107-cc01553bddc9>,
+        <urn:uuid:a75c6efc-ee68-425e-955e-2c224b9a0f1a>,
+        <urn:uuid:f369d206-d927-4ad3-904b-5c7966926b04>;
+    dcat:landingPage det:11-dont-stop;
+    foaf:maker
+        "2Pac Feat. Bone Thugs-N-Harmony",
+        <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:7053fb34-f628-4fa2-8874-1978a21e732d>
+    a mo:Track;
+    dct:title "Pac's Life";
+    mo:duration "217";
+    dcat:downloadUrl
+    <https://archive.org/download/11-dont-stop/02%20Pac's%20Life.mp3>.
+<urn:uuid:75e5b206-0375-42c7-b414-9dde39c2e42e>
+    a mo:Track;
+    dct:title "Don't Stop";
+    mo:duration "324";
+    dcat:downloadUrl
+    <https://archive.org/download/11-dont-stop/11%20Don't%20Stop.mp3>.
+<urn:uuid:7dbf80e0-8d86-4a3e-96f3-7646e2216811>
+    a mo:Track;
+    dct:title "Don't Sleep";
+    mo:duration "215";
+    dcat:downloadUrl
+    <https://archive.org/download/11-dont-stop/08%20Don't%20Sleep.mp3>.
+<urn:uuid:81da06b8-1ff3-45c5-8107-cc01553bddc9>
+    a mo:Track;
+    dct:title "Pac's Life (Remix)";
+    mo:duration "218";
+    dcat:downloadUrl
+    <https://archive.org/download/11-dont-stop/12%20Pac's%20Life%20(Remix).mp3>.
+<urn:uuid:a75c6efc-ee68-425e-955e-2c224b9a0f1a>
+    a mo:Track;
+    dct:title "Soon As I Get Home";
+    mo:duration "220";
+    dcat:downloadUrl
+        <https://archive.org/download/11-dont-stop/09%20Soon%20As%20I%20Get%20Home.mp3>.
+<urn:uuid:f369d206-d927-4ad3-904b-5c7966926b04>
+    a mo:Track;
+    dct:title "Playa Cardz Right (Female)";
+    mo:duration "273";
+    dcat:downloadUrl
+        <https://archive.org/download/11-dont-stop/04%20Playa%20Cardz%20Right%20(Female).mp3>.

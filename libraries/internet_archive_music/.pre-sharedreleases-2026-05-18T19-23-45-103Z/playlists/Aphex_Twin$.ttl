@@ -1,0 +1,320 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/agents.ttl#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Aphex_Twin> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Aphex Twin";
+    foaf:maker "jeffz";
+    dcterms:description "1990s Ambient Electronica";
+    dcterms:hasPart <urn:uuid:f22a6276-425e-48ee-a475-cc8f5dc2d24d>, <urn:uuid:65e66afb-f671-4fca-a5ca-f9ae882ecc18>, <urn:uuid:00243a88-35ac-46b1-9ef3-1efcf4d0f037>, <urn:uuid:70a49a05-64bb-40f1-b611-6c0aa613640d>, <urn:uuid:65a6e83c-447d-4bf9-9f47-372567628590>, <urn:uuid:64519dd3-cb7f-4ea0-9941-1c5e731e8a80>, <urn:uuid:bb22e6e1-9b51-4375-b572-02ad36efe521>, <urn:uuid:a465cb31-b53f-440e-8dc2-3fa655651922>, <urn:uuid:086b3e4f-3d83-4cf4-808e-762ec811b518>, <urn:uuid:85e98c26-cccc-40f2-9551-0948775ffbf3>, <urn:uuid:3b604beb-4cd4-435e-a980-762a02e007d1>, <urn:uuid:d5c2feb9-d544-4cda-9e2c-500e597f4ace>, <urn:uuid:8e807b21-2064-4683-8744-05354e7bb1df>, <urn:uuid:ac2ed10e-a706-4b9f-87bb-1094f098df1c>, <urn:uuid:e8b2848a-2972-4460-8681-67d72fdf30d7>, <urn:uuid:168f5f07-ca48-4a9e-932d-906fa4fea2e0>, <urn:uuid:4b89b2e4-b971-4100-aaa8-d0ac0189433d>, <urn:uuid:1277b5a8-58c3-4d94-90a1-eeebfa730b7e>, <urn:uuid:57625955-53f4-4743-b719-7b52efe0d857>, <urn:uuid:dfca7ac3-9a5c-4a3b-83ba-81177fe123bf>, <urn:uuid:2a13fe2b-b439-42b6-a4a3-22e6bc2625b0>, <urn:uuid:80717685-1f13-4b86-8246-784a6d3901c6>, <urn:uuid:a0eb61e3-17e7-4168-ac6f-1fb2cdab99fc>, <urn:uuid:591c0a04-0457-42ff-81fb-9e634d973bd1>, <urn:uuid:ec740fa4-443f-4105-a9ec-5678e46b609f>, <urn:uuid:9e0e770e-e332-470b-91d8-5600e85c47c9>, <urn:uuid:1235d6da-1aa1-4a54-963c-aae3ba846326>, <urn:uuid:0b17206c-f2dd-4d74-b344-61918f406256>, <urn:uuid:f3e2232d-80e7-467f-a3c6-57fbeab0384e>, <urn:uuid:6a7c6dc8-7e4f-473b-a7ab-0b708d64668f>, <urn:uuid:112ad27d-c04d-44f1-a6ef-c8ba5e329f43>, <urn:uuid:e589d1ca-9f88-484b-bd3b-7066fdefff85>, <urn:uuid:33983ffc-051b-4c92-9a75-ffe1ef5207af>, <urn:uuid:82352a8e-a98f-4f6a-bfac-1ca7fb9ca623>, <urn:uuid:6cc13b62-0d40-481a-a982-f735e3db2a3a>, <urn:uuid:92eba53d-4c8c-4d95-8090-349f01240f85>, <urn:uuid:dd48a732-3c2b-43b0-a34e-16ffb8ed26a5>, <urn:uuid:5dfb6cdb-d238-4310-aca6-1e6e947fd567>, <urn:uuid:4cb1e922-0499-4962-a88b-5cdcf585dfc6>, <urn:uuid:4c9a8e1a-f0b1-410b-9a23-819a5326dc0d>, <urn:uuid:e744c82e-1e03-4ec7-b3f3-f59da8465e17>, <urn:uuid:b41b364a-4075-4012-a95a-c7346c9fa1c6>, <urn:uuid:e665c67c-02ea-4da7-9e0d-10067f01841f>, <urn:uuid:9d252ae0-7619-477b-ad7b-4f26a70d9ee4>, <urn:uuid:6be9a922-903c-4fd4-94cd-0cb239b35c75>, <urn:uuid:d7b2efeb-d2b2-49aa-b946-66eae0e117ce>, <urn:uuid:e9b34c67-f39d-4a30-9ae7-e18d9a4086f8>, <urn:uuid:ced6f940-d5cf-4954-99bb-f13a6a004b86>, <urn:uuid:5206218f-98ad-4bc8-b607-2abf1814a7e7>, <urn:uuid:142d8f99-83be-4e94-bcfd-1fd4786068f1>, <urn:uuid:4a5baf63-1086-4a63-a623-36e456f3ca73>, <urn:uuid:c3088b79-254e-4fed-bb3c-ef029f4fa75a>, <urn:uuid:84526df2-7c28-4134-96c1-c86373cd9529>, <urn:uuid:4c2f4775-831a-44f8-bbd1-e4555764ec33>, <urn:uuid:3af87471-d546-4ebc-b3ba-02cc9dee7696>, <urn:uuid:fb341078-f6a5-4951-a489-0a3264c6cedc>, <urn:uuid:10b4eea0-fd85-4136-a020-bcb0b4ba85bf>, <urn:uuid:e26b40da-5905-4273-8813-81e9b8e202f1>, <urn:uuid:1efca05e-ae31-4eef-afe2-84753b6173c2>, <urn:uuid:c734c999-f62c-4a54-9756-321ee052f286>, <urn:uuid:0ce29706-41dc-44ee-b03f-786ac5743ec6>, <urn:uuid:d4814429-a9a5-4690-aa53-f999372b132f>, <urn:uuid:cc3cf90e-2a2e-4646-a2ae-60f447699b73>, <urn:uuid:22fb69dd-2263-466c-8612-789e532f2202>, <urn:uuid:fea72e12-a1ad-4967-bfbd-abcdbb162b22>, <urn:uuid:6e8af088-a4db-4c55-94d3-41058aeb356f>;
+    omp:hidePlaylist "true".
+<urn:uuid:f22a6276-425e-48ee-a475-cc8f5dc2d24d> a mo:Track;
+    dcterms:title "4x Atlantis take1";
+    dcat:downloadUrl <https://archive.org/download/london_14-09-2019/London-002-Aphex%20Twin-4x%20Atlantis%20take1.mp3>;
+    mo:duration "229".
+<urn:uuid:65e66afb-f671-4fca-a5ca-f9ae882ecc18> a mo:Track;
+    dcterms:title "diskhat ALL prepared1mixed 13";
+    dcat:downloadUrl <https://archive.org/download/01-diskhat-all-prepared-1mixed-13/2015%20-%20Computer%20Controlled%20Acoustic%20Instruments%20Pt.2%20ep%2F01%20-%20diskhat%20ALL%20prepared1mixed%2013.mp3>;
+    mo:duration "323".
+<urn:uuid:00243a88-35ac-46b1-9ef3-1efcf4d0f037> a mo:Track;
+    dcterms:title "Acrid Avid Jam Shred";
+    dcat:downloadUrl <https://archive.org/download/ICBYD/01.%20Acrid%20Avid%20Jam%20Shred.mp3>;
+    mo:duration "459".
+<urn:uuid:70a49a05-64bb-40f1-b611-6c0aa613640d> a mo:Track;
+    dcterms:title "The Waxen Pith";
+    dcat:downloadUrl <https://archive.org/download/ICBYD/02.%20The%20Waxen%20Pith.mp3>;
+    mo:duration "289".
+<urn:uuid:65a6e83c-447d-4bf9-9f47-372567628590> a mo:Track;
+    dcterms:title "Wax The Nip";
+    dcat:downloadUrl <https://archive.org/download/ICBYD/03.%20Wax%20The%20Nip.mp3>;
+    mo:duration "258".
+<urn:uuid:64519dd3-cb7f-4ea0-9941-1c5e731e8a80> a mo:Track;
+    dcterms:title "Start As You Mean To Go On";
+    dcat:downloadUrl <https://archive.org/download/ICBYD/07.%20Start%20As%20You%20Mean%20To%20Go%20On.mp3>;
+    mo:duration "365".
+<urn:uuid:bb22e6e1-9b51-4375-b572-02ad36efe521> a mo:Track;
+    dcterms:title "Wet Tip Hen Ax";
+    dcat:downloadUrl <https://archive.org/download/ICBYD/08.%20Wet%20Tip%20Hen%20Ax.mp3>;
+    mo:duration "317".
+<urn:uuid:a465cb31-b53f-440e-8dc2-3fa655651922> a mo:Track;
+    dcterms:title "Mookid";
+    dcat:downloadUrl <https://archive.org/download/ICBYD/09.%20Mookid.mp3>;
+    mo:duration "231".
+<urn:uuid:086b3e4f-3d83-4cf4-808e-762ec811b518> a mo:Track;
+    dcterms:title "Alberto Balsalm";
+    dcat:downloadUrl <https://archive.org/download/ICBYD/10.%20Alberto%20Balsalm.mp3>;
+    mo:duration "310".
+<urn:uuid:85e98c26-cccc-40f2-9551-0948775ffbf3> a mo:Track;
+    dcterms:title "Cow Cud Is A Twin";
+    dcat:downloadUrl <https://archive.org/download/ICBYD/11.%20Cow%20Cud%20Is%20A%20Twin.mp3>;
+    mo:duration "333".
+<urn:uuid:3b604beb-4cd4-435e-a980-762a02e007d1> a mo:Track;
+    dcterms:title "#1";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2001%20%231.mp3>;
+    mo:duration "448".
+<urn:uuid:d5c2feb9-d544-4cda-9e2c-500e597f4ace> a mo:Track;
+    dcterms:title "#2";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2002%20%232.mp3>;
+    mo:duration "394".
+<urn:uuid:8e807b21-2064-4683-8744-05354e7bb1df> a mo:Track;
+    dcterms:title "#3";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2003%20%233.mp3>;
+    mo:duration "464".
+<urn:uuid:ac2ed10e-a706-4b9f-87bb-1094f098df1c> a mo:Track;
+    dcterms:title "#4";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2004%20%234.mp3>;
+    mo:duration "280".
+<urn:uuid:e8b2848a-2972-4460-8681-67d72fdf30d7> a mo:Track;
+    dcterms:title "#5";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2005%20%235.mp3>;
+    mo:duration "535".
+<urn:uuid:168f5f07-ca48-4a9e-932d-906fa4fea2e0> a mo:Track;
+    dcterms:title "#6";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2006%20%236.mp3>;
+    mo:duration "211".
+<urn:uuid:4b89b2e4-b971-4100-aaa8-d0ac0189433d> a mo:Track;
+    dcterms:title "#7";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2007%20%237.mp3>;
+    mo:duration "531".
+<urn:uuid:1277b5a8-58c3-4d94-90a1-eeebfa730b7e> a mo:Track;
+    dcterms:title "#8";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2008%20%238.mp3>;
+    mo:duration "309".
+<urn:uuid:57625955-53f4-4743-b719-7b52efe0d857> a mo:Track;
+    dcterms:title "#9";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2009%20%239.mp3>;
+    mo:duration "415".
+<urn:uuid:dfca7ac3-9a5c-4a3b-83ba-81177fe123bf> a mo:Track;
+    dcterms:title "#10";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2010%20%2310.mp3>;
+    mo:duration "598".
+<urn:uuid:2a13fe2b-b439-42b6-a4a3-22e6bc2625b0> a mo:Track;
+    dcterms:title "#11";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2011%20%2311.mp3>;
+    mo:duration "438".
+<urn:uuid:80717685-1f13-4b86-8246-784a6d3901c6> a mo:Track;
+    dcterms:title "#13";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2013%20%2313.mp3>;
+    mo:duration "440".
+<urn:uuid:a0eb61e3-17e7-4168-ac6f-1fb2cdab99fc> a mo:Track;
+    dcterms:title "#14";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2014%20%2314.mp3>;
+    mo:duration "481".
+<urn:uuid:591c0a04-0457-42ff-81fb-9e634d973bd1> a mo:Track;
+    dcterms:title "#15";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2015%20%2315.mp3>;
+    mo:duration "334".
+<urn:uuid:ec740fa4-443f-4105-a9ec-5678e46b609f> a mo:Track;
+    dcterms:title "#16";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2016%20%2316.mp3>;
+    mo:duration "286".
+<urn:uuid:9e0e770e-e332-470b-91d8-5600e85c47c9> a mo:Track;
+    dcterms:title "#18";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2018%20%2318.mp3>;
+    mo:duration "437".
+<urn:uuid:1235d6da-1aa1-4a54-963c-aae3ba846326> a mo:Track;
+    dcterms:title "#19";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2019%20%2319.mp3>;
+    mo:duration "358".
+<urn:uuid:0b17206c-f2dd-4d74-b344-61918f406256> a mo:Track;
+    dcterms:title "#20";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2020%20%2320.mp3>;
+    mo:duration "255".
+<urn:uuid:f3e2232d-80e7-467f-a3c6-57fbeab0384e> a mo:Track;
+    dcterms:title "#21";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2021%20%2321.mp3>;
+    mo:duration "430".
+<urn:uuid:6a7c6dc8-7e4f-473b-a7ab-0b708d64668f> a mo:Track;
+    dcterms:title "#22";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2022%20%2322.mp3>;
+    mo:duration "450".
+<urn:uuid:112ad27d-c04d-44f1-a6ef-c8ba5e329f43> a mo:Track;
+    dcterms:title "#23";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2023%20%2323.mp3>;
+    mo:duration "687".
+<urn:uuid:e589d1ca-9f88-484b-bd3b-7066fdefff85> a mo:Track;
+    dcterms:title "#24";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-selected-ambient-works-volume-ii_202412/Aphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%2FAphex%20Twin%20-%20Selected%20Ambient%20Works%20Volume%20II%20-%2024%20%2324.mp3>;
+    mo:duration "342".
+<urn:uuid:33983ffc-051b-4c92-9a75-ffe1ef5207af> a mo:Track;
+    dcterms:title "T69 collapse";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2001%20T69%20collapse.mp3>;
+    mo:duration "323".
+<urn:uuid:82352a8e-a98f-4f6a-bfac-1ca7fb9ca623> a mo:Track;
+    dcterms:title "1st 44";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2002%201st%2044.mp3>;
+    mo:duration "370".
+<urn:uuid:6cc13b62-0d40-481a-a982-f735e3db2a3a> a mo:Track;
+    dcterms:title "MT1 t29r2";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2003%20MT1%20t29r2.mp3>;
+    mo:duration "365".
+<urn:uuid:92eba53d-4c8c-4d95-8090-349f01240f85> a mo:Track;
+    dcterms:title "abundance10edit[2 R8's, FZ20m & a 909]";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2004%20abundance10edit-2%20R8's%2C%20FZ20m%20%26%20a%20909-.mp3>;
+    mo:duration "380".
+<urn:uuid:dd48a732-3c2b-43b0-a34e-16ffb8ed26a5> a mo:Track;
+    dcterms:title "pthex";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2005%20pthex.mp3>;
+    mo:duration "298".
+<urn:uuid:5dfb6cdb-d238-4310-aca6-1e6e947fd567> a mo:Track;
+    dcterms:title "Xtal";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F01.%20Xtal.mp3>;
+    mo:duration "295".
+<urn:uuid:4cb1e922-0499-4962-a88b-5cdcf585dfc6> a mo:Track;
+    dcterms:title "Tha";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F02.%20Tha.mp3>;
+    mo:duration "547".
+<urn:uuid:4c9a8e1a-f0b1-410b-9a23-819a5326dc0d> a mo:Track;
+    dcterms:title "Pulsewidth";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F03.%20Pulsewidth.mp3>;
+    mo:duration "228".
+<urn:uuid:e744c82e-1e03-4ec7-b3f3-f59da8465e17> a mo:Track;
+    dcterms:title "Ageispolis";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F04.%20Ageispolis.mp3>;
+    mo:duration "323".
+<urn:uuid:b41b364a-4075-4012-a95a-c7346c9fa1c6> a mo:Track;
+    dcterms:title "Green Calx";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F06.%20Green%20Calx.mp3>;
+    mo:duration "365".
+<urn:uuid:e665c67c-02ea-4da7-9e0d-10067f01841f> a mo:Track;
+    dcterms:title "Heliosphan";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F07.%20Heliosphan.mp3>;
+    mo:duration "294".
+<urn:uuid:9d252ae0-7619-477b-ad7b-4f26a70d9ee4> a mo:Track;
+    dcterms:title "We are the music makers";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F08.%20We%20are%20the%20music%20makers.mp3>;
+    mo:duration "464".
+<urn:uuid:6be9a922-903c-4fd4-94cd-0cb239b35c75> a mo:Track;
+    dcterms:title "Schottkey 7th Path";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F09.%20Schottkey%207th%20Path.mp3>;
+    mo:duration "308".
+<urn:uuid:d7b2efeb-d2b2-49aa-b946-66eae0e117ce> a mo:Track;
+    dcterms:title "Ptolemy";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F10.%20Ptolemy.mp3>;
+    mo:duration "434".
+<urn:uuid:e9b34c67-f39d-4a30-9ae7-e18d9a4086f8> a mo:Track;
+    dcterms:title "Hedphelym";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F11.%20Hedphelym.mp3>;
+    mo:duration "364".
+<urn:uuid:ced6f940-d5cf-4954-99bb-f13a6a004b86> a mo:Track;
+    dcterms:title "Delphium";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F12.%20Delphium.mp3>;
+    mo:duration "329".
+<urn:uuid:5206218f-98ad-4bc8-b607-2abf1814a7e7> a mo:Track;
+    dcterms:title "Actium";
+    dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F13.%20Actium.mp3>;
+    mo:duration "458".
+<urn:uuid:142d8f99-83be-4e94-bcfd-1fd4786068f1> a mo:Track;
+    dcterms:title "2X202-ST5";
+    dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/2X202-ST5.mp3>;
+    mo:duration "279".
+<urn:uuid:4a5baf63-1086-4a63-a623-36e456f3ca73> a mo:Track;
+    dcterms:title "CHEETAHT7b";
+    dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/CHEETAHT7b.mp3>;
+    mo:duration "403".
+<urn:uuid:c3088b79-254e-4fed-bb3c-ef029f4fa75a> a mo:Track;
+    dcterms:title "CIRKLON3 (Kolkhoznaya Mix)";
+    dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/CIRKLON3%20(Kolkhoznaya%20Mix).mp3>;
+    mo:duration "493".
+<urn:uuid:84526df2-7c28-4134-96c1-c86373cd9529> a mo:Track;
+    dcterms:title "Cheetaht2 [Ld Spectrum]";
+    dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/Cheetaht2%20%5BLd%20Spectrum%5D.mp3>;
+    mo:duration "353".
+<urn:uuid:4c2f4775-831a-44f8-bbd1-e4555764ec33> a mo:Track;
+    dcterms:title "Cirklon 1";
+    dcat:downloadUrl <https://archive.org/download/cheetaht-2-ld-spectrum/Cirklon%201.mp3>;
+    mo:duration "437".
+<urn:uuid:3af87471-d546-4ebc-b3ba-02cc9dee7696> a mo:Track;
+    dcterms:title "Xtal";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(01).mp3>;
+    mo:duration "294".
+<urn:uuid:fb341078-f6a5-4951-a489-0a3264c6cedc> a mo:Track;
+    dcterms:title "Tha";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(02).mp3>;
+    mo:duration "547".
+<urn:uuid:10b4eea0-fd85-4136-a020-bcb0b4ba85bf> a mo:Track;
+    dcterms:title "Pulsewidth";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(03).mp3>;
+    mo:duration "228".
+<urn:uuid:e26b40da-5905-4273-8813-81e9b8e202f1> a mo:Track;
+    dcterms:title "Ageispolis";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(04).mp3>;
+    mo:duration "323".
+<urn:uuid:1efca05e-ae31-4eef-afe2-84753b6173c2> a mo:Track;
+    dcterms:title "Green Calx";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(06).mp3>;
+    mo:duration "365".
+<urn:uuid:c734c999-f62c-4a54-9756-321ee052f286> a mo:Track;
+    dcterms:title "Heliosphan";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(07).mp3>;
+    mo:duration "293".
+<urn:uuid:0ce29706-41dc-44ee-b03f-786ac5743ec6> a mo:Track;
+    dcterms:title "We Are the Music Makers";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(08).mp3>;
+    mo:duration "463".
+<urn:uuid:d4814429-a9a5-4690-aa53-f999372b132f> a mo:Track;
+    dcterms:title "Schottkey 7th Path";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(09).mp3>;
+    mo:duration "308".
+<urn:uuid:cc3cf90e-2a2e-4646-a2ae-60f447699b73> a mo:Track;
+    dcterms:title "Ptolemy";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(10).mp3>;
+    mo:duration "434".
+<urn:uuid:22fb69dd-2263-466c-8612-789e532f2202> a mo:Track;
+    dcterms:title "Hedphelym";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(11).mp3>;
+    mo:duration "363".
+<urn:uuid:fea72e12-a1ad-4967-bfbd-abcdbb162b22> a mo:Track;
+    dcterms:title "Delphium";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(12).mp3>;
+    mo:duration "329".
+<urn:uuid:6e8af088-a4db-4c55-94d3-41058aeb356f> a mo:Track;
+    dcterms:title "Actium";
+    dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(13).mp3>;
+    mo:duration "456".
+<urn:uuid:409cce68-7780-48d7-b965-f94db9f827da> a mo:Release;
+    dcterms:title "Aphex Twin - London 14.09.2019";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/london_14-09-2019>;
+    mo:track <urn:uuid:f22a6276-425e-48ee-a475-cc8f5dc2d24d>.
+<urn:uuid:57e0e25f-004b-4dd7-86bd-f863d61f0262> a mo:Release;
+    dcterms:title "Computer Controlled Acoustic Instruments Pt.2 - Aphex Twin [Flac]";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/01-diskhat-all-prepared-1mixed-13>;
+    mo:track <urn:uuid:65e66afb-f671-4fca-a5ca-f9ae882ecc18>.
+<urn:uuid:13c802ed-70e3-4e77-bd3a-ff76d8fb30b9> a mo:Release;
+    dcterms:title "Aphex Twin - ...I Care Because You Do [1995]";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/ICBYD>;
+    mo:track <urn:uuid:00243a88-35ac-46b1-9ef3-1efcf4d0f037>, <urn:uuid:70a49a05-64bb-40f1-b611-6c0aa613640d>, <urn:uuid:65a6e83c-447d-4bf9-9f47-372567628590>, <urn:uuid:64519dd3-cb7f-4ea0-9941-1c5e731e8a80>, <urn:uuid:bb22e6e1-9b51-4375-b572-02ad36efe521>, <urn:uuid:a465cb31-b53f-440e-8dc2-3fa655651922>, <urn:uuid:086b3e4f-3d83-4cf4-808e-762ec811b518>, <urn:uuid:85e98c26-cccc-40f2-9551-0948775ffbf3>.
+<urn:uuid:375d64df-d41c-41bb-814d-40107ffc78e7> a mo:Release;
+    dcterms:title "Selected Ambient Works Volume II";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/aphex-twin-selected-ambient-works-volume-ii_202412>;
+    mo:track <urn:uuid:3b604beb-4cd4-435e-a980-762a02e007d1>, <urn:uuid:d5c2feb9-d544-4cda-9e2c-500e597f4ace>, <urn:uuid:8e807b21-2064-4683-8744-05354e7bb1df>, <urn:uuid:ac2ed10e-a706-4b9f-87bb-1094f098df1c>, <urn:uuid:e8b2848a-2972-4460-8681-67d72fdf30d7>, <urn:uuid:168f5f07-ca48-4a9e-932d-906fa4fea2e0>, <urn:uuid:4b89b2e4-b971-4100-aaa8-d0ac0189433d>, <urn:uuid:1277b5a8-58c3-4d94-90a1-eeebfa730b7e>, <urn:uuid:57625955-53f4-4743-b719-7b52efe0d857>, <urn:uuid:dfca7ac3-9a5c-4a3b-83ba-81177fe123bf>, <urn:uuid:2a13fe2b-b439-42b6-a4a3-22e6bc2625b0>, <urn:uuid:80717685-1f13-4b86-8246-784a6d3901c6>, <urn:uuid:a0eb61e3-17e7-4168-ac6f-1fb2cdab99fc>, <urn:uuid:591c0a04-0457-42ff-81fb-9e634d973bd1>, <urn:uuid:ec740fa4-443f-4105-a9ec-5678e46b609f>, <urn:uuid:9e0e770e-e332-470b-91d8-5600e85c47c9>, <urn:uuid:1235d6da-1aa1-4a54-963c-aae3ba846326>, <urn:uuid:0b17206c-f2dd-4d74-b344-61918f406256>, <urn:uuid:f3e2232d-80e7-467f-a3c6-57fbeab0384e>, <urn:uuid:6a7c6dc8-7e4f-473b-a7ab-0b708d64668f>, <urn:uuid:112ad27d-c04d-44f1-a6ef-c8ba5e329f43>, <urn:uuid:e589d1ca-9f88-484b-bd3b-7066fdefff85>.
+<urn:uuid:e3e45496-3456-422e-afa8-5d5684f926bc> a mo:Release;
+    dcterms:title "Collapse EP";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/aphex-twin-collapse-ep_202412>;
+    mo:track <urn:uuid:33983ffc-051b-4c92-9a75-ffe1ef5207af>, <urn:uuid:82352a8e-a98f-4f6a-bfac-1ca7fb9ca623>, <urn:uuid:6cc13b62-0d40-481a-a982-f735e3db2a3a>, <urn:uuid:92eba53d-4c8c-4d95-8090-349f01240f85>, <urn:uuid:dd48a732-3c2b-43b0-a34e-16ffb8ed26a5>.
+<urn:uuid:6c9d4f0b-5e14-4bbf-86b6-9cf193f9a4e4> a mo:Release;
+    dcterms:title "Aphex Twin - Selected Ambient Works 86–92 CD Rip";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/aphex-twin-saw-86-92-cd-rip>;
+    mo:track <urn:uuid:5dfb6cdb-d238-4310-aca6-1e6e947fd567>, <urn:uuid:4cb1e922-0499-4962-a88b-5cdcf585dfc6>, <urn:uuid:4c9a8e1a-f0b1-410b-9a23-819a5326dc0d>, <urn:uuid:e744c82e-1e03-4ec7-b3f3-f59da8465e17>, <urn:uuid:b41b364a-4075-4012-a95a-c7346c9fa1c6>, <urn:uuid:e665c67c-02ea-4da7-9e0d-10067f01841f>, <urn:uuid:9d252ae0-7619-477b-ad7b-4f26a70d9ee4>, <urn:uuid:6be9a922-903c-4fd4-94cd-0cb239b35c75>, <urn:uuid:d7b2efeb-d2b2-49aa-b946-66eae0e117ce>, <urn:uuid:e9b34c67-f39d-4a30-9ae7-e18d9a4086f8>, <urn:uuid:ced6f940-d5cf-4954-99bb-f13a6a004b86>, <urn:uuid:5206218f-98ad-4bc8-b607-2abf1814a7e7>.
+<urn:uuid:39182ca5-523b-4707-a65d-d6eb8d25a856> a mo:Release;
+    dcterms:title "Cheetah EP";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/cheetaht-2-ld-spectrum>;
+    mo:track <urn:uuid:142d8f99-83be-4e94-bcfd-1fd4786068f1>, <urn:uuid:4a5baf63-1086-4a63-a623-36e456f3ca73>, <urn:uuid:c3088b79-254e-4fed-bb3c-ef029f4fa75a>, <urn:uuid:84526df2-7c28-4134-96c1-c86373cd9529>, <urn:uuid:4c2f4775-831a-44f8-bbd1-e4555764ec33>.
+<urn:uuid:6a22411a-2ffa-4a57-b1f4-6265025cfd7a> a mo:Release;
+    dcterms:title "Selected Ambient Works 85-92";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/selected-ambient-works-85-92>;
+    mo:track <urn:uuid:3af87471-d546-4ebc-b3ba-02cc9dee7696>, <urn:uuid:fb341078-f6a5-4951-a489-0a3264c6cedc>, <urn:uuid:10b4eea0-fd85-4136-a020-bcb0b4ba85bf>, <urn:uuid:e26b40da-5905-4273-8813-81e9b8e202f1>, <urn:uuid:1efca05e-ae31-4eef-afe2-84753b6173c2>, <urn:uuid:c734c999-f62c-4a54-9756-321ee052f286>, <urn:uuid:0ce29706-41dc-44ee-b03f-786ac5743ec6>, <urn:uuid:d4814429-a9a5-4690-aa53-f999372b132f>, <urn:uuid:cc3cf90e-2a2e-4646-a2ae-60f447699b73>, <urn:uuid:22fb69dd-2263-466c-8612-789e532f2202>, <urn:uuid:fea72e12-a1ad-4967-bfbd-abcdbb162b22>, <urn:uuid:6e8af088-a4db-4c55-94d3-41058aeb356f>.

@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:394c7cec-012e-4700-b425-c35278b645a8> a mo:Release;
+    dcterms:title "Boc Maxima";
+    foaf:maker "Boards of Canada";
+    dcat:landingPage <https://archive.org/details/boc-maxima-a>;
+    mo:track <urn:uuid:daf658d1-0c55-40af-b260-47346bd9a983>, <urn:uuid:4da3bca4-5bd2-43a8-9dad-b467969c7bc6>.
+<urn:uuid:daf658d1-0c55-40af-b260-47346bd9a983> a mo:Track; dcterms:title "Boc Maxima A"; mo:duration "2454"; dcat:downloadUrl <https://archive.org/download/boc-maxima-a/Boc%20Maxima%20A.mp3>.
+<urn:uuid:4da3bca4-5bd2-43a8-9dad-b467969c7bc6> a mo:Track; dcterms:title "Boc Maxima B"; mo:duration "1472"; dcat:downloadUrl <https://archive.org/download/boc-maxima-a/Boc%20Maxima%20B.mp3>.

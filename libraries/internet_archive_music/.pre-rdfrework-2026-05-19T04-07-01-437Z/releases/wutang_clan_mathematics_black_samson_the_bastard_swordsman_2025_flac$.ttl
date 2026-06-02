@@ -1,0 +1,73 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:05d7502a-a2d4-4028-b2fd-9ce196dc61da>
+    a mo:Track;
+    dct:title "Let's Do It Again";
+    mo:duration "256";
+    dcat:downloadUrl
+        <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F09.%20Wu-Tang%20Clan%2C%20RJ%20PAYNE%2C%2038%20Spesh%2C%20Willie%20The%20Kid%2C%20RZA%20-%20Let's%20Do%20It%20Again.mp3>.
+<urn:uuid:24424165-4a43-4612-939c-3b904cb07248>
+    a mo:Track;
+    dct:title "Mandingo";
+    mo:duration "269";
+    dcat:downloadUrl
+        <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F02.%20Wu-Tang%20Clan%2C%20Mathematics%2C%20Raekwon%2C%20Inspectah%20Deck%2C%20Method%20Man%2C%20Cappadonna%20-%20Mandingo.mp3>.
+<urn:uuid:441ddc67-d497-482f-839c-376bd2a09726>
+    a mo:Track;
+    dct:title "Claudine";
+    mo:duration "236";
+    dcat:downloadUrl
+        <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F04.%20Wu-Tang%20Clan%2C%20Mathematics%2C%20Method%20Man%2C%20Ghostface%20Killah%2C%20Nicole%20Bus%20-%20Claudine.mp3>.
+<urn:uuid:679d2c6e-41d6-4c38-bb4f-3866710deeae>
+    a mo:Track;
+    dct:title "Cleopatra Jones";
+    mo:duration "214";
+    dcat:downloadUrl
+        <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F07.%20Wu-Tang%20Clan%2C%20Raekwon%2C%20Masta%20Killa%20-%20Cleopatra%20Jones.mp3>.
+<urn:uuid:9a490abc-2488-41d6-9f5d-9f0a9c2aa1db>
+    a mo:Track;
+    dct:title "Roar of the Lion (The Lion's Pit)";
+    mo:duration "249";
+    dcat:downloadUrl
+        <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F03.%20Wu-Tang%20Clan%2C%20U-God%2C%20Kool%20G%20Rap%2C%20RZA%20-%20Roar%20of%20the%20Lion%20(The%20Lion's%20Pit).mp3>.
+<urn:uuid:9ea58034-7fc6-41de-87f6-95147837ec65>
+    a mo:Track;
+    dct:title "Shaolin Vs Lama";
+    mo:duration "232";
+    dcat:downloadUrl
+        <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F05.%20Wu-Tang%20Clan%2C%20Raekwon%2C%20Inspectah%20Deck%20-%20Shaolin%20Vs%20Lama.mp3>.
+<urn:uuid:b1cbfbfa-d050-4a79-bcc5-5f0863ba913a>
+    a mo:Release;
+    dct:title
+        "Wu-Tang Clan & Mathematics - Black Samson, the Bastard Swordsman (2025) flac";
+    mo:track
+        <urn:uuid:05d7502a-a2d4-4028-b2fd-9ce196dc61da>,
+        <urn:uuid:24424165-4a43-4612-939c-3b904cb07248>,
+        <urn:uuid:441ddc67-d497-482f-839c-376bd2a09726>,
+        <urn:uuid:679d2c6e-41d6-4c38-bb4f-3866710deeae>,
+        <urn:uuid:9a490abc-2488-41d6-9f5d-9f0a9c2aa1db>,
+        <urn:uuid:9ea58034-7fc6-41de-87f6-95147837ec65>,
+        <urn:uuid:ca0be88b-3763-434b-94ed-8e154871799c>,
+        <urn:uuid:fdb5ac17-be23-4e23-aba7-86e415e63c05>;
+    dcat:landingPage
+        det:04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine;
+    foaf:maker
+        "Wu-Tang Clan, Mathematics, Method Man, Ghostface Killah, Nicole Bus",
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:ca0be88b-3763-434b-94ed-8e154871799c>
+    a mo:Track;
+    dct:title "Dolemite";
+    mo:duration "245";
+    dcat:downloadUrl
+        <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F10.%20Wu-Tang%20Clan%2C%20Cappadonna%2C%20U-God%2C%20Masta%20Killa%20-%20Dolemite.mp3>.
+<urn:uuid:fdb5ac17-be23-4e23-aba7-86e415e63c05>
+    a mo:Track;
+    dct:title "Warriors Two, Cooley High";
+    mo:duration "193";
+    dcat:downloadUrl
+        <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F08.%20Wu-Tang%20Clan%2C%20Benny%20The%20Butcher%2C%20Method%20Man%20-%20Warriors%20Two%2C%20Cooley%20High.mp3>.

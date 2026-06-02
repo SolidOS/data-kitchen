@@ -1,0 +1,19 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:fe524bfd-489d-48e9-84ea-c2b751da1df1> a mo:Release;
+    dcterms:title "Boc Maxima";
+    foaf:maker "Boards of Canada";
+    dcat:landingPage <https://archive.org/details/boards-of-canada-boc-maxima>;
+    mo:track <urn:uuid:c1c7d25d-4ea0-47c8-a864-5c09cdb36c3b>, <urn:uuid:c8851e35-f288-4ce1-a43e-739202900df7>, <urn:uuid:72c4afc7-99e3-4c05-ba73-a3fd00708e18>, <urn:uuid:51a3ad45-184a-47e0-9d36-58228b521708>, <urn:uuid:310b6e92-3a91-4cfa-9d2b-b853350161b8>, <urn:uuid:380f3db3-dfc4-4eed-8be6-6e85da759e17>, <urn:uuid:f6335c04-db6a-4a56-bd52-de243627bfed>, <urn:uuid:b60048e0-97fe-4414-a638-7fb8b850fe8e>, <urn:uuid:4fbc074f-816b-47e7-8ef7-7fc481daba5c>.
+<urn:uuid:c1c7d25d-4ea0-47c8-a864-5c09cdb36c3b> a mo:Track; dcterms:title "Chinook"; mo:duration "279"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2002%20-%20Chinook.mp3>.
+<urn:uuid:c8851e35-f288-4ce1-a43e-739202900df7> a mo:Track; dcterms:title "Everything You Do Is A Balloon"; mo:duration "415"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2004%20-%20Everything%20You%20Do%20Is%20A%20Balloon.mp3>.
+<urn:uuid:72c4afc7-99e3-4c05-ba73-a3fd00708e18> a mo:Track; dcterms:title "June 9th"; mo:duration "315"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2008%20-%20June%209th.mp3>.
+<urn:uuid:51a3ad45-184a-47e0-9d36-58228b521708> a mo:Track; dcterms:title "Sixtyniner"; mo:duration "310"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2011%20-%20Sixtyniner.mp3>.
+<urn:uuid:310b6e92-3a91-4cfa-9d2b-b853350161b8> a mo:Track; dcterms:title "Red Moss"; mo:duration "382"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2012%20-%20Red%20Moss.mp3>.
+<urn:uuid:380f3db3-dfc4-4eed-8be6-6e85da759e17> a mo:Track; dcterms:title "Nlogax"; mo:duration "313"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2015%20-%20Nlogax.mp3>.
+<urn:uuid:f6335c04-db6a-4a56-bd52-de243627bfed> a mo:Track; dcterms:title "M9"; mo:duration "220"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2016%20-%20M9.mp3>.
+<urn:uuid:b60048e0-97fe-4414-a638-7fb8b850fe8e> a mo:Track; dcterms:title "Turquoise Hexagon Sun"; mo:duration "312"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2018%20-%20Turquoise%20Hexagon%20Sun.mp3>.
+<urn:uuid:4fbc074f-816b-47e7-8ef7-7fc481daba5c> a mo:Track; dcterms:title "Whitewater"; mo:duration "376"; dcat:downloadUrl <https://archive.org/download/boards-of-canada-boc-maxima/Boards%20of%20Canada%20-%20Boc%20Maxima%20-%2019%20-%20Whitewater.mp3>.

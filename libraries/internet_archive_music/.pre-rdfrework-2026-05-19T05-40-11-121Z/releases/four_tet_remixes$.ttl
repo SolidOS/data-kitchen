@@ -1,0 +1,13 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:4c4388ed-92fb-4ee6-a17d-ea1e167ad168> a mo:Release;
+    dcterms:title "Four Tet Remixes";
+    foaf:maker "Madvillain";
+    dcat:landingPage <https://archive.org/details/madvillian-four-tet-remixes>;
+    mo:track <urn:uuid:bdc07bca-6463-46d6-b7cb-ec256ba2ff60>, <urn:uuid:f43e3bd2-ec78-4249-81b2-dce176c541d0>, <urn:uuid:ae52c61e-0a54-4a9c-84a5-7634e06f2eb7>.
+<urn:uuid:bdc07bca-6463-46d6-b7cb-ec256ba2ff60> a mo:Track; dcterms:title "Rhinestone Cowboy"; mo:duration "191"; dcat:downloadUrl <https://archive.org/download/madvillian-four-tet-remixes/05%20Rhinestone%20Cowboy.mp3>.
+<urn:uuid:f43e3bd2-ec78-4249-81b2-dce176c541d0> a mo:Track; dcterms:title "Great Day (Instrumental)"; mo:duration "183"; dcat:downloadUrl <https://archive.org/download/madvillian-four-tet-remixes/09%20Great%20Day%20(Instrumental).mp3>.
+<urn:uuid:ae52c61e-0a54-4a9c-84a5-7634e06f2eb7> a mo:Track; dcterms:title "Shadows Of Tomorrow (Instrumental)"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/madvillian-four-tet-remixes/10%20Shadows%20Of%20Tomorrow%20(Instrumental).mp3>.

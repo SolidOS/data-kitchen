@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:a67caa9a-2837-472c-8edf-d9269bccc8f4> a mo:Release;
+    dcterms:title "Madvillainy";
+    foaf:maker "Madvillain feat. Lord Quas";
+    dcat:landingPage <https://archive.org/details/Madvillainy-madvillain>;
+    mo:track <urn:uuid:1d96e24f-65e6-4d76-983d-068b053afa09>, <urn:uuid:2564a824-12b3-415f-9fff-8ab5e6f7ad2e>.
+<urn:uuid:1d96e24f-65e6-4d76-983d-068b053afa09> a mo:Track; dcterms:title "America’s Most Blunted"; mo:duration "234"; dcat:downloadUrl <https://archive.org/download/Madvillainy-madvillain/06.%20America's%20Most%20Blunted.mp3>.
+<urn:uuid:2564a824-12b3-415f-9fff-8ab5e6f7ad2e> a mo:Track; dcterms:title "Money Folder"; mo:duration "183"; dcat:downloadUrl <https://archive.org/download/Madvillainy-madvillain/11.%20Money%20Folder.mp3>.

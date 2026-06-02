@@ -1,0 +1,24 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:a059f91d-2b7c-4b88-954b-715b40085174> a mo:Release;
+    dcterms:title "Skelethon";
+    foaf:maker "Aesop Rock";
+    dcat:landingPage <https://archive.org/details/skelethon>;
+    mo:track <urn:uuid:ce34bcdd-a3f2-402e-9b8b-1abc63ab1fef>, <urn:uuid:af52e7a8-ae5c-4395-a853-282b3584570e>, <urn:uuid:55250a04-3370-4baa-ae39-8853cd9d88d2>, <urn:uuid:e197e789-55c0-4fbe-874e-5dd527bf758d>, <urn:uuid:f7ea6992-423e-4f16-a637-b0f09fde34c9>, <urn:uuid:23cd7f14-b684-49d6-9e8a-7a536af35d0f>, <urn:uuid:2a5e0222-43c3-43d1-93da-0ace4f6489fe>, <urn:uuid:78ce37e1-bf26-417a-af36-fdf20b9a72b3>, <urn:uuid:4b552d98-839d-4cfd-9b8a-bcf6ca54e47e>, <urn:uuid:7ed3cf6c-cd43-478a-babb-2df8e97fb4de>, <urn:uuid:a972a34e-aaf6-492a-a1e9-0e5d4bc3f115>, <urn:uuid:b6d52239-7447-4c01-9e9a-1bbc66198bd6>, <urn:uuid:b20f8040-c542-449c-872e-967351382ab3>, <urn:uuid:a7a90065-029c-40a8-b954-4e5104137c33>.
+<urn:uuid:ce34bcdd-a3f2-402e-9b8b-1abc63ab1fef> a mo:Track; dcterms:title "1,000 O'Clock"; mo:duration "238"; dcat:downloadUrl <https://archive.org/download/skelethon/1%2C000%20O'Clock.mp3>.
+<urn:uuid:af52e7a8-ae5c-4395-a853-282b3584570e> a mo:Track; dcterms:title "BMX (feat. Blueprint & Rob Sonic) - Bonus Track"; mo:duration "214"; dcat:downloadUrl <https://archive.org/download/skelethon/BMX%20(feat.%20Blueprint%20%26%20Rob%20Sonic)%20-%20Bonus%20Track.mp3>.
+<urn:uuid:55250a04-3370-4baa-ae39-8853cd9d88d2> a mo:Track; dcterms:title "Crows 1"; mo:duration "259"; dcat:downloadUrl <https://archive.org/download/skelethon/Crows%201.mp3>.
+<urn:uuid:e197e789-55c0-4fbe-874e-5dd527bf758d> a mo:Track; dcterms:title "Cycles To Gehenna"; mo:duration "240"; dcat:downloadUrl <https://archive.org/download/skelethon/Cycles%20To%20Gehenna.mp3>.
+<urn:uuid:f7ea6992-423e-4f16-a637-b0f09fde34c9> a mo:Track; dcterms:title "Dokken Rules (feat. Rob Sonic) - Bonus Track"; mo:duration "239"; dcat:downloadUrl <https://archive.org/download/skelethon/Dokken%20Rules%20(feat.%20Rob%20Sonic)%20-%20Bonus%20Track.mp3>.
+<urn:uuid:23cd7f14-b684-49d6-9e8a-7a536af35d0f> a mo:Track; dcterms:title "Fryerstarter"; mo:duration "208"; dcat:downloadUrl <https://archive.org/download/skelethon/Fryerstarter.mp3>.
+<urn:uuid:2a5e0222-43c3-43d1-93da-0ace4f6489fe> a mo:Track; dcterms:title "Gopher Guts"; mo:duration "238"; dcat:downloadUrl <https://archive.org/download/skelethon/Gopher%20Guts.mp3>.
+<urn:uuid:78ce37e1-bf26-417a-af36-fdf20b9a72b3> a mo:Track; dcterms:title "Grace"; mo:duration "218"; dcat:downloadUrl <https://archive.org/download/skelethon/Grace.mp3>.
+<urn:uuid:4b552d98-839d-4cfd-9b8a-bcf6ca54e47e> a mo:Track; dcterms:title "Leisureforce"; mo:duration "283"; dcat:downloadUrl <https://archive.org/download/skelethon/Leisureforce.mp3>.
+<urn:uuid:7ed3cf6c-cd43-478a-babb-2df8e97fb4de> a mo:Track; dcterms:title "Racing Stripes"; mo:duration "203"; dcat:downloadUrl <https://archive.org/download/skelethon/Racing%20Stripes.mp3>.
+<urn:uuid:a972a34e-aaf6-492a-a1e9-0e5d4bc3f115> a mo:Track; dcterms:title "Saturn Missiles"; mo:duration "217"; dcat:downloadUrl <https://archive.org/download/skelethon/Saturn%20Missiles.mp3>.
+<urn:uuid:b6d52239-7447-4c01-9e9a-1bbc66198bd6> a mo:Track; dcterms:title "Tetra"; mo:duration "281"; dcat:downloadUrl <https://archive.org/download/skelethon/Tetra.mp3>.
+<urn:uuid:b20f8040-c542-449c-872e-967351382ab3> a mo:Track; dcterms:title "ZZZ Top"; mo:duration "255"; dcat:downloadUrl <https://archive.org/download/skelethon/ZZZ%20Top.mp3>.
+<urn:uuid:a7a90065-029c-40a8-b954-4e5104137c33> a mo:Track; dcterms:title "Zero Dark Thirty"; mo:duration "201"; dcat:downloadUrl <https://archive.org/download/skelethon/Zero%20Dark%20Thirty.mp3>.

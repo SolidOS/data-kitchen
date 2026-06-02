@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Various_Blues_Artists> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Various Blues Artists";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://open-media-player.org/ns#hidePlaylist> "true";
+    dcterms:hasPart <urn:uuid:54a872e8-050b-4791-adc1-aa1ffff82aee>, <urn:uuid:79329a3f-4706-4fbf-96ca-6ead7b36b02f>, <urn:uuid:0df5c1ee-75c5-444c-ae56-4b7a429d8b2c>, <urn:uuid:15ef9ebd-ec3b-4e08-be1a-a99d17e84d4d>, <urn:uuid:05db003c-2c49-45e5-8574-2607e8baa124>, <urn:uuid:7f21d0f6-f750-4c91-a31a-ebc5478c9beb>, <urn:uuid:dde3ae9b-1b08-45c9-bc69-6c78c9708fe6>, <urn:uuid:986528b3-09c8-4ecf-bb35-ce4ce3cd42be>, <urn:uuid:1435f6a8-e288-476b-9d8b-fefe59abc114>, <urn:uuid:66d11011-b136-4300-85e3-ab7e6f4b85ac>, <urn:uuid:41301074-b8e7-4f49-9eac-5a0f4cb3e79b>, <urn:uuid:e1ef9448-ed9a-4ac9-89b8-f9fa227494eb>, <urn:uuid:50198f16-7d6c-45dc-8b91-35692a4db760>, <urn:uuid:f9f01f16-f6da-4105-80dd-f386f5a99815>, <urn:uuid:002b5f9d-6f14-4238-b583-4f08921acb31>, <urn:uuid:d32971d1-4344-463e-b932-9b2ea9107464>, <urn:uuid:2674440f-e7c9-40e8-8702-08fd59d29da6>, <urn:uuid:2f8bf66c-57fc-4cfc-91c4-6e348f5d7691>, <urn:uuid:07b8d057-8d12-4da3-b71f-7a81acceeb6d>, <urn:uuid:bcc5f8ad-2d87-418a-a7a0-b74853d64e3b>, <urn:uuid:04e669a4-c389-4692-bde6-a3ad91b0ee30>, <urn:uuid:32c788a4-e6fa-4ce7-ba06-5c2866fcaf7c>, <urn:uuid:8920c034-bd72-47de-a1fd-47085ef9c2b4>, <urn:uuid:746a2a34-7dbb-456c-b76f-f1416c774f5e>, <urn:uuid:8c8c6474-1aa4-4c50-b413-5c41c3f6104e>.

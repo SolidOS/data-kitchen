@@ -1,0 +1,72 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:05d2cf94-14f9-4e0e-be82-38133bab8c53>
+    a mo:Track;
+    dct:title "Check The Rhime";
+    mo:duration "217";
+    dcat:downloadUrl
+        <https://archive.org/download/the_low_end_theory/09%20Check%20The%20Rhime.mp3>.
+<urn:uuid:381b3da8-5a1e-4cef-b756-c81c98ffcc0b>
+    a mo:Track;
+    dct:title "Show Business";
+    mo:duration "233";
+    dcat:downloadUrl
+    <https://archive.org/download/the_low_end_theory/06%20Show%20Business.mp3>.
+<urn:uuid:4675c966-797c-482d-bf9e-88a548a0783f>
+    a mo:Track;
+    dct:title "Excursions";
+    mo:duration "235";
+    dcat:downloadUrl
+    <https://archive.org/download/the_low_end_theory/01%20Excursions.mp3>.
+<urn:uuid:85751ca0-4fda-4f5f-b5fe-562201629fe2>
+    a mo:Track;
+    dct:title "Vibes And Stuff";
+    mo:duration "258";
+    dcat:downloadUrl
+        <https://archive.org/download/the_low_end_theory/07%20Vibes%20And%20Stuff.mp3>.
+<urn:uuid:900e3283-d032-462b-8ef3-d9f0fbe64a69>
+    a mo:Track;
+    dct:title "Buggin' Out";
+    mo:duration "217";
+    dcat:downloadUrl
+    <https://archive.org/download/the_low_end_theory/02%20Buggin'%20Out.mp3>.
+<urn:uuid:ebdfb6be-1dc0-44f1-8205-e54ba735943d>
+    a mo:Track;
+    dct:title "Jazz";
+    mo:duration "250";
+    dcat:downloadUrl
+    <https://archive.org/download/the_low_end_theory/11%20Jazz.mp3>.
+<urn:uuid:ebe21d1c-9443-48ac-9b1b-ea7ebecfac3b>
+    a mo:Release;
+    dct:title "The Low End Theory";
+    mo:track
+        <urn:uuid:05d2cf94-14f9-4e0e-be82-38133bab8c53>,
+        <urn:uuid:381b3da8-5a1e-4cef-b756-c81c98ffcc0b>,
+        <urn:uuid:4675c966-797c-482d-bf9e-88a548a0783f>,
+        <urn:uuid:85751ca0-4fda-4f5f-b5fe-562201629fe2>,
+        <urn:uuid:900e3283-d032-462b-8ef3-d9f0fbe64a69>,
+        <urn:uuid:ebdfb6be-1dc0-44f1-8205-e54ba735943d>,
+        <urn:uuid:f582c49e-f2f0-4ed0-b66c-cd3cf3ac7034>,
+        <urn:uuid:f60bd7ad-f906-42ad-84e0-59f3b260782d>;
+    dcat:landingPage det:the_low_end_theory;
+    foaf:maker
+        <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>,
+        <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>,
+        <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>.
+<urn:uuid:f582c49e-f2f0-4ed0-b66c-cd3cf3ac7034>
+    a mo:Track;
+    dct:title "Butter";
+    mo:duration "219";
+    dcat:downloadUrl
+    <https://archive.org/download/the_low_end_theory/04%20Butter.mp3>.
+<urn:uuid:f60bd7ad-f906-42ad-84e0-59f3b260782d>
+    a mo:Track;
+    dct:title "Verses From The Abstract";
+    mo:duration "239";
+    dcat:downloadUrl
+        <https://archive.org/download/the_low_end_theory/05%20Verses%20From%20The%20Abstract.mp3>.

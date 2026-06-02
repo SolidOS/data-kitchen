@@ -1,0 +1,50 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Otis_Spann#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Otis_Spann> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Otis Spann";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:be83ef5e-d0dc-4c17-b4d5-b1aefcf3acb7>, <urn:uuid:fa2c10d5-880e-436b-b57a-60193527bda0>, <urn:uuid:7f57c8a5-dced-4260-9d0b-17ca03c99892>, <urn:uuid:d04d8db8-f189-49a2-8fdd-5950f08b39d8>, <urn:uuid:54a872e8-050b-4791-adc1-aa1ffff82aee>, <urn:uuid:79329a3f-4706-4fbf-96ca-6ead7b36b02f>;
+    <http://open-media-player.org/ns#hidePlaylist> "true".
+<urn:uuid:be83ef5e-d0dc-4c17-b4d5-b1aefcf3acb7> a mo:Track;
+    dcterms:title "OtisSpannSweetGiant1";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/OtisSpannSweetGiant1/OtisSpannSweetGiant1.mp3>;
+    mo:duration "1089".
+<urn:uuid:fa2c10d5-880e-436b-b57a-60193527bda0> a mo:Track;
+    dcterms:title "OtisSpannSweetGiant2";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/OtisSpannSweetGiant1/OtisSpannSweetGiant2.mp3>;
+    mo:duration "1232".
+<urn:uuid:7f57c8a5-dced-4260-9d0b-17ca03c99892> a mo:Track;
+    dcterms:title "OtisSpannWalking1";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/OtisSpannWalking1/OtisSpannWalking1.mp3>;
+    mo:duration "1496".
+<urn:uuid:d04d8db8-f189-49a2-8fdd-5950f08b39d8> a mo:Track;
+    dcterms:title "OtisSpannWalking2";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/OtisSpannWalking1/OtisSpannWalking2.mp3>;
+    mo:duration "1240".
+<urn:uuid:54a872e8-050b-4791-adc1-aa1ffff82aee> a mo:Track;
+    dcterms:title "14 - Story of the Blues Vol. 1 CBS M 63573 [LP 2] Side B - Otis SPANN - Bloody Murder (V.1968)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/story-of-the-blues-vol.-1-cbs-m-63573-side-b/14%20-%20Story%20of%20the%20Blues%20Vol.%201%20CBS%20M%2063573%20%5BLP%202%5D%20Side%20B%20-%20Otis%20SPANN%20-%20Bloody%20Murder%20(V.1968).mp3>;
+    mo:duration "217".
+<urn:uuid:79329a3f-4706-4fbf-96ca-6ead7b36b02f> a mo:Track;
+    dcterms:title "16 - Story of the Blues Vol. 1 CBS M 63573 [LP 2] Side B - Johnny SHINES - I don't know (V.1968)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/story-of-the-blues-vol.-1-cbs-m-63573-side-b/16%20-%20Story%20of%20the%20Blues%20Vol.%201%20CBS%20M%2063573%20%5BLP%202%5D%20Side%20B%20-%20Johnny%20SHINES%20-%20I%20don't%20know%20(V.1968).mp3>;
+    mo:duration "214".
+<urn:uuid:9a1af88b-a006-4ce8-bb48-1473f383110d> a mo:Release;
+    dcterms:title "Otis Spann - Sweet Giant";
+    foaf:maker "Otis Spann";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/OtisSpannSweetGiant1>;
+    mo:track <urn:uuid:be83ef5e-d0dc-4c17-b4d5-b1aefcf3acb7>, <urn:uuid:fa2c10d5-880e-436b-b57a-60193527bda0>.
+<urn:uuid:b5b4b8cd-0f35-42b8-a83f-6eb4009c346e> a mo:Release;
+    dcterms:title "Otis Spann - Walking The Blues";
+    foaf:maker "Otis Spann";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/OtisSpannWalking1>;
+    mo:track <urn:uuid:7f57c8a5-dced-4260-9d0b-17ca03c99892>, <urn:uuid:d04d8db8-f189-49a2-8fdd-5950f08b39d8>.
+<urn:uuid:68243be9-1ac3-4fb8-8266-1251b4e5b89b> a mo:Release;
+    dcterms:title "The Story of the Blues – LP 2 Side B";
+    foaf:maker "Blind Boy FULLER, Brownie McGHEE, Joe WILLIAMS, Big Bill BROONZY & Memphis Slim, Joe TURNER & Pete JOHNSON, Otis SPANN, Elmore JAMES, Johnny SHINES";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/story-of-the-blues-vol.-1-cbs-m-63573-side-b>;
+    mo:track <urn:uuid:54a872e8-050b-4791-adc1-aa1ffff82aee>, <urn:uuid:79329a3f-4706-4fbf-96ca-6ead7b36b02f>.

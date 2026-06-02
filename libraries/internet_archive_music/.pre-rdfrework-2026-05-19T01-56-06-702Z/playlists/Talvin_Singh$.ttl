@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Talvin_Singh> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Talvin Singh";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://purl.org/dc/terms/description> "South Asian Underground";
+    dcterms:hasPart <urn:uuid:dc9f2a1c-87b9-4a4c-9442-f6b323113e0d>, <urn:uuid:f10b346b-93c4-4022-b430-1a12bb8a54c8>, <urn:uuid:c967416f-13bf-448f-b870-5518191e7f67>, <urn:uuid:f414a778-9937-4b22-b990-86efc714c5c8>, <urn:uuid:7f245cd3-e9ed-4acb-beeb-66d230c78753>, <urn:uuid:d522d24f-390f-4929-b55b-87780b2eba95>, <urn:uuid:791197a6-f541-43c3-880a-87082eb28f4d>, <urn:uuid:4edbc50c-b3e3-405c-81bc-ed87d166bbf3>, <urn:uuid:39804d28-576d-4547-a8d3-9dbbe3016a00>, <urn:uuid:ba20b4bb-b107-4608-b2d9-f311f0b3c915>, <urn:uuid:f69227cc-a882-444a-b5eb-74118f85632f>, <urn:uuid:e00653da-3a70-422f-bde6-c692f52c1729>, <urn:uuid:97b23e9f-6a8b-4ae9-b416-f8e144e578ad>, <urn:uuid:d8a3f225-878b-43a4-8fa7-a4e10b4604d6>, <urn:uuid:0f3b4e21-ca44-4453-8dd5-eae3b94f68d7>, <urn:uuid:46a66742-8dcf-4da6-adb7-c1128d460a6c>, <urn:uuid:300f0975-a019-42db-8085-abc37c22dfc2>, <urn:uuid:5dc50e24-8b0d-4d52-a25b-d1646679f583>, <urn:uuid:ee27f47c-b8e3-4b40-b464-ade0a02ba8d1>, <urn:uuid:2404695f-5597-4f82-9609-6b3363e6ae63>, <urn:uuid:00c36668-c5d2-4324-8103-6aeec1ad13e0>.

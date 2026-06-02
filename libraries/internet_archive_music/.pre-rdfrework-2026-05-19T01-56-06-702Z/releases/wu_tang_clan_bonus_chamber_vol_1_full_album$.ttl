@@ -1,0 +1,93 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:16999f95-9dae-42c0-9fac-3274f6bc9609>
+    a mo:Track;
+    dct:title "$ Wu-Tang Clan -Bonus Chamber FULLMIXTAPE";
+    mo:duration "2682";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/%24%20Wu-Tang%20Clan%20-%20Bonus%20Chamber%20FULLMIXTAPE.mp3>.
+<urn:uuid:19be61e6-8c97-4c1a-8d0d-4fcfdc803f82>
+    a mo:Track;
+    dct:title "Street Nigguz";
+    mo:duration "294";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Onyx%20-%20Street%20Nigguz.mp3>.
+<urn:uuid:2ae460cc-155c-4203-9736-db3c6ada103c>
+    a mo:Track;
+    dct:title "Always NY";
+    mo:duration "293";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Wu-Tang%20Clan%20-%20Always%20NY.mp3>.
+<urn:uuid:44deb45a-bd1b-43d4-ad00-5d121fa7971b>
+    a mo:Track;
+    dct:title "The Mall";
+    mo:duration "222";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Gangstarr%20-%20The%20Mall.mp3>.
+<urn:uuid:5215186c-db63-453d-a3b9-16552a930cd6>
+    a mo:Track;
+    dct:title "Hyperdermix";
+    mo:duration "292";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Inspectah%20Deck%20-%20Hyperdermix.mp3>.
+<urn:uuid:5838a8bd-9700-4f9f-b48b-5be521cf9f4f>
+    a mo:Track;
+    dct:title "Beasts From The East";
+    mo:duration "334";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Lost%20Boyz%20ft.%20A%2B%2C%20Redman%2C%20Canibus%20-%20Beasts%20From%20The%20East.mp3>.
+<urn:uuid:666bb433-4493-4702-8c37-bf056c70b60a>
+    a mo:Track;
+    dct:title "Dangerous Grounds";
+    mo:duration "249";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Method%20Man%20ft.%20Streetlife%20-%20Dangerous%20Grounds.mp3>.
+<urn:uuid:95dd54be-71c0-408d-8c05-fabc52b22f4e>
+    a mo:Track;
+    dct:title "Dr. Greenthumb";
+    mo:duration "191";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Cypress%20Hill%20-%20Dr.%20Greenthumb.mp3>.
+<urn:uuid:b98018db-f7ae-48ce-a45d-825305b4dbf7>
+    a mo:Track;
+    dct:title "What You See Is What You Get";
+    mo:duration "308";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Xzibit%20-%20What%20You%20See%20Is%20What%20You%20Get.mp3>.
+<urn:uuid:da181b57-e299-4b8b-bb94-cfbb09c17ede>
+    a mo:Track;
+    dct:title
+    "Raekwon ft. Ghostface Killah, Inspectah Deck, GZA - Guillotine Swordz";
+    mo:duration "262";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Raekwon%20ft.%20Ghostface%20Killah%2C%20Inspectah%20Deck%2C%20GZA%20-%20Guillotine%20Swordz.mp3>.
+<urn:uuid:e5864498-95da-4bfc-8a57-729c83cbde34>
+    a mo:Release;
+    dct:title "Wu Tang Clan - Bonus Chamber Vol 1 FULL ALBUM";
+    mo:track
+        <urn:uuid:16999f95-9dae-42c0-9fac-3274f6bc9609>,
+        <urn:uuid:19be61e6-8c97-4c1a-8d0d-4fcfdc803f82>,
+        <urn:uuid:2ae460cc-155c-4203-9736-db3c6ada103c>,
+        <urn:uuid:44deb45a-bd1b-43d4-ad00-5d121fa7971b>,
+        <urn:uuid:5215186c-db63-453d-a3b9-16552a930cd6>,
+        <urn:uuid:5838a8bd-9700-4f9f-b48b-5be521cf9f4f>,
+        <urn:uuid:666bb433-4493-4702-8c37-bf056c70b60a>,
+        <urn:uuid:95dd54be-71c0-408d-8c05-fabc52b22f4e>,
+        <urn:uuid:b98018db-f7ae-48ce-a45d-825305b4dbf7>,
+        <urn:uuid:da181b57-e299-4b8b-bb94-cfbb09c17ede>,
+        <urn:uuid:f5445b96-0775-4f93-a218-70521b3256ba>;
+    dcat:landingPage det:wu-tang-clan-bonus-chamber-vol-1-full-album;
+    foaf:maker
+        "EPMD ft. Redman, Method Man, Lady Luck, Method Man ft. Streetlife, Inspectah Deck, Xzibit, Cypress Hill, Onyx, Raekwon, Lost Boyz ft. A+, Redman, Canibus, Gangstarr, Wu-Tang Clan",
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:f5445b96-0775-4f93-a218-70521b3256ba>
+    a mo:Track;
+    dct:title "Symphony 2000";
+    mo:duration "242";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/EPMD%20ft.%20Redman%2C%20Method%20Man%2C%20Lady%20Luck%20-%20Symphony%202000.mp3>.

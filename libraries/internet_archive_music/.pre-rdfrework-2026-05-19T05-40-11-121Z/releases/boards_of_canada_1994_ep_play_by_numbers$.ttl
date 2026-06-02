@@ -1,0 +1,14 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:727d70fd-25fa-4170-be4f-d50f071324a4> a mo:Release;
+    dcterms:title "Boards Of Canada - (1994) (Ep) Play By Numbers";
+    foaf:maker "Boards Of Canada";
+    dcat:landingPage <https://archive.org/details/BoardsOfCanada-1994EpPlayByNumbers>;
+    mo:track <urn:uuid:58ea74a2-bfe7-4b16-9455-c563dc384394>, <urn:uuid:4c3f22fd-787a-4221-a902-f43fc990d2f3>, <urn:uuid:28390265-a912-44ce-abb3-1a8162974cd8>, <urn:uuid:fe706ce0-3678-4b10-a9f6-b57bc7939c2c>.
+<urn:uuid:58ea74a2-bfe7-4b16-9455-c563dc384394> a mo:Track; dcterms:title "Wouldn't You Like To Be Free?"; mo:duration "305"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1994EpPlayByNumbers/02%20-%20Wouldn't%20You%20Like%20to%20Be%20Free.mp3>.
+<urn:uuid:4c3f22fd-787a-4221-a902-f43fc990d2f3> a mo:Track; dcterms:title "Infinite Lines of Colourful Sevens"; mo:duration "394"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1994EpPlayByNumbers/03%20-%20Infinite%20Lines%20of%20Colourful%20Sevens.mp3>.
+<urn:uuid:28390265-a912-44ce-abb3-1a8162974cd8> a mo:Track; dcterms:title "Numerator"; mo:duration "279"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1994EpPlayByNumbers/04%20-%20Numerator.mp3>.
+<urn:uuid:fe706ce0-3678-4b10-a9f6-b57bc7939c2c> a mo:Track; dcterms:title "Echelon"; mo:duration "339"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1994EpPlayByNumbers/05%20-%20Echelon.mp3>.

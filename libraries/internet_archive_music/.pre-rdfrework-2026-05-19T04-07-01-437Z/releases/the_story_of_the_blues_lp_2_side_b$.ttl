@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:68243be9-1ac3-4fb8-8266-1251b4e5b89b> a mo:Release;
+    dcterms:title "The Story of the Blues – LP 2 Side B";
+    foaf:maker "Blind Boy FULLER, Brownie McGHEE, Joe WILLIAMS, Big Bill BROONZY & Memphis Slim, Joe TURNER & Pete JOHNSON, Otis SPANN, Elmore JAMES, Johnny SHINES";
+    dcat:landingPage <https://archive.org/details/story-of-the-blues-vol.-1-cbs-m-63573-side-b>;
+    mo:track <urn:uuid:54a872e8-050b-4791-adc1-aa1ffff82aee>, <urn:uuid:79329a3f-4706-4fbf-96ca-6ead7b36b02f>.
+<urn:uuid:54a872e8-050b-4791-adc1-aa1ffff82aee> a mo:Track; dcterms:title "14 - Story of the Blues Vol. 1 CBS M 63573 [LP 2] Side B - Otis SPANN - Bloody Murder (V.1968)"; mo:duration "217"; dcat:downloadUrl <https://archive.org/download/story-of-the-blues-vol.-1-cbs-m-63573-side-b/14%20-%20Story%20of%20the%20Blues%20Vol.%201%20CBS%20M%2063573%20%5BLP%202%5D%20Side%20B%20-%20Otis%20SPANN%20-%20Bloody%20Murder%20(V.1968).mp3>.
+<urn:uuid:79329a3f-4706-4fbf-96ca-6ead7b36b02f> a mo:Track; dcterms:title "16 - Story of the Blues Vol. 1 CBS M 63573 [LP 2] Side B - Johnny SHINES - I don't know (V.1968)"; mo:duration "214"; dcat:downloadUrl <https://archive.org/download/story-of-the-blues-vol.-1-cbs-m-63573-side-b/16%20-%20Story%20of%20the%20Blues%20Vol.%201%20CBS%20M%2063573%20%5BLP%202%5D%20Side%20B%20-%20Johnny%20SHINES%20-%20I%20don't%20know%20(V.1968).mp3>.

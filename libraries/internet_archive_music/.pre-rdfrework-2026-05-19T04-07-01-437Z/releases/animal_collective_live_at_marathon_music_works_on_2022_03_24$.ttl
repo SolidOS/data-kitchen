@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c5ba01b6-5c49-4683-8257-e445c2278867> a mo:Release;
+    dcterms:title "Animal Collective Live at Marathon Music Works on 2022-03-24";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    dcat:landingPage <https://archive.org/details/acollective2022-03-24>;
+    mo:track <urn:uuid:d95dd385-6eb5-49c8-bb64-15abdce3d7e1>.
+<urn:uuid:d95dd385-6eb5-49c8-bb64-15abdce3d7e1> a mo:Track; dcterms:title "Defeat (A Not Suite)"; mo:duration "1358"; dcat:downloadUrl <https://archive.org/download/acollective2022-03-24/10%20-%20Defeat%20(A%20Not%20Suite).flac>.

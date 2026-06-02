@@ -1,0 +1,37 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Wilson_Pickett#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Wilson_Pickett> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Wilson Pickett";
+    foaf:maker "jeffz";
+    dcterms:description "Soul";
+    dcterms:hasPart <urn:uuid:c8380f6a-4869-495b-b9dc-c80d9e517029>, <urn:uuid:61c92299-eeaa-4cce-849e-45ff8291fd63>, <urn:uuid:6190e7ca-b30c-4414-a35c-b52742b0a843>, <urn:uuid:d8273a3d-efe7-45a6-a9af-14b18ea1c808>, <urn:uuid:9f811c2e-1eef-4a99-9537-4e5fd0e827f5>;
+    <http://open-media-player.org/ns#hidePlaylist> "true".
+<urn:uuid:c8380f6a-4869-495b-b9dc-c80d9e517029> a mo:Track;
+    dcterms:title "634-5789";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/thebestofwilsonpickett1977vinyl/03%20634-5789.mp3>;
+    mo:duration "181".
+<urn:uuid:61c92299-eeaa-4cce-849e-45ff8291fd63> a mo:Track;
+    dcterms:title "Mustang Sally";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/thebestofwilsonpickett1977vinyl/04%20Mustang%20Sally.mp3>;
+    mo:duration "189".
+<urn:uuid:6190e7ca-b30c-4414-a35c-b52742b0a843> a mo:Track;
+    dcterms:title "Get Me Back on Time, Engine Number 9";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/thebestofwilsonpickett1977vinyl/13%20Get%20Me%20Back%20on%20Time%2C%20Engine%20Number%209.mp3>;
+    mo:duration "390".
+<urn:uuid:d8273a3d-efe7-45a6-a9af-14b18ea1c808> a mo:Track;
+    dcterms:title "Hey Jude";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/thebestofwilsonpickett1977vinyl/17%20Hey%20Jude.mp3>;
+    mo:duration "247".
+<urn:uuid:9f811c2e-1eef-4a99-9537-4e5fd0e827f5> a mo:Track;
+    dcterms:title "Fire and Water";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/thebestofwilsonpickett1977vinyl/18%20Fire%20and%20Water.mp3>;
+    mo:duration "213".
+<urn:uuid:aa374335-5d04-42ca-a9d0-25255c3e5713> a mo:Release;
+    dcterms:title "The Best of Wilson Pickett - Wilson Pickett (1977)";
+    foaf:maker "Wilson Pickett";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/thebestofwilsonpickett1977vinyl>;
+    mo:track <urn:uuid:c8380f6a-4869-495b-b9dc-c80d9e517029>, <urn:uuid:61c92299-eeaa-4cce-849e-45ff8291fd63>, <urn:uuid:6190e7ca-b30c-4414-a35c-b52742b0a843>, <urn:uuid:d8273a3d-efe7-45a6-a9af-14b18ea1c808>, <urn:uuid:9f811c2e-1eef-4a99-9537-4e5fd0e827f5>.

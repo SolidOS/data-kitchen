@@ -1,0 +1,16 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:d18265f1-424c-42bd-a78d-51542be4720a> a mo:Release;
+    dcterms:title "GNX";
+    foaf:maker "Kendrick Lamar";
+    dcat:landingPage <https://archive.org/details/gnx-kendricklamar>;
+    mo:track <urn:uuid:61acc4fa-21e0-4bb6-a39b-e54c9a06934f>, <urn:uuid:4fc80c86-46bd-46e4-b858-ba41f9246944>, <urn:uuid:6e5b5657-2653-45e2-a043-32a4b4ff3efb>, <urn:uuid:7250266a-3e9d-4540-a686-34e9cf9b4086>, <urn:uuid:108d2887-7c35-4662-848f-42072fcc8ff8>, <urn:uuid:7888491d-740d-4e9b-aaec-3065af0d7410>.
+<urn:uuid:61acc4fa-21e0-4bb6-a39b-e54c9a06934f> a mo:Track; dcterms:title "wacced out murals"; mo:duration "317"; dcat:downloadUrl <https://archive.org/download/gnx-kendricklamar/01.%20wacced%20out%20murals.mp3>.
+<urn:uuid:4fc80c86-46bd-46e4-b858-ba41f9246944> a mo:Track; dcterms:title "luther (with SZA)"; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/gnx-kendricklamar/03.%20luther%20(with%20SZA).mp3>.
+<urn:uuid:6e5b5657-2653-45e2-a043-32a4b4ff3efb> a mo:Track; dcterms:title "man at the garden"; mo:duration "235"; dcat:downloadUrl <https://archive.org/download/gnx-kendricklamar/04.%20man%20at%20the%20garden.mp3>.
+<urn:uuid:7250266a-3e9d-4540-a686-34e9cf9b4086> a mo:Track; dcterms:title "hey now (feat. Dody6)"; mo:duration "220"; dcat:downloadUrl <https://archive.org/download/gnx-kendricklamar/05.%20hey%20now%20(feat.%20Dody6).mp3>.
+<urn:uuid:108d2887-7c35-4662-848f-42072fcc8ff8> a mo:Track; dcterms:title "heart pt. 6"; mo:duration "295"; dcat:downloadUrl <https://archive.org/download/gnx-kendricklamar/10.%20heart%20pt.%206.mp3>.
+<urn:uuid:7888491d-740d-4e9b-aaec-3065af0d7410> a mo:Track; dcterms:title "gloria (with SZA)"; mo:duration "290"; dcat:downloadUrl <https://archive.org/download/gnx-kendricklamar/12.%20gloria%20(with%20SZA).mp3>.

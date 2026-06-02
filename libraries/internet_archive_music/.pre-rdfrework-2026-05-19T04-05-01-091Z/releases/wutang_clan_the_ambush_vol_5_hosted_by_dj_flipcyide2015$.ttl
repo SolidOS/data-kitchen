@@ -1,0 +1,148 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:063c1635-c185-46dc-b3a8-56d1295edfda>
+    a mo:Track;
+    dct:title "27 - Mr Forge - Diabolical Angel Vs Angelic Demon";
+    mo:duration "187";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/27%20-%20Mr%20Forge%20-%20Diabolical%20Angel%20vs%20Angelic%20Demon.mp3>.
+<urn:uuid:0bc1cda6-dc2c-4c7e-a258-e2f327447075>
+    a mo:Track;
+    dct:title "28 - Mack Sauce - Anomaly";
+    mo:duration "270";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/28%20-%20Mack%20Sauce%20-%20Anomaly.mp3>.
+<urn:uuid:2ad7e297-dc96-41ff-a842-a63e801fadb2>
+    a mo:Track;
+    dct:title "17 - Wulords - Melted Gold Ft Digi Eddie Grizz Z1 Nation";
+    mo:duration "258";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/17%20-%20WuLords%20-%20Melted%20Gold%20ft%20DIGI%20Eddie%20Grizz%20Z1%20Nation.mp3>.
+<urn:uuid:2eddb1f0-dc20-4209-8a64-c97e95facc27>
+    a mo:Track;
+    dct:title "15 - Mack Sauce - Protect Ya Neck";
+    mo:duration "219";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/15%20-%20Mack%20Sauce%20-%20Protect%20Ya%20Neck.mp3>.
+<urn:uuid:391307d3-f129-4869-a62a-a402b13b53c3>
+    a mo:Track;
+    dct:title "26 - Baggy The Ghost - Ride With Me";
+    mo:duration "230";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/26%20-%20Baggy%20The%20Ghost%20-%20Ride%20With%20Me.mp3>.
+<urn:uuid:472782d7-6f57-4c2f-bc88-697cb373f235>
+    a mo:Track;
+    dct:title "25 - Big Jv Feat 2 Dice & Factory Boy - Gorilla Until I Die";
+    mo:duration "206";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/25%20-%20BIG%20JV%20FEAT%202%20DICE%20%26%20FACTORY%20BOY%20-%20GORILLA%20UNTIL%20I%20DIE.mp3>.
+<urn:uuid:4e60144e-79d2-4228-a99f-a9347e5c37e6>
+    a mo:Track;
+    dct:title "21 - Btg Kidd - Scarfo Testo";
+    mo:duration "189";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/21%20-%20BTG%20Kidd%20-%20Scarfo%20Testo.mp3>.
+<urn:uuid:506e509e-0756-4d8a-b8af-a7bfddbece28>
+    a mo:Track;
+    dct:title
+    "09 - A-Villa - The Colosseum Ft Big Krit Termanology & Inspectah Deck";
+    mo:duration "207";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/09%20-%20A-Villa%20-%20The%20Colosseum%20ft%20Big%20KRIT%20Termanology%20%26%20Inspectah%20Deck.mp3>.
+<urn:uuid:5e2c89f9-5adc-4bf7-9807-336e5a8da358>
+    a mo:Track;
+    dct:title "04 - Judah Priest - Lonely Feat Cappadonna & Killah Priest";
+    mo:duration "237";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/04%20-%20Judah%20Priest%20-%20Lonely%20Feat%20Cappadonna%20%26%20Killah%20Priest.mp3>.
+<urn:uuid:6c2a00dc-2f5a-4c51-b98d-fc304232167a>
+    a mo:Track;
+    dct:title
+        "13 - Inspectah Deck - Another Time Ft Dj Efn Guilty Simpson Mop Bernz (Mayday) (Another Time)";
+    mo:duration "203";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/13%20-%20Inspectah%20Deck%20-%20Another%20Time%20ft%20DJ%20EFN%20Guilty%20Simpson%20MOP%20Bernz%20(MAYDAY)%20(Another%20Time).mp3>.
+<urn:uuid:6e357ee6-6417-4281-9e1d-2e9bb40511d8>
+    a mo:Track;
+    dct:title "12 - Git X 1Mt - Lyrical Warfare Ft Inspectah Deck & Ransom";
+    mo:duration "220";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/12%20-%20Git%20x%201Mt%20-%20%20Lyrical%20Warfare%20ft%20Inspectah%20Deck%20%26%20Ransom.mp3>.
+<urn:uuid:6ee2df87-f397-4922-98f5-255425e97f33>
+    a mo:Track;
+    dct:title
+        "30 - Hell Razah - Lintballz Feat Prodigal Sunn Buddah Monk 12 Oclock And Odb";
+    mo:duration "256";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/30%20-%20Hell%20Razah%20-%20Lintballz%20Feat%20Prodigal%20Sunn%20Buddah%20Monk%2012%20OClock%20and%20ODB.mp3>.
+<urn:uuid:72a218e6-4f3d-4170-b231-0acea6ee6eed>
+    a mo:Track;
+    dct:title "11 - Cannibal Ox - Blade The Art Of Ox (Feat Artifacts & U-God)";
+    mo:duration "271";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/11%20-%20Cannibal%20Ox%20-%20Blade%20%20The%20Art%20of%20Ox%20(feat%20Artifacts%20%26%20U-God).mp3>.
+<urn:uuid:92c41f37-39b5-4473-a9e9-8e7716053fc7>
+    a mo:Track;
+    dct:title
+        "16 - Piece Of Life Born Divine Ft King Edward N Witch Hazel - Ek Life Time";
+    mo:duration "192";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/16%20-%20Piece%20of%20Life%20Born%20Divine%20%20ft%20King%20Edward%20n%20Witch%20Hazel%20-%20EK%20Life%20Time.mp3>.
+<urn:uuid:93f233d9-379f-4b01-b16d-18621d4abea7>
+    a mo:Track;
+    dct:title "01 - Intro & Theodore Unit - The Chosen One";
+    mo:duration "249";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/01%20-%20Intro%20%26%20Theodore%20Unit%20-%20The%20Chosen%20One.mp3>.
+<urn:uuid:b6c603bf-046c-417e-b311-8f23db82a72d>
+    a mo:Track;
+    dct:title
+    "03 - Eternal Of Killa Beez & Kastle Creeps Feat Amanda Jane - Ice Age";
+    mo:duration "250";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/03%20-%20Eternal%20of%20Killa%20Beez%20%26%20Kastle%20Creeps%20feat%20Amanda%20Jane%20-%20Ice%20Age.mp3>.
+<urn:uuid:ba0ecd90-2853-4db2-8ab2-8c5d83913e46>
+    a mo:Track;
+    dct:title
+        "22 - Buddha Monk The Zu Bulliez Feat Krumbsnatcha And Green Leaf - Converse With Me Lord";
+    mo:duration "335";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/22%20-%20Buddha%20Monk%20The%20Zu%20Bulliez%20feat%20Krumbsnatcha%20and%20Green%20Leaf%20-%20Converse%20With%20Me%20Lord.mp3>.
+<urn:uuid:c0786f67-829f-46e9-98b1-00d5f8cdce1e>
+    a mo:Release;
+    dct:title "Wu-Tang Clan - The Ambush Vol. 5 (Hosted By DJ Flipcyide)-2015";
+    mo:track
+        <urn:uuid:063c1635-c185-46dc-b3a8-56d1295edfda>,
+        <urn:uuid:0bc1cda6-dc2c-4c7e-a258-e2f327447075>,
+        <urn:uuid:2ad7e297-dc96-41ff-a842-a63e801fadb2>,
+        <urn:uuid:2eddb1f0-dc20-4209-8a64-c97e95facc27>,
+        <urn:uuid:391307d3-f129-4869-a62a-a402b13b53c3>,
+        <urn:uuid:472782d7-6f57-4c2f-bc88-697cb373f235>,
+        <urn:uuid:4e60144e-79d2-4228-a99f-a9347e5c37e6>,
+        <urn:uuid:506e509e-0756-4d8a-b8af-a7bfddbece28>,
+        <urn:uuid:5e2c89f9-5adc-4bf7-9807-336e5a8da358>,
+        <urn:uuid:6c2a00dc-2f5a-4c51-b98d-fc304232167a>,
+        <urn:uuid:6e357ee6-6417-4281-9e1d-2e9bb40511d8>,
+        <urn:uuid:6ee2df87-f397-4922-98f5-255425e97f33>,
+        <urn:uuid:72a218e6-4f3d-4170-b231-0acea6ee6eed>,
+        <urn:uuid:92c41f37-39b5-4473-a9e9-8e7716053fc7>,
+        <urn:uuid:93f233d9-379f-4b01-b16d-18621d4abea7>,
+        <urn:uuid:b6c603bf-046c-417e-b311-8f23db82a72d>,
+        <urn:uuid:ba0ecd90-2853-4db2-8ab2-8c5d83913e46>,
+        <urn:uuid:d9ac3b5e-3b4a-4832-a3b9-4e566599eb24>;
+    dcat:landingPage
+    det:Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015;
+    foaf:maker
+        <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>,
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:d9ac3b5e-3b4a-4832-a3b9-4e566599eb24>
+    a mo:Track;
+    dct:title "02 - Guru Feat Avrex & Big Shug - Propaganda";
+    mo:duration "231";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/02%20-%20Guru%20feat%20Avrex%20%20%26%20Big%20Shug%20-%20PropaGanda.mp3>.

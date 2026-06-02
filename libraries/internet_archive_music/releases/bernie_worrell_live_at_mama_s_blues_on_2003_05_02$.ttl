@@ -1,0 +1,22 @@
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#it> a mo:Release, dcat:Dataset;
+    dct:title "Bernie Worrell Live at Mama's Blues on 2003-05-02";
+    dct:identifier "BWorrell2003-05-02";
+    dct:isPartOf <../releases.ttl#it>;
+    dcat:landingPage <https://archive.org/details/BWorrell2003-05-02>;
+    mo:track <#t01>, <#t02>;
+    foaf:maker <urn:uuid:fcba2f0f-f434-44ad-a587-04f6e051c8e8>.
+<#t01> a mo:Track;
+    dct:title "You've Got To Change (You've Got To Reform)";
+    dct:isPartOf <#it>;
+    mo:duration "515";
+    mo:item <https://archive.org/download/BWorrell2003-05-02/BWorrell2003-05-02d1t07.mp3>.
+<#t02> a mo:Track;
+    dct:title "The Hype and The Hoopla";
+    dct:isPartOf <#it>;
+    mo:duration "744";
+    mo:item <https://archive.org/download/BWorrell2003-05-02/BWorrell2003-05-02d1t05.mp3>.

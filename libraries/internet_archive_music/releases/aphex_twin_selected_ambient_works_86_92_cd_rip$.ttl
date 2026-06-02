@@ -1,0 +1,97 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Aphex Twin - Selected Ambient Works 86–92 CD Rip" ;
+    dct:identifier "aphex-twin-saw-86-92-cd-rip" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/aphex-twin-saw-86-92-cd-rip> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12> ;
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Xtal" ;
+    mo:duration "295" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F01.%20Xtal.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Tha" ;
+    mo:duration "547" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F02.%20Tha.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Pulsewidth" ;
+    mo:duration "228" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F03.%20Pulsewidth.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Ageispolis" ;
+    mo:duration "323" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F04.%20Ageispolis.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Green Calx" ;
+    mo:duration "365" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F06.%20Green%20Calx.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Heliosphan" ;
+    mo:duration "294" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F07.%20Heliosphan.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "We are the music makers" ;
+    mo:duration "464" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F08.%20We%20are%20the%20music%20makers.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Schottkey 7th Path" ;
+    mo:duration "308" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F09.%20Schottkey%207th%20Path.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Ptolemy" ;
+    mo:duration "434" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F10.%20Ptolemy.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Hedphelym" ;
+    mo:duration "364" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F11.%20Hedphelym.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Delphium" ;
+    mo:duration "329" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F12.%20Delphium.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "Actium" ;
+    mo:duration "458" ;
+    mo:item <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F13.%20Actium.mp3> ;
+    dct:isPartOf <#it> .

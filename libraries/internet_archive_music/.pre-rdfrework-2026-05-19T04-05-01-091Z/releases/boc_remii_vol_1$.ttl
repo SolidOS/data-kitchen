@@ -1,0 +1,16 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:e6d317e4-39fc-4094-bee6-a0504a42b6d5> a mo:Release;
+    dcterms:title "Boc Remii Vol. 1";
+    foaf:maker "Boards of Canada";
+    dcat:landingPage <https://archive.org/details/meat-beat-manifesto-prime-audio-soup-vegetarian-soup>;
+    mo:track <urn:uuid:e078b7c9-2cb3-403e-a846-06ad0f8e8898>, <urn:uuid:2eb68c8d-a31b-4b12-8f77-b771ab3b3f1c>, <urn:uuid:af4745ef-9931-4643-9189-a93f008b3467>, <urn:uuid:dac414a2-3ed7-4b3e-a79b-c1dd85f6cda4>, <urn:uuid:943514cc-ad0e-4b37-900c-4949ed1fc4cb>, <urn:uuid:e50532a7-cde6-45bc-b912-eda48f4275f1>.
+<urn:uuid:e078b7c9-2cb3-403e-a846-06ad0f8e8898> a mo:Track; dcterms:title "Bubbah's Tum - Dirty Great Mable (Boards of Canada Mix)"; mo:duration "318"; dcat:downloadUrl <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Bubbah's%20Tum%20-%20Dirty%20Great%20Mable%20(Boards%20of%20Canada%20Mix).mp3>.
+<urn:uuid:2eb68c8d-a31b-4b12-8f77-b771ab3b3f1c> a mo:Track; dcterms:title "Meat Beat Manifesto - Prime Audio Soup (Vegetarian Soup)"; mo:duration "426"; dcat:downloadUrl <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Meat%20Beat%20Manifesto%20-%20Prime%20Audio%20Soup%20(Vegetarian%20Soup).mp3>.
+<urn:uuid:af4745ef-9931-4643-9189-a93f008b3467> a mo:Track; dcterms:title "Michael Fakesch - Surfaise (Trade Winds Mix)"; mo:duration "370"; dcat:downloadUrl <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Michael%20Fakesch%20-%20Surfaise%20(Trade%20Winds%20Mix).mp3>.
+<urn:uuid:dac414a2-3ed7-4b3e-a79b-c1dd85f6cda4> a mo:Track; dcterms:title "Mira Calix - Sandsings (Boards of Canada Mix)"; mo:duration "382"; dcat:downloadUrl <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Mira%20Calix%20-%20Sandsings%20(Boards%20of%20Canada%20Mix).mp3>.
+<urn:uuid:943514cc-ad0e-4b37-900c-4949ed1fc4cb> a mo:Track; dcterms:title "Slag Boom Van Loon - Poppy Seed (Boards of Canada Mix)"; mo:duration "416"; dcat:downloadUrl <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Slag%20Boom%20Van%20Loon%20-%20Poppy%20Seed%20(Boards%20of%20Canada%20Mix).mp3>.
+<urn:uuid:e50532a7-cde6-45bc-b912-eda48f4275f1> a mo:Track; dcterms:title "Slag Boom Van Loon - Poppy Seed (Reprise)"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/meat-beat-manifesto-prime-audio-soup-vegetarian-soup/Slag%20Boom%20Van%20Loon%20-%20Poppy%20Seed%20(Reprise).mp3>.

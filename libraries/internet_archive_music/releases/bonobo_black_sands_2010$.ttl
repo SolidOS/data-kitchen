@@ -1,0 +1,90 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Bonobo - Black Sands (2010)" ;
+    dct:identifier "bonobo-black-sands" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/bonobo-black-sands> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11> ;
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Kiara" ;
+    mo:duration "231" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/02%20Kiara.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Kong" ;
+    mo:duration "237" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/03%20Kong.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Eyesdown" ;
+    mo:duration "326" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/04%20Eyesdown.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "El Toro" ;
+    mo:duration "224" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/05%20El%20Toro.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "We Could Forever" ;
+    mo:duration "259" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/06%20We%20Could%20Forever.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "1009" ;
+    mo:duration "270" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/07%201009.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "All in Forms" ;
+    mo:duration "291" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/08%20All%20in%20Forms.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "The Keeper" ;
+    mo:duration "288" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/09%20The%20Keeper.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Stay the Same" ;
+    mo:duration "284" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/10%20Stay%20the%20Same.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Animals" ;
+    mo:duration "405" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/11%20Animals.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Black Sands" ;
+    mo:duration "409" ;
+    mo:item <https://archive.org/download/bonobo-black-sands/12%20Black%20Sands.mp3> ;
+    dct:isPartOf <#it> .

@@ -1,0 +1,46 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "His Story - Big Bill Broonzy Interviewed By Studs Terkel" ;
+    dct:identifier "lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05> ;
+    foaf:maker "Big Bill Broonzy" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Early Days: Plough-hand Blues; C.C. Rider" ;
+    mo:duration "713" ;
+    mo:item <https://archive.org/download/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy/disc1%2F01.01.%20Early%20Days%3A%20Plough-hand%20Blues%3B%20C.C.%20Rider.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "disc1/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy_disc1side1" ;
+    mo:duration "1670" ;
+    mo:item <https://archive.org/download/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy/disc1%2Flp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy_disc1side1.flac> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "disc1/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy_disc1side1" ;
+    mo:item <https://archive.org/download/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy/disc1%2Flp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy_disc1side1.opus> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "disc1/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy_disc1side2" ;
+    mo:duration "1926" ;
+    mo:item <https://archive.org/download/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy/disc1%2Flp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy_disc1side2.flac> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "disc1/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy_disc1side2" ;
+    mo:item <https://archive.org/download/lp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy/disc1%2Flp_his-story-big-bill-broonzy-interviewed-b_big-bill-broonzy_disc1side2.opus> ;
+    dct:isPartOf <#it> .

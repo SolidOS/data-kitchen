@@ -1,0 +1,15 @@
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a schema:BookmarkAction ;
+   dct:creator "y" ;
+   dct:title "How to be an Antiracist" ;
+   dct:created "2026-06-02T00:49:49.676Z"^^xsd:dateTime ;
+   dct:references <https://archive.org/details/theaspen-How_to_be_an_Antiracist> .
+
+<https://archive.org/details/theaspen-How_to_be_an_Antiracist> a dctype:MovingImage, schema:VideoObject ;
+   schema:name "How to be an Antiracist" ;
+   dcat:landingPage <https://archive.org/details/theaspen-How_to_be_an_Antiracist> .

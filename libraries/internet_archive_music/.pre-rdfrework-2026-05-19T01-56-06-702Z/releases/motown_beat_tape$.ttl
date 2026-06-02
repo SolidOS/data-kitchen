@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:2f3cf951-0370-4d56-8c84-e03c461dacbc> a mo:Release;
+    dcterms:title "Motown Beat Tape";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    dcat:landingPage <https://archive.org/details/j-dilla-motown-beat-tape>;
+    mo:track <urn:uuid:25a51776-3062-4aad-8408-0873dd802021>, <urn:uuid:43888116-c89c-49f3-98d5-50dd33650335>.
+<urn:uuid:25a51776-3062-4aad-8408-0873dd802021> a mo:Track; dcterms:title "Track 32 - In the Streets"; mo:duration "188"; dcat:downloadUrl <https://archive.org/download/j-dilla-motown-beat-tape/32%20-%20MBT%20-%20Track%2032.mp3>.
+<urn:uuid:43888116-c89c-49f3-98d5-50dd33650335> a mo:Track; dcterms:title "Track 34 - Rebirth Is Necessary (Instrumental)"; mo:duration "190"; dcat:downloadUrl <https://archive.org/download/j-dilla-motown-beat-tape/34%20-%20MBT%20-%20Track%2034.mp3>.

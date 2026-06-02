@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:5a65bfec-f81d-49ad-b227-afa6e7bf7418> a mo:Release;
+    dcterms:title "Animal Collective Live at Unknown on 2022-02-17";
+    foaf:maker "Deakin & Geologist";
+    dcat:landingPage <https://archive.org/details/acollective2022-02-17>;
+    mo:track <urn:uuid:f2d411d3-b30b-4e30-bf2d-dc091cf5c58f>.
+<urn:uuid:f2d411d3-b30b-4e30-bf2d-dc091cf5c58f> a mo:Track; dcterms:title "Improvised Set"; mo:duration "1002"; dcat:downloadUrl <https://archive.org/download/acollective2022-02-17/Deakin%20%26%20Geologist%20-%20Improvised%20Set.flac>.

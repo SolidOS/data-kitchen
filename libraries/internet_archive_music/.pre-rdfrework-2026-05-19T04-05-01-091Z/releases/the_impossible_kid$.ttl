@@ -1,0 +1,21 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:d422efc0-6e70-4dee-b79b-ab20ec14a2e7> a mo:Release;
+    dcterms:title "The Impossible Kid";
+    foaf:maker "Aesop Rock";
+    dcat:landingPage <https://archive.org/details/the-impossible-kid>;
+    mo:track <urn:uuid:1017d55b-f66f-4a47-8b42-045ca4070299>, <urn:uuid:f49295f3-5828-42bd-951d-ee8d41d0bc8c>, <urn:uuid:7c860aec-ef49-42e6-ba39-984d79d9dc59>, <urn:uuid:1a468a9a-010e-49f0-bf56-d905b4d24c94>, <urn:uuid:1e360693-488b-4e0b-87a7-74788f20f081>, <urn:uuid:9031b34a-ce34-4dff-9f6e-49eb97f18b68>, <urn:uuid:27a9cc0e-5577-4a05-a5d2-3913f0b63a90>, <urn:uuid:309adf80-777c-4eb7-b8ed-8d48608b208b>, <urn:uuid:35e9859b-c7b6-4ee2-b300-06846e58374a>, <urn:uuid:dd2ea12c-363c-45b0-9ee6-db69763c1618>, <urn:uuid:4175af22-267c-447b-b0a5-57c5a7c59eca>.
+<urn:uuid:1017d55b-f66f-4a47-8b42-045ca4070299> a mo:Track; dcterms:title "Blood Sandwich"; mo:duration "265"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Blood%20Sandwich.mp3>.
+<urn:uuid:f49295f3-5828-42bd-951d-ee8d41d0bc8c> a mo:Track; dcterms:title "Defender"; mo:duration "191"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Defender.mp3>.
+<urn:uuid:7c860aec-ef49-42e6-ba39-984d79d9dc59> a mo:Track; dcterms:title "Dorks"; mo:duration "212"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Dorks.mp3>.
+<urn:uuid:1a468a9a-010e-49f0-bf56-d905b4d24c94> a mo:Track; dcterms:title "Molecules"; mo:duration "202"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Molecules.mp3>.
+<urn:uuid:1e360693-488b-4e0b-87a7-74788f20f081> a mo:Track; dcterms:title "Mystery Fish"; mo:duration "189"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Mystery%20Fish.mp3>.
+<urn:uuid:9031b34a-ce34-4dff-9f6e-49eb97f18b68> a mo:Track; dcterms:title "Rabies"; mo:duration "185"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Rabies.mp3>.
+<urn:uuid:27a9cc0e-5577-4a05-a5d2-3913f0b63a90> a mo:Track; dcterms:title "Rings"; mo:duration "227"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Rings.mp3>.
+<urn:uuid:309adf80-777c-4eb7-b8ed-8d48608b208b> a mo:Track; dcterms:title "Shrunk"; mo:duration "188"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Shrunk.mp3>.
+<urn:uuid:35e9859b-c7b6-4ee2-b300-06846e58374a> a mo:Track; dcterms:title "Supercell"; mo:duration "230"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Supercell.mp3>.
+<urn:uuid:dd2ea12c-363c-45b0-9ee6-db69763c1618> a mo:Track; dcterms:title "TUFF"; mo:duration "231"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/TUFF.mp3>.
+<urn:uuid:4175af22-267c-447b-b0a5-57c5a7c59eca> a mo:Track; dcterms:title "Water Tower"; mo:duration "230"; dcat:downloadUrl <https://archive.org/download/the-impossible-kid/Water%20Tower.mp3>.

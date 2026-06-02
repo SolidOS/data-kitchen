@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c3968fd6-b729-480a-9e52-aaef26383b27> a mo:Release;
+    dcterms:title "I'm Crying";
+    foaf:maker "Memphis Slim and Terry Timmons;Chatman";
+    dcat:landingPage <https://archive.org/details/78_im-crying_memphis-slim-and-terry-timmons-chatman_gbia0060711b>;
+    mo:track <urn:uuid:8394d7a1-c0c3-489a-bba8-b6d9b937fb9b>.
+<urn:uuid:8394d7a1-c0c3-489a-bba8-b6d9b937fb9b> a mo:Track; dcterms:title "I'm Crying"; mo:duration "203"; dcat:downloadUrl <https://archive.org/download/78_im-crying_memphis-slim-and-terry-timmons-chatman_gbia0060711b/I'm%20Crying%20-%20Memphis%20Slim%20and%20Terry%20Timmons.mp3>.

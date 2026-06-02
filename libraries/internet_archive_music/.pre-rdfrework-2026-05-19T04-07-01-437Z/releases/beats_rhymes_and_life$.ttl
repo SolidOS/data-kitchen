@@ -1,0 +1,101 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:2d7fd9e4-e247-4f07-94af-9be88276d3b5>
+    a mo:Release;
+    dct:title "Beats, Rhymes And Life";
+    mo:track
+        <urn:uuid:47cbccf8-920d-4b54-8ecb-1d68c7add6cc>,
+        <urn:uuid:4cb17b6b-85b5-461d-82eb-b6f05b4c0686>,
+        <urn:uuid:5f68a06c-4408-41e0-be18-88d69f7599ba>,
+        <urn:uuid:6efdf7e8-a870-48ed-a666-84707137f694>,
+        <urn:uuid:733d1d03-3b17-486d-82a4-e260ac2d23c3>,
+        <urn:uuid:81a4c00f-41fb-4d66-8bc9-a78fe6d59520>,
+        <urn:uuid:95f5c18c-44a8-4fb4-b138-e5bda76311aa>,
+        <urn:uuid:9c7c8e7b-5003-4a72-af95-049f9f0c398a>,
+        <urn:uuid:bc96b597-e1a8-471e-b4ed-fd81544ab48e>,
+        <urn:uuid:d58fcb6a-e602-4bd1-8487-4576ccda67a3>,
+        <urn:uuid:e77f2817-ce95-4b7d-9a85-e65d50787a82>,
+        <urn:uuid:f3a116e3-b882-4aa2-bd55-c5d3a991b2af>;
+    dcat:landingPage det:15-stressed-out-feat.-faith-evans;
+    foaf:maker
+        <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>,
+        <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>,
+        <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>.
+<urn:uuid:47cbccf8-920d-4b54-8ecb-1d68c7add6cc>
+    a mo:Track;
+    dct:title "Get A Hold";
+    mo:duration "215";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/02%20Get%20A%20Hold.mp3>.
+<urn:uuid:4cb17b6b-85b5-461d-82eb-b6f05b4c0686>
+    a mo:Track;
+    dct:title "Mind Power";
+    mo:duration "235";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/08%20Mind%20Power.mp3>.
+<urn:uuid:5f68a06c-4408-41e0-be18-88d69f7599ba>
+    a mo:Track;
+    dct:title "Phony Rappers";
+    mo:duration "216";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/01%20Phony%20Rappers.mp3>.
+<urn:uuid:6efdf7e8-a870-48ed-a666-84707137f694>
+    a mo:Track;
+    dct:title "Keeping It Moving";
+    mo:duration "218";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/10%20Keeping%20It%20Moving.mp3>.
+<urn:uuid:733d1d03-3b17-486d-82a4-e260ac2d23c3>
+    a mo:Track;
+    dct:title
+    "Stressed Out [Baby Phife Version Full] (Bonus Track Only Japan Edition)";
+    mo:duration "287";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/16%20Stressed%20Out%20%5BBaby%20Phife%20Version.mp3>.
+<urn:uuid:81a4c00f-41fb-4d66-8bc9-a78fe6d59520>
+    a mo:Track;
+    dct:title "The Hop";
+    mo:duration "207";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/09%20The%20Hop.mp3>.
+<urn:uuid:95f5c18c-44a8-4fb4-b138-e5bda76311aa>
+    a mo:Track;
+    dct:title "Jam";
+    mo:duration "278";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/04%20Jam.mp3>.
+<urn:uuid:9c7c8e7b-5003-4a72-af95-049f9f0c398a>
+    a mo:Track;
+    dct:title "Stressed Out feat. Faith Evans";
+    mo:duration "295";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/15%20Stressed%20Out%20feat.%20Faith%20Evans.mp3>.
+<urn:uuid:bc96b597-e1a8-471e-b4ed-fd81544ab48e>
+    a mo:Track;
+    dct:title "What Really Goes On";
+    mo:duration "203";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/13%20What%20Really%20Goes%20On.mp3>.
+<urn:uuid:d58fcb6a-e602-4bd1-8487-4576ccda67a3>
+    a mo:Track;
+    dct:title "Motivators";
+    mo:duration "200";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/03%20Motivators.mp3>.
+<urn:uuid:e77f2817-ce95-4b7d-9a85-e65d50787a82>
+    a mo:Track;
+    dct:title "The Pressure";
+    mo:duration "182";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/06%20The%20Pressure.mp3>.
+<urn:uuid:f3a116e3-b882-4aa2-bd55-c5d3a991b2af>
+    a mo:Track;
+    dct:title "Baby Phife's Return";
+    mo:duration "198";
+    dcat:downloadUrl
+        <https://archive.org/download/15-stressed-out-feat.-faith-evans/11%20Baby%20Phife's%20Return.mp3>.

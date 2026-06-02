@@ -1,0 +1,15 @@
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a schema:BookmarkAction ;
+   dct:creator "y" ;
+   dct:title "Tarot de Marseille - Jean Dodal" ;
+   dct:created "2026-06-01T21:47:43.800Z"^^xsd:dateTime ;
+   dct:references <https://commons.wikimedia.org/wiki/Category:Tarot_de_Marseille_-_Jean_Dodal> .
+
+<https://commons.wikimedia.org/wiki/Category:Tarot_de_Marseille_-_Jean_Dodal> a dctype:Collection, schema:ImageGallery ;
+   schema:name "Tarot de Marseille - Jean Dodal" ;
+   dcat:landingPage <https://commons.wikimedia.org/wiki/Category:Tarot_de_Marseille_-_Jean_Dodal> .

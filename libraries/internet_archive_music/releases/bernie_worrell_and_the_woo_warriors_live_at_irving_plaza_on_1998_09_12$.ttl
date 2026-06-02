@@ -1,0 +1,27 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Bernie Worrell and the WOO Warriors Live at Irving Plaza on 1998-09-12" ;
+    dct:identifier "bernieworrell1998-09-12.mg200.duro.flac24" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/bernieworrell1998-09-12.mg200.duro.flac24> ;
+    mo:track <#t01>, <#t02> ;
+    foaf:maker "Bernie Worrell & the WOO Warriors" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "instrumental" ;
+    mo:duration "226" ;
+    mo:item <https://archive.org/download/bernieworrell1998-09-12.mg200.duro.flac24/bernieworrell1998-09-12t09.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Comin' 'Round The Mountain" ;
+    mo:duration "249" ;
+    mo:item <https://archive.org/download/bernieworrell1998-09-12.mg200.duro.flac24/bernieworrell1998-09-12t04.mp3> ;
+    dct:isPartOf <#it> .

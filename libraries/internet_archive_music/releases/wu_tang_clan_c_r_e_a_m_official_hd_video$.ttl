@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Wu Tang Clan C. R. E. A. M. ( Official HD Video)" ;
+    dct:identifier "wu-tang-clan-c.-r.-e.-a.-m.-official-hd-video" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/wu-tang-clan-c.-r.-e.-a.-m.-official-hd-video> ;
+    mo:track <#t01> ;
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Wu-Tang Clan - C.R.E.A.M. (Official HD Video)" ;
+    mo:duration "242" ;
+    mo:item <https://archive.org/download/wu-tang-clan-c.-r.-e.-a.-m.-official-hd-video/Wu-Tang%20Clan%20-%20C.R.E.A.M.%20(Official%20HD%20Video).mp3> ;
+    dct:isPartOf <#it> .

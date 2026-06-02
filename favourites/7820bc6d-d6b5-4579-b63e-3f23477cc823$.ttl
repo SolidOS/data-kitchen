@@ -1,0 +1,15 @@
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a schema:BookmarkAction ;
+   dct:creator "y" ;
+   dct:title "Museo Frida Kahlo" ;
+   dct:created "2026-06-01T21:38:59.630Z"^^xsd:dateTime ;
+   dct:references <https://commons.wikimedia.org/wiki/Category:Museo_Frida_Kahlo> .
+
+<https://commons.wikimedia.org/wiki/Category:Museo_Frida_Kahlo> a dctype:Collection, schema:ImageGallery ;
+   schema:name "Museo Frida Kahlo" ;
+   dcat:landingPage <https://commons.wikimedia.org/wiki/Category:Museo_Frida_Kahlo> .

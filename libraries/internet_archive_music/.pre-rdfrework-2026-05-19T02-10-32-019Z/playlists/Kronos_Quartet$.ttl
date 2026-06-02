@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Kronos_Quartet> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Kronos Quartet";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://purl.org/dc/terms/description> "Experimental Classical";
+    dcterms:hasPart <urn:uuid:226409c7-abf0-4069-889e-4fad11946ab0>, <urn:uuid:1d0f8441-0387-41ec-a3e2-d2ec4d6b1369>, <urn:uuid:1da60d52-6193-4356-8165-2e29fcd833af>, <urn:uuid:3f4bb18e-f1f2-4cff-b434-5eeb57094969>, <urn:uuid:f6b3f0b1-eb80-4fc1-9c21-fc30ff5109d2>, <urn:uuid:d3be92c0-1907-4d4d-be1c-bc665c62cfe1>, <urn:uuid:b1db3efa-1168-40e7-8c97-2480235a9c22>, <urn:uuid:e5c837f7-d984-47b3-b144-76d8133c2c43>, <urn:uuid:f7f009be-b8a4-4469-ab86-982b4882cc37>, <urn:uuid:45c51af0-5db5-4de6-9f3f-4a7a3e068f7d>, <urn:uuid:0bf6e8f4-69a6-4c77-a780-1e5eda1b3cd7>, <urn:uuid:e467f1ae-a955-49c7-ab1f-c0decfb14314>, <urn:uuid:bf1cba3d-7eb7-4100-8399-7a89d9509db2>, <urn:uuid:6d597593-b321-44bd-9ac5-fe5d7d28259d>, <urn:uuid:f32cbb1a-7aeb-44fe-a51d-dd74e3bc9603>, <urn:uuid:7d554e91-2aed-4d64-9219-fbe3590382f5>, <urn:uuid:7aaf2cc1-b7c6-4ad6-9ba7-57e2d8bbb7f7>.

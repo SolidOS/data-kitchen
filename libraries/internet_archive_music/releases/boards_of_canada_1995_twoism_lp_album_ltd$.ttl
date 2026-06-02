@@ -1,0 +1,55 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Boards Of Canada - (1995) Twoism ‎(LP, Album, Ltd)" ;
+    dct:identifier "BoardsOfCanada-1995TwoismLPAlbumLtd" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/BoardsOfCanada-1995TwoismLPAlbumLtd> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06> ;
+    foaf:maker "Boards Of Canada" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Sixtyniner" ;
+    mo:duration "312" ;
+    mo:item <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/01%20-%20Sixtyniner.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Oirectine" ;
+    mo:duration "330" ;
+    mo:item <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/02%20-%20Oirectine.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Basefree" ;
+    mo:duration "353" ;
+    mo:item <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/04%20-%20Basefree.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Twoism" ;
+    mo:duration "334" ;
+    mo:item <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/05%20-%20Twoism.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Seeya Later" ;
+    mo:duration "244" ;
+    mo:item <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/06%20-%20Seeya%20Later.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Smokes Quantity" ;
+    mo:duration "187" ;
+    mo:item <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/08%20-%20Smokes%20Quantity.mp3> ;
+    dct:isPartOf <#it> .

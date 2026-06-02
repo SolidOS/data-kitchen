@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:18129c99-0e7b-4845-92ab-e7e542b6eb15> a mo:Release;
+    dcterms:title "More Than You Know - Teddy Wilson - Billie Holiday";
+    foaf:maker "Teddy Wilson - Billie Holiday";
+    dcat:landingPage <https://archive.org/details/MoreThanYouKnowTeddyWilsonBillieHoliday>;
+    mo:track <urn:uuid:aceea5d7-cba6-4e44-b56a-a2522726cfb0>.
+<urn:uuid:aceea5d7-cba6-4e44-b56a-a2522726cfb0> a mo:Track; dcterms:title "More Than You Know - Teddy Wilson - Billie Holiday"; mo:duration "185"; dcat:downloadUrl <https://archive.org/download/MoreThanYouKnowTeddyWilsonBillieHoliday/More%20Than%20You%20Know%20-%20Teddy%20Wilson%20-%20Billie%20Holiday.mp3>.

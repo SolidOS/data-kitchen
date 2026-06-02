@@ -1,0 +1,21 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:909c0bf9-b6fa-42e0-9236-e60dde935154> a mo:Release;
+    dcterms:title "Sunrise Projector";
+    foaf:maker "Tycho";
+    dcat:landingPage <https://archive.org/details/tycho-sunrise-projector>;
+    mo:track <urn:uuid:da6287c2-cdd7-418f-be63-e3ed83100321>, <urn:uuid:88280348-0405-452e-82a9-67d0744ae04d>, <urn:uuid:6975d908-7c3a-4404-a204-4e8afcc88e58>, <urn:uuid:89b5976b-5efe-445e-94db-dad06cc2ac35>, <urn:uuid:61a9a665-18cd-4024-ae41-cba5bc783c94>, <urn:uuid:fa48aa90-faff-404b-8d9d-4de7502cb0d5>, <urn:uuid:bd5a8060-0c1d-4df4-89f6-2ec1b3896c49>, <urn:uuid:5cc13971-dc68-4a0a-8922-2c2e6bb05bf5>, <urn:uuid:74da6f39-3740-4563-944c-d4d897e69398>, <urn:uuid:bcc08afc-66a9-4d6c-84fd-c51483e071be>, <urn:uuid:f4225d31-d2da-4d23-b5c6-6b88835bc0a8>.
+<urn:uuid:da6287c2-cdd7-418f-be63-e3ed83100321> a mo:Track; dcterms:title "A Circular Reeducation (feat. Jianda Johnson)"; mo:duration "318"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/10%20-%20A%20Circular%20Reeducation%20(feat.%20Jianda%20Johnson).mp3>.
+<urn:uuid:88280348-0405-452e-82a9-67d0744ae04d> a mo:Track; dcterms:title "Cloud Generator"; mo:duration "259"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/11%20-%20Cloud%20Generator.mp3>.
+<urn:uuid:6975d908-7c3a-4404-a204-4e8afcc88e58> a mo:Track; dcterms:title "Dictaphone's Lament"; mo:duration "309"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/02%20-%20Dictaphone's%20Lament.mp3>.
+<urn:uuid:89b5976b-5efe-445e-94db-dad06cc2ac35> a mo:Track; dcterms:title "Lapse"; mo:duration "320"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/06%20-%20Lapse.mp3>.
+<urn:uuid:61a9a665-18cd-4024-ae41-cba5bc783c94> a mo:Track; dcterms:title "Overlook"; mo:duration "342"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/05%20-%20Overlook.mp3>.
+<urn:uuid:fa48aa90-faff-404b-8d9d-4de7502cb0d5> a mo:Track; dcterms:title "Past Is Prologue"; mo:duration "347"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/08%20-%20Past%20Is%20Prologue.mp3>.
+<urn:uuid:bd5a8060-0c1d-4df4-89f6-2ec1b3896c49> a mo:Track; dcterms:title "PBS / KAE"; mo:duration "279"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/03%20-%20PBS%20%2C%20KAE.mp3>.
+<urn:uuid:5cc13971-dc68-4a0a-8922-2c2e6bb05bf5> a mo:Track; dcterms:title "Send And Receive (Chachi Jones Remix)"; mo:duration "356"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/13%20-%20Send%20And%20Receive%20(Chachi%20Jones%20Remix).mp3>.
+<urn:uuid:74da6f39-3740-4563-944c-d4d897e69398> a mo:Track; dcterms:title "Send And Receive (feat. Jianda Johnson)"; mo:duration "286"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/07%20-%20Send%20And%20Receive%20(feat.%20Jianda%20Johnson).mp3>.
+<urn:uuid:bcc08afc-66a9-4d6c-84fd-c51483e071be> a mo:Track; dcterms:title "Sunrise Calendar"; mo:duration "189"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/12%20-%20Sunrise%20Calendar.mp3>.
+<urn:uuid:f4225d31-d2da-4d23-b5c6-6b88835bc0a8> a mo:Track; dcterms:title "Sunrise Projector (feat. Jianda Johnson)"; mo:duration "183"; dcat:downloadUrl <https://archive.org/download/tycho-sunrise-projector/01%20-%20Sunrise%20Projector%20(feat.%20Jianda%20Johnson).mp3>.

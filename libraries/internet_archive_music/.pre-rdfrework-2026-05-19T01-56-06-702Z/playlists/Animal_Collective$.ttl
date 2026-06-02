@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Animal_Collective> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Animal Collective";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://open-media-player.org/ns#hidePlaylist> "true";
+    dcterms:hasPart <urn:uuid:b60ddeae-0ccc-481c-adc3-91c4bf441a25>, <urn:uuid:f2d411d3-b30b-4e30-bf2d-dc091cf5c58f>, <urn:uuid:572d967b-5ec7-42d3-83f9-fa5711f453f3>, <urn:uuid:93cd08b0-bb8d-4315-a378-68876b91e678>, <urn:uuid:5d06ece3-d023-47ef-bf41-d778b0039b59>, <urn:uuid:3bc24e3e-b816-4910-914f-7db377dc1bf2>, <urn:uuid:efd15f0d-c5ba-423e-8b44-c73fa33b7490>, <urn:uuid:e5dcd7c0-d848-4987-a427-27fda74a0623>, <urn:uuid:03a75bf7-9dfe-4dfd-b5ae-49b234cd9768>, <urn:uuid:42bdfde0-a240-4483-aeb0-e14298b98f40>, <urn:uuid:fa791955-45cb-49b3-81e1-b9ef9b043f23>, <urn:uuid:cb12ee74-6592-45e5-930a-e175ac78d6d1>, <urn:uuid:55ee29eb-2e08-4ec6-a602-ab91b7eef7f1>, <urn:uuid:64977c43-fa55-42bb-8658-851e89d1e6f2>, <urn:uuid:c8174c57-6c2c-456e-9569-83d8da0cbac5>, <urn:uuid:ab4ae8b3-30c8-4d8a-ad4a-bcd42f6a5535>, <urn:uuid:fc594489-8243-4b32-a9d5-ba27a0fb8aed>, <urn:uuid:383b43b0-52c4-47c7-a403-6ff1638d611d>, <urn:uuid:05138e28-3b1f-472e-9d09-e17825fa49d2>, <urn:uuid:4f3ae832-d16d-4d3c-ac02-67841ebb27cb>, <urn:uuid:a2867860-c79f-42ec-b64c-beaa50ae2ac6>, <urn:uuid:98cb3da8-870e-4849-8cdc-75552b5d5fbe>, <urn:uuid:0e0ecad7-666e-4e58-aa1b-f36a2e465bf0>, <urn:uuid:d95dd385-6eb5-49c8-bb64-15abdce3d7e1>, <urn:uuid:87335e92-4d78-40d5-bd1f-130c2338e9c7>, <urn:uuid:69fef9a4-8946-423f-a917-3ad7b66a47ba>.

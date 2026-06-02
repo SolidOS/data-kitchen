@@ -1,0 +1,14 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:41288369-f184-4493-8639-3041d279e00a> a mo:Release;
+    dcterms:title "Sound Ancestors";
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a>;
+    dcat:landingPage <https://archive.org/details/sound-ancestors-flac>;
+    mo:track <urn:uuid:ca9bf5b2-cbb4-4c75-9157-94d84e53479f>, <urn:uuid:5d1a9229-b1ae-4a21-b4ec-f9305e2a50c5>, <urn:uuid:ebeaf315-cee0-45f6-80bd-85d31cfeacc1>, <urn:uuid:6f7ca6cf-0df1-4b00-bda7-33e2a45545e6>.
+<urn:uuid:ca9bf5b2-cbb4-4c75-9157-94d84e53479f> a mo:Track; dcterms:title "Road Of The Lonely Ones"; mo:duration "218"; dcat:downloadUrl <https://archive.org/download/sound-ancestors-flac/04.%20Madlib%20-%20Road%20Of%20The%20Lonely%20Ones.mp3>.
+<urn:uuid:5d1a9229-b1ae-4a21-b4ec-f9305e2a50c5> a mo:Track; dcterms:title "Hopprock"; mo:duration "207"; dcat:downloadUrl <https://archive.org/download/sound-ancestors-flac/07.%20Madlib%20-%20Hopprock.mp3>.
+<urn:uuid:ebeaf315-cee0-45f6-80bd-85d31cfeacc1> a mo:Track; dcterms:title "Latino Negro"; mo:duration "217"; dcat:downloadUrl <https://archive.org/download/sound-ancestors-flac/13.%20Madlib%20-%20Latino%20Negro.mp3>.
+<urn:uuid:6f7ca6cf-0df1-4b00-bda7-33e2a45545e6> a mo:Track; dcterms:title "Duumbiyay"; mo:duration "193"; dcat:downloadUrl <https://archive.org/download/sound-ancestors-flac/16.%20Madlib%20-%20Duumbiyay.mp3>.

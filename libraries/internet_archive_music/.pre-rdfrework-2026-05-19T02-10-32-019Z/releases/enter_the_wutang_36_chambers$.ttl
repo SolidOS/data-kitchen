@@ -1,0 +1,92 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:078e8ff4-81fb-49b9-b291-ac6e47ba0e61>
+    a mo:Track;
+    dct:title "Tearz";
+    mo:duration "258";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/11%20Tearz.mp3>.
+<urn:uuid:09d7a596-a6bd-45db-bf16-26fbb9a33ba3>
+    a mo:Track;
+    dct:title "Wu-Tang: 7th Chamber";
+    mo:duration "367";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/04%20Wu-Tang-%207th%20Chamber.mp3>.
+<urn:uuid:1870a100-891e-41cb-b6e3-eb292876d6bf>
+    a mo:Track;
+    dct:title "Method Man";
+    mo:duration "351";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/09%20Method%20Man.mp3>.
+<urn:uuid:379b8a30-ebef-4ccf-8802-4827cbb465ad>
+    a mo:Track;
+    dct:title "Clan In Da Front";
+    mo:duration "273";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/03%20Clan%20In%20Da%20Front.mp3>.
+<urn:uuid:71209a42-c4c9-45cb-b367-e1342b19d119>
+    a mo:Release;
+    dct:title "Enter The Wu-Tang- 36 Chambers";
+    mo:track
+        <urn:uuid:078e8ff4-81fb-49b9-b291-ac6e47ba0e61>,
+        <urn:uuid:09d7a596-a6bd-45db-bf16-26fbb9a33ba3>,
+        <urn:uuid:1870a100-891e-41cb-b6e3-eb292876d6bf>,
+        <urn:uuid:379b8a30-ebef-4ccf-8802-4827cbb465ad>,
+        <urn:uuid:9673c469-bff1-46b5-9d4a-4cc97687f6db>,
+        <urn:uuid:a8dafe16-cff7-4569-8bc8-eeba8cec477a>,
+        <urn:uuid:aaf1c086-17de-4df2-9b50-44cf01d501af>,
+        <urn:uuid:b7d0ef17-c8fe-4090-9d8b-8c6283b4e830>,
+        <urn:uuid:c433d685-91e9-4ab0-891b-9fe5147ef3a8>,
+        <urn:uuid:fa1f3d06-896d-4ae6-875e-2d5bd0a0e2ee>,
+        <urn:uuid:fd3108f4-9a36-4e1d-8b0c-45a9c9d3c652>;
+    dcat:landingPage det:enter-the-wu-tang-36-chambers_202409;
+    foaf:maker
+        <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>,
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:9673c469-bff1-46b5-9d4a-4cc97687f6db>
+    a mo:Track;
+    dct:title "Da Mystery Of Chessboxin'";
+    mo:duration "288";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/06%20Da%20Mystery%20Of%20Chessboxin'.mp3>.
+<urn:uuid:a8dafe16-cff7-4569-8bc8-eeba8cec477a>
+    a mo:Track;
+    dct:title "Wu-Tang Clan Ain't Nothin' Ta Fuck Wit";
+    mo:duration "216";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/07%20Wu-Tang%20Clan%20Ain't%20Nothin'%20Ta%20Fuck%20Wit.mp3>.
+<urn:uuid:aaf1c086-17de-4df2-9b50-44cf01d501af>
+    a mo:Track;
+    dct:title "Bring Da Ruckus";
+    mo:duration "251";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/01%20Bring%20Da%20Ruckus.mp3>.
+<urn:uuid:b7d0ef17-c8fe-4090-9d8b-8c6283b4e830>
+    a mo:Track;
+    dct:title "C.R.E.A.M.";
+    mo:duration "252";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/08%20C.R.E.A.M.mp3>.
+<urn:uuid:c433d685-91e9-4ab0-891b-9fe5147ef3a8>
+    a mo:Track;
+    dct:title "Protect Ya Neck";
+    mo:duration "291";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/10%20Protect%20Ya%20Neck.mp3>.
+<urn:uuid:fa1f3d06-896d-4ae6-875e-2d5bd0a0e2ee>
+    a mo:Track;
+    dct:title "Wu-Tang: 7th Chamber, Pt. II";
+    mo:duration "370";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/12%20Wu-Tang-%207th%20Chamber%2C%20Pt.%20II.mp3>.
+<urn:uuid:fd3108f4-9a36-4e1d-8b0c-45a9c9d3c652>
+    a mo:Track;
+    dct:title "Can It Be All So Simple";
+    mo:duration "413";
+    dcat:downloadUrl
+        <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/05%20Can%20It%20Be%20All%20So%20Simple.mp3>.

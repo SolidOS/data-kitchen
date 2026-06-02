@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:e0530230-ed99-4375-8e43-b094b84e071a> a mo:Release;
+    dcterms:title "Tycho - Live @ Cats Cradle 4/23/2014";
+    foaf:maker "Tycho";
+    dcat:landingPage <https://archive.org/details/TychoCatsCradle20140423WCB>;
+    mo:track <urn:uuid:435c6ff4-e19d-4e51-acee-46831198e034>.
+<urn:uuid:435c6ff4-e19d-4e51-acee-46831198e034> a mo:Track; dcterms:title "Tycho-CatsCradle-2014-04-23-WCB"; mo:duration "2414"; dcat:downloadUrl <https://archive.org/download/TychoCatsCradle20140423WCB/Tycho-CatsCradle-2014-04-23-WCB.mp3>.

@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:4a84a56d-d6d6-47d9-b4df-961abede54fa> a mo:Release;
+    dcterms:title "Mean To Me";
+    foaf:maker "Teddy Wilson and His Orchestra";
+    dcat:landingPage <https://archive.org/details/mean-to-me>;
+    mo:track <urn:uuid:b94b5b3f-d711-41c1-967b-1d77176e4400>.
+<urn:uuid:b94b5b3f-d711-41c1-967b-1d77176e4400> a mo:Track; dcterms:title "Mean to Me"; mo:duration "188"; dcat:downloadUrl <https://archive.org/download/mean-to-me/Mean%20to%20Me.mp3>.

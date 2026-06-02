@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:5b56d902-bb84-421b-bed8-de35a2c584d4> a mo:Release;
+    dcterms:title "Los Angeles";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/flying-lotus-los-angeles_202601>;
+    mo:track <urn:uuid:3041d005-78e3-462a-ab1a-a8f8193f491b>, <urn:uuid:d58dc3bb-301c-48be-8853-b89102f3e351>, <urn:uuid:9c6f1855-c52a-4016-9a60-32e60e5c9b05>, <urn:uuid:f181c01e-638d-40ce-82f2-9e92d2d87a4a>, <urn:uuid:efa02af8-2707-47b5-84f0-fc9ff5ab9342>, <urn:uuid:04be4f4f-b3d7-4d29-b83a-52ad0577dfba>, <urn:uuid:7999df53-b8e7-46fe-be10-8e20762e12aa>, <urn:uuid:0cb83588-e134-44de-99f6-1a4041a24e40>.
+<urn:uuid:3041d005-78e3-462a-ab1a-a8f8193f491b> a mo:Track; dcterms:title "Breathe . Something/Stellar STar"; mo:duration "200"; dcat:downloadUrl <https://archive.org/download/flying-lotus-los-angeles_202601/02.%20Flying%20Lotus%20-%20Breathe%20.%20Something%20Stellar%20STar%20(2008).mp3>.
+<urn:uuid:d58dc3bb-301c-48be-8853-b89102f3e351> a mo:Track; dcterms:title "Comet Course"; mo:duration "181"; dcat:downloadUrl <https://archive.org/download/flying-lotus-los-angeles_202601/06.%20Flying%20Lotus%20-%20Comet%20Course%20(2008).mp3>.
+<urn:uuid:9c6f1855-c52a-4016-9a60-32e60e5c9b05> a mo:Track; dcterms:title "Golden Diva"; mo:duration "242"; dcat:downloadUrl <https://archive.org/download/flying-lotus-los-angeles_202601/08.%20Flying%20Lotus%20-%20Golden%20Diva%20(2008).mp3>.
+<urn:uuid:f181c01e-638d-40ce-82f2-9e92d2d87a4a> a mo:Track; dcterms:title "Riot"; mo:duration "242"; dcat:downloadUrl <https://archive.org/download/flying-lotus-los-angeles_202601/09.%20Flying%20Lotus%20-%20Riot%20(2008).mp3>.
+<urn:uuid:efa02af8-2707-47b5-84f0-fc9ff5ab9342> a mo:Track; dcterms:title "GNG BNG"; mo:duration "220"; dcat:downloadUrl <https://archive.org/download/flying-lotus-los-angeles_202601/10.%20Flying%20Lotus%20-%20GNG%20BNG%20(2008).mp3>.
+<urn:uuid:04be4f4f-b3d7-4d29-b83a-52ad0577dfba> a mo:Track; dcterms:title "Parisian Goldfish"; mo:duration "181"; dcat:downloadUrl <https://archive.org/download/flying-lotus-los-angeles_202601/11.%20Flying%20Lotus%20-%20Parisian%20Goldfish%20(2008).mp3>.
+<urn:uuid:7999df53-b8e7-46fe-be10-8e20762e12aa> a mo:Track; dcterms:title "RobertaFlack ft. Ahu"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/flying-lotus-los-angeles_202601/13.%20Flying%20Lotus%20-%20RobertaFlack%20ft.%20Ahu%20(2008).mp3>.
+<urn:uuid:0cb83588-e134-44de-99f6-1a4041a24e40> a mo:Track; dcterms:title "Backpack Caviar"; mo:duration "200"; dcat:downloadUrl <https://archive.org/download/flying-lotus-los-angeles_202601/19.%20Flying%20Lotus%20-%20Backpack%20Caviar%20(2008).mp3>.

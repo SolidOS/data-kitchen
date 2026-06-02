@@ -1,0 +1,652 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:039f9b3d-aa58-4703-add2-70c7566a72eb>
+    a mo:Track;
+    dct:title "Wolves (feat. George Clinton)";
+    mo:duration "256";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wolves%20(feat.%20George%20Clinton).mp3>.
+<urn:uuid:054f8efc-5c1e-4a49-8f3c-4d4544c5199e>
+    a mo:Track;
+    dct:title
+        "Protect Ya Neck (The Jump Off) (feat. Inspectah Deck, Raekwon, Method Man & Masta Killa)";
+    mo:duration "238";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Protect%20Ya%20Neck%20(The%20Jump%20Off)%20(feat.%20Inspectah%20Deck%2C%20Raekwon%2C%20Method%20Man%20%26%20Masta%20Killa).mp3>.
+<urn:uuid:05c91e68-50da-4348-9fdb-1dcc4786d5ac>
+    a mo:Track;
+    dct:title
+        "Soul Power (Black Jungle) (feat. Flavor Flav, Raekwon, Masta Killa & Ghostface Killah)";
+    mo:duration "292";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Soul%20Power%20(Black%20Jungle)%20(feat.%20Flavor%20Flav%2C%20Raekwon%2C%20Masta%20Killa%20%26%20Ghostface%20Killah).mp3>.
+<urn:uuid:096f7de1-1ae8-4938-9c82-cee2efcb3399>
+    a mo:Track;
+    dct:title "Duck Seazon (feat. Raekwon, RZA & Method Man)";
+    mo:duration "342";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Duck%20Seazon%20(feat.%20Raekwon%2C%20RZA%20%26%20Method%20Man).mp3>.
+<urn:uuid:109b5336-44b9-4a29-bed0-196a2ab2b42a>
+    a mo:Track;
+    dct:title "Sunlight";
+    mo:duration "202";
+    dcat:downloadUrl
+    <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Sunlight.mp3>.
+<urn:uuid:1101ccf5-132a-4447-ba7a-890a30e3ea1a>
+    a mo:Track;
+    dct:title "Method Man";
+    mo:duration "350";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Method%20Man.mp3>.
+<urn:uuid:138154cc-a658-4071-984b-7a4c9d44c41f>
+    a mo:Track;
+    dct:title "Bring Da Ruckus";
+    mo:duration "251";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Bring%20Da%20Ruckus.mp3>.
+<urn:uuid:13d937fb-7d97-4b59-842e-c08ad47ee5b0>
+    a mo:Track;
+    dct:title "Let My Niggas Live (feat. Raekwon, Inspectah Deck & Nas)";
+    mo:duration "269";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Let%20My%20Niggas%20Live%20(feat.%20Raekwon%2C%20Inspectah%20Deck%20%26%20Nas).mp3>.
+<urn:uuid:1811231b-5d0d-4842-9b12-ece9e54dbf0f>
+    a mo:Track;
+    dct:title "Hold the Heater";
+    mo:duration "247";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Hold%20the%20Heater.mp3>.
+<urn:uuid:1ac2b6bc-424d-4705-b4a0-4724636ccac7>
+    a mo:Track;
+    dct:title "Protect Ya Neck (Shao Lin Version)";
+    mo:duration "278";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Protect%20Ya%20Neck%20(Shao%20Lin%20Version).mp3>.
+<urn:uuid:20178211-6c77-4e8b-931c-57fbbc1e0c94>
+    a mo:Track;
+    dct:title "Method Man (Home Grown Version)";
+    mo:duration "310";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Method%20Man%20(Home%20Grown%20Version).mp3>.
+<urn:uuid:20f27a07-cf05-4348-95b3-0db199105dd7>
+    a mo:Track;
+    dct:title
+    "Visionz (feat. Method Man, Raekwon, Masta Killa & Inspectah Deck)";
+    mo:duration "189";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Visionz%20(feat.%20Method%20Man%2C%20Raekwon%2C%20Masta%20Killa%20%26%20Inspectah%20Deck).mp3>.
+<urn:uuid:2641f804-52b5-4582-8b40-6072e83f65b4>
+    a mo:Track;
+    dct:title "Weak Spot";
+    mo:duration "238";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Weak%20Spot.mp3>.
+<urn:uuid:2afea9ae-2b42-448b-a2d8-94de48ae8f16>
+    a mo:Track;
+    dct:title "Starter (feat. Sunny Valentine & Tash Mahogany)";
+    mo:duration "253";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Starter%20(feat.%20Sunny%20Valentine%20%26%20Tash%20Mahogany).mp3>.
+<urn:uuid:2b20bb6d-8e36-484d-af55-796a9e145069>
+    a mo:Track;
+    dct:title "Jah World (feat. Ghostface Killah, RZA & Junior Reid)";
+    mo:duration "231";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Jah%20World%20(feat.%20Ghostface%20Killah%2C%20RZA%20%26%20Junior%20Reid).mp3>.
+<urn:uuid:2d2ed29e-8d54-407c-b8db-a47e8daba529>
+    a mo:Track;
+    dct:title "Da Glock (feat. U-God, Ghostface Killah, RZA & Cappadonna)";
+    mo:duration "195";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Da%20Glock%20(feat.%20U-God%2C%20Ghostface%20Killah%2C%20RZA%20%26%20Cappadonna).mp3>.
+<urn:uuid:2f01cd39-43e0-4007-9082-0b6f9ca0cd7a>
+    a mo:Track;
+    dct:title "Dog Shit (feat. Ol' Dirty Bastard, RZA & Method Man)";
+    mo:duration "214";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Dog%20Shit%20(feat.%20Ol'%20Dirty%20Bastard%2C%20RZA%20%26%20Method%20Man).mp3>.
+<urn:uuid:30c1f268-1b04-4e15-b4f8-ac02d3730619>
+    a mo:Track;
+    dct:title
+        "The Heart Gently Weeps (feat. Erykah Badu, Dhani Harrison & John Frusciante)";
+    mo:duration "337";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20The%20Heart%20Gently%20Weeps%20(feat.%20Erykah%20Badu%2C%20Dhani%20Harrison%20%26%20John%20Frusciante).mp3>.
+<urn:uuid:31ea1cd7-911e-48d5-bf08-13d9aa689bf9>
+    a mo:Track;
+    dct:title "Da Mystery of Chessboxin'";
+    mo:duration "287";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Da%20Mystery%20of%20Chessboxin'.mp3>.
+<urn:uuid:390302fa-dbab-4d4a-99ee-beb5ffa4ee9f>
+    a mo:Track;
+    dct:title "Protect Ya Neck";
+    mo:duration "291";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Protect%20Ya%20Neck.mp3>.
+<urn:uuid:3bb0fbe0-36e2-4a38-9d2c-5657e9bedbba>
+    a mo:Track;
+    dct:title "Wu-Tang Reunion";
+    mo:duration "213";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wu-Tang%20Reunion.mp3>.
+<urn:uuid:44cd709c-749a-41be-abfd-58f9b9791037>
+    a mo:Track;
+    dct:title
+        "Radioactive (Four Assassins) (feat. GZA, Raekwon, Method Man & Masta Killa)";
+    mo:duration "210";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Radioactive%20(Four%20Assassins)%20(feat.%20GZA%2C%20Raekwon%2C%20Method%20Man%20%26%20Masta%20Killa).mp3>.
+<urn:uuid:46f11b65-b53f-431e-808b-539fa70e1a0e>
+    a mo:Track;
+    dct:title "Ron O'Neal";
+    mo:duration "268";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Ron%20O'Neal.mp3>.
+<urn:uuid:48e16866-c1c3-4a75-8248-f704ee0d423c>
+    a mo:Track;
+    dct:title "Campfire";
+    mo:duration "239";
+    dcat:downloadUrl
+    <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Campfire.mp3>.
+<urn:uuid:4bf1f302-22ac-4bcd-8aa1-252d32f36d69>
+    a mo:Track;
+    dct:title "Take It Back";
+    mo:duration "252";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Take%20It%20Back.mp3>.
+<urn:uuid:4e25167d-9643-4877-8672-08f1368e0628>
+    a mo:Track;
+    dct:title "Stick Me For My Riches (feat. Gerald Alston)";
+    mo:duration "368";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Stick%20Me%20For%20My%20Riches%20(feat.%20Gerald%20Alston).mp3>.
+<urn:uuid:4f2d0e6e-e191-4a3d-b2b0-b8318507078c>
+    a mo:Track;
+    dct:title "Ruckus in B Minor";
+    mo:duration "324";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Ruckus%20in%20B%20Minor.mp3>.
+<urn:uuid:595d0517-db84-4eb2-b698-a2367b728dab>
+    a mo:Track;
+    dct:title "Gun Will Go (feat. Sunny Valentine)";
+    mo:duration "254";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Gun%20Will%20Go%20(feat.%20Sunny%20Valentine).mp3>.
+<urn:uuid:61a9d782-099a-4d36-8700-4143117ad404>
+    a mo:Track;
+    dct:title
+    "For Heavens Sake (feat. Inspectah Deck, Masta Killa & Cappadonna)";
+    mo:duration "253";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20For%20Heavens%20Sake%20(feat.%20Inspectah%20Deck%2C%20Masta%20Killa%20%26%20Cappadonna).mp3>.
+<urn:uuid:636f9ab0-f9e5-4e8f-a08b-66d2bf0fb44f>
+    a mo:Track;
+    dct:title
+    "Little Ghetto Boys (feat. Raekwon, RZA, Cappadonna & Ghostface Killah)";
+    mo:duration "289";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Little%20Ghetto%20Boys%20(feat.%20Raekwon%2C%20RZA%2C%20Cappadonna%20%26%20Ghostface%20Killah).mp3>.
+<urn:uuid:63b44ec1-6312-4db1-9843-c20663de9f30>
+    a mo:Track;
+    dct:title "One of These Days (feat. Inspectah Deck, Raekwon & U-God)";
+    mo:duration "253";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20One%20of%20These%20Days%20(feat.%20Inspectah%20Deck%2C%20Raekwon%20%26%20U-God).mp3>.
+<urn:uuid:685ff40f-de54-4c03-aada-a224c9e12913>
+    a mo:Track;
+    dct:title "Windmill";
+    mo:duration "271";
+    dcat:downloadUrl
+    <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Windmill.mp3>.
+<urn:uuid:6ca97a86-ce8c-4924-81ce-49cfc3af4b36>
+    a mo:Track;
+    dct:title "Unpredictable (feat. Dexter Wiggle)";
+    mo:duration "251";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Unpredictable%20(feat.%20Dexter%20Wiggle).mp3>.
+<urn:uuid:70d24922-a941-4013-9cb5-41b2ce0f4e02>
+    a mo:Track;
+    dct:title
+    "A Better Tomorrow (feat. Inspectah Deck, Masta Killa, U-God & RZA)";
+    mo:duration "295";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20A%20Better%20Tomorrow%20(feat.%20Inspectah%20Deck%2C%20Masta%20Killa%2C%20U-God%20%26%20RZA).mp3>.
+<urn:uuid:786bf647-dd2c-4cf2-9284-24bc63728b9d>
+    a mo:Track;
+    dct:title "40th Street Black / We Will Fight";
+    mo:duration "266";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%2040th%20Street%20Black%20_%20We%20Will%20Fight.mp3>.
+<urn:uuid:7e468bf3-a796-467d-b97d-f621fd646cb4>
+    a mo:Track;
+    dct:title "A Better Tomorrow";
+    mo:duration "264";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20A%20Better%20Tomorrow.mp3>.
+<urn:uuid:7e8717e5-71ce-4831-9afc-be6d002bf129>
+    a mo:Track;
+    dct:title "C.R.E.A.M. (Cash Rules Everything Around Me)";
+    mo:duration "252";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20C.R.E.A.M.%20(Cash%20Rules%20Everything%20Around%20Me).mp3>.
+<urn:uuid:81630eb1-5a20-4bdb-b291-750a3743160e>
+    a mo:Track;
+    dct:title "Reunited (feat. GZA, Ol' Dirty Bastard, RZA & Method Man)";
+    mo:duration "321";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Reunited%20(feat.%20GZA%2C%20Ol'%20Dirty%20Bastard%2C%20RZA%20%26%20Method%20Man).mp3>.
+<urn:uuid:82af14ef-2632-4bb0-8f38-ca36cbd872c1>
+    a mo:Track;
+    dct:title
+        "Intro (Shaolin Finger Jab) / Chamber Music (feat. Junior Reid, Raekwon, GZA & Method Man)";
+    mo:duration "266";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Intro%20(Shaolin%20Finger%20Jab)%20_%20Chamber%20Music%20(feat.%20Junior%20Reid%2C%20Raekwon%2C%20GZA%20%26%20Method%20Man).mp3>.
+<urn:uuid:85a8f64f-4f71-4b46-8f2c-acd96e60e2dc>
+    a mo:Track;
+    dct:title "Severe Punishment (feat. U-God, GZA, Raekwon & RZA)";
+    mo:duration "289";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Severe%20Punishment%20(feat.%20U-God%2C%20GZA%2C%20Raekwon%20%26%20RZA).mp3>.
+<urn:uuid:86bdd172-09f7-4c44-ab20-6d2afbe8a396>
+    a mo:Track;
+    dct:title "Wu-Tang: 7th Chamber";
+    mo:duration "365";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wu-Tang_%207th%20Chamber.mp3>.
+<urn:uuid:87a833ac-d9d0-410a-8aa5-1815656bb5db>
+    a mo:Track;
+    dct:title
+        "Cash Still Rules / Scary Hours (Still Don't Nothing Move but the Money) (feat. Raekwon, Method Man & Ghostface Killah)";
+    mo:duration "181";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Cash%20Still%20Rules%20_%20Scary%20Hours%20(Still%20Don't%20Nothing%20Move%20but%20the%20Money)%20(feat.%20Raekwon%2C%20Method%20Man%20%26%20Ghostface%20Killah).mp3>.
+<urn:uuid:887412ae-19a4-41ef-a22a-9c7cc3f826eb>
+    a mo:Track;
+    dct:title "The Projects";
+    mo:duration "197";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20The%20Projects.mp3>.
+<urn:uuid:8d16649a-5035-4916-ad22-7704cac377b3>
+    a mo:Track;
+    dct:title "Rushing Elephants";
+    mo:duration "180";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Rushing%20Elephants.mp3>.
+<urn:uuid:8df478f2-abf2-4627-8b7f-3c4f885b1ca6>
+    a mo:Track;
+    dct:title "Deadly Melody (feat. Masta Killa, U-God, RZA & Method Man)";
+    mo:duration "260";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Deadly%20Melody%20(feat.%20Masta%20Killa%2C%20U-God%2C%20RZA%20%26%20Method%20Man).mp3>.
+<urn:uuid:909f6138-9b94-480e-8d30-df903fd309e2>
+    a mo:Track;
+    dct:title
+    "Ya'll Been Warned (feat. Method Man, RZA, Inspectah Deck & Raekwon)";
+    mo:duration "255";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Ya'll%20Been%20Warned%20(feat.%20Method%20Man%2C%20RZA%2C%20Inspectah%20Deck%20%26%20Raekwon).mp3>.
+<urn:uuid:945126e4-a383-4643-9018-54ce0d3f2055>
+    a mo:Track;
+    dct:title "Babies (feat. Ghostface Killah, Raekwon & GZA)";
+    mo:duration "308";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Babies%20(feat.%20Ghostface%20Killah%2C%20Raekwon%20%26%20GZA).mp3>.
+<urn:uuid:94a8efe0-f964-4966-9aa0-dcc8f56dd73c>
+    a mo:Track;
+    dct:title "Pioneer the Frontier";
+    mo:duration "238";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Pioneer%20the%20Frontier.mp3>.
+<urn:uuid:9619161a-999c-4479-91af-6bd3fbd3f53e>
+    a mo:Track;
+    dct:title "Gravel Pit (feat. RZA, Method Man, Ghostface Killah & Raekwon)";
+    mo:duration "291";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Gravel%20Pit%20(feat.%20RZA%2C%20Method%20Man%2C%20Ghostface%20Killah%20%26%20Raekwon).mp3>.
+<urn:uuid:965dcb13-fe05-4350-869c-bb2403b96be2>
+    a mo:Track;
+    dct:title "Miracle";
+    mo:duration "303";
+    dcat:downloadUrl
+    <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Miracle.mp3>.
+<urn:uuid:9eda7689-942a-46e7-9241-655d63a12ce7>
+    a mo:Track;
+    dct:title
+    "Back In the Game (feat. Method Man, Inspectah Deck, GZA & Raekwon)";
+    mo:duration "274";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Back%20In%20the%20Game%20(feat.%20Method%20Man%2C%20Inspectah%20Deck%2C%20GZA%20%26%20Raekwon).mp3>.
+<urn:uuid:a0f6ff7b-4e06-47d3-a0b2-489261472108>
+    a mo:Track;
+    dct:title
+    "Careful (Click, Click) (feat. RZA, U-God, Masta Killa & Cappadonna)";
+    mo:duration "296";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Careful%20(Click%2C%20Click)%20(feat.%20RZA%2C%20U-God%2C%20Masta%20Killa%20%26%20Cappadonna).mp3>.
+<urn:uuid:a3d9c0b9-eaad-4e7d-9431-334ab3ecd1b6>
+    a mo:Track;
+    dct:title
+    "In the Hood (feat. RZA, Masta Killa, Inspectah Deck & Streetlife)";
+    mo:duration "250";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20In%20the%20Hood%20(feat.%20RZA%2C%20Masta%20Killa%2C%20Inspectah%20Deck%20%26%20Streetlife).mp3>.
+<urn:uuid:a3f0c5d9-7095-40d9-a0cd-d6ec0b3c9dd2>
+    a mo:Track;
+    dct:title "Clan In Da Front";
+    mo:duration "273";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Clan%20In%20Da%20Front.mp3>.
+<urn:uuid:a93b61a2-4144-47e3-8e01-c496b9a7c24b>
+    a mo:Track;
+    dct:title "Second Coming (feat. Tekitha)";
+    mo:duration "279";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Second%20Coming%20(feat.%20Tekitha).mp3>.
+<urn:uuid:b2b868e9-be5e-47ac-b775-aa37a0ca8a1d>
+    a mo:Track;
+    dct:title
+        "Triumph (feat. Ol' Dirty Bastard, Inspectah Deck, Method Man & Cappadonna)";
+    mo:duration "338";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Triumph%20(feat.%20Ol'%20Dirty%20Bastard%2C%20Inspectah%20Deck%2C%20Method%20Man%20%26%20Cappadonna).mp3>.
+<urn:uuid:b2e8b808-6b8f-453b-9d42-2925de524a1c>
+    a mo:Track;
+    dct:title "Felt";
+    mo:duration "231";
+    dcat:downloadUrl
+    <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Felt.mp3>.
+<urn:uuid:b304cc4b-e053-4332-9fdf-0370accf7bec>
+    a mo:Release;
+    dct:title "The Wu - Studio Albums";
+    mo:track
+        <urn:uuid:039f9b3d-aa58-4703-add2-70c7566a72eb>,
+        <urn:uuid:054f8efc-5c1e-4a49-8f3c-4d4544c5199e>,
+        <urn:uuid:05c91e68-50da-4348-9fdb-1dcc4786d5ac>,
+        <urn:uuid:096f7de1-1ae8-4938-9c82-cee2efcb3399>,
+        <urn:uuid:109b5336-44b9-4a29-bed0-196a2ab2b42a>,
+        <urn:uuid:1101ccf5-132a-4447-ba7a-890a30e3ea1a>,
+        <urn:uuid:138154cc-a658-4071-984b-7a4c9d44c41f>,
+        <urn:uuid:13d937fb-7d97-4b59-842e-c08ad47ee5b0>,
+        <urn:uuid:1811231b-5d0d-4842-9b12-ece9e54dbf0f>,
+        <urn:uuid:1ac2b6bc-424d-4705-b4a0-4724636ccac7>,
+        <urn:uuid:20178211-6c77-4e8b-931c-57fbbc1e0c94>,
+        <urn:uuid:20f27a07-cf05-4348-95b3-0db199105dd7>,
+        <urn:uuid:2641f804-52b5-4582-8b40-6072e83f65b4>,
+        <urn:uuid:2afea9ae-2b42-448b-a2d8-94de48ae8f16>,
+        <urn:uuid:2b20bb6d-8e36-484d-af55-796a9e145069>,
+        <urn:uuid:2d2ed29e-8d54-407c-b8db-a47e8daba529>,
+        <urn:uuid:2f01cd39-43e0-4007-9082-0b6f9ca0cd7a>,
+        <urn:uuid:30c1f268-1b04-4e15-b4f8-ac02d3730619>,
+        <urn:uuid:31ea1cd7-911e-48d5-bf08-13d9aa689bf9>,
+        <urn:uuid:390302fa-dbab-4d4a-99ee-beb5ffa4ee9f>,
+        <urn:uuid:3bb0fbe0-36e2-4a38-9d2c-5657e9bedbba>,
+        <urn:uuid:44cd709c-749a-41be-abfd-58f9b9791037>,
+        <urn:uuid:46f11b65-b53f-431e-808b-539fa70e1a0e>,
+        <urn:uuid:48e16866-c1c3-4a75-8248-f704ee0d423c>,
+        <urn:uuid:4bf1f302-22ac-4bcd-8aa1-252d32f36d69>,
+        <urn:uuid:4e25167d-9643-4877-8672-08f1368e0628>,
+        <urn:uuid:4f2d0e6e-e191-4a3d-b2b0-b8318507078c>,
+        <urn:uuid:595d0517-db84-4eb2-b698-a2367b728dab>,
+        <urn:uuid:61a9d782-099a-4d36-8700-4143117ad404>,
+        <urn:uuid:636f9ab0-f9e5-4e8f-a08b-66d2bf0fb44f>,
+        <urn:uuid:63b44ec1-6312-4db1-9843-c20663de9f30>,
+        <urn:uuid:685ff40f-de54-4c03-aada-a224c9e12913>,
+        <urn:uuid:6ca97a86-ce8c-4924-81ce-49cfc3af4b36>,
+        <urn:uuid:70d24922-a941-4013-9cb5-41b2ce0f4e02>,
+        <urn:uuid:786bf647-dd2c-4cf2-9284-24bc63728b9d>,
+        <urn:uuid:7e468bf3-a796-467d-b97d-f621fd646cb4>,
+        <urn:uuid:7e8717e5-71ce-4831-9afc-be6d002bf129>,
+        <urn:uuid:81630eb1-5a20-4bdb-b291-750a3743160e>,
+        <urn:uuid:82af14ef-2632-4bb0-8f38-ca36cbd872c1>,
+        <urn:uuid:85a8f64f-4f71-4b46-8f2c-acd96e60e2dc>,
+        <urn:uuid:86bdd172-09f7-4c44-ab20-6d2afbe8a396>,
+        <urn:uuid:87a833ac-d9d0-410a-8aa5-1815656bb5db>,
+        <urn:uuid:887412ae-19a4-41ef-a22a-9c7cc3f826eb>,
+        <urn:uuid:8d16649a-5035-4916-ad22-7704cac377b3>,
+        <urn:uuid:8df478f2-abf2-4627-8b7f-3c4f885b1ca6>,
+        <urn:uuid:909f6138-9b94-480e-8d30-df903fd309e2>,
+        <urn:uuid:945126e4-a383-4643-9018-54ce0d3f2055>,
+        <urn:uuid:94a8efe0-f964-4966-9aa0-dcc8f56dd73c>,
+        <urn:uuid:9619161a-999c-4479-91af-6bd3fbd3f53e>,
+        <urn:uuid:965dcb13-fe05-4350-869c-bb2403b96be2>,
+        <urn:uuid:9eda7689-942a-46e7-9241-655d63a12ce7>,
+        <urn:uuid:a0f6ff7b-4e06-47d3-a0b2-489261472108>,
+        <urn:uuid:a3d9c0b9-eaad-4e7d-9431-334ab3ecd1b6>,
+        <urn:uuid:a3f0c5d9-7095-40d9-a0cd-d6ec0b3c9dd2>,
+        <urn:uuid:a93b61a2-4144-47e3-8e01-c496b9a7c24b>,
+        <urn:uuid:b2b868e9-be5e-47ac-b775-aa37a0ca8a1d>,
+        <urn:uuid:b2e8b808-6b8f-453b-9d42-2925de524a1c>,
+        <urn:uuid:b46bafe7-e421-42f1-a224-db0fe6208587>,
+        <urn:uuid:b47aa624-7688-4244-9f2e-acd91223629a>,
+        <urn:uuid:b9a18d5d-1c52-455a-8d1f-361edb0259df>,
+        <urn:uuid:ba93e529-42d1-4255-8cb1-5ba72c41a326>,
+        <urn:uuid:bf93d79f-5a73-458a-b61b-8437d84194f7>,
+        <urn:uuid:bffe5d7a-23eb-47e1-916d-6701e88e17a5>,
+        <urn:uuid:c0368884-3fde-41c2-b7c0-054520ba8932>,
+        <urn:uuid:c2124d53-c61d-45a0-b107-15311596ba12>,
+        <urn:uuid:c22ef026-4fd0-4077-802a-8c5a8a38b3b7>,
+        <urn:uuid:c5535b28-31cb-406f-ab14-21701d87518c>,
+        <urn:uuid:c75de712-eb8d-4471-bcd2-8e4014054a60>,
+        <urn:uuid:c7625d2d-97fb-4683-bea4-575710606bb7>,
+        <urn:uuid:c836466b-59a8-4186-b0b1-d47b8ef3d060>,
+        <urn:uuid:c8bf634c-a8fc-4d30-b95b-8032c215be49>,
+        <urn:uuid:ce2bdeb3-1bcc-4f25-a3ff-8bedf91b2321>,
+        <urn:uuid:d68da6bd-8631-4995-b385-45622cbbb3f4>,
+        <urn:uuid:d8ffff45-1c08-4ecb-bf60-592a9d6ac1ee>,
+        <urn:uuid:dc8bce2d-c3f7-489a-b140-08f89124cfeb>,
+        <urn:uuid:e5be40eb-7919-4bd1-914b-0a9e27f27270>,
+        <urn:uuid:e78c69de-745e-4d65-a9f0-94b0bcf71d04>,
+        <urn:uuid:e7eaadf2-1f0f-4821-9bdc-f037a2289f32>,
+        <urn:uuid:e827ec6e-eecb-4c80-8db2-d8785196f964>,
+        <urn:uuid:ebd7979b-2d1c-4df5-9f2c-8e248e32d99f>,
+        <urn:uuid:f018151b-de46-4f77-9cb7-4c62a53fed69>,
+        <urn:uuid:f3f43bf8-faa2-4a61-ae8a-6559f5172547>,
+        <urn:uuid:f5cc5933-28e7-4ebd-bde7-cf7637eaf635>,
+        <urn:uuid:f7096d57-d319-4a3b-a3e5-61d641112527>,
+        <urn:uuid:f8e3ea40-bdec-4ad1-aa0a-b654c7ba705e>,
+        <urn:uuid:f9b96a09-6701-451b-9f71-95666114e1f6>,
+        <urn:uuid:fc4fe12f-06ee-468e-b3d2-39efeda11edf>,
+        <urn:uuid:fd067f5f-75d4-4c49-a7c3-332685d471f8>;
+    dcat:landingPage det:wustudio;
+    foaf:maker
+        <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>,
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:b46bafe7-e421-42f1-a224-db0fe6208587>
+    a mo:Track;
+    dct:title "Older Gods (feat. Ghostface Killah, Raekwon & GZA)";
+    mo:duration "186";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Older%20Gods%20(feat.%20Ghostface%20Killah%2C%20Raekwon%20%26%20GZA).mp3>.
+<urn:uuid:b47aa624-7688-4244-9f2e-acd91223629a>
+    a mo:Track;
+    dct:title
+        "Hellz Wind Staff (feat. Streetlife, Ghostface Killah, Inspectah Deck & Method Man)";
+    mo:duration "292";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Hellz%20Wind%20Staff%20(feat.%20Streetlife%2C%20Ghostface%20Killah%2C%20Inspectah%20Deck%20%26%20Method%20Man).mp3>.
+<urn:uuid:b9a18d5d-1c52-455a-8d1f-361edb0259df>
+    a mo:Track;
+    dct:title "Necklace";
+    mo:duration "251";
+    dcat:downloadUrl
+    <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Necklace.mp3>.
+<urn:uuid:ba93e529-42d1-4255-8cb1-5ba72c41a326>
+    a mo:Track;
+    dct:title "One Blood Under W (feat. Masta Killa & Junior Reid)";
+    mo:duration "251";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20One%20Blood%20Under%20W%20(feat.%20Masta%20Killa%20%26%20Junior%20Reid).mp3>.
+<urn:uuid:bf93d79f-5a73-458a-b61b-8437d84194f7>
+    a mo:Track;
+    dct:title "Mistaken Identity";
+    mo:duration "344";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Mistaken%20Identity.mp3>.
+<urn:uuid:bffe5d7a-23eb-47e1-916d-6701e88e17a5>
+    a mo:Track;
+    dct:title "Iron Flag (feat. Raekwon, Masta Killa, Inspectah Deck & U-God)";
+    mo:duration "193";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Iron%20Flag%20(feat.%20Raekwon%2C%20Masta%20Killa%2C%20Inspectah%20Deck%20%26%20U-God).mp3>.
+<urn:uuid:c0368884-3fde-41c2-b7c0-054520ba8932>
+    a mo:Track;
+    dct:title "Tearz";
+    mo:duration "257";
+    dcat:downloadUrl
+    <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Tearz.mp3>.
+<urn:uuid:c2124d53-c61d-45a0-b107-15311596ba12>
+    a mo:Track;
+    dct:title "It's Yourz (feat. Raekwon, U-God, RZA & Inspectah Deck)";
+    mo:duration "256";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20It's%20Yourz%20(feat.%20Raekwon%2C%20U-God%2C%20RZA%20%26%20Inspectah%20Deck).mp3>.
+<urn:uuid:c22ef026-4fd0-4077-802a-8c5a8a38b3b7>
+    a mo:Track;
+    dct:title "I Can't Go to Sleep (feat. Ghostface Killah, RZA & Issac Hayes)";
+    mo:duration "215";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20I%20Can't%20Go%20to%20Sleep%20(feat.%20Ghostface%20Killah%2C%20RZA%20%26%20Issac%20Hayes).mp3>.
+<urn:uuid:c5535b28-31cb-406f-ab14-21701d87518c>
+    a mo:Track;
+    dct:title
+    "Redbull (feat. Redman, Method Man, Inspectah Deck & Ghostface Killah)";
+    mo:duration "234";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Redbull%20(feat.%20Redman%2C%20Method%20Man%2C%20Inspectah%20Deck%20%26%20Ghostface%20Killah).mp3>.
+<urn:uuid:c75de712-eb8d-4471-bcd2-8e4014054a60>
+    a mo:Track;
+    dct:title "Chrome Wheels (feat. RZA, Raekwon, Prodigal Sunn & Madame Dee)";
+    mo:duration "254";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Chrome%20Wheels%20(feat.%20RZA%2C%20Raekwon%2C%20Prodigal%20Sunn%20%26%20Madame%20Dee).mp3>.
+<urn:uuid:c7625d2d-97fb-4683-bea4-575710606bb7>
+    a mo:Track;
+    dct:title "Hollow Bones (feat. Raekwon, Inspectah Deck & Ghostface Killah)";
+    mo:duration "217";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Hollow%20Bones%20(feat.%20Raekwon%2C%20Inspectah%20Deck%20%26%20Ghostface%20Killah).mp3>.
+<urn:uuid:c836466b-59a8-4186-b0b1-d47b8ef3d060>
+    a mo:Track;
+    dct:title "Bells of War (feat. U-God, Method Man, RZA & Masta Killa)";
+    mo:duration "312";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Bells%20of%20War%20(feat.%20U-God%2C%20Method%20Man%2C%20RZA%20%26%20Masta%20Killa).mp3>.
+<urn:uuid:c8bf634c-a8fc-4d30-b95b-8032c215be49>
+    a mo:Track;
+    dct:title "Dashing (Reasons) (feat. Inspectah Deck & GZA)";
+    mo:duration "285";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Dashing%20(Reasons)%20(feat.%20Inspectah%20Deck%20%26%20GZA).mp3>.
+<urn:uuid:ce2bdeb3-1bcc-4f25-a3ff-8bedf91b2321>
+    a mo:Track;
+    dct:title "Wu-Tang: 7th Chamber - Part II (Conclusion)";
+    mo:duration "370";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wu-Tang_%207th%20Chamber%20-%20Part%20II%20(Conclusion).mp3>.
+<urn:uuid:d68da6bd-8631-4995-b385-45622cbbb3f4>
+    a mo:Track;
+    dct:title
+    "Conditioner (feat. Ol' Dirty Bastard, GZA, Inspectah Deck & Snoop Dogg)";
+    mo:duration "332";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Conditioner%20(feat.%20Ol'%20Dirty%20Bastard%2C%20GZA%2C%20Inspectah%20Deck%20%26%20Snoop%20Dogg).mp3>.
+<urn:uuid:d8ffff45-1c08-4ecb-bf60-592a9d6ac1ee>
+    a mo:Track;
+    dct:title
+        "Do You Really (Thang Thang) (feat. DJ Kay Slay, Method Man, Streetlife & Masta Killa)";
+    mo:duration "322";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Do%20You%20Really%20(Thang%20Thang)%20(feat.%20DJ%20Kay%20Slay%2C%20Method%20Man%2C%20Streetlife%20%26%20Masta%20Killa).mp3>.
+<urn:uuid:dc8bce2d-c3f7-489a-b140-08f89124cfeb>
+    a mo:Track;
+    dct:title "Impossible (feat. RZA, U-God, Ghostface Killah & Tekitha)";
+    mo:duration "269";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Impossible%20(feat.%20RZA%2C%20U-God%2C%20Ghostface%20Killah%20%26%20Tekitha).mp3>.
+<urn:uuid:e5be40eb-7919-4bd1-914b-0a9e27f27270>
+    a mo:Track;
+    dct:title "Can It Be All So Simple / Intermission";
+    mo:duration "414";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Can%20It%20Be%20All%20So%20Simple%20_%20Intermission.mp3>.
+<urn:uuid:e78c69de-745e-4d65-a9f0-94b0bcf71d04>
+    a mo:Track;
+    dct:title
+    "Rules (feat. RZA, Ghostface Killah, Inspectah Deck & Masta Killa)";
+    mo:duration "233";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Rules%20(feat.%20RZA%2C%20Ghostface%20Killah%2C%20Inspectah%20Deck%20%26%20Masta%20Killa).mp3>.
+<urn:uuid:e7eaadf2-1f0f-4821-9bdc-f037a2289f32>
+    a mo:Track;
+    dct:title "Never Let Go";
+    mo:duration "322";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Never%20Let%20Go.mp3>.
+<urn:uuid:e827ec6e-eecb-4c80-8db2-d8785196f964>
+    a mo:Track;
+    dct:title
+    "Heaterz (feat. Raekwon, Inspectah Deck, Ol' Dirty Bastard & U-God)";
+    mo:duration "326";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Heaterz%20(feat.%20Raekwon%2C%20Inspectah%20Deck%2C%20Ol'%20Dirty%20Bastard%20%26%20U-God).mp3>.
+<urn:uuid:ebd7979b-2d1c-4df5-9f2c-8e248e32d99f>
+    a mo:Track;
+    dct:title "Keep Watch";
+    mo:duration "265";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Keep%20Watch.mp3>.
+<urn:uuid:f018151b-de46-4f77-9cb7-4c62a53fed69>
+    a mo:Track;
+    dct:title "Ain't Nuthing ta F' Wit";
+    mo:duration "216";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Ain't%20Nuthing%20ta%20F'%20Wit.mp3>.
+<urn:uuid:f3f43bf8-faa2-4a61-ae8a-6559f5172547>
+    a mo:Track;
+    dct:title "Preacher's Daughter";
+    mo:duration "313";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Preacher's%20Daughter.mp3>.
+<urn:uuid:f5cc5933-28e7-4ebd-bde7-cf7637eaf635>
+    a mo:Track;
+    dct:title "Black Shampoo (feat. U-God, Method Man, Tekitha & Dom Pachino)";
+    mo:duration "230";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Black%20Shampoo%20(feat.%20U-God%2C%20Method%20Man%2C%20Tekitha%20%26%20Dom%20Pachino).mp3>.
+<urn:uuid:f7096d57-d319-4a3b-a3e5-61d641112527>
+    a mo:Track;
+    dct:title "The City (feat. Inspectah Deck)";
+    mo:duration "245";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20The%20City%20(feat.%20Inspectah%20Deck).mp3>.
+<urn:uuid:f8e3ea40-bdec-4ad1-aa0a-b654c7ba705e>
+    a mo:Track;
+    dct:title "Wu-Revolution (feat. Poppa Wu & Uncle Pete)";
+    mo:duration "406";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wu-Revolution%20(feat.%20Poppa%20Wu%20%26%20Uncle%20Pete).mp3>.
+<urn:uuid:f9b96a09-6701-451b-9f71-95666114e1f6>
+    a mo:Track;
+    dct:title "Life Changes";
+    mo:duration "441";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Life%20Changes.mp3>.
+<urn:uuid:fc4fe12f-06ee-468e-b3d2-39efeda11edf>
+    a mo:Track;
+    dct:title "Uzi (Pinky Ring) (feat. U-God, Raekwon, Ghostface Killah & RZA)";
+    mo:duration "320";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Uzi%20(Pinky%20Ring)%20(feat.%20U-God%2C%20Raekwon%2C%20Ghostface%20Killah%20%26%20RZA).mp3>.
+<urn:uuid:fd067f5f-75d4-4c49-a7c3-332685d471f8>
+    a mo:Track;
+    dct:title "Get Them Out Ya Way Pa";
+    mo:duration "258";
+    dcat:downloadUrl
+        <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Get%20Them%20Out%20Ya%20Way%20Pa.mp3>.

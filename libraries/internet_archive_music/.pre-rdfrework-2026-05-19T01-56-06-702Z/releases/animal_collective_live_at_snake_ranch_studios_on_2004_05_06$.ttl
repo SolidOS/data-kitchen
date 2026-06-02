@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:a76bf15e-d083-4ea1-9463-982cce56b055> a mo:Release;
+    dcterms:title "Animal Collective Live at Snake Ranch Studios on 2004-05-06";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    dcat:landingPage <https://archive.org/details/acollective2004-05-06.bbc>;
+    mo:track <urn:uuid:572d967b-5ec7-42d3-83f9-fa5711f453f3>.
+<urn:uuid:572d967b-5ec7-42d3-83f9-fa5711f453f3> a mo:Track; dcterms:title "Kids on Holiday (15:24)"; mo:duration "924"; dcat:downloadUrl <https://archive.org/download/acollective2004-05-06.bbc/Animal%20Collective%202004-06-18%20BBC%20Radio%203%20Mixing%20It%2FAnimal%20Collective%202004-06-18%20BBC%20Radio%203%20Mixing%20It%20t02.mp3>.

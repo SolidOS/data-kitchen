@@ -1,0 +1,32 @@
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#it> a mo:Release, dcat:Dataset;
+    dct:title "Autechre Live at Peel Session on 1999-07-06";
+    dct:identifier "Autechre1999-07-06";
+    dct:isPartOf <../releases.ttl#it>;
+    dcat:landingPage <https://archive.org/details/Autechre1999-07-06>;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>;
+    foaf:maker <urn:uuid:7a4257ca-fd8c-4010-9e46-b307cc43af66>.
+<#t01> a mo:Track;
+    dct:title "Autechre - 1999-07-05 Peel Session - 1 Gelk";
+    dct:isPartOf <#it>;
+    mo:duration "412";
+    mo:item <https://archive.org/download/Autechre1999-07-06/Autechre-1999-07-05PeelSession-1Gelk.mp3>.
+<#t02> a mo:Track;
+    dct:title "Autechre - 1999-07-05 Peel Session - 2 Blifil";
+    dct:isPartOf <#it>;
+    mo:duration "415";
+    mo:item <https://archive.org/download/Autechre1999-07-06/Autechre-1999-07-05PeelSession-2Blifil.mp3>.
+<#t03> a mo:Track;
+    dct:title "Autechre - 1999-07-05 Peel Session - 4 19 Headaches";
+    dct:isPartOf <#it>;
+    mo:duration "422";
+    mo:item <https://archive.org/download/Autechre1999-07-06/Autechre-1999-07-05PeelSession-419Headaches.mp3>.
+<#t04> a mo:Track;
+    dct:title "Autechre - 1999-07-05 Peel Session - 3 Gaekwad";
+    dct:isPartOf <#it>;
+    mo:duration "376";
+    mo:item <https://archive.org/download/Autechre1999-07-06/Autechre-1999-07-05PeelSession-3Gaekwad.mp3>.

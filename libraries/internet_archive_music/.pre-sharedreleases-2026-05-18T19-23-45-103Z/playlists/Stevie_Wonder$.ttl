@@ -1,0 +1,213 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Stevie_Wonder#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Stevie_Wonder> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Stevie Wonder";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:bf1a3b0e-2ca4-49ea-91e7-2a6f3a664812>, <urn:uuid:50e5297b-1a58-4d51-adeb-5fcf39f56c3f>, <urn:uuid:4c3db48d-cf11-4120-9d61-623dfc906790>, <urn:uuid:79a53c5f-cc4d-4794-8f55-ba187ddbeee7>, <urn:uuid:c04c81db-9d6b-413e-b817-cafbccb350b8>, <urn:uuid:275ed2bc-d1ce-4896-802f-9fe5e62c60ae>, <urn:uuid:4ecbf08d-1b88-452a-9f9b-d8844067f3c9>, <urn:uuid:1cb9b82f-fc17-4a8a-bf40-3cb254eec2cc>, <urn:uuid:6e3ec3a1-61b8-4930-a8e3-baaf8be8a3d3>, <urn:uuid:327e654b-d1ea-4baf-9c16-8bfa3e6b95bb>, <urn:uuid:5e45dcac-b115-403c-a725-06d683e6c087>, <urn:uuid:0b25e5e3-466e-4b99-b2d9-f35579e25b86>, <urn:uuid:a176d729-3969-4a35-87a0-85ebda9e4123>, <urn:uuid:245a5803-9e52-4d1a-a883-77abde99e644>, <urn:uuid:bf1faab5-27eb-4f10-b3e2-f297c3800b58>, <urn:uuid:43cb30bd-400f-486e-b150-6313d9b87b2c>, <urn:uuid:3c98a68b-ac01-47d3-a468-8bba401670d5>, <urn:uuid:67a35765-37c6-49c3-beba-6492d265ada2>, <urn:uuid:34fb9c2a-61e1-4e7f-8ca6-556409759706>, <urn:uuid:238267a0-aeff-4d10-a49e-d1c610622b3f>, <urn:uuid:00adc8e4-1ae1-44b2-9943-12127e6e9cb3>, <urn:uuid:2d47ec8c-4838-45dd-9116-2be1f3147d53>, <urn:uuid:79fbdf69-7689-49ee-acc7-c8a4b259e52c>, <urn:uuid:acb4190d-bfaa-4833-a44c-97b1c96a677e>, <urn:uuid:65aff6c2-d1f8-4fdc-817d-0e245f0a0aa8>, <urn:uuid:308b8884-13f0-46f7-ad93-d32ce60b5ff3>, <urn:uuid:20d14be6-0057-4ed7-94b1-02a2ad196671>, <urn:uuid:de93dbc6-0cbf-446c-b8d2-1815c1524236>, <urn:uuid:692bcbc0-fb18-4e56-88a3-e67a85c754aa>, <urn:uuid:ff84f0a8-110d-40e6-aa81-7ae9c25aed23>, <urn:uuid:4aee273c-6f6d-4e0f-8787-9cff892bae5a>, <urn:uuid:83c2ba4b-d8af-45b6-a332-ac4475972ed9>, <urn:uuid:b058948e-2ae2-446a-bc4f-2a2d08314e17>, <urn:uuid:8f57d3c3-b2ca-473c-9687-81297ced1a7a>, <urn:uuid:1bfdc88f-46ea-4c6d-ad13-ef7575dd1bb2>, <urn:uuid:ece0c48e-f9c3-4ff9-aa8a-9c48aebbdf61>, <urn:uuid:9ddde90c-4d28-4b65-97d4-957240f7c51f>, <urn:uuid:f1b55168-77c5-46a0-86b3-84c9bd77f03e>, <urn:uuid:71fd85aa-9ddb-4844-adc3-43adbd9b7ffb>, <urn:uuid:926a4b2b-65bd-4fa0-8f5b-0db4b009334c>, <urn:uuid:fabd24ba-5a74-4b2c-955f-d6e3cbcdca98>, <urn:uuid:17b115c9-e6cc-44f5-a570-7d5fc9be6b22>, <urn:uuid:f10feec5-cd09-430e-932e-10fc79fb60a7>, <urn:uuid:451afceb-5866-4bd8-b899-b12dc96ddd36>, <urn:uuid:ec129148-f59b-4a34-99f3-0f49b07d4a8b>, <urn:uuid:83139486-31b0-4ac5-ac7c-5042ba917edd>, <urn:uuid:3ee5e91b-c09f-4233-97f2-c5780efd4f8e>, <urn:uuid:90dcc111-b433-46c0-a062-f33667e130cb>;
+    <http://open-media-player.org/ns#hidePlaylist> "true".
+<urn:uuid:bf1a3b0e-2ca4-49ea-91e7-2a6f3a664812> a mo:Track;
+    dcterms:title "Love's In Need Of Love Today";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F1-Loves%20In%20Need%20Of%20Love%20Today.mp3>;
+    mo:duration "425".
+<urn:uuid:50e5297b-1a58-4d51-adeb-5fcf39f56c3f> a mo:Track;
+    dcterms:title "Ordinary Pain";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F10-Ordinary%20Pain.mp3>;
+    mo:duration "383".
+<urn:uuid:4c3db48d-cf11-4120-9d61-623dfc906790> a mo:Track;
+    dcterms:title "Isn't She Lovely";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F11-Isnt%20She%20Lovely.mp3>;
+    mo:duration "394".
+<urn:uuid:79a53c5f-cc4d-4794-8f55-ba187ddbeee7> a mo:Track;
+    dcterms:title "Joy Inside My Tears";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F12-Joy%20Inside%20My%20Tears.mp3>;
+    mo:duration "389".
+<urn:uuid:c04c81db-9d6b-413e-b817-cafbccb350b8> a mo:Track;
+    dcterms:title "Black Man";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F13-Black%20Man.mp3>;
+    mo:duration "511".
+<urn:uuid:275ed2bc-d1ce-4896-802f-9fe5e62c60ae> a mo:Track;
+    dcterms:title "Ngiculela-Es Una Historia-I Am Singing";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F14-NgiculelaEs%20Una%20HistoriaI%20A.mp3>;
+    mo:duration "228".
+<urn:uuid:4ecbf08d-1b88-452a-9f9b-d8844067f3c9> a mo:Track;
+    dcterms:title "If It's Magic";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F15-If%20Its%20Magic.mp3>;
+    mo:duration "192".
+<urn:uuid:1cb9b82f-fc17-4a8a-bf40-3cb254eec2cc> a mo:Track;
+    dcterms:title "As";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F16-As.mp3>;
+    mo:duration "427".
+<urn:uuid:6e3ec3a1-61b8-4930-a8e3-baaf8be8a3d3> a mo:Track;
+    dcterms:title "Another Star";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F17-Another%20Star.mp3>;
+    mo:duration "505".
+<urn:uuid:327e654b-d1ea-4baf-9c16-8bfa3e6b95bb> a mo:Track;
+    dcterms:title "Saturn";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F18-Saturn.mp3>;
+    mo:duration "293".
+<urn:uuid:5e45dcac-b115-403c-a725-06d683e6c087> a mo:Track;
+    dcterms:title "Ebony Eyes";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F19-Ebony%20Eyes.mp3>;
+    mo:duration "250".
+<urn:uuid:0b25e5e3-466e-4b99-b2d9-f35579e25b86> a mo:Track;
+    dcterms:title "All Day Sucker";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F20-All%20Day%20Sucker.mp3>;
+    mo:duration "306".
+<urn:uuid:a176d729-3969-4a35-87a0-85ebda9e4123> a mo:Track;
+    dcterms:title "Easy Goin' Evening (My Mama's Call)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F21-Easy%20Goin%20Evening%20My%20Mamas%20.mp3>;
+    mo:duration "240".
+<urn:uuid:245a5803-9e52-4d1a-a883-77abde99e644> a mo:Track;
+    dcterms:title "Village Ghetto Land";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F3-Village%20Ghetto%20Land.mp3>;
+    mo:duration "202".
+<urn:uuid:bf1faab5-27eb-4f10-b3e2-f297c3800b58> a mo:Track;
+    dcterms:title "Contusion";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F4-Contusion.mp3>;
+    mo:duration "223".
+<urn:uuid:43cb30bd-400f-486e-b150-6313d9b87b2c> a mo:Track;
+    dcterms:title "Sir Duke";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F5-Sir%20Duke.mp3>;
+    mo:duration "232".
+<urn:uuid:3c98a68b-ac01-47d3-a468-8bba401670d5> a mo:Track;
+    dcterms:title "I Wish";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F6-I%20Wish.mp3>;
+    mo:duration "249".
+<urn:uuid:67a35765-37c6-49c3-beba-6492d265ada2> a mo:Track;
+    dcterms:title "Knocks Me Off My Feet";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F7-Knocks%20Me%20Off%20My%20Feet.mp3>;
+    mo:duration "214".
+<urn:uuid:34fb9c2a-61e1-4e7f-8ca6-556409759706> a mo:Track;
+    dcterms:title "Pastime Paradise";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F8-Pastime%20Paradise.mp3>;
+    mo:duration "205".
+<urn:uuid:238267a0-aeff-4d10-a49e-d1c610622b3f> a mo:Track;
+    dcterms:title "Summer Soft";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/stevie-wonder_202510/Stevie%20Wonder%2F1976%20-%20Songs%20in%20the%20Key%20of%20Life%2F9-Summer%20Soft.mp3>;
+    mo:duration "250".
+<urn:uuid:00adc8e4-1ae1-44b2-9943-12127e6e9cb3> a mo:Track;
+    dcterms:title "Superstition";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/01.-Superstition.mp3>;
+    mo:duration "267".
+<urn:uuid:2d47ec8c-4838-45dd-9116-2be1f3147d53> a mo:Track;
+    dcterms:title "Sir Duke";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/02.-Sir%20Duke.mp3>;
+    mo:duration "232".
+<urn:uuid:79fbdf69-7689-49ee-acc7-c8a4b259e52c> a mo:Track;
+    dcterms:title "I Wish";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/03.-I%20Wish.mp3>;
+    mo:duration "252".
+<urn:uuid:acb4190d-bfaa-4833-a44c-97b1c96a677e> a mo:Track;
+    dcterms:title "Master Blaster (Jammin')";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/04.-Master%20Blaster%20(Jammin').mp3>;
+    mo:duration "307".
+<urn:uuid:65aff6c2-d1f8-4fdc-817d-0e245f0a0aa8> a mo:Track;
+    dcterms:title "Isn't She Lovely";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/05.-Isn't%20She%20Lovely.mp3>;
+    mo:duration "199".
+<urn:uuid:308b8884-13f0-46f7-ad93-d32ce60b5ff3> a mo:Track;
+    dcterms:title "I Just Called To Say I Love You";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/06.-I%20Just%20Called%20To%20Say%20I%20Love%20You.mp3>;
+    mo:duration "262".
+<urn:uuid:20d14be6-0057-4ed7-94b1-02a2ad196671> a mo:Track;
+    dcterms:title "Ebony And Ivory";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/07.-Ebony%20And%20Ivory.mp3>;
+    mo:duration "220".
+<urn:uuid:de93dbc6-0cbf-446c-b8d2-1815c1524236> a mo:Track;
+    dcterms:title "As";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/08.-As.mp3>;
+    mo:duration "208".
+<urn:uuid:692bcbc0-fb18-4e56-88a3-e67a85c754aa> a mo:Track;
+    dcterms:title "Never Had A Dream Come True";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/09.-Never%20Had%20A%20Dream%20Come%20True.mp3>;
+    mo:duration "192".
+<urn:uuid:ff84f0a8-110d-40e6-aa81-7ae9c25aed23> a mo:Track;
+    dcterms:title "Heaven Help Us All";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/11.-Heaven%20Help%20Us%20All.mp3>;
+    mo:duration "192".
+<urn:uuid:4aee273c-6f6d-4e0f-8787-9cff892bae5a> a mo:Track;
+    dcterms:title "Overjoyed";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/12.-Overjoyed.mp3>;
+    mo:duration "239".
+<urn:uuid:83c2ba4b-d8af-45b6-a332-ac4475972ed9> a mo:Track;
+    dcterms:title "Lately";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/13.-Lately.mp3>;
+    mo:duration "245".
+<urn:uuid:b058948e-2ae2-446a-bc4f-2a2d08314e17> a mo:Track;
+    dcterms:title "For Your Love";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/14.-For%20Your%20Love.mp3>;
+    mo:duration "300".
+<urn:uuid:8f57d3c3-b2ca-473c-9687-81297ced1a7a> a mo:Track;
+    dcterms:title "Higher Ground";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/16.-Higher%20Ground.mp3>;
+    mo:duration "222".
+<urn:uuid:1bfdc88f-46ea-4c6d-ad13-ef7575dd1bb2> a mo:Track;
+    dcterms:title "Do I Do";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/17.-Do%20I%20Do.mp3>;
+    mo:duration "303".
+<urn:uuid:ece0c48e-f9c3-4ff9-aa8a-9c48aebbdf61> a mo:Track;
+    dcterms:title "Living For The City";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/18.-Living%20For%20The%20City.mp3>;
+    mo:duration "219".
+<urn:uuid:9ddde90c-4d28-4b65-97d4-957240f7c51f> a mo:Track;
+    dcterms:title "Part-Time Lover";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/19.-Part-Time%20Lover.mp3>;
+    mo:duration "253".
+<urn:uuid:f1b55168-77c5-46a0-86b3-84c9bd77f03e> a mo:Track;
+    dcterms:title "We Can Work It Out";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/22.-We%20Can%20Work%20It%20Out.mp3>;
+    mo:duration "195".
+<urn:uuid:71fd85aa-9ddb-4844-adc3-43adbd9b7ffb> a mo:Track;
+    dcterms:title "Yester-Me Yester-You Yesterday";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/24.-Yester-Me%20Yester-You%20Yesterday.mp3>;
+    mo:duration "182".
+<urn:uuid:926a4b2b-65bd-4fa0-8f5b-0db4b009334c> a mo:Track;
+    dcterms:title "Blowin' In The Wind";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/30.-Blowin'%20In%20The%20Wind.mp3>;
+    mo:duration "184".
+<urn:uuid:fabd24ba-5a74-4b2c-955f-d6e3cbcdca98> a mo:Track;
+    dcterms:title "Send One Your Love";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/31-Send%20One%20Your%20Love.mp3>;
+    mo:duration "242".
+<urn:uuid:17b115c9-e6cc-44f5-a570-7d5fc9be6b22> a mo:Track;
+    dcterms:title "Pastime Paradise";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/32.-Pastime%20Paradise.mp3>;
+    mo:duration "208".
+<urn:uuid:f10feec5-cd09-430e-932e-10fc79fb60a7> a mo:Track;
+    dcterms:title "I Ain't Gonna Stand For It";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/33.-I%20Ain't%20Gonna%20Stand%20For%20It.mp3>;
+    mo:duration "279".
+<urn:uuid:451afceb-5866-4bd8-b899-b12dc96ddd36> a mo:Track;
+    dcterms:title "Fingertips (Parts 1 & 2)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/34.-Fingertips%20(Parts%201%20%26%202).mp3>;
+    mo:duration "413".
+<urn:uuid:ec129148-f59b-4a34-99f3-0f49b07d4a8b> a mo:Track;
+    dcterms:title "Boogie On Reggae Woman";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/35-Boogie%20On%20Reggae%20Woman.mp3>;
+    mo:duration "313".
+<urn:uuid:83139486-31b0-4ac5-ac7c-5042ba917edd> a mo:Track;
+    dcterms:title "You Haven't Done Nothin'";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/36%20-You%20Haven't%20Done%20Nothin'.mp3>;
+    mo:duration "203".
+<urn:uuid:3ee5e91b-c09f-4233-97f2-c5780efd4f8e> a mo:Track;
+    dcterms:title "He's Misstra Know It All";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/37.-He's%20Misstra%20Know%20It%20All.mp3>;
+    mo:duration "334".
+<urn:uuid:90dcc111-b433-46c0-a062-f33667e130cb> a mo:Track;
+    dcterms:title "Happy Birthday";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-definitive-collection-cd-rip/38.-Happy%20Birthday.mp3>;
+    mo:duration "355".
+<urn:uuid:7158c963-5374-468e-859d-115eb037d715> a mo:Release;
+    dcterms:title "Stevie Wonder";
+    foaf:maker "Stevie Wonder";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/stevie-wonder_202510>;
+    mo:track <urn:uuid:bf1a3b0e-2ca4-49ea-91e7-2a6f3a664812>, <urn:uuid:50e5297b-1a58-4d51-adeb-5fcf39f56c3f>, <urn:uuid:4c3db48d-cf11-4120-9d61-623dfc906790>, <urn:uuid:79a53c5f-cc4d-4794-8f55-ba187ddbeee7>, <urn:uuid:c04c81db-9d6b-413e-b817-cafbccb350b8>, <urn:uuid:275ed2bc-d1ce-4896-802f-9fe5e62c60ae>, <urn:uuid:4ecbf08d-1b88-452a-9f9b-d8844067f3c9>, <urn:uuid:1cb9b82f-fc17-4a8a-bf40-3cb254eec2cc>, <urn:uuid:6e3ec3a1-61b8-4930-a8e3-baaf8be8a3d3>, <urn:uuid:327e654b-d1ea-4baf-9c16-8bfa3e6b95bb>, <urn:uuid:5e45dcac-b115-403c-a725-06d683e6c087>, <urn:uuid:0b25e5e3-466e-4b99-b2d9-f35579e25b86>, <urn:uuid:a176d729-3969-4a35-87a0-85ebda9e4123>, <urn:uuid:245a5803-9e52-4d1a-a883-77abde99e644>, <urn:uuid:bf1faab5-27eb-4f10-b3e2-f297c3800b58>, <urn:uuid:43cb30bd-400f-486e-b150-6313d9b87b2c>, <urn:uuid:3c98a68b-ac01-47d3-a468-8bba401670d5>, <urn:uuid:67a35765-37c6-49c3-beba-6492d265ada2>, <urn:uuid:34fb9c2a-61e1-4e7f-8ca6-556409759706>, <urn:uuid:238267a0-aeff-4d10-a49e-d1c610622b3f>.
+<urn:uuid:144d9d3f-2ddb-4c4e-b3c5-f54258e3c8ed> a mo:Release;
+    dcterms:title "The Definitive Collection (CD Rip)";
+    foaf:maker "Stevie Wonder";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/the-definitive-collection-cd-rip>;
+    mo:track <urn:uuid:00adc8e4-1ae1-44b2-9943-12127e6e9cb3>, <urn:uuid:2d47ec8c-4838-45dd-9116-2be1f3147d53>, <urn:uuid:79fbdf69-7689-49ee-acc7-c8a4b259e52c>, <urn:uuid:acb4190d-bfaa-4833-a44c-97b1c96a677e>, <urn:uuid:65aff6c2-d1f8-4fdc-817d-0e245f0a0aa8>, <urn:uuid:308b8884-13f0-46f7-ad93-d32ce60b5ff3>, <urn:uuid:20d14be6-0057-4ed7-94b1-02a2ad196671>, <urn:uuid:de93dbc6-0cbf-446c-b8d2-1815c1524236>, <urn:uuid:692bcbc0-fb18-4e56-88a3-e67a85c754aa>, <urn:uuid:ff84f0a8-110d-40e6-aa81-7ae9c25aed23>, <urn:uuid:4aee273c-6f6d-4e0f-8787-9cff892bae5a>, <urn:uuid:83c2ba4b-d8af-45b6-a332-ac4475972ed9>, <urn:uuid:b058948e-2ae2-446a-bc4f-2a2d08314e17>, <urn:uuid:8f57d3c3-b2ca-473c-9687-81297ced1a7a>, <urn:uuid:1bfdc88f-46ea-4c6d-ad13-ef7575dd1bb2>, <urn:uuid:ece0c48e-f9c3-4ff9-aa8a-9c48aebbdf61>, <urn:uuid:9ddde90c-4d28-4b65-97d4-957240f7c51f>, <urn:uuid:f1b55168-77c5-46a0-86b3-84c9bd77f03e>, <urn:uuid:71fd85aa-9ddb-4844-adc3-43adbd9b7ffb>, <urn:uuid:926a4b2b-65bd-4fa0-8f5b-0db4b009334c>, <urn:uuid:fabd24ba-5a74-4b2c-955f-d6e3cbcdca98>, <urn:uuid:17b115c9-e6cc-44f5-a570-7d5fc9be6b22>, <urn:uuid:f10feec5-cd09-430e-932e-10fc79fb60a7>, <urn:uuid:451afceb-5866-4bd8-b899-b12dc96ddd36>, <urn:uuid:ec129148-f59b-4a34-99f3-0f49b07d4a8b>, <urn:uuid:83139486-31b0-4ac5-ac7c-5042ba917edd>, <urn:uuid:3ee5e91b-c09f-4233-97f2-c5780efd4f8e>, <urn:uuid:90dcc111-b433-46c0-a062-f33667e130cb>.

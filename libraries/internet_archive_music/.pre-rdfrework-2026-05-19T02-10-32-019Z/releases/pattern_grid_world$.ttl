@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:69834ac2-3aca-49a5-9326-4f3ad14328c7> a mo:Release;
+    dcterms:title "Pattern+Grid World";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/flyinglotuspatterngridworld>;
+    mo:track <urn:uuid:cb45763a-965a-4f1e-ab9e-07d8fc3e1286>, <urn:uuid:25d52990-64d1-4ae5-90a1-766850a30efb>.
+<urn:uuid:cb45763a-965a-4f1e-ab9e-07d8fc3e1286> a mo:Track; dcterms:title "Kill Your Co-Workers"; mo:duration "184"; dcat:downloadUrl <https://archive.org/download/flyinglotuspatterngridworld/02%20Kill%20Your%20Co-Workers.mp3>.
+<urn:uuid:25d52990-64d1-4ae5-90a1-766850a30efb> a mo:Track; dcterms:title "Jurassic Notion / M Theory"; mo:duration "195"; dcat:downloadUrl <https://archive.org/download/flyinglotuspatterngridworld/05%20Jurassic%20Notion%20_%20M%20Theory.mp3>.

@@ -1,0 +1,13 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/James_Brown> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "James Brown";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://purl.org/dc/terms/description> "Soul";
+    <http://open-media-player.org/ns#hidePlaylist> "true";
+    dcterms:hasPart <urn:uuid:5d0ee363-6ea0-40b0-8590-440c6e0bb07c>, <urn:uuid:496aa6bf-211c-4fd7-b444-a47fa34459b0>, <urn:uuid:f1048134-49b4-4338-8943-da2622725387>, <urn:uuid:766c02d4-a937-4b90-86c1-88d79efbc6bd>, <urn:uuid:55e9d7b6-6160-4452-85de-89839ac763d8>, <urn:uuid:95b7cbd7-0d4c-4531-9d0e-275ba3389eef>, <urn:uuid:fdbbb8af-ef74-4330-97c9-b9474954b35c>, <urn:uuid:84acdb40-c29d-43f8-8399-98dc754fc7be>, <urn:uuid:cb47bb6f-30e5-40f5-bad4-6f0817a34e82>, <urn:uuid:03d3ba33-115e-47e7-b65c-ebb4af86c513>, <urn:uuid:ec18df04-5cdd-4869-902b-40bc5a01b0fc>, <urn:uuid:382da656-558b-4ce8-a390-dc69dcc965ea>, <urn:uuid:a447ac18-dafe-4979-889f-ed865ed6c84b>, <urn:uuid:28aaa220-50f5-418f-b1d1-6c9c6e55d142>, <urn:uuid:d046a5ab-a525-4549-9d2a-d5baa5d671ca>, <urn:uuid:e2c83e0f-2372-46ab-a4f3-59b7f394974b>, <urn:uuid:64ce5de4-d628-442c-bd1c-500973a04219>, <urn:uuid:78365c8c-7d5c-4a37-926c-a66b61b87c32>, <urn:uuid:4ceee88d-c78d-45c3-8745-a46fcadf1194>, <urn:uuid:0901e03c-69b3-4e38-9b47-5cd91e9c981f>, <urn:uuid:36540e4d-4a87-47ac-a533-ad7e0b5b58ca>, <urn:uuid:4a6bffc4-3acd-43dc-9576-08a9c8101aea>, <urn:uuid:060819c8-0698-4739-b712-3fa94bd5d2db>, <urn:uuid:e006806f-2d25-4965-ae10-fcdbd907de38>, <urn:uuid:1cdd54b3-ee58-4baf-8b56-504631ebcb9b>, <urn:uuid:aeb79f27-0a1f-454b-a9ad-2cbe68186770>, <urn:uuid:2b7563b8-1ca4-49ea-bb54-5394995b56f0>, <urn:uuid:05ab7a81-c410-4dba-921a-84e931ba5f3c>, <urn:uuid:178d47c7-98b6-4224-ade5-c1d4b7e8dc6c>.

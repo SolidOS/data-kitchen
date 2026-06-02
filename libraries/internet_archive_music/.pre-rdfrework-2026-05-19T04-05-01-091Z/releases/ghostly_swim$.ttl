@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:4eacd845-c4a4-4a15-a471-4231f303431a> a mo:Release;
+    dcterms:title "Ghostly Swim";
+    foaf:maker "Tycho";
+    dcat:landingPage <https://archive.org/details/ghostly_swim_202405>;
+    mo:track <urn:uuid:353c33ab-e9a4-4007-886e-11e4b5752a41>.
+<urn:uuid:353c33ab-e9a4-4007-886e-11e4b5752a41> a mo:Track; dcterms:title "Cascade"; mo:duration "236"; dcat:downloadUrl <https://archive.org/download/ghostly_swim_202405/05_Tycho_Cascade.mp3>.

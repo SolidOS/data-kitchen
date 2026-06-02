@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:6e98d3ca-c20e-4cd2-a14c-90eb85c4d3a5> a mo:Release;
+    dcterms:title "perpetuum mobile";
+    foaf:maker "penguin cafe orchestra";
+    dcat:landingPage <https://archive.org/details/PerpetuumMobile>;
+    mo:track <urn:uuid:c1638af5-8f16-4ee6-9218-91802004eb8f>.
+<urn:uuid:c1638af5-8f16-4ee6-9218-91802004eb8f> a mo:Track; dcterms:title "Perpetuum Mobile"; mo:duration "262"; dcat:downloadUrl <https://archive.org/download/PerpetuumMobile/PerpetuumMobile.mp3>.

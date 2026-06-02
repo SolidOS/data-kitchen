@@ -1,0 +1,104 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Koko Taylor live at Higher Ground 1998.08.21" ;
+    dct:identifier "KokoTaylor.1998.08.21" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/KokoTaylor.1998.08.21> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13> ;
+    foaf:maker "Koko Taylor" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "15 1998.08.21" ;
+    mo:duration "805" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/15%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "13 1998.08.21" ;
+    mo:duration "794" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/13%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "12 1998.08.21" ;
+    mo:duration "792" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/12%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "02 1998.08.21" ;
+    mo:duration "587" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/02%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "04 1998.08.21" ;
+    mo:duration "471" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/04%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "05 1998.08.21" ;
+    mo:duration "440" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/05%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "08 1998.08.21" ;
+    mo:duration "387" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/08%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "11 1998.08.21" ;
+    mo:duration "385" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/11%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "06 1998.08.21" ;
+    mo:duration "366" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/06%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "07 1998.08.21" ;
+    mo:duration "363" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/07%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "10 1998.08.21" ;
+    mo:duration "362" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/10%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "03 1998.08.21" ;
+    mo:duration "336" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/03%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "09 1998.08.21" ;
+    mo:duration "317" ;
+    mo:item <https://archive.org/download/KokoTaylor.1998.08.21/09%201998.08.21.mp3> ;
+    dct:isPartOf <#it> .

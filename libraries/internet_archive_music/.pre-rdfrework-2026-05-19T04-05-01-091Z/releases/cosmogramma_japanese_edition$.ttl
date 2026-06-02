@@ -1,0 +1,16 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:0d39b293-2ce5-4d3a-80d5-fcae5a65f03d> a mo:Release;
+    dcterms:title "Cosmogramma (Japanese Edition)";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/Cosmogramma>;
+    mo:track <urn:uuid:32d68a5e-2084-41d7-8137-9b31f230d1cd>, <urn:uuid:9fb0e6d3-067b-4dc7-bd01-89bb79ecbdf8>, <urn:uuid:7c90b8a1-bcf7-4882-a6ed-a384bfb10a56>, <urn:uuid:e29fdc7d-82e8-4698-96bf-bf82a4c289d0>, <urn:uuid:31851e89-37a5-472f-8fa0-3274d2cb654a>, <urn:uuid:422e4504-842b-4ea5-9042-3244b01d4148>.
+<urn:uuid:32d68a5e-2084-41d7-8137-9b31f230d1cd> a mo:Track; dcterms:title "MmmHmm"; mo:duration "255"; dcat:downloadUrl <https://archive.org/download/Cosmogramma/09%20-%20Mmmhmm.mp3>.
+<urn:uuid:9fb0e6d3-067b-4dc7-bd01-89bb79ecbdf8> a mo:Track; dcterms:title "Do the Astral Plane"; mo:duration "238"; dcat:downloadUrl <https://archive.org/download/Cosmogramma/10%20-%20Do%20the%20Astral%20Plane.mp3>.
+<urn:uuid:7c90b8a1-bcf7-4882-a6ed-a384bfb10a56> a mo:Track; dcterms:title "Satelllliiiiiiiteee"; mo:duration "229"; dcat:downloadUrl <https://archive.org/download/Cosmogramma/11%20-%20Satelllliiiiiteee.mp3>.
+<urn:uuid:e29fdc7d-82e8-4698-96bf-bf82a4c289d0> a mo:Track; dcterms:title "Recoiled"; mo:duration "217"; dcat:downloadUrl <https://archive.org/download/Cosmogramma/13%20-%20Recoiled.mp3>.
+<urn:uuid:31851e89-37a5-472f-8fa0-3274d2cb654a> a mo:Track; dcterms:title "Table Tennis"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/Cosmogramma/16%20-%20Table%20Tennis.mp3>.
+<urn:uuid:422e4504-842b-4ea5-9042-3244b01d4148> a mo:Track; dcterms:title "Galaxy in Janaki"; mo:duration "261"; dcat:downloadUrl <https://archive.org/download/Cosmogramma/17%20-%20Galaxy%20in%20Janaki.mp3>.

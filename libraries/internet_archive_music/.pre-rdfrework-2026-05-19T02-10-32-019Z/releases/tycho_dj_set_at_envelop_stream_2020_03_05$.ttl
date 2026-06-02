@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:cafaa358-d57e-4785-a7a9-91c72c2eb92e> a mo:Release;
+    dcterms:title "Tycho DJ Set At Envelop Stream 2020 03 05";
+    foaf:maker "Tycho";
+    dcat:landingPage <https://archive.org/details/tycho-dj-set-at-envelop-stream-2020-03-05>;
+    mo:track <urn:uuid:89bdb0dd-9a0f-4a74-aca8-3501d7e315e0>.
+<urn:uuid:89bdb0dd-9a0f-4a74-aca8-3501d7e315e0> a mo:Track; dcterms:title "Tycho - DJ Set At Envelop Stream 2020-03-05"; mo:duration "3490"; dcat:downloadUrl <https://archive.org/download/tycho-dj-set-at-envelop-stream-2020-03-05/Tycho%20-%20DJ%20Set%20At%20Envelop%20Stream%202020-03-05.mp3>.

@@ -1,0 +1,22 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:2e73c578-8236-4ff9-99ce-a73404d25de0>
+    a mo:Release;
+    dct:title "Beats, Rhymes, and Life";
+    mo:track <urn:uuid:32d74e28-cd08-41ad-a7aa-95c94a02b853>;
+    dcat:landingPage det:beats-rhymes-and-life;
+    foaf:maker
+        <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>,
+        <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>,
+        <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>.
+<urn:uuid:32d74e28-cd08-41ad-a7aa-95c94a02b853>
+    a mo:Track;
+    dct:title "1nce Again (feat. Tammy Lucas) - Radio Version";
+    mo:duration "229";
+    dcat:downloadUrl
+        <https://archive.org/download/beats-rhymes-and-life/1nce%20Again%20(feat.%20Tammy%20Lucas)%20-%20Radio%20Version.mp3>.

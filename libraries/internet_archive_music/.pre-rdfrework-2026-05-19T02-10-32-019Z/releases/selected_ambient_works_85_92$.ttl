@@ -1,0 +1,22 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:6a22411a-2ffa-4a57-b1f4-6265025cfd7a> a mo:Release;
+    dcterms:title "Selected Ambient Works 85-92";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/selected-ambient-works-85-92>;
+    mo:track <urn:uuid:3af87471-d546-4ebc-b3ba-02cc9dee7696>, <urn:uuid:fb341078-f6a5-4951-a489-0a3264c6cedc>, <urn:uuid:10b4eea0-fd85-4136-a020-bcb0b4ba85bf>, <urn:uuid:e26b40da-5905-4273-8813-81e9b8e202f1>, <urn:uuid:1efca05e-ae31-4eef-afe2-84753b6173c2>, <urn:uuid:c734c999-f62c-4a54-9756-321ee052f286>, <urn:uuid:0ce29706-41dc-44ee-b03f-786ac5743ec6>, <urn:uuid:d4814429-a9a5-4690-aa53-f999372b132f>, <urn:uuid:cc3cf90e-2a2e-4646-a2ae-60f447699b73>, <urn:uuid:22fb69dd-2263-466c-8612-789e532f2202>, <urn:uuid:fea72e12-a1ad-4967-bfbd-abcdbb162b22>, <urn:uuid:6e8af088-a4db-4c55-94d3-41058aeb356f>.
+<urn:uuid:3af87471-d546-4ebc-b3ba-02cc9dee7696> a mo:Track; dcterms:title "Xtal"; mo:duration "294"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(01).mp3>.
+<urn:uuid:fb341078-f6a5-4951-a489-0a3264c6cedc> a mo:Track; dcterms:title "Tha"; mo:duration "547"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(02).mp3>.
+<urn:uuid:10b4eea0-fd85-4136-a020-bcb0b4ba85bf> a mo:Track; dcterms:title "Pulsewidth"; mo:duration "228"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(03).mp3>.
+<urn:uuid:e26b40da-5905-4273-8813-81e9b8e202f1> a mo:Track; dcterms:title "Ageispolis"; mo:duration "323"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(04).mp3>.
+<urn:uuid:1efca05e-ae31-4eef-afe2-84753b6173c2> a mo:Track; dcterms:title "Green Calx"; mo:duration "365"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(06).mp3>.
+<urn:uuid:c734c999-f62c-4a54-9756-321ee052f286> a mo:Track; dcterms:title "Heliosphan"; mo:duration "293"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(07).mp3>.
+<urn:uuid:0ce29706-41dc-44ee-b03f-786ac5743ec6> a mo:Track; dcterms:title "We Are the Music Makers"; mo:duration "463"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(08).mp3>.
+<urn:uuid:d4814429-a9a5-4690-aa53-f999372b132f> a mo:Track; dcterms:title "Schottkey 7th Path"; mo:duration "308"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(09).mp3>.
+<urn:uuid:cc3cf90e-2a2e-4646-a2ae-60f447699b73> a mo:Track; dcterms:title "Ptolemy"; mo:duration "434"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(10).mp3>.
+<urn:uuid:22fb69dd-2263-466c-8612-789e532f2202> a mo:Track; dcterms:title "Hedphelym"; mo:duration "363"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(11).mp3>.
+<urn:uuid:fea72e12-a1ad-4967-bfbd-abcdbb162b22> a mo:Track; dcterms:title "Delphium"; mo:duration "329"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(12).mp3>.
+<urn:uuid:6e8af088-a4db-4c55-94d3-41058aeb356f> a mo:Track; dcterms:title "Actium"; mo:duration "456"; dcat:downloadUrl <https://archive.org/download/selected-ambient-works-85-92/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2085-92%20-%20Track%20(13).mp3>.

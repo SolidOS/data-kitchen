@@ -1,0 +1,41 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Madvilliany [Demo Tape]" ;
+    dct:identifier "tagmp3_tagmp3_one-false-move-intro-song-1" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/tagmp3_tagmp3_one-false-move-intro-song-1> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04> ;
+    foaf:maker "MF DOOM" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "America's Most Blunted" ;
+    mo:duration "234" ;
+    mo:item <https://archive.org/download/tagmp3_tagmp3_one-false-move-intro-song-1/tagmp3_tagmp3_Americas-most-blunted-(song-2).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Fancy Clown" ;
+    mo:duration "210" ;
+    mo:item <https://archive.org/download/tagmp3_tagmp3_one-false-move-intro-song-1/tagmp3_tagmp3_Fancy-Clown-(song-7).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "One False Move" ;
+    mo:duration "295" ;
+    mo:item <https://archive.org/download/tagmp3_tagmp3_one-false-move-intro-song-1/tagmp3_tagmp3_One-False-Move-(intro)-(song-1).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Rainbow" ;
+    mo:duration "183" ;
+    mo:item <https://archive.org/download/tagmp3_tagmp3_one-false-move-intro-song-1/tagmp3_tagmp3_Rainbow-(song-5).mp3> ;
+    dct:isPartOf <#it> .

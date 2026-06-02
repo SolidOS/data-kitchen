@@ -1,0 +1,114 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:1b963e45-0b9c-493d-aec8-13c5c6798f98>
+    a mo:Track;
+    dct:title "So Many Tears";
+    mo:duration "239";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2004%20-%20So%20Many%20Tears.mp3>.
+<urn:uuid:262790c0-7c6f-4728-ba08-7811ec7676a7>
+    a mo:Track;
+    dct:title "Death Around The Corner";
+    mo:duration "247";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2014%20-%20Death%20Around%20The%20Corner.mp3>.
+<urn:uuid:29552dcd-926f-4104-b499-cc91ca95d12d>
+    a mo:Track;
+    dct:title "Fuck The World";
+    mo:duration "253";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2013%20-%20Fuck%20The%20World.mp3>.
+<urn:uuid:5bdb8b83-7bf9-44ab-8046-b265c2796792>
+    a mo:Track;
+    dct:title "Old School";
+    mo:duration "280";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2012%20-%20Old%20School.mp3>.
+<urn:uuid:62493f69-13ee-4731-9828-badd5afdd3c4>
+    a mo:Track;
+    dct:title "Me Against The World";
+    mo:duration "281";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2003%20-%20Me%20Against%20The%20World.mp3>.
+<urn:uuid:6f216880-dff9-4e9a-b3c6-ad6ff5018965>
+    a mo:Track;
+    dct:title "Can U Get Away";
+    mo:duration "345";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2011%20-%20Can%20U%20Get%20Away.mp3>.
+<urn:uuid:7306966a-cef9-4a7c-b7d1-e8eead4cf580>
+    a mo:Track;
+    dct:title "Lord Knows";
+    mo:duration "271";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2008%20-%20Lord%20Knows.mp3>.
+<urn:uuid:8d40e9bc-1d51-46a6-b778-87cd3af009f7>
+    a mo:Track;
+    dct:title "Dear Mama";
+    mo:duration "279";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2009%20-%20Dear%20Mama.mp3>.
+<urn:uuid:8da0de04-a62e-44ac-b98d-7623fbb8290b>
+    a mo:Track;
+    dct:title "If I Die 2nite";
+    mo:duration "241";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2002%20-%20If%20I%20Die%202nite.mp3>.
+<urn:uuid:9c3b3658-ec8a-4c6e-b98d-db5298e23ee2>
+    a mo:Track;
+    dct:title "Temptations";
+    mo:duration "300";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2005%20-%20Temptations.mp3>.
+<urn:uuid:a5f2bfe9-b3f0-4a0c-b2c9-48761a8a2a95>
+    a mo:Release;
+    dct:title "Me Against The World";
+    mo:track
+        <urn:uuid:1b963e45-0b9c-493d-aec8-13c5c6798f98>,
+        <urn:uuid:262790c0-7c6f-4728-ba08-7811ec7676a7>,
+        <urn:uuid:29552dcd-926f-4104-b499-cc91ca95d12d>,
+        <urn:uuid:5bdb8b83-7bf9-44ab-8046-b265c2796792>,
+        <urn:uuid:62493f69-13ee-4731-9828-badd5afdd3c4>,
+        <urn:uuid:6f216880-dff9-4e9a-b3c6-ad6ff5018965>,
+        <urn:uuid:7306966a-cef9-4a7c-b7d1-e8eead4cf580>,
+        <urn:uuid:8d40e9bc-1d51-46a6-b778-87cd3af009f7>,
+        <urn:uuid:8da0de04-a62e-44ac-b98d-7623fbb8290b>,
+        <urn:uuid:9c3b3658-ec8a-4c6e-b98d-db5298e23ee2>,
+        <urn:uuid:aa48a1b6-dcaa-40cf-82fd-f6499f732913>,
+        <urn:uuid:b073b20d-695d-46d9-b146-f99b0fdd9b6a>,
+        <urn:uuid:cf5a8f47-5c1c-4e4d-a181-89dcdca51e3f>,
+        <urn:uuid:e015e329-c1ea-4531-9bb7-a61e4e3cbee1>;
+    dcat:landingPage det:2-pac-11-can-u-get-away;
+    foaf:maker
+        "2Pac", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:aa48a1b6-dcaa-40cf-82fd-f6499f732913>
+    a mo:Track;
+    dct:title "Young Niggaz";
+    mo:duration "293";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2006%20-%20Young%20Niggaz.mp3>.
+<urn:uuid:b073b20d-695d-46d9-b146-f99b0fdd9b6a>
+    a mo:Track;
+    dct:title "It Ain't Easy";
+    mo:duration "294";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2010%20-%20It%20Ain't%20Easy.mp3>.
+<urn:uuid:cf5a8f47-5c1c-4e4d-a181-89dcdca51e3f>
+    a mo:Track;
+    dct:title "Heavy In The Game";
+    mo:duration "263";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2007%20-%20Heavy%20In%20The%20Game.mp3>.
+<urn:uuid:e015e329-c1ea-4531-9bb7-a61e4e3cbee1>
+    a mo:Track;
+    dct:title "Outlaw";
+    mo:duration "271";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2015%20-%20Outlaw.mp3>.

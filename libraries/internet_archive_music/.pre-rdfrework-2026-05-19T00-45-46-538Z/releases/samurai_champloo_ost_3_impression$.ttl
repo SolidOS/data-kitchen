@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:5f744ab7-9146-4595-a4c1-6230cd102bb0> a mo:Release;
+    dcterms:title "Samurai Champloo OST 3: Impression";
+    foaf:maker "Force of Nature, Nujabes, & Fat Jon/Force of Nature - Nujabes/Fat Jon";
+    dcat:landingPage <https://archive.org/details/samurai-champloo-ost-3-impression>;
+    mo:track <urn:uuid:2ce86f5f-1587-45b2-a4bc-2c597962d215>.
+<urn:uuid:2ce86f5f-1587-45b2-a4bc-2c597962d215> a mo:Track; dcterms:title "Hiji Suru Style"; mo:duration "223"; dcat:downloadUrl <https://archive.org/download/samurai-champloo-ost-3-impression/03%20Hiji%20Zuru%20Style.mp3>.

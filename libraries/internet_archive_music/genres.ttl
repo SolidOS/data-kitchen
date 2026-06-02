@@ -1,0 +1,36 @@
+@prefix : <./genres.ttl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<#Music> a skos:ConceptScheme;
+    skos:prefLabel "Music".
+<#World> a skos:Concept, mo:Genre;
+    skos:prefLabel "World";
+    skos:topConceptOf <#Music>.
+<#Funk> a skos:Concept, mo:Genre;
+    skos:prefLabel "Soul & Funk";
+    skos:topConceptOf <#Music>.
+<#Jazz> a skos:Concept, mo:Genre;
+    skos:prefLabel "Jazz";
+    skos:topConceptOf <#Music>.
+<#Electronica> a skos:Concept, mo:Genre;
+    skos:prefLabel "Electronica";
+    skos:topConceptOf <#Music>.
+<#Dub> a skos:Concept, mo:Genre;
+    skos:prefLabel "Dub & Reggae";
+    skos:topConceptOf <#Music>.
+<#Indie> a skos:Concept, mo:Genre;
+    skos:prefLabel "Indie";
+    skos:topConceptOf <#Music>.
+<#Sixties> a skos:Concept, mo:Genre;
+    skos:prefLabel "Sixties & Jam Rock";
+    skos:topConceptOf <#Music>.
+<#Unsorted> a skos:Concept, mo:Genre;
+    skos:prefLabel "Unsorted";
+    skos:topConceptOf <#Music>.
+<#Hip_Hop> a skos:Concept, mo:Genre;
+    skos:prefLabel "Hip Hop";
+    skos:topConceptOf <#Music>.
+<#Blues> a skos:Concept, mo:Genre;
+    skos:prefLabel "Blues";
+    skos:topConceptOf <#Music>.

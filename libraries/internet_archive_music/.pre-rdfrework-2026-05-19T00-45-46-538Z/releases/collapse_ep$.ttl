@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:e3e45496-3456-422e-afa8-5d5684f926bc> a mo:Release;
+    dcterms:title "Collapse EP";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/aphex-twin-collapse-ep_202412>;
+    mo:track <urn:uuid:33983ffc-051b-4c92-9a75-ffe1ef5207af>, <urn:uuid:82352a8e-a98f-4f6a-bfac-1ca7fb9ca623>, <urn:uuid:6cc13b62-0d40-481a-a982-f735e3db2a3a>, <urn:uuid:92eba53d-4c8c-4d95-8090-349f01240f85>, <urn:uuid:dd48a732-3c2b-43b0-a34e-16ffb8ed26a5>.
+<urn:uuid:33983ffc-051b-4c92-9a75-ffe1ef5207af> a mo:Track; dcterms:title "T69 collapse"; mo:duration "323"; dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2001%20T69%20collapse.mp3>.
+<urn:uuid:82352a8e-a98f-4f6a-bfac-1ca7fb9ca623> a mo:Track; dcterms:title "1st 44"; mo:duration "370"; dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2002%201st%2044.mp3>.
+<urn:uuid:6cc13b62-0d40-481a-a982-f735e3db2a3a> a mo:Track; dcterms:title "MT1 t29r2"; mo:duration "365"; dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2003%20MT1%20t29r2.mp3>.
+<urn:uuid:92eba53d-4c8c-4d95-8090-349f01240f85> a mo:Track; dcterms:title "abundance10edit[2 R8's, FZ20m & a 909]"; mo:duration "380"; dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2004%20abundance10edit-2%20R8's%2C%20FZ20m%20%26%20a%20909-.mp3>.
+<urn:uuid:dd48a732-3c2b-43b0-a34e-16ffb8ed26a5> a mo:Track; dcterms:title "pthex"; mo:duration "298"; dcat:downloadUrl <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2005%20pthex.mp3>.

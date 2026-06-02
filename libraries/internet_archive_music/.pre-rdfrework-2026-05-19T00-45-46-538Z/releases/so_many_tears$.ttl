@@ -1,0 +1,51 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:0d61668c-a6d5-438b-853d-2bc4ef3f4ab7>
+    a mo:Track;
+    dct:title "If I Die Tonight - Album Version";
+    mo:duration "241";
+    dcat:downloadUrl
+        <https://archive.org/download/somanytears2pac/05%20If%20I%20Die%20Tonight%20-%20Album%20Version.mp3>.
+<urn:uuid:387f0b01-1be7-452c-935b-2888c009ff1c>
+    a mo:Release;
+    dct:title "So Many Tears";
+    mo:track
+        <urn:uuid:0d61668c-a6d5-438b-853d-2bc4ef3f4ab7>,
+        <urn:uuid:4d7739b9-f312-4ba8-87d2-7e608583300c>,
+        <urn:uuid:74870b53-2b93-4dbe-adde-dd6e94fa8ddd>,
+        <urn:uuid:a7a381d7-7d6e-4949-a80f-87549927fada>,
+        <urn:uuid:fdf1b15c-155c-4567-859c-008efee5db16>;
+    dcat:landingPage det:somanytears2pac;
+    foaf:maker
+        "2Pac", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:4d7739b9-f312-4ba8-87d2-7e608583300c>
+    a mo:Track;
+    dct:title "So Many Tears (Album Version)";
+    mo:duration "239";
+    dcat:downloadUrl
+        <https://archive.org/download/somanytears2pac/01%20So%20Many%20Tears%20(Album%20Version).mp3>.
+<urn:uuid:74870b53-2b93-4dbe-adde-dd6e94fa8ddd>
+    a mo:Track;
+    dct:title "So Many Tears - Key Of Z Remix";
+    mo:duration "263";
+    dcat:downloadUrl
+        <https://archive.org/download/somanytears2pac/02%20So%20Many%20Tears%20-%20Key%20Of%20Z%20Remix.mp3>.
+<urn:uuid:a7a381d7-7d6e-4949-a80f-87549927fada>
+    a mo:Track;
+    dct:title "Dramacydal's \"Hard To Imagine\"";
+    mo:duration "282";
+    dcat:downloadUrl
+        <https://archive.org/download/somanytears2pac/04%20Dramacydal's%20%22Hard%20To%20Imagine%22.mp3>.
+<urn:uuid:fdf1b15c-155c-4567-859c-008efee5db16>
+    a mo:Track;
+    dct:title "So Many Tears - Reminizm' Remix";
+    mo:duration "264";
+    dcat:downloadUrl
+        <https://archive.org/download/somanytears2pac/03%20So%20Many%20Tears%20-%20Reminizm'%20Remix.mp3>.

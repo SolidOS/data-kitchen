@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:622d544e-6908-4c09-9fdb-ec81fe2e9888> a mo:Release;
+    dcterms:title "Tia Juana";
+    foaf:maker "Memphis Slim and the House Rockers;Chatman";
+    dcat:landingPage <https://archive.org/details/78_tia-juana_memphis-slim-and-the-house-rockers-chatman_gbia0060711a>;
+    mo:track <urn:uuid:b205dcd9-a3cf-4048-b1eb-3162da5a7210>.
+<urn:uuid:b205dcd9-a3cf-4048-b1eb-3162da5a7210> a mo:Track; dcterms:title "Tia Juana"; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/78_tia-juana_memphis-slim-and-the-house-rockers-chatman_gbia0060711a/Tia%20Juana%20-%20Memphis%20Slim%20and%20the%20House%20Rockers.mp3>.

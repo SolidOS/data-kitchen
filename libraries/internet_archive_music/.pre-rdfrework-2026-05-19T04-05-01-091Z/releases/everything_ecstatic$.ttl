@@ -1,0 +1,17 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:2ee3a6f3-f3fa-49e8-95c8-fcd455d29462> a mo:Release;
+    dcterms:title "Everything Ecstatic";
+    foaf:maker "Four Tet";
+    dcat:landingPage <https://archive.org/details/cd-everything-ecstatic_four-tet-not-samples>;
+    mo:track <urn:uuid:3d703235-2ea8-4166-aa84-9d85181105d8>, <urn:uuid:2922ea39-5027-47d6-9472-f46244c1d0e1>, <urn:uuid:d27a045e-e7a2-4db6-b7fd-4967c0307609>, <urn:uuid:3bae011c-54d9-4777-af73-f395c1c87211>, <urn:uuid:766d40b7-4c3d-4516-af48-f626001a25da>, <urn:uuid:5deaeb3c-784d-47ab-97f1-c44a64f3687b>, <urn:uuid:8c110638-67e1-4b37-9c71-c7549aa4abe2>.
+<urn:uuid:3d703235-2ea8-4166-aa84-9d85181105d8> a mo:Track; dcterms:title "A Joy"; mo:duration "185"; dcat:downloadUrl <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/01%20-%20A%20Joy.flac>.
+<urn:uuid:2922ea39-5027-47d6-9472-f46244c1d0e1> a mo:Track; dcterms:title "Smile Around The Face"; mo:duration "274"; dcat:downloadUrl <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/02%20-%20Smile%20Around%20The%20Face.flac>.
+<urn:uuid:d27a045e-e7a2-4db6-b7fd-4967c0307609> a mo:Track; dcterms:title "Sun Drums And Soil"; mo:duration "380"; dcat:downloadUrl <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/04%20-%20Sun%20Drums%20And%20Soil.flac>.
+<urn:uuid:3bae011c-54d9-4777-af73-f395c1c87211> a mo:Track; dcterms:title "And Then Patterns"; mo:duration "284"; dcat:downloadUrl <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/06%20-%20And%20Then%20Patterns.flac>.
+<urn:uuid:766d40b7-4c3d-4516-af48-f626001a25da> a mo:Track; dcterms:title "High Fives"; mo:duration "308"; dcat:downloadUrl <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/07%20-%20High%20Fives.flac>.
+<urn:uuid:5deaeb3c-784d-47ab-97f1-c44a64f3687b> a mo:Track; dcterms:title "Sleep, Eat Food, Have Visions"; mo:duration "479"; dcat:downloadUrl <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/09%20-%20Sleep%2C%20Eat%20Food%2C%20Have%20Visions.flac>.
+<urn:uuid:8c110638-67e1-4b37-9c71-c7549aa4abe2> a mo:Track; dcterms:title "You Were There With Me"; mo:duration "352"; dcat:downloadUrl <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/10%20-%20You%20Were%20There%20With%20Me.flac>.

@@ -1,0 +1,57 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:385b68d1-58cd-4d49-80ed-75ebaa653623>
+    a mo:Track;
+    dct:title "Triumph";
+    mo:duration "180";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/16.%20Triumph.mp3>.
+<urn:uuid:4edb820b-e06f-4a35-baa9-5794dcb4e857>
+    a mo:Track;
+    dct:title "Intro + Wu-Revolution";
+    mo:duration "516";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/01.%20Intro%20%2B%20Wu-Revolution.mp3>.
+<urn:uuid:504fbb55-2e8e-4a57-aeb2-23d99a356350>
+    a mo:Track;
+    dct:title "Criminology";
+    mo:duration "270";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/04.%20Criminology.mp3>.
+<urn:uuid:9aa77fc0-3e0b-44ff-89c0-41b859153bbc>
+    a mo:Track;
+    dct:title "Cash Still Rules + Scary Hours";
+    mo:duration "310";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/17.%20Cash%20Still%20Rules%20%2B%20Scary%20Hours.mp3>.
+<urn:uuid:b22e8c9c-d58d-481f-86e2-199d607e80bf>
+    a mo:Track;
+    dct:title "Its Yourz";
+    mo:duration "184";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/19.%20Its%20Yourz.mp3>.
+<urn:uuid:c6c3f386-e9b6-4557-bea4-efe3eec9f007>
+    a mo:Track;
+    dct:title "Wu Tang Clan Aint Nothin To Fuck Wit";
+    mo:duration "307";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/02.%20Wu%20Tang%20Clan%20Aint%20Nothin%20To%20Fuck%20Wit.mp3>.
+<urn:uuid:ca642e82-6156-4292-b42f-7f86283e01a6>
+    a mo:Release;
+    dct:title "Wu-Tang Clan - (1997-08-17) Meadows Music Theater, Hartford";
+    mo:track
+        <urn:uuid:385b68d1-58cd-4d49-80ed-75ebaa653623>,
+        <urn:uuid:4edb820b-e06f-4a35-baa9-5794dcb4e857>,
+        <urn:uuid:504fbb55-2e8e-4a57-aeb2-23d99a356350>,
+        <urn:uuid:9aa77fc0-3e0b-44ff-89c0-41b859153bbc>,
+        <urn:uuid:b22e8c9c-d58d-481f-86e2-199d607e80bf>,
+        <urn:uuid:c6c3f386-e9b6-4557-bea4-efe3eec9f007>;
+    dcat:landingPage det:wu-tang-clan-1997-08-17-meadows-music-theater-hartford;
+    foaf:maker
+        <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>,
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.

@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:b5b4b8cd-0f35-42b8-a83f-6eb4009c346e> a mo:Release;
+    dcterms:title "Otis Spann - Walking The Blues";
+    foaf:maker "Otis Spann";
+    dcat:landingPage <https://archive.org/details/OtisSpannWalking1>;
+    mo:track <urn:uuid:7f57c8a5-dced-4260-9d0b-17ca03c99892>, <urn:uuid:d04d8db8-f189-49a2-8fdd-5950f08b39d8>.
+<urn:uuid:7f57c8a5-dced-4260-9d0b-17ca03c99892> a mo:Track; dcterms:title "OtisSpannWalking1"; mo:duration "1496"; dcat:downloadUrl <https://archive.org/download/OtisSpannWalking1/OtisSpannWalking1.mp3>.
+<urn:uuid:d04d8db8-f189-49a2-8fdd-5950f08b39d8> a mo:Track; dcterms:title "OtisSpannWalking2"; mo:duration "1240"; dcat:downloadUrl <https://archive.org/download/OtisSpannWalking1/OtisSpannWalking2.mp3>.

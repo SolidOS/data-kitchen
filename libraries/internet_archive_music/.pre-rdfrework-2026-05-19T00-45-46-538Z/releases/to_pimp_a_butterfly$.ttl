@@ -1,0 +1,25 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c5f13981-829e-4eae-a6e7-d33793062700> a mo:Release;
+    dcterms:title "To Pimp A Butterfly";
+    foaf:maker "Kendrick Lamar Feat. George Clinton & Thundercat";
+    dcat:landingPage <https://archive.org/details/16-mortal-man_202404>;
+    mo:track <urn:uuid:b6879b0b-fbf1-4f61-925d-03cd03d76413>, <urn:uuid:50ff5565-cd64-4d93-93f5-3a1a7bdd4f12>, <urn:uuid:425304c0-9ec6-473c-97a3-f6c956c5bd25>, <urn:uuid:980fe77f-a3db-414e-86fa-3d20a099f674>, <urn:uuid:f8021392-bfb7-4149-85da-02be52dd6b00>, <urn:uuid:a5740b51-5a1e-4b6c-877f-56b865446387>, <urn:uuid:f351fd5a-014c-4967-9410-2f917236ffce>, <urn:uuid:3150247b-0acd-4fca-b2ef-cd12f3059da9>, <urn:uuid:f17e50f2-826f-413a-babc-fb9a9fe78d24>, <urn:uuid:5a3cf21c-6d08-414a-afd7-27c82fe64c0c>, <urn:uuid:28cc9c23-2fff-4f56-bb1a-85d02d0ff989>, <urn:uuid:bbe90cbc-501f-4443-b651-8cb3245681fc>, <urn:uuid:794021f8-acce-4ef0-bdd8-4bfe3011a623>, <urn:uuid:2eaa7039-0eb8-476b-b15f-cc1db41ccd77>, <urn:uuid:cfd58b0b-daf5-48bc-ba50-bb350606224d>.
+<urn:uuid:b6879b0b-fbf1-4f61-925d-03cd03d76413> a mo:Track; dcterms:title "Wesley's Theory"; mo:duration "286"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/01%20Wesley's%20Theory.mp3>.
+<urn:uuid:50ff5565-cd64-4d93-93f5-3a1a7bdd4f12> a mo:Track; dcterms:title "King Kunta"; mo:duration "234"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/03%20King%20Kunta.mp3>.
+<urn:uuid:425304c0-9ec6-473c-97a3-f6c956c5bd25> a mo:Track; dcterms:title "Institutionalized"; mo:duration "271"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/04%20Institutionalized.mp3>.
+<urn:uuid:980fe77f-a3db-414e-86fa-3d20a099f674> a mo:Track; dcterms:title "These Walls"; mo:duration "300"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/05%20These%20Walls.mp3>.
+<urn:uuid:f8021392-bfb7-4149-85da-02be52dd6b00> a mo:Track; dcterms:title "U"; mo:duration "267"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/06%20U.mp3>.
+<urn:uuid:a5740b51-5a1e-4b6c-877f-56b865446387> a mo:Track; dcterms:title "Alright"; mo:duration "218"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/07%20Alright.mp3>.
+<urn:uuid:f351fd5a-014c-4967-9410-2f917236ffce> a mo:Track; dcterms:title "For Sale? (Interlude)"; mo:duration "291"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/08%20For%20Sale-%20(Interlude).mp3>.
+<urn:uuid:3150247b-0acd-4fca-b2ef-cd12f3059da9> a mo:Track; dcterms:title "Momma"; mo:duration "282"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/09%20Momma.mp3>.
+<urn:uuid:f17e50f2-826f-413a-babc-fb9a9fe78d24> a mo:Track; dcterms:title "Hood Politics"; mo:duration "291"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/10%20Hood%20Politics.mp3>.
+<urn:uuid:5a3cf21c-6d08-414a-afd7-27c82fe64c0c> a mo:Track; dcterms:title "How Much A Dollar Cost"; mo:duration "261"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/11%20How%20Much%20A%20Dollar%20Cost.mp3>.
+<urn:uuid:28cc9c23-2fff-4f56-bb1a-85d02d0ff989> a mo:Track; dcterms:title "Complexion (A Zulu Love)"; mo:duration "262"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/12%20Complexion%20(A%20Zulu%20Love).mp3>.
+<urn:uuid:bbe90cbc-501f-4443-b651-8cb3245681fc> a mo:Track; dcterms:title "The Blacker The Berry"; mo:duration "328"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/13%20The%20Blacker%20The%20Berry.mp3>.
+<urn:uuid:794021f8-acce-4ef0-bdd8-4bfe3011a623> a mo:Track; dcterms:title "You Ain't Gotta Lie (Momma Said)"; mo:duration "241"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/14%20You%20Ain't%20Gotta%20Lie%20(Momma%20Said).mp3>.
+<urn:uuid:2eaa7039-0eb8-476b-b15f-cc1db41ccd77> a mo:Track; dcterms:title "I"; mo:duration "335"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/15%20I.mp3>.
+<urn:uuid:cfd58b0b-daf5-48bc-ba50-bb350606224d> a mo:Track; dcterms:title "Mortal Man"; mo:duration "725"; dcat:downloadUrl <https://archive.org/download/16-mortal-man_202404/16%20Mortal%20Man.mp3>.

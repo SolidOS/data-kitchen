@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:aa7fcc12-606c-4f63-8d1b-969ad6d097f9> a mo:Release;
+    dcterms:title "Darling I Miss You";
+    foaf:maker "Memphis Slim;Memphis Slim Quartette;Alex Atkins;Ernest Cotton;Willie Dixon;Chatman";
+    dcat:landingPage <https://archive.org/details/78_darling-i-miss-you_memphis-slim-memphis-slim-quartette-alex-atkins-ernest-cotton-wi_gbia0073009b>;
+    mo:track <urn:uuid:e5ba301c-ea7f-4b47-a6e7-ad5ffec7da02>.
+<urn:uuid:e5ba301c-ea7f-4b47-a6e7-ad5ffec7da02> a mo:Track; dcterms:title "Darling I Miss You"; mo:duration "193"; dcat:downloadUrl <https://archive.org/download/78_darling-i-miss-you_memphis-slim-memphis-slim-quartette-alex-atkins-ernest-cotton-wi_gbia0073009b/Darling%20I%20Miss%20You%20-%20Memphis%20Slim%20-%20Memphis%20Slim%20Quartette.mp3>.

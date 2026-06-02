@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:f642dea7-91be-48f2-9620-12f3322b4e96> a mo:Release;
+    dcterms:title "1983";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/flylo-1983>;
+    mo:track <urn:uuid:654b0510-1ac9-4599-9477-c8df4d7caa41>, <urn:uuid:ce3d4b24-3d9e-431d-bdb0-7858db3053a7>, <urn:uuid:53c5dc1f-5d3c-45a4-a485-f103f5e74969>, <urn:uuid:486dc7c3-449b-44f7-b245-345e0703f62c>, <urn:uuid:7ab48645-68e8-49ab-9d48-4f518148c4cd>.
+<urn:uuid:654b0510-1ac9-4599-9477-c8df4d7caa41> a mo:Track; dcterms:title "1983"; mo:duration "310"; dcat:downloadUrl <https://archive.org/download/flylo-1983/01-1983.mp3>.
+<urn:uuid:ce3d4b24-3d9e-431d-bdb0-7858db3053a7> a mo:Track; dcterms:title "Pet Monster Shotglass"; mo:duration "399"; dcat:downloadUrl <https://archive.org/download/flylo-1983/07-Pet%20Monster%20Shotglass.mp3>.
+<urn:uuid:53c5dc1f-5d3c-45a4-a485-f103f5e74969> a mo:Track; dcterms:title "Untitled #7"; mo:duration "202"; dcat:downloadUrl <https://archive.org/download/flylo-1983/09-Untitled%20%237.mp3>.
+<urn:uuid:486dc7c3-449b-44f7-b245-345e0703f62c> a mo:Track; dcterms:title "Unexpected Delight"; mo:duration "202"; dcat:downloadUrl <https://archive.org/download/flylo-1983/10-Unexpected%20Delight.mp3>.
+<urn:uuid:7ab48645-68e8-49ab-9d48-4f518148c4cd> a mo:Track; dcterms:title "1983 (Daedelus's Odd-Dance Party Remix)"; mo:duration "235"; dcat:downloadUrl <https://archive.org/download/flylo-1983/11-1983%20(Daedelus's%20Odd-Dance%20Party%20Remix).mp3>.

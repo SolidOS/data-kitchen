@@ -1,0 +1,34 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1" ;
+    dct:identifier "the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1> ;
+    mo:track <#t01>, <#t02>, <#t03> ;
+    foaf:maker "B.B.KING, Buster BROWN, Big Bill BROONZY, Memphis SLIM, Slim HARPO, Lighnin' HOPKINS, Elmore JAMES, Jimmy REED, Arthur CRUDUP" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "03 - The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1 Side A - Big Bill BROONZY - Careless Love" ;
+    mo:duration "250" ;
+    mo:item <https://archive.org/download/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1/03%20-%20The%20Blues%20Vol.%201%20-%20Metronome%202002%20DALP%202-1964%2C%20LP%201%20Side%20A%20-%20Big%20Bill%20BROONZY%20-%20Careless%20Love.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "06 - The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1 Side B - Lighnin' HOPKINS - Mojo Hand" ;
+    mo:duration "181" ;
+    mo:item <https://archive.org/download/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1/06%20-%20The%20Blues%20Vol.%201%20-%20Metronome%202002%20DALP%202-1964%2C%20LP%201%20Side%20B%20-%20Lighnin'%20HOPKINS%20-%20Mojo%20Hand.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "07 - The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1 Side B - Elmore JAMES - It hurts me too" ;
+    mo:duration "198" ;
+    mo:item <https://archive.org/download/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1/07%20-%20The%20Blues%20Vol.%201%20-%20Metronome%202002%20DALP%202-1964%2C%20LP%201%20Side%20B%20-%20Elmore%20JAMES%20-%20It%20hurts%20me%20too.mp3> ;
+    dct:isPartOf <#it> .

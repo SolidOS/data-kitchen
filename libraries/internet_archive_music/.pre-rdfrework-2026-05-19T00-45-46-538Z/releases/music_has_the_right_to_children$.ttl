@@ -1,0 +1,20 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:0170e2d6-62e6-48c1-82cc-325321eaa7c1> a mo:Release;
+    dcterms:title "Music Has the Right to Children";
+    foaf:maker "Boards of Canada";
+    dcat:landingPage <https://archive.org/details/1998-boards-of-canada-music-has-the-right-to-children>;
+    mo:track <urn:uuid:5f737b28-4964-4bcc-b637-d75b34c46935>, <urn:uuid:6cfb7098-d44e-45c5-969c-a38fb25d3ac4>, <urn:uuid:ef5f1336-4f25-43ec-849e-6bbe474d2e43>, <urn:uuid:7d11eda2-2751-41bc-bee3-8245fe6af9dc>, <urn:uuid:81f44549-0322-4541-ac3d-75156186d728>, <urn:uuid:4653d57b-b8c2-49a2-9163-11309aa7198b>, <urn:uuid:ac823932-fa52-4f32-bc08-3a6c74693b1b>, <urn:uuid:dcd45708-9517-46bb-8dfc-7dd13dc1279f>, <urn:uuid:86a1a0be-ad4e-47cb-8451-357c97c1f259>, <urn:uuid:095fb2b7-e62f-48c5-a561-88f73702d7df>.
+<urn:uuid:5f737b28-4964-4bcc-b637-d75b34c46935> a mo:Track; dcterms:title "An Eagle in Your Mind"; mo:duration "386"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/02%20An%20Eagle%20in%20Your%20Mind.mp3>.
+<urn:uuid:6cfb7098-d44e-45c5-969c-a38fb25d3ac4> a mo:Track; dcterms:title "Telephasic Workshop"; mo:duration "396"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/04%20Telephasic%20Workshop.mp3>.
+<urn:uuid:ef5f1336-4f25-43ec-849e-6bbe474d2e43> a mo:Track; dcterms:title "Sixtyten"; mo:duration "348"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/06%20Sixtyten.mp3>.
+<urn:uuid:7d11eda2-2751-41bc-bee3-8245fe6af9dc> a mo:Track; dcterms:title "Turquoise Hexagon Sun"; mo:duration "308"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/07%20Turquoise%20Hexagon%20Sun.mp3>.
+<urn:uuid:81f44549-0322-4541-ac3d-75156186d728> a mo:Track; dcterms:title "Rue the Whirl"; mo:duration "400"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/11%20Rue%20the%20Whirl.mp3>.
+<urn:uuid:4653d57b-b8c2-49a2-9163-11309aa7198b> a mo:Track; dcterms:title "Aquarius"; mo:duration "358"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/12%20Aquarius.mp3>.
+<urn:uuid:ac823932-fa52-4f32-bc08-3a6c74693b1b> a mo:Track; dcterms:title "Pete Standing Alone"; mo:duration "368"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/14%20Pete%20Standing%20Alone.mp3>.
+<urn:uuid:dcd45708-9517-46bb-8dfc-7dd13dc1279f> a mo:Track; dcterms:title "Smokes Quantity"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/15%20Smokes%20Quantity.mp3>.
+<urn:uuid:86a1a0be-ad4e-47cb-8451-357c97c1f259> a mo:Track; dcterms:title "Open the Light"; mo:duration "265"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/16%20Open%20the%20Light.mp3>.
+<urn:uuid:095fb2b7-e62f-48c5-a561-88f73702d7df> a mo:Track; dcterms:title "Happy Cycling"; mo:duration "473"; dcat:downloadUrl <https://archive.org/download/1998-boards-of-canada-music-has-the-right-to-children/18%20Happy%20Cycling.mp3>.

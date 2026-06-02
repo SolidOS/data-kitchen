@@ -1,0 +1,50 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix gza: <https://archive.org/download/gza-2025-05-14/>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:21f74e2c-b745-431f-9b6e-ddd17a857e15>
+    a mo:Track;
+    dct:title "Band Intros Jam > (without GZA)";
+    mo:duration "186";
+    dcat:downloadUrl gza:GZA2025-05-14t23.mp3 .
+<urn:uuid:40a173dd-3190-40b6-881c-9f820efb7952>
+    a mo:Track;
+    dct:title "Crash Your Crew";
+    mo:duration "201";
+    dcat:downloadUrl gza:GZA2025-05-14t13.mp3 .
+<urn:uuid:4451332a-5d30-4075-913c-e38ff30fcd00>
+    a mo:Track;
+    dct:title "Liquid Swords";
+    mo:duration "219";
+    dcat:downloadUrl gza:GZA2025-05-14t22.mp3 .
+<urn:uuid:4de4201c-4ea0-4c72-bc80-84cca95f68d9>
+    a mo:Track;
+    dct:title "For the Love of Money [The O'Jays] > C.R.E.A.M. [Wu‐Tang Clan]";
+    mo:duration "266";
+    dcat:downloadUrl gza:GZA2025-05-14t20.mp3 .
+<urn:uuid:a071b352-b8f7-4838-9742-48d7f88d8c78>
+    a mo:Track;
+    dct:title "Living in the World Today";
+    mo:duration "237";
+    dcat:downloadUrl gza:GZA2025-05-14t05.mp3 .
+<urn:uuid:cb262cde-56d1-4d15-9943-4fb9c093d0f4>
+    a mo:Release;
+    dct:title "GZA 2025-05-14 The Taft Theatre";
+    mo:track
+        <urn:uuid:21f74e2c-b745-431f-9b6e-ddd17a857e15>,
+        <urn:uuid:40a173dd-3190-40b6-881c-9f820efb7952>,
+        <urn:uuid:4451332a-5d30-4075-913c-e38ff30fcd00>,
+        <urn:uuid:4de4201c-4ea0-4c72-bc80-84cca95f68d9>,
+        <urn:uuid:a071b352-b8f7-4838-9742-48d7f88d8c78>,
+        <urn:uuid:f142102a-9ddd-4afd-9e28-8548174ba9f0>;
+    dcat:landingPage det:gza-2025-05-14;
+    foaf:maker "GZA", <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:f142102a-9ddd-4afd-9e28-8548174ba9f0>
+    a mo:Track;
+    dct:title "Shimmy Shimmy Ya [Ol' Dirty Bastard]";
+    mo:duration "200";
+    dcat:downloadUrl gza:GZA2025-05-14t19.mp3 .

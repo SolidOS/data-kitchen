@@ -1,0 +1,16 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:b715e9dc-4c7a-4cc4-8654-c500b8b9611e> a mo:Release;
+    dcterms:title "Boards Of Canada - (1995) Twoism ‎(LP, Album, Ltd)";
+    foaf:maker "Boards Of Canada";
+    dcat:landingPage <https://archive.org/details/BoardsOfCanada-1995TwoismLPAlbumLtd>;
+    mo:track <urn:uuid:5a8dc958-a313-4750-b784-22745cc1a971>, <urn:uuid:20e7b797-5cfc-4925-b179-e92a0db80595>, <urn:uuid:2ac572e4-504c-4d6d-a9c9-5a009d50579d>, <urn:uuid:f61b2e3b-3807-4892-a7a9-6010ff8a8928>, <urn:uuid:fd67327b-ff9f-4077-a9aa-cf79ed47d8f6>, <urn:uuid:b4badac1-7782-4b03-a5c1-d92b21be6c28>.
+<urn:uuid:5a8dc958-a313-4750-b784-22745cc1a971> a mo:Track; dcterms:title "Sixtyniner"; mo:duration "312"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/01%20-%20Sixtyniner.mp3>.
+<urn:uuid:20e7b797-5cfc-4925-b179-e92a0db80595> a mo:Track; dcterms:title "Oirectine"; mo:duration "330"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/02%20-%20Oirectine.mp3>.
+<urn:uuid:2ac572e4-504c-4d6d-a9c9-5a009d50579d> a mo:Track; dcterms:title "Basefree"; mo:duration "353"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/04%20-%20Basefree.mp3>.
+<urn:uuid:f61b2e3b-3807-4892-a7a9-6010ff8a8928> a mo:Track; dcterms:title "Twoism"; mo:duration "334"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/05%20-%20Twoism.mp3>.
+<urn:uuid:fd67327b-ff9f-4077-a9aa-cf79ed47d8f6> a mo:Track; dcterms:title "Seeya Later"; mo:duration "244"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/06%20-%20Seeya%20Later.mp3>.
+<urn:uuid:b4badac1-7782-4b03-a5c1-d92b21be6c28> a mo:Track; dcterms:title "Smokes Quantity"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/BoardsOfCanada-1995TwoismLPAlbumLtd/08%20-%20Smokes%20Quantity.mp3>.

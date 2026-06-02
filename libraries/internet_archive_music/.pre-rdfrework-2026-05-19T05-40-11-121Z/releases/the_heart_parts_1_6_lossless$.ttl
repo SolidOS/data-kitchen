@@ -1,0 +1,28 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:7c7a74a0-2815-4875-9ca3-46b1208d8283> a mo:Release;
+    dcterms:title "The Heart, Parts 1-6 Lossless";
+    foaf:maker "Kendrick Lamar";
+    dcat:landingPage <https://archive.org/details/the-heart-parts-1-through-6>;
+    mo:track <urn:uuid:4e3189f0-3e8c-4273-9db2-e052b1f4d3a7>, <urn:uuid:bfa66f52-aca4-4c6f-99e4-cfea581af5d4>, <urn:uuid:984bba3a-95d4-4335-9348-061ba3a7540b>, <urn:uuid:d442be2f-258f-418a-a4da-a3714fea65e5>, <urn:uuid:9dfa883a-2973-4f00-9097-3ff422501ac8>, <urn:uuid:1dce58b1-85cf-4040-9a99-a191b8358a9b>, <urn:uuid:6fdc29ab-75e8-482e-a38c-d85abc9d9fff>, <urn:uuid:43cdb3a9-506f-466a-ae93-a13122da458a>, <urn:uuid:97f879c1-c844-4d96-b414-317475bb5ca1>, <urn:uuid:7c4450ed-9aac-49b7-96a2-84d5c847830b>, <urn:uuid:7f7dc71d-907b-4fc6-9fda-5c89bcdd992a>, <urn:uuid:7dc55d7a-d3ca-4efe-bb90-7840790c3a57>, <urn:uuid:4c8faec6-0ed3-4f21-8ec5-53b706d6fabd>, <urn:uuid:234e57b9-aff6-4d5a-8d79-1cb25542d21c>, <urn:uuid:e8d69b9b-dc16-4dc6-b106-b8f05a03424b>, <urn:uuid:bec20de1-7dda-44c6-bbdf-4453a9562830>, <urn:uuid:14f2b35f-9f5f-464f-8892-20c5f479240d>, <urn:uuid:6ce328be-2c4f-48c5-9ac5-2508030ee986>.
+<urn:uuid:4e3189f0-3e8c-4273-9db2-e052b1f4d3a7> a mo:Track; dcterms:title "The Heart, Part I"; mo:duration "266"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%201.flac>.
+<urn:uuid:bfa66f52-aca4-4c6f-99e4-cfea581af5d4> a mo:Track; dcterms:title "The Heart, Part I"; mo:duration "266"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%201.mp3>.
+<urn:uuid:984bba3a-95d4-4335-9348-061ba3a7540b> a mo:Track; dcterms:title "The Heart, Part I"; mo:duration "266"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%201.wav>.
+<urn:uuid:d442be2f-258f-418a-a4da-a3714fea65e5> a mo:Track; dcterms:title "The Heart, Part II"; mo:duration "293"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%202.flac>.
+<urn:uuid:9dfa883a-2973-4f00-9097-3ff422501ac8> a mo:Track; dcterms:title "The Heart, Part II"; mo:duration "293"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%202.mp3>.
+<urn:uuid:1dce58b1-85cf-4040-9a99-a191b8358a9b> a mo:Track; dcterms:title "The Heart, Part II"; mo:duration "293"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%202.wav>.
+<urn:uuid:6fdc29ab-75e8-482e-a38c-d85abc9d9fff> a mo:Track; dcterms:title "The Heart, Part III"; mo:duration "276"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%203.flac>.
+<urn:uuid:43cdb3a9-506f-466a-ae93-a13122da458a> a mo:Track; dcterms:title "The Heart, Part III"; mo:duration "276"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%203.mp3>.
+<urn:uuid:97f879c1-c844-4d96-b414-317475bb5ca1> a mo:Track; dcterms:title "The Heart, Part III"; mo:duration "276"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%203.wav>.
+<urn:uuid:7c4450ed-9aac-49b7-96a2-84d5c847830b> a mo:Track; dcterms:title "The Heart, Part IV"; mo:duration "288"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%204.flac>.
+<urn:uuid:7f7dc71d-907b-4fc6-9fda-5c89bcdd992a> a mo:Track; dcterms:title "The Heart, Part IV"; mo:duration "288"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%204.mp3>.
+<urn:uuid:7dc55d7a-d3ca-4efe-bb90-7840790c3a57> a mo:Track; dcterms:title "The Heart, Part IV"; mo:duration "288"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%204.wav>.
+<urn:uuid:4c8faec6-0ed3-4f21-8ec5-53b706d6fabd> a mo:Track; dcterms:title "The Heart, Part V"; mo:duration "332"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%205.flac>.
+<urn:uuid:234e57b9-aff6-4d5a-8d79-1cb25542d21c> a mo:Track; dcterms:title "The Heart, Part V"; mo:duration "332"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%205.mp3>.
+<urn:uuid:e8d69b9b-dc16-4dc6-b106-b8f05a03424b> a mo:Track; dcterms:title "The Heart, Part V"; mo:duration "332"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%205.wav>.
+<urn:uuid:bec20de1-7dda-44c6-bbdf-4453a9562830> a mo:Track; dcterms:title "The Heart, Part VI"; mo:duration "292"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%206.flac>.
+<urn:uuid:14f2b35f-9f5f-464f-8892-20c5f479240d> a mo:Track; dcterms:title "The Heart, Part VI"; mo:duration "292"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%206.mp3>.
+<urn:uuid:6ce328be-2c4f-48c5-9ac5-2508030ee986> a mo:Track; dcterms:title "The Heart, Part VI"; mo:duration "292"; dcat:downloadUrl <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%206.wav>.

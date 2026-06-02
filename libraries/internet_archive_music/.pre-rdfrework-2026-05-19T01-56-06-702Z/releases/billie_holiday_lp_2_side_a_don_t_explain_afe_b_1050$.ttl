@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:90da46f6-fd82-47dc-9677-9d78aa056d80> a mo:Release;
+    dcterms:title "Billie HOLIDAY - LP 2 Side A - Don't Explain - AFE B 1050";
+    foaf:maker "Billie HOLIDAY - Vocals";
+    dcat:landingPage <https://archive.org/details/billie-holiday-dont-explain-afe-b-1050-lp-2-side-a>;
+    mo:track <urn:uuid:952e2374-3ded-4bac-ab0f-4d13c20e0c09>, <urn:uuid:6841bf6f-bea6-4492-8f90-f185c27f7e51>.
+<urn:uuid:952e2374-3ded-4bac-ab0f-4d13c20e0c09> a mo:Track; dcterms:title "02 - Billie HOLIDAY - Don't explain - AFE B1050 - LP 2 - Side A - Don't explain"; mo:duration "206"; dcat:downloadUrl <https://archive.org/download/billie-holiday-dont-explain-afe-b-1050-lp-2-side-a/02%20-%20Billie%20HOLIDAY%20-%20Don't%20explain%20-%20AFE%20B1050%20-%20LP%202%20-%20Side%20A%20-%20Don't%20explain.mp3>.
+<urn:uuid:6841bf6f-bea6-4492-8f90-f185c27f7e51> a mo:Track; dcterms:title "04 - Billie HOLIDAY - Don't explain - AFE B1050 - LP 2 - Side A - Lover Man"; mo:duration "198"; dcat:downloadUrl <https://archive.org/download/billie-holiday-dont-explain-afe-b-1050-lp-2-side-a/04%20-%20Billie%20HOLIDAY%20-%20Don't%20explain%20-%20AFE%20B1050%20-%20LP%202%20-%20Side%20A%20-%20Lover%20Man.mp3>.

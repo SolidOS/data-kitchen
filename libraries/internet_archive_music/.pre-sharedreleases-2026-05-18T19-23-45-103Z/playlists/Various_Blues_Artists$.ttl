@@ -1,0 +1,140 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/agents.ttl#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Various_Blues_Artists> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Various Blues Artists";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:b19c98a0-0536-4777-a12b-3a46c5391901>, <urn:uuid:0a9cb190-51c5-4bf0-aa48-35d64057820a>, <urn:uuid:0df5c1ee-75c5-444c-ae56-4b7a429d8b2c>, <urn:uuid:15ef9ebd-ec3b-4e08-be1a-a99d17e84d4d>, <urn:uuid:05db003c-2c49-45e5-8574-2607e8baa124>, <urn:uuid:7f21d0f6-f750-4c91-a31a-ebc5478c9beb>, <urn:uuid:dde3ae9b-1b08-45c9-bc69-6c78c9708fe6>, <urn:uuid:986528b3-09c8-4ecf-bb35-ce4ce3cd42be>, <urn:uuid:1435f6a8-e288-476b-9d8b-fefe59abc114>, <urn:uuid:66d11011-b136-4300-85e3-ab7e6f4b85ac>, <urn:uuid:41301074-b8e7-4f49-9eac-5a0f4cb3e79b>, <urn:uuid:e1ef9448-ed9a-4ac9-89b8-f9fa227494eb>, <urn:uuid:50198f16-7d6c-45dc-8b91-35692a4db760>, <urn:uuid:f9f01f16-f6da-4105-80dd-f386f5a99815>, <urn:uuid:002b5f9d-6f14-4238-b583-4f08921acb31>, <urn:uuid:d32971d1-4344-463e-b932-9b2ea9107464>, <urn:uuid:2674440f-e7c9-40e8-8702-08fd59d29da6>, <urn:uuid:2f8bf66c-57fc-4cfc-91c4-6e348f5d7691>, <urn:uuid:07b8d057-8d12-4da3-b71f-7a81acceeb6d>, <urn:uuid:bcc5f8ad-2d87-418a-a7a0-b74853d64e3b>, <urn:uuid:04e669a4-c389-4692-bde6-a3ad91b0ee30>, <urn:uuid:32c788a4-e6fa-4ce7-ba06-5c2866fcaf7c>, <urn:uuid:8920c034-bd72-47de-a1fd-47085ef9c2b4>, <urn:uuid:746a2a34-7dbb-456c-b76f-f1416c774f5e>, <urn:uuid:8c8c6474-1aa4-4c50-b413-5c41c3f6104e>;
+    omp:hidePlaylist "true".
+<urn:uuid:b19c98a0-0536-4777-a12b-3a46c5391901> a mo:Track;
+    dcterms:title "14 - Story of the Blues Vol. 1 CBS M 63573 [LP 2] Side B - Otis SPANN - Bloody Murder (V.1968)";
+    dcat:downloadUrl <https://archive.org/download/story-of-the-blues-vol.-1-cbs-m-63573-side-b/14%20-%20Story%20of%20the%20Blues%20Vol.%201%20CBS%20M%2063573%20%5BLP%202%5D%20Side%20B%20-%20Otis%20SPANN%20-%20Bloody%20Murder%20(V.1968).mp3>;
+    mo:duration "217".
+<urn:uuid:0a9cb190-51c5-4bf0-aa48-35d64057820a> a mo:Track;
+    dcterms:title "16 - Story of the Blues Vol. 1 CBS M 63573 [LP 2] Side B - Johnny SHINES - I don't know (V.1968)";
+    dcat:downloadUrl <https://archive.org/download/story-of-the-blues-vol.-1-cbs-m-63573-side-b/16%20-%20Story%20of%20the%20Blues%20Vol.%201%20CBS%20M%2063573%20%5BLP%202%5D%20Side%20B%20-%20Johnny%20SHINES%20-%20I%20don't%20know%20(V.1968).mp3>;
+    mo:duration "214".
+<urn:uuid:0df5c1ee-75c5-444c-ae56-4b7a429d8b2c> a mo:Track;
+    dcterms:title "03 - The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1 Side A - Big Bill BROONZY - Careless Love";
+    dcat:downloadUrl <https://archive.org/download/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1/03%20-%20The%20Blues%20Vol.%201%20-%20Metronome%202002%20DALP%202-1964%2C%20LP%201%20Side%20A%20-%20Big%20Bill%20BROONZY%20-%20Careless%20Love.mp3>;
+    mo:duration "250".
+<urn:uuid:15ef9ebd-ec3b-4e08-be1a-a99d17e84d4d> a mo:Track;
+    dcterms:title "06 - The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1 Side B - Lighnin' HOPKINS - Mojo Hand";
+    dcat:downloadUrl <https://archive.org/download/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1/06%20-%20The%20Blues%20Vol.%201%20-%20Metronome%202002%20DALP%202-1964%2C%20LP%201%20Side%20B%20-%20Lighnin'%20HOPKINS%20-%20Mojo%20Hand.mp3>;
+    mo:duration "181".
+<urn:uuid:05db003c-2c49-45e5-8574-2607e8baa124> a mo:Track;
+    dcterms:title "07 - The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1 Side B - Elmore JAMES - It hurts me too";
+    dcat:downloadUrl <https://archive.org/download/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1/07%20-%20The%20Blues%20Vol.%201%20-%20Metronome%202002%20DALP%202-1964%2C%20LP%201%20Side%20B%20-%20Elmore%20JAMES%20-%20It%20hurts%20me%20too.mp3>;
+    mo:duration "198".
+<urn:uuid:7f21d0f6-f750-4c91-a31a-ebc5478c9beb> a mo:Track;
+    dcterms:title "11 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side A -  The HOLY MODAL ROUNDERS - Blues in a bottle";
+    dcat:downloadUrl <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/11%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20A%20-%20%20The%20HOLY%20MODAL%20ROUNDERS%20-%20Blues%20in%20a%20bottle.mp3>;
+    mo:duration "205".
+<urn:uuid:dde3ae9b-1b08-45c9-bc69-6c78c9708fe6> a mo:Track;
+    dcterms:title "13 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side A - Lightnin' HOPKINS - Too many drivers";
+    dcat:downloadUrl <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/13%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20A%20-%20Lightnin'%20HOPKINS%20-%20Too%20many%20drivers.mp3>;
+    mo:duration "215".
+<urn:uuid:986528b3-09c8-4ecf-bb35-ce4ce3cd42be> a mo:Track;
+    dcterms:title "14 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side A - Furry LEWIS - Going to Brownsville";
+    dcat:downloadUrl <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/14%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20A%20-%20Furry%20LEWIS%20-%20Going%20to%20Brownsville.mp3>;
+    mo:duration "216".
+<urn:uuid:1435f6a8-e288-476b-9d8b-fefe59abc114> a mo:Track;
+    dcterms:title "15 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side A - Rev. Gary DAVIS - When I die I'll live again";
+    dcat:downloadUrl <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/15%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20A%20-%20Rev.%20Gary%20DAVIS%20-%20When%20I%20die%20I'll%20live%20again.mp3>;
+    mo:duration "213".
+<urn:uuid:66d11011-b136-4300-85e3-ab7e6f4b85ac> a mo:Track;
+    dcterms:title "17 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side B - John Lee HOOKER - Driftin' and Driftin'";
+    dcat:downloadUrl <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/17%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20B%20-%20John%20Lee%20HOOKER%20-%20Driftin'%20and%20Driftin'.mp3>;
+    mo:duration "255".
+<urn:uuid:41301074-b8e7-4f49-9eac-5a0f4cb3e79b> a mo:Track;
+    dcterms:title "18 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side B - Jesse FULLER - Red River Blues";
+    dcat:downloadUrl <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/18%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20B%20-%20Jesse%20FULLER%20-%20Red%20River%20Blues.mp3>;
+    mo:duration "221".
+<urn:uuid:e1ef9448-ed9a-4ac9-89b8-f9fa227494eb> a mo:Track;
+    dcterms:title "20 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side B - Tom RUSH - Drop down Mama";
+    dcat:downloadUrl <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/20%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20B%20-%20Tom%20RUSH%20-%20Drop%20down%20Mama.mp3>;
+    mo:duration "250".
+<urn:uuid:50198f16-7d6c-45dc-8b91-35692a4db760> a mo:Track;
+    dcterms:title "21 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side B - Dave VAN RONK - He was a friend of mine";
+    dcat:downloadUrl <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/21%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20B%20-%20Dave%20VAN%20RONK%20-%20He%20was%20a%20friend%20of%20mine.mp3>;
+    mo:duration "214".
+<urn:uuid:f9f01f16-f6da-4105-80dd-f386f5a99815> a mo:Track;
+    dcterms:title "01 - BLUES SELECTION LP 1 Bellaphon BJS 4071 Side A -  Jimmy WITHERSPOON - Ain't nobodys buisiness";
+    dcat:downloadUrl <https://archive.org/download/blues-selection-lp-1-bellaphon-bjs-4071/01%20-%20BLUES%20SELECTION%20LP%201%20Bellaphon%20BJS%204071%20Side%20A%20-%20%20Jimmy%20WITHERSPOON%20-%20Ain't%20nobodys%20buisiness.mp3>;
+    mo:duration "392".
+<urn:uuid:002b5f9d-6f14-4238-b583-4f08921acb31> a mo:Track;
+    dcterms:title "02 - BLUES SELECTION LP 1 Bellaphon BJS 4071 Side A - Lightnin' HOPKINS - The howlin' wolf";
+    dcat:downloadUrl <https://archive.org/download/blues-selection-lp-1-bellaphon-bjs-4071/02%20-%20BLUES%20SELECTION%20LP%201%20Bellaphon%20BJS%204071%20Side%20A%20-%20Lightnin'%20HOPKINS%20-%20The%20howlin'%20wolf.mp3>;
+    mo:duration "235".
+<urn:uuid:d32971d1-4344-463e-b932-9b2ea9107464> a mo:Track;
+    dcterms:title "04 - BLUES SELECTION LP 1 Bellaphon BJS 4071 Side A - Rev. Gary DAVIS - I'll fly away";
+    dcat:downloadUrl <https://archive.org/download/blues-selection-lp-1-bellaphon-bjs-4071/04%20-%20BLUES%20SELECTION%20LP%201%20Bellaphon%20BJS%204071%20Side%20A%20-%20Rev.%20Gary%20DAVIS%20-%20I'll%20fly%20away.mp3>;
+    mo:duration "279".
+<urn:uuid:2674440f-e7c9-40e8-8702-08fd59d29da6> a mo:Track;
+    dcterms:title "05 - BLUES SELECTION LP 1 Bellaphon BJS 4071 Side A - Memphis Slim - Beer Drinkin' Women";
+    dcat:downloadUrl <https://archive.org/download/blues-selection-lp-1-bellaphon-bjs-4071/05%20-%20BLUES%20SELECTION%20LP%201%20Bellaphon%20BJS%204071%20Side%20A%20-%20Memphis%20Slim%20-%20Beer%20Drinkin'%20Women.mp3>;
+    mo:duration "210".
+<urn:uuid:2f8bf66c-57fc-4cfc-91c4-6e348f5d7691> a mo:Track;
+    dcterms:title "07 - BLUES SELECTION LP 1 Bellaphon BJS 4071 Side B - Jesse FULLER - San Francisco Bay";
+    dcat:downloadUrl <https://archive.org/download/blues-selection-lp-1-bellaphon-bjs-4071/07%20-%20BLUES%20SELECTION%20LP%201%20Bellaphon%20BJS%204071%20Side%20B%20-%20Jesse%20FULLER%20-%20San%20Francisco%20Bay.mp3>;
+    mo:duration "180".
+<urn:uuid:07b8d057-8d12-4da3-b71f-7a81acceeb6d> a mo:Track;
+    dcterms:title "08 - BLUES SELECTION LP 1 Bellaphon BJS 4071 Side B - Sonny TERRY & Brownie McGHEE - Betty and Dupree's Blues";
+    dcat:downloadUrl <https://archive.org/download/blues-selection-lp-1-bellaphon-bjs-4071/08%20-%20BLUES%20SELECTION%20LP%201%20Bellaphon%20BJS%204071%20Side%20B%20-%20Sonny%20TERRY%20%26%20Brownie%20McGHEE%20-%20Betty%20and%20Dupree's%20Blues.mp3>;
+    mo:duration "378".
+<urn:uuid:bcc5f8ad-2d87-418a-a7a0-b74853d64e3b> a mo:Track;
+    dcterms:title "09 - BLUES SELECTION LP 1 Bellaphon BJS 4071 Side B - Tom RUSH - Duncan and Brady";
+    dcat:downloadUrl <https://archive.org/download/blues-selection-lp-1-bellaphon-bjs-4071/09%20-%20BLUES%20SELECTION%20LP%201%20Bellaphon%20BJS%204071%20Side%20B%20-%20Tom%20RUSH%20-%20Duncan%20and%20Brady.mp3>;
+    mo:duration "220".
+<urn:uuid:04e669a4-c389-4692-bde6-a3ad91b0ee30> a mo:Track;
+    dcterms:title "10 - BLUES SELECTION LP 1 Bellaphon BJS 4071 Side B - Dave VAN RONK - Cocaine Blues";
+    dcat:downloadUrl <https://archive.org/download/blues-selection-lp-1-bellaphon-bjs-4071/10%20-%20BLUES%20SELECTION%20LP%201%20Bellaphon%20BJS%204071%20Side%20B%20-%20Dave%20VAN%20RONK%20-%20Cocaine%20Blues.mp3>;
+    mo:duration "261".
+<urn:uuid:32c788a4-e6fa-4ce7-ba06-5c2866fcaf7c> a mo:Track;
+    dcterms:title "02 - Blue & Boogie Slow Jam Pt. 1";
+    dcat:downloadUrl <https://archive.org/download/j.-l.-hooker-santana-etta-james-fillmore-86/02%20-%20Blue%20%26%20Boogie%20Slow%20Jam%20Pt.%201.mp3>;
+    mo:duration "432".
+<urn:uuid:8920c034-bd72-47de-a1fd-47085ef9c2b4> a mo:Track;
+    dcterms:title "03 - Something's Got a Hold of Me";
+    dcat:downloadUrl <https://archive.org/download/j.-l.-hooker-santana-etta-james-fillmore-86/03%20-%20Something's%20Got%20a%20Hold%20of%20Me.mp3>;
+    mo:duration "454".
+<urn:uuid:746a2a34-7dbb-456c-b76f-f1416c774f5e> a mo:Track;
+    dcterms:title "04 - Tell Mama";
+    dcat:downloadUrl <https://archive.org/download/j.-l.-hooker-santana-etta-james-fillmore-86/04%20-%20Tell%20Mama.mp3>;
+    mo:duration "469".
+<urn:uuid:8c8c6474-1aa4-4c50-b413-5c41c3f6104e> a mo:Track;
+    dcterms:title "05 - Blue & Boogie Slow Jam Pt. 2";
+    dcat:downloadUrl <https://archive.org/download/j.-l.-hooker-santana-etta-james-fillmore-86/05%20-%20Blue%20%26%20Boogie%20Slow%20Jam%20Pt.%202.mp3>;
+    mo:duration "1282".
+<urn:uuid:edcc6e4a-2ab5-4d1a-8498-3b0b4e362048> a mo:Release;
+    dcterms:title "The Story of the Blues – LP 2 Side B";
+    foaf:maker "Blind Boy FULLER, Brownie McGHEE, Joe WILLIAMS, Big Bill BROONZY & Memphis Slim, Joe TURNER & Pete JOHNSON, Otis SPANN, Elmore JAMES, Johnny SHINES";
+    dcat:landingPage <https://archive.org/details/story-of-the-blues-vol.-1-cbs-m-63573-side-b>;
+    mo:track <urn:uuid:b19c98a0-0536-4777-a12b-3a46c5391901>, <urn:uuid:0a9cb190-51c5-4bf0-aa48-35d64057820a>.
+<urn:uuid:4eece5f8-d8b2-4a4a-af6a-5a8981a338f2> a mo:Release;
+    dcterms:title "The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1";
+    foaf:maker "B.B.KING, Buster BROWN, Big Bill BROONZY, Memphis SLIM, Slim HARPO, Lighnin' HOPKINS, Elmore JAMES, Jimmy REED, Arthur CRUDUP";
+    dcat:landingPage <https://archive.org/details/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1>;
+    mo:track <urn:uuid:0df5c1ee-75c5-444c-ae56-4b7a429d8b2c>, <urn:uuid:15ef9ebd-ec3b-4e08-be1a-a99d17e84d4d>, <urn:uuid:05db003c-2c49-45e5-8574-2607e8baa124>.
+<urn:uuid:dfae0632-d16b-4d1f-9dd5-b3cd65083fb3> a mo:Release;
+    dcterms:title "BLUES SELECTION LP 2 - Bellaphon BJS 4071";
+    foaf:maker "Jimmy WITHERSPOON, John Lee HOKER, Lightnin' HOPKINS, Furry LEWIS, Reverend Gary DAVIS, Memphis Slim, Jesse FULER, Tom RUSH, Sony TERRY, Brownie McGHEE, Dave van RONK, Holy Modal Rounders";
+    dcat:landingPage <https://archive.org/details/17-blues-selection-lp-2-bellaphon-bjs-4071>;
+    mo:track <urn:uuid:7f21d0f6-f750-4c91-a31a-ebc5478c9beb>, <urn:uuid:dde3ae9b-1b08-45c9-bc69-6c78c9708fe6>, <urn:uuid:986528b3-09c8-4ecf-bb35-ce4ce3cd42be>, <urn:uuid:1435f6a8-e288-476b-9d8b-fefe59abc114>, <urn:uuid:66d11011-b136-4300-85e3-ab7e6f4b85ac>, <urn:uuid:41301074-b8e7-4f49-9eac-5a0f4cb3e79b>, <urn:uuid:e1ef9448-ed9a-4ac9-89b8-f9fa227494eb>, <urn:uuid:50198f16-7d6c-45dc-8b91-35692a4db760>.
+<urn:uuid:48831b1e-069d-4e7b-9d3c-690324b54534> a mo:Release;
+    dcterms:title "BLUES SELECTION LP 1 - Bellaphon BJS 4071";
+    foaf:maker "Jimmy WITHERSPOON, John Lee HOOKER, Lightnin' HOPKINS, Furry LEWIS, Reverend Gary DAVIS, Memphis Slim, Jesse FULLER, Tom RUSH, Sonny TERRY, Brownie McGHEE, Dave van RONK";
+    dcat:landingPage <https://archive.org/details/blues-selection-lp-1-bellaphon-bjs-4071>;
+    mo:track <urn:uuid:f9f01f16-f6da-4105-80dd-f386f5a99815>, <urn:uuid:002b5f9d-6f14-4238-b583-4f08921acb31>, <urn:uuid:d32971d1-4344-463e-b932-9b2ea9107464>, <urn:uuid:2674440f-e7c9-40e8-8702-08fd59d29da6>, <urn:uuid:2f8bf66c-57fc-4cfc-91c4-6e348f5d7691>, <urn:uuid:07b8d057-8d12-4da3-b71f-7a81acceeb6d>, <urn:uuid:bcc5f8ad-2d87-418a-a7a0-b74853d64e3b>, <urn:uuid:04e669a4-c389-4692-bde6-a3ad91b0ee30>.
+<urn:uuid:43b3b5df-3a4c-4a73-8ef1-df00978fd4e2> a mo:Release;
+    dcterms:title "J.L. Hooker, Santana & Etta James Fillmore 1986";
+    foaf:maker "Santana, Etta James & John Lee Hooker";
+    dcat:landingPage <https://archive.org/details/j.-l.-hooker-santana-etta-james-fillmore-86>;
+    mo:track <urn:uuid:32c788a4-e6fa-4ce7-ba06-5c2866fcaf7c>, <urn:uuid:8920c034-bd72-47de-a1fd-47085ef9c2b4>, <urn:uuid:746a2a34-7dbb-456c-b76f-f1416c774f5e>, <urn:uuid:8c8c6474-1aa4-4c50-b413-5c41c3f6104e>.

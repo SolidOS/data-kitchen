@@ -1,0 +1,71 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:09ed32ec-8f0f-40f0-8089-7087f778aa8a>
+    a mo:Track;
+    dct:title "Sly Fox";
+    mo:duration "263";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Nas%20-%20Sly%20Fox.mp3>.
+<urn:uuid:13797e97-d237-48bd-9a54-f82f154cd1d6>
+    a mo:Track;
+    dct:title "Gilla House Check";
+    mo:duration "181";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Redman%20-%20Gilla%20House%20Check.mp3>.
+<urn:uuid:13ba0965-289a-4fe9-b96a-b2a67d12f4d4>
+    a mo:Track;
+    dct:title "Hrshu Attack";
+    mo:duration "208";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Canibus%20-%20Hrshu%20Attack.mp3>.
+<urn:uuid:63d2d234-3477-4b59-b5e8-317a330772d7>
+    a mo:Track;
+    dct:title "Coke (Featuring Raekwon And Slaine of La Coka Nostra)";
+    mo:duration "240";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/U-God%20ft.%20Raekwon%2C%20Slaine%20-%20Coke.mp3>.
+<urn:uuid:6643d9d4-f92f-47c3-aad6-014640d4c122>
+    a mo:Track;
+    dct:title "weak spot";
+    mo:duration "238";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Wu-Tang%20Clan%20-%20Weak%20Spot.mp3>.
+<urn:uuid:6d738b39-3573-4696-bfdd-43e7509ed8a7>
+    a mo:Track;
+    dct:title "$ Wu-Tang Clan - Bonus Chamber Vol. 2 FULL MIXTAPE";
+    mo:duration "2819";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/%24%20Wu-Tang%20Clan%20-%20Bonus%20Chamber%20Vol.%202%20FULL%20MIXTAPE.mp3>.
+<urn:uuid:ab1b909d-46dd-464a-9ddb-1fcfd7418b17>
+    a mo:Release;
+    dct:title "Wu-Tang Clan - Bonus Chamber Vol 2 FULL ALBUM";
+    mo:track
+        <urn:uuid:09ed32ec-8f0f-40f0-8089-7087f778aa8a>,
+        <urn:uuid:13797e97-d237-48bd-9a54-f82f154cd1d6>,
+        <urn:uuid:13ba0965-289a-4fe9-b96a-b2a67d12f4d4>,
+        <urn:uuid:63d2d234-3477-4b59-b5e8-317a330772d7>,
+        <urn:uuid:6643d9d4-f92f-47c3-aad6-014640d4c122>,
+        <urn:uuid:6d738b39-3573-4696-bfdd-43e7509ed8a7>,
+        <urn:uuid:c0223d1c-11a9-43ac-9207-b63f0a95d797>,
+        <urn:uuid:d332e043-8270-4dff-8b12-1d2d53d9f74b>;
+    dcat:landingPage det:wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum;
+    foaf:maker
+        "Redman, Raekwon, U-God, Raekwon, TuPac, Nas, Eminem, Canibus, Easy-E, Ice Cube, The Game, Eminem, Jadakiss ft. Styles P., Fat Joe, Nas, Cam'ron, The Game, Jedi Mind Tricks, Canibus, The Game, Inspectah Deck, Busta Rhymes, Busta Rhymes, Ghostface Killah ft. Notorious B.I.G., Raekwon, Wu Tang Clan, Canibus/Canibus/J-Corry/[GZA + RZA]",
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:c0223d1c-11a9-43ac-9207-b63f0a95d797>
+    a mo:Track;
+    dct:title "Nas - Don't Body YaSelf ";
+    mo:duration "264";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Nas%20-%20Don't%20Body%20YaSelf%20.mp3>.
+<urn:uuid:d332e043-8270-4dff-8b12-1d2d53d9f74b>
+    a mo:Track;
+    dct:title "Three Bricks";
+    mo:duration "284";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Ghostface%20Killah%20ft.%20Notorious%20B.I.G.%2C%20Raekwon%20-%20Three%20Bricks.mp3>.

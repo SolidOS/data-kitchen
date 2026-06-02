@@ -1,0 +1,14 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:365f4c7f-0ffe-40ac-8c00-392075179474> a mo:Release;
+    dcterms:title "Perfect Circle";
+    foaf:maker "Nujabes (feat. Shing02)";
+    dcat:landingPage <https://archive.org/details/Nujabes-perfect-circle-uio-loi-remix>;
+    mo:track <urn:uuid:d694da51-6ff9-4802-a89c-dcfc7b2c3fe1>, <urn:uuid:a4e6f78d-570b-438f-b6cc-81b025e761fe>, <urn:uuid:40b480cd-7a15-4879-9987-2cca0fc94a46>, <urn:uuid:ac6ed5eb-987f-4176-b5dc-c61c18f3cb37>.
+<urn:uuid:d694da51-6ff9-4802-a89c-dcfc7b2c3fe1> a mo:Track; dcterms:title "Perfect Circle (Vocal)"; mo:duration "237"; dcat:downloadUrl <https://archive.org/download/Nujabes-perfect-circle-uio-loi-remix/Perfect%20Circle%2FPerfect%20Circle%2F01%20Perfect%20Circle%20(Vocal).mp3>.
+<urn:uuid:a4e6f78d-570b-438f-b6cc-81b025e761fe> a mo:Track; dcterms:title "Perfect Circle (Instrumental)"; mo:duration "236"; dcat:downloadUrl <https://archive.org/download/Nujabes-perfect-circle-uio-loi-remix/Perfect%20Circle%2FPerfect%20Circle%2F02%20Perfect%20Circle%20(Instrumental).mp3>.
+<urn:uuid:40b480cd-7a15-4879-9987-2cca0fc94a46> a mo:Track; dcterms:title "Perfect Circle (Uio Loi Remix)"; mo:duration "252"; dcat:downloadUrl <https://archive.org/download/Nujabes-perfect-circle-uio-loi-remix/Perfect%20Circle%2FPerfect%20Circle%2F03%20Perfect%20Circle%20(Uio%20Loi%20Remix).mp3>.
+<urn:uuid:ac6ed5eb-987f-4176-b5dc-c61c18f3cb37> a mo:Track; dcterms:title "Perfect Circle (Uio Loi Remix Instrumental)"; mo:duration "251"; dcat:downloadUrl <https://archive.org/download/Nujabes-perfect-circle-uio-loi-remix/Perfect%20Circle%2FPerfect%20Circle%2F04%20Perfect%20Circle%20(Uio%20Loi%20Remix%20Instrumental).mp3>.

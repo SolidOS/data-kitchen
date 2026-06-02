@@ -1,0 +1,43 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:015c31a5-e034-4d7e-b6e5-eb7731f92f07>
+    a mo:Track;
+    dct:title "Miranda";
+    mo:duration "182";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-massacre/10%20-%20Raekwon%2C%20Ghostface%20Killah%20%26%20Method%20Man%20-%20Miranda.mp3>.
+<urn:uuid:6228fde5-f3a9-41a8-a75e-2d74af5fa6ea>
+    a mo:Track;
+    dct:title "Our Dreams";
+    mo:duration "204";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-massacre/05%20-%20Raekwon%2C%20Ghostface%20Killah%20%26%20Method%20Man%20-%20Our%20Dreams.mp3>.
+<urn:uuid:7c7939f6-dbaf-4929-8bba-219ddc75f82a>
+    a mo:Release;
+    dct:title "Wu-Massacre";
+    mo:track
+        <urn:uuid:015c31a5-e034-4d7e-b6e5-eb7731f92f07>,
+        <urn:uuid:6228fde5-f3a9-41a8-a75e-2d74af5fa6ea>,
+        <urn:uuid:7d4c0f42-aad4-4619-8d1a-623274c4c29d>,
+        <urn:uuid:bc97a15a-7fdc-4903-94db-29bc5cb25149>;
+    dcat:landingPage det:wu-massacre;
+    foaf:maker
+        "Raekwon, Ghostface Killah & Method Man",
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:7d4c0f42-aad4-4619-8d1a-623274c4c29d>
+    a mo:Track;
+    dct:title "Dangerous";
+    mo:duration "234";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-massacre/07%20-%20Raekwon%2C%20Ghostface%20Killah%20%26%20Method%20Man%20-%20Dangerous.mp3>.
+<urn:uuid:bc97a15a-7fdc-4903-94db-29bc5cb25149>
+    a mo:Track;
+    dct:title "It's That Wu Sh*t";
+    mo:duration "191";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-massacre/12%20-%20Ghostface%20Killah%20%26%20Method%20Man%20-%20It's%20That%20Wu%20Sh-t.mp3>.

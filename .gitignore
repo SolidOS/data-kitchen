@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+*~
+\#*\#
+.\#*
+*.swp
+
+# Local Claude Code agent state (not project content)
+.claude/
+
+# Private working notes — NOT for publication. Remove this line if you
+# decide to publish them.
+drafts/
+
+# Scratch: stale one-off conversion dump (broken `undefined` triples,
+# unreferenced by the app).
+convert.ttl
+
+# Bulky Claude artifacts — local history / test output, not repo content:
+claude/backups/
+claude/validation/images-e2e/
+
+# NOTE: dist/ is intentionally TRACKED — the app serves ./dist/ia-player.js
+# directly (no server-side build step), so the bundle must be committed.

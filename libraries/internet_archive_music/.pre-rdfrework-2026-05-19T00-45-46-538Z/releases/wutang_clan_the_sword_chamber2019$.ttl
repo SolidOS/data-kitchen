@@ -1,0 +1,93 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:185da38e-a18c-4d54-921c-f860d861e025>
+    a mo:Track;
+    dct:title "06 - Wu-Tang Clan - Treez (Raekwon)";
+    mo:duration "227";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/06%20-%20Wu-Tang%20Clan%20-%20Treez%20(Raekwon).mp3>.
+<urn:uuid:1cf64cae-04b5-44de-8241-35faca0ea066>
+    a mo:Track;
+    dct:title "11 - Tragedy";
+    mo:duration "231";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/11%20-%20Tragedy.mp3>.
+<urn:uuid:1e0c9921-f7e3-4ab5-b094-d04bc63c0677>
+    a mo:Track;
+    dct:title "12 - Wu-Tang Clan - Execution In Autumn (Unreleased)";
+    mo:duration "186";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/12%20-%20Wu-Tang%20Clan%20-%20Execution%20In%20Autumn%20(Unreleased).mp3>.
+<urn:uuid:2769f124-81ea-4ad6-90ff-50e3ba8781d5>
+    a mo:Release;
+    dct:title "Wu-Tang Clan - The Sword Chamber-2019";
+    mo:track
+        <urn:uuid:185da38e-a18c-4d54-921c-f860d861e025>,
+        <urn:uuid:1cf64cae-04b5-44de-8241-35faca0ea066>,
+        <urn:uuid:1e0c9921-f7e3-4ab5-b094-d04bc63c0677>,
+        <urn:uuid:6d63c787-b442-49e0-b4de-d0a82ccad188>,
+        <urn:uuid:8732d5cf-fc3c-4a5e-a7f4-3e9fed9e6259>,
+        <urn:uuid:b60f279b-6829-47a4-873f-0e893314127d>,
+        <urn:uuid:c36da612-b152-460f-89e4-0c2fdedaca30>,
+        <urn:uuid:e76271b9-f0cb-49e3-b0f9-bc654fc17b0d>,
+        <urn:uuid:e7b06f18-efb6-40b4-bad6-cd4beaf47016>,
+        <urn:uuid:e85ac723-d762-4321-bba7-f604bb24bfb4>,
+        <urn:uuid:f724ba83-c898-49a8-b5d7-edeebf4f3a45>;
+    dcat:landingPage det:Wu-Tang_Clan_-_The_Sword_Chamber-2019;
+    foaf:maker
+        <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>,
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:6d63c787-b442-49e0-b4de-d0a82ccad188>
+    a mo:Track;
+    dct:title "02 - 4Th Chamber - Gza Ghostface Killer Rza Killah Priest";
+    mo:duration "280";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/02%20-%204th%20Chamber%20-%20GZA%20Ghostface%20Killer%20RZA%20%20Killah%20Priest.mp3>.
+<urn:uuid:8732d5cf-fc3c-4a5e-a7f4-3e9fed9e6259>
+    a mo:Track;
+    dct:title
+        "04 - Wu-Tang Killa Beez - Killa Beez (Feat Bobby Digital U-God Inspectah Deck Suga Bang Bang)";
+    mo:duration "238";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/04%20-%20Wu-Tang%20Killa%20Beez%20-%20Killa%20Beez%20(Feat%20Bobby%20Digital%20U-God%20Inspectah%20Deck%20Suga%20Bang%20Bang).mp3>.
+<urn:uuid:b60f279b-6829-47a4-873f-0e893314127d>
+    a mo:Track;
+    dct:title "15 - Wu-Tang Clan - Street Kronicles (M-Speed)";
+    mo:duration "302";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/15%20-%20Wu-Tang%20Clan%20-%20Street%20Kronicles%20(M-Speed).mp3>.
+<urn:uuid:c36da612-b152-460f-89e4-0c2fdedaca30>
+    a mo:Track;
+    dct:title "07 - Wu-Tang Clan - Chunky";
+    mo:duration "182";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/07%20-%20Wu-Tang%20Clan%20-%20Chunky.mp3>.
+<urn:uuid:e76271b9-f0cb-49e3-b0f9-bc654fc17b0d>
+    a mo:Track;
+    dct:title "08 - Wu-Tang Clan - Graveyard Chamber (Feat Gravediggaz)";
+    mo:duration "298";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/08%20-%20Wu-Tang%20Clan%20-%20Graveyard%20Chamber%20(feat%20Gravediggaz).mp3>.
+<urn:uuid:e7b06f18-efb6-40b4-bad6-cd4beaf47016>
+    a mo:Track;
+    dct:title "09 - Ghostface Killah - Watch Your Mouth";
+    mo:duration "236";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/09%20-%20Ghostface%20Killah%20-%20Watch%20Your%20Mouth.mp3>.
+<urn:uuid:e85ac723-d762-4321-bba7-f604bb24bfb4>
+    a mo:Track;
+    dct:title "13 - Wu - Tang Clan - Common Denominator (Unreleased Track)";
+    mo:duration "207";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/13%20-%20Wu%20-%20Tang%20Clan%20-%20Common%20Denominator%20(UNRELEASED%20TRACK).mp3>.
+<urn:uuid:f724ba83-c898-49a8-b5d7-edeebf4f3a45>
+    a mo:Track;
+    dct:title "16 - Wu-Tang Clan Freestyle";
+    mo:duration "226";
+    dcat:downloadUrl
+        <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/16%20-%20Wu-Tang%20Clan%20Freestyle.mp3>.

@@ -1,0 +1,34 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Four Tet Remixes" ;
+    dct:identifier "madvillian-four-tet-remixes" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/madvillian-four-tet-remixes> ;
+    mo:track <#t01>, <#t02>, <#t03> ;
+    foaf:maker "Madvillain" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Rhinestone Cowboy" ;
+    mo:duration "191" ;
+    mo:item <https://archive.org/download/madvillian-four-tet-remixes/05%20Rhinestone%20Cowboy.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Great Day (Instrumental)" ;
+    mo:duration "183" ;
+    mo:item <https://archive.org/download/madvillian-four-tet-remixes/09%20Great%20Day%20(Instrumental).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Shadows Of Tomorrow (Instrumental)" ;
+    mo:duration "187" ;
+    mo:item <https://archive.org/download/madvillian-four-tet-remixes/10%20Shadows%20Of%20Tomorrow%20(Instrumental).mp3> ;
+    dct:isPartOf <#it> .

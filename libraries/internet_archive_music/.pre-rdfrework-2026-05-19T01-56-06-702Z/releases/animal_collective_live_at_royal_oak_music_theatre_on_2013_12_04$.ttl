@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:8f3b1325-3408-4b03-9855-1ad4ca5033d9> a mo:Release;
+    dcterms:title "Animal Collective Live at Royal Oak Music Theatre on 2013-12-04";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    dcat:landingPage <https://archive.org/details/ac2013-12-04.m10>;
+    mo:track <urn:uuid:69fef9a4-8946-423f-a917-3ad7b66a47ba>.
+<urn:uuid:69fef9a4-8946-423f-a917-3ad7b66a47ba> a mo:Track; dcterms:title "MoonJocks"; mo:duration "1181"; dcat:downloadUrl <https://archive.org/download/ac2013-12-04.m10/AnimalCollective.2013-12-04-RoyalOakMusicTheatreRoyalOakMi.spC4TinyboxtransfosPcmM-10Microsd.t04.mp3>.

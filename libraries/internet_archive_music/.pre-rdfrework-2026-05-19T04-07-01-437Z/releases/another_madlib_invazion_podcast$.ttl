@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:1d583763-3d77-46ae-b5e7-fe19c85bcba1> a mo:Release;
+    dcterms:title "Another Madlib Invazion Podcast";
+    foaf:maker "Various Artists";
+    dcat:landingPage <https://archive.org/details/AnotherMadlibInvazionPodcast>;
+    mo:track <urn:uuid:5ab57aca-437d-4f41-8009-24db9590b200>.
+<urn:uuid:5ab57aca-437d-4f41-8009-24db9590b200> a mo:Track; dcterms:title "Another Madlib Invazion Podcast"; mo:duration "3501"; dcat:downloadUrl <https://archive.org/download/AnotherMadlibInvazionPodcast/Another%20Madlib%20Invazion%20Podcast.mp3>.

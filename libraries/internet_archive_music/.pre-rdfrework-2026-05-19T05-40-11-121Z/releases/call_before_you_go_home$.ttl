@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:a8738c32-474e-461f-ad19-220e1eb8c17a> a mo:Release;
+    dcterms:title "CALL BEFORE YOU GO HOME";
+    foaf:maker "MEMPHIS SLIM and his House Rockers, Fraser";
+    dcat:landingPage <https://archive.org/details/78_call-before-you-go-home_memphis-slim-and-his-house-rockers-fraser_gbia0366392a>;
+    mo:track <urn:uuid:7b683bec-068e-43af-a8b2-0a9ff05c2f07>.
+<urn:uuid:7b683bec-068e-43af-a8b2-0a9ff05c2f07> a mo:Track; dcterms:title "CALL BEFORE YOU GO HOME"; mo:duration "189"; dcat:downloadUrl <https://archive.org/download/78_call-before-you-go-home_memphis-slim-and-his-house-rockers-fraser_gbia0366392a/CALL%20BEFORE%20YOU%20GO%20HOME%20-%20MEMPHIS%20SLIM%20and%20his%20House%20Rockers.mp3>.

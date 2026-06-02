@@ -1,0 +1,13 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:0e2b4b08-d307-4bf8-ba9d-40ee9f200b1f> a mo:Release;
+    dcterms:title "Penguin Cafe Orchestra LIVE 1982-06-10 @Kani Hoken Hotel, Tokyo, Japan";
+    foaf:maker "Penguin Cafe Orchestra";
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra10061982>;
+    mo:track <urn:uuid:ae0e2cfe-f43a-479c-830b-2284ee2bbbc3>, <urn:uuid:dc3600ff-21aa-4153-96c8-4567f287ff51>, <urn:uuid:d4270283-9a02-4e8f-a704-d22257387c7a>.
+<urn:uuid:ae0e2cfe-f43a-479c-830b-2284ee2bbbc3> a mo:Track; dcterms:title "Intermission"; mo:duration "203"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra10061982/09%20-%20Intermission.mp3>.
+<urn:uuid:dc3600ff-21aa-4153-96c8-4567f287ff51> a mo:Track; dcterms:title "Kenya (White Mischief)"; mo:duration "359"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra10061982/11%20-%20Kenya%20(White%20Mischief).mp3>.
+<urn:uuid:d4270283-9a02-4e8f-a704-d22257387c7a> a mo:Track; dcterms:title "Walk Don't Run"; mo:duration "263"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra10061982/16%20-%20Walk%20Don't%20Run.mp3>.

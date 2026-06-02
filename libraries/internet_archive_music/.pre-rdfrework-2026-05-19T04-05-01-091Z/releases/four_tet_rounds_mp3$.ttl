@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:dd25eb6c-ba0d-42a3-ac43-db5e9b61b629> a mo:Release;
+    dcterms:title "Four Tet - Rounds (MP3)";
+    foaf:maker "Four Tet";
+    dcat:landingPage <https://archive.org/details/06-four-tet-unspoken>;
+    mo:track <urn:uuid:7e3b3168-9eef-45e3-924b-6a9cdb0cb321>, <urn:uuid:2736e85e-160b-423b-9532-1c96fc62ca23>, <urn:uuid:8dee854d-f357-41ed-bbb9-fc9a0c0064bc>, <urn:uuid:4d932be5-4802-4c7c-87ab-8058f6c6b7fc>, <urn:uuid:036aa64b-3d0e-43e2-b3f6-b40547bd7b69>, <urn:uuid:a45fcc55-84c1-4305-907c-0006819c063a>, <urn:uuid:06024e63-bcb7-4715-bc20-55d5989b5386>, <urn:uuid:8d8091ab-0e61-4191-b786-93ad9daa1abb>.
+<urn:uuid:7e3b3168-9eef-45e3-924b-6a9cdb0cb321> a mo:Track; dcterms:title "Hands"; mo:duration "341"; dcat:downloadUrl <https://archive.org/download/06-four-tet-unspoken/01%20-%20Four%20Tet%20-%20Hands.mp3>.
+<urn:uuid:2736e85e-160b-423b-9532-1c96fc62ca23> a mo:Track; dcterms:title "She Moves She"; mo:duration "281"; dcat:downloadUrl <https://archive.org/download/06-four-tet-unspoken/02%20-%20Four%20Tet%20-%20She%20Moves%20She.mp3>.
+<urn:uuid:8dee854d-f357-41ed-bbb9-fc9a0c0064bc> a mo:Track; dcterms:title "My Angel Rocks Back and Forth"; mo:duration "307"; dcat:downloadUrl <https://archive.org/download/06-four-tet-unspoken/04%20-%20Four%20Tet%20-%20My%20Angel%20Rocks%20Back%20and%20Forth.mp3>.
+<urn:uuid:4d932be5-4802-4c7c-87ab-8058f6c6b7fc> a mo:Track; dcterms:title "Spirit Fingers"; mo:duration "202"; dcat:downloadUrl <https://archive.org/download/06-four-tet-unspoken/05%20-%20Four%20Tet%20-%20Spirit%20Fingers.mp3>.
+<urn:uuid:036aa64b-3d0e-43e2-b3f6-b40547bd7b69> a mo:Track; dcterms:title "Unspoken"; mo:duration "571"; dcat:downloadUrl <https://archive.org/download/06-four-tet-unspoken/06%20-%20Four%20Tet%20-%20Unspoken.mp3>.
+<urn:uuid:a45fcc55-84c1-4305-907c-0006819c063a> a mo:Track; dcterms:title "As Serious As Your Life"; mo:duration "288"; dcat:downloadUrl <https://archive.org/download/06-four-tet-unspoken/08%20-%20Four%20Tet%20-%20As%20Serious%20As%20Your%20Life.mp3>.
+<urn:uuid:06024e63-bcb7-4715-bc20-55d5989b5386> a mo:Track; dcterms:title "And They All Look Broken Hearted"; mo:duration "309"; dcat:downloadUrl <https://archive.org/download/06-four-tet-unspoken/09%20-%20Four%20Tet%20-%20And%20They%20All%20Look%20Broken%20Hearted.mp3>.
+<urn:uuid:8d8091ab-0e61-4191-b786-93ad9daa1abb> a mo:Track; dcterms:title "Slow Jam"; mo:duration "318"; dcat:downloadUrl <https://archive.org/download/06-four-tet-unspoken/10%20-%20Four%20Tet%20-%20Slow%20Jam.mp3>.

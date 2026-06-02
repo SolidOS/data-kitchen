@@ -1,0 +1,101 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:0a824448-f9f6-4ebe-9d10-a41795e8267b>
+    a mo:Track;
+    dct:title "Enough!!";
+    mo:duration "201";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD1%2F08.%20A%20Tribe%20Called%20Quest%20-%20Enough!!.mp3>.
+<urn:uuid:1d2631e3-8803-4c9f-a1c4-a6cc36b38ea9>
+    a mo:Track;
+    dct:title "Black Spasmodic (feat. Consequence)";
+    mo:duration "184";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD2%2F02.%20A%20Tribe%20Called%20Quest%20-%20Black%20Spasmodic%20(feat.%20Consequence).mp3>.
+<urn:uuid:2ec43d1b-f810-4838-ace9-0237b818f382>
+    a mo:Track;
+    dct:title "Melatonin (feat. Marsha Ambrosius & Yebba)";
+    mo:duration "285";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD1%2F07.%20A%20Tribe%20Called%20Quest%20-%20Melatonin%20(feat.%20Marsha%20Ambrosius%20%26%20Yebba).mp3>.
+<urn:uuid:3a25faaa-306d-4da6-b806-c3d4cb3ab43d>
+    a mo:Track;
+    dct:title
+    "Solid Wall of Sound (feat. Busta Rhymes, Jack White & Elton John)";
+    mo:duration "223";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD1%2F04.%20A%20Tribe%20Called%20Quest%20-%20Solid%20Wall%20of%20Sound%20(feat.%20Busta%20Rhymes%2C%20Jack%20White%20%26%20Elton%20John).mp3>.
+<urn:uuid:3d4872e5-08a1-49ff-8d8a-4fa0c1529855>
+    a mo:Track;
+    dct:title "The Space Program";
+    mo:duration "341";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD1%2F01.%20A%20Tribe%20Called%20Quest%20-%20The%20Space%20Program.mp3>.
+<urn:uuid:3e0fbb1a-62d7-4c0b-b8e5-ff516c20631e>
+    a mo:Track;
+    dct:title "Dis Generation (feat. Busta Rhymes)";
+    mo:duration "213";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD1%2F05.%20A%20Tribe%20Called%20Quest%20-%20Dis%20Generation%20(feat.%20Busta%20Rhymes).mp3>.
+<urn:uuid:457ce021-0ff3-4618-95ab-2fd255726603>
+    a mo:Track;
+    dct:title "Conrad Tokyo (feat. Kendrick Lamar & Jack White)";
+    mo:duration "212";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD2%2F06.%20A%20Tribe%20Called%20Quest%20-%20Conrad%20Tokyo%20(feat.%20Kendrick%20Lamar%20%26%20Jack%20White).mp3>.
+<urn:uuid:6bd4fbce-c557-4dc4-91dd-5299d28fcb14>
+    a mo:Track;
+    dct:title "Ego";
+    mo:duration "197";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD2%2F07.%20A%20Tribe%20Called%20Quest%20-%20Ego.mp3>.
+<urn:uuid:6f60adac-8f8f-4ad5-9669-8d112c38fdea>
+    a mo:Track;
+    dct:title "Movin Backwards (feat. Anderson .Paak)";
+    mo:duration "282";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD2%2F05.%20A%20Tribe%20Called%20Quest%20-%20Movin%20Backwards%20(feat.%20Anderson%20.Paak).mp3>.
+<urn:uuid:7da06a62-5b7b-4ffd-9eea-024dce68f851>
+    a mo:Track;
+    dct:title "Lost Somebody (feat. Katia Cadet)";
+    mo:duration "259";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD2%2F04.%20A%20Tribe%20Called%20Quest%20-%20Lost%20Somebody%20(feat.%20Katia%20Cadet).mp3>.
+<urn:uuid:d2c5e11c-3909-4083-8c00-d5314ee298e3>
+    a mo:Release;
+    dct:title "We got it from here... Thank You 4 Your service";
+    mo:track
+        <urn:uuid:0a824448-f9f6-4ebe-9d10-a41795e8267b>,
+        <urn:uuid:1d2631e3-8803-4c9f-a1c4-a6cc36b38ea9>,
+        <urn:uuid:2ec43d1b-f810-4838-ace9-0237b818f382>,
+        <urn:uuid:3a25faaa-306d-4da6-b806-c3d4cb3ab43d>,
+        <urn:uuid:3d4872e5-08a1-49ff-8d8a-4fa0c1529855>,
+        <urn:uuid:3e0fbb1a-62d7-4c0b-b8e5-ff516c20631e>,
+        <urn:uuid:457ce021-0ff3-4618-95ab-2fd255726603>,
+        <urn:uuid:6bd4fbce-c557-4dc4-91dd-5299d28fcb14>,
+        <urn:uuid:6f60adac-8f8f-4ad5-9669-8d112c38fdea>,
+        <urn:uuid:7da06a62-5b7b-4ffd-9eea-024dce68f851>,
+        <urn:uuid:fc0ac42f-4606-4447-8295-4ff7e185f485>,
+        <urn:uuid:fe2cc422-766e-440c-8bbc-7ed119f47bcf>;
+    dcat:landingPage det:wgifh...ty4ys2016;
+    foaf:maker
+        "A Tribe Called Quest, Consequence",
+        <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>,
+        <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>.
+<urn:uuid:fc0ac42f-4606-4447-8295-4ff7e185f485>
+    a mo:Track;
+    dct:title "Kids... (feat. Andre 3000)";
+    mo:duration "229";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD1%2F06.%20A%20Tribe%20Called%20Quest%20-%20Kids...%20(feat.%20Andre%203000).mp3>.
+<urn:uuid:fe2cc422-766e-440c-8bbc-7ed119f47bcf>
+    a mo:Track;
+    dct:title "The Donald (feat. Busta Rhymes & Cadet)";
+    mo:duration "322";
+    dcat:downloadUrl
+        <https://archive.org/download/wgifh...ty4ys2016/CD2%2F08.%20A%20Tribe%20Called%20Quest%20-%20The%20Donald%20(feat.%20Busta%20Rhymes%20%26%20Cadet).mp3>.

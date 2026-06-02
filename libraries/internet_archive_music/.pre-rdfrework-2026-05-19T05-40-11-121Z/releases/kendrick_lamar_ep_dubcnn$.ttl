@@ -1,0 +1,24 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c177ee6b-0575-421f-8509-f06171e6a899> a mo:Release;
+    dcterms:title "Kendrick Lamar EP (dubcnn)";
+    foaf:maker "Kendrick Lamar";
+    dcat:landingPage <https://archive.org/details/kendrick-lamar-ep>;
+    mo:track <urn:uuid:f1ba509f-3f86-481d-91fd-957b0545c53e>, <urn:uuid:bd34b05c-e104-452e-ad2d-42e35737cf3e>, <urn:uuid:10c4806b-697e-4953-84d1-d6f5aceaa88f>, <urn:uuid:9961d6ee-bd3a-40d0-8944-a1c4f629a128>, <urn:uuid:b8b3b70e-7293-4440-8c62-9202a9f7dadb>, <urn:uuid:8e07d47e-7dc3-442d-90ce-8e8236f0412f>, <urn:uuid:a5c91bec-bf70-4dca-9e5e-da4bbeb36738>, <urn:uuid:6ce12778-c78e-4d6a-9add-e97ab11dabef>, <urn:uuid:2008c42f-9001-41e3-b540-46bfed2ea096>, <urn:uuid:198e0ff5-95b6-4312-876c-df02c113c0e7>, <urn:uuid:cd785e37-ba70-4a2c-9797-a1be0efe2a7b>, <urn:uuid:d70d3468-b63d-45e5-86e6-3bb6d338e6a2>, <urn:uuid:bbb06167-89ba-4654-8514-02bd78ba8f39>, <urn:uuid:27af07f2-7842-443d-8a30-ac301917fe60>.
+<urn:uuid:f1ba509f-3f86-481d-91fd-957b0545c53e> a mo:Track; dcterms:title "Is It Love ft. Angela McCluskey"; mo:duration "239"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/01%20Is%20It%20Love%20ft.%20Angela%20McCluskey.mp3>.
+<urn:uuid:bd34b05c-e104-452e-ad2d-42e35737cf3e> a mo:Track; dcterms:title "Celebration"; mo:duration "230"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/02%20Celebration.mp3>.
+<urn:uuid:10c4806b-697e-4953-84d1-d6f5aceaa88f> a mo:Track; dcterms:title "P & P - ft. Ab Soul"; mo:duration "282"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/03%20P%20%26%20P%20-%20ft.%20Ab%20Soul.mp3>.
+<urn:uuid:9961d6ee-bd3a-40d0-8944-a1c4f629a128> a mo:Track; dcterms:title "She Needs Me ft. Javonte"; mo:duration "210"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/04%20She%20Needs%20Me%20ft.%20Javonte.mp3>.
+<urn:uuid:b8b3b70e-7293-4440-8c62-9202a9f7dadb> a mo:Track; dcterms:title "Wanna Be Heard"; mo:duration "277"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/06%20Wanna%20Be%20Heard.mp3>.
+<urn:uuid:8e07d47e-7dc3-442d-90ce-8e8236f0412f> a mo:Track; dcterms:title "I Do This ft. Jay Rock"; mo:duration "248"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/07%20I%20Do%20This%20ft.%20Jay%20Rock.mp3>.
+<urn:uuid:a5c91bec-bf70-4dca-9e5e-da4bbeb36738> a mo:Track; dcterms:title "Uncle Bobby & Jason Keaton ft. Javonte"; mo:duration "239"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/08%20Uncle%20Bobby%20%26%20Jason%20Keaton%20ft.%20Javonte.mp3>.
+<urn:uuid:6ce12778-c78e-4d6a-9add-e97ab11dabef> a mo:Track; dcterms:title "Faith ft. Bj The Chicago Kid & Punch"; mo:duration "291"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/09%20Faith%20ft.%20Bj%20The%20Chicago%20Kid%20%26%20Punch.mp3>.
+<urn:uuid:2008c42f-9001-41e3-b540-46bfed2ea096> a mo:Track; dcterms:title "Trip"; mo:duration "230"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/10%20Trip.mp3>.
+<urn:uuid:198e0ff5-95b6-4312-876c-df02c113c0e7> a mo:Track; dcterms:title "Vanity Slaves"; mo:duration "254"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/11%20Vanity%20Slaves.mp3>.
+<urn:uuid:cd785e37-ba70-4a2c-9797-a1be0efe2a7b> a mo:Track; dcterms:title "Far From Here ft. Schoolboy Q"; mo:duration "233"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/12%20Far%20From%20Here%20ft.%20Schoolboy%20Q.mp3>.
+<urn:uuid:d70d3468-b63d-45e5-86e6-3bb6d338e6a2> a mo:Track; dcterms:title "Thanksgiving ft. Big Pooh"; mo:duration "219"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/13%20Thanksgiving%20ft.%20Big%20Pooh.mp3>.
+<urn:uuid:bbb06167-89ba-4654-8514-02bd78ba8f39> a mo:Track; dcterms:title "Let Me Be Me"; mo:duration "439"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/14%20Let%20Me%20Be%20Me.mp3>.
+<urn:uuid:27af07f2-7842-443d-8a30-ac301917fe60> a mo:Track; dcterms:title "Determined (ft. Ash Riser) BOUNS TRACK"; mo:duration "270"; dcat:downloadUrl <https://archive.org/download/kendrick-lamar-ep/15%20Determined%20(ft.%20Ash%20Riser)%20BOUNS%20TRACK.mp3>.

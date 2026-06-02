@@ -1,0 +1,13 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:4eece5f8-d8b2-4a4a-af6a-5a8981a338f2> a mo:Release;
+    dcterms:title "The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1";
+    foaf:maker "B.B.KING, Buster BROWN, Big Bill BROONZY, Memphis SLIM, Slim HARPO, Lighnin' HOPKINS, Elmore JAMES, Jimmy REED, Arthur CRUDUP";
+    dcat:landingPage <https://archive.org/details/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1>;
+    mo:track <urn:uuid:0df5c1ee-75c5-444c-ae56-4b7a429d8b2c>, <urn:uuid:15ef9ebd-ec3b-4e08-be1a-a99d17e84d4d>, <urn:uuid:05db003c-2c49-45e5-8574-2607e8baa124>.
+<urn:uuid:0df5c1ee-75c5-444c-ae56-4b7a429d8b2c> a mo:Track; dcterms:title "03 - The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1 Side A - Big Bill BROONZY - Careless Love"; mo:duration "250"; dcat:downloadUrl <https://archive.org/download/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1/03%20-%20The%20Blues%20Vol.%201%20-%20Metronome%202002%20DALP%202-1964%2C%20LP%201%20Side%20A%20-%20Big%20Bill%20BROONZY%20-%20Careless%20Love.mp3>.
+<urn:uuid:15ef9ebd-ec3b-4e08-be1a-a99d17e84d4d> a mo:Track; dcterms:title "06 - The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1 Side B - Lighnin' HOPKINS - Mojo Hand"; mo:duration "181"; dcat:downloadUrl <https://archive.org/download/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1/06%20-%20The%20Blues%20Vol.%201%20-%20Metronome%202002%20DALP%202-1964%2C%20LP%201%20Side%20B%20-%20Lighnin'%20HOPKINS%20-%20Mojo%20Hand.mp3>.
+<urn:uuid:05db003c-2c49-45e5-8574-2607e8baa124> a mo:Track; dcterms:title "07 - The Blues Vol. 1 - Metronome 2002 DALP 2-1964, LP 1 Side B - Elmore JAMES - It hurts me too"; mo:duration "198"; dcat:downloadUrl <https://archive.org/download/the-blues-vol.-1-metronome-2002-dalp-2-1964-lp-1/07%20-%20The%20Blues%20Vol.%201%20-%20Metronome%202002%20DALP%202-1964%2C%20LP%201%20Side%20B%20-%20Elmore%20JAMES%20-%20It%20hurts%20me%20too.mp3>.

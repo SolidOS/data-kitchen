@@ -1,0 +1,19 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:a20f3552-6cd3-4d9c-b5b2-0acba9dbbe2e> a mo:Release;
+    dcterms:title "I Heard It's A Mess There Too";
+    foaf:maker "Aesop Rock";
+    dcat:landingPage <https://archive.org/details/i-heard-its-a-mess-there-too>;
+    mo:track <urn:uuid:6e01175d-3912-460b-bb79-7f60a85c8289>, <urn:uuid:c8ffbe70-4810-474b-8ef5-4562a56c2fc0>, <urn:uuid:b8a93ff7-4570-459e-973f-f74f26bde348>, <urn:uuid:35d20241-10a5-40c8-b3fb-cad1f8369b0f>, <urn:uuid:4a0b90f4-8730-459c-be6f-f5b1a381f19a>, <urn:uuid:8478fd84-c7c4-43be-9ee6-a3b503634fe4>, <urn:uuid:892491f1-ebb8-4f13-870d-dc3c9049d008>, <urn:uuid:2c9d136a-a758-405e-a7d0-b897e43914b8>, <urn:uuid:c29ee925-5afa-4ba0-8a1e-a450efe95392>.
+<urn:uuid:6e01175d-3912-460b-bb79-7f60a85c8289> a mo:Track; dcterms:title "Call Home"; mo:duration "243"; dcat:downloadUrl <https://archive.org/download/i-heard-its-a-mess-there-too/Call%20Home.mp3>.
+<urn:uuid:c8ffbe70-4810-474b-8ef5-4562a56c2fc0> a mo:Track; dcterms:title "Full House Pinball"; mo:duration "208"; dcat:downloadUrl <https://archive.org/download/i-heard-its-a-mess-there-too/Full%20House%20Pinball.mp3>.
+<urn:uuid:b8a93ff7-4570-459e-973f-f74f26bde348> a mo:Track; dcterms:title "Oh My Stars"; mo:duration "209"; dcat:downloadUrl <https://archive.org/download/i-heard-its-a-mess-there-too/Oh%20My%20Stars.mp3>.
+<urn:uuid:35d20241-10a5-40c8-b3fb-cad1f8369b0f> a mo:Track; dcterms:title "Opossum"; mo:duration "229"; dcat:downloadUrl <https://archive.org/download/i-heard-its-a-mess-there-too/Opossum.mp3>.
+<urn:uuid:4a0b90f4-8730-459c-be6f-f5b1a381f19a> a mo:Track; dcterms:title "Poly Cotton Blend"; mo:duration "235"; dcat:downloadUrl <https://archive.org/download/i-heard-its-a-mess-there-too/Poly%20Cotton%20Blend.mp3>.
+<urn:uuid:8478fd84-c7c4-43be-9ee6-a3b503634fe4> a mo:Track; dcterms:title "Potato Leek Soup"; mo:duration "220"; dcat:downloadUrl <https://archive.org/download/i-heard-its-a-mess-there-too/Potato%20Leek%20Soup.mp3>.
+<urn:uuid:892491f1-ebb8-4f13-870d-dc3c9049d008> a mo:Track; dcterms:title "Sherbert"; mo:duration "236"; dcat:downloadUrl <https://archive.org/download/i-heard-its-a-mess-there-too/Sherbert.mp3>.
+<urn:uuid:2c9d136a-a758-405e-a7d0-b897e43914b8> a mo:Track; dcterms:title "Spin To Win"; mo:duration "230"; dcat:downloadUrl <https://archive.org/download/i-heard-its-a-mess-there-too/Spin%20To%20Win.mp3>.
+<urn:uuid:c29ee925-5afa-4ba0-8a1e-a450efe95392> a mo:Track; dcterms:title "The Cut"; mo:duration "242"; dcat:downloadUrl <https://archive.org/download/i-heard-its-a-mess-there-too/The%20Cut.mp3>.

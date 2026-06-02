@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:82e40421-0a47-45f8-8a79-d10a25abf2e8> a mo:Release;
+    dcterms:title "Cruisin' / Spirit Level";
+    foaf:maker "Tycho";
+    dcat:landingPage <https://archive.org/details/tycho-cruisin-spirit-level>;
+    mo:track <urn:uuid:1a4500e2-252e-4880-8c19-270e66f4de97>, <urn:uuid:dd3a3bc4-9ecd-47c3-821c-e8f53b2fd529>.
+<urn:uuid:1a4500e2-252e-4880-8c19-270e66f4de97> a mo:Track; dcterms:title "Cruisin'"; mo:duration "357"; dcat:downloadUrl <https://archive.org/download/tycho-cruisin-spirit-level/THIS%20SIDE%20-%20Tycho%20-%20Spirit%20Level.mp3>.
+<urn:uuid:dd3a3bc4-9ecd-47c3-821c-e8f53b2fd529> a mo:Track; dcterms:title "Spirit Level"; mo:duration "382"; dcat:downloadUrl <https://archive.org/download/tycho-cruisin-spirit-level/THAT%20SIDE%20-%20Tycho%20-%20Cruisin'.mp3>.

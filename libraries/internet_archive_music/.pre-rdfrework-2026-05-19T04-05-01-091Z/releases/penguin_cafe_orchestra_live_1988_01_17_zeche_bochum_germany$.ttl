@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c9263d27-9e35-4e8e-a2b5-3fb5f5290f68> a mo:Release;
+    dcterms:title "Penguin Cafe Orchestra LIVE 1988-01-17 @Zeche Bochum, Germany";
+    foaf:maker "Penguin Cafe Orchestra";
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra17011988>;
+    mo:track <urn:uuid:70dc4860-a95c-4cb4-90a3-cb88149e2055>, <urn:uuid:0254e400-c22c-4118-8b48-a7ccd3a033c3>, <urn:uuid:f882fad8-b6ad-4984-87a7-494ec88df9ec>, <urn:uuid:8d6ad4ce-d419-4ac9-8af2-622eba56f30d>, <urn:uuid:5e7524c0-bf1c-4575-9178-0b6052a1b06d>.
+<urn:uuid:70dc4860-a95c-4cb4-90a3-cb88149e2055> a mo:Track; dcterms:title "Isle of View (Music for Helicopter Pilots)"; mo:duration "328"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra17011988/2-09%20-%20Isle%20of%20View%20(Music%20for%20Helicopter%20Pilots).mp3>.
+<urn:uuid:0254e400-c22c-4118-8b48-a7ccd3a033c3> a mo:Track; dcterms:title "Paul's Dance"; mo:duration "193"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra17011988/2-05%20-%20Paul's%20Dance.mp3>.
+<urn:uuid:f882fad8-b6ad-4984-87a7-494ec88df9ec> a mo:Track; dcterms:title "Surface Tension/Oscar Tango"; mo:duration "373"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra17011988/2-06%20-%20Surface%20Tension-Oscar%20Tango.mp3>.
+<urn:uuid:8d6ad4ce-d419-4ac9-8af2-622eba56f30d> a mo:Track; dcterms:title "The Ecstasy of Dancing Fleas"; mo:duration "261"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra17011988/1-01%20-%20The%20Ecstasy%20of%20Dancing%20Fleas.mp3>.
+<urn:uuid:5e7524c0-bf1c-4575-9178-0b6052a1b06d> a mo:Track; dcterms:title "Yodel 1"; mo:duration "383"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra17011988/1-04%20-%20Yodel%201.mp3>.

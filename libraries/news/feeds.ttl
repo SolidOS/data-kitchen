@@ -1,0 +1,232 @@
+@prefix : <http://localhost:3000/solid/open_media_player/libraries/news/feeds.ttl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rss: <http://purl.org/rss/1.0/>.
+@prefix taxo: <http://purl.org/rss/1.0/modules/taxonomy/>.
+
+<#catalog> a dcat:Catalog;
+    dct:title "News feeds";
+    dcat:themeTaxonomy <#Feeds>;
+    dcat:dataset <#00010>, <#00011>, <#00012>, <#00013>, <#00020>, <#00021>, <#00022>, <#00025>, <#00014>, <#00015>, <#00016>, <#00017>, <#00018>, <#00019>, <#00024>, <#00030>, <#00027>, <#doctorow>, <#00029>, <#00028>, <#00040>, <#00041>, <#00023>, <#00043>, <#00044>, <#00045>, <#00042>, <#00046>, <#xkcd>, <#00047>, <#6507c185-5d9e-4669-97c3-ad3d577a0d70>, <#301ac60a-1708-4a28-a42a-8d9877ff0367>, <#4d426d23-fcf0-40b8-874f-016b3c0f403a>, <#24f6bab8-f5ba-4125-afdd-c674efbcd5fd>, <#2a44d81f-fbba-4216-8e23-e5218eb7cb7f>, <#da3873cc-3235-4942-85a7-11ea160265be>, <#d36273f7-ef16-4a49-ab89-3c0e0cef17ff>, <#d0b569f9-ff59-4229-ae09-3eff7ea6d911>, <#b5b20e42-2f4f-48d8-ada0-fcb1bff7d2fc>, <#41022a14-ce8b-4740-9766-c7580e51aa6b>, <#5d4c7850-ffa6-4426-a6df-0bb4451cffb8>, <#6507c185-5d9e-4669-97c3-ad3d577a0d69>.
+<#Feeds> a skos:ConceptScheme;
+    skos:prefLabel "Feeds".
+<#00010> a dcat:Dataset, rss:channel;
+    dct:title "OPB";
+    dcat:accessURL <https://www.opb.org/arc/outboundfeeds/rss/?outputType=xml>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 9.
+<#00011> a dcat:Dataset, rss:channel;
+    dct:title "Al Jazeera";
+    dcat:accessURL <http://www.aljazeera.com/xml/rss/all.xml>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 5.
+<#00012> a dcat:Dataset, rss:channel;
+    dct:title "NY Times";
+    dcat:accessURL <https://rss.nytimes.com/services/xml/rss/nyt/World.xml>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 0.
+<#00013> a dcat:Dataset, rss:channel;
+    dct:title "Democracy Now";
+    dcat:accessURL <https://www.democracynow.org/democracynow.rss>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 1.
+<#00020> a dcat:Dataset, rss:channel;
+    dct:title "Truthout";
+    dcat:accessURL <https://www.truth-out.org/feed?format=feed>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 2.
+<#00021> a dcat:Dataset, rss:channel;
+    dct:title "The Intercept";
+    dcat:accessURL <https://theintercept.com/feed/?lang=en>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 3.
+<#00022> a dcat:Dataset, rss:channel;
+    dct:title "Counterspin";
+    dcat:accessURL <https://fair.org/feed/>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 6.
+<#00025> a dcat:Dataset, rss:channel;
+    dct:title "ProPublica";
+    dcat:accessURL <http://feeds.propublica.org/propublica/main>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 7.
+<#00014> a dcat:Dataset, rss:channel;
+    dct:title "Smithsonian";
+    dcat:accessURL <https://www.smithsonianmag.com/rss/latest_articles/>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 0.
+<#00015> a dcat:Dataset, rss:channel;
+    dct:title "Scientific American";
+    dcat:accessURL <http://rss.sciam.com/ScientificAmerican-Global>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 1.
+<#00016> a dcat:Dataset, rss:channel;
+    dct:title "Wired";
+    dcat:accessURL <https://www.wired.com/feed/rss>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 2.
+<#00017> a dcat:Dataset, rss:channel;
+    dct:title "Engadget";
+    dcat:accessURL <https://www.engadget.com/rss.xml>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 3.
+<#00018> a dcat:Dataset, rss:channel;
+    dct:title "The Verge";
+    dcat:accessURL <https://www.theverge.com/rss/index.xml>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 5.
+<#00019> a dcat:Dataset, rss:channel;
+    dct:title "Ars Technica";
+    dcat:accessURL <https://feeds.arstechnica.com/arstechnica/index>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 6.
+<#00024> a dcat:Dataset, rss:channel;
+    dct:title "404 Media";
+    dcat:accessURL <https://www.404media.co/rss/>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 4.
+<#00030> a dcat:Dataset, rss:channel;
+    dct:title "Wedistribute";
+    dcat:accessURL <https://wedistribute.org/feed/>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 7.
+<#00027> a dcat:Dataset, rss:channel;
+    dct:title "Slate";
+    dcat:accessURL <https://slate.com/feeds/all.rss>;
+    dcat:theme <#Culture>;
+    <http://schema.org/position> 0.
+<#doctorow> a dcat:Dataset, rss:channel;
+    dct:title "Cory Doctorow";
+    dcat:accessURL <https://doctorow.medium.com/feed>;
+    dcat:theme <#Culture>;
+    <http://schema.org/position> 1.
+<#00029> a dcat:Dataset, rss:channel;
+    dct:title "Open Culture";
+    dcat:accessURL <https://www.openculture.com/feed/rss2>;
+    dcat:theme <#Culture>;
+    <http://schema.org/position> 2.
+<#00028> a dcat:Dataset, rss:channel;
+    dct:title "The Conversation";
+    dcat:accessURL <https://theconversation.com/us/articles.atom>;
+    dcat:theme <#Culture>;
+    <http://schema.org/position> 4.
+<#00040> a dcat:Dataset, rss:channel;
+    dct:title "This American Life";
+    dcat:accessURL <https://www.thisamericanlife.org/podcast/rss.xml>;
+    dcat:theme <#Culture>;
+    <http://schema.org/position> 5.
+<#00041> a dcat:Dataset, rss:channel;
+    dct:title "Jacobin";
+    dcat:accessURL <https://jacobin.com/feed/>;
+    dcat:theme <#Culture>;
+    <http://schema.org/position> 6.
+<#00023> a dcat:Dataset, rss:channel;
+    dct:title "Vox";
+    dcat:accessURL <https://www.vox.com/rss/index.xml>;
+    dcat:theme <#Culture>;
+    <http://schema.org/position> 7.
+<#00043> a dcat:Dataset, rss:channel;
+    dct:title "The Real News";
+    dcat:accessURL <https://therealnews.com/feed>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 8.
+<#00044> a dcat:Dataset, rss:channel;
+    dct:title "The Guardian";
+    dcat:accessURL <https://www.theguardian.com/us-news/rss>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 4.
+<#00045> a dcat:Dataset, rss:channel;
+    dct:title "Mother Jones";
+    dcat:accessURL <https://www.motherjones.com/feed/>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 10.
+<#00042> a dcat:Dataset, rss:channel;
+    dct:title "Labor Notes";
+    dcat:accessURL <https://labornotes.org/feed>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 11.
+<#00046> a dcat:Dataset, rss:channel;
+    dct:title "Boing Boing";
+    dcat:accessURL <https://boingboing.net/feed>;
+    dcat:theme <#Culture>;
+    <http://schema.org/position> 3.
+<#xkcd> a dcat:Dataset, rss:channel;
+    dct:title "XKCD";
+    dcat:accessURL <https://xkcd.com/rss.xml>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 8.
+<#00047> a dcat:Dataset, rss:channel;
+    dct:title "Vice";
+    dcat:accessURL <https://www.vice.com/en/feed/>;
+    dcat:theme <#Culture>;
+    <http://schema.org/position> 8.
+<#6507c185-5d9e-4669-97c3-ad3d577a0d70> a dcat:Dataset, rss:channel;
+    dct:title "Electronic Freedom Foundation";
+    dcat:accessURL <https://www.eff.org/rss/updates.xml>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 9.
+<#301ac60a-1708-4a28-a42a-8d9877ff0367> a dcat:Dataset, rss:channel;
+    dct:title "TechCrunch";
+    dcat:accessURL <https://techcrunch.com/feed/>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 10.
+<#4d426d23-fcf0-40b8-874f-016b3c0f403a> a dcat:Dataset, rss:channel;
+    dct:title "The Register";
+    dcat:accessURL <https://www.theregister.com/headlines.atom>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 11.
+<#24f6bab8-f5ba-4125-afdd-c674efbcd5fd> a dcat:Dataset, rss:channel;
+    dct:title "Hacker News";
+    dcat:accessURL <https://news.ycombinator.com/rss>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 12.
+<#2a44d81f-fbba-4216-8e23-e5218eb7cb7f> a dcat:Dataset, rss:channel;
+    dct:title "Nature";
+    dcat:accessURL <https://www.nature.com/nature.rss>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 13.
+<#da3873cc-3235-4942-85a7-11ea160265be> a dcat:Dataset, rss:channel;
+    dct:title "It's FOSS";
+    dcat:accessURL <https://itsfoss.com/rss/>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 14.
+<#d36273f7-ef16-4a49-ab89-3c0e0cef17ff> a dcat:Dataset, rss:channel;
+    dct:title "Open Source .com";
+    dcat:accessURL <https://opensource.com/feed>;
+    dcat:theme <#SciTech>;
+    <http://schema.org/position> 15.
+<#d0b569f9-ff59-4229-ae09-3eff7ea6d911> a dcat:Dataset, rss:channel;
+    dct:title "Telesur English";
+    dcat:accessURL <https://www.telesurenglish.net/feed/>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 12.
+<#b5b20e42-2f4f-48d8-ada0-fcb1bff7d2fc> a dcat:Dataset, rss:channel;
+    dct:title "The Root";
+    dcat:accessURL <https://www.theroot.com/rss>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 13.
+<#41022a14-ce8b-4740-9766-c7580e51aa6b> a dcat:Dataset, rss:channel;
+    dct:title "The Grio";
+    dcat:accessURL <https://thegrio.com/feed/>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 14.
+<#5d4c7850-ffa6-4426-a6df-0bb4451cffb8> a dcat:Dataset, rss:channel;
+    dct:title "Black Agenda Report";
+    dcat:accessURL <https://blackagendareport.com/rss.xml>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 15.
+<#6507c185-5d9e-4669-97c3-ad3d577a0d69> a dcat:Dataset, rss:channel;
+    dct:title "Cultural Survival";
+    dcat:accessURL <https://www.culturalsurvival.org/rss.xml>;
+    dcat:theme <#News>;
+    <http://schema.org/position> 16.
+<#News> a skos:Concept, taxo:topic;
+    skos:prefLabel "News";
+    skos:topConceptOf <#Feeds>.
+<#SciTech> a skos:Concept, taxo:topic;
+    skos:prefLabel "Sci/Tech";
+    skos:topConceptOf <#Feeds>.
+<#Culture> a skos:Concept, taxo:topic;
+    skos:prefLabel "Culture";
+    skos:topConceptOf <#Feeds>.

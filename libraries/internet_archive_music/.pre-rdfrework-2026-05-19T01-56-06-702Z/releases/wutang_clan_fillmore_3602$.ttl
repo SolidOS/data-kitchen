@@ -1,0 +1,128 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:18e0b8fb-a44e-4693-a912-06b42e50be0a>
+    a mo:Track;
+    dct:title "32 (mystery girl) Impossible - freestyle";
+    mo:duration "265";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/32%20(mystery%20girl)%20Impossible%20-%20freestyle.mp3>.
+<urn:uuid:2ae81bd7-01b2-448b-9879-852061d4d1b0>
+    a mo:Track;
+    dct:title "26 Chrome Wheels";
+    mo:duration "214";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/26%20Chrome%20Wheels.mp3>.
+<urn:uuid:35be1478-8879-4b34-b5d0-93c239299d1e>
+    a mo:Track;
+    dct:title "21 All I Need - ";
+    mo:duration "369";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/21%20All%20I%20Need%20-%20.mp3>.
+<urn:uuid:3fd8211d-0896-4318-9e45-f2063b026ce6>
+    a mo:Track;
+    dct:title
+        "23 How High - Judgement Day - Bring The Ruckus - Wu Tang Clan Ain't Nuthin' Ta F' Wit";
+    mo:duration "486";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/23%20How%20High%20-%20Judgement%20Day%20-%20Bring%20The%20Ruckus%20-%20Wu%20Tang%20Clan%20Ain't%20Nuthin'%20Ta%20F'%20Wit.mp3>.
+<urn:uuid:43862ef8-7de8-450c-8d3c-a5f4c32c7b34>
+    a mo:Release;
+    dct:title "Wu-Tang Clan - Fillmore - 3/6/02";
+    mo:track
+        <urn:uuid:18e0b8fb-a44e-4693-a912-06b42e50be0a>,
+        <urn:uuid:2ae81bd7-01b2-448b-9879-852061d4d1b0>,
+        <urn:uuid:35be1478-8879-4b34-b5d0-93c239299d1e>,
+        <urn:uuid:3fd8211d-0896-4318-9e45-f2063b026ce6>,
+        <urn:uuid:67d1fddd-1f9a-4fd8-ac9e-dd0930187e4d>,
+        <urn:uuid:7b336a00-cd22-4334-b4b8-ff364c05d024>,
+        <urn:uuid:886c6105-0b07-4659-9a1f-944e767439d3>,
+        <urn:uuid:99e2fdd2-a19c-46f6-b164-7737fc615262>,
+        <urn:uuid:9c947210-663c-4261-b086-7dd77da5ff7f>,
+        <urn:uuid:bab2e6bd-6679-45a3-b3fc-7e4b5cad19f5>,
+        <urn:uuid:d331ee1e-6afd-433d-bf7f-5e90a311c5f5>,
+        <urn:uuid:d9e89d8a-d7ab-42bf-bbf0-3813da8fce16>,
+        <urn:uuid:e68c9e7c-9763-4c20-9e95-0fe63b329fad>,
+        <urn:uuid:e899069b-4358-4a51-865f-b8dabbad589a>,
+        <urn:uuid:edfd882b-3659-41d0-bd61-02e5d21b92cf>,
+        <urn:uuid:fd4d9779-2813-4920-9015-60362033b53a>;
+    dcat:landingPage det:wu-tang-clan-fillmore-3602;
+    foaf:maker
+        <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>,
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:67d1fddd-1f9a-4fd8-ac9e-dd0930187e4d>
+    a mo:Track;
+    dct:title "11 WTC";
+    mo:duration "193";
+    dcat:downloadUrl
+    <https://archive.org/download/wu-tang-clan-fillmore-3602/11%20WTC.mp3>.
+<urn:uuid:7b336a00-cd22-4334-b4b8-ff364c05d024>
+    a mo:Track;
+    dct:title "33 In The Hood - Y'all Been Warned - Rules - Uzi (Pinky Ring) ";
+    mo:duration "699";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/33%20In%20The%20Hood%20-%20Y'all%20Been%20Warned%20-%20Rules%20-%20Uzi%20(Pinky%20Ring)%20.mp3>.
+<urn:uuid:886c6105-0b07-4659-9a1f-944e767439d3>
+    a mo:Track;
+    dct:title "17 Iron's Theme - Ghost Deini - C.R.E.A.M. ";
+    mo:duration "434";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/17%20Iron's%20Theme%20-%20Ghost%20Deini%20-%20C.R.E.A.M.%20.mp3>.
+<urn:uuid:99e2fdd2-a19c-46f6-b164-7737fc615262>
+    a mo:Track;
+    dct:title "16 WTC";
+    mo:duration "290";
+    dcat:downloadUrl
+    <https://archive.org/download/wu-tang-clan-fillmore-3602/16%20WTC.mp3>.
+<urn:uuid:9c947210-663c-4261-b086-7dd77da5ff7f>
+    a mo:Track;
+    dct:title "14 Domestic Violence (cont.) - La Rhumba";
+    mo:duration "356";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/14%20Domestic%20Violence%20(cont.)%20-%20La%20Rhumba.mp3>.
+<urn:uuid:bab2e6bd-6679-45a3-b3fc-7e4b5cad19f5>
+    a mo:Track;
+    dct:title "08 Liquid Swords - Cold World";
+    mo:duration "278";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/08%20Liquid%20Swords%20-%20Cold%20World.mp3>.
+<urn:uuid:d331ee1e-6afd-433d-bf7f-5e90a311c5f5>
+    a mo:Track;
+    dct:title "13 Glocko Pop - Domestic Violence (cut)";
+    mo:duration "276";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/13%20Glocko%20Pop%20-%20Domestic%20Violence%20(cut).mp3>.
+<urn:uuid:d9e89d8a-d7ab-42bf-bbf0-3813da8fce16>
+    a mo:Track;
+    dct:title "02 More Intro";
+    mo:duration "259";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/02%20More%20Intro.mp3>.
+<urn:uuid:e68c9e7c-9763-4c20-9e95-0fe63b329fad>
+    a mo:Track;
+    dct:title "24 Tearz - Can It Be All So Simple - Reunited ";
+    mo:duration "307";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/24%20Tearz%20-%20Can%20It%20Be%20All%20So%20Simple%20-%20Reunited%20.mp3>.
+<urn:uuid:e899069b-4358-4a51-865f-b8dabbad589a>
+    a mo:Track;
+    dct:title "10 One Blood Under W - Duel Of The Iron Mic";
+    mo:duration "302";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/10%20One%20Blood%20Under%20W%20-%20Duel%20Of%20The%20Iron%20Mic.mp3>.
+<urn:uuid:edfd882b-3659-41d0-bd61-02e5d21b92cf>
+    a mo:Track;
+    dct:title "27 Ice Cream - Freek'n You";
+    mo:duration "231";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/27%20Ice%20Cream%20-%20Freek'n%20You.mp3>.
+<urn:uuid:fd4d9779-2813-4920-9015-60362033b53a>
+    a mo:Track;
+    dct:title "19 Method Man";
+    mo:duration "286";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-fillmore-3602/19%20Method%20Man.mp3>.

@@ -1,0 +1,13 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:48b70653-3975-4465-8744-339eec4fb7fc> a mo:Release;
+    dcterms:title "Disc 1 Mr. Morale & the Big Steppers Piano Sessions Only Stems (48K 24BIT WAV)";
+    foaf:maker "Kendrick Lamar";
+    dcat:landingPage <https://archive.org/details/MrMoralesPianos>;
+    mo:track <urn:uuid:ceff6d84-2807-4a07-9fdf-ce6a39166ec0>, <urn:uuid:c567f6be-fe83-4ede-8e7b-f26c9ee85288>, <urn:uuid:710bbb54-2076-41cd-a2af-7dfa8a40aea8>.
+<urn:uuid:ceff6d84-2807-4a07-9fdf-ce6a39166ec0> a mo:Track; dcterms:title "Die Hard"; mo:duration "228"; dcat:downloadUrl <https://archive.org/download/MrMoralesPianos/Die%20Hard%20Main%20Piano.mp3>.
+<urn:uuid:c567f6be-fe83-4ede-8e7b-f26c9ee85288> a mo:Track; dcterms:title "Father Time"; mo:duration "1598"; dcat:downloadUrl <https://archive.org/download/MrMoralesPianos/Father%20Time%20Piano%202.mp3>.
+<urn:uuid:710bbb54-2076-41cd-a2af-7dfa8a40aea8> a mo:Track; dcterms:title "Father Time"; mo:duration "969"; dcat:downloadUrl <https://archive.org/download/MrMoralesPianos/Father%20Time%20Piano%20Intro%20Trim.mp3>.

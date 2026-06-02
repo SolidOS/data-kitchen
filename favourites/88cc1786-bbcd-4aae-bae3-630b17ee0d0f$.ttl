@@ -1,0 +1,15 @@
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a schema:BookmarkAction ;
+   dct:creator "y" ;
+   dct:title "Owl of Athena" ;
+   dct:created "2026-06-01T21:22:58.638Z"^^xsd:dateTime ;
+   dct:references <https://commons.wikimedia.org/wiki/Category:Owl_of_Athena> .
+
+<https://commons.wikimedia.org/wiki/Category:Owl_of_Athena> a dctype:Collection, schema:ImageGallery ;
+   schema:name "Owl of Athena" ;
+   dcat:landingPage <https://commons.wikimedia.org/wiki/Category:Owl_of_Athena> .

@@ -1,0 +1,10 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:079aeb63-0871-45e5-af50-56b47c03293f> a mo:Release;
+    dcterms:title "(untitled album)";
+    dcat:landingPage <https://archive.org/details/NosajThingAquarium>;
+    mo:track <urn:uuid:4d29be19-656d-4301-b479-e214e0169050>.
+<urn:uuid:4d29be19-656d-4301-b479-e214e0169050> a mo:Track; dcterms:title "Aquarium"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/NosajThingAquarium/Nosaj%20Thing%20-%20Aquarium.mp3>.

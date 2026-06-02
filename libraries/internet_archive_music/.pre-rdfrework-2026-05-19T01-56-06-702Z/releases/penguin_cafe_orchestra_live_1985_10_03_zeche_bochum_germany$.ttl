@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c155f483-d756-43e5-9174-7f9bb7f630d6> a mo:Release;
+    dcterms:title "Penguin Cafe Orchestra LIVE 1985-10-03 @Zeche Bochum, Germany";
+    foaf:maker "Penguin Cafe Orchestra";
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra03101985>;
+    mo:track <urn:uuid:29031ec3-e4b1-4be0-b2fe-5b9a5891898a>, <urn:uuid:226907da-8d10-4a57-ab3b-f9684d7ac813>, <urn:uuid:85684a6a-e45a-4328-80d3-088874a0a4da>, <urn:uuid:a3b86a6c-ea45-45cd-881c-46d05801e19f>, <urn:uuid:c5d62fb1-054c-478e-be27-9c9cf237f1d3>, <urn:uuid:7929e7f6-c93e-41a3-bdcc-4f653a3acf88>, <urn:uuid:8ba89cef-35d6-4199-b7a4-367476cdaf64>, <urn:uuid:32f8aece-8647-4423-8515-533bce2ec396>.
+<urn:uuid:29031ec3-e4b1-4be0-b2fe-5b9a5891898a> a mo:Track; dcterms:title "Chartered Flight"; mo:duration "489"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra03101985/2-01%20Chartered%20Flight.mp3>.
+<urn:uuid:226907da-8d10-4a57-ab3b-f9684d7ac813> a mo:Track; dcterms:title "Cutting Branches"; mo:duration "207"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra03101985/1-04%20Cutting%20Branches.mp3>.
+<urn:uuid:85684a6a-e45a-4328-80d3-088874a0a4da> a mo:Track; dcterms:title "In the Back of a Taxi"; mo:duration "277"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra03101985/1-03%20In%20the%20Back%20of%20a%20Taxi.mp3>.
+<urn:uuid:a3b86a6c-ea45-45cd-881c-46d05801e19f> a mo:Track; dcterms:title "Salty Bean Fumble II"; mo:duration "253"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra03101985/2-11%20Salty%20Bean%20Fumble%20II.mp3>.
+<urn:uuid:c5d62fb1-054c-478e-be27-9c9cf237f1d3> a mo:Track; dcterms:title "The Ecstasy of Dancing Fleas I"; mo:duration "286"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra03101985/2-07%20The%20Ecstasy%20of%20Dancing%20Fleas%20I.mp3>.
+<urn:uuid:7929e7f6-c93e-41a3-bdcc-4f653a3acf88> a mo:Track; dcterms:title "The Ecstasy of Dancing Fleas II"; mo:duration "311"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra03101985/2-12%20The%20Ecstasy%20of%20Dancing%20Fleas%20II.mp3>.
+<urn:uuid:8ba89cef-35d6-4199-b7a4-367476cdaf64> a mo:Track; dcterms:title "The Toy"; mo:duration "281"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra03101985/2-10%20The%20Toy.mp3>.
+<urn:uuid:32f8aece-8647-4423-8515-533bce2ec396> a mo:Track; dcterms:title "Yodel One"; mo:duration "323"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra03101985/1-02%20Yodel%20One.mp3>.

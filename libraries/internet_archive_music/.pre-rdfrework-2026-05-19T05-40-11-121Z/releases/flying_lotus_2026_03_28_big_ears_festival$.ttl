@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:5f08ee2e-9b94-4fa5-8ae5-9d152d8aaca2> a mo:Release;
+    dcterms:title "Flying Lotus 2026-03-28 Big Ears Festival";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/flying-lotus-2026-03-28_202604>;
+    mo:track <urn:uuid:d73dff53-e7c1-4a1e-8ec0-02bf547b02ea>, <urn:uuid:5d1925fb-949a-4347-99b3-c6212a81d714>, <urn:uuid:deab7702-8794-4a32-bcda-898bcc8eded2>, <urn:uuid:c23a4672-d8c2-47ba-a6af-0970ce9b5fd1>, <urn:uuid:e76e0385-0fbb-4729-ae00-57b183cc64b7>.
+<urn:uuid:d73dff53-e7c1-4a1e-8ec0-02bf547b02ea> a mo:Track; dcterms:title "Never Catch Me (ft. Kendrick Lamar)"; mo:duration "188"; dcat:downloadUrl <https://archive.org/download/flying-lotus-2026-03-28_202604/FlyingLotus2026-03-28t03.mp3>.
+<urn:uuid:5d1925fb-949a-4347-99b3-c6212a81d714> a mo:Track; dcterms:title "unknown > unknown"; mo:duration "348"; dcat:downloadUrl <https://archive.org/download/flying-lotus-2026-03-28_202604/FlyingLotus2026-03-28t04.mp3>.
+<urn:uuid:deab7702-8794-4a32-bcda-898bcc8eded2> a mo:Track; dcterms:title "Heat [Austin Ato] > Daddy Is Home [Harry Romero Remix] [Gotta] > Garmonbozia [Cesco Remix] >"; mo:duration "529"; dcat:downloadUrl <https://archive.org/download/flying-lotus-2026-03-28_202604/FlyingLotus2026-03-28t05.mp3>.
+<urn:uuid:c23a4672-d8c2-47ba-a6af-0970ce9b5fd1> a mo:Track; dcterms:title "PINK DREAM"; mo:duration "237"; dcat:downloadUrl <https://archive.org/download/flying-lotus-2026-03-28_202604/FlyingLotus2026-03-28t07.mp3>.
+<urn:uuid:e76e0385-0fbb-4729-ae00-57b183cc64b7> a mo:Track; dcterms:title "Which Way [G Jones] >"; mo:duration "431"; dcat:downloadUrl <https://archive.org/download/flying-lotus-2026-03-28_202604/FlyingLotus2026-03-28t09.mp3>.

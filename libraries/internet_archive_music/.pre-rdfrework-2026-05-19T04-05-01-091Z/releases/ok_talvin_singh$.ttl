@@ -1,0 +1,19 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:7591a0ac-516a-41ff-a045-db8412b83e2a> a mo:Release;
+    dcterms:title "OK - Talvin Singh";
+    foaf:maker "Talvin Singh";
+    dcat:landingPage <https://archive.org/details/01-traveller-talvin-singh>;
+    mo:track <urn:uuid:dc9f2a1c-87b9-4a4c-9442-f6b323113e0d>, <urn:uuid:f10b346b-93c4-4022-b430-1a12bb8a54c8>, <urn:uuid:c967416f-13bf-448f-b870-5518191e7f67>, <urn:uuid:f414a778-9937-4b22-b990-86efc714c5c8>, <urn:uuid:7f245cd3-e9ed-4acb-beeb-66d230c78753>, <urn:uuid:d522d24f-390f-4929-b55b-87780b2eba95>, <urn:uuid:791197a6-f541-43c3-880a-87082eb28f4d>, <urn:uuid:4edbc50c-b3e3-405c-81bc-ed87d166bbf3>, <urn:uuid:39804d28-576d-4547-a8d3-9dbbe3016a00>.
+<urn:uuid:dc9f2a1c-87b9-4a4c-9442-f6b323113e0d> a mo:Track; dcterms:title "Traveller"; mo:duration "678"; dcat:downloadUrl <https://archive.org/download/01-traveller-talvin-singh/01%20Traveller%20Talvin%20Singh.mp3>.
+<urn:uuid:f10b346b-93c4-4022-b430-1a12bb8a54c8> a mo:Track; dcterms:title "Butterfly"; mo:duration "266"; dcat:downloadUrl <https://archive.org/download/01-traveller-talvin-singh/02%20Butterfly%20Talvin%20Singh.mp3>.
+<urn:uuid:c967416f-13bf-448f-b870-5518191e7f67> a mo:Track; dcterms:title "Sutrix"; mo:duration "355"; dcat:downloadUrl <https://archive.org/download/01-traveller-talvin-singh/03%20Sutrix%20Talvin%20Singh.mp3>.
+<urn:uuid:f414a778-9937-4b22-b990-86efc714c5c8> a mo:Track; dcterms:title "Mombasstic"; mo:duration "345"; dcat:downloadUrl <https://archive.org/download/01-traveller-talvin-singh/04%20Mombasstic%20Talvin%20Singh.mp3>.
+<urn:uuid:7f245cd3-e9ed-4acb-beeb-66d230c78753> a mo:Track; dcterms:title "Eclipse"; mo:duration "350"; dcat:downloadUrl <https://archive.org/download/01-traveller-talvin-singh/06%20Eclipse%20Talvin%20Singh.mp3>.
+<urn:uuid:d522d24f-390f-4929-b55b-87780b2eba95> a mo:Track; dcterms:title "Ok"; mo:duration "259"; dcat:downloadUrl <https://archive.org/download/01-traveller-talvin-singh/07%20Ok%20Talvin%20Singh.mp3>.
+<urn:uuid:791197a6-f541-43c3-880a-87082eb28f4d> a mo:Track; dcterms:title "Light"; mo:duration "383"; dcat:downloadUrl <https://archive.org/download/01-traveller-talvin-singh/08%20Light%20Talvin%20Singh.mp3>.
+<urn:uuid:4edbc50c-b3e3-405c-81bc-ed87d166bbf3> a mo:Track; dcterms:title "Soni"; mo:duration "359"; dcat:downloadUrl <https://archive.org/download/01-traveller-talvin-singh/10%20Soni%20Talvin%20Singh.mp3>.
+<urn:uuid:39804d28-576d-4547-a8d3-9dbbe3016a00> a mo:Track; dcterms:title "Vikram the Vampire"; mo:duration "407"; dcat:downloadUrl <https://archive.org/download/01-traveller-talvin-singh/11%20Vikram%20the%20Vampire%20Talvin%20Singh.mp3>.

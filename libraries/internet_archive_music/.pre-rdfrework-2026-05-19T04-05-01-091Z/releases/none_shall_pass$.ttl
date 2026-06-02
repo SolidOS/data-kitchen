@@ -1,0 +1,24 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:eda5ed45-40e5-4f6b-bd42-51987141ce87> a mo:Release;
+    dcterms:title "None Shall Pass";
+    foaf:maker "Aesop Rock";
+    dcat:landingPage <https://archive.org/details/none-shall-pass>;
+    mo:track <urn:uuid:2bf97ad6-6b95-493d-9d0a-4881745ab231>, <urn:uuid:ce876f09-e53f-414b-9f76-9ffe64f24a9a>, <urn:uuid:9cb790c8-7c0d-403a-ab5f-f38c1dbc113b>, <urn:uuid:62c0718a-1332-4056-bcb7-564b4dedd598>, <urn:uuid:4ba2c762-eece-45cd-addd-4aa7c1eb5bbc>, <urn:uuid:c26e7980-f5bd-4e5f-a42a-2ac875857c49>, <urn:uuid:9779fedf-c414-41f1-8e66-56eabff41870>, <urn:uuid:0f57be01-6393-4e4e-8f36-fb082ea420a0>, <urn:uuid:66a6d0fd-1c04-40b7-b3b3-b8e396cb73e7>, <urn:uuid:8b619864-01da-4379-8d34-d2b35baee1db>, <urn:uuid:4710307a-acb9-4d6a-b167-9543524e1d9d>, <urn:uuid:b5823df1-bb60-43fb-99c4-a384f7418d88>, <urn:uuid:e43bd606-0b77-4306-9d72-cb582d16df14>, <urn:uuid:5c069d69-2ca2-4069-94a7-cfec717d465f>.
+<urn:uuid:2bf97ad6-6b95-493d-9d0a-4881745ab231> a mo:Track; dcterms:title "39 Thieves"; mo:duration "255"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/39%20Thieves.mp3>.
+<urn:uuid:ce876f09-e53f-414b-9f76-9ffe64f24a9a> a mo:Track; dcterms:title "Bring Back Pluto"; mo:duration "269"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Bring%20Back%20Pluto.mp3>.
+<urn:uuid:9cb790c8-7c0d-403a-ab5f-f38c1dbc113b> a mo:Track; dcterms:title "Catacomb Kids"; mo:duration "247"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Catacomb%20Kids.mp3>.
+<urn:uuid:62c0718a-1332-4056-bcb7-564b4dedd598> a mo:Track; dcterms:title "Citronella"; mo:duration "293"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Citronella.mp3>.
+<urn:uuid:4ba2c762-eece-45cd-addd-4aa7c1eb5bbc> a mo:Track; dcterms:title "Coffee"; mo:duration "574"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Coffee.mp3>.
+<urn:uuid:c26e7980-f5bd-4e5f-a42a-2ac875857c49> a mo:Track; dcterms:title "Dark Heart News"; mo:duration "239"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Dark%20Heart%20News.mp3>.
+<urn:uuid:9779fedf-c414-41f1-8e66-56eabff41870> a mo:Track; dcterms:title "Five Fingers"; mo:duration "246"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Five%20Fingers.mp3>.
+<urn:uuid:0f57be01-6393-4e4e-8f36-fb082ea420a0> a mo:Track; dcterms:title "Fumes"; mo:duration "300"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Fumes.mp3>.
+<urn:uuid:66a6d0fd-1c04-40b7-b3b3-b8e396cb73e7> a mo:Track; dcterms:title "Getaway Car"; mo:duration "195"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Getaway%20Car.mp3>.
+<urn:uuid:8b619864-01da-4379-8d34-d2b35baee1db> a mo:Track; dcterms:title "Gun For The Whole Family"; mo:duration "233"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Gun%20For%20The%20Whole%20Family.mp3>.
+<urn:uuid:4710307a-acb9-4d6a-b167-9543524e1d9d> a mo:Track; dcterms:title "Keep Off The Lawn"; mo:duration "225"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/Keep%20Off%20The%20Lawn.mp3>.
+<urn:uuid:b5823df1-bb60-43fb-99c4-a384f7418d88> a mo:Track; dcterms:title "No City"; mo:duration "268"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/No%20City.mp3>.
+<urn:uuid:e43bd606-0b77-4306-9d72-cb582d16df14> a mo:Track; dcterms:title "None Shall Pass"; mo:duration "243"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/None%20Shall%20Pass.mp3>.
+<urn:uuid:5c069d69-2ca2-4069-94a7-cfec717d465f> a mo:Track; dcterms:title "The Harbor Is Yours"; mo:duration "238"; dcat:downloadUrl <https://archive.org/download/none-shall-pass/The%20Harbor%20Is%20Yours.mp3>.

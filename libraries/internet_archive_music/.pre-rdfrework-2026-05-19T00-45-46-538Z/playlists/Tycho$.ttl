@@ -1,0 +1,13 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Tycho> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Tycho";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://purl.org/dc/terms/description> "Ambient Electronica";
+    <http://open-media-player.org/ns#hidePlaylist> "true";
+    dcterms:hasPart <urn:uuid:1a4500e2-252e-4880-8c19-270e66f4de97>, <urn:uuid:dd3a3bc4-9ecd-47c3-821c-e8f53b2fd529>, <urn:uuid:353c33ab-e9a4-4007-886e-11e4b5752a41>, <urn:uuid:da6287c2-cdd7-418f-be63-e3ed83100321>, <urn:uuid:88280348-0405-452e-82a9-67d0744ae04d>, <urn:uuid:6975d908-7c3a-4404-a204-4e8afcc88e58>, <urn:uuid:89b5976b-5efe-445e-94db-dad06cc2ac35>, <urn:uuid:61a9a665-18cd-4024-ae41-cba5bc783c94>, <urn:uuid:fa48aa90-faff-404b-8d9d-4de7502cb0d5>, <urn:uuid:bd5a8060-0c1d-4df4-89f6-2ec1b3896c49>, <urn:uuid:5cc13971-dc68-4a0a-8922-2c2e6bb05bf5>, <urn:uuid:74da6f39-3740-4563-944c-d4d897e69398>, <urn:uuid:bcc08afc-66a9-4d6c-84fd-c51483e071be>, <urn:uuid:f4225d31-d2da-4d23-b5c6-6b88835bc0a8>, <urn:uuid:e2af2d25-074f-46e0-8434-7d77ad81e701>, <urn:uuid:2990af13-0922-4128-af1d-c4f41c5aa904>, <urn:uuid:b6562422-9ff9-4575-a601-716e2025d96c>, <urn:uuid:67cacd83-bcde-4ad5-97ea-32ee9e307f1b>, <urn:uuid:4e7400ef-3e51-45e6-98dc-49528672af40>, <urn:uuid:bfc91527-d51b-46e3-a6dc-eddb0f010ac1>, <urn:uuid:3967be68-de7f-418f-902f-dd42451b31c0>, <urn:uuid:5360a50d-8d3c-4a4b-8723-dbdb608db20b>, <urn:uuid:f5b193a0-a713-4beb-a09d-b7d70b494a83>, <urn:uuid:435c6ff4-e19d-4e51-acee-46831198e034>, <urn:uuid:236f6f30-cb5c-4f75-b3f5-1dbbbfc76008>, <urn:uuid:bb24b514-ff9f-4586-97b8-f4754ae90454>, <urn:uuid:82483af7-96b9-4b9f-9274-724aa456c478>, <urn:uuid:ee801a5e-635b-45bb-9d23-84e6815b70ab>, <urn:uuid:b5d346a1-2e3f-4243-a8c2-5711e3d67128>, <urn:uuid:ed42a21f-06a4-486b-b1f3-ac8bc21cc730>, <urn:uuid:4c16a112-afb3-4ee1-a944-96fe63455569>, <urn:uuid:55e38f13-d84c-4d21-838e-967b3fc2bf0c>, <urn:uuid:89bdb0dd-9a0f-4a74-aca8-3501d7e315e0>.

@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:ffe67967-33e0-4d70-a54f-a833883b49de> a mo:Release;
+    dcterms:title "Five O'Clock Blues";
+    foaf:maker "Memphis Slim and his House Rockers;Fraser";
+    dcat:landingPage <https://archive.org/details/78_five-oclock-blues_memphis-slim-and-his-house-rockers-fraser_gbia0001676b>;
+    mo:track <urn:uuid:9a29e2bb-de7f-4f01-91b3-d821f3b7682c>.
+<urn:uuid:9a29e2bb-de7f-4f01-91b3-d821f3b7682c> a mo:Track; dcterms:title "Five O'Clock Blues"; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/78_five-oclock-blues_memphis-slim-and-his-house-rockers-fraser_gbia0001676b/Five%20O'Clock%20Blues%20-%20Memphis%20Slim%20and%20his%20House%20Rockers.mp3>.

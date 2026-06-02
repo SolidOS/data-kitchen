@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:296f5101-dad5-4691-8185-1ef3ebdeedbe> a mo:Release;
+    dcterms:title "Monolake - Recorded live, JJJ Mixup FM - 13-05-2006";
+    foaf:maker <urn:uuid:7c2420d2-5190-4d6a-8b9d-1fb37bf4125b>;
+    dcat:landingPage <https://archive.org/details/monolake-jjj-mixup-fm-13-05-2006>;
+    mo:track <urn:uuid:713247fb-84cf-448c-b92c-56bc954a5f04>.
+<urn:uuid:713247fb-84cf-448c-b92c-56bc954a5f04> a mo:Track; dcterms:title "JJJ_Mixup-FM-05-13-2006"; mo:duration "2798"; dcat:downloadUrl <https://archive.org/download/monolake-jjj-mixup-fm-13-05-2006/01-monolake_-_jjj_mixup-fm-05-13-2006-hsalive.mp3>.

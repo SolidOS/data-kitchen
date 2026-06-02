@@ -1,0 +1,21 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:6d69a857-0a36-4e6a-beac-e7e04f500977> a mo:Release;
+    dcterms:title "Billie Holiday - Lady In Autumn (The Best Of The Verve Years) Disc 1";
+    foaf:maker <urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd>;
+    dcat:landingPage <https://archive.org/details/17-i-wished-on-the-moon>;
+    mo:track <urn:uuid:c2d51f5c-c615-409e-b1a9-9e9f3b9f5033>, <urn:uuid:fb9d5c36-251c-4330-86da-4d632408634e>, <urn:uuid:38475e14-ff9c-4583-930a-3f570231d5e1>, <urn:uuid:ac07ea8e-67c6-4606-9c88-c95da2f6b0d5>, <urn:uuid:5c55aad8-bb10-43eb-b574-7597fed09a00>, <urn:uuid:2e9ecf1d-8a98-434d-b673-eaf5e720a417>, <urn:uuid:997c7f03-f956-49e5-aa0d-a99eb28c55fa>, <urn:uuid:b768162b-c576-40d3-9168-1c3c431c6f0f>, <urn:uuid:c9364a92-7fdf-4c60-95de-25dafb884eb8>, <urn:uuid:54368c06-c122-4342-a78b-0e42b7065eb0>, <urn:uuid:95685446-e68b-4851-bb32-be6943cf917e>.
+<urn:uuid:c2d51f5c-c615-409e-b1a9-9e9f3b9f5033> a mo:Track; dcterms:title "(I Got a Man, Crazy for Me) He's Funny That Way"; mo:duration "190"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/13%20(I%20Got%20a%20Man%2C%20Crazy%20for%20Me)%20He's%20Funny%20That%20Way.mp3>.
+<urn:uuid:fb9d5c36-251c-4330-86da-4d632408634e> a mo:Track; dcterms:title "Autumn in New York"; mo:duration "233"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/09%20Autumn%20in%20New%20York.mp3>.
+<urn:uuid:38475e14-ff9c-4583-930a-3f570231d5e1> a mo:Track; dcterms:title "Body and Soul"; mo:duration "206"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/01%20Body%20and%20Soul.mp3>.
+<urn:uuid:ac07ea8e-67c6-4606-9c88-c95da2f6b0d5> a mo:Track; dcterms:title "I Don't Want to Cry Anymore"; mo:duration "237"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/18%20I%20Don't%20Want%20to%20Cry%20Anymore.mp3>.
+<urn:uuid:5c55aad8-bb10-43eb-b574-7597fed09a00> a mo:Track; dcterms:title "I Wished on the Moon"; mo:duration "406"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/17%20I%20Wished%20on%20the%20Moon.mp3>.
+<urn:uuid:2e9ecf1d-8a98-434d-b673-eaf5e720a417> a mo:Track; dcterms:title "Prelude to a Kiss"; mo:duration "334"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/19%20Prelude%20to%20a%20Kiss.mp3>.
+<urn:uuid:997c7f03-f956-49e5-aa0d-a99eb28c55fa> a mo:Track; dcterms:title "Stormy Weather"; mo:duration "221"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/11%20Stormy%20Weather.mp3>.
+<urn:uuid:b768162b-c576-40d3-9168-1c3c431c6f0f> a mo:Track; dcterms:title "Tenderly"; mo:duration "202"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/08%20Tenderly.mp3>.
+<urn:uuid:c9364a92-7fdf-4c60-95de-25dafb884eb8> a mo:Track; dcterms:title "These Foolish Things"; mo:duration "216"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/07%20These%20Foolish%20Things.mp3>.
+<urn:uuid:54368c06-c122-4342-a78b-0e42b7065eb0> a mo:Track; dcterms:title "Trav'lin' Light"; mo:duration "205"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/03%20Trav'lin'%20Light.mp3>.
+<urn:uuid:95685446-e68b-4851-bb32-be6943cf917e> a mo:Track; dcterms:title "What a Little Moonlight Can Do"; mo:duration "194"; dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/14%20What%20a%20Little%20Moonlight%20Can%20Do.mp3>.

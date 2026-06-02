@@ -1,0 +1,461 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Samurai Champloo Music Record: Departure, Impression, Katana, Masta, Playlist (2004) [FLAC 16-44.1]" ;
+    dct:identifier "samurai-champloo-music-record-flac" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/samurai-champloo-music-record-flac> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15>, <#t16>, <#t17>, <#t18>, <#t19>, <#t20>, <#t21>, <#t22>, <#t23>, <#t24>, <#t25>, <#t26>, <#t27>, <#t28>, <#t29>, <#t30>, <#t31>, <#t32>, <#t33>, <#t34>, <#t35>, <#t36>, <#t37>, <#t38>, <#t39>, <#t40>, <#t41>, <#t42>, <#t43>, <#t44>, <#t45>, <#t46>, <#t47>, <#t48>, <#t49>, <#t50>, <#t51>, <#t52>, <#t53>, <#t54>, <#t55>, <#t56>, <#t57>, <#t58>, <#t59>, <#t60>, <#t61>, <#t62>, <#t63>, <#t64> ;
+    foaf:maker <urn:uuid:a5f679b6-aef4-43d9-9ea5-57ca3758d0da> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "1st. samurai" ;
+    mo:duration "188" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F06.%201st.%20samurai.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "2 messages" ;
+    mo:duration "323" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F15_2%20messages.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "624 part2" ;
+    mo:duration "225" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F08.%20624%20part2.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "absolute" ;
+    mo:duration "320" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F07_absolute.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "adapt myself" ;
+    mo:duration "298" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F08_adapt%20myself.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "aruarian dance" ;
+    mo:duration "248" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F03.%20aruarian%20dance.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "ask" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F14.%20ask.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "battlecry / Nujabes feat. Shing02" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F01.%20battlecry%20-%20Nujabes%20feat.%20Shing02.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "bracelet" ;
+    mo:duration "221" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F17%20bracelet.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "breeezin'" ;
+    mo:duration "260" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F12.%20breeezin'.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "chambers" ;
+    mo:duration "223" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F13.%20chambers.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "deeper than words" ;
+    mo:duration "299" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F14_deeper%20than%20words.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "dry" ;
+    mo:duration "261" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F05-dry.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "FLY feat.AZUMA RIKI (SMALL CIRCLE OF FRIENDS)" ;
+    mo:duration "234" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F18_FLY%20feat.AZUMA%20RIKI%20(SMALL%20CIRCLE%20OF%20FRIENDS).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "funkin" ;
+    mo:duration "215" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F11.%20funkin.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t16>
+    a mo:Track ;
+    dct:title "genome" ;
+    mo:duration "215" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F09.%20genome.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t17>
+    a mo:Track ;
+    dct:title "genome" ;
+    mo:duration "216" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F04-genome.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t18>
+    a mo:Track ;
+    dct:title "here and there" ;
+    mo:duration "194" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F22%20here%20and%20there.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t19>
+    a mo:Track ;
+    dct:title "how you feel" ;
+    mo:duration "267" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F15.%20how%20you%20feel.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t20>
+    a mo:Track ;
+    dct:title "I sighed" ;
+    mo:duration "224" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F16.%20I%20sighed.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t21>
+    a mo:Track ;
+    dct:title "in position" ;
+    mo:duration "233" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F18%20in%20position.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t22>
+    a mo:Track ;
+    dct:title "judgment on" ;
+    mo:duration "182" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F03.%20judgment%20on.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t23>
+    a mo:Track ;
+    dct:title "just forget" ;
+    mo:duration "234" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F01%20just%20forget.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t24>
+    a mo:Track ;
+    dct:title "kujaku" ;
+    mo:duration "419" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F04.%20kujaku.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t25>
+    a mo:Track ;
+    dct:title "let me know what U think" ;
+    mo:duration "304" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F04_let%20me%20know%20what%20U%20think.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t26>
+    a mo:Track ;
+    dct:title "loading zone" ;
+    mo:duration "269" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F04.%20loading%20zone.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t27>
+    a mo:Track ;
+    dct:title "mist" ;
+    mo:duration "224" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F02.%20mist.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t28>
+    a mo:Track ;
+    dct:title "mists" ;
+    mo:duration "251" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F05_mists.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t29>
+    a mo:Track ;
+    dct:title "mystline" ;
+    mo:duration "287" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F05.%20mystline.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t30>
+    a mo:Track ;
+    dct:title "new dimension" ;
+    mo:duration "194" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F09.%20new%20dimension.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t31>
+    a mo:Track ;
+    dct:title "nightshift" ;
+    mo:duration "283" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F02%20nightshift.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t32>
+    a mo:Track ;
+    dct:title "no icon" ;
+    mo:duration "189" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F10_no%20icon.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t33>
+    a mo:Track ;
+    dct:title "no way back" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F10.%20no%20way%20back.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t34>
+    a mo:Track ;
+    dct:title "numbernine [back in TYO]" ;
+    mo:duration "205" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F18.%20numbernine%20%5Bback%20in%20TYO%5D.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t35>
+    a mo:Track ;
+    dct:title "offers" ;
+    mo:duration "216" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F17_offers.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t36>
+    a mo:Track ;
+    dct:title "ole" ;
+    mo:duration "208" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F07.%20ole.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t37>
+    a mo:Track ;
+    dct:title "ole" ;
+    mo:duration "208" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F02-ole.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t38>
+    a mo:Track ;
+    dct:title "paranoid" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F05.%20paranoid.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t39>
+    a mo:Track ;
+    dct:title "pretending to..." ;
+    mo:duration "273" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F11-pretending%20to....mp3> ;
+    dct:isPartOf <#it> .
+
+<#t40>
+    a mo:Track ;
+    dct:title "process" ;
+    mo:duration "281" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F12_process.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t41>
+    a mo:Track ;
+    dct:title "raw material" ;
+    mo:duration "294" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F03-raw%20material.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t42>
+    a mo:Track ;
+    dct:title "reflective" ;
+    mo:duration "271" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F13_reflective.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t43>
+    a mo:Track ;
+    dct:title "sanctuary ship" ;
+    mo:duration "255" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F09%20sanctuary%20ship.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t44>
+    a mo:Track ;
+    dct:title "seventythree" ;
+    mo:duration "288" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F15.%20seventythree.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t45>
+    a mo:Track ;
+    dct:title "shiki no uta (song of the seasons)/MINMI" ;
+    mo:duration "302" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F17-shiki%20no%20uta%20(song%20of%20the%20seasons)-MINMI.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t46>
+    a mo:Track ;
+    dct:title "silver children" ;
+    mo:duration "236" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F06.%20silver%20children.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t47>
+    a mo:Track ;
+    dct:title "silver morning" ;
+    mo:duration "216" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F15-silver%20morning.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t48>
+    a mo:Track ;
+    dct:title "sincerely" ;
+    mo:duration "287" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F17.%20sincerely.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t49>
+    a mo:Track ;
+    dct:title "sneak chamber" ;
+    mo:duration "195" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F08-sneak%20chamber.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t50>
+    a mo:Track ;
+    dct:title "Song of the Seasons / MINMI" ;
+    mo:duration "300" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F17.%20Song%20of%20the%20Seasons%20-%20MINMI.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t51>
+    a mo:Track ;
+    dct:title "stay" ;
+    mo:duration "222" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F12.%20stay.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t52>
+    a mo:Track ;
+    dct:title "stretch out" ;
+    mo:duration "241" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F11_stretch%20out.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t53>
+    a mo:Track ;
+    dct:title "strike back" ;
+    mo:duration "254" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F03_strike%20back.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t54>
+    a mo:Track ;
+    dct:title "STYLE of the Rising Sun" ;
+    mo:duration "222" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F03%20STYLE%20of%20the%20Rising%20Sun.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t55>
+    a mo:Track ;
+    dct:title "thank you" ;
+    mo:duration "255" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F01_thank%20you.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t56>
+    a mo:Track ;
+    dct:title "the space between two world" ;
+    mo:duration "279" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F02.%20the%20space%20between%20two%20world.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t57>
+    a mo:Track ;
+    dct:title "the updater" ;
+    mo:duration "238" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F16_the%20updater.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t58>
+    a mo:Track ;
+    dct:title "tsurugi no mai" ;
+    mo:duration "205" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F11%20tsurugi%20no%20mai.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t59>
+    a mo:Track ;
+    dct:title "tubed (drum please!!!)" ;
+    mo:duration "272" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F10-tubed%20(drum%20please!!!).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t60>
+    a mo:Track ;
+    dct:title "vagrancy" ;
+    mo:duration "190" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F07-vagrancy.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t61>
+    a mo:Track ;
+    dct:title "Who's Theme" ;
+    mo:duration "298" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F23%20Who's%20Theme.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t62>
+    a mo:Track ;
+    dct:title "world without words" ;
+    mo:duration "373" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F14%20world%20without%20words.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t63>
+    a mo:Track ;
+    dct:title "yet? why not?" ;
+    mo:duration "226" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F02_yet%20why%20not.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t64>
+    a mo:Track ;
+    dct:title "YOU feat. Kazami" ;
+    mo:duration "299" ;
+    mo:item <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F09-YOU%20feat.%20Kazami.mp3> ;
+    dct:isPartOf <#it> .

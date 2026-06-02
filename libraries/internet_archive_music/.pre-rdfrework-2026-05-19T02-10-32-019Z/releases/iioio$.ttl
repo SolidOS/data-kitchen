@@ -1,0 +1,16 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:ca37edd3-df0b-47ff-8948-4185cbd46251> a mo:Release;
+    dcterms:title "IIOIO";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/flylo-iioio>;
+    mo:track <urn:uuid:0724f700-7503-481b-ab94-87a88b33b2da>, <urn:uuid:2ff948aa-4e40-43d8-b554-bb4e26c52a65>, <urn:uuid:bf6fc3c0-6e8a-4e77-98a6-6a317865b2bc>, <urn:uuid:6defe7da-aad4-4763-8b73-41e1ac96dba2>, <urn:uuid:6bf208ce-02ac-4d7d-a596-c6081416b208>, <urn:uuid:0c3bc47a-237a-4507-84c5-12491acd1d2d>.
+<urn:uuid:0724f700-7503-481b-ab94-87a88b33b2da> a mo:Track; dcterms:title "Untitled"; mo:duration "284"; dcat:downloadUrl <https://archive.org/download/flylo-iioio/01%20Untitled.mp3>.
+<urn:uuid:2ff948aa-4e40-43d8-b554-bb4e26c52a65> a mo:Track; dcterms:title "Glendale Galleria"; mo:duration "184"; dcat:downloadUrl <https://archive.org/download/flylo-iioio/02%20Glendale%20Galleria.mp3>.
+<urn:uuid:bf6fc3c0-6e8a-4e77-98a6-6a317865b2bc> a mo:Track; dcterms:title "Tronix"; mo:duration "223"; dcat:downloadUrl <https://archive.org/download/flylo-iioio/06%20Tronix.mp3>.
+<urn:uuid:6defe7da-aad4-4763-8b73-41e1ac96dba2> a mo:Track; dcterms:title "Quakes"; mo:duration "183"; dcat:downloadUrl <https://archive.org/download/flylo-iioio/08%20Quakes.mp3>.
+<urn:uuid:6bf208ce-02ac-4d7d-a596-c6081416b208> a mo:Track; dcterms:title "First Friday Funk"; mo:duration "218"; dcat:downloadUrl <https://archive.org/download/flylo-iioio/11%20First%20Friday%20Funk.mp3>.
+<urn:uuid:0c3bc47a-237a-4507-84c5-12491acd1d2d> a mo:Track; dcterms:title "Meeting the Prez"; mo:duration "249"; dcat:downloadUrl <https://archive.org/download/flylo-iioio/14%20Meeting%20The%20Prez.mp3>.

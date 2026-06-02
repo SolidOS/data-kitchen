@@ -1,0 +1,28 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:43c537f2-c65b-4b80-b219-9e8f69d28723> a mo:Release;
+    dcterms:title "Billie Holiday - The Complete Decca Recordings (Disc 2)";
+    foaf:maker <urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd>;
+    dcat:landingPage <https://archive.org/details/19-youre-my-thrill>;
+    mo:track <urn:uuid:a2f45d3d-a89d-4ae4-b5ef-2453e4a9c1eb>, <urn:uuid:4eb0a1cf-972e-43dc-8ca3-ca657b720f93>, <urn:uuid:26da6f53-dbbe-4e72-84d1-b645700e0654>, <urn:uuid:f216a8eb-e6f4-4397-aaab-c6e41cc436b6>, <urn:uuid:06725860-695d-4c7e-bfd7-c9c339be944b>, <urn:uuid:875d3aef-9466-4fed-9b57-66daecaaab29>, <urn:uuid:fa7da248-664f-424c-beb3-b60cd273d041>, <urn:uuid:78c6a9b8-1934-498a-8315-78cc95ec7ff7>, <urn:uuid:d9cab708-d341-4d82-9ac6-734e1d6cac10>, <urn:uuid:833ba6e5-90bc-4936-836a-a6b68bc764ae>, <urn:uuid:40805262-36c4-49ef-aba1-04cbac0a911a>, <urn:uuid:6302c5d0-7e21-4191-be23-6761cce2c11b>, <urn:uuid:1ac8661c-c4ef-4cf9-afca-8a984d08b401>, <urn:uuid:692c85d6-04e4-4c21-81e1-80588f1ff023>, <urn:uuid:82fe0933-9f0d-42a1-9382-fc5b611d8349>, <urn:uuid:f151b27c-e60a-41ee-9c6e-fae8d83e8680>, <urn:uuid:635e2805-abd9-4e7b-9718-78423b2f8510>, <urn:uuid:e9e9cbb7-d800-4b8c-809c-ae6d9d08cfac>.
+<urn:uuid:a2f45d3d-a89d-4ae4-b5ef-2453e4a9c1eb> a mo:Track; dcterms:title "'Tain't Nobody's Bizness If I Do"; mo:duration "200"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/10%20'Tain't%20Nobody's%20Bizness%20If%20I%20Do.mp3>.
+<urn:uuid:4eb0a1cf-972e-43dc-8ca3-ca657b720f93> a mo:Track; dcterms:title "'Tain't Nobody's Bizness If I Do [#][Previously Unissued Alternate]"; mo:duration "197"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/09%20'Tain't%20Nobody's%20Bizness%20If%20I%20Do%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>.
+<urn:uuid:26da6f53-dbbe-4e72-84d1-b645700e0654> a mo:Track; dcterms:title "Baby Get Lost"; mo:duration "195"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/11%20Baby%20Get%20Lost.mp3>.
+<urn:uuid:f216a8eb-e6f4-4397-aaab-c6e41cc436b6> a mo:Track; dcterms:title "Do Your Duty"; mo:duration "196"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/14%20Do%20Your%20Duty.mp3>.
+<urn:uuid:06725860-695d-4c7e-bfd7-c9c339be944b> a mo:Track; dcterms:title "Easy Living"; mo:duration "192"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/01%20Easy%20Living.mp3>.
+<urn:uuid:875d3aef-9466-4fed-9b57-66daecaaab29> a mo:Track; dcterms:title "Girls Were Made to Take Care of Boys"; mo:duration "193"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/05%20Girls%20Were%20Made%20to%20Take%20Care%20of%20Boys.mp3>.
+<urn:uuid:fa7da248-664f-424c-beb3-b60cd273d041> a mo:Track; dcterms:title "God Bless the Child"; mo:duration "190"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/23%20God%20Bless%20the%20Child.mp3>.
+<urn:uuid:78c6a9b8-1934-498a-8315-78cc95ec7ff7> a mo:Track; dcterms:title "Keeps on A-Rainin'"; mo:duration "196"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/12%20Keeps%20on%20A-Rainin'.mp3>.
+<urn:uuid:d9cab708-d341-4d82-9ac6-734e1d6cac10> a mo:Track; dcterms:title "My Man [#][Previously Unissued Alternate]"; mo:duration "190"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/07%20My%20Man%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>.
+<urn:uuid:833ba6e5-90bc-4936-836a-a6b68bc764ae> a mo:Track; dcterms:title "My Sweet Hunk O' Trash"; mo:duration "200"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/17%20My%20Sweet%20Hunk%20O'%20Trash.mp3>.
+<urn:uuid:40805262-36c4-49ef-aba1-04cbac0a911a> a mo:Track; dcterms:title "Now or Never"; mo:duration "197"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/18%20Now%20or%20Never.mp3>.
+<urn:uuid:6302c5d0-7e21-4191-be23-6761cce2c11b> a mo:Track; dcterms:title "Please Tell Me Now"; mo:duration "194"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/21%20Please%20Tell%20Me%20Now.mp3>.
+<urn:uuid:1ac8661c-c4ef-4cf9-afca-8a984d08b401> a mo:Track; dcterms:title "Solitude"; mo:duration "190"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/03%20Solitude.mp3>.
+<urn:uuid:692c85d6-04e4-4c21-81e1-80588f1ff023> a mo:Track; dcterms:title "Solitude [#][Previously Unissued Alternate]"; mo:duration "194"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/02%20Solitude%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>.
+<urn:uuid:82fe0933-9f0d-42a1-9382-fc5b611d8349> a mo:Track; dcterms:title "They Can't Take That Away from Me"; mo:duration "185"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/20%20They%20Can't%20Take%20That%20Away%20from%20Me.mp3>.
+<urn:uuid:f151b27c-e60a-41ee-9c6e-fae8d83e8680> a mo:Track; dcterms:title "Weep No More"; mo:duration "201"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/04%20Weep%20No%20More.mp3>.
+<urn:uuid:635e2805-abd9-4e7b-9718-78423b2f8510> a mo:Track; dcterms:title "You Can't Lose a Broken Heart"; mo:duration "195"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/16%20You%20Can't%20Lose%20a%20Broken%20Heart.mp3>.
+<urn:uuid:e9e9cbb7-d800-4b8c-809c-ae6d9d08cfac> a mo:Track; dcterms:title "You're My Thrill"; mo:duration "204"; dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/19%20You're%20My%20Thrill.mp3>.

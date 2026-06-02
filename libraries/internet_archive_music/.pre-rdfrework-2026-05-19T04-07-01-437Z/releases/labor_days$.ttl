@@ -1,0 +1,23 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:da52133d-a4e0-435f-a70d-981ab7b4dc00> a mo:Release;
+    dcterms:title "Labor Days";
+    foaf:maker "Aesop Rock";
+    dcat:landingPage <https://archive.org/details/labor-days>;
+    mo:track <urn:uuid:386e5ea5-d068-4d02-ba9a-1aaee83d5183>, <urn:uuid:457ead1c-4915-49f4-bcc1-754e67d554d3>, <urn:uuid:4e4cf5c4-b7e0-47bd-a552-d61e5ef2ace7>, <urn:uuid:08fa1e67-c87a-433d-9904-1ee67356b4fe>, <urn:uuid:c359d53b-b773-4de3-9f93-5a7282fc0a3c>, <urn:uuid:29b7f147-f31c-4873-b538-56c0c3cd1e80>, <urn:uuid:ad6fb379-5976-4c64-9cc3-5ae416146427>, <urn:uuid:a2c4c50f-c04f-475c-ac35-949310f0e778>, <urn:uuid:d8789561-1577-4789-b39a-18200cde37cf>, <urn:uuid:627f1457-de2c-44cc-94a8-674406772883>, <urn:uuid:ebfd3201-185a-4095-8b8c-2282ff64b797>, <urn:uuid:44862376-39b0-431b-a42d-1a920c860214>, <urn:uuid:6c9ec9c1-d43b-46df-8760-e86cd4468271>.
+<urn:uuid:386e5ea5-d068-4d02-ba9a-1aaee83d5183> a mo:Track; dcterms:title "9-5ers Anthem"; mo:duration "278"; dcat:downloadUrl <https://archive.org/download/labor-days/9-5ers%20Anthem.mp3>.
+<urn:uuid:457ead1c-4915-49f4-bcc1-754e67d554d3> a mo:Track; dcterms:title "Battery"; mo:duration "307"; dcat:downloadUrl <https://archive.org/download/labor-days/Battery.mp3>.
+<urn:uuid:4e4cf5c4-b7e0-47bd-a552-d61e5ef2ace7> a mo:Track; dcterms:title "Bent Life"; mo:duration "289"; dcat:downloadUrl <https://archive.org/download/labor-days/Bent%20Life.mp3>.
+<urn:uuid:08fa1e67-c87a-433d-9904-1ee67356b4fe> a mo:Track; dcterms:title "Boombox Apocalypse"; mo:duration "305"; dcat:downloadUrl <https://archive.org/download/labor-days/Boombox%20Apocalypse.mp3>.
+<urn:uuid:c359d53b-b773-4de3-9f93-5a7282fc0a3c> a mo:Track; dcterms:title "Coma"; mo:duration "236"; dcat:downloadUrl <https://archive.org/download/labor-days/Coma.mp3>.
+<urn:uuid:29b7f147-f31c-4873-b538-56c0c3cd1e80> a mo:Track; dcterms:title "Daylight"; mo:duration "266"; dcat:downloadUrl <https://archive.org/download/labor-days/Daylight.mp3>.
+<urn:uuid:ad6fb379-5976-4c64-9cc3-5ae416146427> a mo:Track; dcterms:title "Flashflood"; mo:duration "234"; dcat:downloadUrl <https://archive.org/download/labor-days/Flashflood.mp3>.
+<urn:uuid:a2c4c50f-c04f-475c-ac35-949310f0e778> a mo:Track; dcterms:title "No rEgrets"; mo:duration "271"; dcat:downloadUrl <https://archive.org/download/labor-days/No%20rEgrets.mp3>.
+<urn:uuid:d8789561-1577-4789-b39a-18200cde37cf> a mo:Track; dcterms:title "One Brick"; mo:duration "272"; dcat:downloadUrl <https://archive.org/download/labor-days/One%20Brick.mp3>.
+<urn:uuid:627f1457-de2c-44cc-94a8-674406772883> a mo:Track; dcterms:title "Save Yourself"; mo:duration "299"; dcat:downloadUrl <https://archive.org/download/labor-days/Save%20Yourself.mp3>.
+<urn:uuid:ebfd3201-185a-4095-8b8c-2282ff64b797> a mo:Track; dcterms:title "Shovel"; mo:duration "285"; dcat:downloadUrl <https://archive.org/download/labor-days/Shovel.mp3>.
+<urn:uuid:44862376-39b0-431b-a42d-1a920c860214> a mo:Track; dcterms:title "The Tugboat Complex Pt. 3"; mo:duration "226"; dcat:downloadUrl <https://archive.org/download/labor-days/The%20Tugboat%20Complex%20Pt.%203.mp3>.
+<urn:uuid:6c9ec9c1-d43b-46df-8760-e86cd4468271> a mo:Track; dcterms:title "The Yes & The Y'all"; mo:duration "244"; dcat:downloadUrl <https://archive.org/download/labor-days/The%20Yes%20%26%20The%20Y'all.mp3>.

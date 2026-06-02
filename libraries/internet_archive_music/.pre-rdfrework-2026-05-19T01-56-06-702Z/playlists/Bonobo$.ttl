@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Bonobo> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Bonobo";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    dcterms:hasPart <urn:uuid:dee260b0-ce38-42f4-a048-e58039d8828d>, <urn:uuid:8f3bef5a-24fb-4be9-913e-4dd9ed5b199f>, <urn:uuid:84284098-f88c-4458-b49e-01d7f507e158>, <urn:uuid:9213b76e-a0e7-42e3-af0a-d5865a2e98af>, <urn:uuid:75aa3e8c-2650-4be3-8f61-32a6f751e1f7>, <urn:uuid:910bb9c7-276c-45a7-a076-d40027cffa11>, <urn:uuid:c0f624ee-5135-4602-bcf5-ab4c7ac2cb85>, <urn:uuid:8738f874-a5b8-4941-beb4-c655f9d8d733>, <urn:uuid:dbabf38a-b290-4f98-a817-9c25a0353e47>, <urn:uuid:12f1fe0a-1f25-4d24-a199-21c9150b4fe8>, <urn:uuid:53276257-3115-4860-b925-8ee0cf339457>, <urn:uuid:55605a54-13e3-48c4-9dfb-7bff500a581f>, <urn:uuid:e50d6498-1a1a-4e9b-b728-e11d376c4c7b>, <urn:uuid:1adfa2e8-ab36-429f-8a75-8c614dea7c9e>, <urn:uuid:993f4c54-8b41-4543-9577-adf1b858107b>, <urn:uuid:e0db32b5-6ad0-4d49-a30c-f5cc3fd049ff>, <urn:uuid:f3c774af-50d0-4dce-8247-2b703c6b31b2>, <urn:uuid:dd0d6530-ef23-41fc-8b11-723f3f1e7e58>, <urn:uuid:45272207-b463-46a8-bea0-490d54dad09f>, <urn:uuid:79cc4f59-c0e5-45e9-b5aa-cfe84d08f0f1>, <urn:uuid:ad5d23ec-2017-49e3-9b3f-c395d6749f5e>, <urn:uuid:0d5580d6-b479-440d-8e77-d4030526ff65>, <urn:uuid:10af34fd-8279-4af3-95b0-96661588eb2c>, <urn:uuid:8fd36ebc-8dc7-4e11-a27a-a66efc08327b>, <urn:uuid:bc210889-285f-4063-bd72-f4bcc29db32b>, <urn:uuid:da1b5796-f264-47b7-97aa-2580f92c53e7>, <urn:uuid:b42658aa-e598-45ef-8acf-949f893b4602>, <urn:uuid:655bd7c8-4a38-44f8-b568-264147d14701>.

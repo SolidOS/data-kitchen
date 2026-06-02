@@ -1,0 +1,17 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:276f1007-f63e-462e-9baa-754372bd1f50> a mo:Release;
+    dcterms:title "Tycho - Weather [FLAC] [ZENCD257]";
+    foaf:maker "Tycho";
+    dcat:landingPage <https://archive.org/details/01-easy>;
+    mo:track <urn:uuid:236f6f30-cb5c-4f75-b3f5-1dbbbfc76008>, <urn:uuid:bb24b514-ff9f-4586-97b8-f4754ae90454>, <urn:uuid:82483af7-96b9-4b9f-9274-724aa456c478>, <urn:uuid:ee801a5e-635b-45bb-9d23-84e6815b70ab>, <urn:uuid:b5d346a1-2e3f-4243-a8c2-5711e3d67128>, <urn:uuid:ed42a21f-06a4-486b-b1f3-ac8bc21cc730>, <urn:uuid:4c16a112-afb3-4ee1-a944-96fe63455569>.
+<urn:uuid:236f6f30-cb5c-4f75-b3f5-1dbbbfc76008> a mo:Track; dcterms:title "Easy"; mo:duration "207"; dcat:downloadUrl <https://archive.org/download/01-easy/01%20Easy.mp3>.
+<urn:uuid:bb24b514-ff9f-4586-97b8-f4754ae90454> a mo:Track; dcterms:title "Into The Woods"; mo:duration "243"; dcat:downloadUrl <https://archive.org/download/01-easy/04%20Into%20The%20Woods.mp3>.
+<urn:uuid:82483af7-96b9-4b9f-9274-724aa456c478> a mo:Track; dcterms:title "For How Long"; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/01-easy/06%20For%20How%20Long.mp3>.
+<urn:uuid:ee801a5e-635b-45bb-9d23-84e6815b70ab> a mo:Track; dcterms:title "Japan"; mo:duration "199"; dcat:downloadUrl <https://archive.org/download/01-easy/03%20Japan.mp3>.
+<urn:uuid:b5d346a1-2e3f-4243-a8c2-5711e3d67128> a mo:Track; dcterms:title "No Stress"; mo:duration "230"; dcat:downloadUrl <https://archive.org/download/01-easy/07%20No%20Stress.mp3>.
+<urn:uuid:ed42a21f-06a4-486b-b1f3-ac8bc21cc730> a mo:Track; dcterms:title "Pink & Blue"; mo:duration "259"; dcat:downloadUrl <https://archive.org/download/01-easy/02%20Pink%20%26%20Blue.mp3>.
+<urn:uuid:4c16a112-afb3-4ee1-a944-96fe63455569> a mo:Track; dcterms:title "Skate"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/01-easy/05%20Skate.mp3>.

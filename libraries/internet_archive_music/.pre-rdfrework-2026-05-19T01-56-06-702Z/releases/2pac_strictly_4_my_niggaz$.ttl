@@ -1,0 +1,114 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:0dfbb1d4-bbca-4e8b-b140-a12c58d72e51>
+    a mo:Track;
+    dct:title "5 Deadly Venomz";
+    mo:duration "314";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2016%20-%205%20Deadly%20Venomz.mp3>.
+<urn:uuid:2c625aa2-7a99-488e-a1e8-d1d11524dc5b>
+    a mo:Track;
+    dct:title "Keep Ya Head Up";
+    mo:duration "262";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2011%20-%20Keep%20Ya%20Head%20Up.mp3>.
+<urn:uuid:38ac1e26-670f-4d9f-b8dc-e51f1322ba9d>
+    a mo:Track;
+    dct:title "Papa'z Song";
+    mo:duration "325";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2015%20-%20Papa'z%20Song.mp3>.
+<urn:uuid:3c198c31-1dac-4724-b6d4-8437b18068c6>
+    a mo:Release;
+    dct:title "2Pac - Strictly 4 My N.I.G.G.A.Z";
+    mo:track
+        <urn:uuid:0dfbb1d4-bbca-4e8b-b140-a12c58d72e51>,
+        <urn:uuid:2c625aa2-7a99-488e-a1e8-d1d11524dc5b>,
+        <urn:uuid:38ac1e26-670f-4d9f-b8dc-e51f1322ba9d>,
+        <urn:uuid:3e2bc603-7164-46bc-8262-ddfd3300cdce>,
+        <urn:uuid:48989907-d0bc-4195-9c27-1bc06ce465c1>,
+        <urn:uuid:48b85f3f-9910-4660-9ee6-712e6c399d15>,
+        <urn:uuid:6123e8e8-55b8-4068-a4da-23f6bad48102>,
+        <urn:uuid:71ed30cb-afc5-481a-8c70-9f4181c17397>,
+        <urn:uuid:9067553d-339e-4cf7-94b5-62b58f00b634>,
+        <urn:uuid:90e27887-14da-468e-bdab-62e10c7cd08d>,
+        <urn:uuid:abc33168-ebbc-40a3-9143-53e19978c78c>,
+        <urn:uuid:da260dd3-3375-474f-8e4a-5464fc87f409>,
+        <urn:uuid:dfcddc86-032f-4e01-bfde-2bdf27ba280a>,
+        <urn:uuid:eebf31ed-d97c-45f0-98d0-8d882a45154f>;
+    dcat:landingPage det:2-pac-12-strictly-4-my-niggaz;
+    foaf:maker
+        "2Pac", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:3e2bc603-7164-46bc-8262-ddfd3300cdce>
+    a mo:Track;
+    dct:title "Holler If Ya Hear Me";
+    mo:duration "278";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2001%20-%20Holler%20If%20Ya%20Hear%20Me.mp3>.
+<urn:uuid:48989907-d0bc-4195-9c27-1bc06ce465c1>
+    a mo:Track;
+    dct:title "Souljah's Revenge";
+    mo:duration "196";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2006%20-%20Souljah's%20Revenge.mp3>.
+<urn:uuid:48b85f3f-9910-4660-9ee6-712e6c399d15>
+    a mo:Track;
+    dct:title "Strugglin'";
+    mo:duration "213";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2008%20-%20Strugglin'.mp3>.
+<urn:uuid:6123e8e8-55b8-4068-a4da-23f6bad48102>
+    a mo:Track;
+    dct:title "Guess Who's Back";
+    mo:duration "186";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2009%20-%20Guess%20Who's%20Back.mp3>.
+<urn:uuid:71ed30cb-afc5-481a-8c70-9f4181c17397>
+    a mo:Track;
+    dct:title "Peep Game";
+    mo:duration "268";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2007%20-%20Peep%20Game.mp3>.
+<urn:uuid:9067553d-339e-4cf7-94b5-62b58f00b634>
+    a mo:Track;
+    dct:title "I Get Around";
+    mo:duration "259";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2014%20-%20I%20Get%20Around.mp3>.
+<urn:uuid:90e27887-14da-468e-bdab-62e10c7cd08d>
+    a mo:Track;
+    dct:title "The Streetz R Deathrow";
+    mo:duration "206";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2013%20-%20The%20Streetz%20R%20Deathrow.mp3>.
+<urn:uuid:abc33168-ebbc-40a3-9143-53e19978c78c>
+    a mo:Track;
+    dct:title "Point The Finga";
+    mo:duration "265";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2003%20-%20Point%20The%20Finga.mp3>.
+<urn:uuid:da260dd3-3375-474f-8e4a-5464fc87f409>
+    a mo:Track;
+    dct:title "Last Wordz";
+    mo:duration "216";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2005%20-%20Last%20Wordz.mp3>.
+<urn:uuid:dfcddc86-032f-4e01-bfde-2bdf27ba280a>
+    a mo:Track;
+    dct:title "Strictly 4 My Niggaz";
+    mo:duration "355";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2012%20-%20Strictly%204%20My%20Niggaz.mp3>.
+<urn:uuid:eebf31ed-d97c-45f0-98d0-8d882a45154f>
+    a mo:Track;
+    dct:title "Representin' 93";
+    mo:duration "214";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2010%20-%20Representin'%2093.mp3>.

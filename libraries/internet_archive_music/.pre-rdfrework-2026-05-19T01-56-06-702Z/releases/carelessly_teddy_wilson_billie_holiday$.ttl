@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:ca16e7ed-81e7-4378-b67b-a77463ca72ef> a mo:Release;
+    dcterms:title "Carelessly - Teddy Wilson - Billie Holiday";
+    foaf:maker "Teddy Wilson - Billie Holiday";
+    dcat:landingPage <https://archive.org/details/CarelesslyTeddyWilsonBillieHoliday>;
+    mo:track <urn:uuid:c727494c-094b-48b2-9967-590a0b23fa92>.
+<urn:uuid:c727494c-094b-48b2-9967-590a0b23fa92> a mo:Track; dcterms:title "Carelessly - Teddy Wilson - Billie Holiday"; mo:duration "185"; dcat:downloadUrl <https://archive.org/download/CarelesslyTeddyWilsonBillieHoliday/Carelessly%20-%20Teddy%20Wilson%20-%20Billie%20Holiday.mp3>.

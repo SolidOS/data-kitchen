@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:44b99fd4-6df5-42da-a4cc-97169ff05484> a mo:Release;
+    dcterms:title "Bandana (2019)";
+    foaf:maker "Freddie Gibbs & Madlib";
+    dcat:landingPage <https://archive.org/details/14.-education>;
+    mo:track <urn:uuid:50172cfc-5f16-4b34-91fe-115c2030bde9>, <urn:uuid:e16fa5a3-eeff-4b3c-babf-98775cebb416>, <urn:uuid:285fcaf0-d1a8-477a-8aa4-1c2dfac384c0>, <urn:uuid:62d13aa5-0ef5-48bf-a37b-b64c24ebd37e>, <urn:uuid:e05d8a7a-5932-4f75-aca6-d93a1796fc1d>.
+<urn:uuid:50172cfc-5f16-4b34-91fe-115c2030bde9> a mo:Track; dcterms:title "Fake Names"; mo:duration "224"; dcat:downloadUrl <https://archive.org/download/14.-education/07.%20Fake%20Names.mp3>.
+<urn:uuid:e16fa5a3-eeff-4b3c-babf-98775cebb416> a mo:Track; dcterms:title "Situations"; mo:duration "228"; dcat:downloadUrl <https://archive.org/download/14.-education/09.%20Situations.mp3>.
+<urn:uuid:285fcaf0-d1a8-477a-8aa4-1c2dfac384c0> a mo:Track; dcterms:title "Soul Right"; mo:duration "206"; dcat:downloadUrl <https://archive.org/download/14.-education/15.%20Soul%20Right.mp3>.
+<urn:uuid:62d13aa5-0ef5-48bf-a37b-b64c24ebd37e> a mo:Track; dcterms:title "Education (feat. Black Thought & Yasiin Bey)"; mo:duration "260"; dcat:downloadUrl <https://archive.org/download/14.-education/14.%20Education.mp3>.
+<urn:uuid:e05d8a7a-5932-4f75-aca6-d93a1796fc1d> a mo:Track; dcterms:title "Palmolive (feat. Pusha T & Killer Mike)"; mo:duration "245"; dcat:downloadUrl <https://archive.org/download/14.-education/06.%20Palmolive.mp3>.

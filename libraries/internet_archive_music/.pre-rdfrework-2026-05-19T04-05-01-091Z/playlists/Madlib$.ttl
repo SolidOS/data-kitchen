@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Madlib> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Madlib";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    dcterms:hasPart <urn:uuid:05dfa569-8af8-486c-9d82-90bd5788dbf9>, <urn:uuid:3b8a78ef-72cd-45d8-99ce-ddbc047cca93>, <urn:uuid:aa90e544-6b61-4c60-96f8-f57e81c5e69f>, <urn:uuid:1d96e24f-65e6-4d76-983d-068b053afa09>, <urn:uuid:2564a824-12b3-415f-9fff-8ab5e6f7ad2e>, <urn:uuid:14a888e6-8f9d-431c-a042-0bd1af802f49>, <urn:uuid:02293df2-a556-4807-9f00-17b301254d4a>, <urn:uuid:e7c4a71f-da1f-49f8-8b6c-89ca3a6dda90>, <urn:uuid:26491fcc-2743-4a89-9190-e6ec830be28f>, <urn:uuid:ca9bf5b2-cbb4-4c75-9157-94d84e53479f>, <urn:uuid:5d1a9229-b1ae-4a21-b4ec-f9305e2a50c5>, <urn:uuid:ebeaf315-cee0-45f6-80bd-85d31cfeacc1>, <urn:uuid:6f7ca6cf-0df1-4b00-bda7-33e2a45545e6>, <urn:uuid:11a62618-07f0-4b8e-b309-7776f69d4df4>, <urn:uuid:b19dcdc6-ef6e-44a3-9cf3-c70dfb6b6a63>, <urn:uuid:ac46cdbc-8330-414e-ad0a-c25de6aa3dff>, <urn:uuid:8c03c477-8b09-47b0-a707-e38a83caa70c>, <urn:uuid:d8c479a5-d5ba-4163-8bba-12f099383bf9>, <urn:uuid:35b3bd1b-a7e4-4f97-a787-a7ac45cdcea4>, <urn:uuid:5435e76d-e998-46ba-a3e2-a022860523d8>, <urn:uuid:ae3362b7-b917-449d-97e8-7362af76e68f>, <urn:uuid:13593e80-e330-4793-ab8e-d716ee12c603>, <urn:uuid:d14a6623-9e79-4e9d-a3ad-9cfbc6d6115a>, <urn:uuid:a7c57daa-1080-4957-aa1a-34308d14e018>, <urn:uuid:7cb93aff-7120-443e-a32f-43efc6c0c861>, <urn:uuid:666224c6-4d0a-4744-8885-7f69c75467a7>, <urn:uuid:cd523f85-108e-4f7c-a092-8835ac2428e1>, <urn:uuid:e5ad4d9a-26df-4c36-b13d-106cb285a300>, <urn:uuid:21d24b0b-4cb2-4b9f-b41d-baaa2ed220b2>, <urn:uuid:12b11f4e-5e83-4ad8-b516-052bd4f5bf0a>, <urn:uuid:36b5a40b-4579-4cac-9086-48400833f11a>, <urn:uuid:0571a364-9b7a-4fe5-a87e-60b64d7c8244>, <urn:uuid:94caf1b6-7a20-4719-86a7-06d7c3ab38f1>, <urn:uuid:58882575-d905-4f96-9766-1b39e444038e>, <urn:uuid:e1cd440a-c8da-4268-b4c0-7d59ff34f673>, <urn:uuid:74c64189-f1d1-49a5-bba9-0d1940a4cf95>, <urn:uuid:c6fe5251-7a04-4cbf-ae84-069e52c7c219>, <urn:uuid:1e317539-2bf2-413c-a38b-bf8c1046f443>.

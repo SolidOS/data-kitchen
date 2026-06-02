@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:9a0b3507-6fb9-4de8-acda-f267eaebaa67> a mo:Release;
+    dcterms:title "afblues";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/afblues>;
+    mo:track <urn:uuid:8647e185-7d1b-4885-bf0e-d233ec041acf>.
+<urn:uuid:8647e185-7d1b-4885-bf0e-d233ec041acf> a mo:Track; dcterms:title "afblues"; mo:duration "263"; dcat:downloadUrl <https://archive.org/download/afblues/afblues.mp3>.

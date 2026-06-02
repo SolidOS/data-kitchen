@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:e07100c2-658e-4df6-babb-e955b4a77a9e> a mo:Release;
+    dcterms:title "Pause";
+    foaf:maker "Four Tet";
+    dcat:landingPage <https://archive.org/details/pause-album>;
+    mo:track <urn:uuid:2cc08020-3b29-46fc-b78c-0599eee8347e>, <urn:uuid:3f544f6b-1bf0-4d24-b436-60a4ae570f0b>, <urn:uuid:c93e4242-7fcd-4048-bced-77ccdc6afbfc>, <urn:uuid:6ba9de2c-c32e-4f17-98e0-af5301191169>, <urn:uuid:ef03aa94-a841-41cb-812e-0995386c80d5>, <urn:uuid:9af4d8a0-8767-49bd-884d-dd60873a18eb>, <urn:uuid:e4875275-59f5-4823-abd0-27648ce5f7d0>, <urn:uuid:472d4822-aba0-497e-b66b-103179a0d52d>.
+<urn:uuid:2cc08020-3b29-46fc-b78c-0599eee8347e> a mo:Track; dcterms:title "Glue of the World"; mo:duration "302"; dcat:downloadUrl <https://archive.org/download/pause-album/Pause%2F01%20Glue%20Of%20The%20World.mp3>.
+<urn:uuid:3f544f6b-1bf0-4d24-b436-60a4ae570f0b> a mo:Track; dcterms:title "Twenty Three"; mo:duration "214"; dcat:downloadUrl <https://archive.org/download/pause-album/Pause%2F02%20Twenty%20Three.mp3>.
+<urn:uuid:c93e4242-7fcd-4048-bced-77ccdc6afbfc> a mo:Track; dcterms:title "Parks"; mo:duration "364"; dcat:downloadUrl <https://archive.org/download/pause-album/Pause%2F04%20Parks.mp3>.
+<urn:uuid:6ba9de2c-c32e-4f17-98e0-af5301191169> a mo:Track; dcterms:title "Untangle"; mo:duration "277"; dcat:downloadUrl <https://archive.org/download/pause-album/Pause%2F06%20Untangle.mp3>.
+<urn:uuid:ef03aa94-a841-41cb-812e-0995386c80d5> a mo:Track; dcterms:title "No More Mosquitoes"; mo:duration "219"; dcat:downloadUrl <https://archive.org/download/pause-album/Pause%2F08%20No%20More%20Mosquitoes.mp3>.
+<urn:uuid:9af4d8a0-8767-49bd-884d-dd60873a18eb> a mo:Track; dcterms:title "Tangle"; mo:duration "224"; dcat:downloadUrl <https://archive.org/download/pause-album/Pause%2F09%20Tangle.mp3>.
+<urn:uuid:e4875275-59f5-4823-abd0-27648ce5f7d0> a mo:Track; dcterms:title "You Could Ruin My Day"; mo:duration "424"; dcat:downloadUrl <https://archive.org/download/pause-album/Pause%2F10%20You%20Could%20Ruin%20My%20Day.mp3>.
+<urn:uuid:472d4822-aba0-497e-b66b-103179a0d52d> a mo:Track; dcterms:title "Hilarious Movie of the 90's"; mo:duration "209"; dcat:downloadUrl <https://archive.org/download/pause-album/Pause%2F11%20Hilarious%20Movie%20Of%20The%2090's.mp3>.

@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:9a1af88b-a006-4ce8-bb48-1473f383110d> a mo:Release;
+    dcterms:title "Otis Spann - Sweet Giant";
+    foaf:maker "Otis Spann";
+    dcat:landingPage <https://archive.org/details/OtisSpannSweetGiant1>;
+    mo:track <urn:uuid:be83ef5e-d0dc-4c17-b4d5-b1aefcf3acb7>, <urn:uuid:fa2c10d5-880e-436b-b57a-60193527bda0>.
+<urn:uuid:be83ef5e-d0dc-4c17-b4d5-b1aefcf3acb7> a mo:Track; dcterms:title "OtisSpannSweetGiant1"; mo:duration "1089"; dcat:downloadUrl <https://archive.org/download/OtisSpannSweetGiant1/OtisSpannSweetGiant1.mp3>.
+<urn:uuid:fa2c10d5-880e-436b-b57a-60193527bda0> a mo:Track; dcterms:title "OtisSpannSweetGiant2"; mo:duration "1232"; dcat:downloadUrl <https://archive.org/download/OtisSpannSweetGiant1/OtisSpannSweetGiant2.mp3>.

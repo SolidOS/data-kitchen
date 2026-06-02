@@ -1,0 +1,125 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "People’s Instinctive Travels and the Paths of Rhythm" ;
+    dct:identifier "peoples-instinctive-travels-and-the-paths-of-rhythm" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/peoples-instinctive-travels-and-the-paths-of-rhythm> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15>, <#t16> ;
+    foaf:maker <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>, <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "After Hours" ;
+    mo:duration "278" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/After%20Hours.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Bonita Applebum - Pharrell Williams Remix" ;
+    mo:duration "233" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Bonita%20Applebum%20-%20Pharrell%20Williams%20Remix.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Footprints (feat. CeeLo Green) - Remix" ;
+    mo:duration "308" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Footprints%20(feat.%20CeeLo%20Green)%20-%20Remix.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Ham 'N' Eggs" ;
+    mo:duration "327" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Ham%20'N'%20Eggs.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Youthful Expression" ;
+    mo:duration "292" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Youthful%20Expression.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Luck of Lucien" ;
+    mo:duration "273" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Luck%20of%20Lucien.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Rhythm (Devoted to the Art of Moving Butts)" ;
+    mo:duration "242" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Rhythm%20(Devoted%20to%20the%20Art%20of%20Moving%20Butts).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Footprints" ;
+    mo:duration "240" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Footprints.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Description of a Fool" ;
+    mo:duration "341" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Description%20of%20a%20Fool.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Push It Along" ;
+    mo:duration "454" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Push%20It%20Along.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Pubic Enemy" ;
+    mo:duration "225" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Pubic%20Enemy.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "Mr. Muhammad" ;
+    mo:duration "213" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Mr.%20Muhammad.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "Footprints (feat. CeeLo Green) - Remix Instrumental" ;
+    mo:duration "308" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Footprints%20(feat.%20CeeLo%20Green)%20-%20Remix%20Instrumental.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "Go Ahead In the Rain" ;
+    mo:duration "234" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Go%20Ahead%20In%20the%20Rain.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "I Left My Wallet in El Segundo" ;
+    mo:duration "246" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/I%20Left%20My%20Wallet%20in%20El%20Segundo.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t16>
+    a mo:Track ;
+    dct:title "Bonita Applebum" ;
+    mo:duration "229" ;
+    mo:item <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Bonita%20Applebum.mp3> ;
+    dct:isPartOf <#it> .

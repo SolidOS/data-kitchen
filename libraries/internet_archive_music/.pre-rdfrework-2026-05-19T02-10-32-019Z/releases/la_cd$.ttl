@@ -1,0 +1,23 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:3c034f7f-5650-44b4-ba78-2812cfded977> a mo:Release;
+    dcterms:title "LA CD";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/FL_LA_CD>;
+    mo:track <urn:uuid:85aa6918-103a-4b1c-9bc1-96a3bcce3152>, <urn:uuid:65a34759-b847-4ca3-9fea-fd45ffd93dd5>, <urn:uuid:61448418-63ab-47cf-add3-1154b0102830>, <urn:uuid:fdb5fd05-37d4-4bc3-ab5e-5b47e2412e5a>, <urn:uuid:440aaf51-75e8-4573-88e0-8e19df8e7f5d>, <urn:uuid:c902d96c-dd90-494c-a3df-06b9505567af>, <urn:uuid:2d7091a7-c30b-4ae6-9b76-aaccf6504794>, <urn:uuid:7d7c8efa-44fd-44a8-9aac-caabc62f6541>, <urn:uuid:344e212f-6417-4027-b77f-e024b4b2aa96>, <urn:uuid:0756c767-2b24-4829-8b99-0bd611b7aab9>, <urn:uuid:e0d11dda-e8c9-4959-84a0-6c2c3804d697>, <urn:uuid:1371e86c-371f-4b74-8a99-bf7bbb814e91>, <urn:uuid:e7cef038-16e4-448e-9901-9fa0e069d648>.
+<urn:uuid:85aa6918-103a-4b1c-9bc1-96a3bcce3152> a mo:Track; dcterms:title "RobertaFlack (Martyn's Heart Beat Mix)"; mo:duration "366"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/05%20-%20RobertaFlack%20(Martyn's%20Heart%20Beat%20Mix).mp3>.
+<urn:uuid:65a34759-b847-4ca3-9fea-fd45ffd93dd5> a mo:Track; dcterms:title "Sleepy Dinosaur (Ras_G Mix)"; mo:duration "250"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/06%20-%20Sleepy%20Dinosaur%20(Ras_G%20Mix).mp3>.
+<urn:uuid:61448418-63ab-47cf-add3-1154b0102830> a mo:Track; dcterms:title "Grapesicles (Samiyam Remix)"; mo:duration "234"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/08%20-%20Grapesicles%20(Samiyam%20Remix).mp3>.
+<urn:uuid:fdb5fd05-37d4-4bc3-ab5e-5b47e2412e5a> a mo:Track; dcterms:title "RobertaFlack (Mike Slott's Other Mix)"; mo:duration "183"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/09%20-%20RobertaFlack%20(Mike%20Slott's%20Other%20Mix).mp3>.
+<urn:uuid:440aaf51-75e8-4573-88e0-8e19df8e7f5d> a mo:Track; dcterms:title "Secrets (Soundmurderer Refix)"; mo:duration "302"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/10%20-%20Secrets%20(Soundmurderer%20Refix).mp3>.
+<urn:uuid:c902d96c-dd90-494c-a3df-06b9505567af> a mo:Track; dcterms:title "Melt! (Monopoly Mix)"; mo:duration "228"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/11%20-%20Melt!%20(Monopoly%20Mix).mp3>.
+<urn:uuid:2d7091a7-c30b-4ae6-9b76-aaccf6504794> a mo:Track; dcterms:title "Infinitum (Exile Remix)"; mo:duration "249"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/12%20-%20Infinitum%20(Exile%20Remix).mp3>.
+<urn:uuid:7d7c8efa-44fd-44a8-9aac-caabc62f6541> a mo:Track; dcterms:title "Auntie's Lock/Infinitum (Quarta330 Remix)"; mo:duration "215"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/13%20-%20Auntie's%20Lock-Infinitum%20(Quarta330%20Remix).mp3>.
+<urn:uuid:344e212f-6417-4027-b77f-e024b4b2aa96> a mo:Track; dcterms:title "Testament (Breakage's Bill's Suit Mix)"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/16%20-%20Testament%20(Breakage's%20Bill's%20Suit%20Mix).mp3>.
+<urn:uuid:0756c767-2b24-4829-8b99-0bd611b7aab9> a mo:Track; dcterms:title "Endless White"; mo:duration "279"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/17%20-%20Endless%20White.mp3>.
+<urn:uuid:e0d11dda-e8c9-4959-84a0-6c2c3804d697> a mo:Track; dcterms:title "Auntie's Harp (Rebekah Raff Remix)"; mo:duration "365"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/18%20-%20Auntie's%20Harp%20(Rebekah%20Raff%20Remix).mp3>.
+<urn:uuid:1371e86c-371f-4b74-8a99-bf7bbb814e91> a mo:Track; dcterms:title "Infinitum (Dimlite's Re-finitum)"; mo:duration "344"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/20%20-%20Infinitum%20(Dimlite's%20Re-finitum).mp3>.
+<urn:uuid:e7cef038-16e4-448e-9901-9fa0e069d648> a mo:Track; dcterms:title "Spin Cycles"; mo:duration "270"; dcat:downloadUrl <https://archive.org/download/FL_LA_CD/21%20-%20Spin%20Cycles.mp3>.

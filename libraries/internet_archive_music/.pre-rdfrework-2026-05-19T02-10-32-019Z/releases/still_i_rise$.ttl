@@ -1,0 +1,121 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:03a74524-2b9c-4d60-bfa3-be46d919b687>
+    a mo:Track;
+    dct:title "U Can Be Touched";
+    mo:duration "263";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/14%20U%20Can%20Be%20Touched.mp3>.
+<urn:uuid:188339f0-7e43-4d72-94db-434fb9ffcbdb>
+    a mo:Track;
+    dct:title "Baby Don't Cry (Keep Ya Head Up II)";
+    mo:duration "262";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/04%20Baby%20Don't%20Cry%20(Keep%20Ya%20Head%20Up%20I.mp3>.
+<urn:uuid:310d175c-7969-4a25-879e-72afc3b1b6be>
+    a mo:Track;
+    dct:title "Killuminati";
+    mo:duration "242";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/11%20Killuminati.mp3>.
+<urn:uuid:364f2816-026a-4b6a-825b-71f118bf04f5>
+    a mo:Track;
+    dct:title "High Speed";
+    mo:duration "359";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/09%20High%20Speed.mp3>.
+<urn:uuid:504674a9-e4ce-4f57-b538-ef0193fa2477>
+    a mo:Track;
+    dct:title "Hell 4 A Hustler";
+    mo:duration "296";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/08%20Hell%204%20A%20Hustler.mp3>.
+<urn:uuid:6080f82c-5408-4509-9c3a-c44e6536c7f9>
+    a mo:Track;
+    dct:title "Still I Rise";
+    mo:duration "285";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/02%20Still%20I%20Rise.mp3>.
+<urn:uuid:6120a7ab-46ac-490f-9444-763c69970b52>
+    a mo:Track;
+    dct:title "Secretz of War";
+    mo:duration "255";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/03%20Secretz%20of%20War.mp3>.
+<urn:uuid:778f18d8-84a9-4c67-8abc-c3a3dd25a4b1>
+    a mo:Track;
+    dct:title "Letter To The President";
+    mo:duration "364";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/01%20Letter%20To%20The%20President.mp3>.
+<urn:uuid:7d8a5490-a304-44ff-9dac-3f2151bb3779>
+    a mo:Track;
+    dct:title "Tattoo Tears";
+    mo:duration "303";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/13%20Tattoo%20Tears.mp3>.
+<urn:uuid:a6ac7458-6857-4ff4-8cc0-d76b85743fb5>
+    a mo:Release;
+    dct:title "Still I Rise";
+    mo:track
+        <urn:uuid:03a74524-2b9c-4d60-bfa3-be46d919b687>,
+        <urn:uuid:188339f0-7e43-4d72-94db-434fb9ffcbdb>,
+        <urn:uuid:310d175c-7969-4a25-879e-72afc3b1b6be>,
+        <urn:uuid:364f2816-026a-4b6a-825b-71f118bf04f5>,
+        <urn:uuid:504674a9-e4ce-4f57-b538-ef0193fa2477>,
+        <urn:uuid:6080f82c-5408-4509-9c3a-c44e6536c7f9>,
+        <urn:uuid:6120a7ab-46ac-490f-9444-763c69970b52>,
+        <urn:uuid:778f18d8-84a9-4c67-8abc-c3a3dd25a4b1>,
+        <urn:uuid:7d8a5490-a304-44ff-9dac-3f2151bb3779>,
+        <urn:uuid:b3bc4ef0-ecf4-4213-9920-3f2265528230>,
+        <urn:uuid:b47bcb4c-fadf-46a0-93f6-84ed6f579354>,
+        <urn:uuid:d1477828-470a-4427-9502-35472b7c908d>,
+        <urn:uuid:dc150345-f3f9-4dc3-81b5-702266e538b7>,
+        <urn:uuid:e6c7eaa5-3293-4337-bdf2-ab09ab5bdb48>,
+        <urn:uuid:fa939c0a-af48-4c4e-bd8c-57ae8c306d0c>;
+    dcat:landingPage det:01-letter-to-the-president;
+    foaf:maker
+        "2Pac & Outlawz", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:b3bc4ef0-ecf4-4213-9920-3f2265528230>
+    a mo:Track;
+    dct:title "As The World Turns";
+    mo:duration "308";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/05%20As%20The%20World%20Turns.mp3>.
+<urn:uuid:b47bcb4c-fadf-46a0-93f6-84ed6f579354>
+    a mo:Track;
+    dct:title "Y'all Don't Know Us";
+    mo:duration "294";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/15%20Y'all%20Don't%20Know%20Us.mp3>.
+<urn:uuid:d1477828-470a-4427-9502-35472b7c908d>
+    a mo:Track;
+    dct:title "Black Jesuz";
+    mo:duration "269";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/06%20Black%20Jesuz.mp3>.
+<urn:uuid:dc150345-f3f9-4dc3-81b5-702266e538b7>
+    a mo:Track;
+    dct:title "Teardrops & Closed Caskets";
+    mo:duration "305";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/12%20Teardrops%20%26%20Closed%20Caskets.mp3>.
+<urn:uuid:e6c7eaa5-3293-4337-bdf2-ab09ab5bdb48>
+    a mo:Track;
+    dct:title "Homeboyz";
+    mo:duration "218";
+    dcat:downloadUrl
+    <https://archive.org/download/01-letter-to-the-president/07%20Homeboyz.mp3>.
+<urn:uuid:fa939c0a-af48-4c4e-bd8c-57ae8c306d0c>
+    a mo:Track;
+    dct:title "The Good Die Young";
+    mo:duration "342";
+    dcat:downloadUrl
+        <https://archive.org/download/01-letter-to-the-president/10%20The%20Good%20Die%20Young.mp3>.

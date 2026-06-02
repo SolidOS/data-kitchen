@@ -1,0 +1,135 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Four_Tet#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Four_Tet> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Four Tet";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:7e3b3168-9eef-45e3-924b-6a9cdb0cb321>, <urn:uuid:2736e85e-160b-423b-9532-1c96fc62ca23>, <urn:uuid:8dee854d-f357-41ed-bbb9-fc9a0c0064bc>, <urn:uuid:4d932be5-4802-4c7c-87ab-8058f6c6b7fc>, <urn:uuid:036aa64b-3d0e-43e2-b3f6-b40547bd7b69>, <urn:uuid:a45fcc55-84c1-4305-907c-0006819c063a>, <urn:uuid:06024e63-bcb7-4715-bc20-55d5989b5386>, <urn:uuid:8d8091ab-0e61-4191-b786-93ad9daa1abb>, <urn:uuid:2cc08020-3b29-46fc-b78c-0599eee8347e>, <urn:uuid:3f544f6b-1bf0-4d24-b436-60a4ae570f0b>, <urn:uuid:c93e4242-7fcd-4048-bced-77ccdc6afbfc>, <urn:uuid:6ba9de2c-c32e-4f17-98e0-af5301191169>, <urn:uuid:ef03aa94-a841-41cb-812e-0995386c80d5>, <urn:uuid:9af4d8a0-8767-49bd-884d-dd60873a18eb>, <urn:uuid:e4875275-59f5-4823-abd0-27648ce5f7d0>, <urn:uuid:472d4822-aba0-497e-b66b-103179a0d52d>, <urn:uuid:bdc07bca-6463-46d6-b7cb-ec256ba2ff60>, <urn:uuid:f43e3bd2-ec78-4249-81b2-dce176c541d0>, <urn:uuid:ae52c61e-0a54-4a9c-84a5-7634e06f2eb7>, <urn:uuid:3d703235-2ea8-4166-aa84-9d85181105d8>, <urn:uuid:2922ea39-5027-47d6-9472-f46244c1d0e1>, <urn:uuid:d27a045e-e7a2-4db6-b7fd-4967c0307609>, <urn:uuid:3bae011c-54d9-4777-af73-f395c1c87211>, <urn:uuid:766d40b7-4c3d-4516-af48-f626001a25da>, <urn:uuid:5deaeb3c-784d-47ab-97f1-c44a64f3687b>, <urn:uuid:8c110638-67e1-4b37-9c71-c7549aa4abe2>;
+    <http://open-media-player.org/ns#hidePlaylist> "true".
+<urn:uuid:7e3b3168-9eef-45e3-924b-6a9cdb0cb321> a mo:Track;
+    dcterms:title "Hands";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/06-four-tet-unspoken/01%20-%20Four%20Tet%20-%20Hands.mp3>;
+    mo:duration "341".
+<urn:uuid:2736e85e-160b-423b-9532-1c96fc62ca23> a mo:Track;
+    dcterms:title "She Moves She";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/06-four-tet-unspoken/02%20-%20Four%20Tet%20-%20She%20Moves%20She.mp3>;
+    mo:duration "281".
+<urn:uuid:8dee854d-f357-41ed-bbb9-fc9a0c0064bc> a mo:Track;
+    dcterms:title "My Angel Rocks Back and Forth";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/06-four-tet-unspoken/04%20-%20Four%20Tet%20-%20My%20Angel%20Rocks%20Back%20and%20Forth.mp3>;
+    mo:duration "307".
+<urn:uuid:4d932be5-4802-4c7c-87ab-8058f6c6b7fc> a mo:Track;
+    dcterms:title "Spirit Fingers";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/06-four-tet-unspoken/05%20-%20Four%20Tet%20-%20Spirit%20Fingers.mp3>;
+    mo:duration "202".
+<urn:uuid:036aa64b-3d0e-43e2-b3f6-b40547bd7b69> a mo:Track;
+    dcterms:title "Unspoken";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/06-four-tet-unspoken/06%20-%20Four%20Tet%20-%20Unspoken.mp3>;
+    mo:duration "571".
+<urn:uuid:a45fcc55-84c1-4305-907c-0006819c063a> a mo:Track;
+    dcterms:title "As Serious As Your Life";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/06-four-tet-unspoken/08%20-%20Four%20Tet%20-%20As%20Serious%20As%20Your%20Life.mp3>;
+    mo:duration "288".
+<urn:uuid:06024e63-bcb7-4715-bc20-55d5989b5386> a mo:Track;
+    dcterms:title "And They All Look Broken Hearted";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/06-four-tet-unspoken/09%20-%20Four%20Tet%20-%20And%20They%20All%20Look%20Broken%20Hearted.mp3>;
+    mo:duration "309".
+<urn:uuid:8d8091ab-0e61-4191-b786-93ad9daa1abb> a mo:Track;
+    dcterms:title "Slow Jam";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/06-four-tet-unspoken/10%20-%20Four%20Tet%20-%20Slow%20Jam.mp3>;
+    mo:duration "318".
+<urn:uuid:2cc08020-3b29-46fc-b78c-0599eee8347e> a mo:Track;
+    dcterms:title "Glue of the World";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/pause-album/Pause%2F01%20Glue%20Of%20The%20World.mp3>;
+    mo:duration "302".
+<urn:uuid:3f544f6b-1bf0-4d24-b436-60a4ae570f0b> a mo:Track;
+    dcterms:title "Twenty Three";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/pause-album/Pause%2F02%20Twenty%20Three.mp3>;
+    mo:duration "214".
+<urn:uuid:c93e4242-7fcd-4048-bced-77ccdc6afbfc> a mo:Track;
+    dcterms:title "Parks";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/pause-album/Pause%2F04%20Parks.mp3>;
+    mo:duration "364".
+<urn:uuid:6ba9de2c-c32e-4f17-98e0-af5301191169> a mo:Track;
+    dcterms:title "Untangle";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/pause-album/Pause%2F06%20Untangle.mp3>;
+    mo:duration "277".
+<urn:uuid:ef03aa94-a841-41cb-812e-0995386c80d5> a mo:Track;
+    dcterms:title "No More Mosquitoes";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/pause-album/Pause%2F08%20No%20More%20Mosquitoes.mp3>;
+    mo:duration "219".
+<urn:uuid:9af4d8a0-8767-49bd-884d-dd60873a18eb> a mo:Track;
+    dcterms:title "Tangle";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/pause-album/Pause%2F09%20Tangle.mp3>;
+    mo:duration "224".
+<urn:uuid:e4875275-59f5-4823-abd0-27648ce5f7d0> a mo:Track;
+    dcterms:title "You Could Ruin My Day";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/pause-album/Pause%2F10%20You%20Could%20Ruin%20My%20Day.mp3>;
+    mo:duration "424".
+<urn:uuid:472d4822-aba0-497e-b66b-103179a0d52d> a mo:Track;
+    dcterms:title "Hilarious Movie of the 90's";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/pause-album/Pause%2F11%20Hilarious%20Movie%20Of%20The%2090's.mp3>;
+    mo:duration "209".
+<urn:uuid:bdc07bca-6463-46d6-b7cb-ec256ba2ff60> a mo:Track;
+    dcterms:title "Rhinestone Cowboy";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/madvillian-four-tet-remixes/05%20Rhinestone%20Cowboy.mp3>;
+    mo:duration "191".
+<urn:uuid:f43e3bd2-ec78-4249-81b2-dce176c541d0> a mo:Track;
+    dcterms:title "Great Day (Instrumental)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/madvillian-four-tet-remixes/09%20Great%20Day%20(Instrumental).mp3>;
+    mo:duration "183".
+<urn:uuid:ae52c61e-0a54-4a9c-84a5-7634e06f2eb7> a mo:Track;
+    dcterms:title "Shadows Of Tomorrow (Instrumental)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/madvillian-four-tet-remixes/10%20Shadows%20Of%20Tomorrow%20(Instrumental).mp3>;
+    mo:duration "187".
+<urn:uuid:3d703235-2ea8-4166-aa84-9d85181105d8> a mo:Track;
+    dcterms:title "A Joy";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/01%20-%20A%20Joy.flac>;
+    mo:duration "185".
+<urn:uuid:2922ea39-5027-47d6-9472-f46244c1d0e1> a mo:Track;
+    dcterms:title "Smile Around The Face";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/02%20-%20Smile%20Around%20The%20Face.flac>;
+    mo:duration "274".
+<urn:uuid:d27a045e-e7a2-4db6-b7fd-4967c0307609> a mo:Track;
+    dcterms:title "Sun Drums And Soil";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/04%20-%20Sun%20Drums%20And%20Soil.flac>;
+    mo:duration "380".
+<urn:uuid:3bae011c-54d9-4777-af73-f395c1c87211> a mo:Track;
+    dcterms:title "And Then Patterns";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/06%20-%20And%20Then%20Patterns.flac>;
+    mo:duration "284".
+<urn:uuid:766d40b7-4c3d-4516-af48-f626001a25da> a mo:Track;
+    dcterms:title "High Fives";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/07%20-%20High%20Fives.flac>;
+    mo:duration "308".
+<urn:uuid:5deaeb3c-784d-47ab-97f1-c44a64f3687b> a mo:Track;
+    dcterms:title "Sleep, Eat Food, Have Visions";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/09%20-%20Sleep%2C%20Eat%20Food%2C%20Have%20Visions.flac>;
+    mo:duration "479".
+<urn:uuid:8c110638-67e1-4b37-9c71-c7549aa4abe2> a mo:Track;
+    dcterms:title "You Were There With Me";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/cd-everything-ecstatic_four-tet-not-samples/10%20-%20You%20Were%20There%20With%20Me.flac>;
+    mo:duration "352".
+<urn:uuid:dd25eb6c-ba0d-42a3-ac43-db5e9b61b629> a mo:Release;
+    dcterms:title "Four Tet - Rounds (MP3)";
+    foaf:maker "Four Tet";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/06-four-tet-unspoken>;
+    mo:track <urn:uuid:7e3b3168-9eef-45e3-924b-6a9cdb0cb321>, <urn:uuid:2736e85e-160b-423b-9532-1c96fc62ca23>, <urn:uuid:8dee854d-f357-41ed-bbb9-fc9a0c0064bc>, <urn:uuid:4d932be5-4802-4c7c-87ab-8058f6c6b7fc>, <urn:uuid:036aa64b-3d0e-43e2-b3f6-b40547bd7b69>, <urn:uuid:a45fcc55-84c1-4305-907c-0006819c063a>, <urn:uuid:06024e63-bcb7-4715-bc20-55d5989b5386>, <urn:uuid:8d8091ab-0e61-4191-b786-93ad9daa1abb>.
+<urn:uuid:e07100c2-658e-4df6-babb-e955b4a77a9e> a mo:Release;
+    dcterms:title "Pause";
+    foaf:maker "Four Tet";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/pause-album>;
+    mo:track <urn:uuid:2cc08020-3b29-46fc-b78c-0599eee8347e>, <urn:uuid:3f544f6b-1bf0-4d24-b436-60a4ae570f0b>, <urn:uuid:c93e4242-7fcd-4048-bced-77ccdc6afbfc>, <urn:uuid:6ba9de2c-c32e-4f17-98e0-af5301191169>, <urn:uuid:ef03aa94-a841-41cb-812e-0995386c80d5>, <urn:uuid:9af4d8a0-8767-49bd-884d-dd60873a18eb>, <urn:uuid:e4875275-59f5-4823-abd0-27648ce5f7d0>, <urn:uuid:472d4822-aba0-497e-b66b-103179a0d52d>.
+<urn:uuid:4c4388ed-92fb-4ee6-a17d-ea1e167ad168> a mo:Release;
+    dcterms:title "Four Tet Remixes";
+    foaf:maker "Madvillain";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/madvillian-four-tet-remixes>;
+    mo:track <urn:uuid:bdc07bca-6463-46d6-b7cb-ec256ba2ff60>, <urn:uuid:f43e3bd2-ec78-4249-81b2-dce176c541d0>, <urn:uuid:ae52c61e-0a54-4a9c-84a5-7634e06f2eb7>.
+<urn:uuid:2ee3a6f3-f3fa-49e8-95c8-fcd455d29462> a mo:Release;
+    dcterms:title "Everything Ecstatic";
+    foaf:maker "Four Tet";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/cd-everything-ecstatic_four-tet-not-samples>;
+    mo:track <urn:uuid:3d703235-2ea8-4166-aa84-9d85181105d8>, <urn:uuid:2922ea39-5027-47d6-9472-f46244c1d0e1>, <urn:uuid:d27a045e-e7a2-4db6-b7fd-4967c0307609>, <urn:uuid:3bae011c-54d9-4777-af73-f395c1c87211>, <urn:uuid:766d40b7-4c3d-4516-af48-f626001a25da>, <urn:uuid:5deaeb3c-784d-47ab-97f1-c44a64f3687b>, <urn:uuid:8c110638-67e1-4b37-9c71-c7549aa4abe2>.

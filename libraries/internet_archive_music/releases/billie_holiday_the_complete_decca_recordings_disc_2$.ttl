@@ -1,0 +1,139 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Billie Holiday - The Complete Decca Recordings (Disc 2)" ;
+    dct:identifier "19-youre-my-thrill" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/19-youre-my-thrill> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15>, <#t16>, <#t17>, <#t18> ;
+    foaf:maker <urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "'Tain't Nobody's Bizness If I Do" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/10%20'Tain't%20Nobody's%20Bizness%20If%20I%20Do.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "'Tain't Nobody's Bizness If I Do [#][Previously Unissued Alternate]" ;
+    mo:duration "197" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/09%20'Tain't%20Nobody's%20Bizness%20If%20I%20Do%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Baby Get Lost" ;
+    mo:duration "195" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/11%20Baby%20Get%20Lost.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Do Your Duty" ;
+    mo:duration "196" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/14%20Do%20Your%20Duty.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Easy Living" ;
+    mo:duration "192" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/01%20Easy%20Living.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Girls Were Made to Take Care of Boys" ;
+    mo:duration "193" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/05%20Girls%20Were%20Made%20to%20Take%20Care%20of%20Boys.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "God Bless the Child" ;
+    mo:duration "190" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/23%20God%20Bless%20the%20Child.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Keeps on A-Rainin'" ;
+    mo:duration "196" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/12%20Keeps%20on%20A-Rainin'.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "My Man [#][Previously Unissued Alternate]" ;
+    mo:duration "190" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/07%20My%20Man%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "My Sweet Hunk O' Trash" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/17%20My%20Sweet%20Hunk%20O'%20Trash.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Now or Never" ;
+    mo:duration "197" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/18%20Now%20or%20Never.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "Please Tell Me Now" ;
+    mo:duration "194" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/21%20Please%20Tell%20Me%20Now.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "Solitude" ;
+    mo:duration "190" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/03%20Solitude.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "Solitude [#][Previously Unissued Alternate]" ;
+    mo:duration "194" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/02%20Solitude%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "They Can't Take That Away from Me" ;
+    mo:duration "185" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/20%20They%20Can't%20Take%20That%20Away%20from%20Me.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t16>
+    a mo:Track ;
+    dct:title "Weep No More" ;
+    mo:duration "201" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/04%20Weep%20No%20More.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t17>
+    a mo:Track ;
+    dct:title "You Can't Lose a Broken Heart" ;
+    mo:duration "195" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/16%20You%20Can't%20Lose%20a%20Broken%20Heart.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t18>
+    a mo:Track ;
+    dct:title "You're My Thrill" ;
+    mo:duration "204" ;
+    mo:item <https://archive.org/download/19-youre-my-thrill/19%20You're%20My%20Thrill.mp3> ;
+    dct:isPartOf <#it> .

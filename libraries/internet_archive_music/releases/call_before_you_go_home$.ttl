@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "CALL BEFORE YOU GO HOME" ;
+    dct:identifier "78_call-before-you-go-home_memphis-slim-and-his-house-rockers-fraser_gbia0366392a" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/78_call-before-you-go-home_memphis-slim-and-his-house-rockers-fraser_gbia0366392a> ;
+    mo:track <#t01> ;
+    foaf:maker "MEMPHIS SLIM and his House Rockers, Fraser" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "CALL BEFORE YOU GO HOME" ;
+    mo:duration "189" ;
+    mo:item <https://archive.org/download/78_call-before-you-go-home_memphis-slim-and-his-house-rockers-fraser_gbia0366392a/CALL%20BEFORE%20YOU%20GO%20HOME%20-%20MEMPHIS%20SLIM%20and%20his%20House%20Rockers.mp3> ;
+    dct:isPartOf <#it> .

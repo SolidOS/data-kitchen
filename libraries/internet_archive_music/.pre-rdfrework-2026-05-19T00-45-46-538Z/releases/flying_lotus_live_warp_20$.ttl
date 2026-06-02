@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:54698755-0de5-4741-9470-61c4d0233f52> a mo:Release;
+    dcterms:title "Flying Lotus Live @ Warp 20";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/flying-lotus-live-warp-20>;
+    mo:track <urn:uuid:0ddb5fe0-5e9b-43ed-97dd-0bcb5cd917cd>.
+<urn:uuid:0ddb5fe0-5e9b-43ed-97dd-0bcb5cd917cd> a mo:Track; dcterms:title "Live @ Warp20"; mo:duration "698"; dcat:downloadUrl <https://archive.org/download/flying-lotus-live-warp-20/Flying%20Lotus%20-%20Live%20%40%20Warp20.mp3>.

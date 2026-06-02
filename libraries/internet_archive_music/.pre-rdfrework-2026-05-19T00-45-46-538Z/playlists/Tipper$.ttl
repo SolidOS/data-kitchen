@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Tipper> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Tipper";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://open-media-player.org/ns#hidePlaylist> "true";
+    dcterms:hasPart <urn:uuid:e047b5bd-1d31-43af-94a0-3a8375a12a0b>.

@@ -1,0 +1,134 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:050057b6-e94e-44e9-83e8-8a031d164865>
+    a mo:Track;
+    dct:title "Hard To Kill";
+    mo:duration "244";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20Spice%20I%20-%20Hard%20To%20Kill.mp3>.
+<urn:uuid:065a1047-bc9c-4776-a6ab-1acf0642e50a>
+    a mo:Track;
+    dct:title "Eyes A Bleed (RZA Remix)";
+    mo:duration "286";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Bounty%20Killer%20ft.%20Masta%20Killa%20-%20Eyes%20A%20Bleed%20(RZA%20Remix).mp3>.
+<urn:uuid:0689d9d5-ae3c-4f57-b167-bca16134f1e6>
+    a mo:Track;
+    dct:title "Three Amigos (If It's On)";
+    mo:duration "219";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20King%20Just%2C%20Sic%20-%20Three%20Amigos%20(If%20It's%20On).mp3>.
+<urn:uuid:0d4266fd-b8e5-4d1a-91bc-f4e756362fcf>
+    a mo:Track;
+    dct:title "N.Y.C. Everything";
+    mo:duration "258";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20RZA%20-%20N.Y.C.%20Everything.mp3>.
+<urn:uuid:1960d1a2-3be7-429a-9633-e92695f17377>
+    a mo:Track;
+    dct:title "Left & Right";
+    mo:duration "340";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20%26%20Redman%2C%20D'Angelo%20-%20Left%20%26%20Right.mp3>.
+<urn:uuid:19a4d9ee-422a-41bd-99ef-242ee7b4b3cd>
+    a mo:Track;
+    dct:title "Dangerous Mindz";
+    mo:duration "295";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Gravediggaz%20-%20Dangerous%20Mindz.mp3>.
+<urn:uuid:299d3844-43e0-4641-b735-4bcb41fff48e>
+    a mo:Release;
+    dct:title "WU-TANG CLAN Wu Chronicles Vol 2 FULL ALBUM";
+    mo:track
+        <urn:uuid:050057b6-e94e-44e9-83e8-8a031d164865>,
+        <urn:uuid:065a1047-bc9c-4776-a6ab-1acf0642e50a>,
+        <urn:uuid:0689d9d5-ae3c-4f57-b167-bca16134f1e6>,
+        <urn:uuid:0d4266fd-b8e5-4d1a-91bc-f4e756362fcf>,
+        <urn:uuid:1960d1a2-3be7-429a-9633-e92695f17377>,
+        <urn:uuid:19a4d9ee-422a-41bd-99ef-242ee7b4b3cd>,
+        <urn:uuid:5fb42516-a53a-4b2c-8511-80d13f5ef9c7>,
+        <urn:uuid:71096ca6-89ea-4f8e-8666-da1ccd8e643f>,
+        <urn:uuid:85b8e1e8-9363-4c7b-a822-5cdd35e2149a>,
+        <urn:uuid:9089be1e-e072-4089-ae13-48d553729011>,
+        <urn:uuid:acd38ac9-fa35-4282-ae6d-efc9a96c8569>,
+        <urn:uuid:aded9c91-ff80-49d1-926f-48ac2b71b0c9>,
+        <urn:uuid:b366f4ca-9a94-4036-86a6-1d29907a0a8f>,
+        <urn:uuid:d333d8f6-c56b-40c9-800e-1c8d0f710db5>,
+        <urn:uuid:dc826d82-5905-4f94-9f35-7b0ab79f76cd>,
+        <urn:uuid:e611556a-b21d-42f0-a66a-0a217b5716fc>,
+        <urn:uuid:f56f7cbd-bf94-4d43-8718-45bec46908e6>;
+    dcat:landingPage det:wu-tang-caln-wu-chronicles-vol-2-full-album;
+    foaf:maker
+        "Wu-Tang Clan - WU CHRONICLES Vol. 2 FULL ALBUM",
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:5fb42516-a53a-4b2c-8511-80d13f5ef9c7>
+    a mo:Track;
+    dct:title "Above The Clouds";
+    mo:duration "227";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Gangstarr%20ft.%20Inspectah%20Deck%20-%20Above%20The%20Clouds.mp3>.
+<urn:uuid:71096ca6-89ea-4f8e-8666-da1ccd8e643f>
+    a mo:Track;
+    dct:title "Re-Up";
+    mo:duration "211";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Two%20Da%20Road%20ft.%20Shyheim%20-%20Re-Up.mp3>.
+<urn:uuid:85b8e1e8-9363-4c7b-a822-5cdd35e2149a>
+    a mo:Track;
+    dct:title "To The Rescue";
+    mo:duration "242";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/U-God%20ft.%20Leatha%20Face%20-%20To%20The%20Rescue.mp3>.
+<urn:uuid:9089be1e-e072-4089-ae13-48d553729011>
+    a mo:Track;
+    dct:title "Only 4 My Niggaz";
+    mo:duration "199";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Black%20Knights%20-%20Only%204%20My%20Niggaz.mp3>.
+<urn:uuid:acd38ac9-fa35-4282-ae6d-efc9a96c8569>
+    a mo:Track;
+    dct:title "Greyhound Pt.2 (GZA Remix)";
+    mo:duration "204";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/The%20Jon%20Spencer%20Blues%20Explosion%20ft.%20Killah%20Priest%20-%20Greyhound%20Pt.2%20(GZA%20Remix).mp3>.
+<urn:uuid:aded9c91-ff80-49d1-926f-48ac2b71b0c9>
+    a mo:Track;
+    dct:title "In Trouble";
+    mo:duration "265";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Shyheim%20-%20In%20Trouble.mp3>.
+<urn:uuid:b366f4ca-9a94-4036-86a6-1d29907a0a8f>
+    a mo:Track;
+    dct:title "Wu-Tang Clan - WU CHRONICLES Vol. 2 FULL ALBUM";
+    mo:duration "4029";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/%24%20Wu-Tang%20Clan%20-%20WU%20CHRONICLES%20Vol.%202%20FULL%20ALBUM.mp3>.
+<urn:uuid:d333d8f6-c56b-40c9-800e-1c8d0f710db5>
+    a mo:Track;
+    dct:title "Gots Like Come On Thru";
+    mo:duration "278";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Ol'%20Dirty%20Bastard%20ft.%20Buddha%20Monk%2C%20Drunken%20Dragon%20-%20Gots%20Like%20Come%20On%20Thru.mp3>.
+<urn:uuid:dc826d82-5905-4f94-9f35-7b0ab79f76cd>
+    a mo:Track;
+    dct:title "Wu-Tang Clan LIVE FREESTYLE - GZA & Masta Killa";
+    mo:duration "225";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Wu-Tang%20Clan%20LIVE%20FREESTYLE%20-%20GZA%20%26%20Masta%20Killa.mp3>.
+<urn:uuid:e611556a-b21d-42f0-a66a-0a217b5716fc>
+    a mo:Track;
+    dct:title "Hip Hop Fury";
+    mo:duration "226";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/GZA%20ft.%20RZA%2C%20Hell%20Raizah%2C%20Royal%20Fam%20-%20Hip%20Hop%20Fury.mp3>.
+<urn:uuid:f56f7cbd-bf94-4d43-8718-45bec46908e6>
+    a mo:Track;
+    dct:title "Rumble";
+    mo:duration "272";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20U-God%2C%20Inspectah%20Deck%2C%20Leatha%20Face%20-%20Rumble.mp3>.

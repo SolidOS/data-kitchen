@@ -1,0 +1,163 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/agents.ttl#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Aretha_Franklin> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Aretha Franklin";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:478e8d42-d708-4232-a549-cba7ce9916b0>, <urn:uuid:8647e185-7d1b-4885-bf0e-d233ec041acf>, <urn:uuid:e91bf172-7f06-4714-97d3-e487a23a7d0c>, <urn:uuid:130aa278-1273-4f5c-8469-a910791a8c75>, <urn:uuid:cfc21ddc-f235-4276-8ad3-8706902038e8>, <urn:uuid:5f074f79-39ec-48e2-86c2-3a91c66eee82>, <urn:uuid:6c8b8522-3b5a-4f2b-bd57-51ed1631c661>, <urn:uuid:6f47e920-7adb-4ae9-856a-a9a35a5c44fc>, <urn:uuid:ca814efb-91ac-4d69-86c1-eba2e62d3d2d>, <urn:uuid:04daa79c-9244-44a9-85a7-b2afabd0b87b>, <urn:uuid:93ab8259-d32d-40a1-8ee5-cf57cb08b844>, <urn:uuid:3478b5a0-c563-4371-875e-6628a9d97b8d>, <urn:uuid:870920e5-655b-487b-b202-a8ec38a9571a>, <urn:uuid:e404fd77-99d0-4edc-be4f-773a19ff7b62>, <urn:uuid:490079fb-b975-4c3e-b842-2d0f4d518108>, <urn:uuid:e7ee792f-33cf-4012-ba4d-46abfa367d63>, <urn:uuid:6a685d55-e173-4396-a7d1-e98531c6241e>, <urn:uuid:3431fdb6-0512-4358-9b9f-8cbadf8cac25>, <urn:uuid:94564c13-883c-4211-ae7c-7742e9a8cfc4>, <urn:uuid:f07d58d9-258a-4d31-b12f-e5ce40a3b2bd>, <urn:uuid:9eef038d-887f-4fd8-9538-285f1c994197>, <urn:uuid:8d3c638d-d785-427f-a8f2-84c9c32c718a>, <urn:uuid:fb67562c-7c7e-4df7-a439-8e0c38558c1f>, <urn:uuid:08665cda-9ffd-4aa5-83aa-44ca5b7c060c>, <urn:uuid:7076ddf0-175f-482c-9bee-d819d219ba6b>;
+    omp:hidePlaylist "true".
+<urn:uuid:478e8d42-d708-4232-a549-cba7ce9916b0> a mo:Track;
+    dcterms:title "A Change Is Gonna Come";
+    dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/11%20A%20Change%20Is%20Gonna%20Come.mp3>;
+    mo:duration "260".
+<urn:uuid:8647e185-7d1b-4885-bf0e-d233ec041acf> a mo:Track;
+    dcterms:title "afblues";
+    dcat:downloadUrl <https://archive.org/download/afblues/afblues.mp3>;
+    mo:duration "263".
+<urn:uuid:e91bf172-7f06-4714-97d3-e487a23a7d0c> a mo:Track;
+    dcterms:title "afzoominacapella";
+    dcat:downloadUrl <https://archive.org/download/afzoominacapella/afzoominacapella.mp3>;
+    mo:duration "329".
+<urn:uuid:130aa278-1273-4f5c-8469-a910791a8c75> a mo:Track;
+    dcterms:title "Ain't No Way (Live At The Jamaica World Music Festival) – Aretha Franklin";
+    dcat:downloadUrl <https://archive.org/download/afnoway/afnoway.mp3>;
+    mo:duration "365".
+<urn:uuid:cfc21ddc-f235-4276-8ad3-8706902038e8> a mo:Track;
+    dcterms:title "Call Me";
+    dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/09%20-%20Call%20Me.mp3>;
+    mo:duration "237".
+<urn:uuid:5f074f79-39ec-48e2-86c2-3a91c66eee82> a mo:Track;
+    dcterms:title "Dark End of the Street";
+    dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/03%20-%20Dark%20End%20of%20the%20Street.mp3>;
+    mo:duration "284".
+<urn:uuid:6c8b8522-3b5a-4f2b-bd57-51ed1631c661> a mo:Track;
+    dcterms:title "disc1/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side1";
+    dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2Flp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side1.flac>;
+    mo:duration "929".
+<urn:uuid:6f47e920-7adb-4ae9-856a-a9a35a5c44fc> a mo:Track;
+    dcterms:title "disc1/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side1";
+    dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2Flp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side1.opus>.
+<urn:uuid:ca814efb-91ac-4d69-86c1-eba2e62d3d2d> a mo:Track;
+    dcterms:title "disc1/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side2";
+    dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2Flp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side2.flac>;
+    mo:duration "948".
+<urn:uuid:04daa79c-9244-44a9-85a7-b2afabd0b87b> a mo:Track;
+    dcterms:title "disc1/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side2";
+    dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2Flp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side2.opus>.
+<urn:uuid:93ab8259-d32d-40a1-8ee5-cf57cb08b844> a mo:Track;
+    dcterms:title "Do Right Woman - Do Right Man";
+    dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/09%20Do%20Right%20Woman%20-%20Do%20Right%20Man.mp3>;
+    mo:duration "196".
+<urn:uuid:3478b5a0-c563-4371-875e-6628a9d97b8d> a mo:Track;
+    dcterms:title "Do Right Woman, Do Right Man [Stereo Version]";
+    dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/14%20Do%20Right%20Woman%2C%20Do%20Right%20Man%20%5BSte.mp3>;
+    mo:duration "194".
+<urn:uuid:870920e5-655b-487b-b202-a8ec38a9571a> a mo:Track;
+    dcterms:title "Dr. Feelgood [Love Is a Serious Business]";
+    dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/07%20Dr.%20Feelgood%20%5BLove%20Is%20a%20Serious%20B.mp3>;
+    mo:duration "203".
+<urn:uuid:e404fd77-99d0-4edc-be4f-773a19ff7b62> a mo:Track;
+    dcterms:title "Drown in My Own Tears";
+    dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/02%20Drown%20in%20My%20Own%20Tears.mp3>;
+    mo:duration "247".
+<urn:uuid:490079fb-b975-4c3e-b842-2d0f4d518108> a mo:Track;
+    dcterms:title "Franklin_Aretha_1991/Preservation Master/Franklin_Aretha_1991_01";
+    dcat:downloadUrl <https://archive.org/download/bpl-franklin-aretha-1991/Franklin_Aretha_1991%2FPreservation%20Master%2FFranklin_Aretha_1991_01.mp3>;
+    mo:duration "2247".
+<urn:uuid:e7ee792f-33cf-4012-ba4d-46abfa367d63> a mo:Track;
+    dcterms:title "Franklin_Aretha_1995/Preservation Master/Franklin_Aretha_1995_01";
+    dcat:downloadUrl <https://archive.org/download/bpl-franklin-aretha-1995/Franklin_Aretha_1995%2FPreservation%20Master%2FFranklin_Aretha_1995_01.mp3>;
+    mo:duration "1222".
+<urn:uuid:6a685d55-e173-4396-a7d1-e98531c6241e> a mo:Track;
+    dcterms:title "I Say a Little Prayer For You - Aretha Franklin";
+    dcat:downloadUrl <https://archive.org/download/MusicaLentaClasica/ISayALittlePrayerForYou-ArethaFranklin.mp3>;
+    mo:duration "214".
+<urn:uuid:3431fdb6-0512-4358-9b9f-8cbadf8cac25> a mo:Track;
+    dcterms:title "It Ain't Fair";
+    dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/07%20-%20It%20Ain't%20Fair.mp3>;
+    mo:duration "203".
+<urn:uuid:94564c13-883c-4211-ae7c-7742e9a8cfc4> a mo:Track;
+    dcterms:title "It Hurts Like Hell";
+    dcat:downloadUrl <https://archive.org/download/reehurts/reehurts.mp3>;
+    mo:duration "259".
+<urn:uuid:f07d58d9-258a-4d31-b12f-e5ce40a3b2bd> a mo:Track;
+    dcterms:title "Let It Be";
+    dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/04%20-%20Let%20It%20Be.mp3>;
+    mo:duration "212".
+<urn:uuid:9eef038d-887f-4fd8-9538-285f1c994197> a mo:Track;
+    dcterms:title "People";
+    dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2F01.01.%20People.mp3>;
+    mo:duration "262".
+<urn:uuid:8d3c638d-d785-427f-a8f2-84c9c32c718a> a mo:Track;
+    dcterms:title "Share Your Love With Me";
+    dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/02%20-%20Share%20Your%20Love%20With%20Me.mp3>;
+    mo:duration "202".
+<urn:uuid:fb67562c-7c7e-4df7-a439-8e0c38558c1f> a mo:Track;
+    dcterms:title "Sit Down and Cry";
+    dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/10%20-%20Sit%20Down%20and%20Cry.mp3>;
+    mo:duration "232".
+<urn:uuid:08665cda-9ffd-4aa5-83aa-44ca5b7c060c> a mo:Track;
+    dcterms:title "Son of a Preacher Man";
+    dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/01%20-%20Son%20of%20a%20Preacher%20Man.mp3>;
+    mo:duration "199".
+<urn:uuid:7076ddf0-175f-482c-9bee-d819d219ba6b> a mo:Track;
+    dcterms:title "This Girl's in Love With You";
+    dcat:downloadUrl <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/06%20-%20This%20Girl's%20in%20Love%20With%20You.mp3>;
+    mo:duration "241".
+<urn:uuid:11b21203-4e42-44f3-a1f8-1cee000e62fd> a mo:Release;
+    dcterms:title "I Never Loved A Man The Way I Love You- Aretha Franklin";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/inlamtwilyarethafranklin>;
+    mo:track <urn:uuid:478e8d42-d708-4232-a549-cba7ce9916b0>, <urn:uuid:93ab8259-d32d-40a1-8ee5-cf57cb08b844>, <urn:uuid:3478b5a0-c563-4371-875e-6628a9d97b8d>, <urn:uuid:870920e5-655b-487b-b202-a8ec38a9571a>, <urn:uuid:e404fd77-99d0-4edc-be4f-773a19ff7b62>.
+<urn:uuid:9a0b3507-6fb9-4de8-acda-f267eaebaa67> a mo:Release;
+    dcterms:title "afblues";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/afblues>;
+    mo:track <urn:uuid:8647e185-7d1b-4885-bf0e-d233ec041acf>.
+<urn:uuid:1cdf10fc-6e6d-4082-a310-64293d7eb53e> a mo:Release;
+    dcterms:title "afzoominacapella";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/afzoominacapella>;
+    mo:track <urn:uuid:e91bf172-7f06-4714-97d3-e487a23a7d0c>.
+<urn:uuid:d0a41db7-de58-4fe4-b731-4252e556a127> a mo:Release;
+    dcterms:title "afnoway";
+    foaf:maker "BlackMusicMonth";
+    dcat:landingPage <https://archive.org/details/afnoway>;
+    mo:track <urn:uuid:130aa278-1273-4f5c-8469-a910791a8c75>.
+<urn:uuid:10d7c991-a3c6-45c6-9255-81de1dad3f19> a mo:Release;
+    dcterms:title "This Girl's in Love with You";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/lp_this-girls-in-love-with-you_aretha-franklin_item>;
+    mo:track <urn:uuid:cfc21ddc-f235-4276-8ad3-8706902038e8>, <urn:uuid:5f074f79-39ec-48e2-86c2-3a91c66eee82>, <urn:uuid:3431fdb6-0512-4358-9b9f-8cbadf8cac25>, <urn:uuid:f07d58d9-258a-4d31-b12f-e5ce40a3b2bd>, <urn:uuid:8d3c638d-d785-427f-a8f2-84c9c32c718a>, <urn:uuid:fb67562c-7c7e-4df7-a439-8e0c38558c1f>, <urn:uuid:08665cda-9ffd-4aa5-83aa-44ca5b7c060c>, <urn:uuid:7076ddf0-175f-482c-9bee-d819d219ba6b>.
+<urn:uuid:24670242-bb8a-451d-8458-7c7a0cbd2212> a mo:Release;
+    dcterms:title "Great Moments in American Music";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett>;
+    mo:track <urn:uuid:6c8b8522-3b5a-4f2b-bd57-51ed1631c661>, <urn:uuid:6f47e920-7adb-4ae9-856a-a9a35a5c44fc>, <urn:uuid:ca814efb-91ac-4d69-86c1-eba2e62d3d2d>, <urn:uuid:04daa79c-9244-44a9-85a7-b2afabd0b87b>, <urn:uuid:9eef038d-887f-4fd8-9538-285f1c994197>.
+<urn:uuid:8fb972c5-f1c6-46a3-8ce9-8b5286737d3d> a mo:Release;
+    dcterms:title "bpl-franklin-aretha-1991";
+    foaf:maker "Franklin, Aretha";
+    dcat:landingPage <https://archive.org/details/bpl-franklin-aretha-1991>;
+    mo:track <urn:uuid:490079fb-b975-4c3e-b842-2d0f4d518108>.
+<urn:uuid:37fc4d39-4e67-4d57-a28b-a9044239a419> a mo:Release;
+    dcterms:title "bpl-franklin-aretha-1995";
+    foaf:maker "Franklin, Aretha";
+    dcat:landingPage <https://archive.org/details/bpl-franklin-aretha-1995>;
+    mo:track <urn:uuid:e7ee792f-33cf-4012-ba4d-46abfa367d63>.
+<urn:uuid:5cc60d99-d258-4913-a5b9-a570141e5c49> a mo:Release;
+    dcterms:title "Musica lenta clasica";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/MusicaLentaClasica>;
+    mo:track <urn:uuid:6a685d55-e173-4396-a7d1-e98531c6241e>.
+<urn:uuid:c5f6f381-cee5-404c-82a4-5f34ec99f2c4> a mo:Release;
+    dcterms:title "reehurts";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/reehurts>;
+    mo:track <urn:uuid:94564c13-883c-4211-ae7c-7742e9a8cfc4>.

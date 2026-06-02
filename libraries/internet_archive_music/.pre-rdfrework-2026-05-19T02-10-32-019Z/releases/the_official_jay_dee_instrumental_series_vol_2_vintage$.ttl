@@ -1,0 +1,22 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:43e1e8aa-dc56-4d8d-b8dd-f85be35e9798> a mo:Release;
+    dcterms:title "The Official Jay Dee Instrumental Series Vol.2: Vintage";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    dcat:landingPage <https://archive.org/details/jay-dee-instrumental-series-vol-2-vintage>;
+    mo:track <urn:uuid:02ad9e3c-b154-4c3a-8c83-9b711c43cdaf>, <urn:uuid:122e616c-f2f6-4981-a45c-0f895cc5999b>, <urn:uuid:3829b2c6-cb01-44de-959f-50fee2d09747>, <urn:uuid:aa37069b-9236-4bc6-9119-50fff9a1cda9>, <urn:uuid:cee20e22-c727-4ed7-9a70-4c3d06135c21>, <urn:uuid:dce48649-57aa-4d0e-b72c-68412e90dff6>, <urn:uuid:eba253c4-6f37-45b9-9564-c03fabc26c58>, <urn:uuid:c571760c-74d6-43f8-971b-1b653001b9e1>, <urn:uuid:3487785f-a484-461e-b92e-47525cca3fa1>, <urn:uuid:47c6a12f-4b58-4b99-8702-ab826a9e50dd>, <urn:uuid:6cfc0566-0265-4bd0-918b-72eeb78c8a66>, <urn:uuid:9a6b9374-ba81-4f51-9916-5065450d3fca>.
+<urn:uuid:02ad9e3c-b154-4c3a-8c83-9b711c43cdaf> a mo:Track; dcterms:title "It's Dope"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/01.%20J%20Dilla%20-%20It's%20Dope%20(2003).m4a>.
+<urn:uuid:122e616c-f2f6-4981-a45c-0f895cc5999b> a mo:Track; dcterms:title "Kamaal"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/02.%20J%20Dilla%20-%20Kamaal%20(2003).m4a>.
+<urn:uuid:3829b2c6-cb01-44de-959f-50fee2d09747> a mo:Track; dcterms:title "Doo Doo"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/03.%20J%20Dilla%20-%20Doo%20Doo%20(2003).m4a>.
+<urn:uuid:aa37069b-9236-4bc6-9119-50fff9a1cda9> a mo:Track; dcterms:title "The Skip"; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/04.%20J%20Dilla%20-%20The%20Skip%20(2003).m4a>.
+<urn:uuid:cee20e22-c727-4ed7-9a70-4c3d06135c21> a mo:Track; dcterms:title "Get Down"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/05.%20J%20Dilla%20-%20Get%20Down%20(2003).m4a>.
+<urn:uuid:dce48649-57aa-4d0e-b72c-68412e90dff6> a mo:Track; dcterms:title "Dreamy"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/06.%20J%20Dilla%20-%20Dreamy%20(2003).m4a>.
+<urn:uuid:eba253c4-6f37-45b9-9564-c03fabc26c58> a mo:Track; dcterms:title "Coastin'"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/07.%20J%20Dilla%20-%20Coastin'%20(2003).m4a>.
+<urn:uuid:c571760c-74d6-43f8-971b-1b653001b9e1> a mo:Track; dcterms:title "The Dee"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/08.%20J%20Dilla%20-%20The%20Dee%20(2003).m4a>.
+<urn:uuid:3487785f-a484-461e-b92e-47525cca3fa1> a mo:Track; dcterms:title "09. J Dilla - Earl (2003)"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/09.%20J%20Dilla%20-%20Earl%20(2003).opus>.
+<urn:uuid:47c6a12f-4b58-4b99-8702-ab826a9e50dd> a mo:Track; dcterms:title "On The 1"; mo:duration "181"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/10.%20J%20Dilla%20-%20On%20The%201%20(2003).m4a>.
+<urn:uuid:6cfc0566-0265-4bd0-918b-72eeb78c8a66> a mo:Track; dcterms:title "Grannie"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/12.%20J%20Dilla%20-%20Grannie%20(2003).m4a>.
+<urn:uuid:9a6b9374-ba81-4f51-9916-5065450d3fca> a mo:Track; dcterms:title "Trashy"; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/13.%20J%20Dilla%20-%20Trashy%20(2003).m4a>.

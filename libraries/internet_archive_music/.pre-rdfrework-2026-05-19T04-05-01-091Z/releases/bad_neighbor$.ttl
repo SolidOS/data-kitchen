@@ -1,0 +1,19 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:a833461b-7219-476c-b60e-711a33cac894> a mo:Release;
+    dcterms:title "Bad Neighbor";
+    foaf:maker "Med, Blu & Madlib";
+    dcat:landingPage <https://archive.org/details/bad-neighbor_202403>;
+    mo:track <urn:uuid:66d04335-d4ce-4b55-80e9-0b34086f2510>, <urn:uuid:4ed6005a-2e04-4615-b948-e82ab68467c6>, <urn:uuid:3c3668c8-4375-4902-811b-3f0fffddcf71>, <urn:uuid:a011aa90-44f0-468d-8d40-ba0f5fc8f772>, <urn:uuid:c77a4c7a-e72d-4ecc-8a6f-9497e8957103>, <urn:uuid:65fab9cc-29af-4ba5-9487-e99a2bf5d12d>, <urn:uuid:0d2e1a64-d6cf-4a06-9879-dae2c86c0e5d>, <urn:uuid:9a75ccd9-346b-4ece-b77e-7075d3686a51>, <urn:uuid:99ca5082-65d5-4fba-bfea-ae36732feebf>.
+<urn:uuid:66d04335-d4ce-4b55-80e9-0b34086f2510> a mo:Track; dcterms:title "The Strip (feat. Anderson .Paak)"; mo:duration "231"; dcat:downloadUrl <https://archive.org/download/bad-neighbor_202403/9.%20The%20Strip%20(feat.%20Anderson%20.Paak).mp3>.
+<urn:uuid:4ed6005a-2e04-4615-b948-e82ab68467c6> a mo:Track; dcterms:title "The Buzz (feat. Mayer Hawthorne)"; mo:duration "260"; dcat:downloadUrl <https://archive.org/download/bad-neighbor_202403/15.%20The%20Buzz%20(feat.%20Mayer%20Hawthorne).mp3>.
+<urn:uuid:3c3668c8-4375-4902-811b-3f0fffddcf71> a mo:Track; dcterms:title "Streets (feat. Oh No & DJ Romes)"; mo:duration "217"; dcat:downloadUrl <https://archive.org/download/bad-neighbor_202403/5.%20Streets%20(feat.%20Oh%20No%20%26%20DJ%20Romes).mp3>.
+<urn:uuid:a011aa90-44f0-468d-8d40-ba0f5fc8f772> a mo:Track; dcterms:title "Serving (feat. Hodgy Beats)"; mo:duration "213"; dcat:downloadUrl <https://archive.org/download/bad-neighbor_202403/2.%20Serving%20(feat.%20Hodgy%20Beats).mp3>.
+<urn:uuid:c77a4c7a-e72d-4ecc-8a6f-9497e8957103> a mo:Track; dcterms:title "Knock Knock (feat. MF DOOM)"; mo:duration "285"; dcat:downloadUrl <https://archive.org/download/bad-neighbor_202403/7.%20Knock%20Knock%20(feat.%20MF%20DOOM).mp3>.
+<urn:uuid:65fab9cc-29af-4ba5-9487-e99a2bf5d12d> a mo:Track; dcterms:title "Get Money (feat. Frank Nitty)"; mo:duration "212"; dcat:downloadUrl <https://archive.org/download/bad-neighbor_202403/4.%20Get%20Money%20(feat.%20Frank%20Nitty).mp3>.
+<urn:uuid:0d2e1a64-d6cf-4a06-9879-dae2c86c0e5d> a mo:Track; dcterms:title "Finer Things (feat. Likewise & Phonte)"; mo:duration "261"; dcat:downloadUrl <https://archive.org/download/bad-neighbor_202403/10.%20Finer%20Things%20(feat.%20Likewise%20Phonte).mp3>.
+<urn:uuid:9a75ccd9-346b-4ece-b77e-7075d3686a51> a mo:Track; dcterms:title "Drive In (Feat. Aloe Blacc)"; mo:duration "239"; dcat:downloadUrl <https://archive.org/download/bad-neighbor_202403/12.%20Drive%20In%20(Feat.%20Aloe%20Blacc).mp3>.
+<urn:uuid:99ca5082-65d5-4fba-bfea-ae36732feebf> a mo:Track; dcterms:title "Birds"; mo:duration "219"; dcat:downloadUrl <https://archive.org/download/bad-neighbor_202403/14.%20Birds.mp3>.

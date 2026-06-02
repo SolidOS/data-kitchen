@@ -1,0 +1,17 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c99b759c-d302-4b2f-ac49-af9bf40b85ad> a mo:Release;
+    dcterms:title "The Shining";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    dcat:landingPage <https://archive.org/details/the-shining_202602>;
+    mo:track <urn:uuid:965424ea-e21e-40fc-a21e-a042c3b77dc6>, <urn:uuid:01bfb0e9-3e37-4f4d-930e-62125589eb93>, <urn:uuid:b78dae6a-aca7-48d8-ad2b-68e6981d1c21>, <urn:uuid:d107bf0d-a0a2-41af-82fb-ea84ad4b4ee3>, <urn:uuid:f7f94d82-ab0d-4dd0-b1f2-ffa0e99d40f0>, <urn:uuid:17ae53c3-7805-4ad5-b6e9-80383fedc54f>, <urn:uuid:704ccdbd-db8c-4bb5-a447-519eb7bfd342>.
+<urn:uuid:965424ea-e21e-40fc-a21e-a042c3b77dc6> a mo:Track; dcterms:title "E=MC²"; mo:duration "229"; dcat:downloadUrl <https://archive.org/download/the-shining_202602/002.%20J%20Dilla%20-%20E%3DMC%C2%B2%20(2006).mp3>.
+<urn:uuid:01bfb0e9-3e37-4f4d-930e-62125589eb93> a mo:Track; dcterms:title "Love"; mo:duration "194"; dcat:downloadUrl <https://archive.org/download/the-shining_202602/004.%20J%20Dilla%20-%20Love%20(2006).mp3>.
+<urn:uuid:b78dae6a-aca7-48d8-ad2b-68e6981d1c21> a mo:Track; dcterms:title "Baby"; mo:duration "219"; dcat:downloadUrl <https://archive.org/download/the-shining_202602/005.%20J%20Dilla%20-%20Baby%20(2006).mp3>.
+<urn:uuid:d107bf0d-a0a2-41af-82fb-ea84ad4b4ee3> a mo:Track; dcterms:title "So Far To Go"; mo:duration "336"; dcat:downloadUrl <https://archive.org/download/the-shining_202602/006.%20J%20Dilla%20-%20So%20Far%20To%20Go%20(2006).mp3>.
+<urn:uuid:f7f94d82-ab0d-4dd0-b1f2-ffa0e99d40f0> a mo:Track; dcterms:title "Dime Piece"; mo:duration "195"; dcat:downloadUrl <https://archive.org/download/the-shining_202602/010.%20J%20Dilla%20-%20Dime%20Piece%20(2006).mp3>.
+<urn:uuid:17ae53c3-7805-4ad5-b6e9-80383fedc54f> a mo:Track; dcterms:title "Love Movin'"; mo:duration "214"; dcat:downloadUrl <https://archive.org/download/the-shining_202602/011.%20J%20Dilla%20-%20Love%20Movin'%20(2006).mp3>.
+<urn:uuid:704ccdbd-db8c-4bb5-a447-519eb7bfd342> a mo:Track; dcterms:title "Won't Do"; mo:duration "232"; dcat:downloadUrl <https://archive.org/download/the-shining_202602/012.%20J%20Dilla%20-%20Won't%20Do%20(2006).mp3>.

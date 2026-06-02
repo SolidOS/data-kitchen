@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:b3d6d6d4-cbc4-48c9-b4d0-93433653695e> a mo:Release;
+    dcterms:title "Kronos Quartet with Wu Man: Live at the Krannert Center for the Performing Arts - 2010-01-28";
+    foaf:maker "Kronos Quartet and Wu Man";
+    dcat:landingPage <https://archive.org/details/Kronos-2010-01-28>;
+    mo:track <urn:uuid:226409c7-abf0-4069-889e-4fad11946ab0>, <urn:uuid:1d0f8441-0387-41ec-a3e2-d2ec4d6b1369>, <urn:uuid:1da60d52-6193-4356-8165-2e29fcd833af>, <urn:uuid:3f4bb18e-f1f2-4cff-b434-5eeb57094969>, <urn:uuid:f6b3f0b1-eb80-4fc1-9c21-fc30ff5109d2>.
+<urn:uuid:226409c7-abf0-4069-889e-4fad11946ab0> a mo:Track; dcterms:title "Ghost Opera"; mo:duration "2296"; dcat:downloadUrl <https://archive.org/download/Kronos-2010-01-28/kronos2010-01-28.bmc2.flac16%2Fkronos2010-01-28t01.mp3>.
+<urn:uuid:1d0f8441-0387-41ec-a3e2-d2ec4d6b1369> a mo:Track; dcterms:title "Part I. Return"; mo:duration "954"; dcat:downloadUrl <https://archive.org/download/Kronos-2010-01-28/kronos2010-01-28.bmc2.flac16%2Fkronos2010-01-28t02.mp3>.
+<urn:uuid:1da60d52-6193-4356-8165-2e29fcd833af> a mo:Track; dcterms:title "Part II. Shanghai"; mo:duration "786"; dcat:downloadUrl <https://archive.org/download/Kronos-2010-01-28/kronos2010-01-28.bmc2.flac16%2Fkronos2010-01-28t03.mp3>.
+<urn:uuid:3f4bb18e-f1f2-4cff-b434-5eeb57094969> a mo:Track; dcterms:title "Part III. The East is Red"; mo:duration "992"; dcat:downloadUrl <https://archive.org/download/Kronos-2010-01-28/kronos2010-01-28.bmc2.flac16%2Fkronos2010-01-28t04.mp3>.
+<urn:uuid:f6b3f0b1-eb80-4fc1-9c21-fc30ff5109d2> a mo:Track; dcterms:title "Part IV. Made in China"; mo:duration "527"; dcat:downloadUrl <https://archive.org/download/Kronos-2010-01-28/kronos2010-01-28.bmc2.flac16%2Fkronos2010-01-28t05.mp3>.

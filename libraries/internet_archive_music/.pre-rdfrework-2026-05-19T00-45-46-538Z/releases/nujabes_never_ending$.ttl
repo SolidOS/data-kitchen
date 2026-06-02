@@ -1,0 +1,21 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c1876dbf-a0aa-47cb-b6ce-6d7062bb447d> a mo:Release;
+    dcterms:title "Nujabes - Never ending";
+    foaf:maker <urn:uuid:a5f679b6-aef4-43d9-9ea5-57ca3758d0da>;
+    dcat:landingPage <https://archive.org/details/nujabes-spiritual-state-featuring-uyama-hiroto>;
+    mo:track <urn:uuid:37fa0673-0005-42b3-9848-dc14e144308f>, <urn:uuid:f2c732e6-2f71-4100-af73-322e20c024ad>, <urn:uuid:dc722694-a582-4db0-ad5c-eb0e6ac5e4da>, <urn:uuid:a3e24099-fa56-4ae2-ba08-723a302a7d1e>, <urn:uuid:78ed237c-ebca-4fec-bb47-080a9384b8e9>, <urn:uuid:8a16552f-ac6b-4aad-a8eb-ee8a8dde7c32>, <urn:uuid:acd81061-9fdd-45a4-8274-bd6e87224a09>, <urn:uuid:eacb9246-4cba-4755-bf67-0fd34e6fe18e>, <urn:uuid:fdb85145-b3eb-428f-ad9c-6c6cb9e3f250>, <urn:uuid:8599ae19-3cd8-4920-9701-608c5567a6c1>, <urn:uuid:16aa2e28-eee3-4b98-9d85-570c8bc298a0>.
+<urn:uuid:37fa0673-0005-42b3-9848-dc14e144308f> a mo:Track; dcterms:title "Aruarian Dance"; mo:duration "249"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2FAruarian%20Dance.mp3>.
+<urn:uuid:f2c732e6-2f71-4100-af73-322e20c024ad> a mo:Track; dcterms:title "Another Reflection"; mo:duration "224"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-another-reflection.mp3>.
+<urn:uuid:dc722694-a582-4db0-ad5c-eb0e6ac5e4da> a mo:Track; dcterms:title "Far Fowls"; mo:duration "264"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-far-fowls.mp3>.
+<urn:uuid:a3e24099-fa56-4ae2-ba08-723a302a7d1e> a mo:Track; dcterms:title "Lady Brown [Feat. Cise Starr from CYNE]"; mo:duration "198"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-lady-brown-feat-cise-starr-from-cyne.mp3>.
+<urn:uuid:78ed237c-ebca-4fec-bb47-080a9384b8e9> a mo:Track; dcterms:title "Luv (Sic) (Modal Soul remix) (feat Shing02)"; mo:duration "288"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-luv-sic-modal-soul-remix-feat-shing02.mp3>.
+<urn:uuid:8a16552f-ac6b-4aad-a8eb-ee8a8dde7c32> a mo:Track; dcterms:title "Mystline"; mo:duration "290"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-mystline.mp3>.
+<urn:uuid:acd81061-9fdd-45a4-8274-bd6e87224a09> a mo:Track; dcterms:title "Prayer"; mo:duration "209"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-prayer.mp3>.
+<urn:uuid:eacb9246-4cba-4755-bf67-0fd34e6fe18e> a mo:Track; dcterms:title "Spiral"; mo:duration "220"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-spiral.mp3>.
+<urn:uuid:fdb85145-b3eb-428f-ad9c-6c6cb9e3f250> a mo:Track; dcterms:title "Spiritual State (featuring Uya"; mo:duration "391"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-spiritual-state-featuring-uyama-hiroto.mp3>.
+<urn:uuid:8599ae19-3cd8-4920-9701-608c5567a6c1> a mo:Track; dcterms:title "Windspeaks (feat Uyama Hiroto)"; mo:duration "269"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-windspeaks-feat-uyama-hiroto.mp3>.
+<urn:uuid:16aa2e28-eee3-4b98-9d85-570c8bc298a0> a mo:Track; dcterms:title "With Rainy Eyes (feat Emancipator)"; mo:duration "299"; dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-with-rainy-eyes-feat-emancipator.mp3>.

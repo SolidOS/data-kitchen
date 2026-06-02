@@ -1,0 +1,311 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/agents.ttl#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Billie_Holiday> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Billie Holiday";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:f44d69e4-8146-45da-93ed-422bdf91ffeb>, <urn:uuid:aceea5d7-cba6-4e44-b56a-a2522726cfb0>, <urn:uuid:b94b5b3f-d711-41c1-967b-1d77176e4400>, <urn:uuid:3b430332-c51a-45f2-a479-3864c042d60c>, <urn:uuid:a46d6b14-d2ec-42b7-a5d2-4504525a84ab>, <urn:uuid:7675acf5-430e-426f-986f-a0e60d7e5490>, <urn:uuid:18cb365f-9947-483f-b6de-f44489164b77>, <urn:uuid:c4ffb306-dd0b-4d07-81ad-a314a813dd57>, <urn:uuid:8e64dc32-6520-49e6-a6a7-756a6ebf96ed>, <urn:uuid:c727494c-094b-48b2-9967-590a0b23fa92>, <urn:uuid:a2f45d3d-a89d-4ae4-b5ef-2453e4a9c1eb>, <urn:uuid:4eb0a1cf-972e-43dc-8ca3-ca657b720f93>, <urn:uuid:26da6f53-dbbe-4e72-84d1-b645700e0654>, <urn:uuid:f216a8eb-e6f4-4397-aaab-c6e41cc436b6>, <urn:uuid:06725860-695d-4c7e-bfd7-c9c339be944b>, <urn:uuid:875d3aef-9466-4fed-9b57-66daecaaab29>, <urn:uuid:fa7da248-664f-424c-beb3-b60cd273d041>, <urn:uuid:78c6a9b8-1934-498a-8315-78cc95ec7ff7>, <urn:uuid:d9cab708-d341-4d82-9ac6-734e1d6cac10>, <urn:uuid:833ba6e5-90bc-4936-836a-a6b68bc764ae>, <urn:uuid:40805262-36c4-49ef-aba1-04cbac0a911a>, <urn:uuid:6302c5d0-7e21-4191-be23-6761cce2c11b>, <urn:uuid:1ac8661c-c4ef-4cf9-afca-8a984d08b401>, <urn:uuid:692c85d6-04e4-4c21-81e1-80588f1ff023>, <urn:uuid:82fe0933-9f0d-42a1-9382-fc5b611d8349>, <urn:uuid:f151b27c-e60a-41ee-9c6e-fae8d83e8680>, <urn:uuid:635e2805-abd9-4e7b-9718-78423b2f8510>, <urn:uuid:e9e9cbb7-d800-4b8c-809c-ae6d9d08cfac>, <urn:uuid:f43b7970-912b-47cb-9e5b-676188cc1b8f>, <urn:uuid:567468a3-45bf-4630-9939-b3f5b4fd6e43>, <urn:uuid:52effe3b-f969-4b8c-b96f-d38566ee6188>, <urn:uuid:664b230d-6a7c-4ba2-84d6-03b5f74a9cbf>, <urn:uuid:45ca311a-9ccd-4275-9788-760a7f64c515>, <urn:uuid:b0e58e5d-8705-4464-b752-169b37759f9f>, <urn:uuid:539cd571-6c48-43bb-98bb-b7459c0135ce>, <urn:uuid:43d069ae-b02f-4d5b-a5eb-b95acec8fdf2>, <urn:uuid:cdf55b34-7ceb-43df-9824-f2e478f259d8>, <urn:uuid:543735e0-5416-4a1b-b5d3-aaf9af53b895>, <urn:uuid:b90c6a07-1120-40c2-a93e-e69bef391646>, <urn:uuid:6664eee0-acb2-4ecb-8570-3ec639d3090d>, <urn:uuid:b45a9eb9-6f7e-422c-8819-9ca1dee21661>, <urn:uuid:8b5af52d-55af-499d-ba99-d394c0a0bfe2>, <urn:uuid:226f30e2-68c4-41a0-b78d-b7740c24a1c7>, <urn:uuid:42133f82-9cf1-47f5-b3e8-bf0b7182447f>, <urn:uuid:77b446f1-93d3-4f6c-b1b5-ed0f549a72b8>, <urn:uuid:952e2374-3ded-4bac-ab0f-4d13c20e0c09>, <urn:uuid:6841bf6f-bea6-4492-8f90-f185c27f7e51>, <urn:uuid:c2d51f5c-c615-409e-b1a9-9e9f3b9f5033>, <urn:uuid:fb9d5c36-251c-4330-86da-4d632408634e>, <urn:uuid:38475e14-ff9c-4583-930a-3f570231d5e1>, <urn:uuid:ac07ea8e-67c6-4606-9c88-c95da2f6b0d5>, <urn:uuid:5c55aad8-bb10-43eb-b574-7597fed09a00>, <urn:uuid:2e9ecf1d-8a98-434d-b673-eaf5e720a417>, <urn:uuid:997c7f03-f956-49e5-aa0d-a99eb28c55fa>, <urn:uuid:b768162b-c576-40d3-9168-1c3c431c6f0f>, <urn:uuid:c9364a92-7fdf-4c60-95de-25dafb884eb8>, <urn:uuid:54368c06-c122-4342-a78b-0e42b7065eb0>, <urn:uuid:95685446-e68b-4851-bb32-be6943cf917e>, <urn:uuid:fd7b5f8b-ad28-4a1b-a2bf-c6f7c3180e63>;
+    omp:hidePlaylist "true".
+<urn:uuid:f44d69e4-8146-45da-93ed-422bdf91ffeb> a mo:Track;
+    dcterms:title "They Say - Teddy Wilson - Billie Holiday";
+    dcat:downloadUrl <https://archive.org/download/TheySayTeddyWilsonBillieHoliday/They%20Say%20-%20Teddy%20Wilson%20-%20Billie%20Holiday.mp3>;
+    mo:duration "190".
+<urn:uuid:aceea5d7-cba6-4e44-b56a-a2522726cfb0> a mo:Track;
+    dcterms:title "More Than You Know - Teddy Wilson - Billie Holiday";
+    dcat:downloadUrl <https://archive.org/download/MoreThanYouKnowTeddyWilsonBillieHoliday/More%20Than%20You%20Know%20-%20Teddy%20Wilson%20-%20Billie%20Holiday.mp3>;
+    mo:duration "185".
+<urn:uuid:b94b5b3f-d711-41c1-967b-1d77176e4400> a mo:Track;
+    dcterms:title "Mean to Me";
+    dcat:downloadUrl <https://archive.org/download/mean-to-me/Mean%20to%20Me.mp3>;
+    mo:duration "188".
+<urn:uuid:3b430332-c51a-45f2-a479-3864c042d60c> a mo:Track;
+    dcterms:title "I Cover the Waterfront";
+    dcat:downloadUrl <https://archive.org/download/i-cover-the-waterfront_202603/I%20Cover%20the%20Waterfront.mp3>;
+    mo:duration "211".
+<urn:uuid:a46d6b14-d2ec-42b7-a5d2-4504525a84ab> a mo:Track;
+    dcterms:title "All of me";
+    dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/06-Billie%20Holiday%20-%20Broadcasts%201949-1952%20All%20of%20me.mp3>;
+    mo:duration "225".
+<urn:uuid:7675acf5-430e-426f-986f-a0e60d7e5490> a mo:Track;
+    dcterms:title "Billie's blues";
+    dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/09-Billie%20Holiday%20-%20Broadcasts%201949-1952%20Billie's%20blues.mp3>;
+    mo:duration "219".
+<urn:uuid:18cb365f-9947-483f-b6de-f44489164b77> a mo:Track;
+    dcterms:title "He's funny that way";
+    dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/08-Billie%20Holiday%20-%20Broadcasts%201949-1952%20He's%20funny%20that%20way.mp3>;
+    mo:duration "192".
+<urn:uuid:c4ffb306-dd0b-4d07-81ad-a314a813dd57> a mo:Track;
+    dcterms:title "My man";
+    dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/11-Billie%20Holiday%20-%20Broadcasts%201949-1952%20My%20man.mp3>;
+    mo:duration "180".
+<urn:uuid:8e64dc32-6520-49e6-a6a7-756a6ebf96ed> a mo:Track;
+    dcterms:title "You're my thrill";
+    dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/07-Billie%20Holiday%20-%20Broadcasts%201949-1952%20You're%20my%20thrill.mp3>;
+    mo:duration "216".
+<urn:uuid:c727494c-094b-48b2-9967-590a0b23fa92> a mo:Track;
+    dcterms:title "Carelessly - Teddy Wilson - Billie Holiday";
+    dcat:downloadUrl <https://archive.org/download/CarelesslyTeddyWilsonBillieHoliday/Carelessly%20-%20Teddy%20Wilson%20-%20Billie%20Holiday.mp3>;
+    mo:duration "185".
+<urn:uuid:a2f45d3d-a89d-4ae4-b5ef-2453e4a9c1eb> a mo:Track;
+    dcterms:title "'Tain't Nobody's Bizness If I Do";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/10%20'Tain't%20Nobody's%20Bizness%20If%20I%20Do.mp3>;
+    mo:duration "200".
+<urn:uuid:4eb0a1cf-972e-43dc-8ca3-ca657b720f93> a mo:Track;
+    dcterms:title "'Tain't Nobody's Bizness If I Do [#][Previously Unissued Alternate]";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/09%20'Tain't%20Nobody's%20Bizness%20If%20I%20Do%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>;
+    mo:duration "197".
+<urn:uuid:26da6f53-dbbe-4e72-84d1-b645700e0654> a mo:Track;
+    dcterms:title "Baby Get Lost";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/11%20Baby%20Get%20Lost.mp3>;
+    mo:duration "195".
+<urn:uuid:f216a8eb-e6f4-4397-aaab-c6e41cc436b6> a mo:Track;
+    dcterms:title "Do Your Duty";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/14%20Do%20Your%20Duty.mp3>;
+    mo:duration "196".
+<urn:uuid:06725860-695d-4c7e-bfd7-c9c339be944b> a mo:Track;
+    dcterms:title "Easy Living";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/01%20Easy%20Living.mp3>;
+    mo:duration "192".
+<urn:uuid:875d3aef-9466-4fed-9b57-66daecaaab29> a mo:Track;
+    dcterms:title "Girls Were Made to Take Care of Boys";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/05%20Girls%20Were%20Made%20to%20Take%20Care%20of%20Boys.mp3>;
+    mo:duration "193".
+<urn:uuid:fa7da248-664f-424c-beb3-b60cd273d041> a mo:Track;
+    dcterms:title "God Bless the Child";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/23%20God%20Bless%20the%20Child.mp3>;
+    mo:duration "190".
+<urn:uuid:78c6a9b8-1934-498a-8315-78cc95ec7ff7> a mo:Track;
+    dcterms:title "Keeps on A-Rainin'";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/12%20Keeps%20on%20A-Rainin'.mp3>;
+    mo:duration "196".
+<urn:uuid:d9cab708-d341-4d82-9ac6-734e1d6cac10> a mo:Track;
+    dcterms:title "My Man [#][Previously Unissued Alternate]";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/07%20My%20Man%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>;
+    mo:duration "190".
+<urn:uuid:833ba6e5-90bc-4936-836a-a6b68bc764ae> a mo:Track;
+    dcterms:title "My Sweet Hunk O' Trash";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/17%20My%20Sweet%20Hunk%20O'%20Trash.mp3>;
+    mo:duration "200".
+<urn:uuid:40805262-36c4-49ef-aba1-04cbac0a911a> a mo:Track;
+    dcterms:title "Now or Never";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/18%20Now%20or%20Never.mp3>;
+    mo:duration "197".
+<urn:uuid:6302c5d0-7e21-4191-be23-6761cce2c11b> a mo:Track;
+    dcterms:title "Please Tell Me Now";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/21%20Please%20Tell%20Me%20Now.mp3>;
+    mo:duration "194".
+<urn:uuid:1ac8661c-c4ef-4cf9-afca-8a984d08b401> a mo:Track;
+    dcterms:title "Solitude";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/03%20Solitude.mp3>;
+    mo:duration "190".
+<urn:uuid:692c85d6-04e4-4c21-81e1-80588f1ff023> a mo:Track;
+    dcterms:title "Solitude [#][Previously Unissued Alternate]";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/02%20Solitude%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>;
+    mo:duration "194".
+<urn:uuid:82fe0933-9f0d-42a1-9382-fc5b611d8349> a mo:Track;
+    dcterms:title "They Can't Take That Away from Me";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/20%20They%20Can't%20Take%20That%20Away%20from%20Me.mp3>;
+    mo:duration "185".
+<urn:uuid:f151b27c-e60a-41ee-9c6e-fae8d83e8680> a mo:Track;
+    dcterms:title "Weep No More";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/04%20Weep%20No%20More.mp3>;
+    mo:duration "201".
+<urn:uuid:635e2805-abd9-4e7b-9718-78423b2f8510> a mo:Track;
+    dcterms:title "You Can't Lose a Broken Heart";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/16%20You%20Can't%20Lose%20a%20Broken%20Heart.mp3>;
+    mo:duration "195".
+<urn:uuid:e9e9cbb7-d800-4b8c-809c-ae6d9d08cfac> a mo:Track;
+    dcterms:title "You're My Thrill";
+    dcat:downloadUrl <https://archive.org/download/19-youre-my-thrill/19%20You're%20My%20Thrill.mp3>;
+    mo:duration "204".
+<urn:uuid:f43b7970-912b-47cb-9e5b-676188cc1b8f> a mo:Track;
+    dcterms:title "Baby, I Don't Cry Over You";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/18%20Baby%2C%20I%20Don't%20Cry%20Over%20You.mp3>;
+    mo:duration "192".
+<urn:uuid:567468a3-45bf-4630-9939-b3f5b4fd6e43> a mo:Track;
+    dcterms:title "Baby, I Don't Cry Over You [#][Previously Unissued Alternate]";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/17%20Baby%2C%20I%20Don't%20Cry%20Over%20You%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>;
+    mo:duration "193".
+<urn:uuid:52effe3b-f969-4b8c-b96f-d38566ee6188> a mo:Track;
+    dcterms:title "Big Stuff";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/08%20Big%20Stuff.mp3>;
+    mo:duration "180".
+<urn:uuid:664b230d-6a7c-4ba2-84d6-03b5f74a9cbf> a mo:Track;
+    dcterms:title "Deep Song";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/25%20Deep%20Song.mp3>;
+    mo:duration "193".
+<urn:uuid:45ca311a-9ccd-4275-9788-760a7f64c515> a mo:Track;
+    dcterms:title "Don't Explain [Second Version]";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/07%20Don't%20Explain%20%5BSecond%20Version%5D.mp3>;
+    mo:duration "204".
+<urn:uuid:b0e58e5d-8705-4464-b752-169b37759f9f> a mo:Track;
+    dcterms:title "Good Morning Heartache";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/11%20Good%20Morning%20Heartache.mp3>;
+    mo:duration "188".
+<urn:uuid:539cd571-6c48-43bb-98bb-b7459c0135ce> a mo:Track;
+    dcterms:title "Guilty";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/24%20Guilty.mp3>;
+    mo:duration "194".
+<urn:uuid:43d069ae-b02f-4d5b-a5eb-b95acec8fdf2> a mo:Track;
+    dcterms:title "I'll Look Around";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/20%20I'll%20Look%20Around.mp3>;
+    mo:duration "195".
+<urn:uuid:cdf55b34-7ceb-43df-9824-f2e478f259d8> a mo:Track;
+    dcterms:title "I'll Look Around [#][Previously Unissued Alternate]";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/19%20I'll%20Look%20Around%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>;
+    mo:duration "196".
+<urn:uuid:543735e0-5416-4a1b-b5d3-aaf9af53b895> a mo:Track;
+    dcterms:title "Lover Man";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/01%20Lover%20Man.mp3>;
+    mo:duration "198".
+<urn:uuid:b90c6a07-1120-40c2-a93e-e69bef391646> a mo:Track;
+    dcterms:title "No Good Man";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/13%20No%20Good%20Man.mp3>;
+    mo:duration "188".
+<urn:uuid:6664eee0-acb2-4ecb-8570-3ec639d3090d> a mo:Track;
+    dcterms:title "No Good Man [#][Previously Unissued Alternate]";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/12%20No%20Good%20Man%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>;
+    mo:duration "204".
+<urn:uuid:b45a9eb9-6f7e-422c-8819-9ca1dee21661> a mo:Track;
+    dcterms:title "No More [Alternate Take]";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/03%20No%20More%20%5BAlternate%20Take%5D.mp3>;
+    mo:duration "186".
+<urn:uuid:8b5af52d-55af-499d-ba99-d394c0a0bfe2> a mo:Track;
+    dcterms:title "The Blues Are Brewin'";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/21%20The%20Blues%20Are%20Brewin'.mp3>;
+    mo:duration "183".
+<urn:uuid:226f30e2-68c4-41a0-b78d-b7740c24a1c7> a mo:Track;
+    dcterms:title "What Is This Thing Called Love?";
+    dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/10%20What%20Is%20This%20Thing%20Called%20Love-.mp3>;
+    mo:duration "187".
+<urn:uuid:42133f82-9cf1-47f5-b3e8-bf0b7182447f> a mo:Track;
+    dcterms:title "09 - Billie HOLIDAY - Don't explain - AFE B1050 - LP 3 - Side B - Easy to remember (25.VII.1958)";
+    dcat:downloadUrl <https://archive.org/download/billie-holiday-dont-explain-afe-b-1050-lp-3-side-b/09%20-%20Billie%20HOLIDAY%20-%20Don't%20explain%20-%20AFE%20B1050%20-%20LP%203%20-%20Side%20B%20-%20Easy%20to%20remember%20(25.VII.1958).mp3>;
+    mo:duration "209".
+<urn:uuid:77b446f1-93d3-4f6c-b1b5-ed0f549a72b8> a mo:Track;
+    dcterms:title "12 - Billie HOLIDAY - Don't explain - AFE B1050 - LP 3 - Side B - Billie's Blues (1957)";
+    dcat:downloadUrl <https://archive.org/download/billie-holiday-dont-explain-afe-b-1050-lp-3-side-b/12%20-%20Billie%20HOLIDAY%20-%20Don't%20explain%20-%20AFE%20B1050%20-%20LP%203%20-%20Side%20B%20-%20Billie's%20Blues%20(1957).mp3>;
+    mo:duration "197".
+<urn:uuid:952e2374-3ded-4bac-ab0f-4d13c20e0c09> a mo:Track;
+    dcterms:title "02 - Billie HOLIDAY - Don't explain - AFE B1050 - LP 2 - Side A - Don't explain";
+    dcat:downloadUrl <https://archive.org/download/billie-holiday-dont-explain-afe-b-1050-lp-2-side-a/02%20-%20Billie%20HOLIDAY%20-%20Don't%20explain%20-%20AFE%20B1050%20-%20LP%202%20-%20Side%20A%20-%20Don't%20explain.mp3>;
+    mo:duration "206".
+<urn:uuid:6841bf6f-bea6-4492-8f90-f185c27f7e51> a mo:Track;
+    dcterms:title "04 - Billie HOLIDAY - Don't explain - AFE B1050 - LP 2 - Side A - Lover Man";
+    dcat:downloadUrl <https://archive.org/download/billie-holiday-dont-explain-afe-b-1050-lp-2-side-a/04%20-%20Billie%20HOLIDAY%20-%20Don't%20explain%20-%20AFE%20B1050%20-%20LP%202%20-%20Side%20A%20-%20Lover%20Man.mp3>;
+    mo:duration "198".
+<urn:uuid:c2d51f5c-c615-409e-b1a9-9e9f3b9f5033> a mo:Track;
+    dcterms:title "(I Got a Man, Crazy for Me) He's Funny That Way";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/13%20(I%20Got%20a%20Man%2C%20Crazy%20for%20Me)%20He's%20Funny%20That%20Way.mp3>;
+    mo:duration "190".
+<urn:uuid:fb9d5c36-251c-4330-86da-4d632408634e> a mo:Track;
+    dcterms:title "Autumn in New York";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/09%20Autumn%20in%20New%20York.mp3>;
+    mo:duration "233".
+<urn:uuid:38475e14-ff9c-4583-930a-3f570231d5e1> a mo:Track;
+    dcterms:title "Body and Soul";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/01%20Body%20and%20Soul.mp3>;
+    mo:duration "206".
+<urn:uuid:ac07ea8e-67c6-4606-9c88-c95da2f6b0d5> a mo:Track;
+    dcterms:title "I Don't Want to Cry Anymore";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/18%20I%20Don't%20Want%20to%20Cry%20Anymore.mp3>;
+    mo:duration "237".
+<urn:uuid:5c55aad8-bb10-43eb-b574-7597fed09a00> a mo:Track;
+    dcterms:title "I Wished on the Moon";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/17%20I%20Wished%20on%20the%20Moon.mp3>;
+    mo:duration "406".
+<urn:uuid:2e9ecf1d-8a98-434d-b673-eaf5e720a417> a mo:Track;
+    dcterms:title "Prelude to a Kiss";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/19%20Prelude%20to%20a%20Kiss.mp3>;
+    mo:duration "334".
+<urn:uuid:997c7f03-f956-49e5-aa0d-a99eb28c55fa> a mo:Track;
+    dcterms:title "Stormy Weather";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/11%20Stormy%20Weather.mp3>;
+    mo:duration "221".
+<urn:uuid:b768162b-c576-40d3-9168-1c3c431c6f0f> a mo:Track;
+    dcterms:title "Tenderly";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/08%20Tenderly.mp3>;
+    mo:duration "202".
+<urn:uuid:c9364a92-7fdf-4c60-95de-25dafb884eb8> a mo:Track;
+    dcterms:title "These Foolish Things";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/07%20These%20Foolish%20Things.mp3>;
+    mo:duration "216".
+<urn:uuid:54368c06-c122-4342-a78b-0e42b7065eb0> a mo:Track;
+    dcterms:title "Trav'lin' Light";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/03%20Trav'lin'%20Light.mp3>;
+    mo:duration "205".
+<urn:uuid:95685446-e68b-4851-bb32-be6943cf917e> a mo:Track;
+    dcterms:title "What a Little Moonlight Can Do";
+    dcat:downloadUrl <https://archive.org/download/17-i-wished-on-the-moon/14%20What%20a%20Little%20Moonlight%20Can%20Do.mp3>;
+    mo:duration "194".
+<urn:uuid:fd7b5f8b-ad28-4a1b-a2bf-c6f7c3180e63> a mo:Track;
+    dcterms:title "April In My Heart - Teddy Wilson - Billie Holiday";
+    dcat:downloadUrl <https://archive.org/download/AprilInMyHeartTeddyWilsonBillieHoliday/April%20In%20My%20Heart%20-%20Teddy%20Wilson%20-%20Billie%20Holiday.mp3>;
+    mo:duration "186".
+<urn:uuid:075c5521-98cc-45fb-8ee5-7801c8d9574e> a mo:Release;
+    dcterms:title "They Say - Teddy Wilson - Billie Holiday";
+    foaf:maker "Teddy Wilson - Billie Holiday";
+    dcat:landingPage <https://archive.org/details/TheySayTeddyWilsonBillieHoliday>;
+    mo:track <urn:uuid:f44d69e4-8146-45da-93ed-422bdf91ffeb>.
+<urn:uuid:18129c99-0e7b-4845-92ab-e7e542b6eb15> a mo:Release;
+    dcterms:title "More Than You Know - Teddy Wilson - Billie Holiday";
+    foaf:maker "Teddy Wilson - Billie Holiday";
+    dcat:landingPage <https://archive.org/details/MoreThanYouKnowTeddyWilsonBillieHoliday>;
+    mo:track <urn:uuid:aceea5d7-cba6-4e44-b56a-a2522726cfb0>.
+<urn:uuid:4a84a56d-d6d6-47d9-b4df-961abede54fa> a mo:Release;
+    dcterms:title "Mean To Me";
+    foaf:maker "Teddy Wilson and His Orchestra";
+    dcat:landingPage <https://archive.org/details/mean-to-me>;
+    mo:track <urn:uuid:b94b5b3f-d711-41c1-967b-1d77176e4400>.
+<urn:uuid:0af8741e-d238-4a88-9263-0cfc998cec4a> a mo:Release;
+    dcterms:title "I Cover The Waterfront";
+    foaf:maker "Billie Holiday and Her Orchestra";
+    dcat:landingPage <https://archive.org/details/i-cover-the-waterfront_202603>;
+    mo:track <urn:uuid:3b430332-c51a-45f2-a479-3864c042d60c>.
+<urn:uuid:a0661cf3-4393-4363-945b-d5067f9066b0> a mo:Release;
+    dcterms:title "Holiday, Billie - Vol. 1 Broadcasts 1949-1952 (Black Elephant)";
+    foaf:maker <urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd>;
+    dcat:landingPage <https://archive.org/details/09-billie-holiday-broadcasts-1949-1952-billies-blues>;
+    mo:track <urn:uuid:a46d6b14-d2ec-42b7-a5d2-4504525a84ab>, <urn:uuid:7675acf5-430e-426f-986f-a0e60d7e5490>, <urn:uuid:18cb365f-9947-483f-b6de-f44489164b77>, <urn:uuid:c4ffb306-dd0b-4d07-81ad-a314a813dd57>, <urn:uuid:8e64dc32-6520-49e6-a6a7-756a6ebf96ed>.
+<urn:uuid:ca16e7ed-81e7-4378-b67b-a77463ca72ef> a mo:Release;
+    dcterms:title "Carelessly - Teddy Wilson - Billie Holiday";
+    foaf:maker "Teddy Wilson - Billie Holiday";
+    dcat:landingPage <https://archive.org/details/CarelesslyTeddyWilsonBillieHoliday>;
+    mo:track <urn:uuid:c727494c-094b-48b2-9967-590a0b23fa92>.
+<urn:uuid:43c537f2-c65b-4b80-b219-9e8f69d28723> a mo:Release;
+    dcterms:title "Billie Holiday - The Complete Decca Recordings (Disc 2)";
+    foaf:maker <urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd>;
+    dcat:landingPage <https://archive.org/details/19-youre-my-thrill>;
+    mo:track <urn:uuid:a2f45d3d-a89d-4ae4-b5ef-2453e4a9c1eb>, <urn:uuid:4eb0a1cf-972e-43dc-8ca3-ca657b720f93>, <urn:uuid:26da6f53-dbbe-4e72-84d1-b645700e0654>, <urn:uuid:f216a8eb-e6f4-4397-aaab-c6e41cc436b6>, <urn:uuid:06725860-695d-4c7e-bfd7-c9c339be944b>, <urn:uuid:875d3aef-9466-4fed-9b57-66daecaaab29>, <urn:uuid:fa7da248-664f-424c-beb3-b60cd273d041>, <urn:uuid:78c6a9b8-1934-498a-8315-78cc95ec7ff7>, <urn:uuid:d9cab708-d341-4d82-9ac6-734e1d6cac10>, <urn:uuid:833ba6e5-90bc-4936-836a-a6b68bc764ae>, <urn:uuid:40805262-36c4-49ef-aba1-04cbac0a911a>, <urn:uuid:6302c5d0-7e21-4191-be23-6761cce2c11b>, <urn:uuid:1ac8661c-c4ef-4cf9-afca-8a984d08b401>, <urn:uuid:692c85d6-04e4-4c21-81e1-80588f1ff023>, <urn:uuid:82fe0933-9f0d-42a1-9382-fc5b611d8349>, <urn:uuid:f151b27c-e60a-41ee-9c6e-fae8d83e8680>, <urn:uuid:635e2805-abd9-4e7b-9718-78423b2f8510>, <urn:uuid:e9e9cbb7-d800-4b8c-809c-ae6d9d08cfac>.
+<urn:uuid:a9c4056f-fdef-4b0b-b06d-e2030d1c603d> a mo:Release;
+    dcterms:title "Billie Holiday - The Complete Decca Recordings (Disc 1)";
+    foaf:maker <urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd>;
+    dcat:landingPage <https://archive.org/details/07-dont-explain-second-version>;
+    mo:track <urn:uuid:f43b7970-912b-47cb-9e5b-676188cc1b8f>, <urn:uuid:567468a3-45bf-4630-9939-b3f5b4fd6e43>, <urn:uuid:52effe3b-f969-4b8c-b96f-d38566ee6188>, <urn:uuid:664b230d-6a7c-4ba2-84d6-03b5f74a9cbf>, <urn:uuid:45ca311a-9ccd-4275-9788-760a7f64c515>, <urn:uuid:b0e58e5d-8705-4464-b752-169b37759f9f>, <urn:uuid:539cd571-6c48-43bb-98bb-b7459c0135ce>, <urn:uuid:43d069ae-b02f-4d5b-a5eb-b95acec8fdf2>, <urn:uuid:cdf55b34-7ceb-43df-9824-f2e478f259d8>, <urn:uuid:543735e0-5416-4a1b-b5d3-aaf9af53b895>, <urn:uuid:b90c6a07-1120-40c2-a93e-e69bef391646>, <urn:uuid:6664eee0-acb2-4ecb-8570-3ec639d3090d>, <urn:uuid:b45a9eb9-6f7e-422c-8819-9ca1dee21661>, <urn:uuid:8b5af52d-55af-499d-ba99-d394c0a0bfe2>, <urn:uuid:226f30e2-68c4-41a0-b78d-b7740c24a1c7>.
+<urn:uuid:633f3cce-0898-472b-b047-82abd3a30b7c> a mo:Release;
+    dcterms:title "Billie HOLIDAY - LP 3 Side B - Don't Explain - AFE B 1050";
+    foaf:maker "Billie HOLIDAY - Vocals";
+    dcat:landingPage <https://archive.org/details/billie-holiday-dont-explain-afe-b-1050-lp-3-side-b>;
+    mo:track <urn:uuid:42133f82-9cf1-47f5-b3e8-bf0b7182447f>, <urn:uuid:77b446f1-93d3-4f6c-b1b5-ed0f549a72b8>.
+<urn:uuid:90da46f6-fd82-47dc-9677-9d78aa056d80> a mo:Release;
+    dcterms:title "Billie HOLIDAY - LP 2 Side A - Don't Explain - AFE B 1050";
+    foaf:maker "Billie HOLIDAY - Vocals";
+    dcat:landingPage <https://archive.org/details/billie-holiday-dont-explain-afe-b-1050-lp-2-side-a>;
+    mo:track <urn:uuid:952e2374-3ded-4bac-ab0f-4d13c20e0c09>, <urn:uuid:6841bf6f-bea6-4492-8f90-f185c27f7e51>.
+<urn:uuid:6d69a857-0a36-4e6a-beac-e7e04f500977> a mo:Release;
+    dcterms:title "Billie Holiday - Lady In Autumn (The Best Of The Verve Years) Disc 1";
+    foaf:maker <urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd>;
+    dcat:landingPage <https://archive.org/details/17-i-wished-on-the-moon>;
+    mo:track <urn:uuid:c2d51f5c-c615-409e-b1a9-9e9f3b9f5033>, <urn:uuid:fb9d5c36-251c-4330-86da-4d632408634e>, <urn:uuid:38475e14-ff9c-4583-930a-3f570231d5e1>, <urn:uuid:ac07ea8e-67c6-4606-9c88-c95da2f6b0d5>, <urn:uuid:5c55aad8-bb10-43eb-b574-7597fed09a00>, <urn:uuid:2e9ecf1d-8a98-434d-b673-eaf5e720a417>, <urn:uuid:997c7f03-f956-49e5-aa0d-a99eb28c55fa>, <urn:uuid:b768162b-c576-40d3-9168-1c3c431c6f0f>, <urn:uuid:c9364a92-7fdf-4c60-95de-25dafb884eb8>, <urn:uuid:54368c06-c122-4342-a78b-0e42b7065eb0>, <urn:uuid:95685446-e68b-4851-bb32-be6943cf917e>.
+<urn:uuid:4cfa33a0-2520-4d70-8ca1-a8823bce3f61> a mo:Release;
+    dcterms:title "April In My Heart - Teddy Wilson - Billie Holiday";
+    foaf:maker "Teddy Wilson - Billie Holiday";
+    dcat:landingPage <https://archive.org/details/AprilInMyHeartTeddyWilsonBillieHoliday>;
+    mo:track <urn:uuid:fd7b5f8b-ad28-4a1b-a2bf-c6f7c3180e63>.

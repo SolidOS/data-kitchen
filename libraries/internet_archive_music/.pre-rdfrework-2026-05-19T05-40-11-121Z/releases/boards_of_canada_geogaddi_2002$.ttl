@@ -1,0 +1,20 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:863444a2-9943-4b9c-a82f-dce1e8797a82> a mo:Release;
+    dcterms:title "Boards of Canada - Geogaddi (2002)";
+    foaf:maker "Boards of Canada";
+    dcat:landingPage <https://archive.org/details/14.-alpha-and-omega>;
+    mo:track <urn:uuid:829fb5cf-31ab-43c7-89b8-95f24f8c65e5>, <urn:uuid:a16eb7f0-d2f4-4453-824d-91c7a938777f>, <urn:uuid:7dc723c4-e032-49dc-adf3-e251d6438250>, <urn:uuid:b629d4ce-5fe8-4fd0-a48a-0991bbab2552>, <urn:uuid:28f0b957-785a-4bc5-9419-77cd9a2ea293>, <urn:uuid:2378345c-4a05-4a9e-972a-8acd9a631377>, <urn:uuid:e66907a3-6b9b-48f9-9100-90901e8d1293>, <urn:uuid:d36ec1d4-f3d6-48f7-9863-67db5102da0d>, <urn:uuid:a6ebabd0-5347-4d4d-9438-8e66343f76ca>, <urn:uuid:4b491246-5c0c-43a7-9ec8-e98e3e283576>.
+<urn:uuid:829fb5cf-31ab-43c7-89b8-95f24f8c65e5> a mo:Track; dcterms:title "Music Is Math"; mo:duration "321"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F02.Music%20Is%20Math.mp3>.
+<urn:uuid:a16eb7f0-d2f4-4453-824d-91c7a938777f> a mo:Track; dcterms:title "Gyroscope"; mo:duration "215"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F04.Gyroscope.mp3>.
+<urn:uuid:7dc723c4-e032-49dc-adf3-e251d6438250> a mo:Track; dcterms:title "Sunshine Recorder"; mo:duration "371"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F06.Sunshine%20Recorder.mp3>.
+<urn:uuid:b629d4ce-5fe8-4fd0-a48a-0991bbab2552> a mo:Track; dcterms:title "Julie And Candy"; mo:duration "330"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F08.Julie%20And%20Candy.mp3>.
+<urn:uuid:28f0b957-785a-4bc5-9419-77cd9a2ea293> a mo:Track; dcterms:title "1969"; mo:duration "260"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F10.1969.mp3>.
+<urn:uuid:2378345c-4a05-4a9e-972a-8acd9a631377> a mo:Track; dcterms:title "The Beach At Redpoint"; mo:duration "258"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F12.The%20Beach%20At%20Redpoint.mp3>.
+<urn:uuid:e66907a3-6b9b-48f9-9100-90901e8d1293> a mo:Track; dcterms:title "Alpha And Omega"; mo:duration "422"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F14.Alpha%20And%20Omega.mp3>.
+<urn:uuid:d36ec1d4-f3d6-48f7-9863-67db5102da0d> a mo:Track; dcterms:title "The Devil Is In The Details"; mo:duration "233"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F16.The%20Devil%20Is%20In%20The%20Details.mp3>.
+<urn:uuid:a6ebabd0-5347-4d4d-9438-8e66343f76ca> a mo:Track; dcterms:title "Dawn Chorus"; mo:duration "235"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F19.Dawn%20Chorus.mp3>.
+<urn:uuid:4b491246-5c0c-43a7-9ec8-e98e3e283576> a mo:Track; dcterms:title "You Could Feel The Sky"; mo:duration "312"; dcat:downloadUrl <https://archive.org/download/14.-alpha-and-omega/%5B2002%5DGeogaddi%2F21.You%20Could%20Feel%20The%20Sky.mp3>.

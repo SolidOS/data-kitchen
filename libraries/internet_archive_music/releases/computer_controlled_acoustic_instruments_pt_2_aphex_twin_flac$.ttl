@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Computer Controlled Acoustic Instruments Pt.2 - Aphex Twin [Flac]" ;
+    dct:identifier "01-diskhat-all-prepared-1mixed-13" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/01-diskhat-all-prepared-1mixed-13> ;
+    mo:track <#t01> ;
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "diskhat ALL prepared1mixed 13" ;
+    mo:duration "323" ;
+    mo:item <https://archive.org/download/01-diskhat-all-prepared-1mixed-13/2015%20-%20Computer%20Controlled%20Acoustic%20Instruments%20Pt.2%20ep%2F01%20-%20diskhat%20ALL%20prepared1mixed%2013.mp3> ;
+    dct:isPartOf <#it> .

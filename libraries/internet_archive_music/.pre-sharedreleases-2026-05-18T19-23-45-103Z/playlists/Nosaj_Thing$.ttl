@@ -1,0 +1,130 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/agents.ttl#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Nosaj_Thing> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Nosaj Thing";
+    foaf:maker "jeffz";
+    dcterms:description "Korean-American Composer";
+    dcterms:hasPart <urn:uuid:a62dd162-d132-479d-8f70-de08e63e28fc>, <urn:uuid:2e68cba4-50ce-4f9c-afa2-a3dbd45fcdb2>, <urn:uuid:f3438413-a8a5-45e4-acc2-9e2c8598e1f5>, <urn:uuid:1dab8ee8-3d05-4d2f-9b03-d274ae452ff3>, <urn:uuid:079fa3af-704d-4107-9339-13f3be69a162>, <urn:uuid:24040675-d3bb-43f0-9775-801d70095f1e>, <urn:uuid:a8974b7c-e840-4f70-8c1a-2fe8d19f05ea>, <urn:uuid:6cc71c34-d69f-4c31-89c1-54a487f5f84f>, <urn:uuid:40cc82bb-be65-40e3-bb99-548131d3ce3f>, <urn:uuid:c71ad42e-8108-48c0-90d2-d8c425d2f45c>, <urn:uuid:b2bbb92d-11df-44e9-9842-34ad84b342cc>, <urn:uuid:b2a94696-0731-4ddb-8a8d-47bd0acfc2fa>, <urn:uuid:a39044a9-2a2a-423e-9c4e-d3d7af5bbcd4>, <urn:uuid:aca345e1-c457-4eb6-ab3e-56bbe69830d5>, <urn:uuid:a6d5df08-974e-486e-b9c5-c433620062b0>, <urn:uuid:d38a1fc8-d7f2-4aa7-99a4-5a348a0eab75>, <urn:uuid:2777b38f-f62e-463e-ac97-e0a0f48f4847>, <urn:uuid:12970673-e284-4ef9-8a82-8f82a8f968ce>, <urn:uuid:e9150639-41e4-491a-9b06-867d150b60ca>, <urn:uuid:5c000788-4a1f-4e2f-8eba-01cfdb7a7c57>, <urn:uuid:4d29be19-656d-4301-b479-e214e0169050>, <urn:uuid:b846378c-a44f-4a15-95d1-cb7517faf7b7>, <urn:uuid:fd686b66-1606-4310-a86b-eebce8977152>.
+<urn:uuid:a62dd162-d132-479d-8f70-de08e63e28fc> a mo:Track;
+    dcterms:title "Us";
+    dcat:downloadUrl <https://archive.org/download/NosajThing-Us/10-nosaj_thing-us.mp3>;
+    mo:duration "186".
+<urn:uuid:2e68cba4-50ce-4f9c-afa2-a3dbd45fcdb2> a mo:Track;
+    dcterms:title "Continua";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/02.%20Continua%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "189".
+<urn:uuid:f3438413-a8a5-45e4-acc2-9e2c8598e1f5> a mo:Track;
+    dcterms:title "Eclipse/Blue";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/03.%20Eclipse-Blue%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "253".
+<urn:uuid:1dab8ee8-3d05-4d2f-9b03-d274ae452ff3> a mo:Track;
+    dcterms:title "Flatlands (Nosaj Thing Remix)";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/04.%20Flatlands%20(Nosaj%20Thing%20Remix)%20-%20Nalepa.mp3>;
+    mo:duration "253".
+<urn:uuid:079fa3af-704d-4107-9339-13f3be69a162> a mo:Track;
+    dcterms:title "Coat Of Arms";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/06.%20Coat%20Of%20Arms%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "207".
+<urn:uuid:24040675-d3bb-43f0-9775-801d70095f1e> a mo:Track;
+    dcterms:title "RB3";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/07.%20RB3%20-%20Nosaj%20Thing%20x%20Jacques%20Greene.mp3>;
+    mo:duration "244".
+<urn:uuid:a8974b7c-e840-4f70-8c1a-2fe8d19f05ea> a mo:Track;
+    dcterms:title "Safe";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/08.%20Safe%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "218".
+<urn:uuid:6cc71c34-d69f-4c31-89c1-54a487f5f84f> a mo:Track;
+    dcterms:title "Woodland (Inst.)";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/09.%20Woodland%20(Inst.)%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "242".
+<urn:uuid:40cc82bb-be65-40e3-bb99-548131d3ce3f> a mo:Track;
+    dcterms:title "Klapp Klapp (Nosaj Thing Remix)";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/10.%20Klapp%20Klapp%20(Nosaj%20Thing%20Remix)%20-%20Little%20Dragon.mp3>;
+    mo:duration "228".
+<urn:uuid:c71ad42e-8108-48c0-90d2-d8c425d2f45c> a mo:Track;
+    dcterms:title "Nightcrawler";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/12.%20Nightcrawler%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "216".
+<urn:uuid:b2bbb92d-11df-44e9-9842-34ad84b342cc> a mo:Track;
+    dcterms:title "How We Do";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/13.%20How%20We%20Do%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "247".
+<urn:uuid:b2a94696-0731-4ddb-8a8d-47bd0acfc2fa> a mo:Track;
+    dcterms:title "No Mind";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/14.%20No%20Mind%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "182".
+<urn:uuid:a39044a9-2a2a-423e-9c4e-d3d7af5bbcd4> a mo:Track;
+    dcterms:title "N R 5";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/15.%20N%20R%205%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "243".
+<urn:uuid:aca345e1-c457-4eb6-ab3e-56bbe69830d5> a mo:Track;
+    dcterms:title "Knee 1 (Nosaj Thing Remix)";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/16.%20Knee%201%20(Nosaj%20Thing%20Remix)%20-%20Philip%20Glass.mp3>;
+    mo:duration "250".
+<urn:uuid:a6d5df08-974e-486e-b9c5-c433620062b0> a mo:Track;
+    dcterms:title "We Are";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/17.%20We%20Are%20(%EC%9A%B0%EB%A6%AC%EB%8A%94)%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "221".
+<urn:uuid:d38a1fc8-d7f2-4aa7-99a4-5a348a0eab75> a mo:Track;
+    dcterms:title "Phase III";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/18.%20Phase%20III%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "195".
+<urn:uuid:2777b38f-f62e-463e-ac97-e0a0f48f4847> a mo:Track;
+    dcterms:title "Nod";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/19.%20Nod%20-%20Julianna%20Barwick.mp3>;
+    mo:duration "229".
+<urn:uuid:12970673-e284-4ef9-8a82-8f82a8f968ce> a mo:Track;
+    dcterms:title "IGYC";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/21.%20IGYC%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "207".
+<urn:uuid:e9150639-41e4-491a-9b06-867d150b60ca> a mo:Track;
+    dcterms:title "Reckoner (Nosaj Thing Remix)";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/22.%20Reckoner%20(Nosaj%20Thing%20Remix)%20-%20Radiohead.mp3>;
+    mo:duration "195".
+<urn:uuid:5c000788-4a1f-4e2f-8eba-01cfdb7a7c57> a mo:Track;
+    dcterms:title "My Soul Or Something";
+    dcat:downloadUrl <https://archive.org/download/nosajthingchung/23.%20My%20Soul%20Or%20Something%20-%20Nosaj%20Thing.mp3>;
+    mo:duration "229".
+<urn:uuid:4d29be19-656d-4301-b479-e214e0169050> a mo:Track;
+    dcterms:title "Aquarium";
+    foaf:maker "Nosaj Thing";
+    dcat:downloadUrl <https://archive.org/download/NosajThingAquarium/Nosaj%20Thing%20-%20Aquarium.mp3>;
+    mo:duration "187".
+<urn:uuid:b846378c-a44f-4a15-95d1-cb7517faf7b7> a mo:Track;
+    dcterms:title "Nosaj Thing - N R 3";
+    dcat:downloadUrl <https://archive.org/download/va-the-top-100-tracks-of-2016-bleep-2016-opus-128/Nosaj%20Thing%20-%20N%20R%203.opus>.
+<urn:uuid:fd686b66-1606-4310-a86b-eebce8977152> a mo:Track;
+    dcterms:title "Nosaj Thing - Laptop Set (Live @ KEXP)";
+    dcat:downloadUrl <https://archive.org/download/Nosaj_Thing_-_Live__KEXP_2102010-6030/Nosaj_Thing_-_Nosaj_Thing_-_Laptop_Set_Live__KEXP.mp3>;
+    mo:duration "560".
+<urn:uuid:08b96dbb-c18a-4a10-ade6-99c69f29c10a> a mo:Release;
+    dcterms:title "Nosaj Thing - Us";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3aa>;
+    dcat:landingPage <https://archive.org/details/NosajThing-Us>;
+    mo:track <urn:uuid:a62dd162-d132-479d-8f70-de08e63e28fc>.
+<urn:uuid:e68b5083-7969-4544-8a38-c5d9f55b20ea> a mo:Release;
+    dcterms:title "Nosaj Thing - Chung";
+    foaf:maker "Nosaj Thing feat. Duval Timothy";
+    dcat:landingPage <https://archive.org/details/nosajthingchung>;
+    mo:track <urn:uuid:2e68cba4-50ce-4f9c-afa2-a3dbd45fcdb2>, <urn:uuid:f3438413-a8a5-45e4-acc2-9e2c8598e1f5>, <urn:uuid:1dab8ee8-3d05-4d2f-9b03-d274ae452ff3>, <urn:uuid:079fa3af-704d-4107-9339-13f3be69a162>, <urn:uuid:24040675-d3bb-43f0-9775-801d70095f1e>, <urn:uuid:a8974b7c-e840-4f70-8c1a-2fe8d19f05ea>, <urn:uuid:6cc71c34-d69f-4c31-89c1-54a487f5f84f>, <urn:uuid:40cc82bb-be65-40e3-bb99-548131d3ce3f>, <urn:uuid:c71ad42e-8108-48c0-90d2-d8c425d2f45c>, <urn:uuid:b2bbb92d-11df-44e9-9842-34ad84b342cc>, <urn:uuid:b2a94696-0731-4ddb-8a8d-47bd0acfc2fa>, <urn:uuid:a39044a9-2a2a-423e-9c4e-d3d7af5bbcd4>, <urn:uuid:aca345e1-c457-4eb6-ab3e-56bbe69830d5>, <urn:uuid:a6d5df08-974e-486e-b9c5-c433620062b0>, <urn:uuid:d38a1fc8-d7f2-4aa7-99a4-5a348a0eab75>, <urn:uuid:2777b38f-f62e-463e-ac97-e0a0f48f4847>, <urn:uuid:12970673-e284-4ef9-8a82-8f82a8f968ce>, <urn:uuid:e9150639-41e4-491a-9b06-867d150b60ca>, <urn:uuid:5c000788-4a1f-4e2f-8eba-01cfdb7a7c57>.
+<urn:uuid:079aeb63-0871-45e5-af50-56b47c03293f> a mo:Release;
+    dcat:landingPage <https://archive.org/details/NosajThingAquarium>;
+    mo:track <urn:uuid:4d29be19-656d-4301-b479-e214e0169050>.
+<urn:uuid:93d89ecf-7b64-4e78-83b3-b6cd96c1d53e> a mo:Release;
+    dcterms:title "VA - The Top 100 Tracks Of 2016 [Bleep] (2016) (Opus ~128) [Only2]";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3aa>;
+    dcat:landingPage <https://archive.org/details/va-the-top-100-tracks-of-2016-bleep-2016-opus-128>;
+    mo:track <urn:uuid:b846378c-a44f-4a15-95d1-cb7517faf7b7>.
+<urn:uuid:809916d9-d93c-4c55-a993-52947c21168a> a mo:Release;
+    dcterms:title "Nosaj Thing - Live @ KEXP 2/10/2010";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3aa>;
+    dcat:landingPage <https://archive.org/details/Nosaj_Thing_-_Live__KEXP_2102010-6030>;
+    mo:track <urn:uuid:fd686b66-1606-4310-a86b-eebce8977152>.

@@ -1,0 +1,35 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:f1405850-28a8-4dfc-91d0-b55136334fad> a mo:Release;
+    dcterms:title "good kid, m.A.A.d city (Complete)";
+    foaf:maker "Kendrick Lamar";
+    dcat:landingPage <https://archive.org/details/20260227_20260227_0254>;
+    mo:track <urn:uuid:78a21d52-d970-4030-86ef-259e954fbbe3>, <urn:uuid:45fa2569-39b2-4dd7-819e-e8a806fe8fdb>, <urn:uuid:9524acc7-ff30-494b-92bf-f9275ec2baa0>, <urn:uuid:55e37002-3800-41f8-ad8d-bc973ef11117>, <urn:uuid:f4628c9f-3bb6-42a5-9515-4210ea33bcae>, <urn:uuid:01f31328-63b4-4204-8116-525f7c892cb2>, <urn:uuid:d0293c75-3fe2-4479-8848-051f01fe684f>, <urn:uuid:c7c2c60c-f576-4fcb-a0a7-361cc9604233>, <urn:uuid:c185e1cb-014e-42a1-aa58-1e33022c32e2>, <urn:uuid:301d28fc-1e7a-44e7-8f6f-cc30048264f3>, <urn:uuid:5c45f986-cd1f-4090-be89-33cef470e492>, <urn:uuid:77307d75-3bc6-4670-aaa0-33d02f9c9449>, <urn:uuid:3d57f1f8-be62-462a-9e4b-8547e753cb2d>, <urn:uuid:fb7910ef-cfcb-4d77-8e65-db4994498451>, <urn:uuid:57612b32-2bdc-49ec-bfee-5aead285db05>, <urn:uuid:02081cc3-8204-4db4-aa3d-6dd39ff844b1>, <urn:uuid:e9f5e315-9056-4e97-8bda-be6a298cbff7>, <urn:uuid:b120c3fb-bef9-4f57-9708-2dcca12d0c0e>, <urn:uuid:0f279fd7-22e2-4bd2-8758-ebede8cefa71>, <urn:uuid:66bf22c5-fa04-404e-8140-6ebb60a50ec0>, <urn:uuid:4dfcd869-726b-4a76-aab4-b3e1d18af575>, <urn:uuid:ca9e1a59-34c7-469b-abd5-b39ff39128ed>, <urn:uuid:c6d92bc9-7e12-47ac-be93-449794d05e73>, <urn:uuid:39a06862-fcb4-4c4c-8748-3a22a83ee670>, <urn:uuid:8a3240f6-abc4-44a9-aead-980f25685d94>.
+<urn:uuid:78a21d52-d970-4030-86ef-259e954fbbe3> a mo:Track; dcterms:title "The Heart Pt.3"; mo:duration "276"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/01_The%20Heart%20Pt.3.mp3>.
+<urn:uuid:45fa2569-39b2-4dd7-819e-e8a806fe8fdb> a mo:Track; dcterms:title "Sherane a.k.a Master Splinter’s Daughter"; mo:duration "273"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/02_Sherane%20a.k.a%20Master%20Splinter%E2%80%99s%20Daughter.mp3>.
+<urn:uuid:9524acc7-ff30-494b-92bf-f9275ec2baa0> a mo:Track; dcterms:title "Bitch, Don’t Kill My Vibe"; mo:duration "310"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/03_Bitch%2C%20Don%E2%80%99t%20Kill%20My%20Vibe.mp3>.
+<urn:uuid:55e37002-3800-41f8-ad8d-bc973ef11117> a mo:Track; dcterms:title "Backseat Freestyle"; mo:duration "212"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/04_Backseat%20Freestyle.mp3>.
+<urn:uuid:f4628c9f-3bb6-42a5-9515-4210ea33bcae> a mo:Track; dcterms:title "The Art of Peer Pressure"; mo:duration "324"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/05_The%20Art%20of%20Peer%20Pressure.mp3>.
+<urn:uuid:01f31328-63b4-4204-8116-525f7c892cb2> a mo:Track; dcterms:title "Money Trees"; mo:duration "386"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/06_Money%20Trees.mp3>.
+<urn:uuid:d0293c75-3fe2-4479-8848-051f01fe684f> a mo:Track; dcterms:title "Poetic Justice"; mo:duration "300"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/07_Poetic%20Justice.mp3>.
+<urn:uuid:c7c2c60c-f576-4fcb-a0a7-361cc9604233> a mo:Track; dcterms:title "good kid"; mo:duration "214"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/08_good%20kid.mp3>.
+<urn:uuid:c185e1cb-014e-42a1-aa58-1e33022c32e2> a mo:Track; dcterms:title "m.A.A.d city"; mo:duration "350"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/09_m.A.A.d%20city.mp3>.
+<urn:uuid:301d28fc-1e7a-44e7-8f6f-cc30048264f3> a mo:Track; dcterms:title "Swimming Pools (Drank)"; mo:duration "313"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/10_Swimming%20Pools%20(Drank).mp3>.
+<urn:uuid:5c45f986-cd1f-4090-be89-33cef470e492> a mo:Track; dcterms:title "Sing About Me, I'm Dying Of Thirst"; mo:duration "723"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/11_Sing%20About%20Me%2C%20I'm%20Dying%20Of%20Thirst.mp3>.
+<urn:uuid:77307d75-3bc6-4670-aaa0-33d02f9c9449> a mo:Track; dcterms:title "Real"; mo:duration "443"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/12_Real.mp3>.
+<urn:uuid:3d57f1f8-be62-462a-9e4b-8547e753cb2d> a mo:Track; dcterms:title "Compton"; mo:duration "248"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/13_Compton.mp3>.
+<urn:uuid:fb7910ef-cfcb-4d77-8e65-db4994498451> a mo:Track; dcterms:title "The Recipe"; mo:duration "352"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/14_The%20Recipe.mp3>.
+<urn:uuid:57612b32-2bdc-49ec-bfee-5aead285db05> a mo:Track; dcterms:title "Black Boy Fly"; mo:duration "279"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/15_Black%20Boy%20Fly.mp3>.
+<urn:uuid:02081cc3-8204-4db4-aa3d-6dd39ff844b1> a mo:Track; dcterms:title "Now Or Never"; mo:duration "256"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/16_Now%20Or%20Never.mp3>.
+<urn:uuid:e9f5e315-9056-4e97-8bda-be6a298cbff7> a mo:Track; dcterms:title "County Building Blues"; mo:duration "257"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/17_County%20Building%20Blues.mp3>.
+<urn:uuid:b120c3fb-bef9-4f57-9708-2dcca12d0c0e> a mo:Track; dcterms:title "Cartoon & Cereal"; mo:duration "408"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/18_Cartoon%20%26%20Cereal.mp3>.
+<urn:uuid:0f279fd7-22e2-4bd2-8758-ebede8cefa71> a mo:Track; dcterms:title "Collect Calls"; mo:duration "240"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/19_Collect%20Calls.mp3>.
+<urn:uuid:66bf22c5-fa04-404e-8140-6ebb60a50ec0> a mo:Track; dcterms:title "I Hate You"; mo:duration "245"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/20_I%20Hate%20You.mp3>.
+<urn:uuid:4dfcd869-726b-4a76-aab4-b3e1d18af575> a mo:Track; dcterms:title "Want In Life"; mo:duration "200"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/21_Want%20In%20Life.mp3>.
+<urn:uuid:ca9e1a59-34c7-469b-abd5-b39ff39128ed> a mo:Track; dcterms:title "Westside, Right On Time"; mo:duration "287"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/22_Westside%2C%20Right%20On%20Time.mp3>.
+<urn:uuid:c6d92bc9-7e12-47ac-be93-449794d05e73> a mo:Track; dcterms:title "Rare Breed"; mo:duration "186"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/24_Rare%20Breed.mp3>.
+<urn:uuid:39a06862-fcb4-4c4c-8748-3a22a83ee670> a mo:Track; dcterms:title "The Jig Is Up (Dump'n)"; mo:duration "240"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/25_The%20Jig%20Is%20Up%20(Dump'n).mp3>.
+<urn:uuid:8a3240f6-abc4-44a9-aead-980f25685d94> a mo:Track; dcterms:title "Gang Member"; mo:duration "252"; dcat:downloadUrl <https://archive.org/download/20260227_20260227_0254/26_Gang%20Member.mp3>.

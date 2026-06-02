@@ -1,0 +1,72 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:2a298d7d-8c0f-4587-9203-600babf73986>
+    a mo:Track;
+    dct:title "15. Triump";
+    mo:duration "351";
+    dcat:downloadUrl
+        <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F15.%20Triump.mp3>.
+<urn:uuid:4ab60217-91ca-443a-b2d6-a2ae6ca8262a>
+    a mo:Track;
+    dct:title "04. Shame on a Nigga";
+    mo:duration "260";
+    dcat:downloadUrl
+        <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F04.%20Shame%20on%20a%20Nigga.mp3>.
+<urn:uuid:5b9e0f80-2ff6-4a41-b76b-2eff82ffe7a9>
+    a mo:Track;
+    dct:title "13. Shimmy Shimmy Ya";
+    mo:duration "210";
+    dcat:downloadUrl
+        <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F13.%20Shimmy%20Shimmy%20Ya.mp3>.
+<urn:uuid:64e46baa-6d87-49f7-a3f9-9c97e622aa34>
+    a mo:Track;
+    dct:title "12. CREAM";
+    mo:duration "301";
+    dcat:downloadUrl
+        <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F12.%20CREAM.mp3>.
+<urn:uuid:9d229d93-8163-4043-a5c6-713bad7d74c4>
+    a mo:Track;
+    dct:title "11. Young Blood + Unknown";
+    mo:duration "272";
+    dcat:downloadUrl
+        <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F11.%20Young%20Blood%20%2B%20Unknown.mp3>.
+<urn:uuid:9d7001dd-2243-4c81-bee0-e3ce96f3ba63>
+    a mo:Release;
+    dct:title
+        "Wu-Tang Clan Live - 2007-07-28 Randall's Island Park, Randall's Island, New York";
+    mo:track
+        <urn:uuid:2a298d7d-8c0f-4587-9203-600babf73986>,
+        <urn:uuid:4ab60217-91ca-443a-b2d6-a2ae6ca8262a>,
+        <urn:uuid:5b9e0f80-2ff6-4a41-b76b-2eff82ffe7a9>,
+        <urn:uuid:64e46baa-6d87-49f7-a3f9-9c97e622aa34>,
+        <urn:uuid:9d229d93-8163-4043-a5c6-713bad7d74c4>,
+        <urn:uuid:cbabce92-2d94-45d2-b4e8-7f999d2e6de0>,
+        <urn:uuid:ce05a00b-ef96-44e8-ba6d-d24827f626d8>,
+        <urn:uuid:f3013135-dc18-46d0-b433-22ba380a1810>;
+    dcat:landingPage det:WTC_2007-07-28;
+    foaf:maker
+        <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>,
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:cbabce92-2d94-45d2-b4e8-7f999d2e6de0>
+    a mo:Track;
+    dct:title "01. Intro + Bring Da Ruckus";
+    mo:duration "268";
+    dcat:downloadUrl
+        <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F01.%20Intro%20%2B%20Bring%20Da%20Ruckus%20.mp3>.
+<urn:uuid:ce05a00b-ef96-44e8-ba6d-d24827f626d8>
+    a mo:Track;
+    dct:title "03. Da Mystery of Chessboxin";
+    mo:duration "220";
+    dcat:downloadUrl
+        <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F03.%20Da%20Mystery%20of%20Chessboxin.mp3>.
+<urn:uuid:f3013135-dc18-46d0-b433-22ba380a1810>
+    a mo:Track;
+    dct:title "08. Bring the Pain";
+    mo:duration "189";
+    dcat:downloadUrl
+        <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F08.%20Bring%20the%20Pain.mp3>.

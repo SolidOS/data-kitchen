@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:0af8741e-d238-4a88-9263-0cfc998cec4a> a mo:Release;
+    dcterms:title "I Cover The Waterfront";
+    foaf:maker "Billie Holiday and Her Orchestra";
+    dcat:landingPage <https://archive.org/details/i-cover-the-waterfront_202603>;
+    mo:track <urn:uuid:3b430332-c51a-45f2-a479-3864c042d60c>.
+<urn:uuid:3b430332-c51a-45f2-a479-3864c042d60c> a mo:Track; dcterms:title "I Cover the Waterfront"; mo:duration "211"; dcat:downloadUrl <https://archive.org/download/i-cover-the-waterfront_202603/I%20Cover%20the%20Waterfront.mp3>.

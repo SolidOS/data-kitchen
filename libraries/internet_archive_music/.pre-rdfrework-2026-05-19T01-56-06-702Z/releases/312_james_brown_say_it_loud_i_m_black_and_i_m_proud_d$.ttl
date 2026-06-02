@@ -1,0 +1,17 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:f2603faa-f14f-4a75-92bf-7b6fc78700ed> a mo:Release;
+    dcterms:title "312_James Brown - Say It Loud I'm Black and I'm Proud СD";
+    foaf:maker "James Brown";
+    dcat:landingPage <https://archive.org/details/03-goodbye-my-love-pts.-1-2>;
+    mo:track <urn:uuid:5d0ee363-6ea0-40b0-8590-440c6e0bb07c>, <urn:uuid:496aa6bf-211c-4fd7-b444-a47fa34459b0>, <urn:uuid:f1048134-49b4-4338-8943-da2622725387>, <urn:uuid:766c02d4-a937-4b90-86c1-88d79efbc6bd>, <urn:uuid:55e9d7b6-6160-4452-85de-89839ac763d8>, <urn:uuid:95b7cbd7-0d4c-4531-9d0e-275ba3389eef>, <urn:uuid:fdbbb8af-ef74-4330-97c9-b9474954b35c>.
+<urn:uuid:5d0ee363-6ea0-40b0-8590-440c6e0bb07c> a mo:Track; dcterms:title " 01_Say It Loud-I'm Black & I'm Proud"; mo:duration "286"; dcat:downloadUrl <https://archive.org/download/03-goodbye-my-love-pts.-1-2/%2001_Say%20It%20Loud-I'm%20Black%20%26%20I'm%20Proud.mp3>.
+<urn:uuid:496aa6bf-211c-4fd7-b444-a47fa34459b0> a mo:Track; dcterms:title "02_Guess I'll Have to Cry, Cry, Cry"; mo:duration "213"; dcat:downloadUrl <https://archive.org/download/03-goodbye-my-love-pts.-1-2/02_Guess%20I'll%20Have%20to%20Cry%2C%20Cry%2C%20Cry.mp3>.
+<urn:uuid:f1048134-49b4-4338-8943-da2622725387> a mo:Track; dcterms:title "03_Goodbye My Love, Pts. 1 & 2"; mo:duration "331"; dcat:downloadUrl <https://archive.org/download/03-goodbye-my-love-pts.-1-2/03_Goodbye%20My%20Love%2C%20Pts.%201%20%26%202.mp3>.
+<urn:uuid:766c02d4-a937-4b90-86c1-88d79efbc6bd> a mo:Track; dcterms:title "06_I Love You"; mo:duration "213"; dcat:downloadUrl <https://archive.org/download/03-goodbye-my-love-pts.-1-2/06_I%20Love%20You.mp3>.
+<urn:uuid:55e9d7b6-6160-4452-85de-89839ac763d8> a mo:Track; dcterms:title "07_ Then You Can Tell Me Goodbye"; mo:duration "232"; dcat:downloadUrl <https://archive.org/download/03-goodbye-my-love-pts.-1-2/07_%20Then%20You%20Can%20Tell%20Me%20Goodbye.mp3>.
+<urn:uuid:95b7cbd7-0d4c-4531-9d0e-275ba3389eef> a mo:Track; dcterms:title "08_ Let Them Talk"; mo:duration "241"; dcat:downloadUrl <https://archive.org/download/03-goodbye-my-love-pts.-1-2/08_%20Let%20Them%20Talk.mp3>.
+<urn:uuid:fdbbb8af-ef74-4330-97c9-b9474954b35c> a mo:Track; dcterms:title "09_Maybe I'll Understand"; mo:duration "197"; dcat:downloadUrl <https://archive.org/download/03-goodbye-my-love-pts.-1-2/09_Maybe%20I'll%20Understand.mp3>.

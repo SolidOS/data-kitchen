@@ -1,0 +1,21 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:846252f4-e0c4-48e9-8aca-2eeb4a4c3b3f> a mo:Release;
+    dcterms:title "Penguin Cafe Orchestra LIVE 1995-07-14 @Bristol, UK, St. Georges";
+    foaf:maker "Penguin Cafe Orchestra";
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra14071995>;
+    mo:track <urn:uuid:0f6f271d-2b41-4103-a04e-f5b8d330b8fb>, <urn:uuid:19ae45d8-0d57-4075-9244-0a035aac867b>, <urn:uuid:a50c3934-fb5c-4553-9449-8a986224f13c>, <urn:uuid:4b7fad2d-031f-4cad-ba0b-4ff55d88c4bf>, <urn:uuid:af1cd043-dce6-461a-a1b2-bac3a96a834b>, <urn:uuid:fe8012df-d7fd-4af1-af44-6e7a1e838551>, <urn:uuid:d69abef9-4e50-4489-b70b-6412eb13a9d9>, <urn:uuid:5d74c72e-0c53-4081-8b29-3ce90f540b0c>, <urn:uuid:b29b92f9-e516-4884-93aa-d4374debb444>, <urn:uuid:e77127d7-680b-489f-a12b-1d198fee3f49>, <urn:uuid:962a001c-8207-43e8-a3cd-ed864909fa88>.
+<urn:uuid:0f6f271d-2b41-4103-a04e-f5b8d330b8fb> a mo:Track; dcterms:title "Air"; mo:duration "271"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/1-07%20-%20Air.mp3>.
+<urn:uuid:19ae45d8-0d57-4075-9244-0a035aac867b> a mo:Track; dcterms:title "Air a Danser"; mo:duration "365"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/1-03%20-%20Air%20a%20Danser.mp3>.
+<urn:uuid:a50c3934-fb5c-4553-9449-8a986224f13c> a mo:Track; dcterms:title "Cage Dead"; mo:duration "322"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/1-04%20-%20Cage%20Dead.mp3>.
+<urn:uuid:4b7fad2d-031f-4cad-ba0b-4ff55d88c4bf> a mo:Track; dcterms:title "Lifeboat (Lovers' Rock)"; mo:duration "486"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/2-03%20-%20Lifeboat%20(Lovers'%20Rock).mp3>.
+<urn:uuid:af1cd043-dce6-461a-a1b2-bac3a96a834b> a mo:Track; dcterms:title "Nothing Really Blue (horrible speed issue, non-alignment)"; mo:duration "318"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/1-09%20-%20Nothing%20Really%20Blue%20(horrible%20speed%20issue%2C%20non-alignment).mp3>.
+<urn:uuid:fe8012df-d7fd-4af1-af44-6e7a1e838551> a mo:Track; dcterms:title "Organum"; mo:duration "284"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/1-05%20-%20Organum.mp3>.
+<urn:uuid:d69abef9-4e50-4489-b70b-6412eb13a9d9> a mo:Track; dcterms:title "Robert Sandal presents the \"Concert Program\" and begins interview with Simon Jeffes."; mo:duration "277"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/1-02%20-%20Robert%20Sandal%20presents%20the%20'Concert%20Program'%20and%20begins%20interview%20with%20Simon%20Jeffes.mp3>.
+<urn:uuid:5d74c72e-0c53-4081-8b29-3ce90f540b0c> a mo:Track; dcterms:title "Southern Jukebox Music"; mo:duration "403"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/1-06%20-%20Southern%20Jukebox%20Music.mp3>.
+<urn:uuid:b29b92f9-e516-4884-93aa-d4374debb444> a mo:Track; dcterms:title "Steady State/Scherzo & Trio"; mo:duration "798"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/2-04%20-%20Steady%20State-Scherzo%20%26%20Trio.mp3>.
+<urn:uuid:e77127d7-680b-489f-a12b-1d198fee3f49> a mo:Track; dcterms:title "Surface Tension/Oscar Tango/Music for a Found Harmonium"; mo:duration "531"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/2-02%20-%20Surface%20Tension-Oscar%20Tango-Music%20for%20a%20Found%20Harmonium.mp3>.
+<urn:uuid:962a001c-8207-43e8-a3cd-ed864909fa88> a mo:Track; dcterms:title "Telephone & Rubber Band (speed issue until 3:21)"; mo:duration "313"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra14071995/2-01%20-%20Telephone%20%26%20Rubber%20Band%20(speed%20issue%20until%203-21).mp3>.

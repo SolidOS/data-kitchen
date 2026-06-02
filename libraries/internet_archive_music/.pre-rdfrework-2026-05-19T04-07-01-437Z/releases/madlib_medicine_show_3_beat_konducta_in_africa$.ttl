@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:fa303be0-a4bc-46ce-af17-d33cfba26943> a mo:Release;
+    dcterms:title "Madlib Medicine Show #3 - Beat Konducta in Africa";
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a>;
+    dcat:landingPage <https://archive.org/details/madlib-medicine-show-3-beat-konducta-in-africa>;
+    mo:track <urn:uuid:05dfa569-8af8-486c-9d82-90bd5788dbf9>, <urn:uuid:3b8a78ef-72cd-45d8-99ce-ddbc047cca93>.
+<urn:uuid:05dfa569-8af8-486c-9d82-90bd5788dbf9> a mo:Track; dcterms:title "Bonus R"; mo:duration "354"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-3-beat-konducta-in-africa/Madlib%20-%20Madlib%20Medicine%20Show%203-%20Beat%20Konducta%20In%20Africa%20-%2040%20-%20Bonus%20R.mp3>.
+<urn:uuid:3b8a78ef-72cd-45d8-99ce-ddbc047cca93> a mo:Track; dcterms:title "Bonus I"; mo:duration "198"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-3-beat-konducta-in-africa/Madlib%20-%20Madlib%20Medicine%20Show%203-%20Beat%20Konducta%20In%20Africa%20-%2041%20-%20Bonus%20I.mp3>.

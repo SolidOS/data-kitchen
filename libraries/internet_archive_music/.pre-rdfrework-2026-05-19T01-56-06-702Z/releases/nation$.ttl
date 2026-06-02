@@ -1,0 +1,20 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:408954dc-22c2-446e-a4eb-e4c044a88fd0> a mo:Release;
+    dcterms:title "NATION.";
+    foaf:maker "Kendrick Lamar";
+    dcat:landingPage <https://archive.org/details/NATION.>;
+    mo:track <urn:uuid:b51b2610-816e-4db1-b349-5931344f33c3>, <urn:uuid:c5056e03-2cfb-44a8-9602-d6c6203d9cd7>, <urn:uuid:5dfffe40-5668-433f-8599-0f57c001f664>, <urn:uuid:48bc1137-162b-4564-bad7-0e4351171c9c>, <urn:uuid:1175f9b4-0ef9-4aa5-8546-0392dc73047b>, <urn:uuid:660f8413-3493-418d-8b46-86637916081c>, <urn:uuid:c73ad492-2bd9-4767-a271-10b76bf386d8>, <urn:uuid:e4317f8d-645e-4e1f-b1bd-a3da1780e8ff>, <urn:uuid:1753c5f9-e438-4d95-868a-fffbb9a5dec0>, <urn:uuid:0713209d-ac76-49aa-aee9-dfb9e060d43c>.
+<urn:uuid:b51b2610-816e-4db1-b349-5931344f33c3> a mo:Track; dcterms:title "DRONES."; mo:duration "208"; dcat:downloadUrl <https://archive.org/download/NATION./DRONES..mp3>.
+<urn:uuid:c5056e03-2cfb-44a8-9602-d6c6203d9cd7> a mo:Track; dcterms:title "FAIR. FEAT. MAC. MILLER."; mo:duration "345"; dcat:downloadUrl <https://archive.org/download/NATION./FAIR.%20FEAT.%20MAC.%20MILLER..mp3>.
+<urn:uuid:5dfffe40-5668-433f-8599-0f57c001f664> a mo:Track; dcterms:title "HAPPY."; mo:duration "221"; dcat:downloadUrl <https://archive.org/download/NATION./HAPPY..mp3>.
+<urn:uuid:48bc1137-162b-4564-bad7-0e4351171c9c> a mo:Track; dcterms:title "HOOLIGAN."; mo:duration "189"; dcat:downloadUrl <https://archive.org/download/NATION./HOOLIGAN..mp3>.
+<urn:uuid:1175f9b4-0ef9-4aa5-8546-0392dc73047b> a mo:Track; dcterms:title "LOVE."; mo:duration "262"; dcat:downloadUrl <https://archive.org/download/NATION./LOVE..mp3>.
+<urn:uuid:660f8413-3493-418d-8b46-86637916081c> a mo:Track; dcterms:title "PRAYER."; mo:duration "322"; dcat:downloadUrl <https://archive.org/download/NATION./PRAYER..mp3>.
+<urn:uuid:c73ad492-2bd9-4767-a271-10b76bf386d8> a mo:Track; dcterms:title "PURE."; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/NATION./PURE..mp3>.
+<urn:uuid:e4317f8d-645e-4e1f-b1bd-a3da1780e8ff> a mo:Track; dcterms:title "ROTATION."; mo:duration "230"; dcat:downloadUrl <https://archive.org/download/NATION./ROTATION..mp3>.
+<urn:uuid:1753c5f9-e438-4d95-868a-fffbb9a5dec0> a mo:Track; dcterms:title "SOMETHING."; mo:duration "296"; dcat:downloadUrl <https://archive.org/download/NATION./SOMETHING..mp3>.
+<urn:uuid:0713209d-ac76-49aa-aee9-dfb9e060d43c> a mo:Track; dcterms:title "STYLE."; mo:duration "196"; dcat:downloadUrl <https://archive.org/download/NATION./STYLE..mp3>.

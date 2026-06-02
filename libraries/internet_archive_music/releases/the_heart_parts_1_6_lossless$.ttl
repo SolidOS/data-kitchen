@@ -1,0 +1,139 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "The Heart, Parts 1-6 Lossless" ;
+    dct:identifier "the-heart-parts-1-through-6" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/the-heart-parts-1-through-6> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15>, <#t16>, <#t17>, <#t18> ;
+    foaf:maker "Kendrick Lamar" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "The Heart, Part I" ;
+    mo:duration "266" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%201.flac> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "The Heart, Part I" ;
+    mo:duration "266" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%201.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "The Heart, Part I" ;
+    mo:duration "266" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%201.wav> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "The Heart, Part II" ;
+    mo:duration "293" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%202.flac> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "The Heart, Part II" ;
+    mo:duration "293" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%202.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "The Heart, Part II" ;
+    mo:duration "293" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%202.wav> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "The Heart, Part III" ;
+    mo:duration "276" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%203.flac> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "The Heart, Part III" ;
+    mo:duration "276" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%203.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "The Heart, Part III" ;
+    mo:duration "276" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%203.wav> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "The Heart, Part IV" ;
+    mo:duration "288" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%204.flac> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "The Heart, Part IV" ;
+    mo:duration "288" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%204.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "The Heart, Part IV" ;
+    mo:duration "288" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%204.wav> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "The Heart, Part V" ;
+    mo:duration "332" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%205.flac> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "The Heart, Part V" ;
+    mo:duration "332" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%205.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "The Heart, Part V" ;
+    mo:duration "332" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%205.wav> ;
+    dct:isPartOf <#it> .
+
+<#t16>
+    a mo:Track ;
+    dct:title "The Heart, Part VI" ;
+    mo:duration "292" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%206.flac> ;
+    dct:isPartOf <#it> .
+
+<#t17>
+    a mo:Track ;
+    dct:title "The Heart, Part VI" ;
+    mo:duration "292" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%206.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t18>
+    a mo:Track ;
+    dct:title "The Heart, Part VI" ;
+    mo:duration "292" ;
+    mo:item <https://archive.org/download/the-heart-parts-1-through-6/The%20Heart%2C%20Part%206.wav> ;
+    dct:isPartOf <#it> .

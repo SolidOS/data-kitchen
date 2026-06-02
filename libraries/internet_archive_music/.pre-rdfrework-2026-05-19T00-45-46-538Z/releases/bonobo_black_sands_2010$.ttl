@@ -1,0 +1,21 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:2245f012-a911-47de-97b7-1f5cea4d569c> a mo:Release;
+    dcterms:title "Bonobo - Black Sands (2010)";
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0>;
+    dcat:landingPage <https://archive.org/details/bonobo-black-sands>;
+    mo:track <urn:uuid:8f3bef5a-24fb-4be9-913e-4dd9ed5b199f>, <urn:uuid:84284098-f88c-4458-b49e-01d7f507e158>, <urn:uuid:9213b76e-a0e7-42e3-af0a-d5865a2e98af>, <urn:uuid:75aa3e8c-2650-4be3-8f61-32a6f751e1f7>, <urn:uuid:910bb9c7-276c-45a7-a076-d40027cffa11>, <urn:uuid:c0f624ee-5135-4602-bcf5-ab4c7ac2cb85>, <urn:uuid:8738f874-a5b8-4941-beb4-c655f9d8d733>, <urn:uuid:dbabf38a-b290-4f98-a817-9c25a0353e47>, <urn:uuid:12f1fe0a-1f25-4d24-a199-21c9150b4fe8>, <urn:uuid:53276257-3115-4860-b925-8ee0cf339457>, <urn:uuid:55605a54-13e3-48c4-9dfb-7bff500a581f>.
+<urn:uuid:8f3bef5a-24fb-4be9-913e-4dd9ed5b199f> a mo:Track; dcterms:title "Kiara"; mo:duration "231"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/02%20Kiara.mp3>.
+<urn:uuid:84284098-f88c-4458-b49e-01d7f507e158> a mo:Track; dcterms:title "Kong"; mo:duration "237"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/03%20Kong.mp3>.
+<urn:uuid:9213b76e-a0e7-42e3-af0a-d5865a2e98af> a mo:Track; dcterms:title "Eyesdown"; mo:duration "326"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/04%20Eyesdown.mp3>.
+<urn:uuid:75aa3e8c-2650-4be3-8f61-32a6f751e1f7> a mo:Track; dcterms:title "El Toro"; mo:duration "224"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/05%20El%20Toro.mp3>.
+<urn:uuid:910bb9c7-276c-45a7-a076-d40027cffa11> a mo:Track; dcterms:title "We Could Forever"; mo:duration "259"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/06%20We%20Could%20Forever.mp3>.
+<urn:uuid:c0f624ee-5135-4602-bcf5-ab4c7ac2cb85> a mo:Track; dcterms:title "1009"; mo:duration "270"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/07%201009.mp3>.
+<urn:uuid:8738f874-a5b8-4941-beb4-c655f9d8d733> a mo:Track; dcterms:title "All in Forms"; mo:duration "291"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/08%20All%20in%20Forms.mp3>.
+<urn:uuid:dbabf38a-b290-4f98-a817-9c25a0353e47> a mo:Track; dcterms:title "The Keeper"; mo:duration "288"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/09%20The%20Keeper.mp3>.
+<urn:uuid:12f1fe0a-1f25-4d24-a199-21c9150b4fe8> a mo:Track; dcterms:title "Stay the Same"; mo:duration "284"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/10%20Stay%20the%20Same.mp3>.
+<urn:uuid:53276257-3115-4860-b925-8ee0cf339457> a mo:Track; dcterms:title "Animals"; mo:duration "405"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/11%20Animals.mp3>.
+<urn:uuid:55605a54-13e3-48c4-9dfb-7bff500a581f> a mo:Track; dcterms:title "Black Sands"; mo:duration "409"; dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/12%20Black%20Sands.mp3>.

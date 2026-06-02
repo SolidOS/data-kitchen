@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:e0cac718-6a52-47d6-8a4b-f26a7b175089> a mo:Release;
+    dcterms:title "DAMN. (CD RIP)";
+    foaf:maker "Kendrick Lamar";
+    dcat:landingPage <https://archive.org/details/12-fear_202604>;
+    mo:track <urn:uuid:65dc2b3a-955e-42a2-83a3-e763faeb37ab>, <urn:uuid:370d18a8-a9e2-43fc-9f88-fc757cbf3680>, <urn:uuid:2fb7edbe-53c5-4893-a7e2-3a7d0af8553a>, <urn:uuid:731576c2-8d74-482e-824a-d150a0a6dc76>, <urn:uuid:9116820b-f30a-46ee-8487-e8eb5a9b25ce>, <urn:uuid:db346e6c-b17d-4784-bca8-2e657a4c419b>, <urn:uuid:312d2316-97dd-4e40-a879-3acd3b16769f>, <urn:uuid:63a47851-247b-4a7e-bf14-49ca47bd1315>.
+<urn:uuid:65dc2b3a-955e-42a2-83a3-e763faeb37ab> a mo:Track; dcterms:title "FEEL."; mo:duration "214"; dcat:downloadUrl <https://archive.org/download/12-fear_202604/05%20FEEL.m4a>.
+<urn:uuid:370d18a8-a9e2-43fc-9f88-fc757cbf3680> a mo:Track; dcterms:title "LOYALTY"; mo:duration "227"; dcat:downloadUrl <https://archive.org/download/12-fear_202604/06%20LOYALTY.m4a>.
+<urn:uuid:2fb7edbe-53c5-4893-a7e2-3a7d0af8553a> a mo:Track; dcterms:title "PRIDE."; mo:duration "275"; dcat:downloadUrl <https://archive.org/download/12-fear_202604/07%20PRIDE.m4a>.
+<urn:uuid:731576c2-8d74-482e-824a-d150a0a6dc76> a mo:Track; dcterms:title "LUST."; mo:duration "307"; dcat:downloadUrl <https://archive.org/download/12-fear_202604/09%20LUST.m4a>.
+<urn:uuid:9116820b-f30a-46ee-8487-e8eb5a9b25ce> a mo:Track; dcterms:title "LOVE."; mo:duration "213"; dcat:downloadUrl <https://archive.org/download/12-fear_202604/10%20LOVE.m4a>.
+<urn:uuid:db346e6c-b17d-4784-bca8-2e657a4c419b> a mo:Track; dcterms:title "FEAR."; mo:duration "460"; dcat:downloadUrl <https://archive.org/download/12-fear_202604/12%20FEAR.m4a>.
+<urn:uuid:312d2316-97dd-4e40-a879-3acd3b16769f> a mo:Track; dcterms:title "GOD."; mo:duration "248"; dcat:downloadUrl <https://archive.org/download/12-fear_202604/13%20GOD.m4a>.
+<urn:uuid:63a47851-247b-4a7e-bf14-49ca47bd1315> a mo:Track; dcterms:title "DUCKWORTH."; mo:duration "248"; dcat:downloadUrl <https://archive.org/download/12-fear_202604/14%20DUCKWORTH.m4a>.

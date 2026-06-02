@@ -1,0 +1,78 @@
+@prefix : <#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+
+# A small, valid example of the post-migration model — see music.shaclc.
+
+# Genre scheme + a genre
+<#Music> a skos:ConceptScheme ;
+    skos:prefLabel "Music" .
+
+<#Funk> a skos:Concept, mo:Genre ;
+    skos:prefLabel "Funk" ;
+    skos:topConceptOf <#Music> .
+
+# Catalog — the library index.
+<#library> a dcat:Catalog ;
+    dcterms:title "Example library" ;
+    dcat:dataset <#WooWarriorsAtSoho>, <#MyPlaylist> ;
+    dcat:themeTaxonomy <#Music> .
+
+# Agent — a catalog artist.
+<#Agent_BernieWorrell> a foaf:Agent, mo:MusicArtist ;
+    foaf:name "Bernie Worrell" ;
+    mo:genre <#Funk> .
+
+# Release — mo:Release + dcat:Dataset. Its tracks are the unordered
+# mo:track set; order is each track's mo:track_number.
+<#WooWarriorsAtSoho> a mo:Release, dcat:Dataset ;
+    dcterms:title "Woo Warriors at the Soho" ;
+    dcterms:identifier "woo-warriors-soho" ;
+    dcterms:isPartOf <#library> ;
+    foaf:maker <#Agent_BernieWorrell> ;
+    mo:genre <#Funk> ;
+    dcat:landingPage <https://archive.org/details/woo-warriors-soho> ;
+    dcterms:date "2011" ;
+    schema:ratingValue 4.5 ;
+    mo:track <#t-woo-intro>, <#t-woo-blues> .
+
+# Tracks — defined in the release; the audio file is linked via mo:item.
+<#t-woo-intro> a mo:Track ;
+    dcterms:title "Intro" ;
+    dcterms:isPartOf <#WooWarriorsAtSoho> ;
+    foaf:maker <#Agent_BernieWorrell> ;
+    mo:track_number 1 ;
+    mo:duration 42.0 ;
+    mo:item <./woo-track1.mp3> .
+
+<#t-woo-blues> a mo:Track ;
+    dcterms:title "Woo's Blues" ;
+    dcterms:isPartOf <#WooWarriorsAtSoho> ;
+    foaf:maker <#Agent_BernieWorrell> ;
+    mo:track_number 2 ;
+    mo:duration 185.0 ;
+    mo:bpm 96.0 ;
+    schema:ratingValue 5 ;
+    mo:item <./woo-track3.mp3> .
+
+# Playlist — schema:ItemList + schema:MusicPlaylist. Membership is the
+# ordered schema:itemListElement → schema:ListItem sequence; each
+# ListItem's schema:item points at a canonical Track.
+<#MyPlaylist> a schema:ItemList, schema:MusicPlaylist, dcat:Dataset ;
+    dcterms:title "JZ's Dance Mix" ;
+    dcterms:isPartOf <#library> ;
+    foaf:maker "jeffz" ;
+    schema:itemListOrder schema:ItemListOrderAscending ;
+    schema:itemListElement <#e01>, <#e02> .
+
+<#e01> a schema:ListItem ;
+    schema:position 1 ;
+    schema:item <#t-woo-blues> .
+
+<#e02> a schema:ListItem ;
+    schema:position 2 ;
+    schema:item <#t-woo-intro> .

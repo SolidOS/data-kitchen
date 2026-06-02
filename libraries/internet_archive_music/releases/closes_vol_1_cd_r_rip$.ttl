@@ -1,0 +1,48 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Closes vol. 1 (cd-r rip)" ;
+    dct:identifier "closes-vol-1-cd-r-rip" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/closes-vol-1-cd-r-rip> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05> ;
+    foaf:maker "Boards of Canada" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "True Map" ;
+    mo:duration "322" ;
+    mo:item <https://archive.org/download/closes-vol-1-cd-r-rip/03%20-%20True%20Map.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "5d" ;
+    mo:duration "322" ;
+    mo:item <https://archive.org/download/closes-vol-1-cd-r-rip/05%20-%205d.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Tends Towards" ;
+    mo:duration "528" ;
+    mo:item <https://archive.org/download/closes-vol-1-cd-r-rip/07%20-%20Tends%20Towards.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Eye / Ear" ;
+    mo:duration "418" ;
+    mo:item <https://archive.org/download/closes-vol-1-cd-r-rip/09%20-%20Eye%20Ear.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Found The Way" ;
+    mo:duration "366" ;
+    mo:item <https://archive.org/download/closes-vol-1-cd-r-rip/12%20-%20Found%20The%20Way.mp3> ;
+    dct:isPartOf <#it> .

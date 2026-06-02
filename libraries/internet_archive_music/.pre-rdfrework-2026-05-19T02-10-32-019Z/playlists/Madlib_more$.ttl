@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Madlib_more> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Madlib - more";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://open-media-player.org/ns#hidePlaylist> "true";
+    dcterms:hasPart <urn:uuid:5ab57aca-437d-4f41-8009-24db9590b200>, <urn:uuid:66d04335-d4ce-4b55-80e9-0b34086f2510>, <urn:uuid:4ed6005a-2e04-4615-b948-e82ab68467c6>, <urn:uuid:3c3668c8-4375-4902-811b-3f0fffddcf71>, <urn:uuid:a011aa90-44f0-468d-8d40-ba0f5fc8f772>, <urn:uuid:c77a4c7a-e72d-4ecc-8a6f-9497e8957103>, <urn:uuid:65fab9cc-29af-4ba5-9487-e99a2bf5d12d>, <urn:uuid:0d2e1a64-d6cf-4a06-9879-dae2c86c0e5d>, <urn:uuid:9a75ccd9-346b-4ece-b77e-7075d3686a51>, <urn:uuid:99ca5082-65d5-4fba-bfea-ae36732feebf>, <urn:uuid:50172cfc-5f16-4b34-91fe-115c2030bde9>, <urn:uuid:e16fa5a3-eeff-4b3c-babf-98775cebb416>, <urn:uuid:285fcaf0-d1a8-477a-8aa4-1c2dfac384c0>, <urn:uuid:62d13aa5-0ef5-48bf-a37b-b64c24ebd37e>, <urn:uuid:e05d8a7a-5932-4f75-aca6-d93a1796fc1d>, <urn:uuid:c738106b-fdaa-4a31-b527-e58d096323fe>, <urn:uuid:bfe833dc-7693-4760-82bd-b640f713b632>, <urn:uuid:588a8b06-04d3-4684-93dd-3f385b254e9d>, <urn:uuid:f2f9a89e-9725-43e5-bcb3-5b7a158f8425>, <urn:uuid:bc440454-2b79-4a36-abdc-1998dd184ef7>, <urn:uuid:9b71ef98-878d-44ea-97d1-257cd9860efd>, <urn:uuid:cae7d762-3fe8-4f04-8885-e1432d7aa91b>, <urn:uuid:1e7ea511-cf82-492f-8251-6964effdcce8>, <urn:uuid:6d677179-facb-4a18-83cd-249804678149>, <urn:uuid:7a3de22a-bdcd-458e-8cfa-5758816b9da2>, <urn:uuid:6aa6756d-2e64-482a-9192-14e647c41df3>.

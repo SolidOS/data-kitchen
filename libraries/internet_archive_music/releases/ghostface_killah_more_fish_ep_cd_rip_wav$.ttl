@@ -1,0 +1,41 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Ghostface Killah - More Fish EP [CD RIP / WAV]" ;
+    dct:identifier "01-ghost-is-back" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/01-ghost-is-back> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04> ;
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "02 Guns N' Razors" ;
+    mo:duration "197" ;
+    mo:item <https://archive.org/download/01-ghost-is-back/02%20Guns%20N'%20Razors.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "04 Josephine" ;
+    mo:duration "252" ;
+    mo:item <https://archive.org/download/01-ghost-is-back/04%20Josephine.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "01 Ghost Is Back" ;
+    mo:duration "307" ;
+    mo:item <https://archive.org/download/01-ghost-is-back/01%20Ghost%20Is%20Back.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "03 You Know I'm No Good" ;
+    mo:duration "265" ;
+    mo:item <https://archive.org/download/01-ghost-is-back/03%20You%20Know%20I'm%20No%20Good.mp3> ;
+    dct:isPartOf <#it> .

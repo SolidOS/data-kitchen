@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:a0661cf3-4393-4363-945b-d5067f9066b0> a mo:Release;
+    dcterms:title "Holiday, Billie - Vol. 1 Broadcasts 1949-1952 (Black Elephant)";
+    foaf:maker <urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd>;
+    dcat:landingPage <https://archive.org/details/09-billie-holiday-broadcasts-1949-1952-billies-blues>;
+    mo:track <urn:uuid:a46d6b14-d2ec-42b7-a5d2-4504525a84ab>, <urn:uuid:7675acf5-430e-426f-986f-a0e60d7e5490>, <urn:uuid:18cb365f-9947-483f-b6de-f44489164b77>, <urn:uuid:c4ffb306-dd0b-4d07-81ad-a314a813dd57>, <urn:uuid:8e64dc32-6520-49e6-a6a7-756a6ebf96ed>.
+<urn:uuid:a46d6b14-d2ec-42b7-a5d2-4504525a84ab> a mo:Track; dcterms:title "All of me"; mo:duration "225"; dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/06-Billie%20Holiday%20-%20Broadcasts%201949-1952%20All%20of%20me.mp3>.
+<urn:uuid:7675acf5-430e-426f-986f-a0e60d7e5490> a mo:Track; dcterms:title "Billie's blues"; mo:duration "219"; dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/09-Billie%20Holiday%20-%20Broadcasts%201949-1952%20Billie's%20blues.mp3>.
+<urn:uuid:18cb365f-9947-483f-b6de-f44489164b77> a mo:Track; dcterms:title "He's funny that way"; mo:duration "192"; dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/08-Billie%20Holiday%20-%20Broadcasts%201949-1952%20He's%20funny%20that%20way.mp3>.
+<urn:uuid:c4ffb306-dd0b-4d07-81ad-a314a813dd57> a mo:Track; dcterms:title "My man"; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/11-Billie%20Holiday%20-%20Broadcasts%201949-1952%20My%20man.mp3>.
+<urn:uuid:8e64dc32-6520-49e6-a6a7-756a6ebf96ed> a mo:Track; dcterms:title "You're my thrill"; mo:duration "216"; dcat:downloadUrl <https://archive.org/download/09-billie-holiday-broadcasts-1949-1952-billies-blues/07-Billie%20Holiday%20-%20Broadcasts%201949-1952%20You're%20my%20thrill.mp3>.

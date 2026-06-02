@@ -1,0 +1,14 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:ca018b2d-8c92-4d05-b211-de937ea5b913> a mo:Release;
+    dcterms:title "Ruff Draft";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    dcat:landingPage <https://archive.org/details/j-dilla-ruff-draft_202510>;
+    mo:track <urn:uuid:7d1c27ab-7b11-41dc-ac87-b63582e543af>, <urn:uuid:d75917e2-bb3f-45da-a3d1-9435f666273f>, <urn:uuid:9588c81a-ce8c-4880-bdfa-7563f294fdd8>, <urn:uuid:64e0142b-cf8b-417d-86fd-7991696ec2c2>.
+<urn:uuid:7d1c27ab-7b11-41dc-ac87-b63582e543af> a mo:Track; dcterms:title "Crushin' (Yeeeeaah!)"; mo:duration "223"; dcat:downloadUrl <https://archive.org/download/j-dilla-ruff-draft_202510/0109%20-%20J%20Dilla%20-%20Ruff%20Draft%20-%20Crushin'%20(Yeeeeaah!).mp3>.
+<urn:uuid:d75917e2-bb3f-45da-a3d1-9435f666273f> a mo:Track; dcterms:title "Take Notice"; mo:duration "265"; dcat:downloadUrl <https://archive.org/download/j-dilla-ruff-draft_202510/0113%20-%20J%20Dilla%20-%20Ruff%20Draft%20-%20Take%20Notice.mp3>.
+<urn:uuid:9588c81a-ce8c-4880-bdfa-7563f294fdd8> a mo:Track; dcterms:title "Crushin' (Instrumental)"; mo:duration "221"; dcat:downloadUrl <https://archive.org/download/j-dilla-ruff-draft_202510/0206%20-%20J%20Dilla%20-%20Ruff%20Draft%20-%20Crushin'%20(Instrumental).mp3>.
+<urn:uuid:64e0142b-cf8b-417d-86fd-7991696ec2c2> a mo:Track; dcterms:title "Take Notice (Instrumental)"; mo:duration "266"; dcat:downloadUrl <https://archive.org/download/j-dilla-ruff-draft_202510/0209%20-%20J%20Dilla%20-%20Ruff%20Draft%20-%20Take%20Notice%20(Instrumental).mp3>.

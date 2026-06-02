@@ -1,0 +1,33 @@
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
+
+<#Tabs> a ui:Menu ; ui:label "Open Media Player" ;
+  ui:orientation ui:Horizontal ;
+  ui:parts ( <#News> <#Music> <#Images> <#Movies> ) .
+
+<#News> a ui:Component ; ui:label "📰 News" ; ui:name "sol-feed" ;
+  ui:attribute
+    [ schema:name "id" ;           schema:value "panel-news" ] ,
+    [ schema:name "view" ;         schema:value "topics" ] ,
+    [ schema:name "select-first" ; schema:value "" ] ,
+    [ schema:name "source" ;       schema:value "./libraries/news/feeds.ttl#Feeds" ] .
+
+<#Music> a ui:Component ; ui:label "🎵 Music" ; ui:name "ia-player" ;
+  ui:attribute
+    [ schema:name "id" ;         schema:value "panel-music" ] ,
+    [ schema:name "storage-ns" ; schema:value "music" ] ,
+    [ schema:name "src" ;        schema:value "./libraries/internet_archive_music/index.ttl" ] ,
+    [ schema:name "defer" ;      schema:value "" ] .
+
+<#Images> a ui:Component ; ui:label "🖼 Images" ; ui:name "omp-images" ;
+  ui:attribute
+    [ schema:name "id" ;     schema:value "panel-images" ] ,
+    [ schema:name "source" ; schema:value "./libraries/wikimedia_images/images.ttl#Images" ] .
+
+<#Movies> a ui:Component ; ui:label "🎬 Movies" ; ui:name "ia-player" ;
+  ui:attribute
+    [ schema:name "id" ;         schema:value "panel-movies" ] ,
+    [ schema:name "storage-ns" ;      schema:value "movies" ] ,
+    [ schema:name "src" ;             schema:value "./libraries/internet_archive_movies/index.ttl" ] ,
+    [ schema:name "favourites-only" ; schema:value "" ] ,
+    [ schema:name "defer" ;           schema:value "" ] .

@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Media Player — Movies</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('omp:theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.setAttribute('data-fontsize', localStorage.getItem('omp:fontsize') || 'medium');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  main { height:100vh; width:100vw; }
+</style>
+  <!-- <sol-login> expects @inrupt/solid-client-authn-browser as a UMD
+       global (window.solidClientAuthn). Loaded here for the dev page;
+       a host embedding <ia-player> provides its own. -->
+  <script src="https://cdn.jsdelivr.net/npm/@inrupt/solid-client-authn-browser/dist/solid-client-authn.bundle.js"></script>
+  <script>
+    window.SolidKitchen = true; // dev/preview: treat localhost as logged in
+  </script>
+  <script src="./dist/ia-player.js" type="module"></script>
+</head>
+<body><main>
+
+    <ia-player src="./libraries/internet_archive_movies/index.ttl"></ia-player>
+
+</body></main>
+</html>

@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Monolake> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Monolake";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://purl.org/dc/terms/description> "Berlin Techno Ambient";
+    dcterms:hasPart <urn:uuid:e84871e3-966c-43e1-bb69-baf277a02ab8>, <urn:uuid:16aa8ca1-6c45-4cdb-ad16-edc8b5a1d875>, <urn:uuid:7f6bc3ae-2a12-4a96-a931-c7fb1857b7c9>, <urn:uuid:f001c505-0a5c-40b2-9169-a620ef2b7407>, <urn:uuid:f432817f-24b6-41d2-9ca0-8d833760959a>, <urn:uuid:17a47537-0e1d-4b57-b5ec-4fd80252d71c>, <urn:uuid:634ab215-7472-4331-aa5f-b8b50b0f08c5>, <urn:uuid:fd6abd6e-f279-4599-8bbb-1649bf9e6007>, <urn:uuid:ff5fe9c8-23d9-44c9-ba01-fb884390bc7a>, <urn:uuid:713247fb-84cf-448c-b92c-56bc954a5f04>.

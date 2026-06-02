@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:95b7a2ae-b1da-4d39-8036-1ba8993bb5f4> a mo:Release;
+    dcterms:title "King Curtis – The New Scene of King Curtis (1960; 1992 reissue)";
+    foaf:maker "King Curtis";
+    dcat:landingPage <https://archive.org/details/king-curtis-the-new-scene-of-king-curtis>;
+    mo:track <urn:uuid:f785c410-44e6-4f67-825c-64bc4bf7b8a0>, <urn:uuid:ef8dd3a8-27ff-4db0-af2c-6a4af8b0eec1>, <urn:uuid:c16b14c5-78aa-482b-bdbe-290cd1b3fce1>, <urn:uuid:6bda8df6-5c0f-40c9-80fc-eaa3a088931a>, <urn:uuid:db47fa4e-4972-4667-91d3-4984ec0bb25a>.
+<urn:uuid:f785c410-44e6-4f67-825c-64bc4bf7b8a0> a mo:Track; dcterms:title "Da Duh Dah"; mo:duration "311"; dcat:downloadUrl <https://archive.org/download/king-curtis-the-new-scene-of-king-curtis/01%20-%20Da%20Duh%20Dah.mp3>.
+<urn:uuid:ef8dd3a8-27ff-4db0-af2c-6a4af8b0eec1> a mo:Track; dcterms:title "Have You Heard?"; mo:duration "622"; dcat:downloadUrl <https://archive.org/download/king-curtis-the-new-scene-of-king-curtis/02%20-%20Have%20You%20Heard.mp3>.
+<urn:uuid:c16b14c5-78aa-482b-bdbe-290cd1b3fce1> a mo:Track; dcterms:title "Willow Weep For Me"; mo:duration "324"; dcat:downloadUrl <https://archive.org/download/king-curtis-the-new-scene-of-king-curtis/03%20-%20Willow%20Weep%20For%20Me.mp3>.
+<urn:uuid:6bda8df6-5c0f-40c9-80fc-eaa3a088931a> a mo:Track; dcterms:title "Little Brother Soul"; mo:duration "514"; dcat:downloadUrl <https://archive.org/download/king-curtis-the-new-scene-of-king-curtis/04%20-%20Little%20Brother%20Soul.mp3>.
+<urn:uuid:db47fa4e-4972-4667-91d3-4984ec0bb25a> a mo:Track; dcterms:title "In a Funky Groove"; mo:duration "648"; dcat:downloadUrl <https://archive.org/download/king-curtis-the-new-scene-of-king-curtis/05%20-%20In%20A%20Funky%20Groove.mp3>.

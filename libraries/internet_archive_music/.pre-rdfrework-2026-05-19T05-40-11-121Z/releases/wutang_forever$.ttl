@@ -1,0 +1,170 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:226c8e7e-aa21-43b4-91f8-7673981c2075>
+    a mo:Release;
+    dct:title "Wu-Tang Forever";
+    mo:track
+        <urn:uuid:28f44eb6-4cfb-42b0-8c53-9be28e163661>,
+        <urn:uuid:407f6009-a8bb-4a13-8816-023f583332b2>,
+        <urn:uuid:5094fc37-5144-4711-ba5b-232fe2ca5350>,
+        <urn:uuid:5533eaba-c066-4e2e-b3ce-f85bde079122>,
+        <urn:uuid:56ad986c-7d84-43f5-abb0-3a83c40eb3c3>,
+        <urn:uuid:7ad0df26-1454-40fb-a1f7-8de00394d059>,
+        <urn:uuid:7d840ca2-e3d6-4079-92bb-69d5befc4b21>,
+        <urn:uuid:85df47e9-568c-4bfb-b2b7-17ea292b55f3>,
+        <urn:uuid:86fa7bef-79dc-4821-98b8-b57137d441d7>,
+        <urn:uuid:8adb5abc-ce67-43fd-b9de-07ed9848e5db>,
+        <urn:uuid:8c23b477-6626-4c1f-8a7e-bb0f7d048f7b>,
+        <urn:uuid:99001d56-51ce-4b4e-ae15-5c1ffd5d70e6>,
+        <urn:uuid:9f350f2b-8992-4d9e-bafd-b43ae429df4f>,
+        <urn:uuid:a327d4b8-6234-40de-b3c0-00d4d23f4bd3>,
+        <urn:uuid:a926ad59-46e5-4b62-89e7-1f12231b00f7>,
+        <urn:uuid:af875c1e-bfee-45f2-a07b-17f68dca3907>,
+        <urn:uuid:be412748-c158-4854-ab78-be383b35078c>,
+        <urn:uuid:cca3d7ec-78ff-43f1-961d-8b843231921b>,
+        <urn:uuid:d97077ec-b622-48fa-be1b-2af57550ce21>,
+        <urn:uuid:e07a00f7-f2de-47d2-b7e1-a000c148d8d8>,
+        <urn:uuid:e9a9eba7-9080-4082-a402-b543b0f5a558>,
+        <urn:uuid:ebc2d222-66e3-48e8-9dfb-b839980f568d>;
+    dcat:landingPage det:wu-tang-clan-wu-tang-forever_202401;
+    foaf:maker
+        <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>,
+        <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:28f44eb6-4cfb-42b0-8c53-9be28e163661>
+    a mo:Track;
+    dct:title "Bells of War";
+    mo:duration "312";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-08%20Bells%20of%20War.m4a>.
+<urn:uuid:407f6009-a8bb-4a13-8816-023f583332b2>
+    a mo:Track;
+    dct:title "Dog Sh*t";
+    mo:duration "214";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-10%20Dog%20Sh_t.m4a>.
+<urn:uuid:5094fc37-5144-4711-ba5b-232fe2ca5350>
+    a mo:Track;
+    dct:title
+    "Cash Still Rules / Scary Hours (Still Don't Nothing Move But the Money)";
+    mo:duration "181";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-04%20Cash%20Still%20Rules%20_%20Scary%20Hours.m4a>.
+<urn:uuid:5533eaba-c066-4e2e-b3ce-f85bde079122>
+    a mo:Track;
+    dct:title "Little Ghetto Boys";
+    mo:duration "289";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-04%20Little%20Ghetto%20Boys.m4a>.
+<urn:uuid:56ad986c-7d84-43f5-abb0-3a83c40eb3c3>
+    a mo:Track;
+    dct:title "Heaterz";
+    mo:duration "326";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-13%20Heaterz.m4a>.
+<urn:uuid:7ad0df26-1454-40fb-a1f7-8de00394d059>
+    a mo:Track;
+    dct:title "Hellz Wind Staff";
+    mo:duration "292";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-12%20Hellz%20Wind%20Staff.m4a>.
+<urn:uuid:7d840ca2-e3d6-4079-92bb-69d5befc4b21>
+    a mo:Track;
+    dct:title "Triumph";
+    mo:duration "338";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-02%20Triumph.m4a>.
+<urn:uuid:85df47e9-568c-4bfb-b2b7-17ea292b55f3>
+    a mo:Track;
+    dct:title "The City";
+    mo:duration "245";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-06%20The%20City.m4a>.
+<urn:uuid:86fa7bef-79dc-4821-98b8-b57137d441d7>
+    a mo:Track;
+    dct:title "A Better Tomorrow";
+    mo:duration "295";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-10%20A%20Better%20Tomorrow.m4a>.
+<urn:uuid:8adb5abc-ce67-43fd-b9de-07ed9848e5db>
+    a mo:Track;
+    dct:title "It's Yourz";
+    mo:duration "256";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-11%20It's%20Yourz.m4a>.
+<urn:uuid:8c23b477-6626-4c1f-8a7e-bb0f7d048f7b>
+    a mo:Track;
+    dct:title "Reunited";
+    mo:duration "321";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-02%20Reunited.m4a>.
+<urn:uuid:99001d56-51ce-4b4e-ae15-5c1ffd5d70e6>
+    a mo:Track;
+    dct:title "Wu-Revolution";
+    mo:duration "406";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-01%20Wu-Revolution.m4a>.
+<urn:uuid:9f350f2b-8992-4d9e-bafd-b43ae429df4f>
+    a mo:Track;
+    dct:title "Duck Seazon";
+    mo:duration "342";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-11%20Duck%20Seazon.m4a>.
+<urn:uuid:a327d4b8-6234-40de-b3c0-00d4d23f4bd3>
+    a mo:Track;
+    dct:title "For Heavens Sake";
+    mo:duration "253";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-03%20For%20Heavens%20Sake.m4a>.
+<urn:uuid:a926ad59-46e5-4b62-89e7-1f12231b00f7>
+    a mo:Track;
+    dct:title "Older Gods";
+    mo:duration "186";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-08%20Older%20Gods.m4a>.
+<urn:uuid:af875c1e-bfee-45f2-a07b-17f68dca3907>
+    a mo:Track;
+    dct:title "Visionz";
+    mo:duration "189";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-05%20Visionz.m4a>.
+<urn:uuid:be412748-c158-4854-ab78-be383b35078c>
+    a mo:Track;
+    dct:title "The Projects";
+    mo:duration "197";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-07%20The%20Projects.m4a>.
+<urn:uuid:cca3d7ec-78ff-43f1-961d-8b843231921b>
+    a mo:Track;
+    dct:title "Impossible";
+    mo:duration "269";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-03%20Impossible.m4a>.
+<urn:uuid:d97077ec-b622-48fa-be1b-2af57550ce21>
+    a mo:Track;
+    dct:title "Second Coming";
+    mo:duration "279";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-15%20Second%20Coming.m4a>.
+<urn:uuid:e07a00f7-f2de-47d2-b7e1-a000c148d8d8>
+    a mo:Track;
+    dct:title "Deadly Melody";
+    mo:duration "260";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-05%20Deadly%20Melody.m4a>.
+<urn:uuid:e9a9eba7-9080-4082-a402-b543b0f5a558>
+    a mo:Track;
+    dct:title "Black Shampoo";
+    mo:duration "229";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-14%20Black%20Shampoo.m4a>.
+<urn:uuid:ebc2d222-66e3-48e8-9dfb-b839980f568d>
+    a mo:Track;
+    dct:title "Severe Punishment";
+    mo:duration "289";
+    dcat:downloadUrl
+        <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-07%20Severe%20Punishment.m4a>.

@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:69a11a8c-e605-4e3d-992c-5c29549c182f> a mo:Release;
+    dcterms:title "Closes vol. 1 (cd-r rip)";
+    foaf:maker "Boards of Canada";
+    dcat:landingPage <https://archive.org/details/closes-vol-1-cd-r-rip>;
+    mo:track <urn:uuid:688be533-2d35-4498-bd6d-42c1d4cead55>, <urn:uuid:a824d607-3771-4768-8683-6ec35b1fcd11>, <urn:uuid:f1e4f8be-f0d9-47e8-88be-cc8360e0a896>, <urn:uuid:72d83d02-ccad-44a3-a348-2bab0b299696>, <urn:uuid:640d68f5-8f9e-4092-8fd3-c067390d0510>.
+<urn:uuid:688be533-2d35-4498-bd6d-42c1d4cead55> a mo:Track; dcterms:title "True Map"; mo:duration "322"; dcat:downloadUrl <https://archive.org/download/closes-vol-1-cd-r-rip/03%20-%20True%20Map.mp3>.
+<urn:uuid:a824d607-3771-4768-8683-6ec35b1fcd11> a mo:Track; dcterms:title "5d"; mo:duration "322"; dcat:downloadUrl <https://archive.org/download/closes-vol-1-cd-r-rip/05%20-%205d.mp3>.
+<urn:uuid:f1e4f8be-f0d9-47e8-88be-cc8360e0a896> a mo:Track; dcterms:title "Tends Towards"; mo:duration "528"; dcat:downloadUrl <https://archive.org/download/closes-vol-1-cd-r-rip/07%20-%20Tends%20Towards.mp3>.
+<urn:uuid:72d83d02-ccad-44a3-a348-2bab0b299696> a mo:Track; dcterms:title "Eye / Ear"; mo:duration "418"; dcat:downloadUrl <https://archive.org/download/closes-vol-1-cd-r-rip/09%20-%20Eye%20Ear.mp3>.
+<urn:uuid:640d68f5-8f9e-4092-8fd3-c067390d0510> a mo:Track; dcterms:title "Found The Way"; mo:duration "366"; dcat:downloadUrl <https://archive.org/download/closes-vol-1-cd-r-rip/12%20-%20Found%20The%20Way.mp3>.

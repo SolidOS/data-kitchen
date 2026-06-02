@@ -1,0 +1,61 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:12c3b6d1-b7fb-4d87-a85d-7bfbb1f9146b>
+    a mo:Track;
+    dct:title "2Pac - All Out (Suge Knight's Stolen CD Version)";
+    mo:duration "329";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20All%20Out%20(Suge%20Knight's%20Stolen%20CD%20Version).mp3>.
+<urn:uuid:1d8ac0f5-7884-4317-8334-98e85313ffa1>
+    a mo:Track;
+    dct:title
+    "2Pac - Bury Me A G (Untitled Interscope Project [Manu Tape] Ver.)";
+    mo:duration "302";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Bury%20Me%20A%20G%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>.
+<urn:uuid:5514dd5e-d562-4ec5-802a-fec448195067>
+    a mo:Track;
+    dct:title "2Pac - Everything They Owe (Original Mix 2)";
+    mo:duration "189";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Everything%20They%20Owe%20(Original%20Mix%202).mp3>.
+<urn:uuid:6135ff09-f645-43ba-9147-3a97e0e0bc20>
+    a mo:Release;
+    dct:title "2Pac The OG Project Vol 2";
+    mo:track
+        <urn:uuid:12c3b6d1-b7fb-4d87-a85d-7bfbb1f9146b>,
+        <urn:uuid:1d8ac0f5-7884-4317-8334-98e85313ffa1>,
+        <urn:uuid:5514dd5e-d562-4ec5-802a-fec448195067>,
+        <urn:uuid:e4e0b026-ecb8-4a65-a282-ed33398ccc96>,
+        <urn:uuid:f6be37f2-6adb-40a2-b4f6-9492e99dc48b>,
+        <urn:uuid:fbfe1eb3-1292-41c8-9718-3ac40344a9d4>;
+    dcat:landingPage det:2-pac-all-out-suge-knights-stolen-cd-version;
+    foaf:maker
+        "2Pac Unreleased", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:e4e0b026-ecb8-4a65-a282-ed33398ccc96>
+    a mo:Track;
+    dct:title
+    "2Pac - Out On Bail (Untitled Interscope Project [Manu Tape] Ver.)";
+    mo:duration "225";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Out%20On%20Bail%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>.
+<urn:uuid:f6be37f2-6adb-40a2-b4f6-9492e99dc48b>
+    a mo:Track;
+    dct:title
+    "2Pac - Runnin From The Police (Original Version) [Prod. Easy Mo Bee]";
+    mo:duration "271";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Runnin%20From%20The%20Police%20(Original%20Version)%20%5BProd.%20Easy%20Mo%20Bee%5D.mp3>.
+<urn:uuid:fbfe1eb3-1292-41c8-9718-3ac40344a9d4>
+    a mo:Track;
+    dct:title "2Pac - My Block (The Show Soundtrack) (314 529 021-2)";
+    mo:duration "311";
+    dcat:downloadUrl
+        <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20My%20Block%20(The%20Show%20Soundtrack)%20(314%20529%20021-2).mp3>.

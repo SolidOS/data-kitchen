@@ -1,0 +1,731 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <agents.ttl#>.
+@prefix genres: <genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Nujabes>
+    a dctypes:Collection, mo:Playlist ;
+    dcterms:title "Nujabes" ;
+    foaf:maker "jeffz" ;
+    dcterms:hasPart <urn:uuid:4141ad90-02ef-418f-872c-44922f27cd97>, <urn:uuid:001cfabf-ce7c-4f1b-b666-8e0244341346>, <urn:uuid:4f801968-7849-4a3d-b794-9b5d9bb7217e>, <urn:uuid:52fda95e-709e-40a0-8df3-b95ef26fbfd1>, <urn:uuid:67ecc9f7-6d14-42fb-9882-639b3659aaf1>, <urn:uuid:b9a5acf2-6343-4bcb-99d5-763984ec553b>, <urn:uuid:f346c342-c6c2-44a1-963c-7d86948eaf99>, <urn:uuid:f1ea9861-6eae-4e1a-b849-31b4027bcda3>, <urn:uuid:c0d4e793-4990-4b4e-ac05-4bc004b4985b>, <urn:uuid:72431cdf-308d-4257-9363-dd543de57b37>, <urn:uuid:70147d70-ae23-4ce2-aa04-adc1aa1eb996>, <urn:uuid:3782ad01-f8ae-4c2d-857c-93b34f0e12ef>, <urn:uuid:83470ca0-37ff-418e-a0a6-336af8c7fa8a>, <urn:uuid:37fa0673-0005-42b3-9848-dc14e144308f>, <urn:uuid:f2c732e6-2f71-4100-af73-322e20c024ad>, <urn:uuid:dc722694-a582-4db0-ad5c-eb0e6ac5e4da>, <urn:uuid:a3e24099-fa56-4ae2-ba08-723a302a7d1e>, <urn:uuid:78ed237c-ebca-4fec-bb47-080a9384b8e9>, <urn:uuid:8a16552f-ac6b-4aad-a8eb-ee8a8dde7c32>, <urn:uuid:acd81061-9fdd-45a4-8274-bd6e87224a09>, <urn:uuid:eacb9246-4cba-4755-bf67-0fd34e6fe18e>, <urn:uuid:fdb85145-b3eb-428f-ad9c-6c6cb9e3f250>, <urn:uuid:8599ae19-3cd8-4920-9701-608c5567a6c1>, <urn:uuid:16aa2e28-eee3-4b98-9d85-570c8bc298a0>, <urn:uuid:d694da51-6ff9-4802-a89c-dcfc7b2c3fe1>, <urn:uuid:a4e6f78d-570b-438f-b6cc-81b025e761fe>, <urn:uuid:40b480cd-7a15-4879-9987-2cca0fc94a46>, <urn:uuid:ac6ed5eb-987f-4176-b5dc-c61c18f3cb37>, <urn:uuid:b3ea22db-71b4-40db-a267-5973a5ed8086>, <urn:uuid:acedf2df-8efc-432d-815b-ca6620062e62>, <urn:uuid:8f2f68bb-f48d-4969-b564-bfbf802a4897>, <urn:uuid:41fcc068-8597-415a-92c5-e2b726f4ca32>, <urn:uuid:92db34bd-e845-4f4f-9040-bf798dce1053>, <urn:uuid:598fdf4b-5b53-4475-8c47-494ae9c7795a>, <urn:uuid:fb74b028-5962-44d8-ab14-27fe4232bdc9>, <urn:uuid:88ef5e76-c7ca-490e-83c9-61512fba66c3>, <urn:uuid:7b2a1db7-1e43-4773-ac62-ed2de2778650>, <urn:uuid:94a11c0c-d2aa-4ba2-b877-b44eca6107ad>, <urn:uuid:266dc9fe-ed38-4a00-9f36-86c852e28bcc>, <urn:uuid:aa99531d-ec05-41fe-b198-e6b54bb35de1>, <urn:uuid:536e9f48-3ee3-4901-a2eb-b9ac1cef5dbc>, <urn:uuid:ca2ea660-c918-4ef5-8d13-9730346d7e73>, <urn:uuid:8508db8a-168c-478f-86f5-ee307e1a5779>, <urn:uuid:bbe92d20-c028-4899-a777-ed9dc855c396>, <urn:uuid:08911b63-3af5-429c-b1d9-46f53affb3fd>, <urn:uuid:2c218064-76ce-44ca-a83a-93a8a4ac6bb8>, <urn:uuid:06924a29-ecc4-48d4-b620-9b66a6e54443>, <urn:uuid:0007ac33-a4ff-4f1e-a5b4-9aa38be68386>, <urn:uuid:fdc7cc7f-41cd-46ba-a624-95f05916205d>, <urn:uuid:58e78470-9ea1-4f07-9042-1b50f0174551>, <urn:uuid:52ffb0cb-c462-4555-acb4-78f4c91ebd17>, <urn:uuid:97c5dad8-26e6-496c-9239-3a803759ca88>, <urn:uuid:300c8a7f-27fb-49e5-938d-aa286cba1808>, <urn:uuid:0379152f-94b9-41e6-ae06-ebb88d4a9e8f>, <urn:uuid:345c1257-f418-474d-a758-32e9255fb337>, <urn:uuid:979886d0-d45e-4622-85a2-e0ca776cd174>, <urn:uuid:5babc8e4-5cbb-46ab-bbaf-f404ffcde1bc>, <urn:uuid:47de00e8-5039-4fd8-8f41-d8b9359cb21a>, <urn:uuid:c420d8b6-cf74-4b19-b2ec-97c1fc9db01f>, <urn:uuid:72e1354c-0d50-44ee-a182-5e91f6ebc3da>, <urn:uuid:954b7b9c-7b73-475f-93df-392484e39b91>, <urn:uuid:4b353f5e-26c9-4fa1-a1cc-af4a29975144>, <urn:uuid:0760581b-dc07-496f-b4f1-b3afe0fe0754>, <urn:uuid:30954b9b-87d6-4829-b88c-fb8b60d9a026>, <urn:uuid:2ce86f5f-1587-45b2-a4bc-2c597962d215>, <urn:uuid:5e0cdfca-5400-4afa-8696-9d2c41c194c3>, <urn:uuid:4241c8d4-5f77-4d9c-8b81-6d04bce7905e>, <urn:uuid:d85a7b00-f12a-43d2-bc52-f071fd069ec3>, <urn:uuid:112d3e85-666b-49c2-87dd-46da71395d51>, <urn:uuid:0ad85381-90c3-48eb-894a-1140f3086b83>, <urn:uuid:913fe1c5-e901-4f2d-9b09-4f493c04f33d>, <urn:uuid:cdd27d66-0ef6-45dd-a862-0053f305c895>, <urn:uuid:6e4347db-d1c7-4c62-a07d-576c7f491cfb>, <urn:uuid:867be968-3e06-43ce-b148-7328bb5f48b8>, <urn:uuid:8b187227-422b-4a0c-8e29-3d0f44d248e0>, <urn:uuid:5a899f17-cc8b-4906-a184-3ae395990df6>, <urn:uuid:432cab20-2f6e-4a2a-8e3d-7f4ee0fc507c>, <urn:uuid:46bc066c-17bd-4b2a-8991-09c1e86d3cc2>, <urn:uuid:7bfe5acc-e0ae-4340-9958-214c7cdfad94>, <urn:uuid:809ff88e-3158-434d-a020-cba3d36e589b>, <urn:uuid:0de2c958-9fc1-4296-b272-3fc9d44e4529>, <urn:uuid:fb58ac52-118d-4a56-bb21-87bb17b3ea96>, <urn:uuid:97dbf00b-61ab-4bdc-a2f0-5367849c354a>, <urn:uuid:f8907d64-a9ed-4fc7-866a-207e6b3be66a>, <urn:uuid:15d3057e-eb5b-480b-b8a9-25f3ea2bd539>, <urn:uuid:4a0cc1e6-47e8-4d3f-aca7-420179c6de45>, <urn:uuid:e592eee6-0cbc-4e15-95ee-50ed617a8314>, <urn:uuid:78511550-631e-427c-ac4a-f584c148662c>, <urn:uuid:0de32eb7-daab-4948-8006-ebbd771bfb43>, <urn:uuid:9a8e59a4-f0f2-45d1-80fd-fc7ed782c42b>, <urn:uuid:7051f00f-144f-4d5e-9c19-046d9a9ad5ec>, <urn:uuid:20d74f6e-269d-4756-9298-7a7a327ddc5e>, <urn:uuid:cd3aaf9a-6046-49f0-a48b-cdf421906a56>, <urn:uuid:bfcad7ed-6996-4174-b418-ff9445cacf65>, <urn:uuid:a7919c03-5902-4d96-9b1d-f9eadbc9d16a>, <urn:uuid:4109c2b1-a0b0-4c27-8f97-28c66c688897>, <urn:uuid:37f0e9ec-4a3f-4b74-aa50-3630ff7f7cb5>, <urn:uuid:3ab1a75b-2226-49a9-8108-fd579cd811c9>, <urn:uuid:82b666d9-b3a4-427c-a4e8-bf4f8d4e05c9>, <urn:uuid:5bcc17be-c7df-4a0b-8fdb-6b43c1898929>, <urn:uuid:15a89ea7-fe93-438c-b113-0d42280b13ee>, <urn:uuid:9ead0a18-b0a6-4b22-ae78-f0c2e0ae3adf>, <urn:uuid:47bad7b6-ea34-4775-a48b-8cb054f7b018>, <urn:uuid:76557370-eff4-4f3c-844c-bfb0dff8b0ad>, <urn:uuid:2a1a505e-959a-4fa0-b43e-d4db781a2ad9>, <urn:uuid:6c79d851-f993-4ff9-a01c-e5a4df376b30>, <urn:uuid:dc6f92ff-a76e-41fb-bc86-76bd113461df>, <urn:uuid:1aa69a8e-d8db-41d3-8213-17ce46e448ad>, <urn:uuid:c8deb46f-c54b-436d-ba4b-d5239ea190d2>, <urn:uuid:9c27661f-49e2-4d2e-8188-2fb71d68e2d0>, <urn:uuid:12db598f-8d23-46b6-9fd5-bf12e9cccd3d> .
+
+<urn:uuid:9c6eb227-1be6-4645-8dab-1392742ae922>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/1-8-luvsic-part-2-acoustica> ;
+    dcterms:title "Luv(sic) Hexalogy" ;
+    foaf:maker "Nujabes & Shing02" ;
+    mo:track <urn:uuid:4141ad90-02ef-418f-872c-44922f27cd97>, <urn:uuid:001cfabf-ce7c-4f1b-b666-8e0244341346>, <urn:uuid:4f801968-7849-4a3d-b794-9b5d9bb7217e>, <urn:uuid:52fda95e-709e-40a0-8df3-b95ef26fbfd1>, <urn:uuid:67ecc9f7-6d14-42fb-9882-639b3659aaf1>, <urn:uuid:b9a5acf2-6343-4bcb-99d5-763984ec553b>, <urn:uuid:f346c342-c6c2-44a1-963c-7d86948eaf99>, <urn:uuid:f1ea9861-6eae-4e1a-b849-31b4027bcda3>, <urn:uuid:c0d4e793-4990-4b4e-ac05-4bc004b4985b>, <urn:uuid:72431cdf-308d-4257-9363-dd543de57b37>, <urn:uuid:70147d70-ae23-4ce2-aa04-adc1aa1eb996>, <urn:uuid:3782ad01-f8ae-4c2d-857c-93b34f0e12ef>, <urn:uuid:83470ca0-37ff-418e-a0a6-336af8c7fa8a> .
+
+<urn:uuid:c1876dbf-a0aa-47cb-b6ce-6d7062bb447d>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/nujabes-spiritual-state-featuring-uyama-hiroto> ;
+    dcterms:title "Nujabes - Never ending" ;
+    foaf:maker <urn:uuid:a5f679b6-aef4-43d9-9ea5-57ca3758d0da> ;
+    mo:track <urn:uuid:37fa0673-0005-42b3-9848-dc14e144308f>, <urn:uuid:f2c732e6-2f71-4100-af73-322e20c024ad>, <urn:uuid:dc722694-a582-4db0-ad5c-eb0e6ac5e4da>, <urn:uuid:a3e24099-fa56-4ae2-ba08-723a302a7d1e>, <urn:uuid:78ed237c-ebca-4fec-bb47-080a9384b8e9>, <urn:uuid:8a16552f-ac6b-4aad-a8eb-ee8a8dde7c32>, <urn:uuid:acd81061-9fdd-45a4-8274-bd6e87224a09>, <urn:uuid:eacb9246-4cba-4755-bf67-0fd34e6fe18e>, <urn:uuid:fdb85145-b3eb-428f-ad9c-6c6cb9e3f250>, <urn:uuid:8599ae19-3cd8-4920-9701-608c5567a6c1>, <urn:uuid:16aa2e28-eee3-4b98-9d85-570c8bc298a0> .
+
+<urn:uuid:365f4c7f-0ffe-40ac-8c00-392075179474>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/Nujabes-perfect-circle-uio-loi-remix> ;
+    dcterms:title "Perfect Circle" ;
+    foaf:maker "Nujabes (feat. Shing02)" ;
+    mo:track <urn:uuid:d694da51-6ff9-4802-a89c-dcfc7b2c3fe1>, <urn:uuid:a4e6f78d-570b-438f-b6cc-81b025e761fe>, <urn:uuid:40b480cd-7a15-4879-9987-2cca0fc94a46>, <urn:uuid:ac6ed5eb-987f-4176-b5dc-c61c18f3cb37> .
+
+<urn:uuid:06d23607-eca6-4974-8ac4-1ede6e289fe0>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/nujabes-metaphorical-music> ;
+    dcterms:title "Metaphorical Music" ;
+    foaf:maker <urn:uuid:a5f679b6-aef4-43d9-9ea5-57ca3758d0da> ;
+    mo:track <urn:uuid:b3ea22db-71b4-40db-a267-5973a5ed8086>, <urn:uuid:acedf2df-8efc-432d-815b-ca6620062e62>, <urn:uuid:8f2f68bb-f48d-4969-b564-bfbf802a4897>, <urn:uuid:41fcc068-8597-415a-92c5-e2b726f4ca32>, <urn:uuid:92db34bd-e845-4f4f-9040-bf798dce1053>, <urn:uuid:598fdf4b-5b53-4475-8c47-494ae9c7795a>, <urn:uuid:fb74b028-5962-44d8-ab14-27fe4232bdc9>, <urn:uuid:88ef5e76-c7ca-490e-83c9-61512fba66c3>, <urn:uuid:7b2a1db7-1e43-4773-ac62-ed2de2778650>, <urn:uuid:94a11c0c-d2aa-4ba2-b877-b44eca6107ad>, <urn:uuid:266dc9fe-ed38-4a00-9f36-86c852e28bcc>, <urn:uuid:aa99531d-ec05-41fe-b198-e6b54bb35de1>, <urn:uuid:536e9f48-3ee3-4901-a2eb-b9ac1cef5dbc>, <urn:uuid:ca2ea660-c918-4ef5-8d13-9730346d7e73>, <urn:uuid:8508db8a-168c-478f-86f5-ee307e1a5779> .
+
+<urn:uuid:90d460f6-684c-4217-9efb-a812fcb25768>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/homeward-journey> ;
+    dcterms:title "Nujabes & Uyama Hiroto - Homeward Journey" ;
+    foaf:maker "Uyama Hiroto" ;
+    mo:track <urn:uuid:bbe92d20-c028-4899-a777-ed9dc855c396>, <urn:uuid:08911b63-3af5-429c-b1d9-46f53affb3fd>, <urn:uuid:2c218064-76ce-44ca-a83a-93a8a4ac6bb8> .
+
+<urn:uuid:b22d9461-e7af-4e59-b39b-488c82a58da3>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/samurai-champloo-music-record-flac> ;
+    dcterms:title "Samurai Champloo Music Record: Departure, Impression, Katana, Masta, Playlist (2004) [FLAC 16-44.1]" ;
+    foaf:maker <urn:uuid:a5f679b6-aef4-43d9-9ea5-57ca3758d0da> ;
+    mo:track <urn:uuid:06924a29-ecc4-48d4-b620-9b66a6e54443>, <urn:uuid:0007ac33-a4ff-4f1e-a5b4-9aa38be68386>, <urn:uuid:fdc7cc7f-41cd-46ba-a624-95f05916205d>, <urn:uuid:58e78470-9ea1-4f07-9042-1b50f0174551>, <urn:uuid:52ffb0cb-c462-4555-acb4-78f4c91ebd17>, <urn:uuid:97c5dad8-26e6-496c-9239-3a803759ca88>, <urn:uuid:300c8a7f-27fb-49e5-938d-aa286cba1808>, <urn:uuid:0379152f-94b9-41e6-ae06-ebb88d4a9e8f>, <urn:uuid:345c1257-f418-474d-a758-32e9255fb337>, <urn:uuid:979886d0-d45e-4622-85a2-e0ca776cd174>, <urn:uuid:5babc8e4-5cbb-46ab-bbaf-f404ffcde1bc>, <urn:uuid:47de00e8-5039-4fd8-8f41-d8b9359cb21a>, <urn:uuid:c420d8b6-cf74-4b19-b2ec-97c1fc9db01f>, <urn:uuid:72e1354c-0d50-44ee-a182-5e91f6ebc3da>, <urn:uuid:954b7b9c-7b73-475f-93df-392484e39b91>, <urn:uuid:4b353f5e-26c9-4fa1-a1cc-af4a29975144>, <urn:uuid:0760581b-dc07-496f-b4f1-b3afe0fe0754>, <urn:uuid:30954b9b-87d6-4829-b88c-fb8b60d9a026>, <urn:uuid:5e0cdfca-5400-4afa-8696-9d2c41c194c3>, <urn:uuid:4241c8d4-5f77-4d9c-8b81-6d04bce7905e>, <urn:uuid:d85a7b00-f12a-43d2-bc52-f071fd069ec3>, <urn:uuid:112d3e85-666b-49c2-87dd-46da71395d51>, <urn:uuid:0ad85381-90c3-48eb-894a-1140f3086b83>, <urn:uuid:913fe1c5-e901-4f2d-9b09-4f493c04f33d>, <urn:uuid:cdd27d66-0ef6-45dd-a862-0053f305c895>, <urn:uuid:6e4347db-d1c7-4c62-a07d-576c7f491cfb>, <urn:uuid:867be968-3e06-43ce-b148-7328bb5f48b8>, <urn:uuid:8b187227-422b-4a0c-8e29-3d0f44d248e0>, <urn:uuid:5a899f17-cc8b-4906-a184-3ae395990df6>, <urn:uuid:432cab20-2f6e-4a2a-8e3d-7f4ee0fc507c>, <urn:uuid:46bc066c-17bd-4b2a-8991-09c1e86d3cc2>, <urn:uuid:7bfe5acc-e0ae-4340-9958-214c7cdfad94>, <urn:uuid:809ff88e-3158-434d-a020-cba3d36e589b>, <urn:uuid:0de2c958-9fc1-4296-b272-3fc9d44e4529>, <urn:uuid:fb58ac52-118d-4a56-bb21-87bb17b3ea96>, <urn:uuid:97dbf00b-61ab-4bdc-a2f0-5367849c354a>, <urn:uuid:f8907d64-a9ed-4fc7-866a-207e6b3be66a>, <urn:uuid:15d3057e-eb5b-480b-b8a9-25f3ea2bd539>, <urn:uuid:4a0cc1e6-47e8-4d3f-aca7-420179c6de45>, <urn:uuid:e592eee6-0cbc-4e15-95ee-50ed617a8314>, <urn:uuid:78511550-631e-427c-ac4a-f584c148662c>, <urn:uuid:0de32eb7-daab-4948-8006-ebbd771bfb43>, <urn:uuid:9a8e59a4-f0f2-45d1-80fd-fc7ed782c42b>, <urn:uuid:7051f00f-144f-4d5e-9c19-046d9a9ad5ec>, <urn:uuid:20d74f6e-269d-4756-9298-7a7a327ddc5e>, <urn:uuid:cd3aaf9a-6046-49f0-a48b-cdf421906a56>, <urn:uuid:bfcad7ed-6996-4174-b418-ff9445cacf65>, <urn:uuid:a7919c03-5902-4d96-9b1d-f9eadbc9d16a>, <urn:uuid:4109c2b1-a0b0-4c27-8f97-28c66c688897>, <urn:uuid:37f0e9ec-4a3f-4b74-aa50-3630ff7f7cb5>, <urn:uuid:3ab1a75b-2226-49a9-8108-fd579cd811c9>, <urn:uuid:82b666d9-b3a4-427c-a4e8-bf4f8d4e05c9>, <urn:uuid:5bcc17be-c7df-4a0b-8fdb-6b43c1898929>, <urn:uuid:15a89ea7-fe93-438c-b113-0d42280b13ee>, <urn:uuid:9ead0a18-b0a6-4b22-ae78-f0c2e0ae3adf>, <urn:uuid:47bad7b6-ea34-4775-a48b-8cb054f7b018>, <urn:uuid:76557370-eff4-4f3c-844c-bfb0dff8b0ad>, <urn:uuid:2a1a505e-959a-4fa0-b43e-d4db781a2ad9>, <urn:uuid:6c79d851-f993-4ff9-a01c-e5a4df376b30>, <urn:uuid:dc6f92ff-a76e-41fb-bc86-76bd113461df>, <urn:uuid:1aa69a8e-d8db-41d3-8213-17ce46e448ad>, <urn:uuid:c8deb46f-c54b-436d-ba4b-d5239ea190d2>, <urn:uuid:9c27661f-49e2-4d2e-8188-2fb71d68e2d0>, <urn:uuid:12db598f-8d23-46b6-9fd5-bf12e9cccd3d> .
+
+<urn:uuid:5f744ab7-9146-4595-a4c1-6230cd102bb0>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/samurai-champloo-ost-3-impression> ;
+    dcterms:title "Samurai Champloo OST 3: Impression" ;
+    foaf:maker "Force of Nature, Nujabes, & Fat Jon/Force of Nature - Nujabes/Fat Jon" ;
+    mo:track <urn:uuid:2ce86f5f-1587-45b2-a4bc-2c597962d215> .
+
+<urn:uuid:4141ad90-02ef-418f-872c-44922f27cd97>
+    a mo:Track ;
+    dcterms:title "Perfect Circle" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F1-13%20Perfect%20Circle.mp3> ;
+    mo:duration "240" .
+
+<urn:uuid:001cfabf-ce7c-4f1b-b666-8e0244341346>
+    a mo:Track ;
+    dcterms:title "Luv(sic) Grand Finale" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F1-6%20Luv(sic)%20Grand%20Finale.mp3> ;
+    mo:duration "310" .
+
+<urn:uuid:4f801968-7849-4a3d-b794-9b5d9bb7217e>
+    a mo:Track ;
+    dcterms:title "Luv(sic) Part 2 (Acoustica)" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F1-8%20Luv(sic)%20Part%202%20Acoustica.mp3> ;
+    mo:duration "390" .
+
+<urn:uuid:52fda95e-709e-40a0-8df3-b95ef26fbfd1>
+    a mo:Track ;
+    dcterms:title "Luv(sic) pt1 Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-1%20Luv(sic)%20Instrumental.mp3> ;
+    mo:duration "286" .
+
+<urn:uuid:67ecc9f7-6d14-42fb-9882-639b3659aaf1>
+    a mo:Track ;
+    dcterms:title "Luv(sic) pt4 (LASTorder Remix) Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-10%20Luv(sic)%20pt4%20LASTorder%20Remix%20Instrumental.mp3> ;
+    mo:duration "278" .
+
+<urn:uuid:b9a5acf2-6343-4bcb-99d5-763984ec553b>
+    a mo:Track ;
+    dcterms:title "Luv(sic) pt5 (Jumpster Remix) Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-11%20Luv(sic)%20pt5%20Jumpster%20Remix%20Instrumental.mp3> ;
+    mo:duration "279" .
+
+<urn:uuid:f346c342-c6c2-44a1-963c-7d86948eaf99>
+    a mo:Track ;
+    dcterms:title "Luv(sic) pt6 (Uyama Hiroto Remix) Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-12%20Luv(sic)%20pt6%20Uyama%20Hiroto%20Remix%20Instrumental.mp3> ;
+    mo:duration "278" .
+
+<urn:uuid:f1ea9861-6eae-4e1a-b849-31b4027bcda3>
+    a mo:Track ;
+    dcterms:title "Perfect Circle Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-13%20Perfect%20Circle%20Instrumental.mp3> ;
+    mo:duration "240" .
+
+<urn:uuid:c0d4e793-4990-4b4e-ac05-4bc004b4985b>
+    a mo:Track ;
+    dcterms:title "Luv(sic) pt2 Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-2%20Luv(sic)%20pt2%20Instrumental.mp3> ;
+    mo:duration "273" .
+
+<urn:uuid:72431cdf-308d-4257-9363-dd543de57b37>
+    a mo:Track ;
+    dcterms:title "Luv(sic) pt3 Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-3%20Luv(sic.)%20pt%203%20Instrumental.mp3> ;
+    mo:duration "374" .
+
+<urn:uuid:70147d70-ae23-4ce2-aa04-adc1aa1eb996>
+    a mo:Track ;
+    dcterms:title "Luv(sic) pt4 Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-4%20Luv(sic)%20pt4%20Instrumental.mp3> ;
+    mo:duration "310" .
+
+<urn:uuid:3782ad01-f8ae-4c2d-857c-93b34f0e12ef>
+    a mo:Track ;
+    dcterms:title "Luv(sic) pt5 Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-5%20Luv(sic)%20pt5%20Instrumental.mp3> ;
+    mo:duration "349" .
+
+<urn:uuid:83470ca0-37ff-418e-a0a6-336af8c7fa8a>
+    a mo:Track ;
+    dcterms:title "Luv(sic) pt3 (Ta-ku Remix) Instrumental" ;
+    dcat:downloadUrl <https://archive.org/download/1-8-luvsic-part-2-acoustica/Nujabes%20%26%20Shing02%2F2-9%20Luv(sic)%20pt3%20Ta-ku%20Remix%20Instrumental.mp3> ;
+    mo:duration "296" .
+
+<urn:uuid:37fa0673-0005-42b3-9848-dc14e144308f>
+    a mo:Track ;
+    dcterms:title "Aruarian Dance" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2FAruarian%20Dance.mp3> ;
+    mo:duration "249" .
+
+<urn:uuid:f2c732e6-2f71-4100-af73-322e20c024ad>
+    a mo:Track ;
+    dcterms:title "Another Reflection" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-another-reflection.mp3> ;
+    mo:duration "224" .
+
+<urn:uuid:dc722694-a582-4db0-ad5c-eb0e6ac5e4da>
+    a mo:Track ;
+    dcterms:title "Far Fowls" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-far-fowls.mp3> ;
+    mo:duration "264" .
+
+<urn:uuid:a3e24099-fa56-4ae2-ba08-723a302a7d1e>
+    a mo:Track ;
+    dcterms:title "Lady Brown [Feat. Cise Starr from CYNE]" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-lady-brown-feat-cise-starr-from-cyne.mp3> ;
+    mo:duration "198" .
+
+<urn:uuid:78ed237c-ebca-4fec-bb47-080a9384b8e9>
+    a mo:Track ;
+    dcterms:title "Luv (Sic) (Modal Soul remix) (feat Shing02)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-luv-sic-modal-soul-remix-feat-shing02.mp3> ;
+    mo:duration "288" .
+
+<urn:uuid:8a16552f-ac6b-4aad-a8eb-ee8a8dde7c32>
+    a mo:Track ;
+    dcterms:title "Mystline" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-mystline.mp3> ;
+    mo:duration "290" .
+
+<urn:uuid:acd81061-9fdd-45a4-8274-bd6e87224a09>
+    a mo:Track ;
+    dcterms:title "Prayer" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-prayer.mp3> ;
+    mo:duration "209" .
+
+<urn:uuid:eacb9246-4cba-4755-bf67-0fd34e6fe18e>
+    a mo:Track ;
+    dcterms:title "Spiral" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-spiral.mp3> ;
+    mo:duration "220" .
+
+<urn:uuid:fdb85145-b3eb-428f-ad9c-6c6cb9e3f250>
+    a mo:Track ;
+    dcterms:title "Spiritual State (featuring Uya" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-spiritual-state-featuring-uyama-hiroto.mp3> ;
+    mo:duration "391" .
+
+<urn:uuid:8599ae19-3cd8-4920-9701-608c5567a6c1>
+    a mo:Track ;
+    dcterms:title "Windspeaks (feat Uyama Hiroto)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-windspeaks-feat-uyama-hiroto.mp3> ;
+    mo:duration "269" .
+
+<urn:uuid:16aa2e28-eee3-4b98-9d85-570c8bc298a0>
+    a mo:Track ;
+    dcterms:title "With Rainy Eyes (feat Emancipator)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-spiritual-state-featuring-uyama-hiroto/Never%20ending%2Fnujabes-with-rainy-eyes-feat-emancipator.mp3> ;
+    mo:duration "299" .
+
+<urn:uuid:d694da51-6ff9-4802-a89c-dcfc7b2c3fe1>
+    a mo:Track ;
+    dcterms:title "Perfect Circle (Vocal)" ;
+    dcat:downloadUrl <https://archive.org/download/Nujabes-perfect-circle-uio-loi-remix/Perfect%20Circle%2FPerfect%20Circle%2F01%20Perfect%20Circle%20(Vocal).mp3> ;
+    mo:duration "237" .
+
+<urn:uuid:a4e6f78d-570b-438f-b6cc-81b025e761fe>
+    a mo:Track ;
+    dcterms:title "Perfect Circle (Instrumental)" ;
+    dcat:downloadUrl <https://archive.org/download/Nujabes-perfect-circle-uio-loi-remix/Perfect%20Circle%2FPerfect%20Circle%2F02%20Perfect%20Circle%20(Instrumental).mp3> ;
+    mo:duration "236" .
+
+<urn:uuid:40b480cd-7a15-4879-9987-2cca0fc94a46>
+    a mo:Track ;
+    dcterms:title "Perfect Circle (Uio Loi Remix)" ;
+    dcat:downloadUrl <https://archive.org/download/Nujabes-perfect-circle-uio-loi-remix/Perfect%20Circle%2FPerfect%20Circle%2F03%20Perfect%20Circle%20(Uio%20Loi%20Remix).mp3> ;
+    mo:duration "252" .
+
+<urn:uuid:ac6ed5eb-987f-4176-b5dc-c61c18f3cb37>
+    a mo:Track ;
+    dcterms:title "Perfect Circle (Uio Loi Remix Instrumental)" ;
+    dcat:downloadUrl <https://archive.org/download/Nujabes-perfect-circle-uio-loi-remix/Perfect%20Circle%2FPerfect%20Circle%2F04%20Perfect%20Circle%20(Uio%20Loi%20Remix%20Instrumental).mp3> ;
+    mo:duration "251" .
+
+<urn:uuid:b3ea22db-71b4-40db-a267-5973a5ed8086>
+    a mo:Track ;
+    dcterms:title "Blessing It (Feat. Substantial & Pase Rock)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/1%20Blessing%20It.mp3> ;
+    mo:duration "203" .
+
+<urn:uuid:acedf2df-8efc-432d-815b-ca6620062e62>
+    a mo:Track ;
+    dcterms:title "Next View (Feat. Uyama Hiroto)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/10%20Next%20View.mp3> ;
+    mo:duration "275" .
+
+<urn:uuid:8f2f68bb-f48d-4969-b564-bfbf802a4897>
+    a mo:Track ;
+    dcterms:title "Latitude - Remix (Feat. Five Deez)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/11%20Latitude%20-%20Remix.mp3> ;
+    mo:duration "236" .
+
+<urn:uuid:41fcc068-8597-415a-92c5-e2b726f4ca32>
+    a mo:Track ;
+    dcterms:title "F.I.L.O. (Feat. Shing02)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/12%20F.I.L.O..mp3> ;
+    mo:duration "211" .
+
+<urn:uuid:92db34bd-e845-4f4f-9040-bf798dce1053>
+    a mo:Track ;
+    dcterms:title "Summer Gypsy" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/13%20Summer%20Gypsy.mp3> ;
+    mo:duration "259" .
+
+<urn:uuid:598fdf4b-5b53-4475-8c47-494ae9c7795a>
+    a mo:Track ;
+    dcterms:title "The Final View" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/14%20The%20Final%20View.mp3> ;
+    mo:duration "214" .
+
+<urn:uuid:fb74b028-5962-44d8-ab14-27fe4232bdc9>
+    a mo:Track ;
+    dcterms:title "Peaceland" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/15%20Peaceland.mp3> ;
+    mo:duration "499" .
+
+<urn:uuid:88ef5e76-c7ca-490e-83c9-61512fba66c3>
+    a mo:Track ;
+    dcterms:title "Horn in the Middle" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/2%20Horn%20in%20the%20Middle.mp3> ;
+    mo:duration "248" .
+
+<urn:uuid:7b2a1db7-1e43-4773-ac62-ed2de2778650>
+    a mo:Track ;
+    dcterms:title "Lady Brown (Feat. Cise Starr)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/3%20Lady%20Brown.mp3> ;
+    mo:duration "199" .
+
+<urn:uuid:94a11c0c-d2aa-4ba2-b877-b44eca6107ad>
+    a mo:Track ;
+    dcterms:title "Kunomi" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/4%20Kunomi.mp3> ;
+    mo:duration "286" .
+
+<urn:uuid:266dc9fe-ed38-4a00-9f36-86c852e28bcc>
+    a mo:Track ;
+    dcterms:title "Highs 2 Lows (Feat. Cise Starr)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/5%20Highs%202%20Lows.mp3> ;
+    mo:duration "277" .
+
+<urn:uuid:aa99531d-ec05-41fe-b198-e6b54bb35de1>
+    a mo:Track ;
+    dcterms:title "Beat Laments the World" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/6%20Beat%20Laments%20the%20World.mp3> ;
+    mo:duration "263" .
+
+<urn:uuid:536e9f48-3ee3-4901-a2eb-b9ac1cef5dbc>
+    a mo:Track ;
+    dcterms:title "Letter from Yokosuka" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/7%20Letter%20from%20Yokosuka.mp3> ;
+    mo:duration "189" .
+
+<urn:uuid:ca2ea660-c918-4ef5-8d13-9730346d7e73>
+    a mo:Track ;
+    dcterms:title "Think Different (Feat. Substantial)" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/8%20Think%20Different.mp3> ;
+    mo:duration "197" .
+
+<urn:uuid:8508db8a-168c-478f-86f5-ee307e1a5779>
+    a mo:Track ;
+    dcterms:title "A Day by Atmosphere Supreme" ;
+    dcat:downloadUrl <https://archive.org/download/nujabes-metaphorical-music/9%20A%20Day%20by%20Atmosphere%20Supreme.mp3> ;
+    mo:duration "240" .
+
+<urn:uuid:bbe92d20-c028-4899-a777-ed9dc855c396>
+    a mo:Track ;
+    dcterms:title "Homeward Journey (House Edit)" ;
+    dcat:downloadUrl <https://archive.org/download/homeward-journey/01%20Homeward%20Journey%20(House%20Edit).mp3> ;
+    mo:duration "386" .
+
+<urn:uuid:08911b63-3af5-429c-b1d9-46f53affb3fd>
+    a mo:Track ;
+    dcterms:title "Homeward Journey (Original)" ;
+    dcat:downloadUrl <https://archive.org/download/homeward-journey/02%20Homeward%20Journey%20(Original).mp3> ;
+    mo:duration "325" .
+
+<urn:uuid:2c218064-76ce-44ca-a83a-93a8a4ac6bb8>
+    a mo:Track ;
+    dcterms:title "Homeward Journey (Nujabes Edit)" ;
+    dcat:downloadUrl <https://archive.org/download/homeward-journey/03%20Homeward%20Journey%20(Nujabes%20Edit).mp3> ;
+    mo:duration "376" .
+
+<urn:uuid:06924a29-ecc4-48d4-b620-9b66a6e54443>
+    a mo:Track ;
+    dcterms:title "1st. samurai" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F06.%201st.%20samurai.mp3> ;
+    mo:duration "188" .
+
+<urn:uuid:0007ac33-a4ff-4f1e-a5b4-9aa38be68386>
+    a mo:Track ;
+    dcterms:title "2 messages" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F15_2%20messages.mp3> ;
+    mo:duration "323" .
+
+<urn:uuid:fdc7cc7f-41cd-46ba-a624-95f05916205d>
+    a mo:Track ;
+    dcterms:title "624 part2" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F08.%20624%20part2.mp3> ;
+    mo:duration "225" .
+
+<urn:uuid:58e78470-9ea1-4f07-9042-1b50f0174551>
+    a mo:Track ;
+    dcterms:title "absolute" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F07_absolute.mp3> ;
+    mo:duration "320" .
+
+<urn:uuid:52ffb0cb-c462-4555-acb4-78f4c91ebd17>
+    a mo:Track ;
+    dcterms:title "adapt myself" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F08_adapt%20myself.mp3> ;
+    mo:duration "298" .
+
+<urn:uuid:97c5dad8-26e6-496c-9239-3a803759ca88>
+    a mo:Track ;
+    dcterms:title "aruarian dance" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F03.%20aruarian%20dance.mp3> ;
+    mo:duration "248" .
+
+<urn:uuid:300c8a7f-27fb-49e5-938d-aa286cba1808>
+    a mo:Track ;
+    dcterms:title "ask" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F14.%20ask.mp3> ;
+    mo:duration "200" .
+
+<urn:uuid:0379152f-94b9-41e6-ae06-ebb88d4a9e8f>
+    a mo:Track ;
+    dcterms:title "battlecry / Nujabes feat. Shing02" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F01.%20battlecry%20-%20Nujabes%20feat.%20Shing02.mp3> ;
+    mo:duration "200" .
+
+<urn:uuid:345c1257-f418-474d-a758-32e9255fb337>
+    a mo:Track ;
+    dcterms:title "bracelet" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F17%20bracelet.mp3> ;
+    mo:duration "221" .
+
+<urn:uuid:979886d0-d45e-4622-85a2-e0ca776cd174>
+    a mo:Track ;
+    dcterms:title "breeezin'" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F12.%20breeezin'.mp3> ;
+    mo:duration "260" .
+
+<urn:uuid:5babc8e4-5cbb-46ab-bbaf-f404ffcde1bc>
+    a mo:Track ;
+    dcterms:title "chambers" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F13.%20chambers.mp3> ;
+    mo:duration "223" .
+
+<urn:uuid:47de00e8-5039-4fd8-8f41-d8b9359cb21a>
+    a mo:Track ;
+    dcterms:title "deeper than words" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F14_deeper%20than%20words.mp3> ;
+    mo:duration "299" .
+
+<urn:uuid:c420d8b6-cf74-4b19-b2ec-97c1fc9db01f>
+    a mo:Track ;
+    dcterms:title "dry" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F05-dry.mp3> ;
+    mo:duration "261" .
+
+<urn:uuid:72e1354c-0d50-44ee-a182-5e91f6ebc3da>
+    a mo:Track ;
+    dcterms:title "FLY feat.AZUMA RIKI (SMALL CIRCLE OF FRIENDS)" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F18_FLY%20feat.AZUMA%20RIKI%20(SMALL%20CIRCLE%20OF%20FRIENDS).mp3> ;
+    mo:duration "234" .
+
+<urn:uuid:954b7b9c-7b73-475f-93df-392484e39b91>
+    a mo:Track ;
+    dcterms:title "funkin" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F11.%20funkin.mp3> ;
+    mo:duration "215" .
+
+<urn:uuid:4b353f5e-26c9-4fa1-a1cc-af4a29975144>
+    a mo:Track ;
+    dcterms:title "genome" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F09.%20genome.mp3> ;
+    mo:duration "215" .
+
+<urn:uuid:0760581b-dc07-496f-b4f1-b3afe0fe0754>
+    a mo:Track ;
+    dcterms:title "genome" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F04-genome.mp3> ;
+    mo:duration "216" .
+
+<urn:uuid:30954b9b-87d6-4829-b88c-fb8b60d9a026>
+    a mo:Track ;
+    dcterms:title "here and there" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F22%20here%20and%20there.mp3> ;
+    mo:duration "194" .
+
+<urn:uuid:2ce86f5f-1587-45b2-a4bc-2c597962d215>
+    a mo:Track ;
+    dcterms:title "Hiji Suru Style" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-ost-3-impression/03%20Hiji%20Zuru%20Style.mp3> ;
+    mo:duration "223" .
+
+<urn:uuid:5e0cdfca-5400-4afa-8696-9d2c41c194c3>
+    a mo:Track ;
+    dcterms:title "how you feel" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F15.%20how%20you%20feel.mp3> ;
+    mo:duration "267" .
+
+<urn:uuid:4241c8d4-5f77-4d9c-8b81-6d04bce7905e>
+    a mo:Track ;
+    dcterms:title "I sighed" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F16.%20I%20sighed.mp3> ;
+    mo:duration "224" .
+
+<urn:uuid:d85a7b00-f12a-43d2-bc52-f071fd069ec3>
+    a mo:Track ;
+    dcterms:title "in position" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F18%20in%20position.mp3> ;
+    mo:duration "233" .
+
+<urn:uuid:112d3e85-666b-49c2-87dd-46da71395d51>
+    a mo:Track ;
+    dcterms:title "judgment on" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F03.%20judgment%20on.mp3> ;
+    mo:duration "182" .
+
+<urn:uuid:0ad85381-90c3-48eb-894a-1140f3086b83>
+    a mo:Track ;
+    dcterms:title "just forget" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F01%20just%20forget.mp3> ;
+    mo:duration "234" .
+
+<urn:uuid:913fe1c5-e901-4f2d-9b09-4f493c04f33d>
+    a mo:Track ;
+    dcterms:title "kujaku" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F04.%20kujaku.mp3> ;
+    mo:duration "419" .
+
+<urn:uuid:cdd27d66-0ef6-45dd-a862-0053f305c895>
+    a mo:Track ;
+    dcterms:title "let me know what U think" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F04_let%20me%20know%20what%20U%20think.mp3> ;
+    mo:duration "304" .
+
+<urn:uuid:6e4347db-d1c7-4c62-a07d-576c7f491cfb>
+    a mo:Track ;
+    dcterms:title "loading zone" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F04.%20loading%20zone.mp3> ;
+    mo:duration "269" .
+
+<urn:uuid:867be968-3e06-43ce-b148-7328bb5f48b8>
+    a mo:Track ;
+    dcterms:title "mist" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F02.%20mist.mp3> ;
+    mo:duration "224" .
+
+<urn:uuid:8b187227-422b-4a0c-8e29-3d0f44d248e0>
+    a mo:Track ;
+    dcterms:title "mists" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F05_mists.mp3> ;
+    mo:duration "251" .
+
+<urn:uuid:5a899f17-cc8b-4906-a184-3ae395990df6>
+    a mo:Track ;
+    dcterms:title "mystline" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F05.%20mystline.mp3> ;
+    mo:duration "287" .
+
+<urn:uuid:432cab20-2f6e-4a2a-8e3d-7f4ee0fc507c>
+    a mo:Track ;
+    dcterms:title "new dimension" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F09.%20new%20dimension.mp3> ;
+    mo:duration "194" .
+
+<urn:uuid:46bc066c-17bd-4b2a-8991-09c1e86d3cc2>
+    a mo:Track ;
+    dcterms:title "nightshift" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F02%20nightshift.mp3> ;
+    mo:duration "283" .
+
+<urn:uuid:7bfe5acc-e0ae-4340-9958-214c7cdfad94>
+    a mo:Track ;
+    dcterms:title "no icon" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F10_no%20icon.mp3> ;
+    mo:duration "189" .
+
+<urn:uuid:809ff88e-3158-434d-a020-cba3d36e589b>
+    a mo:Track ;
+    dcterms:title "no way back" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F10.%20no%20way%20back.mp3> ;
+    mo:duration "200" .
+
+<urn:uuid:0de2c958-9fc1-4296-b272-3fc9d44e4529>
+    a mo:Track ;
+    dcterms:title "numbernine [back in TYO]" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F18.%20numbernine%20%5Bback%20in%20TYO%5D.mp3> ;
+    mo:duration "205" .
+
+<urn:uuid:fb58ac52-118d-4a56-bb21-87bb17b3ea96>
+    a mo:Track ;
+    dcterms:title "offers" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F17_offers.mp3> ;
+    mo:duration "216" .
+
+<urn:uuid:97dbf00b-61ab-4bdc-a2f0-5367849c354a>
+    a mo:Track ;
+    dcterms:title "ole" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F07.%20ole.mp3> ;
+    mo:duration "208" .
+
+<urn:uuid:f8907d64-a9ed-4fc7-866a-207e6b3be66a>
+    a mo:Track ;
+    dcterms:title "ole" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F02-ole.mp3> ;
+    mo:duration "208" .
+
+<urn:uuid:15d3057e-eb5b-480b-b8a9-25f3ea2bd539>
+    a mo:Track ;
+    dcterms:title "paranoid" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F05.%20paranoid.mp3> ;
+    mo:duration "200" .
+
+<urn:uuid:4a0cc1e6-47e8-4d3f-aca7-420179c6de45>
+    a mo:Track ;
+    dcterms:title "pretending to..." ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F11-pretending%20to....mp3> ;
+    mo:duration "273" .
+
+<urn:uuid:e592eee6-0cbc-4e15-95ee-50ed617a8314>
+    a mo:Track ;
+    dcterms:title "process" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F12_process.mp3> ;
+    mo:duration "281" .
+
+<urn:uuid:78511550-631e-427c-ac4a-f584c148662c>
+    a mo:Track ;
+    dcterms:title "raw material" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F03-raw%20material.mp3> ;
+    mo:duration "294" .
+
+<urn:uuid:0de32eb7-daab-4948-8006-ebbd771bfb43>
+    a mo:Track ;
+    dcterms:title "reflective" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F13_reflective.mp3> ;
+    mo:duration "271" .
+
+<urn:uuid:9a8e59a4-f0f2-45d1-80fd-fc7ed782c42b>
+    a mo:Track ;
+    dcterms:title "sanctuary ship" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F09%20sanctuary%20ship.mp3> ;
+    mo:duration "255" .
+
+<urn:uuid:7051f00f-144f-4d5e-9c19-046d9a9ad5ec>
+    a mo:Track ;
+    dcterms:title "seventythree" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F15.%20seventythree.mp3> ;
+    mo:duration "288" .
+
+<urn:uuid:20d74f6e-269d-4756-9298-7a7a327ddc5e>
+    a mo:Track ;
+    dcterms:title "shiki no uta (song of the seasons)/MINMI" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F17-shiki%20no%20uta%20(song%20of%20the%20seasons)-MINMI.mp3> ;
+    mo:duration "302" .
+
+<urn:uuid:cd3aaf9a-6046-49f0-a48b-cdf421906a56>
+    a mo:Track ;
+    dcterms:title "silver children" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F06.%20silver%20children.mp3> ;
+    mo:duration "236" .
+
+<urn:uuid:bfcad7ed-6996-4174-b418-ff9445cacf65>
+    a mo:Track ;
+    dcterms:title "silver morning" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F15-silver%20morning.mp3> ;
+    mo:duration "216" .
+
+<urn:uuid:a7919c03-5902-4d96-9b1d-f9eadbc9d16a>
+    a mo:Track ;
+    dcterms:title "sincerely" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FMasta%2F17.%20sincerely.mp3> ;
+    mo:duration "287" .
+
+<urn:uuid:4109c2b1-a0b0-4c27-8f97-28c66c688897>
+    a mo:Track ;
+    dcterms:title "sneak chamber" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F08-sneak%20chamber.mp3> ;
+    mo:duration "195" .
+
+<urn:uuid:37f0e9ec-4a3f-4b74-aa50-3630ff7f7cb5>
+    a mo:Track ;
+    dcterms:title "Song of the Seasons / MINMI" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F17.%20Song%20of%20the%20Seasons%20-%20MINMI.mp3> ;
+    mo:duration "300" .
+
+<urn:uuid:3ab1a75b-2226-49a9-8108-fd579cd811c9>
+    a mo:Track ;
+    dcterms:title "stay" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F12.%20stay.mp3> ;
+    mo:duration "222" .
+
+<urn:uuid:82b666d9-b3a4-427c-a4e8-bf4f8d4e05c9>
+    a mo:Track ;
+    dcterms:title "stretch out" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F11_stretch%20out.mp3> ;
+    mo:duration "241" .
+
+<urn:uuid:5bcc17be-c7df-4a0b-8fdb-6b43c1898929>
+    a mo:Track ;
+    dcterms:title "strike back" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F03_strike%20back.mp3> ;
+    mo:duration "254" .
+
+<urn:uuid:15a89ea7-fe93-438c-b113-0d42280b13ee>
+    a mo:Track ;
+    dcterms:title "STYLE of the Rising Sun" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F03%20STYLE%20of%20the%20Rising%20Sun.mp3> ;
+    mo:duration "222" .
+
+<urn:uuid:9ead0a18-b0a6-4b22-ae78-f0c2e0ae3adf>
+    a mo:Track ;
+    dcterms:title "thank you" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F01_thank%20you.mp3> ;
+    mo:duration "255" .
+
+<urn:uuid:47bad7b6-ea34-4775-a48b-8cb054f7b018>
+    a mo:Track ;
+    dcterms:title "the space between two world" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FDeparture%2F02.%20the%20space%20between%20two%20world.mp3> ;
+    mo:duration "279" .
+
+<urn:uuid:76557370-eff4-4f3c-844c-bfb0dff8b0ad>
+    a mo:Track ;
+    dcterms:title "the updater" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F16_the%20updater.mp3> ;
+    mo:duration "238" .
+
+<urn:uuid:2a1a505e-959a-4fa0-b43e-d4db781a2ad9>
+    a mo:Track ;
+    dcterms:title "tsurugi no mai" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F11%20tsurugi%20no%20mai.mp3> ;
+    mo:duration "205" .
+
+<urn:uuid:6c79d851-f993-4ff9-a01c-e5a4df376b30>
+    a mo:Track ;
+    dcterms:title "tubed (drum please!!!)" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F10-tubed%20(drum%20please!!!).mp3> ;
+    mo:duration "272" .
+
+<urn:uuid:dc6f92ff-a76e-41fb-bc86-76bd113461df>
+    a mo:Track ;
+    dcterms:title "vagrancy" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F07-vagrancy.mp3> ;
+    mo:duration "190" .
+
+<urn:uuid:1aa69a8e-d8db-41d3-8213-17ce46e448ad>
+    a mo:Track ;
+    dcterms:title "Who's Theme" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F23%20Who's%20Theme.mp3> ;
+    mo:duration "298" .
+
+<urn:uuid:c8deb46f-c54b-436d-ba4b-d5239ea190d2>
+    a mo:Track ;
+    dcterms:title "world without words" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FImpression%2F14%20world%20without%20words.mp3> ;
+    mo:duration "373" .
+
+<urn:uuid:9c27661f-49e2-4d2e-8188-2fb71d68e2d0>
+    a mo:Track ;
+    dcterms:title "yet? why not?" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FPlaylist%2F02_yet%20why%20not.mp3> ;
+    mo:duration "226" .
+
+<urn:uuid:12db598f-8d23-46b6-9fd5-bf12e9cccd3d>
+    a mo:Track ;
+    dcterms:title "YOU feat. Kazami" ;
+    dcat:downloadUrl <https://archive.org/download/samurai-champloo-music-record-flac/Samurai%20Champloo%20Music%20Record%2FKatana%2F09-YOU%20feat.%20Kazami.mp3> ;
+    mo:duration "299" .
+

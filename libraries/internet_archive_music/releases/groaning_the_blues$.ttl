@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "GROANING THE BLUES" ;
+    dct:identifier "78_groaning-the-blues_otis-rush-willie-dixon_gbia0395031a" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/78_groaning-the-blues_otis-rush-willie-dixon_gbia0395031a> ;
+    mo:track <#t01> ;
+    foaf:maker "OTIS RUSH, Willie Dixon" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "GROANING THE BLUES" ;
+    mo:duration "182" ;
+    mo:item <https://archive.org/download/78_groaning-the-blues_otis-rush-willie-dixon_gbia0395031a/GROANING%20THE%20BLUES%20-%20OTIS%20RUSH%20-%20Willie%20Dixon.mp3> ;
+    dct:isPartOf <#it> .

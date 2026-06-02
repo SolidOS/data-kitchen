@@ -1,0 +1,15 @@
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a schema:BookmarkAction ;
+   dct:creator "y" ;
+   dct:title "Albrecht Dürer woodcut series - Narrenschiff" ;
+   dct:created "2026-06-01T21:42:27.414Z"^^xsd:dateTime ;
+   dct:references <https://commons.wikimedia.org/wiki/Category:Albrecht_Dürer_woodcut_series_-_Narrenschiff> .
+
+<https://commons.wikimedia.org/wiki/Category:Albrecht_Dürer_woodcut_series_-_Narrenschiff> a dctype:Collection, schema:ImageGallery ;
+   schema:name "Albrecht Dürer woodcut series - Narrenschiff" ;
+   dcat:landingPage <https://commons.wikimedia.org/wiki/Category:Albrecht_Dürer_woodcut_series_-_Narrenschiff> .

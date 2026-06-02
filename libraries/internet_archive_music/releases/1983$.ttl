@@ -1,0 +1,48 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "1983" ;
+    dct:identifier "flylo-1983" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/flylo-1983> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05> ;
+    foaf:maker "Flying Lotus" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "1983" ;
+    mo:duration "310" ;
+    mo:item <https://archive.org/download/flylo-1983/01-1983.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Pet Monster Shotglass" ;
+    mo:duration "399" ;
+    mo:item <https://archive.org/download/flylo-1983/07-Pet%20Monster%20Shotglass.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Untitled #7" ;
+    mo:duration "202" ;
+    mo:item <https://archive.org/download/flylo-1983/09-Untitled%20%237.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Unexpected Delight" ;
+    mo:duration "202" ;
+    mo:item <https://archive.org/download/flylo-1983/10-Unexpected%20Delight.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "1983 (Daedelus's Odd-Dance Party Remix)" ;
+    mo:duration "235" ;
+    mo:item <https://archive.org/download/flylo-1983/11-1983%20(Daedelus's%20Odd-Dance%20Party%20Remix).mp3> ;
+    dct:isPartOf <#it> .

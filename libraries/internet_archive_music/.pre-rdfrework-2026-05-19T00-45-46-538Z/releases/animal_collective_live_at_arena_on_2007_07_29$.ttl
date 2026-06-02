@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:9dbea52a-702e-4813-93fe-6aa97e96351b> a mo:Release;
+    dcterms:title "Animal Collective Live at Arena on 2007-07-29";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    dcat:landingPage <https://archive.org/details/acollective2007-07-29.cos11s.flac16>;
+    mo:track <urn:uuid:b60ddeae-0ccc-481c-adc3-91c4bf441a25>, <urn:uuid:93cd08b0-bb8d-4315-a378-68876b91e678>.
+<urn:uuid:b60ddeae-0ccc-481c-adc3-91c4bf441a25> a mo:Track; dcterms:title "Doggy"; mo:duration "328"; dcat:downloadUrl <https://archive.org/download/acollective2007-07-29.cos11s.flac16/animalcollective2007-07-29.cos11s.d1t03.mp3>.
+<urn:uuid:93cd08b0-bb8d-4315-a378-68876b91e678> a mo:Track; dcterms:title "Brother Sport"; mo:duration "575"; dcat:downloadUrl <https://archive.org/download/acollective2007-07-29.cos11s.flac16/animalcollective2007-07-29.cos11s.d2t05.mp3>.

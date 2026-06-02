@@ -1,0 +1,243 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/J_Dilla#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/J_Dilla> a dctypes:Collection, mo:Playlist;
+    dcterms:title "J Dilla";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:66354f66-6e20-4959-a91a-ea4aa7574922>, <urn:uuid:4650b7db-2c59-4d9a-a161-bcccd7bfe222>, <urn:uuid:57a7101e-aaac-409a-b2fe-a79198dd65bc>, <urn:uuid:15cf5fdb-445f-4f25-8689-df8c08acdb81>, <urn:uuid:bdf9996d-53d4-4914-9f28-8f3166a2987a>, <urn:uuid:944d781b-9f26-4f6b-b8bb-850d94ba68ec>, <urn:uuid:e9450c05-573f-41f0-a393-9055408654b1>, <urn:uuid:25a51776-3062-4aad-8408-0873dd802021>, <urn:uuid:43888116-c89c-49f3-98d5-50dd33650335>, <urn:uuid:8f0b342f-c4d5-44ef-a534-db31eaf39ceb>, <urn:uuid:605dc7ac-8f09-4e89-baf9-06f7cfa6fb83>, <urn:uuid:673e6e07-96d9-4eb9-b600-dd50ff7cfc71>, <urn:uuid:aec487fb-8b39-4718-9ef9-116a0be8f2a1>, <urn:uuid:bfbf17cf-0268-44e8-b291-2371e7d6f519>, <urn:uuid:5a6ace5c-4c87-4973-911b-581abcd08b0a>, <urn:uuid:30f8b2e8-e21c-4b0c-8206-667e48078281>, <urn:uuid:914f019e-b358-48d3-a3e3-9a12c92c900c>, <urn:uuid:98bd8ea3-2425-4da7-ba97-446182ba8e65>, <urn:uuid:80cfe52b-6b0d-4e9f-935b-3148a17c43f9>, <urn:uuid:dad0834b-0dcb-4334-b1ec-19edb4eba954>, <urn:uuid:52301098-6c3d-480e-9137-ae745bf36d6b>, <urn:uuid:7d1c27ab-7b11-41dc-ac87-b63582e543af>, <urn:uuid:d75917e2-bb3f-45da-a3d1-9435f666273f>, <urn:uuid:9588c81a-ce8c-4880-bdfa-7563f294fdd8>, <urn:uuid:64e0142b-cf8b-417d-86fd-7991696ec2c2>, <urn:uuid:02ad9e3c-b154-4c3a-8c83-9b711c43cdaf>, <urn:uuid:122e616c-f2f6-4981-a45c-0f895cc5999b>, <urn:uuid:3829b2c6-cb01-44de-959f-50fee2d09747>, <urn:uuid:aa37069b-9236-4bc6-9119-50fff9a1cda9>, <urn:uuid:cee20e22-c727-4ed7-9a70-4c3d06135c21>, <urn:uuid:dce48649-57aa-4d0e-b72c-68412e90dff6>, <urn:uuid:eba253c4-6f37-45b9-9564-c03fabc26c58>, <urn:uuid:c571760c-74d6-43f8-971b-1b653001b9e1>, <urn:uuid:3487785f-a484-461e-b92e-47525cca3fa1>, <urn:uuid:47c6a12f-4b58-4b99-8702-ab826a9e50dd>, <urn:uuid:6cfc0566-0265-4bd0-918b-72eeb78c8a66>, <urn:uuid:9a6b9374-ba81-4f51-9916-5065450d3fca>, <urn:uuid:965424ea-e21e-40fc-a21e-a042c3b77dc6>, <urn:uuid:01bfb0e9-3e37-4f4d-930e-62125589eb93>, <urn:uuid:b78dae6a-aca7-48d8-ad2b-68e6981d1c21>, <urn:uuid:d107bf0d-a0a2-41af-82fb-ea84ad4b4ee3>, <urn:uuid:f7f94d82-ab0d-4dd0-b1f2-ffa0e99d40f0>, <urn:uuid:17ae53c3-7805-4ad5-b6e9-80383fedc54f>, <urn:uuid:704ccdbd-db8c-4bb5-a447-519eb7bfd342>, <urn:uuid:fac0b6c6-965b-4a68-a2fd-b072401577bd>, <urn:uuid:690085d0-c5a6-4a59-9c17-f48cd7e36576>, <urn:uuid:753ed8d3-456d-4197-b5c0-6516ecc8e0d1>;
+    <http://open-media-player.org/ns#hidePlaylist> "true".
+<urn:uuid:66354f66-6e20-4959-a91a-ea4aa7574922> a mo:Track;
+    dcterms:title "Safety Dance";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/gs_j-dilla-donut-shop/1-01%20Safety%20Dance.mp3>;
+    mo:duration "180".
+<urn:uuid:4650b7db-2c59-4d9a-a161-bcccd7bfe222> a mo:Track;
+    dcterms:title "Bars & Twists";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/gs_j-dilla-donut-shop/1-03%20Bars%20%26%20Twists.mp3>;
+    mo:duration "229".
+<urn:uuid:57a7101e-aaac-409a-b2fe-a79198dd65bc> a mo:Track;
+    dcterms:title "You Can't Hold a Torch (Busta instrumental)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/gs_j-dilla-donut-shop/1-06%20You%20Can't%20Hold%20a%20Torch%20(Busta%20instrumental).mp3>;
+    mo:duration "206".
+<urn:uuid:15cf5fdb-445f-4f25-8689-df8c08acdb81> a mo:Track;
+    dcterms:title "Glamour Sho75 (09)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-stay-paid/18.%20J%20Dilla%20-%20Glamour%20Sho75%20(09).mp3>;
+    mo:duration "181".
+<urn:uuid:bdf9996d-53d4-4914-9f28-8f3166a2987a> a mo:Track;
+    dcterms:title "Make It Fast (Unadulterated mix) (feat. Diz Gibran)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-stay-paid/21.%20J%20Dilla%20-%20Make%20It%20Fast%20(Unadulterated%20mix)%20(feat.%20Diz%20Gibran).mp3>;
+    mo:duration "300".
+<urn:uuid:944d781b-9f26-4f6b-b8bb-850d94ba68ec> a mo:Track;
+    dcterms:title "24K Rap (feat. Havoc & Raekwon)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-stay-paid/22.%20J%20Dilla%20-%2024K%20Rap%20(feat.%20Havoc%20%26%20Raekwon).mp3>;
+    mo:duration "261".
+<urn:uuid:e9450c05-573f-41f0-a393-9055408654b1> a mo:Track;
+    dcterms:title "See That Boy Fly (feat. Illa J & Cue D)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-stay-paid/25.%20J%20Dilla%20-%20See%20That%20Boy%20Fly%20(feat.%20Illa%20J%20%26%20Cue%20D).mp3>;
+    mo:duration "223".
+<urn:uuid:25a51776-3062-4aad-8408-0873dd802021> a mo:Track;
+    dcterms:title "Track 32 - In the Streets";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/j-dilla-motown-beat-tape/32%20-%20MBT%20-%20Track%2032.mp3>;
+    mo:duration "188".
+<urn:uuid:43888116-c89c-49f3-98d5-50dd33650335> a mo:Track;
+    dcterms:title "Track 34 - Rebirth Is Necessary (Instrumental)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/j-dilla-motown-beat-tape/34%20-%20MBT%20-%20Track%2034.mp3>;
+    mo:duration "190".
+<urn:uuid:8f0b342f-c4d5-44ef-a534-db31eaf39ceb> a mo:Track;
+    dcterms:title "Detroit Madness";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/02%20-%20J%20Dilla%20-%20Detroit%20Madness.mp3>;
+    mo:duration "223".
+<urn:uuid:605dc7ac-8f09-4e89-baf9-06f7cfa6fb83> a mo:Track;
+    dcterms:title "Big Thangs";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/03%20-%20J%20Dilla%20-%20Big%20Thangs.mp3>;
+    mo:duration "204".
+<urn:uuid:673e6e07-96d9-4eb9-b600-dd50ff7cfc71> a mo:Track;
+    dcterms:title "Ride With It";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/04%20-%20J%20Dilla%20-%20Ride%20With%20It.mp3>;
+    mo:duration "253".
+<urn:uuid:aec487fb-8b39-4718-9ef9-116a0be8f2a1> a mo:Track;
+    dcterms:title "Say My Name";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/05%20-%20J%20Dilla%20-%20Say%20My%20Name.mp3>;
+    mo:duration "187".
+<urn:uuid:bfbf17cf-0268-44e8-b291-2371e7d6f519> a mo:Track;
+    dcterms:title "City Of Boom";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/08%20-%20J%20Dilla%20-%20City%20Of%20Boom.mp3>;
+    mo:duration "200".
+<urn:uuid:5a6ace5c-4c87-4973-911b-581abcd08b0a> a mo:Track;
+    dcterms:title "Let's Pray Together";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/09%20-%20J%20Dilla%20-%20Let's%20Pray%20Together.mp3>;
+    mo:duration "225".
+<urn:uuid:30f8b2e8-e21c-4b0c-8206-667e48078281> a mo:Track;
+    dcterms:title "Do It Right";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/11%20-%20J%20Dilla%20-%20Do%20It%20Right.mp3>;
+    mo:duration "184".
+<urn:uuid:914f019e-b358-48d3-a3e3-9a12c92c900c> a mo:Track;
+    dcterms:title "Rebirth Is Necessary";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/13%20-%20J%20Dilla%20-%20Rebirth%20Is%20Necessary.mp3>;
+    mo:duration "198".
+<urn:uuid:98bd8ea3-2425-4da7-ba97-446182ba8e65> a mo:Track;
+    dcterms:title "Dillatroit";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/14%20-%20J%20Dilla%20-%20Dillatroit.mp3>;
+    mo:duration "268".
+<urn:uuid:80cfe52b-6b0d-4e9f-935b-3148a17c43f9> a mo:Track;
+    dcterms:title "Center Of The Movement";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/15%20-%20J%20Dilla%20-%20Center%20Of%20The%20Movement.mp3>;
+    mo:duration "206".
+<urn:uuid:dad0834b-0dcb-4334-b1ec-19edb4eba954> a mo:Track;
+    dcterms:title "Pitfalls";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/16%20-%20J%20Dilla%20-%20Pitfalls.mp3>;
+    mo:duration "270".
+<urn:uuid:52301098-6c3d-480e-9137-ae745bf36d6b> a mo:Track;
+    dcterms:title "The Best That Ever Did It";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/rebirth-of-detroit/21%20-%20J%20Dilla%20-%20The%20Best%20That%20Ever%20Did%20It.mp3>;
+    mo:duration "228".
+<urn:uuid:7d1c27ab-7b11-41dc-ac87-b63582e543af> a mo:Track;
+    dcterms:title "Crushin' (Yeeeeaah!)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/j-dilla-ruff-draft_202510/0109%20-%20J%20Dilla%20-%20Ruff%20Draft%20-%20Crushin'%20(Yeeeeaah!).mp3>;
+    mo:duration "223".
+<urn:uuid:d75917e2-bb3f-45da-a3d1-9435f666273f> a mo:Track;
+    dcterms:title "Take Notice";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/j-dilla-ruff-draft_202510/0113%20-%20J%20Dilla%20-%20Ruff%20Draft%20-%20Take%20Notice.mp3>;
+    mo:duration "265".
+<urn:uuid:9588c81a-ce8c-4880-bdfa-7563f294fdd8> a mo:Track;
+    dcterms:title "Crushin' (Instrumental)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/j-dilla-ruff-draft_202510/0206%20-%20J%20Dilla%20-%20Ruff%20Draft%20-%20Crushin'%20(Instrumental).mp3>;
+    mo:duration "221".
+<urn:uuid:64e0142b-cf8b-417d-86fd-7991696ec2c2> a mo:Track;
+    dcterms:title "Take Notice (Instrumental)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/j-dilla-ruff-draft_202510/0209%20-%20J%20Dilla%20-%20Ruff%20Draft%20-%20Take%20Notice%20(Instrumental).mp3>;
+    mo:duration "266".
+<urn:uuid:02ad9e3c-b154-4c3a-8c83-9b711c43cdaf> a mo:Track;
+    dcterms:title "It's Dope";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/01.%20J%20Dilla%20-%20It's%20Dope%20(2003).m4a>;
+    mo:duration "182".
+<urn:uuid:122e616c-f2f6-4981-a45c-0f895cc5999b> a mo:Track;
+    dcterms:title "Kamaal";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/02.%20J%20Dilla%20-%20Kamaal%20(2003).m4a>;
+    mo:duration "182".
+<urn:uuid:3829b2c6-cb01-44de-959f-50fee2d09747> a mo:Track;
+    dcterms:title "Doo Doo";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/03.%20J%20Dilla%20-%20Doo%20Doo%20(2003).m4a>;
+    mo:duration "182".
+<urn:uuid:aa37069b-9236-4bc6-9119-50fff9a1cda9> a mo:Track;
+    dcterms:title "The Skip";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/04.%20J%20Dilla%20-%20The%20Skip%20(2003).m4a>;
+    mo:duration "180".
+<urn:uuid:cee20e22-c727-4ed7-9a70-4c3d06135c21> a mo:Track;
+    dcterms:title "Get Down";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/05.%20J%20Dilla%20-%20Get%20Down%20(2003).m4a>;
+    mo:duration "182".
+<urn:uuid:dce48649-57aa-4d0e-b72c-68412e90dff6> a mo:Track;
+    dcterms:title "Dreamy";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/06.%20J%20Dilla%20-%20Dreamy%20(2003).m4a>;
+    mo:duration "182".
+<urn:uuid:eba253c4-6f37-45b9-9564-c03fabc26c58> a mo:Track;
+    dcterms:title "Coastin'";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/07.%20J%20Dilla%20-%20Coastin'%20(2003).m4a>;
+    mo:duration "182".
+<urn:uuid:c571760c-74d6-43f8-971b-1b653001b9e1> a mo:Track;
+    dcterms:title "The Dee";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/08.%20J%20Dilla%20-%20The%20Dee%20(2003).m4a>;
+    mo:duration "182".
+<urn:uuid:3487785f-a484-461e-b92e-47525cca3fa1> a mo:Track;
+    dcterms:title "09. J Dilla - Earl (2003)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/09.%20J%20Dilla%20-%20Earl%20(2003).opus>.
+<urn:uuid:47c6a12f-4b58-4b99-8702-ab826a9e50dd> a mo:Track;
+    dcterms:title "On The 1";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/10.%20J%20Dilla%20-%20On%20The%201%20(2003).m4a>;
+    mo:duration "181".
+<urn:uuid:6cfc0566-0265-4bd0-918b-72eeb78c8a66> a mo:Track;
+    dcterms:title "Grannie";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/12.%20J%20Dilla%20-%20Grannie%20(2003).m4a>;
+    mo:duration "182".
+<urn:uuid:9a6b9374-ba81-4f51-9916-5065450d3fca> a mo:Track;
+    dcterms:title "Trashy";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-instrumental-series-vol-2-vintage/13.%20J%20Dilla%20-%20Trashy%20(2003).m4a>;
+    mo:duration "180".
+<urn:uuid:965424ea-e21e-40fc-a21e-a042c3b77dc6> a mo:Track;
+    dcterms:title "E=MC²";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-shining_202602/002.%20J%20Dilla%20-%20E%3DMC%C2%B2%20(2006).mp3>;
+    mo:duration "229".
+<urn:uuid:01bfb0e9-3e37-4f4d-930e-62125589eb93> a mo:Track;
+    dcterms:title "Love";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-shining_202602/004.%20J%20Dilla%20-%20Love%20(2006).mp3>;
+    mo:duration "194".
+<urn:uuid:b78dae6a-aca7-48d8-ad2b-68e6981d1c21> a mo:Track;
+    dcterms:title "Baby";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-shining_202602/005.%20J%20Dilla%20-%20Baby%20(2006).mp3>;
+    mo:duration "219".
+<urn:uuid:d107bf0d-a0a2-41af-82fb-ea84ad4b4ee3> a mo:Track;
+    dcterms:title "So Far To Go";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-shining_202602/006.%20J%20Dilla%20-%20So%20Far%20To%20Go%20(2006).mp3>;
+    mo:duration "336".
+<urn:uuid:f7f94d82-ab0d-4dd0-b1f2-ffa0e99d40f0> a mo:Track;
+    dcterms:title "Dime Piece";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-shining_202602/010.%20J%20Dilla%20-%20Dime%20Piece%20(2006).mp3>;
+    mo:duration "195".
+<urn:uuid:17ae53c3-7805-4ad5-b6e9-80383fedc54f> a mo:Track;
+    dcterms:title "Love Movin'";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-shining_202602/011.%20J%20Dilla%20-%20Love%20Movin'%20(2006).mp3>;
+    mo:duration "214".
+<urn:uuid:704ccdbd-db8c-4bb5-a447-519eb7bfd342> a mo:Track;
+    dcterms:title "Won't Do";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/the-shining_202602/012.%20J%20Dilla%20-%20Won't%20Do%20(2006).mp3>;
+    mo:duration "232".
+<urn:uuid:fac0b6c6-965b-4a68-a2fd-b072401577bd> a mo:Track;
+    dcterms:title "Won't Do";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/j-dilla_the-shining/12.%20J%20Dilla%20-%20Won't%20Do.mp3>;
+    mo:duration "232".
+<urn:uuid:690085d0-c5a6-4a59-9c17-f48cd7e36576> a mo:Track;
+    dcterms:title "Think Twice";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-aka-j-dilla-welcome-2-detroit/03%20-%20Think%20Twice.mp3>;
+    mo:duration "232".
+<urn:uuid:753ed8d3-456d-4197-b5c0-6516ecc8e0d1> a mo:Track;
+    dcterms:title "Give It Up";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/jay-dee-aka-j-dilla-welcome-2-detroit/11%20-%20Give%20It%20Up.mp3>;
+    mo:duration "188".
+<urn:uuid:3ca2c4e0-1271-4efe-a59c-4f875103deff> a mo:Release;
+    dcterms:title "Donut Shop";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/gs_j-dilla-donut-shop>;
+    mo:track <urn:uuid:66354f66-6e20-4959-a91a-ea4aa7574922>, <urn:uuid:4650b7db-2c59-4d9a-a161-bcccd7bfe222>, <urn:uuid:57a7101e-aaac-409a-b2fe-a79198dd65bc>.
+<urn:uuid:4a6c2389-830b-4fdf-9e41-b230c152188e> a mo:Release;
+    dcterms:title "Jay Stay Paid";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/jay-stay-paid>;
+    mo:track <urn:uuid:15cf5fdb-445f-4f25-8689-df8c08acdb81>, <urn:uuid:bdf9996d-53d4-4914-9f28-8f3166a2987a>, <urn:uuid:944d781b-9f26-4f6b-b8bb-850d94ba68ec>, <urn:uuid:e9450c05-573f-41f0-a393-9055408654b1>.
+<urn:uuid:2f3cf951-0370-4d56-8c84-e03c461dacbc> a mo:Release;
+    dcterms:title "Motown Beat Tape";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/j-dilla-motown-beat-tape>;
+    mo:track <urn:uuid:25a51776-3062-4aad-8408-0873dd802021>, <urn:uuid:43888116-c89c-49f3-98d5-50dd33650335>.
+<urn:uuid:79d83bc2-7200-43aa-8f9b-98080736e5c9> a mo:Release;
+    dcterms:title "Rebirth Of Detroit";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/rebirth-of-detroit>;
+    mo:track <urn:uuid:8f0b342f-c4d5-44ef-a534-db31eaf39ceb>, <urn:uuid:605dc7ac-8f09-4e89-baf9-06f7cfa6fb83>, <urn:uuid:673e6e07-96d9-4eb9-b600-dd50ff7cfc71>, <urn:uuid:aec487fb-8b39-4718-9ef9-116a0be8f2a1>, <urn:uuid:bfbf17cf-0268-44e8-b291-2371e7d6f519>, <urn:uuid:5a6ace5c-4c87-4973-911b-581abcd08b0a>, <urn:uuid:30f8b2e8-e21c-4b0c-8206-667e48078281>, <urn:uuid:914f019e-b358-48d3-a3e3-9a12c92c900c>, <urn:uuid:98bd8ea3-2425-4da7-ba97-446182ba8e65>, <urn:uuid:80cfe52b-6b0d-4e9f-935b-3148a17c43f9>, <urn:uuid:dad0834b-0dcb-4334-b1ec-19edb4eba954>, <urn:uuid:52301098-6c3d-480e-9137-ae745bf36d6b>.
+<urn:uuid:ca018b2d-8c92-4d05-b211-de937ea5b913> a mo:Release;
+    dcterms:title "Ruff Draft";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/j-dilla-ruff-draft_202510>;
+    mo:track <urn:uuid:7d1c27ab-7b11-41dc-ac87-b63582e543af>, <urn:uuid:d75917e2-bb3f-45da-a3d1-9435f666273f>, <urn:uuid:9588c81a-ce8c-4880-bdfa-7563f294fdd8>, <urn:uuid:64e0142b-cf8b-417d-86fd-7991696ec2c2>.
+<urn:uuid:43e1e8aa-dc56-4d8d-b8dd-f85be35e9798> a mo:Release;
+    dcterms:title "The Official Jay Dee Instrumental Series Vol.2: Vintage";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/jay-dee-instrumental-series-vol-2-vintage>;
+    mo:track <urn:uuid:02ad9e3c-b154-4c3a-8c83-9b711c43cdaf>, <urn:uuid:122e616c-f2f6-4981-a45c-0f895cc5999b>, <urn:uuid:3829b2c6-cb01-44de-959f-50fee2d09747>, <urn:uuid:aa37069b-9236-4bc6-9119-50fff9a1cda9>, <urn:uuid:cee20e22-c727-4ed7-9a70-4c3d06135c21>, <urn:uuid:dce48649-57aa-4d0e-b72c-68412e90dff6>, <urn:uuid:eba253c4-6f37-45b9-9564-c03fabc26c58>, <urn:uuid:c571760c-74d6-43f8-971b-1b653001b9e1>, <urn:uuid:3487785f-a484-461e-b92e-47525cca3fa1>, <urn:uuid:47c6a12f-4b58-4b99-8702-ab826a9e50dd>, <urn:uuid:6cfc0566-0265-4bd0-918b-72eeb78c8a66>, <urn:uuid:9a6b9374-ba81-4f51-9916-5065450d3fca>.
+<urn:uuid:c99b759c-d302-4b2f-ac49-af9bf40b85ad> a mo:Release;
+    dcterms:title "The Shining";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/the-shining_202602>;
+    mo:track <urn:uuid:965424ea-e21e-40fc-a21e-a042c3b77dc6>, <urn:uuid:01bfb0e9-3e37-4f4d-930e-62125589eb93>, <urn:uuid:b78dae6a-aca7-48d8-ad2b-68e6981d1c21>, <urn:uuid:d107bf0d-a0a2-41af-82fb-ea84ad4b4ee3>, <urn:uuid:f7f94d82-ab0d-4dd0-b1f2-ffa0e99d40f0>, <urn:uuid:17ae53c3-7805-4ad5-b6e9-80383fedc54f>, <urn:uuid:704ccdbd-db8c-4bb5-a447-519eb7bfd342>.
+<urn:uuid:53f4cc4a-5a0a-433e-8d65-2a44edb4857a> a mo:Release;
+    dcterms:title "The Shining";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/j-dilla_the-shining>;
+    mo:track <urn:uuid:fac0b6c6-965b-4a68-a2fd-b072401577bd>.
+<urn:uuid:6a6932f6-b9a0-4ec7-82a0-5351956e91b1> a mo:Release;
+    dcterms:title "Welcome 2 Detroit";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/jay-dee-aka-j-dilla-welcome-2-detroit>;
+    mo:track <urn:uuid:690085d0-c5a6-4a59-9c17-f48cd7e36576>, <urn:uuid:753ed8d3-456d-4197-b5c0-6516ecc8e0d1>.

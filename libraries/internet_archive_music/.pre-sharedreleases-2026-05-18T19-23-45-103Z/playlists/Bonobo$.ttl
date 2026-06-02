@@ -1,0 +1,219 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <agents.ttl#>.
+@prefix genres: <genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Bonobo>
+    a dctypes:Collection, mo:Playlist ;
+    dcterms:title "Bonobo" ;
+    foaf:maker "jeffz" ;
+    dcterms:hasPart <urn:uuid:dee260b0-ce38-42f4-a048-e58039d8828d>, <urn:uuid:8f3bef5a-24fb-4be9-913e-4dd9ed5b199f>, <urn:uuid:84284098-f88c-4458-b49e-01d7f507e158>, <urn:uuid:9213b76e-a0e7-42e3-af0a-d5865a2e98af>, <urn:uuid:75aa3e8c-2650-4be3-8f61-32a6f751e1f7>, <urn:uuid:910bb9c7-276c-45a7-a076-d40027cffa11>, <urn:uuid:c0f624ee-5135-4602-bcf5-ab4c7ac2cb85>, <urn:uuid:8738f874-a5b8-4941-beb4-c655f9d8d733>, <urn:uuid:dbabf38a-b290-4f98-a817-9c25a0353e47>, <urn:uuid:12f1fe0a-1f25-4d24-a199-21c9150b4fe8>, <urn:uuid:53276257-3115-4860-b925-8ee0cf339457>, <urn:uuid:55605a54-13e3-48c4-9dfb-7bff500a581f>, <urn:uuid:e50d6498-1a1a-4e9b-b728-e11d376c4c7b>, <urn:uuid:1adfa2e8-ab36-429f-8a75-8c614dea7c9e>, <urn:uuid:993f4c54-8b41-4543-9577-adf1b858107b>, <urn:uuid:e0db32b5-6ad0-4d49-a30c-f5cc3fd049ff>, <urn:uuid:f3c774af-50d0-4dce-8247-2b703c6b31b2>, <urn:uuid:dd0d6530-ef23-41fc-8b11-723f3f1e7e58>, <urn:uuid:45272207-b463-46a8-bea0-490d54dad09f>, <urn:uuid:79cc4f59-c0e5-45e9-b5aa-cfe84d08f0f1>, <urn:uuid:ad5d23ec-2017-49e3-9b3f-c395d6749f5e>, <urn:uuid:0d5580d6-b479-440d-8e77-d4030526ff65>, <urn:uuid:10af34fd-8279-4af3-95b0-96661588eb2c>, <urn:uuid:8fd36ebc-8dc7-4e11-a27a-a66efc08327b>, <urn:uuid:bc210889-285f-4063-bd72-f4bcc29db32b>, <urn:uuid:da1b5796-f264-47b7-97aa-2580f92c53e7>, <urn:uuid:b42658aa-e598-45ef-8acf-949f893b4602>, <urn:uuid:655bd7c8-4a38-44f8-b568-264147d14701> .
+
+<urn:uuid:447c0580-69f5-4892-a804-a4c57842b79a>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/13PiecesFt.Cornelia> ;
+    dcterms:title "13 Pieces ( Ft. Cornelia)" ;
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0> ;
+    mo:track <urn:uuid:dee260b0-ce38-42f4-a048-e58039d8828d> .
+
+<urn:uuid:2245f012-a911-47de-97b7-1f5cea4d569c>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/bonobo-black-sands> ;
+    dcterms:title "Bonobo - Black Sands (2010)" ;
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0> ;
+    mo:track <urn:uuid:8f3bef5a-24fb-4be9-913e-4dd9ed5b199f>, <urn:uuid:84284098-f88c-4458-b49e-01d7f507e158>, <urn:uuid:9213b76e-a0e7-42e3-af0a-d5865a2e98af>, <urn:uuid:75aa3e8c-2650-4be3-8f61-32a6f751e1f7>, <urn:uuid:910bb9c7-276c-45a7-a076-d40027cffa11>, <urn:uuid:c0f624ee-5135-4602-bcf5-ab4c7ac2cb85>, <urn:uuid:8738f874-a5b8-4941-beb4-c655f9d8d733>, <urn:uuid:dbabf38a-b290-4f98-a817-9c25a0353e47>, <urn:uuid:12f1fe0a-1f25-4d24-a199-21c9150b4fe8>, <urn:uuid:53276257-3115-4860-b925-8ee0cf339457>, <urn:uuid:55605a54-13e3-48c4-9dfb-7bff500a581f> .
+
+<urn:uuid:5c5aaadc-0dec-4b0d-b8eb-0709c5ea149c>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/Bonobo_-_Live__KEXP_4252010-6682> ;
+    dcterms:title "Bonobo - Live @ KEXP 4/25/2010" ;
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0> ;
+    mo:track <urn:uuid:e50d6498-1a1a-4e9b-b728-e11d376c4c7b> .
+
+<urn:uuid:bbfde89b-63b5-4636-b37d-2667952af02d>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/3d-83-2412-4b-9e-a-9ab-7ca-6533ae-205> ;
+    dcterms:title "Bonobo - NTS Radio 2020-10-23" ;
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0> ;
+    mo:track <urn:uuid:1adfa2e8-ab36-429f-8a75-8c614dea7c9e> .
+
+<urn:uuid:be2749aa-160f-4a45-90f0-d05806e372af>
+    a mo:Release ;
+    dcat:landingPage <https://archive.org/details/BonoboSweetness> ;
+    dcterms:title "Sweetness" ;
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0> ;
+    mo:track <urn:uuid:993f4c54-8b41-4543-9577-adf1b858107b>, <urn:uuid:e0db32b5-6ad0-4d49-a30c-f5cc3fd049ff>, <urn:uuid:f3c774af-50d0-4dce-8247-2b703c6b31b2>, <urn:uuid:dd0d6530-ef23-41fc-8b11-723f3f1e7e58>, <urn:uuid:45272207-b463-46a8-bea0-490d54dad09f>, <urn:uuid:79cc4f59-c0e5-45e9-b5aa-cfe84d08f0f1>, <urn:uuid:ad5d23ec-2017-49e3-9b3f-c395d6749f5e>, <urn:uuid:0d5580d6-b479-440d-8e77-d4030526ff65>, <urn:uuid:10af34fd-8279-4af3-95b0-96661588eb2c>, <urn:uuid:8fd36ebc-8dc7-4e11-a27a-a66efc08327b>, <urn:uuid:bc210889-285f-4063-bd72-f4bcc29db32b>, <urn:uuid:da1b5796-f264-47b7-97aa-2580f92c53e7>, <urn:uuid:b42658aa-e598-45ef-8acf-949f893b4602>, <urn:uuid:655bd7c8-4a38-44f8-b568-264147d14701> .
+
+<urn:uuid:dee260b0-ce38-42f4-a048-e58039d8828d>
+    a mo:Track ;
+    dcterms:title "Pieces (Ft. Cornelia)" ;
+    dcat:downloadUrl <https://archive.org/download/13PiecesFt.Cornelia/13%20Pieces%20(Ft.%20Cornelia).mp3> ;
+    mo:duration "267" .
+
+<urn:uuid:8f3bef5a-24fb-4be9-913e-4dd9ed5b199f>
+    a mo:Track ;
+    dcterms:title "Kiara" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/02%20Kiara.mp3> ;
+    mo:duration "231" .
+
+<urn:uuid:84284098-f88c-4458-b49e-01d7f507e158>
+    a mo:Track ;
+    dcterms:title "Kong" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/03%20Kong.mp3> ;
+    mo:duration "237" .
+
+<urn:uuid:9213b76e-a0e7-42e3-af0a-d5865a2e98af>
+    a mo:Track ;
+    dcterms:title "Eyesdown" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/04%20Eyesdown.mp3> ;
+    mo:duration "326" .
+
+<urn:uuid:75aa3e8c-2650-4be3-8f61-32a6f751e1f7>
+    a mo:Track ;
+    dcterms:title "El Toro" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/05%20El%20Toro.mp3> ;
+    mo:duration "224" .
+
+<urn:uuid:910bb9c7-276c-45a7-a076-d40027cffa11>
+    a mo:Track ;
+    dcterms:title "We Could Forever" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/06%20We%20Could%20Forever.mp3> ;
+    mo:duration "259" .
+
+<urn:uuid:c0f624ee-5135-4602-bcf5-ab4c7ac2cb85>
+    a mo:Track ;
+    dcterms:title "1009" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/07%201009.mp3> ;
+    mo:duration "270" .
+
+<urn:uuid:8738f874-a5b8-4941-beb4-c655f9d8d733>
+    a mo:Track ;
+    dcterms:title "All in Forms" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/08%20All%20in%20Forms.mp3> ;
+    mo:duration "291" .
+
+<urn:uuid:dbabf38a-b290-4f98-a817-9c25a0353e47>
+    a mo:Track ;
+    dcterms:title "The Keeper" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/09%20The%20Keeper.mp3> ;
+    mo:duration "288" .
+
+<urn:uuid:12f1fe0a-1f25-4d24-a199-21c9150b4fe8>
+    a mo:Track ;
+    dcterms:title "Stay the Same" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/10%20Stay%20the%20Same.mp3> ;
+    mo:duration "284" .
+
+<urn:uuid:53276257-3115-4860-b925-8ee0cf339457>
+    a mo:Track ;
+    dcterms:title "Animals" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/11%20Animals.mp3> ;
+    mo:duration "405" .
+
+<urn:uuid:55605a54-13e3-48c4-9dfb-7bff500a581f>
+    a mo:Track ;
+    dcterms:title "Black Sands" ;
+    dcat:downloadUrl <https://archive.org/download/bonobo-black-sands/12%20Black%20Sands.mp3> ;
+    mo:duration "409" .
+
+<urn:uuid:e50d6498-1a1a-4e9b-b728-e11d376c4c7b>
+    a mo:Track ;
+    dcterms:title "The Keeper (Live @ KEXP)" ;
+    dcat:downloadUrl <https://archive.org/download/Bonobo_-_Live__KEXP_4252010-6682/Bonobo_-_The_Keeper_Live__KEXP.mp3> ;
+    mo:duration "259" .
+
+<urn:uuid:1adfa2e8-ab36-429f-8a75-8c614dea7c9e>
+    a mo:Track ;
+    dcterms:title "Bonobo - NTS Radio 2020-10-23" ;
+    dcat:downloadUrl <https://archive.org/download/3d-83-2412-4b-9e-a-9ab-7ca-6533ae-205/3d83-2412-4b9e-a9ab-7ca6533ae205.m4a> ;
+    mo:duration "7186" .
+
+<urn:uuid:993f4c54-8b41-4543-9577-adf1b858107b>
+    a mo:Track ;
+    dcterms:title "Terrapin (Sonorous Star mix)" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/01%20Bonobo%20-%20Terrapin%20(Sonorous%20Star%20mix).mp3> ;
+    mo:duration "296" .
+
+<urn:uuid:e0db32b5-6ad0-4d49-a30c-f5cc3fd049ff>
+    a mo:Track ;
+    dcterms:title "Super 8" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/02%20Bonobo%20-%20Super%208.mp3> ;
+    mo:duration "322" .
+
+<urn:uuid:f3c774af-50d0-4dce-8247-2b703c6b31b2>
+    a mo:Track ;
+    dcterms:title "Dismantling Frank" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/03%20Bonobo%20-%20Dismantling%20Frank.mp3> ;
+    mo:duration "209" .
+
+<urn:uuid:dd0d6530-ef23-41fc-8b11-723f3f1e7e58>
+    a mo:Track ;
+    dcterms:title "Kota (Bonobo rework)" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/04%20Bonobo%20-%20Kota%20(Bonobo%20rework).mp3> ;
+    mo:duration "344" .
+
+<urn:uuid:45272207-b463-46a8-bea0-490d54dad09f>
+    a mo:Track ;
+    dcterms:title "Never (Bonobo mix)" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/05%20Bushy%20-%20Never%20(Bonobo%20mix).mp3> ;
+    mo:duration "324" .
+
+<urn:uuid:79cc4f59-c0e5-45e9-b5aa-cfe84d08f0f1>
+    a mo:Track ;
+    dcterms:title "Scuba" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/06%20Bonobo%20-%20Scuba.mp3> ;
+    mo:duration "258" .
+
+<urn:uuid:ad5d23ec-2017-49e3-9b3f-c395d6749f5e>
+    a mo:Track ;
+    dcterms:title "Dinosaurs (Jon Kennedy mix)" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/07%20Bonobo%20-%20Dinosaurs%20(Jon%20Kennedy%20mix).mp3> ;
+    mo:duration "244" .
+
+<urn:uuid:0d5580d6-b479-440d-8e77-d4030526ff65>
+    a mo:Track ;
+    dcterms:title "The Sicilian" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/08%20Bonobo%20-%20The%20Sicilian.mp3> ;
+    mo:duration "256" .
+
+<urn:uuid:10af34fd-8279-4af3-95b0-96661588eb2c>
+    a mo:Track ;
+    dcterms:title "The Turtle (Bonobo mix)" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/09%20Pilote%20-%20The%20Turtle%20(Bonobo%20mix).mp3> ;
+    mo:duration "307" .
+
+<urn:uuid:8fd36ebc-8dc7-4e11-a27a-a66efc08327b>
+    a mo:Track ;
+    dcterms:title "The Shark" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/10%20Bonobo%20-%20The%20Shark.mp3> ;
+    mo:duration "284" .
+
+<urn:uuid:bc210889-285f-4063-bd72-f4bcc29db32b>
+    a mo:Track ;
+    dcterms:title "The Plug (Quantic mix)" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/11%20Bonobo%20-%20The%20Plug%20(Quantic%20mix).mp3> ;
+    mo:duration "373" .
+
+<urn:uuid:da1b5796-f264-47b7-97aa-2580f92c53e7>
+    a mo:Track ;
+    dcterms:title "Terrapin (Mr Scruff mix)" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/12%20Bonobo%20-%20Terrapin%20(Mr%20Scruff%20mix).mp3> ;
+    mo:duration "477" .
+
+<urn:uuid:b42658aa-e598-45ef-8acf-949f893b4602>
+    a mo:Track ;
+    dcterms:title "Scuba (Amon Tobin remix)" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/13%20Bonobo%20-%20Scuba%20(Amon%20Tobin%20remix).mp3> ;
+    mo:duration "366" .
+
+<urn:uuid:655bd7c8-4a38-44f8-b568-264147d14701>
+    a mo:Track ;
+    dcterms:title "Tell Me How You Feel (Bonobo mix)" ;
+    dcat:downloadUrl <https://archive.org/download/BonoboSweetness/14%20Jon%20Kennedy%20-%20Tell%20Me%20How%20You%20Feel%20(Bonobo%20mix).mp3> ;
+    mo:duration "299" .
+

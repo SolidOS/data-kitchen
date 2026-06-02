@@ -1,0 +1,24 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:46fed8b2-1b9d-4d91-9ff1-c307a06cd411> a mo:Release;
+    dcterms:title "Integrated Tech Solutions";
+    foaf:maker "Aesop Rock";
+    dcat:landingPage <https://archive.org/details/integrated-tech-solutions>;
+    mo:track <urn:uuid:fc56e909-56cc-4304-a9e1-82871bbd08fd>, <urn:uuid:917306fe-2a1d-472b-bcd5-ccf6ff69194a>, <urn:uuid:d315a3c5-f9e3-4749-9631-9ebcc736e762>, <urn:uuid:cddbc1a3-47aa-4f84-b9cf-6ee21994f42f>, <urn:uuid:eedf7621-e6cc-4c1b-8605-96a6b57e1392>, <urn:uuid:8d224b84-aa5b-43c9-a226-c565d8ef61d1>, <urn:uuid:65633b54-6ed2-49ae-97af-e16c6f955e7d>, <urn:uuid:07abba20-e3e2-48f0-93d3-1eab2da75ef6>, <urn:uuid:fd483801-f1a1-41ce-a044-7baff66d6e61>, <urn:uuid:a17742eb-9075-4d37-8163-405387c8caa0>, <urn:uuid:e3459ce0-25b1-4d36-8154-b78dbe8b3315>, <urn:uuid:d5c78d8b-4000-463d-aeb4-754a790782d1>, <urn:uuid:53a2b3bd-83a8-4dd7-bcfc-6a73bb7d4f6c>, <urn:uuid:2dbb714e-1c73-4eba-bbbb-ba8821fa0671>.
+<urn:uuid:fc56e909-56cc-4304-a9e1-82871bbd08fd> a mo:Track; dcterms:title "100 Feet Tall"; mo:duration "253"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/100%20Feet%20Tall.mp3>.
+<urn:uuid:917306fe-2a1d-472b-bcd5-ccf6ff69194a> a mo:Track; dcterms:title "Aggressive Steven"; mo:duration "318"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Aggressive%20Steven.mp3>.
+<urn:uuid:d315a3c5-f9e3-4749-9631-9ebcc736e762> a mo:Track; dcterms:title "All City Nerve Map"; mo:duration "235"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/All%20City%20Nerve%20Map.mp3>.
+<urn:uuid:cddbc1a3-47aa-4f84-b9cf-6ee21994f42f> a mo:Track; dcterms:title "Bermuda"; mo:duration "197"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Bermuda.mp3>.
+<urn:uuid:eedf7621-e6cc-4c1b-8605-96a6b57e1392> a mo:Track; dcterms:title "Black Snow"; mo:duration "292"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Black%20Snow.mp3>.
+<urn:uuid:8d224b84-aa5b-43c9-a226-c565d8ef61d1> a mo:Track; dcterms:title "Forward Compatibility Engine"; mo:duration "232"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Forward%20Compatibility%20Engine.mp3>.
+<urn:uuid:65633b54-6ed2-49ae-97af-e16c6f955e7d> a mo:Track; dcterms:title "Infinity Fill Goose Down"; mo:duration "212"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Infinity%20Fill%20Goose%20Down.mp3>.
+<urn:uuid:07abba20-e3e2-48f0-93d3-1eab2da75ef6> a mo:Track; dcterms:title "Kyanite Toothpick"; mo:duration "249"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Kyanite%20Toothpick.mp3>.
+<urn:uuid:fd483801-f1a1-41ce-a044-7baff66d6e61> a mo:Track; dcterms:title "Living Curfew"; mo:duration "231"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Living%20Curfew.mp3>.
+<urn:uuid:a17742eb-9075-4d37-8163-405387c8caa0> a mo:Track; dcterms:title "Mindful Solutionism"; mo:duration "214"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Mindful%20Solutionism.mp3>.
+<urn:uuid:e3459ce0-25b1-4d36-8154-b78dbe8b3315> a mo:Track; dcterms:title "Pigeonometry"; mo:duration "212"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Pigeonometry.mp3>.
+<urn:uuid:d5c78d8b-4000-463d-aeb4-754a790782d1> a mo:Track; dcterms:title "Salt and Pepper Squid"; mo:duration "250"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Salt%20and%20Pepper%20Squid.mp3>.
+<urn:uuid:53a2b3bd-83a8-4dd7-bcfc-6a73bb7d4f6c> a mo:Track; dcterms:title "Time Moves Differently Here"; mo:duration "228"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Time%20Moves%20Differently%20Here.mp3>.
+<urn:uuid:2dbb714e-1c73-4eba-bbbb-ba8821fa0671> a mo:Track; dcterms:title "Vititus"; mo:duration "248"; dcat:downloadUrl <https://archive.org/download/integrated-tech-solutions/Vititus.mp3>.

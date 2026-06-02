@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:409cce68-7780-48d7-b965-f94db9f827da> a mo:Release;
+    dcterms:title "Aphex Twin - London 14.09.2019";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/london_14-09-2019>;
+    mo:track <urn:uuid:f22a6276-425e-48ee-a475-cc8f5dc2d24d>.
+<urn:uuid:f22a6276-425e-48ee-a475-cc8f5dc2d24d> a mo:Track; dcterms:title "4x Atlantis take1"; mo:duration "229"; dcat:downloadUrl <https://archive.org/download/london_14-09-2019/London-002-Aphex%20Twin-4x%20Atlantis%20take1.mp3>.

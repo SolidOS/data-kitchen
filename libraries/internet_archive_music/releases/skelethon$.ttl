@@ -1,0 +1,111 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Skelethon" ;
+    dct:identifier "skelethon" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/skelethon> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14> ;
+    foaf:maker "Aesop Rock" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "1,000 O'Clock" ;
+    mo:duration "238" ;
+    mo:item <https://archive.org/download/skelethon/1%2C000%20O'Clock.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "BMX (feat. Blueprint & Rob Sonic) - Bonus Track" ;
+    mo:duration "214" ;
+    mo:item <https://archive.org/download/skelethon/BMX%20(feat.%20Blueprint%20%26%20Rob%20Sonic)%20-%20Bonus%20Track.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Crows 1" ;
+    mo:duration "259" ;
+    mo:item <https://archive.org/download/skelethon/Crows%201.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Cycles To Gehenna" ;
+    mo:duration "240" ;
+    mo:item <https://archive.org/download/skelethon/Cycles%20To%20Gehenna.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Dokken Rules (feat. Rob Sonic) - Bonus Track" ;
+    mo:duration "239" ;
+    mo:item <https://archive.org/download/skelethon/Dokken%20Rules%20(feat.%20Rob%20Sonic)%20-%20Bonus%20Track.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Fryerstarter" ;
+    mo:duration "208" ;
+    mo:item <https://archive.org/download/skelethon/Fryerstarter.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Gopher Guts" ;
+    mo:duration "238" ;
+    mo:item <https://archive.org/download/skelethon/Gopher%20Guts.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Grace" ;
+    mo:duration "218" ;
+    mo:item <https://archive.org/download/skelethon/Grace.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Leisureforce" ;
+    mo:duration "283" ;
+    mo:item <https://archive.org/download/skelethon/Leisureforce.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Racing Stripes" ;
+    mo:duration "203" ;
+    mo:item <https://archive.org/download/skelethon/Racing%20Stripes.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Saturn Missiles" ;
+    mo:duration "217" ;
+    mo:item <https://archive.org/download/skelethon/Saturn%20Missiles.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "Tetra" ;
+    mo:duration "281" ;
+    mo:item <https://archive.org/download/skelethon/Tetra.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "ZZZ Top" ;
+    mo:duration "255" ;
+    mo:item <https://archive.org/download/skelethon/ZZZ%20Top.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "Zero Dark Thirty" ;
+    mo:duration "201" ;
+    mo:item <https://archive.org/download/skelethon/Zero%20Dark%20Thirty.mp3> ;
+    dct:isPartOf <#it> .

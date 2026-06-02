@@ -1,0 +1,588 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/agents.ttl#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Tupac_Shakur> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Tupac Shakur";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:a1640e60-ac69-47e9-97c8-2241dd8c2932>, <urn:uuid:9186563c-7162-4389-9faa-77621fecc50f>, <urn:uuid:2f14ffb2-a117-4d2d-a108-3f7f9c057d73>, <urn:uuid:da832649-a52f-4a9d-8dd9-4774dc7ad078>, <urn:uuid:c65414c8-4212-4968-9057-b58ce119278e>, <urn:uuid:cebcc3d6-cdc7-48b8-ba52-8c057c04be74>, <urn:uuid:3e2bc603-7164-46bc-8262-ddfd3300cdce>, <urn:uuid:abc33168-ebbc-40a3-9143-53e19978c78c>, <urn:uuid:da260dd3-3375-474f-8e4a-5464fc87f409>, <urn:uuid:48989907-d0bc-4195-9c27-1bc06ce465c1>, <urn:uuid:71ed30cb-afc5-481a-8c70-9f4181c17397>, <urn:uuid:48b85f3f-9910-4660-9ee6-712e6c399d15>, <urn:uuid:6123e8e8-55b8-4068-a4da-23f6bad48102>, <urn:uuid:eebf31ed-d97c-45f0-98d0-8d882a45154f>, <urn:uuid:2c625aa2-7a99-488e-a1e8-d1d11524dc5b>, <urn:uuid:dfcddc86-032f-4e01-bfde-2bdf27ba280a>, <urn:uuid:90e27887-14da-468e-bdab-62e10c7cd08d>, <urn:uuid:9067553d-339e-4cf7-94b5-62b58f00b634>, <urn:uuid:38ac1e26-670f-4d9f-b8dc-e51f1322ba9d>, <urn:uuid:0dfbb1d4-bbca-4e8b-b140-a12c58d72e51>, <urn:uuid:4d7739b9-f312-4ba8-87d2-7e608583300c>, <urn:uuid:74870b53-2b93-4dbe-adde-dd6e94fa8ddd>, <urn:uuid:fdf1b15c-155c-4567-859c-008efee5db16>, <urn:uuid:a7a381d7-7d6e-4949-a80f-87549927fada>, <urn:uuid:0d61668c-a6d5-438b-853d-2bc4ef3f4ab7>, <urn:uuid:b25d5d74-394a-4a7a-82aa-dc10befe93de>, <urn:uuid:dd3ac34a-a82c-4426-b19a-09c04673e696>, <urn:uuid:25abdf19-eea0-4ece-8c29-14acc16ce839>, <urn:uuid:f71ac3fc-6552-48c1-bb78-bcc30d6e359c>, <urn:uuid:760ba94f-f3d7-4d23-b848-8312f4dcf7df>, <urn:uuid:147ed57a-6c68-4432-a225-e202bd41ae4b>, <urn:uuid:55611f13-78f0-46eb-b1d0-f4467b838811>, <urn:uuid:1b56675f-e2de-4234-a7d2-10cb3cff5369>, <urn:uuid:a82a0167-f37a-4f94-a67a-c27313e10c73>, <urn:uuid:61d007ea-7dcc-4483-9f4b-8d97f4740e33>, <urn:uuid:68b86203-25c1-4437-8187-c18d5c4802d2>, <urn:uuid:12c3b6d1-b7fb-4d87-a85d-7bfbb1f9146b>, <urn:uuid:1d8ac0f5-7884-4317-8334-98e85313ffa1>, <urn:uuid:5514dd5e-d562-4ec5-802a-fec448195067>, <urn:uuid:fbfe1eb3-1292-41c8-9718-3ac40344a9d4>, <urn:uuid:e4e0b026-ecb8-4a65-a282-ed33398ccc96>, <urn:uuid:f6be37f2-6adb-40a2-b4f6-9492e99dc48b>, <urn:uuid:8da0de04-a62e-44ac-b98d-7623fbb8290b>, <urn:uuid:62493f69-13ee-4731-9828-badd5afdd3c4>, <urn:uuid:1b963e45-0b9c-493d-aec8-13c5c6798f98>, <urn:uuid:9c3b3658-ec8a-4c6e-b98d-db5298e23ee2>, <urn:uuid:aa48a1b6-dcaa-40cf-82fd-f6499f732913>, <urn:uuid:cf5a8f47-5c1c-4e4d-a181-89dcdca51e3f>, <urn:uuid:7306966a-cef9-4a7c-b7d1-e8eead4cf580>, <urn:uuid:8d40e9bc-1d51-46a6-b778-87cd3af009f7>, <urn:uuid:b073b20d-695d-46d9-b146-f99b0fdd9b6a>, <urn:uuid:6f216880-dff9-4e9a-b3c6-ad6ff5018965>, <urn:uuid:5bdb8b83-7bf9-44ab-8046-b265c2796792>, <urn:uuid:29552dcd-926f-4104-b499-cc91ca95d12d>, <urn:uuid:262790c0-7c6f-4728-ba08-7811ec7676a7>, <urn:uuid:e015e329-c1ea-4531-9bb7-a61e4e3cbee1>, <urn:uuid:37a6e1e0-c978-4c8b-b9b5-14d54f214559>, <urn:uuid:ad150f06-7500-4497-80d1-de5745db3c6f>, <urn:uuid:6a405c2c-a9fd-42e1-9e41-e2ac5e145a6d>, <urn:uuid:4a403eb9-7623-489d-a040-74e2d0076da1>, <urn:uuid:f5c4e62a-92fa-440b-90c8-9466de69a9ef>, <urn:uuid:e1cff091-e8ae-4853-b7d0-1e2f38e3b75c>, <urn:uuid:b816b8c1-2f72-4dda-b51f-4f56eb67f5e5>, <urn:uuid:47dab522-2d59-430f-b8d7-ad77296d81da>, <urn:uuid:188e88bd-5a0c-4826-ab7d-e77474cef8f5>, <urn:uuid:a4a663a1-e5e0-498a-ac8d-83cf127fd3d3>, <urn:uuid:a3d21a35-3fc9-4e1a-a939-396b63e5c41f>, <urn:uuid:a8ababd0-2613-4c80-bbb5-c2f89c9ddf2f>, <urn:uuid:56d14f54-9774-4bc2-9f4e-2b66981e5a2c>, <urn:uuid:778f18d8-84a9-4c67-8abc-c3a3dd25a4b1>, <urn:uuid:6080f82c-5408-4509-9c3a-c44e6536c7f9>, <urn:uuid:6120a7ab-46ac-490f-9444-763c69970b52>, <urn:uuid:188339f0-7e43-4d72-94db-434fb9ffcbdb>, <urn:uuid:b3bc4ef0-ecf4-4213-9920-3f2265528230>, <urn:uuid:d1477828-470a-4427-9502-35472b7c908d>, <urn:uuid:e6c7eaa5-3293-4337-bdf2-ab09ab5bdb48>, <urn:uuid:504674a9-e4ce-4f57-b538-ef0193fa2477>, <urn:uuid:364f2816-026a-4b6a-825b-71f118bf04f5>, <urn:uuid:fa939c0a-af48-4c4e-bd8c-57ae8c306d0c>, <urn:uuid:310d175c-7969-4a25-879e-72afc3b1b6be>, <urn:uuid:dc150345-f3f9-4dc3-81b5-702266e538b7>, <urn:uuid:7d8a5490-a304-44ff-9dac-3f2151bb3779>, <urn:uuid:03a74524-2b9c-4d60-bfa3-be46d919b687>, <urn:uuid:b47bcb4c-fadf-46a0-93f6-84ed6f579354>, <urn:uuid:86ea37c5-8bb2-4397-87fd-ec99fe571d00>, <urn:uuid:7ec3ddfd-bb76-4cb4-abd5-1c1ca6ea103f>, <urn:uuid:d3c544c5-6946-44a0-b549-72ddcb696e67>, <urn:uuid:121aa37a-4481-40e4-b17e-1d48311a510a>, <urn:uuid:8774de8e-15f1-4d9b-bcd4-d7262a0d90a7>, <urn:uuid:b514d354-8d45-422e-817d-39ef4ba877c7>, <urn:uuid:df8cbb93-6ae8-479b-a3d4-11b1afbbb2c2>, <urn:uuid:676b70de-4796-444f-88de-afff91f19af2>, <urn:uuid:2200679e-df9e-4ebe-8c24-7b614f6de055>, <urn:uuid:5d1f62e1-1faf-43c6-b978-cf51e0d7912b>, <urn:uuid:b6d6cab5-7575-4f28-9182-cf6c2454f834>, <urn:uuid:07aef5b2-a090-4261-a4a5-56cdb306c7b5>, <urn:uuid:231d1caf-4c3e-48e3-b8a6-c038c09aca4e>, <urn:uuid:055bd69b-9156-44b9-b28a-017d2537af76>, <urn:uuid:45182ce7-ff78-4147-917e-57908f45b114>, <urn:uuid:93fc5dcf-6f53-4e5a-b258-5f4ded27b1a8>, <urn:uuid:7dc31782-1fb7-4b9d-ab29-f88d4d488f76>, <urn:uuid:85a7591c-b512-4bc8-bc3d-cb2f1f95e1f5>, <urn:uuid:ddb8e16a-27ef-4bc9-92ef-44ae3da61e98>, <urn:uuid:a5057a5d-48f3-49f1-b00e-0d70418830b2>, <urn:uuid:1fde4ed7-4822-4b1f-9add-14d8cbf19079>, <urn:uuid:2c64f4b0-867c-4071-8a2b-bc10401f9629>, <urn:uuid:727f67fe-c1e8-4c9c-bce6-3e4d8d53f23d>, <urn:uuid:367a3538-014d-49e0-a820-66dc43f46804>, <urn:uuid:0d086ac3-72eb-4662-a515-ba817565cd3e>, <urn:uuid:1df29423-a5f6-4093-a450-6f88ac4a7a28>, <urn:uuid:47ccec82-467f-4297-a1b4-fc32eada6f93>, <urn:uuid:e3e8db66-cadc-49c6-a007-da773ad3fc86>, <urn:uuid:63648efd-7fcf-42ed-96f7-4452753e276e>, <urn:uuid:cf9a2ab4-3a29-4010-ac2c-87a105ba77b6>, <urn:uuid:021d3b22-dd63-4fd0-abc0-83b4e871bfb5>, <urn:uuid:7053fb34-f628-4fa2-8874-1978a21e732d>, <urn:uuid:0894e8a4-0f61-4280-b521-3fbc81aaea41>, <urn:uuid:f369d206-d927-4ad3-904b-5c7966926b04>, <urn:uuid:56ed1f52-b8e0-4c28-be8d-01be2401aa5b>, <urn:uuid:09abb003-9675-4099-bd2d-e53e5a3390b3>, <urn:uuid:1364fe77-99a5-40bc-83d5-c3976c3a4ded>, <urn:uuid:7dbf80e0-8d86-4a3e-96f3-7646e2216811>, <urn:uuid:a75c6efc-ee68-425e-955e-2c224b9a0f1a>, <urn:uuid:196e3385-96d8-449e-bef6-55a34638fcbb>, <urn:uuid:75e5b206-0375-42c7-b414-9dde39c2e42e>, <urn:uuid:81da06b8-1ff3-45c5-8107-cc01553bddc9>, <urn:uuid:12d009d1-816c-4ecb-a7ff-2e24175ced63>;
+    omp:hidePlaylist "true".
+<urn:uuid:a1640e60-ac69-47e9-97c8-2241dd8c2932> a mo:Track;
+    dcterms:title "Write This Down (feat. DMX, Eazy E, Ice Cube, Dr Dre, MC Ren, Method Man, Nas, Biggie, Pop Smoke, Nipsey, Snoop Dogg)";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/002%20-%20%5Bnew%5D%202Pac%20-%20Write%20This%20Down%20(feat.%20DMX%2C%20Eazy%20E%2C%20Ice%20Cube%2C%20Dr%20Dre%2C%20MC%20Ren%2C%20Method%20Man%2C%20Nas%2C%20Biggie%2C%20Pop%20Smoke%2C%20Nipsey%2C%20Snoop%20Dogg).mp3>;
+    mo:duration "818".
+<urn:uuid:9186563c-7162-4389-9faa-77621fecc50f> a mo:Track;
+    dcterms:title "Devil's World";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/003%20-%20(AI)%202Pac%20-%20Devil's%20World.mp3>;
+    mo:duration "275".
+<urn:uuid:2f14ffb2-a117-4d2d-a108-3f7f9c057d73> a mo:Track;
+    dcterms:title "Raised In The Ghetto";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/004%20-%20updated%20(AI)%202Pac%20%26%20Scarface%20-%20Raised%20In%20The%20Ghetto.mp3>;
+    mo:duration "190".
+<urn:uuid:da832649-a52f-4a9d-8dd9-4774dc7ad078> a mo:Track;
+    dcterms:title "How Long WIll They Mourn Me? (prod. Warren G)";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/005%20-%20(2Pac%2C%20BIg%20Syke%2C%20The%20Rated%20R%2C%20Macadoshis%2C%20Nate%20Dogg)%20-%20How%20Long%20Will%20They%20Mourn%20Me%20(prod.%20Warren%20G).mp3>;
+    mo:duration "250".
+<urn:uuid:c65414c8-4212-4968-9057-b58ce119278e> a mo:Track;
+    dcterms:title "White Man'z World";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/020%20-%20White%20Man'z%20World.mp3>;
+    mo:duration "338".
+<urn:uuid:cebcc3d6-cdc7-48b8-ba52-8c057c04be74> a mo:Track;
+    dcterms:title "Write This Down (Ft. The Notorious B.I.G., Ice Cube, Eazy-E, Snoop Dogg, N.W.A, Dr. Dre, DMX, Nipsey Hussle)";
+    dcat:downloadUrl <https://archive.org/download/2pac-thug-theory/01.%20Write%20This%20Down.mp3>;
+    mo:duration "798".
+<urn:uuid:3e2bc603-7164-46bc-8262-ddfd3300cdce> a mo:Track;
+    dcterms:title "Holler If Ya Hear Me";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2001%20-%20Holler%20If%20Ya%20Hear%20Me.mp3>;
+    mo:duration "278".
+<urn:uuid:abc33168-ebbc-40a3-9143-53e19978c78c> a mo:Track;
+    dcterms:title "Point The Finga";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2003%20-%20Point%20The%20Finga.mp3>;
+    mo:duration "265".
+<urn:uuid:da260dd3-3375-474f-8e4a-5464fc87f409> a mo:Track;
+    dcterms:title "Last Wordz";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2005%20-%20Last%20Wordz.mp3>;
+    mo:duration "216".
+<urn:uuid:48989907-d0bc-4195-9c27-1bc06ce465c1> a mo:Track;
+    dcterms:title "Souljah's Revenge";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2006%20-%20Souljah's%20Revenge.mp3>;
+    mo:duration "196".
+<urn:uuid:71ed30cb-afc5-481a-8c70-9f4181c17397> a mo:Track;
+    dcterms:title "Peep Game";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2007%20-%20Peep%20Game.mp3>;
+    mo:duration "268".
+<urn:uuid:48b85f3f-9910-4660-9ee6-712e6c399d15> a mo:Track;
+    dcterms:title "Strugglin'";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2008%20-%20Strugglin'.mp3>;
+    mo:duration "213".
+<urn:uuid:6123e8e8-55b8-4068-a4da-23f6bad48102> a mo:Track;
+    dcterms:title "Guess Who's Back";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2009%20-%20Guess%20Who's%20Back.mp3>;
+    mo:duration "186".
+<urn:uuid:eebf31ed-d97c-45f0-98d0-8d882a45154f> a mo:Track;
+    dcterms:title "Representin' 93";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2010%20-%20Representin'%2093.mp3>;
+    mo:duration "214".
+<urn:uuid:2c625aa2-7a99-488e-a1e8-d1d11524dc5b> a mo:Track;
+    dcterms:title "Keep Ya Head Up";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2011%20-%20Keep%20Ya%20Head%20Up.mp3>;
+    mo:duration "262".
+<urn:uuid:dfcddc86-032f-4e01-bfde-2bdf27ba280a> a mo:Track;
+    dcterms:title "Strictly 4 My Niggaz";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2012%20-%20Strictly%204%20My%20Niggaz.mp3>;
+    mo:duration "355".
+<urn:uuid:90e27887-14da-468e-bdab-62e10c7cd08d> a mo:Track;
+    dcterms:title "The Streetz R Deathrow";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2013%20-%20The%20Streetz%20R%20Deathrow.mp3>;
+    mo:duration "206".
+<urn:uuid:9067553d-339e-4cf7-94b5-62b58f00b634> a mo:Track;
+    dcterms:title "I Get Around";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2014%20-%20I%20Get%20Around.mp3>;
+    mo:duration "259".
+<urn:uuid:38ac1e26-670f-4d9f-b8dc-e51f1322ba9d> a mo:Track;
+    dcterms:title "Papa'z Song";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2015%20-%20Papa'z%20Song.mp3>;
+    mo:duration "325".
+<urn:uuid:0dfbb1d4-bbca-4e8b-b140-a12c58d72e51> a mo:Track;
+    dcterms:title "5 Deadly Venomz";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2016%20-%205%20Deadly%20Venomz.mp3>;
+    mo:duration "314".
+<urn:uuid:4d7739b9-f312-4ba8-87d2-7e608583300c> a mo:Track;
+    dcterms:title "So Many Tears (Album Version)";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/01%20So%20Many%20Tears%20(Album%20Version).mp3>;
+    mo:duration "239".
+<urn:uuid:74870b53-2b93-4dbe-adde-dd6e94fa8ddd> a mo:Track;
+    dcterms:title "So Many Tears - Key Of Z Remix";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/02%20So%20Many%20Tears%20-%20Key%20Of%20Z%20Remix.mp3>;
+    mo:duration "263".
+<urn:uuid:fdf1b15c-155c-4567-859c-008efee5db16> a mo:Track;
+    dcterms:title "So Many Tears - Reminizm' Remix";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/03%20So%20Many%20Tears%20-%20Reminizm'%20Remix.mp3>;
+    mo:duration "264".
+<urn:uuid:a7a381d7-7d6e-4949-a80f-87549927fada> a mo:Track;
+    dcterms:title "Dramacydal's \"Hard To Imagine\"";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/04%20Dramacydal's%20%22Hard%20To%20Imagine%22.mp3>;
+    mo:duration "282".
+<urn:uuid:0d61668c-a6d5-438b-853d-2bc4ef3f4ab7> a mo:Track;
+    dcterms:title "If I Die Tonight - Album Version";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/05%20If%20I%20Die%20Tonight%20-%20Album%20Version.mp3>;
+    mo:duration "241".
+<urn:uuid:b25d5d74-394a-4a7a-82aa-dc10befe93de> a mo:Track;
+    dcterms:title "Trapped";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/02%20Trapped.mp3>;
+    mo:duration "285".
+<urn:uuid:dd3ac34a-a82c-4426-b19a-09c04673e696> a mo:Track;
+    dcterms:title "Soulja's Story";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/03%20Soulja's%20Story.mp3>;
+    mo:duration "306".
+<urn:uuid:25abdf19-eea0-4ece-8c29-14acc16ce839> a mo:Track;
+    dcterms:title "I Don't Give A Fuck";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/04%20I%20Don't%20Give%20A%20Fuck.mp3>;
+    mo:duration "260".
+<urn:uuid:f71ac3fc-6552-48c1-bb78-bcc30d6e359c> a mo:Track;
+    dcterms:title "Violent";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/05%20Violent.mp3>;
+    mo:duration "386".
+<urn:uuid:760ba94f-f3d7-4d23-b848-8312f4dcf7df> a mo:Track;
+    dcterms:title "Words Of Wisdom";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/06%20Words%20Of%20Wisdom.mp3>;
+    mo:duration "294".
+<urn:uuid:147ed57a-6c68-4432-a225-e202bd41ae4b> a mo:Track;
+    dcterms:title "Crooked Ass Nigga";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/08%20Crooked%20Ass%20Nigga.mp3>;
+    mo:duration "257".
+<urn:uuid:55611f13-78f0-46eb-b1d0-f4467b838811> a mo:Track;
+    dcterms:title "If My Homie Calls";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/09%20If%20My%20Homie%20Calls.mp3>;
+    mo:duration "258".
+<urn:uuid:1b56675f-e2de-4234-a7d2-10cb3cff5369> a mo:Track;
+    dcterms:title "Brenda's Got A Baby";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/10%20Brenda's%20Got%20A%20Baby.mp3>;
+    mo:duration "234".
+<urn:uuid:a82a0167-f37a-4f94-a67a-c27313e10c73> a mo:Track;
+    dcterms:title "Tha' Lunatic";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/11%20Tha'%20Lunatic.mp3>;
+    mo:duration "209".
+<urn:uuid:61d007ea-7dcc-4483-9f4b-8d97f4740e33> a mo:Track;
+    dcterms:title "Rebel Of The Underground";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/12%20Rebel%20Of%20The%20Underground.mp3>;
+    mo:duration "197".
+<urn:uuid:68b86203-25c1-4437-8187-c18d5c4802d2> a mo:Track;
+    dcterms:title "Part Time Mutha";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/13%20Part%20Time%20Mutha.mp3>;
+    mo:duration "314".
+<urn:uuid:12c3b6d1-b7fb-4d87-a85d-7bfbb1f9146b> a mo:Track;
+    dcterms:title "2Pac - All Out (Suge Knight's Stolen CD Version)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20All%20Out%20(Suge%20Knight's%20Stolen%20CD%20Version).mp3>;
+    mo:duration "329".
+<urn:uuid:1d8ac0f5-7884-4317-8334-98e85313ffa1> a mo:Track;
+    dcterms:title "2Pac - Bury Me A G (Untitled Interscope Project [Manu Tape] Ver.)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Bury%20Me%20A%20G%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>;
+    mo:duration "302".
+<urn:uuid:5514dd5e-d562-4ec5-802a-fec448195067> a mo:Track;
+    dcterms:title "2Pac - Everything They Owe (Original Mix 2)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Everything%20They%20Owe%20(Original%20Mix%202).mp3>;
+    mo:duration "189".
+<urn:uuid:fbfe1eb3-1292-41c8-9718-3ac40344a9d4> a mo:Track;
+    dcterms:title "2Pac - My Block (The Show Soundtrack) (314 529 021-2)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20My%20Block%20(The%20Show%20Soundtrack)%20(314%20529%20021-2).mp3>;
+    mo:duration "311".
+<urn:uuid:e4e0b026-ecb8-4a65-a282-ed33398ccc96> a mo:Track;
+    dcterms:title "2Pac - Out On Bail (Untitled Interscope Project [Manu Tape] Ver.)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Out%20On%20Bail%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>;
+    mo:duration "225".
+<urn:uuid:f6be37f2-6adb-40a2-b4f6-9492e99dc48b> a mo:Track;
+    dcterms:title "2Pac - Runnin From The Police (Original Version) [Prod. Easy Mo Bee]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Runnin%20From%20The%20Police%20(Original%20Version)%20%5BProd.%20Easy%20Mo%20Bee%5D.mp3>;
+    mo:duration "271".
+<urn:uuid:8da0de04-a62e-44ac-b98d-7623fbb8290b> a mo:Track;
+    dcterms:title "If I Die 2nite";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2002%20-%20If%20I%20Die%202nite.mp3>;
+    mo:duration "241".
+<urn:uuid:62493f69-13ee-4731-9828-badd5afdd3c4> a mo:Track;
+    dcterms:title "Me Against The World";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2003%20-%20Me%20Against%20The%20World.mp3>;
+    mo:duration "281".
+<urn:uuid:1b963e45-0b9c-493d-aec8-13c5c6798f98> a mo:Track;
+    dcterms:title "So Many Tears";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2004%20-%20So%20Many%20Tears.mp3>;
+    mo:duration "239".
+<urn:uuid:9c3b3658-ec8a-4c6e-b98d-db5298e23ee2> a mo:Track;
+    dcterms:title "Temptations";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2005%20-%20Temptations.mp3>;
+    mo:duration "300".
+<urn:uuid:aa48a1b6-dcaa-40cf-82fd-f6499f732913> a mo:Track;
+    dcterms:title "Young Niggaz";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2006%20-%20Young%20Niggaz.mp3>;
+    mo:duration "293".
+<urn:uuid:cf5a8f47-5c1c-4e4d-a181-89dcdca51e3f> a mo:Track;
+    dcterms:title "Heavy In The Game";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2007%20-%20Heavy%20In%20The%20Game.mp3>;
+    mo:duration "263".
+<urn:uuid:7306966a-cef9-4a7c-b7d1-e8eead4cf580> a mo:Track;
+    dcterms:title "Lord Knows";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2008%20-%20Lord%20Knows.mp3>;
+    mo:duration "271".
+<urn:uuid:8d40e9bc-1d51-46a6-b778-87cd3af009f7> a mo:Track;
+    dcterms:title "Dear Mama";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2009%20-%20Dear%20Mama.mp3>;
+    mo:duration "279".
+<urn:uuid:b073b20d-695d-46d9-b146-f99b0fdd9b6a> a mo:Track;
+    dcterms:title "It Ain't Easy";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2010%20-%20It%20Ain't%20Easy.mp3>;
+    mo:duration "294".
+<urn:uuid:6f216880-dff9-4e9a-b3c6-ad6ff5018965> a mo:Track;
+    dcterms:title "Can U Get Away";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2011%20-%20Can%20U%20Get%20Away.mp3>;
+    mo:duration "345".
+<urn:uuid:5bdb8b83-7bf9-44ab-8046-b265c2796792> a mo:Track;
+    dcterms:title "Old School";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2012%20-%20Old%20School.mp3>;
+    mo:duration "280".
+<urn:uuid:29552dcd-926f-4104-b499-cc91ca95d12d> a mo:Track;
+    dcterms:title "Fuck The World";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2013%20-%20Fuck%20The%20World.mp3>;
+    mo:duration "253".
+<urn:uuid:262790c0-7c6f-4728-ba08-7811ec7676a7> a mo:Track;
+    dcterms:title "Death Around The Corner";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2014%20-%20Death%20Around%20The%20Corner.mp3>;
+    mo:duration "247".
+<urn:uuid:e015e329-c1ea-4531-9bb7-a61e4e3cbee1> a mo:Track;
+    dcterms:title "Outlaw";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2015%20-%20Outlaw.mp3>;
+    mo:duration "271".
+<urn:uuid:37a6e1e0-c978-4c8b-b9b5-14d54f214559> a mo:Track;
+    dcterms:title "Untouchables (Swizz Beatz Remix)";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/01.%20Untouchable%20Swizz%20Beatz%20Remix.mp3>;
+    mo:duration "256".
+<urn:uuid:ad150f06-7500-4497-80d1-de5745db3c6f> a mo:Track;
+    dcterms:title "Pac's Life";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/02.%20Pac's%20Life.mp3>;
+    mo:duration "217".
+<urn:uuid:6a405c2c-a9fd-42e1-9e41-e2ac5e145a6d> a mo:Track;
+    dcterms:title "Dumpin'";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/03.%20Dumpin'.mp3>;
+    mo:duration "267".
+<urn:uuid:4a403eb9-7623-489d-a040-74e2d0076da1> a mo:Track;
+    dcterms:title "Playa Cardz Right (Female)";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/04.%20Playa%20Cardz%20Right%20(Female).mp3>;
+    mo:duration "273".
+<urn:uuid:f5c4e62a-92fa-440b-90c8-9466de69a9ef> a mo:Track;
+    dcterms:title "Whatz Next";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/05.%20Whatz%20Next.mp3>;
+    mo:duration "258".
+<urn:uuid:e1cff091-e8ae-4853-b7d0-1e2f38e3b75c> a mo:Track;
+    dcterms:title "Sleep";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/06.%20Sleep.mp3>;
+    mo:duration "249".
+<urn:uuid:b816b8c1-2f72-4dda-b51f-4f56eb67f5e5> a mo:Track;
+    dcterms:title "International";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/07.%20International.mp3>;
+    mo:duration "243".
+<urn:uuid:47dab522-2d59-430f-b8d7-ad77296d81da> a mo:Track;
+    dcterms:title "Don't Sleep";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/08.%20Don't%20Sleep.mp3>;
+    mo:duration "215".
+<urn:uuid:188e88bd-5a0c-4826-ab7d-e77474cef8f5> a mo:Track;
+    dcterms:title "Soon As I Get Home";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/09.%20Soon%20As%20I%20Get%20Home.mp3>;
+    mo:duration "220".
+<urn:uuid:a4a663a1-e5e0-498a-ac8d-83cf127fd3d3> a mo:Track;
+    dcterms:title "Playa Cardz Right (Male)";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/10.%20Playa%20Cardz%20Right%20(Male).mp3>;
+    mo:duration "294".
+<urn:uuid:a3d21a35-3fc9-4e1a-a939-396b63e5c41f> a mo:Track;
+    dcterms:title "Don't Stop";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/11.%20Don't%20Stop.mp3>;
+    mo:duration "324".
+<urn:uuid:a8ababd0-2613-4c80-bbb5-c2f89c9ddf2f> a mo:Track;
+    dcterms:title "Pac's Life (Remix)";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/12.%20Pac's%20Life%20Remix.mp3>;
+    mo:duration "218".
+<urn:uuid:56d14f54-9774-4bc2-9f4e-2b66981e5a2c> a mo:Track;
+    dcterms:title "Untouchable";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/13.%20Untouchable.mp3>;
+    mo:duration "270".
+<urn:uuid:778f18d8-84a9-4c67-8abc-c3a3dd25a4b1> a mo:Track;
+    dcterms:title "Letter To The President";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/01%20Letter%20To%20The%20President.mp3>;
+    mo:duration "364".
+<urn:uuid:6080f82c-5408-4509-9c3a-c44e6536c7f9> a mo:Track;
+    dcterms:title "Still I Rise";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/02%20Still%20I%20Rise.mp3>;
+    mo:duration "285".
+<urn:uuid:6120a7ab-46ac-490f-9444-763c69970b52> a mo:Track;
+    dcterms:title "Secretz of War";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/03%20Secretz%20of%20War.mp3>;
+    mo:duration "255".
+<urn:uuid:188339f0-7e43-4d72-94db-434fb9ffcbdb> a mo:Track;
+    dcterms:title "Baby Don't Cry (Keep Ya Head Up II)";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/04%20Baby%20Don't%20Cry%20(Keep%20Ya%20Head%20Up%20I.mp3>;
+    mo:duration "262".
+<urn:uuid:b3bc4ef0-ecf4-4213-9920-3f2265528230> a mo:Track;
+    dcterms:title "As The World Turns";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/05%20As%20The%20World%20Turns.mp3>;
+    mo:duration "308".
+<urn:uuid:d1477828-470a-4427-9502-35472b7c908d> a mo:Track;
+    dcterms:title "Black Jesuz";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/06%20Black%20Jesuz.mp3>;
+    mo:duration "269".
+<urn:uuid:e6c7eaa5-3293-4337-bdf2-ab09ab5bdb48> a mo:Track;
+    dcterms:title "Homeboyz";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/07%20Homeboyz.mp3>;
+    mo:duration "218".
+<urn:uuid:504674a9-e4ce-4f57-b538-ef0193fa2477> a mo:Track;
+    dcterms:title "Hell 4 A Hustler";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/08%20Hell%204%20A%20Hustler.mp3>;
+    mo:duration "296".
+<urn:uuid:364f2816-026a-4b6a-825b-71f118bf04f5> a mo:Track;
+    dcterms:title "High Speed";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/09%20High%20Speed.mp3>;
+    mo:duration "359".
+<urn:uuid:fa939c0a-af48-4c4e-bd8c-57ae8c306d0c> a mo:Track;
+    dcterms:title "The Good Die Young";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/10%20The%20Good%20Die%20Young.mp3>;
+    mo:duration "342".
+<urn:uuid:310d175c-7969-4a25-879e-72afc3b1b6be> a mo:Track;
+    dcterms:title "Killuminati";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/11%20Killuminati.mp3>;
+    mo:duration "242".
+<urn:uuid:dc150345-f3f9-4dc3-81b5-702266e538b7> a mo:Track;
+    dcterms:title "Teardrops & Closed Caskets";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/12%20Teardrops%20%26%20Closed%20Caskets.mp3>;
+    mo:duration "305".
+<urn:uuid:7d8a5490-a304-44ff-9dac-3f2151bb3779> a mo:Track;
+    dcterms:title "Tattoo Tears";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/13%20Tattoo%20Tears.mp3>;
+    mo:duration "303".
+<urn:uuid:03a74524-2b9c-4d60-bfa3-be46d919b687> a mo:Track;
+    dcterms:title "U Can Be Touched";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/14%20U%20Can%20Be%20Touched.mp3>;
+    mo:duration "263".
+<urn:uuid:b47bcb4c-fadf-46a0-93f6-84ed6f579354> a mo:Track;
+    dcterms:title "Y'all Don't Know Us";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/15%20Y'all%20Don't%20Know%20Us.mp3>;
+    mo:duration "294".
+<urn:uuid:86ea37c5-8bb2-4397-87fd-ec99fe571d00> a mo:Track;
+    dcterms:title "2Pac & Big Daddy Kane - Wherever You Are [Unreleased HQ]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20%26%20Big%20Daddy%20Kane%20-%20Wherever%20You%20Are%20%5BUnreleased%20HQ%5D.mp3>;
+    mo:duration "227".
+<urn:uuid:7ec3ddfd-bb76-4cb4-abd5-1c1ca6ea103f> a mo:Track;
+    dcterms:title "2Pac & Storm - He Vs She (Unreleased) [HQ]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20%26%20Storm%20-%20He%20Vs%20She%20(Unreleased)%20%5BHQ%5D.mp3>;
+    mo:duration "203".
+<urn:uuid:d3c544c5-6946-44a0-b549-72ddcb696e67> a mo:Track;
+    dcterms:title "2Pac - All Out (Suge Knight's Stolen CD Version)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20All%20Out%20(Suge%20Knight's%20Stolen%20CD%20Version).mp3>;
+    mo:duration "329".
+<urn:uuid:121aa37a-4481-40e4-b17e-1d48311a510a> a mo:Track;
+    dcterms:title "2Pac - Bury Me A G (Untitled Interscope Project [Manu Tape] Ver.)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Bury%20Me%20A%20G%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>;
+    mo:duration "302".
+<urn:uuid:8774de8e-15f1-4d9b-bcd4-d7262a0d90a7> a mo:Track;
+    dcterms:title "2Pac - Everything They Owe (Original Mix 2)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Everything%20They%20Owe%20(Original%20Mix%202).mp3>;
+    mo:duration "189".
+<urn:uuid:b514d354-8d45-422e-817d-39ef4ba877c7> a mo:Track;
+    dcterms:title "2Pac - My Block (The Show Soundtrack) (314 529 021-2)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20My%20Block%20(The%20Show%20Soundtrack)%20(314%20529%20021-2).mp3>;
+    mo:duration "311".
+<urn:uuid:df8cbb93-6ae8-479b-a3d4-11b1afbbb2c2> a mo:Track;
+    dcterms:title "2Pac - Out On Bail (Untitled Interscope Project [Manu Tape] Ver.)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Out%20On%20Bail%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>;
+    mo:duration "225".
+<urn:uuid:676b70de-4796-444f-88de-afff91f19af2> a mo:Track;
+    dcterms:title "2Pac - Runnin From The Police (Original Version) [Prod. Easy Mo Bee]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Runnin%20From%20The%20Police%20(Original%20Version)%20%5BProd.%20Easy%20Mo%20Bee%5D.mp3>;
+    mo:duration "271".
+<urn:uuid:2200679e-df9e-4ebe-8c24-7b614f6de055> a mo:Track;
+    dcterms:title "2Pac, Nate Dogg & Big Syke - Changed Man (Original Version) [Unreleased HQ]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%2C%20Nate%20Dogg%20%26%20Big%20Syke%20-%20Changed%20Man%20(Original%20Version)%20%5BUnreleased%20HQ%5D.mp3>;
+    mo:duration "231".
+<urn:uuid:5d1f62e1-1faf-43c6-b978-cf51e0d7912b> a mo:Track;
+    dcterms:title "2Pac, Outlawz & Nanci Fletcher - Don't Stop The Music (Original Version) [HQ]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%2C%20Outlawz%20%26%20Nanci%20Fletcher%20-%20Don't%20Stop%20The%20Music%20(Original%20Version)%20%5BHQ%5D.mp3>;
+    mo:duration "241".
+<urn:uuid:b6d6cab5-7575-4f28-9182-cf6c2454f834> a mo:Track;
+    dcterms:title "Outlawz - U Can Be Touched (4-24-96 [2Pac Reference] DAT Mix)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/Outlawz%20-%20U%20Can%20Be%20Touched%20(4-24-96%20%5B2Pac%20Reference%5D%20DAT%20Mix).mp3>;
+    mo:duration "283".
+<urn:uuid:07aef5b2-a090-4261-a4a5-56cdb306c7b5> a mo:Track;
+    dcterms:title "It Ain't Easy";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA04.%20It%20Ain't%20Easy.mp3>;
+    mo:duration "305".
+<urn:uuid:231d1caf-4c3e-48e3-b8a6-c038c09aca4e> a mo:Track;
+    dcterms:title "Temptations";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA05.%20Temptations.mp3>;
+    mo:duration "308".
+<urn:uuid:055bd69b-9156-44b9-b28a-017d2537af76> a mo:Track;
+    dcterms:title "Fuck All Y'all";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA09.%20Fuck%20All%20Y'all.mp3>;
+    mo:duration "249".
+<urn:uuid:45182ce7-ff78-4147-917e-57908f45b114> a mo:Track;
+    dcterms:title "AmeriKKKa Eats Its Young";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA10.%20AmeriKKKa%20Eats%20Its%20Young.mp3>;
+    mo:duration "359".
+<urn:uuid:93fc5dcf-6f53-4e5a-b258-5f4ded27b1a8> a mo:Track;
+    dcterms:title "Stay True";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA11.%20Stay%20True.mp3>;
+    mo:duration "188".
+<urn:uuid:7dc31782-1fb7-4b9d-ab29-f88d4d488f76> a mo:Track;
+    dcterms:title "Ambitionz Az A Ridah";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/01%20Ambitionz%20Az%20A%20Ridah.mp3>;
+    mo:duration "278".
+<urn:uuid:85a7591c-b512-4bc8-bc3d-cb2f1f95e1f5> a mo:Track;
+    dcterms:title "All About U";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/02%20All%20About%20U.mp3>;
+    mo:duration "276".
+<urn:uuid:ddb8e16a-27ef-4bc9-92ef-44ae3da61e98> a mo:Track;
+    dcterms:title "Skandalouz";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/03%20Skandalouz.mp3>;
+    mo:duration "248".
+<urn:uuid:a5057a5d-48f3-49f1-b00e-0d70418830b2> a mo:Track;
+    dcterms:title "Got My Mind Made Up";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/04%20Got%20My%20Mind%20Made%20Up.mp3>;
+    mo:duration "312".
+<urn:uuid:1fde4ed7-4822-4b1f-9add-14d8cbf19079> a mo:Track;
+    dcterms:title "How Do U Want It";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/05%20How%20Do%20U%20Want%20It.mp3>;
+    mo:duration "287".
+<urn:uuid:2c64f4b0-867c-4071-8a2b-bc10401f9629> a mo:Track;
+    dcterms:title "2 Of Amerikaz Most Wanted";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/06%202%20Of%20Amerikaz%20Most%20Wanted.mp3>;
+    mo:duration "246".
+<urn:uuid:727f67fe-c1e8-4c9c-bce6-3e4d8d53f23d> a mo:Track;
+    dcterms:title "No More Pain";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/07%20No%20More%20Pain.mp3>;
+    mo:duration "373".
+<urn:uuid:367a3538-014d-49e0-a820-66dc43f46804> a mo:Track;
+    dcterms:title "Heartz Of Men";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/08%20Heartz%20Of%20Men.mp3>;
+    mo:duration "283".
+<urn:uuid:0d086ac3-72eb-4662-a515-ba817565cd3e> a mo:Track;
+    dcterms:title "Life Goes On";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/09%20Life%20Goes%20On.mp3>;
+    mo:duration "301".
+<urn:uuid:1df29423-a5f6-4093-a450-6f88ac4a7a28> a mo:Track;
+    dcterms:title "Only God Can Judge Me";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/10%20Only%20God%20Can%20Judge%20Me.mp3>;
+    mo:duration "296".
+<urn:uuid:47ccec82-467f-4297-a1b4-fc32eada6f93> a mo:Track;
+    dcterms:title "Tradin' War Stories";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/11%20Tradin'%20War%20Stories.mp3>;
+    mo:duration "329".
+<urn:uuid:e3e8db66-cadc-49c6-a007-da773ad3fc86> a mo:Track;
+    dcterms:title "California Love (Remix)";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/12%20California%20Love%20(Remix).mp3>;
+    mo:duration "385".
+<urn:uuid:63648efd-7fcf-42ed-96f7-4452753e276e> a mo:Track;
+    dcterms:title "I Ain't Mad At Cha";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/13%20I%20Ain't%20Mad%20At%20Cha.mp3>;
+    mo:duration "293".
+<urn:uuid:cf9a2ab4-3a29-4010-ac2c-87a105ba77b6> a mo:Track;
+    dcterms:title "Whatz Ya Phone #";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/14%20Whatz%20Ya%20Phone%20%23.mp3>;
+    mo:duration "308".
+<urn:uuid:021d3b22-dd63-4fd0-abc0-83b4e871bfb5> a mo:Track;
+    dcterms:title "Untouchables (Swizz Beatz Remix)";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/01%20Untouchables%20(Swizz%20Beatz%20Remix).mp3>;
+    mo:duration "256".
+<urn:uuid:7053fb34-f628-4fa2-8874-1978a21e732d> a mo:Track;
+    dcterms:title "Pac's Life";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/02%20Pac's%20Life.mp3>;
+    mo:duration "217".
+<urn:uuid:0894e8a4-0f61-4280-b521-3fbc81aaea41> a mo:Track;
+    dcterms:title "Dumpin'";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/03%20Dumpin'.mp3>;
+    mo:duration "267".
+<urn:uuid:f369d206-d927-4ad3-904b-5c7966926b04> a mo:Track;
+    dcterms:title "Playa Cardz Right (Female)";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/04%20Playa%20Cardz%20Right%20(Female).mp3>;
+    mo:duration "273".
+<urn:uuid:56ed1f52-b8e0-4c28-be8d-01be2401aa5b> a mo:Track;
+    dcterms:title "Whatz Next";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/05%20Whatz%20Next.mp3>;
+    mo:duration "258".
+<urn:uuid:09abb003-9675-4099-bd2d-e53e5a3390b3> a mo:Track;
+    dcterms:title "Sleep";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/06%20Sleep.mp3>;
+    mo:duration "249".
+<urn:uuid:1364fe77-99a5-40bc-83d5-c3976c3a4ded> a mo:Track;
+    dcterms:title "International";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/07%20International.mp3>;
+    mo:duration "243".
+<urn:uuid:7dbf80e0-8d86-4a3e-96f3-7646e2216811> a mo:Track;
+    dcterms:title "Don't Sleep";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/08%20Don't%20Sleep.mp3>;
+    mo:duration "215".
+<urn:uuid:a75c6efc-ee68-425e-955e-2c224b9a0f1a> a mo:Track;
+    dcterms:title "Soon As I Get Home";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/09%20Soon%20As%20I%20Get%20Home.mp3>;
+    mo:duration "220".
+<urn:uuid:196e3385-96d8-449e-bef6-55a34638fcbb> a mo:Track;
+    dcterms:title "Playa Cardz Right (Male)";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/10%20Playa%20Cardz%20Right%20(Male).mp3>;
+    mo:duration "294".
+<urn:uuid:75e5b206-0375-42c7-b414-9dde39c2e42e> a mo:Track;
+    dcterms:title "Don't Stop";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/11%20Don't%20Stop.mp3>;
+    mo:duration "324".
+<urn:uuid:81da06b8-1ff3-45c5-8107-cc01553bddc9> a mo:Track;
+    dcterms:title "Pac's Life (Remix)";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/12%20Pac's%20Life%20(Remix).mp3>;
+    mo:duration "218".
+<urn:uuid:12d009d1-816c-4ecb-a7ff-2e24175ced63> a mo:Track;
+    dcterms:title "Untouchable";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/13%20Untouchable.mp3>;
+    mo:duration "270".
+<urn:uuid:447d205a-658e-4d35-8c86-9448051620cf> a mo:Release;
+    dcterms:title "anarchism music discography collection";
+    foaf:maker <urn:uuid:b95be055-69d4-4d84-8d80-76f531b71897>, <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>;
+    dcat:landingPage <https://archive.org/details/anarchism-music-discography-collection_202603>;
+    mo:track <urn:uuid:a1640e60-ac69-47e9-97c8-2241dd8c2932>, <urn:uuid:9186563c-7162-4389-9faa-77621fecc50f>, <urn:uuid:2f14ffb2-a117-4d2d-a108-3f7f9c057d73>, <urn:uuid:da832649-a52f-4a9d-8dd9-4774dc7ad078>, <urn:uuid:c65414c8-4212-4968-9057-b58ce119278e>.
+<urn:uuid:d2e8a8af-7dec-4d30-8fdf-a22ad4e0ccd4> a mo:Release;
+    dcterms:title "2Pac - Thug Theory";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac";
+    dcat:landingPage <https://archive.org/details/2pac-thug-theory>;
+    mo:track <urn:uuid:cebcc3d6-cdc7-48b8-ba52-8c057c04be74>.
+<urn:uuid:3c198c31-1dac-4724-b6d4-8437b18068c6> a mo:Release;
+    dcterms:title "2Pac - Strictly 4 My N.I.G.G.A.Z";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac";
+    dcat:landingPage <https://archive.org/details/2-pac-12-strictly-4-my-niggaz>;
+    mo:track <urn:uuid:3e2bc603-7164-46bc-8262-ddfd3300cdce>, <urn:uuid:abc33168-ebbc-40a3-9143-53e19978c78c>, <urn:uuid:da260dd3-3375-474f-8e4a-5464fc87f409>, <urn:uuid:48989907-d0bc-4195-9c27-1bc06ce465c1>, <urn:uuid:71ed30cb-afc5-481a-8c70-9f4181c17397>, <urn:uuid:48b85f3f-9910-4660-9ee6-712e6c399d15>, <urn:uuid:6123e8e8-55b8-4068-a4da-23f6bad48102>, <urn:uuid:eebf31ed-d97c-45f0-98d0-8d882a45154f>, <urn:uuid:2c625aa2-7a99-488e-a1e8-d1d11524dc5b>, <urn:uuid:dfcddc86-032f-4e01-bfde-2bdf27ba280a>, <urn:uuid:90e27887-14da-468e-bdab-62e10c7cd08d>, <urn:uuid:9067553d-339e-4cf7-94b5-62b58f00b634>, <urn:uuid:38ac1e26-670f-4d9f-b8dc-e51f1322ba9d>, <urn:uuid:0dfbb1d4-bbca-4e8b-b140-a12c58d72e51>.
+<urn:uuid:387f0b01-1be7-452c-935b-2888c009ff1c> a mo:Release;
+    dcterms:title "So Many Tears";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac";
+    dcat:landingPage <https://archive.org/details/somanytears2pac>;
+    mo:track <urn:uuid:4d7739b9-f312-4ba8-87d2-7e608583300c>, <urn:uuid:74870b53-2b93-4dbe-adde-dd6e94fa8ddd>, <urn:uuid:fdf1b15c-155c-4567-859c-008efee5db16>, <urn:uuid:a7a381d7-7d6e-4949-a80f-87549927fada>, <urn:uuid:0d61668c-a6d5-438b-853d-2bc4ef3f4ab7>.
+<urn:uuid:70e2d4e2-2143-41cf-9172-8c21a9b8b746> a mo:Release;
+    dcterms:title "2Pacalypse Now";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac";
+    dcat:landingPage <https://archive.org/details/gs_2pac-2pacalypse-now>;
+    mo:track <urn:uuid:b25d5d74-394a-4a7a-82aa-dc10befe93de>, <urn:uuid:dd3ac34a-a82c-4426-b19a-09c04673e696>, <urn:uuid:25abdf19-eea0-4ece-8c29-14acc16ce839>, <urn:uuid:f71ac3fc-6552-48c1-bb78-bcc30d6e359c>, <urn:uuid:760ba94f-f3d7-4d23-b848-8312f4dcf7df>, <urn:uuid:147ed57a-6c68-4432-a225-e202bd41ae4b>, <urn:uuid:55611f13-78f0-46eb-b1d0-f4467b838811>, <urn:uuid:1b56675f-e2de-4234-a7d2-10cb3cff5369>, <urn:uuid:a82a0167-f37a-4f94-a67a-c27313e10c73>, <urn:uuid:61d007ea-7dcc-4483-9f4b-8d97f4740e33>, <urn:uuid:68b86203-25c1-4437-8187-c18d5c4802d2>.
+<urn:uuid:6135ff09-f645-43ba-9147-3a97e0e0bc20> a mo:Release;
+    dcterms:title "2Pac The OG Project Vol 2";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac Unreleased";
+    dcat:landingPage <https://archive.org/details/2-pac-all-out-suge-knights-stolen-cd-version>;
+    mo:track <urn:uuid:12c3b6d1-b7fb-4d87-a85d-7bfbb1f9146b>, <urn:uuid:1d8ac0f5-7884-4317-8334-98e85313ffa1>, <urn:uuid:5514dd5e-d562-4ec5-802a-fec448195067>, <urn:uuid:fbfe1eb3-1292-41c8-9718-3ac40344a9d4>, <urn:uuid:e4e0b026-ecb8-4a65-a282-ed33398ccc96>, <urn:uuid:f6be37f2-6adb-40a2-b4f6-9492e99dc48b>.
+<urn:uuid:a5f2bfe9-b3f0-4a0c-b2c9-48761a8a2a95> a mo:Release;
+    dcterms:title "Me Against The World";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac";
+    dcat:landingPage <https://archive.org/details/2-pac-11-can-u-get-away>;
+    mo:track <urn:uuid:8da0de04-a62e-44ac-b98d-7623fbb8290b>, <urn:uuid:62493f69-13ee-4731-9828-badd5afdd3c4>, <urn:uuid:1b963e45-0b9c-493d-aec8-13c5c6798f98>, <urn:uuid:9c3b3658-ec8a-4c6e-b98d-db5298e23ee2>, <urn:uuid:aa48a1b6-dcaa-40cf-82fd-f6499f732913>, <urn:uuid:cf5a8f47-5c1c-4e4d-a181-89dcdca51e3f>, <urn:uuid:7306966a-cef9-4a7c-b7d1-e8eead4cf580>, <urn:uuid:8d40e9bc-1d51-46a6-b778-87cd3af009f7>, <urn:uuid:b073b20d-695d-46d9-b146-f99b0fdd9b6a>, <urn:uuid:6f216880-dff9-4e9a-b3c6-ad6ff5018965>, <urn:uuid:5bdb8b83-7bf9-44ab-8046-b265c2796792>, <urn:uuid:29552dcd-926f-4104-b499-cc91ca95d12d>, <urn:uuid:262790c0-7c6f-4728-ba08-7811ec7676a7>, <urn:uuid:e015e329-c1ea-4531-9bb7-a61e4e3cbee1>.
+<urn:uuid:12638957-a5e2-429b-8452-ba6ab912f1f9> a mo:Release;
+    dcterms:title "Pac's Life";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac Feat. Bone Thugs-N-Harmony";
+    dcat:landingPage <https://archive.org/details/pacs-life_202511>;
+    mo:track <urn:uuid:37a6e1e0-c978-4c8b-b9b5-14d54f214559>, <urn:uuid:ad150f06-7500-4497-80d1-de5745db3c6f>, <urn:uuid:6a405c2c-a9fd-42e1-9e41-e2ac5e145a6d>, <urn:uuid:4a403eb9-7623-489d-a040-74e2d0076da1>, <urn:uuid:f5c4e62a-92fa-440b-90c8-9466de69a9ef>, <urn:uuid:e1cff091-e8ae-4853-b7d0-1e2f38e3b75c>, <urn:uuid:b816b8c1-2f72-4dda-b51f-4f56eb67f5e5>, <urn:uuid:47dab522-2d59-430f-b8d7-ad77296d81da>, <urn:uuid:188e88bd-5a0c-4826-ab7d-e77474cef8f5>, <urn:uuid:a4a663a1-e5e0-498a-ac8d-83cf127fd3d3>, <urn:uuid:a3d21a35-3fc9-4e1a-a939-396b63e5c41f>, <urn:uuid:a8ababd0-2613-4c80-bbb5-c2f89c9ddf2f>, <urn:uuid:56d14f54-9774-4bc2-9f4e-2b66981e5a2c>.
+<urn:uuid:a6ac7458-6857-4ff4-8cc0-d76b85743fb5> a mo:Release;
+    dcterms:title "Still I Rise";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac & Outlawz";
+    dcat:landingPage <https://archive.org/details/01-letter-to-the-president>;
+    mo:track <urn:uuid:778f18d8-84a9-4c67-8abc-c3a3dd25a4b1>, <urn:uuid:6080f82c-5408-4509-9c3a-c44e6536c7f9>, <urn:uuid:6120a7ab-46ac-490f-9444-763c69970b52>, <urn:uuid:188339f0-7e43-4d72-94db-434fb9ffcbdb>, <urn:uuid:b3bc4ef0-ecf4-4213-9920-3f2265528230>, <urn:uuid:d1477828-470a-4427-9502-35472b7c908d>, <urn:uuid:e6c7eaa5-3293-4337-bdf2-ab09ab5bdb48>, <urn:uuid:504674a9-e4ce-4f57-b538-ef0193fa2477>, <urn:uuid:364f2816-026a-4b6a-825b-71f118bf04f5>, <urn:uuid:fa939c0a-af48-4c4e-bd8c-57ae8c306d0c>, <urn:uuid:310d175c-7969-4a25-879e-72afc3b1b6be>, <urn:uuid:dc150345-f3f9-4dc3-81b5-702266e538b7>, <urn:uuid:7d8a5490-a304-44ff-9dac-3f2151bb3779>, <urn:uuid:03a74524-2b9c-4d60-bfa3-be46d919b687>, <urn:uuid:b47bcb4c-fadf-46a0-93f6-84ed6f579354>.
+<urn:uuid:1c50eedc-c5cb-410d-873e-fe4114642734> a mo:Release;
+    dcterms:title "2Pac The OG Project Vol 2";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "Tha Row Ryda";
+    dcat:landingPage <https://archive.org/details/2-pac-all-out-suge-knights-stolen-cd-version_202504>;
+    mo:track <urn:uuid:86ea37c5-8bb2-4397-87fd-ec99fe571d00>, <urn:uuid:7ec3ddfd-bb76-4cb4-abd5-1c1ca6ea103f>, <urn:uuid:d3c544c5-6946-44a0-b549-72ddcb696e67>, <urn:uuid:121aa37a-4481-40e4-b17e-1d48311a510a>, <urn:uuid:8774de8e-15f1-4d9b-bcd4-d7262a0d90a7>, <urn:uuid:b514d354-8d45-422e-817d-39ef4ba877c7>, <urn:uuid:df8cbb93-6ae8-479b-a3d4-11b1afbbb2c2>, <urn:uuid:676b70de-4796-444f-88de-afff91f19af2>, <urn:uuid:2200679e-df9e-4ebe-8c24-7b614f6de055>, <urn:uuid:5d1f62e1-1faf-43c6-b978-cf51e0d7912b>, <urn:uuid:b6d6cab5-7575-4f28-9182-cf6c2454f834>.
+<urn:uuid:ecd1dd9b-b8c8-4e43-b0ca-759324e4c140> a mo:Release;
+    dcterms:title "\"Stay True\" Demo Cassette (Side A ONLY)";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac";
+    dcat:landingPage <https://archive.org/details/stay-true>;
+    mo:track <urn:uuid:07aef5b2-a090-4261-a4a5-56cdb306c7b5>, <urn:uuid:231d1caf-4c3e-48e3-b8a6-c038c09aca4e>, <urn:uuid:055bd69b-9156-44b9-b28a-017d2537af76>, <urn:uuid:45182ce7-ff78-4147-917e-57908f45b114>, <urn:uuid:93fc5dcf-6f53-4e5a-b258-5f4ded27b1a8>.
+<urn:uuid:336a5804-76f0-40e0-8b18-dfafcd05258c> a mo:Release;
+    dcterms:title "2Pac - All Eyez On Me [Disc 1]";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac";
+    dcat:landingPage <https://archive.org/details/12-california-love-remix>;
+    mo:track <urn:uuid:7dc31782-1fb7-4b9d-ab29-f88d4d488f76>, <urn:uuid:85a7591c-b512-4bc8-bc3d-cb2f1f95e1f5>, <urn:uuid:ddb8e16a-27ef-4bc9-92ef-44ae3da61e98>, <urn:uuid:a5057a5d-48f3-49f1-b00e-0d70418830b2>, <urn:uuid:1fde4ed7-4822-4b1f-9add-14d8cbf19079>, <urn:uuid:2c64f4b0-867c-4071-8a2b-bc10401f9629>, <urn:uuid:727f67fe-c1e8-4c9c-bce6-3e4d8d53f23d>, <urn:uuid:367a3538-014d-49e0-a820-66dc43f46804>, <urn:uuid:0d086ac3-72eb-4662-a515-ba817565cd3e>, <urn:uuid:1df29423-a5f6-4093-a450-6f88ac4a7a28>, <urn:uuid:47ccec82-467f-4297-a1b4-fc32eada6f93>, <urn:uuid:e3e8db66-cadc-49c6-a007-da773ad3fc86>, <urn:uuid:63648efd-7fcf-42ed-96f7-4452753e276e>, <urn:uuid:cf9a2ab4-3a29-4010-ac2c-87a105ba77b6>.
+<urn:uuid:5a3a94bb-2307-4da4-a15c-d8abdff6ee49> a mo:Release;
+    dcterms:title "Pac's Life";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, "2Pac Feat. Bone Thugs-N-Harmony";
+    dcat:landingPage <https://archive.org/details/11-dont-stop>;
+    mo:track <urn:uuid:021d3b22-dd63-4fd0-abc0-83b4e871bfb5>, <urn:uuid:7053fb34-f628-4fa2-8874-1978a21e732d>, <urn:uuid:0894e8a4-0f61-4280-b521-3fbc81aaea41>, <urn:uuid:f369d206-d927-4ad3-904b-5c7966926b04>, <urn:uuid:56ed1f52-b8e0-4c28-be8d-01be2401aa5b>, <urn:uuid:09abb003-9675-4099-bd2d-e53e5a3390b3>, <urn:uuid:1364fe77-99a5-40bc-83d5-c3976c3a4ded>, <urn:uuid:7dbf80e0-8d86-4a3e-96f3-7646e2216811>, <urn:uuid:a75c6efc-ee68-425e-955e-2c224b9a0f1a>, <urn:uuid:196e3385-96d8-449e-bef6-55a34638fcbb>, <urn:uuid:75e5b206-0375-42c7-b414-9dde39c2e42e>, <urn:uuid:81da06b8-1ff3-45c5-8107-cc01553bddc9>, <urn:uuid:12d009d1-816c-4ecb-a7ff-2e24175ced63>.

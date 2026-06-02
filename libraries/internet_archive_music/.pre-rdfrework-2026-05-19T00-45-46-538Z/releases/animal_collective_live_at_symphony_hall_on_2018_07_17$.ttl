@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:9cccd314-49bf-4579-a411-c90b139f0fe7> a mo:Release;
+    dcterms:title "Animal Collective Live at Symphony Hall on 2018-07-17";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    dcat:landingPage <https://archive.org/details/acollective2018-07-17.H4n.flac16>;
+    mo:track <urn:uuid:87335e92-4d78-40d5-bd1f-130c2338e9c7>.
+<urn:uuid:87335e92-4d78-40d5-bd1f-130c2338e9c7> a mo:Track; dcterms:title "The Softest Voice"; mo:duration "729"; dcat:downloadUrl <https://archive.org/download/acollective2018-07-17.H4n.flac16/Track%2004.mp3>.

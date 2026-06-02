@@ -1,0 +1,270 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/agents.ttl#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/genres.ttl#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Parliament_Funkadelic> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Parliament/Funkadelic";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:2929ba63-b790-4b20-a6f3-89325393e796>, <urn:uuid:26273229-f641-4952-bac5-4e3a48aacbad>, <urn:uuid:12ca794e-98ff-4bbf-bb88-2a20da9ee060>, <urn:uuid:3f1de4fa-b09c-455f-87d6-c50de3f2f8d2>, <urn:uuid:8f2f41dd-7c55-4cea-940a-b10eb5253fb6>, <urn:uuid:771eac5a-c3b4-4c27-a2b7-f20cfaff9fea>, <urn:uuid:75bbe210-5e6f-4fa6-83f4-0cae6615226e>, <urn:uuid:d174cbb4-ba25-4691-844f-7403a35dc0f0>, <urn:uuid:2f12c492-d683-4307-a4f6-464330fbc79d>, <urn:uuid:c9f911b6-b343-4f5c-bac7-70cb639970e7>, <urn:uuid:e27dae6c-e1ef-4358-970d-635aa05b4a4b>, <urn:uuid:1085343d-8f0b-4497-848d-1921b2f96c6f>, <urn:uuid:064b9b96-5155-4486-82f8-dbaa07ed3e82>, <urn:uuid:4a375741-a93f-467a-810f-b864365ffeaf>, <urn:uuid:3da57f34-2f0b-4ceb-87d2-1afe912cc730>, <urn:uuid:01175662-b1ed-4833-aa6f-5945d317c7e9>, <urn:uuid:032c5269-a092-411d-9c24-1bed8607000f>, <urn:uuid:b0e0ab02-c1e6-40e7-8a51-35664462af6e>, <urn:uuid:6e145070-d226-4737-9349-321c96f0cad8>, <urn:uuid:97cfae15-153a-4cf6-a77e-66c12c22d9d2>, <urn:uuid:3f2e43ed-9774-4b51-af16-aeef55bf75bc>, <urn:uuid:5a6aa5a1-a485-4edc-8392-c18be63cf825>, <urn:uuid:05270eec-b9a7-49d5-85cf-4fa158a259b8>, <urn:uuid:71e62f1b-0513-4b64-a28d-e814fb229aff>, <urn:uuid:816dc474-e246-468e-acfb-20e0fb371c0d>, <urn:uuid:5b5d0a60-e503-4841-af1e-3c75076cea56>, <urn:uuid:36841d86-b3c3-411f-a448-05a1cfc6ec8c>, <urn:uuid:89d18bde-2e60-4e5e-8a31-dfd3436b82e1>, <urn:uuid:05cde43c-0f5f-488c-a9ef-724a878f4a3a>, <urn:uuid:2b980baf-c180-46c7-a0f2-1f2d656c0466>, <urn:uuid:5fcc441c-eeb9-4a44-8715-1e60d9c94289>, <urn:uuid:8037350a-0cf9-46a3-b997-d4a87b6a14c7>, <urn:uuid:6c2e174a-f057-4567-9c23-2b23ad78a012>, <urn:uuid:b0bc55f2-3756-479a-81de-f23f3636d8bd>, <urn:uuid:d2d0a264-ed01-423c-aa2e-3c3d06661972>, <urn:uuid:bd4619e3-10f0-480f-a532-6c4afb332955>, <urn:uuid:99e20073-0a87-4ade-a9cb-17dc810abce1>, <urn:uuid:9f38af23-9191-43f5-80d5-d702afa10c23>, <urn:uuid:8988a32c-9868-4021-9338-eb8d2297b85c>, <urn:uuid:59dcbcd6-9bac-41d0-9eff-769dfeb99e05>, <urn:uuid:5c08ac1c-8ae6-4792-bf73-015b4ede31d0>, <urn:uuid:99847840-c705-41d0-b504-f02e2f1c1121>, <urn:uuid:903472d3-b78f-43a5-bce8-1f64d0d70532>, <urn:uuid:cf9dfca5-7257-4e09-903a-83d4b88e8561>, <urn:uuid:19bede61-e7a9-4dc4-b512-b97af734de10>, <urn:uuid:db53e382-1cdc-49c1-a6e2-d0023c2eeebe>, <urn:uuid:bc3eef6f-1b38-4a7b-b63d-d235f7add242>, <urn:uuid:1e1175ee-72d0-4e31-b36e-588c0bb5d172>, <urn:uuid:e886223a-4856-4194-a3e1-66475cfe8790>, <urn:uuid:4f10fd97-8ba2-4516-8c1c-67e7dec0a286>, <urn:uuid:ce05ea54-3651-4d5f-86e0-d70b36db31cb>, <urn:uuid:ed085aea-447a-49c6-8e92-14a64cf33999>, <urn:uuid:2c96eb0a-e5b9-4cb5-be83-22cc0d6b8732>, <urn:uuid:880bfc9f-050f-405c-bc73-e52f67c02a67>, <urn:uuid:49c18bad-66a1-494e-be3a-c0552e16f08a>, <urn:uuid:989d82df-1f5a-4743-ad23-18ef4bb23e49>, <urn:uuid:58057222-2517-449b-a530-80dd698f0b0c>, <urn:uuid:cf735c31-30ef-4cd6-8de1-e2a19788056d>, <urn:uuid:e0a0a37a-b422-49db-83ba-6333135947ab>, <urn:uuid:3b55a05d-878a-4364-b7e7-3c13f3e1b29b>;
+    omp:hidePlaylist "true".
+<urn:uuid:2929ba63-b790-4b20-a6f3-89325393e796> a mo:Track;
+    dcterms:title "01 Intro >";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/01%20Intro.mp3>;
+    mo:duration "551".
+<urn:uuid:26273229-f641-4952-bac5-4e3a48aacbad> a mo:Track;
+    dcterms:title "02 P. Funk (Wants To Get Funked Up)*";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/02%20P.%20Funk%20(Wants%20To%20Get%20Funked%20Up).mp3>;
+    mo:duration "916".
+<urn:uuid:12ca794e-98ff-4bbf-bb88-2a20da9ee060> a mo:Track;
+    dcterms:title "03 Rhythm And Rhyme";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/03%20Rhythm%20And%20Rhyme.mp3>;
+    mo:duration "425".
+<urn:uuid:3f1de4fa-b09c-455f-87d6-c50de3f2f8d2> a mo:Track;
+    dcterms:title "05 Cosmic Slop";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/05%20Cosmic%20Slop.mp3>;
+    mo:duration "617".
+<urn:uuid:8f2f41dd-7c55-4cea-940a-b10eb5253fb6> a mo:Track;
+    dcterms:title "07 Standing On The Verge Of Getting It On ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/07%20Standing%20On%20The%20Verge%20Of%20Getting%20It%20On.mp3>;
+    mo:duration "226".
+<urn:uuid:771eac5a-c3b4-4c27-a2b7-f20cfaff9fea> a mo:Track;
+    dcterms:title "09 Pumpin’ It Up ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/09%20Pumpin%E2%80%99%20It%20Up.mp3>;
+    mo:duration "349".
+<urn:uuid:75bbe210-5e6f-4fa6-83f4-0cae6615226e> a mo:Track;
+    dcterms:title "10 Medley*";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/10%20Medley.mp3>;
+    mo:duration "1458".
+<urn:uuid:d174cbb4-ba25-4691-844f-7403a35dc0f0> a mo:Track;
+    dcterms:title "11 Give Up The Funk (Tear The Roof Off The Sucker) ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/11%20Give%20Up%20The%20Funk%20(Tear%20The%20Roof%20Off%20The%20Sucker).mp3>;
+    mo:duration "522".
+<urn:uuid:2f12c492-d683-4307-a4f6-464330fbc79d> a mo:Track;
+    dcterms:title "12 Night Of The Thumpasorus Peoples ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/12%20Night%20Of%20The%20Thumpasorus%20People.mp3>;
+    mo:duration "266".
+<urn:uuid:c9f911b6-b343-4f5c-bac7-70cb639970e7> a mo:Track;
+    dcterms:title "13 Promentalshitbackwashpsychosis Enema Squad (The Doo Doo Chasers)";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/13%20Promentalshitbackwashpsychosis%20Enema%20Squad.mp3>;
+    mo:duration "517".
+<urn:uuid:e27dae6c-e1ef-4358-970d-635aa05b4a4b> a mo:Track;
+    dcterms:title "15 U.S. Custom Coast Guard Dope Dog/Free Your Mind And Your Ass Will Follow ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/15%20US%20Custom%20Coast%20Guard%20Dope%20Dog.mp3>;
+    mo:duration "374".
+<urn:uuid:1085343d-8f0b-4497-848d-1921b2f96c6f> a mo:Track;
+    dcterms:title "17 Maggot Brain ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/17%20Maggot%20Brain.mp3>;
+    mo:duration "678".
+<urn:uuid:064b9b96-5155-4486-82f8-dbaa07ed3e82> a mo:Track;
+    dcterms:title "18 //(Not Just) Knee Deep/Sentimental Journey/Won't You Come Fly";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/18%20(Not%20Just)%20Knee%20Deep.mp3>;
+    mo:duration "1034".
+<urn:uuid:4a375741-a93f-467a-810f-b864365ffeaf> a mo:Track;
+    dcterms:title "19 Atomic Dog** ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/19%20Atomic%20Dog.mp3>;
+    mo:duration "725".
+<urn:uuid:3da57f34-2f0b-4ceb-87d2-1afe912cc730> a mo:Track;
+    dcterms:title "20 Rhythm And Rhyme/Babblin' Kabbabie";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/20%20Rhythm%20And%20Rhyme-Babblin_%20Kabbabie.mp3>;
+    mo:duration "655".
+<urn:uuid:01175662-b1ed-4833-aa6f-5945d317c7e9> a mo:Track;
+    dcterms:title "23 Flash Light***";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/23%20Flash%20Light.mp3>;
+    mo:duration "638".
+<urn:uuid:032c5269-a092-411d-9c24-1bed8607000f> a mo:Track;
+    dcterms:title "27 Mothership Connection (Star Child) ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/27%20Mothership%20Connection%20(Star%20Child).mp3>;
+    mo:duration "319".
+<urn:uuid:b0e0ab02-c1e6-40e7-8a51-35664462af6e> a mo:Track;
+    dcterms:title "28 Party People";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/28%20Party%20People.mp3>;
+    mo:duration "767".
+<urn:uuid:6e145070-d226-4737-9349-321c96f0cad8> a mo:Track;
+    dcterms:title "29 Red Hot Mama ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/29%20Red%20Hot%20Mama.mp3>;
+    mo:duration "279".
+<urn:uuid:97cfae15-153a-4cf6-a77e-66c12c22d9d2> a mo:Track;
+    dcterms:title "31 Free Your Mind And Your Ass Will Follow ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/31%20Free%20Your%20Mind%20And%20Your%20Ass%20Will%20Follow.mp3>;
+    mo:duration "358".
+<urn:uuid:3f2e43ed-9774-4b51-af16-aeef55bf75bc> a mo:Track;
+    dcterms:title "35 What Is Soul?/Funky Dollar Bill^ ->";
+    dcat:downloadUrl <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/35%20What%20Is%20Soul%20-%20Funky%20Dollar%20Bill.mp3>;
+    mo:duration "400".
+<urn:uuid:5a6aa5a1-a485-4edc-8392-c18be63cf825> a mo:Track;
+    dcterms:title "Atomic Dog";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-20.mp3>;
+    mo:duration "654".
+<urn:uuid:05270eec-b9a7-49d5-85cf-4fa158a259b8> a mo:Track;
+    dcterms:title "Biological Speculation Reprise";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-17.mp3>;
+    mo:duration "231".
+<urn:uuid:71e62f1b-0513-4b64-a28d-e814fb229aff> a mo:Track;
+    dcterms:title "Cosmic Slop >";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-09.mp3>;
+    mo:duration "405".
+<urn:uuid:816dc474-e246-468e-acfb-20e0fb371c0d> a mo:Track;
+    dcterms:title "Flash Light";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-03.mp3>;
+    mo:duration "547".
+<urn:uuid:5b5d0a60-e503-4841-af1e-3c75076cea56> a mo:Track;
+    dcterms:title "Get Low";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-07.mp3>;
+    mo:duration "284".
+<urn:uuid:36841d86-b3c3-411f-a448-05a1cfc6ec8c> a mo:Track;
+    dcterms:title "Get Off Your Ass and Jam";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-02.mp3>;
+    mo:duration "797".
+<urn:uuid:89d18bde-2e60-4e5e-8a31-dfd3436b82e1> a mo:Track;
+    dcterms:title "Give Up the Funk (Tear the Roof Off the Sucker)";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-19.mp3>;
+    mo:duration "379".
+<urn:uuid:05cde43c-0f5f-488c-a9ef-724a878f4a3a> a mo:Track;
+    dcterms:title "Good Thoughts, Bad Thoughts >";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-12.mp3>;
+    mo:duration "195".
+<urn:uuid:2b980baf-c180-46c7-a0f2-1f2d656c0466> a mo:Track;
+    dcterms:title "I got a Thing, You Got a Thing, Everybody's Got a Thing";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-16.mp3>;
+    mo:duration "223".
+<urn:uuid:5fcc441c-eeb9-4a44-8715-1e60d9c94289> a mo:Track;
+    dcterms:title "Maggot Brain";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-13.mp3>;
+    mo:duration "504".
+<urn:uuid:8037350a-0cf9-46a3-b997-d4a87b6a14c7> a mo:Track;
+    dcterms:title "Meow Meow >";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-06.mp3>;
+    mo:duration "208".
+<urn:uuid:6c2e174a-f057-4567-9c23-2b23ad78a012> a mo:Track;
+    dcterms:title "One Nation Under a Groove >";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-08.mp3>;
+    mo:duration "244".
+<urn:uuid:b0bc55f2-3756-479a-81de-f23f3636d8bd> a mo:Track;
+    dcterms:title "P.Funk (Wants to Get Funked Up)";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-14.mp3>;
+    mo:duration "991".
+<urn:uuid:d2d0a264-ed01-423c-aa2e-3c3d06661972> a mo:Track;
+    dcterms:title "Pole Power >";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-05.mp3>;
+    mo:duration "309".
+<urn:uuid:bd4619e3-10f0-480f-a532-6c4afb332955> a mo:Track;
+    dcterms:title "Presence of a Brain";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-18.mp3>;
+    mo:duration "297".
+<urn:uuid:99e20073-0a87-4ade-a9cb-17dc810abce1> a mo:Track;
+    dcterms:title "Yank My Doodle";
+    dcat:downloadUrl <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-04.mp3>;
+    mo:duration "381".
+<urn:uuid:9f38af23-9191-43f5-80d5-d702afa10c23> a mo:Track;
+    dcterms:title "01 Intro";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.01%20Intro.mp3>;
+    mo:duration "268".
+<urn:uuid:8988a32c-9868-4021-9338-eb8d2297b85c> a mo:Track;
+    dcterms:title "02 Funkentelechy";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.02%20Funkentelechy.mp3>;
+    mo:duration "465".
+<urn:uuid:59dcbcd6-9bac-41d0-9eff-769dfeb99e05> a mo:Track;
+    dcterms:title "03 Cosmic Slop";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.03%20Cosmic%20Slop.mp3>;
+    mo:duration "517".
+<urn:uuid:5c08ac1c-8ae6-4792-bf73-015b4ede31d0> a mo:Track;
+    dcterms:title "04 Pole Power, Meow Meow, Get Low";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.04%20Pole%20Power%2C%20Meow%20Meow%2C%20Get%20Low.mp3>;
+    mo:duration "857".
+<urn:uuid:99847840-c705-41d0-b504-f02e2f1c1121> a mo:Track;
+    dcterms:title "05 One Nation Under a Groove";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.05%20One%20Nation%20Under%20a%20Groove.mp3>;
+    mo:duration "297".
+<urn:uuid:903472d3-b78f-43a5-bce8-1f64d0d70532> a mo:Track;
+    dcterms:title "06 (Not Just) Knee Deep";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.06%20(Not%20Just)%20Knee%20Deep.mp3>;
+    mo:duration "937".
+<urn:uuid:cf9dfca5-7257-4e09-903a-83d4b88e8561> a mo:Track;
+    dcterms:title "06 Flashlight";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.06%20Flashlight.mp3>;
+    mo:duration "555".
+<urn:uuid:19bede61-e7a9-4dc4-b512-b97af734de10> a mo:Track;
+    dcterms:title "07 P Funk (Wants to get Funked Up)";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.07%20P%20Funk%20(Wants%20to%20get%20Funked%20Up).mp3>;
+    mo:duration "1146".
+<urn:uuid:db53e382-1cdc-49c1-a6e2-d0023c2eeebe> a mo:Track;
+    dcterms:title "08 Jump Around, I got a thing You got a thing Everybody got a thing, Get off Your Ass and Jam";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.08%20Jump%20Around%2C%20I%20got%20a%20thing%20You%20got%20a%20thing%20Everybody%20got%20a%20thing%2C%20Get%20off%20Your%20Ass%20and%20Jam.mp3>;
+    mo:duration "456".
+<urn:uuid:bc3eef6f-1b38-4a7b-b63d-d235f7add242> a mo:Track;
+    dcterms:title "09 Tear the Roof off the Sucker";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.09%20Tear%20the%20Roof%20off%20the%20Sucker.mp3>;
+    mo:duration "187".
+<urn:uuid:1e1175ee-72d0-4e31-b36e-588c0bb5d172> a mo:Track;
+    dcterms:title "10 Night of the Thumpasorus Peoples";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.10%20Night%20of%20the%20Thumpasorus%20Peoples.mp3>;
+    mo:duration "536".
+<urn:uuid:e886223a-4856-4194-a3e1-66475cfe8790> a mo:Track;
+    dcterms:title "11 Dirty Queen";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.11%20Dirty%20Queen.mp3>;
+    mo:duration "310".
+<urn:uuid:4f10fd97-8ba2-4516-8c1c-67e7dec0a286> a mo:Track;
+    dcterms:title "12 Presence of a Brain";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.12%20Presence%20of%20a%20Brain.mp3>;
+    mo:duration "303".
+<urn:uuid:ce05ea54-3651-4d5f-86e0-d70b36db31cb> a mo:Track;
+    dcterms:title "13 Atomic Dog";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/2.13%20Atomic%20Dog.mp3>;
+    mo:duration "579".
+<urn:uuid:ed085aea-447a-49c6-8e92-14a64cf33999> a mo:Track;
+    dcterms:title "fishbone_01 Hide Behind my Glasses";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/1.01%20Hide%20Behind%20my%20Glasses.mp3>;
+    mo:duration "396".
+<urn:uuid:2c96eb0a-e5b9-4cb5-be83-22cc0d6b8732> a mo:Track;
+    dcterms:title "fishbone_02 Cholly";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/1.02%20Cholly.mp3>;
+    mo:duration "231".
+<urn:uuid:880bfc9f-050f-405c-bc73-e52f67c02a67> a mo:Track;
+    dcterms:title "fishbone_04 All We Have Is Now";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/1.04%20All%20We%20Have%20Is%20Now.mp3>;
+    mo:duration "253".
+<urn:uuid:49c18bad-66a1-494e-be3a-c0552e16f08a> a mo:Track;
+    dcterms:title "fishbone_05 Estranged Fruit";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/1.05%20Estranged%20Fruit.mp3>;
+    mo:duration "344".
+<urn:uuid:989d82df-1f5a-4743-ad23-18ef4bb23e49> a mo:Track;
+    dcterms:title "fishbone_06 Alcoholic -Ironman";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/1.06%20Alcoholic%20-Ironman.mp3>;
+    mo:duration "336".
+<urn:uuid:58057222-2517-449b-a530-80dd698f0b0c> a mo:Track;
+    dcterms:title "fishbone_07 Ma and Pa";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/1.07%20Ma%20and%20Pa.mp3>;
+    mo:duration "225".
+<urn:uuid:cf735c31-30ef-4cd6-8de1-e2a19788056d> a mo:Track;
+    dcterms:title "fishbone_08 I Don't Care";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/1.08%20I%20Don't%20Care.mp3>;
+    mo:duration "205".
+<urn:uuid:e0a0a37a-b422-49db-83ba-6333135947ab> a mo:Track;
+    dcterms:title "fishbone_09 Boning in the Boneyard";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/1.09%20Boning%20in%20the%20Boneyard.mp3>;
+    mo:duration "423".
+<urn:uuid:3b55a05d-878a-4364-b7e7-3c13f3e1b29b> a mo:Track;
+    dcterms:title "fishbone_10 Party at Ground Zero";
+    dcat:downloadUrl <https://archive.org/download/PFUNK2023-08-19/1.10%20Party%20at%20Ground%20Zero.mp3>;
+    mo:duration "370".
+<urn:uuid:72eb99ed-80b8-4d33-8ffd-7591af2d779f> a mo:Release;
+    dcterms:title "George Clinton and the P-Funk All Stars 1994-03-05 The Sting New Britain, CT";
+    foaf:maker "George Clinton & The P-Funk All Stars";
+    dcat:landingPage <https://archive.org/details/georgeclinton-and-the-p-funk-all-starsMedeirosMaster>;
+    mo:track <urn:uuid:2929ba63-b790-4b20-a6f3-89325393e796>, <urn:uuid:26273229-f641-4952-bac5-4e3a48aacbad>, <urn:uuid:12ca794e-98ff-4bbf-bb88-2a20da9ee060>, <urn:uuid:3f1de4fa-b09c-455f-87d6-c50de3f2f8d2>, <urn:uuid:8f2f41dd-7c55-4cea-940a-b10eb5253fb6>, <urn:uuid:771eac5a-c3b4-4c27-a2b7-f20cfaff9fea>, <urn:uuid:75bbe210-5e6f-4fa6-83f4-0cae6615226e>, <urn:uuid:d174cbb4-ba25-4691-844f-7403a35dc0f0>, <urn:uuid:2f12c492-d683-4307-a4f6-464330fbc79d>, <urn:uuid:c9f911b6-b343-4f5c-bac7-70cb639970e7>, <urn:uuid:e27dae6c-e1ef-4358-970d-635aa05b4a4b>, <urn:uuid:1085343d-8f0b-4497-848d-1921b2f96c6f>, <urn:uuid:064b9b96-5155-4486-82f8-dbaa07ed3e82>, <urn:uuid:4a375741-a93f-467a-810f-b864365ffeaf>, <urn:uuid:3da57f34-2f0b-4ceb-87d2-1afe912cc730>, <urn:uuid:01175662-b1ed-4833-aa6f-5945d317c7e9>, <urn:uuid:032c5269-a092-411d-9c24-1bed8607000f>, <urn:uuid:b0e0ab02-c1e6-40e7-8a51-35664462af6e>, <urn:uuid:6e145070-d226-4737-9349-321c96f0cad8>, <urn:uuid:97cfae15-153a-4cf6-a77e-66c12c22d9d2>, <urn:uuid:3f2e43ed-9774-4b51-af16-aeef55bf75bc>.
+<urn:uuid:653a33f8-20fc-4429-b915-fd2f1e681f49> a mo:Release;
+    dcterms:title "George Clinton & Parliament-Funkadelic Live at The Andrew J. Brady Music Center on 2024-05-28";
+    foaf:maker "George Clinton & Parliament-Funkadelic";
+    dcat:landingPage <https://archive.org/details/p-funk2024-05-28.mk41.nbob.f3.16bit>;
+    mo:track <urn:uuid:5a6aa5a1-a485-4edc-8392-c18be63cf825>, <urn:uuid:05270eec-b9a7-49d5-85cf-4fa158a259b8>, <urn:uuid:71e62f1b-0513-4b64-a28d-e814fb229aff>, <urn:uuid:816dc474-e246-468e-acfb-20e0fb371c0d>, <urn:uuid:5b5d0a60-e503-4841-af1e-3c75076cea56>, <urn:uuid:36841d86-b3c3-411f-a448-05a1cfc6ec8c>, <urn:uuid:89d18bde-2e60-4e5e-8a31-dfd3436b82e1>, <urn:uuid:05cde43c-0f5f-488c-a9ef-724a878f4a3a>, <urn:uuid:2b980baf-c180-46c7-a0f2-1f2d656c0466>, <urn:uuid:5fcc441c-eeb9-4a44-8715-1e60d9c94289>, <urn:uuid:8037350a-0cf9-46a3-b997-d4a87b6a14c7>, <urn:uuid:6c2e174a-f057-4567-9c23-2b23ad78a012>, <urn:uuid:b0bc55f2-3756-479a-81de-f23f3636d8bd>, <urn:uuid:d2d0a264-ed01-423c-aa2e-3c3d06661972>, <urn:uuid:bd4619e3-10f0-480f-a532-6c4afb332955>, <urn:uuid:99e20073-0a87-4ade-a9cb-17dc810abce1>.
+<urn:uuid:c161d9ff-2155-403a-b13b-6ae3ae1abf33> a mo:Release;
+    dcterms:title "George Clinton and Parliament Funkadelic at Wellmont Theater";
+    foaf:maker "George Clinton and Parliament Funkadelic";
+    dcat:landingPage <https://archive.org/details/PFUNK2023-08-19>;
+    mo:track <urn:uuid:9f38af23-9191-43f5-80d5-d702afa10c23>, <urn:uuid:8988a32c-9868-4021-9338-eb8d2297b85c>, <urn:uuid:59dcbcd6-9bac-41d0-9eff-769dfeb99e05>, <urn:uuid:5c08ac1c-8ae6-4792-bf73-015b4ede31d0>, <urn:uuid:99847840-c705-41d0-b504-f02e2f1c1121>, <urn:uuid:903472d3-b78f-43a5-bce8-1f64d0d70532>, <urn:uuid:cf9dfca5-7257-4e09-903a-83d4b88e8561>, <urn:uuid:19bede61-e7a9-4dc4-b512-b97af734de10>, <urn:uuid:db53e382-1cdc-49c1-a6e2-d0023c2eeebe>, <urn:uuid:bc3eef6f-1b38-4a7b-b63d-d235f7add242>, <urn:uuid:1e1175ee-72d0-4e31-b36e-588c0bb5d172>, <urn:uuid:e886223a-4856-4194-a3e1-66475cfe8790>, <urn:uuid:4f10fd97-8ba2-4516-8c1c-67e7dec0a286>, <urn:uuid:ce05ea54-3651-4d5f-86e0-d70b36db31cb>, <urn:uuid:ed085aea-447a-49c6-8e92-14a64cf33999>, <urn:uuid:2c96eb0a-e5b9-4cb5-be83-22cc0d6b8732>, <urn:uuid:880bfc9f-050f-405c-bc73-e52f67c02a67>, <urn:uuid:49c18bad-66a1-494e-be3a-c0552e16f08a>, <urn:uuid:989d82df-1f5a-4743-ad23-18ef4bb23e49>, <urn:uuid:58057222-2517-449b-a530-80dd698f0b0c>, <urn:uuid:cf735c31-30ef-4cd6-8de1-e2a19788056d>, <urn:uuid:e0a0a37a-b422-49db-83ba-6333135947ab>, <urn:uuid:3b55a05d-878a-4364-b7e7-3c13f3e1b29b>.

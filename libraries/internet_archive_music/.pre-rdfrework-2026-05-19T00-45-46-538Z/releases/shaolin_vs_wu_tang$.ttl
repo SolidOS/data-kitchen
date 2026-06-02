@@ -1,0 +1,48 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:150b9866-bb16-49d6-be23-4fa98f55b29f>
+    a mo:Track;
+    dct:title "Molasses (ft. Rick Ross & Ghostface Killah)";
+    mo:duration "253";
+    dcat:downloadUrl
+        <https://archive.org/download/shaolin-vs.-wu-tang/14%20-%20Raekwon%20-%20Molasses%20(ft.%20Rick%20Ross%20%26%20Ghostface%20Killah).mp3>.
+<urn:uuid:31bf5328-c2ec-4a86-a69d-d4a353ec59d5>
+    a mo:Track;
+    dct:title "Masters Of Our Fate (ft. Black Thought)";
+    mo:duration "202";
+    dcat:downloadUrl
+        <https://archive.org/download/shaolin-vs.-wu-tang/16%20-%20Raekwon%20-%20Masters%20Of%20Our%20Fate%20(ft.%20Black%20Thought).mp3>.
+<urn:uuid:6157cf88-e49e-45a4-9f95-61e7db2b0a92>
+    a mo:Track;
+    dct:title "Rich And Black (ft. Nas)";
+    mo:duration "215";
+    dcat:downloadUrl
+        <https://archive.org/download/shaolin-vs.-wu-tang/09%20-%20Raekwon%20-%20Rich%20And%20Black%20(ft.%20Nas).mp3>.
+<urn:uuid:785df6e3-936f-4b31-9c9f-bc82101bc042>
+    a mo:Release;
+    dct:title "Shaolin Vs. Wu Tang";
+    mo:track
+        <urn:uuid:150b9866-bb16-49d6-be23-4fa98f55b29f>,
+        <urn:uuid:31bf5328-c2ec-4a86-a69d-d4a353ec59d5>,
+        <urn:uuid:6157cf88-e49e-45a4-9f95-61e7db2b0a92>,
+        <urn:uuid:ce29c410-0944-45de-9dbd-f766dc4a3d6f>,
+        <urn:uuid:d8b98fce-3fc6-4a12-8f9d-5b96a59378b0>;
+    dcat:landingPage det:shaolin-vs.-wu-tang;
+    foaf:maker "Raekwon", <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:ce29c410-0944-45de-9dbd-f766dc4a3d6f>
+    a mo:Track;
+    dct:title "Chop Chop Ninja (ft. Inspectah Deck & Estelle)";
+    mo:duration "264";
+    dcat:downloadUrl
+        <https://archive.org/download/shaolin-vs.-wu-tang/04%20-%20Raekwon%20-%20Chop%20Chop%20Ninja%20(ft.%20Inspectah%20Deck%20%26%20Estelle).mp3>.
+<urn:uuid:d8b98fce-3fc6-4a12-8f9d-5b96a59378b0>
+    a mo:Track;
+    dct:title "Rock N Roll (ft. Ghostface Killah & Jim Jones)";
+    mo:duration "340";
+    dcat:downloadUrl
+        <https://archive.org/download/shaolin-vs.-wu-tang/08%20-%20Raekwon%20-%20Rock%20N%20Roll%20(ft.%20Ghostface%20Killah%20%26%20Jim%20Jones).mp3>.

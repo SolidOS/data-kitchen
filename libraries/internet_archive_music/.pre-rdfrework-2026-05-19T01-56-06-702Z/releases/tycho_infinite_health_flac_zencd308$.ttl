@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:caedcdf9-c2b7-4967-b3d6-a270a54ed820> a mo:Release;
+    dcterms:title "Tycho - Infinite Health [FLAC] [ZENCD308]";
+    foaf:maker "Tycho";
+    dcat:landingPage <https://archive.org/details/01-consciousness-felt>;
+    mo:track <urn:uuid:2990af13-0922-4128-af1d-c4f41c5aa904>, <urn:uuid:b6562422-9ff9-4575-a601-716e2025d96c>, <urn:uuid:67cacd83-bcde-4ad5-97ea-32ee9e307f1b>, <urn:uuid:4e7400ef-3e51-45e6-98dc-49528672af40>, <urn:uuid:bfc91527-d51b-46e3-a6dc-eddb0f010ac1>, <urn:uuid:3967be68-de7f-418f-902f-dd42451b31c0>, <urn:uuid:5360a50d-8d3c-4a4b-8723-dbdb608db20b>, <urn:uuid:f5b193a0-a713-4beb-a09d-b7d70b494a83>.
+<urn:uuid:2990af13-0922-4128-af1d-c4f41c5aa904> a mo:Track; dcterms:title "Consciousness Felt"; mo:duration "194"; dcat:downloadUrl <https://archive.org/download/01-consciousness-felt/01%20Consciousness%20Felt.mp3>.
+<urn:uuid:b6562422-9ff9-4575-a601-716e2025d96c> a mo:Track; dcterms:title "Devices"; mo:duration "311"; dcat:downloadUrl <https://archive.org/download/01-consciousness-felt/04%20Devices.mp3>.
+<urn:uuid:67cacd83-bcde-4ad5-97ea-32ee9e307f1b> a mo:Track; dcterms:title "DX Odyssey"; mo:duration "198"; dcat:downloadUrl <https://archive.org/download/01-consciousness-felt/07%20DX%20Odyssey.mp3>.
+<urn:uuid:4e7400ef-3e51-45e6-98dc-49528672af40> a mo:Track; dcterms:title "Green"; mo:duration "268"; dcat:downloadUrl <https://archive.org/download/01-consciousness-felt/06%20Green.mp3>.
+<urn:uuid:bfc91527-d51b-46e3-a6dc-eddb0f010ac1> a mo:Track; dcterms:title "Phantom"; mo:duration "281"; dcat:downloadUrl <https://archive.org/download/01-consciousness-felt/02%20Phantom.mp3>.
+<urn:uuid:3967be68-de7f-418f-902f-dd42451b31c0> a mo:Track; dcterms:title "Restraint"; mo:duration "186"; dcat:downloadUrl <https://archive.org/download/01-consciousness-felt/03%20Restraint.mp3>.
+<urn:uuid:5360a50d-8d3c-4a4b-8723-dbdb608db20b> a mo:Track; dcterms:title "Totem"; mo:duration "223"; dcat:downloadUrl <https://archive.org/download/01-consciousness-felt/08%20Totem.mp3>.
+<urn:uuid:f5b193a0-a713-4beb-a09d-b7d70b494a83> a mo:Track; dcterms:title "Infinite Health"; mo:duration "222"; dcat:downloadUrl <https://archive.org/download/01-consciousness-felt/05%20Infinite%20Health.mp3>.

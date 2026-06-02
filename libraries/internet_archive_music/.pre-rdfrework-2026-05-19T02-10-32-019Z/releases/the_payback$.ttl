@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:d99dfec6-d3fa-48af-9fe6-16b6219e4420> a mo:Release;
+    dcterms:title "The Payback";
+    foaf:maker "James Brown";
+    dcat:landingPage <https://archive.org/details/1973-james-brown-the-payback>;
+    mo:track <urn:uuid:84acdb40-c29d-43f8-8399-98dc754fc7be>, <urn:uuid:cb47bb6f-30e5-40f5-bad4-6f0817a34e82>, <urn:uuid:03d3ba33-115e-47e7-b65c-ebb4af86c513>, <urn:uuid:ec18df04-5cdd-4869-902b-40bc5a01b0fc>, <urn:uuid:382da656-558b-4ce8-a390-dc69dcc965ea>, <urn:uuid:a447ac18-dafe-4979-889f-ed865ed6c84b>, <urn:uuid:28aaa220-50f5-418f-b1d1-6c9c6e55d142>, <urn:uuid:d046a5ab-a525-4549-9d2a-d5baa5d671ca>.
+<urn:uuid:84acdb40-c29d-43f8-8399-98dc754fc7be> a mo:Track; dcterms:title "Doing The Best I Can"; mo:duration "462"; dcat:downloadUrl <https://archive.org/download/1973-james-brown-the-payback/02-Doing%20The%20Best%20I%20Can.mp3>.
+<urn:uuid:cb47bb6f-30e5-40f5-bad4-6f0817a34e82> a mo:Track; dcterms:title "Forever Suffering"; mo:duration "352"; dcat:downloadUrl <https://archive.org/download/1973-james-brown-the-payback/05-Forever%20Suffering.mp3>.
+<urn:uuid:03d3ba33-115e-47e7-b65c-ebb4af86c513> a mo:Track; dcterms:title "Mind Power"; mo:duration "724"; dcat:downloadUrl <https://archive.org/download/1973-james-brown-the-payback/08-Mind%20Power.mp3>.
+<urn:uuid:ec18df04-5cdd-4869-902b-40bc5a01b0fc> a mo:Track; dcterms:title "Shoot Your Shot"; mo:duration "489"; dcat:downloadUrl <https://archive.org/download/1973-james-brown-the-payback/04-Shoot%20Your%20Shot.mp3>.
+<urn:uuid:382da656-558b-4ce8-a390-dc69dcc965ea> a mo:Track; dcterms:title "Stone To The Bone"; mo:duration "614"; dcat:downloadUrl <https://archive.org/download/1973-james-brown-the-payback/07-Stone%20To%20The%20Bone.mp3>.
+<urn:uuid:a447ac18-dafe-4979-889f-ed865ed6c84b> a mo:Track; dcterms:title "Take Some - Leave Some"; mo:duration "513"; dcat:downloadUrl <https://archive.org/download/1973-james-brown-the-payback/03-Take%20Some%2C%20Leave%20some.mp3>.
+<urn:uuid:28aaa220-50f5-418f-b1d1-6c9c6e55d142> a mo:Track; dcterms:title "The Payback"; mo:duration "459"; dcat:downloadUrl <https://archive.org/download/1973-james-brown-the-payback/01-The%20Payback.mp3>.
+<urn:uuid:d046a5ab-a525-4549-9d2a-d5baa5d671ca> a mo:Track; dcterms:title "Time Is Running Out Fast"; mo:duration "767"; dcat:downloadUrl <https://archive.org/download/1973-james-brown-the-payback/06-Time%20Is%20Running%20Out%20Fast.mp3>.

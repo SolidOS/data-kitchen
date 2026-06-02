@@ -1,0 +1,2432 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix omp: <http://open-media-player.org/ns#>.
+@prefix agents: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/agents.ttl#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/genres.ttl#>.
+
+<urn:uuid:66d121db-a936-4589-ac18-0b18742500b2> a mo:Release;
+    dcat:landingPage <https://archive.org/details/928-Full-Album>;
+    mo:track <urn:uuid:8a0abc4b-e8e0-4148-968c-cd73dc4e8a47>, <urn:uuid:ecdf329a-c584-498f-bfd3-24c15ebc2940>;
+    dcterms:title "928 (Full Album)";
+    foaf:maker "j dilla", <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>.
+<urn:uuid:8a0abc4b-e8e0-4148-968c-cd73dc4e8a47> a mo:Track;
+    dcterms:title "Lato B";
+    dcat:downloadUrl <https://archive.org/download/928-Full-Album/Track%209.mp3>;
+    mo:duration "182".
+<urn:uuid:ecdf329a-c584-498f-bfd3-24c15ebc2940> a mo:Track;
+    dcterms:title "Lato B";
+    dcat:downloadUrl <https://archive.org/download/928-Full-Album/Track%2013%20(Prod.%20by%20House%20Shoes).mp3>;
+    mo:duration "194".
+<urn:uuid:a490b286-180b-47f3-906c-b26652c60166> a mo:Release;
+    dcat:landingPage <https://archive.org/details/dilladayz_j_dilla_20181120>;
+    mo:track <urn:uuid:3a864d60-32e6-49d5-a338-8b3f7f508ed5>, <urn:uuid:9fe2b70d-679d-4f89-888a-04f863c2c3f0>, <urn:uuid:91153637-bc07-4fa3-8f0c-ad2047e36509>, <urn:uuid:4779d0bd-fc56-428d-b396-582292e79406>, <urn:uuid:88b3bb9a-1870-4bde-8f83-c829c56071fa>, <urn:uuid:ca333d91-c16b-406a-b9fd-e642ae10d2f1>, <urn:uuid:40be0a25-cc3f-4b7c-925e-a1948831e48f>, <urn:uuid:66a8a967-92be-4008-aa66-19ba7ce63b75>, <urn:uuid:738034aa-c071-4301-9595-166f8e6df672>, <urn:uuid:cf4e2596-dd72-410d-9009-309b12d6ef00>, <urn:uuid:a030a1ad-2bb5-4ff7-bdbc-4d69620bac04>, <urn:uuid:8c3925b0-309b-4a69-89cb-a4b027adb101>, <urn:uuid:52bd2d20-4fbf-4ab1-b578-5c991fb101c6>, <urn:uuid:489481aa-0c0f-442c-8ba2-a60c5b3bcb14>, <urn:uuid:aecbe2bb-adca-46a0-ba9b-98e2f1ff977f>, <urn:uuid:8981ed2d-0b57-47d9-a230-2ef5a7b053e8>, <urn:uuid:aa068446-3ab8-4ed4-9c01-21aace825560>, <urn:uuid:29048c07-3c43-4703-affa-cfff8a26fe85>, <urn:uuid:bd33fd25-cf4c-4ba1-b6d0-5afb8e8e8a24>, <urn:uuid:3dc2ed4e-5fc8-4679-9453-5a0ad787ce41>, <urn:uuid:8fbdfb30-4903-425a-b0ff-c69a59d48049>, <urn:uuid:ce8a7346-c793-480c-b0a4-d377a548d41b>, <urn:uuid:0f45149e-6d49-4a8c-9cbd-f2b76d0a6998>, <urn:uuid:25864791-bb38-4678-880b-afa7b6ab7a0c>, <urn:uuid:ed1438ba-61cb-417e-a4c8-6ec31c21e97b>, <urn:uuid:e83eba82-181c-4a66-835d-733771c1d7c9>, <urn:uuid:3bcd8d6d-59a4-428c-a48f-4bc65e351a36>, <urn:uuid:e9956b6c-ac23-4c1a-838d-8fe5347771e9>, <urn:uuid:1e5c056b-5f4a-4db0-b52d-5edd93385f79>, <urn:uuid:5c6cc872-185d-41a9-b73e-6839b77664e7>, <urn:uuid:71cdc2dc-0682-4221-8b98-0b1d59dfde66>, <urn:uuid:05f813ef-7487-4ae3-a245-9b16fb8a3cb9>, <urn:uuid:bbfd3b34-426e-4618-9e55-38d2fa470875>, <urn:uuid:d4fa3585-5b3c-475a-8adf-76c572828704>, <urn:uuid:7aacd199-9e3e-43d1-b0e9-4145d6f5e3cb>, <urn:uuid:0f82d999-0f64-4e33-9547-ce712d4055f2>, <urn:uuid:100133af-7598-43ec-a2cd-14d88bea7953>, <urn:uuid:204c66e1-c550-4765-879d-24fcf0fd0877>;
+    dcterms:title "J. Dilla - Dilladayz";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>, "J Dilla".
+<urn:uuid:3a864d60-32e6-49d5-a338-8b3f7f508ed5> a mo:Track;
+    dcterms:title "865";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20865.mp3>;
+    mo:duration "187".
+<urn:uuid:9fe2b70d-679d-4f89-888a-04f863c2c3f0> a mo:Track;
+    dcterms:title "A Day Wit the Homies";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20A%20Day%20Wit%20the%20Homies.mp3>;
+    mo:duration "183".
+<urn:uuid:91153637-bc07-4fa3-8f0c-ad2047e36509> a mo:Track;
+    dcterms:title "All Good";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20All%20Good.mp3>;
+    mo:duration "185".
+<urn:uuid:4779d0bd-fc56-428d-b396-582292e79406> a mo:Track;
+    dcterms:title "All I Do";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20All%20I%20Do.mp3>;
+    mo:duration "301".
+<urn:uuid:88b3bb9a-1870-4bde-8f83-c829c56071fa> a mo:Track;
+    dcterms:title "Always Find a Way";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Always%20Find%20a%20Way.mp3>;
+    mo:duration "225".
+<urn:uuid:ca333d91-c16b-406a-b9fd-e642ae10d2f1> a mo:Track;
+    dcterms:title "Bass in the D (Town)";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Bass%20in%20the%20D.mp3>;
+    mo:duration "334".
+<urn:uuid:40be0a25-cc3f-4b7c-925e-a1948831e48f> a mo:Track;
+    dcterms:title "Beat #27";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Beat%20%2327.mp3>;
+    mo:duration "249".
+<urn:uuid:66a8a967-92be-4008-aa66-19ba7ce63b75> a mo:Track;
+    dcterms:title "Beat #51";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Beat%20%2351.mp3>;
+    mo:duration "257".
+<urn:uuid:738034aa-c071-4301-9595-166f8e6df672> a mo:Track;
+    dcterms:title "Can't Hold the Torch";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Can't%20Hold%20the%20Torch.mp3>;
+    mo:duration "223".
+<urn:uuid:cf4e2596-dd72-410d-9009-309b12d6ef00> a mo:Track;
+    dcterms:title "Climax Girl Shit";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Climax%20Girl%20Shit.mp3>;
+    mo:duration "204".
+<urn:uuid:a030a1ad-2bb5-4ff7-bdbc-4d69620bac04> a mo:Track;
+    dcterms:title "Didn't Cha' Know?";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Didn't%20Cha'%20Know%3B.mp3>;
+    mo:duration "238".
+<urn:uuid:8c3925b0-309b-4a69-89cb-a4b027adb101> a mo:Track;
+    dcterms:title "Dilla Plugged-In";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Dilla%20Plugged-In.mp3>;
+    mo:duration "190".
+<urn:uuid:52bd2d20-4fbf-4ab1-b578-5c991fb101c6> a mo:Track;
+    dcterms:title "Dukes";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Dukes.mp3>;
+    mo:duration "276".
+<urn:uuid:489481aa-0c0f-442c-8ba2-a60c5b3bcb14> a mo:Track;
+    dcterms:title "Earl";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Earl.mp3>;
+    mo:duration "189".
+<urn:uuid:aecbe2bb-adca-46a0-ba9b-98e2f1ff977f> a mo:Track;
+    dcterms:title "Enjoy da Ride";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Enjoy%20da%20Ride.mp3>;
+    mo:duration "245".
+<urn:uuid:8981ed2d-0b57-47d9-a230-2ef5a7b053e8> a mo:Track;
+    dcterms:title "Fallin' in Lust";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Fallin'%20in%20Lust.mp3>;
+    mo:duration "267".
+<urn:uuid:aa068446-3ab8-4ed4-9c01-21aace825560> a mo:Track;
+    dcterms:title "Flowers";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Flowers.mp3>;
+    mo:duration "280".
+<urn:uuid:29048c07-3c43-4703-affa-cfff8a26fe85> a mo:Track;
+    dcterms:title "Forth & Back";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Forth%20%26%20Back.mp3>;
+    mo:duration "279".
+<urn:uuid:bd33fd25-cf4c-4ba1-b6d0-5afb8e8e8a24> a mo:Track;
+    dcterms:title "I Try";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20I%20Try.mp3>;
+    mo:duration "337".
+<urn:uuid:3dc2ed4e-5fc8-4679-9453-5a0ad787ce41> a mo:Track;
+    dcterms:title "Illasoul";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Illasoul.mp3>;
+    mo:duration "227".
+<urn:uuid:8fbdfb30-4903-425a-b0ff-c69a59d48049> a mo:Track;
+    dcterms:title "In Space";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20In%20Space.mp3>;
+    mo:duration "343".
+<urn:uuid:ce8a7346-c793-480c-b0a4-d377a548d41b> a mo:Track;
+    dcterms:title "Kamaal";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Kamaal.mp3>;
+    mo:duration "424".
+<urn:uuid:0f45149e-6d49-4a8c-9cbd-f2b76d0a6998> a mo:Track;
+    dcterms:title "Keep It On";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Keep%20It%20On.mp3>;
+    mo:duration "214".
+<urn:uuid:25864791-bb38-4678-880b-afa7b6ab7a0c> a mo:Track;
+    dcterms:title "Life";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Life.mp3>;
+    mo:duration "280".
+<urn:uuid:ed1438ba-61cb-417e-a4c8-6ec31c21e97b> a mo:Track;
+    dcterms:title "One Two";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20One%20Two.mp3>;
+    mo:duration "186".
+<urn:uuid:e83eba82-181c-4a66-835d-733771c1d7c9> a mo:Track;
+    dcterms:title "Quicksand";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Quicksand.mp3>;
+    mo:duration "281".
+<urn:uuid:3bcd8d6d-59a4-428c-a48f-4bc65e351a36> a mo:Track;
+    dcterms:title "R U Listenin'?";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20R%20U%20Listenin'%3B.mp3>;
+    mo:duration "260".
+<urn:uuid:e9956b6c-ac23-4c1a-838d-8fe5347771e9> a mo:Track;
+    dcterms:title "Runnin'";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Runnin'.mp3>;
+    mo:duration "302".
+<urn:uuid:1e5c056b-5f4a-4db0-b52d-5edd93385f79> a mo:Track;
+    dcterms:title "She Said";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20She%20Said.mp3>;
+    mo:duration "249".
+<urn:uuid:5c6cc872-185d-41a9-b73e-6839b77664e7> a mo:Track;
+    dcterms:title "Show Me What You Got";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Show%20Me%20What%20You%20Got.mp3>;
+    mo:duration "238".
+<urn:uuid:71cdc2dc-0682-4221-8b98-0b1d59dfde66> a mo:Track;
+    dcterms:title "Smooth";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Smooth.mp3>;
+    mo:duration "242".
+<urn:uuid:05f813ef-7487-4ae3-a245-9b16fb8a3cb9> a mo:Track;
+    dcterms:title "So Far to Go";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20So%20Far%20to%20Go.mp3>;
+    mo:duration "336".
+<urn:uuid:bbfd3b34-426e-4618-9e55-38d2fa470875> a mo:Track;
+    dcterms:title "The Ex";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Ex.mp3>;
+    mo:duration "210".
+<urn:uuid:d4fa3585-5b3c-475a-8adf-76c572828704> a mo:Track;
+    dcterms:title "The Light";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Light.mp3>;
+    mo:duration "294".
+<urn:uuid:7aacd199-9e3e-43d1-b0e9-4145d6f5e3cb> a mo:Track;
+    dcterms:title "The Look of Love (Pt. 1)";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Look%20of%20Love%20(Pt.%201).mp3>;
+    mo:duration "207".
+<urn:uuid:0f82d999-0f64-4e33-9547-ce712d4055f2> a mo:Track;
+    dcterms:title "The Look of Love (Pt. 2)";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Look%20of%20Love%20(Pt.%202).mp3>;
+    mo:duration "186".
+<urn:uuid:100133af-7598-43ec-a2cd-14d88bea7953> a mo:Track;
+    dcterms:title "The Wind";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20The%20Wind.mp3>;
+    mo:duration "248".
+<urn:uuid:204c66e1-c550-4765-879d-24fcf0fd0877> a mo:Track;
+    dcterms:title "Tomorrow Never Knows";
+    dcat:downloadUrl <https://archive.org/download/dilladayz_j_dilla_20181120/J%20Dilla%20-%20Tomorrow%20Never%20Knows.mp3>;
+    mo:duration "181".
+<urn:uuid:578ca6ce-c6d6-4c04-b3b4-f376b962260b> a mo:Release;
+    dcat:landingPage <https://archive.org/details/DillaMix>;
+    mo:track <urn:uuid:9e697352-b15d-4b4a-9693-8e6d1cf7ea78>;
+    dcterms:title "Dilla mix";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>, <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3ww>.
+<urn:uuid:9e697352-b15d-4b4a-9693-8e6d1cf7ea78> a mo:Track;
+    dcterms:title "00herreramix240210";
+    dcat:downloadUrl <https://archive.org/download/DillaMix/00herreramix240210.mp3>;
+    mo:duration "2540".
+<urn:uuid:aceb1927-a66d-4c65-9948-fd8486ea04e3> a mo:Release;
+    dcat:landingPage <https://archive.org/details/gs_j-dilla-donut-shop>;
+    mo:track <urn:uuid:e4da0d11-1cbf-4914-811d-ea6e8ea776e6>, <urn:uuid:c5d09fea-5dcd-4132-890e-b07433a4b802>, <urn:uuid:346c946d-60d1-4928-a5b3-7b94fbd4b7ce>;
+    dcterms:title "Donut Shop";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>, "J Dilla".
+<urn:uuid:e4da0d11-1cbf-4914-811d-ea6e8ea776e6> a mo:Track;
+    dcterms:title "Bars & Twists";
+    dcat:downloadUrl <https://archive.org/download/gs_j-dilla-donut-shop/1-03%20Bars%20%26%20Twists.mp3>;
+    mo:duration "229".
+<urn:uuid:c5d09fea-5dcd-4132-890e-b07433a4b802> a mo:Track;
+    dcterms:title "Safety Dance";
+    dcat:downloadUrl <https://archive.org/download/gs_j-dilla-donut-shop/1-01%20Safety%20Dance.mp3>;
+    mo:duration "180".
+<urn:uuid:346c946d-60d1-4928-a5b3-7b94fbd4b7ce> a mo:Track;
+    dcterms:title "You Can't Hold a Torch (Busta instrumental)";
+    dcat:downloadUrl <https://archive.org/download/gs_j-dilla-donut-shop/1-06%20You%20Can't%20Hold%20a%20Torch%20(Busta%20instrumental).mp3>;
+    mo:duration "206".
+<urn:uuid:55d26674-ea0b-4f20-87f4-9b8c7d40cb6d> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-tang-clan-1994-08-14-irvine-meadows-irvine-ca>;
+    mo:track <urn:uuid:9728b259-e6e7-4525-9442-c4f10f45e1bf>, <urn:uuid:d4ed3a1d-494a-42cf-ae96-cae592d46b4c>, <urn:uuid:b2abbc70-c2cd-4746-a012-6047fd61e8d0>;
+    dcterms:title "Wu-Tang Clan - [1994-08-14] Irvine Meadows, Irvine, CA";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:9728b259-e6e7-4525-9442-c4f10f45e1bf> a mo:Track;
+    dcterms:title "03 Method Man";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-1994-08-14-irvine-meadows-irvine-ca/03%20Method%20Man.mp3>;
+    mo:duration "193".
+<urn:uuid:d4ed3a1d-494a-42cf-ae96-cae592d46b4c> a mo:Track;
+    dcterms:title "04 Can It Be All So Simple";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-1994-08-14-irvine-meadows-irvine-ca/04%20Can%20It%20Be%20All%20So%20Simple.mp3>;
+    mo:duration "257".
+<urn:uuid:b2abbc70-c2cd-4746-a012-6047fd61e8d0> a mo:Track;
+    dcterms:title "05 C.R.E.A.M.";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-1994-08-14-irvine-meadows-irvine-ca/05%20C.R.E.A.M..mp3>;
+    mo:duration "264".
+<urn:uuid:71209a42-c4c9-45cb-b367-e1342b19d119> a mo:Release;
+    dcat:landingPage <https://archive.org/details/enter-the-wu-tang-36-chambers_202409>;
+    mo:track <urn:uuid:aaf1c086-17de-4df2-9b50-44cf01d501af>, <urn:uuid:b7d0ef17-c8fe-4090-9d8b-8c6283b4e830>, <urn:uuid:fd3108f4-9a36-4e1d-8b0c-45a9c9d3c652>, <urn:uuid:379b8a30-ebef-4ccf-8802-4827cbb465ad>, <urn:uuid:9673c469-bff1-46b5-9d4a-4cc97687f6db>, <urn:uuid:1870a100-891e-41cb-b6e3-eb292876d6bf>, <urn:uuid:c433d685-91e9-4ab0-891b-9fe5147ef3a8>, <urn:uuid:078e8ff4-81fb-49b9-b291-ac6e47ba0e61>, <urn:uuid:a8dafe16-cff7-4569-8bc8-eeba8cec477a>, <urn:uuid:09d7a596-a6bd-45db-bf16-26fbb9a33ba3>, <urn:uuid:fa1f3d06-896d-4ae6-875e-2d5bd0a0e2ee>;
+    dcterms:title "Enter The Wu-Tang- 36 Chambers";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:aaf1c086-17de-4df2-9b50-44cf01d501af> a mo:Track;
+    dcterms:title "Bring Da Ruckus";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/01%20Bring%20Da%20Ruckus.mp3>;
+    mo:duration "251".
+<urn:uuid:b7d0ef17-c8fe-4090-9d8b-8c6283b4e830> a mo:Track;
+    dcterms:title "C.R.E.A.M.";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/08%20C.R.E.A.M.mp3>;
+    mo:duration "252".
+<urn:uuid:fd3108f4-9a36-4e1d-8b0c-45a9c9d3c652> a mo:Track;
+    dcterms:title "Can It Be All So Simple";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/05%20Can%20It%20Be%20All%20So%20Simple.mp3>;
+    mo:duration "413".
+<urn:uuid:379b8a30-ebef-4ccf-8802-4827cbb465ad> a mo:Track;
+    dcterms:title "Clan In Da Front";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/03%20Clan%20In%20Da%20Front.mp3>;
+    mo:duration "273".
+<urn:uuid:9673c469-bff1-46b5-9d4a-4cc97687f6db> a mo:Track;
+    dcterms:title "Da Mystery Of Chessboxin'";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/06%20Da%20Mystery%20Of%20Chessboxin'.mp3>;
+    mo:duration "288".
+<urn:uuid:1870a100-891e-41cb-b6e3-eb292876d6bf> a mo:Track;
+    dcterms:title "Method Man";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/09%20Method%20Man.mp3>;
+    mo:duration "351".
+<urn:uuid:c433d685-91e9-4ab0-891b-9fe5147ef3a8> a mo:Track;
+    dcterms:title "Protect Ya Neck";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/10%20Protect%20Ya%20Neck.mp3>;
+    mo:duration "291".
+<urn:uuid:078e8ff4-81fb-49b9-b291-ac6e47ba0e61> a mo:Track;
+    dcterms:title "Tearz";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/11%20Tearz.mp3>;
+    mo:duration "258".
+<urn:uuid:a8dafe16-cff7-4569-8bc8-eeba8cec477a> a mo:Track;
+    dcterms:title "Wu-Tang Clan Ain't Nothin' Ta Fuck Wit";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/07%20Wu-Tang%20Clan%20Ain't%20Nothin'%20Ta%20Fuck%20Wit.mp3>;
+    mo:duration "216".
+<urn:uuid:09d7a596-a6bd-45db-bf16-26fbb9a33ba3> a mo:Track;
+    dcterms:title "Wu-Tang: 7th Chamber";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/04%20Wu-Tang-%207th%20Chamber.mp3>;
+    mo:duration "367".
+<urn:uuid:fa1f3d06-896d-4ae6-875e-2d5bd0a0e2ee> a mo:Track;
+    dcterms:title "Wu-Tang: 7th Chamber, Pt. II";
+    dcat:downloadUrl <https://archive.org/download/enter-the-wu-tang-36-chambers_202409/12%20Wu-Tang-%207th%20Chamber%2C%20Pt.%20II.mp3>;
+    mo:duration "370".
+<urn:uuid:2769f124-81ea-4ad6-90ff-50e3ba8781d5> a mo:Release;
+    dcat:landingPage <https://archive.org/details/Wu-Tang_Clan_-_The_Sword_Chamber-2019>;
+    mo:track <urn:uuid:6d63c787-b442-49e0-b4de-d0a82ccad188>, <urn:uuid:8732d5cf-fc3c-4a5e-a7f4-3e9fed9e6259>, <urn:uuid:185da38e-a18c-4d54-921c-f860d861e025>, <urn:uuid:c36da612-b152-460f-89e4-0c2fdedaca30>, <urn:uuid:e76271b9-f0cb-49e3-b0f9-bc654fc17b0d>, <urn:uuid:e7b06f18-efb6-40b4-bad6-cd4beaf47016>, <urn:uuid:1cf64cae-04b5-44de-8241-35faca0ea066>, <urn:uuid:1e0c9921-f7e3-4ab5-b094-d04bc63c0677>, <urn:uuid:e85ac723-d762-4321-bba7-f604bb24bfb4>, <urn:uuid:b60f279b-6829-47a4-873f-0e893314127d>, <urn:uuid:f724ba83-c898-49a8-b5d7-edeebf4f3a45>;
+    dcterms:title "Wu-Tang Clan - The Sword Chamber-2019";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:6d63c787-b442-49e0-b4de-d0a82ccad188> a mo:Track;
+    dcterms:title "02 - 4Th Chamber - Gza Ghostface Killer Rza Killah Priest";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/02%20-%204th%20Chamber%20-%20GZA%20Ghostface%20Killer%20RZA%20%20Killah%20Priest.mp3>;
+    mo:duration "280".
+<urn:uuid:8732d5cf-fc3c-4a5e-a7f4-3e9fed9e6259> a mo:Track;
+    dcterms:title "04 - Wu-Tang Killa Beez - Killa Beez (Feat Bobby Digital U-God Inspectah Deck Suga Bang Bang)";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/04%20-%20Wu-Tang%20Killa%20Beez%20-%20Killa%20Beez%20(Feat%20Bobby%20Digital%20U-God%20Inspectah%20Deck%20Suga%20Bang%20Bang).mp3>;
+    mo:duration "238".
+<urn:uuid:185da38e-a18c-4d54-921c-f860d861e025> a mo:Track;
+    dcterms:title "06 - Wu-Tang Clan - Treez (Raekwon)";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/06%20-%20Wu-Tang%20Clan%20-%20Treez%20(Raekwon).mp3>;
+    mo:duration "227".
+<urn:uuid:c36da612-b152-460f-89e4-0c2fdedaca30> a mo:Track;
+    dcterms:title "07 - Wu-Tang Clan - Chunky";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/07%20-%20Wu-Tang%20Clan%20-%20Chunky.mp3>;
+    mo:duration "182".
+<urn:uuid:e76271b9-f0cb-49e3-b0f9-bc654fc17b0d> a mo:Track;
+    dcterms:title "08 - Wu-Tang Clan - Graveyard Chamber (Feat Gravediggaz)";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/08%20-%20Wu-Tang%20Clan%20-%20Graveyard%20Chamber%20(feat%20Gravediggaz).mp3>;
+    mo:duration "298".
+<urn:uuid:e7b06f18-efb6-40b4-bad6-cd4beaf47016> a mo:Track;
+    dcterms:title "09 - Ghostface Killah - Watch Your Mouth";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/09%20-%20Ghostface%20Killah%20-%20Watch%20Your%20Mouth.mp3>;
+    mo:duration "236".
+<urn:uuid:1cf64cae-04b5-44de-8241-35faca0ea066> a mo:Track;
+    dcterms:title "11 - Tragedy";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/11%20-%20Tragedy.mp3>;
+    mo:duration "231".
+<urn:uuid:1e0c9921-f7e3-4ab5-b094-d04bc63c0677> a mo:Track;
+    dcterms:title "12 - Wu-Tang Clan - Execution In Autumn (Unreleased)";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/12%20-%20Wu-Tang%20Clan%20-%20Execution%20In%20Autumn%20(Unreleased).mp3>;
+    mo:duration "186".
+<urn:uuid:e85ac723-d762-4321-bba7-f604bb24bfb4> a mo:Track;
+    dcterms:title "13 - Wu - Tang Clan - Common Denominator (Unreleased Track)";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/13%20-%20Wu%20-%20Tang%20Clan%20-%20Common%20Denominator%20(UNRELEASED%20TRACK).mp3>;
+    mo:duration "207".
+<urn:uuid:b60f279b-6829-47a4-873f-0e893314127d> a mo:Track;
+    dcterms:title "15 - Wu-Tang Clan - Street Kronicles (M-Speed)";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/15%20-%20Wu-Tang%20Clan%20-%20Street%20Kronicles%20(M-Speed).mp3>;
+    mo:duration "302".
+<urn:uuid:f724ba83-c898-49a8-b5d7-edeebf4f3a45> a mo:Track;
+    dcterms:title "16 - Wu-Tang Clan Freestyle";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Sword_Chamber-2019/16%20-%20Wu-Tang%20Clan%20Freestyle.mp3>;
+    mo:duration "226".
+<urn:uuid:9d7001dd-2243-4c81-bee0-e3ce96f3ba63> a mo:Release;
+    dcat:landingPage <https://archive.org/details/WTC_2007-07-28>;
+    mo:track <urn:uuid:cbabce92-2d94-45d2-b4e8-7f999d2e6de0>, <urn:uuid:ce05a00b-ef96-44e8-ba6d-d24827f626d8>, <urn:uuid:4ab60217-91ca-443a-b2d6-a2ae6ca8262a>, <urn:uuid:f3013135-dc18-46d0-b433-22ba380a1810>, <urn:uuid:9d229d93-8163-4043-a5c6-713bad7d74c4>, <urn:uuid:64e46baa-6d87-49f7-a3f9-9c97e622aa34>, <urn:uuid:5b9e0f80-2ff6-4a41-b76b-2eff82ffe7a9>, <urn:uuid:2a298d7d-8c0f-4587-9203-600babf73986>;
+    dcterms:title "Wu-Tang Clan Live - 2007-07-28 Randall's Island Park, Randall's Island, New York";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:cbabce92-2d94-45d2-b4e8-7f999d2e6de0> a mo:Track;
+    dcterms:title "01. Intro + Bring Da Ruckus";
+    dcat:downloadUrl <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F01.%20Intro%20%2B%20Bring%20Da%20Ruckus%20.mp3>;
+    mo:duration "268".
+<urn:uuid:ce05a00b-ef96-44e8-ba6d-d24827f626d8> a mo:Track;
+    dcterms:title "03. Da Mystery of Chessboxin";
+    dcat:downloadUrl <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F03.%20Da%20Mystery%20of%20Chessboxin.mp3>;
+    mo:duration "220".
+<urn:uuid:4ab60217-91ca-443a-b2d6-a2ae6ca8262a> a mo:Track;
+    dcterms:title "04. Shame on a Nigga";
+    dcat:downloadUrl <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F04.%20Shame%20on%20a%20Nigga.mp3>;
+    mo:duration "260".
+<urn:uuid:f3013135-dc18-46d0-b433-22ba380a1810> a mo:Track;
+    dcterms:title "08. Bring the Pain";
+    dcat:downloadUrl <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F08.%20Bring%20the%20Pain.mp3>;
+    mo:duration "189".
+<urn:uuid:9d229d93-8163-4043-a5c6-713bad7d74c4> a mo:Track;
+    dcterms:title "11. Young Blood + Unknown";
+    dcat:downloadUrl <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F11.%20Young%20Blood%20%2B%20Unknown.mp3>;
+    mo:duration "272".
+<urn:uuid:64e46baa-6d87-49f7-a3f9-9c97e622aa34> a mo:Track;
+    dcterms:title "12. CREAM";
+    dcat:downloadUrl <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F12.%20CREAM.mp3>;
+    mo:duration "301".
+<urn:uuid:5b9e0f80-2ff6-4a41-b76b-2eff82ffe7a9> a mo:Track;
+    dcterms:title "13. Shimmy Shimmy Ya";
+    dcat:downloadUrl <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F13.%20Shimmy%20Shimmy%20Ya.mp3>;
+    mo:duration "210".
+<urn:uuid:2a298d7d-8c0f-4587-9203-600babf73986> a mo:Track;
+    dcterms:title "15. Triump";
+    dcat:downloadUrl <https://archive.org/download/WTC_2007-07-28/2007-07-28%20Randall's%20Island%20Park%2C%20Randall's%20Island%2C%20New%20York%2F15.%20Triump.mp3>;
+    mo:duration "351".
+<urn:uuid:b1cbfbfa-d050-4a79-bcc5-5f0863ba913a> a mo:Release;
+    dcat:landingPage <https://archive.org/details/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine>;
+    mo:track <urn:uuid:441ddc67-d497-482f-839c-376bd2a09726>, <urn:uuid:679d2c6e-41d6-4c38-bb4f-3866710deeae>, <urn:uuid:ca0be88b-3763-434b-94ed-8e154871799c>, <urn:uuid:05d7502a-a2d4-4028-b2fd-9ce196dc61da>, <urn:uuid:24424165-4a43-4612-939c-3b904cb07248>, <urn:uuid:9a490abc-2488-41d6-9f5d-9f0a9c2aa1db>, <urn:uuid:9ea58034-7fc6-41de-87f6-95147837ec65>, <urn:uuid:fdb5ac17-be23-4e23-aba7-86e415e63c05>;
+    dcterms:title "Wu-Tang Clan & Mathematics - Black Samson, the Bastard Swordsman (2025) flac";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "Wu-Tang Clan, Mathematics, Method Man, Ghostface Killah, Nicole Bus".
+<urn:uuid:441ddc67-d497-482f-839c-376bd2a09726> a mo:Track;
+    dcterms:title "Claudine";
+    dcat:downloadUrl <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F04.%20Wu-Tang%20Clan%2C%20Mathematics%2C%20Method%20Man%2C%20Ghostface%20Killah%2C%20Nicole%20Bus%20-%20Claudine.mp3>;
+    mo:duration "236".
+<urn:uuid:679d2c6e-41d6-4c38-bb4f-3866710deeae> a mo:Track;
+    dcterms:title "Cleopatra Jones";
+    dcat:downloadUrl <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F07.%20Wu-Tang%20Clan%2C%20Raekwon%2C%20Masta%20Killa%20-%20Cleopatra%20Jones.mp3>;
+    mo:duration "214".
+<urn:uuid:ca0be88b-3763-434b-94ed-8e154871799c> a mo:Track;
+    dcterms:title "Dolemite";
+    dcat:downloadUrl <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F10.%20Wu-Tang%20Clan%2C%20Cappadonna%2C%20U-God%2C%20Masta%20Killa%20-%20Dolemite.mp3>;
+    mo:duration "245".
+<urn:uuid:05d7502a-a2d4-4028-b2fd-9ce196dc61da> a mo:Track;
+    dcterms:title "Let's Do It Again";
+    dcat:downloadUrl <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F09.%20Wu-Tang%20Clan%2C%20RJ%20PAYNE%2C%2038%20Spesh%2C%20Willie%20The%20Kid%2C%20RZA%20-%20Let's%20Do%20It%20Again.mp3>;
+    mo:duration "256".
+<urn:uuid:24424165-4a43-4612-939c-3b904cb07248> a mo:Track;
+    dcterms:title "Mandingo";
+    dcat:downloadUrl <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F02.%20Wu-Tang%20Clan%2C%20Mathematics%2C%20Raekwon%2C%20Inspectah%20Deck%2C%20Method%20Man%2C%20Cappadonna%20-%20Mandingo.mp3>;
+    mo:duration "269".
+<urn:uuid:9a490abc-2488-41d6-9f5d-9f0a9c2aa1db> a mo:Track;
+    dcterms:title "Roar of the Lion (The Lion's Pit)";
+    dcat:downloadUrl <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F03.%20Wu-Tang%20Clan%2C%20U-God%2C%20Kool%20G%20Rap%2C%20RZA%20-%20Roar%20of%20the%20Lion%20(The%20Lion's%20Pit).mp3>;
+    mo:duration "249".
+<urn:uuid:9ea58034-7fc6-41de-87f6-95147837ec65> a mo:Track;
+    dcterms:title "Shaolin Vs Lama";
+    dcat:downloadUrl <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F05.%20Wu-Tang%20Clan%2C%20Raekwon%2C%20Inspectah%20Deck%20-%20Shaolin%20Vs%20Lama.mp3>;
+    mo:duration "232".
+<urn:uuid:fdb5ac17-be23-4e23-aba7-86e415e63c05> a mo:Track;
+    dcterms:title "Warriors Two, Cooley High";
+    dcat:downloadUrl <https://archive.org/download/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine/Wu-Tang%20Clan%20%26%20Mathematics%20-%20Black%20Samson%2C%20the%20Bastard%20Swordsman%20(2025)%20flac%2F08.%20Wu-Tang%20Clan%2C%20Benny%20The%20Butcher%2C%20Method%20Man%20-%20Warriors%20Two%2C%20Cooley%20High.mp3>;
+    mo:duration "193".
+<urn:uuid:6e807a71-9c0d-46fa-9a8b-b689575bac3c> a mo:Release;
+    dcat:landingPage <https://archive.org/details/words-from-the-genius_202503>;
+    mo:track <urn:uuid:cc883761-1c6a-4e47-9ff9-d0d05dabf36c>, <urn:uuid:85c0c9c3-39ef-49ee-ba23-b3bd9235d6e2>, <urn:uuid:9426ef2e-114d-4551-bf69-a6243260f68c>, <urn:uuid:9c3dd2be-cfa7-4463-8064-ddf3c0ba5fca>, <urn:uuid:e6c510b5-84d4-47c4-9530-fb73093bcab7>, <urn:uuid:cc44fccf-8778-4874-857c-5042f05a10d8>, <urn:uuid:7c074584-7316-450f-a5d9-8ff4c05f050a>, <urn:uuid:e627cd83-266f-4c6c-9e19-8fcfe9b5b096>, <urn:uuid:c4e5a22b-d090-4b19-8c85-9c650b024b34>, <urn:uuid:d09eedca-39c5-4083-99bf-8a3913ef3f3b>, <urn:uuid:e7556e2a-f5a6-451b-80d7-0fc626092a99>, <urn:uuid:9fef7bb4-55d1-4251-be75-b8bd66d90858>, <urn:uuid:1118badb-7f22-4c87-ad49-3f624aef5a6c>, <urn:uuid:ec8b474a-6aed-4c11-ab56-04f59ec38c68>, <urn:uuid:535952d3-6ff2-4e7f-8ff8-0f317214da48>;
+    dcterms:title "GZA - Words from the Genius(full)";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "Gza".
+<urn:uuid:cc883761-1c6a-4e47-9ff9-d0d05dabf36c> a mo:Track;
+    dcterms:title "Come Do Me";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F01.%20GZA%20-%20Come%20Do%20Me.mp3>;
+    mo:duration "287".
+<urn:uuid:85c0c9c3-39ef-49ee-ba23-b3bd9235d6e2> a mo:Track;
+    dcterms:title "Drama";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F12.%20GZA%20-%20Drama.mp3>;
+    mo:duration "239".
+<urn:uuid:9426ef2e-114d-4551-bf69-a6243260f68c> a mo:Track;
+    dcterms:title "Feel The Pain";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F07.%20GZA%20-%20Feel%20The%20Pain.mp3>;
+    mo:duration "220".
+<urn:uuid:9c3dd2be-cfa7-4463-8064-ddf3c0ba5fca> a mo:Track;
+    dcterms:title "Life Of A Drug Dealer";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F09.%20GZA%20-%20Life%20Of%20A%20Drug%20Dealer.mp3>;
+    mo:duration "219".
+<urn:uuid:e6c510b5-84d4-47c4-9530-fb73093bcab7> a mo:Track;
+    dcterms:title "Living Foul";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F11.%20GZA%20-%20Living%20Foul.mp3>;
+    mo:duration "261".
+<urn:uuid:cc44fccf-8778-4874-857c-5042f05a10d8> a mo:Track;
+    dcterms:title "Phony As Ya Wanna Be";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F02.%20GZA%20-%20Phony%20As%20Ya%20Wanna%20Be.mp3>;
+    mo:duration "304".
+<urn:uuid:7c074584-7316-450f-a5d9-8ff4c05f050a> a mo:Track;
+    dcterms:title "Stay Out Of Bars";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F13.%20GZA%20-%20Stay%20Out%20Of%20Bars.mp3>;
+    mo:duration "235".
+<urn:uuid:e627cd83-266f-4c6c-9e19-8fcfe9b5b096> a mo:Track;
+    dcterms:title "Stop The Nonsense";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F10.%20GZA%20-%20Stop%20The%20Nonsense.mp3>;
+    mo:duration "221".
+<urn:uuid:c4e5a22b-d090-4b19-8c85-9c650b024b34> a mo:Track;
+    dcterms:title "Superfreak";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F15.%20GZA%20-%20Superfreak.mp3>;
+    mo:duration "278".
+<urn:uuid:d09eedca-39c5-4083-99bf-8a3913ef3f3b> a mo:Track;
+    dcterms:title "The Genius Is Slammin'";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F04.%20GZA%20-%20The%20Genius%20Is%20Slammin'.mp3>;
+    mo:duration "262".
+<urn:uuid:e7556e2a-f5a6-451b-80d7-0fc626092a99> a mo:Track;
+    dcterms:title "Those Were The Days";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F08.%20GZA%20-%20Those%20Were%20The%20Days.mp3>;
+    mo:duration "277".
+<urn:uuid:9fef7bb4-55d1-4251-be75-b8bd66d90858> a mo:Track;
+    dcterms:title "True Fresh M.C.";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F03.%20GZA%20-%20True%20Fresh%20M.C..mp3>;
+    mo:duration "218".
+<urn:uuid:1118badb-7f22-4c87-ad49-3f624aef5a6c> a mo:Track;
+    dcterms:title "What Are Silly Girls Made Of";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F14.%20GZA%20-%20What%20Are%20Silly%20Girls%20Made%20Of.mp3>;
+    mo:duration "271".
+<urn:uuid:ec8b474a-6aed-4c11-ab56-04f59ec38c68> a mo:Track;
+    dcterms:title "Who's Your Rhyme Hero";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F06.%20GZA%20-%20Who's%20Your%20Rhyme%20Hero.mp3>;
+    mo:duration "273".
+<urn:uuid:535952d3-6ff2-4e7f-8ff8-0f317214da48> a mo:Track;
+    dcterms:title "Words From A Genius";
+    dcat:downloadUrl <https://archive.org/download/words-from-the-genius_202503/1991%20-%20GZA%20-%20Words%20from%20the%20Genius%2F05.%20GZA%20-%20Words%20From%20A%20Genius.mp3>;
+    mo:duration "305".
+<urn:uuid:abf6384f-0bc5-4596-917f-d8bc257cdef5> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-tang-clan-iron-flag_202510>;
+    mo:track <urn:uuid:942a722f-d663-4635-be7b-2222aa82a94f>, <urn:uuid:3d03595f-c4ee-4035-8561-dabe72423887>, <urn:uuid:072a21d2-da6c-44c9-a55a-dc9b43039264>, <urn:uuid:727307ab-3da0-492a-9907-9edc2bbe1718>, <urn:uuid:b8ce41b3-a40c-4300-a825-3fc7561d2d7e>, <urn:uuid:b877a544-4453-4c26-aeb3-aceb57bd59d4>, <urn:uuid:5cb1b44f-37dc-4d3e-bedd-750479a4dd00>, <urn:uuid:c2622c1a-dd18-47d2-9744-c52228900310>, <urn:uuid:8c8deaec-e028-4798-823c-4aaabadb9afc>, <urn:uuid:13cf843e-4ad5-47a5-88fd-d4477e746a32>, <urn:uuid:4ccc8f10-5949-455d-b0d0-97d48373639a>, <urn:uuid:2425edff-f33b-42fe-ade6-4769de6adca1>, <urn:uuid:259e96bd-9928-450c-b538-c2d5b0e6cd0b>;
+    dcterms:title "Wu-Tang Clan - Iron Flag";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:942a722f-d663-4635-be7b-2222aa82a94f> a mo:Track;
+    dcterms:title "Babies";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/08%20Babies.m4a>;
+    mo:duration "310".
+<urn:uuid:3d03595f-c4ee-4035-8561-dabe72423887> a mo:Track;
+    dcterms:title "Back In The Game";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/10%20Back%20In%20The%20Game.m4a>;
+    mo:duration "276".
+<urn:uuid:072a21d2-da6c-44c9-a55a-dc9b43039264> a mo:Track;
+    dcterms:title "Chrome Wheels";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/03%20Chrome%20Wheels.m4a>;
+    mo:duration "256".
+<urn:uuid:727307ab-3da0-492a-9907-9edc2bbe1718> a mo:Track;
+    dcterms:title "Dashing (Reasons)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/12%20Dashing%20(Reasons).m4a>;
+    mo:duration "287".
+<urn:uuid:b8ce41b3-a40c-4300-a825-3fc7561d2d7e> a mo:Track;
+    dcterms:title "In The Hood";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/01%20In%20The%20Hood.m4a>;
+    mo:duration "253".
+<urn:uuid:b877a544-4453-4c26-aeb3-aceb57bd59d4> a mo:Track;
+    dcterms:title "Iron Flag";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/11%20Iron%20Flag.m4a>;
+    mo:duration "388".
+<urn:uuid:5cb1b44f-37dc-4d3e-bedd-750479a4dd00> a mo:Track;
+    dcterms:title "One Of These Days";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/06%20One%20Of%20These%20Days.m4a>;
+    mo:duration "255".
+<urn:uuid:c2622c1a-dd18-47d2-9744-c52228900310> a mo:Track;
+    dcterms:title "Radioactive (Four Assasins)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/09%20Radioactive%20(Four%20Assasins).m4a>;
+    mo:duration "212".
+<urn:uuid:8c8deaec-e028-4798-823c-4aaabadb9afc> a mo:Track;
+    dcterms:title "Rules";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/02%20Rules.m4a>;
+    mo:duration "235".
+<urn:uuid:13cf843e-4ad5-47a5-88fd-d4477e746a32> a mo:Track;
+    dcterms:title "Soul Power (Black Jungle)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/04%20Soul%20Power%20(Black%20Jungle).m4a>;
+    mo:duration "294".
+<urn:uuid:4ccc8f10-5949-455d-b0d0-97d48373639a> a mo:Track;
+    dcterms:title "The W";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/13%20The%20W.m4a>;
+    mo:duration "221".
+<urn:uuid:2425edff-f33b-42fe-ade6-4769de6adca1> a mo:Track;
+    dcterms:title "Uzi (Pinky Ring)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/05%20Uzi%20(Pinky%20Ring).m4a>;
+    mo:duration "322".
+<urn:uuid:259e96bd-9928-450c-b538-c2d5b0e6cd0b> a mo:Track;
+    dcterms:title "Y'all Been Warned";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-iron-flag_202510/07%20Y'all%20Been%20Warned.m4a>;
+    mo:duration "257".
+<urn:uuid:ab1b909d-46dd-464a-9ddb-1fcfd7418b17> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum>;
+    mo:track <urn:uuid:6d738b39-3573-4696-bfdd-43e7509ed8a7>, <urn:uuid:13ba0965-289a-4fe9-b96a-b2a67d12f4d4>, <urn:uuid:d332e043-8270-4dff-8b12-1d2d53d9f74b>, <urn:uuid:c0223d1c-11a9-43ac-9207-b63f0a95d797>, <urn:uuid:09ed32ec-8f0f-40f0-8089-7087f778aa8a>, <urn:uuid:13797e97-d237-48bd-9a54-f82f154cd1d6>, <urn:uuid:63d2d234-3477-4b59-b5e8-317a330772d7>, <urn:uuid:6643d9d4-f92f-47c3-aad6-014640d4c122>;
+    dcterms:title "Wu-Tang Clan - Bonus Chamber Vol 2 FULL ALBUM";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "Redman, Raekwon, U-God, Raekwon, TuPac, Nas, Eminem, Canibus, Easy-E, Ice Cube, The Game, Eminem, Jadakiss ft. Styles P., Fat Joe, Nas, Cam'ron, The Game, Jedi Mind Tricks, Canibus, The Game, Inspectah Deck, Busta Rhymes, Busta Rhymes, Ghostface Killah ft. Notorious B.I.G., Raekwon, Wu Tang Clan, Canibus/Canibus/J-Corry/[GZA + RZA]".
+<urn:uuid:6d738b39-3573-4696-bfdd-43e7509ed8a7> a mo:Track;
+    dcterms:title "$ Wu-Tang Clan - Bonus Chamber Vol. 2 FULL MIXTAPE";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/%24%20Wu-Tang%20Clan%20-%20Bonus%20Chamber%20Vol.%202%20FULL%20MIXTAPE.mp3>;
+    mo:duration "2819".
+<urn:uuid:13ba0965-289a-4fe9-b96a-b2a67d12f4d4> a mo:Track;
+    dcterms:title "Hrshu Attack";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Canibus%20-%20Hrshu%20Attack.mp3>;
+    mo:duration "208".
+<urn:uuid:d332e043-8270-4dff-8b12-1d2d53d9f74b> a mo:Track;
+    dcterms:title "Three Bricks";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Ghostface%20Killah%20ft.%20Notorious%20B.I.G.%2C%20Raekwon%20-%20Three%20Bricks.mp3>;
+    mo:duration "284".
+<urn:uuid:c0223d1c-11a9-43ac-9207-b63f0a95d797> a mo:Track;
+    dcterms:title "Nas - Don't Body YaSelf ";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Nas%20-%20Don't%20Body%20YaSelf%20.mp3>;
+    mo:duration "264".
+<urn:uuid:09ed32ec-8f0f-40f0-8089-7087f778aa8a> a mo:Track;
+    dcterms:title "Sly Fox";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Nas%20-%20Sly%20Fox.mp3>;
+    mo:duration "263".
+<urn:uuid:13797e97-d237-48bd-9a54-f82f154cd1d6> a mo:Track;
+    dcterms:title "Gilla House Check";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Redman%20-%20Gilla%20House%20Check.mp3>;
+    mo:duration "181".
+<urn:uuid:63d2d234-3477-4b59-b5e8-317a330772d7> a mo:Track;
+    dcterms:title "Coke (Featuring Raekwon And Slaine of La Coka Nostra)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/U-God%20ft.%20Raekwon%2C%20Slaine%20-%20Coke.mp3>;
+    mo:duration "240".
+<urn:uuid:6643d9d4-f92f-47c3-aad6-014640d4c122> a mo:Track;
+    dcterms:title "weak spot";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum/Wu-Tang%20Clan%20-%20Weak%20Spot.mp3>;
+    mo:duration "238".
+<urn:uuid:b7b04949-9ee4-43be-9bc3-a08f2c4bc16c> a mo:Release;
+    dcat:landingPage <https://archive.org/details/04-problems>;
+    mo:track <urn:uuid:f2f4c391-76e4-42b0-8e15-2327ff3ad150>, <urn:uuid:3b188a02-a0f6-4d73-a9df-ac3d423fcbaf>, <urn:uuid:8810df8d-9400-4417-960b-62dfac40e2f6>, <urn:uuid:f7dc0416-ec2c-43cc-b43c-5407c1e6c2f2>, <urn:uuid:a7414bf3-d3d5-4235-a41d-bcb8bf34913b>, <urn:uuid:c977702e-2955-49a6-a5e3-7453c4c5da22>, <urn:uuid:2aecf0d0-65e3-4ab4-af0c-93006ebcadd1>;
+    dcterms:title "Wu-Tang Clan Demo Tape 1992";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "RZA".
+<urn:uuid:f2f4c391-76e4-42b0-8e15-2327ff3ad150> a mo:Track;
+    dcterms:title "Wu tang demo tape 1992/01 Enter the Wu";
+    dcat:downloadUrl <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F01%20Enter%20the%20Wu.mp3>;
+    mo:duration "181".
+<urn:uuid:3b188a02-a0f6-4d73-a9df-ac3d423fcbaf> a mo:Track;
+    dcterms:title "Wu tang demo tape 1992/02 Wu tang Master";
+    dcat:downloadUrl <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F02%20Wu%20tang%20Master.mp3>;
+    mo:duration "247".
+<urn:uuid:8810df8d-9400-4417-960b-62dfac40e2f6> a mo:Track;
+    dcterms:title "Wu tang demo tape 1992/04 Problems";
+    dcat:downloadUrl <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F04%20Problems.mp3>;
+    mo:duration "277".
+<urn:uuid:f7dc0416-ec2c-43cc-b43c-5407c1e6c2f2> a mo:Track;
+    dcterms:title "Wu tang demo tape 1992/05 It's all about me";
+    dcat:downloadUrl <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F05%20It's%20all%20about%20me.mp3>;
+    mo:duration "188".
+<urn:uuid:a7414bf3-d3d5-4235-a41d-bcb8bf34913b> a mo:Track;
+    dcterms:title "Wu tang demo tape 1992/06 After the laughter";
+    dcat:downloadUrl <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F06%20After%20the%20laughter.mp3>;
+    mo:duration "221".
+<urn:uuid:c977702e-2955-49a6-a5e3-7453c4c5da22> a mo:Track;
+    dcterms:title "Wu tang demo tape 1992/07 Bring da ruckus";
+    dcat:downloadUrl <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F07%20Bring%20da%20ruckus.mp3>;
+    mo:duration "210".
+<urn:uuid:2aecf0d0-65e3-4ab4-af0c-93006ebcadd1> a mo:Track;
+    dcterms:title "Wu tang demo tape 1992/08 The Wu is comin' thru";
+    dcat:downloadUrl <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F08%20The%20Wu%20is%20comin'%20thru.mp3>;
+    mo:duration "210".
+<urn:uuid:e5864498-95da-4bfc-8a57-729c83cbde34> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-tang-clan-bonus-chamber-vol-1-full-album>;
+    mo:track <urn:uuid:16999f95-9dae-42c0-9fac-3274f6bc9609>, <urn:uuid:95dd54be-71c0-408d-8c05-fabc52b22f4e>, <urn:uuid:f5445b96-0775-4f93-a218-70521b3256ba>, <urn:uuid:44deb45a-bd1b-43d4-ad00-5d121fa7971b>, <urn:uuid:5215186c-db63-453d-a3b9-16552a930cd6>, <urn:uuid:5838a8bd-9700-4f9f-b48b-5be521cf9f4f>, <urn:uuid:666bb433-4493-4702-8c37-bf056c70b60a>, <urn:uuid:19be61e6-8c97-4c1a-8d0d-4fcfdc803f82>, <urn:uuid:da181b57-e299-4b8b-bb94-cfbb09c17ede>, <urn:uuid:2ae460cc-155c-4203-9736-db3c6ada103c>, <urn:uuid:b98018db-f7ae-48ce-a45d-825305b4dbf7>;
+    dcterms:title "Wu Tang Clan - Bonus Chamber Vol 1 FULL ALBUM";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "EPMD ft. Redman, Method Man, Lady Luck, Method Man ft. Streetlife, Inspectah Deck, Xzibit, Cypress Hill, Onyx, Raekwon, Lost Boyz ft. A+, Redman, Canibus, Gangstarr, Wu-Tang Clan".
+<urn:uuid:16999f95-9dae-42c0-9fac-3274f6bc9609> a mo:Track;
+    dcterms:title "$ Wu-Tang Clan -Bonus Chamber FULLMIXTAPE";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/%24%20Wu-Tang%20Clan%20-%20Bonus%20Chamber%20FULLMIXTAPE.mp3>;
+    mo:duration "2682".
+<urn:uuid:95dd54be-71c0-408d-8c05-fabc52b22f4e> a mo:Track;
+    dcterms:title "Dr. Greenthumb";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Cypress%20Hill%20-%20Dr.%20Greenthumb.mp3>;
+    mo:duration "191".
+<urn:uuid:f5445b96-0775-4f93-a218-70521b3256ba> a mo:Track;
+    dcterms:title "Symphony 2000";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/EPMD%20ft.%20Redman%2C%20Method%20Man%2C%20Lady%20Luck%20-%20Symphony%202000.mp3>;
+    mo:duration "242".
+<urn:uuid:44deb45a-bd1b-43d4-ad00-5d121fa7971b> a mo:Track;
+    dcterms:title "The Mall";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Gangstarr%20-%20The%20Mall.mp3>;
+    mo:duration "222".
+<urn:uuid:5215186c-db63-453d-a3b9-16552a930cd6> a mo:Track;
+    dcterms:title "Hyperdermix";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Inspectah%20Deck%20-%20Hyperdermix.mp3>;
+    mo:duration "292".
+<urn:uuid:5838a8bd-9700-4f9f-b48b-5be521cf9f4f> a mo:Track;
+    dcterms:title "Beasts From The East";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Lost%20Boyz%20ft.%20A%2B%2C%20Redman%2C%20Canibus%20-%20Beasts%20From%20The%20East.mp3>;
+    mo:duration "334".
+<urn:uuid:666bb433-4493-4702-8c37-bf056c70b60a> a mo:Track;
+    dcterms:title "Dangerous Grounds";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Method%20Man%20ft.%20Streetlife%20-%20Dangerous%20Grounds.mp3>;
+    mo:duration "249".
+<urn:uuid:19be61e6-8c97-4c1a-8d0d-4fcfdc803f82> a mo:Track;
+    dcterms:title "Street Nigguz";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Onyx%20-%20Street%20Nigguz.mp3>;
+    mo:duration "294".
+<urn:uuid:da181b57-e299-4b8b-bb94-cfbb09c17ede> a mo:Track;
+    dcterms:title "Raekwon ft. Ghostface Killah, Inspectah Deck, GZA - Guillotine Swordz";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Raekwon%20ft.%20Ghostface%20Killah%2C%20Inspectah%20Deck%2C%20GZA%20-%20Guillotine%20Swordz.mp3>;
+    mo:duration "262".
+<urn:uuid:2ae460cc-155c-4203-9736-db3c6ada103c> a mo:Track;
+    dcterms:title "Always NY";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Wu-Tang%20Clan%20-%20Always%20NY.mp3>;
+    mo:duration "293".
+<urn:uuid:b98018db-f7ae-48ce-a45d-825305b4dbf7> a mo:Track;
+    dcterms:title "What You See Is What You Get";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-bonus-chamber-vol-1-full-album/Xzibit%20-%20What%20You%20See%20Is%20What%20You%20Get.mp3>;
+    mo:duration "308".
+<urn:uuid:7c7939f6-dbaf-4929-8bba-219ddc75f82a> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-massacre>;
+    mo:track <urn:uuid:6228fde5-f3a9-41a8-a75e-2d74af5fa6ea>, <urn:uuid:7d4c0f42-aad4-4619-8d1a-623274c4c29d>, <urn:uuid:015c31a5-e034-4d7e-b6e5-eb7731f92f07>, <urn:uuid:bc97a15a-7fdc-4903-94db-29bc5cb25149>;
+    dcterms:title "Wu-Massacre";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "Raekwon, Ghostface Killah & Method Man".
+<urn:uuid:6228fde5-f3a9-41a8-a75e-2d74af5fa6ea> a mo:Track;
+    dcterms:title "Our Dreams";
+    dcat:downloadUrl <https://archive.org/download/wu-massacre/05%20-%20Raekwon%2C%20Ghostface%20Killah%20%26%20Method%20Man%20-%20Our%20Dreams.mp3>;
+    mo:duration "204".
+<urn:uuid:7d4c0f42-aad4-4619-8d1a-623274c4c29d> a mo:Track;
+    dcterms:title "Dangerous";
+    dcat:downloadUrl <https://archive.org/download/wu-massacre/07%20-%20Raekwon%2C%20Ghostface%20Killah%20%26%20Method%20Man%20-%20Dangerous.mp3>;
+    mo:duration "234".
+<urn:uuid:015c31a5-e034-4d7e-b6e5-eb7731f92f07> a mo:Track;
+    dcterms:title "Miranda";
+    dcat:downloadUrl <https://archive.org/download/wu-massacre/10%20-%20Raekwon%2C%20Ghostface%20Killah%20%26%20Method%20Man%20-%20Miranda.mp3>;
+    mo:duration "182".
+<urn:uuid:bc97a15a-7fdc-4903-94db-29bc5cb25149> a mo:Track;
+    dcterms:title "It's That Wu Sh*t";
+    dcat:downloadUrl <https://archive.org/download/wu-massacre/12%20-%20Ghostface%20Killah%20%26%20Method%20Man%20-%20It's%20That%20Wu%20Sh-t.mp3>;
+    mo:duration "191".
+<urn:uuid:3b924ae6-42ba-4294-9443-92d470c39ef4> a mo:Release;
+    dcat:landingPage <https://archive.org/details/01-ghost-is-back>;
+    mo:track <urn:uuid:6cc8d19e-5312-48dd-9095-08bbb8df1c1b>, <urn:uuid:178a7ff7-72cc-431d-9e06-1f3b5d5a6830>, <urn:uuid:ee78e095-ff68-4bb4-a3a8-780d3ef346f2>, <urn:uuid:4e51f7e8-86b9-4473-95d2-ce0eaf6f1dca>;
+    dcterms:title "Ghostface Killah - More Fish EP [CD RIP / WAV]";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:6cc8d19e-5312-48dd-9095-08bbb8df1c1b> a mo:Track;
+    dcterms:title "01 Ghost Is Back";
+    dcat:downloadUrl <https://archive.org/download/01-ghost-is-back/01%20Ghost%20Is%20Back.mp3>;
+    mo:duration "307".
+<urn:uuid:178a7ff7-72cc-431d-9e06-1f3b5d5a6830> a mo:Track;
+    dcterms:title "02 Guns N' Razors";
+    dcat:downloadUrl <https://archive.org/download/01-ghost-is-back/02%20Guns%20N'%20Razors.mp3>;
+    mo:duration "197".
+<urn:uuid:ee78e095-ff68-4bb4-a3a8-780d3ef346f2> a mo:Track;
+    dcterms:title "03 You Know I'm No Good";
+    dcat:downloadUrl <https://archive.org/download/01-ghost-is-back/03%20You%20Know%20I'm%20No%20Good.mp3>;
+    mo:duration "265".
+<urn:uuid:4e51f7e8-86b9-4473-95d2-ce0eaf6f1dca> a mo:Track;
+    dcterms:title "04 Josephine";
+    dcat:downloadUrl <https://archive.org/download/01-ghost-is-back/04%20Josephine.mp3>;
+    mo:duration "252".
+<urn:uuid:43862ef8-7de8-450c-8d3c-a5f4c32c7b34> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-tang-clan-fillmore-3602>;
+    mo:track <urn:uuid:d9e89d8a-d7ab-42bf-bbf0-3813da8fce16>, <urn:uuid:bab2e6bd-6679-45a3-b3fc-7e4b5cad19f5>, <urn:uuid:e899069b-4358-4a51-865f-b8dabbad589a>, <urn:uuid:67d1fddd-1f9a-4fd8-ac9e-dd0930187e4d>, <urn:uuid:d331ee1e-6afd-433d-bf7f-5e90a311c5f5>, <urn:uuid:9c947210-663c-4261-b086-7dd77da5ff7f>, <urn:uuid:99e2fdd2-a19c-46f6-b164-7737fc615262>, <urn:uuid:886c6105-0b07-4659-9a1f-944e767439d3>, <urn:uuid:fd4d9779-2813-4920-9015-60362033b53a>, <urn:uuid:35be1478-8879-4b34-b5d0-93c239299d1e>, <urn:uuid:3fd8211d-0896-4318-9e45-f2063b026ce6>, <urn:uuid:e68c9e7c-9763-4c20-9e95-0fe63b329fad>, <urn:uuid:2ae81bd7-01b2-448b-9879-852061d4d1b0>, <urn:uuid:edfd882b-3659-41d0-bd61-02e5d21b92cf>, <urn:uuid:18e0b8fb-a44e-4693-a912-06b42e50be0a>, <urn:uuid:7b336a00-cd22-4334-b4b8-ff364c05d024>;
+    dcterms:title "Wu-Tang Clan - Fillmore - 3/6/02";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:d9e89d8a-d7ab-42bf-bbf0-3813da8fce16> a mo:Track;
+    dcterms:title "02 More Intro";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/02%20More%20Intro.mp3>;
+    mo:duration "259".
+<urn:uuid:bab2e6bd-6679-45a3-b3fc-7e4b5cad19f5> a mo:Track;
+    dcterms:title "08 Liquid Swords - Cold World";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/08%20Liquid%20Swords%20-%20Cold%20World.mp3>;
+    mo:duration "278".
+<urn:uuid:e899069b-4358-4a51-865f-b8dabbad589a> a mo:Track;
+    dcterms:title "10 One Blood Under W - Duel Of The Iron Mic";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/10%20One%20Blood%20Under%20W%20-%20Duel%20Of%20The%20Iron%20Mic.mp3>;
+    mo:duration "302".
+<urn:uuid:67d1fddd-1f9a-4fd8-ac9e-dd0930187e4d> a mo:Track;
+    dcterms:title "11 WTC";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/11%20WTC.mp3>;
+    mo:duration "193".
+<urn:uuid:d331ee1e-6afd-433d-bf7f-5e90a311c5f5> a mo:Track;
+    dcterms:title "13 Glocko Pop - Domestic Violence (cut)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/13%20Glocko%20Pop%20-%20Domestic%20Violence%20(cut).mp3>;
+    mo:duration "276".
+<urn:uuid:9c947210-663c-4261-b086-7dd77da5ff7f> a mo:Track;
+    dcterms:title "14 Domestic Violence (cont.) - La Rhumba";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/14%20Domestic%20Violence%20(cont.)%20-%20La%20Rhumba.mp3>;
+    mo:duration "356".
+<urn:uuid:99e2fdd2-a19c-46f6-b164-7737fc615262> a mo:Track;
+    dcterms:title "16 WTC";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/16%20WTC.mp3>;
+    mo:duration "290".
+<urn:uuid:886c6105-0b07-4659-9a1f-944e767439d3> a mo:Track;
+    dcterms:title "17 Iron's Theme - Ghost Deini - C.R.E.A.M. ";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/17%20Iron's%20Theme%20-%20Ghost%20Deini%20-%20C.R.E.A.M.%20.mp3>;
+    mo:duration "434".
+<urn:uuid:fd4d9779-2813-4920-9015-60362033b53a> a mo:Track;
+    dcterms:title "19 Method Man";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/19%20Method%20Man.mp3>;
+    mo:duration "286".
+<urn:uuid:35be1478-8879-4b34-b5d0-93c239299d1e> a mo:Track;
+    dcterms:title "21 All I Need - ";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/21%20All%20I%20Need%20-%20.mp3>;
+    mo:duration "369".
+<urn:uuid:3fd8211d-0896-4318-9e45-f2063b026ce6> a mo:Track;
+    dcterms:title "23 How High - Judgement Day - Bring The Ruckus - Wu Tang Clan Ain't Nuthin' Ta F' Wit";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/23%20How%20High%20-%20Judgement%20Day%20-%20Bring%20The%20Ruckus%20-%20Wu%20Tang%20Clan%20Ain't%20Nuthin'%20Ta%20F'%20Wit.mp3>;
+    mo:duration "486".
+<urn:uuid:e68c9e7c-9763-4c20-9e95-0fe63b329fad> a mo:Track;
+    dcterms:title "24 Tearz - Can It Be All So Simple - Reunited ";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/24%20Tearz%20-%20Can%20It%20Be%20All%20So%20Simple%20-%20Reunited%20.mp3>;
+    mo:duration "307".
+<urn:uuid:2ae81bd7-01b2-448b-9879-852061d4d1b0> a mo:Track;
+    dcterms:title "26 Chrome Wheels";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/26%20Chrome%20Wheels.mp3>;
+    mo:duration "214".
+<urn:uuid:edfd882b-3659-41d0-bd61-02e5d21b92cf> a mo:Track;
+    dcterms:title "27 Ice Cream - Freek'n You";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/27%20Ice%20Cream%20-%20Freek'n%20You.mp3>;
+    mo:duration "231".
+<urn:uuid:18e0b8fb-a44e-4693-a912-06b42e50be0a> a mo:Track;
+    dcterms:title "32 (mystery girl) Impossible - freestyle";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/32%20(mystery%20girl)%20Impossible%20-%20freestyle.mp3>;
+    mo:duration "265".
+<urn:uuid:7b336a00-cd22-4334-b4b8-ff364c05d024> a mo:Track;
+    dcterms:title "33 In The Hood - Y'all Been Warned - Rules - Uzi (Pinky Ring) ";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-fillmore-3602/33%20In%20The%20Hood%20-%20Y'all%20Been%20Warned%20-%20Rules%20-%20Uzi%20(Pinky%20Ring)%20.mp3>;
+    mo:duration "699".
+<urn:uuid:e59bddca-605f-429a-affa-39653ae07f34> a mo:Release;
+    dcat:landingPage <https://archive.org/details/Ghost174bpmMinimalTechno>;
+    mo:track <urn:uuid:20eec126-08b9-4406-afb5-5ee5793fd55f>;
+    dcterms:title "Ghostface Killah vs 13 Mitred Abbots Apollo Kids 174bpm Minimal Techno";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "Ghostface, Raekwon, 13 Mitred Abbots".
+<urn:uuid:20eec126-08b9-4406-afb5-5ee5793fd55f> a mo:Track;
+    dcterms:title "ghost 174bpm minimal techno";
+    dcat:downloadUrl <https://archive.org/download/Ghost174bpmMinimalTechno/ghost%20174bpm%20minimal%20techno.mp3>;
+    mo:duration "276".
+<urn:uuid:299d3844-43e0-4641-b735-4bcb41fff48e> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-tang-caln-wu-chronicles-vol-2-full-album>;
+    mo:track <urn:uuid:b366f4ca-9a94-4036-86a6-1d29907a0a8f>, <urn:uuid:9089be1e-e072-4089-ae13-48d553729011>, <urn:uuid:065a1047-bc9c-4776-a6ab-1acf0642e50a>, <urn:uuid:e611556a-b21d-42f0-a66a-0a217b5716fc>, <urn:uuid:5fb42516-a53a-4b2c-8511-80d13f5ef9c7>, <urn:uuid:19a4d9ee-422a-41bd-99ef-242ee7b4b3cd>, <urn:uuid:1960d1a2-3be7-429a-9633-e92695f17377>, <urn:uuid:0689d9d5-ae3c-4f57-b167-bca16134f1e6>, <urn:uuid:0d4266fd-b8e5-4d1a-91bc-f4e756362fcf>, <urn:uuid:050057b6-e94e-44e9-83e8-8a031d164865>, <urn:uuid:f56f7cbd-bf94-4d43-8718-45bec46908e6>, <urn:uuid:d333d8f6-c56b-40c9-800e-1c8d0f710db5>, <urn:uuid:aded9c91-ff80-49d1-926f-48ac2b71b0c9>, <urn:uuid:acd38ac9-fa35-4282-ae6d-efc9a96c8569>, <urn:uuid:71096ca6-89ea-4f8e-8666-da1ccd8e643f>, <urn:uuid:85b8e1e8-9363-4c7b-a822-5cdd35e2149a>, <urn:uuid:dc826d82-5905-4f94-9f35-7b0ab79f76cd>;
+    dcterms:title "WU-TANG CLAN Wu Chronicles Vol 2 FULL ALBUM";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "Wu-Tang Clan - WU CHRONICLES Vol. 2 FULL ALBUM".
+<urn:uuid:b366f4ca-9a94-4036-86a6-1d29907a0a8f> a mo:Track;
+    dcterms:title "Wu-Tang Clan - WU CHRONICLES Vol. 2 FULL ALBUM";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/%24%20Wu-Tang%20Clan%20-%20WU%20CHRONICLES%20Vol.%202%20FULL%20ALBUM.mp3>;
+    mo:duration "4029".
+<urn:uuid:9089be1e-e072-4089-ae13-48d553729011> a mo:Track;
+    dcterms:title "Only 4 My Niggaz";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Black%20Knights%20-%20Only%204%20My%20Niggaz.mp3>;
+    mo:duration "199".
+<urn:uuid:065a1047-bc9c-4776-a6ab-1acf0642e50a> a mo:Track;
+    dcterms:title "Eyes A Bleed (RZA Remix)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Bounty%20Killer%20ft.%20Masta%20Killa%20-%20Eyes%20A%20Bleed%20(RZA%20Remix).mp3>;
+    mo:duration "286".
+<urn:uuid:e611556a-b21d-42f0-a66a-0a217b5716fc> a mo:Track;
+    dcterms:title "Hip Hop Fury";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/GZA%20ft.%20RZA%2C%20Hell%20Raizah%2C%20Royal%20Fam%20-%20Hip%20Hop%20Fury.mp3>;
+    mo:duration "226".
+<urn:uuid:5fb42516-a53a-4b2c-8511-80d13f5ef9c7> a mo:Track;
+    dcterms:title "Above The Clouds";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Gangstarr%20ft.%20Inspectah%20Deck%20-%20Above%20The%20Clouds.mp3>;
+    mo:duration "227".
+<urn:uuid:19a4d9ee-422a-41bd-99ef-242ee7b4b3cd> a mo:Track;
+    dcterms:title "Dangerous Mindz";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Gravediggaz%20-%20Dangerous%20Mindz.mp3>;
+    mo:duration "295".
+<urn:uuid:1960d1a2-3be7-429a-9633-e92695f17377> a mo:Track;
+    dcterms:title "Left & Right";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20%26%20Redman%2C%20D'Angelo%20-%20Left%20%26%20Right.mp3>;
+    mo:duration "340".
+<urn:uuid:0689d9d5-ae3c-4f57-b167-bca16134f1e6> a mo:Track;
+    dcterms:title "Three Amigos (If It's On)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20King%20Just%2C%20Sic%20-%20Three%20Amigos%20(If%20It's%20On).mp3>;
+    mo:duration "219".
+<urn:uuid:0d4266fd-b8e5-4d1a-91bc-f4e756362fcf> a mo:Track;
+    dcterms:title "N.Y.C. Everything";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20RZA%20-%20N.Y.C.%20Everything.mp3>;
+    mo:duration "258".
+<urn:uuid:050057b6-e94e-44e9-83e8-8a031d164865> a mo:Track;
+    dcterms:title "Hard To Kill";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20Spice%20I%20-%20Hard%20To%20Kill.mp3>;
+    mo:duration "244".
+<urn:uuid:f56f7cbd-bf94-4d43-8718-45bec46908e6> a mo:Track;
+    dcterms:title "Rumble";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20U-God%2C%20Inspectah%20Deck%2C%20Leatha%20Face%20-%20Rumble.mp3>;
+    mo:duration "272".
+<urn:uuid:d333d8f6-c56b-40c9-800e-1c8d0f710db5> a mo:Track;
+    dcterms:title "Gots Like Come On Thru";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Ol'%20Dirty%20Bastard%20ft.%20Buddha%20Monk%2C%20Drunken%20Dragon%20-%20Gots%20Like%20Come%20On%20Thru.mp3>;
+    mo:duration "278".
+<urn:uuid:aded9c91-ff80-49d1-926f-48ac2b71b0c9> a mo:Track;
+    dcterms:title "In Trouble";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Shyheim%20-%20In%20Trouble.mp3>;
+    mo:duration "265".
+<urn:uuid:acd38ac9-fa35-4282-ae6d-efc9a96c8569> a mo:Track;
+    dcterms:title "Greyhound Pt.2 (GZA Remix)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/The%20Jon%20Spencer%20Blues%20Explosion%20ft.%20Killah%20Priest%20-%20Greyhound%20Pt.2%20(GZA%20Remix).mp3>;
+    mo:duration "204".
+<urn:uuid:71096ca6-89ea-4f8e-8666-da1ccd8e643f> a mo:Track;
+    dcterms:title "Re-Up";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Two%20Da%20Road%20ft.%20Shyheim%20-%20Re-Up.mp3>;
+    mo:duration "211".
+<urn:uuid:85b8e1e8-9363-4c7b-a822-5cdd35e2149a> a mo:Track;
+    dcterms:title "To The Rescue";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/U-God%20ft.%20Leatha%20Face%20-%20To%20The%20Rescue.mp3>;
+    mo:duration "242".
+<urn:uuid:dc826d82-5905-4f94-9f35-7b0ab79f76cd> a mo:Track;
+    dcterms:title "Wu-Tang Clan LIVE FREESTYLE - GZA & Masta Killa";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Wu-Tang%20Clan%20LIVE%20FREESTYLE%20-%20GZA%20%26%20Masta%20Killa.mp3>;
+    mo:duration "225".
+<urn:uuid:cb262cde-56d1-4d15-9943-4fb9c093d0f4> a mo:Release;
+    dcat:landingPage <https://archive.org/details/gza-2025-05-14>;
+    mo:track <urn:uuid:a071b352-b8f7-4838-9742-48d7f88d8c78>, <urn:uuid:40a173dd-3190-40b6-881c-9f820efb7952>, <urn:uuid:f142102a-9ddd-4afd-9e28-8548174ba9f0>, <urn:uuid:4de4201c-4ea0-4c72-bc80-84cca95f68d9>, <urn:uuid:4451332a-5d30-4075-913c-e38ff30fcd00>, <urn:uuid:21f74e2c-b745-431f-9b6e-ddd17a857e15>;
+    dcterms:title "GZA 2025-05-14 The Taft Theatre";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "GZA".
+<urn:uuid:a071b352-b8f7-4838-9742-48d7f88d8c78> a mo:Track;
+    dcterms:title "Living in the World Today";
+    dcat:downloadUrl <https://archive.org/download/gza-2025-05-14/GZA2025-05-14t05.mp3>;
+    mo:duration "237".
+<urn:uuid:40a173dd-3190-40b6-881c-9f820efb7952> a mo:Track;
+    dcterms:title "Crash Your Crew";
+    dcat:downloadUrl <https://archive.org/download/gza-2025-05-14/GZA2025-05-14t13.mp3>;
+    mo:duration "201".
+<urn:uuid:f142102a-9ddd-4afd-9e28-8548174ba9f0> a mo:Track;
+    dcterms:title "Shimmy Shimmy Ya [Ol' Dirty Bastard]";
+    dcat:downloadUrl <https://archive.org/download/gza-2025-05-14/GZA2025-05-14t19.mp3>;
+    mo:duration "200".
+<urn:uuid:4de4201c-4ea0-4c72-bc80-84cca95f68d9> a mo:Track;
+    dcterms:title "For the Love of Money [The O'Jays] > C.R.E.A.M. [Wu‐Tang Clan]";
+    dcat:downloadUrl <https://archive.org/download/gza-2025-05-14/GZA2025-05-14t20.mp3>;
+    mo:duration "266".
+<urn:uuid:4451332a-5d30-4075-913c-e38ff30fcd00> a mo:Track;
+    dcterms:title "Liquid Swords";
+    dcat:downloadUrl <https://archive.org/download/gza-2025-05-14/GZA2025-05-14t22.mp3>;
+    mo:duration "219".
+<urn:uuid:21f74e2c-b745-431f-9b6e-ddd17a857e15> a mo:Track;
+    dcterms:title "Band Intros Jam > (without GZA)";
+    dcat:downloadUrl <https://archive.org/download/gza-2025-05-14/GZA2025-05-14t23.mp3>;
+    mo:duration "186".
+<urn:uuid:ca642e82-6156-4292-b42f-7f86283e01a6> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-tang-clan-1997-08-17-meadows-music-theater-hartford>;
+    mo:track <urn:uuid:4edb820b-e06f-4a35-baa9-5794dcb4e857>, <urn:uuid:c6c3f386-e9b6-4557-bea4-efe3eec9f007>, <urn:uuid:504fbb55-2e8e-4a57-aeb2-23d99a356350>, <urn:uuid:385b68d1-58cd-4d49-80ed-75ebaa653623>, <urn:uuid:9aa77fc0-3e0b-44ff-89c0-41b859153bbc>, <urn:uuid:b22e8c9c-d58d-481f-86e2-199d607e80bf>;
+    dcterms:title "Wu-Tang Clan - (1997-08-17) Meadows Music Theater, Hartford";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:4edb820b-e06f-4a35-baa9-5794dcb4e857> a mo:Track;
+    dcterms:title "Intro + Wu-Revolution";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/01.%20Intro%20%2B%20Wu-Revolution.mp3>;
+    mo:duration "516".
+<urn:uuid:c6c3f386-e9b6-4557-bea4-efe3eec9f007> a mo:Track;
+    dcterms:title "Wu Tang Clan Aint Nothin To Fuck Wit";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/02.%20Wu%20Tang%20Clan%20Aint%20Nothin%20To%20Fuck%20Wit.mp3>;
+    mo:duration "307".
+<urn:uuid:504fbb55-2e8e-4a57-aeb2-23d99a356350> a mo:Track;
+    dcterms:title "Criminology";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/04.%20Criminology.mp3>;
+    mo:duration "270".
+<urn:uuid:385b68d1-58cd-4d49-80ed-75ebaa653623> a mo:Track;
+    dcterms:title "Triumph";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/16.%20Triumph.mp3>;
+    mo:duration "180".
+<urn:uuid:9aa77fc0-3e0b-44ff-89c0-41b859153bbc> a mo:Track;
+    dcterms:title "Cash Still Rules + Scary Hours";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/17.%20Cash%20Still%20Rules%20%2B%20Scary%20Hours.mp3>;
+    mo:duration "310".
+<urn:uuid:b22e8c9c-d58d-481f-86e2-199d607e80bf> a mo:Track;
+    dcterms:title "Its Yourz";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-1997-08-17-meadows-music-theater-hartford/19.%20Its%20Yourz.mp3>;
+    mo:duration "184".
+<urn:uuid:22eb1d9d-fd7f-46d4-a7b1-d1e14764e88a> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-tang-clan-c.-r.-e.-a.-m.-official-hd-video>;
+    mo:track <urn:uuid:c93a24bf-b173-4161-92a5-00537fc20ff6>;
+    dcterms:title "Wu Tang Clan C. R. E. A. M. ( Official HD Video)";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:c93a24bf-b173-4161-92a5-00537fc20ff6> a mo:Track;
+    dcterms:title "Wu-Tang Clan - C.R.E.A.M. (Official HD Video)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-c.-r.-e.-a.-m.-official-hd-video/Wu-Tang%20Clan%20-%20C.R.E.A.M.%20(Official%20HD%20Video).mp3>;
+    mo:duration "242".
+<urn:uuid:c816ee01-14f5-43f0-ae14-007fab227a12> a mo:Release;
+    dcat:landingPage <https://archive.org/details/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503>;
+    mo:track <urn:uuid:df7aeae1-4924-4852-b678-51e22b4a4a33>, <urn:uuid:31dffdf7-27b7-485d-bc96-8607bc289f92>, <urn:uuid:93543947-c0fb-4750-a987-c5dc233bfeff>, <urn:uuid:624af1c6-9fb0-472a-9506-fbf7d4c2830e>, <urn:uuid:75c586a8-a2fa-4b01-a6b3-9b46653d3c7a>, <urn:uuid:57abeefe-514a-436c-aacb-29975c358154>, <urn:uuid:c6f17e50-c553-43e0-905c-5a2ad3e8fb68>, <urn:uuid:07af0a42-b6b0-46cd-8963-2980cbfa5728>, <urn:uuid:3003d958-926d-41dc-acbb-dbf3d11a218d>, <urn:uuid:d54cb302-71f7-4978-817d-dce9c3dbb159>, <urn:uuid:e3268fa2-0ca6-4c0b-bc4e-c0ff73b493af>, <urn:uuid:7f7cf6c1-f901-4833-8b92-bd78cda27efc>;
+    dcterms:title "GZA- Liquid Swords 1995(full 2nd press)";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "Gza/Genius".
+<urn:uuid:df7aeae1-4924-4852-b678-51e22b4a4a33> a mo:Track;
+    dcterms:title "Liquid Swords (feat. Rza)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F01%20GZAGenius%20-%20Liquid%20Swords%20(Feat.%20RZA).mp3>;
+    mo:duration "270".
+<urn:uuid:31dffdf7-27b7-485d-bc96-8607bc289f92> a mo:Track;
+    dcterms:title "Duel Of The Iron Mic (feat. Ol' Dirty Bastard & Inspectah Deck And Masta Killa)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F02%20GZAGenius%20-%20Duel%20Of%20The%20Iron%20Mic%20(Feat.%20Ol'%20Dirty%20Bastard%20%26%20Inspectah%20Deck%20and%20Masta%20Killa).mp3>;
+    mo:duration "246".
+<urn:uuid:93543947-c0fb-4750-a987-c5dc233bfeff> a mo:Track;
+    dcterms:title "Living In The World Today (feat. Rza & Method Man)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F03%20GZAGenius%20-%20Living%20In%20The%20World%20Today%20(Feat.%20RZA%20%26%20Method%20Man).mp3>;
+    mo:duration "262".
+<urn:uuid:624af1c6-9fb0-472a-9506-fbf7d4c2830e> a mo:Track;
+    dcterms:title "Gold (feat. Method Man)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F04%20GZAGenius%20-%20Gold%20(Feat.%20Method%20Man).mp3>;
+    mo:duration "237".
+<urn:uuid:75c586a8-a2fa-4b01-a6b3-9b46653d3c7a> a mo:Track;
+    dcterms:title "Cold World (feat. Inspectah Deck & Life)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F05%20GZAGenius%20-%20Cold%20World%20(Feat.%20Inspectah%20Deck%20%26%20Life).mp3>;
+    mo:duration "331".
+<urn:uuid:57abeefe-514a-436c-aacb-29975c358154> a mo:Track;
+    dcterms:title "4th Chamber (feat. Ghostface Killah & Killah Priest And Rza)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F07%20GZAGenius%20-%204th%20Chamber%20(Feat.%20Ghostface%20Killah%20%26%20Killah%20Priest%20and%20RZA).mp3>;
+    mo:duration "277".
+<urn:uuid:c6f17e50-c553-43e0-905c-5a2ad3e8fb68> a mo:Track;
+    dcterms:title "Shadowboxin' (feat. Method Man)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F08%20GZAGenius%20-%20Shadowboxin'%20(Feat.%20Method%20Man).mp3>;
+    mo:duration "210".
+<urn:uuid:07af0a42-b6b0-46cd-8963-2980cbfa5728> a mo:Track;
+    dcterms:title "Hell's Killah Hills 10304 (feat. Rza & Ol' Dirty Bastard)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F09%20GZAGenius%20-%20Hell's%20Killah%20Hills%2010304%20(Feat.%20Rza%20%26%20Ol'%20Dirty%20Bastard).mp3>;
+    mo:duration "308".
+<urn:uuid:3003d958-926d-41dc-acbb-dbf3d11a218d> a mo:Track;
+    dcterms:title "Investigative Reports (feat. Raekwon & Ghostface Killah And U-God)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F10%20GZAGenius%20-%20Investigative%20Reports%20(Feat.%20Raekwon%20%26%20Ghostface%20Killah%20and%20U-God).mp3>;
+    mo:duration "229".
+<urn:uuid:d54cb302-71f7-4978-817d-dce9c3dbb159> a mo:Track;
+    dcterms:title "Swordsman";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F11%20GZAGenius%20-%20Swordsman.mp3>;
+    mo:duration "201".
+<urn:uuid:e3268fa2-0ca6-4c0b-bc4e-c0ff73b493af> a mo:Track;
+    dcterms:title "I Gotcha Back (feat. Rza)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F12%20GZAGenius%20-%20I%20Gotcha%20Back%20(Feat.%20RZA).mp3>;
+    mo:duration "301".
+<urn:uuid:7f7cf6c1-f901-4833-8b92-bd78cda27efc> a mo:Track;
+    dcterms:title "B.I.B.L.E. (Basic Instructions Before Leaving Earth) (feat. Killah Priest)";
+    dcat:downloadUrl <https://archive.org/download/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503/1995%20-%20GZA%20-%20Liquid%20Swords%2F13%20GZAGenius%20-%20B.I.B.L.E.%20(Basic%20Instructions%20Before%20Leaving%20Earth)%20(Feat.%20Killah%20Priest).mp3>;
+    mo:duration "270".
+<urn:uuid:b02cc6a1-8634-4ac8-8d98-0f3b8bbd2cc0> a mo:Release;
+    dcat:landingPage <https://archive.org/details/Wu-Tang_Clan_-_Second_Coming-2019>;
+    mo:track <urn:uuid:10a6cf19-64dd-4421-bd4b-019e0ec9db69>, <urn:uuid:22d4d217-1765-4076-899e-64b1d68db564>, <urn:uuid:5e646270-4ebf-4a7e-a7ae-f07ce5836864>, <urn:uuid:4f3ff83f-2c8a-4973-86b1-eb2b7682ef1b>, <urn:uuid:ec56ee95-de6c-4dee-b85e-1cd721107dc6>, <urn:uuid:ccba33e8-1e31-4978-adc6-54ac5cd18506>, <urn:uuid:83aaad58-2a25-4067-ae14-b383feea86f4>;
+    dcterms:title "Wu-Tang Clan - Second Coming-2019";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:10a6cf19-64dd-4421-bd4b-019e0ec9db69> a mo:Track;
+    dcterms:title "02 - The Show";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_Second_Coming-2019/02%20-%20The%20Show.mp3>;
+    mo:duration "225".
+<urn:uuid:22d4d217-1765-4076-899e-64b1d68db564> a mo:Track;
+    dcterms:title "06 - Hold The Heater";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_Second_Coming-2019/06%20-%20Hold%20The%20Heater.mp3>;
+    mo:duration "235".
+<urn:uuid:5e646270-4ebf-4a7e-a7ae-f07ce5836864> a mo:Track;
+    dcterms:title "08 - Diesel Fluid";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_Second_Coming-2019/08%20-%20Diesel%20Fluid.mp3>;
+    mo:duration "247".
+<urn:uuid:4f3ff83f-2c8a-4973-86b1-eb2b7682ef1b> a mo:Track;
+    dcterms:title "10 - Biochemical Equation";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_Second_Coming-2019/10%20-%20Biochemical%20Equation.mp3>;
+    mo:duration "236".
+<urn:uuid:ec56ee95-de6c-4dee-b85e-1cd721107dc6> a mo:Track;
+    dcterms:title "13 - Wanna Believe";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_Second_Coming-2019/13%20-%20Wanna%20Believe.mp3>;
+    mo:duration "286".
+<urn:uuid:ccba33e8-1e31-4978-adc6-54ac5cd18506> a mo:Track;
+    dcterms:title "14 - Lyrical Swords";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_Second_Coming-2019/14%20-%20Lyrical%20Swords.mp3>;
+    mo:duration "205".
+<urn:uuid:83aaad58-2a25-4067-ae14-b383feea86f4> a mo:Track;
+    dcterms:title "15 - Above The Clouds";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_Second_Coming-2019/15%20-%20Above%20The%20Clouds.mp3>;
+    mo:duration "225".
+<urn:uuid:785df6e3-936f-4b31-9c9f-bc82101bc042> a mo:Release;
+    dcat:landingPage <https://archive.org/details/shaolin-vs.-wu-tang>;
+    mo:track <urn:uuid:ce29c410-0944-45de-9dbd-f766dc4a3d6f>, <urn:uuid:d8b98fce-3fc6-4a12-8f9d-5b96a59378b0>, <urn:uuid:6157cf88-e49e-45a4-9f95-61e7db2b0a92>, <urn:uuid:150b9866-bb16-49d6-be23-4fa98f55b29f>, <urn:uuid:31bf5328-c2ec-4a86-a69d-d4a353ec59d5>;
+    dcterms:title "Shaolin Vs. Wu Tang";
+    foaf:maker <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>, "Raekwon".
+<urn:uuid:ce29c410-0944-45de-9dbd-f766dc4a3d6f> a mo:Track;
+    dcterms:title "Chop Chop Ninja (ft. Inspectah Deck & Estelle)";
+    dcat:downloadUrl <https://archive.org/download/shaolin-vs.-wu-tang/04%20-%20Raekwon%20-%20Chop%20Chop%20Ninja%20(ft.%20Inspectah%20Deck%20%26%20Estelle).mp3>;
+    mo:duration "264".
+<urn:uuid:d8b98fce-3fc6-4a12-8f9d-5b96a59378b0> a mo:Track;
+    dcterms:title "Rock N Roll (ft. Ghostface Killah & Jim Jones)";
+    dcat:downloadUrl <https://archive.org/download/shaolin-vs.-wu-tang/08%20-%20Raekwon%20-%20Rock%20N%20Roll%20(ft.%20Ghostface%20Killah%20%26%20Jim%20Jones).mp3>;
+    mo:duration "340".
+<urn:uuid:6157cf88-e49e-45a4-9f95-61e7db2b0a92> a mo:Track;
+    dcterms:title "Rich And Black (ft. Nas)";
+    dcat:downloadUrl <https://archive.org/download/shaolin-vs.-wu-tang/09%20-%20Raekwon%20-%20Rich%20And%20Black%20(ft.%20Nas).mp3>;
+    mo:duration "215".
+<urn:uuid:150b9866-bb16-49d6-be23-4fa98f55b29f> a mo:Track;
+    dcterms:title "Molasses (ft. Rick Ross & Ghostface Killah)";
+    dcat:downloadUrl <https://archive.org/download/shaolin-vs.-wu-tang/14%20-%20Raekwon%20-%20Molasses%20(ft.%20Rick%20Ross%20%26%20Ghostface%20Killah).mp3>;
+    mo:duration "253".
+<urn:uuid:31bf5328-c2ec-4a86-a69d-d4a353ec59d5> a mo:Track;
+    dcterms:title "Masters Of Our Fate (ft. Black Thought)";
+    dcat:downloadUrl <https://archive.org/download/shaolin-vs.-wu-tang/16%20-%20Raekwon%20-%20Masters%20Of%20Our%20Fate%20(ft.%20Black%20Thought).mp3>;
+    mo:duration "202".
+<urn:uuid:226c8e7e-aa21-43b4-91f8-7673981c2075> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wu-tang-clan-wu-tang-forever_202401>;
+    mo:track <urn:uuid:99001d56-51ce-4b4e-ae15-5c1ffd5d70e6>, <urn:uuid:8c23b477-6626-4c1f-8a7e-bb0f7d048f7b>, <urn:uuid:a327d4b8-6234-40de-b3c0-00d4d23f4bd3>, <urn:uuid:5094fc37-5144-4711-ba5b-232fe2ca5350>, <urn:uuid:af875c1e-bfee-45f2-a07b-17f68dca3907>, <urn:uuid:ebc2d222-66e3-48e8-9dfb-b839980f568d>, <urn:uuid:a926ad59-46e5-4b62-89e7-1f12231b00f7>, <urn:uuid:86fa7bef-79dc-4821-98b8-b57137d441d7>, <urn:uuid:8adb5abc-ce67-43fd-b9de-07ed9848e5db>, <urn:uuid:7d840ca2-e3d6-4079-92bb-69d5befc4b21>, <urn:uuid:cca3d7ec-78ff-43f1-961d-8b843231921b>, <urn:uuid:5533eaba-c066-4e2e-b3ce-f85bde079122>, <urn:uuid:e07a00f7-f2de-47d2-b7e1-a000c148d8d8>, <urn:uuid:85df47e9-568c-4bfb-b2b7-17ea292b55f3>, <urn:uuid:be412748-c158-4854-ab78-be383b35078c>, <urn:uuid:28f44eb6-4cfb-42b0-8c53-9be28e163661>, <urn:uuid:407f6009-a8bb-4a13-8816-023f583332b2>, <urn:uuid:9f350f2b-8992-4d9e-bafd-b43ae429df4f>, <urn:uuid:7ad0df26-1454-40fb-a1f7-8de00394d059>, <urn:uuid:56ad986c-7d84-43f5-abb0-3a83c40eb3c3>, <urn:uuid:e9a9eba7-9080-4082-a402-b543b0f5a558>, <urn:uuid:d97077ec-b622-48fa-be1b-2af57550ce21>;
+    dcterms:title "Wu-Tang Forever";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:99001d56-51ce-4b4e-ae15-5c1ffd5d70e6> a mo:Track;
+    dcterms:title "Wu-Revolution";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-01%20Wu-Revolution.m4a>;
+    mo:duration "406".
+<urn:uuid:8c23b477-6626-4c1f-8a7e-bb0f7d048f7b> a mo:Track;
+    dcterms:title "Reunited";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-02%20Reunited.m4a>;
+    mo:duration "321".
+<urn:uuid:a327d4b8-6234-40de-b3c0-00d4d23f4bd3> a mo:Track;
+    dcterms:title "For Heavens Sake";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-03%20For%20Heavens%20Sake.m4a>;
+    mo:duration "253".
+<urn:uuid:5094fc37-5144-4711-ba5b-232fe2ca5350> a mo:Track;
+    dcterms:title "Cash Still Rules / Scary Hours (Still Don't Nothing Move But the Money)";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-04%20Cash%20Still%20Rules%20_%20Scary%20Hours.m4a>;
+    mo:duration "181".
+<urn:uuid:af875c1e-bfee-45f2-a07b-17f68dca3907> a mo:Track;
+    dcterms:title "Visionz";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-05%20Visionz.m4a>;
+    mo:duration "189".
+<urn:uuid:ebc2d222-66e3-48e8-9dfb-b839980f568d> a mo:Track;
+    dcterms:title "Severe Punishment";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-07%20Severe%20Punishment.m4a>;
+    mo:duration "289".
+<urn:uuid:a926ad59-46e5-4b62-89e7-1f12231b00f7> a mo:Track;
+    dcterms:title "Older Gods";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-08%20Older%20Gods.m4a>;
+    mo:duration "186".
+<urn:uuid:86fa7bef-79dc-4821-98b8-b57137d441d7> a mo:Track;
+    dcterms:title "A Better Tomorrow";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-10%20A%20Better%20Tomorrow.m4a>;
+    mo:duration "295".
+<urn:uuid:8adb5abc-ce67-43fd-b9de-07ed9848e5db> a mo:Track;
+    dcterms:title "It's Yourz";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/1-11%20It's%20Yourz.m4a>;
+    mo:duration "256".
+<urn:uuid:7d840ca2-e3d6-4079-92bb-69d5befc4b21> a mo:Track;
+    dcterms:title "Triumph";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-02%20Triumph.m4a>;
+    mo:duration "338".
+<urn:uuid:cca3d7ec-78ff-43f1-961d-8b843231921b> a mo:Track;
+    dcterms:title "Impossible";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-03%20Impossible.m4a>;
+    mo:duration "269".
+<urn:uuid:5533eaba-c066-4e2e-b3ce-f85bde079122> a mo:Track;
+    dcterms:title "Little Ghetto Boys";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-04%20Little%20Ghetto%20Boys.m4a>;
+    mo:duration "289".
+<urn:uuid:e07a00f7-f2de-47d2-b7e1-a000c148d8d8> a mo:Track;
+    dcterms:title "Deadly Melody";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-05%20Deadly%20Melody.m4a>;
+    mo:duration "260".
+<urn:uuid:85df47e9-568c-4bfb-b2b7-17ea292b55f3> a mo:Track;
+    dcterms:title "The City";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-06%20The%20City.m4a>;
+    mo:duration "245".
+<urn:uuid:be412748-c158-4854-ab78-be383b35078c> a mo:Track;
+    dcterms:title "The Projects";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-07%20The%20Projects.m4a>;
+    mo:duration "197".
+<urn:uuid:28f44eb6-4cfb-42b0-8c53-9be28e163661> a mo:Track;
+    dcterms:title "Bells of War";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-08%20Bells%20of%20War.m4a>;
+    mo:duration "312".
+<urn:uuid:407f6009-a8bb-4a13-8816-023f583332b2> a mo:Track;
+    dcterms:title "Dog Sh*t";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-10%20Dog%20Sh_t.m4a>;
+    mo:duration "214".
+<urn:uuid:9f350f2b-8992-4d9e-bafd-b43ae429df4f> a mo:Track;
+    dcterms:title "Duck Seazon";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-11%20Duck%20Seazon.m4a>;
+    mo:duration "342".
+<urn:uuid:7ad0df26-1454-40fb-a1f7-8de00394d059> a mo:Track;
+    dcterms:title "Hellz Wind Staff";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-12%20Hellz%20Wind%20Staff.m4a>;
+    mo:duration "292".
+<urn:uuid:56ad986c-7d84-43f5-abb0-3a83c40eb3c3> a mo:Track;
+    dcterms:title "Heaterz";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-13%20Heaterz.m4a>;
+    mo:duration "326".
+<urn:uuid:e9a9eba7-9080-4082-a402-b543b0f5a558> a mo:Track;
+    dcterms:title "Black Shampoo";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-14%20Black%20Shampoo.m4a>;
+    mo:duration "229".
+<urn:uuid:d97077ec-b622-48fa-be1b-2af57550ce21> a mo:Track;
+    dcterms:title "Second Coming";
+    dcat:downloadUrl <https://archive.org/download/wu-tang-clan-wu-tang-forever_202401/2-15%20Second%20Coming.m4a>;
+    mo:duration "279".
+<urn:uuid:b304cc4b-e053-4332-9fdf-0370accf7bec> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wustudio>;
+    mo:track <urn:uuid:786bf647-dd2c-4cf2-9284-24bc63728b9d>, <urn:uuid:70d24922-a941-4013-9cb5-41b2ce0f4e02>, <urn:uuid:7e468bf3-a796-467d-b97d-f621fd646cb4>, <urn:uuid:f018151b-de46-4f77-9cb7-4c62a53fed69>, <urn:uuid:945126e4-a383-4643-9018-54ce0d3f2055>, <urn:uuid:9eda7689-942a-46e7-9241-655d63a12ce7>, <urn:uuid:c836466b-59a8-4186-b0b1-d47b8ef3d060>, <urn:uuid:f5cc5933-28e7-4ebd-bde7-cf7637eaf635>, <urn:uuid:138154cc-a658-4071-984b-7a4c9d44c41f>, <urn:uuid:7e8717e5-71ce-4831-9afc-be6d002bf129>, <urn:uuid:48e16866-c1c3-4a75-8248-f704ee0d423c>, <urn:uuid:e5be40eb-7919-4bd1-914b-0a9e27f27270>, <urn:uuid:a0f6ff7b-4e06-47d3-a0b2-489261472108>, <urn:uuid:87a833ac-d9d0-410a-8aa5-1815656bb5db>, <urn:uuid:c75de712-eb8d-4471-bcd2-8e4014054a60>, <urn:uuid:a3f0c5d9-7095-40d9-a0cd-d6ec0b3c9dd2>, <urn:uuid:d68da6bd-8631-4995-b385-45622cbbb3f4>, <urn:uuid:2d2ed29e-8d54-407c-b8db-a47e8daba529>, <urn:uuid:31ea1cd7-911e-48d5-bf08-13d9aa689bf9>, <urn:uuid:c8bf634c-a8fc-4d30-b95b-8032c215be49>, <urn:uuid:8df478f2-abf2-4627-8b7f-3c4f885b1ca6>, <urn:uuid:d8ffff45-1c08-4ecb-bf60-592a9d6ac1ee>, <urn:uuid:2f01cd39-43e0-4007-9082-0b6f9ca0cd7a>, <urn:uuid:096f7de1-1ae8-4938-9c82-cee2efcb3399>, <urn:uuid:b2e8b808-6b8f-453b-9d42-2925de524a1c>, <urn:uuid:61a9d782-099a-4d36-8700-4143117ad404>, <urn:uuid:fd067f5f-75d4-4c49-a7c3-332685d471f8>, <urn:uuid:9619161a-999c-4479-91af-6bd3fbd3f53e>, <urn:uuid:595d0517-db84-4eb2-b698-a2367b728dab>, <urn:uuid:e827ec6e-eecb-4c80-8db2-d8785196f964>, <urn:uuid:b47aa624-7688-4244-9f2e-acd91223629a>, <urn:uuid:1811231b-5d0d-4842-9b12-ece9e54dbf0f>, <urn:uuid:c7625d2d-97fb-4683-bea4-575710606bb7>, <urn:uuid:c22ef026-4fd0-4077-802a-8c5a8a38b3b7>, <urn:uuid:dc8bce2d-c3f7-489a-b140-08f89124cfeb>, <urn:uuid:a3d9c0b9-eaad-4e7d-9431-334ab3ecd1b6>, <urn:uuid:82af14ef-2632-4bb0-8f38-ca36cbd872c1>, <urn:uuid:bffe5d7a-23eb-47e1-916d-6701e88e17a5>, <urn:uuid:c2124d53-c61d-45a0-b107-15311596ba12>, <urn:uuid:2b20bb6d-8e36-484d-af55-796a9e145069>, <urn:uuid:ebd7979b-2d1c-4df5-9f2c-8e248e32d99f>, <urn:uuid:13d937fb-7d97-4b59-842e-c08ad47ee5b0>, <urn:uuid:f9b96a09-6701-451b-9f71-95666114e1f6>, <urn:uuid:636f9ab0-f9e5-4e8f-a08b-66d2bf0fb44f>, <urn:uuid:20178211-6c77-4e8b-931c-57fbbc1e0c94>, <urn:uuid:1101ccf5-132a-4447-ba7a-890a30e3ea1a>, <urn:uuid:965dcb13-fe05-4350-869c-bb2403b96be2>, <urn:uuid:bf93d79f-5a73-458a-b61b-8437d84194f7>, <urn:uuid:b9a18d5d-1c52-455a-8d1f-361edb0259df>, <urn:uuid:e7eaadf2-1f0f-4821-9bdc-f037a2289f32>, <urn:uuid:b46bafe7-e421-42f1-a224-db0fe6208587>, <urn:uuid:ba93e529-42d1-4255-8cb1-5ba72c41a326>, <urn:uuid:63b44ec1-6312-4db1-9843-c20663de9f30>, <urn:uuid:94a8efe0-f964-4966-9aa0-dcc8f56dd73c>, <urn:uuid:f3f43bf8-faa2-4a61-ae8a-6559f5172547>, <urn:uuid:1ac2b6bc-424d-4705-b4a0-4724636ccac7>, <urn:uuid:054f8efc-5c1e-4a49-8f3c-4d4544c5199e>, <urn:uuid:390302fa-dbab-4d4a-99ee-beb5ffa4ee9f>, <urn:uuid:44cd709c-749a-41be-abfd-58f9b9791037>, <urn:uuid:c5535b28-31cb-406f-ab14-21701d87518c>, <urn:uuid:81630eb1-5a20-4bdb-b291-750a3743160e>, <urn:uuid:46f11b65-b53f-431e-808b-539fa70e1a0e>, <urn:uuid:4f2d0e6e-e191-4a3d-b2b0-b8318507078c>, <urn:uuid:e78c69de-745e-4d65-a9f0-94b0bcf71d04>, <urn:uuid:8d16649a-5035-4916-ad22-7704cac377b3>, <urn:uuid:a93b61a2-4144-47e3-8e01-c496b9a7c24b>, <urn:uuid:85a8f64f-4f71-4b46-8f2c-acd96e60e2dc>, <urn:uuid:05c91e68-50da-4348-9fdb-1dcc4786d5ac>, <urn:uuid:2afea9ae-2b42-448b-a2d8-94de48ae8f16>, <urn:uuid:4e25167d-9643-4877-8672-08f1368e0628>, <urn:uuid:109b5336-44b9-4a29-bed0-196a2ab2b42a>, <urn:uuid:4bf1f302-22ac-4bcd-8aa1-252d32f36d69>, <urn:uuid:c0368884-3fde-41c2-b7c0-054520ba8932>, <urn:uuid:f7096d57-d319-4a3b-a3e5-61d641112527>, <urn:uuid:30c1f268-1b04-4e15-b4f8-ac02d3730619>, <urn:uuid:887412ae-19a4-41ef-a22a-9c7cc3f826eb>, <urn:uuid:b2b868e9-be5e-47ac-b775-aa37a0ca8a1d>, <urn:uuid:6ca97a86-ce8c-4924-81ce-49cfc3af4b36>, <urn:uuid:fc4fe12f-06ee-468e-b3d2-39efeda11edf>, <urn:uuid:20f27a07-cf05-4348-95b3-0db199105dd7>, <urn:uuid:2641f804-52b5-4582-8b40-6072e83f65b4>, <urn:uuid:685ff40f-de54-4c03-aada-a224c9e12913>, <urn:uuid:039f9b3d-aa58-4703-add2-70c7566a72eb>, <urn:uuid:f8e3ea40-bdec-4ad1-aa0a-b654c7ba705e>, <urn:uuid:3bb0fbe0-36e2-4a38-9d2c-5657e9bedbba>, <urn:uuid:ce2bdeb3-1bcc-4f25-a3ff-8bedf91b2321>, <urn:uuid:86bdd172-09f7-4c44-ab20-6d2afbe8a396>, <urn:uuid:909f6138-9b94-480e-8d30-df903fd309e2>;
+    dcterms:title "The Wu - Studio Albums";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:786bf647-dd2c-4cf2-9284-24bc63728b9d> a mo:Track;
+    dcterms:title "40th Street Black / We Will Fight";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%2040th%20Street%20Black%20_%20We%20Will%20Fight.mp3>;
+    mo:duration "266".
+<urn:uuid:70d24922-a941-4013-9cb5-41b2ce0f4e02> a mo:Track;
+    dcterms:title "A Better Tomorrow (feat. Inspectah Deck, Masta Killa, U-God & RZA)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20A%20Better%20Tomorrow%20(feat.%20Inspectah%20Deck%2C%20Masta%20Killa%2C%20U-God%20%26%20RZA).mp3>;
+    mo:duration "295".
+<urn:uuid:7e468bf3-a796-467d-b97d-f621fd646cb4> a mo:Track;
+    dcterms:title "A Better Tomorrow";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20A%20Better%20Tomorrow.mp3>;
+    mo:duration "264".
+<urn:uuid:f018151b-de46-4f77-9cb7-4c62a53fed69> a mo:Track;
+    dcterms:title "Ain't Nuthing ta F' Wit";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Ain't%20Nuthing%20ta%20F'%20Wit.mp3>;
+    mo:duration "216".
+<urn:uuid:945126e4-a383-4643-9018-54ce0d3f2055> a mo:Track;
+    dcterms:title "Babies (feat. Ghostface Killah, Raekwon & GZA)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Babies%20(feat.%20Ghostface%20Killah%2C%20Raekwon%20%26%20GZA).mp3>;
+    mo:duration "308".
+<urn:uuid:9eda7689-942a-46e7-9241-655d63a12ce7> a mo:Track;
+    dcterms:title "Back In the Game (feat. Method Man, Inspectah Deck, GZA & Raekwon)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Back%20In%20the%20Game%20(feat.%20Method%20Man%2C%20Inspectah%20Deck%2C%20GZA%20%26%20Raekwon).mp3>;
+    mo:duration "274".
+<urn:uuid:c836466b-59a8-4186-b0b1-d47b8ef3d060> a mo:Track;
+    dcterms:title "Bells of War (feat. U-God, Method Man, RZA & Masta Killa)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Bells%20of%20War%20(feat.%20U-God%2C%20Method%20Man%2C%20RZA%20%26%20Masta%20Killa).mp3>;
+    mo:duration "312".
+<urn:uuid:f5cc5933-28e7-4ebd-bde7-cf7637eaf635> a mo:Track;
+    dcterms:title "Black Shampoo (feat. U-God, Method Man, Tekitha & Dom Pachino)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Black%20Shampoo%20(feat.%20U-God%2C%20Method%20Man%2C%20Tekitha%20%26%20Dom%20Pachino).mp3>;
+    mo:duration "230".
+<urn:uuid:138154cc-a658-4071-984b-7a4c9d44c41f> a mo:Track;
+    dcterms:title "Bring Da Ruckus";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Bring%20Da%20Ruckus.mp3>;
+    mo:duration "251".
+<urn:uuid:7e8717e5-71ce-4831-9afc-be6d002bf129> a mo:Track;
+    dcterms:title "C.R.E.A.M. (Cash Rules Everything Around Me)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20C.R.E.A.M.%20(Cash%20Rules%20Everything%20Around%20Me).mp3>;
+    mo:duration "252".
+<urn:uuid:48e16866-c1c3-4a75-8248-f704ee0d423c> a mo:Track;
+    dcterms:title "Campfire";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Campfire.mp3>;
+    mo:duration "239".
+<urn:uuid:e5be40eb-7919-4bd1-914b-0a9e27f27270> a mo:Track;
+    dcterms:title "Can It Be All So Simple / Intermission";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Can%20It%20Be%20All%20So%20Simple%20_%20Intermission.mp3>;
+    mo:duration "414".
+<urn:uuid:a0f6ff7b-4e06-47d3-a0b2-489261472108> a mo:Track;
+    dcterms:title "Careful (Click, Click) (feat. RZA, U-God, Masta Killa & Cappadonna)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Careful%20(Click%2C%20Click)%20(feat.%20RZA%2C%20U-God%2C%20Masta%20Killa%20%26%20Cappadonna).mp3>;
+    mo:duration "296".
+<urn:uuid:87a833ac-d9d0-410a-8aa5-1815656bb5db> a mo:Track;
+    dcterms:title "Cash Still Rules / Scary Hours (Still Don't Nothing Move but the Money) (feat. Raekwon, Method Man & Ghostface Killah)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Cash%20Still%20Rules%20_%20Scary%20Hours%20(Still%20Don't%20Nothing%20Move%20but%20the%20Money)%20(feat.%20Raekwon%2C%20Method%20Man%20%26%20Ghostface%20Killah).mp3>;
+    mo:duration "181".
+<urn:uuid:c75de712-eb8d-4471-bcd2-8e4014054a60> a mo:Track;
+    dcterms:title "Chrome Wheels (feat. RZA, Raekwon, Prodigal Sunn & Madame Dee)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Chrome%20Wheels%20(feat.%20RZA%2C%20Raekwon%2C%20Prodigal%20Sunn%20%26%20Madame%20Dee).mp3>;
+    mo:duration "254".
+<urn:uuid:a3f0c5d9-7095-40d9-a0cd-d6ec0b3c9dd2> a mo:Track;
+    dcterms:title "Clan In Da Front";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Clan%20In%20Da%20Front.mp3>;
+    mo:duration "273".
+<urn:uuid:d68da6bd-8631-4995-b385-45622cbbb3f4> a mo:Track;
+    dcterms:title "Conditioner (feat. Ol' Dirty Bastard, GZA, Inspectah Deck & Snoop Dogg)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Conditioner%20(feat.%20Ol'%20Dirty%20Bastard%2C%20GZA%2C%20Inspectah%20Deck%20%26%20Snoop%20Dogg).mp3>;
+    mo:duration "332".
+<urn:uuid:2d2ed29e-8d54-407c-b8db-a47e8daba529> a mo:Track;
+    dcterms:title "Da Glock (feat. U-God, Ghostface Killah, RZA & Cappadonna)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Da%20Glock%20(feat.%20U-God%2C%20Ghostface%20Killah%2C%20RZA%20%26%20Cappadonna).mp3>;
+    mo:duration "195".
+<urn:uuid:31ea1cd7-911e-48d5-bf08-13d9aa689bf9> a mo:Track;
+    dcterms:title "Da Mystery of Chessboxin'";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Da%20Mystery%20of%20Chessboxin'.mp3>;
+    mo:duration "287".
+<urn:uuid:c8bf634c-a8fc-4d30-b95b-8032c215be49> a mo:Track;
+    dcterms:title "Dashing (Reasons) (feat. Inspectah Deck & GZA)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Dashing%20(Reasons)%20(feat.%20Inspectah%20Deck%20%26%20GZA).mp3>;
+    mo:duration "285".
+<urn:uuid:8df478f2-abf2-4627-8b7f-3c4f885b1ca6> a mo:Track;
+    dcterms:title "Deadly Melody (feat. Masta Killa, U-God, RZA & Method Man)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Deadly%20Melody%20(feat.%20Masta%20Killa%2C%20U-God%2C%20RZA%20%26%20Method%20Man).mp3>;
+    mo:duration "260".
+<urn:uuid:d8ffff45-1c08-4ecb-bf60-592a9d6ac1ee> a mo:Track;
+    dcterms:title "Do You Really (Thang Thang) (feat. DJ Kay Slay, Method Man, Streetlife & Masta Killa)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Do%20You%20Really%20(Thang%20Thang)%20(feat.%20DJ%20Kay%20Slay%2C%20Method%20Man%2C%20Streetlife%20%26%20Masta%20Killa).mp3>;
+    mo:duration "322".
+<urn:uuid:2f01cd39-43e0-4007-9082-0b6f9ca0cd7a> a mo:Track;
+    dcterms:title "Dog Shit (feat. Ol' Dirty Bastard, RZA & Method Man)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Dog%20Shit%20(feat.%20Ol'%20Dirty%20Bastard%2C%20RZA%20%26%20Method%20Man).mp3>;
+    mo:duration "214".
+<urn:uuid:096f7de1-1ae8-4938-9c82-cee2efcb3399> a mo:Track;
+    dcterms:title "Duck Seazon (feat. Raekwon, RZA & Method Man)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Duck%20Seazon%20(feat.%20Raekwon%2C%20RZA%20%26%20Method%20Man).mp3>;
+    mo:duration "342".
+<urn:uuid:b2e8b808-6b8f-453b-9d42-2925de524a1c> a mo:Track;
+    dcterms:title "Felt";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Felt.mp3>;
+    mo:duration "231".
+<urn:uuid:61a9d782-099a-4d36-8700-4143117ad404> a mo:Track;
+    dcterms:title "For Heavens Sake (feat. Inspectah Deck, Masta Killa & Cappadonna)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20For%20Heavens%20Sake%20(feat.%20Inspectah%20Deck%2C%20Masta%20Killa%20%26%20Cappadonna).mp3>;
+    mo:duration "253".
+<urn:uuid:fd067f5f-75d4-4c49-a7c3-332685d471f8> a mo:Track;
+    dcterms:title "Get Them Out Ya Way Pa";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Get%20Them%20Out%20Ya%20Way%20Pa.mp3>;
+    mo:duration "258".
+<urn:uuid:9619161a-999c-4479-91af-6bd3fbd3f53e> a mo:Track;
+    dcterms:title "Gravel Pit (feat. RZA, Method Man, Ghostface Killah & Raekwon)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Gravel%20Pit%20(feat.%20RZA%2C%20Method%20Man%2C%20Ghostface%20Killah%20%26%20Raekwon).mp3>;
+    mo:duration "291".
+<urn:uuid:595d0517-db84-4eb2-b698-a2367b728dab> a mo:Track;
+    dcterms:title "Gun Will Go (feat. Sunny Valentine)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Gun%20Will%20Go%20(feat.%20Sunny%20Valentine).mp3>;
+    mo:duration "254".
+<urn:uuid:e827ec6e-eecb-4c80-8db2-d8785196f964> a mo:Track;
+    dcterms:title "Heaterz (feat. Raekwon, Inspectah Deck, Ol' Dirty Bastard & U-God)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Heaterz%20(feat.%20Raekwon%2C%20Inspectah%20Deck%2C%20Ol'%20Dirty%20Bastard%20%26%20U-God).mp3>;
+    mo:duration "326".
+<urn:uuid:b47aa624-7688-4244-9f2e-acd91223629a> a mo:Track;
+    dcterms:title "Hellz Wind Staff (feat. Streetlife, Ghostface Killah, Inspectah Deck & Method Man)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Hellz%20Wind%20Staff%20(feat.%20Streetlife%2C%20Ghostface%20Killah%2C%20Inspectah%20Deck%20%26%20Method%20Man).mp3>;
+    mo:duration "292".
+<urn:uuid:1811231b-5d0d-4842-9b12-ece9e54dbf0f> a mo:Track;
+    dcterms:title "Hold the Heater";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Hold%20the%20Heater.mp3>;
+    mo:duration "247".
+<urn:uuid:c7625d2d-97fb-4683-bea4-575710606bb7> a mo:Track;
+    dcterms:title "Hollow Bones (feat. Raekwon, Inspectah Deck & Ghostface Killah)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Hollow%20Bones%20(feat.%20Raekwon%2C%20Inspectah%20Deck%20%26%20Ghostface%20Killah).mp3>;
+    mo:duration "217".
+<urn:uuid:c22ef026-4fd0-4077-802a-8c5a8a38b3b7> a mo:Track;
+    dcterms:title "I Can't Go to Sleep (feat. Ghostface Killah, RZA & Issac Hayes)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20I%20Can't%20Go%20to%20Sleep%20(feat.%20Ghostface%20Killah%2C%20RZA%20%26%20Issac%20Hayes).mp3>;
+    mo:duration "215".
+<urn:uuid:dc8bce2d-c3f7-489a-b140-08f89124cfeb> a mo:Track;
+    dcterms:title "Impossible (feat. RZA, U-God, Ghostface Killah & Tekitha)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Impossible%20(feat.%20RZA%2C%20U-God%2C%20Ghostface%20Killah%20%26%20Tekitha).mp3>;
+    mo:duration "269".
+<urn:uuid:a3d9c0b9-eaad-4e7d-9431-334ab3ecd1b6> a mo:Track;
+    dcterms:title "In the Hood (feat. RZA, Masta Killa, Inspectah Deck & Streetlife)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20In%20the%20Hood%20(feat.%20RZA%2C%20Masta%20Killa%2C%20Inspectah%20Deck%20%26%20Streetlife).mp3>;
+    mo:duration "250".
+<urn:uuid:82af14ef-2632-4bb0-8f38-ca36cbd872c1> a mo:Track;
+    dcterms:title "Intro (Shaolin Finger Jab) / Chamber Music (feat. Junior Reid, Raekwon, GZA & Method Man)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Intro%20(Shaolin%20Finger%20Jab)%20_%20Chamber%20Music%20(feat.%20Junior%20Reid%2C%20Raekwon%2C%20GZA%20%26%20Method%20Man).mp3>;
+    mo:duration "266".
+<urn:uuid:bffe5d7a-23eb-47e1-916d-6701e88e17a5> a mo:Track;
+    dcterms:title "Iron Flag (feat. Raekwon, Masta Killa, Inspectah Deck & U-God)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Iron%20Flag%20(feat.%20Raekwon%2C%20Masta%20Killa%2C%20Inspectah%20Deck%20%26%20U-God).mp3>;
+    mo:duration "193".
+<urn:uuid:c2124d53-c61d-45a0-b107-15311596ba12> a mo:Track;
+    dcterms:title "It's Yourz (feat. Raekwon, U-God, RZA & Inspectah Deck)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20It's%20Yourz%20(feat.%20Raekwon%2C%20U-God%2C%20RZA%20%26%20Inspectah%20Deck).mp3>;
+    mo:duration "256".
+<urn:uuid:2b20bb6d-8e36-484d-af55-796a9e145069> a mo:Track;
+    dcterms:title "Jah World (feat. Ghostface Killah, RZA & Junior Reid)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Jah%20World%20(feat.%20Ghostface%20Killah%2C%20RZA%20%26%20Junior%20Reid).mp3>;
+    mo:duration "231".
+<urn:uuid:ebd7979b-2d1c-4df5-9f2c-8e248e32d99f> a mo:Track;
+    dcterms:title "Keep Watch";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Keep%20Watch.mp3>;
+    mo:duration "265".
+<urn:uuid:13d937fb-7d97-4b59-842e-c08ad47ee5b0> a mo:Track;
+    dcterms:title "Let My Niggas Live (feat. Raekwon, Inspectah Deck & Nas)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Let%20My%20Niggas%20Live%20(feat.%20Raekwon%2C%20Inspectah%20Deck%20%26%20Nas).mp3>;
+    mo:duration "269".
+<urn:uuid:f9b96a09-6701-451b-9f71-95666114e1f6> a mo:Track;
+    dcterms:title "Life Changes";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Life%20Changes.mp3>;
+    mo:duration "441".
+<urn:uuid:636f9ab0-f9e5-4e8f-a08b-66d2bf0fb44f> a mo:Track;
+    dcterms:title "Little Ghetto Boys (feat. Raekwon, RZA, Cappadonna & Ghostface Killah)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Little%20Ghetto%20Boys%20(feat.%20Raekwon%2C%20RZA%2C%20Cappadonna%20%26%20Ghostface%20Killah).mp3>;
+    mo:duration "289".
+<urn:uuid:20178211-6c77-4e8b-931c-57fbbc1e0c94> a mo:Track;
+    dcterms:title "Method Man (Home Grown Version)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Method%20Man%20(Home%20Grown%20Version).mp3>;
+    mo:duration "310".
+<urn:uuid:1101ccf5-132a-4447-ba7a-890a30e3ea1a> a mo:Track;
+    dcterms:title "Method Man";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Method%20Man.mp3>;
+    mo:duration "350".
+<urn:uuid:965dcb13-fe05-4350-869c-bb2403b96be2> a mo:Track;
+    dcterms:title "Miracle";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Miracle.mp3>;
+    mo:duration "303".
+<urn:uuid:bf93d79f-5a73-458a-b61b-8437d84194f7> a mo:Track;
+    dcterms:title "Mistaken Identity";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Mistaken%20Identity.mp3>;
+    mo:duration "344".
+<urn:uuid:b9a18d5d-1c52-455a-8d1f-361edb0259df> a mo:Track;
+    dcterms:title "Necklace";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Necklace.mp3>;
+    mo:duration "251".
+<urn:uuid:e7eaadf2-1f0f-4821-9bdc-f037a2289f32> a mo:Track;
+    dcterms:title "Never Let Go";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Never%20Let%20Go.mp3>;
+    mo:duration "322".
+<urn:uuid:b46bafe7-e421-42f1-a224-db0fe6208587> a mo:Track;
+    dcterms:title "Older Gods (feat. Ghostface Killah, Raekwon & GZA)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Older%20Gods%20(feat.%20Ghostface%20Killah%2C%20Raekwon%20%26%20GZA).mp3>;
+    mo:duration "186".
+<urn:uuid:ba93e529-42d1-4255-8cb1-5ba72c41a326> a mo:Track;
+    dcterms:title "One Blood Under W (feat. Masta Killa & Junior Reid)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20One%20Blood%20Under%20W%20(feat.%20Masta%20Killa%20%26%20Junior%20Reid).mp3>;
+    mo:duration "251".
+<urn:uuid:63b44ec1-6312-4db1-9843-c20663de9f30> a mo:Track;
+    dcterms:title "One of These Days (feat. Inspectah Deck, Raekwon & U-God)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20One%20of%20These%20Days%20(feat.%20Inspectah%20Deck%2C%20Raekwon%20%26%20U-God).mp3>;
+    mo:duration "253".
+<urn:uuid:94a8efe0-f964-4966-9aa0-dcc8f56dd73c> a mo:Track;
+    dcterms:title "Pioneer the Frontier";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Pioneer%20the%20Frontier.mp3>;
+    mo:duration "238".
+<urn:uuid:f3f43bf8-faa2-4a61-ae8a-6559f5172547> a mo:Track;
+    dcterms:title "Preacher's Daughter";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Preacher's%20Daughter.mp3>;
+    mo:duration "313".
+<urn:uuid:1ac2b6bc-424d-4705-b4a0-4724636ccac7> a mo:Track;
+    dcterms:title "Protect Ya Neck (Shao Lin Version)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Protect%20Ya%20Neck%20(Shao%20Lin%20Version).mp3>;
+    mo:duration "278".
+<urn:uuid:054f8efc-5c1e-4a49-8f3c-4d4544c5199e> a mo:Track;
+    dcterms:title "Protect Ya Neck (The Jump Off) (feat. Inspectah Deck, Raekwon, Method Man & Masta Killa)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Protect%20Ya%20Neck%20(The%20Jump%20Off)%20(feat.%20Inspectah%20Deck%2C%20Raekwon%2C%20Method%20Man%20%26%20Masta%20Killa).mp3>;
+    mo:duration "238".
+<urn:uuid:390302fa-dbab-4d4a-99ee-beb5ffa4ee9f> a mo:Track;
+    dcterms:title "Protect Ya Neck";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Protect%20Ya%20Neck.mp3>;
+    mo:duration "291".
+<urn:uuid:44cd709c-749a-41be-abfd-58f9b9791037> a mo:Track;
+    dcterms:title "Radioactive (Four Assassins) (feat. GZA, Raekwon, Method Man & Masta Killa)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Radioactive%20(Four%20Assassins)%20(feat.%20GZA%2C%20Raekwon%2C%20Method%20Man%20%26%20Masta%20Killa).mp3>;
+    mo:duration "210".
+<urn:uuid:c5535b28-31cb-406f-ab14-21701d87518c> a mo:Track;
+    dcterms:title "Redbull (feat. Redman, Method Man, Inspectah Deck & Ghostface Killah)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Redbull%20(feat.%20Redman%2C%20Method%20Man%2C%20Inspectah%20Deck%20%26%20Ghostface%20Killah).mp3>;
+    mo:duration "234".
+<urn:uuid:81630eb1-5a20-4bdb-b291-750a3743160e> a mo:Track;
+    dcterms:title "Reunited (feat. GZA, Ol' Dirty Bastard, RZA & Method Man)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Reunited%20(feat.%20GZA%2C%20Ol'%20Dirty%20Bastard%2C%20RZA%20%26%20Method%20Man).mp3>;
+    mo:duration "321".
+<urn:uuid:46f11b65-b53f-431e-808b-539fa70e1a0e> a mo:Track;
+    dcterms:title "Ron O'Neal";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Ron%20O'Neal.mp3>;
+    mo:duration "268".
+<urn:uuid:4f2d0e6e-e191-4a3d-b2b0-b8318507078c> a mo:Track;
+    dcterms:title "Ruckus in B Minor";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Ruckus%20in%20B%20Minor.mp3>;
+    mo:duration "324".
+<urn:uuid:e78c69de-745e-4d65-a9f0-94b0bcf71d04> a mo:Track;
+    dcterms:title "Rules (feat. RZA, Ghostface Killah, Inspectah Deck & Masta Killa)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Rules%20(feat.%20RZA%2C%20Ghostface%20Killah%2C%20Inspectah%20Deck%20%26%20Masta%20Killa).mp3>;
+    mo:duration "233".
+<urn:uuid:8d16649a-5035-4916-ad22-7704cac377b3> a mo:Track;
+    dcterms:title "Rushing Elephants";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Rushing%20Elephants.mp3>;
+    mo:duration "180".
+<urn:uuid:a93b61a2-4144-47e3-8e01-c496b9a7c24b> a mo:Track;
+    dcterms:title "Second Coming (feat. Tekitha)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Second%20Coming%20(feat.%20Tekitha).mp3>;
+    mo:duration "279".
+<urn:uuid:85a8f64f-4f71-4b46-8f2c-acd96e60e2dc> a mo:Track;
+    dcterms:title "Severe Punishment (feat. U-God, GZA, Raekwon & RZA)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Severe%20Punishment%20(feat.%20U-God%2C%20GZA%2C%20Raekwon%20%26%20RZA).mp3>;
+    mo:duration "289".
+<urn:uuid:05c91e68-50da-4348-9fdb-1dcc4786d5ac> a mo:Track;
+    dcterms:title "Soul Power (Black Jungle) (feat. Flavor Flav, Raekwon, Masta Killa & Ghostface Killah)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Soul%20Power%20(Black%20Jungle)%20(feat.%20Flavor%20Flav%2C%20Raekwon%2C%20Masta%20Killa%20%26%20Ghostface%20Killah).mp3>;
+    mo:duration "292".
+<urn:uuid:2afea9ae-2b42-448b-a2d8-94de48ae8f16> a mo:Track;
+    dcterms:title "Starter (feat. Sunny Valentine & Tash Mahogany)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Starter%20(feat.%20Sunny%20Valentine%20%26%20Tash%20Mahogany).mp3>;
+    mo:duration "253".
+<urn:uuid:4e25167d-9643-4877-8672-08f1368e0628> a mo:Track;
+    dcterms:title "Stick Me For My Riches (feat. Gerald Alston)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Stick%20Me%20For%20My%20Riches%20(feat.%20Gerald%20Alston).mp3>;
+    mo:duration "368".
+<urn:uuid:109b5336-44b9-4a29-bed0-196a2ab2b42a> a mo:Track;
+    dcterms:title "Sunlight";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Sunlight.mp3>;
+    mo:duration "202".
+<urn:uuid:4bf1f302-22ac-4bcd-8aa1-252d32f36d69> a mo:Track;
+    dcterms:title "Take It Back";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Take%20It%20Back.mp3>;
+    mo:duration "252".
+<urn:uuid:c0368884-3fde-41c2-b7c0-054520ba8932> a mo:Track;
+    dcterms:title "Tearz";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Tearz.mp3>;
+    mo:duration "257".
+<urn:uuid:f7096d57-d319-4a3b-a3e5-61d641112527> a mo:Track;
+    dcterms:title "The City (feat. Inspectah Deck)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20The%20City%20(feat.%20Inspectah%20Deck).mp3>;
+    mo:duration "245".
+<urn:uuid:30c1f268-1b04-4e15-b4f8-ac02d3730619> a mo:Track;
+    dcterms:title "The Heart Gently Weeps (feat. Erykah Badu, Dhani Harrison & John Frusciante)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20The%20Heart%20Gently%20Weeps%20(feat.%20Erykah%20Badu%2C%20Dhani%20Harrison%20%26%20John%20Frusciante).mp3>;
+    mo:duration "337".
+<urn:uuid:887412ae-19a4-41ef-a22a-9c7cc3f826eb> a mo:Track;
+    dcterms:title "The Projects";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20The%20Projects.mp3>;
+    mo:duration "197".
+<urn:uuid:b2b868e9-be5e-47ac-b775-aa37a0ca8a1d> a mo:Track;
+    dcterms:title "Triumph (feat. Ol' Dirty Bastard, Inspectah Deck, Method Man & Cappadonna)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Triumph%20(feat.%20Ol'%20Dirty%20Bastard%2C%20Inspectah%20Deck%2C%20Method%20Man%20%26%20Cappadonna).mp3>;
+    mo:duration "338".
+<urn:uuid:6ca97a86-ce8c-4924-81ce-49cfc3af4b36> a mo:Track;
+    dcterms:title "Unpredictable (feat. Dexter Wiggle)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Unpredictable%20(feat.%20Dexter%20Wiggle).mp3>;
+    mo:duration "251".
+<urn:uuid:fc4fe12f-06ee-468e-b3d2-39efeda11edf> a mo:Track;
+    dcterms:title "Uzi (Pinky Ring) (feat. U-God, Raekwon, Ghostface Killah & RZA)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Uzi%20(Pinky%20Ring)%20(feat.%20U-God%2C%20Raekwon%2C%20Ghostface%20Killah%20%26%20RZA).mp3>;
+    mo:duration "320".
+<urn:uuid:20f27a07-cf05-4348-95b3-0db199105dd7> a mo:Track;
+    dcterms:title "Visionz (feat. Method Man, Raekwon, Masta Killa & Inspectah Deck)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Visionz%20(feat.%20Method%20Man%2C%20Raekwon%2C%20Masta%20Killa%20%26%20Inspectah%20Deck).mp3>;
+    mo:duration "189".
+<urn:uuid:2641f804-52b5-4582-8b40-6072e83f65b4> a mo:Track;
+    dcterms:title "Weak Spot";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Weak%20Spot.mp3>;
+    mo:duration "238".
+<urn:uuid:685ff40f-de54-4c03-aada-a224c9e12913> a mo:Track;
+    dcterms:title "Windmill";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Windmill.mp3>;
+    mo:duration "271".
+<urn:uuid:039f9b3d-aa58-4703-add2-70c7566a72eb> a mo:Track;
+    dcterms:title "Wolves (feat. George Clinton)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wolves%20(feat.%20George%20Clinton).mp3>;
+    mo:duration "256".
+<urn:uuid:f8e3ea40-bdec-4ad1-aa0a-b654c7ba705e> a mo:Track;
+    dcterms:title "Wu-Revolution (feat. Poppa Wu & Uncle Pete)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wu-Revolution%20(feat.%20Poppa%20Wu%20%26%20Uncle%20Pete).mp3>;
+    mo:duration "406".
+<urn:uuid:3bb0fbe0-36e2-4a38-9d2c-5657e9bedbba> a mo:Track;
+    dcterms:title "Wu-Tang Reunion";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wu-Tang%20Reunion.mp3>;
+    mo:duration "213".
+<urn:uuid:ce2bdeb3-1bcc-4f25-a3ff-8bedf91b2321> a mo:Track;
+    dcterms:title "Wu-Tang: 7th Chamber - Part II (Conclusion)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wu-Tang_%207th%20Chamber%20-%20Part%20II%20(Conclusion).mp3>;
+    mo:duration "370".
+<urn:uuid:86bdd172-09f7-4c44-ab20-6d2afbe8a396> a mo:Track;
+    dcterms:title "Wu-Tang: 7th Chamber";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Wu-Tang_%207th%20Chamber.mp3>;
+    mo:duration "365".
+<urn:uuid:909f6138-9b94-480e-8d30-df903fd309e2> a mo:Track;
+    dcterms:title "Ya'll Been Warned (feat. Method Man, RZA, Inspectah Deck & Raekwon)";
+    dcat:downloadUrl <https://archive.org/download/wustudio/Wu-Tang%20Clan%20-%20Ya'll%20Been%20Warned%20(feat.%20Method%20Man%2C%20RZA%2C%20Inspectah%20Deck%20%26%20Raekwon).mp3>;
+    mo:duration "255".
+<urn:uuid:c0786f67-829f-46e9-98b1-00d5f8cdce1e> a mo:Release;
+    dcat:landingPage <https://archive.org/details/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015>;
+    mo:track <urn:uuid:93f233d9-379f-4b01-b16d-18621d4abea7>, <urn:uuid:d9ac3b5e-3b4a-4832-a3b9-4e566599eb24>, <urn:uuid:b6c603bf-046c-417e-b311-8f23db82a72d>, <urn:uuid:5e2c89f9-5adc-4bf7-9807-336e5a8da358>, <urn:uuid:506e509e-0756-4d8a-b8af-a7bfddbece28>, <urn:uuid:72a218e6-4f3d-4170-b231-0acea6ee6eed>, <urn:uuid:6e357ee6-6417-4281-9e1d-2e9bb40511d8>, <urn:uuid:6c2a00dc-2f5a-4c51-b98d-fc304232167a>, <urn:uuid:2eddb1f0-dc20-4209-8a64-c97e95facc27>, <urn:uuid:92c41f37-39b5-4473-a9e9-8e7716053fc7>, <urn:uuid:2ad7e297-dc96-41ff-a842-a63e801fadb2>, <urn:uuid:4e60144e-79d2-4228-a99f-a9347e5c37e6>, <urn:uuid:ba0ecd90-2853-4db2-8ab2-8c5d83913e46>, <urn:uuid:472782d7-6f57-4c2f-bc88-697cb373f235>, <urn:uuid:391307d3-f129-4869-a62a-a402b13b53c3>, <urn:uuid:063c1635-c185-46dc-b3a8-56d1295edfda>, <urn:uuid:0bc1cda6-dc2c-4c7e-a258-e2f327447075>, <urn:uuid:6ee2df87-f397-4922-98f5-255425e97f33>;
+    dcterms:title "Wu-Tang Clan - The Ambush Vol. 5 (Hosted By DJ Flipcyide)-2015";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3zz>, <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:93f233d9-379f-4b01-b16d-18621d4abea7> a mo:Track;
+    dcterms:title "01 - Intro & Theodore Unit - The Chosen One";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/01%20-%20Intro%20%26%20Theodore%20Unit%20-%20The%20Chosen%20One.mp3>;
+    mo:duration "249".
+<urn:uuid:d9ac3b5e-3b4a-4832-a3b9-4e566599eb24> a mo:Track;
+    dcterms:title "02 - Guru Feat Avrex & Big Shug - Propaganda";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/02%20-%20Guru%20feat%20Avrex%20%20%26%20Big%20Shug%20-%20PropaGanda.mp3>;
+    mo:duration "231".
+<urn:uuid:b6c603bf-046c-417e-b311-8f23db82a72d> a mo:Track;
+    dcterms:title "03 - Eternal Of Killa Beez & Kastle Creeps Feat Amanda Jane - Ice Age";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/03%20-%20Eternal%20of%20Killa%20Beez%20%26%20Kastle%20Creeps%20feat%20Amanda%20Jane%20-%20Ice%20Age.mp3>;
+    mo:duration "250".
+<urn:uuid:5e2c89f9-5adc-4bf7-9807-336e5a8da358> a mo:Track;
+    dcterms:title "04 - Judah Priest - Lonely Feat Cappadonna & Killah Priest";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/04%20-%20Judah%20Priest%20-%20Lonely%20Feat%20Cappadonna%20%26%20Killah%20Priest.mp3>;
+    mo:duration "237".
+<urn:uuid:506e509e-0756-4d8a-b8af-a7bfddbece28> a mo:Track;
+    dcterms:title "09 - A-Villa - The Colosseum Ft Big Krit Termanology & Inspectah Deck";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/09%20-%20A-Villa%20-%20The%20Colosseum%20ft%20Big%20KRIT%20Termanology%20%26%20Inspectah%20Deck.mp3>;
+    mo:duration "207".
+<urn:uuid:72a218e6-4f3d-4170-b231-0acea6ee6eed> a mo:Track;
+    dcterms:title "11 - Cannibal Ox - Blade The Art Of Ox (Feat Artifacts & U-God)";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/11%20-%20Cannibal%20Ox%20-%20Blade%20%20The%20Art%20of%20Ox%20(feat%20Artifacts%20%26%20U-God).mp3>;
+    mo:duration "271".
+<urn:uuid:6e357ee6-6417-4281-9e1d-2e9bb40511d8> a mo:Track;
+    dcterms:title "12 - Git X 1Mt - Lyrical Warfare Ft Inspectah Deck & Ransom";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/12%20-%20Git%20x%201Mt%20-%20%20Lyrical%20Warfare%20ft%20Inspectah%20Deck%20%26%20Ransom.mp3>;
+    mo:duration "220".
+<urn:uuid:6c2a00dc-2f5a-4c51-b98d-fc304232167a> a mo:Track;
+    dcterms:title "13 - Inspectah Deck - Another Time Ft Dj Efn Guilty Simpson Mop Bernz (Mayday) (Another Time)";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/13%20-%20Inspectah%20Deck%20-%20Another%20Time%20ft%20DJ%20EFN%20Guilty%20Simpson%20MOP%20Bernz%20(MAYDAY)%20(Another%20Time).mp3>;
+    mo:duration "203".
+<urn:uuid:2eddb1f0-dc20-4209-8a64-c97e95facc27> a mo:Track;
+    dcterms:title "15 - Mack Sauce - Protect Ya Neck";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/15%20-%20Mack%20Sauce%20-%20Protect%20Ya%20Neck.mp3>;
+    mo:duration "219".
+<urn:uuid:92c41f37-39b5-4473-a9e9-8e7716053fc7> a mo:Track;
+    dcterms:title "16 - Piece Of Life Born Divine Ft King Edward N Witch Hazel - Ek Life Time";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/16%20-%20Piece%20of%20Life%20Born%20Divine%20%20ft%20King%20Edward%20n%20Witch%20Hazel%20-%20EK%20Life%20Time.mp3>;
+    mo:duration "192".
+<urn:uuid:2ad7e297-dc96-41ff-a842-a63e801fadb2> a mo:Track;
+    dcterms:title "17 - Wulords - Melted Gold Ft Digi Eddie Grizz Z1 Nation";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/17%20-%20WuLords%20-%20Melted%20Gold%20ft%20DIGI%20Eddie%20Grizz%20Z1%20Nation.mp3>;
+    mo:duration "258".
+<urn:uuid:4e60144e-79d2-4228-a99f-a9347e5c37e6> a mo:Track;
+    dcterms:title "21 - Btg Kidd - Scarfo Testo";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/21%20-%20BTG%20Kidd%20-%20Scarfo%20Testo.mp3>;
+    mo:duration "189".
+<urn:uuid:ba0ecd90-2853-4db2-8ab2-8c5d83913e46> a mo:Track;
+    dcterms:title "22 - Buddha Monk The Zu Bulliez Feat Krumbsnatcha And Green Leaf - Converse With Me Lord";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/22%20-%20Buddha%20Monk%20The%20Zu%20Bulliez%20feat%20Krumbsnatcha%20and%20Green%20Leaf%20-%20Converse%20With%20Me%20Lord.mp3>;
+    mo:duration "335".
+<urn:uuid:472782d7-6f57-4c2f-bc88-697cb373f235> a mo:Track;
+    dcterms:title "25 - Big Jv Feat 2 Dice & Factory Boy - Gorilla Until I Die";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/25%20-%20BIG%20JV%20FEAT%202%20DICE%20%26%20FACTORY%20BOY%20-%20GORILLA%20UNTIL%20I%20DIE.mp3>;
+    mo:duration "206".
+<urn:uuid:391307d3-f129-4869-a62a-a402b13b53c3> a mo:Track;
+    dcterms:title "26 - Baggy The Ghost - Ride With Me";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/26%20-%20Baggy%20The%20Ghost%20-%20Ride%20With%20Me.mp3>;
+    mo:duration "230".
+<urn:uuid:063c1635-c185-46dc-b3a8-56d1295edfda> a mo:Track;
+    dcterms:title "27 - Mr Forge - Diabolical Angel Vs Angelic Demon";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/27%20-%20Mr%20Forge%20-%20Diabolical%20Angel%20vs%20Angelic%20Demon.mp3>;
+    mo:duration "187".
+<urn:uuid:0bc1cda6-dc2c-4c7e-a258-e2f327447075> a mo:Track;
+    dcterms:title "28 - Mack Sauce - Anomaly";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/28%20-%20Mack%20Sauce%20-%20Anomaly.mp3>;
+    mo:duration "270".
+<urn:uuid:6ee2df87-f397-4922-98f5-255425e97f33> a mo:Track;
+    dcterms:title "30 - Hell Razah - Lintballz Feat Prodigal Sunn Buddah Monk 12 Oclock And Odb";
+    dcat:downloadUrl <https://archive.org/download/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015/30%20-%20Hell%20Razah%20-%20Lintballz%20Feat%20Prodigal%20Sunn%20Buddah%20Monk%2012%20OClock%20and%20ODB.mp3>;
+    mo:duration "256".
+<urn:uuid:447d205a-658e-4d35-8c86-9448051620cf> a mo:Release;
+    dcat:landingPage <https://archive.org/details/anarchism-music-discography-collection_202603>;
+    mo:track <urn:uuid:a1640e60-ac69-47e9-97c8-2241dd8c2932>, <urn:uuid:9186563c-7162-4389-9faa-77621fecc50f>, <urn:uuid:2f14ffb2-a117-4d2d-a108-3f7f9c057d73>, <urn:uuid:da832649-a52f-4a9d-8dd9-4774dc7ad078>, <urn:uuid:c65414c8-4212-4968-9057-b58ce119278e>;
+    dcterms:title "anarchism music discography collection";
+    foaf:maker <urn:uuid:b95be055-69d4-4d84-8d80-76f531b71897>, <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.
+<urn:uuid:a1640e60-ac69-47e9-97c8-2241dd8c2932> a mo:Track;
+    dcterms:title "Write This Down (feat. DMX, Eazy E, Ice Cube, Dr Dre, MC Ren, Method Man, Nas, Biggie, Pop Smoke, Nipsey, Snoop Dogg)";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/002%20-%20%5Bnew%5D%202Pac%20-%20Write%20This%20Down%20(feat.%20DMX%2C%20Eazy%20E%2C%20Ice%20Cube%2C%20Dr%20Dre%2C%20MC%20Ren%2C%20Method%20Man%2C%20Nas%2C%20Biggie%2C%20Pop%20Smoke%2C%20Nipsey%2C%20Snoop%20Dogg).mp3>;
+    mo:duration "818".
+<urn:uuid:9186563c-7162-4389-9faa-77621fecc50f> a mo:Track;
+    dcterms:title "Devil's World";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/003%20-%20(AI)%202Pac%20-%20Devil's%20World.mp3>;
+    mo:duration "275".
+<urn:uuid:2f14ffb2-a117-4d2d-a108-3f7f9c057d73> a mo:Track;
+    dcterms:title "Raised In The Ghetto";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/004%20-%20updated%20(AI)%202Pac%20%26%20Scarface%20-%20Raised%20In%20The%20Ghetto.mp3>;
+    mo:duration "190".
+<urn:uuid:da832649-a52f-4a9d-8dd9-4774dc7ad078> a mo:Track;
+    dcterms:title "How Long WIll They Mourn Me? (prod. Warren G)";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/005%20-%20(2Pac%2C%20BIg%20Syke%2C%20The%20Rated%20R%2C%20Macadoshis%2C%20Nate%20Dogg)%20-%20How%20Long%20Will%20They%20Mourn%20Me%20(prod.%20Warren%20G).mp3>;
+    mo:duration "250".
+<urn:uuid:c65414c8-4212-4968-9057-b58ce119278e> a mo:Track;
+    dcterms:title "White Man'z World";
+    dcat:downloadUrl <https://archive.org/download/anarchism-music-discography-collection_202603/020%20-%20White%20Man'z%20World.mp3>;
+    mo:duration "338".
+<urn:uuid:d2e8a8af-7dec-4d30-8fdf-a22ad4e0ccd4> a mo:Release;
+    dcat:landingPage <https://archive.org/details/2pac-thug-theory>;
+    mo:track <urn:uuid:cebcc3d6-cdc7-48b8-ba52-8c057c04be74>;
+    dcterms:title "2Pac - Thug Theory";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac".
+<urn:uuid:cebcc3d6-cdc7-48b8-ba52-8c057c04be74> a mo:Track;
+    dcterms:title "Write This Down (Ft. The Notorious B.I.G., Ice Cube, Eazy-E, Snoop Dogg, N.W.A, Dr. Dre, DMX, Nipsey Hussle)";
+    dcat:downloadUrl <https://archive.org/download/2pac-thug-theory/01.%20Write%20This%20Down.mp3>;
+    mo:duration "798".
+<urn:uuid:3c198c31-1dac-4724-b6d4-8437b18068c6> a mo:Release;
+    dcat:landingPage <https://archive.org/details/2-pac-12-strictly-4-my-niggaz>;
+    mo:track <urn:uuid:3e2bc603-7164-46bc-8262-ddfd3300cdce>, <urn:uuid:abc33168-ebbc-40a3-9143-53e19978c78c>, <urn:uuid:da260dd3-3375-474f-8e4a-5464fc87f409>, <urn:uuid:48989907-d0bc-4195-9c27-1bc06ce465c1>, <urn:uuid:71ed30cb-afc5-481a-8c70-9f4181c17397>, <urn:uuid:48b85f3f-9910-4660-9ee6-712e6c399d15>, <urn:uuid:6123e8e8-55b8-4068-a4da-23f6bad48102>, <urn:uuid:eebf31ed-d97c-45f0-98d0-8d882a45154f>, <urn:uuid:2c625aa2-7a99-488e-a1e8-d1d11524dc5b>, <urn:uuid:dfcddc86-032f-4e01-bfde-2bdf27ba280a>, <urn:uuid:90e27887-14da-468e-bdab-62e10c7cd08d>, <urn:uuid:9067553d-339e-4cf7-94b5-62b58f00b634>, <urn:uuid:38ac1e26-670f-4d9f-b8dc-e51f1322ba9d>, <urn:uuid:0dfbb1d4-bbca-4e8b-b140-a12c58d72e51>;
+    dcterms:title "2Pac - Strictly 4 My N.I.G.G.A.Z";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac".
+<urn:uuid:3e2bc603-7164-46bc-8262-ddfd3300cdce> a mo:Track;
+    dcterms:title "Holler If Ya Hear Me";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2001%20-%20Holler%20If%20Ya%20Hear%20Me.mp3>;
+    mo:duration "278".
+<urn:uuid:abc33168-ebbc-40a3-9143-53e19978c78c> a mo:Track;
+    dcterms:title "Point The Finga";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2003%20-%20Point%20The%20Finga.mp3>;
+    mo:duration "265".
+<urn:uuid:da260dd3-3375-474f-8e4a-5464fc87f409> a mo:Track;
+    dcterms:title "Last Wordz";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2005%20-%20Last%20Wordz.mp3>;
+    mo:duration "216".
+<urn:uuid:48989907-d0bc-4195-9c27-1bc06ce465c1> a mo:Track;
+    dcterms:title "Souljah's Revenge";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2006%20-%20Souljah's%20Revenge.mp3>;
+    mo:duration "196".
+<urn:uuid:71ed30cb-afc5-481a-8c70-9f4181c17397> a mo:Track;
+    dcterms:title "Peep Game";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2007%20-%20Peep%20Game.mp3>;
+    mo:duration "268".
+<urn:uuid:48b85f3f-9910-4660-9ee6-712e6c399d15> a mo:Track;
+    dcterms:title "Strugglin'";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2008%20-%20Strugglin'.mp3>;
+    mo:duration "213".
+<urn:uuid:6123e8e8-55b8-4068-a4da-23f6bad48102> a mo:Track;
+    dcterms:title "Guess Who's Back";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2009%20-%20Guess%20Who's%20Back.mp3>;
+    mo:duration "186".
+<urn:uuid:eebf31ed-d97c-45f0-98d0-8d882a45154f> a mo:Track;
+    dcterms:title "Representin' 93";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2010%20-%20Representin'%2093.mp3>;
+    mo:duration "214".
+<urn:uuid:2c625aa2-7a99-488e-a1e8-d1d11524dc5b> a mo:Track;
+    dcterms:title "Keep Ya Head Up";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2011%20-%20Keep%20Ya%20Head%20Up.mp3>;
+    mo:duration "262".
+<urn:uuid:dfcddc86-032f-4e01-bfde-2bdf27ba280a> a mo:Track;
+    dcterms:title "Strictly 4 My Niggaz";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2012%20-%20Strictly%204%20My%20Niggaz.mp3>;
+    mo:duration "355".
+<urn:uuid:90e27887-14da-468e-bdab-62e10c7cd08d> a mo:Track;
+    dcterms:title "The Streetz R Deathrow";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2013%20-%20The%20Streetz%20R%20Deathrow.mp3>;
+    mo:duration "206".
+<urn:uuid:9067553d-339e-4cf7-94b5-62b58f00b634> a mo:Track;
+    dcterms:title "I Get Around";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2014%20-%20I%20Get%20Around.mp3>;
+    mo:duration "259".
+<urn:uuid:38ac1e26-670f-4d9f-b8dc-e51f1322ba9d> a mo:Track;
+    dcterms:title "Papa'z Song";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2015%20-%20Papa'z%20Song.mp3>;
+    mo:duration "325".
+<urn:uuid:0dfbb1d4-bbca-4e8b-b140-a12c58d72e51> a mo:Track;
+    dcterms:title "5 Deadly Venomz";
+    dcat:downloadUrl <https://archive.org/download/2-pac-12-strictly-4-my-niggaz/1993%20-%20Strictly%204%20My%20N.I.G.G.A.Z%2F2Pac%20-%2016%20-%205%20Deadly%20Venomz.mp3>;
+    mo:duration "314".
+<urn:uuid:387f0b01-1be7-452c-935b-2888c009ff1c> a mo:Release;
+    dcat:landingPage <https://archive.org/details/somanytears2pac>;
+    mo:track <urn:uuid:4d7739b9-f312-4ba8-87d2-7e608583300c>, <urn:uuid:74870b53-2b93-4dbe-adde-dd6e94fa8ddd>, <urn:uuid:fdf1b15c-155c-4567-859c-008efee5db16>, <urn:uuid:a7a381d7-7d6e-4949-a80f-87549927fada>, <urn:uuid:0d61668c-a6d5-438b-853d-2bc4ef3f4ab7>;
+    dcterms:title "So Many Tears";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac".
+<urn:uuid:4d7739b9-f312-4ba8-87d2-7e608583300c> a mo:Track;
+    dcterms:title "So Many Tears (Album Version)";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/01%20So%20Many%20Tears%20(Album%20Version).mp3>;
+    mo:duration "239".
+<urn:uuid:74870b53-2b93-4dbe-adde-dd6e94fa8ddd> a mo:Track;
+    dcterms:title "So Many Tears - Key Of Z Remix";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/02%20So%20Many%20Tears%20-%20Key%20Of%20Z%20Remix.mp3>;
+    mo:duration "263".
+<urn:uuid:fdf1b15c-155c-4567-859c-008efee5db16> a mo:Track;
+    dcterms:title "So Many Tears - Reminizm' Remix";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/03%20So%20Many%20Tears%20-%20Reminizm'%20Remix.mp3>;
+    mo:duration "264".
+<urn:uuid:a7a381d7-7d6e-4949-a80f-87549927fada> a mo:Track;
+    dcterms:title "Dramacydal's \"Hard To Imagine\"";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/04%20Dramacydal's%20%22Hard%20To%20Imagine%22.mp3>;
+    mo:duration "282".
+<urn:uuid:0d61668c-a6d5-438b-853d-2bc4ef3f4ab7> a mo:Track;
+    dcterms:title "If I Die Tonight - Album Version";
+    dcat:downloadUrl <https://archive.org/download/somanytears2pac/05%20If%20I%20Die%20Tonight%20-%20Album%20Version.mp3>;
+    mo:duration "241".
+<urn:uuid:70e2d4e2-2143-41cf-9172-8c21a9b8b746> a mo:Release;
+    dcat:landingPage <https://archive.org/details/gs_2pac-2pacalypse-now>;
+    mo:track <urn:uuid:b25d5d74-394a-4a7a-82aa-dc10befe93de>, <urn:uuid:dd3ac34a-a82c-4426-b19a-09c04673e696>, <urn:uuid:25abdf19-eea0-4ece-8c29-14acc16ce839>, <urn:uuid:f71ac3fc-6552-48c1-bb78-bcc30d6e359c>, <urn:uuid:760ba94f-f3d7-4d23-b848-8312f4dcf7df>, <urn:uuid:147ed57a-6c68-4432-a225-e202bd41ae4b>, <urn:uuid:55611f13-78f0-46eb-b1d0-f4467b838811>, <urn:uuid:1b56675f-e2de-4234-a7d2-10cb3cff5369>, <urn:uuid:a82a0167-f37a-4f94-a67a-c27313e10c73>, <urn:uuid:61d007ea-7dcc-4483-9f4b-8d97f4740e33>, <urn:uuid:68b86203-25c1-4437-8187-c18d5c4802d2>;
+    dcterms:title "2Pacalypse Now";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac".
+<urn:uuid:b25d5d74-394a-4a7a-82aa-dc10befe93de> a mo:Track;
+    dcterms:title "Trapped";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/02%20Trapped.mp3>;
+    mo:duration "285".
+<urn:uuid:dd3ac34a-a82c-4426-b19a-09c04673e696> a mo:Track;
+    dcterms:title "Soulja's Story";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/03%20Soulja's%20Story.mp3>;
+    mo:duration "306".
+<urn:uuid:25abdf19-eea0-4ece-8c29-14acc16ce839> a mo:Track;
+    dcterms:title "I Don't Give A Fuck";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/04%20I%20Don't%20Give%20A%20Fuck.mp3>;
+    mo:duration "260".
+<urn:uuid:f71ac3fc-6552-48c1-bb78-bcc30d6e359c> a mo:Track;
+    dcterms:title "Violent";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/05%20Violent.mp3>;
+    mo:duration "386".
+<urn:uuid:760ba94f-f3d7-4d23-b848-8312f4dcf7df> a mo:Track;
+    dcterms:title "Words Of Wisdom";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/06%20Words%20Of%20Wisdom.mp3>;
+    mo:duration "294".
+<urn:uuid:147ed57a-6c68-4432-a225-e202bd41ae4b> a mo:Track;
+    dcterms:title "Crooked Ass Nigga";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/08%20Crooked%20Ass%20Nigga.mp3>;
+    mo:duration "257".
+<urn:uuid:55611f13-78f0-46eb-b1d0-f4467b838811> a mo:Track;
+    dcterms:title "If My Homie Calls";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/09%20If%20My%20Homie%20Calls.mp3>;
+    mo:duration "258".
+<urn:uuid:1b56675f-e2de-4234-a7d2-10cb3cff5369> a mo:Track;
+    dcterms:title "Brenda's Got A Baby";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/10%20Brenda's%20Got%20A%20Baby.mp3>;
+    mo:duration "234".
+<urn:uuid:a82a0167-f37a-4f94-a67a-c27313e10c73> a mo:Track;
+    dcterms:title "Tha' Lunatic";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/11%20Tha'%20Lunatic.mp3>;
+    mo:duration "209".
+<urn:uuid:61d007ea-7dcc-4483-9f4b-8d97f4740e33> a mo:Track;
+    dcterms:title "Rebel Of The Underground";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/12%20Rebel%20Of%20The%20Underground.mp3>;
+    mo:duration "197".
+<urn:uuid:68b86203-25c1-4437-8187-c18d5c4802d2> a mo:Track;
+    dcterms:title "Part Time Mutha";
+    dcat:downloadUrl <https://archive.org/download/gs_2pac-2pacalypse-now/13%20Part%20Time%20Mutha.mp3>;
+    mo:duration "314".
+<urn:uuid:6135ff09-f645-43ba-9147-3a97e0e0bc20> a mo:Release;
+    dcat:landingPage <https://archive.org/details/2-pac-all-out-suge-knights-stolen-cd-version>;
+    mo:track <urn:uuid:12c3b6d1-b7fb-4d87-a85d-7bfbb1f9146b>, <urn:uuid:1d8ac0f5-7884-4317-8334-98e85313ffa1>, <urn:uuid:5514dd5e-d562-4ec5-802a-fec448195067>, <urn:uuid:fbfe1eb3-1292-41c8-9718-3ac40344a9d4>, <urn:uuid:e4e0b026-ecb8-4a65-a282-ed33398ccc96>, <urn:uuid:f6be37f2-6adb-40a2-b4f6-9492e99dc48b>;
+    dcterms:title "2Pac The OG Project Vol 2";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac Unreleased".
+<urn:uuid:12c3b6d1-b7fb-4d87-a85d-7bfbb1f9146b> a mo:Track;
+    dcterms:title "2Pac - All Out (Suge Knight's Stolen CD Version)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20All%20Out%20(Suge%20Knight's%20Stolen%20CD%20Version).mp3>;
+    mo:duration "329".
+<urn:uuid:1d8ac0f5-7884-4317-8334-98e85313ffa1> a mo:Track;
+    dcterms:title "2Pac - Bury Me A G (Untitled Interscope Project [Manu Tape] Ver.)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Bury%20Me%20A%20G%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>;
+    mo:duration "302".
+<urn:uuid:5514dd5e-d562-4ec5-802a-fec448195067> a mo:Track;
+    dcterms:title "2Pac - Everything They Owe (Original Mix 2)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Everything%20They%20Owe%20(Original%20Mix%202).mp3>;
+    mo:duration "189".
+<urn:uuid:fbfe1eb3-1292-41c8-9718-3ac40344a9d4> a mo:Track;
+    dcterms:title "2Pac - My Block (The Show Soundtrack) (314 529 021-2)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20My%20Block%20(The%20Show%20Soundtrack)%20(314%20529%20021-2).mp3>;
+    mo:duration "311".
+<urn:uuid:e4e0b026-ecb8-4a65-a282-ed33398ccc96> a mo:Track;
+    dcterms:title "2Pac - Out On Bail (Untitled Interscope Project [Manu Tape] Ver.)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Out%20On%20Bail%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>;
+    mo:duration "225".
+<urn:uuid:f6be37f2-6adb-40a2-b4f6-9492e99dc48b> a mo:Track;
+    dcterms:title "2Pac - Runnin From The Police (Original Version) [Prod. Easy Mo Bee]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version/2Pac%20-%20Runnin%20From%20The%20Police%20(Original%20Version)%20%5BProd.%20Easy%20Mo%20Bee%5D.mp3>;
+    mo:duration "271".
+<urn:uuid:a5f2bfe9-b3f0-4a0c-b2c9-48761a8a2a95> a mo:Release;
+    dcat:landingPage <https://archive.org/details/2-pac-11-can-u-get-away>;
+    mo:track <urn:uuid:8da0de04-a62e-44ac-b98d-7623fbb8290b>, <urn:uuid:62493f69-13ee-4731-9828-badd5afdd3c4>, <urn:uuid:1b963e45-0b9c-493d-aec8-13c5c6798f98>, <urn:uuid:9c3b3658-ec8a-4c6e-b98d-db5298e23ee2>, <urn:uuid:aa48a1b6-dcaa-40cf-82fd-f6499f732913>, <urn:uuid:cf5a8f47-5c1c-4e4d-a181-89dcdca51e3f>, <urn:uuid:7306966a-cef9-4a7c-b7d1-e8eead4cf580>, <urn:uuid:8d40e9bc-1d51-46a6-b778-87cd3af009f7>, <urn:uuid:b073b20d-695d-46d9-b146-f99b0fdd9b6a>, <urn:uuid:6f216880-dff9-4e9a-b3c6-ad6ff5018965>, <urn:uuid:5bdb8b83-7bf9-44ab-8046-b265c2796792>, <urn:uuid:29552dcd-926f-4104-b499-cc91ca95d12d>, <urn:uuid:262790c0-7c6f-4728-ba08-7811ec7676a7>, <urn:uuid:e015e329-c1ea-4531-9bb7-a61e4e3cbee1>;
+    dcterms:title "Me Against The World";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac".
+<urn:uuid:8da0de04-a62e-44ac-b98d-7623fbb8290b> a mo:Track;
+    dcterms:title "If I Die 2nite";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2002%20-%20If%20I%20Die%202nite.mp3>;
+    mo:duration "241".
+<urn:uuid:62493f69-13ee-4731-9828-badd5afdd3c4> a mo:Track;
+    dcterms:title "Me Against The World";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2003%20-%20Me%20Against%20The%20World.mp3>;
+    mo:duration "281".
+<urn:uuid:1b963e45-0b9c-493d-aec8-13c5c6798f98> a mo:Track;
+    dcterms:title "So Many Tears";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2004%20-%20So%20Many%20Tears.mp3>;
+    mo:duration "239".
+<urn:uuid:9c3b3658-ec8a-4c6e-b98d-db5298e23ee2> a mo:Track;
+    dcterms:title "Temptations";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2005%20-%20Temptations.mp3>;
+    mo:duration "300".
+<urn:uuid:aa48a1b6-dcaa-40cf-82fd-f6499f732913> a mo:Track;
+    dcterms:title "Young Niggaz";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2006%20-%20Young%20Niggaz.mp3>;
+    mo:duration "293".
+<urn:uuid:cf5a8f47-5c1c-4e4d-a181-89dcdca51e3f> a mo:Track;
+    dcterms:title "Heavy In The Game";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2007%20-%20Heavy%20In%20The%20Game.mp3>;
+    mo:duration "263".
+<urn:uuid:7306966a-cef9-4a7c-b7d1-e8eead4cf580> a mo:Track;
+    dcterms:title "Lord Knows";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2008%20-%20Lord%20Knows.mp3>;
+    mo:duration "271".
+<urn:uuid:8d40e9bc-1d51-46a6-b778-87cd3af009f7> a mo:Track;
+    dcterms:title "Dear Mama";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2009%20-%20Dear%20Mama.mp3>;
+    mo:duration "279".
+<urn:uuid:b073b20d-695d-46d9-b146-f99b0fdd9b6a> a mo:Track;
+    dcterms:title "It Ain't Easy";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2010%20-%20It%20Ain't%20Easy.mp3>;
+    mo:duration "294".
+<urn:uuid:6f216880-dff9-4e9a-b3c6-ad6ff5018965> a mo:Track;
+    dcterms:title "Can U Get Away";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2011%20-%20Can%20U%20Get%20Away.mp3>;
+    mo:duration "345".
+<urn:uuid:5bdb8b83-7bf9-44ab-8046-b265c2796792> a mo:Track;
+    dcterms:title "Old School";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2012%20-%20Old%20School.mp3>;
+    mo:duration "280".
+<urn:uuid:29552dcd-926f-4104-b499-cc91ca95d12d> a mo:Track;
+    dcterms:title "Fuck The World";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2013%20-%20Fuck%20The%20World.mp3>;
+    mo:duration "253".
+<urn:uuid:262790c0-7c6f-4728-ba08-7811ec7676a7> a mo:Track;
+    dcterms:title "Death Around The Corner";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2014%20-%20Death%20Around%20The%20Corner.mp3>;
+    mo:duration "247".
+<urn:uuid:e015e329-c1ea-4531-9bb7-a61e4e3cbee1> a mo:Track;
+    dcterms:title "Outlaw";
+    dcat:downloadUrl <https://archive.org/download/2-pac-11-can-u-get-away/2Pac%20-%2015%20-%20Outlaw.mp3>;
+    mo:duration "271".
+<urn:uuid:12638957-a5e2-429b-8452-ba6ab912f1f9> a mo:Release;
+    dcat:landingPage <https://archive.org/details/pacs-life_202511>;
+    mo:track <urn:uuid:37a6e1e0-c978-4c8b-b9b5-14d54f214559>, <urn:uuid:ad150f06-7500-4497-80d1-de5745db3c6f>, <urn:uuid:6a405c2c-a9fd-42e1-9e41-e2ac5e145a6d>, <urn:uuid:4a403eb9-7623-489d-a040-74e2d0076da1>, <urn:uuid:f5c4e62a-92fa-440b-90c8-9466de69a9ef>, <urn:uuid:e1cff091-e8ae-4853-b7d0-1e2f38e3b75c>, <urn:uuid:b816b8c1-2f72-4dda-b51f-4f56eb67f5e5>, <urn:uuid:47dab522-2d59-430f-b8d7-ad77296d81da>, <urn:uuid:188e88bd-5a0c-4826-ab7d-e77474cef8f5>, <urn:uuid:a4a663a1-e5e0-498a-ac8d-83cf127fd3d3>, <urn:uuid:a3d21a35-3fc9-4e1a-a939-396b63e5c41f>, <urn:uuid:a8ababd0-2613-4c80-bbb5-c2f89c9ddf2f>, <urn:uuid:56d14f54-9774-4bc2-9f4e-2b66981e5a2c>;
+    dcterms:title "Pac's Life";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac Feat. Bone Thugs-N-Harmony".
+<urn:uuid:37a6e1e0-c978-4c8b-b9b5-14d54f214559> a mo:Track;
+    dcterms:title "Untouchables (Swizz Beatz Remix)";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/01.%20Untouchable%20Swizz%20Beatz%20Remix.mp3>;
+    mo:duration "256".
+<urn:uuid:ad150f06-7500-4497-80d1-de5745db3c6f> a mo:Track;
+    dcterms:title "Pac's Life";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/02.%20Pac's%20Life.mp3>;
+    mo:duration "217".
+<urn:uuid:6a405c2c-a9fd-42e1-9e41-e2ac5e145a6d> a mo:Track;
+    dcterms:title "Dumpin'";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/03.%20Dumpin'.mp3>;
+    mo:duration "267".
+<urn:uuid:4a403eb9-7623-489d-a040-74e2d0076da1> a mo:Track;
+    dcterms:title "Playa Cardz Right (Female)";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/04.%20Playa%20Cardz%20Right%20(Female).mp3>;
+    mo:duration "273".
+<urn:uuid:f5c4e62a-92fa-440b-90c8-9466de69a9ef> a mo:Track;
+    dcterms:title "Whatz Next";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/05.%20Whatz%20Next.mp3>;
+    mo:duration "258".
+<urn:uuid:e1cff091-e8ae-4853-b7d0-1e2f38e3b75c> a mo:Track;
+    dcterms:title "Sleep";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/06.%20Sleep.mp3>;
+    mo:duration "249".
+<urn:uuid:b816b8c1-2f72-4dda-b51f-4f56eb67f5e5> a mo:Track;
+    dcterms:title "International";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/07.%20International.mp3>;
+    mo:duration "243".
+<urn:uuid:47dab522-2d59-430f-b8d7-ad77296d81da> a mo:Track;
+    dcterms:title "Don't Sleep";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/08.%20Don't%20Sleep.mp3>;
+    mo:duration "215".
+<urn:uuid:188e88bd-5a0c-4826-ab7d-e77474cef8f5> a mo:Track;
+    dcterms:title "Soon As I Get Home";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/09.%20Soon%20As%20I%20Get%20Home.mp3>;
+    mo:duration "220".
+<urn:uuid:a4a663a1-e5e0-498a-ac8d-83cf127fd3d3> a mo:Track;
+    dcterms:title "Playa Cardz Right (Male)";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/10.%20Playa%20Cardz%20Right%20(Male).mp3>;
+    mo:duration "294".
+<urn:uuid:a3d21a35-3fc9-4e1a-a939-396b63e5c41f> a mo:Track;
+    dcterms:title "Don't Stop";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/11.%20Don't%20Stop.mp3>;
+    mo:duration "324".
+<urn:uuid:a8ababd0-2613-4c80-bbb5-c2f89c9ddf2f> a mo:Track;
+    dcterms:title "Pac's Life (Remix)";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/12.%20Pac's%20Life%20Remix.mp3>;
+    mo:duration "218".
+<urn:uuid:56d14f54-9774-4bc2-9f4e-2b66981e5a2c> a mo:Track;
+    dcterms:title "Untouchable";
+    dcat:downloadUrl <https://archive.org/download/pacs-life_202511/13.%20Untouchable.mp3>;
+    mo:duration "270".
+<urn:uuid:a6ac7458-6857-4ff4-8cc0-d76b85743fb5> a mo:Release;
+    dcat:landingPage <https://archive.org/details/01-letter-to-the-president>;
+    mo:track <urn:uuid:778f18d8-84a9-4c67-8abc-c3a3dd25a4b1>, <urn:uuid:6080f82c-5408-4509-9c3a-c44e6536c7f9>, <urn:uuid:6120a7ab-46ac-490f-9444-763c69970b52>, <urn:uuid:188339f0-7e43-4d72-94db-434fb9ffcbdb>, <urn:uuid:b3bc4ef0-ecf4-4213-9920-3f2265528230>, <urn:uuid:d1477828-470a-4427-9502-35472b7c908d>, <urn:uuid:e6c7eaa5-3293-4337-bdf2-ab09ab5bdb48>, <urn:uuid:504674a9-e4ce-4f57-b538-ef0193fa2477>, <urn:uuid:364f2816-026a-4b6a-825b-71f118bf04f5>, <urn:uuid:fa939c0a-af48-4c4e-bd8c-57ae8c306d0c>, <urn:uuid:310d175c-7969-4a25-879e-72afc3b1b6be>, <urn:uuid:dc150345-f3f9-4dc3-81b5-702266e538b7>, <urn:uuid:7d8a5490-a304-44ff-9dac-3f2151bb3779>, <urn:uuid:03a74524-2b9c-4d60-bfa3-be46d919b687>, <urn:uuid:b47bcb4c-fadf-46a0-93f6-84ed6f579354>;
+    dcterms:title "Still I Rise";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac & Outlawz".
+<urn:uuid:778f18d8-84a9-4c67-8abc-c3a3dd25a4b1> a mo:Track;
+    dcterms:title "Letter To The President";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/01%20Letter%20To%20The%20President.mp3>;
+    mo:duration "364".
+<urn:uuid:6080f82c-5408-4509-9c3a-c44e6536c7f9> a mo:Track;
+    dcterms:title "Still I Rise";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/02%20Still%20I%20Rise.mp3>;
+    mo:duration "285".
+<urn:uuid:6120a7ab-46ac-490f-9444-763c69970b52> a mo:Track;
+    dcterms:title "Secretz of War";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/03%20Secretz%20of%20War.mp3>;
+    mo:duration "255".
+<urn:uuid:188339f0-7e43-4d72-94db-434fb9ffcbdb> a mo:Track;
+    dcterms:title "Baby Don't Cry (Keep Ya Head Up II)";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/04%20Baby%20Don't%20Cry%20(Keep%20Ya%20Head%20Up%20I.mp3>;
+    mo:duration "262".
+<urn:uuid:b3bc4ef0-ecf4-4213-9920-3f2265528230> a mo:Track;
+    dcterms:title "As The World Turns";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/05%20As%20The%20World%20Turns.mp3>;
+    mo:duration "308".
+<urn:uuid:d1477828-470a-4427-9502-35472b7c908d> a mo:Track;
+    dcterms:title "Black Jesuz";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/06%20Black%20Jesuz.mp3>;
+    mo:duration "269".
+<urn:uuid:e6c7eaa5-3293-4337-bdf2-ab09ab5bdb48> a mo:Track;
+    dcterms:title "Homeboyz";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/07%20Homeboyz.mp3>;
+    mo:duration "218".
+<urn:uuid:504674a9-e4ce-4f57-b538-ef0193fa2477> a mo:Track;
+    dcterms:title "Hell 4 A Hustler";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/08%20Hell%204%20A%20Hustler.mp3>;
+    mo:duration "296".
+<urn:uuid:364f2816-026a-4b6a-825b-71f118bf04f5> a mo:Track;
+    dcterms:title "High Speed";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/09%20High%20Speed.mp3>;
+    mo:duration "359".
+<urn:uuid:fa939c0a-af48-4c4e-bd8c-57ae8c306d0c> a mo:Track;
+    dcterms:title "The Good Die Young";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/10%20The%20Good%20Die%20Young.mp3>;
+    mo:duration "342".
+<urn:uuid:310d175c-7969-4a25-879e-72afc3b1b6be> a mo:Track;
+    dcterms:title "Killuminati";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/11%20Killuminati.mp3>;
+    mo:duration "242".
+<urn:uuid:dc150345-f3f9-4dc3-81b5-702266e538b7> a mo:Track;
+    dcterms:title "Teardrops & Closed Caskets";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/12%20Teardrops%20%26%20Closed%20Caskets.mp3>;
+    mo:duration "305".
+<urn:uuid:7d8a5490-a304-44ff-9dac-3f2151bb3779> a mo:Track;
+    dcterms:title "Tattoo Tears";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/13%20Tattoo%20Tears.mp3>;
+    mo:duration "303".
+<urn:uuid:03a74524-2b9c-4d60-bfa3-be46d919b687> a mo:Track;
+    dcterms:title "U Can Be Touched";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/14%20U%20Can%20Be%20Touched.mp3>;
+    mo:duration "263".
+<urn:uuid:b47bcb4c-fadf-46a0-93f6-84ed6f579354> a mo:Track;
+    dcterms:title "Y'all Don't Know Us";
+    dcat:downloadUrl <https://archive.org/download/01-letter-to-the-president/15%20Y'all%20Don't%20Know%20Us.mp3>;
+    mo:duration "294".
+<urn:uuid:1c50eedc-c5cb-410d-873e-fe4114642734> a mo:Release;
+    dcat:landingPage <https://archive.org/details/2-pac-all-out-suge-knights-stolen-cd-version_202504>;
+    mo:track <urn:uuid:86ea37c5-8bb2-4397-87fd-ec99fe571d00>, <urn:uuid:7ec3ddfd-bb76-4cb4-abd5-1c1ca6ea103f>, <urn:uuid:d3c544c5-6946-44a0-b549-72ddcb696e67>, <urn:uuid:121aa37a-4481-40e4-b17e-1d48311a510a>, <urn:uuid:8774de8e-15f1-4d9b-bcd4-d7262a0d90a7>, <urn:uuid:b514d354-8d45-422e-817d-39ef4ba877c7>, <urn:uuid:df8cbb93-6ae8-479b-a3d4-11b1afbbb2c2>, <urn:uuid:676b70de-4796-444f-88de-afff91f19af2>, <urn:uuid:2200679e-df9e-4ebe-8c24-7b614f6de055>, <urn:uuid:5d1f62e1-1faf-43c6-b978-cf51e0d7912b>, <urn:uuid:b6d6cab5-7575-4f28-9182-cf6c2454f834>;
+    dcterms:title "2Pac The OG Project Vol 2";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "Tha Row Ryda".
+<urn:uuid:86ea37c5-8bb2-4397-87fd-ec99fe571d00> a mo:Track;
+    dcterms:title "2Pac & Big Daddy Kane - Wherever You Are [Unreleased HQ]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20%26%20Big%20Daddy%20Kane%20-%20Wherever%20You%20Are%20%5BUnreleased%20HQ%5D.mp3>;
+    mo:duration "227".
+<urn:uuid:7ec3ddfd-bb76-4cb4-abd5-1c1ca6ea103f> a mo:Track;
+    dcterms:title "2Pac & Storm - He Vs She (Unreleased) [HQ]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20%26%20Storm%20-%20He%20Vs%20She%20(Unreleased)%20%5BHQ%5D.mp3>;
+    mo:duration "203".
+<urn:uuid:d3c544c5-6946-44a0-b549-72ddcb696e67> a mo:Track;
+    dcterms:title "2Pac - All Out (Suge Knight's Stolen CD Version)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20All%20Out%20(Suge%20Knight's%20Stolen%20CD%20Version).mp3>;
+    mo:duration "329".
+<urn:uuid:121aa37a-4481-40e4-b17e-1d48311a510a> a mo:Track;
+    dcterms:title "2Pac - Bury Me A G (Untitled Interscope Project [Manu Tape] Ver.)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Bury%20Me%20A%20G%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>;
+    mo:duration "302".
+<urn:uuid:8774de8e-15f1-4d9b-bcd4-d7262a0d90a7> a mo:Track;
+    dcterms:title "2Pac - Everything They Owe (Original Mix 2)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Everything%20They%20Owe%20(Original%20Mix%202).mp3>;
+    mo:duration "189".
+<urn:uuid:b514d354-8d45-422e-817d-39ef4ba877c7> a mo:Track;
+    dcterms:title "2Pac - My Block (The Show Soundtrack) (314 529 021-2)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20My%20Block%20(The%20Show%20Soundtrack)%20(314%20529%20021-2).mp3>;
+    mo:duration "311".
+<urn:uuid:df8cbb93-6ae8-479b-a3d4-11b1afbbb2c2> a mo:Track;
+    dcterms:title "2Pac - Out On Bail (Untitled Interscope Project [Manu Tape] Ver.)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Out%20On%20Bail%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3>;
+    mo:duration "225".
+<urn:uuid:676b70de-4796-444f-88de-afff91f19af2> a mo:Track;
+    dcterms:title "2Pac - Runnin From The Police (Original Version) [Prod. Easy Mo Bee]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Runnin%20From%20The%20Police%20(Original%20Version)%20%5BProd.%20Easy%20Mo%20Bee%5D.mp3>;
+    mo:duration "271".
+<urn:uuid:2200679e-df9e-4ebe-8c24-7b614f6de055> a mo:Track;
+    dcterms:title "2Pac, Nate Dogg & Big Syke - Changed Man (Original Version) [Unreleased HQ]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%2C%20Nate%20Dogg%20%26%20Big%20Syke%20-%20Changed%20Man%20(Original%20Version)%20%5BUnreleased%20HQ%5D.mp3>;
+    mo:duration "231".
+<urn:uuid:5d1f62e1-1faf-43c6-b978-cf51e0d7912b> a mo:Track;
+    dcterms:title "2Pac, Outlawz & Nanci Fletcher - Don't Stop The Music (Original Version) [HQ]";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%2C%20Outlawz%20%26%20Nanci%20Fletcher%20-%20Don't%20Stop%20The%20Music%20(Original%20Version)%20%5BHQ%5D.mp3>;
+    mo:duration "241".
+<urn:uuid:b6d6cab5-7575-4f28-9182-cf6c2454f834> a mo:Track;
+    dcterms:title "Outlawz - U Can Be Touched (4-24-96 [2Pac Reference] DAT Mix)";
+    dcat:downloadUrl <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/Outlawz%20-%20U%20Can%20Be%20Touched%20(4-24-96%20%5B2Pac%20Reference%5D%20DAT%20Mix).mp3>;
+    mo:duration "283".
+<urn:uuid:ecd1dd9b-b8c8-4e43-b0ca-759324e4c140> a mo:Release;
+    dcat:landingPage <https://archive.org/details/stay-true>;
+    mo:track <urn:uuid:07aef5b2-a090-4261-a4a5-56cdb306c7b5>, <urn:uuid:231d1caf-4c3e-48e3-b8a6-c038c09aca4e>, <urn:uuid:055bd69b-9156-44b9-b28a-017d2537af76>, <urn:uuid:45182ce7-ff78-4147-917e-57908f45b114>, <urn:uuid:93fc5dcf-6f53-4e5a-b258-5f4ded27b1a8>;
+    dcterms:title "\"Stay True\" Demo Cassette (Side A ONLY)";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac".
+<urn:uuid:07aef5b2-a090-4261-a4a5-56cdb306c7b5> a mo:Track;
+    dcterms:title "It Ain't Easy";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA04.%20It%20Ain't%20Easy.mp3>;
+    mo:duration "305".
+<urn:uuid:231d1caf-4c3e-48e3-b8a6-c038c09aca4e> a mo:Track;
+    dcterms:title "Temptations";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA05.%20Temptations.mp3>;
+    mo:duration "308".
+<urn:uuid:055bd69b-9156-44b9-b28a-017d2537af76> a mo:Track;
+    dcterms:title "Fuck All Y'all";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA09.%20Fuck%20All%20Y'all.mp3>;
+    mo:duration "249".
+<urn:uuid:45182ce7-ff78-4147-917e-57908f45b114> a mo:Track;
+    dcterms:title "AmeriKKKa Eats Its Young";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA10.%20AmeriKKKa%20Eats%20Its%20Young.mp3>;
+    mo:duration "359".
+<urn:uuid:93fc5dcf-6f53-4e5a-b258-5f4ded27b1a8> a mo:Track;
+    dcterms:title "Stay True";
+    dcat:downloadUrl <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA11.%20Stay%20True.mp3>;
+    mo:duration "188".
+<urn:uuid:336a5804-76f0-40e0-8b18-dfafcd05258c> a mo:Release;
+    dcat:landingPage <https://archive.org/details/12-california-love-remix>;
+    mo:track <urn:uuid:7dc31782-1fb7-4b9d-ab29-f88d4d488f76>, <urn:uuid:85a7591c-b512-4bc8-bc3d-cb2f1f95e1f5>, <urn:uuid:ddb8e16a-27ef-4bc9-92ef-44ae3da61e98>, <urn:uuid:a5057a5d-48f3-49f1-b00e-0d70418830b2>, <urn:uuid:1fde4ed7-4822-4b1f-9add-14d8cbf19079>, <urn:uuid:2c64f4b0-867c-4071-8a2b-bc10401f9629>, <urn:uuid:727f67fe-c1e8-4c9c-bce6-3e4d8d53f23d>, <urn:uuid:367a3538-014d-49e0-a820-66dc43f46804>, <urn:uuid:0d086ac3-72eb-4662-a515-ba817565cd3e>, <urn:uuid:1df29423-a5f6-4093-a450-6f88ac4a7a28>, <urn:uuid:47ccec82-467f-4297-a1b4-fc32eada6f93>, <urn:uuid:e3e8db66-cadc-49c6-a007-da773ad3fc86>, <urn:uuid:63648efd-7fcf-42ed-96f7-4452753e276e>, <urn:uuid:cf9a2ab4-3a29-4010-ac2c-87a105ba77b6>;
+    dcterms:title "2Pac - All Eyez On Me [Disc 1]";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac".
+<urn:uuid:7dc31782-1fb7-4b9d-ab29-f88d4d488f76> a mo:Track;
+    dcterms:title "Ambitionz Az A Ridah";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/01%20Ambitionz%20Az%20A%20Ridah.mp3>;
+    mo:duration "278".
+<urn:uuid:85a7591c-b512-4bc8-bc3d-cb2f1f95e1f5> a mo:Track;
+    dcterms:title "All About U";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/02%20All%20About%20U.mp3>;
+    mo:duration "276".
+<urn:uuid:ddb8e16a-27ef-4bc9-92ef-44ae3da61e98> a mo:Track;
+    dcterms:title "Skandalouz";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/03%20Skandalouz.mp3>;
+    mo:duration "248".
+<urn:uuid:a5057a5d-48f3-49f1-b00e-0d70418830b2> a mo:Track;
+    dcterms:title "Got My Mind Made Up";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/04%20Got%20My%20Mind%20Made%20Up.mp3>;
+    mo:duration "312".
+<urn:uuid:1fde4ed7-4822-4b1f-9add-14d8cbf19079> a mo:Track;
+    dcterms:title "How Do U Want It";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/05%20How%20Do%20U%20Want%20It.mp3>;
+    mo:duration "287".
+<urn:uuid:2c64f4b0-867c-4071-8a2b-bc10401f9629> a mo:Track;
+    dcterms:title "2 Of Amerikaz Most Wanted";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/06%202%20Of%20Amerikaz%20Most%20Wanted.mp3>;
+    mo:duration "246".
+<urn:uuid:727f67fe-c1e8-4c9c-bce6-3e4d8d53f23d> a mo:Track;
+    dcterms:title "No More Pain";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/07%20No%20More%20Pain.mp3>;
+    mo:duration "373".
+<urn:uuid:367a3538-014d-49e0-a820-66dc43f46804> a mo:Track;
+    dcterms:title "Heartz Of Men";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/08%20Heartz%20Of%20Men.mp3>;
+    mo:duration "283".
+<urn:uuid:0d086ac3-72eb-4662-a515-ba817565cd3e> a mo:Track;
+    dcterms:title "Life Goes On";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/09%20Life%20Goes%20On.mp3>;
+    mo:duration "301".
+<urn:uuid:1df29423-a5f6-4093-a450-6f88ac4a7a28> a mo:Track;
+    dcterms:title "Only God Can Judge Me";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/10%20Only%20God%20Can%20Judge%20Me.mp3>;
+    mo:duration "296".
+<urn:uuid:47ccec82-467f-4297-a1b4-fc32eada6f93> a mo:Track;
+    dcterms:title "Tradin' War Stories";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/11%20Tradin'%20War%20Stories.mp3>;
+    mo:duration "329".
+<urn:uuid:e3e8db66-cadc-49c6-a007-da773ad3fc86> a mo:Track;
+    dcterms:title "California Love (Remix)";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/12%20California%20Love%20(Remix).mp3>;
+    mo:duration "385".
+<urn:uuid:63648efd-7fcf-42ed-96f7-4452753e276e> a mo:Track;
+    dcterms:title "I Ain't Mad At Cha";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/13%20I%20Ain't%20Mad%20At%20Cha.mp3>;
+    mo:duration "293".
+<urn:uuid:cf9a2ab4-3a29-4010-ac2c-87a105ba77b6> a mo:Track;
+    dcterms:title "Whatz Ya Phone #";
+    dcat:downloadUrl <https://archive.org/download/12-california-love-remix/14%20Whatz%20Ya%20Phone%20%23.mp3>;
+    mo:duration "308".
+<urn:uuid:5a3a94bb-2307-4da4-a15c-d8abdff6ee49> a mo:Release;
+    dcat:landingPage <https://archive.org/details/11-dont-stop>;
+    mo:track <urn:uuid:021d3b22-dd63-4fd0-abc0-83b4e871bfb5>, <urn:uuid:7053fb34-f628-4fa2-8874-1978a21e732d>, <urn:uuid:0894e8a4-0f61-4280-b521-3fbc81aaea41>, <urn:uuid:f369d206-d927-4ad3-904b-5c7966926b04>, <urn:uuid:56ed1f52-b8e0-4c28-be8d-01be2401aa5b>, <urn:uuid:09abb003-9675-4099-bd2d-e53e5a3390b3>, <urn:uuid:1364fe77-99a5-40bc-83d5-c3976c3a4ded>, <urn:uuid:7dbf80e0-8d86-4a3e-96f3-7646e2216811>, <urn:uuid:a75c6efc-ee68-425e-955e-2c224b9a0f1a>, <urn:uuid:196e3385-96d8-449e-bef6-55a34638fcbb>, <urn:uuid:75e5b206-0375-42c7-b414-9dde39c2e42e>, <urn:uuid:81da06b8-1ff3-45c5-8107-cc01553bddc9>, <urn:uuid:12d009d1-816c-4ecb-a7ff-2e24175ced63>;
+    dcterms:title "Pac's Life";
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>, "2Pac Feat. Bone Thugs-N-Harmony".
+<urn:uuid:021d3b22-dd63-4fd0-abc0-83b4e871bfb5> a mo:Track;
+    dcterms:title "Untouchables (Swizz Beatz Remix)";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/01%20Untouchables%20(Swizz%20Beatz%20Remix).mp3>;
+    mo:duration "256".
+<urn:uuid:7053fb34-f628-4fa2-8874-1978a21e732d> a mo:Track;
+    dcterms:title "Pac's Life";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/02%20Pac's%20Life.mp3>;
+    mo:duration "217".
+<urn:uuid:0894e8a4-0f61-4280-b521-3fbc81aaea41> a mo:Track;
+    dcterms:title "Dumpin'";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/03%20Dumpin'.mp3>;
+    mo:duration "267".
+<urn:uuid:f369d206-d927-4ad3-904b-5c7966926b04> a mo:Track;
+    dcterms:title "Playa Cardz Right (Female)";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/04%20Playa%20Cardz%20Right%20(Female).mp3>;
+    mo:duration "273".
+<urn:uuid:56ed1f52-b8e0-4c28-be8d-01be2401aa5b> a mo:Track;
+    dcterms:title "Whatz Next";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/05%20Whatz%20Next.mp3>;
+    mo:duration "258".
+<urn:uuid:09abb003-9675-4099-bd2d-e53e5a3390b3> a mo:Track;
+    dcterms:title "Sleep";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/06%20Sleep.mp3>;
+    mo:duration "249".
+<urn:uuid:1364fe77-99a5-40bc-83d5-c3976c3a4ded> a mo:Track;
+    dcterms:title "International";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/07%20International.mp3>;
+    mo:duration "243".
+<urn:uuid:7dbf80e0-8d86-4a3e-96f3-7646e2216811> a mo:Track;
+    dcterms:title "Don't Sleep";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/08%20Don't%20Sleep.mp3>;
+    mo:duration "215".
+<urn:uuid:a75c6efc-ee68-425e-955e-2c224b9a0f1a> a mo:Track;
+    dcterms:title "Soon As I Get Home";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/09%20Soon%20As%20I%20Get%20Home.mp3>;
+    mo:duration "220".
+<urn:uuid:196e3385-96d8-449e-bef6-55a34638fcbb> a mo:Track;
+    dcterms:title "Playa Cardz Right (Male)";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/10%20Playa%20Cardz%20Right%20(Male).mp3>;
+    mo:duration "294".
+<urn:uuid:75e5b206-0375-42c7-b414-9dde39c2e42e> a mo:Track;
+    dcterms:title "Don't Stop";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/11%20Don't%20Stop.mp3>;
+    mo:duration "324".
+<urn:uuid:81da06b8-1ff3-45c5-8107-cc01553bddc9> a mo:Track;
+    dcterms:title "Pac's Life (Remix)";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/12%20Pac's%20Life%20(Remix).mp3>;
+    mo:duration "218".
+<urn:uuid:12d009d1-816c-4ecb-a7ff-2e24175ced63> a mo:Track;
+    dcterms:title "Untouchable";
+    dcat:downloadUrl <https://archive.org/download/11-dont-stop/13%20Untouchable.mp3>;
+    mo:duration "270".
+<urn:uuid:2d7fd9e4-e247-4f07-94af-9be88276d3b5> a mo:Release;
+    dcat:landingPage <https://archive.org/details/15-stressed-out-feat.-faith-evans>;
+    mo:track <urn:uuid:f3a116e3-b882-4aa2-bd55-c5d3a991b2af>, <urn:uuid:47cbccf8-920d-4b54-8ecb-1d68c7add6cc>, <urn:uuid:95f5c18c-44a8-4fb4-b138-e5bda76311aa>, <urn:uuid:6efdf7e8-a870-48ed-a666-84707137f694>, <urn:uuid:4cb17b6b-85b5-461d-82eb-b6f05b4c0686>, <urn:uuid:d58fcb6a-e602-4bd1-8487-4576ccda67a3>, <urn:uuid:5f68a06c-4408-41e0-be18-88d69f7599ba>, <urn:uuid:733d1d03-3b17-486d-82a4-e260ac2d23c3>, <urn:uuid:9c7c8e7b-5003-4a72-af95-049f9f0c398a>, <urn:uuid:81a4c00f-41fb-4d66-8bc9-a78fe6d59520>, <urn:uuid:e77f2817-ce95-4b7d-9a85-e65d50787a82>, <urn:uuid:bc96b597-e1a8-471e-b4ed-fd81544ab48e>;
+    dcterms:title "Beats, Rhymes And Life";
+    foaf:maker <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>, <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>.
+<urn:uuid:f3a116e3-b882-4aa2-bd55-c5d3a991b2af> a mo:Track;
+    dcterms:title "Baby Phife's Return";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/11%20Baby%20Phife's%20Return.mp3>;
+    mo:duration "198".
+<urn:uuid:47cbccf8-920d-4b54-8ecb-1d68c7add6cc> a mo:Track;
+    dcterms:title "Get A Hold";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/02%20Get%20A%20Hold.mp3>;
+    mo:duration "215".
+<urn:uuid:95f5c18c-44a8-4fb4-b138-e5bda76311aa> a mo:Track;
+    dcterms:title "Jam";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/04%20Jam.mp3>;
+    mo:duration "278".
+<urn:uuid:6efdf7e8-a870-48ed-a666-84707137f694> a mo:Track;
+    dcterms:title "Keeping It Moving";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/10%20Keeping%20It%20Moving.mp3>;
+    mo:duration "218".
+<urn:uuid:4cb17b6b-85b5-461d-82eb-b6f05b4c0686> a mo:Track;
+    dcterms:title "Mind Power";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/08%20Mind%20Power.mp3>;
+    mo:duration "235".
+<urn:uuid:d58fcb6a-e602-4bd1-8487-4576ccda67a3> a mo:Track;
+    dcterms:title "Motivators";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/03%20Motivators.mp3>;
+    mo:duration "200".
+<urn:uuid:5f68a06c-4408-41e0-be18-88d69f7599ba> a mo:Track;
+    dcterms:title "Phony Rappers";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/01%20Phony%20Rappers.mp3>;
+    mo:duration "216".
+<urn:uuid:733d1d03-3b17-486d-82a4-e260ac2d23c3> a mo:Track;
+    dcterms:title "Stressed Out [Baby Phife Version Full] (Bonus Track Only Japan Edition)";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/16%20Stressed%20Out%20%5BBaby%20Phife%20Version.mp3>;
+    mo:duration "287".
+<urn:uuid:9c7c8e7b-5003-4a72-af95-049f9f0c398a> a mo:Track;
+    dcterms:title "Stressed Out feat. Faith Evans";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/15%20Stressed%20Out%20feat.%20Faith%20Evans.mp3>;
+    mo:duration "295".
+<urn:uuid:81a4c00f-41fb-4d66-8bc9-a78fe6d59520> a mo:Track;
+    dcterms:title "The Hop";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/09%20The%20Hop.mp3>;
+    mo:duration "207".
+<urn:uuid:e77f2817-ce95-4b7d-9a85-e65d50787a82> a mo:Track;
+    dcterms:title "The Pressure";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/06%20The%20Pressure.mp3>;
+    mo:duration "182".
+<urn:uuid:bc96b597-e1a8-471e-b4ed-fd81544ab48e> a mo:Track;
+    dcterms:title "What Really Goes On";
+    dcat:downloadUrl <https://archive.org/download/15-stressed-out-feat.-faith-evans/13%20What%20Really%20Goes%20On.mp3>;
+    mo:duration "203".
+<urn:uuid:2e73c578-8236-4ff9-99ce-a73404d25de0> a mo:Release;
+    dcat:landingPage <https://archive.org/details/beats-rhymes-and-life>;
+    mo:track <urn:uuid:32d74e28-cd08-41ad-a7aa-95c94a02b853>;
+    dcterms:title "Beats, Rhymes, and Life";
+    foaf:maker <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>, <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>.
+<urn:uuid:32d74e28-cd08-41ad-a7aa-95c94a02b853> a mo:Track;
+    dcterms:title "1nce Again (feat. Tammy Lucas) - Radio Version";
+    dcat:downloadUrl <https://archive.org/download/beats-rhymes-and-life/1nce%20Again%20(feat.%20Tammy%20Lucas)%20-%20Radio%20Version.mp3>;
+    mo:duration "229".
+<urn:uuid:d3501286-eba3-414a-95e6-12479eb14c69> a mo:Release;
+    dcat:landingPage <https://archive.org/details/more-low-end-theories>;
+    mo:track <urn:uuid:c3cfe71a-dd40-4bcc-95e5-8818e823a539>, <urn:uuid:9bea361a-924a-41b1-811d-a73b880b2707>;
+    dcterms:title "More Low End theories";
+    foaf:maker <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>, <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>.
+<urn:uuid:c3cfe71a-dd40-4bcc-95e5-8818e823a539> a mo:Track;
+    dcterms:title "11. Scenario (Less Muffled, Stereo)";
+    dcat:downloadUrl <https://archive.org/download/more-low-end-theories/11.%20Scenario%20(Less%20Muffled%2C%20Stereo).mp3>;
+    mo:duration "247".
+<urn:uuid:9bea361a-924a-41b1-811d-a73b880b2707> a mo:Track;
+    dcterms:title "Spillin off tha tongue";
+    dcat:downloadUrl <https://archive.org/download/more-low-end-theories/01%20Spillin%20off%20tha%20tongue.mp3>;
+    mo:duration "218".
+<urn:uuid:dc88ba89-9706-4624-9f03-92dc4adb5ab7> a mo:Release;
+    dcat:landingPage <https://archive.org/details/peoples-instinctive-travels-and-the-paths-of-rhythm>;
+    mo:track <urn:uuid:006b672b-2cf1-409c-bbbb-cf8663cd2663>, <urn:uuid:f71c9d54-66fc-40a1-bb0d-1ae64d6c0916>, <urn:uuid:0c98b055-35a1-43da-bfb5-08fcaa2c8a03>, <urn:uuid:a08867be-11a8-448b-8954-46f5929a0450>, <urn:uuid:8d2ceb51-4f4a-46a8-bdcf-03834f19dbd7>, <urn:uuid:0f58cf0b-c78a-4f8d-9440-057de74fa2dc>, <urn:uuid:ccdfaa3c-4e39-4f8e-8c01-8c3c71f2dc4b>, <urn:uuid:dbd6577d-f0ef-4787-b615-f73b5dc8aa5b>, <urn:uuid:263f1b54-5699-4837-84df-a0c4bc620b6e>, <urn:uuid:ec60615e-f1f5-41bb-b492-884bc8631782>, <urn:uuid:64edbe52-f639-4e58-888b-7159c7ed1899>, <urn:uuid:c4950bd2-9231-4bd8-acb4-02b0d0f65562>, <urn:uuid:c32475e9-f1f2-4fad-8c23-88dfd62554b5>, <urn:uuid:c0d94943-466d-4adb-812c-70d283a8aec6>, <urn:uuid:752702eb-7010-4510-81a7-c281117171af>, <urn:uuid:357b6465-d1ce-4b0d-adef-b5346cb81f35>;
+    dcterms:title "People’s Instinctive Travels and the Paths of Rhythm";
+    foaf:maker <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>, <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>.
+<urn:uuid:006b672b-2cf1-409c-bbbb-cf8663cd2663> a mo:Track;
+    dcterms:title "After Hours";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/After%20Hours.mp3>;
+    mo:duration "278".
+<urn:uuid:f71c9d54-66fc-40a1-bb0d-1ae64d6c0916> a mo:Track;
+    dcterms:title "Bonita Applebum";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Bonita%20Applebum.mp3>;
+    mo:duration "229".
+<urn:uuid:0c98b055-35a1-43da-bfb5-08fcaa2c8a03> a mo:Track;
+    dcterms:title "Bonita Applebum - Pharrell Williams Remix";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Bonita%20Applebum%20-%20Pharrell%20Williams%20Remix.mp3>;
+    mo:duration "233".
+<urn:uuid:a08867be-11a8-448b-8954-46f5929a0450> a mo:Track;
+    dcterms:title "Description of a Fool";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Description%20of%20a%20Fool.mp3>;
+    mo:duration "341".
+<urn:uuid:8d2ceb51-4f4a-46a8-bdcf-03834f19dbd7> a mo:Track;
+    dcterms:title "Footprints";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Footprints.mp3>;
+    mo:duration "240".
+<urn:uuid:0f58cf0b-c78a-4f8d-9440-057de74fa2dc> a mo:Track;
+    dcterms:title "Footprints (feat. CeeLo Green) - Remix";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Footprints%20(feat.%20CeeLo%20Green)%20-%20Remix.mp3>;
+    mo:duration "308".
+<urn:uuid:ccdfaa3c-4e39-4f8e-8c01-8c3c71f2dc4b> a mo:Track;
+    dcterms:title "Footprints (feat. CeeLo Green) - Remix Instrumental";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Footprints%20(feat.%20CeeLo%20Green)%20-%20Remix%20Instrumental.mp3>;
+    mo:duration "308".
+<urn:uuid:dbd6577d-f0ef-4787-b615-f73b5dc8aa5b> a mo:Track;
+    dcterms:title "Go Ahead In the Rain";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Go%20Ahead%20In%20the%20Rain.mp3>;
+    mo:duration "234".
+<urn:uuid:263f1b54-5699-4837-84df-a0c4bc620b6e> a mo:Track;
+    dcterms:title "Ham 'N' Eggs";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Ham%20'N'%20Eggs.mp3>;
+    mo:duration "327".
+<urn:uuid:ec60615e-f1f5-41bb-b492-884bc8631782> a mo:Track;
+    dcterms:title "I Left My Wallet in El Segundo";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/I%20Left%20My%20Wallet%20in%20El%20Segundo.mp3>;
+    mo:duration "246".
+<urn:uuid:64edbe52-f639-4e58-888b-7159c7ed1899> a mo:Track;
+    dcterms:title "Luck of Lucien";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Luck%20of%20Lucien.mp3>;
+    mo:duration "273".
+<urn:uuid:c4950bd2-9231-4bd8-acb4-02b0d0f65562> a mo:Track;
+    dcterms:title "Mr. Muhammad";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Mr.%20Muhammad.mp3>;
+    mo:duration "213".
+<urn:uuid:c32475e9-f1f2-4fad-8c23-88dfd62554b5> a mo:Track;
+    dcterms:title "Pubic Enemy";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Pubic%20Enemy.mp3>;
+    mo:duration "225".
+<urn:uuid:c0d94943-466d-4adb-812c-70d283a8aec6> a mo:Track;
+    dcterms:title "Push It Along";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Push%20It%20Along.mp3>;
+    mo:duration "454".
+<urn:uuid:752702eb-7010-4510-81a7-c281117171af> a mo:Track;
+    dcterms:title "Rhythm (Devoted to the Art of Moving Butts)";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Rhythm%20(Devoted%20to%20the%20Art%20of%20Moving%20Butts).mp3>;
+    mo:duration "242".
+<urn:uuid:357b6465-d1ce-4b0d-adef-b5346cb81f35> a mo:Track;
+    dcterms:title "Youthful Expression";
+    dcat:downloadUrl <https://archive.org/download/peoples-instinctive-travels-and-the-paths-of-rhythm/Youthful%20Expression.mp3>;
+    mo:duration "292".
+<urn:uuid:cede4ea9-5485-4113-b992-4c7d4330a8e0> a mo:Release;
+    dcat:landingPage <https://archive.org/details/the-love-movement>;
+    mo:track <urn:uuid:5710d987-69ec-4105-88c0-b0677c62a0f5>, <urn:uuid:c8295828-2cc3-49fe-ae6e-1278f6ee14fe>, <urn:uuid:19f1e178-827e-412d-8491-ce2eacadaae8>, <urn:uuid:d72a0dcf-f5cc-4bb1-b0b1-e1c3be1402cd>, <urn:uuid:13f4e4f3-975c-42e9-83c7-98cdf664a11f>, <urn:uuid:8b3487a0-d0a0-4f67-aae7-a25bcc2c3627>, <urn:uuid:04916963-0500-4b88-94be-dfe821c8b050>, <urn:uuid:356113b2-e222-43b8-82d0-dbb723e89833>, <urn:uuid:87a3aa78-1f21-46c9-9a98-248e2b5feed4>, <urn:uuid:b454d06b-4d90-4875-b909-59d5c6f519b6>, <urn:uuid:8d7726d5-b22b-4395-8b58-c65eb095b179>, <urn:uuid:3d1a8fab-65d8-4205-982f-ea21f614e2c8>, <urn:uuid:f6e96f01-45c8-4342-b4e0-1f4a9df960cc>, <urn:uuid:a070c262-b712-45cb-8562-8d046ca38455>, <urn:uuid:c72b848d-ca48-4dd7-9966-96e36ea04d84>;
+    dcterms:title "The Love Movement (With Bonus Tracks)";
+    foaf:maker <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>, <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>.
+<urn:uuid:5710d987-69ec-4105-88c0-b0677c62a0f5> a mo:Track;
+    dcterms:title "Against The World";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-13%20Against%20The%20World.mp3>;
+    mo:duration "239".
+<urn:uuid:c8295828-2cc3-49fe-ae6e-1278f6ee14fe> a mo:Track;
+    dcterms:title "Da Booty";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-03%20Da%20Booty.mp3>;
+    mo:duration "201".
+<urn:uuid:19f1e178-827e-412d-8491-ce2eacadaae8> a mo:Track;
+    dcterms:title "Find A Way";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-02%20Find%20A%20Way.mp3>;
+    mo:duration "203".
+<urn:uuid:d72a0dcf-f5cc-4bb1-b0b1-e1c3be1402cd> a mo:Track;
+    dcterms:title "Give Me";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-09%20Give%20Me.mp3>;
+    mo:duration "232".
+<urn:uuid:13f4e4f3-975c-42e9-83c7-98cdf664a11f> a mo:Track;
+    dcterms:title "Hot 4 U";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-12%20Hot%204%20U.mp3>;
+    mo:duration "196".
+<urn:uuid:8b3487a0-d0a0-4f67-aae7-a25bcc2c3627> a mo:Track;
+    dcterms:title "Jazz (We've Got)";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/2-05%20Jazz%20(We've%20Got).mp3>;
+    mo:duration "259".
+<urn:uuid:04916963-0500-4b88-94be-dfe821c8b050> a mo:Track;
+    dcterms:title "Money Maker";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/2-02%20Money%20Maker.mp3>;
+    mo:duration "262".
+<urn:uuid:356113b2-e222-43b8-82d0-dbb723e89833> a mo:Track;
+    dcterms:title "Oh My God (Remix)";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/2-04%20Oh%20My%20God%20(Remix).mp3>;
+    mo:duration "242".
+<urn:uuid:87a3aa78-1f21-46c9-9a98-248e2b5feed4> a mo:Track;
+    dcterms:title "One Two S**T";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/2-06%20One%20Two%20S--T.mp3>;
+    mo:duration "272".
+<urn:uuid:b454d06b-4d90-4875-b909-59d5c6f519b6> a mo:Track;
+    dcterms:title "Pad & Pen";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-10%20Pad%20%26%20Pen.mp3>;
+    mo:duration "203".
+<urn:uuid:8d7726d5-b22b-4395-8b58-c65eb095b179> a mo:Track;
+    dcterms:title "Rock Rock Y'All";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-15%20Rock%20Rock%20Y'All.mp3>;
+    mo:duration "267".
+<urn:uuid:3d1a8fab-65d8-4205-982f-ea21f614e2c8> a mo:Track;
+    dcterms:title "Scenario (Remix)";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/2-01%20Scenario%20(Remix).mp3>;
+    mo:duration "318".
+<urn:uuid:f6e96f01-45c8-4342-b4e0-1f4a9df960cc> a mo:Track;
+    dcterms:title "Start It Up";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-01%20Start%20It%20Up.mp3>;
+    mo:duration "199".
+<urn:uuid:a070c262-b712-45cb-8562-8d046ca38455> a mo:Track;
+    dcterms:title "Steppin' It Up";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-04%20Steppin'%20It%20Up.mp3>;
+    mo:duration "202".
+<urn:uuid:c72b848d-ca48-4dd7-9966-96e36ea04d84> a mo:Track;
+    dcterms:title "The Love";
+    dcat:downloadUrl <https://archive.org/download/the-love-movement/1-14%20The%20Love.mp3>;
+    mo:duration "243".
+<urn:uuid:ebe21d1c-9443-48ac-9b1b-ea7ebecfac3b> a mo:Release;
+    dcat:landingPage <https://archive.org/details/the_low_end_theory>;
+    mo:track <urn:uuid:900e3283-d032-462b-8ef3-d9f0fbe64a69>, <urn:uuid:f582c49e-f2f0-4ed0-b66c-cd3cf3ac7034>, <urn:uuid:05d2cf94-14f9-4e0e-be82-38133bab8c53>, <urn:uuid:4675c966-797c-482d-bf9e-88a548a0783f>, <urn:uuid:ebdfb6be-1dc0-44f1-8205-e54ba735943d>, <urn:uuid:381b3da8-5a1e-4cef-b756-c81c98ffcc0b>, <urn:uuid:f60bd7ad-f906-42ad-84e0-59f3b260782d>, <urn:uuid:85751ca0-4fda-4f5f-b5fe-562201629fe2>;
+    dcterms:title "The Low End Theory";
+    foaf:maker <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>, <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>.
+<urn:uuid:900e3283-d032-462b-8ef3-d9f0fbe64a69> a mo:Track;
+    dcterms:title "Buggin' Out";
+    dcat:downloadUrl <https://archive.org/download/the_low_end_theory/02%20Buggin'%20Out.mp3>;
+    mo:duration "217".
+<urn:uuid:f582c49e-f2f0-4ed0-b66c-cd3cf3ac7034> a mo:Track;
+    dcterms:title "Butter";
+    dcat:downloadUrl <https://archive.org/download/the_low_end_theory/04%20Butter.mp3>;
+    mo:duration "219".
+<urn:uuid:05d2cf94-14f9-4e0e-be82-38133bab8c53> a mo:Track;
+    dcterms:title "Check The Rhime";
+    dcat:downloadUrl <https://archive.org/download/the_low_end_theory/09%20Check%20The%20Rhime.mp3>;
+    mo:duration "217".
+<urn:uuid:4675c966-797c-482d-bf9e-88a548a0783f> a mo:Track;
+    dcterms:title "Excursions";
+    dcat:downloadUrl <https://archive.org/download/the_low_end_theory/01%20Excursions.mp3>;
+    mo:duration "235".
+<urn:uuid:ebdfb6be-1dc0-44f1-8205-e54ba735943d> a mo:Track;
+    dcterms:title "Jazz";
+    dcat:downloadUrl <https://archive.org/download/the_low_end_theory/11%20Jazz.mp3>;
+    mo:duration "250".
+<urn:uuid:381b3da8-5a1e-4cef-b756-c81c98ffcc0b> a mo:Track;
+    dcterms:title "Show Business";
+    dcat:downloadUrl <https://archive.org/download/the_low_end_theory/06%20Show%20Business.mp3>;
+    mo:duration "233".
+<urn:uuid:f60bd7ad-f906-42ad-84e0-59f3b260782d> a mo:Track;
+    dcterms:title "Verses From The Abstract";
+    dcat:downloadUrl <https://archive.org/download/the_low_end_theory/05%20Verses%20From%20The%20Abstract.mp3>;
+    mo:duration "239".
+<urn:uuid:85751ca0-4fda-4f5f-b5fe-562201629fe2> a mo:Track;
+    dcterms:title "Vibes And Stuff";
+    dcat:downloadUrl <https://archive.org/download/the_low_end_theory/07%20Vibes%20And%20Stuff.mp3>;
+    mo:duration "258".
+<urn:uuid:3c64bc70-da3a-43a9-9bed-37877437b62f> a mo:Release;
+    dcat:landingPage <https://archive.org/details/thelowendtheory1991>;
+    mo:track <urn:uuid:7c31af7f-3eff-4eb0-b953-cf575aec50c1>, <urn:uuid:50787f76-0e3c-45bf-88bd-b5e9383033e0>, <urn:uuid:03ea2060-bdd5-4e19-a816-2c505a18374c>;
+    dcterms:title "The Low End Theory";
+    foaf:maker <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>, <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>.
+<urn:uuid:7c31af7f-3eff-4eb0-b953-cf575aec50c1> a mo:Track;
+    dcterms:title "Scenario (feat. Busta Rhymes, Dinco D & Charlie Brown) (LP Mix)";
+    dcat:downloadUrl <https://archive.org/download/thelowendtheory1991/14.%20A%20Tribe%20Called%20Quest%20-%20Scenario%20(feat.%20Busta%20Rhymes%2C%20Dinco%20D%20%26%20Charlie%20Brown)%20(LP%20Mix).mp3>;
+    mo:duration "250".
+<urn:uuid:50787f76-0e3c-45bf-88bd-b5e9383033e0> a mo:Track;
+    dcterms:title "Show Business (feat. Diamond D, Lord Jamar & Sadat X)";
+    dcat:downloadUrl <https://archive.org/download/thelowendtheory1991/06.%20A%20Tribe%20Called%20Quest%20-%20Show%20Business%20(feat.%20Diamond%20D%2C%20Lord%20Jamar%20%26%20Sadat%20X).mp3>;
+    mo:duration "233".
+<urn:uuid:03ea2060-bdd5-4e19-a816-2c505a18374c> a mo:Track;
+    dcterms:title "Verses from the Abstract (feat. Vinia Mojica & Ron Carter)";
+    dcat:downloadUrl <https://archive.org/download/thelowendtheory1991/05.%20A%20Tribe%20Called%20Quest%20-%20Verses%20from%20the%20Abstract%20(feat.%20Vinia%20Mojica%20%26%20Ron%20Carter).mp3>;
+    mo:duration "239".
+<urn:uuid:d2c5e11c-3909-4083-8c00-d5314ee298e3> a mo:Release;
+    dcat:landingPage <https://archive.org/details/wgifh...ty4ys2016>;
+    mo:track <urn:uuid:1d2631e3-8803-4c9f-a1c4-a6cc36b38ea9>, <urn:uuid:457ce021-0ff3-4618-95ab-2fd255726603>, <urn:uuid:3e0fbb1a-62d7-4c0b-b8e5-ff516c20631e>, <urn:uuid:6bd4fbce-c557-4dc4-91dd-5299d28fcb14>, <urn:uuid:0a824448-f9f6-4ebe-9d10-a41795e8267b>, <urn:uuid:fc0ac42f-4606-4447-8295-4ff7e185f485>, <urn:uuid:7da06a62-5b7b-4ffd-9eea-024dce68f851>, <urn:uuid:2ec43d1b-f810-4838-ace9-0237b818f382>, <urn:uuid:6f60adac-8f8f-4ad5-9669-8d112c38fdea>, <urn:uuid:3a25faaa-306d-4da6-b806-c3d4cb3ab43d>, <urn:uuid:fe2cc422-766e-440c-8bbc-7ed119f47bcf>, <urn:uuid:3d4872e5-08a1-49ff-8d8a-4fa0c1529855>;
+    dcterms:title "We got it from here... Thank You 4 Your service";
+    foaf:maker <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, "A Tribe Called Quest, Consequence", <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>.
+<urn:uuid:1d2631e3-8803-4c9f-a1c4-a6cc36b38ea9> a mo:Track;
+    dcterms:title "Black Spasmodic (feat. Consequence)";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD2%2F02.%20A%20Tribe%20Called%20Quest%20-%20Black%20Spasmodic%20(feat.%20Consequence).mp3>;
+    mo:duration "184".
+<urn:uuid:457ce021-0ff3-4618-95ab-2fd255726603> a mo:Track;
+    dcterms:title "Conrad Tokyo (feat. Kendrick Lamar & Jack White)";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD2%2F06.%20A%20Tribe%20Called%20Quest%20-%20Conrad%20Tokyo%20(feat.%20Kendrick%20Lamar%20%26%20Jack%20White).mp3>;
+    mo:duration "212".
+<urn:uuid:3e0fbb1a-62d7-4c0b-b8e5-ff516c20631e> a mo:Track;
+    dcterms:title "Dis Generation (feat. Busta Rhymes)";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD1%2F05.%20A%20Tribe%20Called%20Quest%20-%20Dis%20Generation%20(feat.%20Busta%20Rhymes).mp3>;
+    mo:duration "213".
+<urn:uuid:6bd4fbce-c557-4dc4-91dd-5299d28fcb14> a mo:Track;
+    dcterms:title "Ego";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD2%2F07.%20A%20Tribe%20Called%20Quest%20-%20Ego.mp3>;
+    mo:duration "197".
+<urn:uuid:0a824448-f9f6-4ebe-9d10-a41795e8267b> a mo:Track;
+    dcterms:title "Enough!!";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD1%2F08.%20A%20Tribe%20Called%20Quest%20-%20Enough!!.mp3>;
+    mo:duration "201".
+<urn:uuid:fc0ac42f-4606-4447-8295-4ff7e185f485> a mo:Track;
+    dcterms:title "Kids... (feat. Andre 3000)";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD1%2F06.%20A%20Tribe%20Called%20Quest%20-%20Kids...%20(feat.%20Andre%203000).mp3>;
+    mo:duration "229".
+<urn:uuid:7da06a62-5b7b-4ffd-9eea-024dce68f851> a mo:Track;
+    dcterms:title "Lost Somebody (feat. Katia Cadet)";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD2%2F04.%20A%20Tribe%20Called%20Quest%20-%20Lost%20Somebody%20(feat.%20Katia%20Cadet).mp3>;
+    mo:duration "259".
+<urn:uuid:2ec43d1b-f810-4838-ace9-0237b818f382> a mo:Track;
+    dcterms:title "Melatonin (feat. Marsha Ambrosius & Yebba)";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD1%2F07.%20A%20Tribe%20Called%20Quest%20-%20Melatonin%20(feat.%20Marsha%20Ambrosius%20%26%20Yebba).mp3>;
+    mo:duration "285".
+<urn:uuid:6f60adac-8f8f-4ad5-9669-8d112c38fdea> a mo:Track;
+    dcterms:title "Movin Backwards (feat. Anderson .Paak)";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD2%2F05.%20A%20Tribe%20Called%20Quest%20-%20Movin%20Backwards%20(feat.%20Anderson%20.Paak).mp3>;
+    mo:duration "282".
+<urn:uuid:3a25faaa-306d-4da6-b806-c3d4cb3ab43d> a mo:Track;
+    dcterms:title "Solid Wall of Sound (feat. Busta Rhymes, Jack White & Elton John)";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD1%2F04.%20A%20Tribe%20Called%20Quest%20-%20Solid%20Wall%20of%20Sound%20(feat.%20Busta%20Rhymes%2C%20Jack%20White%20%26%20Elton%20John).mp3>;
+    mo:duration "223".
+<urn:uuid:fe2cc422-766e-440c-8bbc-7ed119f47bcf> a mo:Track;
+    dcterms:title "The Donald (feat. Busta Rhymes & Cadet)";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD2%2F08.%20A%20Tribe%20Called%20Quest%20-%20The%20Donald%20(feat.%20Busta%20Rhymes%20%26%20Cadet).mp3>;
+    mo:duration "322".
+<urn:uuid:3d4872e5-08a1-49ff-8d8a-4fa0c1529855> a mo:Track;
+    dcterms:title "The Space Program";
+    dcat:downloadUrl <https://archive.org/download/wgifh...ty4ys2016/CD1%2F01.%20A%20Tribe%20Called%20Quest%20-%20The%20Space%20Program.mp3>;
+    mo:duration "341".
+<urn:uuid:b950b24c-7c71-46ca-a58c-5990493a8cfc> a mo:Release;
+    dcat:landingPage <https://archive.org/details/we-got-it-from-here-thank-you-4-your-service>;
+    mo:track <urn:uuid:0fcf5689-039f-41e6-ab4f-53c33ed8fad7>;
+    dcterms:title "We got it from Here... Thank You 4 Your service";
+    foaf:maker <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80>, <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>.
+<urn:uuid:0fcf5689-039f-41e6-ab4f-53c33ed8fad7> a mo:Track;
+    dcterms:title "Black Spasmodic (feat. Consequence)";
+    dcat:downloadUrl <https://archive.org/download/we-got-it-from-here-thank-you-4-your-service/Black%20Spasmodic%20(feat.%20Consequence).mp3>;
+    mo:duration "183".

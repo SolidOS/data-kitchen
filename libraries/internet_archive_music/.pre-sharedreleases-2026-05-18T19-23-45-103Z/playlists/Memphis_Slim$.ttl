@@ -1,0 +1,65 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Memphis_Slim#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Memphis_Slim> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Memphis  Slim";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:7b683bec-068e-43af-a8b2-0a9ff05c2f07>, <urn:uuid:11a3adb1-6e79-42b3-abc1-fd7ea19b7e34>, <urn:uuid:9a29e2bb-de7f-4f01-91b3-d821f3b7682c>, <urn:uuid:8394d7a1-c0c3-489a-bba8-b6d9b937fb9b>, <urn:uuid:b205dcd9-a3cf-4048-b1eb-3162da5a7210>, <urn:uuid:e5ba301c-ea7f-4b47-a6e7-ad5ffec7da02>;
+    <http://open-media-player.org/ns#hidePlaylist> "true".
+<urn:uuid:7b683bec-068e-43af-a8b2-0a9ff05c2f07> a mo:Track;
+    dcterms:title "CALL BEFORE YOU GO HOME";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/78_call-before-you-go-home_memphis-slim-and-his-house-rockers-fraser_gbia0366392a/CALL%20BEFORE%20YOU%20GO%20HOME%20-%20MEMPHIS%20SLIM%20and%20his%20House%20Rockers.mp3>;
+    mo:duration "189".
+<urn:uuid:11a3adb1-6e79-42b3-abc1-fd7ea19b7e34> a mo:Track;
+    dcterms:title "Call Before You Go Home";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/78_call-before-you-go-home_memphis-slim-and-his-house-rockers-fraser_gbia0057662a/Call%20Before%20You%20Go%20Home%20-%20Memphis%20Slim%20and%20his%20House%20Rockers.mp3>;
+    mo:duration "191".
+<urn:uuid:9a29e2bb-de7f-4f01-91b3-d821f3b7682c> a mo:Track;
+    dcterms:title "Five O'Clock Blues";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/78_five-oclock-blues_memphis-slim-and-his-house-rockers-fraser_gbia0001676b/Five%20O'Clock%20Blues%20-%20Memphis%20Slim%20and%20his%20House%20Rockers.mp3>;
+    mo:duration "180".
+<urn:uuid:8394d7a1-c0c3-489a-bba8-b6d9b937fb9b> a mo:Track;
+    dcterms:title "I'm Crying";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/78_im-crying_memphis-slim-and-terry-timmons-chatman_gbia0060711b/I'm%20Crying%20-%20Memphis%20Slim%20and%20Terry%20Timmons.mp3>;
+    mo:duration "203".
+<urn:uuid:b205dcd9-a3cf-4048-b1eb-3162da5a7210> a mo:Track;
+    dcterms:title "Tia Juana";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/78_tia-juana_memphis-slim-and-the-house-rockers-chatman_gbia0060711a/Tia%20Juana%20-%20Memphis%20Slim%20and%20the%20House%20Rockers.mp3>;
+    mo:duration "180".
+<urn:uuid:e5ba301c-ea7f-4b47-a6e7-ad5ffec7da02> a mo:Track;
+    dcterms:title "Darling I Miss You";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/78_darling-i-miss-you_memphis-slim-memphis-slim-quartette-alex-atkins-ernest-cotton-wi_gbia0073009b/Darling%20I%20Miss%20You%20-%20Memphis%20Slim%20-%20Memphis%20Slim%20Quartette.mp3>;
+    mo:duration "193".
+<urn:uuid:a8738c32-474e-461f-ad19-220e1eb8c17a> a mo:Release;
+    dcterms:title "CALL BEFORE YOU GO HOME";
+    foaf:maker "MEMPHIS SLIM and his House Rockers, Fraser";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/78_call-before-you-go-home_memphis-slim-and-his-house-rockers-fraser_gbia0366392a>;
+    mo:track <urn:uuid:7b683bec-068e-43af-a8b2-0a9ff05c2f07>.
+<urn:uuid:b2fb3d16-c04f-47a5-8042-13ca7bf721a7> a mo:Release;
+    dcterms:title "Call Before You Go Home";
+    foaf:maker "Memphis Slim and his House Rockers;Fraser";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/78_call-before-you-go-home_memphis-slim-and-his-house-rockers-fraser_gbia0057662a>;
+    mo:track <urn:uuid:11a3adb1-6e79-42b3-abc1-fd7ea19b7e34>.
+<urn:uuid:ffe67967-33e0-4d70-a54f-a833883b49de> a mo:Release;
+    dcterms:title "Five O'Clock Blues";
+    foaf:maker "Memphis Slim and his House Rockers;Fraser";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/78_five-oclock-blues_memphis-slim-and-his-house-rockers-fraser_gbia0001676b>;
+    mo:track <urn:uuid:9a29e2bb-de7f-4f01-91b3-d821f3b7682c>.
+<urn:uuid:c3968fd6-b729-480a-9e52-aaef26383b27> a mo:Release;
+    dcterms:title "I'm Crying";
+    foaf:maker "Memphis Slim and Terry Timmons;Chatman";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/78_im-crying_memphis-slim-and-terry-timmons-chatman_gbia0060711b>;
+    mo:track <urn:uuid:8394d7a1-c0c3-489a-bba8-b6d9b937fb9b>.
+<urn:uuid:622d544e-6908-4c09-9fdb-ec81fe2e9888> a mo:Release;
+    dcterms:title "Tia Juana";
+    foaf:maker "Memphis Slim and the House Rockers;Chatman";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/78_tia-juana_memphis-slim-and-the-house-rockers-chatman_gbia0060711a>;
+    mo:track <urn:uuid:b205dcd9-a3cf-4048-b1eb-3162da5a7210>.
+<urn:uuid:aa7fcc12-606c-4f63-8d1b-969ad6d097f9> a mo:Release;
+    dcterms:title "Darling I Miss You";
+    foaf:maker "Memphis Slim;Memphis Slim Quartette;Alex Atkins;Ernest Cotton;Willie Dixon;Chatman";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/78_darling-i-miss-you_memphis-slim-memphis-slim-quartette-alex-atkins-ernest-cotton-wi_gbia0073009b>;
+    mo:track <urn:uuid:e5ba301c-ea7f-4b47-a6e7-ad5ffec7da02>.

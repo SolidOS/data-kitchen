@@ -1,0 +1,22 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:6c9d4f0b-5e14-4bbf-86b6-9cf193f9a4e4> a mo:Release;
+    dcterms:title "Aphex Twin - Selected Ambient Works 86–92 CD Rip";
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f>;
+    dcat:landingPage <https://archive.org/details/aphex-twin-saw-86-92-cd-rip>;
+    mo:track <urn:uuid:5dfb6cdb-d238-4310-aca6-1e6e947fd567>, <urn:uuid:4cb1e922-0499-4962-a88b-5cdcf585dfc6>, <urn:uuid:4c9a8e1a-f0b1-410b-9a23-819a5326dc0d>, <urn:uuid:e744c82e-1e03-4ec7-b3f3-f59da8465e17>, <urn:uuid:b41b364a-4075-4012-a95a-c7346c9fa1c6>, <urn:uuid:e665c67c-02ea-4da7-9e0d-10067f01841f>, <urn:uuid:9d252ae0-7619-477b-ad7b-4f26a70d9ee4>, <urn:uuid:6be9a922-903c-4fd4-94cd-0cb239b35c75>, <urn:uuid:d7b2efeb-d2b2-49aa-b946-66eae0e117ce>, <urn:uuid:e9b34c67-f39d-4a30-9ae7-e18d9a4086f8>, <urn:uuid:ced6f940-d5cf-4954-99bb-f13a6a004b86>, <urn:uuid:5206218f-98ad-4bc8-b607-2abf1814a7e7>.
+<urn:uuid:5dfb6cdb-d238-4310-aca6-1e6e947fd567> a mo:Track; dcterms:title "Xtal"; mo:duration "295"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F01.%20Xtal.mp3>.
+<urn:uuid:4cb1e922-0499-4962-a88b-5cdcf585dfc6> a mo:Track; dcterms:title "Tha"; mo:duration "547"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F02.%20Tha.mp3>.
+<urn:uuid:4c9a8e1a-f0b1-410b-9a23-819a5326dc0d> a mo:Track; dcterms:title "Pulsewidth"; mo:duration "228"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F03.%20Pulsewidth.mp3>.
+<urn:uuid:e744c82e-1e03-4ec7-b3f3-f59da8465e17> a mo:Track; dcterms:title "Ageispolis"; mo:duration "323"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F04.%20Ageispolis.mp3>.
+<urn:uuid:b41b364a-4075-4012-a95a-c7346c9fa1c6> a mo:Track; dcterms:title "Green Calx"; mo:duration "365"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F06.%20Green%20Calx.mp3>.
+<urn:uuid:e665c67c-02ea-4da7-9e0d-10067f01841f> a mo:Track; dcterms:title "Heliosphan"; mo:duration "294"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F07.%20Heliosphan.mp3>.
+<urn:uuid:9d252ae0-7619-477b-ad7b-4f26a70d9ee4> a mo:Track; dcterms:title "We are the music makers"; mo:duration "464"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F08.%20We%20are%20the%20music%20makers.mp3>.
+<urn:uuid:6be9a922-903c-4fd4-94cd-0cb239b35c75> a mo:Track; dcterms:title "Schottkey 7th Path"; mo:duration "308"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F09.%20Schottkey%207th%20Path.mp3>.
+<urn:uuid:d7b2efeb-d2b2-49aa-b946-66eae0e117ce> a mo:Track; dcterms:title "Ptolemy"; mo:duration "434"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F10.%20Ptolemy.mp3>.
+<urn:uuid:e9b34c67-f39d-4a30-9ae7-e18d9a4086f8> a mo:Track; dcterms:title "Hedphelym"; mo:duration "364"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F11.%20Hedphelym.mp3>.
+<urn:uuid:ced6f940-d5cf-4954-99bb-f13a6a004b86> a mo:Track; dcterms:title "Delphium"; mo:duration "329"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F12.%20Delphium.mp3>.
+<urn:uuid:5206218f-98ad-4bc8-b607-2abf1814a7e7> a mo:Track; dcterms:title "Actium"; mo:duration "458"; dcat:downloadUrl <https://archive.org/download/aphex-twin-saw-86-92-cd-rip/Aphex%20Twin%20-%20Selected%20Ambient%20Works%2086%E2%80%9392%2F13.%20Actium.mp3>.

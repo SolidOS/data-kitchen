@@ -1,0 +1,105 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Talvin_Singh#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Talvin_Singh> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Talvin Singh";
+    foaf:maker "jeffz";
+    dcterms:description "South Asian Underground";
+    dcterms:hasPart <urn:uuid:dc9f2a1c-87b9-4a4c-9442-f6b323113e0d>, <urn:uuid:f10b346b-93c4-4022-b430-1a12bb8a54c8>, <urn:uuid:c967416f-13bf-448f-b870-5518191e7f67>, <urn:uuid:f414a778-9937-4b22-b990-86efc714c5c8>, <urn:uuid:7f245cd3-e9ed-4acb-beeb-66d230c78753>, <urn:uuid:d522d24f-390f-4929-b55b-87780b2eba95>, <urn:uuid:791197a6-f541-43c3-880a-87082eb28f4d>, <urn:uuid:4edbc50c-b3e3-405c-81bc-ed87d166bbf3>, <urn:uuid:39804d28-576d-4547-a8d3-9dbbe3016a00>, <urn:uuid:ba20b4bb-b107-4608-b2d9-f311f0b3c915>, <urn:uuid:f69227cc-a882-444a-b5eb-74118f85632f>, <urn:uuid:e00653da-3a70-422f-bde6-c692f52c1729>, <urn:uuid:97b23e9f-6a8b-4ae9-b416-f8e144e578ad>, <urn:uuid:d8a3f225-878b-43a4-8fa7-a4e10b4604d6>, <urn:uuid:0f3b4e21-ca44-4453-8dd5-eae3b94f68d7>, <urn:uuid:46a66742-8dcf-4da6-adb7-c1128d460a6c>, <urn:uuid:300f0975-a019-42db-8085-abc37c22dfc2>, <urn:uuid:5dc50e24-8b0d-4d52-a25b-d1646679f583>, <urn:uuid:ee27f47c-b8e3-4b40-b464-ade0a02ba8d1>, <urn:uuid:2404695f-5597-4f82-9609-6b3363e6ae63>, <urn:uuid:00c36668-c5d2-4324-8103-6aeec1ad13e0>.
+<urn:uuid:7591a0ac-516a-41ff-a045-db8412b83e2a> a mo:Release;
+    dcterms:title "OK - Talvin Singh";
+    foaf:maker "Talvin Singh";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/01-traveller-talvin-singh>;
+    mo:track <urn:uuid:dc9f2a1c-87b9-4a4c-9442-f6b323113e0d>, <urn:uuid:f10b346b-93c4-4022-b430-1a12bb8a54c8>, <urn:uuid:c967416f-13bf-448f-b870-5518191e7f67>, <urn:uuid:f414a778-9937-4b22-b990-86efc714c5c8>, <urn:uuid:7f245cd3-e9ed-4acb-beeb-66d230c78753>, <urn:uuid:d522d24f-390f-4929-b55b-87780b2eba95>, <urn:uuid:791197a6-f541-43c3-880a-87082eb28f4d>, <urn:uuid:4edbc50c-b3e3-405c-81bc-ed87d166bbf3>, <urn:uuid:39804d28-576d-4547-a8d3-9dbbe3016a00>.
+<urn:uuid:dc9f2a1c-87b9-4a4c-9442-f6b323113e0d> a mo:Track;
+    dcterms:title "Traveller";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/01-traveller-talvin-singh/01%20Traveller%20Talvin%20Singh.mp3>;
+    mo:duration "678".
+<urn:uuid:f10b346b-93c4-4022-b430-1a12bb8a54c8> a mo:Track;
+    dcterms:title "Butterfly";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/01-traveller-talvin-singh/02%20Butterfly%20Talvin%20Singh.mp3>;
+    mo:duration "266".
+<urn:uuid:c967416f-13bf-448f-b870-5518191e7f67> a mo:Track;
+    dcterms:title "Sutrix";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/01-traveller-talvin-singh/03%20Sutrix%20Talvin%20Singh.mp3>;
+    mo:duration "355".
+<urn:uuid:f414a778-9937-4b22-b990-86efc714c5c8> a mo:Track;
+    dcterms:title "Mombasstic";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/01-traveller-talvin-singh/04%20Mombasstic%20Talvin%20Singh.mp3>;
+    mo:duration "345".
+<urn:uuid:7f245cd3-e9ed-4acb-beeb-66d230c78753> a mo:Track;
+    dcterms:title "Eclipse";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/01-traveller-talvin-singh/06%20Eclipse%20Talvin%20Singh.mp3>;
+    mo:duration "350".
+<urn:uuid:d522d24f-390f-4929-b55b-87780b2eba95> a mo:Track;
+    dcterms:title "Ok";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/01-traveller-talvin-singh/07%20Ok%20Talvin%20Singh.mp3>;
+    mo:duration "259".
+<urn:uuid:791197a6-f541-43c3-880a-87082eb28f4d> a mo:Track;
+    dcterms:title "Light";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/01-traveller-talvin-singh/08%20Light%20Talvin%20Singh.mp3>;
+    mo:duration "383".
+<urn:uuid:4edbc50c-b3e3-405c-81bc-ed87d166bbf3> a mo:Track;
+    dcterms:title "Soni";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/01-traveller-talvin-singh/10%20Soni%20Talvin%20Singh.mp3>;
+    mo:duration "359".
+<urn:uuid:39804d28-576d-4547-a8d3-9dbbe3016a00> a mo:Track;
+    dcterms:title "Vikram the Vampire";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/01-traveller-talvin-singh/11%20Vikram%20the%20Vampire%20Talvin%20Singh.mp3>;
+    mo:duration "407".
+<urn:uuid:fa0adac6-1f14-4da5-b280-fbd978466761> a mo:Release;
+    dcterms:title "Soundz of the Asian Underground - Talvin Singh";
+    foaf:maker "Talvin Singh";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/Soundz-of-the-asian-underground-talvin-singh>;
+    mo:track <urn:uuid:ba20b4bb-b107-4608-b2d9-f311f0b3c915>, <urn:uuid:f69227cc-a882-444a-b5eb-74118f85632f>, <urn:uuid:e00653da-3a70-422f-bde6-c692f52c1729>, <urn:uuid:97b23e9f-6a8b-4ae9-b416-f8e144e578ad>, <urn:uuid:d8a3f225-878b-43a4-8fa7-a4e10b4604d6>, <urn:uuid:0f3b4e21-ca44-4453-8dd5-eae3b94f68d7>, <urn:uuid:46a66742-8dcf-4da6-adb7-c1128d460a6c>, <urn:uuid:300f0975-a019-42db-8085-abc37c22dfc2>, <urn:uuid:5dc50e24-8b0d-4d52-a25b-d1646679f583>, <urn:uuid:ee27f47c-b8e3-4b40-b464-ade0a02ba8d1>, <urn:uuid:2404695f-5597-4f82-9609-6b3363e6ae63>, <urn:uuid:00c36668-c5d2-4324-8103-6aeec1ad13e0>.
+<urn:uuid:ba20b4bb-b107-4608-b2d9-f311f0b3c915> a mo:Track;
+    dcterms:title "Jaan";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/01%20Jaan%20Talvin%20Singh.mp3>;
+    mo:duration "362".
+<urn:uuid:f69227cc-a882-444a-b5eb-74118f85632f> a mo:Track;
+    dcterms:title "Flight IC408";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/02%20Flight%20IC408%20Talvin%20Singh.mp3>;
+    mo:duration "441".
+<urn:uuid:e00653da-3a70-422f-bde6-c692f52c1729> a mo:Track;
+    dcterms:title "Kizmet";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/03%20Kizmet%20Talvin%20Singh.mp3>;
+    mo:duration "316".
+<urn:uuid:97b23e9f-6a8b-4ae9-b416-f8e144e578ad> a mo:Track;
+    dcterms:title "Shang High";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/04%20Shang%20High%20Talvin%20Singh.mp3>;
+    mo:duration "352".
+<urn:uuid:d8a3f225-878b-43a4-8fa7-a4e10b4604d6> a mo:Track;
+    dcterms:title "Chittagong Chill";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/05%20Chittagong%20Chill%20Talvin%20Singh.mp3>;
+    mo:duration "505".
+<urn:uuid:0f3b4e21-ca44-4453-8dd5-eae3b94f68d7> a mo:Track;
+    dcterms:title "Mumbai Theme Tune";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/06%20Mumbai%20Theme%20Tune%20Talvin%20Singh.mp3>;
+    mo:duration "315".
+<urn:uuid:46a66742-8dcf-4da6-adb7-c1128d460a6c> a mo:Track;
+    dcterms:title "Distant God";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/07%20Distant%20God%20Talvin%20Singh.mp3>;
+    mo:duration "377".
+<urn:uuid:300f0975-a019-42db-8085-abc37c22dfc2> a mo:Track;
+    dcterms:title "Heavy Intro";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/08%20Heavy%20Intro%20Talvin%20Singh.mp3>;
+    mo:duration "188".
+<urn:uuid:5dc50e24-8b0d-4d52-a25b-d1646679f583> a mo:Track;
+    dcterms:title "Equation";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/09%20Equation%20Talvin%20Singh.mp3>;
+    mo:duration "359".
+<urn:uuid:ee27f47c-b8e3-4b40-b464-ade0a02ba8d1> a mo:Track;
+    dcterms:title "Spiritual Master Key";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/10%20Spiritual%20Master%20Key%20Talvin%20Singh.mp3>;
+    mo:duration "314".
+<urn:uuid:2404695f-5597-4f82-9609-6b3363e6ae63> a mo:Track;
+    dcterms:title "Accepting Trankuility";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/11%20Accepting%20Trankuility%20Talvin%20Singh.mp3>;
+    mo:duration "519".
+<urn:uuid:00c36668-c5d2-4324-8103-6aeec1ad13e0> a mo:Track;
+    dcterms:title "K-Ascendant";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/Soundz-of-the-asian-underground-talvin-singh/12%20K-Ascendant%20Talvin%20Singh.mp3>;
+    mo:duration "272".

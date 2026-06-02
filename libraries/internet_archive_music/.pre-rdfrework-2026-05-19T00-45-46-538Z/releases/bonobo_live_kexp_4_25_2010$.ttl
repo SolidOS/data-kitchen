@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:5c5aaadc-0dec-4b0d-b8eb-0709c5ea149c> a mo:Release;
+    dcterms:title "Bonobo - Live @ KEXP 4/25/2010";
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0>;
+    dcat:landingPage <https://archive.org/details/Bonobo_-_Live__KEXP_4252010-6682>;
+    mo:track <urn:uuid:e50d6498-1a1a-4e9b-b728-e11d376c4c7b>.
+<urn:uuid:e50d6498-1a1a-4e9b-b728-e11d376c4c7b> a mo:Track; dcterms:title "The Keeper (Live @ KEXP)"; mo:duration "259"; dcat:downloadUrl <https://archive.org/download/Bonobo_-_Live__KEXP_4252010-6682/Bonobo_-_The_Keeper_Live__KEXP.mp3>.

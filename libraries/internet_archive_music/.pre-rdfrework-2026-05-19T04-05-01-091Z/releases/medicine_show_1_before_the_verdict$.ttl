@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:0ad8c736-6d7e-449f-9d36-f94c7a38b389> a mo:Release;
+    dcterms:title "Medicine Show #1: Before the Verdict";
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a>;
+    dcat:landingPage <https://archive.org/details/medicine-show-1-before-the-verdict-flac>;
+    mo:track <urn:uuid:aa90e544-6b61-4c60-96f8-f57e81c5e69f>.
+<urn:uuid:aa90e544-6b61-4c60-96f8-f57e81c5e69f> a mo:Track; dcterms:title "I Must Love You (OJ Simpson Remix)"; mo:duration "354"; dcat:downloadUrl <https://archive.org/download/medicine-show-1-before-the-verdict-flac/13.%20Madlib%20-%20I%20Must%20Love%20You%20(OJ%20Simpson%20Remix)%20(Explicit).mp3>.

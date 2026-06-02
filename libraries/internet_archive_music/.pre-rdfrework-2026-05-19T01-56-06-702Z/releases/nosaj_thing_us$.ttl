@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:08b96dbb-c18a-4a10-ade6-99c69f29c10a> a mo:Release;
+    dcterms:title "Nosaj Thing - Us";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3aa>;
+    dcat:landingPage <https://archive.org/details/NosajThing-Us>;
+    mo:track <urn:uuid:a62dd162-d132-479d-8f70-de08e63e28fc>.
+<urn:uuid:a62dd162-d132-479d-8f70-de08e63e28fc> a mo:Track; dcterms:title "Us"; mo:duration "186"; dcat:downloadUrl <https://archive.org/download/NosajThing-Us/10-nosaj_thing-us.mp3>.

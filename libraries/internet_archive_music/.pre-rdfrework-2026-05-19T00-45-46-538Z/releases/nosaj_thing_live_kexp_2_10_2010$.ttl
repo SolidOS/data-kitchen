@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:809916d9-d93c-4c55-a993-52947c21168a> a mo:Release;
+    dcterms:title "Nosaj Thing - Live @ KEXP 2/10/2010";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3aa>;
+    dcat:landingPage <https://archive.org/details/Nosaj_Thing_-_Live__KEXP_2102010-6030>;
+    mo:track <urn:uuid:fd686b66-1606-4310-a86b-eebce8977152>.
+<urn:uuid:fd686b66-1606-4310-a86b-eebce8977152> a mo:Track; dcterms:title "Nosaj Thing - Laptop Set (Live @ KEXP)"; mo:duration "560"; dcat:downloadUrl <https://archive.org/download/Nosaj_Thing_-_Live__KEXP_2102010-6030/Nosaj_Thing_-_Nosaj_Thing_-_Laptop_Set_Live__KEXP.mp3>.

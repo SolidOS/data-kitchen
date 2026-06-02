@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:93d89ecf-7b64-4e78-83b3-b6cd96c1d53e> a mo:Release;
+    dcterms:title "VA - The Top 100 Tracks Of 2016 [Bleep] (2016) (Opus ~128) [Only2]";
+    foaf:maker <urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3aa>;
+    dcat:landingPage <https://archive.org/details/va-the-top-100-tracks-of-2016-bleep-2016-opus-128>;
+    mo:track <urn:uuid:b846378c-a44f-4a15-95d1-cb7517faf7b7>.
+<urn:uuid:b846378c-a44f-4a15-95d1-cb7517faf7b7> a mo:Track; dcterms:title "Nosaj Thing - N R 3"; dcat:downloadUrl <https://archive.org/download/va-the-top-100-tracks-of-2016-bleep-2016-opus-128/Nosaj%20Thing%20-%20N%20R%203.opus>.

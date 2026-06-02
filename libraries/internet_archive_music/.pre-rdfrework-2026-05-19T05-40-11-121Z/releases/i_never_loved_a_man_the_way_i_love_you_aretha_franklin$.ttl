@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:11b21203-4e42-44f3-a1f8-1cee000e62fd> a mo:Release;
+    dcterms:title "I Never Loved A Man The Way I Love You- Aretha Franklin";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/inlamtwilyarethafranklin>;
+    mo:track <urn:uuid:478e8d42-d708-4232-a549-cba7ce9916b0>, <urn:uuid:93ab8259-d32d-40a1-8ee5-cf57cb08b844>, <urn:uuid:3478b5a0-c563-4371-875e-6628a9d97b8d>, <urn:uuid:870920e5-655b-487b-b202-a8ec38a9571a>, <urn:uuid:e404fd77-99d0-4edc-be4f-773a19ff7b62>.
+<urn:uuid:478e8d42-d708-4232-a549-cba7ce9916b0> a mo:Track; dcterms:title "A Change Is Gonna Come"; mo:duration "260"; dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/11%20A%20Change%20Is%20Gonna%20Come.mp3>.
+<urn:uuid:93ab8259-d32d-40a1-8ee5-cf57cb08b844> a mo:Track; dcterms:title "Do Right Woman - Do Right Man"; mo:duration "196"; dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/09%20Do%20Right%20Woman%20-%20Do%20Right%20Man.mp3>.
+<urn:uuid:3478b5a0-c563-4371-875e-6628a9d97b8d> a mo:Track; dcterms:title "Do Right Woman, Do Right Man [Stereo Version]"; mo:duration "194"; dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/14%20Do%20Right%20Woman%2C%20Do%20Right%20Man%20%5BSte.mp3>.
+<urn:uuid:870920e5-655b-487b-b202-a8ec38a9571a> a mo:Track; dcterms:title "Dr. Feelgood [Love Is a Serious Business]"; mo:duration "203"; dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/07%20Dr.%20Feelgood%20%5BLove%20Is%20a%20Serious%20B.mp3>.
+<urn:uuid:e404fd77-99d0-4edc-be4f-773a19ff7b62> a mo:Track; dcterms:title "Drown in My Own Tears"; mo:duration "247"; dcat:downloadUrl <https://archive.org/download/inlamtwilyarethafranklin/02%20Drown%20in%20My%20Own%20Tears.mp3>.

@@ -1,0 +1,19 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:c04a2c5c-d1db-453e-b6b0-5c97635e3123> a mo:Release;
+    dcterms:title "Madlib Medicine Show #2 - Flight To Brazil";
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a>;
+    dcat:landingPage <https://archive.org/details/madlib-medicine-show-2-flight-to-brazil-flac>;
+    mo:track <urn:uuid:588a8b06-04d3-4684-93dd-3f385b254e9d>, <urn:uuid:f2f9a89e-9725-43e5-bcb3-5b7a158f8425>, <urn:uuid:bc440454-2b79-4a36-abdc-1998dd184ef7>, <urn:uuid:9b71ef98-878d-44ea-97d1-257cd9860efd>, <urn:uuid:cae7d762-3fe8-4f04-8885-e1432d7aa91b>, <urn:uuid:1e7ea511-cf82-492f-8251-6964effdcce8>, <urn:uuid:6d677179-facb-4a18-83cd-249804678149>, <urn:uuid:7a3de22a-bdcd-458e-8cfa-5758816b9da2>, <urn:uuid:6aa6756d-2e64-482a-9192-14e647c41df3>.
+<urn:uuid:588a8b06-04d3-4684-93dd-3f385b254e9d> a mo:Track; dcterms:title "Flight To Brazil 1"; mo:duration "733"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/01%20-%20Rio%20de%20Janeiro.mp3>.
+<urn:uuid:f2f9a89e-9725-43e5-bcb3-5b7a158f8425> a mo:Track; dcterms:title "Flight To Brazil 2"; mo:duration "423"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/02%20-%20Sao%20Paulo.mp3>.
+<urn:uuid:bc440454-2b79-4a36-abdc-1998dd184ef7> a mo:Track; dcterms:title "Flight To Brazil 3"; mo:duration "494"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/03%20-%20Belo%20Horizonte.mp3>.
+<urn:uuid:9b71ef98-878d-44ea-97d1-257cd9860efd> a mo:Track; dcterms:title "Flight To Brazil 4"; mo:duration "342"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/04%20-%20Porto%20Alegre.mp3>.
+<urn:uuid:cae7d762-3fe8-4f04-8885-e1432d7aa91b> a mo:Track; dcterms:title "Flight To Brazil 5"; mo:duration "445"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/05%20-%20Salvador.mp3>.
+<urn:uuid:1e7ea511-cf82-492f-8251-6964effdcce8> a mo:Track; dcterms:title "Flight To Brazil 6"; mo:duration "764"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/06%20-%20Recife.mp3>.
+<urn:uuid:6d677179-facb-4a18-83cd-249804678149> a mo:Track; dcterms:title "Flight To Brazil 7"; mo:duration "670"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/07%20-%20Fortaleza.mp3>.
+<urn:uuid:7a3de22a-bdcd-458e-8cfa-5758816b9da2> a mo:Track; dcterms:title "Flight To Brazil 8"; mo:duration "572"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/08%20-%20Bras%C3%ADlia.mp3>.
+<urn:uuid:6aa6756d-2e64-482a-9192-14e647c41df3> a mo:Track; dcterms:title "Flight To Brazil 9"; mo:duration "334"; dcat:downloadUrl <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/09%20-%20Curitiba.mp3>.

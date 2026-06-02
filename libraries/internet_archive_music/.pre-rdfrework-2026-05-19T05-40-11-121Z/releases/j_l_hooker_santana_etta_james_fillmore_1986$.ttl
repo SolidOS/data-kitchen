@@ -1,0 +1,14 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:43b3b5df-3a4c-4a73-8ef1-df00978fd4e2> a mo:Release;
+    dcterms:title "J.L. Hooker, Santana & Etta James Fillmore 1986";
+    foaf:maker "Santana, Etta James & John Lee Hooker";
+    dcat:landingPage <https://archive.org/details/j.-l.-hooker-santana-etta-james-fillmore-86>;
+    mo:track <urn:uuid:32c788a4-e6fa-4ce7-ba06-5c2866fcaf7c>, <urn:uuid:8920c034-bd72-47de-a1fd-47085ef9c2b4>, <urn:uuid:746a2a34-7dbb-456c-b76f-f1416c774f5e>, <urn:uuid:8c8c6474-1aa4-4c50-b413-5c41c3f6104e>.
+<urn:uuid:32c788a4-e6fa-4ce7-ba06-5c2866fcaf7c> a mo:Track; dcterms:title "02 - Blue & Boogie Slow Jam Pt. 1"; mo:duration "432"; dcat:downloadUrl <https://archive.org/download/j.-l.-hooker-santana-etta-james-fillmore-86/02%20-%20Blue%20%26%20Boogie%20Slow%20Jam%20Pt.%201.mp3>.
+<urn:uuid:8920c034-bd72-47de-a1fd-47085ef9c2b4> a mo:Track; dcterms:title "03 - Something's Got a Hold of Me"; mo:duration "454"; dcat:downloadUrl <https://archive.org/download/j.-l.-hooker-santana-etta-james-fillmore-86/03%20-%20Something's%20Got%20a%20Hold%20of%20Me.mp3>.
+<urn:uuid:746a2a34-7dbb-456c-b76f-f1416c774f5e> a mo:Track; dcterms:title "04 - Tell Mama"; mo:duration "469"; dcat:downloadUrl <https://archive.org/download/j.-l.-hooker-santana-etta-james-fillmore-86/04%20-%20Tell%20Mama.mp3>.
+<urn:uuid:8c8c6474-1aa4-4c50-b413-5c41c3f6104e> a mo:Track; dcterms:title "05 - Blue & Boogie Slow Jam Pt. 2"; mo:duration "1282"; dcat:downloadUrl <https://archive.org/download/j.-l.-hooker-santana-etta-james-fillmore-86/05%20-%20Blue%20%26%20Boogie%20Slow%20Jam%20Pt.%202.mp3>.

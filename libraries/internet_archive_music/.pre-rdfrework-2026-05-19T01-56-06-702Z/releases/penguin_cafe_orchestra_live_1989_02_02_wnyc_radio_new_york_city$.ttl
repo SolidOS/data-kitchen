@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:d078ecd1-39f7-4d8c-af25-2938f0ecbd18> a mo:Release;
+    dcterms:title "Penguin Cafe Orchestra LIVE 1989-02-02 @WNYC Radio, New York City";
+    foaf:maker "Penguin Cafe Orchestra";
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra02021989>;
+    mo:track <urn:uuid:6c405e97-8020-46d0-a106-1c105900cc16>, <urn:uuid:10472ac5-ef96-44da-987d-a7a76cb8b241>, <urn:uuid:b647f376-3608-4029-befa-ea08277f242a>, <urn:uuid:dfdf4d62-da34-434f-823e-44f61682e2e4>, <urn:uuid:f719e64b-a816-4a95-bf7f-2ec0c58f5bce>.
+<urn:uuid:6c405e97-8020-46d0-a106-1c105900cc16> a mo:Track; dcterms:title "Chat 2"; mo:duration "275"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra02021989/04%20Chat%202.mp3>.
+<urn:uuid:10472ac5-ef96-44da-987d-a7a76cb8b241> a mo:Track; dcterms:title "Chat 3"; mo:duration "284"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra02021989/07%20Chat%203.mp3>.
+<urn:uuid:b647f376-3608-4029-befa-ea08277f242a> a mo:Track; dcterms:title "Chat 5 (Helen too)"; mo:duration "237"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra02021989/13%20Chat%205%20(Helen%20too).mp3>.
+<urn:uuid:dfdf4d62-da34-434f-823e-44f61682e2e4> a mo:Track; dcterms:title "From the Colonies"; mo:duration "191"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra02021989/03%20From%20the%20Colonies.mp3>.
+<urn:uuid:f719e64b-a816-4a95-bf7f-2ec0c58f5bce> a mo:Track; dcterms:title "Intro and Chat 1"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra02021989/01%20Intro%20and%20Chat%201.mp3>.

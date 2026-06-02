@@ -1,0 +1,22 @@
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#it> a mo:Release, dcat:Dataset;
+    dct:title "Bernie Worrell and the WOO Warriors Live at Wetlands on 1996-11-08";
+    dct:identifier "bwww1996-11-08.dsm6.flac16";
+    dct:isPartOf <../releases.ttl#it>;
+    dcat:landingPage <https://archive.org/details/bwww1996-11-08.dsm6.flac16>;
+    mo:track <#t01>, <#t02>;
+    foaf:maker <urn:uuid:8030c785-1793-421b-baa7-b03bee051a66>.
+<#t01> a mo:Track;
+    dct:title "volunteered slavery (mingus)";
+    dct:isPartOf <#it>;
+    mo:duration "776";
+    mo:item <https://archive.org/download/bwww1996-11-08.dsm6.flac16/bwww1996-11-08_dsm_d1t08.mp3>.
+<#t02> a mo:Track;
+    dct:title "inspiration in blue";
+    dct:isPartOf <#it>;
+    mo:duration "971";
+    mo:item <https://archive.org/download/bwww1996-11-08.dsm6.flac16/bwww1996-11-08_dsm_d1t03.mp3>.

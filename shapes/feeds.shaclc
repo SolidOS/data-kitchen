@@ -1,0 +1,15 @@
+# News-feeds shape — drives the rolodex editor over libraries/news/feeds.ttl.
+# One card per feed (rss:channel). All predicates are established terms:
+# dct:title, dcat:accessURL (the feed endpoint — RSS has no term for it),
+# dcat:theme -> a skos:Concept topic enumerated from the concepts in feeds.ttl.
+
+PREFIX dct:  <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rss:  <http://purl.org/rss/1.0/>
+PREFIX taxo: <http://purl.org/rss/1.0/modules/taxonomy/>
+
+shape <#FeedShape> -> rss:channel {
+    dct:title xsd:string [1..1] % sh:name "Title" % .
+    dcat:accessURL IRI [1..1] % sh:name "Feed URL" ; sh:description "The RSS / Atom feed endpoint." % .
+    dcat:theme taxo:topic [1..1] % sh:name "Topic" ; sh:description "Which news topic this feed belongs to." % .
+}

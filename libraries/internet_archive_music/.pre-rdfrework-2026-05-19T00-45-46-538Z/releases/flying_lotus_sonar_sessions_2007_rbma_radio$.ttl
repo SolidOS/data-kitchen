@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:449aae8d-7a63-4db8-83c4-0a12c33f5993> a mo:Release;
+    dcterms:title "Flying Lotus Sonar Sessions 2007, Rbma Radio";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/flying-lotus-sonar-sessions-2007-rbma-radio>;
+    mo:track <urn:uuid:d8c4ce85-8263-4044-81d7-74d01b44a8dc>.
+<urn:uuid:d8c4ce85-8263-4044-81d7-74d01b44a8dc> a mo:Track; dcterms:title "flying lotus - sonar sessions 2007, rbma radio"; mo:duration "3600"; dcat:downloadUrl <https://archive.org/download/flying-lotus-sonar-sessions-2007-rbma-radio/flying%20lotus%20-%20sonar%20sessions%202007%2C%20rbma%20radio.mp3>.

@@ -1,0 +1,157 @@
+BASE <http://example.org/ia-music-shapes#>
+
+PREFIX ex: <http://example.org/ia-music-shapes#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX mo: <http://purl.org/ontology/mo/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX schema: <http://schema.org/>
+PREFIX oa: <http://www.w3.org/ns/oa#>
+
+# Library shape model. Companion to claude/plans/vocab-migration-plan.md.
+#
+# A Release and a Playlist both present a set of tracks that the app
+# shows as an ordered tracklist — but they reach that ordering
+# differently and are deliberately DIFFERENT RDF structures, because
+# they are different things and one structure cannot honestly serve
+# both:
+#
+#   • Release  — mo:Release. Its tracks are an UNORDERED mo:track set;
+#     ordering is each track's intrinsic mo:track_number. A track sits
+#     at exactly one position on its one album, so no per-list slot is
+#     needed.
+#   • Playlist — schema:ItemList + schema:MusicPlaylist. Its tracks are
+#     an ORDERED schema:itemListElement → schema:ListItem sequence,
+#     each ListItem a per-occurrence slot carrying schema:position. A
+#     playlist needs slots: ordering, arbitrary per-list positions, and
+#     the same track possibly appearing more than once.
+#
+# The "a release ≈ a playlist" equivalence the app relies on is a
+# CODE-level abstraction (one parser yields a uniform ordered-track
+# array from either shape; one UI renders it) — NOT identical triples.
+# A mo:Track is the shared leaf: a Release OWNS its tracks (defined
+# in-document; mo:track + the dcterms:isPartOf back-link), a Playlist
+# only REFERENCES them (schema:item → the canonical Track IRI).
+#
+# STATUS:
+#   • Phase A shipped 2026-05-21 — Playlists use the shape below; the
+#     omp: namespace is retired (sourcePlaylist → dcterms:source,
+#     localData derived, hidePlaylist → oa:styleClass).
+#   • Phase B shipped 2026-05-21 — a mo:Track links its audio file(s)
+#     via mo:item (Music Ontology: a manifestation → the item holding
+#     its full content). Multi-valued, so a track can offer several
+#     formats. No mo:Signal node (the B1 decision — see the plan).
+
+# The genre scheme — genres.ttl#Music. dcat:themeTaxonomy on the
+# Catalog points here; concepts attach via skos:topConceptOf.
+shape ex:GenreSchemeShape -> skos:ConceptScheme {
+  skos:prefLabel xsd:string [1..1] ;
+}
+
+# A Genre is a SKOS concept AND an mo:Genre (linkable via mo:genre),
+# a top concept of the Music scheme.
+shape ex:GenreShape -> skos:Concept {
+  rdf:type [ sh:hasValue mo:Genre ] ;
+  skos:prefLabel xsd:string [1..1] ;
+  skos:topConceptOf @ex:GenreSchemeShape [0..1] ;
+}
+
+# A foaf:Agent — catalog artists (also mo:MusicArtist) and
+# converted-to-artist playlists. dcterms:source links a
+# converted-to-artist Agent to the Playlist that is its single source
+# of truth; its presence is also the "read albums/tracks from RDF, not
+# an archive.org search" signal.
+shape ex:AgentShape -> foaf:Agent {
+  foaf:name xsd:string [1..1] ;
+  mo:genre @ex:GenreShape [0..*] ;
+  dcat:landingPage IRI [0..1] ;
+  dcterms:source @ex:PlaylistShape [0..1] ;
+}
+
+# Catalog — every index <#it> (the library index, plus the
+# releases.ttl and playlists.ttl sub-catalogs). The DCAT edges below
+# ARE the loader spine. dcat:catalog nests sub-catalogs; dcat:dataset
+# → member Datasets (Releases / Playlists / agents.ttl#it);
+# dcat:themeTaxonomy → the genre ConceptScheme (top-level index only).
+shape ex:CatalogShape -> dcat:Catalog {
+  dcterms:title xsd:string [1..1] ;
+  dcat:catalog @ex:CatalogShape [0..*] ;
+  dcat:dataset IRI [0..*] ;
+  dcat:themeTaxonomy @ex:GenreSchemeShape [0..1] ;
+}
+
+# Release — a published album / concert / IA item: mo:Release (+
+# dcat:Dataset for catalog membership). Identity = its doc IRI (<#it>);
+# exactly one dcterms:identifier (the IA item id, the dedup key). Its
+# tracks are the UNORDERED mo:track set — ordering is each Track's
+# mo:track_number. dcterms:isPartOf → the releases sub-catalog is the
+# structural spine. A Release is NOT a schema:ItemList (see the header).
+shape ex:ReleaseShape -> mo:Release {
+  rdf:type [ sh:hasValue dcat:Dataset ] ;
+  dcterms:title xsd:string [1..1] ;
+  dcterms:identifier xsd:string [1..1] ;
+  dcterms:isPartOf @ex:CatalogShape [1..1] ;
+  foaf:maker @ex:AgentShape [0..*] ;
+  mo:genre @ex:GenreShape [0..*] ;
+  dcat:landingPage IRI [0..1] ;
+  dcterms:date xsd:string [0..1] ;
+  dcterms:rights xsd:string [0..1] ;
+  foaf:depiction IRI [0..*] ;
+  schema:ratingValue xsd:decimal [0..1] ;
+  rdfs:comment xsd:string [0..1] ;
+  mo:track @ex:TrackShape [1..*] ;
+}
+
+# Playlist — a curated track list: schema:ItemList (the ordered
+# collection) + schema:MusicPlaylist (the playlist facet) + dcat:Dataset
+# (catalog membership — what the loader spine follows). Membership is
+# the ordered schema:itemListElement → schema:ListItem sequence;
+# schema:itemListOrder fixes ascending-by-position. dcterms:isPartOf →
+# the playlists sub-catalog is the structural spine. foaf:maker here is
+# a literal curator NAME, not an Agent IRI. oa:styleClass "hidden"
+# marks a converted-to-artist playlist shown only as its linked artist.
+shape ex:PlaylistShape -> schema:MusicPlaylist {
+  rdf:type [ sh:hasValue schema:ItemList ] ;
+  rdf:type [ sh:hasValue dcat:Dataset ] ;
+  dcterms:title xsd:string [1..1] ;
+  dcterms:isPartOf @ex:CatalogShape [1..1] ;
+  schema:itemListOrder [ sh:hasValue schema:ItemListOrderAscending ] ;
+  foaf:maker xsd:string [0..1] ;
+  dcterms:description xsd:string [0..1] ;
+  oa:styleClass xsd:string [0..1] ;
+  schema:itemListElement @ex:ListItemShape [0..*] ;
+}
+
+# ListItem — one ordered slot in a Playlist, typed schema:ListItem
+# (hash IRIs <#eNN>). schema:position is 1-based and contiguous across
+# the playlist; schema:item → a mo:Track (a cross-document IRI into a
+# release file — playlists reference, never own, their tracks).
+shape ex:ListItemShape -> schema:ListItem {
+  schema:position xsd:integer [1..1] ;
+  schema:item @ex:TrackShape [1..1] ;
+}
+
+# Track — a mo:Track, defined in its Release document (<#tNN>).
+# dcterms:isPartOf → its owning Release is the home back-link (distinct
+# from playlist membership). mo:track_number is the intrinsic 1-based
+# position on that release. foaf:maker is the per-track artist
+# (features / Various-Artists); absent → the UI falls back to the
+# Release maker.
+#   The audio file(s) are linked via mo:item — the Music Ontology
+#   sub-property of mo:available_as meaning the item holds the FULL
+#   track; multi-valued, so a track can offer several formats.
+shape ex:TrackShape -> mo:Track {
+  dcterms:title xsd:string [1..1] ;
+  dcterms:isPartOf @ex:ReleaseShape [1..1] ;
+  foaf:maker @ex:AgentShape [0..*] ;
+  mo:track_number xsd:integer [0..1] ;
+  mo:duration xsd:decimal [0..1] ;
+  mo:bpm xsd:decimal [0..1] ;
+  schema:ratingValue xsd:decimal [0..1] ;
+  mo:item IRI [0..*] ;
+}

@@ -1,0 +1,23 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:cebcc3d6-cdc7-48b8-ba52-8c057c04be74>
+    a mo:Track;
+    dct:title
+        "Write This Down (Ft. The Notorious B.I.G., Ice Cube, Eazy-E, Snoop Dogg, N.W.A, Dr. Dre, DMX, Nipsey Hussle)";
+    mo:duration "798";
+    dcat:downloadUrl
+        <https://archive.org/download/2pac-thug-theory/01.%20Write%20This%20Down.mp3>.
+<urn:uuid:d2e8a8af-7dec-4d30-8fdf-a22ad4e0ccd4>
+    a mo:Release;
+    dct:title "2Pac - Thug Theory";
+    mo:track <urn:uuid:cebcc3d6-cdc7-48b8-ba52-8c057c04be74>;
+    dcat:landingPage det:2pac-thug-theory;
+    foaf:maker
+        "2Pac", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>,
+        <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>,
+        <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3>.

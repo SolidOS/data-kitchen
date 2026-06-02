@@ -1,0 +1,160 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "George Clinton and the P-Funk All Stars 1994-03-05 The Sting New Britain, CT" ;
+    dct:identifier "georgeclinton-and-the-p-funk-all-starsMedeirosMaster" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/georgeclinton-and-the-p-funk-all-starsMedeirosMaster> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15>, <#t16>, <#t17>, <#t18>, <#t19>, <#t20>, <#t21> ;
+    foaf:maker "George Clinton & The P-Funk All Stars" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "01 Intro >" ;
+    mo:duration "551" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/01%20Intro.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "02 P. Funk (Wants To Get Funked Up)*" ;
+    mo:duration "916" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/02%20P.%20Funk%20(Wants%20To%20Get%20Funked%20Up).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "03 Rhythm And Rhyme" ;
+    mo:duration "425" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/03%20Rhythm%20And%20Rhyme.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "05 Cosmic Slop" ;
+    mo:duration "617" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/05%20Cosmic%20Slop.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "07 Standing On The Verge Of Getting It On ->" ;
+    mo:duration "226" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/07%20Standing%20On%20The%20Verge%20Of%20Getting%20It%20On.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "09 Pumpin’ It Up ->" ;
+    mo:duration "349" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/09%20Pumpin%E2%80%99%20It%20Up.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "10 Medley*" ;
+    mo:duration "1458" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/10%20Medley.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "11 Give Up The Funk (Tear The Roof Off The Sucker) ->" ;
+    mo:duration "522" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/11%20Give%20Up%20The%20Funk%20(Tear%20The%20Roof%20Off%20The%20Sucker).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "12 Night Of The Thumpasorus Peoples ->" ;
+    mo:duration "266" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/12%20Night%20Of%20The%20Thumpasorus%20People.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "13 Promentalshitbackwashpsychosis Enema Squad (The Doo Doo Chasers)" ;
+    mo:duration "517" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/13%20Promentalshitbackwashpsychosis%20Enema%20Squad.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "15 U.S. Custom Coast Guard Dope Dog/Free Your Mind And Your Ass Will Follow ->" ;
+    mo:duration "374" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/15%20US%20Custom%20Coast%20Guard%20Dope%20Dog.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "17 Maggot Brain ->" ;
+    mo:duration "678" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/17%20Maggot%20Brain.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "18 //(Not Just) Knee Deep/Sentimental Journey/Won't You Come Fly" ;
+    mo:duration "1034" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/18%20(Not%20Just)%20Knee%20Deep.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "19 Atomic Dog** ->" ;
+    mo:duration "725" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/19%20Atomic%20Dog.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "20 Rhythm And Rhyme/Babblin' Kabbabie" ;
+    mo:duration "655" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/20%20Rhythm%20And%20Rhyme-Babblin_%20Kabbabie.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t16>
+    a mo:Track ;
+    dct:title "23 Flash Light***" ;
+    mo:duration "638" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/23%20Flash%20Light.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t17>
+    a mo:Track ;
+    dct:title "27 Mothership Connection (Star Child) ->" ;
+    mo:duration "319" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/27%20Mothership%20Connection%20(Star%20Child).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t18>
+    a mo:Track ;
+    dct:title "28 Party People" ;
+    mo:duration "767" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/28%20Party%20People.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t19>
+    a mo:Track ;
+    dct:title "29 Red Hot Mama ->" ;
+    mo:duration "279" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/29%20Red%20Hot%20Mama.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t20>
+    a mo:Track ;
+    dct:title "31 Free Your Mind And Your Ass Will Follow ->" ;
+    mo:duration "358" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/31%20Free%20Your%20Mind%20And%20Your%20Ass%20Will%20Follow.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t21>
+    a mo:Track ;
+    dct:title "35 What Is Soul?/Funky Dollar Bill^ ->" ;
+    mo:duration "400" ;
+    mo:item <https://archive.org/download/georgeclinton-and-the-p-funk-all-starsMedeirosMaster/35%20What%20Is%20Soul%20-%20Funky%20Dollar%20Bill.mp3> ;
+    dct:isPartOf <#it> .

@@ -1,0 +1,10 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:e352a2ea-9d74-40a9-a01c-b807caa5dfdf> a mo:Release;
+    dcterms:title "Jaylib - Rough Drafts (2003) Full Album | J Dilla Madlib | Mixed at 89 Hz | Mastered at 48khz | m4a";
+    dcat:landingPage <https://archive.org/details/jaylib-rough-drafts>;
+    mo:track <urn:uuid:bfe833dc-7693-4760-82bd-b640f713b632>.
+<urn:uuid:bfe833dc-7693-4760-82bd-b640f713b632> a mo:Track; dcterms:title "89hz+JAYLIB+-+THE+ROUGH+DRAFTS "; mo:duration "4136"; dcat:downloadUrl <https://archive.org/download/jaylib-rough-drafts/89hz%2BJAYLIB%2B-%2BTHE%2BROUGH%2BDRAFTS%20.m4a>.

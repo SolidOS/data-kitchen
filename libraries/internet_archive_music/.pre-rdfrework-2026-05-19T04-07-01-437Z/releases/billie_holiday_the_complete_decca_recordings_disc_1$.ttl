@@ -1,0 +1,25 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:a9c4056f-fdef-4b0b-b06d-e2030d1c603d> a mo:Release;
+    dcterms:title "Billie Holiday - The Complete Decca Recordings (Disc 1)";
+    foaf:maker <urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd>;
+    dcat:landingPage <https://archive.org/details/07-dont-explain-second-version>;
+    mo:track <urn:uuid:f43b7970-912b-47cb-9e5b-676188cc1b8f>, <urn:uuid:567468a3-45bf-4630-9939-b3f5b4fd6e43>, <urn:uuid:52effe3b-f969-4b8c-b96f-d38566ee6188>, <urn:uuid:664b230d-6a7c-4ba2-84d6-03b5f74a9cbf>, <urn:uuid:45ca311a-9ccd-4275-9788-760a7f64c515>, <urn:uuid:b0e58e5d-8705-4464-b752-169b37759f9f>, <urn:uuid:539cd571-6c48-43bb-98bb-b7459c0135ce>, <urn:uuid:43d069ae-b02f-4d5b-a5eb-b95acec8fdf2>, <urn:uuid:cdf55b34-7ceb-43df-9824-f2e478f259d8>, <urn:uuid:543735e0-5416-4a1b-b5d3-aaf9af53b895>, <urn:uuid:b90c6a07-1120-40c2-a93e-e69bef391646>, <urn:uuid:6664eee0-acb2-4ecb-8570-3ec639d3090d>, <urn:uuid:b45a9eb9-6f7e-422c-8819-9ca1dee21661>, <urn:uuid:8b5af52d-55af-499d-ba99-d394c0a0bfe2>, <urn:uuid:226f30e2-68c4-41a0-b78d-b7740c24a1c7>.
+<urn:uuid:f43b7970-912b-47cb-9e5b-676188cc1b8f> a mo:Track; dcterms:title "Baby, I Don't Cry Over You"; mo:duration "192"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/18%20Baby%2C%20I%20Don't%20Cry%20Over%20You.mp3>.
+<urn:uuid:567468a3-45bf-4630-9939-b3f5b4fd6e43> a mo:Track; dcterms:title "Baby, I Don't Cry Over You [#][Previously Unissued Alternate]"; mo:duration "193"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/17%20Baby%2C%20I%20Don't%20Cry%20Over%20You%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>.
+<urn:uuid:52effe3b-f969-4b8c-b96f-d38566ee6188> a mo:Track; dcterms:title "Big Stuff"; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/08%20Big%20Stuff.mp3>.
+<urn:uuid:664b230d-6a7c-4ba2-84d6-03b5f74a9cbf> a mo:Track; dcterms:title "Deep Song"; mo:duration "193"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/25%20Deep%20Song.mp3>.
+<urn:uuid:45ca311a-9ccd-4275-9788-760a7f64c515> a mo:Track; dcterms:title "Don't Explain [Second Version]"; mo:duration "204"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/07%20Don't%20Explain%20%5BSecond%20Version%5D.mp3>.
+<urn:uuid:b0e58e5d-8705-4464-b752-169b37759f9f> a mo:Track; dcterms:title "Good Morning Heartache"; mo:duration "188"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/11%20Good%20Morning%20Heartache.mp3>.
+<urn:uuid:539cd571-6c48-43bb-98bb-b7459c0135ce> a mo:Track; dcterms:title "Guilty"; mo:duration "194"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/24%20Guilty.mp3>.
+<urn:uuid:43d069ae-b02f-4d5b-a5eb-b95acec8fdf2> a mo:Track; dcterms:title "I'll Look Around"; mo:duration "195"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/20%20I'll%20Look%20Around.mp3>.
+<urn:uuid:cdf55b34-7ceb-43df-9824-f2e478f259d8> a mo:Track; dcterms:title "I'll Look Around [#][Previously Unissued Alternate]"; mo:duration "196"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/19%20I'll%20Look%20Around%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>.
+<urn:uuid:543735e0-5416-4a1b-b5d3-aaf9af53b895> a mo:Track; dcterms:title "Lover Man"; mo:duration "198"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/01%20Lover%20Man.mp3>.
+<urn:uuid:b90c6a07-1120-40c2-a93e-e69bef391646> a mo:Track; dcterms:title "No Good Man"; mo:duration "188"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/13%20No%20Good%20Man.mp3>.
+<urn:uuid:6664eee0-acb2-4ecb-8570-3ec639d3090d> a mo:Track; dcterms:title "No Good Man [#][Previously Unissued Alternate]"; mo:duration "204"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/12%20No%20Good%20Man%20%5B%23%5D%5BPreviously%20Unissued%20Alternate%5D.mp3>.
+<urn:uuid:b45a9eb9-6f7e-422c-8819-9ca1dee21661> a mo:Track; dcterms:title "No More [Alternate Take]"; mo:duration "186"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/03%20No%20More%20%5BAlternate%20Take%5D.mp3>.
+<urn:uuid:8b5af52d-55af-499d-ba99-d394c0a0bfe2> a mo:Track; dcterms:title "The Blues Are Brewin'"; mo:duration "183"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/21%20The%20Blues%20Are%20Brewin'.mp3>.
+<urn:uuid:226f30e2-68c4-41a0-b78d-b7740c24a1c7> a mo:Track; dcterms:title "What Is This Thing Called Love?"; mo:duration "187"; dcat:downloadUrl <https://archive.org/download/07-dont-explain-second-version/10%20What%20Is%20This%20Thing%20Called%20Love-.mp3>.

@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Aretha_Franklin> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Aretha Franklin";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://open-media-player.org/ns#hidePlaylist> "true";
+    dcterms:hasPart <urn:uuid:478e8d42-d708-4232-a549-cba7ce9916b0>, <urn:uuid:8647e185-7d1b-4885-bf0e-d233ec041acf>, <urn:uuid:e91bf172-7f06-4714-97d3-e487a23a7d0c>, <urn:uuid:130aa278-1273-4f5c-8469-a910791a8c75>, <urn:uuid:cfc21ddc-f235-4276-8ad3-8706902038e8>, <urn:uuid:5f074f79-39ec-48e2-86c2-3a91c66eee82>, <urn:uuid:6c8b8522-3b5a-4f2b-bd57-51ed1631c661>, <urn:uuid:6f47e920-7adb-4ae9-856a-a9a35a5c44fc>, <urn:uuid:ca814efb-91ac-4d69-86c1-eba2e62d3d2d>, <urn:uuid:04daa79c-9244-44a9-85a7-b2afabd0b87b>, <urn:uuid:93ab8259-d32d-40a1-8ee5-cf57cb08b844>, <urn:uuid:3478b5a0-c563-4371-875e-6628a9d97b8d>, <urn:uuid:870920e5-655b-487b-b202-a8ec38a9571a>, <urn:uuid:e404fd77-99d0-4edc-be4f-773a19ff7b62>, <urn:uuid:490079fb-b975-4c3e-b842-2d0f4d518108>, <urn:uuid:e7ee792f-33cf-4012-ba4d-46abfa367d63>, <urn:uuid:6a685d55-e173-4396-a7d1-e98531c6241e>, <urn:uuid:3431fdb6-0512-4358-9b9f-8cbadf8cac25>, <urn:uuid:94564c13-883c-4211-ae7c-7742e9a8cfc4>, <urn:uuid:f07d58d9-258a-4d31-b12f-e5ce40a3b2bd>, <urn:uuid:9eef038d-887f-4fd8-9538-285f1c994197>, <urn:uuid:8d3c638d-d785-427f-a8f2-84c9c32c718a>, <urn:uuid:fb67562c-7c7e-4df7-a439-8e0c38558c1f>, <urn:uuid:08665cda-9ffd-4aa5-83aa-44ca5b7c060c>, <urn:uuid:7076ddf0-175f-482c-9bee-d819d219ba6b>.

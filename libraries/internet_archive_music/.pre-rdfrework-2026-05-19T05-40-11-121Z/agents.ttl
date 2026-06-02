@@ -1,0 +1,692 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/agents.ttl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix genres: <http://localhost:3000/s/test/ia/libraries/internet_archive_music/genres.ttl#>.
+
+<urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3cc> a mo:MusicArtist;
+    foaf:name "Rumba de Fuego Kaua'i";
+    dcat:landingPage <https://archive.org/details/RumbaDeFuegoKauai>;
+    mo:genre genres:World.
+<urn:uuid:0cdad077-a022-40ac-9155-f7bb185eec12> a mo:MusicArtist;
+    foaf:name "Brave Combo";
+    dcat:landingPage <https://archive.org/details/BraveCombo>;
+    mo:genre genres:Unsorted.
+<urn:uuid:0931c941-6679-4aa1-a957-d42e0808484f> a mo:MusicArtist;
+    foaf:name "Bernie Worrell Orchestra";
+    dcat:landingPage <https://archive.org/details/BernieWorrellOrchestra>;
+    mo:genre genres:Funk.
+<urn:uuid:84beb57d-4b4a-4df9-900e-a63bbc29fbdc> a mo:MusicArtist;
+    foaf:name "The Rave Tapes";
+    dcat:landingPage <https://archive.org/details/ravetapes>;
+    mo:genre genres:Unsorted.
+<urn:uuid:5e6099a5-8727-47b3-b032-2440d23c8b45> a mo:MusicArtist;
+    foaf:name "HipHop Mixtapes";
+    dcat:landingPage <https://archive.org/details/hiphopmixtapes>;
+    mo:genre genres:Hip_Hop.
+<urn:uuid:b3b1a93b-4f38-4390-b2d8-dcb12db383ca> a mo:MusicArtist;
+    foaf:name "Jazz Mandolin Project";
+    dcat:landingPage <https://archive.org/details/JazzMandolinProject>;
+    mo:genre genres:Jazz.
+<urn:uuid:1b4efb2f-e571-446b-965f-e3d999bb44dc> a mo:MusicArtist;
+    foaf:name "Was (Not Was)";
+    dcat:landingPage <https://archive.org/details/WasNotWas>;
+    mo:genre genres:Funk.
+<urn:uuid:ce3a8e1e-45ea-48e2-bd61-7cf38185ed75> a mo:MusicArtist;
+    foaf:name "Chicago Afrobeat Project";
+    dcat:landingPage <https://archive.org/details/ChicagoAfrobeatProject>;
+    mo:genre genres:Funk.
+<urn:uuid:0400544c-4175-45ea-a5d0-e1e15feea3aa> a mo:MusicArtist;
+    foaf:name "Nosaj Thing";
+    dcat:landingPage <https://archive.org/search?tab=all&query=Nosaj+Thing&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> true;
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Nosaj_Thing>.
+<urn:uuid:8a78cb51-2ec3-4785-9ff9-fa5f4d9a749e> a mo:MusicArtist;
+    foaf:name "The Motet";
+    dcat:landingPage <https://archive.org/details/TheMotet>;
+    mo:genre genres:Indie.
+<urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1> a mo:MusicArtist;
+    foaf:name "Animal Collective";
+    dcat:landingPage <https://archive.org/details/AnimalCollective>;
+    mo:genre genres:Indie;
+    <http://open-media-player.org/ns#localData> true;
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Animal_Collective>.
+<urn:uuid:7a4257ca-fd8c-4010-9e46-b307cc43af66> a mo:MusicArtist;
+    foaf:name "Autechre";
+    dcat:landingPage <https://archive.org/details/Autechre>;
+    mo:genre genres:Electronica.
+<urn:uuid:437e1539-d05d-4548-a9af-0e111a5945a6> a mo:MusicArtist;
+    foaf:name "Lost Children Netlabel";
+    dcat:landingPage <https://archive.org/details/lost_children>;
+    mo:genre genres:Electronica.
+<urn:uuid:d4393e9c-c849-406f-92c1-3afd5621e55f> a mo:MusicArtist;
+    foaf:name "The Chillout Zone";
+    dcat:landingPage <https://archive.org/details/chilloutzonefm>;
+    mo:genre genres:Electronica.
+<urn:uuid:840ea829-a6f9-4a51-8f3a-caa2956d5460> a mo:MusicArtist;
+    foaf:name "Drone Lab";
+    dcat:landingPage <https://archive.org/details/podcast_dronelab>;
+    mo:genre genres:Electronica.
+<urn:uuid:4a523bb6-8998-400c-8ddd-0759bb5d0130> a mo:MusicArtist;
+    foaf:name "Gamelan Mitra Kusuma";
+    dcat:landingPage <https://archive.org/details/GamelanMitraKusuma>;
+    mo:genre genres:World.
+<urn:uuid:927a8936-75f5-4f7f-9c48-a016a98641c4> a mo:MusicArtist;
+    foaf:name "Alan Lomax Kentucky Recordings";
+    dcat:landingPage <https://archive.org/details/lomaxky>;
+    mo:genre genres:World.
+<urn:uuid:ba0adc7d-d1df-4c4b-ae82-6a018242b2c6> a mo:MusicArtist;
+    foaf:name "Arab and Andalusian Music";
+    dcat:landingPage <https://archive.org/details/arabandalusian>;
+    mo:genre genres:World.
+<urn:uuid:ee879ec1-4058-4752-8019-2b214f2c9267> a mo:MusicArtist;
+    foaf:name "Bela Fleck and the Flecktones";
+    dcat:landingPage <https://archive.org/details/BelaFleckandtheFlecktones>;
+    mo:genre genres:World.
+<urn:uuid:7be7ebbc-4d2f-4b94-b2e9-821d826f9193> a mo:MusicArtist;
+    foaf:name "Morroccan Folk Songs";
+    dcat:landingPage <https://archive.org/details/settatbladi>;
+    mo:genre genres:World.
+<urn:uuid:46490198-ff96-4f33-9b07-a3633daa96f8> a mo:MusicArtist;
+    foaf:name "Naryan Padmanabha";
+    dcat:landingPage <https://archive.org/details/NaryanPadmanabha>;
+    mo:genre genres:World.
+<urn:uuid:24f06c8b-3bfd-49f6-bb1d-67468984b40e> a mo:MusicArtist;
+    foaf:name "Red Baraat";
+    dcat:landingPage <https://archive.org/details/RedBaraat>;
+    mo:genre genres:World.
+<urn:uuid:6973a0ff-9e41-4aeb-ae77-d2e2b536bb63> a mo:MusicArtist;
+    foaf:name "Sierra Leone's Refugee All Stars";
+    dcat:landingPage <https://archive.org/details/SierraLeonesRefugeeAllStars>;
+    mo:genre genres:World.
+<urn:uuid:3c267ad1-4971-4664-9c4b-5e789a23b18c> a mo:MusicArtist;
+    foaf:name "Toubab Krewe";
+    dcat:landingPage <https://archive.org/details/ToubabKrewe>;
+    mo:genre genres:World.
+<urn:uuid:3013561a-fa9c-4beb-9bb0-c3f8b5800ba4> a mo:MusicArtist;
+    foaf:name "Toussaint Liberator and Buru Style";
+    dcat:landingPage <https://archive.org/details/ToussaintLiberatorandBuruStyle>;
+    mo:genre genres:World.
+<urn:uuid:0ae2a425-0762-4760-bb81-2c875830faea> a mo:MusicArtist;
+    foaf:name "Fareed Haque Group";
+    dcat:landingPage <https://archive.org/details/FareedHaqueGroup>;
+    mo:genre genres:Jazz.
+<urn:uuid:e424f4d4-dab3-4309-a066-eadc0a5cdbe4> a mo:MusicArtist;
+    foaf:name "Goran Ivanovic [Group]";
+    dcat:landingPage <https://archive.org/details/GoranIvanovicGroup>;
+    mo:genre genres:Jazz.
+<urn:uuid:9b0d1575-a48e-4ec2-ae71-1981063185a2> a mo:MusicArtist;
+    foaf:name "Goran Ivanovic and Fareed Haque";
+    dcat:landingPage <https://archive.org/details/GoranIvanovicandFareedHaque>;
+    mo:genre genres:Jazz.
+<urn:uuid:736c4c35-9b9f-43ce-9d27-921c1d44d76c> a mo:MusicArtist;
+    foaf:name "Dirty Dozen Brass Band";
+    dcat:landingPage <https://archive.org/details/DirtyDozenBrassBand>;
+    mo:genre genres:Jazz.
+<urn:uuid:d03d9db6-c048-48d7-8e22-4e5d3bcbca53> a mo:MusicArtist;
+    foaf:name "MarchFourth";
+    dcat:landingPage <https://archive.org/details/MarchFourth>;
+    mo:genre genres:Jazz.
+<urn:uuid:2239e182-a161-42d8-a8be-aa75e33ab767> a mo:MusicArtist;
+    foaf:name "The Andreas Kapsalis And Goran Ivanovic Guitar Duo";
+    dcat:landingPage <https://archive.org/details/TheAndreasKapsalisAndGoranIvanovicGuitarDuo>;
+    mo:genre genres:Jazz.
+<urn:uuid:eb6a7e6d-729b-49b0-890f-b9869c8aa6b9> a mo:MusicArtist;
+    foaf:name "The Andreas Kapsalis Trio";
+    dcat:landingPage <https://archive.org/details/TheAndreasKapsalisTrio>;
+    mo:genre genres:Jazz.
+<urn:uuid:4adb2375-69c0-4171-a0e9-d937d1014086> a mo:MusicArtist;
+    foaf:name "Wayne Horvitz";
+    dcat:landingPage <https://archive.org/details/WayneHorvitz>;
+    mo:genre genres:Jazz.
+<urn:uuid:4664a952-28f9-4c82-b9e8-28a5d6483841> a mo:MusicArtist;
+    foaf:name "Pato Banton";
+    dcat:landingPage <https://archive.org/details/PatoBanton>;
+    mo:genre genres:Dub.
+<urn:uuid:b5395296-a333-48fe-8da0-465dbe3360a5> a mo:MusicArtist;
+    foaf:name "Jahman Brahman";
+    dcat:landingPage <https://archive.org/details/JahmanBrahman>;
+    mo:genre genres:Dub.
+<urn:uuid:6468cceb-379e-472b-b5de-99aecef83389> a mo:MusicArtist;
+    foaf:name "Culver City Dub Collective";
+    dcat:landingPage <https://archive.org/details/CulverCityDubCollective>;
+    mo:genre genres:Dub.
+<urn:uuid:55bc3e3f-e354-4b2b-9bb1-800011d26d00> a mo:MusicArtist;
+    foaf:name "Dale and the ZDubs";
+    dcat:landingPage <https://archive.org/details/DaleAndTheZDubs>;
+    mo:genre genres:Dub.
+<urn:uuid:01115880-d316-4ebf-9d5d-245329ac86fc> a mo:MusicArtist;
+    foaf:name "Dub Apocalypse";
+    dcat:landingPage <https://archive.org/details/DubApocalypse>;
+    mo:genre genres:Dub.
+<urn:uuid:4a99ca30-f4f5-4ebf-af94-60c3bf22d356> a mo:MusicArtist;
+    foaf:name "Dub is a Weapon";
+    dcat:landingPage <https://archive.org/details/DubisaWeapon>;
+    mo:genre genres:Dub.
+<urn:uuid:3d9cd5be-ca85-4fc6-a04e-fff26d01b4cf> a mo:MusicArtist;
+    foaf:name "Dubconscious";
+    dcat:landingPage <https://archive.org/details/Dubconscious>;
+    mo:genre genres:Dub.
+<urn:uuid:cfdea461-1441-4afd-9300-c40c7d10ae7b> a mo:MusicArtist;
+    foaf:name "Groundation";
+    dcat:landingPage <https://archive.org/details/Groundation>;
+    mo:genre genres:Dub.
+<urn:uuid:bb908dd0-cb8e-4d34-b495-eb5bcbaf63a9> a mo:MusicArtist;
+    foaf:name "Guvna Dub Sessions";
+    dcat:landingPage <https://archive.org/details/GuvnaDubSessions>;
+    mo:genre genres:Dub.
+<urn:uuid:c4299cd1-54db-4e50-a508-fedae7f3c680> a mo:MusicArtist;
+    foaf:name "Roots In Volution";
+    dcat:landingPage <https://archive.org/details/RootsInVolution>;
+    mo:genre genres:Dub.
+<urn:uuid:a91eab56-82c7-46fc-a53a-3f50958ec836> a mo:MusicArtist;
+    foaf:name "Yellow Dubmarine";
+    dcat:landingPage <https://archive.org/details/YellowDubmarine>;
+    mo:genre genres:Dub.
+<urn:uuid:b69f05e7-2236-4897-897f-d58abb385353> a mo:MusicArtist;
+    foaf:name "Jah Works";
+    dcat:landingPage <https://archive.org/details/JahWorks>;
+    mo:genre genres:Dub.
+<urn:uuid:79b2810f-e77d-4e4b-9b36-a94fe88ef9d7> a mo:MusicArtist;
+    foaf:name "Matisyahu";
+    dcat:landingPage <https://archive.org/details/Matisyahu>;
+    mo:genre genres:Dub.
+<urn:uuid:d5c419cf-8257-45fd-9c3d-bf3b0c0549bc> a mo:MusicArtist;
+    foaf:name "Alejandro Escovedo";
+    dcat:landingPage <https://archive.org/details/AlejandroEscovedo>;
+    mo:genre genres:Indie.
+<urn:uuid:027198c8-85ab-45d2-9c59-098c3e5576b0> a mo:MusicArtist;
+    foaf:name "Banyan";
+    dcat:landingPage <https://archive.org/details/BanyanMusic>;
+    mo:genre genres:Indie.
+<urn:uuid:fd321c0e-a2ea-44de-921b-7004805663cf> a mo:MusicArtist;
+    foaf:name "Big Head Todd and the Monsters";
+    dcat:landingPage <https://archive.org/details/BigHeadToddandtheMonsters>;
+    mo:genre genres:Indie.
+<urn:uuid:1b1e8d31-6341-4956-b156-34ff26425bdc> a mo:MusicArtist;
+    foaf:name "Billy Bragg";
+    dcat:landingPage <https://archive.org/details/BillyBragg>;
+    mo:genre genres:Indie.
+<urn:uuid:096eb543-e4e6-4c68-ad0d-6dd2c3b1e572> a mo:MusicArtist;
+    foaf:name "Black Heart Procession";
+    dcat:landingPage <https://archive.org/details/BlackHeartProcession>;
+    mo:genre genres:Indie.
+<urn:uuid:52f2cb03-7d01-478a-a7a7-dd0db7916989> a mo:MusicArtist;
+    foaf:name "Blitzen Trapper";
+    dcat:landingPage <https://archive.org/details/BlitzenTrapper>;
+    mo:genre genres:Indie.
+<urn:uuid:74af8c17-52a7-4826-93de-b475ac785e66> a mo:MusicArtist;
+    foaf:name "Blues Traveler";
+    dcat:landingPage <https://archive.org/details/BluesTraveler>;
+    mo:genre genres:Indie.
+<urn:uuid:31be005e-b43e-4e88-9cf3-7cc328e49c85> a mo:MusicArtist;
+    foaf:name "Buckethead";
+    dcat:landingPage <https://archive.org/details/Buckethead>;
+    mo:genre genres:Indie.
+<urn:uuid:0488ce51-f91f-4ee9-be60-a206d3d2ce99> a mo:MusicArtist;
+    foaf:name "Butthole Surfers";
+    dcat:landingPage <https://archive.org/details/ButtholeSurfers>;
+    mo:genre genres:Indie.
+<urn:uuid:8740bb82-c502-4d40-90bc-3f9c032c155d> a mo:MusicArtist;
+    foaf:name "Calexico";
+    dcat:landingPage <https://archive.org/details/Calexico>;
+    mo:genre genres:Indie.
+<urn:uuid:17e1d780-dfca-49f2-ad49-0d02be2b84b0> a mo:MusicArtist;
+    foaf:name "Camper Van Beethoven";
+    dcat:landingPage <https://archive.org/details/CamperVanBeethoven>;
+    mo:genre genres:Indie.
+<urn:uuid:94473369-c146-407d-a08d-1bde0090ecde> a mo:MusicArtist;
+    foaf:name "Cowboy Junkies";
+    dcat:landingPage <https://archive.org/details/CowboyJunkies>;
+    mo:genre genres:Indie.
+<urn:uuid:9122e7d7-0a55-47e1-bc6d-25d1f55177bc> a mo:MusicArtist;
+    foaf:name "Death Cab for Cutie";
+    dcat:landingPage <https://archive.org/details/DeathCabforCutie>;
+    mo:genre genres:Indie.
+<urn:uuid:ccd6df2c-2aff-45c3-ab08-7b5a66194650> a mo:MusicArtist;
+    foaf:name "Edie Brickell and the New Bohemians";
+    dcat:landingPage <https://archive.org/details/EdieBrickellandNewBohemians>;
+    mo:genre genres:Indie.
+<urn:uuid:f000d0c3-dc2c-4da5-89b0-f89feb6f9fa5> a mo:MusicArtist;
+    foaf:name "Godspeed You Black Emperor!";
+    dcat:landingPage <https://archive.org/details/GodspeedYouBlackEmperor>;
+    mo:genre genres:Indie.
+<urn:uuid:89929efe-5881-413a-a65a-682841dd87c4> a mo:MusicArtist;
+    foaf:name "Low";
+    dcat:landingPage <https://archive.org/details/LowMusic>;
+    mo:genre genres:Indie.
+<urn:uuid:028c0852-877f-4654-86ae-a9607019c072> a mo:MusicArtist;
+    foaf:name "Lydia Lunch";
+    dcat:landingPage <https://archive.org/details/LydiaLunch>;
+    mo:genre genres:Indie.
+<urn:uuid:6af901df-3486-4ab3-b6ec-800ace6a5975> a mo:MusicArtist;
+    foaf:name "Michael Franti and Spearhead";
+    dcat:landingPage <https://archive.org/details/MichaelFrantiandSpearhead>;
+    mo:genre genres:Indie.
+<urn:uuid:a91d968c-7f97-4d8e-8b0e-a2541c1a2af3> a mo:MusicArtist;
+    foaf:name "Papadosio";
+    dcat:landingPage <https://archive.org/details/Papadosio>;
+    mo:genre genres:Indie.
+<urn:uuid:c00f7daa-9926-42ae-9434-384adb3570b5> a mo:MusicArtist;
+    foaf:name "Poi Dog Pondering";
+    dcat:landingPage <https://archive.org/details/PoiDogPondering>;
+    mo:genre genres:Indie.
+<urn:uuid:ca8c9c7c-dd26-4e36-bac5-38b535a3e245> a mo:MusicArtist;
+    foaf:name "Robyn Hitchcock";
+    dcat:landingPage <https://archive.org/details/RobynHitchcock>;
+    mo:genre genres:Indie.
+<urn:uuid:231dc5b9-1980-4f30-84d1-4f75299db5f2> a mo:MusicArtist;
+    foaf:name "Smashing Pumpkins";
+    dcat:landingPage <https://archive.org/details/SmashingPumpkins>;
+    mo:genre genres:Indie.
+<urn:uuid:5dc916cf-a57b-4b7a-8c2f-3837b1dd0e60> a mo:MusicArtist;
+    foaf:name "The Decemberists";
+    dcat:landingPage <https://archive.org/details/TheDecemberists>;
+    mo:genre genres:Indie.
+<urn:uuid:54f57b6e-1a8e-44ca-9080-b4e8791707ff> a mo:MusicArtist;
+    foaf:name "Toad The Wet Sprocket";
+    dcat:landingPage <https://archive.org/details/ToadTheWetSprocket>;
+    mo:genre genres:Indie.
+<urn:uuid:8a09e068-d6dc-43aa-bd37-d92f9f41b883> a mo:MusicArtist;
+    foaf:name "Tortoise";
+    dcat:landingPage <https://archive.org/details/Tortoise>;
+    mo:genre genres:Indie.
+<urn:uuid:3ac51b1f-752d-421c-85ef-6fc1b595cf67> a mo:MusicArtist;
+    foaf:name "Turkuaz";
+    dcat:landingPage <https://archive.org/details/Turkuaz>;
+    mo:genre genres:Indie.
+<urn:uuid:fcba2f0f-f434-44ad-a587-04f6e051c8e8> a mo:MusicArtist;
+    foaf:name "Bernie Worrell";
+    dcat:landingPage <https://archive.org/details/BernieWorrell>;
+    mo:genre genres:Funk.
+<urn:uuid:8030c785-1793-421b-baa7-b03bee051a66> a mo:MusicArtist;
+    foaf:name "Bernie Worrell and the WOO Warriors";
+    dcat:landingPage <https://archive.org/details/BernieWorrellandtheWOOWarriors>;
+    mo:genre genres:Funk.
+<urn:uuid:06c0e095-c881-43a2-8581-7a9255acf48a> a mo:MusicArtist;
+    foaf:name "Denver Funk Mob";
+    dcat:landingPage <https://archive.org/details/DenverFunkMob>;
+    mo:genre genres:Funk.
+<urn:uuid:3ffd6146-0d3d-4963-b11d-056941c7d8ba> a mo:MusicArtist;
+    foaf:name "Global Funk";
+    dcat:landingPage <https://archive.org/details/GlobalFunk>;
+    mo:genre genres:Funk.
+<urn:uuid:3493cf86-7cf5-46e3-ac45-25a05fbd51e1> a mo:MusicArtist;
+    foaf:name "Robert Randolph & the Family Band";
+    dcat:landingPage <https://archive.org/details/RobertRandolphandtheFamilyBand>;
+    mo:genre genres:Funk.
+<urn:uuid:31cf16ca-247e-45ac-848d-a82b1861c472> a mo:MusicArtist;
+    foaf:name "The Mothership Connection";
+    dcat:landingPage <https://archive.org/details/TheMothershipConnection>;
+    mo:genre genres:Funk.
+<urn:uuid:30769f1b-04ab-4f23-af5a-feb2aea8d4fa> a mo:MusicArtist;
+    foaf:name "Tom Tom Club";
+    dcat:landingPage <https://archive.org/details/TomTomClub>;
+    mo:genre genres:Funk.
+<urn:uuid:8dddacbf-8078-4c12-9112-5a6d8eead141> a mo:MusicArtist;
+    foaf:name "James Brown Dance Party";
+    dcat:landingPage <https://archive.org/details/JamesBrownDanceParty>;
+    mo:genre genres:Funk.
+<urn:uuid:9a7707ce-4734-4d88-823f-66c4ebf0722a> a mo:MusicArtist;
+    foaf:name "New York Funk Exchange";
+    dcat:landingPage <https://archive.org/details/NewYorkFunkExchange>;
+    mo:genre genres:Funk.
+<urn:uuid:c1288464-cd60-4491-a58f-5a12f847ab4e> a mo:MusicArtist;
+    foaf:name "Country Joe McDonald";
+    dcat:landingPage <https://archive.org/details/CountryJoeMcDonald>;
+    mo:genre genres:Sixties.
+<urn:uuid:f4deacfb-7eb2-4568-8d05-08d94c354e8a> a mo:MusicArtist;
+    foaf:name "Garcia Birthday Band";
+    dcat:landingPage <https://archive.org/details/GarciaBirthdayBand>;
+    mo:genre genres:Sixties.
+<urn:uuid:0bd4a5e5-a067-41f6-b62e-8e5e03b28739> a mo:MusicArtist;
+    foaf:name "Grateful Dead";
+    dcat:landingPage <https://archive.org/details/GratefulDead>;
+    mo:genre genres:Sixties.
+<urn:uuid:9e37222b-709d-4df4-95bf-f85452c6fea6> a mo:MusicArtist;
+    foaf:name "Jefferson Starship";
+    dcat:landingPage <https://archive.org/details/JeffersonStarship>;
+    mo:genre genres:Sixties.
+<urn:uuid:7d50f240-c665-4b4f-b6d5-475a6f412160> a mo:MusicArtist;
+    foaf:name "Mickey Hart Band";
+    dcat:landingPage <https://archive.org/details/MickeyHartBand>;
+    mo:genre genres:Sixties.
+<urn:uuid:100de342-5c04-4afb-9fde-d34db47192f0> a mo:MusicArtist;
+    foaf:name "New Riders of the Purple Sage";
+    dcat:landingPage <https://archive.org/details/NewRidersofthePurpleSage>;
+    mo:genre genres:Sixties.
+<urn:uuid:452404ff-f27a-4fc3-b27b-e02d4d098cfd> a mo:MusicArtist;
+    foaf:name "String Cheese Incident";
+    dcat:landingPage <https://archive.org/details/StringCheeseIncident>;
+    mo:genre genres:Sixties.
+<urn:uuid:c1f59a85-2af2-41c5-a65c-0b227ba25b5a> a mo:MusicArtist;
+    foaf:name "The DNA Lounge";
+    dcat:landingPage <https://archive.org/details/dnalounge>;
+    mo:genre genres:Unsorted.
+<urn:uuid:5e6099a5-8727-47b3-b032-2440d23c8b45a> a mo:MusicArtist;
+    foaf:name "HipHop Radio Archive";
+    dcat:landingPage <https://archive.org/details/hiphopradioarchive>;
+    mo:genre genres:Hip_Hop.
+<urn:uuid:5e6099a5-8727-47b3-b032-2440d23c8b45b> a mo:MusicArtist;
+    foaf:name "Spanish Speaking Hip Hop";
+    dcat:landingPage <https://archive.org/details/spanish-speaking-hip-hop>;
+    mo:genre genres:Hip_Hop.
+<urn:uuid:9bfddf21-9aa6-4104-9708-5942a29b21dd> a mo:MusicArtist;
+    foaf:name "Bass Time Continuum";
+    dcat:landingPage <https://archive.org/details/BassTimeContinuum>;
+    mo:genre genres:Unsorted.
+<urn:uuid:cbe2ed70-eccf-4afd-bfce-db8b2eaf7591> a mo:MusicArtist;
+    foaf:name "Afrissippi";
+    dcat:landingPage <https://archive.org/details/Afrissippi>;
+    mo:genre genres:World.
+<urn:uuid:d55266c4-4108-4a4e-8841-181d3ca146c7> a mo:MusicArtist;
+    foaf:name "AfroMassive";
+    dcat:landingPage <https://archive.org/details/AfroMassive>;
+    mo:genre genres:Unsorted.
+<urn:uuid:c20ac6ea-ef8a-4d0e-bcaa-0cb6f4cffeb0> a mo:MusicArtist;
+    foaf:name "Akashic Record";
+    dcat:landingPage <https://archive.org/details/AkashicRecord>;
+    mo:genre genres:Unsorted.
+<urn:uuid:d87965ca-8147-4ec0-a806-d020f327a4ab> a mo:MusicArtist;
+    foaf:name "Ali Baba's Tahini";
+    dcat:landingPage <https://archive.org/details/AliBabasTahini>;
+    mo:genre genres:Unsorted.
+<urn:uuid:739533f1-7165-47d6-b2cd-c9a1bd40add6> a mo:MusicArtist;
+    foaf:name "Ancient Harmony";
+    dcat:landingPage <https://archive.org/details/AncientHarmony>;
+    mo:genre genres:Unsorted.
+<urn:uuid:f762decc-6abd-4fc1-ab2b-b77cadb7f7e0> a mo:MusicArtist;
+    foaf:name "Balkun Brothers";
+    dcat:landingPage <https://archive.org/details/BalkunBrothers>;
+    mo:genre genres:Unsorted.
+<urn:uuid:f5f3bd50-06e4-4890-8426-fe3cc4776f29> a mo:MusicArtist;
+    foaf:name "Barika";
+    dcat:landingPage <https://archive.org/details/Barika>;
+    mo:genre genres:Unsorted.
+<urn:uuid:b610cc74-a91e-4fde-9c9c-066e848b962d> a mo:MusicArtist;
+    foaf:name "Beirut";
+    dcat:landingPage <https://archive.org/details/Beirut>;
+    mo:genre genres:Unsorted.
+<urn:uuid:63d48ce6-8e73-4090-9008-313fed77ab45> a mo:MusicArtist;
+    foaf:name "Bemsha";
+    dcat:landingPage <https://archive.org/details/Bemsha>;
+    mo:genre genres:Unsorted.
+<urn:uuid:c86b6224-cae0-4442-a40e-c27d4a357c1b> a mo:MusicArtist;
+    foaf:name "Betsy Franck";
+    dcat:landingPage <https://archive.org/details/BetsyFranck>;
+    mo:genre genres:Unsorted.
+<urn:uuid:6e87883a-62f4-49e9-9dc9-f7aa12bf9781> a mo:MusicArtist;
+    foaf:name "Big Leg Emma";
+    dcat:landingPage <https://archive.org/details/BigLegEmma>;
+    mo:genre genres:Unsorted.
+<urn:uuid:143c51f8-cf6d-40bc-a72b-9a7193d2defb> a mo:MusicArtist;
+    foaf:name "Bimbotown Orchestra";
+    dcat:landingPage <https://archive.org/details/BimbotownOrchestra>;
+    mo:genre genres:Unsorted.
+<urn:uuid:1eb59ba7-a4fd-43a0-9071-79cce5251435> a mo:MusicArtist;
+    foaf:name "Blue Funk";
+    dcat:landingPage <https://archive.org/details/BlueFunk>;
+    mo:genre genres:Unsorted.
+<urn:uuid:ecff80a7-ef84-4606-a8f3-d01c67559b99> a mo:MusicArtist;
+    foaf:name "Bodega";
+    dcat:landingPage <https://archive.org/details/Bodega>;
+    mo:genre genres:Unsorted.
+<urn:uuid:51f4ee63-5244-49c9-89c7-804c8d190b85> a mo:MusicArtist;
+    foaf:name "Bonerama";
+    dcat:landingPage <https://archive.org/details/Bonerama>;
+    mo:genre genres:Unsorted.
+<urn:uuid:7783e115-0f77-4a73-bd77-a3f9d6d06d1e> a mo:MusicArtist;
+    foaf:name "Borboletta";
+    dcat:landingPage <https://archive.org/details/Borboletta>;
+    mo:genre genres:Unsorted.
+<urn:uuid:cd119dfb-6a69-4d3f-addc-af4113693d96> a mo:MusicArtist;
+    foaf:name "Carrie Rodriguez";
+    dcat:landingPage <https://archive.org/details/CarrieRodriguez>;
+    mo:genre genres:Unsorted.
+<urn:uuid:f9ae6155-1271-472f-8399-2ec0da90645f> a mo:MusicArtist;
+    foaf:name "Chachuba";
+    dcat:landingPage <https://archive.org/details/Chachuba>;
+    mo:genre genres:Unsorted.
+<urn:uuid:7b43a807-f9b8-4339-ba7f-a5d2f91058c8> a mo:MusicArtist;
+    foaf:name "Cindy Woolf";
+    dcat:landingPage <https://archive.org/details/CindyWoolf>;
+    mo:genre genres:Unsorted.
+<urn:uuid:310ae440-c9de-4305-8694-c5b4cbcd4f0c> a mo:MusicArtist;
+    foaf:name "Desolation Angels";
+    dcat:landingPage <https://archive.org/details/DesolationAngels>;
+    mo:genre genres:Unsorted.
+<urn:uuid:0f6d6b72-8977-4462-8c52-e9ea3e98d8cb> a mo:MusicArtist;
+    foaf:name "Dream Syndicate";
+    dcat:landingPage <https://archive.org/details/DreamSyndicate>;
+    mo:genre genres:Unsorted.
+<urn:uuid:56811557-3bb4-4eb7-bed1-529ec1698590> a mo:MusicArtist;
+    foaf:name "Family Funktion and The Sitar Jams";
+    dcat:landingPage <https://archive.org/details/FamilyFunktionAndTheSitarJams>;
+    mo:genre genres:Unsorted.
+<urn:uuid:4c34b02b-2dcc-4a8d-b8da-bb09698c2a31> a mo:MusicArtist;
+    foaf:name "Fanfarlo";
+    dcat:landingPage <https://archive.org/details/Fanfarlo>;
+    mo:genre genres:Unsorted.
+<urn:uuid:0ccfbf4f-4076-49c7-a4cd-5ae7a4346bca> a mo:MusicArtist;
+    foaf:name "French Quarter Band";
+    dcat:landingPage <https://archive.org/details/FrenchQuarterBand>;
+    mo:genre genres:Unsorted.
+<urn:uuid:18e1b81f-fa0d-4ba0-9e9f-4577f55322ec> a mo:MusicArtist;
+    foaf:name "Garaj Mahal";
+    dcat:landingPage <https://archive.org/details/GarajMahal>;
+    mo:genre genres:Unsorted.
+<urn:uuid:c5f3df0a-aee9-474f-a332-108e97e5b661> a mo:MusicArtist;
+    foaf:name "Hamsa Lila";
+    dcat:landingPage <https://archive.org/details/HamsaLila>;
+    mo:genre genres:Unsorted.
+<urn:uuid:8dc7514f-6f0e-488b-9de8-1f5c5ae029c0> a mo:MusicArtist;
+    foaf:name "Hanuman Collective";
+    dcat:landingPage <https://archive.org/details/HanumanCollective>;
+    mo:genre genres:Unsorted.
+<urn:uuid:014bd1a4-5695-4d08-9c25-1626717605fc> a mo:MusicArtist;
+    foaf:name "HeartByrne";
+    dcat:landingPage <https://archive.org/details/HeartByrne>;
+    mo:genre genres:Unsorted.
+<urn:uuid:d964fea4-d163-41db-aad2-41c78cbf482d> a mo:MusicArtist;
+    foaf:name "Hunab Ku";
+    dcat:landingPage <https://archive.org/details/Hunab>;
+    mo:genre genres:Unsorted.
+<urn:uuid:f94c6210-bebe-483a-bcab-87f2b380eb41> a mo:MusicArtist;
+    foaf:name "Jake Shimabukuro";
+    dcat:landingPage <https://archive.org/details/JakeShimabukuro>;
+    mo:genre genres:Unsorted.
+<urn:uuid:911d39d2-62e8-4ff5-91bf-0afd1d0bfd4b> a mo:MusicArtist;
+    foaf:name "Jeff Stange's Organ Odyssey";
+    dcat:landingPage <https://archive.org/details/JeffStangesOrganOdyssey>;
+    mo:genre genres:Unsorted.
+<urn:uuid:832fa9a7-8428-4be6-ac21-44f4c8098fa4> a mo:MusicArtist;
+    foaf:name "Jen Say Kwahs";
+    dcat:landingPage <https://archive.org/details/JenSayKwahs>;
+    mo:genre genres:Unsorted.
+<urn:uuid:604ca3c9-f6f1-41b5-b391-b7178dd53441> a mo:MusicArtist;
+    foaf:name "Kanekoa";
+    dcat:landingPage <https://archive.org/details/Kanekoa>;
+    mo:genre genres:Unsorted.
+<urn:uuid:bc1da5ba-ce48-466b-8c33-5dbb04a36aa6> a mo:MusicArtist;
+    foaf:name "La Tampiquena";
+    dcat:landingPage <https://archive.org/details/LaTampiquena>;
+    mo:genre genres:Unsorted.
+<urn:uuid:72c543dc-459a-4a44-b7a9-78351c924213> a mo:MusicArtist;
+    foaf:name "Leche De Tigre";
+    dcat:landingPage <https://archive.org/details/LecheDeTigre>;
+    mo:genre genres:World.
+<urn:uuid:9e29a6c4-a66f-4f6a-bb7f-fc7ee1529281> a mo:MusicArtist;
+    foaf:name "Makayan";
+    dcat:landingPage <https://archive.org/details/Makayan>;
+    mo:genre genres:Unsorted.
+<urn:uuid:d0991233-1087-40d6-8823-86e9ca72ee96> a mo:MusicArtist;
+    foaf:name "Mekons";
+    dcat:landingPage <https://archive.org/details/Mekons>;
+    mo:genre genres:Unsorted.
+<urn:uuid:708f75e8-67c7-4885-99c2-ded9f628f5c2> a mo:MusicArtist;
+    foaf:name "Moonshine Cadillac";
+    dcat:landingPage <https://archive.org/details/MoonshineCadillac>;
+    mo:genre genres:Unsorted.
+<urn:uuid:4797da0f-140d-440d-87ca-ce8ceff309bd> a mo:MusicArtist;
+    foaf:name "Mumbouli";
+    dcat:landingPage <https://archive.org/details/Mumbouli>;
+    mo:genre genres:Unsorted.
+<urn:uuid:9c9382e6-b091-4a61-aadd-10ed4eb58fd2> a mo:MusicArtist;
+    foaf:name "Nativos Jammin Orquestra";
+    dcat:landingPage <https://archive.org/details/NativosJamminOrquestra>;
+    mo:genre genres:World.
+<urn:uuid:6e5d0cbb-e122-4dd9-91c6-a80f6114dca5> a mo:MusicArtist;
+    foaf:name "Ostad Manoochehr Sadeghi";
+    dcat:landingPage <https://archive.org/details/OstadManoochehrSadeghi>;
+    mo:genre genres:World.
+<urn:uuid:666a0008-4880-4840-84f5-fa72a89386de> a mo:MusicArtist;
+    foaf:name "Pangea Acoustic";
+    dcat:landingPage <https://archive.org/details/PangeaAcoustic>;
+    mo:genre genres:Unsorted.
+<urn:uuid:42322b5b-49ce-464c-a5f0-4b5c0ed57bca> a mo:MusicArtist;
+    foaf:name "West Indian Girl";
+    dcat:landingPage <https://archive.org/details/WestIndianGirl>;
+    mo:genre genres:Unsorted.
+<urn:uuid:ef6abef1-1fd7-49f5-9847-89cf08b62452> a mo:MusicArtist;
+    foaf:name "punjabs-classical-music";
+    dcat:landingPage <https://archive.org/details/punjabs-classical-music>;
+    mo:genre genres:World.
+<urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a> a mo:MusicArtist;
+    foaf:name "Madlib";
+    dcat:landingPage <https://archive.org/search?query=creator%3A%28madlib%29%20AND%20mediatype%3A%28audio%29>;
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> true;
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Madlib>.
+<urn:uuid:a5f679b6-aef4-43d9-9ea5-57ca3758d0da> a mo:MusicArtist;
+    foaf:name "Nujabes";
+    dcat:landingPage <https://archive.org/search?query=creator%3A%28nujabes%29+AND+mediatype%3A%28audio%29>;
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> true;
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Nujabes>.
+<urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced> a mo:MusicArtist;
+    foaf:name "J Dilla";
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/J_Dilla>.
+<urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292> a mo:MusicArtist;
+    foaf:name "Wu-Tang Clan";
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> "true".
+<urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0> a mo:MusicArtist;
+    foaf:name "Bonobo";
+    dcat:landingPage <https://archive.org/search?query=creator%3A%28bonobo%29+AND+mediatype%3A%28audio%29>;
+    mo:genre genres:Electronica;
+    <http://open-media-player.org/ns#localData> true;
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Bonobo>.
+<urn:uuid:7c2420d2-5190-4d6a-8b9d-1fb37bf4125b> a mo:MusicArtist;
+    foaf:name "Monolake";
+    dcat:landingPage <https://archive.org/search?query=creator%3A%28monolake%29+AND+mediatype%3A%28audio%29>;
+    mo:genre genres:Electronica;
+    <http://open-media-player.org/ns#localData> true;
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Monolake>.
+<urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f> a mo:MusicArtist;
+    foaf:name "Aphex Twin";
+    mo:genre genres:Electronica;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Aphex_Twin>.
+<urn:uuid:b14a1d3c-9c6d-445e-8862-f986501ca8dd> a mo:MusicArtist;
+    foaf:name "Billie Holiday";
+    mo:genre genres:Blues;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Billie_Holiday>.
+<urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80> a mo:MusicArtist;
+    foaf:name "A Tribe Called Quest";
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/A_Tribe_Called_Quest>.
+<urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3> a mo:MusicArtist;
+    foaf:name "Tupac Shakur";
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Tupac_Shakur>.
+<urn:uuid:2e4b5186-b93d-4ed8-afbb-62dcf09d7d28> a mo:MusicArtist;
+    foaf:name "Memphis  Slim";
+    mo:genre genres:Blues;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Memphis_Slim>.
+<urn:uuid:f58d58e0-3d16-4398-9853-30c193d44ca4> a mo:MusicArtist;
+    foaf:name "Various Blues Artists";
+    mo:genre genres:Blues;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Various_Blues_Artists>.
+<urn:uuid:c5c114c2-5b4f-47df-9811-0c7642561f1d> a mo:MusicArtist;
+    foaf:name "Parliament/Funkadelic";
+    mo:genre genres:Funk;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Parliament_Funkadelic>.
+<urn:uuid:66bc0989-8767-4a65-9cd5-07a993007e78> a mo:MusicArtist;
+    foaf:name "Madlib - more";
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Madlib_more>.
+<urn:uuid:b4551b32-ba63-4f2c-bf4d-fefef1f90dc4> a mo:MusicArtist;
+    foaf:name "Kendrick Lamar";
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Kendrick_Lamar>.
+<urn:uuid:70c76892-ad3d-460b-9776-03d74184b105> a mo:MusicArtist;
+    foaf:name "Wilson Pickett";
+    mo:genre genres:Funk;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Wilson_Pickett>.
+<urn:uuid:214d9cbe-af55-4016-9240-e70ffbb7a798> a mo:MusicArtist;
+    foaf:name "King Curtis";
+    mo:genre genres:Funk;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/King_Curtis>.
+<urn:uuid:afe3a7ce-3bb0-45f4-ac66-959c82b5270b> a mo:MusicArtist;
+    foaf:name "James Brown";
+    mo:genre genres:Funk;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/James_Brown>.
+<urn:uuid:6b9092c0-59ae-461a-ad99-cca763abdabc> a mo:MusicArtist;
+    foaf:name "Otis Spann";
+    mo:genre genres:Blues;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Otis_Spann>.
+<urn:uuid:eaacaf83-1353-46dc-98f7-4a7def7c5cbc> a mo:MusicArtist;
+    foaf:name "Tycho";
+    mo:genre genres:Electronica;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Tycho>.
+<urn:uuid:7ff044ac-ab91-4143-9624-2924cccf62da> a mo:MusicArtist;
+    foaf:name "Four Tet";
+    mo:genre genres:Electronica;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Four_Tet>.
+<urn:uuid:d359eb56-98d9-4a27-a553-dc9c70b59c52> a mo:MusicArtist;
+    foaf:name "Aesop Rock";
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Aesop_Rock>.
+<urn:uuid:26c744f2-9cbf-47b3-b958-1edc29c05349> a mo:MusicArtist;
+    foaf:name "Flying Lotus";
+    mo:genre genres:Hip_Hop;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Flying_Lotus>.
+<urn:uuid:3a7bd4ed-c2e5-4f20-99b9-44d4b2e2ab8d> a mo:MusicArtist;
+    foaf:name "Aretha Franklin";
+    mo:genre genres:Funk;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Aretha_Franklin>.
+<urn:uuid:b2d1b6c3-e6ab-4f84-9314-83248c97bcd9> a mo:MusicArtist;
+    foaf:name "Stevie Wonder";
+    mo:genre genres:Funk;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Stevie_Wonder>.
+<urn:uuid:bf105175-a604-4fac-984e-4dcd1efa8de3> a mo:MusicArtist;
+    foaf:name "Tipper";
+    mo:genre genres:Electronica;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Tipper>.
+<urn:uuid:ab729855-c629-4430-b5fe-b68ed2f3a32d> a mo:MusicArtist;
+    foaf:name "Boards of Canada";
+    mo:genre genres:Electronica;
+    <http://open-media-player.org/ns#localData> "true";
+    <http://open-media-player.org/ns#sourcePlaylist> <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Boards_of_Canada>.

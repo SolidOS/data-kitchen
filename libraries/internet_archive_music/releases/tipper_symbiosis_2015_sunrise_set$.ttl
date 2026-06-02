@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Tipper Symbiosis 2015 Sunrise Set" ;
+    dct:identifier "tipper-2015-symbiosis-sunrise-set" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/tipper-2015-symbiosis-sunrise-set> ;
+    mo:track <#t01> ;
+    foaf:maker "Tipper (Dave Tipper)" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Tipper 2015 Symbiosis Sunrise Set" ;
+    mo:duration "752" ;
+    mo:item <https://archive.org/download/tipper-2015-symbiosis-sunrise-set/Tipper%202015%20Symbiosis%20Sunrise%20Set.mp3> ;
+    dct:isPartOf <#it> .

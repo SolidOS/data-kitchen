@@ -1,0 +1,34 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:346c946d-60d1-4928-a5b3-7b94fbd4b7ce>
+    a mo:Track;
+    dct:title "You Can't Hold a Torch (Busta instrumental)";
+    mo:duration "206";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_j-dilla-donut-shop/1-06%20You%20Can't%20Hold%20a%20Torch%20(Busta%20instrumental).mp3>.
+<urn:uuid:aceb1927-a66d-4c65-9948-fd8486ea04e3>
+    a mo:Release;
+    dct:title "Donut Shop";
+    mo:track
+        <urn:uuid:346c946d-60d1-4928-a5b3-7b94fbd4b7ce>,
+        <urn:uuid:c5d09fea-5dcd-4132-890e-b07433a4b802>,
+        <urn:uuid:e4da0d11-1cbf-4914-811d-ea6e8ea776e6>;
+    dcat:landingPage det:gs_j-dilla-donut-shop;
+    foaf:maker "J Dilla", <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>.
+<urn:uuid:c5d09fea-5dcd-4132-890e-b07433a4b802>
+    a mo:Track;
+    dct:title "Safety Dance";
+    mo:duration "180";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_j-dilla-donut-shop/1-01%20Safety%20Dance.mp3>.
+<urn:uuid:e4da0d11-1cbf-4914-811d-ea6e8ea776e6>
+    a mo:Track;
+    dct:title "Bars & Twists";
+    mo:duration "229";
+    dcat:downloadUrl
+        <https://archive.org/download/gs_j-dilla-donut-shop/1-03%20Bars%20%26%20Twists.mp3>.

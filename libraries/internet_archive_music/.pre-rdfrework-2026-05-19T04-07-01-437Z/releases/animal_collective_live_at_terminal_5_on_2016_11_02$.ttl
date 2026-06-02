@@ -1,0 +1,13 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:a23fe1f4-6370-451a-b11a-1bc1bdb2b0e0> a mo:Release;
+    dcterms:title "Animal Collective Live at Terminal 5 on 2016-11-02";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    dcat:landingPage <https://archive.org/details/acollective2016-11-02.t5>;
+    mo:track <urn:uuid:5d06ece3-d023-47ef-bf41-d778b0039b59>, <urn:uuid:3bc24e3e-b816-4910-914f-7db377dc1bf2>, <urn:uuid:efd15f0d-c5ba-423e-8b44-c73fa33b7490>.
+<urn:uuid:5d06ece3-d023-47ef-bf41-d778b0039b59> a mo:Track; dcterms:title "Guys Eyes"; mo:duration "642"; dcat:downloadUrl <https://archive.org/download/acollective2016-11-02.t5/acollective2016-11-02t5-14.mp3>.
+<urn:uuid:3bc24e3e-b816-4910-914f-7db377dc1bf2> a mo:Track; dcterms:title "Loch Raven"; mo:duration "603"; dcat:downloadUrl <https://archive.org/download/acollective2016-11-02.t5/acollective2016-11-02t5-05.mp3>.
+<urn:uuid:efd15f0d-c5ba-423e-8b44-c73fa33b7490> a mo:Track; dcterms:title "Jimmy Mack [Martha Reeves and The Vandellas]"; mo:duration "579"; dcat:downloadUrl <https://archive.org/download/acollective2016-11-02.t5/acollective2016-11-02t5-07.mp3>.

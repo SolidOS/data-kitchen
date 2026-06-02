@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:0d5d6e31-c9c2-437b-a38d-444f1cc23769> a mo:Release;
+    dcterms:title "Penguin Cafe LIVE 2010-09-08";
+    foaf:maker "Penguin Cafe";
+    dcat:landingPage <https://archive.org/details/penguincafe2010bbc>;
+    mo:track <urn:uuid:c3ffc6ca-a47f-4ac8-908d-f3e716869db0>, <urn:uuid:57efe12d-3827-4b57-8a12-9f4208f78722>, <urn:uuid:d227d07e-c511-4a78-996d-3bbff65d9b8f>, <urn:uuid:387c11ca-ef27-4e76-9cc5-a7f45cea2f64>, <urn:uuid:112930e0-6c41-4cd3-b18e-12589e08820f>.
+<urn:uuid:c3ffc6ca-a47f-4ac8-908d-f3e716869db0> a mo:Track; dcterms:title "Bramble May"; mo:duration "300"; dcat:downloadUrl <https://archive.org/download/penguincafe2010bbc/12%20Bramble%20May.mp3>.
+<urn:uuid:57efe12d-3827-4b57-8a12-9f4208f78722> a mo:Track; dcterms:title "Giles Farnaby's Dream"; mo:duration "319"; dcat:downloadUrl <https://archive.org/download/penguincafe2010bbc/14%20Giles%20Farnaby's%20Dream.mp3>.
+<urn:uuid:d227d07e-c511-4a78-996d-3bbff65d9b8f> a mo:Track; dcterms:title "Harry Peers"; mo:duration "298"; dcat:downloadUrl <https://archive.org/download/penguincafe2010bbc/17%20(Encore)%20Harry%20Peers.mp3>.
+<urn:uuid:387c11ca-ef27-4e76-9cc5-a7f45cea2f64> a mo:Track; dcterms:title "Landau"; mo:duration "311"; dcat:downloadUrl <https://archive.org/download/penguincafe2010bbc/11%20Landau.mp3>.
+<urn:uuid:112930e0-6c41-4cd3-b18e-12589e08820f> a mo:Track; dcterms:title "Pale Peach Jukebox"; mo:duration "271"; dcat:downloadUrl <https://archive.org/download/penguincafe2010bbc/09%20Pale%20Peach%20Jukebox.mp3>.

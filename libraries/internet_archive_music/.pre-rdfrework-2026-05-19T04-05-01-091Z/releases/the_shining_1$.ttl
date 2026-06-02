@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:53f4cc4a-5a0a-433e-8d65-2a44edb4857a> a mo:Release;
+    dcterms:title "The Shining";
+    foaf:maker <urn:uuid:1ae86fb7-8a0a-4b02-b8e2-a01cd014bced>;
+    dcat:landingPage <https://archive.org/details/j-dilla_the-shining>;
+    mo:track <urn:uuid:fac0b6c6-965b-4a68-a2fd-b072401577bd>.
+<urn:uuid:fac0b6c6-965b-4a68-a2fd-b072401577bd> a mo:Track; dcterms:title "Won't Do"; mo:duration "232"; dcat:downloadUrl <https://archive.org/download/j-dilla_the-shining/12.%20J%20Dilla%20-%20Won't%20Do.mp3>.

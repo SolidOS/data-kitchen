@@ -1,0 +1,165 @@
+@prefix : <http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Animal_Collective#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Animal_Collective> a dctypes:Collection, mo:Playlist;
+    dcterms:title "Animal Collective";
+    foaf:maker "jeffz";
+    dcterms:hasPart <urn:uuid:b60ddeae-0ccc-481c-adc3-91c4bf441a25>, <urn:uuid:f2d411d3-b30b-4e30-bf2d-dc091cf5c58f>, <urn:uuid:572d967b-5ec7-42d3-83f9-fa5711f453f3>, <urn:uuid:93cd08b0-bb8d-4315-a378-68876b91e678>, <urn:uuid:5d06ece3-d023-47ef-bf41-d778b0039b59>, <urn:uuid:3bc24e3e-b816-4910-914f-7db377dc1bf2>, <urn:uuid:efd15f0d-c5ba-423e-8b44-c73fa33b7490>, <urn:uuid:e5dcd7c0-d848-4987-a427-27fda74a0623>, <urn:uuid:03a75bf7-9dfe-4dfd-b5ae-49b234cd9768>, <urn:uuid:42bdfde0-a240-4483-aeb0-e14298b98f40>, <urn:uuid:fa791955-45cb-49b3-81e1-b9ef9b043f23>, <urn:uuid:cb12ee74-6592-45e5-930a-e175ac78d6d1>, <urn:uuid:55ee29eb-2e08-4ec6-a602-ab91b7eef7f1>, <urn:uuid:64977c43-fa55-42bb-8658-851e89d1e6f2>, <urn:uuid:c8174c57-6c2c-456e-9569-83d8da0cbac5>, <urn:uuid:ab4ae8b3-30c8-4d8a-ad4a-bcd42f6a5535>, <urn:uuid:fc594489-8243-4b32-a9d5-ba27a0fb8aed>, <urn:uuid:383b43b0-52c4-47c7-a403-6ff1638d611d>, <urn:uuid:05138e28-3b1f-472e-9d09-e17825fa49d2>, <urn:uuid:4f3ae832-d16d-4d3c-ac02-67841ebb27cb>, <urn:uuid:a2867860-c79f-42ec-b64c-beaa50ae2ac6>, <urn:uuid:98cb3da8-870e-4849-8cdc-75552b5d5fbe>, <urn:uuid:0e0ecad7-666e-4e58-aa1b-f36a2e465bf0>, <urn:uuid:d95dd385-6eb5-49c8-bb64-15abdce3d7e1>, <urn:uuid:87335e92-4d78-40d5-bd1f-130c2338e9c7>, <urn:uuid:69fef9a4-8946-423f-a917-3ad7b66a47ba>;
+    <http://open-media-player.org/ns#hidePlaylist> "true".
+<urn:uuid:b60ddeae-0ccc-481c-adc3-91c4bf441a25> a mo:Track;
+    dcterms:title "Doggy";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2007-07-29.cos11s.flac16/animalcollective2007-07-29.cos11s.d1t03.mp3>;
+    mo:duration "328".
+<urn:uuid:f2d411d3-b30b-4e30-bf2d-dc091cf5c58f> a mo:Track;
+    dcterms:title "Improvised Set";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2022-02-17/Deakin%20%26%20Geologist%20-%20Improvised%20Set.flac>;
+    mo:duration "1002".
+<urn:uuid:572d967b-5ec7-42d3-83f9-fa5711f453f3> a mo:Track;
+    dcterms:title "Kids on Holiday (15:24)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2004-05-06.bbc/Animal%20Collective%202004-06-18%20BBC%20Radio%203%20Mixing%20It%2FAnimal%20Collective%202004-06-18%20BBC%20Radio%203%20Mixing%20It%20t02.mp3>;
+    mo:duration "924".
+<urn:uuid:93cd08b0-bb8d-4315-a378-68876b91e678> a mo:Track;
+    dcterms:title "Brother Sport";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2007-07-29.cos11s.flac16/animalcollective2007-07-29.cos11s.d2t05.mp3>;
+    mo:duration "575".
+<urn:uuid:5d06ece3-d023-47ef-bf41-d778b0039b59> a mo:Track;
+    dcterms:title "Guys Eyes";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2016-11-02.t5/acollective2016-11-02t5-14.mp3>;
+    mo:duration "642".
+<urn:uuid:3bc24e3e-b816-4910-914f-7db377dc1bf2> a mo:Track;
+    dcterms:title "Loch Raven";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2016-11-02.t5/acollective2016-11-02t5-05.mp3>;
+    mo:duration "603".
+<urn:uuid:efd15f0d-c5ba-423e-8b44-c73fa33b7490> a mo:Track;
+    dcterms:title "Jimmy Mack [Martha Reeves and The Vandellas]";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2016-11-02.t5/acollective2016-11-02t5-07.mp3>;
+    mo:duration "579".
+<urn:uuid:e5dcd7c0-d848-4987-a427-27fda74a0623> a mo:Track;
+    dcterms:title "Inner Monologue";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/14-Inner%20Monologue.mp3>;
+    mo:duration "384".
+<urn:uuid:03a75bf7-9dfe-4dfd-b5ae-49b234cd9768> a mo:Track;
+    dcterms:title "Virginia Tech";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/04-Virginia%20Tech.mp3>;
+    mo:duration "378".
+<urn:uuid:42bdfde0-a240-4483-aeb0-e14298b98f40> a mo:Track;
+    dcterms:title "Tomboy";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/08-Tomboy.mp3>;
+    mo:duration "358".
+<urn:uuid:fa791955-45cb-49b3-81e1-b9ef9b043f23> a mo:Track;
+    dcterms:title "50mg";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/01-50mg.mp3>;
+    mo:duration "346".
+<urn:uuid:cb12ee74-6592-45e5-930a-e175ac78d6d1> a mo:Track;
+    dcterms:title "Selfish Gene";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/10-Selfish%20Gene.mp3>;
+    mo:duration "331".
+<urn:uuid:55ee29eb-2e08-4ec6-a602-ab91b7eef7f1> a mo:Track;
+    dcterms:title "Venom's In";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/05-Venom's%20In.mp3>;
+    mo:duration "328".
+<urn:uuid:64977c43-fa55-42bb-8658-851e89d1e6f2> a mo:Track;
+    dcterms:title "Praise";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/15-Praise.mp3>;
+    mo:duration "314".
+<urn:uuid:c8174c57-6c2c-456e-9569-83d8da0cbac5> a mo:Track;
+    dcterms:title "Song for Ariel";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/06-Song%20for%20Ariel.mp3>;
+    mo:duration "299".
+<urn:uuid:ab4ae8b3-30c8-4d8a-ad4a-bcd42f6a5535> a mo:Track;
+    dcterms:title "Slow Motion";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/12-Slow%20Motion.mp3>;
+    mo:duration "267".
+<urn:uuid:fc594489-8243-4b32-a9d5-ba27a0fb8aed> a mo:Track;
+    dcterms:title "Defense";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/07-Defense.mp3>;
+    mo:duration "260".
+<urn:uuid:383b43b0-52c4-47c7-a403-6ff1638d611d> a mo:Track;
+    dcterms:title "Alsatian Darn";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/02-Alsatian%20Darn.mp3>;
+    mo:duration "243".
+<urn:uuid:05138e28-3b1f-472e-9d09-e17825fa49d2> a mo:Track;
+    dcterms:title "Just as Well";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/11-Just%20as%20Well.mp3>;
+    mo:duration "201".
+<urn:uuid:4f3ae832-d16d-4d3c-ac02-67841ebb27cb> a mo:Track;
+    dcterms:title "Ends Meet";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2025-05-20.flac24/03-Ends%20Meet.mp3>;
+    mo:duration "182".
+<urn:uuid:a2867860-c79f-42ec-b64c-beaa50ae2ac6> a mo:Track;
+    dcterms:title "Visiting Friends";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2018-07-25/Visiting%20Friends.mp3>;
+    mo:duration "742".
+<urn:uuid:98cb3da8-870e-4849-8cdc-75552b5d5fbe> a mo:Track;
+    dcterms:title "Tuvin";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2018-07-25/Tuvin.mp3>;
+    mo:duration "672".
+<urn:uuid:0e0ecad7-666e-4e58-aa1b-f36a2e465bf0> a mo:Track;
+    dcterms:title "01 Daffy Duck";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/ajc01108_acollective2005-04-27.early.ajcproject/01%20Daffy%20Duck.mp3>;
+    mo:duration "544".
+<urn:uuid:d95dd385-6eb5-49c8-bb64-15abdce3d7e1> a mo:Track;
+    dcterms:title "Defeat (A Not Suite)";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2022-03-24/10%20-%20Defeat%20(A%20Not%20Suite).flac>;
+    mo:duration "1358".
+<urn:uuid:87335e92-4d78-40d5-bd1f-130c2338e9c7> a mo:Track;
+    dcterms:title "The Softest Voice";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/acollective2018-07-17.H4n.flac16/Track%2004.mp3>;
+    mo:duration "729".
+<urn:uuid:69fef9a4-8946-423f-a917-3ad7b66a47ba> a mo:Track;
+    dcterms:title "MoonJocks";
+    <http://www.w3.org/ns/dcat#downloadUrl> <https://archive.org/download/ac2013-12-04.m10/AnimalCollective.2013-12-04-RoyalOakMusicTheatreRoyalOakMi.spC4TinyboxtransfosPcmM-10Microsd.t04.mp3>;
+    mo:duration "1181".
+<urn:uuid:9dbea52a-702e-4813-93fe-6aa97e96351b> a mo:Release;
+    dcterms:title "Animal Collective Live at Arena on 2007-07-29";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/acollective2007-07-29.cos11s.flac16>;
+    mo:track <urn:uuid:b60ddeae-0ccc-481c-adc3-91c4bf441a25>, <urn:uuid:93cd08b0-bb8d-4315-a378-68876b91e678>.
+<urn:uuid:5a65bfec-f81d-49ad-b227-afa6e7bf7418> a mo:Release;
+    dcterms:title "Animal Collective Live at Unknown on 2022-02-17";
+    foaf:maker "Deakin & Geologist";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/acollective2022-02-17>;
+    mo:track <urn:uuid:f2d411d3-b30b-4e30-bf2d-dc091cf5c58f>.
+<urn:uuid:a76bf15e-d083-4ea1-9463-982cce56b055> a mo:Release;
+    dcterms:title "Animal Collective Live at Snake Ranch Studios on 2004-05-06";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/acollective2004-05-06.bbc>;
+    mo:track <urn:uuid:572d967b-5ec7-42d3-83f9-fa5711f453f3>.
+<urn:uuid:a23fe1f4-6370-451a-b11a-1bc1bdb2b0e0> a mo:Release;
+    dcterms:title "Animal Collective Live at Terminal 5 on 2016-11-02";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/acollective2016-11-02.t5>;
+    mo:track <urn:uuid:5d06ece3-d023-47ef-bf41-d778b0039b59>, <urn:uuid:3bc24e3e-b816-4910-914f-7db377dc1bf2>, <urn:uuid:efd15f0d-c5ba-423e-8b44-c73fa33b7490>.
+<urn:uuid:f070f958-9e43-48a6-b7f5-ac9a2a69ccff> a mo:Release;
+    dcterms:title "Animal Collective Live at The Chapel on 2025-05-20";
+    foaf:maker "Panda Bear";
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/acollective2025-05-20.flac24>;
+    mo:track <urn:uuid:e5dcd7c0-d848-4987-a427-27fda74a0623>, <urn:uuid:03a75bf7-9dfe-4dfd-b5ae-49b234cd9768>, <urn:uuid:42bdfde0-a240-4483-aeb0-e14298b98f40>, <urn:uuid:fa791955-45cb-49b3-81e1-b9ef9b043f23>, <urn:uuid:cb12ee74-6592-45e5-930a-e175ac78d6d1>, <urn:uuid:55ee29eb-2e08-4ec6-a602-ab91b7eef7f1>, <urn:uuid:64977c43-fa55-42bb-8658-851e89d1e6f2>, <urn:uuid:c8174c57-6c2c-456e-9569-83d8da0cbac5>, <urn:uuid:ab4ae8b3-30c8-4d8a-ad4a-bcd42f6a5535>, <urn:uuid:fc594489-8243-4b32-a9d5-ba27a0fb8aed>, <urn:uuid:383b43b0-52c4-47c7-a403-6ff1638d611d>, <urn:uuid:05138e28-3b1f-472e-9d09-e17825fa49d2>, <urn:uuid:4f3ae832-d16d-4d3c-ac02-67841ebb27cb>.
+<urn:uuid:45aea9e0-e7ed-4894-92a7-0995e1414cbb> a mo:Release;
+    dcterms:title "Animal Collective Live at Ogden Theatre on 2018-07-25";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/acollective2018-07-25>;
+    mo:track <urn:uuid:a2867860-c79f-42ec-b64c-beaa50ae2ac6>, <urn:uuid:98cb3da8-870e-4849-8cdc-75552b5d5fbe>.
+<urn:uuid:3306fe59-ab3c-4ec4-93e2-eff1531a9542> a mo:Release;
+    dcterms:title "Animal Collective Live at Empty Bottle on 2005-04-27 (Early show)";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/ajc01108_acollective2005-04-27.early.ajcproject>;
+    mo:track <urn:uuid:0e0ecad7-666e-4e58-aa1b-f36a2e465bf0>.
+<urn:uuid:c5ba01b6-5c49-4683-8257-e445c2278867> a mo:Release;
+    dcterms:title "Animal Collective Live at Marathon Music Works on 2022-03-24";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/acollective2022-03-24>;
+    mo:track <urn:uuid:d95dd385-6eb5-49c8-bb64-15abdce3d7e1>.
+<urn:uuid:9cccd314-49bf-4579-a411-c90b139f0fe7> a mo:Release;
+    dcterms:title "Animal Collective Live at Symphony Hall on 2018-07-17";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/acollective2018-07-17.H4n.flac16>;
+    mo:track <urn:uuid:87335e92-4d78-40d5-bd1f-130c2338e9c7>.
+<urn:uuid:8f3b1325-3408-4b03-9855-1ad4ca5033d9> a mo:Release;
+    dcterms:title "Animal Collective Live at Royal Oak Music Theatre on 2013-12-04";
+    foaf:maker <urn:uuid:622b6ae1-fe11-41ad-994b-fd84fc65f8c1>;
+    <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/ac2013-12-04.m10>;
+    mo:track <urn:uuid:69fef9a4-8946-423f-a917-3ad7b66a47ba>.

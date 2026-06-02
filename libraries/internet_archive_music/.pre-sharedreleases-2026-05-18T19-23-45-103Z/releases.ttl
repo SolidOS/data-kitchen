@@ -1,0 +1,106 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases.ttl> dcterms:title "Internet Archive Music — releases index";
+    rdfs:seeAlso <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/928_full_album>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/j_dilla_dilladayz>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/dilla_mix>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/donut_shop>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_19940814_irvine_meadows_irvine_ca>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/enter_the_wutang_36_chambers>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_the_sword_chamber2019>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_live_20070728_randalls_island_park_randalls_island_new_york>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_mathematics_black_samson_the_bastard_swordsman_2025_flac>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/gza_words_from_the_geniusfull>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_iron_flag>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_bonus_chamber_vol_2_full_album>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_demo_tape_1992>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wu_tang_clan_bonus_chamber_vol_1_full_album>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wumassacre>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/ghostface_killah_more_fish_ep_cd_rip_wav>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_fillmore_3602>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/ghostface_killah_vs_13_mitred_abbots_apollo_kids_174bpm_minimal_techno>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_wu_chronicles_vol_2_full_album>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/gza_20250514_the_taft_theatre>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_19970817_meadows_music_theater_hartford>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wu_tang_clan_c_r_e_a_m_official_hd_video>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/gza_liquid_swords_1995full_2nd_press>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_second_coming2019>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/shaolin_vs_wu_tang>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_forever>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/the_wu_studio_albums>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_the_ambush_vol_5_hosted_by_dj_flipcyide2015>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/anarchism_music_discography_collection>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_thug_theory>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_strictly_4_my_niggaz>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/so_many_tears>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pacalypse_now>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_the_og_project_vol_2>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/me_against_the_world>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/pacs_life>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/still_i_rise>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_the_og_project_vol_2_2>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/stay_true_demo_cassette_side_a_only>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_all_eyez_on_me_disc_1>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/pacs_life_2>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/beats_rhymes_and_life>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/beats_rhymes_and_life_2>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/more_low_end_theories>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/peoples_instinctive_travels_and_the_paths_of_rhythm>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/the_love_movement_with_bonus_tracks>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/the_low_end_theory>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/the_low_end_theory_2>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/we_got_it_from_here_thank_you_4_your_service>,
+                 <http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/we_got_it_from_here_thank_you_4_your_service_2>.
+
+# --- shared-releases Phase 1: resolvable dedup keys (migrate-shared-releases-index) ---
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/928_full_album> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/928-Full-Album> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/j_dilla_dilladayz> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/dilladayz_j_dilla_20181120> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/dilla_mix> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/DillaMix> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/donut_shop> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/gs_j-dilla-donut-shop> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_19940814_irvine_meadows_irvine_ca> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-tang-clan-1994-08-14-irvine-meadows-irvine-ca> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/enter_the_wutang_36_chambers> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/enter-the-wu-tang-36-chambers_202409> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_the_sword_chamber2019> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/Wu-Tang_Clan_-_The_Sword_Chamber-2019> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_live_20070728_randalls_island_park_randalls_island_new_york> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/WTC_2007-07-28> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_mathematics_black_samson_the_bastard_swordsman_2025_flac> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/04.-wu-tang-clan-mathematics-method-man-ghostface-killah-nicole-bus-claudine> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/gza_words_from_the_geniusfull> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/words-from-the-genius_202503> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_iron_flag> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-tang-clan-iron-flag_202510> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_bonus_chamber_vol_2_full_album> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-tang-clan-wu-bonus-chamber-vol-2-fullalbum> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_demo_tape_1992> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/04-problems> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wu_tang_clan_bonus_chamber_vol_1_full_album> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-tang-clan-bonus-chamber-vol-1-full-album> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wumassacre> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-massacre> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/ghostface_killah_more_fish_ep_cd_rip_wav> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/01-ghost-is-back> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_fillmore_3602> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-tang-clan-fillmore-3602> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/ghostface_killah_vs_13_mitred_abbots_apollo_kids_174bpm_minimal_techno> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/Ghost174bpmMinimalTechno> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_wu_chronicles_vol_2_full_album> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-tang-caln-wu-chronicles-vol-2-full-album> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/gza_20250514_the_taft_theatre> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/gza-2025-05-14> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_19970817_meadows_music_theater_hartford> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-tang-clan-1997-08-17-meadows-music-theater-hartford> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wu_tang_clan_c_r_e_a_m_official_hd_video> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-tang-clan-c.-r.-e.-a.-m.-official-hd-video> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/gza_liquid_swords_1995full_2nd_press> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/05-gzagenius-cold-world-feat.-inspectah-deck-life_202503> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_second_coming2019> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/Wu-Tang_Clan_-_Second_Coming-2019> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/shaolin_vs_wu_tang> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/shaolin-vs.-wu-tang> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_forever> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wu-tang-clan-wu-tang-forever_202401> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/the_wu_studio_albums> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wustudio> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/wutang_clan_the_ambush_vol_5_hosted_by_dj_flipcyide2015> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/Wu-Tang_Clan_-_The_Ambush_Vol._5_Hosted_By_DJ_Flipcyide-2015> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/anarchism_music_discography_collection> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/anarchism-music-discography-collection_202603> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_thug_theory> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/2pac-thug-theory> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_strictly_4_my_niggaz> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/2-pac-12-strictly-4-my-niggaz> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/so_many_tears> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/somanytears2pac> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pacalypse_now> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/gs_2pac-2pacalypse-now> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_the_og_project_vol_2> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/2-pac-all-out-suge-knights-stolen-cd-version> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/me_against_the_world> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/2-pac-11-can-u-get-away> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/pacs_life> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/pacs-life_202511> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/still_i_rise> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/01-letter-to-the-president> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_the_og_project_vol_2_2> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/2-pac-all-out-suge-knights-stolen-cd-version_202504> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/stay_true_demo_cassette_side_a_only> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/stay-true> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/2pac_all_eyez_on_me_disc_1> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/12-california-love-remix> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/pacs_life_2> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/11-dont-stop> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/beats_rhymes_and_life> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/15-stressed-out-feat.-faith-evans> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/beats_rhymes_and_life_2> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/beats-rhymes-and-life> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/more_low_end_theories> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/more-low-end-theories> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/peoples_instinctive_travels_and_the_paths_of_rhythm> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/peoples-instinctive-travels-and-the-paths-of-rhythm> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/the_love_movement_with_bonus_tracks> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/the-love-movement> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/the_low_end_theory> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/the_low_end_theory> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/the_low_end_theory_2> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/thelowendtheory1991> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/we_got_it_from_here_thank_you_4_your_service> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/wgifh...ty4ys2016> .
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/releases/we_got_it_from_here_thank_you_4_your_service_2> <http://www.w3.org/ns/dcat#landingPage> <https://archive.org/details/we-got-it-from-here-thank-you-4-your-service> .

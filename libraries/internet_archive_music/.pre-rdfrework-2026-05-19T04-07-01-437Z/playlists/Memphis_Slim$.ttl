@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Memphis_Slim> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Memphis  Slim";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://open-media-player.org/ns#hidePlaylist> "true";
+    dcterms:hasPart <urn:uuid:7b683bec-068e-43af-a8b2-0a9ff05c2f07>, <urn:uuid:11a3adb1-6e79-42b3-abc1-fd7ea19b7e34>, <urn:uuid:9a29e2bb-de7f-4f01-91b3-d821f3b7682c>, <urn:uuid:8394d7a1-c0c3-489a-bba8-b6d9b937fb9b>, <urn:uuid:b205dcd9-a3cf-4048-b1eb-3162da5a7210>, <urn:uuid:e5ba301c-ea7f-4b47-a6e7-ad5ffec7da02>.

@@ -1,0 +1,24 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:5a8a3809-bfaa-4a62-8516-c6be503b74be> a mo:Release;
+    dcterms:title "Kendrick Lamar - EP (Original Lossless FLAC)";
+    foaf:maker "Kendrick Lamar";
+    dcat:landingPage <https://archive.org/details/KendrickLamarEPKendrickMixtapesFLAC>;
+    mo:track <urn:uuid:e41ce134-503e-4c61-951f-de4fee178cf5>, <urn:uuid:a7f34ead-a5f8-4a85-a9c3-cfc191aaca3d>, <urn:uuid:f225b3ad-97dd-47bd-8f2c-379ceb0ccdec>, <urn:uuid:9885139e-9733-4a60-90cb-273eb6076722>, <urn:uuid:43543662-3212-4acb-b186-2f663b863cd6>, <urn:uuid:da57ddfd-1281-4670-a7c4-b8abcd000884>, <urn:uuid:97a4784f-d7b7-463c-9382-9c8baa7a87f8>, <urn:uuid:7201ea64-a378-44ff-a1d0-a82ec576f14f>, <urn:uuid:e113a854-9cf3-4758-bbbe-dea14b900523>, <urn:uuid:d941a87a-d4f4-45e5-9b57-1faf844a74b6>, <urn:uuid:34aac234-052a-45f7-b5ae-6bfde9b9e540>, <urn:uuid:1dfc3add-5d77-4cac-bda3-a2cffb5fb487>, <urn:uuid:b5d09ff6-2650-4401-9ff7-e4c311a643ef>, <urn:uuid:a83f6304-c034-449b-8637-0b8ba67bb364>.
+<urn:uuid:e41ce134-503e-4c61-951f-de4fee178cf5> a mo:Track; dcterms:title "Is It Love? (feat. Angela McCluskey)"; mo:duration "239"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/01%20Is%20It%20Love_%20(feat.%20Angela%20McCluskey).mp3>.
+<urn:uuid:a7f34ead-a5f8-4a85-a9c3-cfc191aaca3d> a mo:Track; dcterms:title "Celebration"; mo:duration "230"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/02%20Celebration.mp3>.
+<urn:uuid:f225b3ad-97dd-47bd-8f2c-379ceb0ccdec> a mo:Track; dcterms:title "P&P (feat. Ab-Soul)"; mo:duration "282"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/03%20P%26P%20(feat.%20Ab-Soul).mp3>.
+<urn:uuid:9885139e-9733-4a60-90cb-273eb6076722> a mo:Track; dcterms:title "She Needs Me (feat. JaVonté)"; mo:duration "210"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/04%20She%20Needs%20Me%20(feat.%20JaVont%C3%A9).mp3>.
+<urn:uuid:43543662-3212-4acb-b186-2f663b863cd6> a mo:Track; dcterms:title "Wanna Be Heard"; mo:duration "277"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/06%20Wanna%20Be%20Heard.mp3>.
+<urn:uuid:da57ddfd-1281-4670-a7c4-b8abcd000884> a mo:Track; dcterms:title "I Do This (feat. Jay Rock)"; mo:duration "248"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/07%20I%20Do%20This%20(feat.%20Jay%20Rock).mp3>.
+<urn:uuid:97a4784f-d7b7-463c-9382-9c8baa7a87f8> a mo:Track; dcterms:title "Uncle Bobby & Jason Keaton (feat. JaVonté)"; mo:duration "239"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/08%20Uncle%20Bobby%20%26%20Jason%20Keaton%20(feat.%20JaVont%C3%A9).mp3>.
+<urn:uuid:7201ea64-a378-44ff-a1d0-a82ec576f14f> a mo:Track; dcterms:title "Faith (feat. BJ The Chicago Kid & Punch)"; mo:duration "291"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/09%20Faith%20(feat.%20BJ%20The%20Chicago%20Kid%20%26%20Punch).mp3>.
+<urn:uuid:e113a854-9cf3-4758-bbbe-dea14b900523> a mo:Track; dcterms:title "Trip"; mo:duration "230"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/10%20Trip.mp3>.
+<urn:uuid:d941a87a-d4f4-45e5-9b57-1faf844a74b6> a mo:Track; dcterms:title "Vanity Slaves"; mo:duration "254"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/11%20Vanity%20Slaves.mp3>.
+<urn:uuid:34aac234-052a-45f7-b5ae-6bfde9b9e540> a mo:Track; dcterms:title "Far From Here (feat. ScHoolboy Q)"; mo:duration "233"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/12%20Far%20From%20Here%20(feat.%20ScHoolboy%20Q).mp3>.
+<urn:uuid:1dfc3add-5d77-4cac-bda3-a2cffb5fb487> a mo:Track; dcterms:title "Thanksgiving (feat. Big Pooh)"; mo:duration "219"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/13%20Thanksgiving%20(feat.%20Big%20Pooh).mp3>.
+<urn:uuid:b5d09ff6-2650-4401-9ff7-e4c311a643ef> a mo:Track; dcterms:title "Let Me Be Me"; mo:duration "439"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/14%20Let%20Me%20Be%20Me.mp3>.
+<urn:uuid:a83f6304-c034-449b-8637-0b8ba67bb364> a mo:Track; dcterms:title "Determined (feat. Ash Riser)"; mo:duration "270"; dcat:downloadUrl <https://archive.org/download/KendrickLamarEPKendrickMixtapesFLAC/15%20Determined%20(feat.%20Ash%20Riser).mp3>.

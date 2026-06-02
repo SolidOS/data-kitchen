@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:cde1cb61-4a16-4128-b07e-d52f8d83a62a> a mo:Release;
+    dcterms:title "Penguin Cafe Orchestra LIVE 1991-11-25 @Coleford Royal Forest of Dean College";
+    foaf:maker "Penguin Cafe Orchestra";
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra25111991>;
+    mo:track <urn:uuid:c5dd6226-6baf-4652-ac56-db801ac8de52>, <urn:uuid:0abdbf7c-0e78-4127-a56e-dd3252b8da7b>, <urn:uuid:a36dda35-84ae-47ae-af7b-2509c50ede86>, <urn:uuid:b6b7aa49-e0f7-46cb-b6ff-8c4be24cc929>, <urn:uuid:5d8c979c-0f8c-4265-8823-07a2e8ad7006>, <urn:uuid:09e97da0-aabd-45fa-ad41-f31be05e0f78>, <urn:uuid:9c37f411-bc6a-4a3d-8ef2-46b101e35caf>, <urn:uuid:98eb4bef-04af-4be7-9f70-142f750dfa77>.
+<urn:uuid:c5dd6226-6baf-4652-ac56-db801ac8de52> a mo:Track; dcterms:title "Cutting Branches For A Temporary Shelter"; mo:duration "397"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra25111991/01%20Cutting%20Branches%20For%20A%20Temporary%20Shelter.mp3>.
+<urn:uuid:0abdbf7c-0e78-4127-a56e-dd3252b8da7b> a mo:Track; dcterms:title "Music For A Found Harmonium"; mo:duration "180"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra25111991/12%20Music%20For%20A%20Found%20Harmonium.mp3>.
+<urn:uuid:a36dda35-84ae-47ae-af7b-2509c50ede86> a mo:Track; dcterms:title "Nothing Really Blue"; mo:duration "325"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra25111991/06%20Nothing%20Really%20Blue.mp3>.
+<urn:uuid:b6b7aa49-e0f7-46cb-b6ff-8c4be24cc929> a mo:Track; dcterms:title "Now Nothing"; mo:duration "232"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra25111991/08%20Now%20Nothing.mp3>.
+<urn:uuid:5d8c979c-0f8c-4265-8823-07a2e8ad7006> a mo:Track; dcterms:title "Oscar Tango"; mo:duration "279"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra25111991/11%20Oscar%20Tango.mp3>.
+<urn:uuid:09e97da0-aabd-45fa-ad41-f31be05e0f78> a mo:Track; dcterms:title "Red Shorts"; mo:duration "327"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra25111991/14%20Red%20Shorts.mp3>.
+<urn:uuid:9c37f411-bc6a-4a3d-8ef2-46b101e35caf> a mo:Track; dcterms:title "Steady State"; mo:duration "339"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra25111991/09%20Steady%20State.mp3>.
+<urn:uuid:98eb4bef-04af-4be7-9f70-142f750dfa77> a mo:Track; dcterms:title "Vega (as yet Untitled)"; mo:duration "682"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra25111991/07%20Vega%20(as%20yet%20Untitled).mp3>.

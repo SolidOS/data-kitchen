@@ -1,0 +1,15 @@
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a schema:BookmarkAction ;
+   dct:creator "y" ;
+   dct:title "Interview with Bobby Seale" ;
+   dct:created "2026-06-02T01:09:43.973Z"^^xsd:dateTime ;
+   dct:references <https://archive.org/details/MS1950003H264> .
+
+<https://archive.org/details/MS1950003H264> a dctype:MovingImage, schema:VideoObject ;
+   schema:name "Interview with Bobby Seale" ;
+   dcat:landingPage <https://archive.org/details/MS1950003H264> .

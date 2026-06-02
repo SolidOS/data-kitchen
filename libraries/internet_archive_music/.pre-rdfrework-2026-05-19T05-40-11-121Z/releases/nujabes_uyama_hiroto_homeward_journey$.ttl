@@ -1,0 +1,13 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:90d460f6-684c-4217-9efb-a812fcb25768> a mo:Release;
+    dcterms:title "Nujabes & Uyama Hiroto - Homeward Journey";
+    foaf:maker "Uyama Hiroto";
+    dcat:landingPage <https://archive.org/details/homeward-journey>;
+    mo:track <urn:uuid:bbe92d20-c028-4899-a777-ed9dc855c396>, <urn:uuid:08911b63-3af5-429c-b1d9-46f53affb3fd>, <urn:uuid:2c218064-76ce-44ca-a83a-93a8a4ac6bb8>.
+<urn:uuid:bbe92d20-c028-4899-a777-ed9dc855c396> a mo:Track; dcterms:title "Homeward Journey (House Edit)"; mo:duration "386"; dcat:downloadUrl <https://archive.org/download/homeward-journey/01%20Homeward%20Journey%20(House%20Edit).mp3>.
+<urn:uuid:08911b63-3af5-429c-b1d9-46f53affb3fd> a mo:Track; dcterms:title "Homeward Journey (Original)"; mo:duration "325"; dcat:downloadUrl <https://archive.org/download/homeward-journey/02%20Homeward%20Journey%20(Original).mp3>.
+<urn:uuid:2c218064-76ce-44ca-a83a-93a8a4ac6bb8> a mo:Track; dcterms:title "Homeward Journey (Nujabes Edit)"; mo:duration "376"; dcat:downloadUrl <https://archive.org/download/homeward-journey/03%20Homeward%20Journey%20(Nujabes%20Edit).mp3>.

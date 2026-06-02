@@ -1,0 +1,132 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "WU-TANG CLAN Wu Chronicles Vol 2 FULL ALBUM" ;
+    dct:identifier "wu-tang-caln-wu-chronicles-vol-2-full-album" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/wu-tang-caln-wu-chronicles-vol-2-full-album> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15>, <#t16>, <#t17> ;
+    foaf:maker "Wu-Tang Clan - WU CHRONICLES Vol. 2 FULL ALBUM", <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Hard To Kill" ;
+    mo:duration "244" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20Spice%20I%20-%20Hard%20To%20Kill.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Eyes A Bleed (RZA Remix)" ;
+    mo:duration "286" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Bounty%20Killer%20ft.%20Masta%20Killa%20-%20Eyes%20A%20Bleed%20(RZA%20Remix).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Three Amigos (If It's On)" ;
+    mo:duration "219" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20King%20Just%2C%20Sic%20-%20Three%20Amigos%20(If%20It's%20On).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "N.Y.C. Everything" ;
+    mo:duration "258" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20RZA%20-%20N.Y.C.%20Everything.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Left & Right" ;
+    mo:duration "340" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20%26%20Redman%2C%20D'Angelo%20-%20Left%20%26%20Right.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Dangerous Mindz" ;
+    mo:duration "295" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Gravediggaz%20-%20Dangerous%20Mindz.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Above The Clouds" ;
+    mo:duration "227" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Gangstarr%20ft.%20Inspectah%20Deck%20-%20Above%20The%20Clouds.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Re-Up" ;
+    mo:duration "211" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Two%20Da%20Road%20ft.%20Shyheim%20-%20Re-Up.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "To The Rescue" ;
+    mo:duration "242" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/U-God%20ft.%20Leatha%20Face%20-%20To%20The%20Rescue.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Only 4 My Niggaz" ;
+    mo:duration "199" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Black%20Knights%20-%20Only%204%20My%20Niggaz.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Greyhound Pt.2 (GZA Remix)" ;
+    mo:duration "204" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/The%20Jon%20Spencer%20Blues%20Explosion%20ft.%20Killah%20Priest%20-%20Greyhound%20Pt.2%20(GZA%20Remix).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "In Trouble" ;
+    mo:duration "265" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Shyheim%20-%20In%20Trouble.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "Wu-Tang Clan - WU CHRONICLES Vol. 2 FULL ALBUM" ;
+    mo:duration "4029" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/%24%20Wu-Tang%20Clan%20-%20WU%20CHRONICLES%20Vol.%202%20FULL%20ALBUM.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "Gots Like Come On Thru" ;
+    mo:duration "278" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Ol'%20Dirty%20Bastard%20ft.%20Buddha%20Monk%2C%20Drunken%20Dragon%20-%20Gots%20Like%20Come%20On%20Thru.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "Wu-Tang Clan LIVE FREESTYLE - GZA & Masta Killa" ;
+    mo:duration "225" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Wu-Tang%20Clan%20LIVE%20FREESTYLE%20-%20GZA%20%26%20Masta%20Killa.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t16>
+    a mo:Track ;
+    dct:title "Hip Hop Fury" ;
+    mo:duration "226" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/GZA%20ft.%20RZA%2C%20Hell%20Raizah%2C%20Royal%20Fam%20-%20Hip%20Hop%20Fury.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t17>
+    a mo:Track ;
+    dct:title "Rumble" ;
+    mo:duration "272" ;
+    mo:item <https://archive.org/download/wu-tang-caln-wu-chronicles-vol-2-full-album/Method%20Man%20ft.%20U-God%2C%20Inspectah%20Deck%2C%20Leatha%20Face%20-%20Rumble.mp3> ;
+    dct:isPartOf <#it> .

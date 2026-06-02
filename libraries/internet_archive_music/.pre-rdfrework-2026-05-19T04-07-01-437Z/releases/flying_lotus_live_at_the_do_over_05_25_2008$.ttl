@@ -1,0 +1,11 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:2dc91ad4-233f-42c0-a9f8-66485e661f6c> a mo:Release;
+    dcterms:title "Flying Lotus Live At The Do Over 05-25-2008";
+    foaf:maker "Flying Lotus";
+    dcat:landingPage <https://archive.org/details/flying-lotus-live-at-the-do-over-25-05-08>;
+    mo:track <urn:uuid:2170e732-b796-467c-be98-e6bd16f0bf7c>.
+<urn:uuid:2170e732-b796-467c-be98-e6bd16f0bf7c> a mo:Track; dcterms:title "Live at The Do-Over (May 25, 2008)"; mo:duration "1547"; dcat:downloadUrl <https://archive.org/download/flying-lotus-live-at-the-do-over-25-05-08/flying%20lotus%20-%20live%20at%20the%20do-over%20%5B25-05-08%5D.mp3>.

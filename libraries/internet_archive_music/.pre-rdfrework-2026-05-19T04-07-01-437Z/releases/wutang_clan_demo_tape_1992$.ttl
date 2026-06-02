@@ -1,0 +1,62 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix det: <https://archive.org/details/>.
+
+<urn:uuid:2aecf0d0-65e3-4ab4-af0c-93006ebcadd1>
+    a mo:Track;
+    dct:title "Wu tang demo tape 1992/08 The Wu is comin' thru";
+    mo:duration "210";
+    dcat:downloadUrl
+        <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F08%20The%20Wu%20is%20comin'%20thru.mp3>.
+<urn:uuid:3b188a02-a0f6-4d73-a9df-ac3d423fcbaf>
+    a mo:Track;
+    dct:title "Wu tang demo tape 1992/02 Wu tang Master";
+    mo:duration "247";
+    dcat:downloadUrl
+        <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F02%20Wu%20tang%20Master.mp3>.
+<urn:uuid:8810df8d-9400-4417-960b-62dfac40e2f6>
+    a mo:Track;
+    dct:title "Wu tang demo tape 1992/04 Problems";
+    mo:duration "277";
+    dcat:downloadUrl
+        <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F04%20Problems.mp3>.
+<urn:uuid:a7414bf3-d3d5-4235-a41d-bcb8bf34913b>
+    a mo:Track;
+    dct:title "Wu tang demo tape 1992/06 After the laughter";
+    mo:duration "221";
+    dcat:downloadUrl
+        <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F06%20After%20the%20laughter.mp3>.
+<urn:uuid:b7b04949-9ee4-43be-9bc3-a08f2c4bc16c>
+    a mo:Release;
+    dct:title "Wu-Tang Clan Demo Tape 1992";
+    mo:track
+        <urn:uuid:2aecf0d0-65e3-4ab4-af0c-93006ebcadd1>,
+        <urn:uuid:3b188a02-a0f6-4d73-a9df-ac3d423fcbaf>,
+        <urn:uuid:8810df8d-9400-4417-960b-62dfac40e2f6>,
+        <urn:uuid:a7414bf3-d3d5-4235-a41d-bcb8bf34913b>,
+        <urn:uuid:c977702e-2955-49a6-a5e3-7453c4c5da22>,
+        <urn:uuid:f2f4c391-76e4-42b0-8e15-2327ff3ad150>,
+        <urn:uuid:f7dc0416-ec2c-43cc-b43c-5407c1e6c2f2>;
+    dcat:landingPage det:04-problems;
+    foaf:maker "RZA", <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292>.
+<urn:uuid:c977702e-2955-49a6-a5e3-7453c4c5da22>
+    a mo:Track;
+    dct:title "Wu tang demo tape 1992/07 Bring da ruckus";
+    mo:duration "210";
+    dcat:downloadUrl
+        <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F07%20Bring%20da%20ruckus.mp3>.
+<urn:uuid:f2f4c391-76e4-42b0-8e15-2327ff3ad150>
+    a mo:Track;
+    dct:title "Wu tang demo tape 1992/01 Enter the Wu";
+    mo:duration "181";
+    dcat:downloadUrl
+        <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F01%20Enter%20the%20Wu.mp3>.
+<urn:uuid:f7dc0416-ec2c-43cc-b43c-5407c1e6c2f2>
+    a mo:Track;
+    dct:title "Wu tang demo tape 1992/05 It's all about me";
+    mo:duration "188";
+    dcat:downloadUrl
+        <https://archive.org/download/04-problems/Wu%20tang%20demo%20tape%201992%2F05%20It's%20all%20about%20me.mp3>.

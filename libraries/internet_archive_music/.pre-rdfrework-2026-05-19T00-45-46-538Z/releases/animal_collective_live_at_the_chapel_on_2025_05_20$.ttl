@@ -1,0 +1,23 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:f070f958-9e43-48a6-b7f5-ac9a2a69ccff> a mo:Release;
+    dcterms:title "Animal Collective Live at The Chapel on 2025-05-20";
+    foaf:maker "Panda Bear";
+    dcat:landingPage <https://archive.org/details/acollective2025-05-20.flac24>;
+    mo:track <urn:uuid:e5dcd7c0-d848-4987-a427-27fda74a0623>, <urn:uuid:03a75bf7-9dfe-4dfd-b5ae-49b234cd9768>, <urn:uuid:42bdfde0-a240-4483-aeb0-e14298b98f40>, <urn:uuid:fa791955-45cb-49b3-81e1-b9ef9b043f23>, <urn:uuid:cb12ee74-6592-45e5-930a-e175ac78d6d1>, <urn:uuid:55ee29eb-2e08-4ec6-a602-ab91b7eef7f1>, <urn:uuid:64977c43-fa55-42bb-8658-851e89d1e6f2>, <urn:uuid:c8174c57-6c2c-456e-9569-83d8da0cbac5>, <urn:uuid:ab4ae8b3-30c8-4d8a-ad4a-bcd42f6a5535>, <urn:uuid:fc594489-8243-4b32-a9d5-ba27a0fb8aed>, <urn:uuid:383b43b0-52c4-47c7-a403-6ff1638d611d>, <urn:uuid:05138e28-3b1f-472e-9d09-e17825fa49d2>, <urn:uuid:4f3ae832-d16d-4d3c-ac02-67841ebb27cb>.
+<urn:uuid:e5dcd7c0-d848-4987-a427-27fda74a0623> a mo:Track; dcterms:title "Inner Monologue"; mo:duration "384"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/14-Inner%20Monologue.mp3>.
+<urn:uuid:03a75bf7-9dfe-4dfd-b5ae-49b234cd9768> a mo:Track; dcterms:title "Virginia Tech"; mo:duration "378"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/04-Virginia%20Tech.mp3>.
+<urn:uuid:42bdfde0-a240-4483-aeb0-e14298b98f40> a mo:Track; dcterms:title "Tomboy"; mo:duration "358"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/08-Tomboy.mp3>.
+<urn:uuid:fa791955-45cb-49b3-81e1-b9ef9b043f23> a mo:Track; dcterms:title "50mg"; mo:duration "346"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/01-50mg.mp3>.
+<urn:uuid:cb12ee74-6592-45e5-930a-e175ac78d6d1> a mo:Track; dcterms:title "Selfish Gene"; mo:duration "331"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/10-Selfish%20Gene.mp3>.
+<urn:uuid:55ee29eb-2e08-4ec6-a602-ab91b7eef7f1> a mo:Track; dcterms:title "Venom's In"; mo:duration "328"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/05-Venom's%20In.mp3>.
+<urn:uuid:64977c43-fa55-42bb-8658-851e89d1e6f2> a mo:Track; dcterms:title "Praise"; mo:duration "314"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/15-Praise.mp3>.
+<urn:uuid:c8174c57-6c2c-456e-9569-83d8da0cbac5> a mo:Track; dcterms:title "Song for Ariel"; mo:duration "299"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/06-Song%20for%20Ariel.mp3>.
+<urn:uuid:ab4ae8b3-30c8-4d8a-ad4a-bcd42f6a5535> a mo:Track; dcterms:title "Slow Motion"; mo:duration "267"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/12-Slow%20Motion.mp3>.
+<urn:uuid:fc594489-8243-4b32-a9d5-ba27a0fb8aed> a mo:Track; dcterms:title "Defense"; mo:duration "260"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/07-Defense.mp3>.
+<urn:uuid:383b43b0-52c4-47c7-a403-6ff1638d611d> a mo:Track; dcterms:title "Alsatian Darn"; mo:duration "243"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/02-Alsatian%20Darn.mp3>.
+<urn:uuid:05138e28-3b1f-472e-9d09-e17825fa49d2> a mo:Track; dcterms:title "Just as Well"; mo:duration "201"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/11-Just%20as%20Well.mp3>.
+<urn:uuid:4f3ae832-d16d-4d3c-ac02-67841ebb27cb> a mo:Track; dcterms:title "Ends Meet"; mo:duration "182"; dcat:downloadUrl <https://archive.org/download/acollective2025-05-20.flac24/03-Ends%20Meet.mp3>.

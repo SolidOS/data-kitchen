@@ -1,0 +1,12 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dctypes: <http://purl.org/dc/dcmitype/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix omp: <http://open-media-player.org/ns#>.
+
+<http://localhost:3000/s/test/ia/libraries/internet_archive_music/playlists/Four_Tet> a dctypes:Collection, mo:Playlist;
+    <http://purl.org/dc/terms/title> "Four Tet";
+    <http://xmlns.com/foaf/0.1/maker> "jeffz";
+    <http://open-media-player.org/ns#hidePlaylist> "true";
+    dcterms:hasPart <urn:uuid:7e3b3168-9eef-45e3-924b-6a9cdb0cb321>, <urn:uuid:2736e85e-160b-423b-9532-1c96fc62ca23>, <urn:uuid:8dee854d-f357-41ed-bbb9-fc9a0c0064bc>, <urn:uuid:4d932be5-4802-4c7c-87ab-8058f6c6b7fc>, <urn:uuid:036aa64b-3d0e-43e2-b3f6-b40547bd7b69>, <urn:uuid:a45fcc55-84c1-4305-907c-0006819c063a>, <urn:uuid:06024e63-bcb7-4715-bc20-55d5989b5386>, <urn:uuid:8d8091ab-0e61-4191-b786-93ad9daa1abb>, <urn:uuid:2cc08020-3b29-46fc-b78c-0599eee8347e>, <urn:uuid:3f544f6b-1bf0-4d24-b436-60a4ae570f0b>, <urn:uuid:c93e4242-7fcd-4048-bced-77ccdc6afbfc>, <urn:uuid:6ba9de2c-c32e-4f17-98e0-af5301191169>, <urn:uuid:ef03aa94-a841-41cb-812e-0995386c80d5>, <urn:uuid:9af4d8a0-8767-49bd-884d-dd60873a18eb>, <urn:uuid:e4875275-59f5-4823-abd0-27648ce5f7d0>, <urn:uuid:472d4822-aba0-497e-b66b-103179a0d52d>, <urn:uuid:bdc07bca-6463-46d6-b7cb-ec256ba2ff60>, <urn:uuid:f43e3bd2-ec78-4249-81b2-dce176c541d0>, <urn:uuid:ae52c61e-0a54-4a9c-84a5-7634e06f2eb7>, <urn:uuid:3d703235-2ea8-4166-aa84-9d85181105d8>, <urn:uuid:2922ea39-5027-47d6-9472-f46244c1d0e1>, <urn:uuid:d27a045e-e7a2-4db6-b7fd-4967c0307609>, <urn:uuid:3bae011c-54d9-4777-af73-f395c1c87211>, <urn:uuid:766d40b7-4c3d-4516-af48-f626001a25da>, <urn:uuid:5deaeb3c-784d-47ab-97f1-c44a64f3687b>, <urn:uuid:8c110638-67e1-4b37-9c71-c7549aa4abe2>.

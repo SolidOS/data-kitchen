@@ -1,0 +1,15 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:24670242-bb8a-451d-8458-7c7a0cbd2212> a mo:Release;
+    dcterms:title "Great Moments in American Music";
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f>;
+    dcat:landingPage <https://archive.org/details/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett>;
+    mo:track <urn:uuid:6c8b8522-3b5a-4f2b-bd57-51ed1631c661>, <urn:uuid:6f47e920-7adb-4ae9-856a-a9a35a5c44fc>, <urn:uuid:ca814efb-91ac-4d69-86c1-eba2e62d3d2d>, <urn:uuid:04daa79c-9244-44a9-85a7-b2afabd0b87b>, <urn:uuid:9eef038d-887f-4fd8-9538-285f1c994197>.
+<urn:uuid:6c8b8522-3b5a-4f2b-bd57-51ed1631c661> a mo:Track; dcterms:title "disc1/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side1"; mo:duration "929"; dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2Flp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side1.flac>.
+<urn:uuid:6f47e920-7adb-4ae9-856a-a9a35a5c44fc> a mo:Track; dcterms:title "disc1/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side1"; dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2Flp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side1.opus>.
+<urn:uuid:ca814efb-91ac-4d69-86c1-eba2e62d3d2d> a mo:Track; dcterms:title "disc1/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side2"; mo:duration "948"; dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2Flp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side2.flac>.
+<urn:uuid:04daa79c-9244-44a9-85a7-b2afabd0b87b> a mo:Track; dcterms:title "disc1/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side2"; dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2Flp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett_disc1side2.opus>.
+<urn:uuid:9eef038d-887f-4fd8-9538-285f1c994197> a mo:Track; dcterms:title "People"; mo:duration "262"; dcat:downloadUrl <https://archive.org/download/lp_great-moments-in-american-music_aretha-franklin-jerry-vale-gary-puckett/disc1%2F01.01.%20People.mp3>.

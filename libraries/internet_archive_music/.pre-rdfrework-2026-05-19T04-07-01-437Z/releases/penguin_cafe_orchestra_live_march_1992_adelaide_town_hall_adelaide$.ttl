@@ -1,0 +1,17 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+
+<urn:uuid:77bf5c7b-ca3a-42b0-88e7-c8d1d20262c7> a mo:Release;
+    dcterms:title "Penguin Cafe Orchestra LIVE March 1992 @Adelaide Town Hall, Adelaide";
+    foaf:maker "Penguin Cafe Orchestra";
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra1992adelaide>;
+    mo:track <urn:uuid:75c8bbf6-1a99-4e0e-ab26-cf47e954a523>, <urn:uuid:0950f31b-9c2c-4eb9-9330-0f35726ff209>, <urn:uuid:51cbb143-1999-43b7-ac6b-9b5e018ac908>, <urn:uuid:29730d48-9b3e-4632-83af-dc219d6321cc>, <urn:uuid:0dacde0c-d180-4cf6-9e53-7ea0547f984c>, <urn:uuid:bf8ecfc3-9571-4510-86b4-837879ae39ce>, <urn:uuid:d0518575-1a25-490c-b7ea-c179161abb6b>.
+<urn:uuid:75c8bbf6-1a99-4e0e-ab26-cf47e954a523> a mo:Track; dcterms:title "Beanfields"; mo:duration "267"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra1992adelaide/04%20-%20Beanfields.mp3>.
+<urn:uuid:0950f31b-9c2c-4eb9-9330-0f35726ff209> a mo:Track; dcterms:title "Isle of View"; mo:duration "311"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra1992adelaide/07%20-%20Isle%20of%20View.mp3>.
+<urn:uuid:51cbb143-1999-43b7-ac6b-9b5e018ac908> a mo:Track; dcterms:title "Medley: Surface Tension/Oscar Tango/Music for a Found Harmonium"; mo:duration "484"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra1992adelaide/06%20-%20Medley%20-%20Surface%20Tension-Oscar%20Tango-Music%20for%20a%20Found%20Harmonium.mp3>.
+<urn:uuid:29730d48-9b3e-4632-83af-dc219d6321cc> a mo:Track; dcterms:title "Pythagoras's Trousers"; mo:duration "222"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra1992adelaide/08%20-%20Pythagoras's%20Trousers.mp3>.
+<urn:uuid:0dacde0c-d180-4cf6-9e53-7ea0547f984c> a mo:Track; dcterms:title "Salty Bean Fumble"; mo:duration "255"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra1992adelaide/11%20-%20Salty%20Bean%20Fumble.mp3>.
+<urn:uuid:bf8ecfc3-9571-4510-86b4-837879ae39ce> a mo:Track; dcterms:title "Scherzo and Trio"; mo:duration "426"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra1992adelaide/09%20-%20Scherzo%20and%20Trio.mp3>.
+<urn:uuid:d0518575-1a25-490c-b7ea-c179161abb6b> a mo:Track; dcterms:title "White Mischief"; mo:duration "333"; dcat:downloadUrl <https://archive.org/download/penguincafeorchestra1992adelaide/05%20-%20White%20Mischief.mp3>.
