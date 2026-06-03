@@ -93,10 +93,10 @@
       transition: color .15s ease, background .15s ease;
     }
     #omp-tabs > .sol-tabs-bar > button:hover { color: var(--ia-text-strong, #fff); }
-    #omp-tabs > .sol-tabs-bar > button[data-tab-id="Music"].active      { background: var(--tab-music);  border-color: var(--tab-music);  color: var(--tab-on); }
-    #omp-tabs > .sol-tabs-bar > button[data-tab-id="Movies"].active     { background: var(--tab-movies); border-color: var(--tab-movies); color: var(--tab-on); }
-    #omp-tabs > .sol-tabs-bar > button[data-tab-id="News"].active       { background: var(--tab-news);   border-color: var(--tab-news);   color: var(--tab-on); }
-    #omp-tabs > .sol-tabs-bar > button[data-tab-id="Images"].active     { background: var(--tab-images); border-color: var(--tab-images); color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-music"].active  { background: var(--tab-music);  border-color: var(--tab-music);  color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-movies"].active { background: var(--tab-movies); border-color: var(--tab-movies); color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-news"].active   { background: var(--tab-news);   border-color: var(--tab-news);   color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-images"].active { background: var(--tab-images); border-color: var(--tab-images); color: var(--tab-on); }
     #omp-tabs > .sol-tabs-bar > button[data-tab-id="Favourites"].active { background: var(--tab-fav, #e6b800); border-color: var(--tab-fav, #e6b800); color: var(--tab-on); }
     /* While help fills the tab content (a .sol-inline-panel is present), no tab
        is the current view — drop the active highlight (the ? button takes it). */

@@ -46,7 +46,7 @@ try {
     { timeout: 20000 });
   const ids = await page.evaluate(() =>
     [...document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button')].map(b => b.dataset.tabId));
-  check(JSON.stringify(ids) === JSON.stringify(['News', 'Music', 'Images', 'Movies']),
+  check(JSON.stringify(ids) === JSON.stringify(['panel-news', 'panel-music', 'panel-images', 'panel-movies']),
     `tab order (data-tab-id) = ${ids.join(' · ')}`);
 
   // All four panels mounted up front (eager keep-alive).
@@ -57,7 +57,7 @@ try {
   // News active + its first source's articles rendered.
   const activeId = await page.evaluate(() =>
     document.querySelector('#omp-tabs > .sol-tabs-bar > button.active')?.dataset.tabId);
-  check(activeId === 'News', `active tab on cold start = ${activeId}`);
+  check(activeId === 'panel-news', `active tab on cold start = ${activeId}`);
 
   await page.waitForFunction(() => {
     const f = document.getElementById('panel-news');
@@ -113,7 +113,7 @@ try {
     `Help ? → owner help inline in content area (not modal), if-logged-in=${help.altSrc}`);
   check(help.btnOpen, 'Help open: ? button reflects open (highlighted)');
   // Picking a tab dismisses help.
-  await page.evaluate(() => document.querySelector('#omp-tabs > .sol-tabs-bar > button[data-tab-id="News"]').click());
+  await page.evaluate(() => document.querySelector('#omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-news"]').click());
   await sleep(400);
   check(await page.evaluate(() => !document.querySelector('#omp-tabs > .sol-tabs-content > .sol-inline-panel')), 'Help dismissed when a tab is picked');
   check(await page.evaluate(() => !document.querySelector('.omp-help-launch').hasAttribute('open')), 'Help button no longer open after dismiss');

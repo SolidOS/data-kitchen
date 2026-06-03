@@ -4199,7 +4199,9 @@ async function init(host, libraryConfigs) {
 }
 
 class IaPlayerElement extends HTMLElement {
-  static get observedAttributes() { return ['src']; }
+  // `source` is accepted as an alias for `src` so a <sol-tabs> anchor's href
+  // (forwarded as `source`) drives the player without a duplicate `data-src`.
+  static get observedAttributes() { return ['src', 'source']; }
 
   connectedCallback() {
     if (this._mounted) return;
@@ -4221,13 +4223,13 @@ class IaPlayerElement extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (!this._mounted || name !== 'src' || oldValue === newValue) return;
+    if (!this._mounted || (name !== 'src' && name !== 'source') || oldValue === newValue) return;
     // Only honor src attribute if no persisted libraries exist.
     if (!localStorage.getItem(LIB_KEY)) this._loadFromConfig();
   }
 
   _loadFromConfig() {
-    const defaultSrc = this.getAttribute('src');
+    const defaultSrc = this.getAttribute('src') || this.getAttribute('source');
     // Panel instance (storage-ns + src): one isolated, src-driven library.
     // Bypass the shared LIB_KEY config list so two panels (Music/Movies)
     // never read or overwrite each other's library set.
