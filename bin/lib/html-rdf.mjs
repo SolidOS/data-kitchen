@@ -220,13 +220,15 @@ export function parseMenuTtl(text, base = 'http://x/menu.ttl') {
 const indent = (lines, n) => lines.map((l) => ' '.repeat(n) + l).join('\n');
 const attrStr = ([k, v]) => (v === '' ? k : `${k}="${v}"`);
 export function emitTabsHtml({ tabs, actions = [], menu = null }) {
-  // Reverse of extract: source→href, id→id attr, local→data-tab-id, name→data-handler,
-  // other attrs→data-*. Standard attrs on the tag line; data-* each indented; > on its own line.
+  // Reverse of extract: source→href, id/local→id attr, name→data-handler,
+  // other attrs→data-*. The bar button's per-room key is derived from `id` at
+  // runtime (sol-tabs mirrors it as data-tab-id), so no separate data-tab-id is
+  // authored. Standard attrs on the tag line; data-* each indented; > on its own line.
   const anchors = tabs.map((t) => {
     const byKey = Object.fromEntries(t.attrs.map(([k, v]) => [k, v]));
     const href = byKey.source ?? '';
-    const idAttr = byKey.id != null ? ` id="${byKey.id}"` : '';
-    const dataLines = [`data-tab-id="${t.local}"`, `data-handler="${t.name}"`];
+    const idAttr = byKey.id != null ? ` id="${byKey.id}"` : (t.local ? ` id="${t.local}"` : '');
+    const dataLines = [`data-handler="${t.name}"`];
     for (const [k, v] of t.attrs) {
       if (k === 'id' || k === 'source') continue;
       dataLines.push(v === '' ? `data-${k}` : `data-${k}="${v}"`);

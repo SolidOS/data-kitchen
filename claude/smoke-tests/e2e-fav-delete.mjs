@@ -72,7 +72,7 @@ try {
   // Favourites now live in the "Community Favorites" column (both music and
   // movies), each row with an owner ✕ (.ia-row-favdel).
   const delFromFavCol = async (panel, re) => {
-    await clickTab(panel === 'panel-music' ? 'Music' : 'Movies');
+    await clickTab(panel);
     await page.waitForFunction((p) =>
       document.querySelector(`#${p} #ia-h-favs`)?.textContent.trim() === 'Community Favorites', { timeout: 30000 }, panel);
     await page.waitForFunction((p, r) =>
@@ -105,7 +105,7 @@ try {
 
   // ---- Images: owner-only ✕ on the favourites column ----
   // The <omp-images> element itself carries id="panel-images" (per tabs.ttl).
-  await clickTab('Images');
+  await clickTab('panel-images');
   await page.waitForFunction(() => {
     const el = document.getElementById('panel-images');
     return el && el.shadowRoot && /ZZ Delete Gallery/.test(el.shadowRoot.textContent);

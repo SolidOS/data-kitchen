@@ -45,7 +45,7 @@ try {
   // ---- Music ----
   // Music keeps its Playlists section AND a separate "Community Favorites"
   // section below it.
-  await clickTab('Music');
+  await clickTab('panel-music');
   await favsReady('panel-music');
   const music = await page.evaluate(() => {
     const root = document.getElementById('panel-music');
@@ -67,7 +67,7 @@ try {
   // ---- Movies ----
   // Movies are favourites-only: the Playlists section is hidden and the
   // Community Favorites section fills the column.
-  await clickTab('Movies');
+  await clickTab('panel-movies');
   await favsReady('panel-movies');
   const movies = await page.evaluate(() => {
     const root = document.getElementById('panel-movies');

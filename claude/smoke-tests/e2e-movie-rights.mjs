@@ -31,7 +31,7 @@ try {
     document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 4, { timeout: 20000 });
 
   await page.evaluate(() =>
-    document.querySelector('#omp-tabs > .sol-tabs-bar > button[data-tab-id="Movies"]').click());
+    document.querySelector('#omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-movies"]').click());
 
   // Film types (local RDF) → pick the first.
   await page.waitForFunction((s) => document.querySelectorAll(s).length > 0, { timeout: 30000 }, opts('genre'));

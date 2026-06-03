@@ -17,7 +17,7 @@ try {
     { timeout: 20000 });
   // Go to Movies
   await page.evaluate(() =>
-    document.querySelector('#omp-tabs > .sol-tabs-bar > button[data-tab-id="Movies"]').click());
+    document.querySelector('#omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-movies"]').click());
   await page.waitForFunction(() => {
     const l = document.querySelector('#panel-movies .ia-sources-list');
     return l && /Favorites/.test(l.textContent);

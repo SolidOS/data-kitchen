@@ -58,7 +58,7 @@ try {
   });
 
   // Switch to Images; wait for the Library column (Art / Life).
-  await page.click('#omp-tabs > .sol-tabs-bar > button[data-tab-id="Images"]');
+  await page.click('#omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-images"]');
   await page.waitForFunction(() => {
     const g = document.getElementById('panel-images');
     return g && !g.hidden && g.shadowRoot && g.shadowRoot.querySelectorAll('.row.lib').length >= 2;
