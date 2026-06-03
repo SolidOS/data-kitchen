@@ -216,6 +216,8 @@
     .omp-sollogin { display: inline-flex; }
 
     .omp-panels { flex: 1 1 auto; min-height: 0; overflow: hidden; display: flex; }
+    .omp-panels > sol-include,
+    .omp-panels > sol-include > .si-content { display: contents; }
     ia-player { display: block; width: 100%; }
     /* Higher specificity than ia.css's `ia-player { height: 100vh }` (which
        is injected later and would otherwise win) — here the panel must fill

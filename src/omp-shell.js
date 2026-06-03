@@ -4,7 +4,17 @@
 // keep-alive>; here we react to its sol-tab-change. Favourites are no longer
 // a tab — each media tab surfaces its own favourites.
 
-    const solTabs = document.getElementById('omp-tabs');
+    // Body UI source is declared on <sol-default src-of-truth> (html | rdf,
+    // default html); feed it to the #omp-body include, which loads the matching
+    // tabs fragment. #omp-tabs therefore appears asynchronously (see whenTabsReady).
+    (function selectBody() {
+      const body = document.getElementById('omp-body');
+      if (!body || body.getAttribute('source')) return;
+      const sot = (document.querySelector('sol-default')?.getAttribute('src-of-truth') || 'html').toLowerCase();
+      body.setAttribute('source', sot === 'rdf' ? './rdf-first.html' : './html-first.html');
+    })();
+
+    let solTabs = null;   // assigned once the included <sol-tabs> exists
     const chrome  = document.querySelector('.omp-chrome');
     const PANEL_KEYS = ['news', 'music', 'images', 'movies'];
     const panelEl   = (key) => document.getElementById('panel-' + key);
@@ -90,7 +100,7 @@
       document.dispatchEvent(new CustomEvent('omp:appearance'));
     }
     // Plain <button> chrome (index.html) toggles on click; a <sol-button
-    // command="…"> (index2.html) routes through the sol-command registry below.
+    // command="…"> (html-first.html) routes through the sol-command registry below.
     if (themeBtn && themeBtn.tagName !== 'SOL-BUTTON') themeBtn.addEventListener('click', toggleTheme);
     if (fontBtn  && fontBtn.tagName  !== 'SOL-BUTTON') fontBtn.addEventListener('click', cycleFontSize);
     document.addEventListener('omp:appearance', () => { syncTheme(); syncFontSize(); });
@@ -213,6 +223,7 @@
       }, 50);
     }
     whenTabsReady(() => {
+      solTabs = document.getElementById('omp-tabs');
       for (const el of allPanels()) el.addEventListener('omp:access', syncGating);
       solTabs.addEventListener('sol-tab-change', (e) => onTab(e.detail?.name));
       if (canWrite()) panelEl('news')?.toggleAttribute('editable', true);

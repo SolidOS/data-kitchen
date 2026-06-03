@@ -3,37 +3,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Media Player</title>
-
   <script src="./src/omp-boot.js"></script>
-
   <link rel="stylesheet" href="./assets/omp.css">
-
   <script src="https://cdn.jsdelivr.net/npm/@inrupt/solid-client-authn-browser/dist/solid-client-authn.bundle.js"></script>
   <script src="./dist/ia-player.js" type="module"></script>
 </head>
 <body>
-  <sol-default proxy="http://localhost:3002/proxy?uri=" solid-kitchen></sol-default>
+
+  <sol-default
+     src-of-truth="html"
+     proxy="http://localhost:3002/proxy?uri="
+     theme="dark"
+     fontsize="medium"
+     solid-kitchen
+     data-settings="./data/generated/settings.ttl#Settings"
+  ></sol-default>
 
   <nav class="omp-chrome-bar" aria-label="Controls">
-    <div class="omp-mini" hidden role="group" aria-label="Audio player">
-      <button type="button" class="chrome-btn omp-mini-play" title="Play / pause" aria-label="Play / pause">▶</button>
-      <input type="range" class="omp-mini-seek" min="0" max="1000" value="0" aria-label="Seek">
-    </div>
-
-    <div class="omp-chrome">
-      <sol-button class="omp-help-launch" title="Help" aria-label="Help"
-                  handler="sol-include" inline for="#omp-tabs > .sol-tabs-content"
-                  source="./assets/omp-help.html" if-logged-in="./assets/omp-help-owner.html"
-                  trusted>?</sol-button>
-      <button type="button" class="chrome-btn omp-fontsize" data-size="medium" title="Text size" aria-label="Text size">A</button>
-      <button type="button" class="chrome-btn omp-theme" title="Toggle light / dark" aria-label="Toggle light / dark">🌙</button>
-      <sol-login class="omp-sollogin" issuers="https://solidcommunity.net,https://login.inrupt.com"></sol-login>
-      <sol-dropdown-button class="omp-more" label="⋮" title="More" aria-label="More" if-logged-in source="./data/menu.ttl#More"></sol-dropdown-button>
-    </div>
+    <sol-include
+       source="assets/mini-player.html"
+       trusted
+    ></sol-include>
   </nav>
 
   <main class="omp-panels">
-    <sol-tabs id="omp-tabs" keep-alive from-rdf="./data/tabs.ttl#Tabs"></sol-tabs>
+    <sol-include id="omp-body" trusted></sol-include>
   </main>
 
   <script type="module" src="./src/omp-shell.js"></script>

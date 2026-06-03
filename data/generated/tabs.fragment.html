@@ -1,0 +1,38 @@
+<a href="./libraries/news/feeds.ttl#Feeds" id="panel-news"
+   data-tab-id="News"
+   data-handler="sol-feed"
+   data-view="topics"
+   data-select-first
+>📰 News</a>
+<a href="./libraries/internet_archive_music/index.ttl" id="panel-music"
+   data-tab-id="Music"
+   data-handler="ia-player"
+   data-src="./libraries/internet_archive_music/index.ttl"
+   data-storage-ns="music"
+   data-defer
+>🎵 Music</a>
+<a href="./libraries/wikimedia_images/images.ttl#Images" id="panel-images"
+   data-tab-id="Images"
+   data-handler="omp-images"
+>🖼 Images</a>
+<a href="./libraries/internet_archive_movies/index.ttl" id="panel-movies"
+   data-tab-id="Movies"
+   data-handler="ia-player"
+   data-src="./libraries/internet_archive_movies/index.ttl"
+   data-storage-ns="movies"
+   data-favourites-only
+   data-defer
+>🎬 Movies</a>
+<sol-button class="omp-help-launch" title="Help" aria-label="Help" handler="sol-include" source="./assets/omp-help.html" if-logged-in="./assets/omp-help-owner.html" inline>?</sol-button>
+<sol-button class="omp-fontsize" title="Text size" aria-label="Text size" handler="cycleFontSize">A</sol-button>
+<sol-button class="omp-theme" title="Toggle light / dark" aria-label="Toggle light / dark" handler="toggleTheme">🌙</sol-button>
+<sol-login class="omp-sollogin" issuers="https://solidcommunity.net,https://login.inrupt.com"></sol-login>
+<sol-dropdown-button class="omp-more" title="More" aria-label="More" label="⋮" if-logged-in>
+  <menu>
+  <button handler="guestView">View as guest</button>
+  <button handler="filters">Filters…</button>
+  <button handler="viewDeleted">View deleted</button>
+  <button handler="installPod">Install on my Pod…</button>
+  <button handler="updateApp">Update app on Pod…</button>
+  </menu>
+</sol-dropdown-button>

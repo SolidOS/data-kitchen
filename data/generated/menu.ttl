@@ -1,0 +1,12 @@
+@prefix ui:  <http://www.w3.org/ns/ui#> .
+@prefix acl: <http://www.w3.org/ns/auth/acl#> .
+
+# GENERATED from the declarative HTML by bin/html-to-rdf.mjs — do not hand-edit.
+<#More> a ui:Menu ; ui:label "More" ;
+  ui:parts ( <#guestView> <#filters> <#viewDeleted> <#installPod> <#updateApp> ) .
+
+<#guestView> a ui:Component ; ui:label "View as guest" ; ui:name "guestView" ; acl:mode acl:Write .
+<#filters> a ui:Component ; ui:label "Filters…" ; ui:name "filters" ; acl:mode acl:Write .
+<#viewDeleted> a ui:Component ; ui:label "View deleted" ; ui:name "viewDeleted" ; acl:mode acl:Write .
+<#installPod> a ui:Component ; ui:label "Install on my Pod…" ; ui:name "installPod" ; acl:mode acl:Write .
+<#updateApp> a ui:Component ; ui:label "Update app on Pod…" ; ui:name "updateApp" ; acl:mode acl:Write .

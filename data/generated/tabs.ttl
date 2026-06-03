@@ -1,0 +1,79 @@
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
+
+# GENERATED from the declarative HTML by bin/html-to-rdf.mjs — do not hand-edit.
+<#Tabs> a ui:Menu ; ui:label "Open Media Player" ;
+  ui:orientation ui:Horizontal ;
+  ui:parts ( <#News> <#Music> <#Images> <#Movies> <#helpLaunch> <#fontsize> <#theme> <#sollogin> <#more> ) .
+
+<#News> a ui:Component ; ui:label "📰 News" ; ui:name "sol-feed" ;
+  ui:attribute
+    [ schema:name "id" ; schema:value "panel-news" ] ,
+    [ schema:name "view" ; schema:value "topics" ] ,
+    [ schema:name "select-first" ; schema:value "" ] ,
+    [ schema:name "source" ; schema:value "./libraries/news/feeds.ttl#Feeds" ] .
+
+<#Music> a ui:Component ; ui:label "🎵 Music" ; ui:name "ia-player" ;
+  ui:attribute
+    [ schema:name "id" ; schema:value "panel-music" ] ,
+    [ schema:name "src" ; schema:value "./libraries/internet_archive_music/index.ttl" ] ,
+    [ schema:name "storage-ns" ; schema:value "music" ] ,
+    [ schema:name "defer" ; schema:value "" ] ,
+    [ schema:name "source" ; schema:value "./libraries/internet_archive_music/index.ttl" ] .
+
+<#Images> a ui:Component ; ui:label "🖼 Images" ; ui:name "omp-images" ;
+  ui:attribute
+    [ schema:name "id" ; schema:value "panel-images" ] ,
+    [ schema:name "source" ; schema:value "./libraries/wikimedia_images/images.ttl#Images" ] .
+
+<#Movies> a ui:Component ; ui:label "🎬 Movies" ; ui:name "ia-player" ;
+  ui:attribute
+    [ schema:name "id" ; schema:value "panel-movies" ] ,
+    [ schema:name "src" ; schema:value "./libraries/internet_archive_movies/index.ttl" ] ,
+    [ schema:name "storage-ns" ; schema:value "movies" ] ,
+    [ schema:name "favourites-only" ; schema:value "" ] ,
+    [ schema:name "defer" ; schema:value "" ] ,
+    [ schema:name "source" ; schema:value "./libraries/internet_archive_movies/index.ttl" ] .
+
+<#helpLaunch> a ui:Component ; ui:label "?" ; ui:name "sol-button" ;
+  ui:attribute
+    [ schema:name "slot" ; schema:value "actions" ] ,
+    [ schema:name "class" ; schema:value "omp-help-launch" ] ,
+    [ schema:name "title" ; schema:value "Help" ] ,
+    [ schema:name "aria-label" ; schema:value "Help" ] ,
+    [ schema:name "handler" ; schema:value "sol-include" ] ,
+    [ schema:name "source" ; schema:value "./assets/omp-help.html" ] ,
+    [ schema:name "if-logged-in" ; schema:value "./assets/omp-help-owner.html" ] ,
+    [ schema:name "inline" ; schema:value "" ] .
+
+<#fontsize> a ui:Component ; ui:label "A" ; ui:name "sol-button" ;
+  ui:attribute
+    [ schema:name "slot" ; schema:value "actions" ] ,
+    [ schema:name "class" ; schema:value "omp-fontsize" ] ,
+    [ schema:name "title" ; schema:value "Text size" ] ,
+    [ schema:name "aria-label" ; schema:value "Text size" ] ,
+    [ schema:name "handler" ; schema:value "cycleFontSize" ] .
+
+<#theme> a ui:Component ; ui:label "🌙" ; ui:name "sol-button" ;
+  ui:attribute
+    [ schema:name "slot" ; schema:value "actions" ] ,
+    [ schema:name "class" ; schema:value "omp-theme" ] ,
+    [ schema:name "title" ; schema:value "Toggle light / dark" ] ,
+    [ schema:name "aria-label" ; schema:value "Toggle light / dark" ] ,
+    [ schema:name "handler" ; schema:value "toggleTheme" ] .
+
+<#sollogin> a ui:Component ; ui:label "" ; ui:name "sol-login" ;
+  ui:attribute
+    [ schema:name "slot" ; schema:value "actions" ] ,
+    [ schema:name "class" ; schema:value "omp-sollogin" ] ,
+    [ schema:name "issuers" ; schema:value "https://solidcommunity.net,https://login.inrupt.com" ] .
+
+<#more> a ui:Component ; ui:label "" ; ui:name "sol-dropdown-button" ;
+  ui:attribute
+    [ schema:name "slot" ; schema:value "actions" ] ,
+    [ schema:name "class" ; schema:value "omp-more" ] ,
+    [ schema:name "title" ; schema:value "More" ] ,
+    [ schema:name "aria-label" ; schema:value "More" ] ,
+    [ schema:name "label" ; schema:value "⋮" ] ,
+    [ schema:name "if-logged-in" ; schema:value "" ] ,
+    [ schema:name "source" ; schema:value "./data/generated/menu.ttl#More" ] .

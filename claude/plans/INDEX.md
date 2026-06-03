@@ -37,13 +37,23 @@ What each item *does* and its next step. Full history is in the status
 table below and in each plan. 🔴 = outstanding work (rendered red where
 the viewer supports it).
 
-**🔴 ① HTML as the source of truth** (`PLAN-html-src-of-truth.md`, **TOP
-   to-do, Proposal 2026-06-02**). The UI config now lives in slim declarative
-   HTML (`index2.html`: inline tabs, bare toolbar actions, `<menu>` of
-   `handler=` items, `<sol-default>` theme/fontsize/solid-kitchen). Next step:
-   **auto-generate the RDF (`.ttl`) and the Forms FROM that HTML** instead of
-   hand-authoring both — invert `from-rdf` so the `.ttl` is a generated artifact
-   (like `.shaclc` from `.shacl`). See [[project_html_src_of_truth]].
+**🔴 ① HTML as the source of truth** (`PLAN-html-src-of-truth.md`, **Phases 1–6
+   BUILT 2026-06-02**). UI config lives in slim declarative HTML (inline tabs,
+   bare toolbar actions, `<menu>` of `handler=` items, `<sol-default>`
+   theme/fontsize/solid-kitchen). **SHIPPED entry point:** a **vanilla
+   `index.html`** = `<sol-default src-of-truth="html|rdf">` (default `html`) + an
+   empty `<sol-include id="omp-body" trusted>`; `omp-shell.js` reads the attr and
+   includes **`html-first.html`** (inline tabs) or **`rdf-first.html`** (`<sol-tabs
+   from-rdf>`) into the light DOM. No swc change. **DONE (both generator
+   directions):** `bin/html-to-rdf.mjs` (`npm run gen:rdf`) generates
+   tabs/⋮-menu/settings RDF FROM `html-first.html` (+ `<sol-default>` from
+   index.html); `bin/rdf-to-html.mjs` (`npm run gen:html`) regenerates the HTML
+   fragments FROM the RDF; shared mappings in `bin/lib/html-rdf.mjs`; the
+   HTML→RDF→HTML→RDF round-trip is verified lossless. `index2.html` deleted; the
+   old `<sol-default from-rdf>` one-file switch glue in swc is now dead code
+   (offered for removal). Verified `claude/smoke-tests/e2e-src-of-truth.mjs`
+   (12/12 both modes, 0 errors). **Next (await go):** Forms generation from HTML.
+   See [[project_html_src_of_truth]].
 
 **★ Communal favourites wall** (`PLAN-communal-favourites.md`, **BUILT +
    verified 2026-05-31**). A shared `favourites/` folder (one append-only file

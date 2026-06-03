@@ -6,7 +6,11 @@
   "main": "dist/ia-player.js",
   "scripts": {
     "build": "node bin/build.js",
-    "watch": "node bin/build.js --watch"
+    "watch": "node bin/build.js --watch",
+    "gen:rdf": "node bin/html-to-rdf.mjs",
+    "gen:rdf:verify": "node bin/html-to-rdf.mjs --verify",
+    "gen:html": "node bin/rdf-to-html.mjs",
+    "gen:html:verify": "node bin/rdf-to-html.mjs --verify"
   },
   "dependencies": {
     "rdflib": "^2.2.36"
