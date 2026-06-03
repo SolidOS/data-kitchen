@@ -25,6 +25,10 @@ import '../../solid-web-components/web/sol-modal.js';
 // are command items that dispatch sol-command to omp's COMMANDS registry.
 // (Imports sol-menu transitively, which it extends.)
 import '../../solid-web-components/web/sol-dropdown-button.js';
+// from-rdf is now an opt-in add-on in swc — this enables <sol-tabs from-rdf> /
+// <sol-dropdown-button from-rdf> (rdf-first.html, data/tabs.ttl, data/menu.ttl).
+// rdflib is already in this bundle (sol-feed/ia3), so it adds no weight here.
+import '../../solid-web-components/web/menu-from-rdf.js';
 // <omp-images> is the Images tab shell: it owns the Topics/Collections
 // selectors + owner-only +Topic/+Collection controls and pumps a source
 // adapter's pages into a display-only <sol-gallery> (which it imports).
