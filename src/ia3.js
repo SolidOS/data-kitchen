@@ -3390,6 +3390,14 @@ function createPlayer({ libraryConfigs, libs, host }) {
     switchSource(binId);
   });
 
+  // ⚠️ FIXME (sol-loader migration): pod-install assumes a SELF-CONTAINED
+  // bundle. omp now externalizes rdflib + the swc components and loads them via
+  // sol-loader from ../solid-web-components/dist/ (see index.html). A pod copy
+  // of index.html + ia-player.esm.js alone will NOT run — the loader, the swc
+  // dist bundles, dist/vendor/*, and the relative loader path all need to be
+  // deployed too (or vendored into the pod and the index.html path rewritten).
+  // Until that's done, "Install on my Pod" produces a broken deployment.
+  //
   // Deploy a complete, self-hosted OMP onto the user's pod: the app
   // shell (CDN-prereq index.html + the self-contained ia-player.js
   // bundle) plus the whole local libraries/ tree, then best-effort link

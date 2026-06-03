@@ -1,17 +1,17 @@
 // omp-shell — page-level wiring around <sol-tabs>: tab-change reactions,
 // chrome actions, mini audio player, guest gating, and the help overlay.
-// The four tabs + panels come from data/tabs.ttl via <sol-tabs from-rdf
-// keep-alive>; here we react to its sol-tab-change. Favourites are no longer
-// a tab — each media tab surfaces its own favourites.
+// The four tabs + panels are authored declaratively in html-first.html; here
+// we react to <sol-tabs>'s sol-tab-change. Favourites are no longer a tab —
+// each media tab surfaces its own favourites.
 
-    // Body UI source is declared on <sol-default src-of-truth> (html | rdf,
-    // default html); feed it to the #omp-body include, which loads the matching
-    // tabs fragment. #omp-tabs therefore appears asynchronously (see whenTabsReady).
+    // The body UI is authored declaratively in html-first.html; feed it to the
+    // #omp-body include. (#omp-tabs therefore appears asynchronously — see
+    // whenTabsReady.) The html⇄rdf dual-authoring option was retired; the
+    // HTML/RDF converters now live in conversion/ as a standalone tool.
     (function selectBody() {
       const body = document.getElementById('omp-body');
       if (!body || body.getAttribute('source')) return;
-      const sot = (document.querySelector('sol-default')?.getAttribute('src-of-truth') || 'html').toLowerCase();
-      body.setAttribute('source', sot === 'rdf' ? './rdf-first.html' : './html-first.html');
+      body.setAttribute('source', './html-first.html');
     })();
 
     let solTabs = null;   // assigned once the included <sol-tabs> exists

@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "description": "Open Media Player web component",
   "type": "module",
-  "main": "dist/ia-player.js",
+  "main": "dist/ia-player.esm.js",
   "scripts": {
     "build": "node bin/build.js",
     "watch": "node bin/build.js --watch",
-    "gen:rdf": "node bin/html-to-rdf.mjs",
-    "gen:rdf:verify": "node bin/html-to-rdf.mjs --verify",
-    "gen:html": "node bin/rdf-to-html.mjs",
-    "gen:html:verify": "node bin/rdf-to-html.mjs --verify"
+    "gen:rdf": "node conversion/html-to-rdf.mjs",
+    "gen:rdf:verify": "node conversion/html-to-rdf.mjs --verify",
+    "gen:html": "node conversion/rdf-to-html.mjs",
+    "gen:html:verify": "node conversion/rdf-to-html.mjs --verify"
   },
   "dependencies": {
     "rdflib": "^2.2.36"

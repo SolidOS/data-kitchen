@@ -19,14 +19,16 @@
 <style>
   main { height:100vh; width:100vw; }
 </style>
-  <!-- <sol-login> expects @inrupt/solid-client-authn-browser as a UMD
-       global (window.solidClientAuthn). Loaded here for the dev page;
-       a host embedding <ia-player> provides its own. -->
-  <script src="https://cdn.jsdelivr.net/npm/@inrupt/solid-client-authn-browser/dist/solid-client-authn.bundle.js"></script>
   <script>
     window.SolidKitchen = true; // dev/preview: treat localhost as logged in
   </script>
-  <script src="./dist/ia-player.js" type="module"></script>
+  <!-- swc components + auth + the rdflib importmap come from sol-loader (see
+       index.html for the rationale); ia-player.esm.js shares its rdflib. -->
+  <script src="../solid-web-components/dist/sol-loader.min.js"
+          data-stage="local"
+          data-bundles="basic feed gallery"
+          data-with="auth"></script>
+  <script src="./dist/ia-player.esm.js" type="module"></script>
 </head>
 <body><main>
 

@@ -23,7 +23,7 @@
 import { rdf } from '../../solid-web-components/core/rdf.js';
 import { NS } from '../../solid-web-components/sources/contract.js';
 import { loadCategory } from '../../solid-web-components/sources/commons.js';
-import '../../solid-web-components/web/sol-gallery.js';
+// <sol-gallery> is registered by sol-loader (see index.html); used as a tag here.
 import { star } from './omp-favourites-ui.js';
 import { listFavourites, removeFavouriteFile } from './omp-favourites-store.js';
 
