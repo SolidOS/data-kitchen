@@ -4,32 +4,29 @@
 # GENERATED from the declarative HTML by bin/html-to-rdf.mjs — do not hand-edit.
 <#Tabs> a ui:Menu ; ui:label "Open Media Player" ;
   ui:orientation ui:Horizontal ;
-  ui:parts ( <#News> <#Music> <#Images> <#Movies> <#helpLaunch> <#fontsize> <#theme> <#sollogin> <#more> ) .
+  ui:parts ( <#panel-news> <#panel-music> <#panel-images> <#panel-movies> <#helpLaunch> <#fontsize> <#theme> <#sollogin> <#more> ) .
 
-<#News> a ui:Component ; ui:label "📰 News" ; ui:name "sol-feed" ;
+<#panel-news> a ui:Component ; ui:label "📰 News" ; ui:name "sol-feed" ;
   ui:attribute
     [ schema:name "id" ; schema:value "panel-news" ] ,
     [ schema:name "view" ; schema:value "topics" ] ,
-    [ schema:name "select-first" ; schema:value "" ] ,
     [ schema:name "source" ; schema:value "./libraries/news/feeds.ttl#Feeds" ] .
 
-<#Music> a ui:Component ; ui:label "🎵 Music" ; ui:name "ia-player" ;
+<#panel-music> a ui:Component ; ui:label "🎵 Music" ; ui:name "ia-player" ;
   ui:attribute
     [ schema:name "id" ; schema:value "panel-music" ] ,
-    [ schema:name "src" ; schema:value "./libraries/internet_archive_music/index.ttl" ] ,
     [ schema:name "storage-ns" ; schema:value "music" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
     [ schema:name "source" ; schema:value "./libraries/internet_archive_music/index.ttl" ] .
 
-<#Images> a ui:Component ; ui:label "🖼 Images" ; ui:name "omp-images" ;
+<#panel-images> a ui:Component ; ui:label "🖼 Images" ; ui:name "omp-images" ;
   ui:attribute
     [ schema:name "id" ; schema:value "panel-images" ] ,
     [ schema:name "source" ; schema:value "./libraries/wikimedia_images/images.ttl#Images" ] .
 
-<#Movies> a ui:Component ; ui:label "🎬 Movies" ; ui:name "ia-player" ;
+<#panel-movies> a ui:Component ; ui:label "🎬 Movies" ; ui:name "ia-player" ;
   ui:attribute
     [ schema:name "id" ; schema:value "panel-movies" ] ,
-    [ schema:name "src" ; schema:value "./libraries/internet_archive_movies/index.ttl" ] ,
     [ schema:name "storage-ns" ; schema:value "movies" ] ,
     [ schema:name "favourites-only" ; schema:value "" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
