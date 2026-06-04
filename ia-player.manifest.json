@@ -1,0 +1,6 @@
+{
+  "name": "ia-player",
+  "imports": {
+    "ia-player": "./dist/ia-player.esm.js"
+  }
+}

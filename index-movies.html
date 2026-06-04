@@ -22,13 +22,15 @@
   <script>
     window.SolidKitchen = true; // dev/preview: treat localhost as logged in
   </script>
-  <!-- swc components + auth + the rdflib importmap come from sol-loader (see
-       index.html for the rationale); ia-player.esm.js shares its rdflib. -->
+  <!-- sol-loader loads everything incl. ia-player as a bundle via its manifest
+       (see index.html for the rationale) — no separate <script>, no load race. -->
+
   <script src="../solid-web-components/dist/sol-loader.min.js"
           data-stage="local"
-          data-bundles="basic feed gallery"
-          data-with="auth"></script>
-  <script src="./dist/ia-player.esm.js" type="module"></script>
+          data-bundles="sol-basic sol-feed sol-gallery ia-player"
+          data-extend-with="auth"
+          data-manifest="ia-player.manifest.json"
+  ></script>
 </head>
 <body><main>
 

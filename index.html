@@ -5,17 +5,19 @@
   <title>Open Media Player</title>
   <script src="./src/omp-boot.js"></script>
   <link rel="stylesheet" href="./assets/omp.css">
-  <!-- swc components + auth come from sol-loader (parser-blocking <head> script):
-       it injects the importmap (so ia-player.esm.js's `import 'rdflib'` resolves
-       to the shared window.$rdf) and loads sol-login (auth), sol-feed, sol-gallery,
-       and the basic UI (tabs/button/include/modal/dropdown-button/default).
-       ia-player.esm.js no longer bundles rdflib or the components — it shares the
-       one rdflib + one core/rdf singleton the loader establishes. -->
+  <!-- sol-loader (parser-blocking <head> script) loads EVERYTHING: the swc
+       components (sol-basic, sol-feed, sol-gallery) + auth, AND ia-player itself —
+       ia-player is just another bundle, resolved via its own manifest. The loader
+       injects the importmap first, then import()s each bundle, so ia-player's
+       `import 'rdflib'` resolves to the one shared rdflib with no separate
+       <script> tag and no load-order race. -->
+
   <script src="../solid-web-components/dist/sol-loader.min.js"
           data-stage="local"
-          data-bundles="basic feed gallery"
-          data-with="auth"></script>
-  <script src="./dist/ia-player.esm.js" type="module"></script>
+          data-bundles="sol-basic sol-feed sol-gallery ia-player"
+          data-extend-with="auth"
+          data-manifest="ia-player.manifest.json"
+  ></script>
 </head>
 <body>
 
