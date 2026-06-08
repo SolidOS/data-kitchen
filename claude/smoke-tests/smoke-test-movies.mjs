@@ -9,7 +9,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import rdflib from 'rdflib';
 import { parseBookmarks, libraryMediaType } from '../../src/ia-rdf.js';
-import { getAlbums, getTracks } from '../../../solid-web-components/sources/internet-archive.js';
+import { getAlbums, getTracks } from '../../src/sources/internet-archive.js';
 
 const { graph, parse } = rdflib;
 

@@ -75,7 +75,7 @@ globalThis.fetch = async (url) => {
 };
 
 const { parseSourceList, parseBookmarkTree } =
-  await import('/home/jeff/solid/solid-web-components/web/utils/feed-fetch.js');
+  await import('sol-components/web/utils/feed-fetch.js');
 
 let failures = 0;
 const assert = (cond, msg) => {

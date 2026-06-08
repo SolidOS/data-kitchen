@@ -4,7 +4,7 @@
  *   node claude/validation/check-ia-rights.mjs
  */
 import { getAlbums, getTracks, buildArchiveQuery }
-  from '../../../solid-web-components/sources/internet-archive.js';
+  from '../../src/sources/internet-archive.js';
 
 let fails = 0;
 const check = (ok, msg) => { console.log(`${ok ? '✓' : '✗'} ${msg}`); if (!ok) fails++; };

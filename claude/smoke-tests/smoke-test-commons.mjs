@@ -3,7 +3,7 @@
  * API and exercise the category-URL parser on real images.ttl URLs.
  *
  * Run from project root:  node claude/smoke-tests/smoke-test-commons.mjs
- * (Network required. commons-fetch lives in the sibling solid-web-components.)
+ * (Network required. commons-fetch is omp-local at src/sources/commons-fetch.js.)
  */
 // Minimal DOMParser shim so getCategoryImages' extmetadata→text path runs
 // under Node (the browser has DOMParser natively).
@@ -17,7 +17,7 @@ if (!globalThis.DOMParser) {
 }
 
 const { categoryTitleFromUrl, getCategoryImages } =
-  await import('../../../solid-web-components/web/utils/commons-fetch.js');
+  await import('../../src/sources/commons-fetch.js');
 
 let fails = 0;
 const eq = (got, want, msg) => {

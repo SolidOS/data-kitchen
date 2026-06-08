@@ -23,7 +23,7 @@ globalThis.fetch = async (url) => {
 };
 
 const { parseSourceList, parseBookmarkTree } =
-  await import('/home/jeff/solid/solid-web-components/web/utils/feed-fetch.js');
+  await import('sol-components/web/utils/feed-fetch.js');
 
 let fail = 0;
 const ok = (c, m) => { console.log(c ? '  ✓' : '  ✗', m); if (!c) fail++; };

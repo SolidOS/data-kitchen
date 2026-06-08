@@ -1,5 +1,5 @@
 // Headless smoke test for the solid-ui-skos add-on (real solid-ui in real
-// Chrome). Serves the solid-web-components tree statically, loads the
+// Chrome). Serves the sol-components tree statically, loads the
 // add-on's test/smoke/page.html, and drives the flat / mint paths.
 // Persistence is stubbed to in-memory in the page (no network writes).
 //
@@ -13,7 +13,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import puppeteer from 'puppeteer-core';
 
-const SWC = '/home/jeff/solid/solid-web-components';
+const SWC = '/home/jeff/solid/sol-components';
 const CHROME = '/usr/bin/google-chrome';
 const PAGE = '/packages/solid-ui-skos/test/smoke/page.html';
 const SMOKE = SWC + '/packages/solid-ui-skos/test/smoke';
