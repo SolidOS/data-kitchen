@@ -5,18 +5,20 @@
   <title>Open Media Player</title>
   <script src="./src/omp-boot.js"></script>
   <link rel="stylesheet" href="./assets/omp.css">
-  <!-- sol-loader (parser-blocking <head> script) loads EVERYTHING: the swc
-       components (sol-basic, sol-feed, sol-gallery) + auth, AND ia-player itself —
-       ia-player is just another bundle, resolved via its own manifest. The loader
-       injects the importmap first, then import()s each bundle, so ia-player's
-       `import 'rdflib'` resolves to the one shared rdflib with no separate
-       <script> tag and no load-order race. -->
+  <!-- sol-login reads the inrupt auth library from the UMD global
+       window.solidClientAuthn, so the page must load it first. -->
+  <script src="https://cdn.jsdelivr.net/npm/@inrupt/solid-client-authn-browser@4/dist/solid-client-authn.bundle.js"></script>
 
-  <script src="../solid-web-components/dist/sol-loader.min.js"
-          data-stage="local"
-          data-bundles="sol-basic sol-feed sol-gallery ia-player"
-          data-extend-with="auth"
-          data-manifest="ia-player.manifest.json"
+  <!-- component-interop loads the sol-components this app uses + ia-player itself.
+       It merges both manifests into one injected importmap, so ia-player's
+       `import 'rdflib'` resolves to the one shared rdflib — no separate <script>,
+       no load-order race. sol-login is listed explicitly (it is RDF-tier, not part
+       of sol-basic). data-stage="auto" → local files on localhost. -->
+
+  <script src="https://cdn.jsdelivr.net/npm/component-interop@0.2.1/component-interop.js"
+          data-stage="auto"
+          data-manifest="../sol-components/dist/sol-components.manifest.json ./ia-player.manifest.json"
+          data-components="sol-basic sol-feed sol-gallery sol-login ia-player"
   ></script>
 </head>
 <body>

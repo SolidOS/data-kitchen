@@ -13,7 +13,7 @@
 // `dct:references` (the item IRI) is the grouping key; the `dctype:` bucket
 // (StillImage|MovingImage|Sound|Text|Collection) picks the wall's renderer.
 
-import { rdf } from '../../solid-web-components/core/rdf.js';
+import { rdf } from 'sol-components/core/rdf.js';
 
 const NS = {
   rdf:    'http://www.w3.org/1999/02/22-rdf-syntax-ns#',

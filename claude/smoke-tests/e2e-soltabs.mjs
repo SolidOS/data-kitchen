@@ -138,23 +138,21 @@ try {
     `⋮ dropdown built from menu.ttl: ${items.join(' · ')}`);
   await page.screenshot({ path: resolve(SHOTS, 'soltabs-dropdown.png') });
 
-  // Every item now requires write — .no-write hides them all (and in guest mode
-  // the whole ⋮ button is hidden, tested separately below).
-  const gating = await page.evaluate(() => {
-    const btn = (label) => [...document.querySelector('.omp-more').shadowRoot
-      .querySelectorAll('.sol-dd-popup button[role="menuitem"]')].find(b => b.textContent === label);
-    document.body.classList.add('no-write');   // gating now keys off body
-    const r = { filtersHidden: getComputedStyle(btn('Filters…')).display === 'none',
-                guestHidden: getComputedStyle(btn('View as guest')).display === 'none' };
+  // Owner-gating is whole-menu, not per-item: `.omp-more` carries `if-logged-in`,
+  // so `body.no-write [if-logged-in=""]` (omp.css) hides the entire ⋮ button when
+  // the user can't write. canWrite is binary (logged-in ≡ can-write), so a
+  // non-writer never sees the menu — the per-item requires-write path is redundant.
+  const menuHiddenNoWrite = await page.evaluate(() => {
+    document.body.classList.add('no-write');
+    const hidden = getComputedStyle(document.querySelector('.omp-more')).display === 'none';
     document.body.classList.remove('no-write');
-    return r;
+    return hidden;
   });
-  check(gating.filtersHidden && gating.guestHidden,
-    `.no-write hides requires-write items (Filters… hidden=${gating.filtersHidden}, View as guest hidden=${gating.guestHidden})`);
+  check(menuHiddenNoWrite, `.no-write hides the whole ⋮ menu (if-logged-in gate)`);
 
-  // 'View as guest' command → one-way guest preview (chrome gains .guest, and
-  // the whole ⋮ menu then hides — reload restores owner mode).
-  const isGuest = () => page.evaluate(() => document.querySelector('.omp-chrome').classList.contains('guest'));
+  // 'View as guest' command → one-way guest preview (body gains .guest, and the
+  // whole ⋮ menu then hides — reload restores owner mode).
+  const isGuest = () => page.evaluate(() => document.body.classList.contains('guest'));
   const before = await isGuest();
   await clickDdItem('View as guest'); await sleep(300);
   const afterOn = await isGuest();

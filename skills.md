@@ -27,12 +27,20 @@ with esbuild; the only runtime dependency is **rdflib**.
   (`window.solidClientAuthn`). `index.html` loads it from a CDN; an
   embedding host supplies its own. Without it the player still works
   fully on the local/in-memory library.
-- **The web-components repo must be resolvable at build time** at
-  `../../solid-web-components/` (relative to this folder) — `core/rdf.js`,
-  `web/sol-login.js`, and (for the News tab) `web/sol-default.js` +
-  `web/sol-feed.js` are bundled in. `bin/build.js` aliases `rdflib` to
-  this project's single copy so there is exactly one rdflib instance and
-  one shared `rdf` singleton.
+- **`sol-components` must be resolvable at build time** as an npm dependency
+  (bare `sol-components/...` specifiers). In dev, `npm link sol-components`
+  symlinks `node_modules/sol-components` → the `../sol-components` sibling so
+  edits show up on the next build; a published install resolves the same
+  specifiers. Only `core/rdf.js`, `core/auth-fetch.js`, and
+  `web/utils/contract.js` (the shared image vocab, also read by `<sol-gallery>`)
+  are bundled in; omp's own fetchers (`sources/internet-archive.js`,
+  `sources/commons.js`, `sources/commons-fetch.js`) are local under `src/`.
+  `bin/build.js` externalizes `rdflib`; at runtime component-interop's
+  injected importmap maps it to the shared instance, so there is exactly
+  one rdflib instance and one shared `rdf` singleton. The `sol-*`
+  components (`sol-login`, `sol-default`, `sol-feed`, `sol-gallery`,
+  `sol-tabs`, …) are NOT bundled — component-interop loads them from
+  `sol-components` (see `index.html`).
 
 ---
 
@@ -97,9 +105,10 @@ claude/                  ALL Claude-authored artifacts (see claude/plans/INDEX.m
 
 ```
 index.html
+  ├─ component-interop → sol-components: <sol-login>, <sol-feed>, <sol-gallery>,
+  │                      sol-basic tier (<sol-tabs>/<sol-default>/<sol-button>/…)
   └─ dist/ia-player.js  (built from src/bundle-entry.js)
        ├─ src/bundle-init.js → ia-ui.js setBundledAssets(css, aboutHtml)
-       ├─ ../../solid-web-components/web/sol-login.js  (defines <sol-login>)
        └─ ia3.js  ── defines <ia-player>; orchestrates everything
             ├─ ia-ui.js     createPlayerUI / listboxes / modals / track list
             ├─ ia-rdf.js    load + parse + every RDF read/write
@@ -211,9 +220,9 @@ index.html
 
 ### News tab (`<sol-feed>`, not `<ia-player>`)
 
-The third tab is a `<sol-feed>` element (from the web-components repo),
+The third tab is a `<sol-feed>` element (from the `sol-components` repo),
 NOT an `<ia-player>`. It runs a **`view="topics"` newsstand** (a mode
-added to `../../solid-web-components/web/sol-feed.js`): topic columns
+added to `../../sol-components/web/sol-feed.js`): topic columns
 (News / Sci-Tech / Culture) → click a source → its articles as image
 cards → click a card → a shared `window.open` reader. Catalog =
 `libraries/news/feeds.ttl`. Cross-origin RSS needs the CORS proxy in

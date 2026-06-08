@@ -22,14 +22,16 @@
   <script>
     window.SolidKitchen = true; // dev/preview: treat localhost as logged in
   </script>
-  <!-- sol-loader loads everything incl. ia-player as a bundle via its manifest
+  <!-- sol-login reads the inrupt auth library from window.solidClientAuthn. -->
+  <script src="https://cdn.jsdelivr.net/npm/@inrupt/solid-client-authn-browser@4/dist/solid-client-authn.bundle.js"></script>
+
+  <!-- component-interop loads the sol-components + ia-player via both manifests
        (see index.html for the rationale) — no separate <script>, no load race. -->
 
-  <script src="../solid-web-components/dist/sol-loader.min.js"
-          data-stage="local"
-          data-bundles="sol-basic sol-feed sol-gallery ia-player"
-          data-extend-with="auth"
-          data-manifest="ia-player.manifest.json"
+  <script src="https://cdn.jsdelivr.net/npm/component-interop@0.2.1/component-interop.js"
+          data-stage="auto"
+          data-manifest="../sol-components/dist/sol-components.manifest.json ./ia-player.manifest.json"
+          data-components="sol-basic sol-feed sol-gallery sol-login ia-player"
   ></script>
 </head>
 <body><main>

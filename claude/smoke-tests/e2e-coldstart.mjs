@@ -46,13 +46,13 @@ try {
     { timeout: 20000 });
   const order = await page.evaluate(() =>
     [...document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button')].map(b => b.dataset.tabId));
-  check(JSON.stringify(order) === JSON.stringify(['News', 'Music', 'Images', 'Movies']),
+  check(JSON.stringify(order) === JSON.stringify(['panel-news', 'panel-music', 'panel-images', 'panel-movies']),
     `tab order = ${order.join(' · ')}`);
 
   // News active on cold start.
   const active = await page.evaluate(() =>
     document.querySelector('#omp-tabs > .sol-tabs-bar > button.active')?.dataset.tabId);
-  check(active === 'News', `active panel on cold start = ${active}`);
+  check(active === 'panel-news', `active panel on cold start = ${active}`);
 
   // News auto-selected its first source and rendered its articles.
   await page.waitForFunction(() => {

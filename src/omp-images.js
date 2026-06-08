@@ -20,10 +20,10 @@
 // and signed-in alike; owner→RDF (PATCH) sync is a follow-up, as is favouriting
 // individual images (which must mint nodes since images stream live).
 
-import { rdf } from '../../solid-web-components/core/rdf.js';
-import { NS } from '../../solid-web-components/sources/contract.js';
-import { loadCategory } from '../../solid-web-components/sources/commons.js';
-// <sol-gallery> is registered by sol-loader (see index.html); used as a tag here.
+import { rdf } from 'sol-components/core/rdf.js';
+import { NS } from 'sol-components/web/utils/contract.js';
+import { loadCategory } from './sources/commons.js';
+// <sol-gallery> is registered by component-interop (see index.html); used as a tag here.
 import { star } from './omp-favourites-ui.js';
 import { listFavourites, removeFavouriteFile } from './omp-favourites-store.js';
 

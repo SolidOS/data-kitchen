@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.24.0",
-    "puppeteer-core": "^25.1.0"
+    "puppeteer-core": "^25.1.0",
+    "sol-components": "^2.3.1"
   }
 }

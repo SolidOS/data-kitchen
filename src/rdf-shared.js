@@ -20,8 +20,8 @@
 // `rdf.storeFetcher` so it joins the singleton (see PLAN store model A).
 
 export { Namespace, graph, Fetcher, sym, st, literal, UpdateManager, parse } from 'rdflib';
-export { default as rdf } from '../../solid-web-components/core/rdf.js';
+export { default as rdf } from 'sol-components/core/rdf.js';
 // Page-wide authenticated-fetch lookup (finds the live <sol-login>'s
 // session.fetch covering a URL's origin, else global fetch). Reused for
 // authed pod writes instead of relying on the vanilla rdf.storeFetcher.
-export { getAuthFetch } from '../../solid-web-components/core/auth-fetch.js';
+export { getAuthFetch } from 'sol-components/core/auth-fetch.js';

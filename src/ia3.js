@@ -1,4 +1,4 @@
-import {getAlbums, getTracks, buildArchiveQuery} from "../../solid-web-components/sources/internet-archive.js";
+import {getAlbums, getTracks, buildArchiveQuery} from "./sources/internet-archive.js";
 import { listFavourites, removeFavouriteFile } from "./omp-favourites-store.js";
 import {
   loadRDF, resolvePodLibraryUrl, discoverPodStorages, ensurePublicTypeIndex,
@@ -3390,12 +3390,13 @@ function createPlayer({ libraryConfigs, libs, host }) {
     switchSource(binId);
   });
 
-  // ⚠️ FIXME (sol-loader migration): pod-install assumes a SELF-CONTAINED
-  // bundle. omp now externalizes rdflib + the swc components and loads them via
-  // sol-loader from ../solid-web-components/dist/ (see index.html). A pod copy
-  // of index.html + ia-player.esm.js alone will NOT run — the loader, the swc
-  // dist bundles, dist/vendor/*, and the relative loader path all need to be
-  // deployed too (or vendored into the pod and the index.html path rewritten).
+  // ⚠️ FIXME (component-interop migration): pod-install assumes a SELF-CONTAINED
+  // bundle. omp now externalizes rdflib + the sol-components and loads them via
+  // component-interop (see index.html). On the pod (non-localhost) data-stage
+  // resolves to "cdn", so the sol-components themselves come from the CDN — but
+  // data-manifest still points at the local ../sol-components/…, which won't
+  // exist on the pod. Pod install must rewrite data-manifest to a CDN manifest
+  // URL (e.g. https://cdn.jsdelivr.net/npm/sol-components@2.3.1/dist/sol-components.manifest.json).
   // Until that's done, "Install on my Pod" produces a broken deployment.
   //
   // Deploy a complete, self-hosted OMP onto the user's pod: the app

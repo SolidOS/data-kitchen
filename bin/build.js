@@ -2,15 +2,15 @@ import * as esbuild from 'esbuild';
 import { readFileSync } from 'node:fs';
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf8'));
-const banner = `/*! ia-player v${pkg.version} — omp app code (rdflib + swc components via sol-loader) */`;
+const banner = `/*! ia-player v${pkg.version} — omp app code (rdflib + sol-components via component-interop) */`;
 
-// rdflib is EXTERNAL now, not bundled. sol-loader loads the rdflib UMD
-// (window.$rdf) and injects an importmap mapping bare `rdflib` to swc's
-// window.$rdf shim, so `core/rdf.js` here resolves to the SAME rdflib the
-// loader's UMD components use. Coherence (one rdflib + one `core/rdf`
-// singleton sol-login._integrateWithRdflib() patches) is now guaranteed by
-// swc itself (core/rdf is a window singleton), not by aliasing here. Output is
-// ESM only (loaded as <script type="module"> alongside the loader).
+// rdflib is EXTERNAL, not bundled. component-interop injects an importmap (from
+// the sol-components manifest) mapping bare `rdflib` to the shared rdflib, so
+// this bundle and the sol-* components resolve to the SAME rdflib. Coherence
+// (one rdflib + one `core/rdf` singleton sol-login._integrateWithRdflib()
+// patches) is guaranteed by sol-components itself (core/rdf is a window
+// singleton), not by aliasing here. Output is ESM only, imported by
+// component-interop via ia-player.manifest.json.
 const common = {
   entryPoints: ['./src/bundle-entry.js'],
   bundle: true,
