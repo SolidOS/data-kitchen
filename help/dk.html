@@ -1,0 +1,66 @@
+<div class="help-body">
+  <div class="help-section">
+    <h2>data-kitchen</h2>
+    <p>A single-page shell that hosts multiple apps under one menu,
+       one auth pool, one theme, and one set of preferences.</p>
+  </div>
+  <div class="help-section">
+    <h2>Chrome (top row)</h2>
+    <p><strong>Menu</strong>: Home, Podz, Solidos, SolidResources, and
+       DevTools — pick which app fills the display area. Apps marked
+       <em>keep-alive</em> in the menu RDF stay mounted between
+       switches, so things like a pod login or scroll position survive
+       navigation back and forth.</p>
+    <p><em>Solidos</em> is a two-pane workspace: a pod tree on the
+       left, the SolidOS data browser on the right. Click the Solid
+       logo (🌐-like icon) next to any item in the pod tree to load
+       that resource in the right pane. See the Solidos help page for
+       details.</p>
+    <p><em>SolidResources</em> and <em>DevTools</em> are submenus —
+       hover to see their items (website, FAQ, glossary, catalog;
+       JSON-LD / SPARQL / SHACL playgrounds; an RDF validator). Each
+       opens in an iframe inside the display area.</p>
+    <p><strong>Search</strong> (🔍): inline search across DuckDuckGo,
+       Google, Wikipedia, and others — your engine list is editable
+       via Settings.</p>
+    <p><strong>Calendar</strong> (🗓): the same data the dashboard's
+       calendar shows, in a popout. Pre-fetches at page load so the
+       events are ready when you click.</p>
+    <p><strong>Help</strong> (?): you're looking at it. Today the help
+       button shows this same page regardless of which app is active;
+       per-app help pages live under <code>help/&lt;app&gt;.html</code>
+       (e.g. <code>help/podz.html</code>, <code>help/solidos.html</code>).</p>
+    <p><strong>Preferences</strong> (⚙): theme + font size.
+       Per-app preferences (e.g. editor keybindings for podz) live
+       inside the app itself. The gear also doubles as the
+       <em>logged-in indicator</em> — see "Signing in" below.</p>
+  </div>
+  <div class="help-section">
+    <h2>Signing in</h2>
+    <p>data-kitchen has no permanent login button. Login happens
+       <em>on demand</em>: when a save (or any other authenticated
+       fetch) hits a resource that requires sign-in, a login picker
+       appears for the duration of the flow and disappears again
+       once you're authenticated.</p>
+    <p>Once a session is active, the Preferences gear turns
+       <span style="color: var(--success, #388e3c)">green</span>;
+       hovering it surfaces your WebID as the tooltip. Click the
+       gear to reach Settings as usual — your session details and
+       per-issuer logout will live there in the upcoming
+       multi-issuer UI. (Today, all signed-in sessions share one
+       default issuer configured under
+       <code>&lt;sol-default default-issuer="…"&gt;</code>.)</p>
+    <p>Behind the scenes: every widget that saves goes through
+       <code>solFetch</code>, which dispatches
+       <code>sol-auth-needed</code> on a 401. The chrome's hidden
+       <code>&lt;sol-login&gt;</code> catches the event, opens an
+       OIDC popup, and resolves the promise so the original save
+       retries automatically.</p>
+  </div>
+  <div class="help-section">
+    <h2>Settings page</h2>
+    <p>Lists every editable widget on the page. Expanding a panel
+       lazy-mounts its editor; saves write back to the source TTL.
+       The list starts with every panel collapsed.</p>
+  </div>
+</div>

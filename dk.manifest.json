@@ -1,0 +1,17 @@
+{
+  "name": "data-kitchen",
+  "stages": {
+    "local": {
+      "components": {},
+      "shared-modules": {
+        "podz/": "./node_modules/podz/src/"
+      }
+    },
+    "cdn": {
+      "components": {},
+      "shared-modules": {
+        "podz/": "./node_modules/podz/src/"
+      }
+    }
+  }
+}

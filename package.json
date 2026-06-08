@@ -1,0 +1,20 @@
+{
+  "name": "data-kitchen",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Shell hosting sol-components apps under a shared menu, auth pool, and theme.",
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "watch": "node esbuild.config.mjs --watch",
+    "serve": "python3 -m http.server 8081"
+  },
+  "dependencies": {
+    "mashlib": "^2.2.0",
+    "podz": "file:../solid/podz",
+    "sol-components": "file:../solid/sol-components"
+  },
+  "devDependencies": {
+    "component-interop": "0.2.2",
+    "esbuild": "^0.27.5"
+  }
+}

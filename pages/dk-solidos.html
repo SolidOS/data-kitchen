@@ -1,0 +1,22 @@
+<div class="dk-solidos-layout">
+  <aside class="dk-solidos-sidebar">
+    <sol-pod
+      login-mode="popup"
+      login-callback="node_modules/podz/popup-auth-callback.html"
+      issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org"
+      gear-icon="node_modules/sol-components/web/styles/solid-logo.svg"
+    ></sol-pod>
+  </aside>
+  <div class="dk-solidos-splitter"
+       role="separator" aria-orientation="vertical"
+       aria-label="Resize sidebar — drag, double-click to reset"
+       tabindex="0"></div>
+  <section class="dk-solidos-main">
+    <!-- Same-origin iframe: mashlib's CSS / theme / globals stay
+         inside this document, but auth (solid-client-authn IndexedDB),
+         theme, and font-size are shared because the origin matches. -->
+    <iframe class="dk-solidos-iframe"
+            src="pages/solidos-host.html"
+            title="SolidOS browser"></iframe>
+  </section>
+</div>

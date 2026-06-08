@@ -1,0 +1,9 @@
+@prefix : <#>.
+@prefix schema: <http://schema.org/>.
+
+:Settings schema:additionalProperty :timezone, :timezone-offset.
+
+:timezone a schema:PropertyValue; schema:name "timezone"@en; schema:value "Mumbai".
+
+:timezone-offset
+a schema:PropertyValue; schema:name "timezone-offset"@en; schema:value 5.5 .

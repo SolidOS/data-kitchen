@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SolidOS host</title>
+  <link rel="icon" href="data:,">
+
+  <!-- Match dk's theme + font-size from localStorage so first paint
+       doesn't flash. Parent (src/dk-solidos.js) also pushes these on
+       iframe load and on every settings save. -->
+  <script>
+    (function () {
+      try {
+        const s = JSON.parse(localStorage.getItem('data-kitchen-settings') || '{}');
+        if (s.theme)    document.documentElement.dataset.theme = s.theme;
+        if (s.fontSize) document.documentElement.style.setProperty('--font-size', s.fontSize);
+        if (!localStorage.getItem('mashlib-theme')) {
+          localStorage.setItem('mashlib-theme', s.theme === 'dark' ? 'dark' : 'light');
+        }
+      } catch (_) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="../node_modules/mashlib/dist/mash.css">
+  <style>
+    /* dk's font-size custom property → iframe root font size. */
+    html { font-size: var(--font-size, inherit); }
+  </style>
+
+  <!-- sol-components is ESM-only now (no UMD vendor builds). Map the bare
+       specifiers to the vendored ESM and publish window.$rdf — dk's outliner
+       glue below (window.$rdf.sym) and SolidOS expect it as a global. rdflib's
+       ESM imports n3 (and the other vendored deps may chain too), so the whole
+       vendor set is mapped, matching sol-components/dashboard.html. This iframe
+       is its own realm, so its rdflib is independent of the parent page's
+       instance regardless. (window.solidClientAuthn is not set here — the page
+       never reads it; the parent drives auth via installAuthFetch() below.)
+       NB on auth: even same-origin, the parent's sol-pod uses popup mode → its
+       session is a PopupProxySession (tokens live in the popup window, proxied
+       via postMessage; not in IndexedDB) so reload + restorePreviousSession
+       can't pick it up here. Instead, the parent installs an authed fetch via
+       installAuthFetch() below, and mashlib loads AFTER that override is in
+       place — solid-logic's boundFetch resolves global fetch at call time, so
+       everything below it inherits the auth. -->
+  <script type="importmap">
+  {
+    "imports": {
+      "rdflib":                              "../node_modules/sol-components/dist/vendor/rdflib.js",
+      "n3":                                  "../node_modules/sol-components/dist/vendor/n3.js",
+      "dompurify":                           "../node_modules/sol-components/dist/vendor/dompurify.js",
+      "ical.js":                             "../node_modules/sol-components/dist/vendor/ical.js.js",
+      "marked":                              "../node_modules/sol-components/dist/vendor/marked.js",
+      "rdf-validate-shacl":                  "../node_modules/sol-components/dist/vendor/rdf-validate-shacl.js",
+      "@comunica/query-sparql":              "../node_modules/sol-components/dist/vendor/@comunica-query-sparql.js",
+      "solid-ui":                            "../node_modules/sol-components/dist/vendor/solid-ui.js",
+      "solid-logic":                         "../node_modules/sol-components/dist/vendor/solid-logic.js",
+      "@inrupt/solid-client-authn-browser":  "../node_modules/sol-components/dist/vendor/@inrupt-solid-client-authn-browser.js"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as $rdf from 'rdflib';
+    if (!window.$rdf) window.$rdf = $rdf;
+  </script>
+
+  <script>
+    let _resolveAuth, _resolveMashlib;
+    const authReady    = new Promise(r => { _resolveAuth    = r; });
+    const mashlibReady = new Promise(r => { _resolveMashlib = r; });
+
+    // Parent (src/dk-solidos.js) calls this on every iframe load —
+    // including reloads triggered by sol-login / sol-logout — so the
+    // fetch override is always current with sol-pod's session state.
+    window.installAuthFetch = function (authedFetch) {
+      if (typeof authedFetch === 'function') {
+        window.fetch = (input, init) => authedFetch(input, init);
+      }
+      _resolveAuth();
+    };
+    // Standalone use (?uri=…, no parent driver): proceed with plain fetch.
+    if (window.top === window) _resolveAuth();
+
+    authReady.then(() => {
+      const s = document.createElement('script');
+      s.src = '../node_modules/mashlib/dist/mashlib.min.js';
+      s.onload = async () => {
+        // mashlib's bundled solid-logic ships its own Session
+        // singleton at SolidLogic.solidLogicSingleton.authn.authSession
+        // — separate from the vendor inrupt UMD loaded above. If the
+        // iframe came back from an OIDC redirect (URL carries
+        // ?code=…&state=…), only the bundled session can complete the
+        // token exchange; the vendor UMD instance hasn't been near
+        // the flow. restorePreviousSession also picks up a refreshed
+        // session from storage on plain reloads. Done before
+        // mashlibReady resolves so window.gotoSubject's awaiters see
+        // an authenticated session.
+        try {
+          const SL   = window.SolidLogic && window.SolidLogic.solidLogicSingleton;
+          const sess = SL && SL.authn && SL.authn.authSession;
+          if (sess && sess.handleIncomingRedirect) {
+            await sess.handleIncomingRedirect({
+              restorePreviousSession: true,
+              url: window.location.href,
+            });
+            // Strip the OIDC params from the URL bar so a refresh
+            // doesn't try to re-redeem the same code.
+            if (/[?&](code|state)=/.test(window.location.search)) {
+              const clean = window.location.pathname + window.location.hash;
+              history.replaceState(null, '', clean);
+            }
+          }
+        } catch (err) {
+          console.warn('[solidos-host] handleIncomingRedirect failed:', err);
+        }
+        _resolveMashlib();
+      };
+      document.head.appendChild(s);
+    });
+
+    // Expose readiness to the parent (src/dk-solidos.js) so it can
+    // wire mashlib's authSession into sol-pod once it exists.
+    window.mashlibReady = mashlibReady;
+
+    // Cross-window auth signaling. When mashlib's bundled session
+    // logs in (the user used SolidOS's own login banner), broadcast
+    // so sol-pod (and any other same-origin window) lights up green.
+    // sol-login on the parent listens on the same channel — see
+    // web/sol-login.js _setupAuthChannel.
+    mashlibReady.then(() => {
+      const SL   = window.SolidLogic && window.SolidLogic.solidLogicSingleton;
+      const sess = SL && SL.authn && SL.authn.authSession;
+      if (!sess || !sess.events) return;
+      let chan;
+      try { chan = new BroadcastChannel('sol-auth'); } catch (_) { return; }
+      const post = (msg) => { try { chan.postMessage(msg); } catch (_) {} };
+      sess.events.on('login',  () => post({ type: 'login', webId: sess.info && sess.info.webId, side: 'solidos' }));
+      sess.events.on('logout', () => post({ type: 'logout' }));
+      if (sess.info && sess.info.isLoggedIn) {
+        post({ type: 'login', webId: sess.info.webId, side: 'solidos' });
+      }
+      // Reply to newcomers asking for current state.
+      chan.addEventListener('message', (e) => {
+        if (e.data && e.data.type === 'hello' && sess.info && sess.info.isLoggedIn) {
+          post({ type: 'login', webId: sess.info.webId, side: 'solidos' });
+        }
+      });
+    });
+  </script>
+</head>
+<!-- Body structure mirrors mashlib's databrowser.html so its initMainPage
+     finds the right element ids (mainSolidUiHeader, MainContent, NavMenu,
+     OutlineView, GlobalDashboard, PageFooter) and fills them in. -->
+<body id="PageBody" data-app-shell="databrowser">
+  <a href="#MainContent" class="skip-link">Skip to main content</a>
+  <solid-ui-header id="mainSolidUiHeader" theme="" layout="" brand-link="/">
+    <span slot="title"></span>
+  </solid-ui-header>
+  <main id="MainContent" role="main" tabindex="-1" aria-live="polite">
+    <div class="app-shell">
+      <aside id="NavMenu" class="app-nav" aria-label="Application menu" hidden>
+        <div id="NavMenuContent" class="menu-content"></div>
+      </aside>
+      <div class="app-view">
+        <table id="OutlineView" class="outline-view" aria-label="Resource browser"></table>
+        <section id="GlobalDashboard" class="global-dashboard" aria-label="Dashboard" hidden></section>
+      </div>
+    </div>
+    <div id="MenuOverlay" class="menu-overlay" hidden aria-hidden="true"></div>
+  </main>
+  <footer id="PageFooter" role="contentinfo"></footer>
+
+  <script>
+    // Bootstrap is deferred to the first gotoSubject call. mashlib's
+    // initMainPage always calls outliner.GotoSubject(uri), which (when
+    // uri is the iframe URL itself) renders a page-info pseudo-banner
+    // on top of the real SolidOS banner — visible as a "duplicate
+    // banner" on initial load. By waiting for a real subject URL, the
+    // chrome and outline render together against meaningful data.
+    let initialized = false;
+    let outliner = null;
+
+    window.gotoSubject = async function (url) {
+      if (!url) return;
+      await mashlibReady;
+      const SL = window.SolidLogic && window.SolidLogic.solidLogicSingleton;
+      const store = SL && SL.store;
+      if (!window.panes || !store || !window.$rdf || !window.$rdf.sym) {
+        console.warn('[solidos-host] mashlib not ready yet');
+        return;
+      }
+      try {
+        if (!initialized) {
+          // First call builds chrome (banner, menu, footer) AND
+          // navigates to the URL in one shot.
+          await window.panes.initMainPage(store, url);
+          outliner = window.panes.getOutliner(document);
+          initialized = true;
+        } else {
+          outliner.GotoSubject(window.$rdf.sym(url), true, undefined, true, undefined);
+        }
+      } catch (err) {
+        console.warn('[solidos-host] gotoSubject failed:', err);
+      }
+    };
+
+    // Standalone use: open pages/solidos-host.html?uri=https://…
+    const initialUri = new URLSearchParams(window.location.search).get('uri');
+    if (initialUri) window.gotoSubject(initialUri);
+  </script>
+</body>
+</html>

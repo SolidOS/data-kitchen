@@ -1,0 +1,32 @@
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix time:   <http://www.w3.org/2006/time#> .
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix :       <#> .
+
+<#All>
+  dct:source <https://www.w3.org/groups/cg/solid/calendar/export/> ,
+             <https://www.w3.org/groups/wg/lws/calendar/export/> ,
+             <https://calendar.google.com/calendar/ical/c_bfb1bff94af78734820e9fe79db6057dc445ae82fda9beb80b70cf67945df491%40group.calendar.google.com/public/basic.ics> ;
+  dct:format "ics" ;
+  ui:view "agenda" ;
+  time:days 60 ;
+  schema:numberOfItems 200 .
+
+<#SolidCG>
+  dct:source <https://www.w3.org/groups/cg/solid/calendar/export/> ;
+  dct:format "ics" ;
+  ui:view "agenda" ;
+  time:days 30 .
+
+<#LWS>
+  dct:source <https://www.w3.org/groups/wg/lws/calendar/export/> ;
+  dct:format "ics" ;
+  ui:view "agenda" ;
+  time:days 30 .
+
+<#Extra>
+  dct:source <https://calendar.google.com/calendar/ical/c_bfb1bff94af78734820e9fe79db6057dc445ae82fda9beb80b70cf67945df491%40group.calendar.google.com/public/basic.ics> ;
+  dct:format "google" ;
+  ui:view "agenda" ;
+  time:days 30 .

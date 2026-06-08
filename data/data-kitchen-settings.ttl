@@ -1,0 +1,11 @@
+@prefix : <http://localhost:3000/data-kitchen/data/data-kitchen-settings.ttl#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix swc: <urn:swc:shape:data-kitchen-settings:>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<http://localhost:3000/data-kitchen/data/data-kitchen-settings.ttl> a swc:DataKitchenSettingsFile;
+    foaf:primaryTopic <#Settings>.
+<#Settings> ui:colorScheme ui:LightColorScheme;
+    ui:editorKeys ui:DefaultKeys;
+    ui:fontSize ui:LargeFont;
+    ui:proxy "http://localhost:3002/proxy?uri=".

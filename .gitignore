@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+
+# editor backups / autosave
+*~
+\#*\#
+.\#*
+
+# machine-local Claude Code settings (permission grants, etc.)
+.claude/settings.local.json

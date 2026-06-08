@@ -1,0 +1,26 @@
+<div class="app">
+  <div class="container">
+    <div class="pod-container left-panel" id="left-panel">
+      <sol-pod id="left-pod" side="left" login-mode="popup"
+        login-callback="node_modules/podz/popup-auth-callback.html"
+      ></sol-pod>
+      <div class="panel-footer panel-footer-left">
+        <button id="collapse-left-btn" class="pod-collapse-btn"
+          title="Collapse panel" aria-label="Collapse left panel">«</button>
+      </div>
+    </div>
+    <div id="panel-splitter" class="panel-splitter"
+         role="separator" aria-orientation="vertical"
+         aria-label="Resize panels — drag, or arrow keys to nudge, double-click to reset"
+         tabindex="0"></div>
+    <div class="pod-container right-panel" id="right-panel">
+      <sol-pod id="right-pod" side="right" login-mode="popup"
+        login-callback="node_modules/podz/popup-auth-callback.html"
+      ></sol-pod>
+      <div class="panel-footer panel-footer-right">
+        <button id="collapse-right-btn" class="pod-collapse-btn"
+          title="Collapse panel" aria-label="Collapse right panel">»</button>
+      </div>
+    </div>
+  </div>
+</div>

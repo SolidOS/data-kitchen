@@ -1,0 +1,68 @@
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
+
+<#MainMenu> a ui:Menu ; ui:label "data-kitchen" ;
+  ui:orientation ui:Horizontal ;
+  ui:parts ( <#Home> <#Solidos> <#Podz> <#SolidResources> <#DevTools> ) .
+
+<#Home> a ui:Component ; ui:label "Home" ;
+  ui:name "sol-include" ;
+  ui:attribute
+    [ schema:name "source"  ; schema:value "pages/home.html" ] ,
+    [ schema:name "trusted" ; schema:value "true" ] .
+
+<#Solidos> a ui:Component ; ui:label "SolidOS-P" ;
+  ui:name "dk-solidos" .
+
+<#Podz> a ui:Component ; ui:label "Podz" ;
+  ui:name "dk-podz" .
+
+<#SolidResources> a ui:Menu ; ui:label "SolidResources" ;
+  ui:parts ( <#Website> <#TagExplainer> <#Faq> <#Glossary> <#Catalog> ) .
+
+<#DevTools> a ui:Menu ; ui:label "DevTools" ;
+  ui:parts ( <#JsonldPlayground> <#RdfConverter> <#ShaclPlayground> <#SparqlPlayground> ) .
+
+<#Forum> a ui:Component ; ui:label "Forum" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://forum.solidproject.org" ] .
+
+<#Chat> a ui:Component ; ui:label "Chat" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://matrix.to/#/#solid-practitioners:matrix.org/" ] .
+
+<#Website> a ui:Component ; ui:label "Website" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://solidproject.org" ] .
+
+<#TagExplainer> a ui:Component ; ui:label "Tag Explainer" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html" ] .
+
+<#Faq> a ui:Component ; ui:label "FAQ" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://solidproject.org/FAQ" ] .
+
+<#Glossary> a ui:Component ; ui:label "Glossary" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://solidproject.solidcommunity.net/glossary" ] .
+
+<#Catalog> a ui:Component ; ui:label "Catalog" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://solidproject.solidcommunity.net/catalog/" ] .
+
+<#JsonldPlayground> a ui:Component ; ui:label "JSON-LD Playground" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://json-ld.github.io/json-ld.org/playground/" ] .
+
+<#RdfConverter> a ui:Component ; ui:label "RDF Validator" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "http://easyrdf.org/converter" ] .
+
+<#ShaclPlayground> a ui:Component ; ui:label "SHACL Playground" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://shacl.org/playground/" ] .
+
+<#SparqlPlayground> a ui:Component ; ui:label "SPARQL Playground" ;
+  ui:name "iframe" ;
+  ui:attribute [ schema:name "src" ; schema:value "https://atomgraph.github.io/SPARQL-Playground/" ] .

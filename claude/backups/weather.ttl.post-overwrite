@@ -1,0 +1,16 @@
+@prefix : <#>.
+@prefix schema: <http://schema.org/>.
+
+:forecast-window
+a schema:PropertyValue; schema:name "forecast-window"@en; schema:value 12 .
+:latitude a schema:PropertyValue; schema:name "latitude"@en; schema:value 45.52 .
+
+:longitude
+a schema:PropertyValue; schema:name "longitude"@en; schema:value -122.68 .
+:place a schema:PropertyValue; schema:name "place"@en; schema:value "Portland, OR".
+
+:Settings
+    schema:additionalProperty
+    :forecast-window, :latitude, :longitude, :place, :units.
+:units a schema:PropertyValue; schema:name "units"@en; schema:value "both".
+

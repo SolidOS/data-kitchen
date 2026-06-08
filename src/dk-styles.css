@@ -1,0 +1,457 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-ui, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);
+  font-size: var(--font-size, 18px);
+  color: var(--text, #212121);
+  background: var(--bg, #f5f5f5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dk-chrome {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg, 12px);
+  padding: var(--space-md, 8px) var(--space-xl, 16px) var(--space-md, 8px) 0;
+  background: var(--surface, #ffffff);
+}
+
+/* The menu owns row 1: sized purely by its content, never shrunk,
+   never capped to the chrome's row width. sol-menu's :host defaults
+   to `flex: 1` (flex-basis: 0%) and `max-width: 100%`, both of which
+   force the menu to fit within the available row and then wrap its
+   contents internally. We undo both here so the menu reads as one
+   strip; the right-side widgets wrap onto row 2 of .dk-chrome (which
+   itself has flex-wrap: wrap) when they don't fit alongside. */
+.dk-chrome > sol-menu {
+  flex: 0 0 auto;
+  max-width: none;
+}
+
+.dk-chrome-spacer { flex: 1 1 auto; }
+
+/* sol-menu's :host defaults to display:flex; height:100% and its
+   empty content panel would otherwise claim the rest of the row.
+   Live in-line in the chrome and let ui:linkTarget="#dk-content"
+   carry the rendered item somewhere else. The nav's own
+   border-bottom is hidden because .dk-chrome supplies the single
+   divider that spans the full row (gear included). */
+.dk-chrome sol-menu {
+  display: block;
+  height: auto;
+  overflow: visible;
+  /* Tighten menu buttons so the row is compact and the gear lines up
+     visually with the menu titles. */
+  --menu-button-padding: var(--space-sm, 4px) var(--space-md, 8px);
+  /* dk routes menu items into #dk-content via ui:linkTarget, so the
+     menu's own content panel is never used. Collapse its padding so
+     the chrome height equals the nav strip only — no phantom rows. */
+  --menu-content-padding: 0;
+  /* Header has no divider between menu and the display area. */
+  --menu-nav-border-bottom: none;
+  /* Make the active menu item read at a glance — solid accent fill
+     with white text, vs. the faint focus-blue default. */
+  --menu-active-bg: var(--accent, #1F618D);
+  --menu-active-color: #ffffff;
+}
+
+/* Home dashboard: weather + time on a single row, flush right, on a
+   white strip with a visible vertical-bar separator between them.
+   The row is pinned to the small font regardless of the user's
+   prefs choice — overriding --font-size on the host means the
+   cascade reaches into sol-weather / sol-time shadow trees too,
+   since they consult var(--font-size) for their own text sizing. */
+header.dash {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-lg, 12px);
+  padding: var(--space-md, 8px) var(--space-xl, 16px);
+  background: var(--surface, #ffffff);
+  --font-size: var(--small-font, 16px);
+  font-size: var(--font-size);
+}
+header.dash .dash-sep {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border, #9e9e9e);
+  /* Collapse the · text content; the box itself draws the line. */
+  font-size: 0;
+}
+
+/* Header chip family: calendar pop-out, sol-button (help / settings
+   launchers), and sol-search's built-in trigger. Each chip is the
+   same fixed-size square; glyph sizes differ but the boxes don't. */
+dk-calendar-popout {
+  position: relative;
+  display: inline-flex;
+}
+.dk-chrome sol-search::part(trigger),
+.dk-chrome dk-calendar-popout .dk-popout-trigger,
+.dk-chrome sol-button::part(trigger) {
+  box-sizing: border-box;
+  width:  2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+dk-calendar-popout .dk-popout-trigger {
+  background: var(--surface, #fff);
+  color: var(--text, #000);
+  border: 1px solid var(--border, #9e9e9e);
+  border-radius: var(--radius-sm, 4px);
+  padding: 2px 10px;
+  font: inherit;
+  font-size: 1.6em;
+  cursor: pointer;
+  line-height: 1.1;
+}
+dk-calendar-popout .dk-popout-trigger:hover { background: var(--hover, #eaf2fb); }
+dk-calendar-popout .dk-popout-trigger[aria-expanded="true"] {
+  background: var(--hover, #eaf2fb);
+}
+/* Chrome chip icons: each chip's <button> is empty in HTML; the
+   glyph is drawn entirely by CSS via mask-image of the matching SVG
+   in assets/icons/. background-color is currentColor so the icon
+   tracks the theme (light/dark) with the rest of the chrome.
+   To add an icon-only chip elsewhere: drop an SVG in assets/icons/
+   and add one mask-image line below. */
+.dk-chrome dk-calendar-popout .dk-popout-trigger::before,
+.dk-chrome sol-search::part(trigger)::before,
+.dk-chrome sol-button::part(trigger)::before {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask-position: center;       mask-position: center;
+  -webkit-mask-size: contain;          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;      mask-repeat: no-repeat;
+}
+.dk-chrome dk-calendar-popout .dk-popout-trigger::before {
+  -webkit-mask-image: url("../assets/icons/calendar.svg");
+          mask-image: url("../assets/icons/calendar.svg");
+}
+.dk-chrome sol-search::part(trigger)::before {
+  -webkit-mask-image: url("../assets/icons/search.svg");
+          mask-image: url("../assets/icons/search.svg");
+}
+.dk-chrome sol-button[name="Help"]::part(trigger)::before {
+  -webkit-mask-image: url("../assets/icons/help.svg");
+          mask-image: url("../assets/icons/help.svg");
+}
+.dk-chrome sol-button[name="Settings"]::part(trigger)::before {
+  -webkit-mask-image: url("../assets/icons/gear.svg");
+          mask-image: url("../assets/icons/gear.svg");
+}
+
+/* The gear becomes the logged-in indicator. dk-auth-indicator.js
+   toggles .dk-chrome-authed on the Settings sol-button when a
+   sol-login fires; the chip's icon (a CSS mask painted with
+   currentColor) follows the override so no per-icon work is
+   needed. The WebID is surfaced via the button's `title` attribute
+   on hover. */
+.dk-chrome sol-button[name="Settings"].dk-chrome-authed::part(trigger) {
+  color: var(--success, #388e3c);
+  border-color: var(--success, #388e3c);
+}
+
+/* sol-search ships an inline ⌕ glyph in its shadow template; collapse
+   the font so the ::before mask is the only visible content. */
+.dk-chrome sol-search::part(trigger) { font-size: 0; }
+
+dk-calendar-popout .dk-popout-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 100;
+  background: var(--surface, #fff);
+  color: var(--text, #000);
+  border: 1px solid var(--border, #9e9e9e);
+  border-radius: var(--radius-md, 6px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  padding: var(--space-md, 8px);
+  min-width: 28rem;
+  max-width: 90vw;
+  max-height: 70vh;
+  /* sol-calendar manages its own internal scroll — leave overflow
+     visible here so there's a single scrollbar, not nested ones. */
+  display: flex;
+  flex-direction: column;
+}
+dk-calendar-popout .dk-popout-panel[hidden] { display: none; }
+
+dk-calendar-popout .dk-popout-panel sol-calendar {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* sol-search's own trigger is a square icon button — match the chrome
+   chip family by styling its exposed parts. The glyph itself reads as
+   a thin lens; bump its size so it stands at the same visual weight
+   as 🗓 and ⚙ next to it. */
+.dk-chrome sol-search::part(trigger) {
+  background: var(--surface, #fff);
+  color: var(--text, #000);
+  border: 1px solid var(--border, #9e9e9e);
+  border-radius: var(--radius-sm, 4px);
+  padding: 2px 10px;
+  font: inherit;
+  font-size: 1.6em;
+  cursor: pointer;
+  line-height: 1.1;
+}
+.dk-chrome sol-search::part(trigger):hover { background: var(--hover, #eaf2fb); }
+
+/* Settings launcher: <sol-button> in the chrome that mounts
+   pages/settings.html into #dk-content. Match the rest of the chip
+   family — and light up in accent when its tab is the visible one. */
+.dk-chrome sol-button::part(trigger) {
+  background: var(--surface, #fff);
+  color: var(--text, #000);
+  border: 1px solid var(--border, #9e9e9e);
+  border-radius: var(--radius-sm, 4px);
+  font: inherit;
+  font-size: 1.6em;
+  cursor: pointer;
+  line-height: 1.1;
+}
+.dk-chrome sol-button::part(trigger):hover { background: var(--hover, #eaf2fb); }
+.dk-chrome sol-button::part(trigger).active {
+  background: var(--accent, #1F618D);
+  color: #fff;
+  border-color: var(--accent, #1F618D);
+}
+
+/* ── Settings page ──────────────────────────────────────────────── */
+.dk-settings {
+  display: block;
+  padding: var(--space-2xl, 24px) clamp(var(--space-xl, 16px), 4vw, 3rem);
+  overflow: auto;
+  height: 100%;
+  box-sizing: border-box;
+  max-width: 88rem;
+  margin: 0 auto;
+}
+.dk-settings .dk-settings-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xl, 16px);
+  flex-wrap: wrap;
+  margin: 0 0 var(--space-2xl, 24px);
+}
+.dk-settings h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold, 600);
+  letter-spacing: -0.01em;
+}
+.dk-settings .dk-settings-hint {
+  margin: 0;
+  color: var(--text-muted, #4d4d4d);
+  font-size: 0.9rem;
+}
+.dk-settings .dk-settings-empty {
+  padding: var(--space-xl, 16px);
+  border: 1px dashed var(--border, #9e9e9e);
+  border-radius: var(--radius-md, 6px);
+  color: var(--text-muted, #4d4d4d);
+  text-align: center;
+}
+
+/* Override sol-accordion's defaults for a quieter, more editorial
+   look. The accordion injects its own styles document-level; ours
+   target the dk-settings scope only so other apps' accordions stay
+   on the swc defaults. */
+.dk-settings .sol-accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md, 8px);
+}
+.dk-settings .sol-accordion-wrapper details {
+  margin-bottom: 0;
+  border: 1px solid var(--border, #9e9e9e);
+  border-radius: var(--radius-md, 6px);
+  background: var(--surface, #fff);
+  box-shadow: 0 1px 0 var(--shadow, rgba(0,0,0,0.06));
+  overflow: hidden;
+  transition: box-shadow 160ms ease, border-color 160ms ease;
+}
+.dk-settings .sol-accordion-wrapper details[open] {
+  border-color: var(--accent, #1F618D);
+  box-shadow: 0 6px 18px -8px var(--shadow, rgba(0,0,0,0.18));
+}
+.dk-settings .sol-accordion-wrapper summary {
+  padding: var(--space-lg, 12px) var(--space-xl, 16px);
+  background: transparent;
+  border-radius: 0;
+  font-weight: var(--font-weight-bold, 600);
+  font-size: 1rem;
+  color: var(--text, #000);
+  letter-spacing: -0.005em;
+  position: relative;
+}
+.dk-settings .sol-accordion-wrapper summary:hover {
+  background: var(--hover, #eaf2fb);
+}
+.dk-settings .sol-accordion-wrapper details[open] > summary {
+  border-bottom: 1px solid var(--border, #9e9e9e);
+  border-radius: 0;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--accent, #1F618D) 6%, transparent),
+    transparent
+  );
+}
+.dk-settings .sol-accordion-wrapper summary::after {
+  content: '+';
+  font-family: var(--font-mono, monospace);
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--text-muted, #4d4d4d);
+  transition: transform 200ms ease, color 200ms ease;
+}
+.dk-settings .sol-accordion-wrapper details[open] > summary::after {
+  content: '−';
+  color: var(--accent, #1F618D);
+  transform: none;
+}
+.dk-settings .sol-accordion-wrapper .accordion-body {
+  padding: var(--space-xl, 16px);
+  background: var(--surface, #fff);
+}
+/* sol-form's :host rule sets display:flex + flex:1 + min-height:0,
+   which would collapse to 0 height inside a non-flex parent. Make
+   the section a flex column so sol-form's native flex layout fills
+   it — but DON'T force a min-height, let the form size to its own
+   content. (Previously we hard-coded 18rem; that left a tall empty
+   strip below short forms like Time's single field.) */
+.dk-settings .sol-accordion-wrapper .accordion-content-section {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+.dk-settings .dk-settings-loading {
+  padding: var(--space-md, 8px) 0;
+  color: var(--text-muted, #4d4d4d);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.dk-settings .accordion-content-section sol-form {
+  display: flex;
+  flex: 0 1 auto;
+  width: 100%;
+}
+
+main#dk-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Each menu item and each chrome sol-button mounts into its own
+   <div data-menu-item="…"> wrapper here — every wrapper is a
+   persistent tab, hidden in place when its target isn't active so
+   internal state (login, scroll, in-flight fetches) survives across
+   nav. The wrapper flexes, and its inner app child flexes inside it. */
+main#dk-content > [data-menu-item] {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main#dk-content > [data-menu-item] > header.dash {
+  flex: 0 0 auto;
+}
+
+main#dk-content > [data-menu-item][hidden] {
+  display: none;
+}
+
+main#dk-content > [data-menu-item] > * {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* dk-solidos: sol-pod sidebar + iframe main pane, split by a
+   draggable vertical handle. Everything stays inside the container —
+   the sidebar scrolls inside itself, sol-solidos owns the main area.
+   See src/dk-solidos.js for the splitter wiring. */
+dk-solidos {
+  display: flex;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dk-solidos-layout {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dk-solidos-sidebar {
+  flex: 0 0 auto;
+  width: 420px;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--surface, #ffffff);
+  border-right: 1px solid var(--border, #e0e0e0);
+}
+
+.dk-solidos-sidebar sol-pod {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dk-solidos-splitter {
+  flex: 0 0 6px;
+  cursor: col-resize;
+  background: var(--border, #e0e0e0);
+  transition: background 0.15s;
+}
+
+.dk-solidos-splitter:hover,
+.dk-solidos-splitter:focus {
+  background: var(--accent, #1F618D);
+  outline: none;
+}
+
+.dk-solidos-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg, #f5f5f5);
+}
+
+.dk-solidos-iframe {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  border: 0;
+  background: var(--surface, #ffffff);
+}
