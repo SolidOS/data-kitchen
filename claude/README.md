@@ -66,6 +66,25 @@ regression-checking after refactors.
 - `phase{1,2}-*.png` — last screenshot for each phase. Useful
   as a visual baseline.
 
+### sol-components migration verifiers (2026-06-08, Playwright)
+
+Added with the `solid-web-components` → `sol-components` migration. Unlike the
+older `diag-*` scripts these assert **behavior, not just registration**
+(`customElements.get` passing while nothing renders is exactly how the first
+pass missed a broken menu + dead buttons). They drive Chrome via Playwright
+(imported from podz's `node_modules/playwright-core`), so run with the dev
+server up (`npm run serve`) — `node claude/smoke-tests/<file>`.
+
+- `verify-sol-components-migration.mjs` — PASS/FAIL functional check (exits
+  nonzero on failure): component-interop ready + `SolidWebComponents` alias,
+  AuthManager published, the menu **renders its items** (tabs), clicking the
+  Podz tab mounts `dk-podz`, the SolidResources dropdown opens, Help + Settings
+  buttons mount their panes, a **single** rdflib instance loads, and no
+  `solid-web-components` (old-name) requests / unexpected console errors.
+- `verify-podz-tab.mjs` — mounts `<dk-podz>` and confirms the refreshed ESM
+  podz bundle loads, both `sol-pod`s upgrade, and rdflib stays a single shared
+  instance (no second copy).
+
 ## What's not here
 
 - Application source (`src/`), data (`data/`), build config

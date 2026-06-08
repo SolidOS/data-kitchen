@@ -2,6 +2,15 @@
 
 ## Status (as of 2026-05-24)
 
+> **⚠️ 2026-06-08 — major architecture change.** `solid-web-components` was
+> renamed to **`sol-components`** and re-architected to all-ESM + a
+> `component-interop` loader. The `sol-loader` bundle, the
+> `*.bundle.min.js` / vendor-UMD `<script>` tags, and the hand-inlined
+> importmap described throughout sections 2–4, 9 below are **superseded**.
+> See the **"Addendum 2026-06-08 — sol-components migration"** at the end of
+> this file for the current loading model; treat the older sections as
+> historical design context.
+
 The three "visible bugs / UX" items at the top of section 13 (settings
 accordion, podz.css theme scoping, single-mount podz keep-alive) are
 all complete in the current source; see section 13's "Recently
@@ -1193,3 +1202,80 @@ without an empty-iframe gap.
 - `<sol-pod>`'s pod dropdown strips `http(s)://` for display.
 - `.pod-header select` gained `min-width: 0` so the gear stays in
   the row in narrow sidebars like dk-solidos.
+
+---
+
+## Addendum 2026-06-08 — sol-components migration
+
+`solid-web-components` (swc) was renamed to **`sol-components`**
+(`/home/jeff/solid/sol-components`, npm name `sol-components`) and
+re-architected to **all-ESM + a `component-interop` loader**. This supersedes
+the bundle/sol-loader/UMD/inlined-importmap details in sections 2–4 and 9
+above. dk + podz were migrated to match; podz was committed/pushed, and dk was
+put under git (initial commit).
+
+### What changed in the library
+- **No more `sol-loader.min.js`** and **no `*.bundle.min.js` / vendor `*.umd.js`**.
+  Components are plain ESM under `web/` + `core/`; shared deps (rdflib, solid-ui,
+  solid-logic, …) are vendored as ESM under `dist/vendor/`.
+- Loading is driven by **`component-interop`** (CDN or vendored), configured by
+  attributes on one `<script>`:
+  ```html
+  <script src="node_modules/component-interop/component-interop.js"
+    data-stage="auto"
+    data-manifest="node_modules/sol-components/dist/sol-components.manifest.json dk.manifest.json"
+    data-components="sol-basic sol-pod sol-pod-extras sol-live-edit sol-time sol-weather sol-calendar sol-search sol-feed sol-login sol-query menu-from-rdf rdf-bundle"></script>
+  <script type="module" src="dist/dk.bundle.js"></script>
+  ```
+  - `data-manifest` is **whitespace-separated**, merge is **first-wins** →
+    sol-components' manifest listed FIRST owns shared specifiers; `dk.manifest.json`
+    (component-interop format) adds only `podz/`.
+  - `data-stage="auto"` → localhost serves vendored local paths, else esm.sh CDN
+    (this replaces the old per-stage importmap swap; `importmaps/local.json` is now
+    just a reference / Plan-B).
+  - Old `data-extend-with="auth sparql rdf"` → name the components instead:
+    `sol-login` (auth), `sol-query` (sparql), `rdf-bundle` (editing stack),
+    `menu-from-rdf` (RDF-driven `<sol-menu>` — REQUIRED or the menu renders empty).
+  - The loader publishes `window.ComponentInterop.ready`; sol-components aliases
+    `window.SolidWebComponents` to the same object. `dk-shell.js` awaits it.
+
+### Sharp gotchas (cost real debugging this session)
+- **`menu-from-rdf` must be in `data-components`** — `<sol-menu from-rdf=…>` is
+  an opt-in capability; without it the menu silently renders an empty navbar
+  (no tabs/dropdowns, no error).
+- **Web components are `sol-components/<name>.js`, NOT `sol-components/web/<name>.js`**
+  — the importmap prefix `sol-components/` already maps to `web/`, so `/web/`
+  double-resolves to `web/web/…` → 404 (and kills the importing ESM module).
+  `core/` modules ARE `sol-components/core/<name>.js`.
+- **Chrome buttons use `region=` not `target=`** — `<sol-button>` resolves its
+  mount via `region=`/`for=`/ancestor cascade; the old `target=` is ignored, so
+  the button does nothing (only a `no region resolved` warn). dk's Help + Settings
+  buttons use `region="#dk-content"`.
+
+### dk specifics now
+- `index.html`: component-interop loader (above) + `<link>` to
+  `node_modules/sol-components/web/styles/root.css`; `<sol-default shape=…>` →
+  `node_modules/sol-components/shapes/data-kitchen-settings.shacl`.
+- `dk.manifest.json`: component-interop format (`stages.{local,cdn}` →
+  `components`/`shared-modules`), only adds `podz/` → `node_modules/podz/src/`.
+- `dk-shell.js`: awaits `window.ComponentInterop?.ready` (not the old
+  `SolidWebComponents.ready`).
+- `dk-podz.js`: loads podz as an **ESM module** (`import(url)` of
+  `podz.bundle.min.js`), so podz shares dk's single rdflib via the importmap.
+- `pages/solidos-host.html`: the removed rdflib/inrupt UMDs replaced by an inline
+  importmap → vendored ESM, publishing `window.$rdf` for mashlib/SolidOS.
+- `esbuild.config.mjs` externals: `solid-web-components`/`*` → `sol-components`/`*`.
+
+### podz now
+Refreshed to ESM consumption (separate repo, committed + pushed): imports
+`sol-components/core/pod-ops.js` + `sol-components/sol-modal.js` as bare specs;
+esbuild emits **ESM** and externalizes `rdflib` + `sol-components/*`; dropped the
+`window.$rdf` alias plugin and the eager `solidClientAuthn` check; swc pin →
+`../sol-components`.
+
+### Verification
+`claude/smoke-tests/verify-sol-components-migration.mjs` (functional: menu
+renders items, tab click mounts content, dropdown opens, Help/Settings panes
+mount, single rdflib, no old-name requests) and `verify-podz-tab.mjs` (podz ESM
+bundle loads + shares rdflib). Lesson recorded: assert **rendering/behavior**,
+not just `customElements.get` registration.
