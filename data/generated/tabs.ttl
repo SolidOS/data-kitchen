@@ -9,7 +9,8 @@
 <#panel-news> a ui:Component ; ui:label "📰 News" ; ui:name "sol-feed" ;
   ui:attribute
     [ schema:name "id" ; schema:value "panel-news" ] ,
-    [ schema:name "view" ; schema:value "topics" ] ,
+    [ schema:name "view" ; schema:value "threePanel" ] ,
+    [ schema:name "reader" ; schema:value "inline" ] ,
     [ schema:name "source" ; schema:value "./libraries/news/feeds.ttl#Feeds" ] .
 
 <#panel-music> a ui:Component ; ui:label "🎵 Music" ; ui:name "ia-player" ;
