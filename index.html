@@ -96,7 +96,7 @@
 
     <!--HELP-->
         <sol-button
-            handler="sol-include"
+            data-handler="sol-include"
             source="help/dk.html"
             region="#dk-content" name="Help" trusted
             title="Help" aria-label="Open help"
@@ -104,7 +104,7 @@
 
     <!--SETTINGS-->
         <sol-button
-            handler="sol-include"
+            data-handler="sol-include"
             source="pages/settings.html"
             region="#dk-content" name="Settings" trusted
             title="Settings" aria-label="Open settings"
@@ -132,9 +132,10 @@
       <main class="feed" aria-label="News feed">
 
         <!--FEEDS-->
-            <sol-feed 
+            <sol-feed
                 source="data/feeds.ttl#Feeds"
                 view="all"
+                reader="inline"
             ></sol-feed>
 
       </main>
