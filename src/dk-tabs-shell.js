@@ -14,7 +14,7 @@
     // The DEFAULT tab set; panels removed from the menu (pantry items a user
     // can re-add via Customize) simply resolve to null here, and re-added
     // ones work through paneForName/onTab regardless of this list.
-    const PANEL_KEYS = ['news', 'music', 'movies', 'images', 'podz', 'solidos', 'home', 'solid-resources', 'dev-tools', 'customize'];
+    const PANEL_KEYS = ['news', 'music', 'movies', 'images', 'podz', 'solidos', 'home', 'dev-tools', 'customize'];
     const panelEl   = (key) => document.getElementById('panel-' + key);
     const allPanels = () => PANEL_KEYS.map(panelEl).filter(Boolean);
     let audioName = 'music';

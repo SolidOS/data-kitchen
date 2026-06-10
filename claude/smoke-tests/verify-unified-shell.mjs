@@ -59,9 +59,9 @@ const tabs = await page.evaluate(() => {
   return [...tabset.querySelectorAll('[role="tab"], .sol-tab, a')].map(e => e.textContent.trim()).filter(Boolean);
 });
 check('sol-tabs present', Array.isArray(tabs), '');
-const want = ['News', 'Music', 'Movies', 'Images', 'Workspaces', 'Solid Resources', 'Dev Tools'];
+const want = ['News', 'Music', 'Movies', 'Images', 'Workspaces', 'Dev Tools'];
 const missing = want.filter(w => !(tabs || []).some(t => t.includes(w)));
-const stray = ['Home', 'SolidOS', 'Podz', 'Customize'].filter(w => (tabs || []).some(t => t.includes(w)));
+const stray = ['Home', 'SolidOS', 'Podz', 'Customize', 'Solid Resources'].filter(w => (tabs || []).some(t => t.includes(w)));
 check('default tab set present', missing.length === 0, missing.length ? 'missing: ' + missing.join(', ') : (tabs || []).slice(0, 9).join(' | '));
 check('pantry tabs absent from the row', stray.length === 0, stray.join(', '));
 

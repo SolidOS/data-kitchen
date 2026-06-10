@@ -14,8 +14,7 @@
 <#Tabs> a ui:Menu ; ui:label "data-kitchen" ;
   ui:orientation ui:Horizontal ;
   ui:parts ( <#panel-news> <#panel-music> <#panel-movies>
-             <#panel-images> <#panel-podz>
-             <#panel-solid-resources> <#panel-dev-tools> ) .
+             <#panel-images> <#panel-podz> <#panel-dev-tools> ) .
 
 <#panel-home> a ui:Component ; ui:label "🏠 Home" ; ui:name "sol-include" ;
   ui:attribute
@@ -61,12 +60,6 @@
     [ schema:name "id" ;     schema:value "panel-solidos" ] ,
     [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
     [ schema:name "defer" ;  schema:value "" ] .
-
-<#panel-solid-resources> a ui:Component ; ui:label "📚 Solid Resources" ; ui:name "sol-include" ;
-  ui:attribute
-    [ schema:name "id" ;      schema:value "panel-solid-resources" ] ,
-    [ schema:name "source" ;  schema:value "./plugins/solid-resources/resources.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
 
 <#panel-dev-tools> a ui:Component ; ui:label "🛠 Dev Tools" ; ui:name "sol-include" ;
   ui:attribute

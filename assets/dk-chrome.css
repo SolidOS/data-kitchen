@@ -106,8 +106,7 @@
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-movies"].active { background: var(--tab-movies); border-color: var(--tab-movies); color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-news"].active   { background: var(--tab-news);   border-color: var(--tab-news);   color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-images"].active { background: var(--tab-images); border-color: var(--tab-images); color: var(--tab-on); }
-    #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-workspaces"].active     { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
-    #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-solid-resources"].active { background: var(--tab-resources);  border-color: var(--tab-resources);  color: var(--tab-on); }
+    #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-podz"].active     { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-dev-tools"].active       { background: var(--tab-devtools);   border-color: var(--tab-devtools);   color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="Favourites"].active { background: var(--tab-fav, #e6b800); border-color: var(--tab-fav, #e6b800); color: var(--tab-on); }
     /* While help fills the tab content (a .sol-inline-panel is present), no tab
@@ -273,12 +272,12 @@
     /* Solid Resources / Dev Tools tabs: each is a sol-include of a nested
        <sol-tabs variant="sub"> whose sub-tabs are full-bleed iframes. Carry the
        flex height through the include wrapper down to a borderless iframe. */
-    #panel-solid-resources, #panel-dev-tools { height: 100%; min-height: 0; }
-    :is(#panel-solid-resources, #panel-dev-tools) > .si-content,
-    :is(#panel-solid-resources, #panel-dev-tools) sol-tabs[variant="sub"] {
+     #panel-dev-tools { height: 100%; min-height: 0; }
+    #panel-dev-tools > .si-content,
+    #panel-dev-tools sol-tabs[variant="sub"] {
       display: flex; flex-direction: column; flex: 1; min-height: 0; width: 100%;
     }
-    :is(#panel-solid-resources, #panel-dev-tools) iframe.sol-tab-embed { border: 0; }
+    #panel-dev-tools iframe.sol-tab-embed { border: 0; }
 
     /* Sign-in is on demand now (the ☰ "Sign in…" item or any 401): the
        sol-login chip stays hidden until the component surfaces itself with

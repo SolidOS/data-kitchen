@@ -34,8 +34,6 @@ const PLUGINS = [
     ['source', './plugins/solidos/dk-solidos.html'], ['defer', '']]],
   ['Home (dashboard)', 'sol-include', [
     ['source', './plugins/home/home.html'], ['trusted', '']]],
-  ['Solid Resources (links)', 'sol-include', [
-    ['source', './plugins/solid-resources/resources.html'], ['trusted', '']]],
   ['Dev Tools (playgrounds)', 'sol-include', [
     ['source', './plugins/dev-tools/dev-tools.html'], ['trusted', '']]],
   ['Page (HTML include)', 'sol-include', [
