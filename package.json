@@ -29,8 +29,41 @@
   "build": {
     "appId": "com.data-kitchen",
     "productName": "Solid Data Kitchen",
+    "asar": false,
     "files": [
-      "**/*"
+      "electron-config/**",
+      "proxy/**",
+      "pivot-config/**",
+      "pivot/**",
+      "index.html",
+      "html-first.html",
+      "dk.manifest.json",
+      "dist/**",
+      "src/**",
+      "plugins/**",
+      "assets/**",
+      "data/**",
+      "help/**",
+      "pages/**",
+      "shapes/**",
+      "favourites/**",
+      "!**/*.map",
+      "!**/node_modules/sol-components/{node_modules,coverage,tests,tests-disabled,docs,drafts,examples,claude}/**",
+      "!**/node_modules/podz/node_modules/**",
+      "!claude/**",
+      "!tools/**",
+      "!test/**",
+      "!.internal/**",
+      "!notes.md"
+    ],
+    "extraResources": [
+      {
+        "from": "pivot/node_modules",
+        "to": "app/pivot/node_modules",
+        "filter": [
+          "**/*"
+        ]
+      }
     ],
     "directories": {
       "buildResources": "build"
