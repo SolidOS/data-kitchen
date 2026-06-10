@@ -8,9 +8,21 @@ CLAUDE: IGNORE EVERYTHING BELOW HERE
 # THOUGHTS
 ----------
 
+daughter app - an app that shares resources from main app
+
+guest app - an external app displayed in main app
+
+
+* To use an attribute from another component library, 
+  * 1. declare in the CI script tag you want to use the attribute
+'''
+''
+  * 2. use it
 --------
 # DONE
 --------
+## 4. i want help and settings and the dropdown menu to be context sensitive to what plugin is currently in the active pane; there shld be a standard way for a plugin's manifest to point to its help file and shape file if it has one; propose solutions 
+  
 ## 3. you totally misunderstood what i meant about the solid-resources and dev-tools - they should be plugins and
   they should have tabs on the main tabset but their submenus should be on the page loaded with the plugin
 
