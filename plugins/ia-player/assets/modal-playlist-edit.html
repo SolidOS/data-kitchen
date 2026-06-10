@@ -1,0 +1,26 @@
+<!-- Playlist create/edit modal. ia-ui.js showPlaylistEditModal() sets the
+     title, seeds name/maker/description, and prepends any extra action
+     buttons into .filters-actions. -->
+<div class="about-modal-content" role="dialog" aria-modal="true" aria-labelledby="pl-modal-title">
+  <button type="button" class="about-modal-close" aria-label="Close">×</button>
+  <h2 id="pl-modal-title" class="about-modal-title"></h2>
+  <form class="filters-form">
+    <label class="filters-row">
+      <span class="filters-label">Name</span>
+      <input type="text" name="name" required autocomplete="off">
+    </label>
+    <label class="filters-row">
+      <span class="filters-label">Maker</span>
+      <input type="text" name="maker" autocomplete="off" placeholder="(optional)">
+    </label>
+    <label class="filters-row">
+      <span class="filters-label">Description</span>
+      <input type="text" name="description" autocomplete="off" placeholder="(optional, shows on hover)">
+    </label>
+    <div class="filters-actions">
+      <span style="flex:1"></span>
+      <button type="button" class="filters-cancel">Cancel</button>
+      <button type="submit" class="filters-save">Save</button>
+    </div>
+  </form>
+</div>

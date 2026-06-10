@@ -1,0 +1,39 @@
+<!-- Quality-filters modal. ia-ui.js showFiltersModal() seeds the field
+     values from the current filter config and wires reset/cancel/save. -->
+<div class="about-modal-content" role="dialog" aria-modal="true" aria-labelledby="filters-modal-title">
+  <button type="button" class="about-modal-close" aria-label="Close">×</button>
+  <h2 id="filters-modal-title" class="about-modal-title">Filters</h2>
+  <form class="filters-form">
+    <p class="filters-hint">Hides low-quality archive.org results before they reach the album / track lists. Catalog artists (specific IA collections) are not filtered by default.</p>
+    <label class="filters-row">
+      <span class="filters-label">Min track length (mm:ss)</span>
+      <input type="text" name="minTrack" placeholder="3:00" inputmode="numeric">
+    </label>
+    <label class="filters-row">
+      <span class="filters-label">Min item runtime (mm:ss)</span>
+      <input type="text" name="minItem" placeholder="0:00" inputmode="numeric">
+    </label>
+    <label class="filters-row">
+      <span class="filters-label">Min track bitrate (kbps)</span>
+      <input type="number" name="minBitrate" min="0" step="1">
+    </label>
+    <label class="filters-row">
+      <span class="filters-label">Min item downloads</span>
+      <input type="number" name="minDownloads" min="0" step="1">
+    </label>
+    <label class="filters-row">
+      <span class="filters-label">Blocked collections (comma-sep)</span>
+      <input type="text" name="blocked" placeholder="podcasts, spokenword">
+    </label>
+    <label class="filters-row filters-row-check">
+      <input type="checkbox" name="applyCatalog">
+      <span class="filters-label">Also apply to catalog artists (/details/ URLs)</span>
+    </label>
+    <div class="filters-actions">
+      <button type="button" class="filters-reset">Reset to defaults</button>
+      <span style="flex:1"></span>
+      <button type="button" class="filters-cancel">Cancel</button>
+      <button type="submit" class="filters-save">Save</button>
+    </div>
+  </form>
+</div>

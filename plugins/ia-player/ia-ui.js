@@ -2,6 +2,11 @@
 // build time by esbuild's text loader); {{…}} tokens carry the per-media-type
 // labels substituted below.
 import shellHtml from './assets/ia-player-shell.html';
+import aboutModalTpl from './assets/modal-about.html';
+import filtersModalTpl from './assets/modal-filters.html';
+import playlistEditModalTpl from './assets/modal-playlist-edit.html';
+import libraryEditModalTpl from './assets/modal-library-edit.html';
+import trackEditModalTpl from './assets/modal-track-edit.html';
 
 export function createPlayerUI({ mediaType = 'audio', panel = false } = {}) {
   const isVideo = mediaType === 'video';
@@ -841,14 +846,10 @@ export async function showAboutModal(opts = {}) {
 
   const overlay = document.createElement('div');
   overlay.className = 'about-modal';
-  const sizeClass = size === 'large' ? ' about-modal-large' : '';
-  overlay.innerHTML = `
-    <div class="about-modal-content${sizeClass}" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
-      <button type="button" class="about-modal-close" aria-label="Close">×</button>
-      <h2 id="about-modal-title" class="about-modal-title">${escapeHTML(title)}</h2>
-      <div class="about-modal-body">${html}</div>
-    </div>
-  `;
+  overlay.innerHTML = aboutModalTpl;
+  if (size === 'large') overlay.querySelector('.about-modal-content').classList.add('about-modal-large');
+  overlay.querySelector('.about-modal-title').textContent = title;
+  overlay.querySelector('.about-modal-body').innerHTML = html;
   document.body.appendChild(overlay);
 
   const restoreFocus = trapFocus(overlay);
@@ -880,45 +881,14 @@ export function showFiltersModal({ filter, onSave }) {
 
   const overlay = document.createElement('div');
   overlay.className = 'about-modal';
-  overlay.innerHTML = `
-    <div class="about-modal-content" role="dialog" aria-modal="true" aria-labelledby="filters-modal-title">
-      <button type="button" class="about-modal-close" aria-label="Close">×</button>
-      <h2 id="filters-modal-title" class="about-modal-title">Filters</h2>
-      <form class="filters-form">
-        <p class="filters-hint">Hides low-quality archive.org results before they reach the album / track lists. Catalog artists (specific IA collections) are not filtered by default.</p>
-        <label class="filters-row">
-          <span class="filters-label">Min track length (mm:ss)</span>
-          <input type="text" name="minTrack" value="${escapeHTML(minTrackMmSs)}" placeholder="3:00" inputmode="numeric">
-        </label>
-        <label class="filters-row">
-          <span class="filters-label">Min item runtime (mm:ss)</span>
-          <input type="text" name="minItem" value="${escapeHTML(minItemMmSs)}" placeholder="0:00" inputmode="numeric">
-        </label>
-        <label class="filters-row">
-          <span class="filters-label">Min track bitrate (kbps)</span>
-          <input type="number" name="minBitrate" value="${f.minTrackBitrateKbps || 0}" min="0" step="1">
-        </label>
-        <label class="filters-row">
-          <span class="filters-label">Min item downloads</span>
-          <input type="number" name="minDownloads" value="${f.minDownloads || 0}" min="0" step="1">
-        </label>
-        <label class="filters-row">
-          <span class="filters-label">Blocked collections (comma-sep)</span>
-          <input type="text" name="blocked" value="${escapeHTML(blocked)}" placeholder="podcasts, spokenword">
-        </label>
-        <label class="filters-row filters-row-check">
-          <input type="checkbox" name="applyCatalog" ${f.applyToCatalogArtists ? 'checked' : ''}>
-          <span class="filters-label">Also apply to catalog artists (/details/ URLs)</span>
-        </label>
-        <div class="filters-actions">
-          <button type="button" class="filters-reset">Reset to defaults</button>
-          <span style="flex:1"></span>
-          <button type="button" class="filters-cancel">Cancel</button>
-          <button type="submit" class="filters-save">Save</button>
-        </div>
-      </form>
-    </div>
-  `;
+  overlay.innerHTML = filtersModalTpl;
+  const seed = overlay.querySelector('form').elements;
+  seed.minTrack.value = minTrackMmSs;
+  seed.minItem.value = minItemMmSs;
+  seed.minBitrate.value = f.minTrackBitrateKbps || 0;
+  seed.minDownloads.value = f.minDownloads || 0;
+  seed.blocked.value = blocked;
+  seed.applyCatalog.checked = !!f.applyToCatalogArtists;
   document.body.appendChild(overlay);
 
   const restoreFocus = trapFocus(overlay);
@@ -999,32 +969,13 @@ export function showPlaylistEditModal({ title = 'Playlist', values = {}, actions
   const v = values || {};
   const overlay = document.createElement('div');
   overlay.className = 'about-modal';
-  overlay.innerHTML = `
-    <div class="about-modal-content" role="dialog" aria-modal="true" aria-labelledby="pl-modal-title">
-      <button type="button" class="about-modal-close" aria-label="Close">×</button>
-      <h2 id="pl-modal-title" class="about-modal-title">${escapeHTML(title)}</h2>
-      <form class="filters-form">
-        <label class="filters-row">
-          <span class="filters-label">Name</span>
-          <input type="text" name="name" value="${escapeHTML(v.name || '')}" required autocomplete="off">
-        </label>
-        <label class="filters-row">
-          <span class="filters-label">Maker</span>
-          <input type="text" name="maker" value="${escapeHTML(v.maker || '')}" autocomplete="off" placeholder="(optional)">
-        </label>
-        <label class="filters-row">
-          <span class="filters-label">Description</span>
-          <input type="text" name="description" value="${escapeHTML(v.description || '')}" autocomplete="off" placeholder="(optional, shows on hover)">
-        </label>
-        <div class="filters-actions">
-          ${actionsHTML(actions)}
-          <span style="flex:1"></span>
-          <button type="button" class="filters-cancel">Cancel</button>
-          <button type="submit" class="filters-save">Save</button>
-        </div>
-      </form>
-    </div>
-  `;
+  overlay.innerHTML = playlistEditModalTpl;
+  overlay.querySelector('.about-modal-title').textContent = title;
+  const seed = overlay.querySelector('form').elements;
+  seed.name.value = v.name || '';
+  seed.maker.value = v.maker || '';
+  seed.description.value = v.description || '';
+  overlay.querySelector('.filters-actions').insertAdjacentHTML('afterbegin', actionsHTML(actions));
   document.body.appendChild(overlay);
 
   const restoreFocus = trapFocus(overlay);
@@ -1061,28 +1012,12 @@ export function showLibraryEditModal({ title = 'Edit library', values = {}, canD
   const v = values || {};
   const overlay = document.createElement('div');
   overlay.className = 'about-modal';
-  overlay.innerHTML = `
-    <div class="about-modal-content" role="dialog" aria-modal="true" aria-labelledby="lib-modal-title">
-      <button type="button" class="about-modal-close" aria-label="Close">×</button>
-      <h2 id="lib-modal-title" class="about-modal-title">${escapeHTML(title)}</h2>
-      <form class="filters-form">
-        <label class="filters-row">
-          <span class="filters-label">Name</span>
-          <input type="text" name="label" value="${escapeHTML(v.label || '')}" required autocomplete="off">
-        </label>
-        <label class="filters-row">
-          <span class="filters-label">Library URL</span>
-          <input type="text" name="url" value="${escapeHTML(v.url || '')}" required autocomplete="off">
-        </label>
-        <div class="filters-actions">
-          ${canDelete ? '<button type="button" class="filters-extra filters-danger" data-action-idx="0">Delete library</button>' : ''}
-          <span style="flex:1"></span>
-          <button type="button" class="filters-cancel">Cancel</button>
-          <button type="submit" class="filters-save">Save</button>
-        </div>
-      </form>
-    </div>
-  `;
+  overlay.innerHTML = libraryEditModalTpl;
+  overlay.querySelector('.about-modal-title').textContent = title;
+  const seed = overlay.querySelector('form').elements;
+  seed.label.value = v.label || '';
+  seed.url.value = v.url || '';
+  if (!canDelete) overlay.querySelector('.filters-danger').remove();
   document.body.appendChild(overlay);
 
   const restoreFocus = trapFocus(overlay);
@@ -1126,32 +1061,13 @@ export function showTrackEditModal({ values = {}, siblingCount = 0, actions, onS
     : '';
   const overlay = document.createElement('div');
   overlay.className = 'about-modal';
-  overlay.innerHTML = `
-    <div class="about-modal-content" role="dialog" aria-modal="true" aria-labelledby="tk-modal-title">
-      <button type="button" class="about-modal-close" aria-label="Close">×</button>
-      <h2 id="tk-modal-title" class="about-modal-title">Edit track</h2>
-      <form class="filters-form">
-        <label class="filters-row">
-          <span class="filters-label">Title</span>
-          <input type="text" name="title" value="${escapeHTML(v.title || '')}" required autocomplete="off">
-        </label>
-        <label class="filters-row">
-          <span class="filters-label">Artist</span>
-          <input type="text" name="artist" value="${escapeHTML(v.artist || '')}" autocomplete="off" placeholder="(optional)">
-        </label>
-        <label class="filters-row">
-          <span class="filters-label">Album${escapeHTML(albumNote)}</span>
-          <input type="text" name="album" value="${escapeHTML(v.album || '')}" autocomplete="off" placeholder="(optional)">
-        </label>
-        <div class="filters-actions">
-          ${actionsHTML(actions)}
-          <span style="flex:1"></span>
-          <button type="button" class="filters-cancel">Cancel</button>
-          <button type="submit" class="filters-save">Save</button>
-        </div>
-      </form>
-    </div>
-  `;
+  overlay.innerHTML = trackEditModalTpl;
+  const seed = overlay.querySelector('form').elements;
+  seed.title.value = v.title || '';
+  seed.artist.value = v.artist || '';
+  seed.album.value = v.album || '';
+  if (albumNote) overlay.querySelector('.filters-album-label').textContent = 'Album' + albumNote;
+  overlay.querySelector('.filters-actions').insertAdjacentHTML('afterbegin', actionsHTML(actions));
   document.body.appendChild(overlay);
 
   const restoreFocus = trapFocus(overlay);

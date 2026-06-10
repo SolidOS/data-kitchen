@@ -1,0 +1,26 @@
+<!-- Track editor modal (title / artist / album). ia-ui.js
+     showTrackEditModal() seeds the fields, appends the shared-album note to
+     the album label, and prepends any extra action buttons. -->
+<div class="about-modal-content" role="dialog" aria-modal="true" aria-labelledby="tk-modal-title">
+  <button type="button" class="about-modal-close" aria-label="Close">×</button>
+  <h2 id="tk-modal-title" class="about-modal-title">Edit track</h2>
+  <form class="filters-form">
+    <label class="filters-row">
+      <span class="filters-label">Title</span>
+      <input type="text" name="title" required autocomplete="off">
+    </label>
+    <label class="filters-row">
+      <span class="filters-label">Artist</span>
+      <input type="text" name="artist" autocomplete="off" placeholder="(optional)">
+    </label>
+    <label class="filters-row">
+      <span class="filters-label filters-album-label">Album</span>
+      <input type="text" name="album" autocomplete="off" placeholder="(optional)">
+    </label>
+    <div class="filters-actions">
+      <span style="flex:1"></span>
+      <button type="button" class="filters-cancel">Cancel</button>
+      <button type="submit" class="filters-save">Save</button>
+    </div>
+  </form>
+</div>
