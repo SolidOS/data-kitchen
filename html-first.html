@@ -48,39 +48,58 @@
      data-trusted
   >🛠 Dev Tools</a>
 
-  <!-- Actions row. The bar-managed plugins (search, calendar, appearance,
-       login) are user-composable via the bar builder; the help button and
-       the ⋮ menu are CHROME — fixed parts of the shell, edited only by
-       hand-editing this file. -->
+  <a href="./plugins/customize/dk-customize.html" id="panel-customize"
+     data-handler="sol-include"
+     data-trusted
+  >🎛 Customize</a>
 
-  <sol-search class="omp-search" title="Search"
+  <!-- Actions row. The bar-managed plugins below come from
+       data/tabs.ttl#Bar (edited with the bar builder); the chrome block
+       (help, ⋮ menu) is fixed shell furniture preserved by the generator. -->
+
+  <sol-search
+     class="omp-search"
+     title="Search"
      source="./plugins/search/search-engines.ttl#SearchEngines"
   ></sol-search>
 
-  <dk-calendar-popout class="omp-calendar" title="Calendar"
+  <dk-calendar-popout
+     class="omp-calendar"
+     title="Calendar"
      source="./plugins/calendar/calendar-settings.ttl#All"
   ></dk-calendar-popout>
 
-  <sol-button class="omp-fontsize" title="Text size" aria-label="Text size"
+  <sol-button
+     class="omp-fontsize"
+     title="Text size"
      data-handler="cycleFontSize"
   >A</sol-button>
 
-  <sol-button class="omp-theme" title="Toggle light / dark" aria-label="Toggle light / dark"
+  <sol-button
+     class="omp-theme"
+     title="Toggle light / dark"
      data-handler="toggleTheme"
   >🌙</sol-button>
 
-  <sol-button class="omp-settings-launch" title="Settings" aria-label="Open settings"
+  <sol-button
+     class="omp-settings-launch"
+     title="Settings"
      data-handler="sol-include"
      source="./pages/settings.html"
-     inline trusted
+     inline
+     trusted
   >⚙</sol-button>
 
-  <sol-login class="omp-sollogin"
+  <sol-login
+     class="omp-sollogin"
      mode="popup"
      popup-callback="node_modules/podz/popup-auth-callback.html"
      issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
   ></sol-login>
 
+  <!-- chrome:begin — fixed shell chrome (help, ⋮ menu). NOT bar-managed and
+       NOT in tabs.ttl; the generator preserves this block verbatim. Edit it
+       here by hand if you must. -->
   <sol-button class="omp-help-launch" title="Help" aria-label="Help"
      data-handler="sol-include"
      source="./help/dk.html"
@@ -99,5 +118,6 @@
       <button data-handler="updateApp">Update app on Pod…</button>
     </menu>
   </sol-dropdown-button>
+  <!-- chrome:end -->
 
 </sol-tabs>

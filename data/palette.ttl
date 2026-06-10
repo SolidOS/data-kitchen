@@ -1,0 +1,73 @@
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
+
+# The plugins palette — what <sol-plugins-available> offers for dragging into
+# the menu/bar builders. A plain ui:Menu of ui:Component entries (the same
+# shape every menu uses), seeded by tools/seed-palette.mjs and curated by
+# hand thereafter.
+
+<#Palette> a ui:Menu ; ui:label "Available plugins" ;
+  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Podz-pod-browser> <#SolidOS-data-browser> <#Page-HTML-include> <#Search> <#Calendar> <#Sign-in> <#Theme-toggle> <#Text-size> ) .
+
+<#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;
+  ui:attribute
+    [ schema:name "view" ; schema:value "threePanel" ] ,
+    [ schema:name "reader" ; schema:value "inline" ] ,
+    [ schema:name "source" ; schema:value "./plugins/news/feeds.ttl#Feeds" ] .
+
+<#Music-Internet-Archive> a ui:Component ; ui:label "Music (Internet Archive)" ; ui:name "ia-player" ;
+  ui:attribute
+    [ schema:name "storage-ns" ; schema:value "music" ] ,
+    [ schema:name "defer" ; schema:value "" ] ,
+    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_music/index.ttl" ] .
+
+<#Movies-Internet-Archive> a ui:Component ; ui:label "Movies (Internet Archive)" ; ui:name "ia-player" ;
+  ui:attribute
+    [ schema:name "storage-ns" ; schema:value "movies" ] ,
+    [ schema:name "favourites-only" ; schema:value "" ] ,
+    [ schema:name "defer" ; schema:value "" ] ,
+    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] .
+
+<#Images-Wikimedia> a ui:Component ; ui:label "Images (Wikimedia)" ; ui:name "omp-images" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
+
+<#Podz-pod-browser> a ui:Component ; ui:label "Podz (pod browser)" ; ui:name "dk-podz" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
+
+<#SolidOS-data-browser> a ui:Component ; ui:label "SolidOS (data browser)" ; ui:name "dk-solidos" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
+
+<#Page-HTML-include> a ui:Component ; ui:label "Page (HTML include)" ; ui:name "sol-include" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "" ] ,
+    [ schema:name "trusted" ; schema:value "" ] .
+
+<#Search> a ui:Component ; ui:label "Search" ; ui:name "sol-search" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/search/search-engines.ttl#SearchEngines" ] .
+
+<#Calendar> a ui:Component ; ui:label "Calendar" ; ui:name "dk-calendar-popout" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/calendar/calendar-settings.ttl#All" ] .
+
+<#Sign-in> a ui:Component ; ui:label "Sign in" ; ui:name "sol-login" ;
+  ui:attribute
+    [ schema:name "mode" ; schema:value "popup" ] ,
+    [ schema:name "popup-callback" ; schema:value "node_modules/podz/popup-auth-callback.html" ] ,
+    [ schema:name "issuers" ; schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .
+
+<#Theme-toggle> a ui:Component ; ui:label "Theme toggle" ; ui:name "sol-button" ;
+  ui:attribute
+    [ schema:name "data-handler" ; schema:value "toggleTheme" ] ,
+    [ schema:name "title" ; schema:value "Toggle light / dark" ] .
+
+<#Text-size> a ui:Component ; ui:label "Text size" ; ui:name "sol-button" ;
+  ui:attribute
+    [ schema:name "data-handler" ; schema:value "cycleFontSize" ] ,
+    [ schema:name "title" ; schema:value "Text size" ] .
+

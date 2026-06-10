@@ -11,7 +11,7 @@
 
     let solTabs = null;   // assigned once the included <sol-tabs> exists
     const chrome  = document.querySelector('.omp-chrome');
-    const PANEL_KEYS = ['home', 'news', 'music', 'movies', 'images', 'podz', 'solidos', 'solid-resources', 'dev-tools'];
+    const PANEL_KEYS = ['home', 'news', 'music', 'movies', 'images', 'podz', 'solidos', 'solid-resources', 'dev-tools', 'customize'];
     const panelEl   = (key) => document.getElementById('panel-' + key);
     const allPanels = () => PANEL_KEYS.map(panelEl).filter(Boolean);
     let audioName = 'music';

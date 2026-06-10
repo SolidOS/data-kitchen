@@ -1,5 +1,6 @@
 @prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix schema: <http://schema.org/> .
+@prefix acl:    <http://www.w3.org/ns/auth/acl#> .
 
 # RDF twin of html-first.html, kept in sync by tools/conversion (the builders
 # edit this; the generator re-emits the HTML). Two menus: the topmost tabset
@@ -10,7 +11,7 @@
   ui:orientation ui:Horizontal ;
   ui:parts ( <#panel-home> <#panel-news> <#panel-music> <#panel-movies>
              <#panel-images> <#panel-podz> <#panel-solidos>
-             <#panel-solid-resources> <#panel-dev-tools> ) .
+             <#panel-solid-resources> <#panel-dev-tools> <#panel-customize> ) .
 
 <#panel-home> a ui:Component ; ui:label "🏠 Home" ; ui:name "sol-include" ;
   ui:attribute
@@ -67,6 +68,13 @@
   ui:attribute
     [ schema:name "id" ;      schema:value "panel-dev-tools" ] ,
     [ schema:name "source" ;  schema:value "./plugins/dev-tools/dev-tools.html" ] ,
+    [ schema:name "trusted" ; schema:value "" ] .
+
+<#panel-customize> a ui:Component ; ui:label "🎛 Customize" ; ui:name "sol-include" ;
+  acl:mode acl:Write ;
+  ui:attribute
+    [ schema:name "id" ;      schema:value "panel-customize" ] ,
+    [ schema:name "source" ;  schema:value "./plugins/customize/dk-customize.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
 <#Bar> a ui:Menu ; ui:label "actions" ;
