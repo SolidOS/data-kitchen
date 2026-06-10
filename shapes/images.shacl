@@ -1,0 +1,35 @@
+# Image-collections shape — drives the rolodex editor over
+# libraries/wikimedia_images/images.ttl. One card per collection
+# (schema:ImageGallery). dct:title, dcat:landingPage (the Wikimedia Commons
+# category page — a page, so landingPage not accessURL), dcat:theme → a
+# skos:Concept topic enumerated from the concepts loaded from images.ttl.
+
+@prefix :       <#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+
+:ImageCollectionShape
+  a sh:NodeShape ;
+  sh:targetClass schema:ImageGallery ;
+
+  sh:property [
+    sh:path dct:title ;
+    sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:name "Title" ;
+  ] ,
+  [
+    sh:path dcat:landingPage ;
+    sh:nodeKind sh:IRI ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:name "Commons category URL" ;
+    sh:description "A Wikimedia Commons Category: page." ;
+  ] ,
+  [
+    sh:path dcat:theme ;
+    sh:class schema:DefinedTerm ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:name "Topic" ;
+    sh:description "Which image topic this collection belongs to." ;
+  ] .

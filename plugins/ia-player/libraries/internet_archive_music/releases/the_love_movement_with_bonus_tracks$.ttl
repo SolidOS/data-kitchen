@@ -1,0 +1,118 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "The Love Movement (With Bonus Tracks)" ;
+    dct:identifier "the-love-movement" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/the-love-movement> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15> ;
+    foaf:maker <urn:uuid:222dd31d-d495-4882-9694-ca0ef6efc8ac>, <urn:uuid:46130615-ca3b-4641-993d-74a39200d63a>, <urn:uuid:c2833db2-ef8e-4ed5-bcc7-036e31751e80> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Money Maker" ;
+    mo:duration "262" ;
+    mo:item <https://archive.org/download/the-love-movement/2-02%20Money%20Maker.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Hot 4 U" ;
+    mo:duration "196" ;
+    mo:item <https://archive.org/download/the-love-movement/1-12%20Hot%204%20U.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Find A Way" ;
+    mo:duration "203" ;
+    mo:item <https://archive.org/download/the-love-movement/1-02%20Find%20A%20Way.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Oh My God (Remix)" ;
+    mo:duration "242" ;
+    mo:item <https://archive.org/download/the-love-movement/2-04%20Oh%20My%20God%20(Remix).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Scenario (Remix)" ;
+    mo:duration "318" ;
+    mo:item <https://archive.org/download/the-love-movement/2-01%20Scenario%20(Remix).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Against The World" ;
+    mo:duration "239" ;
+    mo:item <https://archive.org/download/the-love-movement/1-13%20Against%20The%20World.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "One Two S**T" ;
+    mo:duration "272" ;
+    mo:item <https://archive.org/download/the-love-movement/2-06%20One%20Two%20S--T.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Jazz (We've Got)" ;
+    mo:duration "259" ;
+    mo:item <https://archive.org/download/the-love-movement/2-05%20Jazz%20(We've%20Got).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Rock Rock Y'All" ;
+    mo:duration "267" ;
+    mo:item <https://archive.org/download/the-love-movement/1-15%20Rock%20Rock%20Y'All.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Steppin' It Up" ;
+    mo:duration "202" ;
+    mo:item <https://archive.org/download/the-love-movement/1-04%20Steppin'%20It%20Up.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Pad & Pen" ;
+    mo:duration "203" ;
+    mo:item <https://archive.org/download/the-love-movement/1-10%20Pad%20%26%20Pen.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "The Love" ;
+    mo:duration "243" ;
+    mo:item <https://archive.org/download/the-love-movement/1-14%20The%20Love.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "Da Booty" ;
+    mo:duration "201" ;
+    mo:item <https://archive.org/download/the-love-movement/1-03%20Da%20Booty.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "Give Me" ;
+    mo:duration "232" ;
+    mo:item <https://archive.org/download/the-love-movement/1-09%20Give%20Me.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "Start It Up" ;
+    mo:duration "199" ;
+    mo:item <https://archive.org/download/the-love-movement/1-01%20Start%20It%20Up.mp3> ;
+    dct:isPartOf <#it> .

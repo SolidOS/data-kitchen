@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Tycho - Division (Heathered Pearls Remix)" ;
+    dct:identifier "soundcloud-291993255" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/soundcloud-291993255> ;
+    mo:track <#t01> ;
+    foaf:maker "Tycho" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "291993255" ;
+    mo:duration "303" ;
+    mo:item <https://archive.org/download/soundcloud-291993255/291993255.mp3> ;
+    dct:isPartOf <#it> .

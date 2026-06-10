@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open Media Player — Help</title>
+<style>
+  body {
+    font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: #1d1d1d;
+    background: #fff;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem 4rem;
+  }
+  h1 { margin-top: 0; font-size: 1.6rem; }
+  h2 {
+    margin-top: 1.8rem;
+    font-size: 1.15rem;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #ddd;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.6rem;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 6px 10px;
+    border-bottom: 1px solid #eee;
+  }
+  th {
+    background: #fafafa;
+    font-weight: 600;
+    border-bottom: 2px solid #ddd;
+  }
+  td:first-child { white-space: nowrap; width: 30%; }
+  td:nth-child(2) { width: 35%; }
+  kbd {
+    background: #f1f1f1;
+    border: 1px solid #d4d4d4;
+    border-bottom-width: 2px;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font: 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  code {
+    font: 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: #f5f5f5;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+  .note {
+    color: #555;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<h1>Open Media Player — User actions</h1>
+
+<p>Reference for every interaction the player supports, grouped by where
+it happens. Every editable row (genre, artist, library, playlist,
+playlist&nbsp;track) carries a bold <strong>⋯</strong> kebab on its
+right edge that opens its action menu.</p>
+
+<h2>Layout in brief</h2>
+<ul>
+  <li><strong>Sources</strong> (left, resizable — drag its right edge):
+    <em>Libraries</em> (checkboxes, top) and <em>Playlists</em>
+    (fills the rest).</li>
+  <li><strong>Browser cascade</strong>: Genres → Artists → Albums.</li>
+  <li><strong>Tracklist</strong> + a status bar; the bar's far right
+    shows the current list's track count and total time
+    (e.g. <code>23 tracks · 1h 47m</code>).</li>
+  <li>At any moment exactly one side is "active": either a
+    <em>playlist</em> (highlighted in Sources) or the
+    <em>library cascade</em>. Clicking a genre/artist/album snaps the
+    active view back to the library; clicking a playlist row snaps it
+    to that playlist.</li>
+</ul>
+
+<h2>Browsing — Genre / Artist / Album columns</h2>
+<table>
+  <thead><tr><th>Action</th><th>How</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Filter artists by genre</td><td>Click a genre</td><td>Multi-select with Shift/Ctrl-click; <code>(All genres)</code> clears. Snaps the active view to the library.</td></tr>
+    <tr><td>List an artist's albums</td><td>Click an artist</td><td>For an archive.org artist this fetches its collection / search results live. For a <em>local-catalog</em> artist (a converted playlist — see below) the albums come straight from the stored RDF, no network.</td></tr>
+    <tr><td>Load tracks from an album</td><td>Click an album</td><td>Appends the album's tracks to the library queue + tracklist.</td></tr>
+    <tr><td>Add / rename / delete a genre</td><td>Genre row <strong>⋯</strong> → <em>Rename / Delete</em>; <strong>+ Add genre</strong> at the column foot</td><td>Rename is an inline input (Enter saves, Esc cancels). Delete confirms and removes the genre and its artists.</td></tr>
+    <tr><td>Add / rename / delete an artist</td><td>Artist row <strong>⋯</strong> → <em>Rename / Delete / Visit on the Internet Archive</em>; <strong>+ Add artist</strong> at the column foot</td><td><em>Visit on the Internet Archive</em> is offered for every artist: archive.org URLs open the artist's IA page directly, others fall back to an audio-restricted IA search on the artist's name. Add takes an archive.org <code>/details/&lt;id&gt;</code> or <code>/search?…</code> URL plus a genre.</td></tr>
+  </tbody>
+</table>
+<p class="note">Drag-to-move-an-artist-between-genres is not currently
+wired in the columns; use the artist's Rename/Delete and re-add if you
+need to recategorise.</p>
+
+<h2>Playback — toolbar</h2>
+<table>
+  <thead><tr><th>Action</th><th>How</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Play / pause</td><td><strong>▶</strong> button, or <kbd>Space</kbd> on a focused track</td><td>If nothing's loaded, starts the first available track.</td></tr>
+    <tr><td>Previous / Next</td><td><strong>⏮</strong> / <strong>⏭</strong></td><td>Prev walks the play history. Restricted (401) / unplayable tracks auto-skip during playback (capped at 5 in a row).</td></tr>
+    <tr><td>Seek</td><td>Drag the seek slider</td><td>Position is saved; reopening resumes within a few seconds of where you left off.</td></tr>
+    <tr><td>Volume</td><td>Drag the volume slider</td><td>Persisted.</td></tr>
+    <tr><td>Randomize the play order</td><td><strong>🎲</strong> at the left of the tracklist's <strong>#</strong> column header</td><td>One-shot Fisher–Yates shuffle of whatever's currently shown; clears any column sort so the next render doesn't re-sort. Re-click to re-shuffle. Playback advances in the new linear order.</td></tr>
+    <tr><td>Clear the library queue</td><td><strong>🧹</strong> at the far right of the tracklist header row</td><td>Empties the Library queue + view. Only meaningful in Library mode (hidden in playlist views); use the playlist's <strong>⋯</strong> menu to remove a playlist itself.</td></tr>
+  </tbody>
+</table>
+
+<h2>Track list</h2>
+<table>
+  <thead><tr><th>Action</th><th>How</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Play a track</td><td>Double-click the row, or focus + <kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Single-click only selects.</td></tr>
+    <tr><td>Select</td><td>Click; <kbd>Shift</kbd>-click range; <kbd>Ctrl/⌘</kbd>-click toggle; <kbd>Ctrl/⌘</kbd>+<kbd>A</kbd> all; <kbd>Esc</kbd> clears</td><td>Arrow keys / <kbd>Home</kbd> / <kbd>End</kbd> move focus.</td></tr>
+    <tr><td>Edit a track</td><td><em>Playlist rows:</em> row <strong>⋯</strong> → <em>Edit…</em></td><td>Form for Title / Artist / Album. Title → that track only. Artist → a per-track override. <strong>Album → the parent release's title; every track from that same source re-displays with it</strong> (the form shows how many siblings). Persisted.</td></tr>
+    <tr><td>Visit the source page</td><td>Playlist row <strong>⋯</strong> → <em>Visit on the Internet Archive</em></td><td>Opens the track's archive.org item in a new tab (archive.org sources only).</td></tr>
+    <tr><td>Remove from playlist</td><td>Playlist row <strong>⋯</strong> → <em>Remove</em>; or select rows + <kbd>Delete</kbd></td><td>Confirms (always from the menu; on <kbd>Delete</kbd> only when removing &gt;1). Library / live rows instead show a hover <strong>✕</strong> (queue-only, no RDF).</td></tr>
+    <tr><td>Sort</td><td>Click a column header (Title / Artist / Album / Time)</td><td>Click again to reverse.</td></tr>
+    <tr><td>Resize a column</td><td>Drag a column-header right edge</td><td>Widths persisted.</td></tr>
+    <tr><td>Add to a playlist</td><td>Drag a row (or selection) onto a playlist in Sources</td><td>Duplicates already in that playlist are skipped; the status bar reports how many.</td></tr>
+  </tbody>
+</table>
+
+<h2>Sources — Libraries &amp; Playlists</h2>
+<table>
+  <thead><tr><th>Action</th><th>How</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Enable / disable a library</td><td>Click its checkbox</td><td>Disabled libraries drop out of the aggregated genres / artists / playlists. (The checkbox is independent of the active-view highlight.)</td></tr>
+    <tr><td>Add / edit a library</td><td><strong>+ Library</strong>; library row <strong>⋯</strong> → <em>Rename / Change library URL / Delete library</em></td><td>Delete only forgets the library in this player; its files stay where they are. The <strong>+ Library</strong> button is hidden in guest mode.</td></tr>
+    <tr><td>Resize the Sources column</td><td>Drag its right edge</td><td>Width persisted.</td></tr>
+    <tr><td>Switch to a playlist</td><td>Click the playlist row</td><td>Re-click (or click a genre/artist/album) returns to the Library view. A playlist shows as <code>Name (Maker)</code>; its description is the hover tooltip.</td></tr>
+    <tr><td>Add a playlist</td><td><strong>+ Playlist</strong></td><td>Combined form: Name (required), Maker, Description.</td></tr>
+    <tr><td>Edit a playlist</td><td>Playlist row <strong>⋯</strong> → <em>Edit…</em></td><td>Same combined form (Name / Maker / Description).</td></tr>
+    <tr><td>Convert a playlist to an artist</td><td>Playlist row <strong>⋯</strong> → <em>Convert to artist…</em></td><td>Name it + pick a genre. The playlist disappears; a local-catalog artist appears under that genre whose albums/tracks come from the RDF (no archive.org search). Good for imported / curated collections.</td></tr>
+    <tr><td>Delete a playlist</td><td>Playlist row <strong>⋯</strong> → <em>Delete playlist</em></td><td>Confirms. Removes the playlist resource and unlinks its tracks.</td></tr>
+  </tbody>
+</table>
+
+<h2>Quality filters (gear menu → Filters…)</h2>
+<p>Hides low-quality archive.org results <em>before</em> they reach the
+album / track lists. Only the 3-minute track floor is on by default;
+the rest opt in. Catalog artists (specific <code>/details/</code>
+collections) are not filtered unless you tick "also apply to catalog
+artists".</p>
+<table>
+  <thead><tr><th>Field</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td>Min track length</td><td>Drops tracks shorter than this (default 3:00) — kills intros / banter / snippets.</td></tr>
+    <tr><td>Min item runtime</td><td>Drops whole search items shorter than this.</td></tr>
+    <tr><td>Min track bitrate</td><td>Drops low-bitrate files.</td></tr>
+    <tr><td>Min item downloads</td><td>Server-side popularity floor on search results.</td></tr>
+    <tr><td>Blocked collections</td><td>Comma-separated archive.org collection ids to exclude (e.g. <code>podcasts</code>).</td></tr>
+    <tr><td>Reset to defaults</td><td>Back to "3-minute floor only".</td></tr>
+  </tbody>
+</table>
+
+<h2>Top-right gear menu (⋮)</h2>
+<p>The menu button turns <strong>green</strong> and shows your WebID as its
+tooltip when you have a live Solid session. <em>Filters…</em>,
+<em>View deleted</em>, <em>Install on my Pod…</em>, and <em>Update app on Pod…</em>
+are hidden in guest mode (no session and no
+<code>solid-kitchen</code> flag on <code>&lt;sol-default&gt;</code>).</p>
+<table>
+  <thead><tr><th>Item</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td>Solid login (top of the menu)</td><td>The <strong>&lt;sol-login&gt;</strong> chip — pick an identity provider, sign in, or sign out. When a session is restored on reload the chip already shows your WebID and the menu button is green.</td></tr>
+    <tr><td>Filters…</td><td>Opens the quality-filters form (above).</td></tr>
+    <tr><td>View deleted</td><td>Opens the reserved per-library "Deleted" bin in the ordinary playlist view; remove a track from the bin to reclaim its release file (when it isn't shared by another playlist).</td></tr>
+    <tr><td>Help</td><td>Opens this page in a modal.</td></tr>
+    <tr><td>Solid login help</td><td>Opens the Solid login walkthrough.</td></tr>
+    <tr><td>Install on my Pod…</td><td>Copies the whole app + every library to a location on your Solid pod (you pick/edit the URL), so your pod hosts its own Open Media Player. Idempotent — safe to re-run. Registers it in your pod's type index when possible.</td></tr>
+    <tr><td>Update app on Pod…</td><td>Re-pushes just the app bundle to a previously-installed pod copy (library data left alone). Use after a code update.</td></tr>
+    <tr><td>About</td><td>Player info / credits modal. Auto-shown once at startup; loading runs in the background behind it.</td></tr>
+  </tbody>
+</table>
+<p>Clear-tracklist used to live here; it's now the <strong>🧹</strong> button at
+the far right of the tracklist header row.</p>
+
+<h2>Where the data lives</h2>
+<p>A library is a self-contained container under
+<code>libraries/&lt;name&gt;/</code> whose small index document
+(<code>index.ttl</code>) <code>rdfs:seeAlso</code>-links its sibling
+files:</p>
+<ul>
+  <li><code>agents.ttl</code> — artists / groups / labels</li>
+  <li><code>genres.ttl</code> — genres + the Music root concept</li>
+  <li><code>releases.ttl</code> — an <em>index</em> that
+  <code>rdfs:seeAlso</code>-links one file per album under
+  <code>releases/&lt;slug&gt;</code> (each holding a
+  <code>mo:Release</code> + its <code>mo:Track</code>s)</li>
+  <li><code>playlists/&lt;Slug&gt;</code> — one self-contained file per
+  playlist</li>
+</ul>
+<p>Each playlist file is <strong>self-contained</strong>: adding tracks
+writes the <code>mo:Track</code> + its parent <code>mo:Release</code>
+<em>and</em> the <code>dcterms:hasPart</code> edge into that one small
+playlist file — <code>releases.ttl</code> is not touched. A failed
+write rolls back so nothing half-lands; the status bar shows the error
+and nothing is silently lost.</p>
+<p>Libraries whose URL is on another origin are listed but stay
+unchecked until you select them (then they load); only same-origin
+libraries auto-load at startup, so listing a remote library costs no
+network trip.</p>
+
+<h2>Session persistence</h2>
+<p>Saved to <code>localStorage</code>, restored next load:</p>
+<ul>
+  <li>Active source (Library or a playlist) and the playlist/library highlight.</li>
+  <li>Loaded track + playback position (Play resumes near where you left off).</li>
+  <li>Library track queue; sort column/direction; column widths; Sources column width.</li>
+  <li>Genre / Artist / Album selection.</li>
+  <li>Volume.</li>
+  <li>Registered libraries and which are enabled.</li>
+  <li>Quality-filter settings (its own key).</li>
+</ul>
+
+<h2>Keyboard shortcuts</h2>
+<table>
+  <thead><tr><th>Key</th><th>Effect</th><th>Context</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Space</kbd></td><td>Play / pause</td><td>Tracklist focused</td></tr>
+    <tr><td><kbd>Enter</kbd></td><td>Play focused track / commit an inline edit</td><td>Tracklist / rename inputs</td></tr>
+    <tr><td><kbd>↑</kbd> <kbd>↓</kbd> <kbd>Home</kbd> <kbd>End</kbd></td><td>Move / jump row focus</td><td>Tracklist focused</td></tr>
+    <tr><td><kbd>Shift</kbd>/<kbd>Ctrl/⌘</kbd>-click</td><td>Range / toggle select</td><td>Tracklist</td></tr>
+    <tr><td><kbd>Ctrl/⌘</kbd>+<kbd>A</kbd></td><td>Select all rows</td><td>Tracklist focused</td></tr>
+    <tr><td><kbd>Delete</kbd></td><td>Remove selected (confirms when &gt;1)</td><td>Tracklist, playlist view</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>Clear selection / cancel an inline edit or modal</td><td>Tracklist; inputs; modals</td></tr>
+  </tbody>
+</table>
+
+</body>
+</html>

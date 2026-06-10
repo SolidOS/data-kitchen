@@ -1,0 +1,334 @@
+/* omp shell styles — extracted from index.html (2026-05-31).
+   Theme / text-size / dev-write are declared on <sol-default> (theme, fontsize,
+   solid-kitchen). omp-boot applies a SAVED choice (localStorage) to <html
+   data-theme/data-fontsize> pre-paint; the DEFAULT (and the system fallback for
+   theme) is resolved by the :has() cascade below — no script, no window flag. */
+
+    :root {
+      /* Per-library tab accents (mirror the in-panel room accents). */
+      --tab-music: #f0a23a;  --tab-movies: #49c8d8;  --tab-news: #6fae6f;  --tab-images: #b07cc6;  --tab-on: #15100a;
+      --tab-workspaces: #8a93e0;  --tab-resources: #5b9bd5;  --tab-devtools: #e58a8a;
+    }
+    [data-theme="light"] {
+      --tab-music: #a8581a;  --tab-movies: #1c7283;  --tab-news: #2f7d4f;  --tab-images: #7d4f9e;  --tab-on: #ffffff;
+      --tab-workspaces: #4348a8;  --tab-resources: #2f5f9e;  --tab-devtools: #a83a3a;
+    }
+
+    /* ── Theme DEFAULT — when there's no explicit <html data-theme> override ──
+       Saved/toggled theme lives on <html data-theme> (above + ia.css). With none
+       set, the default is read off <sol-default theme="…">; if it omits theme,
+       the system preference wins. Dark is the base (ia.css :root) so only the
+       light case needs rules. The primitives/room values mirror ia.css's
+       [data-theme="light"]; keyed via :has() so it's scriptless and pre-paint. */
+    :root:not([data-theme]):has(sol-default[theme="light"]) {
+      color-scheme: light;
+      --ia-lift: #ffffff;  --ia-hover: #1b1712;  --ia-sink: #000000;
+      --ia-base: #efe9dd;  --ia-ink: #2a2620;  --ia-accent: #b5651d;  --ia-on-accent: #ffffff;
+      --tab-music: #a8581a;  --tab-movies: #1c7283;  --tab-news: #2f7d4f;  --tab-images: #7d4f9e;  --tab-on: #ffffff;
+      --tab-workspaces: #4348a8;  --tab-resources: #2f5f9e;  --tab-devtools: #a83a3a;
+    }
+    :root:not([data-theme]):has(sol-default[theme="light"]) .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
+    :root:not([data-theme]):has(sol-default[theme="light"]) .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme]):not(:has(sol-default[theme])) {
+        color-scheme: light;
+        --ia-lift: #ffffff;  --ia-hover: #1b1712;  --ia-sink: #000000;
+        --ia-base: #efe9dd;  --ia-ink: #2a2620;  --ia-accent: #b5651d;  --ia-on-accent: #ffffff;
+        --tab-music: #a8581a;  --tab-movies: #1c7283;  --tab-news: #2f7d4f;  --tab-images: #7d4f9e;  --tab-on: #ffffff;
+      --tab-workspaces: #4348a8;  --tab-resources: #2f5f9e;  --tab-devtools: #a83a3a;
+      }
+      :root:not([data-theme]):not(:has(sol-default[theme])) .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
+      :root:not([data-theme]):not(:has(sol-default[theme])) .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
+    }
+
+    /* ── Text-size DEFAULT — when there's no explicit <html data-fontsize> ────
+       Read off <sol-default fontsize="…">, default medium. Drives the root
+       rem size (mirrors ia.css :root[data-fontsize]) and the per-panel
+       --font-size (mirrors the [data-fontsize] #panel rules further down). */
+    :root:not([data-fontsize]):has(sol-default[fontsize="small"])  { font-size: 16px; }
+    :root:not([data-fontsize]):has(sol-default[fontsize="large"])  { font-size: 24px; }
+    :root:not([data-fontsize]):has(sol-default[fontsize="medium"]),
+    :root:not([data-fontsize]):not(:has(sol-default[fontsize]))    { font-size: 20px; }
+    :root:not([data-fontsize]):has(sol-default[fontsize="small"]) :is(#panel-news, #panel-images) { --font-size: 16px; }
+    :root:not([data-fontsize]):has(sol-default[fontsize="large"]) :is(#panel-news, #panel-images) { --font-size: 24px; }
+    :root:not([data-fontsize]):has(sol-default[fontsize="medium"]) :is(#panel-news, #panel-images),
+    :root:not([data-fontsize]):not(:has(sol-default[fontsize]))    :is(#panel-news, #panel-images) { --font-size: 20px; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex; flex-direction: column;
+      position: relative;
+      background: var(--ia-bg, #121317);
+      font-family: var(--ia-font-body, system-ui, sans-serif);
+    }
+    /* Bridge the generic swc design tokens (consumed by sol-modal etc. mounted
+       on <body>) onto the omp --ia-* theme so the modals follow light/dark and
+       the app font. --ia-* already switch per data-theme, so one bridge covers both. */
+    body {
+      --surface: var(--ia-bg-elev);   --surface-2: var(--ia-bg-elev-2);
+      --text: var(--ia-text);         --text-muted: var(--ia-text-muted);
+      --text-faint: var(--ia-text-muted);
+      --border: var(--ia-border);     --border-soft: var(--ia-border);
+      --hover: var(--ia-bg-btn);      --accent: var(--ia-accent);
+      --font-body: var(--ia-font-body, system-ui, sans-serif);
+    }
+    /* Controls float over the right of the <sol-tabs> bar so they share the
+       tab row (the bar is full-width with empty space on the right). */
+    .omp-chrome-bar {
+      position: absolute; top: 0; right: 12px; z-index: 20;
+      height: 50px;
+      display: flex; align-items: center; gap: 8px;
+      background: transparent; border: none;
+    }
+
+    /* <sol-tabs> bar styled as the per-room library tabs (data-tab-id from RDF). */
+    #omp-tabs > .sol-tabs-bar {
+      align-items: flex-end; gap: 5px; padding: 8px 10px 0;
+      background: var(--ia-bg-elev, #181a1f);
+      border-bottom: 1px solid var(--ia-border, #2a2d33);
+    }
+    #omp-tabs > .sol-tabs-bar > button {
+      font-family: var(--ia-font-display, Georgia, serif);
+      font-size: 0.98rem; font-weight: 600; letter-spacing: 0.01em;
+      line-height: 1.2;
+      color: var(--ia-text-muted, #9aa);
+      background: var(--ia-bg-btn, #26282e);
+      border: 1px solid var(--ia-border-btn, #34373d); border-bottom: none;
+      border-radius: 9px 9px 0 0; padding: 8px 20px; margin-bottom: 0;
+      transition: color .15s ease, background .15s ease;
+    }
+    #omp-tabs > .sol-tabs-bar > button:hover { color: var(--ia-text-strong, #fff); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-music"].active  { background: var(--tab-music);  border-color: var(--tab-music);  color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-movies"].active { background: var(--tab-movies); border-color: var(--tab-movies); color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-news"].active   { background: var(--tab-news);   border-color: var(--tab-news);   color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-images"].active { background: var(--tab-images); border-color: var(--tab-images); color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-workspaces"].active     { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-solid-resources"].active { background: var(--tab-resources);  border-color: var(--tab-resources);  color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-dev-tools"].active       { background: var(--tab-devtools);   border-color: var(--tab-devtools);   color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="Favourites"].active { background: var(--tab-fav, #e6b800); border-color: var(--tab-fav, #e6b800); color: var(--tab-on); }
+    /* While help fills the tab content (a .sol-inline-panel is present), no tab
+       is the current view — drop the active highlight (the ? button takes it). */
+    #omp-tabs:has(> .sol-tabs-content > .sol-inline-panel) > .sol-tabs-bar > button.active {
+      background: var(--ia-bg-btn, #26282e);
+      border-color: var(--ia-border-btn, #34373d);
+      color: var(--ia-text-muted, #9aa);
+    }
+
+    /* Panes fill the content area; each panel manages its own internal scroll. */
+    #omp-tabs > .sol-tabs-content { padding: 0; gap: 0; overflow: hidden; }
+    #omp-tabs .sol-tabs-pane,
+    #omp-tabs .sol-tabs-pane > [data-menu-item] {
+      display: flex; flex-direction: column;
+      flex: 1; min-height: 0; min-width: 0; width: 100%; max-width: 100%;
+    }
+    #omp-tabs .sol-tabs-pane[hidden] { display: none; }
+    /* sol-tabs tags mounted panels .sol-tab-embed (display:flex;column); omp-images
+       is a row layout (Favourites column + browser/gallery), so restore row. */
+    #omp-tabs omp-images.sol-tab-embed { flex-direction: row; }
+    .omp-panels omp-favourites { width: 100%; height: 100%; min-height: 0; overflow: hidden; }
+    omp-favourites[hidden] { display: none; }
+
+    /* Right-aligned global controls. */
+    .omp-chrome { margin-left: auto; display: flex; align-items: center; gap: 8px; padding-bottom: 6px; }
+    .chrome-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; padding: 0;
+      background: var(--ia-bg-btn, #26282e); color: var(--ia-text-muted, #9aa);
+      border: 1px solid var(--ia-border-btn, #34373d); border-radius: 7px;
+      font-family: var(--ia-font-display, Georgia, serif); font-size: 1rem;
+      cursor: pointer; line-height: 1;
+    }
+    .chrome-btn:hover { color: var(--ia-text-strong, #fff); border-color: var(--ia-accent, #888); }
+    /* The Help ? is a <sol-button>; style its shadow trigger like a chrome-btn. */
+    .omp-help-launch::part(trigger) {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; padding: 0;
+      background: var(--ia-bg-btn, #26282e); color: var(--ia-text-muted, #9aa);
+      border: 1px solid var(--ia-border-btn, #34373d); border-radius: 7px;
+      font-family: var(--ia-font-display, Georgia, serif); font-size: 1rem; font-weight: 600;
+      cursor: pointer; line-height: 1;
+    }
+    .omp-help-launch::part(trigger):hover { color: var(--ia-text-strong, #fff); border-color: var(--ia-accent, #888); }
+    /* When help is open (sol-button reflects `open`), the ? is highlighted like
+       an active tab (and the active tab is de-highlighted, above). */
+    .omp-help-launch[open]::part(trigger) {
+      background: var(--ia-accent, #c79248);
+      border-color: var(--ia-accent, #c79248);
+      color: var(--ia-on-accent, #1a1a1a);
+    }
+    /* region="inline" mounts the help into the tab content area, overlaying the
+       active pane; the tab bar stays so picking a tab dismisses it. */
+    #omp-tabs > .sol-tabs-content { position: relative; }
+    #omp-tabs > .sol-tabs-content > .sol-inline-panel {
+      position: absolute; inset: 0; z-index: 6;
+      overflow: auto;
+      background: var(--ia-bg-app, #15161a);
+      color: var(--ia-text, #e7e7ea);
+      padding: 1.5rem clamp(1rem, 5vw, 3.5rem) 2.5rem;
+    }
+    #omp-tabs > .sol-tabs-content > .sol-inline-panel .omp-help-doc { max-width: 56rem; margin: 0 auto; }
+    /* The A (text size) and 🌙 (theme) chrome buttons are <sol-button command="…">
+       in index2; style their shadow trigger like a .chrome-btn. */
+    .omp-fontsize::part(trigger),
+    .omp-theme::part(trigger) {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; padding: 0;
+      background: var(--ia-bg-btn, #26282e); color: var(--ia-text-muted, #9aa);
+      border: 1px solid var(--ia-border-btn, #34373d); border-radius: 7px;
+      font-family: var(--ia-font-display, Georgia, serif); font-size: 1rem;
+      cursor: pointer; line-height: 1;
+    }
+    .omp-fontsize::part(trigger):hover,
+    .omp-theme::part(trigger):hover { color: var(--ia-text-strong, #fff); border-color: var(--ia-accent, #888); }
+    /* Single button cycling Small → Medium → Large; the "A" glyph sizes to
+       the current setting (fixed px so it indicates regardless of scale). The
+       sizing applies to the plain button (index.html) and the sol-button's
+       shadow trigger (index2) alike. */
+    .omp-fontsize,                .omp-fontsize::part(trigger)                { align-items: flex-end; padding-bottom: 4px; }
+    .omp-fontsize[data-size="small"],  .omp-fontsize[data-size="small"]::part(trigger)  { font-size: 12px; }
+    .omp-fontsize[data-size="medium"], .omp-fontsize[data-size="medium"]::part(trigger) { font-size: 15px; }
+    .omp-fontsize[data-size="large"],  .omp-fontsize[data-size="large"]::part(trigger)  { font-size: 19px; }
+    /* Mini audio player — shown in the chrome ONLY when an audio library is
+       playing and you're viewing a different tab. Just play/pause + progress;
+       the full transport stays inside the audio panel. */
+    .omp-mini {
+      display: flex; align-items: center; gap: 9px;
+      align-self: center; margin-left: 16px; padding-bottom: 4px;
+      flex: 0 1 360px; min-width: 0;
+    }
+    .omp-mini[hidden] { display: none; }
+    .omp-mini-seek {
+      flex: 1; min-width: 70px; height: 4px; cursor: pointer;
+      accent-color: var(--tab-music, var(--ia-accent, #f0a23a));
+    }
+    /* ⋮ More menu — <sol-dropdown-button>; style its shadow trigger like a chrome-btn.
+       The popup itself themes off the body --surface/--text/--border bridge. */
+    .omp-more::part(trigger) {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; padding: 0;
+      background: var(--ia-bg-btn, #26282e); color: var(--ia-text-muted, #9aa);
+      border: 1px solid var(--ia-border-btn, #34373d); border-radius: 7px;
+      font-family: var(--ia-font-display, Georgia, serif); font-size: 1rem;
+      cursor: pointer; line-height: 1;
+    }
+    .omp-more::part(trigger):hover { color: var(--ia-text-strong, #fff); border-color: var(--ia-accent, #888); }
+    /* Access gating (omp's policy, not the component's). Two scopes:
+       • whole element — boolean `if-logged-in` (distinct from <sol-include>'s
+         VALUED if-logged-in="src", so [if-logged-in=""] only catches the gate).
+         The ⋮ button declares it, so the whole menu hides when not owner.
+       • per item — acl:mode acl:Write / `if-logged-in` on a menu item surfaces
+         part="requires-write" (for a mixed menu where the button stays). */
+    body.no-write [if-logged-in=""] { display: none; }
+    body.no-write .omp-more::part(requires-write) { display: none; }
+    /* Search ⌕ — <sol-search>; style its shadow trigger like a chrome-btn. */
+    .omp-search::part(trigger) {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; padding: 0;
+      background: var(--ia-bg-btn, #26282e); color: var(--ia-text-muted, #9aa);
+      border: 1px solid var(--ia-border-btn, #34373d); border-radius: 7px;
+      font-family: var(--ia-font-display, Georgia, serif); font-size: 1rem;
+      cursor: pointer; line-height: 1;
+    }
+    .omp-search::part(trigger):hover { color: var(--ia-text-strong, #fff); border-color: var(--ia-accent, #888); }
+    /* Calendar 📅 — <omp-calendar-popout>: a chrome-btn trigger (styled by the
+       .chrome-btn class in its template) over an absolutely-anchored dropdown. */
+    .omp-calendar { position: relative; display: inline-flex; }
+    /* The tab bar clips overflow (sol-tabs-bar overflow-y:hidden), so the dropdown
+       is fixed-positioned (coords set on open) to escape the clip. */
+    .omp-calendar .omp-popout-panel {
+      position: fixed; z-index: 1000;
+      min-width: 28rem; max-width: 90vw; max-height: 70vh;
+      display: flex; flex-direction: column;
+      padding: 8px; border-radius: 8px;
+      background: var(--ia-bg-panel, #1d1f24);
+      color: var(--ia-text, #e7e7ea);
+      border: 1px solid var(--omp-popup-border, silver);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    .omp-calendar .omp-popout-panel[hidden] { display: none; }
+    .omp-calendar .omp-popout-panel sol-calendar { flex: 1 1 auto; min-height: 0; }
+
+    /* Border around the click-popups (Search, Calendar, ⋮ menu): silver in dark,
+       black in light. --omp-popup-border flips with omp's theme cascade — dark is
+       the :root base, light layered via data-theme / sol-default / system pref. */
+    :root { --omp-popup-border: silver; }
+    [data-theme="light"],
+    :root:not([data-theme]):has(sol-default[theme="light"]) { --omp-popup-border: #000; }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme]):not(:has(sol-default[theme])) { --omp-popup-border: #000; }
+    }
+    .omp-search::part(panel),
+    .omp-more::part(menu) { border: 1px solid var(--omp-popup-border, silver); }
+
+    /* The vendored podz shell (.app, id=panel-workspaces) is authored for a full
+       page (height:100vh); inside the Workspaces tab pane it must fill the pane,
+       not the viewport, or its footer/collapse controls overflow below the
+       clipped pane. */
+    #panel-workspaces { height: 100%; min-height: 0; }
+
+    /* Solid Resources / Dev Tools tabs: each is a sol-include of a nested
+       <sol-tabs variant="sub"> whose sub-tabs are full-bleed iframes. Carry the
+       flex height through the include wrapper down to a borderless iframe. */
+    #panel-solid-resources, #panel-dev-tools { height: 100%; min-height: 0; }
+    :is(#panel-solid-resources, #panel-dev-tools) > .si-content,
+    :is(#panel-solid-resources, #panel-dev-tools) sol-tabs[variant="sub"] {
+      display: flex; flex-direction: column; flex: 1; min-height: 0; width: 100%;
+    }
+    :is(#panel-solid-resources, #panel-dev-tools) iframe.sol-tab-embed { border: 0; }
+
+    /* sol-login chip in the bar. */
+    .omp-sollogin { display: inline-flex; }
+
+    .omp-panels { flex: 1 1 auto; min-height: 0; overflow: hidden; display: flex; }
+    .omp-panels > sol-include,
+    .omp-panels > sol-include > .si-content { display: contents; }
+    ia-player { display: block; width: 100%; }
+    /* Higher specificity than ia.css's `ia-player { height: 100vh }` (which
+       is injected later and would otherwise win) — here the panel must fill
+       the flex area BELOW the tab bar, not a whole viewport, or the status
+       bar gets pushed off the page. */
+    .omp-panels ia-player { height: 100%; min-height: 0; overflow: hidden; }
+    ia-player[hidden] { display: none; }
+
+    /* News panel: <sol-feed> isn't an <ia-player>, so it needs its own
+       sizing + a bridge mapping its design tokens onto the omp --ia-*
+       theme so it follows light/dark + the room palette. */
+    /* Clip (don't scroll) the host: sol-feed scrolls only its article grid
+       internally, so the topic columns stay pinned while articles scroll.
+       No `display` here — :host is display:flex/column and a higher-specificity
+       `display:block` would break the internal flex chain that bounds the grid. */
+    .omp-panels sol-feed { width: 100%; height: 100%; min-height: 0; overflow: hidden; }
+    sol-feed[hidden] { display: none; }
+    #panel-news {
+      --bg: var(--ia-bg);            --surface: var(--ia-bg-elev);
+      --border: var(--ia-border);    --text: var(--ia-text);
+      --text-muted: var(--ia-text-muted);
+      --accent: var(--tab-news);     --link: var(--ia-text);
+      --hover: var(--ia-bg-btn);
+      /* Selected source row matches the News tab: tab-news fill, tab-on text. */
+      --focus-bg: var(--tab-news);   --selected-fg: var(--tab-on);
+    }
+    /* Article titles track the global A text-size setter (medium = 20px);
+       sol-feed's title is 1em of its host --font-size. */
+    [data-fontsize="small"]  #panel-news { --font-size: 16px; }
+    [data-fontsize="medium"] #panel-news { --font-size: 20px; }
+    [data-fontsize="large"]  #panel-news { --font-size: 24px; }
+
+    /* Images panel: <omp-images> wraps the Topics/Collections selectors +
+       a display-only <sol-gallery>. Same sizing + design-token bridge as the
+       <sol-feed> host, with the Images accent. It scrolls internally, so clip
+       the host. The bridge tokens below land on <omp-images> and inherit into
+       both its shadow (the selectors) and the nested <sol-gallery>. */
+    .omp-panels omp-images { width: 100%; height: 100%; min-height: 0; overflow: hidden; }
+    omp-images[hidden] { display: none; }
+    #panel-images {
+      --bg: var(--ia-bg);            --surface: var(--ia-bg-elev);
+      --border: var(--ia-border);    --text: var(--ia-text);
+      --text-muted: var(--ia-text-muted);
+      --accent: var(--tab-images);   --link: var(--ia-text);
+      --hover: var(--ia-bg-btn);
+      --focus-bg: var(--tab-images); --selected-fg: var(--tab-on);
+      --font-display: var(--ia-font-display, Georgia, serif);
+    }
+    [data-fontsize="small"]  #panel-images { --font-size: 16px; }
+    [data-fontsize="medium"] #panel-images { --font-size: 20px; }
+    [data-fontsize="large"]  #panel-images { --font-size: 24px; }

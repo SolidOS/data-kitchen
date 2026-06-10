@@ -1,0 +1,69 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "This Girl's in Love with You" ;
+    dct:identifier "lp_this-girls-in-love-with-you_aretha-franklin_item" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/lp_this-girls-in-love-with-you_aretha-franklin_item> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08> ;
+    foaf:maker <urn:uuid:58c16de0-1e59-4e29-aa0d-0ec735b9812f> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Call Me" ;
+    mo:duration "237" ;
+    mo:item <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/09%20-%20Call%20Me.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Dark End of the Street" ;
+    mo:duration "284" ;
+    mo:item <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/03%20-%20Dark%20End%20of%20the%20Street.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "It Ain't Fair" ;
+    mo:duration "203" ;
+    mo:item <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/07%20-%20It%20Ain't%20Fair.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Let It Be" ;
+    mo:duration "212" ;
+    mo:item <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/04%20-%20Let%20It%20Be.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Share Your Love With Me" ;
+    mo:duration "202" ;
+    mo:item <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/02%20-%20Share%20Your%20Love%20With%20Me.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Sit Down and Cry" ;
+    mo:duration "232" ;
+    mo:item <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/10%20-%20Sit%20Down%20and%20Cry.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Son of a Preacher Man" ;
+    mo:duration "199" ;
+    mo:item <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/01%20-%20Son%20of%20a%20Preacher%20Man.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "This Girl's in Love With You" ;
+    mo:duration "241" ;
+    mo:item <https://archive.org/download/lp_this-girls-in-love-with-you_aretha-franklin_item/06%20-%20This%20Girl's%20in%20Love%20With%20You.mp3> ;
+    dct:isPartOf <#it> .

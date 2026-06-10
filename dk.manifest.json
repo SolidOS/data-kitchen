@@ -2,13 +2,17 @@
   "name": "data-kitchen",
   "stages": {
     "local": {
-      "components": {},
+      "components": {
+        "ia-player": "./plugins/ia-player/dist/ia-player.esm.js"
+      },
       "shared-modules": {
         "podz/": "./node_modules/podz/src/"
       }
     },
     "cdn": {
-      "components": {},
+      "components": {
+        "ia-player": "./plugins/ia-player/dist/ia-player.esm.js"
+      },
       "shared-modules": {
         "podz/": "./node_modules/podz/src/"
       }

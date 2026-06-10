@@ -1,0 +1,438 @@
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix schema: <http://schema.org/>.
+@prefix genres: <./genres.ttl#>.
+
+<#it> a dcat:Dataset; dct:title "Collections".
+<urn:uuid:2bf9f5f9-27c5-4ce2-8bc3-b9c8cc8d6228> a schema:Collection;
+    schema:name "Film Noir";
+    dcat:landingPage <https://archive.org/details/Film_Noir>;
+    schema:genre genres:Feature_Films.
+<urn:uuid:dd909563-2644-409b-987e-adc9c3dbd8b2> a schema:Collection;
+    schema:name "SciFi & Horror";
+    dcat:landingPage <https://archive.org/details/SciFi_Horror>;
+    schema:genre genres:Feature_Films.
+<urn:uuid:0417c5f9-55cb-436a-a8ae-5b9fc6a25693> a schema:Collection;
+    schema:name "Comedy Films";
+    dcat:landingPage <https://archive.org/details/Comedy_Films>;
+    schema:genre genres:Feature_Films.
+<urn:uuid:4901e918-e9bc-4658-aa09-41237d06e775> a schema:Collection;
+    schema:name "Picfixer Feature Films";
+    dcat:landingPage <https://archive.org/details/feature_films_picfixer>;
+    schema:genre genres:Feature_Films.
+<urn:uuid:2e2464c7-84fd-462d-a655-fac4a580e87f> a schema:Collection;
+    schema:name "Video Cellar Film Collection";
+    dcat:landingPage <https://archive.org/details/TheVideoCellarCollection>;
+    schema:genre genres:Feature_Films.
+<urn:uuid:708e36a4-d81c-4578-b514-033f7ba1ecd4> a schema:Collection;
+    schema:name "Robert Newman Film Collection";
+    dcat:landingPage <https://archive.org/details/robertnewman>;
+    schema:genre genres:Feature_Films.
+<urn:uuid:e764c9ac-ceaa-4774-a655-1bb126d7c5ef> a schema:Collection;
+    schema:name "Silent Hall of Fame";
+    dcat:landingPage <https://archive.org/details/silenthalloffame>;
+    schema:genre genres:Feature_Films.
+<urn:uuid:85f0e341-e5a8-4ce2-8c32-0a0a4f6d9603> a schema:Collection;
+    schema:name "The Georges Méliès Collection";
+    dcat:landingPage <https://archive.org/details/georgesmelies>;
+    schema:genre genres:International_Films.
+<urn:uuid:3a224b37-3dbc-4266-b73c-e36724ad8af1> a schema:Collection;
+    schema:name "The Segundo de Chomón Collection";
+    dcat:landingPage <https://archive.org/details/segundodechomon>;
+    schema:genre genres:International_Films.
+<urn:uuid:5f58ca71-8cf5-4061-97eb-c0b057fe83f8> a schema:Collection;
+    schema:name "Kino French Films";
+    dcat:landingPage <https://archive.org/details/KINOfilm>;
+    schema:genre genres:International_Films.
+<urn:uuid:34c8961b-76db-4eae-8e6b-cc39ee994f84> a schema:Collection;
+    schema:name "Globians Documentary Film Festival";
+    dcat:landingPage <https://archive.org/details/globiansfilmfestival>;
+    schema:genre genres:International_Films.
+<urn:uuid:e449cb60-ca33-4e9b-9bd7-a9cfb97a140b> a schema:Collection;
+    schema:name "German Cinema from Lutz Mommartz";
+    dcat:landingPage <https://archive.org/details/german_cinema>;
+    schema:genre genres:International_Films.
+<urn:uuid:4219b7b4-2af0-4f80-90e6-096cc78fbdf0> a schema:Collection;
+    schema:name "Film Chest Classic Cartoons";
+    dcat:landingPage <https://archive.org/details/classic_cartoons>;
+    schema:genre genres:Animation_TV_Shorts.
+<urn:uuid:f836181e-f869-442d-a520-380b5c43ff0c> a schema:Collection;
+    schema:name "Animation Shorts";
+    dcat:landingPage <https://archive.org/details/more_animation>;
+    schema:genre genres:Animation_TV_Shorts.
+<urn:uuid:e64ae0ef-6c5d-4ab8-8235-d25cadc81f45> a schema:Collection;
+    schema:name "Nick Fox-Gieg Animations";
+    dcat:landingPage <https://archive.org/details/nickfoxgieganimation>;
+    schema:genre genres:Animation_TV_Shorts.
+<urn:uuid:8c31f546-006a-4562-93be-1fa72dd1d51a> a schema:Collection;
+    schema:name "SIGGRAPH";
+    dcat:landingPage <https://archive.org/details/siggraph>;
+    schema:genre genres:Animation_TV_Shorts.
+<urn:uuid:5264678c-c114-48ee-895e-914822178fd8> a schema:Collection;
+    schema:name "Classic TV Shows";
+    dcat:landingPage <https://archive.org/details/classic_tv_emperor>;
+    schema:genre genres:Animation_TV_Shorts.
+<urn:uuid:e9727055-ef11-4022-b619-c2021fac6957> a schema:Collection;
+    schema:name "Classic TV Commercials";
+    dcat:landingPage <https://archive.org/details/classic_tv_commercials_emperor>;
+    schema:genre genres:Animation_TV_Shorts.
+<urn:uuid:c10cab69-9dbd-41ce-b51a-128aef2191e8> a schema:Collection;
+    schema:name "Short Format Films";
+    dcat:landingPage <https://archive.org/details/short_films>;
+    schema:genre genres:Animation_TV_Shorts.
+<urn:uuid:e90d2ce5-6d6a-469a-a3b4-4e4159ae96d5> a schema:Collection;
+    schema:name "Vintage Cartoons";
+    dcat:landingPage <https://archive.org/details/vintage_cartoons>;
+    schema:genre genres:Animation_TV_Shorts.
+<urn:uuid:38346551-7828-411d-b509-36b8184a6190> a schema:Collection;
+    schema:name "Comedy Central";
+    dcat:landingPage <https://archive.org/details/TV-COM>;
+    schema:genre genres:Animation_TV_Shorts.
+<urn:uuid:4f2fdd65-5c8e-4508-9d76-b797ee88b0b4> a schema:Collection;
+    schema:name "University of California, Los Angeles, Ethnomusicology Archive";
+    dcat:landingPage <https://archive.org/details/uclaethnomusicologyarchive>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:3df6ee34-fd0c-43c9-8b0f-2056a1baba9c> a schema:Collection;
+    schema:name "Department of African American Studies, University of California, Berkeley";
+    dcat:landingPage <https://archive.org/details/africamstudiesucb>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:59d421f1-97c3-4cb0-b41f-e1f12c747ab4> a schema:Collection;
+    schema:name "African American Museum and Library at Oakland";
+    dcat:landingPage <https://archive.org/details/africanamericanmuseumandlibrary>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:506555bd-b405-4b7c-bbcc-dab732bf2dc5> a schema:Collection;
+    schema:name "Califas: Chicano Art and Culture in California Collection";
+    dcat:landingPage <https://archive.org/details/califas>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:87d72582-d3f5-494e-9243-ab049e55948d> a schema:Collection;
+    schema:name "El Teatro Campesino Archives";
+    dcat:landingPage <https://archive.org/details/teatrocampesino>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:387914ea-116a-47c3-b8a1-ba81867a4010> a schema:Collection;
+    schema:name "Memories to Light: Asian American Home Movies";
+    dcat:landingPage <https://archive.org/details/memoriestolight>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:c6e065bd-40c6-47d0-906c-e1e70c2ed8a0> a schema:Collection;
+    schema:name "Manzanar National Historic Site";
+    dcat:landingPage <https://archive.org/details/manzanar>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:9c40a4c1-9eee-459a-98ac-ef1ccd136086> a schema:Collection;
+    schema:name "The Magnes Collection of Jewish Art and Life";
+    dcat:landingPage <https://archive.org/details/magnescollection>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:dda218d3-abc2-45ba-abd1-4a7979b5f0d8> a schema:Collection;
+    schema:name "Yiddish Book Center's Wexler Oral History Project";
+    dcat:landingPage <https://archive.org/details/ybcvideos>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:f4548d9e-74c5-488c-8bef-ac4fe312eccf> a schema:Collection;
+    schema:name "Rosetta Project";
+    dcat:landingPage <https://archive.org/details/rosettaproject_video>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:22d7af1f-5372-43c0-91ad-96886ea98358> a schema:Collection;
+    schema:name "Oral History Center of The Bancroft Library at the University of California Berkeley";
+    dcat:landingPage <https://archive.org/details/ucrohoaudio>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:f070888e-94ed-438e-9fe0-0c004176d6d2> a schema:Collection;
+    schema:name "University of Pennsylvania Museum of Archaeology and Anthropology Films";
+    dcat:landingPage <https://archive.org/details/UPMAA_films>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:2f907737-faae-4ad7-b510-3ac445fe8fff> a schema:Collection;
+    schema:name "Academic Film Archive of North America";
+    dcat:landingPage <https://archive.org/details/academic_films>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:b70da47b-3209-4cdf-bcb9-7eaf7b0e0c7d> a schema:Collection;
+    schema:name "Micronesian Seminar";
+    dcat:landingPage <https://archive.org/details/micronesian_seminar>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:c83a9836-2a05-4184-956a-1602c98dd26c> a schema:Collection;
+    schema:name "Ohlone Profiles Project";
+    dcat:landingPage <https://archive.org/details/ohlone_profiles_project>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:2daec154-66e4-45d0-b06e-c54c02dfa70a> a schema:Collection;
+    schema:name "Field Museum of Natural History";
+    dcat:landingPage <https://archive.org/details/fieldmuseumlibrary>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:a57e5cea-a3c4-4013-891e-3b4e2432a175> a schema:Collection;
+    schema:name "Center for Oral and Public History, California State University, Fullerton";
+    dcat:landingPage <https://archive.org/details/coph_csuf>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:f673f9f7-a4c9-481d-9f38-37a482bdd9f1> a schema:Collection;
+    schema:name "Global Lives Project";
+    dcat:landingPage <https://archive.org/details/globallives>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:79a6e84e-42d0-4988-ace4-73d79031f81f> a schema:Collection;
+    schema:name "Global Islands Project";
+    dcat:landingPage <https://archive.org/details/globalislandsproject>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:2333dcb9-cf18-4896-b263-c889b8c3177d> a schema:Collection;
+    schema:name "Fadiman Social Documentaries";
+    dcat:landingPage <https://archive.org/details/fadimandocumentaries>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:6bc8c88e-ff71-4983-9954-9bcaa0835c41> a schema:Collection;
+    schema:name "Al Jazeera Creative Commons";
+    dcat:landingPage <https://archive.org/details/aljazeeramedia>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:c299f0ce-dfe7-40cf-bef9-8b7aae8340dd> a schema:Collection;
+    schema:name "International Rivers";
+    dcat:landingPage <https://archive.org/details/internationalrivers>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:f0c932cf-905e-4ac9-a762-84556b2348be> a schema:Collection;
+    schema:name "The Autry Museum of the American West";
+    dcat:landingPage <https://archive.org/details/autrynationalcenter>;
+    schema:genre genres:Culture_Ethnicity.
+<urn:uuid:80eccdab-1fe2-48fa-abf2-ae3b26b4d58f> a schema:Collection;
+    schema:name "Big Ideas Fest";
+    dcat:landingPage <https://archive.org/details/bigideasfest>;
+    schema:genre genres:Ideas.
+<urn:uuid:67698d79-e0fe-4c98-a7ef-024281603051> a schema:Collection;
+    schema:name "The Erasmus Collection";
+    dcat:landingPage <https://archive.org/details/the_erasmus_collection>;
+    schema:genre genres:Ideas.
+<urn:uuid:12fc0333-76a2-4231-8f59-2e4417ca16e6> a schema:Collection;
+    schema:name "PBS/NPR Forum";
+    dcat:landingPage <https://archive.org/details/pbs_npr_forumnetwork>;
+    schema:genre genres:Ideas.
+<urn:uuid:cc596f84-28c4-416d-87f5-707a21fbe8cd> a schema:Collection;
+    schema:name "Big Thinkers";
+    dcat:landingPage <https://archive.org/details/bigthinkers>;
+    schema:genre genres:Ideas.
+<urn:uuid:bce67838-dd53-4d5c-b040-04d841d31d79> a schema:Collection;
+    schema:name "Aspen Ideas Project";
+    dcat:landingPage <https://archive.org/details/aspenideas>;
+    schema:genre genres:Ideas.
+<urn:uuid:e81aca95-9106-49a3-85f8-36201847681d> a schema:Collection;
+    schema:name "TED Talks";
+    dcat:landingPage <https://archive.org/details/tedtalks>;
+    schema:genre genres:Ideas.
+<urn:uuid:6a45cbb6-9d2c-404e-addd-8ed51b9f6415> a schema:Collection;
+    schema:name "Buckminster Fuller Archive";
+    dcat:landingPage <https://archive.org/details/buckminsterfuller>;
+    schema:genre genres:Ideas.
+<urn:uuid:35a022f4-cd80-4a2f-976c-ca419b34303b> a schema:Collection;
+    schema:name "Timothy Leary Archive";
+    dcat:landingPage <https://archive.org/details/Tim_Leary_Archive>;
+    schema:genre genres:Ideas.
+<urn:uuid:1172aa63-b0c4-46d3-b582-dfaf6465ccfe> a schema:Collection;
+    schema:name "Doug Engelbart Archives";
+    dcat:landingPage <https://archive.org/details/dougengelbartarchives>;
+    schema:genre genres:Ideas.
+<urn:uuid:939b1bad-a068-478c-afe4-d51d7cec0221> a schema:Collection;
+    schema:name "New Museum";
+    dcat:landingPage <https://archive.org/details/new_museum>;
+    schema:genre genres:Art.
+<urn:uuid:a87431e6-a8ee-4f30-8ade-b11657885179> a schema:Collection;
+    schema:name "University of California, Berkeley Art Museum and Pacific Film Archive";
+    dcat:landingPage <https://archive.org/details/pacificfilmarchive>;
+    schema:genre genres:Art.
+<urn:uuid:ff48a849-74fe-4f61-ba26-b29adccb93a2> a schema:Collection;
+    schema:name "Museum of Performance and Design";
+    dcat:landingPage <https://archive.org/details/museumofperformanceanddesign>;
+    schema:genre genres:Art.
+<urn:uuid:7d423831-a7aa-4773-a35d-24f0753ec8d1> a schema:Collection;
+    schema:name "California College of the Arts Libraries";
+    dcat:landingPage <https://archive.org/details/californiacollegeofthearts>;
+    schema:genre genres:Art.
+<urn:uuid:2ebbc688-da53-4f86-be3d-924e4de20d9f> a schema:Collection;
+    schema:name "The Poetry Activist Collection";
+    dcat:landingPage <https://archive.org/details/thepoetryactivist>;
+    schema:genre genres:Art.
+<urn:uuid:94719d8c-381a-429c-81fc-220202e96b3c> a schema:Collection;
+    schema:name "100 Thousand Poets for Change";
+    dcat:landingPage <https://archive.org/details/100thousandpoetsforchange>;
+    schema:genre genres:Art.
+<urn:uuid:16d658c1-21f2-46d7-97d6-481a623c4afe> a schema:Collection;
+    schema:name "Andrea Callard";
+    dcat:landingPage <https://archive.org/details/andreacallard>;
+    schema:genre genres:Art.
+<urn:uuid:d66686dd-5f40-402a-94d1-565cff633254> a schema:Collection;
+    schema:name "Coffee House TV";
+    dcat:landingPage <https://archive.org/details/thecoffeehouse>;
+    schema:genre genres:Art.
+<urn:uuid:2af47bde-b942-4a85-8af6-bfb0b158215e> a schema:Collection;
+    schema:name "Oregon Literary Review";
+    dcat:landingPage <https://archive.org/details/oregonliteraryreview>;
+    schema:genre genres:Art.
+<urn:uuid:53e8f9b9-2171-4636-8a24-4b80eab797ca> a schema:Collection;
+    schema:name "Other Minds Video Archive";
+    dcat:landingPage <https://archive.org/details/other_minds_video>;
+    schema:genre genres:Art.
+<urn:uuid:59a7afd4-ffff-4f16-aa5f-cada683a7f18> a schema:Collection;
+    schema:name "XFR Collective";
+    dcat:landingPage <https://archive.org/details/xfrcollective>;
+    schema:genre genres:Art.
+<urn:uuid:c5a1405c-beba-49e8-b97d-c1dad602ff0d> a schema:Collection;
+    schema:name "Mood Music Video Archive";
+    dcat:landingPage <https://archive.org/details/moodmusic>;
+    schema:genre genres:Art.
+<urn:uuid:25f4bdee-dea1-4fae-a985-6171a380bbf0> a schema:Collection;
+    schema:name "Punkcast";
+    dcat:landingPage <https://archive.org/details/punkcast>;
+    schema:genre genres:Art.
+<urn:uuid:b876dda2-35e0-4a87-afb2-5ad06f7f2115> a schema:Collection;
+    schema:name "PoohBot Pictures";
+    dcat:landingPage <https://archive.org/details/poohBot>;
+    schema:genre genres:Art.
+<urn:uuid:931c8d56-01cb-4931-a1a6-f92bdedce4f7> a schema:Collection;
+    schema:name "MWF Video Club";
+    dcat:landingPage <https://archive.org/details/mwf_video_club>;
+    schema:genre genres:Art.
+<urn:uuid:e1681d15-4378-48bf-8187-2fe4b192c18f> a schema:Collection;
+    schema:name "Bread and Puppet";
+    dcat:landingPage <https://archive.org/details/breadandpuppet>;
+    schema:genre genres:Art.
+<urn:uuid:f02f391e-5847-43aa-9e63-55898b15ef30> a schema:Collection;
+    schema:name "Compromise Broadcasting";
+    dcat:landingPage <https://archive.org/details/compromisebroadcasting>;
+    schema:genre genres:Art.
+<urn:uuid:ecacf417-c8e6-4c92-ba6b-48de2e6eea4f> a schema:Collection;
+    schema:name "GrooveTV";
+    dcat:landingPage <https://archive.org/details/groove_tv>;
+    schema:genre genres:Art.
+<urn:uuid:69ed6333-3cc0-4914-b71d-0df68f2b1ffe> a schema:Collection;
+    schema:name "Demolition Kitchen Video";
+    dcat:landingPage <https://archive.org/details/demolitionkitchenvideo>;
+    schema:genre genres:Art.
+<urn:uuid:c9a67fb8-7e0f-43f2-bebc-6da339aac415> a schema:Collection;
+    schema:name "Headlands Center for the Arts";
+    dcat:landingPage <https://archive.org/details/headlandscenter>;
+    schema:genre genres:Art.
+<urn:uuid:202b7b0e-5f17-43fd-b384-6a4854ad47b8> a schema:Collection;
+    schema:name "Visual Communications";
+    dcat:landingPage <https://archive.org/details/visualcommunications>;
+    schema:genre genres:Art.
+<urn:uuid:535a4e66-cc02-4ecf-ab71-7f850e0f51f4> a schema:Collection;
+    schema:name "University of California, San Diego, Library";
+    dcat:landingPage <https://archive.org/details/ucsandiego>;
+    schema:genre genres:Museums.
+<urn:uuid:038e41fc-917f-4495-9bf4-21a4c28b514c> a schema:Collection;
+    schema:name "Humboldt County Historical Society";
+    dcat:landingPage <https://archive.org/details/humboldtcountyhistoricalsociety>;
+    schema:genre genres:Museums.
+<urn:uuid:5eb730a1-2f30-4138-b35a-c34b8ea4677e> a schema:Collection;
+    schema:name "California Academy of Sciences";
+    dcat:landingPage <https://archive.org/details/calacademyvideo>;
+    schema:genre genres:Museums.
+<urn:uuid:76180c72-9564-42e1-8d84-214532df8913> a schema:Collection;
+    schema:name "UC Riverside";
+    dcat:landingPage <https://archive.org/details/ucriverside>;
+    schema:genre genres:Museums.
+<urn:uuid:dca0cc87-e19d-47a6-8251-c03f727fd3b7> a schema:Collection;
+    schema:name "Media Resources Center, University of California, Berkeley";
+    dcat:landingPage <https://archive.org/details/mediaresourcescenter>;
+    schema:genre genres:Museums.
+<urn:uuid:506c6723-4de2-4a15-b14d-10e3452f0a01> a schema:Collection;
+    schema:name "University of Southern California, USC Libraries, Special Collections";
+    dcat:landingPage <https://archive.org/details/usclibraries>;
+    schema:genre genres:Museums.
+<urn:uuid:a72b48bb-bf29-4212-9458-2a7462e6d455> a schema:Collection;
+    schema:name "Pepperdine University Special Collections and University Archives";
+    dcat:landingPage <https://archive.org/details/pepperdineuniversity>;
+    schema:genre genres:Museums.
+<urn:uuid:db81a741-c922-4ba0-b12a-d1b85f5913f0> a schema:Collection;
+    schema:name "Loyola Marymount University";
+    dcat:landingPage <https://archive.org/details/loyolamarymountuniversity>;
+    schema:genre genres:Museums.
+<urn:uuid:a421c6d4-c321-47c9-af08-03ecfe45bf46> a schema:Collection;
+    schema:name "Northern Illinois University Digital Library";
+    dcat:landingPage <https://archive.org/details/niulibrarydigitalinitiatives>;
+    schema:genre genres:Museums.
+<urn:uuid:96171f8c-adde-426f-9166-833f7d54c764> a schema:Collection;
+    schema:name "University of California, Santa Barbara Library, Department of Special Research Collections";
+    dcat:landingPage <https://archive.org/details/ucsantabarbara>;
+    schema:genre genres:Museums.
+<urn:uuid:9556afa4-9ac0-4864-9efa-b6bbb6d85fa9> a schema:Collection;
+    schema:name "de Saisset Museum, Santa Clara University";
+    dcat:landingPage <https://archive.org/details/desaisset>;
+    schema:genre genres:Museums.
+<urn:uuid:a931544a-08dd-407e-9503-9c17374f986f> a schema:Collection;
+    schema:name "Los Angeles County Metropolitan Transportation Authority Research Library and Archive";
+    dcat:landingPage <https://archive.org/details/lametrolibrary>;
+    schema:genre genres:Museums.
+<urn:uuid:cb28dbf5-3cc8-4c57-8d55-e9baeb9b67bb> a schema:Collection;
+    schema:name "Humboldt State University Library";
+    dcat:landingPage <https://archive.org/details/humboldtstateuniversitylibrary>;
+    schema:genre genres:Museums.
+<urn:uuid:0db4d064-fd1e-4751-9173-09fa6a275d54> a schema:Collection;
+    schema:name "University of California, San Francisco Library, Archives & Special Collections";
+    dcat:landingPage <https://archive.org/details/ucsanfrancisco>;
+    schema:genre genres:Museums.
+<urn:uuid:82823d4a-4a3e-4d47-a887-bea8977ace9b> a schema:Collection;
+    schema:name "Stanford University, Special Collections and University Archives";
+    dcat:landingPage <https://archive.org/details/stanforduniversity>;
+    schema:genre genres:Museums.
+<urn:uuid:cb06b69d-d4f4-4233-9350-0801629ab66a> a schema:Collection;
+    schema:name "California State University, San Marcos";
+    dcat:landingPage <https://archive.org/details/csusanmarcos>;
+    schema:genre genres:Museums.
+<urn:uuid:885ab7ca-0c2c-4c19-aa82-41439c923ab0> a schema:Collection;
+    schema:name "The Bancroft Library, University of California, Berkeley";
+    dcat:landingPage <https://archive.org/details/bancroftlibraryucberkeley>;
+    schema:genre genres:Museums.
+<urn:uuid:64d87cf7-250f-4aec-95ca-ff7e493f99a4> a schema:Collection;
+    schema:name "Chicago Film Archives";
+    dcat:landingPage <https://archive.org/details/chicagofilmarchives>;
+    schema:genre genres:Museums.
+<urn:uuid:26150a82-2919-4e47-b8f6-a4d1e1c735f0> a schema:Collection;
+    schema:name "University of California, Davis, Special Collections";
+    dcat:landingPage <https://archive.org/details/ucdavisvideo>;
+    schema:genre genres:Museums.
+<urn:uuid:805f34ae-525c-49bd-955e-85cf181deef7> a schema:Collection;
+    schema:name "California Historical Society";
+    dcat:landingPage <https://archive.org/details/californiahistoricalsociety>;
+    schema:genre genres:Museums.
+<urn:uuid:ee8eb686-5e53-4175-87a7-6aaacb5c5f37> a schema:Collection;
+    schema:name "University of Washington Libraries";
+    dcat:landingPage <https://archive.org/details/uwlibraries>;
+    schema:genre genres:Museums.
+<urn:uuid:68b3049b-87c8-434c-94c0-9dd0ad1dd7a2> a schema:Collection;
+    schema:name "Natural History Museum of Los Angeles County";
+    dcat:landingPage <https://archive.org/details/naturalhistorymuseum>;
+    schema:genre genres:Museums.
+<urn:uuid:55a71e18-0421-40d2-88ac-a9a12f78543c> a schema:Collection;
+    schema:name "California State Archives";
+    dcat:landingPage <https://archive.org/details/californiastatearchives>;
+    schema:genre genres:Museums.
+<urn:uuid:d8b3e0fb-0db1-427f-a301-fed72bb9d093> a schema:Collection;
+    schema:name "Living New Deal Project";
+    dcat:landingPage <https://archive.org/details/living_new_deal_project>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:66ecd4c7-dc20-44d3-ac43-8e9274bc65ca> a schema:Collection;
+    schema:name "Homeless Nation";
+    dcat:landingPage <https://archive.org/details/homelessnation>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:21bc68ac-f7ae-4c21-86f1-457b2cc7a859> a schema:Collection;
+    schema:name "Lambda Archives of San Diego";
+    dcat:landingPage <https://archive.org/details/lambdaarchives>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:351328af-441f-4384-aac7-3852d79570de> a schema:Collection;
+    schema:name "Gender Vision";
+    dcat:landingPage <https://archive.org/details/GenderVision>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:c4d567a4-d6c9-45ad-b750-9dc87fb36a7b> a schema:Collection;
+    schema:name "Veterans History Project";
+    dcat:landingPage <https://archive.org/details/VeteransHistoryProject>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:411b9636-c95f-48a5-823b-68fe304baf85> a schema:Collection;
+    schema:name "Women's Museum of California";
+    dcat:landingPage <https://archive.org/details/womensmuseumofcalifornia>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:da8281b3-569f-4384-bf36-af6c6b9cec4a> a schema:Collection;
+    schema:name "Jewish Women's Archive - Katrina's Jewish Voices";
+    dcat:landingPage <https://archive.org/details/KatrinasJewishVoices>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:114f5116-6d7b-4d79-a6c3-23964e53dffb> a schema:Collection;
+    schema:name "Jewish Women's Archive – Weaving Women's Words";
+    dcat:landingPage <https://archive.org/details/weavingwomenswords>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:221cae30-419b-44ad-9d41-5258ea51ec46> a schema:Collection;
+    schema:name "Sojourner Kincaid Rolle Papers";
+    dcat:landingPage <https://archive.org/details/outrageouswomen>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:f58f9d91-b201-4ef8-a02b-797c288d3928> a schema:Collection;
+    schema:name "Sierra Club Library";
+    dcat:landingPage <https://archive.org/details/sierraclublibrary>;
+    schema:genre genres:Social_Issues.
+<urn:uuid:4628c0df-9908-4e92-9c14-746513a841f8> a schema:Collection;
+    schema:name "Little People of America";
+    dcat:landingPage <https://archive.org/details/littlepeopleofamerica>;
+    schema:genre genres:Social_Issues.

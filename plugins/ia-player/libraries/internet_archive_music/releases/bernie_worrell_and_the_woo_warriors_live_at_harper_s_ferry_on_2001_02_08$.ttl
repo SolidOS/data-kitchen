@@ -1,0 +1,27 @@
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#it> a mo:Release, dcat:Dataset;
+    dct:title "Bernie Worrell and the WOO Warriors Live at Harper's Ferry on 2001-02-08";
+    dct:identifier "bwww2001-02-08.shnf";
+    dct:isPartOf <../releases.ttl#it>;
+    dcat:landingPage <https://archive.org/details/bwww2001-02-08.shnf>;
+    mo:track <#t01>, <#t02>, <#t03>;
+    foaf:maker <urn:uuid:8030c785-1793-421b-baa7-b03bee051a66>.
+<#t01> a mo:Track;
+    dct:title "Can You get To That";
+    dct:isPartOf <#it>;
+    mo:duration "1010";
+    mo:item <https://archive.org/download/bwww2001-02-08.shnf/bwww2001-02-08d2t03.mp3>.
+<#t02> a mo:Track;
+    dct:title "Baby, I Owe You Something Good";
+    dct:isPartOf <#it>;
+    mo:duration "515";
+    mo:item <https://archive.org/download/bwww2001-02-08.shnf/bwww2001-02-08d2t02.mp3>.
+<#t03> a mo:Track;
+    dct:title "America";
+    dct:isPartOf <#it>;
+    mo:duration "372";
+    mo:item <https://archive.org/download/bwww2001-02-08.shnf/bwww2001-02-08d1t14.mp3>.

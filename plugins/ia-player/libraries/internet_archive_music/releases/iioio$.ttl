@@ -1,0 +1,55 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "IIOIO" ;
+    dct:identifier "flylo-iioio" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/flylo-iioio> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06> ;
+    foaf:maker "Flying Lotus" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Untitled" ;
+    mo:duration "284" ;
+    mo:item <https://archive.org/download/flylo-iioio/01%20Untitled.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Glendale Galleria" ;
+    mo:duration "184" ;
+    mo:item <https://archive.org/download/flylo-iioio/02%20Glendale%20Galleria.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Tronix" ;
+    mo:duration "223" ;
+    mo:item <https://archive.org/download/flylo-iioio/06%20Tronix.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Quakes" ;
+    mo:duration "183" ;
+    mo:item <https://archive.org/download/flylo-iioio/08%20Quakes.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "First Friday Funk" ;
+    mo:duration "218" ;
+    mo:item <https://archive.org/download/flylo-iioio/11%20First%20Friday%20Funk.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Meeting the Prez" ;
+    mo:duration "249" ;
+    mo:item <https://archive.org/download/flylo-iioio/14%20Meeting%20The%20Prez.mp3> ;
+    dct:isPartOf <#it> .

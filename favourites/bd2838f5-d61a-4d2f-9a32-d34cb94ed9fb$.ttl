@@ -1,0 +1,15 @@
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a schema:BookmarkAction ;
+   dct:creator "y" ;
+   dct:title "Masks of devils/demons from Mexico" ;
+   dct:created "2026-06-01T21:44:51.350Z"^^xsd:dateTime ;
+   dct:references <https://commons.wikimedia.org/wiki/Category:Masks_of_devils/demons_from_Mexico> .
+
+<https://commons.wikimedia.org/wiki/Category:Masks_of_devils/demons_from_Mexico> a dctype:Collection, schema:ImageGallery ;
+   schema:name "Masks of devils/demons from Mexico" ;
+   dcat:landingPage <https://commons.wikimedia.org/wiki/Category:Masks_of_devils/demons_from_Mexico> .

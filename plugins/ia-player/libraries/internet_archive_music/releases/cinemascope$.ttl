@@ -1,0 +1,76 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Cinemascope" ;
+    dct:identifier "2001-monolake-cinemascope" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/2001-monolake-cinemascope> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09> ;
+    foaf:maker <urn:uuid:7c2420d2-5190-4d6a-8b9d-1fb37bf4125b> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Bicom" ;
+    mo:duration "574" ;
+    mo:item <https://archive.org/download/2001-monolake-cinemascope/02.%20Bicom.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Cubicle" ;
+    mo:duration "414" ;
+    mo:item <https://archive.org/download/2001-monolake-cinemascope/03.%20Cubicle.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Ping" ;
+    mo:duration "338" ;
+    mo:item <https://archive.org/download/2001-monolake-cinemascope/04.%20Ping.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Ionized" ;
+    mo:duration "678" ;
+    mo:item <https://archive.org/download/2001-monolake-cinemascope/05.%20Ionized.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Remoteable" ;
+    mo:duration "340" ;
+    mo:item <https://archive.org/download/2001-monolake-cinemascope/06.%20Remoteable.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Television Tower" ;
+    mo:duration "368" ;
+    mo:item <https://archive.org/download/2001-monolake-cinemascope/07.%20Television%20tower.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Cut" ;
+    mo:duration "295" ;
+    mo:item <https://archive.org/download/2001-monolake-cinemascope/08.%20Cut.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Alpenrausch" ;
+    mo:duration "435" ;
+    mo:item <https://archive.org/download/2001-monolake-cinemascope/09.%20Alpenrausch.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Indigo" ;
+    mo:duration "518" ;
+    mo:item <https://archive.org/download/2001-monolake-cinemascope/10.%20Indigo.mp3> ;
+    dct:isPartOf <#it> .

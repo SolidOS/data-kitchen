@@ -1,0 +1,209 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "The Definitive Collection (CD Rip)" ;
+    dct:identifier "the-definitive-collection-cd-rip" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/the-definitive-collection-cd-rip> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15>, <#t16>, <#t17>, <#t18>, <#t19>, <#t20>, <#t21>, <#t22>, <#t23>, <#t24>, <#t25>, <#t26>, <#t27>, <#t28> ;
+    foaf:maker "Stevie Wonder" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Superstition" ;
+    mo:duration "267" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/01.-Superstition.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Sir Duke" ;
+    mo:duration "232" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/02.-Sir%20Duke.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "I Wish" ;
+    mo:duration "252" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/03.-I%20Wish.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Master Blaster (Jammin')" ;
+    mo:duration "307" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/04.-Master%20Blaster%20(Jammin').mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Isn't She Lovely" ;
+    mo:duration "199" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/05.-Isn't%20She%20Lovely.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "I Just Called To Say I Love You" ;
+    mo:duration "262" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/06.-I%20Just%20Called%20To%20Say%20I%20Love%20You.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Ebony And Ivory" ;
+    mo:duration "220" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/07.-Ebony%20And%20Ivory.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "As" ;
+    mo:duration "208" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/08.-As.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Never Had A Dream Come True" ;
+    mo:duration "192" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/09.-Never%20Had%20A%20Dream%20Come%20True.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Heaven Help Us All" ;
+    mo:duration "192" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/11.-Heaven%20Help%20Us%20All.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Overjoyed" ;
+    mo:duration "239" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/12.-Overjoyed.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "Lately" ;
+    mo:duration "245" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/13.-Lately.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "For Your Love" ;
+    mo:duration "300" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/14.-For%20Your%20Love.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "Higher Ground" ;
+    mo:duration "222" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/16.-Higher%20Ground.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "Do I Do" ;
+    mo:duration "303" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/17.-Do%20I%20Do.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t16>
+    a mo:Track ;
+    dct:title "Living For The City" ;
+    mo:duration "219" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/18.-Living%20For%20The%20City.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t17>
+    a mo:Track ;
+    dct:title "Part-Time Lover" ;
+    mo:duration "253" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/19.-Part-Time%20Lover.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t18>
+    a mo:Track ;
+    dct:title "We Can Work It Out" ;
+    mo:duration "195" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/22.-We%20Can%20Work%20It%20Out.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t19>
+    a mo:Track ;
+    dct:title "Yester-Me Yester-You Yesterday" ;
+    mo:duration "182" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/24.-Yester-Me%20Yester-You%20Yesterday.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t20>
+    a mo:Track ;
+    dct:title "Blowin' In The Wind" ;
+    mo:duration "184" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/30.-Blowin'%20In%20The%20Wind.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t21>
+    a mo:Track ;
+    dct:title "Send One Your Love" ;
+    mo:duration "242" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/31-Send%20One%20Your%20Love.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t22>
+    a mo:Track ;
+    dct:title "Pastime Paradise" ;
+    mo:duration "208" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/32.-Pastime%20Paradise.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t23>
+    a mo:Track ;
+    dct:title "I Ain't Gonna Stand For It" ;
+    mo:duration "279" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/33.-I%20Ain't%20Gonna%20Stand%20For%20It.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t24>
+    a mo:Track ;
+    dct:title "Fingertips (Parts 1 & 2)" ;
+    mo:duration "413" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/34.-Fingertips%20(Parts%201%20%26%202).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t25>
+    a mo:Track ;
+    dct:title "Boogie On Reggae Woman" ;
+    mo:duration "313" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/35-Boogie%20On%20Reggae%20Woman.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t26>
+    a mo:Track ;
+    dct:title "You Haven't Done Nothin'" ;
+    mo:duration "203" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/36%20-You%20Haven't%20Done%20Nothin'.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t27>
+    a mo:Track ;
+    dct:title "He's Misstra Know It All" ;
+    mo:duration "334" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/37.-He's%20Misstra%20Know%20It%20All.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t28>
+    a mo:Track ;
+    dct:title "Happy Birthday" ;
+    mo:duration "355" ;
+    mo:item <https://archive.org/download/the-definitive-collection-cd-rip/38.-Happy%20Birthday.mp3> ;
+    dct:isPartOf <#it> .

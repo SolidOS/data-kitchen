@@ -1,0 +1,153 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+
+<>
+    a schema:ItemList, schema:MusicPlaylist, dcat:Dataset ;
+    dct:title "Bonobo" ;
+    dct:isPartOf <../playlists.ttl#it> ;
+    schema:itemListOrder schema:ItemListOrderAscending ;
+    foaf:maker "jeffz" ;
+    schema:itemListElement <#e01>, <#e02>, <#e03>, <#e04>, <#e05>, <#e06>, <#e07>, <#e08>, <#e09>, <#e10>, <#e11>, <#e12>, <#e13>, <#e14>, <#e15>, <#e16>, <#e17>, <#e18>, <#e19>, <#e20>, <#e21>, <#e22>, <#e23>, <#e24>, <#e25>, <#e26>, <#e27>, <#e28> .
+
+<#e01>
+    a schema:ListItem ;
+    schema:position 1 ;
+    schema:item <../releases/13_pieces_ft_cornelia#t01> .
+
+<#e02>
+    a schema:ListItem ;
+    schema:position 2 ;
+    schema:item <../releases/bonobo_black_sands_2010#t01> .
+
+<#e03>
+    a schema:ListItem ;
+    schema:position 3 ;
+    schema:item <../releases/bonobo_black_sands_2010#t02> .
+
+<#e04>
+    a schema:ListItem ;
+    schema:position 4 ;
+    schema:item <../releases/bonobo_black_sands_2010#t03> .
+
+<#e05>
+    a schema:ListItem ;
+    schema:position 5 ;
+    schema:item <../releases/bonobo_black_sands_2010#t04> .
+
+<#e06>
+    a schema:ListItem ;
+    schema:position 6 ;
+    schema:item <../releases/bonobo_black_sands_2010#t05> .
+
+<#e07>
+    a schema:ListItem ;
+    schema:position 7 ;
+    schema:item <../releases/bonobo_black_sands_2010#t06> .
+
+<#e08>
+    a schema:ListItem ;
+    schema:position 8 ;
+    schema:item <../releases/bonobo_black_sands_2010#t07> .
+
+<#e09>
+    a schema:ListItem ;
+    schema:position 9 ;
+    schema:item <../releases/bonobo_black_sands_2010#t08> .
+
+<#e10>
+    a schema:ListItem ;
+    schema:position 10 ;
+    schema:item <../releases/bonobo_black_sands_2010#t09> .
+
+<#e11>
+    a schema:ListItem ;
+    schema:position 11 ;
+    schema:item <../releases/bonobo_black_sands_2010#t10> .
+
+<#e12>
+    a schema:ListItem ;
+    schema:position 12 ;
+    schema:item <../releases/bonobo_black_sands_2010#t11> .
+
+<#e13>
+    a schema:ListItem ;
+    schema:position 13 ;
+    schema:item <../releases/bonobo_live_kexp_4_25_2010#t01> .
+
+<#e14>
+    a schema:ListItem ;
+    schema:position 14 ;
+    schema:item <../releases/bonobo_nts_radio_2020_10_23#t01> .
+
+<#e15>
+    a schema:ListItem ;
+    schema:position 15 ;
+    schema:item <../releases/sweetness#t01> .
+
+<#e16>
+    a schema:ListItem ;
+    schema:position 16 ;
+    schema:item <../releases/sweetness#t02> .
+
+<#e17>
+    a schema:ListItem ;
+    schema:position 17 ;
+    schema:item <../releases/sweetness#t03> .
+
+<#e18>
+    a schema:ListItem ;
+    schema:position 18 ;
+    schema:item <../releases/sweetness#t04> .
+
+<#e19>
+    a schema:ListItem ;
+    schema:position 19 ;
+    schema:item <../releases/sweetness#t05> .
+
+<#e20>
+    a schema:ListItem ;
+    schema:position 20 ;
+    schema:item <../releases/sweetness#t06> .
+
+<#e21>
+    a schema:ListItem ;
+    schema:position 21 ;
+    schema:item <../releases/sweetness#t07> .
+
+<#e22>
+    a schema:ListItem ;
+    schema:position 22 ;
+    schema:item <../releases/sweetness#t08> .
+
+<#e23>
+    a schema:ListItem ;
+    schema:position 23 ;
+    schema:item <../releases/sweetness#t09> .
+
+<#e24>
+    a schema:ListItem ;
+    schema:position 24 ;
+    schema:item <../releases/sweetness#t10> .
+
+<#e25>
+    a schema:ListItem ;
+    schema:position 25 ;
+    schema:item <../releases/sweetness#t11> .
+
+<#e26>
+    a schema:ListItem ;
+    schema:position 26 ;
+    schema:item <../releases/sweetness#t12> .
+
+<#e27>
+    a schema:ListItem ;
+    schema:position 27 ;
+    schema:item <../releases/sweetness#t13> .
+
+<#e28>
+    a schema:ListItem ;
+    schema:position 28 ;
+    schema:item <../releases/sweetness#t14> .

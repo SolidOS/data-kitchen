@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "ALEXANDER'S RAGTIME BAND" ;
+    dct:identifier "78_alexanders-ragtime-band_bessie-smith-her-blue-boys-buster-bailey-c-green-kaiser-mar_gbia3043090b" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/78_alexanders-ragtime-band_bessie-smith-her-blue-boys-buster-bailey-c-green-kaiser-mar_gbia3043090b> ;
+    mo:track <#t01> ;
+    foaf:maker "BESSIE SMITH & HER BLUE BOYS, Buster Bailey, C. Green, Kaiser Marshall, C. Dixon, Fletcher Henderson, J. Smith, Berlin" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "ALEXANDER'S RAGTIME BAND - BESSIE SMITH & HER BLUE BOYS" ;
+    mo:duration "185" ;
+    mo:item <https://archive.org/download/78_alexanders-ragtime-band_bessie-smith-her-blue-boys-buster-bailey-c-green-kaiser-mar_gbia3043090b/ALEXANDER'S%20RAGTIME%20BAND%20-%20BESSIE%20SMITH%20%26%20HER%20BLUE%20BOYS.mp3> ;
+    dct:isPartOf <#it> .

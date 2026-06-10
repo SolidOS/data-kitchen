@@ -1,0 +1,90 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "2Pac The OG Project Vol 2" ;
+    dct:identifier "2-pac-all-out-suge-knights-stolen-cd-version_202504" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/2-pac-all-out-suge-knights-stolen-cd-version_202504> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11> ;
+    foaf:maker "Tha Row Ryda", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "2Pac - Bury Me A G (Untitled Interscope Project [Manu Tape] Ver.)" ;
+    mo:duration "302" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Bury%20Me%20A%20G%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "2Pac, Nate Dogg & Big Syke - Changed Man (Original Version) [Unreleased HQ]" ;
+    mo:duration "231" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%2C%20Nate%20Dogg%20%26%20Big%20Syke%20-%20Changed%20Man%20(Original%20Version)%20%5BUnreleased%20HQ%5D.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "2Pac, Outlawz & Nanci Fletcher - Don't Stop The Music (Original Version) [HQ]" ;
+    mo:duration "241" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%2C%20Outlawz%20%26%20Nanci%20Fletcher%20-%20Don't%20Stop%20The%20Music%20(Original%20Version)%20%5BHQ%5D.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "2Pac - Runnin From The Police (Original Version) [Prod. Easy Mo Bee]" ;
+    mo:duration "271" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Runnin%20From%20The%20Police%20(Original%20Version)%20%5BProd.%20Easy%20Mo%20Bee%5D.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "2Pac & Storm - He Vs She (Unreleased) [HQ]" ;
+    mo:duration "203" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20%26%20Storm%20-%20He%20Vs%20She%20(Unreleased)%20%5BHQ%5D.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "2Pac & Big Daddy Kane - Wherever You Are [Unreleased HQ]" ;
+    mo:duration "227" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20%26%20Big%20Daddy%20Kane%20-%20Wherever%20You%20Are%20%5BUnreleased%20HQ%5D.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "2Pac - Everything They Owe (Original Mix 2)" ;
+    mo:duration "189" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Everything%20They%20Owe%20(Original%20Mix%202).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "2Pac - My Block (The Show Soundtrack) (314 529 021-2)" ;
+    mo:duration "311" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20My%20Block%20(The%20Show%20Soundtrack)%20(314%20529%20021-2).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Outlawz - U Can Be Touched (4-24-96 [2Pac Reference] DAT Mix)" ;
+    mo:duration "283" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/Outlawz%20-%20U%20Can%20Be%20Touched%20(4-24-96%20%5B2Pac%20Reference%5D%20DAT%20Mix).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "2Pac - All Out (Suge Knight's Stolen CD Version)" ;
+    mo:duration "329" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20All%20Out%20(Suge%20Knight's%20Stolen%20CD%20Version).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "2Pac - Out On Bail (Untitled Interscope Project [Manu Tape] Ver.)" ;
+    mo:duration "225" ;
+    mo:item <https://archive.org/download/2-pac-all-out-suge-knights-stolen-cd-version_202504/2Pac%20-%20Out%20On%20Bail%20(Untitled%20Interscope%20Project%20%5BManu%20Tape%5D%20Ver.).mp3> ;
+    dct:isPartOf <#it> .

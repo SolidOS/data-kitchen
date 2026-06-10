@@ -1,0 +1,104 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Animal Collective Live at The Chapel on 2025-05-20" ;
+    dct:identifier "acollective2025-05-20.flac24" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/acollective2025-05-20.flac24> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13> ;
+    foaf:maker "Panda Bear" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Inner Monologue" ;
+    mo:duration "384" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/14-Inner%20Monologue.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Virginia Tech" ;
+    mo:duration "378" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/04-Virginia%20Tech.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Tomboy" ;
+    mo:duration "358" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/08-Tomboy.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "50mg" ;
+    mo:duration "346" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/01-50mg.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Selfish Gene" ;
+    mo:duration "331" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/10-Selfish%20Gene.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Venom's In" ;
+    mo:duration "328" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/05-Venom's%20In.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Praise" ;
+    mo:duration "314" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/15-Praise.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Song for Ariel" ;
+    mo:duration "299" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/06-Song%20for%20Ariel.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Slow Motion" ;
+    mo:duration "267" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/12-Slow%20Motion.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Defense" ;
+    mo:duration "260" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/07-Defense.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Alsatian Darn" ;
+    mo:duration "243" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/02-Alsatian%20Darn.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "Just as Well" ;
+    mo:duration "201" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/11-Just%20as%20Well.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "Ends Meet" ;
+    mo:duration "182" ;
+    mo:item <https://archive.org/download/acollective2025-05-20.flac24/03-Ends%20Meet.mp3> ;
+    dct:isPartOf <#it> .

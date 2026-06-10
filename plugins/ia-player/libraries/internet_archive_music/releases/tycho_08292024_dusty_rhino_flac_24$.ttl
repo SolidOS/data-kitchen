@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Tycho 08292024 Dusty Rhino Flac 24" ;
+    dct:identifier "tycho-08292024-dusty-rhino-flac-24" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/tycho-08292024-dusty-rhino-flac-24> ;
+    mo:track <#t01> ;
+    foaf:maker "Tycho" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Sunrise at the Trash Fence on the Dusty Rhino" ;
+    mo:duration "2019" ;
+    mo:item <https://archive.org/download/tycho-08292024-dusty-rhino-flac-24/Tycho_08292024_Dusty_Rhino_Flac24.mp3> ;
+    dct:isPartOf <#it> .

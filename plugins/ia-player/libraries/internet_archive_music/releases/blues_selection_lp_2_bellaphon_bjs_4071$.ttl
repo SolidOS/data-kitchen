@@ -1,0 +1,69 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "BLUES SELECTION LP 2 - Bellaphon BJS 4071" ;
+    dct:identifier "17-blues-selection-lp-2-bellaphon-bjs-4071" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/17-blues-selection-lp-2-bellaphon-bjs-4071> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08> ;
+    foaf:maker "Jimmy WITHERSPOON, John Lee HOKER, Lightnin' HOPKINS, Furry LEWIS, Reverend Gary DAVIS, Memphis Slim, Jesse FULER, Tom RUSH, Sony TERRY, Brownie McGHEE, Dave van RONK, Holy Modal Rounders" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "11 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side A -  The HOLY MODAL ROUNDERS - Blues in a bottle" ;
+    mo:duration "205" ;
+    mo:item <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/11%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20A%20-%20%20The%20HOLY%20MODAL%20ROUNDERS%20-%20Blues%20in%20a%20bottle.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "13 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side A - Lightnin' HOPKINS - Too many drivers" ;
+    mo:duration "215" ;
+    mo:item <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/13%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20A%20-%20Lightnin'%20HOPKINS%20-%20Too%20many%20drivers.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "14 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side A - Furry LEWIS - Going to Brownsville" ;
+    mo:duration "216" ;
+    mo:item <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/14%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20A%20-%20Furry%20LEWIS%20-%20Going%20to%20Brownsville.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "15 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side A - Rev. Gary DAVIS - When I die I'll live again" ;
+    mo:duration "213" ;
+    mo:item <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/15%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20A%20-%20Rev.%20Gary%20DAVIS%20-%20When%20I%20die%20I'll%20live%20again.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "17 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side B - John Lee HOOKER - Driftin' and Driftin'" ;
+    mo:duration "255" ;
+    mo:item <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/17%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20B%20-%20John%20Lee%20HOOKER%20-%20Driftin'%20and%20Driftin'.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "18 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side B - Jesse FULLER - Red River Blues" ;
+    mo:duration "221" ;
+    mo:item <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/18%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20B%20-%20Jesse%20FULLER%20-%20Red%20River%20Blues.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "20 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side B - Tom RUSH - Drop down Mama" ;
+    mo:duration "250" ;
+    mo:item <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/20%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20B%20-%20Tom%20RUSH%20-%20Drop%20down%20Mama.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "21 - BLUES SELECTION LP 2 Bellaphon BJS 4071 Side B - Dave VAN RONK - He was a friend of mine" ;
+    mo:duration "214" ;
+    mo:item <https://archive.org/download/17-blues-selection-lp-2-bellaphon-bjs-4071/21%20-%20BLUES%20SELECTION%20LP%202%20Bellaphon%20BJS%204071%20Side%20B%20-%20Dave%20VAN%20RONK%20-%20He%20was%20a%20friend%20of%20mine.mp3> ;
+    dct:isPartOf <#it> .

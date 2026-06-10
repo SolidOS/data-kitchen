@@ -1,0 +1,62 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "312_James Brown - Say It Loud I'm Black and I'm Proud СD" ;
+    dct:identifier "03-goodbye-my-love-pts.-1-2" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/03-goodbye-my-love-pts.-1-2> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07> ;
+    foaf:maker "James Brown" .
+
+<#t01>
+    a mo:Track ;
+    dct:title " 01_Say It Loud-I'm Black & I'm Proud" ;
+    mo:duration "286" ;
+    mo:item <https://archive.org/download/03-goodbye-my-love-pts.-1-2/%2001_Say%20It%20Loud-I'm%20Black%20%26%20I'm%20Proud.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "02_Guess I'll Have to Cry, Cry, Cry" ;
+    mo:duration "213" ;
+    mo:item <https://archive.org/download/03-goodbye-my-love-pts.-1-2/02_Guess%20I'll%20Have%20to%20Cry%2C%20Cry%2C%20Cry.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "03_Goodbye My Love, Pts. 1 & 2" ;
+    mo:duration "331" ;
+    mo:item <https://archive.org/download/03-goodbye-my-love-pts.-1-2/03_Goodbye%20My%20Love%2C%20Pts.%201%20%26%202.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "06_I Love You" ;
+    mo:duration "213" ;
+    mo:item <https://archive.org/download/03-goodbye-my-love-pts.-1-2/06_I%20Love%20You.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "07_ Then You Can Tell Me Goodbye" ;
+    mo:duration "232" ;
+    mo:item <https://archive.org/download/03-goodbye-my-love-pts.-1-2/07_%20Then%20You%20Can%20Tell%20Me%20Goodbye.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "08_ Let Them Talk" ;
+    mo:duration "241" ;
+    mo:item <https://archive.org/download/03-goodbye-my-love-pts.-1-2/08_%20Let%20Them%20Talk.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "09_Maybe I'll Understand" ;
+    mo:duration "197" ;
+    mo:item <https://archive.org/download/03-goodbye-my-love-pts.-1-2/09_Maybe%20I'll%20Understand.mp3> ;
+    dct:isPartOf <#it> .

@@ -1,0 +1,25 @@
+graph TB
+    GenreScheme["GenreScheme<br>skos:ConceptScheme"]
+    Genre["Genre<br>skos:Concept · mo:Genre"]
+    Agent["Agent<br>foaf:Agent"]
+    Catalog["Catalog<br>dcat:Catalog"]
+    Release["Release<br>mo:Release · dcat:Dataset"]
+    Playlist["Playlist<br>schema:MusicPlaylist · schema:ItemList · dcat:Dataset"]
+    ListItem["ListItem<br>schema:ListItem"]
+    Track["Track<br>mo:Track"]
+    Catalog -->|"dcat:catalog"| Catalog
+    Catalog -->|"dcat:dataset"| Release
+    Catalog -->|"dcat:dataset"| Playlist
+    Catalog -->|"dcat:themeTaxonomy"| GenreScheme
+    Genre -->|"skos:topConceptOf"| GenreScheme
+    Release -->|"dcterms:isPartOf"| Catalog
+    Release -->|"foaf:maker"| Agent
+    Release -->|"mo:genre"| Genre
+    Release -->|"mo:track"| Track
+    Track -->|"dcterms:isPartOf"| Release
+    Track -->|"foaf:maker"| Agent
+    Playlist -->|"dcterms:isPartOf"| Catalog
+    Playlist -->|"schema:itemListElement"| ListItem
+    ListItem -->|"schema:item"| Track
+    Agent -->|"mo:genre"| Genre
+    Agent -->|"dcterms:source"| Playlist

@@ -1,0 +1,125 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "George Clinton & Parliament-Funkadelic Live at The Andrew J. Brady Music Center on 2024-05-28" ;
+    dct:identifier "p-funk2024-05-28.mk41.nbob.f3.16bit" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/p-funk2024-05-28.mk41.nbob.f3.16bit> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15>, <#t16> ;
+    foaf:maker "George Clinton & Parliament-Funkadelic" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Atomic Dog" ;
+    mo:duration "654" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-20.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Biological Speculation Reprise" ;
+    mo:duration "231" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-17.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Cosmic Slop >" ;
+    mo:duration "405" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-09.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Flash Light" ;
+    mo:duration "547" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-03.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Get Low" ;
+    mo:duration "284" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-07.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Get Off Your Ass and Jam" ;
+    mo:duration "797" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-02.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Give Up the Funk (Tear the Roof Off the Sucker)" ;
+    mo:duration "379" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-19.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Good Thoughts, Bad Thoughts >" ;
+    mo:duration "195" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-12.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "I got a Thing, You Got a Thing, Everybody's Got a Thing" ;
+    mo:duration "223" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-16.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "Maggot Brain" ;
+    mo:duration "504" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-13.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Meow Meow >" ;
+    mo:duration "208" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-06.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "One Nation Under a Groove >" ;
+    mo:duration "244" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-08.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "P.Funk (Wants to Get Funked Up)" ;
+    mo:duration "991" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-14.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "Pole Power >" ;
+    mo:duration "309" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-05.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "Presence of a Brain" ;
+    mo:duration "297" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-18.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t16>
+    a mo:Track ;
+    dct:title "Yank My Doodle" ;
+    mo:duration "381" ;
+    mo:item <https://archive.org/download/p-funk2024-05-28.mk41.nbob.f3.16bit/p-funk2024-05-28.mk41.nbob.f3.16bit-04.mp3> ;
+    dct:isPartOf <#it> .

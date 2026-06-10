@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Thinking blues" ;
+    dct:identifier "bessie-smith-thinking-blues" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/bessie-smith-thinking-blues> ;
+    mo:track <#t01> ;
+    foaf:maker "Bessie Smith" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Bessie Smith - Thinking blues" ;
+    mo:duration "190" ;
+    mo:item <https://archive.org/download/bessie-smith-thinking-blues/Bessie%20Smith%20-%20Thinking%20blues.mp3> ;
+    dct:isPartOf <#it> .

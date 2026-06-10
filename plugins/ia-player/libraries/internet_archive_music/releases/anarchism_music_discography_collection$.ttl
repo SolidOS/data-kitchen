@@ -1,0 +1,48 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "anarchism music discography collection" ;
+    dct:identifier "anarchism-music-discography-collection_202603" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/anarchism-music-discography-collection_202603> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05> ;
+    foaf:maker <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:b95be055-69d4-4d84-8d80-76f531b71897>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Raised In The Ghetto" ;
+    mo:duration "190" ;
+    mo:item <https://archive.org/download/anarchism-music-discography-collection_202603/004%20-%20updated%20(AI)%202Pac%20%26%20Scarface%20-%20Raised%20In%20The%20Ghetto.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Devil's World" ;
+    mo:duration "275" ;
+    mo:item <https://archive.org/download/anarchism-music-discography-collection_202603/003%20-%20(AI)%202Pac%20-%20Devil's%20World.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Write This Down (feat. DMX, Eazy E, Ice Cube, Dr Dre, MC Ren, Method Man, Nas, Biggie, Pop Smoke, Nipsey, Snoop Dogg)" ;
+    mo:duration "818" ;
+    mo:item <https://archive.org/download/anarchism-music-discography-collection_202603/002%20-%20%5Bnew%5D%202Pac%20-%20Write%20This%20Down%20(feat.%20DMX%2C%20Eazy%20E%2C%20Ice%20Cube%2C%20Dr%20Dre%2C%20MC%20Ren%2C%20Method%20Man%2C%20Nas%2C%20Biggie%2C%20Pop%20Smoke%2C%20Nipsey%2C%20Snoop%20Dogg).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "White Man'z World" ;
+    mo:duration "338" ;
+    mo:item <https://archive.org/download/anarchism-music-discography-collection_202603/020%20-%20White%20Man'z%20World.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "How Long WIll They Mourn Me? (prod. Warren G)" ;
+    mo:duration "250" ;
+    mo:item <https://archive.org/download/anarchism-music-discography-collection_202603/005%20-%20(2Pac%2C%20BIg%20Syke%2C%20The%20Rated%20R%2C%20Macadoshis%2C%20Nate%20Dogg)%20-%20How%20Long%20Will%20They%20Mourn%20Me%20(prod.%20Warren%20G).mp3> ;
+    dct:isPartOf <#it> .

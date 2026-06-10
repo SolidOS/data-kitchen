@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Jaylib - Rough Drafts (2003) Full Album | J Dilla Madlib | Mixed at 89 Hz | Mastered at 48khz | m4a" ;
+    dct:identifier "jaylib_rough_drafts_2003_full_album_j_dilla_madlib_mixed_at_89_hz_mastered_at_48_1" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage </plugins/ia-player/libraries/internet_archive_music/releases/jaylib_rough_drafts_2003_full_album_j_dilla_madlib_mixed_at_89_hz_mastered_at_48#it> ;
+    mo:track <#t01> ;
+    foaf:maker <urn:uuid:66bc0989-8767-4a65-9cd5-07a993007e78> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "89hz+JAYLIB+-+THE+ROUGH+DRAFTS " ;
+    mo:duration "4136" ;
+    mo:item <https://archive.org/download/jaylib-rough-drafts/89hz%2BJAYLIB%2B-%2BTHE%2BROUGH%2BDRAFTS%20.m4a> ;
+    dct:isPartOf <#it> .

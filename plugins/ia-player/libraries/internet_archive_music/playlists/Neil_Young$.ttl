@@ -1,0 +1,472 @@
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix schema: <http://schema.org/>.
+
+</plugins/ia-player/libraries/internet_archive_music/playlists/Neil_Young> a schema:ItemList, schema:MusicPlaylist, dcat:Dataset;
+    dct:isPartOf </plugins/ia-player/libraries/internet_archive_music/playlists.ttl#it>;
+    schema:itemListOrder schema:ItemListOrderAscending;
+    dct:title "Neil Young";
+    foaf:maker "jeffz";
+    schema:itemListElement <#e01>, <#e02>, <#e03>, <#e04>, <#e05>, <#e06>, <#e07>, <#e08>, <#e09>, <#e10>, <#e11>, <#e12>, <#e13>, <#e14>, <#e15>, <#e16>, <#e17>, <#e18>, <#e19>, <#e20>, <#e21>, <#e22>, <#e23>, <#e24>, <#e25>, <#e26>, <#e27>, <#e28>, <#e29>, <#e30>, <#e31>, <#e32>, <#e33>, <#e34>, <#e35>, <#e36>, <#e37>, <#e38>, <#e39>, <#e40>, <#e41>, <#e42>, <#e43>, <#e44>, <#e45>, <#e46>, <#e47>, <#e48>, <#e49>.
+<#e01> a schema:ListItem;
+    schema:position "1";
+    schema:item <#t01>.
+<#e02> a schema:ListItem;
+    schema:position "2";
+    schema:item <#t02>.
+<#e03> a schema:ListItem;
+    schema:position "3";
+    schema:item <#t03>.
+<#e04> a schema:ListItem;
+    schema:position "4";
+    schema:item <#t04>.
+<#e05> a schema:ListItem;
+    schema:position "5";
+    schema:item <#t05>.
+<#e06> a schema:ListItem;
+    schema:position "6";
+    schema:item <#t06>.
+<#e07> a schema:ListItem;
+    schema:position "7";
+    schema:item <#t07>.
+<#e08> a schema:ListItem;
+    schema:position "8";
+    schema:item <#t08>.
+<#e09> a schema:ListItem;
+    schema:position "9";
+    schema:item <#t09>.
+<#e10> a schema:ListItem;
+    schema:position "10";
+    schema:item <#t10>.
+<#e11> a schema:ListItem;
+    schema:position "11";
+    schema:item <#t11>.
+<#e12> a schema:ListItem;
+    schema:position "12";
+    schema:item <#t12>.
+<#e13> a schema:ListItem;
+    schema:position "13";
+    schema:item <#t13>.
+<#e14> a schema:ListItem;
+    schema:position "14";
+    schema:item <#t14>.
+<#e15> a schema:ListItem;
+    schema:position "15";
+    schema:item <#t15>.
+<#e16> a schema:ListItem;
+    schema:position "16";
+    schema:item <#t16>.
+<#e17> a schema:ListItem;
+    schema:position "17";
+    schema:item <#t17>.
+<#e18> a schema:ListItem;
+    schema:position "18";
+    schema:item <#t18>.
+<#e19> a schema:ListItem;
+    schema:position "19";
+    schema:item <#t19>.
+<#e20> a schema:ListItem;
+    schema:position "20";
+    schema:item <#t20>.
+<#e21> a schema:ListItem;
+    schema:position "21";
+    schema:item <#t21>.
+<#e22> a schema:ListItem;
+    schema:position "22";
+    schema:item <#t22>.
+<#e23> a schema:ListItem;
+    schema:position "23";
+    schema:item <#t23>.
+<#e24> a schema:ListItem;
+    schema:position "24";
+    schema:item <#t24>.
+<#e25> a schema:ListItem;
+    schema:position "25";
+    schema:item <#t25>.
+<#e26> a schema:ListItem;
+    schema:position "26";
+    schema:item <#t26>.
+<#e27> a schema:ListItem;
+    schema:position "27";
+    schema:item <#t27>.
+<#e28> a schema:ListItem;
+    schema:position "28";
+    schema:item <#t28>.
+<#e29> a schema:ListItem;
+    schema:position "29";
+    schema:item <#t29>.
+<#e30> a schema:ListItem;
+    schema:position "30";
+    schema:item <#t30>.
+<#e31> a schema:ListItem;
+    schema:position "31";
+    schema:item <#t31>.
+<#e32> a schema:ListItem;
+    schema:position "32";
+    schema:item <#t32>.
+<#e33> a schema:ListItem;
+    schema:position "33";
+    schema:item <#t33>.
+<#e34> a schema:ListItem;
+    schema:position "34";
+    schema:item <#t34>.
+<#e35> a schema:ListItem;
+    schema:position "35";
+    schema:item <#t35>.
+<#e36> a schema:ListItem;
+    schema:position "36";
+    schema:item <#t36>.
+<#e37> a schema:ListItem;
+    schema:position "37";
+    schema:item <#t37>.
+<#e38> a schema:ListItem;
+    schema:position "38";
+    schema:item <#t38>.
+<#e39> a schema:ListItem;
+    schema:position "39";
+    schema:item <#t39>.
+<#e40> a schema:ListItem;
+    schema:position "40";
+    schema:item <#t40>.
+<#t01> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a01>;
+    dct:title "After the Gold Rush";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/04-southern-man_202512/02%20After%20the%20Gold%20Rush.mp3>;
+    <http://purl.org/ontology/mo/duration> "226".
+<#t02> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a01>;
+    dct:title "I Believe in You";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/04-southern-man_202512/10%20I%20Believe%20in%20You.mp3>;
+    <http://purl.org/ontology/mo/duration> "208".
+<#t03> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a01>;
+    dct:title "Oh, Lonesome Me";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/04-southern-man_202512/06%20Oh%2C%20Lonesome%20Me.mp3>;
+    <http://purl.org/ontology/mo/duration> "230".
+<#t04> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a01>;
+    dct:title "Only Love Can Break Your Heart";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/04-southern-man_202512/03%20Only%20Love%20Can%20Break%20Your%20Heart.mp3>;
+    <http://purl.org/ontology/mo/duration> "188".
+<#t05> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a01>;
+    dct:title "Southern Man";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/04-southern-man_202512/04%20Southern%20Man.mp3>;
+    <http://purl.org/ontology/mo/duration> "332".
+<#t06> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a01>;
+    dct:title "When You Dance I Can Really Love";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/04-southern-man_202512/09%20When%20You%20Dance%20I%20Can%20Really%20Love.mp3>;
+    <http://purl.org/ontology/mo/duration> "245".
+<#t07> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "01 Oh Susannah";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/01OhSusannah.m4a>;
+    <http://purl.org/ontology/mo/duration> "303".
+<#t08> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "02 Clementine";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/02Clementine.m4a>;
+    <http://purl.org/ontology/mo/duration> "342".
+<#t09> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "03 Tom Dula";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/03TomDula.m4a>;
+    <http://purl.org/ontology/mo/duration> "493".
+<#t10> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "04 Gallows Pole";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/04GallowsPole.m4a>;
+    <http://purl.org/ontology/mo/duration> "255".
+<#t11> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "05 Get A Job";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/05GetAJob.m4a>;
+    <http://purl.org/ontology/mo/duration> "181".
+<#t12> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "06 Travel On";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/06TravelOn.m4a>;
+    <http://purl.org/ontology/mo/duration> "407".
+<#t13> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "07 High Flyin' Bird";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/07HighFlyinBird.m4a>;
+    <http://purl.org/ontology/mo/duration> "330".
+<#t14> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "08 Jesus' Chariot";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/08JesusChariot.m4a>;
+    <http://purl.org/ontology/mo/duration> "338".
+<#t15> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "09 This Land Is Your Land";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/09ThisLandIsYourLand.m4a>;
+    <http://purl.org/ontology/mo/duration> "326".
+<#t16> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "10 Wayfarin' Stranger";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/10WayfarinStranger.m4a>;
+    <http://purl.org/ontology/mo/duration> "187".
+<#t17> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a02>;
+    dct:title "11 God Save The Queen";
+    foaf:maker "Neil Young & Crazy Horse";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/americana_201407/11GodSaveTheQueen.m4a>;
+    <http://purl.org/ontology/mo/duration> "248".
+<#t18> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "After the Goldrush";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-12%20-%20After%20the%20Goldrush.mp3>;
+    <http://purl.org/ontology/mo/duration> "339".
+<#t19> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Crime in the City";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-06%20-%20Crime%20in%20the%20City.mp3>;
+    <http://purl.org/ontology/mo/duration> "527".
+<#t20> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Don't Let It Bring You Down";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-04%20-%20Don't%20Let%20It%20Bring%20You%20Down.mp3>;
+    <http://purl.org/ontology/mo/duration> "219".
+<#t21> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Eldorado";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-07%20-%20Eldorado.mp3>;
+    <http://purl.org/ontology/mo/duration> "502".
+<#t22> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Fuckin' Up";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-11%20-%20Fuckin'%20Up.mp3>;
+    <http://purl.org/ontology/mo/duration> "253".
+<#t23> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Hanging on a Limb";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-13%20-%20Hanging%20on%20a%20Limb.mp3>;
+    <http://purl.org/ontology/mo/duration> "304".
+<#t24> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Heart of Gold";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-14%20-%20Heart%20of%20Gold.mp3>;
+    <http://purl.org/ontology/mo/duration> "287".
+<#t25> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "My My, Hey Hey";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-01%20-%20My%20My%2C%20Hey%20Hey.mp3>;
+    <http://purl.org/ontology/mo/duration> "282".
+<#t26> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Ohio";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-15%20-%20Ohio.mp3>;
+    <http://purl.org/ontology/mo/duration> "217".
+<#t27> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Rockin' in the Free World";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-02%20-%20Rockin'%20in%20the%20Free%20World.mp3>;
+    <http://purl.org/ontology/mo/duration> "335".
+<#t28> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Rockin' in the Free World";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-16%20-%20Rockin'%20in%20the%20Free%20World.mp3>;
+    <http://purl.org/ontology/mo/duration> "239".
+<#t29> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Someday";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-05%20-%20Someday.mp3>;
+    <http://purl.org/ontology/mo/duration> "393".
+<#t30> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "The Old Laughing Lady";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-03%20-%20The%20Old%20Laughing%20Lady.mp3>;
+    <http://purl.org/ontology/mo/duration> "303".
+<#t31> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "This Note's for You";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-09%20-%20This%20Note's%20for%20You.mp3>;
+    <http://purl.org/ontology/mo/duration> "230".
+<#t32> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a03>;
+    dct:title "Too Far Gone";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/1989-Muziektheater-Amsterdam/1-08%20-%20Too%20Far%20Gone.mp3>;
+    <http://purl.org/ontology/mo/duration> "197".
+<#a01> a <http://purl.org/ontology/mo/Release>;
+    dct:title "After the Gold Rush (CD Rip)";
+    foaf:maker "Neil Young";
+    dcat:landingPage <https://archive.org/details/04-southern-man_202512>.
+<#a02> a <http://purl.org/ontology/mo/Release>;
+    dct:title "americana";
+    foaf:maker "Neil Young & Crazy Horse";
+    dcat:landingPage <https://archive.org/details/americana_201407>.
+<#a03> a <http://purl.org/ontology/mo/Release>;
+    dct:title "Amsterdam '89";
+    foaf:maker "Neil Young";
+    dcat:landingPage <https://archive.org/details/1989-Muziektheater-Amsterdam>.
+<#a04> a <http://purl.org/ontology/mo/Release>;
+    dct:title "Neil Young - Harvest (1972)";
+    foaf:maker "Neil Young";
+    dcat:landingPage <https://archive.org/details/neil-young-harvest1972>.
+<#t33> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a04>;
+    dct:title "A Man Needs A Maid";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest1972/03%20A%20Man%20Needs%20A%20Maid.m4a>;
+    <http://purl.org/ontology/mo/duration> "245".
+<#t34> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a04>;
+    dct:title "Alabama";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest1972/08%20Alabama.m4a>;
+    <http://purl.org/ontology/mo/duration> "242".
+<#t35> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a04>;
+    dct:title "Are You Ready For The Country?";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest1972/05%20Are%20You%20Ready%20For%20The%20Country_.m4a>;
+    <http://purl.org/ontology/mo/duration> "203".
+<#t36> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a04>;
+    dct:title "Harvest";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest1972/02%20Harvest.m4a>;
+    <http://purl.org/ontology/mo/duration> "191".
+<#t37> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a04>;
+    dct:title "Heart Of Gold";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest1972/04%20Heart%20Of%20Gold.m4a>;
+    <http://purl.org/ontology/mo/duration> "187".
+<#t38> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a04>;
+    dct:title "Old Man";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest1972/06%20Old%20Man.m4a>;
+    <http://purl.org/ontology/mo/duration> "204".
+<#t39> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a04>;
+    dct:title "Out On The Weekend";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest1972/01%20Out%20On%20The%20Weekend.m4a>;
+    <http://purl.org/ontology/mo/duration> "274".
+<#t40> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a04>;
+    dct:title "Words (Between The Lines Of Age)";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest1972/10%20Words%20(Between%20The%20Lines%20Of%20Age).m4a>;
+    <http://purl.org/ontology/mo/duration> "400".
+<#a05> a <http://purl.org/ontology/mo/Release>;
+    dct:title "Neil Young Harvest Moon";
+    foaf:maker "Neil Young";
+    dcat:landingPage <https://archive.org/details/neil-young-harvest-moon>.
+<#t41> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a05>;
+    dct:title "Dreamin' Man";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest-moon/Dreamin'%20Man.mp3>;
+    <http://purl.org/ontology/mo/duration> "276".
+<#e41> a schema:ListItem;
+    schema:position "41";
+    schema:item <#t41>.
+<#t42> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a05>;
+    dct:title "From Hank to Hendrix";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest-moon/From%20Hank%20to%20Hendrix.mp3>;
+    <http://purl.org/ontology/mo/duration> "317".
+<#e42> a schema:ListItem;
+    schema:position "42";
+    schema:item <#t42>.
+<#t43> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a05>;
+    dct:title "Harvest Moon";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest-moon/Harvest%20Moon.mp3>;
+    <http://purl.org/ontology/mo/duration> "303".
+<#e43> a schema:ListItem;
+    schema:position "43";
+    schema:item <#t43>.
+<#t44> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a05>;
+    dct:title "Natural Beauty";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest-moon/Natural%20Beauty.mp3>;
+    <http://purl.org/ontology/mo/duration> "623".
+<#e44> a schema:ListItem;
+    schema:position "44";
+    schema:item <#t44>.
+<#t45> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a05>;
+    dct:title "One of These Days";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest-moon/One%20of%20These%20Days.mp3>;
+    <http://purl.org/ontology/mo/duration> "297".
+<#e45> a schema:ListItem;
+    schema:position "45";
+    schema:item <#t45>.
+<#t46> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a05>;
+    dct:title "Such a Woman";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest-moon/Such%20a%20Woman.mp3>;
+    <http://purl.org/ontology/mo/duration> "277".
+<#e46> a schema:ListItem;
+    schema:position "46";
+    schema:item <#t46>.
+<#t47> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a05>;
+    dct:title "Unknown Legend";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest-moon/Unknown%20Legend.mp3>;
+    <http://purl.org/ontology/mo/duration> "272".
+<#e47> a schema:ListItem;
+    schema:position "47";
+    schema:item <#t47>.
+<#t48> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a05>;
+    dct:title "War of Man";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest-moon/War%20of%20Man.mp3>;
+    <http://purl.org/ontology/mo/duration> "343".
+<#e48> a schema:ListItem;
+    schema:position "48";
+    schema:item <#t48>.
+<#t49> a <http://purl.org/ontology/mo/Track>;
+    dct:isPartOf <#a05>;
+    dct:title "You and Me";
+    foaf:maker "Neil Young";
+    <http://purl.org/ontology/mo/item> <https://archive.org/download/neil-young-harvest-moon/You%20and%20Me.mp3>;
+    <http://purl.org/ontology/mo/duration> "225".
+<#e49> a schema:ListItem;
+    schema:position "49";
+    schema:item <#t49>.

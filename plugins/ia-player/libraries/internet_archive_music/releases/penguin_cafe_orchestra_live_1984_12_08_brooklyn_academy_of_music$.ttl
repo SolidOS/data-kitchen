@@ -1,0 +1,27 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Penguin Cafe Orchestra LIVE 1984-12-08 @Brooklyn Academy of Music" ;
+    dct:identifier "penguincafeorchestra08121984" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/penguincafeorchestra08121984> ;
+    mo:track <#t01>, <#t02> ;
+    foaf:maker "Penguin Cafe Orchestra" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Another One from the Colonies" ;
+    mo:duration "285" ;
+    mo:item <https://archive.org/download/penguincafeorchestra08121984/%5B1984%5D%20Live%20in%20Brooklyn%2F06%20-%20Another%20One%20from%20the%20Colonies.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "E: The Toy" ;
+    mo:duration "265" ;
+    mo:item <https://archive.org/download/penguincafeorchestra08121984/%5B1984%5D%20Live%20in%20Brooklyn%2F16%20-%20E-%20The%20Toy.mp3> ;
+    dct:isPartOf <#it> .

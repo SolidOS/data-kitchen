@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Ghostface Killah vs 13 Mitred Abbots Apollo Kids 174bpm Minimal Techno" ;
+    dct:identifier "Ghost174bpmMinimalTechno" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/Ghost174bpmMinimalTechno> ;
+    mo:track <#t01> ;
+    foaf:maker "Ghostface, Raekwon, 13 Mitred Abbots", <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "ghost 174bpm minimal techno" ;
+    mo:duration "276" ;
+    mo:item <https://archive.org/download/Ghost174bpmMinimalTechno/ghost%20174bpm%20minimal%20techno.mp3> ;
+    dct:isPartOf <#it> .

@@ -1,0 +1,22 @@
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#it> a mo:Release, dcat:Dataset;
+    dct:title "Bernie Worrell and the WOO Warriors Live at The Green Room on 2003-04-15";
+    dct:identifier "BWWW2003-04-15";
+    dct:isPartOf <../releases.ttl#it>;
+    dcat:landingPage <https://archive.org/details/BWWW2003-04-15>;
+    mo:track <#t01>, <#t02>;
+    foaf:maker <urn:uuid:8030c785-1793-421b-baa7-b03bee051a66>.
+<#t01> a mo:Track;
+    dct:title "One Nation Under A Groove";
+    dct:isPartOf <#it>;
+    mo:duration "368";
+    mo:item <https://archive.org/download/BWWW2003-04-15/BWWW2003-04-15d2t02.mp3>.
+<#t02> a mo:Track;
+    dct:title "Hit It and Quit It";
+    dct:isPartOf <#it>;
+    mo:duration "220";
+    mo:item <https://archive.org/download/BWWW2003-04-15/BWWW2003-04-15d2t01.mp3>.

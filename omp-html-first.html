@@ -1,0 +1,80 @@
+<sol-tabs id="omp-tabs" keep-alive>
+
+  <a href="./plugins/news/feeds.ttl#Feeds" id="panel-news"
+     data-handler="sol-feed"
+     data-view="threePanel"
+     data-reader="inline"
+  >📰 News</a>
+
+  <a href="./plugins/ia-player/libraries/internet_archive_music/index.ttl" id="panel-music"
+     data-handler="ia-player"
+     data-storage-ns="music"
+     data-defer
+  >🎵 Music</a>
+
+  <a href="./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" id="panel-images"
+     data-handler="omp-images"
+  >🖼 Images</a>
+
+  <a href="./plugins/ia-player/libraries/internet_archive_movies/index.ttl" id="panel-movies"
+     data-handler="ia-player"
+     data-storage-ns="movies"
+     data-favourites-only
+     data-defer
+  >🎬 Movies</a>
+
+  <a href="./libraries/workspaces/podz-shell.html" id="panel-workspaces"
+     data-handler="podz"
+  >🗂 Workspaces</a>
+
+  <a href="./plugins/solid-resources/resources.html" id="panel-solid-resources"
+     data-handler="sol-include"
+     data-trusted
+  >📚 Solid Resources</a>
+
+  <a href="./plugins/dev-tools/dev-tools.html" id="panel-dev-tools"
+     data-handler="sol-include"
+     data-trusted
+  >🛠 Dev Tools</a>
+
+  <sol-search class="omp-search" title="Search"
+     source="./data/search-engines.ttl#SearchEngines"
+  ></sol-search>
+
+  <omp-calendar-popout class="omp-calendar" title="Calendar"
+     source="./data/calendar-settings.ttl#All"
+     view="agenda"
+  ></omp-calendar-popout>
+
+  <sol-button class="omp-help-launch" title="Help" aria-label="Help"
+     data-handler="sol-include"
+     source="./assets/omp-help.html"
+     if-logged-in="./assets/omp-help-owner.html"
+     inline
+  >?</sol-button>
+
+  <sol-button class="omp-fontsize" title="Text size" aria-label="Text size"
+     data-handler="cycleFontSize"
+  >A</sol-button>
+
+  <sol-button class="omp-theme" title="Toggle light / dark" aria-label="Toggle light / dark"
+     data-handler="toggleTheme"
+  >🌙</sol-button>
+
+  <sol-login class="omp-sollogin"
+    issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org"
+  ></sol-login>
+
+  <sol-dropdown-button class="omp-more" title="More" aria-label="More"
+     label="⋮"
+     if-logged-in>
+    <menu>
+      <button data-handler="guestView">View as guest</button>
+      <button data-handler="filters">Filters…</button>
+      <button data-handler="viewDeleted">View deleted</button>
+      <button data-handler="installPod">Install on my Pod…</button>
+      <button data-handler="updateApp">Update app on Pod…</button>
+    </menu>
+  </sol-dropdown-button>
+
+</sol-tabs>

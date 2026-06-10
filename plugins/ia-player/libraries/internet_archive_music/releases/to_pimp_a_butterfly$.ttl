@@ -1,0 +1,118 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "To Pimp A Butterfly" ;
+    dct:identifier "16-mortal-man_202404" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/16-mortal-man_202404> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10>, <#t11>, <#t12>, <#t13>, <#t14>, <#t15> ;
+    foaf:maker "Kendrick Lamar Feat. George Clinton & Thundercat" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Wesley's Theory" ;
+    mo:duration "286" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/01%20Wesley's%20Theory.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "King Kunta" ;
+    mo:duration "234" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/03%20King%20Kunta.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Institutionalized" ;
+    mo:duration "271" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/04%20Institutionalized.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "These Walls" ;
+    mo:duration "300" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/05%20These%20Walls.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "U" ;
+    mo:duration "267" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/06%20U.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Alright" ;
+    mo:duration "218" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/07%20Alright.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "For Sale? (Interlude)" ;
+    mo:duration "291" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/08%20For%20Sale-%20(Interlude).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Momma" ;
+    mo:duration "282" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/09%20Momma.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Hood Politics" ;
+    mo:duration "291" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/10%20Hood%20Politics.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "How Much A Dollar Cost" ;
+    mo:duration "261" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/11%20How%20Much%20A%20Dollar%20Cost.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t11>
+    a mo:Track ;
+    dct:title "Complexion (A Zulu Love)" ;
+    mo:duration "262" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/12%20Complexion%20(A%20Zulu%20Love).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t12>
+    a mo:Track ;
+    dct:title "The Blacker The Berry" ;
+    mo:duration "328" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/13%20The%20Blacker%20The%20Berry.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t13>
+    a mo:Track ;
+    dct:title "You Ain't Gotta Lie (Momma Said)" ;
+    mo:duration "241" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/14%20You%20Ain't%20Gotta%20Lie%20(Momma%20Said).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t14>
+    a mo:Track ;
+    dct:title "I" ;
+    mo:duration "335" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/15%20I.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t15>
+    a mo:Track ;
+    dct:title "Mortal Man" ;
+    mo:duration "725" ;
+    mo:item <https://archive.org/download/16-mortal-man_202404/16%20Mortal%20Man.mp3> ;
+    dct:isPartOf <#it> .

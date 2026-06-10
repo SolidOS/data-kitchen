@@ -1,0 +1,83 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Koko Taylor live at Olin Park on 1999-08-27" ;
+    dct:identifier "1999-08-27_KokoTaylor_Madison" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/1999-08-27_KokoTaylor_Madison> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09>, <#t10> ;
+    foaf:maker "Koko Taylor" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest11" ;
+    mo:duration "694" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest11.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest09" ;
+    mo:duration "408" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest09.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest08" ;
+    mo:duration "380" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest08.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest05" ;
+    mo:duration "378" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest05.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest01" ;
+    mo:duration "368" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest01.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest04" ;
+    mo:duration "359" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest04.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest10" ;
+    mo:duration "350" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest10.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest02" ;
+    mo:duration "337" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest02.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest03" ;
+    mo:duration "314" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest03.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t10>
+    a mo:Track ;
+    dct:title "KokoTaylor_1999-08-27_MadisonBluesFest/1999-08-27_KokoTaylor_MadisonBluesFest06" ;
+    mo:duration "274" ;
+    mo:item <https://archive.org/download/1999-08-27_KokoTaylor_Madison/KokoTaylor_1999-08-27_MadisonBluesFest%2F1999-08-27_KokoTaylor_MadisonBluesFest06.mp3> ;
+    dct:isPartOf <#it> .

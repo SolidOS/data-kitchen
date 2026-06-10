@@ -1,0 +1,15 @@
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a schema:BookmarkAction ;
+   dct:creator "y" ;
+   dct:title "Tattoos of dragons" ;
+   dct:created "2026-06-01T21:48:13.895Z"^^xsd:dateTime ;
+   dct:references <https://commons.wikimedia.org/wiki/Category:Tattoos_of_dragons> .
+
+<https://commons.wikimedia.org/wiki/Category:Tattoos_of_dragons> a dctype:Collection, schema:ImageGallery ;
+   schema:name "Tattoos of dragons" ;
+   dcat:landingPage <https://commons.wikimedia.org/wiki/Category:Tattoos_of_dragons> .

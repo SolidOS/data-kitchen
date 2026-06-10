@@ -1,0 +1,62 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Tycho - Weather [FLAC] [ZENCD257]" ;
+    dct:identifier "01-easy" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/01-easy> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07> ;
+    foaf:maker "Tycho" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Easy" ;
+    mo:duration "207" ;
+    mo:item <https://archive.org/download/01-easy/01%20Easy.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Into The Woods" ;
+    mo:duration "243" ;
+    mo:item <https://archive.org/download/01-easy/04%20Into%20The%20Woods.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "For How Long" ;
+    mo:duration "180" ;
+    mo:item <https://archive.org/download/01-easy/06%20For%20How%20Long.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Japan" ;
+    mo:duration "199" ;
+    mo:item <https://archive.org/download/01-easy/03%20Japan.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "No Stress" ;
+    mo:duration "230" ;
+    mo:item <https://archive.org/download/01-easy/07%20No%20Stress.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Pink & Blue" ;
+    mo:duration "259" ;
+    mo:item <https://archive.org/download/01-easy/02%20Pink%20%26%20Blue.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Skate" ;
+    mo:duration "187" ;
+    mo:item <https://archive.org/download/01-easy/05%20Skate.mp3> ;
+    dct:isPartOf <#it> .

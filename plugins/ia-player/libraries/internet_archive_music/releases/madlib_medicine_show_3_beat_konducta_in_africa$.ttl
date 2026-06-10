@@ -1,0 +1,27 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Madlib Medicine Show #3 - Beat Konducta in Africa" ;
+    dct:identifier "madlib-medicine-show-3-beat-konducta-in-africa" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/madlib-medicine-show-3-beat-konducta-in-africa> ;
+    mo:track <#t01>, <#t02> ;
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Bonus R" ;
+    mo:duration "354" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-3-beat-konducta-in-africa/Madlib%20-%20Madlib%20Medicine%20Show%203-%20Beat%20Konducta%20In%20Africa%20-%2040%20-%20Bonus%20R.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Bonus I" ;
+    mo:duration "198" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-3-beat-konducta-in-africa/Madlib%20-%20Madlib%20Medicine%20Show%203-%20Beat%20Konducta%20In%20Africa%20-%2041%20-%20Bonus%20I.mp3> ;
+    dct:isPartOf <#it> .

@@ -1,0 +1,45 @@
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix hydra: <http://www.w3.org/ns/hydra/core#>.
+@prefix schema: <http://schema.org/>.
+
+<#SearchEngines> a schema:ItemList;
+    schema:name "Search Engines";
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement <#ddg>, <#google>, <#wp>, <#prefix>, <#lov>, <#ety>, <#yt>, <#archive>, <#dbpedia>.
+<#ddg> a hydra:IriTemplate;
+    dct:title "DuckDuckGo";
+    schema:position 1;
+    hydra:template "https://duckduckgo.com/?q={query}".
+<#google> a hydra:IriTemplate;
+    dct:title "Google";
+    schema:position 2;
+    hydra:template "https://www.google.com/search?q={query}".
+<#wp> a hydra:IriTemplate;
+    dct:title "Wikipedia";
+    schema:position 3;
+    hydra:template "https://en.wikipedia.org/w/index.php?search={query}".
+<#prefix> a hydra:IriTemplate;
+    dct:title "prefix.cc";
+    schema:position 4;
+    hydra:template "https://prefix.cc/{query}".
+<#lov> a hydra:IriTemplate;
+    dct:title "LOV";
+    schema:position 5;
+    hydra:template "https://lov.linkeddata.es/dataset/lov/terms?q={query}".
+<#ety> a hydra:IriTemplate;
+    dct:title "Etymology";
+    schema:position 6;
+    hydra:template "https://www.etymonline.com/search?q={query}".
+<#yt> a hydra:IriTemplate;
+    dct:title "YouTube";
+    schema:position 7;
+    hydra:template "https://www.youtube.com/results?search_query={query}".
+<#archive> a hydra:IriTemplate;
+    dct:title "Wayback";
+    schema:position 8;
+    hydra:template "https://web.archive.org/web/*/{query}".
+<#dbpedia> a hydra:IriTemplate;
+    dct:title "DBpedia";
+    schema:position 9;
+    hydra:template "https://dbpedia.org/search?query={query}".

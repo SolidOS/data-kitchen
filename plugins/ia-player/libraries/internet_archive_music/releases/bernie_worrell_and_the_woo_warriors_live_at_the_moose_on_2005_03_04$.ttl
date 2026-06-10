@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Bernie Worrell and the WOO Warriors Live at The Moose on 2005-03-04" ;
+    dct:identifier "bwww2005-03-04-Matrix.flac16" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/bwww2005-03-04-Matrix.flac16> ;
+    mo:track <#t01> ;
+    foaf:maker <urn:uuid:8030c785-1793-421b-baa7-b03bee051a66> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Alice In My Fantasies" ;
+    mo:duration "227" ;
+    mo:item <https://archive.org/download/bwww2005-03-04-Matrix.flac16/BWWW2005-03-04-rm-d2t05.mp3> ;
+    dct:isPartOf <#it> .

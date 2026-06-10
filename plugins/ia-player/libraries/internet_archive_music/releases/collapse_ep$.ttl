@@ -1,0 +1,48 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Collapse EP" ;
+    dct:identifier "aphex-twin-collapse-ep_202412" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/aphex-twin-collapse-ep_202412> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05> ;
+    foaf:maker <urn:uuid:728de2cc-522b-4b81-a434-887d24c85b8f> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "T69 collapse" ;
+    mo:duration "323" ;
+    mo:item <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2001%20T69%20collapse.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "1st 44" ;
+    mo:duration "370" ;
+    mo:item <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2002%201st%2044.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "MT1 t29r2" ;
+    mo:duration "365" ;
+    mo:item <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2003%20MT1%20t29r2.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "abundance10edit[2 R8's, FZ20m & a 909]" ;
+    mo:duration "380" ;
+    mo:item <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2004%20abundance10edit-2%20R8's%2C%20FZ20m%20%26%20a%20909-.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "pthex" ;
+    mo:duration "298" ;
+    mo:item <https://archive.org/download/aphex-twin-collapse-ep_202412/Aphex%20Twin%20-%20Collapse%20EP%2FAphex%20Twin%20-%20Collapse%20EP%20-%2005%20pthex.mp3> ;
+    dct:isPartOf <#it> .

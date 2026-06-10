@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "GIN HOUSE BLUES" ;
+    dct:identifier "78_gin-house-blues_bessie-smith-buster-bailey-fletcher-henderson_gbia0243641b" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/78_gin-house-blues_bessie-smith-buster-bailey-fletcher-henderson_gbia0243641b> ;
+    mo:track <#t01> ;
+    foaf:maker "BESSIE SMITH;Buster Bailey;Fletcher Henderson" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "GIN HOUSE BLUES" ;
+    mo:duration "201" ;
+    mo:item <https://archive.org/download/78_gin-house-blues_bessie-smith-buster-bailey-fletcher-henderson_gbia0243641b/GIN%20HOUSE%20BLUES%20-%20BESSIE%20SMITH%20-%20Buster%20Bailey.mp3> ;
+    dct:isPartOf <#it> .

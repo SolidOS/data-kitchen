@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Bernie Worrell Orchestra Live at 123 Pleasant Street on 2013-04-27" ;
+    dct:identifier "bwo2013-04-27" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/bwo2013-04-27> ;
+    mo:track <#t01> ;
+    foaf:maker <urn:uuid:0931c941-6679-4aa1-a957-d42e0808484f> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Come Together" ;
+    mo:duration "332" ;
+    mo:item <https://archive.org/download/bwo2013-04-27/bwo2013-04-27t08.mp3> ;
+    dct:isPartOf <#it> .

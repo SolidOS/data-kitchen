@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "\"Description Blues\"" ;
+    dct:identifier "78_description-blues_t-bone-walker-and-his-guitar-willard-mcdaniel-oscar-bradley-bu_gbia0066438b" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/78_description-blues_t-bone-walker-and-his-guitar-willard-mcdaniel-oscar-bradley-bu_gbia0066438b> ;
+    mo:track <#t01> ;
+    foaf:maker "T-Bone Walker and his Guitar;Willard McDaniel;Oscar Bradley;\"Bumps\" Myers;George Orendorff;John W. Davis;Shifty Henry" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "\"Description Blues\"" ;
+    mo:duration "189" ;
+    mo:item <https://archive.org/download/78_description-blues_t-bone-walker-and-his-guitar-willard-mcdaniel-oscar-bradley-bu_gbia0066438b/%22Description%20Blues%22%20-%20T-Bone%20Walker%20and%20his%20Guitar.mp3> ;
+    dct:isPartOf <#it> .

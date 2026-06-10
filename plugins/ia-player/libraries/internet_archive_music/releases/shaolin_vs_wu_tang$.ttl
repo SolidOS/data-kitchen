@@ -1,0 +1,48 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Shaolin Vs. Wu Tang" ;
+    dct:identifier "shaolin-vs.-wu-tang" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/shaolin-vs.-wu-tang> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05> ;
+    foaf:maker "Raekwon", <urn:uuid:eb51a4a7-e79a-43e7-9337-d1b7a1c04292> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Molasses (ft. Rick Ross & Ghostface Killah)" ;
+    mo:duration "253" ;
+    mo:item <https://archive.org/download/shaolin-vs.-wu-tang/14%20-%20Raekwon%20-%20Molasses%20(ft.%20Rick%20Ross%20%26%20Ghostface%20Killah).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Masters Of Our Fate (ft. Black Thought)" ;
+    mo:duration "202" ;
+    mo:item <https://archive.org/download/shaolin-vs.-wu-tang/16%20-%20Raekwon%20-%20Masters%20Of%20Our%20Fate%20(ft.%20Black%20Thought).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Rich And Black (ft. Nas)" ;
+    mo:duration "215" ;
+    mo:item <https://archive.org/download/shaolin-vs.-wu-tang/09%20-%20Raekwon%20-%20Rich%20And%20Black%20(ft.%20Nas).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Chop Chop Ninja (ft. Inspectah Deck & Estelle)" ;
+    mo:duration "264" ;
+    mo:item <https://archive.org/download/shaolin-vs.-wu-tang/04%20-%20Raekwon%20-%20Chop%20Chop%20Ninja%20(ft.%20Inspectah%20Deck%20%26%20Estelle).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Rock N Roll (ft. Ghostface Killah & Jim Jones)" ;
+    mo:duration "340" ;
+    mo:item <https://archive.org/download/shaolin-vs.-wu-tang/08%20-%20Raekwon%20-%20Rock%20N%20Roll%20(ft.%20Ghostface%20Killah%20%26%20Jim%20Jones).mp3> ;
+    dct:isPartOf <#it> .

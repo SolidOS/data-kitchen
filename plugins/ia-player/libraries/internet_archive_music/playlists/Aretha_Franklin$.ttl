@@ -1,0 +1,139 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+
+<>
+    a schema:ItemList, schema:MusicPlaylist, dcat:Dataset ;
+    dct:title "Aretha Franklin" ;
+    dct:isPartOf <../playlists.ttl#it> ;
+    schema:itemListOrder schema:ItemListOrderAscending ;
+    foaf:maker "jeffz" ;
+    oa:styleClass "hidden" ;
+    schema:itemListElement <#e01>, <#e02>, <#e03>, <#e04>, <#e05>, <#e06>, <#e07>, <#e08>, <#e09>, <#e10>, <#e11>, <#e12>, <#e13>, <#e14>, <#e15>, <#e16>, <#e17>, <#e18>, <#e19>, <#e20>, <#e21>, <#e22>, <#e23>, <#e24>, <#e25> .
+
+<#e01>
+    a schema:ListItem ;
+    schema:position 1 ;
+    schema:item <../releases/i_never_loved_a_man_the_way_i_love_you_aretha_franklin#t01> .
+
+<#e02>
+    a schema:ListItem ;
+    schema:position 2 ;
+    schema:item <../releases/afblues#t01> .
+
+<#e03>
+    a schema:ListItem ;
+    schema:position 3 ;
+    schema:item <../releases/afzoominacapella#t01> .
+
+<#e04>
+    a schema:ListItem ;
+    schema:position 4 ;
+    schema:item <../releases/afnoway#t01> .
+
+<#e05>
+    a schema:ListItem ;
+    schema:position 5 ;
+    schema:item <../releases/this_girl_s_in_love_with_you#t01> .
+
+<#e06>
+    a schema:ListItem ;
+    schema:position 6 ;
+    schema:item <../releases/this_girl_s_in_love_with_you#t02> .
+
+<#e07>
+    a schema:ListItem ;
+    schema:position 7 ;
+    schema:item <../releases/great_moments_in_american_music#t01> .
+
+<#e08>
+    a schema:ListItem ;
+    schema:position 8 ;
+    schema:item <../releases/great_moments_in_american_music#t02> .
+
+<#e09>
+    a schema:ListItem ;
+    schema:position 9 ;
+    schema:item <../releases/great_moments_in_american_music#t03> .
+
+<#e10>
+    a schema:ListItem ;
+    schema:position 10 ;
+    schema:item <../releases/great_moments_in_american_music#t04> .
+
+<#e11>
+    a schema:ListItem ;
+    schema:position 11 ;
+    schema:item <../releases/i_never_loved_a_man_the_way_i_love_you_aretha_franklin#t02> .
+
+<#e12>
+    a schema:ListItem ;
+    schema:position 12 ;
+    schema:item <../releases/i_never_loved_a_man_the_way_i_love_you_aretha_franklin#t03> .
+
+<#e13>
+    a schema:ListItem ;
+    schema:position 13 ;
+    schema:item <../releases/i_never_loved_a_man_the_way_i_love_you_aretha_franklin#t04> .
+
+<#e14>
+    a schema:ListItem ;
+    schema:position 14 ;
+    schema:item <../releases/i_never_loved_a_man_the_way_i_love_you_aretha_franklin#t05> .
+
+<#e15>
+    a schema:ListItem ;
+    schema:position 15 ;
+    schema:item <../releases/bpl_franklin_aretha_1991#t01> .
+
+<#e16>
+    a schema:ListItem ;
+    schema:position 16 ;
+    schema:item <../releases/bpl_franklin_aretha_1995#t01> .
+
+<#e17>
+    a schema:ListItem ;
+    schema:position 17 ;
+    schema:item <../releases/musica_lenta_clasica#t01> .
+
+<#e18>
+    a schema:ListItem ;
+    schema:position 18 ;
+    schema:item <../releases/this_girl_s_in_love_with_you#t03> .
+
+<#e19>
+    a schema:ListItem ;
+    schema:position 19 ;
+    schema:item <../releases/reehurts#t01> .
+
+<#e20>
+    a schema:ListItem ;
+    schema:position 20 ;
+    schema:item <../releases/this_girl_s_in_love_with_you#t04> .
+
+<#e21>
+    a schema:ListItem ;
+    schema:position 21 ;
+    schema:item <../releases/great_moments_in_american_music#t05> .
+
+<#e22>
+    a schema:ListItem ;
+    schema:position 22 ;
+    schema:item <../releases/this_girl_s_in_love_with_you#t05> .
+
+<#e23>
+    a schema:ListItem ;
+    schema:position 23 ;
+    schema:item <../releases/this_girl_s_in_love_with_you#t06> .
+
+<#e24>
+    a schema:ListItem ;
+    schema:position 24 ;
+    schema:item <../releases/this_girl_s_in_love_with_you#t07> .
+
+<#e25>
+    a schema:ListItem ;
+    schema:position 25 ;
+    schema:item <../releases/this_girl_s_in_love_with_you#t08> .

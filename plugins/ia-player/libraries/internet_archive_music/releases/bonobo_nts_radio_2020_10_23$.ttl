@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Bonobo - NTS Radio 2020-10-23" ;
+    dct:identifier "3d-83-2412-4b-9e-a-9ab-7ca-6533ae-205" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/3d-83-2412-4b-9e-a-9ab-7ca-6533ae-205> ;
+    mo:track <#t01> ;
+    foaf:maker <urn:uuid:d55550bf-a4a7-4fb4-8f11-725209d29db0> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Bonobo - NTS Radio 2020-10-23" ;
+    mo:duration "7186" ;
+    mo:item <https://archive.org/download/3d-83-2412-4b-9e-a-9ab-7ca-6533ae-205/3d83-2412-4b9e-a9ab-7ca6533ae205.m4a> ;
+    dct:isPartOf <#it> .

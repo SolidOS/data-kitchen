@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Beat Konducta Vol. 5-6: A Tribute to… (Dil Cosby and Dil Withers Suite)" ;
+    dct:identifier "beat-konducta-vol.-5-6-a-tribute-to...-dil-cosby-and-dil-withers-suite-flac" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/beat-konducta-vol.-5-6-a-tribute-to...-dil-cosby-and-dil-withers-suite-flac> ;
+    mo:track <#t01> ;
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Never Front (Ears Up)" ;
+    mo:duration "263" ;
+    mo:item <https://archive.org/download/beat-konducta-vol.-5-6-a-tribute-to...-dil-cosby-and-dil-withers-suite-flac/34.%20Madlib%20-%20Never%20Front%20(Ears%20Up).mp3> ;
+    dct:isPartOf <#it> .

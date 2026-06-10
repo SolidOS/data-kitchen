@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Autechre Live at [unknown] on 2001-04-01" ;
+    dct:identifier "Autechre2001-04-01" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/Autechre2001-04-01> ;
+    mo:track <#t01> ;
+    foaf:maker <urn:uuid:7a4257ca-fd8c-4010-9e46-b307cc43af66> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Autechre - 2001-04-01 Germany-Cologne - 3" ;
+    mo:duration "907" ;
+    mo:item <https://archive.org/download/Autechre2001-04-01/Autechre-2001-04-01Germany-cologne-3.mp3> ;
+    dct:isPartOf <#it> .

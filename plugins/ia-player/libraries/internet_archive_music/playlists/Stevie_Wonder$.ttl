@@ -1,0 +1,254 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+
+<>
+    a schema:ItemList, schema:MusicPlaylist, dcat:Dataset ;
+    dct:title "Stevie Wonder" ;
+    dct:isPartOf <../playlists.ttl#it> ;
+    schema:itemListOrder schema:ItemListOrderAscending ;
+    foaf:maker "jeffz" ;
+    oa:styleClass "hidden" ;
+    schema:itemListElement <#e01>, <#e02>, <#e03>, <#e04>, <#e05>, <#e06>, <#e07>, <#e08>, <#e09>, <#e10>, <#e11>, <#e12>, <#e13>, <#e14>, <#e15>, <#e16>, <#e17>, <#e18>, <#e19>, <#e20>, <#e21>, <#e22>, <#e23>, <#e24>, <#e25>, <#e26>, <#e27>, <#e28>, <#e29>, <#e30>, <#e31>, <#e32>, <#e33>, <#e34>, <#e35>, <#e36>, <#e37>, <#e38>, <#e39>, <#e40>, <#e41>, <#e42>, <#e43>, <#e44>, <#e45>, <#e46>, <#e47>, <#e48> .
+
+<#e01>
+    a schema:ListItem ;
+    schema:position 1 ;
+    schema:item <../releases/stevie_wonder#t01> .
+
+<#e02>
+    a schema:ListItem ;
+    schema:position 2 ;
+    schema:item <../releases/stevie_wonder#t02> .
+
+<#e03>
+    a schema:ListItem ;
+    schema:position 3 ;
+    schema:item <../releases/stevie_wonder#t03> .
+
+<#e04>
+    a schema:ListItem ;
+    schema:position 4 ;
+    schema:item <../releases/stevie_wonder#t04> .
+
+<#e05>
+    a schema:ListItem ;
+    schema:position 5 ;
+    schema:item <../releases/stevie_wonder#t05> .
+
+<#e06>
+    a schema:ListItem ;
+    schema:position 6 ;
+    schema:item <../releases/stevie_wonder#t06> .
+
+<#e07>
+    a schema:ListItem ;
+    schema:position 7 ;
+    schema:item <../releases/stevie_wonder#t07> .
+
+<#e08>
+    a schema:ListItem ;
+    schema:position 8 ;
+    schema:item <../releases/stevie_wonder#t08> .
+
+<#e09>
+    a schema:ListItem ;
+    schema:position 9 ;
+    schema:item <../releases/stevie_wonder#t09> .
+
+<#e10>
+    a schema:ListItem ;
+    schema:position 10 ;
+    schema:item <../releases/stevie_wonder#t10> .
+
+<#e11>
+    a schema:ListItem ;
+    schema:position 11 ;
+    schema:item <../releases/stevie_wonder#t11> .
+
+<#e12>
+    a schema:ListItem ;
+    schema:position 12 ;
+    schema:item <../releases/stevie_wonder#t12> .
+
+<#e13>
+    a schema:ListItem ;
+    schema:position 13 ;
+    schema:item <../releases/stevie_wonder#t13> .
+
+<#e14>
+    a schema:ListItem ;
+    schema:position 14 ;
+    schema:item <../releases/stevie_wonder#t14> .
+
+<#e15>
+    a schema:ListItem ;
+    schema:position 15 ;
+    schema:item <../releases/stevie_wonder#t15> .
+
+<#e16>
+    a schema:ListItem ;
+    schema:position 16 ;
+    schema:item <../releases/stevie_wonder#t16> .
+
+<#e17>
+    a schema:ListItem ;
+    schema:position 17 ;
+    schema:item <../releases/stevie_wonder#t17> .
+
+<#e18>
+    a schema:ListItem ;
+    schema:position 18 ;
+    schema:item <../releases/stevie_wonder#t18> .
+
+<#e19>
+    a schema:ListItem ;
+    schema:position 19 ;
+    schema:item <../releases/stevie_wonder#t19> .
+
+<#e20>
+    a schema:ListItem ;
+    schema:position 20 ;
+    schema:item <../releases/stevie_wonder#t20> .
+
+<#e21>
+    a schema:ListItem ;
+    schema:position 21 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t01> .
+
+<#e22>
+    a schema:ListItem ;
+    schema:position 22 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t02> .
+
+<#e23>
+    a schema:ListItem ;
+    schema:position 23 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t03> .
+
+<#e24>
+    a schema:ListItem ;
+    schema:position 24 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t04> .
+
+<#e25>
+    a schema:ListItem ;
+    schema:position 25 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t05> .
+
+<#e26>
+    a schema:ListItem ;
+    schema:position 26 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t06> .
+
+<#e27>
+    a schema:ListItem ;
+    schema:position 27 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t07> .
+
+<#e28>
+    a schema:ListItem ;
+    schema:position 28 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t08> .
+
+<#e29>
+    a schema:ListItem ;
+    schema:position 29 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t09> .
+
+<#e30>
+    a schema:ListItem ;
+    schema:position 30 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t10> .
+
+<#e31>
+    a schema:ListItem ;
+    schema:position 31 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t11> .
+
+<#e32>
+    a schema:ListItem ;
+    schema:position 32 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t12> .
+
+<#e33>
+    a schema:ListItem ;
+    schema:position 33 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t13> .
+
+<#e34>
+    a schema:ListItem ;
+    schema:position 34 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t14> .
+
+<#e35>
+    a schema:ListItem ;
+    schema:position 35 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t15> .
+
+<#e36>
+    a schema:ListItem ;
+    schema:position 36 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t16> .
+
+<#e37>
+    a schema:ListItem ;
+    schema:position 37 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t17> .
+
+<#e38>
+    a schema:ListItem ;
+    schema:position 38 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t18> .
+
+<#e39>
+    a schema:ListItem ;
+    schema:position 39 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t19> .
+
+<#e40>
+    a schema:ListItem ;
+    schema:position 40 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t20> .
+
+<#e41>
+    a schema:ListItem ;
+    schema:position 41 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t21> .
+
+<#e42>
+    a schema:ListItem ;
+    schema:position 42 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t22> .
+
+<#e43>
+    a schema:ListItem ;
+    schema:position 43 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t23> .
+
+<#e44>
+    a schema:ListItem ;
+    schema:position 44 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t24> .
+
+<#e45>
+    a schema:ListItem ;
+    schema:position 45 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t25> .
+
+<#e46>
+    a schema:ListItem ;
+    schema:position 46 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t26> .
+
+<#e47>
+    a schema:ListItem ;
+    schema:position 47 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t27> .
+
+<#e48>
+    a schema:ListItem ;
+    schema:position 48 ;
+    schema:item <../releases/the_definitive_collection_cd_rip#t28> .

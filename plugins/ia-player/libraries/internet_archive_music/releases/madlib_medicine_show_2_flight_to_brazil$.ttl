@@ -1,0 +1,76 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Madlib Medicine Show #2 - Flight To Brazil" ;
+    dct:identifier "madlib-medicine-show-2-flight-to-brazil-flac" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/madlib-medicine-show-2-flight-to-brazil-flac> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09> ;
+    foaf:maker <urn:uuid:fc2e1fcc-16ed-4c7a-9b90-d8c483fae21a> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Flight To Brazil 1" ;
+    mo:duration "733" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/01%20-%20Rio%20de%20Janeiro.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Flight To Brazil 2" ;
+    mo:duration "423" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/02%20-%20Sao%20Paulo.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Flight To Brazil 3" ;
+    mo:duration "494" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/03%20-%20Belo%20Horizonte.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Flight To Brazil 4" ;
+    mo:duration "342" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/04%20-%20Porto%20Alegre.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Flight To Brazil 5" ;
+    mo:duration "445" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/05%20-%20Salvador.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Flight To Brazil 6" ;
+    mo:duration "764" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/06%20-%20Recife.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "Flight To Brazil 7" ;
+    mo:duration "670" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/07%20-%20Fortaleza.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Flight To Brazil 8" ;
+    mo:duration "572" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/08%20-%20Bras%C3%ADlia.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t09>
+    a mo:Track ;
+    dct:title "Flight To Brazil 9" ;
+    mo:duration "334" ;
+    mo:item <https://archive.org/download/madlib-medicine-show-2-flight-to-brazil-flac/09%20-%20Curitiba.mp3> ;
+    dct:isPartOf <#it> .

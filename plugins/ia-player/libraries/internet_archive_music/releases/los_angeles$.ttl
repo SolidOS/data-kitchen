@@ -1,0 +1,69 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Los Angeles" ;
+    dct:identifier "flying-lotus-los-angeles_202601" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/flying-lotus-los-angeles_202601> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08> ;
+    foaf:maker "Flying Lotus" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Breathe . Something/Stellar STar" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/flying-lotus-los-angeles_202601/02.%20Flying%20Lotus%20-%20Breathe%20.%20Something%20Stellar%20STar%20(2008).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "Comet Course" ;
+    mo:duration "181" ;
+    mo:item <https://archive.org/download/flying-lotus-los-angeles_202601/06.%20Flying%20Lotus%20-%20Comet%20Course%20(2008).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Golden Diva" ;
+    mo:duration "242" ;
+    mo:item <https://archive.org/download/flying-lotus-los-angeles_202601/08.%20Flying%20Lotus%20-%20Golden%20Diva%20(2008).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "Riot" ;
+    mo:duration "242" ;
+    mo:item <https://archive.org/download/flying-lotus-los-angeles_202601/09.%20Flying%20Lotus%20-%20Riot%20(2008).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "GNG BNG" ;
+    mo:duration "220" ;
+    mo:item <https://archive.org/download/flying-lotus-los-angeles_202601/10.%20Flying%20Lotus%20-%20GNG%20BNG%20(2008).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t06>
+    a mo:Track ;
+    dct:title "Parisian Goldfish" ;
+    mo:duration "181" ;
+    mo:item <https://archive.org/download/flying-lotus-los-angeles_202601/11.%20Flying%20Lotus%20-%20Parisian%20Goldfish%20(2008).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t07>
+    a mo:Track ;
+    dct:title "RobertaFlack ft. Ahu" ;
+    mo:duration "187" ;
+    mo:item <https://archive.org/download/flying-lotus-los-angeles_202601/13.%20Flying%20Lotus%20-%20RobertaFlack%20ft.%20Ahu%20(2008).mp3> ;
+    dct:isPartOf <#it> .
+
+<#t08>
+    a mo:Track ;
+    dct:title "Backpack Caviar" ;
+    mo:duration "200" ;
+    mo:item <https://archive.org/download/flying-lotus-los-angeles_202601/19.%20Flying%20Lotus%20-%20Backpack%20Caviar%20(2008).mp3> ;
+    dct:isPartOf <#it> .

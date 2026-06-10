@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Careless love blues" ;
+    dct:identifier "bessie-smith-careless-love-blues" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/bessie-smith-careless-love-blues> ;
+    mo:track <#t01> ;
+    foaf:maker "Bessie Smith" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Bessie Smith - Careless love blues" ;
+    mo:duration "210" ;
+    mo:item <https://archive.org/download/bessie-smith-careless-love-blues/Bessie%20Smith%20-%20Careless%20love%20blues.mp3> ;
+    dct:isPartOf <#it> .

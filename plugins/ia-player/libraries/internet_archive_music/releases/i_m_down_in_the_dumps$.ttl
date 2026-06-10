@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "I'm down in the dumps" ;
+    dct:identifier "bessie-smith-im-down-in-the-dumps" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/bessie-smith-im-down-in-the-dumps> ;
+    mo:track <#t01> ;
+    foaf:maker "Bessie Smith" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Bessie Smith - I'm down in the dumps" ;
+    mo:duration "193" ;
+    mo:item <https://archive.org/download/bessie-smith-im-down-in-the-dumps/Bessie%20Smith%20-%20I'm%20down%20in%20the%20dumps.mp3> ;
+    dct:isPartOf <#it> .

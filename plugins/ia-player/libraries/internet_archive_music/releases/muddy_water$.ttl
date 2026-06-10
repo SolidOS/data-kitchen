@@ -1,0 +1,20 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "Muddy water" ;
+    dct:identifier "78_muddy-water-bessie-smith-her-blue-boys-de-rose-richman" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/78_muddy-water-bessie-smith-her-blue-boys-de-rose-richman> ;
+    mo:track <#t01> ;
+    foaf:maker "Bessie Smith & her blue boys" .
+
+<#t01>
+    a mo:Track ;
+    dct:title "30164 Muddy water" ;
+    mo:duration "184" ;
+    mo:item <https://archive.org/download/78_muddy-water-bessie-smith-her-blue-boys-de-rose-richman/30164%20Muddy%20water.mp3> ;
+    dct:isPartOf <#it> .

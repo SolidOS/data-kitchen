@@ -1,0 +1,48 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#it>
+    a mo:Release, dcat:Dataset ;
+    dct:title "\"Stay True\" Demo Cassette (Side A ONLY)" ;
+    dct:identifier "stay-true" ;
+    dct:isPartOf <../releases.ttl#it> ;
+    dcat:landingPage <https://archive.org/details/stay-true> ;
+    mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05> ;
+    foaf:maker "2Pac", <urn:uuid:2810c76f-04ca-412c-b7ae-22801c59cf2d>, <urn:uuid:98d897c7-8634-44f1-b3e5-f59b409a9e40>, <urn:uuid:c030a1db-0599-441e-9345-7780fd5afee3> .
+
+<#t01>
+    a mo:Track ;
+    dct:title "Fuck All Y'all" ;
+    mo:duration "249" ;
+    mo:item <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA09.%20Fuck%20All%20Y'all.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t02>
+    a mo:Track ;
+    dct:title "It Ain't Easy" ;
+    mo:duration "305" ;
+    mo:item <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA04.%20It%20Ain't%20Easy.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t03>
+    a mo:Track ;
+    dct:title "Temptations" ;
+    mo:duration "308" ;
+    mo:item <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA05.%20Temptations.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t04>
+    a mo:Track ;
+    dct:title "AmeriKKKa Eats Its Young" ;
+    mo:duration "359" ;
+    mo:item <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA10.%20AmeriKKKa%20Eats%20Its%20Young.mp3> ;
+    dct:isPartOf <#it> .
+
+<#t05>
+    a mo:Track ;
+    dct:title "Stay True" ;
+    mo:duration "188" ;
+    mo:item <https://archive.org/download/stay-true/(1994)%20Stay%20True%20(Demo%20Tape)%20%5BFLAC%5D%2FA11.%20Stay%20True.mp3> ;
+    dct:isPartOf <#it> .

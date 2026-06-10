@@ -1,0 +1,54 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+
+<>
+    a schema:ItemList, schema:MusicPlaylist, dcat:Dataset ;
+    dct:title "The Persuasions" ;
+    dct:isPartOf <../playlists.ttl#it> ;
+    schema:itemListOrder schema:ItemListOrderAscending ;
+    foaf:maker "jeffz" ;
+    oa:styleClass "hidden" ;
+    schema:itemListElement <#e01>, <#e02>, <#e03>, <#e04>, <#e05>, <#e06>, <#e07>, <#e08> .
+
+<#e01>
+    a schema:ListItem ;
+    schema:position 1 ;
+    schema:item <../releases/2017_04_21_the_persuasions_live_at_hart_theater_at_the_egg#t01> .
+
+<#e02>
+    a schema:ListItem ;
+    schema:position 2 ;
+    schema:item <../releases/2017_04_21_the_persuasions_live_at_hart_theater_at_the_egg#t02> .
+
+<#e03>
+    a schema:ListItem ;
+    schema:position 3 ;
+    schema:item <../releases/2017_04_21_the_persuasions_live_at_hart_theater_at_the_egg#t03> .
+
+<#e04>
+    a schema:ListItem ;
+    schema:position 4 ;
+    schema:item <../releases/2017_04_21_the_persuasions_live_at_hart_theater_at_the_egg#t04> .
+
+<#e05>
+    a schema:ListItem ;
+    schema:position 5 ;
+    schema:item <../releases/2017_04_21_the_persuasions_live_at_hart_theater_at_the_egg#t05> .
+
+<#e06>
+    a schema:ListItem ;
+    schema:position 6 ;
+    schema:item <../releases/2017_04_21_the_persuasions_live_at_hart_theater_at_the_egg#t06> .
+
+<#e07>
+    a schema:ListItem ;
+    schema:position 7 ;
+    schema:item <../releases/2017_04_21_the_persuasions_live_at_hart_theater_at_the_egg#t07> .
+
+<#e08>
+    a schema:ListItem ;
+    schema:position 8 ;
+    schema:item <../releases/2017_04_21_the_persuasions_live_at_hart_theater_at_the_egg#t08> .

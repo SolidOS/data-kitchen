@@ -1,0 +1,1828 @@
+/* =====================================================================
+   Theme variables — override these in your page CSS (or via a higher-
+   specificity selector) to retheme the player without touching the rest
+   of the stylesheet.
+   ===================================================================== */
+
+/* =====================================================================
+   THEME ARCHITECTURE — "two rooms, one building".
+   Every surface/text/border token is DERIVED (color-mix) from four room
+   inputs: --ia-base (surface), --ia-ink (text), --ia-accent, --ia-on-accent,
+   plus two theme inputs: --ia-lift (elevation tint) / --ia-hover (interaction
+   tint). So a whole theme or per-library mood is just a handful of vars.
+     • Theme  → :root (dark) and [data-theme="light"].
+     • Room   → .media-audio (warm/amber) and .media-video (cool/cyan),
+                each refined again under light mode.
+   The derived set is declared on BOTH :root (the neutral page/tab "hallway")
+   and .ia-player-app, so each computes from its OWN base (var() substitution
+   is per-element — a single :root copy would NOT pick up the room override).
+   ===================================================================== */
+
+/* ---- Theme inputs + fonts + geometry (DARK is the default) ---------- */
+:root {
+  color-scheme: dark;
+
+  --ia-font-display: ui-serif, Georgia, "Times New Roman", serif;
+  --ia-font-body:    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ia-font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* elevation lightens toward white; interaction also lightens (dark) */
+  --ia-lift:  #ffffff;
+  --ia-hover: #ffffff;
+  --ia-sink:  #000000;
+
+  /* neutral "hallway" room (page bg, tab bar) */
+  --ia-base:      #121317;
+  --ia-ink:       #e8e8ec;
+  --ia-accent:    #c79248;
+  --ia-on-accent: #15100a;
+
+  /* fixed (theme-independent) */
+  --ia-star:               #ffcc33;
+  --ia-error:              #ff5a4d;
+  --ia-error-soft:         #ff7a70;
+
+  --ia-radius-sm:          5px;
+  --ia-radius:             8px;
+  --ia-radius-lg:          12px;
+  --ia-sources-width:      260px;
+  /* Default browse-cascade height ≈ ⅓ of the screen (genre/artist/album or
+     their movie equivs on top, tracklist below). A saved drag overrides it
+     with a px value via restoreState. */
+  --ia-browser-height:     33vh;
+
+  --ia-overlay:            color-mix(in srgb, var(--ia-base) 18%, transparent);
+  --ia-overlay-strong:     color-mix(in srgb, var(--ia-base) 30%, transparent);
+  --ia-shadow-menu:        0 10px 28px -8px rgba(0,0,0,0.55);
+  --ia-shadow-menu-strong: 0 14px 36px -10px rgba(0,0,0,0.65);
+
+  --ia-z-modal:                100;
+  --ia-modal-width:            500px;
+  --ia-modal-width-large:      1100px;
+  --ia-modal-gutter:           40px;
+  --ia-modal-gutter-large:     60px;
+  --ia-modal-max-height:       85vh;
+  --ia-modal-max-height-large: 90vh;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --ia-lift:  #ffffff;   /* cards lift to white above the paper bg */
+  --ia-hover: #1b1712;   /* interaction DARKENS on a light surface */
+  --ia-sink:  #000000;
+  --ia-base:      #efe9dd;
+  --ia-ink:       #2a2620;
+  --ia-accent:    #b5651d;
+  --ia-on-accent: #ffffff;
+}
+
+/* ---- Room inputs (the two media moods) ----------------------------- */
+.ia-player-app.media-audio { --ia-base:#15110c; --ia-ink:#efe6d8; --ia-accent:#f0a23a; --ia-on-accent:#1b1206; }
+.ia-player-app.media-video { --ia-base:#0a0d12; --ia-ink:#dde7ef; --ia-accent:#49c8d8; --ia-on-accent:#06161a; }
+[data-theme="light"] .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
+[data-theme="light"] .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
+
+/* ---- Derived tokens — computed per element from its own inputs ------ */
+:root, .ia-player-app {
+  /* Surfaces */
+  --ia-bg:                 var(--ia-base);
+  --ia-bg-app:             color-mix(in srgb, var(--ia-base) 96%, var(--ia-lift));
+  --ia-bg-panel:           color-mix(in srgb, var(--ia-base) 92%, var(--ia-lift));
+  --ia-bg-panel-strong:    color-mix(in srgb, var(--ia-base) 89%, var(--ia-lift));
+  --ia-bg-elev:            color-mix(in srgb, var(--ia-base) 90%, var(--ia-lift));
+  --ia-bg-elev-2:          color-mix(in srgb, var(--ia-base) 85%, var(--ia-lift));
+  --ia-bg-row-alt:         color-mix(in srgb, var(--ia-base) 97%, var(--ia-sink));
+  --ia-bg-row-hover:       color-mix(in srgb, var(--ia-base) 90%, var(--ia-hover));
+  --ia-bg-row-focus:       color-mix(in srgb, var(--ia-base) 84%, var(--ia-hover));
+  --ia-bg-row-selected:    color-mix(in srgb, var(--ia-base) 70%, var(--ia-accent));
+  --ia-bg-row-playing:     color-mix(in srgb, var(--ia-base) 82%, var(--ia-accent));
+  --ia-bg-row-playing-sel: color-mix(in srgb, var(--ia-base) 60%, var(--ia-accent));
+  --ia-bg-btn:             color-mix(in srgb, var(--ia-base) 87%, var(--ia-lift));
+  --ia-bg-btn-hover:       color-mix(in srgb, var(--ia-base) 78%, var(--ia-hover));
+  --ia-bg-menu-hover:      color-mix(in srgb, var(--ia-base) 84%, var(--ia-hover));
+  --ia-bg-section:         color-mix(in srgb, var(--ia-base) 98%, var(--ia-sink));
+  --ia-bg-section-hover:   color-mix(in srgb, var(--ia-base) 88%, var(--ia-hover));
+  --ia-bg-drop:            color-mix(in srgb, var(--ia-base) 78%, var(--ia-accent));
+  --ia-bg-danger:          color-mix(in srgb, var(--ia-base) 80%, var(--ia-error));
+
+  /* Borders */
+  --ia-border:             color-mix(in srgb, var(--ia-base) 84%, var(--ia-hover));
+  --ia-border-strong:      color-mix(in srgb, var(--ia-base) 74%, var(--ia-hover));
+  --ia-border-btn:         color-mix(in srgb, var(--ia-base) 78%, var(--ia-hover));
+
+  /* Text */
+  --ia-text:               color-mix(in srgb, var(--ia-ink) 90%, var(--ia-base));
+  --ia-text-strong:        var(--ia-ink);
+  --ia-text-soft:          color-mix(in srgb, var(--ia-ink) 80%, var(--ia-base));
+  --ia-text-muted:         color-mix(in srgb, var(--ia-ink) 80%, var(--ia-base));
+  --ia-text-dim:           color-mix(in srgb, var(--ia-ink) 66%, var(--ia-base));
+  --ia-text-faint:         color-mix(in srgb, var(--ia-ink) 56%, var(--ia-base));
+  --ia-text-fainter:       color-mix(in srgb, var(--ia-ink) 46%, var(--ia-base));
+  --ia-text-disabled:      color-mix(in srgb, var(--ia-ink) 46%, var(--ia-base));
+  --ia-text-placeholder:   color-mix(in srgb, var(--ia-ink) 38%, var(--ia-base));
+
+  /* Accent family + atmosphere */
+  --ia-accent-hover:       color-mix(in srgb, var(--ia-accent) 84%, var(--ia-lift));
+  --ia-accent-soft:        color-mix(in srgb, var(--ia-accent) 64%, var(--ia-lift));
+  --ia-accent-pale:        color-mix(in srgb, var(--ia-accent) 44%, var(--ia-lift));
+  --ia-accent-glow:        color-mix(in srgb, var(--ia-accent) 38%, transparent);
+  --ia-glow:               color-mix(in srgb, var(--ia-accent) 20%, transparent);
+}
+
+/* ---- Text size (root font-size drives all rem-based type) ----------- */
+:root[data-fontsize="small"]  { font-size: 16px; }
+:root[data-fontsize="medium"] { font-size: 20px; }   /* default */
+:root[data-fontsize="large"]  { font-size: 24px; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--ia-font-body);
+  background: var(--ia-bg);
+  color: var(--ia-text-strong);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+ia-player {
+  display: block;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Themed, tactile scrollbars. */
+* { scrollbar-width: thin; scrollbar-color: var(--ia-border-strong) transparent; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-thumb {
+  background: var(--ia-border-strong);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ia-accent-soft); background-clip: padding-box; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Cohesive accent focus ring across the whole app. */
+.ia-player-app :focus-visible {
+  outline: 2px solid var(--ia-accent);
+  outline-offset: 2px;
+  border-radius: var(--ia-radius-sm);
+}
+
+/* ====== Rhythmbox-style desktop player layout ===================== */
+
+.ia-player-app {
+  display: grid;
+  grid-template-columns: var(--ia-sources-width) 1fr;
+  /* minmax(0,…) so the browser cascade AND the tracklist can shrink
+     instead of forcing the whole app taller than the viewport (which
+     pushed the status bar — and now-playing — below the fold). */
+  grid-template-rows: auto auto minmax(0, var(--ia-browser-height)) minmax(0, 1fr) auto;
+  grid-template-areas:
+    "toolbar    toolbar"
+    "nowplaying nowplaying"
+    "sources    browser"
+    "sources    tracklist"
+    "status     status";
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;   /* positioning context for the .ia-notice banner */
+  background: var(--ia-bg-app);
+  color: var(--ia-text);
+  font-family: var(--ia-font-body);
+  font-size: 0.92rem;
+  /* Cross-fade theme + library switches. */
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ia-player-app { transition: none; }
+}
+
+/* When the user is on a source that has no browser (Favorites or a saved
+   playlist), hide the browser columns and let the tracklist take the
+   full content area. */
+.ia-player-app.source-no-browser .ia-browser { display: none; }
+.ia-player-app.source-no-browser {
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "toolbar    toolbar"
+    "nowplaying nowplaying"
+    "sources    tracklist"
+    "status     status";
+}
+
+.ia-audio { display: none; }
+
+/* Prominent, dismissible notice banner — used when media can't play (a quiet
+   status-bar line is too easy to miss). Centred near the top of the panel,
+   over everything, with a warning colour. Auto-dismisses unless sticky. */
+.ia-notice {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  max-width: min(560px, 92%);
+  padding: .75em 1.05em;
+  border-radius: 11px;
+  border: 1px solid color-mix(in srgb, var(--ia-error, #ff5a4d) 70%, #000);
+  background: var(--ia-error, #ff5a4d);
+  color: #fff;
+  font-size: .96rem;
+  font-weight: 600;
+  line-height: 1.35;
+  box-shadow: 0 14px 40px -10px rgba(0, 0, 0, .6);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* Quick fade-IN, gentle fade-OUT so the auto-dismiss reads as a fade. */
+  transition: opacity .45s ease, transform .45s ease, visibility .45s;
+}
+.ia-notice.show {
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+}
+.ia-notice.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+.ia-notice-icon { font-size: 1.2rem; line-height: 1; flex: 0 0 auto; }
+.ia-notice-msg { flex: 1 1 auto; }
+.ia-notice-close {
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+  opacity: .85;
+  padding: 0 .1em;
+}
+.ia-notice-close:hover,
+.ia-notice-close:focus-visible { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .ia-notice { transition: opacity .22s ease; } }
+
+/* --- Video (movies) layout --------------------------------------- */
+/* Movies have NO file list: clicking a film plays its best version
+   straight into a large <video> that fills the bottom (the `player` row).
+   Keyed off .media-video set by createPlayerUI for a
+   `dct:type dctype:MovingImage` library. */
+.ia-player-app.media-video {
+  grid-template-rows: auto auto minmax(0, var(--ia-browser-height)) minmax(0, 1fr) auto;
+  grid-template-areas:
+    "toolbar    toolbar"
+    "nowplaying nowplaying"
+    "sources    browser"
+    "sources    player"
+    "status     status";
+}
+.ia-player-app.media-video.source-no-browser {
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "toolbar    toolbar"
+    "nowplaying nowplaying"
+    "sources    player"
+    "status     status";
+}
+/* No tracklist (title/artist rows) in the movies panel — only the banner
+   and the playing film. */
+.ia-player-app.media-video .ia-tracklist-wrap { display: none; }
+/* …except the Favorites view, where the communal films DO list. There's no
+   one-film-at-a-time `tracklist` row in the movies grid, so surface the list
+   in the `player` cell. A clicked film then plays in the <video>, which sits
+   later in the DOM (same cell) and paints over the list. */
+.ia-player-app.media-video.source-favorites .ia-tracklist-wrap {
+  display: block;
+  grid-area: player;
+}
+/* The <video> fills the player area, letterboxed on black — but only once
+   a movie is actually loaded (Req 4): an idle movies screen shows no
+   black box, just the empty player area. */
+.ia-player-app.media-video .ia-video { display: none; }
+.ia-player-app.media-video.has-video .ia-video {
+  grid-area: player;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: #000;
+  object-fit: contain;
+}
+
+/* Film intro overlay — stacked in the same `player` grid cell, on top of
+   the <video>, when a film is selected but not yet started. Clicking it
+   hides it and starts playback. */
+.ia-film-intro { display: none; }
+.ia-player-app.media-video.film-intro .ia-film-intro {
+  grid-area: player;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, .82);
+  cursor: pointer;
+  text-align: center;
+}
+.ia-film-intro-card {
+  position: relative;
+  max-width: 38rem;
+  color: #fff;
+  font-family: var(--ia-font-body, system-ui, sans-serif);
+}
+.ia-film-intro-title {
+  margin: 0 0 .4rem;
+  font-family: var(--ia-font-display, Georgia, serif);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #fff;
+}
+.ia-film-intro-length { margin: 0 0 1rem; font-size: 1rem; color: #cdd6df; }
+.ia-film-intro-length:empty { display: none; }
+.ia-film-intro-about { margin: 0 0 1.4rem; font-size: 1rem; color: #e6edf3; }
+.ia-film-intro-about:empty { display: none; }
+.ia-film-intro-about a { color: var(--ia-accent, #49c8d8); }
+.ia-film-intro-rights { margin: 0 0 1rem; font-size: .9rem; color: #aeb9c4; }
+.ia-film-intro-rights:empty { display: none; }
+.ia-film-intro-hint { margin: 0; font-size: .92rem; font-style: italic; color: #aeb9c4; }
+.ia-nowplaying .ia-np-rights { color: #aeb9c4; }
+
+/* --- Toolbar ----------------------------------------------------- */
+
+.ia-toolbar {
+  grid-area: toolbar;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: linear-gradient(var(--ia-bg-elev-2), var(--ia-bg-panel-strong));
+  border-bottom: 1px solid var(--ia-border);
+}
+
+.ia-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  background: var(--ia-bg-btn);
+  color: var(--ia-text);
+  border: 1px solid var(--ia-border-btn);
+  border-radius: 4px;
+  min-width: 44px;
+  padding: 3px 6px;
+  font-size: 0.95rem;
+  line-height: 1.1;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.ia-btn .ia-icon { font-size: 0.95rem; }
+.ia-btn .ia-blabel {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ia-text-disabled);
+  line-height: 1;
+}
+.ia-btn:hover,
+.ia-btn:focus-visible {
+  background: var(--ia-bg-btn-hover);
+  color: var(--ia-text-strong);
+  border-color: var(--ia-accent);
+  outline: none;
+}
+.ia-btn:hover .ia-blabel,
+.ia-btn:focus-visible .ia-blabel { color: var(--ia-text-strong); }
+.ia-btn.active {
+  background: var(--ia-accent);
+  color: var(--ia-on-accent);
+  border-color: var(--ia-accent);
+}
+.ia-btn.active .ia-blabel { color: var(--ia-on-accent); }
+
+.ia-play .ia-icon { font-size: 1.05rem; }
+
+.ia-seek-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.ia-seek {
+  flex: 1;
+  height: 4px;
+  cursor: pointer;
+  min-width: 0;
+}
+.ia-time {
+  color: var(--ia-text-dim);
+  font-family: var(--ia-font-mono);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ia-volume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ia-volume {
+  width: 80px;
+  cursor: pointer;
+}
+
+/* --- Artist search ----------------------------------------------- */
+
+.ia-artist-search { display: inline-flex; margin-left: auto; }
+.ia-artist-search-input {
+  width: 320px;
+  max-width: 40vw;
+  padding: 4px 8px;
+  font: inherit;
+  color: var(--ia-text);
+  background: var(--ia-bg);
+  border: 1px solid var(--ia-border);
+  border-radius: 4px;
+}
+.ia-artist-search-input:focus {
+  outline: none;
+  border-color: var(--ia-accent);
+}
+
+/* --- Gear menu --------------------------------------------------- */
+
+.gear-wrap { position: relative; display: inline-flex; }
+
+.gear-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 180px;
+  background: var(--ia-bg-elev);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: 6px;
+  padding: 4px;
+  z-index: 50;
+  box-shadow: var(--ia-shadow-menu);
+}
+.gear-menu .menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--ia-text);
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  height: auto;
+  min-width: 0;
+}
+.gear-menu .menu-item:hover,
+.gear-menu .menu-item:focus {
+  background: var(--ia-bg-btn);
+  color: var(--ia-text-strong);
+  outline: none;
+}
+
+/* Appearance: text-size is a single .gear-fontsize menu-item that cycles
+   Small → Medium → Large (the "A" icon resizes to show the current step). */
+.gear-fontsize .gear-fontsize-ico {
+  display: inline-block;
+  width: 1.1rem; text-align: center;
+  font-family: var(--ia-font-display);
+}
+
+/* Sol-login chip lives at the top of the gear menu. Visually distinct from
+   the .menu-item rows below — a small framed block that hosts the login
+   button / WebID popover. Not keyboard-nav'd by the menu's arrow handler
+   (sol-login owns its own focus). */
+.menu-item-sollogin {
+  display: block;
+  padding: 6px 8px 8px;
+  border-bottom: 1px solid var(--ia-border);
+  margin-bottom: 4px;
+}
+.menu-item-sollogin .ia-sol-login {
+  display: block;
+  width: 100%;
+}
+
+/* Menu button reflects real-session state (kitchen mode does NOT colour the
+   chip — it only opens up the affordances). Green accent + the WebID lands
+   in the title attribute (no visible label change — the ⋮ button stays
+   compact in the toolbar). */
+.ia-btn.manage-btn.logged-in {
+  background: var(--ia-bg-loggedin, #1f5a2c);
+  border-color: var(--ia-accent-green, #4caf50);
+  color: var(--ia-text-strong);
+}
+.ia-btn.manage-btn.logged-in:hover,
+.ia-btn.manage-btn.logged-in:focus-visible {
+  background: var(--ia-bg-loggedin-hover, #267237);
+  border-color: var(--ia-accent-green, #4caf50);
+}
+.ia-btn.manage-btn.logged-in .ia-icon { color: var(--ia-accent-green, #66d77a); }
+
+/* Guest mode (no real session, no kitchen flag): hide admin / pod / edit
+   affordances so anonymous visitors see a read-only player. Driven by
+   .guest-mode on .ia-player-app from applyAccessGating(). */
+.ia-player-app.guest-mode .gear-filters,
+.ia-player-app.guest-mode .gear-view-deleted,
+.ia-player-app.guest-mode .gear-install-pod,
+.ia-player-app.guest-mode .gear-update-app { display: none; }
+.ia-player-app.guest-mode .ia-add-source-btn { display: none; }
+/* Playlists are owner content now — guests can browse/listen but not
+   create or modify them (favouriting is the communal write surface instead). */
+.ia-player-app.guest-mode .ia-add-playlist-btn { display: none; }
+.ia-player-app.guest-mode .ia-sources-list .ia-row-kebab { display: none; }
+/* Add-genre / add-artist (= add-film-type / add-collection for movies) are
+   owner-only edits. Hide the whole column footer (border + padded strip), not
+   just the button, so guests don't see an empty bar. Footers exist only on the
+   genre + artist columns. */
+.ia-player-app.guest-mode .ia-column-footer { display: none; }
+/* Kebabs: hide everywhere EXCEPT in the Sources / Playlists list and the
+   tracklist (per-row track kebabs are inside the table, not a listbox).
+   Library + Genre + Artist listboxes lose their kebab in guest mode. */
+.ia-player-app.guest-mode .ia-libraries-list .ia-row-kebab,
+.ia-player-app.guest-mode [data-column="genre"] .ia-row-kebab,
+.ia-player-app.guest-mode [data-column="artist"] .ia-row-kebab { display: none; }
+
+/* Artist IA link: emitted on every artist row, but only DISPLAYED when
+   it would otherwise be the row's lone affordance — i.e. in guest mode,
+   where the artist kebab is hidden (no Rename/Delete/Convert for
+   guests). In logged-in / kitchen mode the kebab covers it (Visit /
+   Search archive.org lives as an item inside the kebab menu — see
+   openArtistEditMenu). Same dimensions as .ia-row-kebab so the row
+   layout stays stable. */
+.ia-row-ialink {
+  display: none;
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ia-text-dim);
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 0 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.ia-row-ialink:hover,
+.ia-row-ialink:focus-visible {
+  color: var(--ia-text-strong);
+  background: var(--ia-bg-btn);
+  outline: none;
+}
+.ia-player-app.guest-mode [data-column="artist"] .ia-row-ialink {
+  display: inline-flex;
+}
+
+/* --- Now-playing strip ------------------------------------------ */
+
+.ia-nowplaying {
+  grid-area: nowplaying;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 16px;
+  background:
+    linear-gradient(90deg, var(--ia-glow), transparent 40%),
+    var(--ia-bg-panel-strong);
+  border-bottom: 1px solid var(--ia-border);
+  min-height: 30px;
+}
+.ia-nowplaying-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--ia-text-strong);
+  font-family: var(--ia-font-display);
+  font-optical-sizing: auto;
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ia-nowplaying-text:empty::before {
+  content: 'Nothing playing yet.';
+  color: var(--ia-text-placeholder);
+  font-style: italic;
+  font-weight: 400;
+}
+/* Movies have no transport bar — hide the whole toolbar; the film-search is
+   moved (JS) onto the now-playing line's right. */
+.ia-player-app.media-video .ia-toolbar { display: none; }
+.ia-nowplaying .ia-artist-search { flex: 0 0 auto; margin-left: auto; }
+.ia-nowplaying .ia-artist-search-input {
+  width: 240px; max-width: 32vw;
+  font-family: var(--ia-font-body); font-size: 0.85rem; font-weight: 400;
+}
+.ia-nowplaying .ia-link {
+  color: var(--ia-accent);
+  text-decoration: none;
+  margin-left: 6px;
+  font-size: 0.85em;
+}
+.ia-nowplaying .ia-link:hover,
+.ia-nowplaying .ia-link:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* --- Sources sidebar -------------------------------------------- */
+
+.ia-sources {
+  grid-area: sources;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--ia-border);
+  background: var(--ia-bg-panel);
+  min-width: 0;
+  overflow: hidden;
+}
+/* Drag handle on the sources column's right edge — resizes the grid's
+   first track by setting --ia-sources-width on .ia-player-app. */
+.ia-sources-resize {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 5;
+}
+.ia-sources-resize:hover,
+.ia-player-app.resizing-sources .ia-sources-resize {
+  background: var(--ia-accent);
+  opacity: 0.5;
+}
+.ia-sources .ia-column-header {
+  padding: 7px 12px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--ia-accent-soft);
+  background: var(--ia-bg-elev);
+  border-bottom: 1px solid var(--ia-border);
+  margin: 0;
+}
+/* Single-library panels (Music/Movies each run as their own <ia-player>)
+   don't need the one-row Libraries switcher — the host page's tab bar
+   switches panels. Hide the Libraries header, list and "+ Library". */
+.ia-player-app.single-library #ia-h-libs,
+.ia-player-app.single-library .ia-libraries-list,
+.ia-player-app.single-library .ia-add-source-btn { display: none; }
+
+/* Two-panel shell: the panel's own ⋮ menu is replaced by the shared chrome
+   bar (host page). The menu DOM stays (its handlers are driven via the
+   chrome's appAction), it's just hidden. */
+.ia-player-app.panel-instance .gear-wrap { display: none; }
+
+/* Libraries list sizes to its content; Playlists list takes the rest of
+   the sources column. A 50% cap on libraries keeps a very long library
+   list from starving playlists (it scrolls instead). */
+.ia-sources .ia-libraries-list {
+  flex: 0 0 auto;
+  max-height: 50%;
+  margin-bottom: 1rem;   /* gap between Libraries and the Playlists section */
+}
+.ia-sources .ia-sources-list {
+  flex: 1 1 auto;
+}
+/* Community Favorites: a capped, independently-scrolling section below the
+   Playlists section. Music caps it at ~⅓ of the column; both lists scroll as
+   needed. Movies (favourites-only) hide Playlists and let favourites fill. */
+.ia-sources .ia-favourites-list {
+  flex: 0 0 auto;
+  max-height: 33%;
+}
+.ia-player-app.favourites-only #ia-h-sources,
+.ia-player-app.favourites-only .ia-sources-list,
+.ia-player-app.favourites-only .ia-add-playlist-btn { display: none; }
+.ia-player-app.favourites-only .ia-favourites-list {
+  flex: 1 1 auto;
+  max-height: none;
+}
+.ia-sources .ia-listbox-item {
+  padding: 6px 10px;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.ia-sources .ia-listbox-checkbox {
+  font-size: 0.95rem;
+  color: var(--ia-text-disabled);
+  flex-shrink: 0;
+}
+.ia-sources .ia-listbox-item.selected .ia-listbox-checkbox { color: var(--ia-on-accent); }
+.ia-sources .ia-listbox-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Pencil button on each source row, hidden until hover/focus. */
+.ia-src-edit {
+  background: transparent;
+  border: none;
+  color: var(--ia-text-dim);
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 0.9rem;
+  visibility: hidden;
+  flex-shrink: 0;
+}
+.ia-sources .ia-listbox-item:hover .ia-src-edit,
+.ia-sources .ia-listbox-item:focus-within .ia-src-edit,
+.ia-sources .ia-listbox-item.selected .ia-src-edit { visibility: visible; }
+.ia-src-edit:hover,
+.ia-src-edit:focus-visible {
+  color: var(--ia-accent);
+  outline: none;
+}
+
+/* Genre + artist column rows need flex layout so the kebab can sit flush
+   right with margin-left:auto. */
+.ia-browser .ia-listbox-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.ia-browser .ia-listbox-label {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Kebab on the genre + artist column rows: always visible, pushed to the
+   right edge of the row, bolder than the label so it reads as a control. */
+.ia-row-kebab {
+  visibility: visible;
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--ia-text-soft);
+}
+.ia-row-kebab:hover,
+.ia-row-kebab:focus-visible { color: var(--ia-text-strong); }
+
+/* Owner-only ✕ on the movies ★ Favourites column rows — removes the film
+   from the communal wall. Pushed to the right edge of the row. */
+.ia-row-favdel {
+  margin-left: auto;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 .25rem;
+  font-size: .9rem;
+  line-height: 1;
+  color: var(--ia-text-faint, #888);
+}
+.ia-player-app.guest-mode .ia-row-favdel { display: none; }
+.ia-row-favdel:hover,
+.ia-row-favdel:focus-visible { color: var(--ia-error-soft, #e74c3c); }
+
+/* ☆ communal-favourite toggle on Movies-column rows (the way images are
+   starred in their Collection column). Always visible, pushed to the right;
+   gold when the film is on the wall. */
+.ia-row-fav {
+  visibility: visible;
+  margin-left: auto;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 .15rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--ia-text-faint, #888);
+}
+.ia-row-fav:hover,
+.ia-row-fav:focus-visible { color: #e6b800; }
+.ia-row-fav.on { color: #e6b800; }
+
+/* Inline rename input that replaces a row's label during edit. */
+.ia-row-rename {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--ia-accent);
+  background: var(--ia-bg);
+  color: var(--ia-text-strong);
+  padding: 2px 4px;
+  font: inherit;
+  border-radius: 3px;
+}
+
+/* Footer area below each browser column, hosting the "+ Add" button or
+   its expanded inline form. */
+.ia-column-footer {
+  padding: 4px 6px;
+  border-top: 1px solid var(--ia-border);
+  background: var(--ia-bg-subtle);
+}
+.ia-column-footer button.ia-add-genre-btn,
+.ia-column-footer button.ia-add-artist-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px dashed var(--ia-border);
+  color: var(--ia-text-dim);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  text-align: left;
+}
+.ia-column-footer button.ia-add-genre-btn:hover,
+.ia-column-footer button.ia-add-artist-btn:hover {
+  color: var(--ia-text-strong);
+  border-color: var(--ia-accent);
+}
+.ia-column-addform {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.ia-column-addinput {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 3px 5px;
+  border: 1px solid var(--ia-accent);
+  border-radius: 3px;
+  background: var(--ia-bg);
+  color: var(--ia-text-strong);
+  font: inherit;
+}
+.ia-column-addselect {
+  flex: 0 1 auto;
+  max-width: 40%;
+  padding: 3px;
+  border: 1px solid var(--ia-border);
+  border-radius: 3px;
+  background: var(--ia-bg);
+  color: var(--ia-text-strong);
+  font: inherit;
+}
+.ia-column-addsave,
+.ia-column-addcancel {
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+  color: var(--ia-text-dim);
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 1rem;
+}
+.ia-column-addsave:hover { color: var(--ia-accent); }
+.ia-column-addcancel:hover { color: var(--ia-danger, #c33); }
+/* Stack the artist add-form when the column is narrow — keeps the URL
+   input usable. */
+.ia-column-addartist { flex-wrap: wrap; }
+.ia-column-addartist .ia-column-addinput { flex-basis: 100%; }
+
+.ia-sources-actions {
+  display: flex;
+  gap: 6px;
+  padding: 6px 8px;
+  border-top: 1px solid var(--ia-border);
+  background: var(--ia-bg-elev);
+}
+.ia-sources-actions button {
+  flex: 1;
+  background: var(--ia-bg-btn);
+  color: var(--ia-text);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.ia-sources-actions button:hover,
+.ia-sources-actions button:focus-visible {
+  background: var(--ia-bg-btn-hover);
+  color: var(--ia-text-strong);
+  border-color: var(--ia-accent);
+  outline: none;
+}
+
+/* Floating contextual menu (used by pencil actions and similar). */
+.ia-floating-menu {
+  position: fixed;
+  z-index: 200;
+  background: var(--ia-bg-elev-2);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: 6px;
+  padding: 4px;
+  min-width: 180px;
+  box-shadow: var(--ia-shadow-menu-strong);
+}
+.ia-floating-menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--ia-text);
+  padding: 6px 10px;
+  font-size: 0.88rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.ia-floating-menu-item:hover,
+.ia-floating-menu-item:focus-visible {
+  background: var(--ia-bg-menu-hover);
+  color: var(--ia-text-strong);
+  outline: none;
+}
+
+/* --- Browser columns (Genres / Artists / Albums) ----------------- */
+
+.ia-browser {
+  grid-area: browser;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  height: 100%;          /* fill the (shrinkable) browser grid row */
+  min-height: 0;
+  background: var(--ia-bg-elev);
+  border-bottom: 1px solid var(--ia-border);
+  position: relative;
+}
+.ia-browser-resize {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 7px;
+  cursor: row-resize;
+  z-index: 6;
+}
+.ia-browser-resize:hover,
+.ia-player-app.resizing-browser .ia-browser-resize {
+  background: var(--ia-accent);
+  opacity: .5;
+}
+.ia-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-right: 1px solid var(--ia-border);
+  overflow: hidden;
+}
+.ia-column:last-child { border-right: none; }
+
+.ia-column-header {
+  margin: 0;
+  padding: 8px 12px;
+  font-family: var(--ia-font-display);
+  font-optical-sizing: auto;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ia-text-soft);
+  background: var(--ia-bg-elev-2);
+  border-bottom: 1px solid var(--ia-border);
+}
+.ia-album-note {
+  padding: 5px 10px;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--ia-text-dim);
+  background: var(--ia-bg-elev);
+  border-bottom: 1px solid var(--ia-border);
+}
+
+.ia-listbox {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+  outline: none;
+}
+.ia-listbox:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--ia-accent);
+}
+
+.ia-listbox-item {
+  padding: 4px 12px;
+  cursor: pointer;
+  color: var(--ia-text-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+.ia-listbox-item:hover { background: var(--ia-bg-row-focus); }
+.ia-listbox-item.selected {
+  background: var(--ia-accent);
+  color: var(--ia-on-accent);
+  font-weight: 600;
+}
+
+/* While a playlist is the current source, only the playlist row (in the
+   Sources list) shows the selected highlight. The library cascade —
+   genre / artist / album columns and the Libraries list — must NOT look
+   active. The Libraries *checkbox* (☑) is unaffected: it's a separate
+   glyph driven by enabled-state, we only neutralise the accent row
+   paint here. The Playlists list (.ia-sources-list) is intentionally
+   excluded so the active playlist stays highlighted. */
+.ia-player-app.viewing-playlist .ia-browser .ia-listbox-item.selected,
+.ia-player-app.viewing-playlist .ia-sources .ia-libraries-list .ia-listbox-item.selected {
+  background: transparent;
+  color: var(--ia-text-soft);
+}
+.ia-player-app.viewing-playlist .ia-sources .ia-libraries-list .ia-listbox-item.selected .ia-listbox-checkbox {
+  color: var(--ia-text-soft);
+}
+.ia-listbox-item:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--ia-accent-soft);
+}
+.ia-listbox-all {
+  font-style: italic;
+  color: var(--ia-text-disabled);
+  border-bottom: 1px solid var(--ia-border);
+}
+
+/* Curated vs raw artist split. The divider is the structural cue
+   (so the distinction isn't colour-only); raw rows are de-emphasised
+   but stay fully interactive — hover/selected restore full contrast. */
+.ia-listbox-divider {
+  padding: 8px 12px 3px;
+  color: var(--ia-text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--ia-border);
+  margin-top: 4px;
+  cursor: default;
+  user-select: none;
+}
+.ia-listbox-item.ia-item-raw { color: var(--ia-text-muted); font-style: italic; }
+.ia-listbox-item.ia-item-raw:hover { color: var(--ia-text-soft); }
+.ia-listbox-item.ia-item-raw.selected { color: var(--ia-on-accent); font-style: normal; }
+
+.ia-listbox-message {
+  padding: 14px 12px;
+  color: var(--ia-text-faint);
+  font-style: italic;
+  font-size: 0.88rem;
+  cursor: default;
+}
+
+/* --- Track list -------------------------------------------------- */
+
+.ia-tracklist-wrap {
+  grid-area: tracklist;
+  overflow: auto;
+  background: var(--ia-bg-app);
+  position: relative;
+}
+.ia-tracklist-empty {
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--ia-text-faint);
+}
+.ia-tracklist {
+  width: 100%;
+  /* Floor: below this the three flex columns (title/artist/album) would
+     clip their header labels, so the wrap scrolls horizontally instead.
+     `table-layout: fixed` ignores per-column min-width, so the minimum
+     is enforced here on the table as a whole. */
+  min-width: 500px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  table-layout: fixed;
+}
+.ia-tracklist.resizing { cursor: col-resize; user-select: none; }
+.ia-tracklist thead {
+  position: sticky;
+  top: 0;
+  background: var(--ia-bg-elev);
+  z-index: 2;
+}
+.ia-tracklist th {
+  position: relative;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ia-text-dim);
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--ia-border);
+  white-space: nowrap;
+}
+.ia-tracklist th[data-sort] { cursor: pointer; }
+.ia-tracklist th[data-sort]:hover { color: var(--ia-text-strong); }
+.ia-tracklist th.sorted { color: var(--ia-accent); }
+.ia-tracklist th .sort-arrow {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.7rem;
+}
+.ia-tracklist th .resize-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  user-select: none;
+  z-index: 3;
+}
+.ia-tracklist th .resize-handle:hover { background: var(--ia-accent-glow); }
+/* Column widths. The table is table-layout:fixed at width:100%, so the
+   columns always fit the pane. num / time / remove are fixed px, each
+   wide enough for its header (and header button); title / artist /
+   album are width:auto, so they flex — sharing the leftover space
+   equally and shrinking together as the pane narrows. They never drop
+   below their header labels: the table's min-width (above) is the floor
+   where those three still clear "Title" / "Artist" / "Album"; below it
+   the tracklist scrolls rather than clipping a heading. A resize handle
+   still overrides any column with an explicit px width. */
+col.col-num    { width: 64px; }
+col.col-title  { width: auto; }
+col.col-artist { width: auto; }
+col.col-album  { width: auto; }
+col.col-time   { width: 76px; }
+col.col-fav    { width: 36px; }
+col.col-remove { width: 60px; }
+.ia-tracklist .col-num    { text-align: right; padding-right: 6px; }
+.ia-tracklist .col-time   { text-align: right; font-family: var(--ia-font-mono); font-size: 0.82em; font-variant-numeric: tabular-nums; color: var(--ia-text-dim); }
+.ia-tracklist .col-fav    { text-align: center; }
+.ia-tracklist .col-remove { text-align: center; }
+/* Header layout: keep button (left) + # label (right) in the col-num <th>,
+   and the clear-tracklist button centered in the col-remove <th>. Body
+   cells aren't affected — they're plain row numbers / per-row remove ×. */
+.ia-tracklist thead th.col-num {
+  text-align: left;
+  padding-left: 4px;
+  padding-right: 6px;
+}
+.ia-tracklist thead th.col-num .th-label {
+  margin-left: 4px;
+}
+.ia-tracklist thead th.col-remove { padding: 4px; }
+.ia-randomize-btn,
+.ia-clear-tracks-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ia-text-dim);
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.ia-randomize-btn:hover,
+.ia-clear-tracks-btn:hover {
+  color: var(--ia-text-strong);
+  background: var(--ia-bg-row-hover);
+}
+.ia-randomize-btn:focus-visible,
+.ia-clear-tracks-btn:focus-visible {
+  outline: 2px solid var(--ia-accent);
+  outline-offset: 1px;
+}
+/* Clear-tracklist applies only to the Library view's ephemeral queue
+   (see updateViewClass / the click handler in ia3.js). Hide the header
+   button outside that view so the affordance matches the behavior. */
+.ia-player-app:not(.viewing-library) .ia-clear-tracks-btn { display: none; }
+
+.ia-track-row {
+  cursor: pointer;
+  outline: none;
+}
+.ia-track-row td {
+  padding: 4px 10px;
+  border-bottom: 1px solid var(--ia-bg-panel-strong);
+  color: var(--ia-text-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ia-track-row:nth-child(even) td { background: var(--ia-bg-row-alt); }
+.ia-track-row:hover td { background: var(--ia-bg-row-hover); }
+.ia-track-row:focus td { background: var(--ia-bg-row-focus); }
+.ia-track-row.selected td {
+  background: var(--ia-bg-row-selected);
+  color: var(--ia-text-strong);
+}
+.ia-track-row.dragging td { opacity: 0.5; }
+.ia-sources .ia-listbox-item.drop-target {
+  outline: 2px dashed var(--ia-accent);
+  outline-offset: -2px;
+  background: var(--ia-bg-drop);
+}
+.ia-track-row.selected.playing td {
+  background: var(--ia-bg-row-playing-sel);
+  /* Strong (ink) text, not accent-pale: on the accent-heavy playing-sel
+     background, pale accent text collapses to ~zero contrast in light mode
+     (it's a light tan on light tan). The row still reads as playing via its
+     distinct background + bold weight + accent track number. */
+  color: var(--ia-text-strong);
+}
+.ia-track-row.playing td {
+  background: var(--ia-bg-row-playing);
+  color: var(--ia-accent-soft);
+  font-weight: 500;
+}
+.ia-track-row.playing .col-num { color: var(--ia-accent); }
+.ia-track-row.selected .ia-track-remove-btn { visibility: visible; }
+
+/* ☆ communal-favourite toggle, prepended in the title cell. */
+.ia-track-fav-btn {
+  background: transparent; border: none; cursor: pointer; padding: 0 .35em 0 0;
+  color: var(--ia-text-faint, #888); font-size: .95em; line-height: 1;
+}
+.ia-track-fav-btn:hover { color: #e6b800; }
+.ia-track-fav-btn.on { color: #e6b800; }
+
+.ia-track-fav-btn {
+  background: transparent;
+  border: none;
+  color: var(--ia-text-fainter);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+}
+.ia-track-fav-btn:hover,
+.ia-track-fav-btn:focus-visible {
+  color: var(--ia-star);
+  outline: none;
+}
+.ia-track-fav-btn.active { color: var(--ia-star); }
+
+.ia-track-remove-btn {
+  background: transparent;
+  border: none;
+  color: var(--ia-text-fainter);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0;
+  visibility: hidden;
+}
+.ia-track-row:hover .ia-track-remove-btn,
+.ia-track-row:focus-within .ia-track-remove-btn { visibility: visible; }
+/* In the Favorites view the ✕ IS the owner's "remove from the wall" control —
+   keep it visible so the moderation affordance is discoverable, not hover-only. */
+.ia-player-app.source-favorites .ia-track-remove-btn { visibility: visible; }
+.ia-track-remove-btn:hover,
+.ia-track-remove-btn:focus-visible {
+  color: var(--ia-error-soft);
+  outline: none;
+}
+
+/* --- Status footer ---------------------------------------------- */
+
+.ia-status {
+  grid-area: status;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  background: var(--ia-bg-panel-strong);
+  border-top: 1px solid var(--ia-border);
+  color: var(--ia-text-muted);
+  font-size: 0.88rem;
+  min-height: 28px;
+}
+.ia-status-msg {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ia-status-count {
+  flex: 0 0 auto;
+  color: var(--ia-text-dim);
+  font-variant-numeric: tabular-nums;
+}
+.ia-status .ia-link {
+  color: var(--ia-accent);
+  text-decoration: none;
+  margin-left: 6px;
+  font-size: 0.85em;
+}
+.ia-status .ia-link:hover,
+.ia-status .ia-link:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+.error {
+  color: var(--ia-error);
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 1.1rem;
+}
+
+.loading-screen {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ia-text-muted);
+  font-size: 1.2rem;
+}
+
+.rdf-input {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.rdf-input input {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--ia-border-strong);
+  border-radius: 6px;
+  background: var(--ia-bg-elev);
+  color: var(--ia-text-strong);
+  margin-bottom: 15px;
+}
+
+.rdf-input button {
+  padding: 12px 30px;
+  font-size: 1rem;
+  background: var(--ia-accent);
+  color: var(--ia-text-strong);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.rdf-input button:hover,
+.rdf-input button:focus {
+  background: var(--ia-accent-hover);
+  outline: 2px solid var(--ia-accent);
+  outline-offset: 2px;
+}
+
+.about-modal {
+  position: fixed;
+  inset: 0;
+  background: var(--ia-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--ia-z-modal);
+}
+
+.about-modal-content {
+  position: relative;
+  max-width: var(--ia-modal-width);
+  width: calc(100% - var(--ia-modal-gutter));
+  max-height: var(--ia-modal-max-height);
+  overflow-y: auto;
+  background: var(--ia-bg-elev);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: var(--ia-radius-lg);
+  padding: 24px 24px 20px;
+  color: var(--ia-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Large-size variant used by the Help modal: wide enough for a reference
+   table to breathe, tall enough to read a section without immediately
+   scrolling. */
+.about-modal-content.about-modal-large {
+  max-width: var(--ia-modal-width-large);
+  width: calc(100% - var(--ia-modal-gutter-large));
+  max-height: var(--ia-modal-max-height-large);
+}
+
+.about-modal-content a {
+  color: var(--ia-accent);
+}
+
+.about-modal-title {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  color: var(--ia-text-strong);
+}
+
+.about-buttons {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 0.9rem;
+}
+
+.about-buttons th,
+.about-buttons td {
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--ia-border-strong);
+}
+
+.about-buttons th {
+  color: var(--ia-text-muted);
+  font-weight: 600;
+}
+
+.about-buttons td:first-child {
+  width: 70px;
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--ia-star);
+  white-space: nowrap;
+}
+
+.manage-modal {
+  position: fixed;
+  inset: 0;
+  background: var(--ia-overlay-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.manage-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 740px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: var(--ia-bg-panel);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: 8px;
+  padding: 20px 24px;
+  color: var(--ia-text);
+}
+.separator {
+  display:inline-block;
+  margin-left:1rem;
+  margin-right:1rem;
+}
+.manage-modal-content h2 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  color: var(--ia-text-strong);
+}
+
+.manage-modal-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: transparent;
+  color: var(--ia-text-muted);
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.manage-modal-close:hover,
+.manage-modal-close:focus {
+  color: var(--ia-accent);
+  outline: none;
+}
+
+.manage-add-genre {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.manage-add-genre input {
+  flex: 1;
+  padding: 8px 12px;
+  background: var(--ia-bg-elev);
+  color: var(--ia-text-strong);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.manage-add-genre button {
+  padding: 8px 14px;
+  background: var(--ia-accent);
+  color: var(--ia-text-strong);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.manage-add-genre button:hover { background: var(--ia-accent-hover); }
+
+.manage-genre {
+  border: 1px solid var(--ia-border);
+  border-radius: 6px;
+  margin-bottom: 12px;
+  background: var(--ia-bg-section);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.manage-genre.drop-hover {
+  border-color: var(--ia-accent);
+  background: var(--ia-bg-drop);
+}
+
+.manage-genre-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ia-border);
+}
+
+.manage-genre-label {
+  flex: 1;
+  font-weight: 600;
+  color: var(--ia-text-strong);
+  cursor: text;
+}
+
+.manage-genre-head button {
+  background: transparent;
+  border: 1px solid var(--ia-border-strong);
+  color: var(--ia-text-muted);
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.manage-genre-head button:hover {
+  color: var(--ia-text-strong);
+  border-color: var(--ia-accent);
+}
+
+.manage-artist-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 8px;
+  min-height: 24px;
+}
+
+.manage-artist {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: grab;
+}
+
+.manage-artist:hover { background: var(--ia-bg-section-hover); }
+
+.manage-artist.dragging {
+  opacity: 0.4;
+}
+
+.manage-artist-label {
+  flex: 1;
+  color: var(--ia-text);
+  cursor: grab;
+  user-select: none;
+}
+
+.manage-artist.dragging .manage-artist-label { cursor: grabbing; }
+
+.manage-artist-delete {
+  background: transparent;
+  border: 1px solid var(--ia-border-strong);
+  color: var(--ia-text-muted);
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.manage-artist-delete:hover,
+.manage-artist-delete:focus-visible {
+  color: var(--ia-text-strong);
+  border-color: var(--ia-error);
+  outline: none;
+}
+
+.manage-artist-move {
+  background: var(--ia-bg-elev);
+  color: var(--ia-text);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.manage-artist-move:hover,
+.manage-artist-move:focus-visible {
+  border-color: var(--ia-accent);
+  outline: none;
+}
+
+/* Visible focus indicators everywhere */
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ia-accent);
+  outline-offset: 2px;
+}
+
+.manage-add-artist-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.manage-add-artist-row input {
+  flex: 1;
+  padding: 8px 12px;
+  background: var(--ia-bg-elev);
+  color: var(--ia-text-strong);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  min-width: 0;
+}
+
+.manage-add-artist-row select {
+  padding: 8px 10px;
+  background: var(--ia-bg-elev);
+  color: var(--ia-text-strong);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  max-width: 40%;
+}
+
+.manage-add-artist-row input:focus,
+.manage-add-artist-row select:focus {
+  border-color: var(--ia-accent);
+  outline: none;
+}
+
+.manage-add-artist-row button {
+  padding: 8px 14px;
+  background: var(--ia-accent);
+  color: var(--ia-text-strong);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.manage-add-artist-row button:hover { background: var(--ia-accent-hover); }
+
+.manage-artist-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.inline-confirm-text {
+  color: var(--ia-accent-soft);
+  font-size: 0.85rem;
+}
+
+.inline-confirm-yes,
+.inline-confirm-no {
+  background: transparent;
+  border: 1px solid var(--ia-border-strong);
+  color: var(--ia-text-muted);
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.inline-confirm-yes:hover {
+  color: var(--ia-text-strong);
+  border-color: var(--ia-error);
+  background: var(--ia-bg-danger);
+}
+
+.inline-confirm-no:hover {
+  color: var(--ia-text-strong);
+  border-color: var(--ia-text-dim);
+}
+
+.manage-hint {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--ia-text-dim);
+}
+
+.manage-hint code {
+  background: var(--ia-bg-elev);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+}
+
+/* Filters modal form (lives inside .about-modal-content). */
+.filters-form { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.filters-hint { color: var(--ia-text-dim); font-size: 0.85rem; margin: 0 0 4px; }
+.filters-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.filters-row .filters-label { flex: 1 1 auto; color: var(--ia-text); }
+.filters-row input[type="text"],
+.filters-row input[type="number"] {
+  flex: 0 0 9rem;
+  padding: 4px 6px;
+  background: var(--ia-bg);
+  color: var(--ia-text-strong);
+  border: 1px solid var(--ia-border-strong);
+  border-radius: var(--ia-radius-sm);
+  font: inherit;
+}
+.filters-row-check { gap: 8px; }
+.filters-row-check input { flex: 0 0 auto; }
+.filters-actions { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+.filters-actions button {
+  background: var(--ia-bg-btn);
+  color: var(--ia-text);
+  border: 1px solid var(--ia-border-btn);
+  border-radius: var(--ia-radius-sm);
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.filters-actions button:hover { background: var(--ia-bg-btn-hover); }
+.filters-actions .filters-save { background: var(--ia-accent); border-color: var(--ia-accent); color: var(--ia-text-strong); }
+.filters-actions .filters-danger { border-color: var(--ia-danger, #c0392b); color: var(--ia-danger, #e74c3c); }
+.filters-actions .filters-danger:hover { background: var(--ia-danger, #c0392b); color: #fff; }
+
+.about-modal-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: transparent;
+  color: var(--ia-text-muted);
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.about-modal-close:hover,
+.about-modal-close:focus {
+  color: var(--ia-accent);
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ia-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ia-border-strong);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ia-text-fainter);
+}
+
+p {
+  margin-bottom:1em;
+}

@@ -1,0 +1,13 @@
+# Image topics — the sub-topics under each library: skos:Concepts with a
+# skos:broader parent. One editable record each; name only (a new topic is
+# anchored under an existing library on Add; re-parenting is intentionally
+# out of scope for now to avoid an over-broad library dropdown).
+# Targeted by sh:targetSubjectsOf skos:broader; findSubjects is
+# document-scoped, so only images.ttl's sub-topics are returned.
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+shape <#TopicShape> {
+    skos:prefLabel xsd:string [1..1] % sh:name "Name" % .
+}
+<#TopicShape> sh:targetSubjectsOf skos:broader .
