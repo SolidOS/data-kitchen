@@ -131,7 +131,8 @@ class DesktopApp {
 
   wireIpc() {
     ipcMain.on('dk:content-rect', (_e, rect) => this.external.setContentRect(rect));
-    ipcMain.on('dk:pane-open', (_e, { url }) => this.external.openPane(url));
+    ipcMain.on('dk:pane-rect', (_e, rect) => this.external.setPaneRect(rect));
+    ipcMain.on('dk:pane-open', (_e, { url, rect }) => this.external.openPane(url, rect));
     ipcMain.on('dk:pane-close', () => this.external.closePane());
     ipcMain.on('dk:overlays-suspend', () => this.external.suspend());
     ipcMain.on('dk:overlays-resume', () => this.external.resume());

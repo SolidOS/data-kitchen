@@ -74,6 +74,10 @@ function report() {
     rafPending = false;
     const content = contentRegionEl();
     if (content) ipcRenderer.send('dk:content-rect', rectOf(content));
+    // The pane shadows the IFRAME's own box, not the whole content region —
+    // plugin pages draw their own chrome (e.g. a sub-tab strip) around the
+    // iframe, and that must stay visible.
+    if (trackedIframe) ipcRenderer.send('dk:pane-rect', rectOf(trackedIframe));
   });
 }
 
@@ -83,7 +87,7 @@ function sync() {
     trackedIframe = iframe;
     iframe.style.visibility = 'hidden';   // keep its layout box; native view sits on top
     iframe.dataset.dkNativeView = '1';
-    ipcRenderer.send('dk:pane-open', { url: iframe.getAttribute('src') });
+    ipcRenderer.send('dk:pane-open', { url: iframe.getAttribute('src'), rect: rectOf(iframe) });
   } else if (!iframe && trackedIframe) {
     trackedIframe = null;
     ipcRenderer.send('dk:pane-close');

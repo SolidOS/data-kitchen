@@ -19,7 +19,8 @@ const BAR_HEIGHT = 40;
 class ExternalViews {
   constructor(baseWindow) {
     this.baseWindow = baseWindow;
-    this.contentRect = null;   // latest #dk-content rect (renderer coords == base coords)
+    this.contentRect = null;   // latest tab-content rect (renderer coords == base coords)
+    this.paneRect = null;      // latest rect of the iframe the pane shadows
     this.pane = null;
     this.readerBar = null;
     this.readerContent = null;
@@ -27,9 +28,18 @@ class ExternalViews {
 
   setContentRect(rect) {
     this.contentRect = rect;
-    if (this.pane && this._paneShown) this.pane.setBounds(rect);
     if (this._readerShown) this._layoutReader();
   }
+
+  // The pane shadows the page's external <iframe> exactly — the plugin page
+  // draws its own chrome (sub-tab strips etc.) around it, which must stay
+  // visible. The reader keeps using the whole content region.
+  setPaneRect(rect) {
+    this.paneRect = rect;
+    if (this.pane && this._paneShown && !this._suspended) this.pane.setBounds(rect);
+  }
+
+  _paneRegion() { return this.paneRect || this._region(); }
 
   _region() {
     if (this.contentRect) return this.contentRect;
@@ -71,13 +81,14 @@ class ExternalViews {
 
   // --- pane (external iframe) ---------------------------------------------
 
-  openPane(url) {
+  openPane(url, rect) {
     if (!url) return;
+    if (rect) this.paneRect = rect;
     if (!this.pane) this.pane = this._build();
     this._paneShown = true;
     if (!this._suspended) {
       this.baseWindow.contentView.addChildView(this.pane);  // on top of app view
-      this.pane.setBounds(this._region());
+      this.pane.setBounds(this._paneRegion());
     }
     if (this.pane.webContents.getURL() !== url) this.pane.webContents.loadURL(url);
   }
@@ -87,6 +98,7 @@ class ExternalViews {
       this.baseWindow.contentView.removeChildView(this.pane);
       this._paneShown = false;
     }
+    this.paneRect = null;
   }
 
   // --- reader (window.open content) ---------------------------------------
@@ -152,7 +164,7 @@ class ExternalViews {
     this._suspended = false;
     if (this._paneShown) {
       this.baseWindow.contentView.addChildView(this.pane);
-      this.pane.setBounds(this._region());
+      this.pane.setBounds(this._paneRegion());
     }
     if (this._readerShown) {
       this.baseWindow.contentView.addChildView(this.readerContent);
