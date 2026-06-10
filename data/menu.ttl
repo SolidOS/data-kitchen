@@ -76,8 +76,7 @@
 # (#MainMenu above is the RETIRED old-dk header menu, kept as pantry.)
 
 <#More> a ui:Menu ; ui:label "Menu" ;
-  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreSignIn> <#MoreGuestView>
-             <#MoreFilters> <#MoreViewDeleted> <#MoreInstallPod> <#MoreUpdateApp> ) .
+  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreSignIn> <#MoreGuestView> ) .
 
 <#MoreCustomize> a ui:Component ; ui:label "Customize…" ;
   ui:name "sol-include" ;
@@ -86,25 +85,16 @@
     [ schema:name "source"  ; schema:value "./plugins/customize/dk-customize.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
-<#MoreSettings> a ui:Component ; ui:label "Settings…" ;
-  ui:name "sol-include" ;
-  ui:attribute
-    [ schema:name "source"  ; schema:value "./pages/settings.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
+# Settings is a COMMAND: the shell resolves it per context — the active
+# plugin's shape (manifest dct:conformsTo) opens a sol-form for the panel's
+# source; otherwise the global pages/settings.html. See dk-tabs-shell.
+<#MoreSettings> a ui:Component ; ui:label "Settings…" ; ui:name "settings" .
 
 <#MoreSignIn> a ui:Component ; ui:label "Sign in…" ; ui:name "signIn" .
 
 <#MoreGuestView> a ui:Component ; ui:label "View as guest" ; ui:name "guestView" ;
   acl:mode acl:Write .
 
-<#MoreFilters> a ui:Component ; ui:label "Filters…" ; ui:name "filters" ;
-  acl:mode acl:Write .
 
-<#MoreViewDeleted> a ui:Component ; ui:label "View deleted" ; ui:name "viewDeleted" ;
-  acl:mode acl:Write .
 
-<#MoreInstallPod> a ui:Component ; ui:label "Install on my Pod…" ; ui:name "installPod" ;
-  acl:mode acl:Write .
 
-<#MoreUpdateApp> a ui:Component ; ui:label "Update app on Pod…" ; ui:name "updateApp" ;
-  acl:mode acl:Write .

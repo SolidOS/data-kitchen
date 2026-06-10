@@ -117,12 +117,16 @@ function install() {
 }
 
 // The native pane is a SEPARATE WebContentsView painted above the app's
-// HTML, so any popup dropping below the actions row (search panel, calendar
-// popout, ⋮ menu) would be occluded by it. Watch every popup host in the
-// actions row and have the host BLANK the overlays while one is open:
+// HTML, so any popup OR overlay drawn by the app (search panel, calendar
+// popout, ☰ menu, the inline help overlay, modals) would be occluded by
+// it. Watch every such host and have the main process BLANK the native
+// overlays while one is open:
 //   sol-dropdown-button — shadow .sol-dd-popup toggles `hidden`
 //   sol-search          — shadow .panel toggles `open`
 //   dk-calendar-popout  — light-DOM .dk-popout-panel toggles `hidden`
+//   sol-button (help ?) — reflects `open` on the host while its inline
+//                         overlay is shown
+//   sol-modal           — conjured into <body> while open, removed on close
 // Custom elements upgrade asynchronously (component-interop imports them
 // after the include lands), so shadow roots appear at different times. The
 // guard binds INCREMENTALLY — each boot tick adopts any newly-upgraded
@@ -135,7 +139,9 @@ let guardSuspended = false;
 function guardAnyOpen() {
   return guardHosts.dropdown.some((d) => { const p = d.shadowRoot.querySelector('.sol-dd-popup'); return p && !p.hidden; })
     || guardHosts.search.some((s) => { const p = s.shadowRoot.querySelector('.panel'); return p && p.hasAttribute('open'); })
-    || guardHosts.calendar.some((c) => { const p = c.querySelector('.dk-popout-panel'); return p && !p.hidden; });
+    || guardHosts.calendar.some((c) => { const p = c.querySelector('.dk-popout-panel'); return p && !p.hidden; })
+    || !!document.querySelector('sol-button[open]')   // inline overlay (help ?)
+    || !!document.querySelector('sol-modal');         // conjured modal (settings, customize, …)
 }
 function guardCheck() {
   const open = guardAnyOpen();
@@ -151,7 +157,16 @@ function guardWatch(el, root, kind) {
     subtree: true, attributes: true, attributeFilter: ['hidden', 'open'],
   });
 }
+let guardBodyWatched = false;
 function setupMenuOverlayGuard() {
+  // One body-level observer covers the light-DOM signals: sol-button's
+  // reflected `open` attribute and sol-modal elements entering/leaving.
+  if (!guardBodyWatched && document.body) {
+    guardBodyWatched = true;
+    new MutationObserver(guardCheck).observe(document.body, {
+      childList: true, subtree: true, attributes: true, attributeFilter: ['open'],
+    });
+  }
   for (const d of document.querySelectorAll('sol-dropdown-button')) {
     if (d.shadowRoot) guardWatch(d, d.shadowRoot, 'dropdown');
   }

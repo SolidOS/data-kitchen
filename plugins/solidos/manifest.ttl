@@ -1,0 +1,11 @@
+@prefix :       <#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
+
+<>
+  a ui:Component ;
+  ui:label "SolidOS" ;
+  ui:name "dk-solidos" ;
+  dct:hasPart <./dk-solidos.html> , <./dk-solidos.js> , <./solidos-host.html> ;
+  schema:softwareHelp <./help.html> .

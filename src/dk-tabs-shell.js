@@ -1,9 +1,16 @@
 // dk-tabs-shell — page-level wiring around the topmost <sol-tabs>: tab-change
-// reactions, chrome actions, mini audio player, guest gating, and the help
-// overlay. (Adapted from omp-shell when open_media_player was absorbed.)
+// reactions, chrome actions, mini audio player, guest gating, the help
+// overlay, and CONTEXT: help / settings / the ☰ menu follow the active
+// plugin via its plugins/<id>/manifest.ttl (schema:softwareHelp,
+// dct:conformsTo, optional #Menu). (Adapted from omp-shell when
+// open_media_player was absorbed.)
 // The tabs + panels are authored declaratively in html-first.html; here we
 // react to <sol-tabs>'s sol-tab-change. Favourites are no longer a tab —
 // each media tab surfaces its own favourites.
+
+    import { rdf } from 'sol-components/core/rdf.js';
+    import { loadRdfStore } from 'sol-components/core/rdf-utils.js';
+    import { displayItem } from 'sol-components/core/display-target.js';
 
     // The body UI is authored declaratively in html-first.html and loaded by the
     // #dk-body <sol-include source="./html-first.html"> in index.html. (#dk-tabs
@@ -20,6 +27,94 @@
     let audioName = 'music';
     let current = 'news';
     const activePanel = () => panelEl(current);
+
+    // ----- plugin context (manifest-driven) -----
+    // Each plugin MAY ship plugins/<id>/manifest.ttl declaring its help file
+    // (schema:softwareHelp), its settings shape (dct:conformsTo), and ☰ menu
+    // contributions (<#Menu> a ui:Menu). The id is the first path segment
+    // under plugins/ in the active panel's source attribute.
+    const SCHEMA_HELP  = 'http://schema.org/softwareHelp';
+    const DCT_CONFORMS = 'http://purl.org/dc/terms/conformsTo';
+    const UI_PARTS     = 'http://www.w3.org/ns/ui#parts';
+    const manifestCache = new Map();   // id → {help, shape, menuUri} | null
+
+    function pluginIdFor(el) {
+      const src = el?.getAttribute?.('source') || '';
+      const m = src.match(/(?:^|\/)plugins\/([^/]+)\//);
+      return m ? m[1] : null;
+    }
+
+    async function pluginManifest(id) {
+      if (!id) return null;
+      if (manifestCache.has(id)) return manifestCache.get(id);
+      let info = null;
+      try {
+        const docUrl = new URL(`plugins/${id}/manifest.ttl`, document.baseURI).href;
+        const store = await loadRdfStore(docUrl);
+        const doc = rdf.sym(docUrl);
+        info = {
+          help:  store.any(doc, rdf.sym(SCHEMA_HELP))?.value || null,
+          shape: store.any(doc, rdf.sym(DCT_CONFORMS))?.value || null,
+          menuUri: store.any(rdf.sym(`${docUrl}#Menu`), rdf.sym(UI_PARTS))
+            ? `plugins/${id}/manifest.ttl#Menu` : null,
+        };
+      } catch { info = null; }   // no manifest — perfectly fine
+      manifestCache.set(id, info);
+      return info;
+    }
+
+    // Point the chrome at the active plugin: the ? button's source and the
+    // ☰ menu's context-source. Defaults stay DECLARED in html-first.html;
+    // this only follows the documented context, and falls back to them.
+    async function applyContext() {
+      const panel = activePanel();
+      const info = await pluginManifest(pluginIdFor(panel));
+      if (panel !== activePanel()) return;   // tab changed while loading
+
+      const helpBtn = document.querySelector('.omp-help-launch');
+      if (helpBtn) {
+        if (!helpBtn._dkDefaults) {
+          helpBtn._dkDefaults = {
+            source: helpBtn.getAttribute('source'),
+            owner: helpBtn.getAttribute('if-logged-in'),
+          };
+        }
+        if (info?.help) {
+          helpBtn.setAttribute('source', info.help);
+          helpBtn.removeAttribute('if-logged-in');
+        } else {
+          helpBtn.setAttribute('source', helpBtn._dkDefaults.source);
+          if (helpBtn._dkDefaults.owner) helpBtn.setAttribute('if-logged-in', helpBtn._dkDefaults.owner);
+        }
+      }
+
+      const more = document.querySelector('sol-dropdown-button.omp-more');
+      if (more) {
+        if (info?.menuUri) more.setAttribute('context-source', info.menuUri);
+        else more.removeAttribute('context-source');
+      }
+    }
+
+    // ☰ Settings…: the active plugin's shape (sol-form over the panel's own
+    // source) when declared, else the global settings page. Mounted through
+    // the same displayItem/modal machinery every menu item uses.
+    async function openSettings() {
+      const launcher = document.querySelector('sol-dropdown-button.omp-more');
+      const panel = activePanel();
+      const info = await pluginManifest(pluginIdFor(panel));
+      const panelSource = panel?.getAttribute?.('source');
+      if (info?.shape && panelSource) {
+        displayItem({
+          launcher, name: 'Settings', tag: 'sol-form',
+          attrs: [['shape', info.shape], ['source', panelSource]],
+        });
+      } else {
+        displayItem({
+          launcher, name: 'Settings', tag: 'sol-include',
+          attrs: [['source', './pages/settings.html'], ['trusted', '']],
+        });
+      }
+    }
 
     // sol-tabs pane ↔ panel-key bridge.
     function paneForName(name) {
@@ -43,6 +138,7 @@
         if (k !== current && k !== audioName) panelEl(k)?.getMediaElement?.()?.pause?.();
       try { localStorage.setItem('dk:active-panel', current); } catch {}
       syncGating(); bindAudio(); updateMini();
+      applyContext();   // help / ☰ follow the active plugin (async, guarded)
     }
 
     // Help is fully declarative now: the ? <sol-button region="inline"> in
@@ -222,6 +318,7 @@
       signIn:      () => document.dispatchEvent(new CustomEvent('sol-auth-needed', {
         detail: { resolve: () => {} },
       })),
+      settings:    () => openSettings(),
       filters:     () => activePanel()?.appAction?.('filters'),
       viewDeleted: () => activePanel()?.appAction?.('viewDeleted'),
       installPod:  () => activePanel()?.appAction?.('installPod'),
@@ -250,6 +347,7 @@
       wireAppearanceButtons();
       syncTheme();
       syncFontSize();
+      applyContext();
 
       // News is the startup tab unless a saved choice says otherwise (a
       // saved key for a since-removed tab falls through to the first tab).

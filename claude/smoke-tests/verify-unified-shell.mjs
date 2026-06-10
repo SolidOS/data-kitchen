@@ -94,6 +94,20 @@ const music = await page.evaluate(() => {
 check('ia-player mounts on Music', !!music.player);
 check('ia-player lists tracks', (music.rows || 0) > 0, `rows=${music.rows}`);
 
+// --- context: help + ☰ follow the active plugin (manifest-driven) ---
+const musicCtx = await page.evaluate(() => {
+  const dd = document.querySelector('sol-dropdown-button.omp-more');
+  return {
+    help: document.querySelector('.omp-help-launch')?.getAttribute('source') || '',
+    sep: !!dd?.shadowRoot?.querySelector('.sol-dd-separator'),
+    items: [...(dd?.shadowRoot?.querySelectorAll('.sol-dd-popup button') || [])].map(b => b.textContent.trim()),
+  };
+});
+check('context help on Music → ia-help', /ia-help\.html$/.test(musicCtx.help), musicCtx.help);
+check('☰ shows plugin items on Music (below a separator)',
+  musicCtx.sep && musicCtx.items.some(t => /filters/i.test(t)) && musicCtx.items.some(t => /customize/i.test(t)),
+  musicCtx.items.join(' | '));
+
 // --- News: sol-feed threePanel renders ---
 await clickTab(/news/i, 4000);
 const news = await page.evaluate(() => {
@@ -114,6 +128,12 @@ const podz = await page.evaluate(() => {
 });
 check('dk-podz mounts on Workspaces tab', !!podz.el);
 check('dk-podz shows both pod panes', (podz.pods || 0) >= 2, `sol-pods=${podz.pods}`);
+const podzCtx = await page.evaluate(() => ({
+  help: document.querySelector('.omp-help-launch')?.getAttribute('source') || '',
+  sep: !!document.querySelector('sol-dropdown-button.omp-more')?.shadowRoot?.querySelector('.sol-dd-separator'),
+}));
+check('context help on Workspaces → podz help', /plugins\/podz\/help\.html$/.test(podzCtx.help), podzCtx.help);
+check('☰ plugin items cleared off Music', !podzCtx.sep);
 
 // --- chrome: search/calendar/appearance in the bar; help + ☰ hamburger
 //     fixed; settings & customize live in the ☰ menu; sign-in is a hidden
