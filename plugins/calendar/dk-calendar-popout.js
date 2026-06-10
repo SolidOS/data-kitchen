@@ -67,6 +67,13 @@ class DkCalendarPopout extends HTMLElement {
   _toggle() { this._panel.hidden ? this._open() : this._close(); }
   _close()  { this._panel.hidden = true;  this._trigger.setAttribute('aria-expanded', 'false'); }
   _open() {
+    // The panel is position:fixed (the actions row lives inside the
+    // overflow-clipped sol-tabs bar, so an absolute panel would be cropped
+    // there). Anchor it under the trigger, right-aligned, clamped into the
+    // viewport.
+    const r = this._trigger.getBoundingClientRect();
+    this._panel.style.top = `${Math.round(r.bottom + 6)}px`;
+    this._panel.style.right = `${Math.round(Math.max(8, window.innerWidth - r.right))}px`;
     this._panel.hidden = false;
     this._trigger.setAttribute('aria-expanded', 'true');
   }

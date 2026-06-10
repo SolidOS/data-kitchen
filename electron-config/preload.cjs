@@ -112,33 +112,56 @@ function install() {
   return true;
 }
 
-// A native overlay paints above the app's HTML, so an open popup that
-// extends over the content region would be occluded. The shell's popup
-// source is the ⋮ <sol-dropdown-button> in the actions row: its floating
-// .sol-dd-popup (shadow DOM) toggles `hidden`. Watch it and have the host
-// suspend/restore the overlays around it.
-let menuGuardSet = false;
+// The native pane is a SEPARATE WebContentsView painted above the app's
+// HTML, so any popup dropping below the actions row (search panel, calendar
+// popout, ⋮ menu) would be occluded by it. Watch every popup host in the
+// actions row and have the host BLANK the overlays while one is open:
+//   sol-dropdown-button — shadow .sol-dd-popup toggles `hidden`
+//   sol-search          — shadow .panel toggles `open`
+//   dk-calendar-popout  — light-DOM .dk-popout-panel toggles `hidden`
+// Custom elements upgrade asynchronously (component-interop imports them
+// after the include lands), so shadow roots appear at different times. The
+// guard binds INCREMENTALLY — each boot tick adopts any newly-upgraded
+// hosts — and reports done only once every host type present in the DOM is
+// actually watched.
+const guardBound = new Set();   // elements already being observed
+const guardHosts = { dropdown: [], search: [], calendar: [] };
+let guardSuspended = false;
+
+function guardAnyOpen() {
+  return guardHosts.dropdown.some((d) => { const p = d.shadowRoot.querySelector('.sol-dd-popup'); return p && !p.hidden; })
+    || guardHosts.search.some((s) => { const p = s.shadowRoot.querySelector('.panel'); return p && p.hasAttribute('open'); })
+    || guardHosts.calendar.some((c) => { const p = c.querySelector('.dk-popout-panel'); return p && !p.hidden; });
+}
+function guardCheck() {
+  const open = guardAnyOpen();
+  if (open === guardSuspended) return;
+  guardSuspended = open;
+  ipcRenderer.send(open ? 'dk:overlays-suspend' : 'dk:overlays-resume');
+}
+function guardWatch(el, root, kind) {
+  if (guardBound.has(el)) return;
+  guardBound.add(el);
+  guardHosts[kind].push(el);
+  new MutationObserver(guardCheck).observe(root, {
+    subtree: true, attributes: true, attributeFilter: ['hidden', 'open'],
+  });
+}
 function setupMenuOverlayGuard() {
-  if (menuGuardSet) return true;
-  const dropdowns = [...document.querySelectorAll('sol-dropdown-button')].filter((d) => d.shadowRoot);
-  if (!dropdowns.length) return false;
-  let suspended = false;
-  const check = () => {
-    const open = dropdowns.some((d) => {
-      const popup = d.shadowRoot.querySelector('.sol-dd-popup');
-      return popup && !popup.hidden;
-    });
-    if (open === suspended) return;
-    suspended = open;
-    ipcRenderer.send(open ? 'dk:overlays-suspend' : 'dk:overlays-resume');
-  };
-  for (const d of dropdowns) {
-    new MutationObserver(check).observe(d.shadowRoot, {
-      subtree: true, attributes: true, attributeFilter: ['hidden'],
-    });
+  for (const d of document.querySelectorAll('sol-dropdown-button')) {
+    if (d.shadowRoot) guardWatch(d, d.shadowRoot, 'dropdown');
   }
-  menuGuardSet = true;
-  return true;
+  for (const s of document.querySelectorAll('sol-search')) {
+    if (s.shadowRoot) guardWatch(s, s.shadowRoot, 'search');
+  }
+  for (const c of document.querySelectorAll('dk-calendar-popout')) {
+    guardWatch(c, c, 'calendar');
+  }
+  // Done when every host ELEMENT in the DOM is bound (i.e. none is still
+  // awaiting upgrade). Until then the boot loop keeps calling back.
+  const pending = [...document.querySelectorAll('sol-dropdown-button, sol-search, dk-calendar-popout')]
+    .filter((el) => !guardBound.has(el));
+  return guardBound.size > 0 && pending.length === 0;
 }
 
 function boot() {
