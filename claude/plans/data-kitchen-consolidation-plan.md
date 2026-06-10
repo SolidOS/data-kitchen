@@ -373,6 +373,16 @@ reuses an existing one).
 - **P8 Remote landing (½d) — EXECUTE-ONLY-ON-EXPLICIT-GO:** publish sc (GO),
   pin deps, remote-landing commands, pre-push checks, push (GO), tag.
 
+## Deferred sweeps (Jeff, 2026-06-10 — need a fresh GO)
+
+One later combined pass over dk AND sol-components:
+- **min-16px font rule** across all legacy stylesheets (ia.css,
+  assets/dk-chrome.css, component styles) — no font-size may compute below
+  16px; exceptions need Jeff's permission.
+- **Full ARIA + keyboard (keypress) support** everywhere possible.
+
+Until then, violations are fixed only in code being touched anyway.
+
 ## Choice points & defaults (Jeff can override any time)
 
 - **C1** omp history graft into dk — **APPROVED** (read-only on omp).
