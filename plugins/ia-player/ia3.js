@@ -1,5 +1,9 @@
 import {getAlbums, getTracks, buildArchiveQuery} from "./sources/internet-archive.js";
 import { listFavourites, removeFavouriteFile } from "../../src/shared/omp-favourites-store.js";
+// Small static fragments (esbuild text imports — markup lives in HTML files).
+import addGenreFormHtml from './assets/fragment-add-genre.html';
+import addArtistFormHtml from './assets/fragment-add-artist.html';
+import noticeHtml from './assets/fragment-notice.html';
 import {
   loadRDF, resolvePodLibraryUrl, discoverPodStorages, ensurePublicTypeIndex,
   listRegisteredLibraries, registerPodLibrary, unregisterPodLibrary,
@@ -1540,13 +1544,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
 
   function openAddGenreForm() {
     if (genreColumnFooter.querySelector('.ia-column-addform')) return;
-    genreColumnFooter.innerHTML = `
-      <form class="ia-column-addform" autocomplete="off">
-        <input type="text" class="ia-column-addinput" placeholder="Genre name" aria-label="New genre name" required>
-        <button type="submit" class="ia-column-addsave" aria-label="Add">✓</button>
-        <button type="button" class="ia-column-addcancel" aria-label="Cancel">✗</button>
-      </form>
-    `;
+    genreColumnFooter.innerHTML = addGenreFormHtml;
     const form = genreColumnFooter.querySelector('form');
     const input = form.querySelector('input');
     const cancel = () => resetGenreFooter();
@@ -1580,17 +1578,14 @@ function createPlayer({ libraryConfigs, libs, host }) {
       updateStatus(status, 'Add a genre first.');
       return;
     }
-    const options = choices
-      .slice().sort(byLabel)
-      .map(g => `<option value="${escapeHTML(g.id)}">${escapeHTML(g.label)}</option>`).join('');
-    artistColumnFooter.innerHTML = `
-      <form class="ia-column-addform ia-column-addartist" autocomplete="off">
-        <input type="text" class="ia-column-addinput" placeholder="archive.org URL or ID" aria-label="Artist URL or ID" required>
-        <select class="ia-column-addselect" aria-label="Genre">${options}</select>
-        <button type="submit" class="ia-column-addsave" aria-label="Add">✓</button>
-        <button type="button" class="ia-column-addcancel" aria-label="Cancel">✗</button>
-      </form>
-    `;
+    artistColumnFooter.innerHTML = addArtistFormHtml;
+    // The genre choices are data-driven; populate the select after parse.
+    const addSelect = artistColumnFooter.querySelector('.ia-column-addselect');
+    for (const g of choices.slice().sort(byLabel)) {
+      const opt = document.createElement('option');
+      opt.value = g.id; opt.textContent = g.label;
+      addSelect.appendChild(opt);
+    }
     const form = artistColumnFooter.querySelector('form');
     const input = form.querySelector('input');
     const select = form.querySelector('select');
@@ -2639,9 +2634,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
       el = document.createElement('div');
       el.className = 'ia-notice';
       el.setAttribute('role', 'alert');
-      el.innerHTML = '<span class="ia-notice-icon" aria-hidden="true">⚠</span>'
-        + '<span class="ia-notice-msg"></span>'
-        + '<button type="button" class="ia-notice-close" aria-label="Dismiss">✕</button>';
+      el.innerHTML = noticeHtml;
       el.querySelector('.ia-notice-close').addEventListener('click', () => hideNotice());
       container.appendChild(el);
     }

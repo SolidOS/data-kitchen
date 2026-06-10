@@ -7,6 +7,7 @@ import filtersModalTpl from './assets/modal-filters.html';
 import playlistEditModalTpl from './assets/modal-playlist-edit.html';
 import libraryEditModalTpl from './assets/modal-library-edit.html';
 import trackEditModalTpl from './assets/modal-track-edit.html';
+import rdfInputHtml from './assets/fragment-rdf-input.html';
 
 export function createPlayerUI({ mediaType = 'audio', panel = false } = {}) {
   const isVideo = mediaType === 'video';
@@ -1104,14 +1105,7 @@ export function showRDFInput(host, onLoad) {
   host.innerHTML = '';
   const container = document.createElement('div');
   container.className = 'music-player';
-  container.innerHTML = `
-    <h1>Open Media Player</h1>
-    <div class="rdf-input">
-      <input type="text" class="rdf-uri" placeholder="Enter RDF file URI" value="./plugins/ia-player/libraries/internet_archive_music/index.ttl" aria-label="RDF file URI">
-      <br>
-      <button class="load-btn">Load Music Library</button>
-    </div>
-  `;
+  container.innerHTML = rdfInputHtml;
 
   host.appendChild(container);
 
