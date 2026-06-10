@@ -47,18 +47,18 @@ async function clickTab(re, settleMs) {
   }, { source: re.source, flags: re.flags, settleMs });
 }
 
-// --- tab row renders the default set (Home/SolidOS/Resources/DevTools are
-//     pantry: defined in tabs.ttl + palette but not in the menu) ---
+// --- tab row renders the default set (Home and SolidOS are pantry:
+//     defined in tabs.ttl + palette but not in the menu) ---
 const tabs = await page.evaluate(() => {
   const tabset = document.querySelector('sol-tabs');
   if (!tabset) return null;
   return [...tabset.querySelectorAll('[role="tab"], .sol-tab, a')].map(e => e.textContent.trim()).filter(Boolean);
 });
 check('sol-tabs present', Array.isArray(tabs), '');
-const want = ['News', 'Music', 'Movies', 'Images', 'Podz', 'Customize'];
+const want = ['News', 'Music', 'Movies', 'Images', 'Workspaces', 'Solid Resources', 'Dev Tools', 'Customize'];
 const missing = want.filter(w => !(tabs || []).some(t => t.includes(w)));
-const stray = ['Home', 'SolidOS', 'Solid Resources', 'Dev Tools'].filter(w => (tabs || []).some(t => t.includes(w)));
-check('default tab set present', missing.length === 0, missing.length ? 'missing: ' + missing.join(', ') : (tabs || []).slice(0, 8).join(' | '));
+const stray = ['Home', 'SolidOS', 'Podz'].filter(w => (tabs || []).some(t => t.includes(w)));
+check('default tab set present', missing.length === 0, missing.length ? 'missing: ' + missing.join(', ') : (tabs || []).slice(0, 9).join(' | '));
 check('pantry tabs absent from the row', stray.length === 0, stray.join(', '));
 
 // --- News is the startup tab; media stays UNLOADED until visited ---
@@ -101,14 +101,14 @@ const news = await page.evaluate(() => {
 check('sol-feed mounts on News', !!news.feed);
 check('News renders content', !!news.content);
 
-// --- Podz: dk-podz mounts its panes ---
-await clickTab(/podz/i, 6000);
+// --- Workspaces: dk-podz mounts its panes ---
+await clickTab(/workspaces/i, 6000);
 const podz = await page.evaluate(() => {
   const el = document.querySelector('dk-podz');
   if (!el) return { el: false };
   return { el: true, pods: el.querySelectorAll('sol-pod').length };
 });
-check('dk-podz mounts on Podz tab', !!podz.el);
+check('dk-podz mounts on Workspaces tab', !!podz.el);
 check('dk-podz shows both pod panes', (podz.pods || 0) >= 2, `sol-pods=${podz.pods}`);
 
 // --- chrome present: search, calendar, settings, help, login, ⋮ ---

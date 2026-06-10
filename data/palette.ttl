@@ -7,7 +7,7 @@
 # hand thereafter.
 
 <#Palette> a ui:Menu ; ui:label "Available plugins" ;
-  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Podz-pod-browser> <#SolidOS-data-browser> <#Home-dashboard> <#Solid-Resources-links> <#Dev-Tools-playgrounds> <#Page-HTML-include> <#Search> <#Calendar> <#Sign-in> <#Theme-toggle> <#Text-size> ) .
+  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Home-dashboard> <#Solid-Resources-links> <#Dev-Tools-playgrounds> <#Page-HTML-include> <#Search> <#Calendar> <#Sign-in> <#Theme-toggle> <#Text-size> ) .
 
 <#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;
   ui:attribute
@@ -32,7 +32,7 @@
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
 
-<#Podz-pod-browser> a ui:Component ; ui:label "Podz (pod browser)" ; ui:name "dk-podz" ;
+<#Workspaces-pod-browser> a ui:Component ; ui:label "Workspaces (pod browser)" ; ui:name "dk-podz" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,
     [ schema:name "defer" ; schema:value "" ] .

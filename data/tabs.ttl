@@ -7,13 +7,15 @@
 # (#Tabs) and the bar-managed actions row (#Bar). The help button and the
 # ⋮ menu are CHROME — declared only in html-first.html, never here.
 
-# Not every defined panel is IN the menu: #panel-home, #panel-solidos,
-# #panel-solid-resources and #panel-dev-tools are PANTRY items — kept here
-# (and in the palette) so the builders can drag them back in.
+# Not every defined panel is IN the menu: #panel-home and #panel-solidos are
+# PANTRY items — kept here (and in the palette) so the builders can drag
+# them back in. Solid Resources / Dev Tools are tabs whose SUBMENUS (the
+# link strips) live inside their plugin pages, never on this tabset.
 <#Tabs> a ui:Menu ; ui:label "data-kitchen" ;
   ui:orientation ui:Horizontal ;
   ui:parts ( <#panel-news> <#panel-music> <#panel-movies>
-             <#panel-images> <#panel-podz> <#panel-customize> ) .
+             <#panel-images> <#panel-podz>
+             <#panel-solid-resources> <#panel-dev-tools> <#panel-customize> ) .
 
 <#panel-home> a ui:Component ; ui:label "🏠 Home" ; ui:name "sol-include" ;
   ui:attribute
@@ -48,7 +50,7 @@
     [ schema:name "id" ;     schema:value "panel-images" ] ,
     [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
 
-<#panel-podz> a ui:Component ; ui:label "🗂 Podz" ; ui:name "dk-podz" ;
+<#panel-podz> a ui:Component ; ui:label "🗂 Workspaces" ; ui:name "dk-podz" ;
   ui:attribute
     [ schema:name "id" ;     schema:value "panel-podz" ] ,
     [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,

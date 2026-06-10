@@ -28,7 +28,7 @@ const PLUGINS = [
     ['source', './plugins/ia-player/libraries/internet_archive_movies/index.ttl']]],
   ['Images (Wikimedia)', 'omp-images', [
     ['source', './plugins/omp-images/libraries/wikimedia_images/images.ttl#Images']]],
-  ['Podz (pod browser)', 'dk-podz', [
+  ['Workspaces (pod browser)', 'dk-podz', [
     ['source', './plugins/podz/dk-podz.html'], ['defer', '']]],
   ['SolidOS (data browser)', 'dk-solidos', [
     ['source', './plugins/solidos/dk-solidos.html'], ['defer', '']]],
