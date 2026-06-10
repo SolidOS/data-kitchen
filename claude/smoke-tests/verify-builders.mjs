@@ -43,8 +43,8 @@ try {
       barRows: barB?.shadowRoot?.querySelectorAll('.row').length ?? -1,
     };
   });
-  check('palette renders plugin cards', mounted.palette >= 8, `cards=${mounted.palette}`);
-  check('menu builder renders the tab rows', mounted.menuRows >= 10, `rows=${mounted.menuRows}`);
+  check('palette renders plugin cards', mounted.palette >= 12, `cards=${mounted.palette}`);
+  check('menu builder renders the tab rows', mounted.menuRows >= 6, `rows=${mounted.menuRows}`);
   check('bar builder renders the bar rows', mounted.barRows >= 6, `rows=${mounted.barRows}`);
 
   // --- edit: add an item, assign it the Music plugin via the drag payload,

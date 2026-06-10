@@ -11,11 +11,14 @@
 
     let solTabs = null;   // assigned once the included <sol-tabs> exists
     const chrome  = document.querySelector('.omp-chrome');
-    const PANEL_KEYS = ['home', 'news', 'music', 'movies', 'images', 'podz', 'solidos', 'solid-resources', 'dev-tools', 'customize'];
+    // The DEFAULT tab set; panels removed from the menu (pantry items a user
+    // can re-add via Customize) simply resolve to null here, and re-added
+    // ones work through paneForName/onTab regardless of this list.
+    const PANEL_KEYS = ['news', 'music', 'movies', 'images', 'podz', 'solidos', 'home', 'solid-resources', 'dev-tools', 'customize'];
     const panelEl   = (key) => document.getElementById('panel-' + key);
     const allPanels = () => PANEL_KEYS.map(panelEl).filter(Boolean);
     let audioName = 'music';
-    let current = 'home';
+    let current = 'news';
     const activePanel = () => panelEl(current);
 
     // sol-tabs pane ↔ panel-key bridge.
@@ -213,10 +216,10 @@
     // <sol-tabs> builds its panels asynchronously (the html-first include);
     // wait for them, then wire tab reactions + restore the last-used tab.
     function whenTabsReady(cb) {
-      if (panelEl('home')) return cb();
+      if (panelEl('news')) return cb();
       let n = 0;
       const t = setInterval(() => {
-        if (panelEl('home') || ++n > 60) { clearInterval(t); cb(); }
+        if (panelEl('news') || ++n > 60) { clearInterval(t); cb(); }
       }, 50);
     }
     whenTabsReady(() => {
@@ -225,15 +228,20 @@
       solTabs.addEventListener('sol-tab-change', (e) => onTab(e.detail?.name));
       if (canWrite()) panelEl('news')?.toggleAttribute('editable', true);
 
-      let saved = 'home';
-      try { saved = localStorage.getItem('dk:active-panel') || 'home'; } catch {}
+      // News is the startup tab unless a saved choice says otherwise (a
+      // saved key for a since-removed tab falls through to the first tab).
+      let saved = 'news';
+      try { saved = localStorage.getItem('dk:active-panel') || 'news'; } catch {}
       const savedName = nameForKey(saved);
       if (savedName && savedName !== solTabs.activeTab) solTabs.switchTab(savedName);
       else onTab(solTabs.activeTab);   // sync state for the already-active tab
       syncGating();
 
+      // Idle-warm only the panels NOT marked defer — media tabs (music,
+      // movies) and the heavy pod tools stay fully lazy: nothing of theirs
+      // (playlists, libraries, bundles) loads until the user opens the tab.
       const idle = window.requestIdleCallback || ((f) => setTimeout(f, 1500));
-      idle(() => { for (const el of allPanels()) el.ensureLoaded?.(); });
+      idle(() => { for (const el of allPanels()) if (!el.hasAttribute('defer')) el.ensureLoaded?.(); });
 
       // Panels mount async — retry gating + audio binding until ready.
       let tries = 0;

@@ -47,26 +47,39 @@ async function clickTab(re, settleMs) {
   }, { source: re.source, flags: re.flags, settleMs });
 }
 
-// --- tab row renders the full union ---
+// --- tab row renders the default set (Home/SolidOS/Resources/DevTools are
+//     pantry: defined in tabs.ttl + palette but not in the menu) ---
 const tabs = await page.evaluate(() => {
   const tabset = document.querySelector('sol-tabs');
   if (!tabset) return null;
   return [...tabset.querySelectorAll('[role="tab"], .sol-tab, a')].map(e => e.textContent.trim()).filter(Boolean);
 });
 check('sol-tabs present', Array.isArray(tabs), '');
-const want = ['Home', 'News', 'Music', 'Movies', 'Images', 'Podz', 'SolidOS', 'Solid Resources', 'Dev Tools'];
+const want = ['News', 'Music', 'Movies', 'Images', 'Podz', 'Customize'];
 const missing = want.filter(w => !(tabs || []).some(t => t.includes(w)));
-check('all union tabs present', missing.length === 0, missing.length ? 'missing: ' + missing.join(', ') : (tabs || []).slice(0, 10).join(' | '));
+const stray = ['Home', 'SolidOS', 'Solid Resources', 'Dev Tools'].filter(w => (tabs || []).some(t => t.includes(w)));
+check('default tab set present', missing.length === 0, missing.length ? 'missing: ' + missing.join(', ') : (tabs || []).slice(0, 8).join(' | '));
+check('pantry tabs absent from the row', stray.length === 0, stray.join(', '));
 
-// --- Home default with dashboard widgets ---
-const home = await page.evaluate(() => ({
-  weather: !!document.querySelector('sol-weather'),
-  time: !!document.querySelector('sol-time'),
-  feed: !!document.querySelector('#panel-home sol-feed, .dk-home sol-feed'),
-}));
-check('Home dashboard mounts (weather/time/feed)', home.weather && home.time && home.feed, JSON.stringify(home));
+// --- News is the startup tab; media stays UNLOADED until visited ---
+// (sol-tabs instantiates the deferred <ia-player> wrapper at mount — lazy
+// means its DATA doesn't load: no library fetches, no track rows yet.)
+const startup = await page.evaluate(() => {
+  const player = document.querySelector('ia-player');
+  const root = player && (player.shadowRoot || player);
+  return {
+    active: document.querySelector('sol-tabs')?.activeTab || null,
+    newsFeed: !!document.querySelector('#panel-news'),
+    playerRows: root ? root.querySelectorAll('tr, .track, [class*=track]').length : 0,
+  };
+});
+check('News selected at startup', /news/i.test(startup.active || '') && startup.newsFeed, `active=${startup.active}`);
+check('media lazy: no track rows before visiting Music', startup.playerRows === 0, `rows=${startup.playerRows}`);
+const mediaFetched = await page.evaluate(() =>
+  performance.getEntriesByType('resource').some(r => r.name.includes('internet_archive')));
+check('media lazy: no music-library fetches at startup', !mediaFetched);
 
-// --- Music: ia-player lists tracks ---
+// --- Music: ia-player lists tracks (loads on first visit) ---
 await clickTab(/music/i, 6000);
 const music = await page.evaluate(() => {
   const player = document.querySelector('ia-player');
