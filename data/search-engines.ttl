@@ -1,4 +1,4 @@
-@prefix : <http://localhost:3000/data-kitchen/data/search-engines.ttl#>.
+@prefix : <#>.
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix hydra: <http://www.w3.org/ns/hydra/core#>.
 @prefix schema: <http://schema.org/>.
