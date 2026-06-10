@@ -1,3 +1,21 @@
+--------
+# TO-DO
+--------
+
+* remove the home tab, news should be first and should be selected automatically if nothing else is specified as selected on startup;
+* remove the SolidOS tab but not the plugin
+* Solid Resources & DevTools submenus should not be part of the tabs menu, they are part of the plugin, not the chrome, so maybe have their html page should 
+* lazy load media ie no music playlists until user selects music tab
+
+CLAUDE: IGNORE EVERYTHING BELOW HERE
+
+----------
+# THOUGHTS
+----------
+
+--------
+# DONE
+--------
 data-kitchen is an electron app that packages a solid server, a proxy, and an app containing multiple subapps that access the server
 it will eventually replace the current version of https://github.com/solidOS/data-kitchen, which i control
 
