@@ -27,66 +27,7 @@ import { loadCategory } from './sources/commons.js';
 import { star } from '../../src/shared/omp-favourites-ui.js';
 import { listFavourites, removeFavouriteFile } from '../../src/shared/omp-favourites-store.js';
 
-const CSS = `
-  :host { display: flex; flex-direction: row; height: 100%; min-height: 0; overflow: hidden;
-          font-family: var(--font-ui, system-ui, sans-serif); font-size: var(--font-size, 20px);
-          color: var(--text, #212121); background: var(--bg, #f5f5f5); }
-  :host([hidden]) { display: none; }
-  * { box-sizing: border-box; }
-
-  .fav-col { flex: 0 0 13rem; display: flex; flex-direction: column; min-height: 0;
-             background: var(--surface, #fff); border-right: 1px solid var(--border, #d0d0d0); }
-  .right { flex: 1 1 auto; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
-  .browser { flex: 0 0 42%; display: flex; min-height: 8rem;
-             background: var(--surface, #fff); border-bottom: 1px solid var(--border, #d0d0d0); }
-
-  .pane { display: flex; flex-direction: column; min-height: 0; min-width: 0; overflow: hidden; }
-  .browser .pane { flex: 1 1 0; }
-  .browser .pane + .pane { border-left: 1px solid var(--border, #d0d0d0); }
-  .pane-head { flex: 0 0 auto; padding: .45rem .6rem .3rem; font-size: .68em; font-weight: 700;
-               text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted, #7f8c8d); }
-  .list { list-style: none; margin: 0; padding: 0 .35rem .4rem; overflow: auto; min-height: 0; flex: 1 1 auto; }
-  .hint { padding: .35rem .5rem; font-size: .72em; font-style: italic; color: var(--text-muted, #7f8c8d); }
-
-  .row { display: block; width: 100%; text-align: left; font: inherit; font-size: .78em;
-         padding: .35rem .5rem; margin: 0; border: none; border-radius: 6px; background: transparent;
-         color: var(--text, #212121); cursor: pointer; line-height: 1.3; }
-  .row:hover { background: var(--hover, #eaf2fb); }
-  .row.selected { background: var(--focus-bg, #ebf5fb); color: var(--selected-fg, var(--link, #2980b9)); font-weight: 600; }
-  .row:focus-visible { outline: 2px solid var(--accent, #3498db); outline-offset: -2px; }
-  .coll, .fav-link { color: var(--link, var(--accent, #2980b9)); }
-
-  /* collection row = label button + a ★ favourite toggle */
-  li.has-star { display: flex; align-items: center; gap: .1rem; }
-  li.has-star .row { flex: 1 1 auto; min-width: 0; }
-  .star { flex: 0 0 auto; background: transparent; border: none; cursor: pointer; padding: 0 .25rem;
-          font-size: .95em; line-height: 1; color: var(--text-muted, #9aa0a6); }
-  .star:hover { color: var(--accent, #e6b800); }
-  .star.on { color: #e6b800; }
-  /* owner-only "remove from the communal wall" control on a favourite row */
-  .fav-x { flex: 0 0 auto; background: transparent; border: none; cursor: pointer; padding: 0 .3rem;
-           color: var(--text-muted, #9aa0a6); font-size: .8em; display: none; }
-  :host(.owner) .fav-x { display: inline-block; }
-  .fav-x:hover { color: var(--error, #e74c3c); }
-
-  /* owner-only add controls (hidden unless :host(.owner)) */
-  .add { flex: 0 0 auto; border-top: 1px solid var(--border, #d0d0d0); padding: .35rem; display: none; }
-  :host(.owner) .add { display: block; }
-  .add-btn { width: 100%; font: inherit; font-size: .74em; padding: .3rem .5rem; cursor: pointer;
-             border: 1px dashed var(--border, #c0c0c0); border-radius: 6px; background: transparent; color: var(--text-muted, #555); }
-  .add-btn:hover:not(:disabled) { background: var(--hover, #eaf2fb); color: var(--text, #111); }
-  .add-btn:disabled { opacity: .5; cursor: default; }
-  .add-form { display: flex; flex-direction: column; gap: .3rem; }
-  .add-form input { font: inherit; font-size: .76em; padding: .3rem .4rem; border: 1px solid var(--border, #c0c0c0);
-                    border-radius: 6px; background: var(--bg, #fff); color: var(--text, #111); }
-  .add-form .add-row { display: flex; gap: .3rem; }
-  .add-form button { font: inherit; font-size: .74em; padding: .28rem .6rem; border-radius: 6px;
-                     border: 1px solid var(--border, #c0c0c0); cursor: pointer; background: var(--surface, #fff); color: inherit; }
-  .add-form button.primary { background: var(--accent, #3498db); color: #fff; border-color: transparent; }
-  .add-err { font-size: .7em; color: var(--error, #e74c3c); padding: 0 .2rem; }
-
-  sol-gallery { flex: 1 1 auto; min-width: 0; min-height: 0; }
-`;
+import CSS from './omp-images.css';
 
 class OmpImages extends HTMLElement {
   constructor() {
