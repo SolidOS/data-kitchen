@@ -82,9 +82,18 @@ class DesktopApp {
         sandbox: true,
       },
     });
+    // The app view fills the window's container view. (Not setContentView:
+    // the native overlay panes must be SIBLINGS of the app view — children
+    // of a WebContentsView don't paint over its web texture.) Manual fitting
+    // must never miss a geometry change, so: every resize-ish event, plus a
+    // cheap drift watchdog that refits if the bounds ever disagree anyway.
     this.baseWindow.contentView.addChildView(this.appView);
     this.fitAppView();
-    this.baseWindow.on('resize', () => this.fitAppView());
+    for (const ev of ['resize', 'resized', 'maximize', 'unmaximize', 'restore',
+                      'enter-full-screen', 'leave-full-screen']) {
+      this.baseWindow.on(ev, () => this.fitAppView());
+    }
+    setInterval(() => this.fitAppView(), 500);
 
     this.external = new ExternalViews(this.baseWindow);
     this.wireIpc();
@@ -105,8 +114,12 @@ class DesktopApp {
     wc.loadURL(APP_URL);
   }
 
+  // Keep the app view exactly the window's content size; cheap no-op when
+  // already in sync (called from events AND the watchdog interval).
   fitAppView() {
     const { width, height } = this.baseWindow.getContentBounds();
+    const b = this.appView.getBounds();
+    if (b.width === width && b.height === height && b.x === 0 && b.y === 0) return;
     this.appView.setBounds({ x: 0, y: 0, width, height });
   }
 
