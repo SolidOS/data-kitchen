@@ -6,5 +6,5 @@
   a ui:Component ;
   ui:label "Calendar" ;
   ui:name "dk-calendar-popout" ;
-  dct:hasPart <../pages/dk-calendar-popout.html> ;
+  dct:hasPart <./dk-calendar-popout.html> ;
   dct:requires <../data/calendar-settings.ttl> .

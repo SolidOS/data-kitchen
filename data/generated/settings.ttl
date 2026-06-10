@@ -1,7 +1,0 @@
-@prefix ui: <http://www.w3.org/ns/ui#> .
-
-# GENERATED from <sol-default> by bin/html-to-rdf.mjs — do not hand-edit.
-<#Settings>
-  ui:colorScheme ui:DarkColorScheme ;
-  ui:fontSize ui:MediumFont ;
-  ui:proxy "http://localhost:3002/proxy?uri=" .

@@ -1,5 +1,5 @@
 // dk-solidos hosts a two-pane workspace: <sol-pod> sidebar on the
-// left, an iframe loading pages/solidos-host.html on the right.
+// left, an iframe loading plugins/solidos/solidos-host.html on the right.
 // The host page runs mashlib + <sol-solidos> in isolation (no CSS,
 // theme, or global leaks back into dk) and exposes window.gotoSubject
 // for parent-driven navigation. Same-origin, so:
@@ -27,14 +27,14 @@
 //     pod-side queries (storage listing) inherit the iframe-side
 //     login. pod.loadContainer is refreshed on apply/release.
 //
-// Cross-window visual cue: pages/solidos-host.html also broadcasts
+// Cross-window visual cue: plugins/solidos/solidos-host.html also broadcasts
 // mashlib's session events on BroadcastChannel('sol-auth'), and
 // sol-pod's embedded sol-login listens on the same channel — so
 // logging in inside SolidOS lights up sol-pod's login button green
 // even when no direct adoption has happened.
 
 class DkSolidos extends HTMLElement {
-  static get template() { return 'pages/dk-solidos.html'; }
+  static get template() { return 'plugins/solidos/dk-solidos.html'; }
 
   static get editableWidgets() { return []; }
 
@@ -60,7 +60,7 @@ class DkSolidos extends HTMLElement {
         } else {
           // Fallback: iframe not yet ready — fall back to navigating
           // the iframe URL (works standalone via ?uri=…).
-          iframe.src = 'pages/solidos-host.html?uri=' + encodeURIComponent(item.url);
+          iframe.src = 'plugins/solidos/solidos-host.html?uri=' + encodeURIComponent(item.url);
         }
       };
       try { await pod.initialize(); }
@@ -93,7 +93,7 @@ class DkSolidos extends HTMLElement {
       // via postMessage — not stored where the iframe's authn could
       // find them). So we hand the iframe an authed fetch sourced
       // from the parent's pod, and the iframe sets window.fetch to
-      // it BEFORE loading mashlib (see pages/solidos-host.html).
+      // it BEFORE loading mashlib (see plugins/solidos/solidos-host.html).
       // boundFetch in solid-logic resolves global fetch at call time,
       // so all of mashlib's traffic inherits the auth.
       const podAuthedFetch = (input, init) => {

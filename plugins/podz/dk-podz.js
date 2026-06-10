@@ -37,7 +37,7 @@ function loadPodzBundle() {
 }
 
 class DkPodz extends HTMLElement {
-  static get template() { return 'pages/dk-podz.html'; }
+  static get template() { return 'plugins/podz/dk-podz.html'; }
   static get manifest() { return 'src/dk-podz.manifest.ttl'; }
 
   /**

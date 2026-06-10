@@ -1,8 +1,0 @@
-@prefix omp: <urn:omp:shape:settings:> .
-@prefix ui:  <http://www.w3.org/ns/ui#> .
-
-<#Settings>
-  a omp:Prefs ;
-  ui:colorScheme ui:DarkColorScheme ;
-  ui:fontSize ui:LargeFont ;
-  ui:proxy "http://localhost:3002/proxy?uri=" .

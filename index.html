@@ -8,138 +8,49 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="node_modules/sol-components/web/styles/root.css">
   <link rel="stylesheet" href="src/dk-styles.css">
+  <link rel="stylesheet" href="assets/dk-chrome.css">
 
-  <script>
-    (function () {
-      try {
-        const s = JSON.parse(localStorage.getItem('data-kitchen-settings') || '{}');
-        if (s.theme)    document.documentElement.dataset.theme = s.theme;
-        if (s.fontSize) document.documentElement.style.setProperty('--font-size', s.fontSize);
-      } catch (_) { /* localStorage disabled — first paint uses defaults */ }
-    })();
-    // One-shot: wipe podz's persisted pod-registry seed AND the
-    // last-viewed pod selection so the next dk load takes podz's
-    // fresh-session path (leftPod.initialize() with no `source=` and an
-    // empty registry → sol-pod.discover() actually runs, [pod-ops]
-    // trace appears). Bump the flag (v2 → v3 → …) to re-clear later.
-    (function () {
-      try {
-        if (localStorage.getItem('dk-cleared-session-pods-v2')) return;
-        const raw = localStorage.getItem('podz_v4');
-        if (raw) {
-          const blob = JSON.parse(raw);
-          delete blob.sessionPods;
-          delete blob.selection;
-          localStorage.setItem('podz_v4', JSON.stringify(blob));
-        }
-        // Legacy keys, in case an old podz version still wrote them.
-        localStorage.removeItem('podz_session_pods');
-        localStorage.removeItem('podzPodSelection');
-        localStorage.setItem('dk-cleared-session-pods-v2', '1');
-      } catch (_) {}
-    })();
-  </script>
+  <!-- Pre-paint boot: apply saved theme / text size before first paint. -->
+  <script src="src/dk-boot.js"></script>
+
+  <!-- sol-login reads the inrupt auth library from the UMD global
+       window.solidClientAuthn, so the page must load it first. Vendored
+       locally (assets/vendor/) — a desktop app must not depend on a CDN. -->
+  <script src="assets/vendor/solid-client-authn.bundle.js"></script>
 
   <!-- component-interop (parser-blocking <head> script) reads both manifests —
-       sol-components' first (it owns the shared specifiers: rdflib, solid-ui,
-       solid-logic, …; merge is first-wins), dk's second (adds podz only) — and
-       injects the stage-selected importmap, then import()s each data-components
-       entry. data-stage="auto": localhost → vendored deps (dist/vendor/*),
-       else → esm.sh CDN. The old data-extend-with capabilities are now just
-       named components: auth ⇒ sol-login, sparql ⇒ sol-query, rdf editing ⇒
-       rdf-bundle (solid-logic → solid-ui → sol-form/modal/settings/tree-edit);
-       data-edit-shape on <sol-default> also auto-loads rdf-bundle.
-       dk's OWN bundle is loaded directly as a module below (not via the loader),
-       so it stays out of the loader's import chain — no readiness deadlock. -->
-
+       sol-components' first (it owns the shared specifiers: rdflib,
+       solid-logic, solid-ui, …; merge is first-wins), dk's second (adds the
+       ia-player plugin bundle and podz) — injects the stage-selected
+       importmap, then import()s each data-components entry. dk's OWN bundle
+       is loaded directly as a module below (not via the loader), so it stays
+       out of the loader's import chain. -->
   <script src="node_modules/component-interop/component-interop.js"
           data-stage="auto"
           data-manifest="node_modules/sol-components/dist/sol-components.manifest.json dk.manifest.json"
-          data-components="sol-basic sol-pod sol-pod-extras sol-live-edit sol-time sol-weather sol-calendar sol-search sol-feed sol-login sol-query menu-from-rdf rdf-bundle"
+          data-components="sol-basic sol-pod sol-pod-extras sol-pod-ops sol-live-edit sol-time sol-weather sol-calendar sol-search sol-feed sol-gallery sol-login sol-query menu-from-rdf rdf-bundle ia-player"
   ></script>
   <script type="module" src="dist/dk.bundle.js"></script>
 </head>
 <body>
-    <!-- DEFAULT -->
-      <sol-default
-          label="Preferences"
-          default-issuer="https://solidcommunity.net"
-          shape="node_modules/sol-components/shapes/data-kitchen-settings.shacl"
-          source="data/data-kitchen-settings.ttl#Settings"
-      ></sol-default>
 
-  <header class="dk-chrome">
+  <sol-default
+      label="Preferences"
+      theme="dark"
+      fontsize="medium"
+      solid-kitchen
+      proxy="http://localhost:3002/proxy?uri="
+      default-issuer="https://solidcommunity.net"
+      shape="node_modules/sol-components/shapes/data-kitchen-settings.shacl"
+      source="data/data-kitchen-settings.ttl#Settings"
+  ></sol-default>
 
-    <!--MAIN MENU-->
-        <sol-menu
-            from-rdf="data/menu.ttl#MainMenu"
-            orientation="horizontal"
-            region="#dk-content"
-        ></sol-menu><div class="dk-chrome-spacer"></div>
+  <nav class="omp-chrome-bar" aria-label="Controls">
+    <sol-include source="plugins/ia-player/assets/mini-player.html" trusted></sol-include>
+  </nav>
 
-    <!--SEARCH-->
-        <sol-search
-            source="data/search-engines.ttl#SearchEngines"
-        ></sol-search>
-
-    <!--CALENDAR-->
-        <dk-calendar-popout
-            source="data/calendar-settings.ttl#All"
-        ></dk-calendar-popout>
-
-    <!--LOGIN-->
-        <sol-login
-            mode="popup"
-            popup-callback="node_modules/podz/popup-auth-callback.html"
-            issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
-        ></sol-login>
-
-    <!--HELP-->
-        <sol-button
-            data-handler="sol-include"
-            source="help/dk.html"
-            region="#dk-content" name="Help" trusted
-            title="Help" aria-label="Open help"
-        ></sol-button>
-
-    <!--SETTINGS-->
-        <sol-button
-            data-handler="sol-include"
-            source="pages/settings.html"
-            region="#dk-content" name="Settings" trusted
-            title="Settings" aria-label="Open settings"
-        ></sol-button>
-
-  </header>
-
-  <main id="dk-content">
-    <div data-menu-item="Home">
-      <header class="dash" aria-label="Dashboard widgets">
-
-        <!--WEATHER-->
-            <sol-weather
-                source="data/weather-settings.ttl#Settings"
-            ></sol-weather>
-
-        <span class="dash-sep" aria-hidden="true">·</span>
-
-        <!--TIME-->
-          <sol-time
-              source="data/time-settings.ttl#Settings"
-          ></sol-time>
-
-      </header>
-      <main class="feed" aria-label="News feed">
-
-        <!--FEEDS-->
-            <sol-feed
-                source="data/feeds.ttl#Feeds"
-                view="all"
-                reader="inline"
-            ></sol-feed>
-
-      </main>
-    </div>
+  <main id="dk-content" class="omp-panels">
+    <sol-include id="dk-body" source="./html-first.html" trusted></sol-include>
   </main>
 
 </body>

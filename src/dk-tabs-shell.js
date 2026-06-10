@@ -1,20 +1,21 @@
-// omp-shell — page-level wiring around <sol-tabs>: tab-change reactions,
-// chrome actions, mini audio player, guest gating, and the help overlay.
-// The four tabs + panels are authored declaratively in html-first.html; here
-// we react to <sol-tabs>'s sol-tab-change. Favourites are no longer a tab —
+// dk-tabs-shell — page-level wiring around the topmost <sol-tabs>: tab-change
+// reactions, chrome actions, mini audio player, guest gating, and the help
+// overlay. (Adapted from omp-shell when open_media_player was absorbed.)
+// The tabs + panels are authored declaratively in html-first.html; here we
+// react to <sol-tabs>'s sol-tab-change. Favourites are no longer a tab —
 // each media tab surfaces its own favourites.
 
     // The body UI is authored declaratively in html-first.html and loaded by the
-    // #omp-body <sol-include source="./html-first.html"> in index.html. (#omp-tabs
+    // #dk-body <sol-include source="./html-first.html"> in index.html. (#dk-tabs
     // therefore appears asynchronously — see whenTabsReady.)
 
     let solTabs = null;   // assigned once the included <sol-tabs> exists
     const chrome  = document.querySelector('.omp-chrome');
-    const PANEL_KEYS = ['news', 'music', 'images', 'movies', 'workspaces', 'solid-resources', 'dev-tools'];
+    const PANEL_KEYS = ['home', 'news', 'music', 'movies', 'images', 'podz', 'solidos', 'solid-resources', 'dev-tools'];
     const panelEl   = (key) => document.getElementById('panel-' + key);
     const allPanels = () => PANEL_KEYS.map(panelEl).filter(Boolean);
     let audioName = 'music';
-    let current = 'news';
+    let current = 'home';
     const activePanel = () => panelEl(current);
 
     // sol-tabs pane ↔ panel-key bridge.
@@ -30,14 +31,15 @@
     // React to a tab switch: load the active panel, pause the panels we left
     // (except the audio one — it plays on under the mini player), remember it.
     function onTab(name) {
-      // Picking a tab dismisses the help overlay (the ? <sol-button region="inline">).
+      // Picking a tab dismisses the inline overlays (help ?, settings ⚙).
       document.querySelector('.omp-help-launch')?.close?.();
+      document.querySelector('.omp-settings-launch')?.close?.();
       const el = paneForName(name)?.querySelector('[id^="panel-"]');
       if (el) current = el.id.replace(/^panel-/, '');
       el?.ensureLoaded?.();
       for (const k of PANEL_KEYS)
         if (k !== current && k !== audioName) panelEl(k)?.getMediaElement?.()?.pause?.();
-      try { localStorage.setItem('omp:active-panel', current); } catch {}
+      try { localStorage.setItem('dk:active-panel', current); } catch {}
       syncGating(); bindAudio(); updateMini();
     }
 
@@ -67,7 +69,7 @@
     function toggleTheme() {
       const next = effectiveTheme() === 'light' ? 'dark' : 'light';
       docEl.setAttribute('data-theme', next);
-      try { localStorage.setItem('omp:theme', next); } catch {}
+      try { localStorage.setItem('dk:theme', next); } catch {}
       syncTheme();
       document.dispatchEvent(new CustomEvent('omp:appearance'));
     }
@@ -89,7 +91,7 @@
       const cur = effectiveFontSize();
       const next = SIZES[(SIZES.indexOf(cur) + 1) % SIZES.length];
       docEl.setAttribute('data-fontsize', next);
-      try { localStorage.setItem('omp:fontsize', next); } catch {}
+      try { localStorage.setItem('dk:fontsize', next); } catch {}
       syncFontSize();
       document.dispatchEvent(new CustomEvent('omp:appearance'));
     }
@@ -188,36 +190,12 @@
       syncGating();
     }
 
-    // ----- RDF menu commands (sol-command) -----
-    // A <sol-menu from-rdf> item whose ui:name is a bare key (e.g. a ui:Component
-    // ui:name "installPod") dispatches `sol-command` on click. This registry maps
-    // those keys to behaviours — it's the allow-list: an unregistered command is
-    // a no-op, and nothing executes code that the RDF names.
-    // Workspaces: a tab whose bare handler ("podz") is a command. sol-tabs hands
-    // it the pane via detail.place(); we mount the vendored podz two-pane shell
-    // there, then import podz's bundle — it self-wires the splitter + cross-pane
-    // drag against the just-placed #left-pod / #right-pod. Boots once.
-    let podzBooted = false;
-    async function mountWorkspaces(params, detail) {
-      if (podzBooted || !detail?.place) return;
-      podzBooted = true;
-      if (!document.querySelector('link[data-podz-css]')) {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = './libraries/workspaces/podz.css';
-        link.setAttribute('data-podz-css', '');
-        document.head.appendChild(link);
-      }
-      const shell = params?.href || './libraries/workspaces/podz-shell.html';
-      const html = await fetch(new URL(shell, document.baseURI)).then((r) => r.text());
-      detail.place(html);   // inserts the two-pod shell into the tab's pane
-      // podz's bundle reads window.SolidWebComponents.AuthManager at eval time;
-      // component-interop only publishes it once sol-login has loaded, so wait
-      // for interop readiness before importing the bundle.
-      try { await window.ComponentInterop?.ready; } catch {}
-      await import('../libraries/workspaces/podz.bundle.min.js');
-    }
-
+    // ----- commands (sol-command) -----
+    // A bare-key handler (e.g. data-handler="toggleTheme") dispatches
+    // `sol-command` on click. This registry maps those keys to behaviours —
+    // it's the allow-list: an unregistered command is a no-op, and nothing
+    // executes code that markup or RDF names. (The old omp Workspaces "podz"
+    // command is gone — Podz is the <dk-podz> component tab now.)
     const COMMANDS = {
       guestView:     () => enterGuestPreview(),
       toggleTheme:   () => toggleTheme(),
@@ -226,30 +204,29 @@
       viewDeleted: () => activePanel()?.appAction?.('viewDeleted'),
       installPod:  () => activePanel()?.appAction?.('installPod'),
       updateApp:   () => activePanel()?.appAction?.('updateApp'),
-      podz:        (params, detail) => mountWorkspaces(params, detail),
     };
     document.addEventListener('sol-command', (e) => COMMANDS[e.detail?.command]?.(e.detail?.params, e.detail));
 
     // ----- boot -----
     syncTheme();
     syncFontSize();
-    // <sol-tabs> builds its panels asynchronously (from-rdf fetch); wait for
-    // them, then wire tab reactions + restore the last-used tab.
+    // <sol-tabs> builds its panels asynchronously (the html-first include);
+    // wait for them, then wire tab reactions + restore the last-used tab.
     function whenTabsReady(cb) {
-      if (panelEl('news')) return cb();
+      if (panelEl('home')) return cb();
       let n = 0;
       const t = setInterval(() => {
-        if (panelEl('news') || ++n > 60) { clearInterval(t); cb(); }
+        if (panelEl('home') || ++n > 60) { clearInterval(t); cb(); }
       }, 50);
     }
     whenTabsReady(() => {
-      solTabs = document.getElementById('omp-tabs');
+      solTabs = document.getElementById('dk-tabs');
       for (const el of allPanels()) el.addEventListener('omp:access', syncGating);
       solTabs.addEventListener('sol-tab-change', (e) => onTab(e.detail?.name));
       if (canWrite()) panelEl('news')?.toggleAttribute('editable', true);
 
-      let saved = 'news';
-      try { saved = localStorage.getItem('omp:active-panel') || 'news'; } catch {}
+      let saved = 'home';
+      try { saved = localStorage.getItem('dk:active-panel') || 'home'; } catch {}
       const savedName = nameForKey(saved);
       if (savedName && savedName !== solTabs.activeTab) solTabs.switchTab(savedName);
       else onTab(solTabs.activeTab);   // sync state for the already-active tab

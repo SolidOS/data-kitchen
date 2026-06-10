@@ -1,66 +1,68 @@
-<div class="help-body">
-  <div class="help-section">
-    <h2>data-kitchen</h2>
-    <p>A single-page shell that hosts multiple apps under one menu,
-       one auth pool, one theme, and one set of preferences.</p>
-  </div>
-  <div class="help-section">
-    <h2>Chrome (top row)</h2>
-    <p><strong>Menu</strong>: Home, Podz, Solidos, SolidResources, and
-       DevTools — pick which app fills the display area. Apps marked
-       <em>keep-alive</em> in the menu RDF stay mounted between
-       switches, so things like a pod login or scroll position survive
-       navigation back and forth.</p>
-    <p><em>Solidos</em> is a two-pane workspace: a pod tree on the
-       left, the SolidOS data browser on the right. Click the Solid
-       logo (🌐-like icon) next to any item in the pod tree to load
-       that resource in the right pane. See the Solidos help page for
-       details.</p>
-    <p><em>SolidResources</em> and <em>DevTools</em> are submenus —
-       hover to see their items (website, FAQ, glossary, catalog;
-       JSON-LD / SPARQL / SHACL playgrounds; an RDF validator). Each
-       opens in an iframe inside the display area.</p>
-    <p><strong>Search</strong> (🔍): inline search across DuckDuckGo,
-       Google, Wikipedia, and others — your engine list is editable
-       via Settings.</p>
-    <p><strong>Calendar</strong> (🗓): the same data the dashboard's
-       calendar shows, in a popout. Pre-fetches at page load so the
-       events are ready when you click.</p>
-    <p><strong>Help</strong> (?): you're looking at it. Today the help
-       button shows this same page regardless of which app is active;
-       per-app help pages live under <code>help/&lt;app&gt;.html</code>
-       (e.g. <code>help/podz.html</code>, <code>help/solidos.html</code>).</p>
-    <p><strong>Preferences</strong> (⚙): theme + font size.
-       Per-app preferences (e.g. editor keybindings for podz) live
-       inside the app itself. The gear also doubles as the
-       <em>logged-in indicator</em> — see "Signing in" below.</p>
-  </div>
-  <div class="help-section">
-    <h2>Signing in</h2>
-    <p>data-kitchen has no permanent login button. Login happens
-       <em>on demand</em>: when a save (or any other authenticated
-       fetch) hits a resource that requires sign-in, a login picker
-       appears for the duration of the flow and disappears again
-       once you're authenticated.</p>
-    <p>Once a session is active, the Preferences gear turns
-       <span style="color: var(--success, #388e3c)">green</span>;
-       hovering it surfaces your WebID as the tooltip. Click the
-       gear to reach Settings as usual — your session details and
-       per-issuer logout will live there in the upcoming
-       multi-issuer UI. (Today, all signed-in sessions share one
-       default issuer configured under
-       <code>&lt;sol-default default-issuer="…"&gt;</code>.)</p>
-    <p>Behind the scenes: every widget that saves goes through
-       <code>solFetch</code>, which dispatches
-       <code>sol-auth-needed</code> on a 401. The chrome's hidden
-       <code>&lt;sol-login&gt;</code> catches the event, opens an
-       OIDC popup, and resolves the promise so the original save
-       retries automatically.</p>
-  </div>
-  <div class="help-section">
-    <h2>Settings page</h2>
-    <p>Lists every editable widget on the page. Expanding a panel
-       lazy-mounts its editor; saves write back to the source TTL.
-       The list starts with every panel collapsed.</p>
-  </div>
+<style>
+  .dk-help-doc { line-height: 1.5; }
+  .dk-help-doc h3 { margin: 1.1em 0 .35em; font-size: 1rem; }
+  .dk-help-doc h3:first-of-type { margin-top: .2em; }
+  .dk-help-doc p { margin: .3em 0 .6em; }
+  .dk-help-doc ul { margin: .2em 0 .7em; padding-left: 1.2em; }
+  .dk-help-doc li { margin: .25em 0; }
+  .dk-help-doc .dk-help-signin {
+    margin-top: 1.2em; padding-top: .8em;
+    border-top: 1px solid var(--ia-border, #2a2d33);
+    font-size: .94em; opacity: .85;
+  }
+</style>
+<div class="dk-help-doc">
+  <p>Welcome to <strong>data-kitchen</strong> — one shell, many plugins, one
+     theme, one sign-in. You're browsing as a guest; everything here works
+     without signing in.</p>
+
+  <h3>🏠 Home</h3>
+  <ul>
+    <li>A dashboard: weather, clock, and a combined news feed.</li>
+  </ul>
+
+  <h3>📰 News</h3>
+  <ul>
+    <li>Pick a <strong>topic</strong> across the top, then a <strong>source</strong> below it to see its latest stories.</li>
+    <li>Click any article to open it in a reader.</li>
+  </ul>
+
+  <h3>🎵 Music &amp; 🎬 Movies</h3>
+  <ul>
+    <li>Browse by genre / film-type → artist / collection → album → track.</li>
+    <li>Search the Internet Archive and click to play.</li>
+    <li>In the music tracklist, <strong>🎲</strong> shuffles the play order and <strong>🧹</strong> clears the whole tracklist.</li>
+    <li>Keep listening with the mini-player while you visit other tabs.</li>
+  </ul>
+
+  <h3>🖼 Images</h3>
+  <ul>
+    <li>Drill <strong>Library → Topic → Collection</strong>, then scroll the picture grid.</li>
+    <li>Click a picture for the full-size view — use ← → to page, click to zoom to 100%, or open it on Wikimedia Commons.</li>
+  </ul>
+
+  <h3>🗂 Podz &amp; 🐧 SolidOS</h3>
+  <ul>
+    <li><strong>Podz</strong>: a two-pane Solid pod browser — sign in to a pod on either side and drag resources between them.</li>
+    <li><strong>SolidOS</strong>: a pod tree on the left, the SolidOS data browser on the right; click the Solid logo next to a tree item to open it on the right.</li>
+  </ul>
+
+  <h3>📚 Solid Resources &amp; 🛠 Dev Tools</h3>
+  <ul>
+    <li>Reference links (website, FAQ, glossary, catalog) and developer playgrounds (JSON-LD, SHACL, SPARQL, an RDF validator) — each opens inside the tab.</li>
+  </ul>
+
+  <h3>★ Community Favorites</h3>
+  <ul>
+    <li>Tap the <strong>☆</strong> on a track, film, or image collection to add it to the shared <strong>Community Favorites</strong> — tap the <strong>★</strong> again to remove it.</li>
+    <li>It's a <strong>communal list</strong>: anyone can add and everyone sees it. Each tab shows its own Community Favorites list.</li>
+  </ul>
+
+  <h3>🎨 Appearance &amp; ⚙ Settings</h3>
+  <ul>
+    <li>Use the <strong>A</strong> and <strong>🌙</strong> buttons in the top bar for <strong>text size</strong> and <strong>light / dark</strong>.</li>
+    <li><strong>⚙ Settings</strong> lists every editable widget on the page; expanding a panel opens its editor, and saves write back to the source data.</li>
+  </ul>
+
+  <p class="dk-help-signin"><strong>Want to do more?</strong> Sign in (top-right) to manage your own library — organise news feeds, add image topics &amp; collections, moderate the Community Favorites list, and install the app to your own Solid pod. Login also happens <em>on demand</em>: any save that needs sign-in opens the login picker for the duration of the flow.</p>
 </div>

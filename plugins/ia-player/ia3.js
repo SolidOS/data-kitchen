@@ -134,12 +134,12 @@ function createPlayer({ libraryConfigs, libs, host }) {
   const FONT_SIZES = ['small', 'medium', 'large'];
   function setTheme(theme) {
     docEl.setAttribute('data-theme', theme);
-    try { localStorage.setItem('omp:theme', theme); } catch {}
+    try { localStorage.setItem('dk:theme', theme); } catch {}
     document.dispatchEvent(new CustomEvent('omp:appearance'));
   }
   function setFontSize(size) {
     docEl.setAttribute('data-fontsize', size);
-    try { localStorage.setItem('omp:fontsize', size); } catch {}
+    try { localStorage.setItem('dk:fontsize', size); } catch {}
     document.dispatchEvent(new CustomEvent('omp:appearance'));
   }
   // Make sure the attributes exist even if the pre-paint script didn't run

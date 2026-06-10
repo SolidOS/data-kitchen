@@ -6,7 +6,7 @@
   a ui:Component ;
   ui:label "Podz" ;
   ui:name "dk-podz" ;
-  dct:hasPart <../pages/dk-podz.html> ;
+  dct:hasPart <../plugins/podz/dk-podz.html> ;
   dct:requires <../node_modules/podz/src/podz.css> ,
                <../node_modules/podz/dist/podz.bundle.min.js> ,
                <../node_modules/podz/popup-auth-callback.html> .

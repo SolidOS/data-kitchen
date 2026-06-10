@@ -32,7 +32,7 @@
        coloured borders around panels. Confining SolidOS to an iframe
        keeps every one of those side effects inside its own document.</p>
     <p>The iframe page is hosted under dk's own origin
-       (<code>pages/solidos-host.html</code>), so:</p>
+       (<code>plugins/solidos/solidos-host.html</code>), so:</p>
     <ul>
       <li><strong>Auth is shared.</strong> Solid-client-authn keeps
           its session in IndexedDB scoped to the origin. One login
@@ -45,7 +45,7 @@
           host page also reads dk's settings from
           <code>localStorage</code> on first paint.</li>
       <li><strong>Standalone use.</strong>
-          <code>pages/solidos-host.html?uri=https://your.pod/foo</code>
+          <code>plugins/solidos/solidos-host.html?uri=https://your.pod/foo</code>
           works on its own in a new tab — same code path, no dk shell
           needed.</li>
     </ul>

@@ -1,4 +1,9 @@
-<sol-tabs id="omp-tabs" keep-alive>
+<sol-tabs id="dk-tabs" keep-alive>
+
+  <a href="./plugins/home/home.html" id="panel-home"
+     data-handler="sol-include"
+     data-trusted
+  >🏠 Home</a>
 
   <a href="./plugins/news/feeds.ttl#Feeds" id="panel-news"
      data-handler="sol-feed"
@@ -12,10 +17,6 @@
      data-defer
   >🎵 Music</a>
 
-  <a href="./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" id="panel-images"
-     data-handler="omp-images"
-  >🖼 Images</a>
-
   <a href="./plugins/ia-player/libraries/internet_archive_movies/index.ttl" id="panel-movies"
      data-handler="ia-player"
      data-storage-ns="movies"
@@ -23,9 +24,19 @@
      data-defer
   >🎬 Movies</a>
 
-  <a href="./libraries/workspaces/podz-shell.html" id="panel-workspaces"
-     data-handler="podz"
-  >🗂 Workspaces</a>
+  <a href="./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" id="panel-images"
+     data-handler="omp-images"
+  >🖼 Images</a>
+
+  <a href="./plugins/podz/dk-podz.html" id="panel-podz"
+     data-handler="dk-podz"
+     data-defer
+  >🗂 Podz</a>
+
+  <a href="./plugins/solidos/dk-solidos.html" id="panel-solidos"
+     data-handler="dk-solidos"
+     data-defer
+  >🐧 SolidOS</a>
 
   <a href="./plugins/solid-resources/resources.html" id="panel-solid-resources"
      data-handler="sol-include"
@@ -37,21 +48,18 @@
      data-trusted
   >🛠 Dev Tools</a>
 
+  <!-- Actions row. The bar-managed plugins (search, calendar, appearance,
+       login) are user-composable via the bar builder; the help button and
+       the ⋮ menu are CHROME — fixed parts of the shell, edited only by
+       hand-editing this file. -->
+
   <sol-search class="omp-search" title="Search"
-     source="./data/search-engines.ttl#SearchEngines"
+     source="./plugins/search/search-engines.ttl#SearchEngines"
   ></sol-search>
 
-  <omp-calendar-popout class="omp-calendar" title="Calendar"
-     source="./data/calendar-settings.ttl#All"
-     view="agenda"
-  ></omp-calendar-popout>
-
-  <sol-button class="omp-help-launch" title="Help" aria-label="Help"
-     data-handler="sol-include"
-     source="./assets/omp-help.html"
-     if-logged-in="./assets/omp-help-owner.html"
-     inline
-  >?</sol-button>
+  <dk-calendar-popout class="omp-calendar" title="Calendar"
+     source="./plugins/calendar/calendar-settings.ttl#All"
+  ></dk-calendar-popout>
 
   <sol-button class="omp-fontsize" title="Text size" aria-label="Text size"
      data-handler="cycleFontSize"
@@ -61,9 +69,24 @@
      data-handler="toggleTheme"
   >🌙</sol-button>
 
+  <sol-button class="omp-settings-launch" title="Settings" aria-label="Open settings"
+     data-handler="sol-include"
+     source="./pages/settings.html"
+     inline trusted
+  >⚙</sol-button>
+
   <sol-login class="omp-sollogin"
-    issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org"
+     mode="popup"
+     popup-callback="node_modules/podz/popup-auth-callback.html"
+     issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
   ></sol-login>
+
+  <sol-button class="omp-help-launch" title="Help" aria-label="Help"
+     data-handler="sol-include"
+     source="./help/dk.html"
+     if-logged-in="./help/dk-owner.html"
+     inline trusted
+  >?</sol-button>
 
   <sol-dropdown-button class="omp-more" title="More" aria-label="More"
      label="⋮"

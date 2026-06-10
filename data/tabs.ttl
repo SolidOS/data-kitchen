@@ -1,14 +1,28 @@
 @prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix schema: <http://schema.org/> .
 
-<#Tabs> a ui:Menu ; ui:label "Open Media Player" ;
+# RDF twin of html-first.html, kept in sync by tools/conversion (the builders
+# edit this; the generator re-emits the HTML). Two menus: the topmost tabset
+# (#Tabs) and the bar-managed actions row (#Bar). The help button and the
+# ⋮ menu are CHROME — declared only in html-first.html, never here.
+
+<#Tabs> a ui:Menu ; ui:label "data-kitchen" ;
   ui:orientation ui:Horizontal ;
-  ui:parts ( <#panel-news> <#panel-music> <#panel-images> <#panel-movies> ) .
+  ui:parts ( <#panel-home> <#panel-news> <#panel-music> <#panel-movies>
+             <#panel-images> <#panel-podz> <#panel-solidos>
+             <#panel-solid-resources> <#panel-dev-tools> ) .
+
+<#panel-home> a ui:Component ; ui:label "🏠 Home" ; ui:name "sol-include" ;
+  ui:attribute
+    [ schema:name "id" ;      schema:value "panel-home" ] ,
+    [ schema:name "source" ;  schema:value "./plugins/home/home.html" ] ,
+    [ schema:name "trusted" ; schema:value "" ] .
 
 <#panel-news> a ui:Component ; ui:label "📰 News" ; ui:name "sol-feed" ;
   ui:attribute
     [ schema:name "id" ;     schema:value "panel-news" ] ,
-    [ schema:name "view" ;   schema:value "topics" ] ,
+    [ schema:name "view" ;   schema:value "threePanel" ] ,
+    [ schema:name "reader" ; schema:value "inline" ] ,
     [ schema:name "source" ; schema:value "./plugins/news/feeds.ttl#Feeds" ] .
 
 <#panel-music> a ui:Component ; ui:label "🎵 Music" ; ui:name "ia-player" ;
@@ -18,11 +32,6 @@
     [ schema:name "source" ;     schema:value "./plugins/ia-player/libraries/internet_archive_music/index.ttl" ] ,
     [ schema:name "defer" ;      schema:value "" ] .
 
-<#panel-images> a ui:Component ; ui:label "🖼 Images" ; ui:name "omp-images" ;
-  ui:attribute
-    [ schema:name "id" ;     schema:value "panel-images" ] ,
-    [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
-
 <#panel-movies> a ui:Component ; ui:label "🎬 Movies" ; ui:name "ia-player" ;
   ui:attribute
     [ schema:name "id" ;              schema:value "panel-movies" ] ,
@@ -30,3 +39,77 @@
     [ schema:name "source" ;          schema:value "./plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] ,
     [ schema:name "favourites-only" ; schema:value "" ] ,
     [ schema:name "defer" ;           schema:value "" ] .
+
+<#panel-images> a ui:Component ; ui:label "🖼 Images" ; ui:name "omp-images" ;
+  ui:attribute
+    [ schema:name "id" ;     schema:value "panel-images" ] ,
+    [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
+
+<#panel-podz> a ui:Component ; ui:label "🗂 Podz" ; ui:name "dk-podz" ;
+  ui:attribute
+    [ schema:name "id" ;     schema:value "panel-podz" ] ,
+    [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,
+    [ schema:name "defer" ;  schema:value "" ] .
+
+<#panel-solidos> a ui:Component ; ui:label "🐧 SolidOS" ; ui:name "dk-solidos" ;
+  ui:attribute
+    [ schema:name "id" ;     schema:value "panel-solidos" ] ,
+    [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
+    [ schema:name "defer" ;  schema:value "" ] .
+
+<#panel-solid-resources> a ui:Component ; ui:label "📚 Solid Resources" ; ui:name "sol-include" ;
+  ui:attribute
+    [ schema:name "id" ;      schema:value "panel-solid-resources" ] ,
+    [ schema:name "source" ;  schema:value "./plugins/solid-resources/resources.html" ] ,
+    [ schema:name "trusted" ; schema:value "" ] .
+
+<#panel-dev-tools> a ui:Component ; ui:label "🛠 Dev Tools" ; ui:name "sol-include" ;
+  ui:attribute
+    [ schema:name "id" ;      schema:value "panel-dev-tools" ] ,
+    [ schema:name "source" ;  schema:value "./plugins/dev-tools/dev-tools.html" ] ,
+    [ schema:name "trusted" ; schema:value "" ] .
+
+<#Bar> a ui:Menu ; ui:label "actions" ;
+  ui:orientation ui:Horizontal ;
+  ui:parts ( <#bar-search> <#bar-calendar> <#bar-fontsize> <#bar-theme>
+             <#bar-settings> <#bar-login> ) .
+
+<#bar-search> a ui:Component ; ui:label "Search" ; ui:name "sol-search" ;
+  ui:attribute
+    [ schema:name "class" ;  schema:value "omp-search" ] ,
+    [ schema:name "title" ;  schema:value "Search" ] ,
+    [ schema:name "source" ; schema:value "./plugins/search/search-engines.ttl#SearchEngines" ] .
+
+<#bar-calendar> a ui:Component ; ui:label "Calendar" ; ui:name "dk-calendar-popout" ;
+  ui:attribute
+    [ schema:name "class" ;  schema:value "omp-calendar" ] ,
+    [ schema:name "title" ;  schema:value "Calendar" ] ,
+    [ schema:name "source" ; schema:value "./plugins/calendar/calendar-settings.ttl#All" ] .
+
+<#bar-fontsize> a ui:Component ; ui:label "A" ; ui:name "sol-button" ;
+  ui:attribute
+    [ schema:name "class" ;        schema:value "omp-fontsize" ] ,
+    [ schema:name "title" ;        schema:value "Text size" ] ,
+    [ schema:name "data-handler" ; schema:value "cycleFontSize" ] .
+
+<#bar-theme> a ui:Component ; ui:label "🌙" ; ui:name "sol-button" ;
+  ui:attribute
+    [ schema:name "class" ;        schema:value "omp-theme" ] ,
+    [ schema:name "title" ;        schema:value "Toggle light / dark" ] ,
+    [ schema:name "data-handler" ; schema:value "toggleTheme" ] .
+
+<#bar-settings> a ui:Component ; ui:label "⚙" ; ui:name "sol-button" ;
+  ui:attribute
+    [ schema:name "class" ;        schema:value "omp-settings-launch" ] ,
+    [ schema:name "title" ;        schema:value "Settings" ] ,
+    [ schema:name "data-handler" ; schema:value "sol-include" ] ,
+    [ schema:name "source" ;       schema:value "./pages/settings.html" ] ,
+    [ schema:name "inline" ;       schema:value "" ] ,
+    [ schema:name "trusted" ;      schema:value "" ] .
+
+<#bar-login> a ui:Component ; ui:label "Sign in" ; ui:name "sol-login" ;
+  ui:attribute
+    [ schema:name "class" ;          schema:value "omp-sollogin" ] ,
+    [ schema:name "mode" ;           schema:value "popup" ] ,
+    [ schema:name "popup-callback" ; schema:value "node_modules/podz/popup-auth-callback.html" ] ,
+    [ schema:name "issuers" ;        schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .

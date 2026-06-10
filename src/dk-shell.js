@@ -21,11 +21,13 @@
     await interop.ready;
   }
 
-  await import('./dk-podz.js');
-  await import('./dk-solidos.js');
-  await import('./dk-calendar-popout.js');
+  await import('../plugins/podz/dk-podz.js');
+  await import('../plugins/solidos/dk-solidos.js');
+  await import('../plugins/calendar/dk-calendar-popout.js');
   await import('./dk-settings-applier.js');
   await import('./dk-auth-router.js');
   await import('./dk-auth-indicator.js');
-  await import('./dk-nav-state.js');
+  // Page wiring around the topmost <sol-tabs> (tab reactions, chrome
+  // commands, mini player, gating). Replaces the old sol-menu nav-state.
+  await import('./dk-tabs-shell.js');
 })();

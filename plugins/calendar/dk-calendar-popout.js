@@ -1,6 +1,6 @@
 // dk-calendar-popout renders a 📅 button in the chrome that opens a
 // dropdown panel containing a <sol-calendar>. The trigger + empty
-// panel template lives in pages/dk-calendar-popout.html; the inline
+// panel template lives in plugins/calendar/dk-calendar-popout.html; the inline
 // gear SVG and panel scaffolding stay HTML, not JS.
 //
 // sol-calendar is mounted (hidden) on first connect so the ICS feeds
@@ -11,7 +11,7 @@
 // and the status is empty.
 
 class DkCalendarPopout extends HTMLElement {
-  static get template() { return 'pages/dk-calendar-popout.html'; }
+  static get template() { return 'plugins/calendar/dk-calendar-popout.html'; }
   static get manifest() { return 'src/dk-calendar-popout.manifest.ttl'; }
 
   async connectedCallback() {
