@@ -82,7 +82,7 @@ tabs).
 ```html
 <sol-tabs id="omp-tabs" keep-alive from-rdf="./data/tabs.ttl#Tabs">
   <sol-button slot="actions" inline class="omp-help-launch" title="Help"
-              handler="sol-include"
+              data-handler="sol-include"
               source="./assets/omp-help.html" if-logged-in="./assets/omp-help-owner.html"
               trusted>?</sol-button>
 </sol-tabs>

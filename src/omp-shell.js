@@ -4,19 +4,13 @@
 // we react to <sol-tabs>'s sol-tab-change. Favourites are no longer a tab —
 // each media tab surfaces its own favourites.
 
-    // The body UI is authored declaratively in html-first.html; feed it to the
-    // #omp-body include. (#omp-tabs therefore appears asynchronously — see
-    // whenTabsReady.) The html⇄rdf dual-authoring option was retired; the
-    // HTML/RDF converters now live in conversion/ as a standalone tool.
-    (function selectBody() {
-      const body = document.getElementById('omp-body');
-      if (!body || body.getAttribute('source')) return;
-      body.setAttribute('source', './html-first.html');
-    })();
+    // The body UI is authored declaratively in html-first.html and loaded by the
+    // #omp-body <sol-include source="./html-first.html"> in index.html. (#omp-tabs
+    // therefore appears asynchronously — see whenTabsReady.)
 
     let solTabs = null;   // assigned once the included <sol-tabs> exists
     const chrome  = document.querySelector('.omp-chrome');
-    const PANEL_KEYS = ['news', 'music', 'images', 'movies', 'workspaces'];
+    const PANEL_KEYS = ['news', 'music', 'images', 'movies', 'workspaces', 'solid-resources', 'dev-tools'];
     const panelEl   = (key) => document.getElementById('panel-' + key);
     const allPanels = () => PANEL_KEYS.map(panelEl).filter(Boolean);
     let audioName = 'music';

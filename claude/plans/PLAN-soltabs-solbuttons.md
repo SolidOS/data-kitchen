@@ -20,7 +20,7 @@ to sol-tabs so audio continuity + player state survive tab switches.
 4. **`index.html`** — replace `.omp-tab` buttons with `<sol-tabs id="omp-tabs"
    keep-alive from-rdf="./data/tabs.ttl#Tabs">` inside `.omp-panels`; chrome
    (mini + buttons + login + menu) becomes its own bar above. About + login-help
-   menu items → `<sol-button handler="sol-include" region="modal" source="./assets/ia-*.html">`.
+   menu items → `<sol-button data-handler="sol-include" region="modal" source="./assets/ia-*.html">`.
 5. **`assets/omp.css`** — chrome-only top bar; per-room colours on
    `#omp-tabs .sol-tabs-bar > button[data-tab-id="…"].active`; panes fill (flex
    chain), content padding 0; sol-button trigger styled like menu items.
@@ -40,7 +40,7 @@ All of the above shipped, then the chrome + ⋮ menu evolved further the same da
 - **One-row header**: the chrome (mini + ?/A/🌙 + login + ⋮) is NOT a separate
   bar above — it's `position:absolute` floated over the right of the `<sol-tabs>`
   bar so it shares the tab row (body is `position:relative`).
-- **Help `?`** is a `<sol-button handler="sol-include" region="modal"
+- **Help `?`** is a `<sol-button data-handler="sol-include" region="modal"
   source="./assets/omp-help.html">` (content extracted from the old inline
   `.omp-help-overlay`, now deleted).
 - **⋮ menu** is now `<sol-dropdown-button source="./data/menu.ttl#More">` (a swc

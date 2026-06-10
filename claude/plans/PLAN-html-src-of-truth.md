@@ -108,7 +108,7 @@ declarative HTML. `index2.html` is the showcase:
   (no `from-rdf`); `data-tab-id` sets the tab identity.
 - **Toolbar actions** — bare non-anchor children of `<sol-tabs>` (no
   `slot="actions"`); `<sol-button>`, `<sol-login>`, `<sol-dropdown-button>`.
-- **⋮ menu** — an inline `<menu>` of `<button handler="…">` (no `menu.ttl`),
+- **⋮ menu** — an inline `<menu>` of `<button data-handler="…">` (no `menu.ttl`),
   gated by `if-logged-in`.
 - **Theme / text-size / dev-write** — attributes on `<sol-default>`
   (`theme` / `fontsize` / `solid-kitchen`); the CSS `:has()` cascade resolves them.

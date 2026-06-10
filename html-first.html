@@ -27,6 +27,16 @@
      data-handler="podz"
   >🗂 Workspaces</a>
 
+  <a href="./libraries/solid_resources/resources.html" id="panel-solid-resources"
+     data-handler="sol-include"
+     data-trusted
+  >📚 Solid Resources</a>
+
+  <a href="./libraries/dev_tools/dev-tools.html" id="panel-dev-tools"
+     data-handler="sol-include"
+     data-trusted
+  >🛠 Dev Tools</a>
+
   <sol-search class="omp-search" title="Search"
      source="./data/search-engines.ttl#SearchEngines"
   ></sol-search>
@@ -37,33 +47,33 @@
   ></omp-calendar-popout>
 
   <sol-button class="omp-help-launch" title="Help" aria-label="Help"
-     handler="sol-include"
+     data-handler="sol-include"
      source="./assets/omp-help.html"
      if-logged-in="./assets/omp-help-owner.html"
      inline
   >?</sol-button>
 
   <sol-button class="omp-fontsize" title="Text size" aria-label="Text size"
-     handler="cycleFontSize"
+     data-handler="cycleFontSize"
   >A</sol-button>
 
   <sol-button class="omp-theme" title="Toggle light / dark" aria-label="Toggle light / dark"
-     handler="toggleTheme"
+     data-handler="toggleTheme"
   >🌙</sol-button>
 
   <sol-login class="omp-sollogin"
-     issuers="https://solidcommunity.net,https://login.inrupt.com"
+    issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org"
   ></sol-login>
 
   <sol-dropdown-button class="omp-more" title="More" aria-label="More"
      label="⋮"
      if-logged-in>
     <menu>
-      <button handler="guestView">View as guest</button>
-      <button handler="filters">Filters…</button>
-      <button handler="viewDeleted">View deleted</button>
-      <button handler="installPod">Install on my Pod…</button>
-      <button handler="updateApp">Update app on Pod…</button>
+      <button data-handler="guestView">View as guest</button>
+      <button data-handler="filters">Filters…</button>
+      <button data-handler="viewDeleted">View deleted</button>
+      <button data-handler="installPod">Install on my Pod…</button>
+      <button data-handler="updateApp">Update app on Pod…</button>
     </menu>
   </sol-dropdown-button>
 

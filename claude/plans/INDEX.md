@@ -39,7 +39,7 @@ the viewer supports it).
 
 **🔴 ① HTML as the source of truth** (`PLAN-html-src-of-truth.md`, **Phases 1–6
    BUILT 2026-06-02**). UI config lives in slim declarative HTML (inline tabs,
-   bare toolbar actions, `<menu>` of `handler=` items, `<sol-default>`
+   bare toolbar actions, `<menu>` of `data-handler=` items, `<sol-default>`
    theme/fontsize/solid-kitchen). **SHIPPED entry point:** a **vanilla
    `index.html`** = `<sol-default src-of-truth="html|rdf">` (default `html`) + an
    empty `<sol-include id="omp-body" trusted>`; `omp-shell.js` reads the attr and

@@ -7,9 +7,11 @@
     :root {
       /* Per-library tab accents (mirror the in-panel room accents). */
       --tab-music: #f0a23a;  --tab-movies: #49c8d8;  --tab-news: #6fae6f;  --tab-images: #b07cc6;  --tab-on: #15100a;
+      --tab-workspaces: #8a93e0;  --tab-resources: #5b9bd5;  --tab-devtools: #e58a8a;
     }
     [data-theme="light"] {
       --tab-music: #a8581a;  --tab-movies: #1c7283;  --tab-news: #2f7d4f;  --tab-images: #7d4f9e;  --tab-on: #ffffff;
+      --tab-workspaces: #4348a8;  --tab-resources: #2f5f9e;  --tab-devtools: #a83a3a;
     }
 
     /* ── Theme DEFAULT — when there's no explicit <html data-theme> override ──
@@ -23,6 +25,7 @@
       --ia-lift: #ffffff;  --ia-hover: #1b1712;  --ia-sink: #000000;
       --ia-base: #efe9dd;  --ia-ink: #2a2620;  --ia-accent: #b5651d;  --ia-on-accent: #ffffff;
       --tab-music: #a8581a;  --tab-movies: #1c7283;  --tab-news: #2f7d4f;  --tab-images: #7d4f9e;  --tab-on: #ffffff;
+      --tab-workspaces: #4348a8;  --tab-resources: #2f5f9e;  --tab-devtools: #a83a3a;
     }
     :root:not([data-theme]):has(sol-default[theme="light"]) .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
     :root:not([data-theme]):has(sol-default[theme="light"]) .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
@@ -32,6 +35,7 @@
         --ia-lift: #ffffff;  --ia-hover: #1b1712;  --ia-sink: #000000;
         --ia-base: #efe9dd;  --ia-ink: #2a2620;  --ia-accent: #b5651d;  --ia-on-accent: #ffffff;
         --tab-music: #a8581a;  --tab-movies: #1c7283;  --tab-news: #2f7d4f;  --tab-images: #7d4f9e;  --tab-on: #ffffff;
+      --tab-workspaces: #4348a8;  --tab-resources: #2f5f9e;  --tab-devtools: #a83a3a;
       }
       :root:not([data-theme]):not(:has(sol-default[theme])) .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
       :root:not([data-theme]):not(:has(sol-default[theme])) .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
@@ -97,6 +101,9 @@
     #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-movies"].active { background: var(--tab-movies); border-color: var(--tab-movies); color: var(--tab-on); }
     #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-news"].active   { background: var(--tab-news);   border-color: var(--tab-news);   color: var(--tab-on); }
     #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-images"].active { background: var(--tab-images); border-color: var(--tab-images); color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-workspaces"].active     { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-solid-resources"].active { background: var(--tab-resources);  border-color: var(--tab-resources);  color: var(--tab-on); }
+    #omp-tabs > .sol-tabs-bar > button[data-tab-id="panel-dev-tools"].active       { background: var(--tab-devtools);   border-color: var(--tab-devtools);   color: var(--tab-on); }
     #omp-tabs > .sol-tabs-bar > button[data-tab-id="Favourites"].active { background: var(--tab-fav, #e6b800); border-color: var(--tab-fav, #e6b800); color: var(--tab-on); }
     /* While help fills the tab content (a .sol-inline-panel is present), no tab
        is the current view — drop the active highlight (the ? button takes it). */
@@ -257,6 +264,16 @@
        not the viewport, or its footer/collapse controls overflow below the
        clipped pane. */
     #panel-workspaces { height: 100%; min-height: 0; }
+
+    /* Solid Resources / Dev Tools tabs: each is a sol-include of a nested
+       <sol-tabs variant="sub"> whose sub-tabs are full-bleed iframes. Carry the
+       flex height through the include wrapper down to a borderless iframe. */
+    #panel-solid-resources, #panel-dev-tools { height: 100%; min-height: 0; }
+    :is(#panel-solid-resources, #panel-dev-tools) > .si-content,
+    :is(#panel-solid-resources, #panel-dev-tools) sol-tabs[variant="sub"] {
+      display: flex; flex-direction: column; flex: 1; min-height: 0; width: 100%;
+    }
+    :is(#panel-solid-resources, #panel-dev-tools) iframe.sol-tab-embed { border: 0; }
 
     /* sol-login chip in the bar. */
     .omp-sollogin { display: inline-flex; }
