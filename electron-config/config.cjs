@@ -30,7 +30,10 @@ module.exports = {
   POD_ROOT: process.env.DK_POD_ROOT || REPO_ROOT,
 
   // The element in the web app that hosts swapped-in content. External content
-  // (menu iframes, search/feed readers) is overlaid with native views here
-  // instead of being iframed.
+  // (tab iframes, search/feed readers) is overlaid with native views there
+  // instead of being iframed. NOTE: the preload reports the TABSET CONTENT
+  // rect (.sol-tabs-content inside this element) once the included shell
+  // exists — the tab bar and actions row also live inside #dk-content and
+  // must never be covered (see preload.cjs contentRegionEl).
   CONTENT_SELECTOR: '#dk-content',
 };

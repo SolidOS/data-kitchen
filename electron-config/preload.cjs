@@ -16,6 +16,16 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 const CONTENT_SELECTOR = '#dk-content';
 
+// The native overlays must cover ONLY the tab content region. The whole
+// sol-tabs shell (tab bar + actions row included) lives INSIDE #dk-content
+// now (html-first.html is included into it), so overlaying the #dk-content
+// rect would obscure the chrome. Report the tabset's content element once it
+// exists; fall back to #dk-content while the include is still loading.
+function contentRegionEl() {
+  return document.querySelector('.sol-tabs-content')
+      || document.querySelector(CONTENT_SELECTOR);
+}
+
 // Minimal, self-contained mirror of sol-components' isExternal(): a cross-origin
 // http(s) URL. Kept local on purpose so the preload has no app dependency.
 function isExternal(href) {
@@ -62,7 +72,7 @@ function report() {
   rafPending = true;
   requestAnimationFrame(() => {
     rafPending = false;
-    const content = document.querySelector(CONTENT_SELECTOR);
+    const content = contentRegionEl();
     if (content) ipcRenderer.send('dk:content-rect', rectOf(content));
   });
 }
@@ -102,25 +112,31 @@ function install() {
   return true;
 }
 
-// A native overlay paints above the app's HTML, so an open menu dropdown that
-// extends over #dk-content would be occluded. Watch sol-menu for an open
-// dropdown (it sets `.sol-menu-group.open`) and have the host suspend/restore
-// the overlays around it.
+// A native overlay paints above the app's HTML, so an open popup that
+// extends over the content region would be occluded. The shell's popup
+// source is the ⋮ <sol-dropdown-button> in the actions row: its floating
+// .sol-dd-popup (shadow DOM) toggles `hidden`. Watch it and have the host
+// suspend/restore the overlays around it.
 let menuGuardSet = false;
 function setupMenuOverlayGuard() {
   if (menuGuardSet) return true;
-  const menu = document.querySelector('sol-menu');
-  if (!menu || !menu.shadowRoot) return false;
+  const dropdowns = [...document.querySelectorAll('sol-dropdown-button')].filter((d) => d.shadowRoot);
+  if (!dropdowns.length) return false;
   let suspended = false;
   const check = () => {
-    const open = !!menu.shadowRoot.querySelector('.sol-menu-group.open');
+    const open = dropdowns.some((d) => {
+      const popup = d.shadowRoot.querySelector('.sol-dd-popup');
+      return popup && !popup.hidden;
+    });
     if (open === suspended) return;
     suspended = open;
     ipcRenderer.send(open ? 'dk:overlays-suspend' : 'dk:overlays-resume');
   };
-  new MutationObserver(check).observe(menu.shadowRoot, {
-    subtree: true, attributes: true, attributeFilter: ['class'],
-  });
+  for (const d of dropdowns) {
+    new MutationObserver(check).observe(d.shadowRoot, {
+      subtree: true, attributes: true, attributeFilter: ['hidden'],
+    });
+  }
   menuGuardSet = true;
   return true;
 }
