@@ -280,8 +280,11 @@
     }
     :is(#panel-solid-resources, #panel-dev-tools) iframe.sol-tab-embed { border: 0; }
 
-    /* sol-login chip in the bar. */
-    .omp-sollogin { display: inline-flex; }
+    /* Sign-in is on demand now (the ☰ "Sign in…" item or any 401): the
+       sol-login chip stays hidden until the component surfaces itself with
+       [active] for the duration of the flow. */
+    .omp-sollogin:not([active]) { display: none; }
+    .omp-sollogin[active] { display: inline-flex; }
 
     .omp-panels { flex: 1 1 auto; min-height: 0; overflow: hidden; display: flex; }
     .omp-panels > sol-include,

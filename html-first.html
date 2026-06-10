@@ -38,11 +38,6 @@
      data-trusted
   >🛠 Dev Tools</a>
 
-  <a href="./plugins/customize/dk-customize.html" id="panel-customize"
-     data-handler="sol-include"
-     data-trusted
-  >🎛 Customize</a>
-
   <!-- Actions row. The bar-managed plugins below come from
        data/tabs.ttl#Bar (edited with the bar builder); the chrome block
        (help, ⋮ menu) is fixed shell furniture preserved by the generator. -->
@@ -71,25 +66,9 @@
      data-handler="toggleTheme"
   >🌙</sol-button>
 
-  <sol-button
-     class="omp-settings-launch"
-     title="Settings"
-     data-handler="sol-include"
-     source="./pages/settings.html"
-     inline
-     trusted
-  >⚙</sol-button>
-
-  <sol-login
-     class="omp-sollogin"
-     mode="popup"
-     popup-callback="node_modules/podz/popup-auth-callback.html"
-     issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
-  ></sol-login>
-
-  <!-- chrome:begin — fixed shell chrome (help, ⋮ menu). NOT bar-managed and
-       NOT in tabs.ttl; the generator preserves this block verbatim. Edit it
-       here by hand if you must. -->
+  <!-- chrome:begin — fixed shell chrome (help, ☰ menu, on-demand sign-in).
+       NOT bar-managed and NOT in tabs.ttl; the generator preserves this
+       block verbatim. Edit it here by hand if you must. -->
   <sol-button class="omp-help-launch" title="Help" aria-label="Help"
      data-handler="sol-include"
      source="./help/dk.html"
@@ -97,17 +76,23 @@
      inline trusted
   >?</sol-button>
 
-  <sol-dropdown-button class="omp-more" title="More" aria-label="More"
-     label="⋮"
-     if-logged-in>
-    <menu>
-      <button data-handler="guestView">View as guest</button>
-      <button data-handler="filters">Filters…</button>
-      <button data-handler="viewDeleted">View deleted</button>
-      <button data-handler="installPod">Install on my Pod…</button>
-      <button data-handler="updateApp">Update app on Pod…</button>
-    </menu>
-  </sol-dropdown-button>
+  <!-- ☰ menu: items live in data/menu.ttl#More (Customize, Settings,
+       Sign in, and the owner commands — acl:Write items hide for guests).
+       Component items open in a modal (region cascade). -->
+  <sol-dropdown-button class="omp-more" title="Menu" aria-label="Menu"
+     label="☰"
+     region="modal"
+     source="./data/menu.ttl#More"
+  ></sol-dropdown-button>
+
+  <!-- Sign-in infrastructure: hidden until a flow needs it (the ☰ "Sign
+       in…" item or any 401 dispatches sol-auth-needed; sol-login surfaces
+       itself with [active] for the duration — see dk-chrome.css). -->
+  <sol-login class="omp-sollogin"
+     mode="popup"
+     popup-callback="node_modules/podz/popup-auth-callback.html"
+     issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
+  ></sol-login>
   <!-- chrome:end -->
 
 </sol-tabs>

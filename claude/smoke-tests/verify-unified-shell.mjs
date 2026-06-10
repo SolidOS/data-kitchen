@@ -59,9 +59,9 @@ const tabs = await page.evaluate(() => {
   return [...tabset.querySelectorAll('[role="tab"], .sol-tab, a')].map(e => e.textContent.trim()).filter(Boolean);
 });
 check('sol-tabs present', Array.isArray(tabs), '');
-const want = ['News', 'Music', 'Movies', 'Images', 'Workspaces', 'Solid Resources', 'Dev Tools', 'Customize'];
+const want = ['News', 'Music', 'Movies', 'Images', 'Workspaces', 'Solid Resources', 'Dev Tools'];
 const missing = want.filter(w => !(tabs || []).some(t => t.includes(w)));
-const stray = ['Home', 'SolidOS', 'Podz'].filter(w => (tabs || []).some(t => t.includes(w)));
+const stray = ['Home', 'SolidOS', 'Podz', 'Customize'].filter(w => (tabs || []).some(t => t.includes(w)));
 check('default tab set present', missing.length === 0, missing.length ? 'missing: ' + missing.join(', ') : (tabs || []).slice(0, 9).join(' | '));
 check('pantry tabs absent from the row', stray.length === 0, stray.join(', '));
 
@@ -115,16 +115,26 @@ const podz = await page.evaluate(() => {
 check('dk-podz mounts on Workspaces tab', !!podz.el);
 check('dk-podz shows both pod panes', (podz.pods || 0) >= 2, `sol-pods=${podz.pods}`);
 
-// --- chrome present: search, calendar, settings, help, login, ⋮ ---
-const chrome = await page.evaluate(() => ({
-  search: !!document.querySelector('sol-search'),
-  calendar: !!document.querySelector('dk-calendar-popout'),
-  settings: !!document.querySelector('.omp-settings-launch'),
-  help: !!document.querySelector('.omp-help-launch'),
-  login: !!document.querySelector('sol-login'),
-  more: !!document.querySelector('sol-dropdown-button.omp-more'),
-}));
-check('actions row + chrome complete', Object.values(chrome).every(Boolean), JSON.stringify(chrome));
+// --- chrome: search/calendar/appearance in the bar; help + ☰ hamburger
+//     fixed; settings & customize live in the ☰ menu; sign-in is a hidden
+//     on-demand element plus a ☰ item ---
+const chrome = await page.evaluate(() => {
+  const dd = document.querySelector('sol-dropdown-button.omp-more');
+  const items = [...(dd?.shadowRoot?.querySelectorAll('.sol-dd-popup button, .sol-dd-popup a') || [])]
+    .map(b => b.textContent.trim());
+  return {
+    search: !!document.querySelector('sol-search'),
+    calendar: !!document.querySelector('dk-calendar-popout'),
+    help: !!document.querySelector('.omp-help-launch'),
+    hamburger: dd?.shadowRoot?.querySelector('.sol-dd-trigger')?.textContent.trim() === '☰',
+    menuHasCustomize: items.some(t => /customize/i.test(t)),
+    menuHasSettings: items.some(t => /settings/i.test(t)),
+    menuHasSignIn: items.some(t => /sign in/i.test(t)),
+    settingsOutOfBar: !document.querySelector('.omp-settings-launch'),
+    loginHiddenOnDemand: !!document.querySelector('sol-login.omp-sollogin') && !document.querySelector('sol-login.omp-sollogin[active]'),
+  };
+});
+check('actions row + ☰ chrome complete', Object.values(chrome).every(Boolean), JSON.stringify(chrome));
 
 // --- no app-internal failures / fatal errors ---
 check('no failed app-internal requests', failed.length === 0, failed.slice(0, 5).join(' | '));

@@ -1,5 +1,6 @@
 @prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix schema: <http://schema.org/> .
+@prefix acl:    <http://www.w3.org/ns/auth/acl#> .
 
 <#MainMenu> a ui:Menu ; ui:label "data-kitchen" ;
   ui:orientation ui:Horizontal ;
@@ -66,3 +67,44 @@
 <#SparqlPlayground> a ui:Component ; ui:label "SPARQL Playground" ;
   ui:name "iframe" ;
   ui:attribute [ schema:name "src" ; schema:value "https://atomgraph.github.io/SPARQL-Playground/" ] .
+
+# ── The ☰ hamburger menu (chrome) ────────────────────────────────────────
+# Consumed by <sol-dropdown-button source="./data/menu.ttl#More" region="modal">
+# in html-first.html: component items open in a modal; bare-name items
+# dispatch sol-command (resolved by the dk-tabs-shell registry); acl:Write
+# items are hidden for guests (body.no-write ::part(requires-write)).
+# (#MainMenu above is the RETIRED old-dk header menu, kept as pantry.)
+
+<#More> a ui:Menu ; ui:label "Menu" ;
+  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreSignIn> <#MoreGuestView>
+             <#MoreFilters> <#MoreViewDeleted> <#MoreInstallPod> <#MoreUpdateApp> ) .
+
+<#MoreCustomize> a ui:Component ; ui:label "Customize…" ;
+  ui:name "sol-include" ;
+  acl:mode acl:Write ;
+  ui:attribute
+    [ schema:name "source"  ; schema:value "./plugins/customize/dk-customize.html" ] ,
+    [ schema:name "trusted" ; schema:value "" ] .
+
+<#MoreSettings> a ui:Component ; ui:label "Settings…" ;
+  ui:name "sol-include" ;
+  ui:attribute
+    [ schema:name "source"  ; schema:value "./pages/settings.html" ] ,
+    [ schema:name "trusted" ; schema:value "" ] .
+
+<#MoreSignIn> a ui:Component ; ui:label "Sign in…" ; ui:name "signIn" .
+
+<#MoreGuestView> a ui:Component ; ui:label "View as guest" ; ui:name "guestView" ;
+  acl:mode acl:Write .
+
+<#MoreFilters> a ui:Component ; ui:label "Filters…" ; ui:name "filters" ;
+  acl:mode acl:Write .
+
+<#MoreViewDeleted> a ui:Component ; ui:label "View deleted" ; ui:name "viewDeleted" ;
+  acl:mode acl:Write .
+
+<#MoreInstallPod> a ui:Component ; ui:label "Install on my Pod…" ; ui:name "installPod" ;
+  acl:mode acl:Write .
+
+<#MoreUpdateApp> a ui:Component ; ui:label "Update app on Pod…" ; ui:name "updateApp" ;
+  acl:mode acl:Write .

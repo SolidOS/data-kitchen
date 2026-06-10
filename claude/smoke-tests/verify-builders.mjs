@@ -19,6 +19,14 @@ const restore = () => {
   try { execFileSync('git', ['checkout', '--', 'data/tabs.ttl', 'html-first.html']); } catch {}
 };
 
+// GUARD: this test git-restores the two files it edits — running it with
+// uncommitted changes to them would WIPE those changes (it has, twice).
+const dirty = execFileSync('git', ['status', '--porcelain', 'data/tabs.ttl', 'html-first.html'], { encoding: 'utf8' }).trim();
+if (dirty) {
+  console.error('ABORT: commit data/tabs.ttl and html-first.html first — this test restores them via git checkout:\n' + dirty);
+  process.exit(2);
+}
+
 const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
 const page = await browser.newPage();
 try {
@@ -26,17 +34,22 @@ try {
   await page.evaluate(async () => { if (window.ComponentInterop?.ready) await window.ComponentInterop.ready; });
   await page.waitForTimeout(5000);
 
-  // --- open Customize ---
+  // --- open Customize via the ☰ hamburger (it's a menu item → modal now) ---
   await page.evaluate(async () => {
-    const tabset = document.querySelector('sol-tabs');
-    [...tabset.querySelectorAll('a, [role="tab"]')].find(e => /customize/i.test(e.textContent))?.click();
-    await new Promise(r => setTimeout(r, 3000));
+    const dd = document.querySelector('sol-dropdown-button.omp-more');
+    dd?.shadowRoot?.querySelector('.sol-dd-trigger')?.click();
+    await new Promise(r => setTimeout(r, 800));
+    [...dd.shadowRoot.querySelectorAll('.sol-dd-popup button, .sol-dd-popup a')]
+      .find(b => /customize/i.test(b.textContent))?.click();
+    await new Promise(r => setTimeout(r, 5000));
   });
 
+  // The builders live inside the conjured sol-modal's shadow body.
   const mounted = await page.evaluate(() => {
-    const palette = document.querySelector('sol-plugins-available');
-    const menuB = document.querySelector('sol-menu-builder');
-    const barB = document.querySelector('sol-bar-builder');
+    const root = document.querySelector('sol-modal')?.shadowRoot || document;
+    const palette = root.querySelector('sol-plugins-available');
+    const menuB = root.querySelector('sol-menu-builder');
+    const barB = root.querySelector('sol-bar-builder');
     return {
       palette: palette?.shadowRoot?.querySelectorAll('.card').length ?? -1,
       menuRows: menuB?.shadowRoot?.querySelectorAll('.row').length ?? -1,
@@ -44,13 +57,14 @@ try {
     };
   });
   check('palette renders plugin cards', mounted.palette >= 12, `cards=${mounted.palette}`);
-  check('menu builder renders the tab rows', mounted.menuRows >= 8, `rows=${mounted.menuRows}`);
-  check('bar builder renders the bar rows', mounted.barRows >= 6, `rows=${mounted.barRows}`);
+  check('menu builder renders the tab rows', mounted.menuRows >= 7, `rows=${mounted.menuRows}`);
+  check('bar builder renders the bar rows', mounted.barRows >= 4, `rows=${mounted.barRows}`);
 
   // --- edit: add an item, assign it the Music plugin via the drag payload,
   //     rename it, save ---
   const saved = await page.evaluate(async () => {
-    const builder = document.querySelector('sol-menu-builder');
+    const root = document.querySelector('sol-modal')?.shadowRoot || document;
+    const builder = root.querySelector('sol-menu-builder');
     const sh = builder.shadowRoot;
     sh.querySelector('.add-btn').click();                       // ＋ item
     await new Promise(r => setTimeout(r, 300));

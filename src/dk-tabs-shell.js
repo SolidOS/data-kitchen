@@ -34,9 +34,8 @@
     // React to a tab switch: load the active panel, pause the panels we left
     // (except the audio one — it plays on under the mini player), remember it.
     function onTab(name) {
-      // Picking a tab dismisses the inline overlays (help ?, settings ⚙).
+      // Picking a tab dismisses the help overlay (the ? sol-button inline region).
       document.querySelector('.omp-help-launch')?.close?.();
-      document.querySelector('.omp-settings-launch')?.close?.();
       const el = paneForName(name)?.querySelector('[id^="panel-"]');
       if (el) current = el.id.replace(/^panel-/, '');
       el?.ensureLoaded?.();
@@ -216,6 +215,13 @@
       guestView:     () => enterGuestPreview(),
       toggleTheme:   () => toggleTheme(),
       cycleFontSize: () => cycleFontSize(),
+      // The ☰ "Sign in…" item: start the same coalesced flow a 401 does —
+      // sol-login listens for sol-auth-needed, surfaces itself ([active])
+      // and runs the popup login. resolve is the protocol's completion
+      // callback; the menu item has nothing to retry, so it's a no-op.
+      signIn:      () => document.dispatchEvent(new CustomEvent('sol-auth-needed', {
+        detail: { resolve: () => {} },
+      })),
       filters:     () => activePanel()?.appAction?.('filters'),
       viewDeleted: () => activePanel()?.appAction?.('viewDeleted'),
       installPod:  () => activePanel()?.appAction?.('installPod'),
