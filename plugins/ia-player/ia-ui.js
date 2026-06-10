@@ -1,3 +1,8 @@
+// The full player layout lives in assets/ia-player-shell.html (inlined at
+// build time by esbuild's text loader); {{…}} tokens carry the per-media-type
+// labels substituted below.
+import shellHtml from './assets/ia-player-shell.html';
+
 export function createPlayerUI({ mediaType = 'audio', panel = false } = {}) {
   const isVideo = mediaType === 'video';
   // Column labels per media type (the renderer half of the media-type
@@ -7,151 +12,13 @@ export function createPlayerUI({ mediaType = 'audio', panel = false } = {}) {
         addGenre: '+ Add film type', addArtist: '+ Add collection' }
     : { genre: 'Genres', artist: 'Artists', album: 'Albums', find: 'Find artist…',
         addGenre: '+ Add genre', addArtist: '+ Add artist' };
-  // ONE media element for every library type — a <video> plays audio
-  // files fine, so this single element handles both music and movies and
-  // can switch media type at runtime without being recreated (music keeps
-  // playing until a movie reuses it). Kept on the `.ia-audio` class so all
-  // existing transport wiring is unchanged; `.ia-video` + the container's
-  // .media-video class drive whether it's hidden (audio) or fills the
-  // bottom (video).
-  const mediaEl = '<video class="ia-audio ia-video" aria-label="Media player" playsinline controls></video>';
   const container = document.createElement('div');
   container.className = 'ia-player-app' + (isVideo ? ' media-video' : ' media-audio');
   container.setAttribute('role', 'region');
   container.setAttribute('aria-label', isVideo ? 'Open Media Player (movies)' : 'Open Media Player');
-  container.innerHTML = `
-    <div class="ia-toolbar" role="toolbar" aria-label="Playback controls">
-      <button type="button" class="ia-btn ia-prev" aria-label="Previous track" title="Previous"><span class="ia-icon" aria-hidden="true">⏮</span><span class="ia-blabel">Prev</span></button>
-      <button type="button" class="ia-btn ia-play" aria-label="Play" title="Play"><span class="ia-icon" aria-hidden="true">▶</span><span class="ia-blabel">Play</span></button>
-      <button type="button" class="ia-btn ia-next" aria-label="Next track" title="Next"><span class="ia-icon" aria-hidden="true">⏭</span><span class="ia-blabel">Next</span></button>
-      <div class="ia-seek-wrap">
-        <input class="ia-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek" disabled>
-        <span class="ia-time" aria-hidden="true"><span class="ia-time-cur">0:00</span> / <span class="ia-time-dur">0:00</span></span>
-      </div>
-      <div class="ia-volume-wrap" role="group" aria-label="Volume">
-        <span class="ia-volume-icon" aria-hidden="true">🔊</span>
-        <input class="ia-volume" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume">
-      </div>
-      <form class="ia-artist-search" role="search">
-        <input class="ia-artist-search-input" type="search" placeholder="${L.find}" aria-label="Find by name (creator search)">
-      </form>
-      <span class="gear-wrap">
-        <button type="button" class="ia-btn manage-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Open menu" title="Menu"><span class="ia-icon" aria-hidden="true">⋮</span><span class="ia-blabel">Menu</span></button>
-        <div class="gear-menu" role="menu" hidden>
-          <!-- Sign-in lives at the top of the menu. <sol-login> hosts its
-               own button + WebID popover; isn't a .menu-item because it's
-               not arrow-key navigable in the same way (its inner button
-               handles focus). The menu button turns green and adopts the
-               WebID as its title when sol-login reports a session. -->
-          ${panel ? '' : `<div class="menu-item-sollogin" role="none">
-            <sol-login class="ia-sol-login" issuers="https://solidcommunity.net,https://login.inrupt.com"></sol-login>
-          </div>`}
-          <!-- Clear tracklist now lives as a button at the far right of the
-               tracklist header row; the menu entry is retired. -->
-          <!-- Appearance: light/dark toggle + text-size stepper. Both write
-               document-level attributes (data-theme / data-fontsize) so the
-               two library panels stay in sync. -->
-          <button type="button" class="menu-item gear-theme" role="menuitemcheckbox" aria-checked="false"><span class="gear-theme-ico" aria-hidden="true">🌙</span> <span class="menu-label gear-theme-label">Dark mode</span></button>
-          <button type="button" class="menu-item gear-fontsize" role="menuitem"><span class="gear-fontsize-ico" aria-hidden="true">A</span> <span class="menu-label gear-fontsize-label">Text size: Medium</span></button>
-          <!-- Save as playlist parked — restore when the workflow returns.
-          <button type="button" class="menu-item gear-save-playlist" role="menuitem"><span aria-hidden="true">💾</span> <span class="menu-label">Save as playlist…</span></button>
-          -->
-          <button type="button" class="menu-item gear-filters" role="menuitem"><span aria-hidden="true">🔎</span> <span class="menu-label">Filters…</span></button>
-          <button type="button" class="menu-item gear-view-deleted" role="menuitem"><span aria-hidden="true">🗑</span> <span class="menu-label">View deleted</span></button>
-          <button type="button" class="menu-item gear-help-link" role="menuitem"><span aria-hidden="true">📖</span> <span class="menu-label">Help</span></button>
-          <button type="button" class="menu-item gear-login-help" role="menuitem"><span aria-hidden="true">🔑</span> <span class="menu-label">Solid login help</span></button>
-          <button type="button" class="menu-item gear-install-pod" role="menuitem"><span aria-hidden="true">📡</span> <span class="menu-label">Install on my Pod…</span></button>
-          <button type="button" class="menu-item gear-update-app" role="menuitem"><span aria-hidden="true">📲</span> <span class="menu-label">Update app on Pod…</span></button>
-          <button type="button" class="menu-item gear-help" role="menuitem"><span aria-hidden="true">?</span> <span class="menu-label">About</span></button>
-        </div>
-      </span>
-    </div>
-
-    <div class="ia-nowplaying"><span class="ia-nowplaying-text" role="status" aria-live="polite" aria-atomic="true"></span></div>
-
-    <div class="ia-sources" data-column="source">
-      <h3 class="ia-column-header" id="ia-h-libs">Libraries</h3>
-      <ul class="ia-listbox ia-libraries-list" role="listbox" aria-multiselectable="true" aria-labelledby="ia-h-libs" tabindex="0"></ul>
-      <h3 class="ia-column-header" id="ia-h-sources">Playlists</h3>
-      <ul class="ia-listbox ia-sources-list" role="listbox" aria-labelledby="ia-h-sources" tabindex="0"></ul>
-      <h3 class="ia-column-header" id="ia-h-favs">Community Favorites</h3>
-      <ul class="ia-listbox ia-favourites-list" role="listbox" aria-labelledby="ia-h-favs" tabindex="0"></ul>
-      <div class="ia-sources-actions">
-        <button type="button" class="ia-add-source-btn">+ Library</button>
-        <button type="button" class="ia-add-playlist-btn">+ Playlist</button>
-      </div>
-      <div class="ia-sources-resize" role="separator" aria-orientation="vertical" aria-label="Resize sources column" title="Drag to resize"></div>
-    </div>
-
-    <div class="ia-browser">
-      <div class="ia-column" data-column="genre">
-        <h3 class="ia-column-header" id="ia-h-genre">${L.genre}</h3>
-        <ul class="ia-listbox" role="listbox" aria-multiselectable="true" aria-labelledby="ia-h-genre" tabindex="0"></ul>
-        <div class="ia-column-footer">
-          <button type="button" class="ia-add-genre-btn">${L.addGenre}</button>
-        </div>
-      </div>
-      <div class="ia-column" data-column="artist">
-        <h3 class="ia-column-header" id="ia-h-artist">${L.artist}</h3>
-        <ul class="ia-listbox" role="listbox" aria-multiselectable="true" aria-labelledby="ia-h-artist" tabindex="0"></ul>
-        <div class="ia-column-footer">
-          <button type="button" class="ia-add-artist-btn">${L.addArtist}</button>
-        </div>
-      </div>
-      <div class="ia-column" data-column="album">
-        <h3 class="ia-column-header" id="ia-h-album">${L.album}</h3>
-        <ul class="ia-listbox" role="listbox" aria-multiselectable="true" aria-labelledby="ia-h-album" tabindex="0"></ul>
-      </div>
-      <div class="ia-browser-resize" role="separator" aria-orientation="horizontal" aria-label="Resize browser" title="Drag to resize"></div>
-    </div>
-
-    <div class="ia-tracklist-wrap">
-      <table class="ia-tracklist" role="grid" aria-label="Tracks">
-        <colgroup>
-          <col data-col="num" class="col-num">
-          <col data-col="title" class="col-title">
-          <col data-col="artist" class="col-artist">
-          <col data-col="album" class="col-album">
-          <col data-col="time" class="col-time">
-          <col data-col="remove" class="col-remove">
-          <!-- favorites column disabled for now; re-enable when that feature returns.
-          <col data-col="fav" class="col-fav">
-          -->
-        </colgroup>
-        <thead>
-          <tr>
-            <th scope="col" data-col="num" class="col-num"><button type="button" class="ia-randomize-btn" aria-label="Randomize tracklist order" title="Randomize"><span aria-hidden="true">🎲</span></button><span class="th-label">#</span><span class="resize-handle" aria-hidden="true"></span></th>
-            <th scope="col" data-col="title" data-sort="name" class="col-title"><span class="th-label">Title</span><span class="sort-arrow" aria-hidden="true"></span><span class="resize-handle" aria-hidden="true"></span></th>
-            <th scope="col" data-col="artist" data-sort="artist" class="col-artist"><span class="th-label">Artist</span><span class="sort-arrow" aria-hidden="true"></span><span class="resize-handle" aria-hidden="true"></span></th>
-            <th scope="col" data-col="album" data-sort="album" class="col-album"><span class="th-label">Album</span><span class="sort-arrow" aria-hidden="true"></span><span class="resize-handle" aria-hidden="true"></span></th>
-            <th scope="col" data-col="time" data-sort="time" class="col-time"><span class="th-label">Time</span><span class="sort-arrow" aria-hidden="true"></span><span class="resize-handle" aria-hidden="true"></span></th>
-            <th scope="col" data-col="remove" class="col-remove" aria-label="Remove"><button type="button" class="ia-clear-tracks-btn" aria-label="Clear tracklist" title="Clear tracklist"><span aria-hidden="true">🧹</span></button></th>
-            <!--
-            <th scope="col" data-col="fav" data-sort="fav" class="col-fav" aria-label="Favorite"><span class="th-label" aria-hidden="true">★</span><span class="sort-arrow" aria-hidden="true"></span><span class="resize-handle" aria-hidden="true"></span></th>
-            -->
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <div class="ia-tracklist-empty">Choose an album to see tracks.</div>
-    </div>
-
-    <div class="ia-status" role="status" aria-live="polite" aria-atomic="true"><span class="ia-status-msg"></span><span class="ia-status-count" aria-live="off"></span></div>
-
-    ${mediaEl}
-
-    <!-- Film intro overlay (movies): shown over the player area when a film
-         is selected but not yet started. Click (or Enter/Space) to play. -->
-    <div class="ia-film-intro" role="button" tabindex="0" aria-label="Play film">
-      <div class="ia-film-intro-card">
-        <h2 class="ia-film-intro-title"></h2>
-        <p class="ia-film-intro-length"></p>
-        <p class="ia-film-intro-about"></p>
-        <p class="ia-film-intro-rights"></p>
-        <p class="ia-film-intro-hint">Click to play. Move the mouse to the lower right of the film to enlarge to full screen.</p>
-      </div>
-    </div>
-  `;
+  container.innerHTML = shellHtml.replace(/\{\{(\w+)\}\}/g, (_, key) => L[key] ?? '');
+  // Embedded-panel mode: the page hosts one shared sign-in; drop the menu's.
+  if (panel) container.querySelector('.menu-item-sollogin')?.remove();
 
   const manageButton = container.querySelector('.manage-btn');
   const gearMenu = container.querySelector('.gear-menu');
