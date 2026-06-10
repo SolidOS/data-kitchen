@@ -5,7 +5,7 @@
 
 <http://localhost:3000/data-kitchen/data/data-kitchen-settings.ttl> a swc:DataKitchenSettingsFile;
     foaf:primaryTopic <#Settings>.
-<#Settings> ui:colorScheme ui:LightColorScheme;
+<#Settings> ui:colorScheme ui:DarkColorScheme;
     ui:editorKeys ui:DefaultKeys;
-    ui:fontSize ui:LargeFont;
+    ui:fontSize ui:MediumFont;
     ui:proxy "http://localhost:3002/proxy?uri=".

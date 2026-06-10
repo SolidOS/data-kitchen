@@ -2,7 +2,11 @@
 
 ## `plans/`
 
-- **`PLAN-architecture.md`** — single canonical plan file. Includes
+- **`data-kitchen-consolidation-plan.md`** — the approved consolidation plan
+  (2026-06-10): electron shell + old dk + open_media_player merge into this
+  repo; mini-app self-containment; builders in sol-components; eventual
+  landing on solidOS/data-kitchen (execute-only-on-GO).
+- **`PLAN-architecture.md`** — earlier canonical plan file. Includes
   status, goal, repo layout, all sub-system designs (auth sharing,
   sol-default, theming, shared editor system with two modes,
   package dedup), UI sketches, build order across all phases, and
