@@ -12,7 +12,27 @@
   package dedup), UI sketches, build order across all phases, and
   a "Next steps" section listing outstanding work.
 
-## `smoke-tests/`
+## `smoke-tests/` — consolidation-era (2026-06-10, Playwright)
+
+The living suite for the consolidated app (servers up first — see file
+headers):
+
+- `verify-unified-shell.mjs` — the whole shell, functionally: default tab
+  set + pantry absences, News default, lazy media (no library fetches at
+  startup), per-tab plugin checks (tracks, feeds, pod panes), context help
+  / ☰ items following the active plugin, chrome completeness, no
+  app-internal failures. Drops `unified-shell.png` as the visual baseline.
+- `verify-builders.mjs` — Customize end-to-end: ☰ → modal builders render,
+  drag-payload assignment, save (PUT via pivot), generator re-emits
+  html-first.html, fresh-browser reload shows the built tab, repo state
+  restored. GUARDED: refuses to run with uncommitted tabs.ttl /
+  html-first.html (its cleanup git-restores them).
+- Evidence screenshots from electron compositing checks:
+  `overlay-below-chrome.png`, `subtabs-above-pane.png`,
+  `popup-{calendar,search}-pane-blanked.png`,
+  `context-help-over-blanked-pane.png`, `narrow-window-wrapped-bar.png`.
+
+## `smoke-tests/` — pre-consolidation (old dk)
 
 Puppeteer-driven diagnostic scripts. Each opens
 `http://localhost:8081/` (run `npm run serve` first), inspects the

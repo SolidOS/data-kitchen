@@ -33,9 +33,11 @@ index.html          the shell: chrome bar + <sol-include source="./html-first.ht
 html-first.html     the topmost <sol-tabs> — GENERATED from data/tabs.ttl
                     (chrome block preserved verbatim between chrome markers)
 data/tabs.ttl       the RDF twin: #Tabs (tab menu) + #Bar (actions row)
-data/palette.ttl    the plugins the Customize tab offers (a ui:Menu, curated)
+data/menu.ttl       #More — the ☰ hamburger's standard items
+data/palette.ttl    the plugins the builders offer (a ui:Menu, curated)
 plugins/<name>/     one SELF-CONTAINED folder per plugin: its scripts,
-                    assets, pages, and RDF libraries (the tree-shaking unit)
+                    assets, pages, RDF libraries, and manifest.ttl
+                    (the tree-shaking unit)
 src/                shell-only code (boot, tab wiring, auth, settings)
 electron-config/    the Electron main process (.cjs)
 pivot/ pivot-config/ proxy/   the bundled servers
@@ -43,9 +45,32 @@ help/  pages/  assets/  shapes/  favourites/   shell-level resources
 tools/              conversion + palette seeding scripts
 ```
 
+## The plugin manifest
+
+Each plugin folder may carry a `manifest.ttl` describing it — existing
+`ui:Component` vocabulary plus three optional declarations the shell uses:
+
+```ttl
+<> a ui:Component ;
+  ui:label "Music" ; ui:name "ia-player" ;
+  dct:hasPart <./ia3.js> ;                      # the plugin's files
+  dct:requires <./libraries/...> ;              # its data/deps
+  schema:softwareHelp <./help.html> ;           # context help page
+  dct:conformsTo <../../shapes/music.shacl> .   # settings/data shape
+
+<#Menu> a ui:Menu ; ui:parts ( … ) .            # ☰ contributions
+```
+
+**Help, Settings and the ☰ menu are context-sensitive** to the active tab:
+the `?` button opens the active plugin's help (dk's own help is the
+fallback); ☰ → Settings… opens a `sol-form` over the plugin's declared
+shape and the panel's own `source` (or the global settings page without
+one); a plugin's `#Menu` items appear in ☰ below a separator while its tab
+is active (e.g. the player's Filters / View deleted / Install / Update).
+
 ## Customize — build the UI with the UI
 
-The **🎛 Customize** tab hosts three sol-components builders:
+**☰ → Customize…** opens the three sol-components builders in a modal:
 
 - `<sol-menu-builder source="data/tabs.ttl#Tabs">` — edit the tab menu
 - `<sol-bar-builder source="data/tabs.ttl#Bar">` — edit the actions bar
@@ -60,8 +85,12 @@ node tools/conversion/generate-html-first.mjs           # tabs.ttl → html-firs
 node tools/conversion/generate-html-first.mjs --verify  # round-trip check
 ```
 
-The help button and the ⋮ menu are **chrome** — fixed in `html-first.html`
-(between the `chrome:begin/end` markers), not bar-managed; edit them by hand.
+The help button and the ☰ menu are **chrome** — fixed in `html-first.html`
+(between the `chrome:begin/end` markers), not bar-managed; edit them by
+hand. The bar carries search / calendar / text-size; theme toggling,
+settings, sign-in and Customize live in ☰ (their bar/tab definitions stay
+in tabs.ttl as pantry, restorable with the builders). Sign-in is
+on-demand: the hidden `sol-login` surfaces only during an auth flow.
 
 ## Verification
 
