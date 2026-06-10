@@ -114,11 +114,17 @@ try {
   check('generator --verify round-trip is stable', verifyOk);
 
   // --- the regenerated shell actually shows the new tab ---
-  await page.reload({ waitUntil: 'domcontentloaded' });
-  await page.evaluate(async () => { if (window.ComponentInterop?.ready) await window.ComponentInterop.ready; });
-  await page.waitForTimeout(4000);
-  const tabsNow = await page.evaluate(() =>
+  // (a FRESH browser, so the old instance's HTTP cache can't serve the
+  // pre-regeneration html-first.html — electron disables its cache, plain
+  // Chrome here doesn't, and that made this check flaky)
+  const browser2 = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
+  const page2 = await browser2.newPage();
+  await page2.goto('http://localhost:3000/index.html', { waitUntil: 'domcontentloaded' });
+  await page2.evaluate(async () => { if (window.ComponentInterop?.ready) await window.ComponentInterop.ready; });
+  await page2.waitForTimeout(4000);
+  const tabsNow = await page2.evaluate(() =>
     [...document.querySelector('sol-tabs')?.querySelectorAll('a, [role="tab"]') || []].map(e => e.textContent.trim()));
+  await browser2.close();
   check('reloaded shell shows the built tab', tabsNow.some(t => /Smoke Test Tab/.test(t)), tabsNow.join(' | ').slice(0, 140));
 } finally {
   restore();
