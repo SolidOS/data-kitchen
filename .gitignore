@@ -3,6 +3,14 @@ dist/
 *.log
 .DS_Store
 
+# the pivot server's PRE-COMPILED config is a required, committed artifact
+# (regenerating needs an isolated build — see pivot/build-compiled-config.sh)
+!pivot/dist/
+!pivot/dist/create-app.cjs
+
+# Community Solid Server runtime storage state (POD_ROOT = repo root)
+.internal/
+
 # editor backups / autosave
 *~
 \#*\#

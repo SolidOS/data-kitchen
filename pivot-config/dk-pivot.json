@@ -1,0 +1,11 @@
+{
+  "comment": "Single entry config for the bundled pivot server: the no-auth base plus the data-kitchen overrides. Exists so the whole config can be pre-compiled (see pivot/build-compiled-config.sh) — the compiled form skips componentsjs' runtime node_modules scan, which otherwise walks into the repo's file:-linked packages and mixes incompatible component registries.",
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^7.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/pivot/^1.0.0/components/context.jsonld"
+  ],
+  "import": [
+    "./no-auth.json",
+    "./customise-me.json"
+  ]
+}

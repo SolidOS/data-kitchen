@@ -1,0 +1,98 @@
+{
+    "comment": "Override parameters for the Data-Kitchen home CSS pivot server. Paths (templates/pod, ./node_modules/mashlib/*) are resolved relative to the server's working directory (pivot-config/), so spawning CSS requires mashlib + a pod template present there. Copied from the old data-kitchen build.",
+    "@context": [
+      "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^7.0.0/components/context.jsonld",
+      "https://linkedsoftwaredependencies.org/bundles/npm/@solid/pivot/^1.0.0/components/context.jsonld"
+    ],
+    "@graph": [
+      {
+        "comment": "The settings of your email server.",
+        "@type": "Override",
+        "overrideInstance": {
+          "@id": "urn:solid-server:default:EmailSender"
+        },
+        "overrideParameters": {
+          "@type": "BaseEmailSender",
+          "senderName": "no-reply@solidcommunity.net",
+          "emailConfig_host": "smtp.sendgrid.net",
+          "emailConfig_port": 465,
+          "emailConfig_auth_user": "apikey",
+          "emailConfig_auth_pass": "<fill me in>"
+        }
+      },
+      {
+        "comment": "The location of the new pod templates folder.",
+        "@type": "Override",
+        "overrideInstance": {
+          "@id": "urn:solid-server:default:PodResourcesGenerator"
+        },
+        "overrideParameters": {
+          "@type": "StaticFolderGenerator",
+          "templateFolder": "templates/pod"
+        }
+      },
+      {
+        "comment": "Sets the maximum size of a single pod to 70MB.",
+        "@type": "Override",
+        "overrideInstance": {
+            "@id": "urn:solid-server:default:QuotaStrategy"
+        },
+        "overrideParameters": {
+            "@type": "PodQuotaStrategy",
+            "limit_amount": 70000000,
+            "limit_unit": "bytes"
+        }
+      },
+      {
+        "comment": "Serve Databrowser as default representation",
+        "@id": "urn:solid-server:default:DefaultUiConverter",
+        "@type": "ConstantConverter",
+        "contentType": "text/html",
+        "filePath": "./node_modules/mashlib/dist/databrowser.html",
+        "options_container": true,
+        "options_document": true,
+        "options_minQuality": 1,
+        "options_disabledMediaRanges": [
+          "image/*",
+          "application/pdf"
+        ]
+      },
+      {
+        "comment": "Serve Mashlib static files.",
+        "@id": "urn:solid-server:default:StaticAssetHandler",
+        "@type": "StaticAssetHandler",
+        "assets": [
+          {
+            "@type": "StaticAssetEntry",
+            "relativeUrl": "/browse.html",
+            "filePath": "./node_modules/mashlib/dist/browse.html"
+          },
+          {
+            "@type": "StaticAssetEntry",
+            "relativeUrl": "/mash.css",
+            "filePath": "./node_modules/mashlib/dist/mash.css"
+          },
+          {
+            "@type": "StaticAssetEntry",
+            "relativeUrl": "/mashlib.js",
+            "filePath": "./node_modules/mashlib/dist/mashlib.js"
+          },
+          {
+            "@type": "StaticAssetEntry",
+            "relativeUrl": "/mashlib.js.map",
+            "filePath": "./node_modules/mashlib/dist/mashlib.js.map"
+          },
+          {
+            "@type": "StaticAssetEntry",
+            "relativeUrl": "/mashlib.min.js",
+            "filePath": "./node_modules/mashlib/dist/mashlib.min.js"
+          },
+          {
+            "@type": "StaticAssetEntry",
+            "relativeUrl": "/mashlib.min.js.map",
+            "filePath": "./node_modules/mashlib/dist/mashlib.min.js.map"
+          }
+        ]
+      }
+    ]
+  }

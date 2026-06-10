@@ -1,20 +1,59 @@
 {
   "name": "data-kitchen",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "type": "module",
-  "description": "Shell hosting sol-components apps under a shared menu, auth pool, and theme.",
+  "description": "Electron app packaging a Solid server (pivot), a CORS proxy, and a shell of sol-components mini-apps.",
+  "main": "./electron-config/main.cjs",
   "scripts": {
+    "start": "electron .",
+    "start-css": "cd pivot && node run-server.cjs .. 3000",
+    "build-pivot-config": "bash pivot/build-compiled-config.sh",
+    "start-proxy": "node proxy/index.cjs",
     "build": "node esbuild.config.mjs",
     "watch": "node esbuild.config.mjs --watch",
-    "serve": "python3 -m http.server 8081"
+    "serve": "python3 -m http.server 8081",
+    "dist": "electron-builder"
   },
   "dependencies": {
+    "component-interop": "^0.2.3",
+    "electron-reloader": "^1.2.3",
     "mashlib": "^2.2.0",
-    "podz": "file:../solid/podz",
-    "sol-components": "file:../solid/sol-components"
+    "podz": "file:../podz",
+    "sol-components": "file:../sol-components"
   },
   "devDependencies": {
-    "component-interop": "0.2.2",
+    "electron": "^40.1.0",
+    "electron-builder": "^24.0.0",
     "esbuild": "^0.27.5"
+  },
+  "build": {
+    "appId": "com.data-kitchen",
+    "productName": "Solid Data Kitchen",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "category": "Utility"
+    },
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    }
   }
 }

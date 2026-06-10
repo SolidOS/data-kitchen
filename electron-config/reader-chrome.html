@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { color-scheme: light dark; }
+  html, body { margin: 0; height: 100%; }
+  .bar {
+    display: flex; align-items: center; gap: 4px;
+    height: 100%; padding: 0 8px; box-sizing: border-box;
+    font: 13px/1 system-ui, sans-serif;
+    background: Canvas; color: CanvasText;
+    border-bottom: 1px solid color-mix(in srgb, CanvasText 18%, transparent);
+  }
+  button {
+    border: 0; background: transparent; color: inherit;
+    width: 30px; height: 26px; border-radius: 6px; cursor: pointer;
+    font-size: 15px; line-height: 1;
+  }
+  button:hover:not(:disabled) { background: color-mix(in srgb, CanvasText 12%, transparent); }
+  button:disabled { opacity: .35; cursor: default; }
+  .url {
+    flex: 1; min-width: 0; margin: 0 6px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    opacity: .7;
+  }
+  .close { margin-left: auto; font-size: 17px; }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <button id="back"    title="Back"    aria-label="Back">‹</button>
+    <button id="forward" title="Forward" aria-label="Forward">›</button>
+    <button id="reload"  title="Reload"  aria-label="Reload">⟳</button>
+    <span class="url" id="url"></span>
+    <button id="close" class="close" title="Close" aria-label="Close">✕</button>
+  </div>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    $('back').onclick    = () => window.readerChrome.back();
+    $('forward').onclick = () => window.readerChrome.forward();
+    $('reload').onclick  = () => window.readerChrome.reload();
+    $('close').onclick   = () => window.readerChrome.close();
+    window.readerChrome.onState((s) => {
+      $('back').disabled = !s.canGoBack;
+      $('forward').disabled = !s.canGoForward;
+      $('url').textContent = s.url || '';
+    });
+  </script>
+</body>
+</html>
