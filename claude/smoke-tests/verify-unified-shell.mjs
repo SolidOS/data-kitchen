@@ -12,7 +12,11 @@ import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/ind
 const URL = 'http://localhost:3000/index.html';
 // App-internal = our own origins. Everything else (news-article sites in the
 // reader, CDNs, consent trackers) fails for its own reasons and is not ours.
-const EXTERNAL = { test: (u) => !/^http:\/\/localhost:300[02]\//.test(u) || /\.well-known\/solid|\.acl|\.meta/.test(u) };
+// A proxied request (localhost:3002/proxy?uri=…) is judged by its TARGET:
+// an upstream 4xx/5xx relayed by our proxy is external weather, not a bug.
+const EXTERNAL = { test: (u) => !/^http:\/\/localhost:300[02]\//.test(u)
+  || /^http:\/\/localhost:3002\/proxy\?/.test(u)
+  || /\.well-known\/solid|\.acl|\.meta/.test(u) };
 const errors = [], failed = [];
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };
