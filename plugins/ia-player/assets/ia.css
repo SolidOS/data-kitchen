@@ -33,7 +33,7 @@
 
   /* neutral "hallway" room (page bg, tab bar) */
   --ia-base:      #121317;
-  --ia-ink:       #e8e8ec;
+  --ia-ink:       #f6f6fa;
   --ia-accent:    #c79248;
   --ia-on-accent: #15100a;
 
@@ -77,8 +77,8 @@
 }
 
 /* ---- Room inputs (the two media moods) ----------------------------- */
-.ia-player-app.media-audio { --ia-base:#15110c; --ia-ink:#efe6d8; --ia-accent:#f0a23a; --ia-on-accent:#1b1206; }
-.ia-player-app.media-video { --ia-base:#0a0d12; --ia-ink:#dde7ef; --ia-accent:#49c8d8; --ia-on-accent:#06161a; }
+.ia-player-app.media-audio { --ia-base:#15110c; --ia-ink:#f8f1e3; --ia-accent:#f0a23a; --ia-on-accent:#1b1206; }
+.ia-player-app.media-video { --ia-base:#0a0d12; --ia-ink:#eef5fb; --ia-accent:#49c8d8; --ia-on-accent:#06161a; }
 [data-theme="light"] .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
 [data-theme="light"] .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
 

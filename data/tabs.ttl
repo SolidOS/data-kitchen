@@ -76,7 +76,7 @@
 
 <#Bar> a ui:Menu ; ui:label "actions" ;
   ui:orientation ui:Horizontal ;
-  ui:parts ( <#bar-search> <#bar-calendar> <#bar-fontsize> <#bar-theme> ) .
+  ui:parts ( <#bar-search> <#bar-calendar> <#bar-fontsize> ) .
 
 <#bar-search> a ui:Component ; ui:label "Search" ; ui:name "sol-search" ;
   ui:attribute

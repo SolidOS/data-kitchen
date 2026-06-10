@@ -76,7 +76,7 @@
 # (#MainMenu above is the RETIRED old-dk header menu, kept as pantry.)
 
 <#More> a ui:Menu ; ui:label "Menu" ;
-  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreSignIn> <#MoreGuestView> ) .
+  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreTheme> <#MoreSignIn> <#MoreGuestView> ) .
 
 <#MoreCustomize> a ui:Component ; ui:label "Customize…" ;
   ui:name "sol-include" ;
@@ -89,6 +89,8 @@
 # plugin's shape (manifest dct:conformsTo) opens a sol-form for the panel's
 # source; otherwise the global pages/settings.html. See dk-tabs-shell.
 <#MoreSettings> a ui:Component ; ui:label "Settings…" ; ui:name "settings" .
+
+<#MoreTheme> a ui:Component ; ui:label "Toggle light / dark" ; ui:name "toggleTheme" .
 
 <#MoreSignIn> a ui:Component ; ui:label "Sign in…" ; ui:name "signIn" .
 
