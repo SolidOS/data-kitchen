@@ -6,7 +6,7 @@
 
 dk (`/home/jeff/solid/data-kitchen`, currently just `notes.md`) is to become a
 single Electron app — packaging a Solid server ("pivot" = Community Solid
-Server), a CORS proxy, and a shell app of mini-apps — eventually replacing
+Server), a CORS proxy, and a shell app of plugins — eventually replacing
 https://github.com/solidOS/data-kitchen (Jeff controls it). It consolidates:
 
 - **el** `/home/jeff/solid/electron` — Electron shell. `electron-config/main.js:106`
@@ -52,9 +52,9 @@ https://github.com/solidOS/data-kitchen (Jeff controls it). It consolidates:
 ## Decisions already made by Jeff
 
 - New dk index = omp look & feel: one topmost `<sol-tabs>`; tabs are the UNION
-  of omp's tabs and the old-dk subapps dk wants — all mini-apps.
+  of omp's tabs and the old-dk subapps dk wants — all plugins.
 - The three builders are **new reusable components in sc**, names approved:
-  `<sol-menu-builder>`, `<sol-bar-builder>`, `<sol-miniapp-palette>`, reusing
+  `<sol-menu-builder>`, `<sol-bar-builder>`, `<sol-plugins-available>`, reusing
   existing attribute conventions (`source=`, `for=`).
 - Builders read/write existing ui:Menu; save = serialize + rewrite the whole
   Turtle doc (no list PATCHing); unreferenced "pantry" subjects preserved.
@@ -68,16 +68,16 @@ https://github.com/solidOS/data-kitchen (Jeff controls it). It consolidates:
   it renders is declared in HTML, not RDF. No new vocabulary.
 - Git: preserve old dk's local history; eventual landing on
   solidOS/data-kitchen `main` preserves both histories.
-- **Mini-app self-containment:** ALL resources of a mini-app live in that
-  mini-app's folder — source scripts, assets, AND its RDF libraries/data.
+- **Plugin self-containment:** ALL resources of a plugin live in that
+  plugin's folder — source scripts, assets, AND its RDF libraries/data.
   ia-player (serving both Music and Movies) is one folder holding both
   libraries. Rationale: eventual tree-shaking — a user downloads only the
-  mini-apps they want.
-- **The actions-row items ARE mini-apps too** (Jeff): login, search, calendar,
-  theme/fontsize etc. are mini-apps the user can omit or retain, managed by
+  plugins they want.
+- **The actions-row items ARE plugins too** (Jeff): login, search, calendar,
+  theme/fontsize etc. are plugins the user can omit or retain, managed by
   the button bar (the bar builder edits which of them appear in the tabset's
-  actions row). They get self-contained `mini-apps/` folders and palette
-  entries like any other mini-app. **Exceptions — chrome: the menu button (⋮)
+  actions row). They get self-contained `plugins/` folders and palette
+  entries like any other plugin. **Exceptions — chrome: the menu button (⋮)
   and the help button.** Both are declared by the shell itself and are not
   bar-builder-managed (a user who wants help gone can edit the HTML by hand —
   it's declarative markup, so that remains possible). So the root shell is
@@ -108,8 +108,8 @@ revisit at packaging). Copied-in pieces:
 ├── pivot-config/              ← copied from el
 ├── bin/                       ← copied from el (cleanCache etc.)
 ├── src/                       ← SHELL-ONLY code (dk-shell.js, dk-styles.css, chrome pieces);
-│                                mini-app scripts do NOT live here
-├── mini-apps/                 ← one SELF-CONTAINED folder per mini-app: its scripts, assets,
+│                                plugin scripts do NOT live here
+├── plugins/                 ← one SELF-CONTAINED folder per plugin: its scripts, assets,
 │   │                            pages, AND its RDF libraries/data (tree-shaking-ready)
 │   ├── ia-player/             ← omp src/ia3.js, ia-rdf.js, ia-ui.js, omp-favourites-*.js
 │   │   ├── assets/            ←   + extracted shells/modals (Phase 5)
@@ -124,15 +124,15 @@ revisit at packaging). Copied-in pieces:
 │   ├── solid-resources/       ← resources.html (omp's, merged with old-dk's 5 iframe links)
 │   ├── dev-tools/             ← dev-tools.html (omp's, merged with old-dk's 4 playgrounds)
 │   ├── customize/             ← dk-customize.html hosting the three builders (Phase 6)
-│   │                          — bar-managed mini-apps (actions-row residents, equally
+│   │                          — bar-managed plugins (actions-row residents, equally
 │   │                            omit-or-retain-able):
 │   ├── search/                ← sol-search markup fragment + search-engines.ttl (omp ∪ old-dk)
 │   ├── calendar/              ← dk-calendar-popout.js/html + calendar-settings.ttl (merged)
 │   ├── login/                 ← sol-login markup fragment + issuer config + popup-callback.html
 │   └── appearance/            ← theme/fontsize buttons fragment
-│                              (help is NOT a mini-app — it's chrome; see help/ at root)
+│                              (help is NOT a plugin — it's chrome; see help/ at root)
 ├── assets/                    ← SHELL look only (omp.css → dk chrome stylesheet, icons);
-│                                mini-player.html lives with ia-player (its mini-app)
+│                                mini-player.html lives with ia-player (its plugin)
 ├── data/                      ← SHELL docs only: menu.ttl, tabs.ttl, palette.ttl (NEW),
 │                                data-kitchen-settings.ttl
 ├── pages/                     ← shell-level pages (settings.html, …)
@@ -142,10 +142,10 @@ revisit at packaging). Copied-in pieces:
 └── claude/plans/data-kitchen-consolidation-plan.md   ← this plan
 ```
 
-Copying into mini-app folders means the self-referencing `./libraries/...`
+Copying into plugin folders means the self-referencing `./libraries/...`
 paths inside omp's TTL/HTML must be rewritten to the new locations (e.g.
-`mini-apps/ia-player/libraries/internet_archive_music/index.ttl`) — done at
-copy time, verified by loading each tab. Each mini-app folder is the future
+`plugins/ia-player/libraries/internet_archive_music/index.ttl`) — done at
+copy time, verified by loading each tab. Each plugin folder is the future
 tree-shaking unit (its `dk.manifest.json` entries point only into its folder;
 a later phase can give each folder its own manifest fragment).
 
@@ -199,7 +199,7 @@ Pre-push check: `git merge-base --is-ancestor origin/main main`; fresh
   <sol-default label="Preferences" theme="dark" fontsize="medium"
        proxy="http://localhost:3002/proxy?uri="
        source="data/data-kitchen-settings.ttl#Settings" …></sol-default>
-  <nav class="dk-chrome-bar"><sol-include source="mini-apps/ia-player/assets/mini-player.html" trusted></sol-include></nav>
+  <nav class="dk-chrome-bar"><sol-include source="plugins/ia-player/assets/mini-player.html" trusted></sol-include></nav>
   <main id="dk-content" class="dk-panels">
     <sol-include id="dk-body" source="./html-first.html" trusted></sol-include>
   </main>
@@ -215,41 +215,41 @@ Pre-push check: `git merge-base --is-ancestor origin/main main`; fresh
   → generator regenerates HTML.
 - `html-first.html`: `<sol-tabs id="dk-tabs" keep-alive>` with the union tabs
   as `<a>` anchors + non-anchor children → actions row, consisting of: the
-  bar-managed mini-apps (search, calendar, appearance, login — each
+  bar-managed plugins (search, calendar, appearance, login — each
   omit-or-retain-able via the bar builder, fragments living in their
-  `mini-apps/<name>/` folders, emitted here by the generator) and the
+  `plugins/<name>/` folders, emitted here by the generator) and the
   **chrome: the help button and the ⋮ menu button (sol-dropdown-button)** —
   declared directly by the shell, never generated or bar-managed (removable
   only by hand-editing this declarative file).
 
-## Mini-app migration map (union + dedupe)
+## Plugin migration map (union + dedupe)
 
-| Tab | Source | Markup (sources under each mini-app's own folder) | Notes |
+| Tab | Source | Markup (sources under each plugin's own folder) | Notes |
 |---|---|---|---|
-| 🏠 Home | old dk | `sol-include` → NEW `mini-apps/home/home.html` | extract old-dk index.html inline Home block (sol-weather, sol-time, sol-feed dashboard); its dashboard feeds.ttl lives beside it |
-| 📰 News | omp | `sol-feed view=threePanel` → `mini-apps/news/feeds.ttl#Feeds` | Home's feed list stays separate (default D4) |
-| 🎵 Music | omp | `ia-player storage-ns=music defer` → `mini-apps/ia-player/libraries/internet_archive_music/index.ttl` | |
-| 🎬 Movies | omp | `ia-player storage-ns=movies favourites-only defer` → `mini-apps/ia-player/libraries/internet_archive_movies/index.ttl` | one ia-player folder serves both tabs |
-| 🖼 Images | omp | `omp-images` → `mini-apps/omp-images/libraries/wikimedia_images/images.ttl#Images` | |
-| 🗂 Podz | BOTH | `dk-podz` → `mini-apps/podz/` | default D1: old-dk wins; omp's checked-in `workspaces/podz.bundle.min.js` not copied |
-| 🐧 SolidOS | old dk | `dk-solidos` → `mini-apps/solidos/` | unchanged behavior |
-| 📚 Solid Resources | BOTH | `sol-include trusted` → `mini-apps/solid-resources/resources.html` | merge old-dk menu.ttl's 5 iframe links into resources.html |
-| 🛠 Dev Tools | BOTH | `sol-include` → `mini-apps/dev-tools/dev-tools.html` | merge old-dk's 4 playground iframes in |
-| 🎛 Customize (Phase 6) | NEW | `mini-apps/customize/dk-customize.html` | hosts the three builders |
+| 🏠 Home | old dk | `sol-include` → NEW `plugins/home/home.html` | extract old-dk index.html inline Home block (sol-weather, sol-time, sol-feed dashboard); its dashboard feeds.ttl lives beside it |
+| 📰 News | omp | `sol-feed view=threePanel` → `plugins/news/feeds.ttl#Feeds` | Home's feed list stays separate (default D4) |
+| 🎵 Music | omp | `ia-player storage-ns=music defer` → `plugins/ia-player/libraries/internet_archive_music/index.ttl` | |
+| 🎬 Movies | omp | `ia-player storage-ns=movies favourites-only defer` → `plugins/ia-player/libraries/internet_archive_movies/index.ttl` | one ia-player folder serves both tabs |
+| 🖼 Images | omp | `omp-images` → `plugins/omp-images/libraries/wikimedia_images/images.ttl#Images` | |
+| 🗂 Podz | BOTH | `dk-podz` → `plugins/podz/` | default D1: old-dk wins; omp's checked-in `workspaces/podz.bundle.min.js` not copied |
+| 🐧 SolidOS | old dk | `dk-solidos` → `plugins/solidos/` | unchanged behavior |
+| 📚 Solid Resources | BOTH | `sol-include trusted` → `plugins/solid-resources/resources.html` | merge old-dk menu.ttl's 5 iframe links into resources.html |
+| 🛠 Dev Tools | BOTH | `sol-include` → `plugins/dev-tools/dev-tools.html` | merge old-dk's 4 playground iframes in |
+| 🎛 Customize (Phase 6) | NEW | `plugins/customize/dk-customize.html` | hosts the three builders |
 
-ia-player / omp-images live **inside dk** under `mini-apps/`, registered via
+ia-player / omp-images live **inside dk** under `plugins/`, registered via
 `dk.manifest.json` (default D2; extractable later if a second consumer appears).
 Merge `search-engines.ttl` and `calendar-settings.ttl` (omp ∪ old-dk; default
 D3). Old-dk's `dk-calendar-popout` wins over omp's near-twin.
 
 ## omp JS-extraction cleanup (during/after absorption; sources = dk copies)
 
-| # | File (in dk's mini-apps/) | Extract to |
+| # | File (in dk's plugins/) | Extract to |
 |---|---|---|
-| 1 | `ia-player/ia-ui.js:22–154` ~130-line shell innerHTML | `mini-apps/ia-player/assets/ia-player-shell.html` |
+| 1 | `ia-player/ia-ui.js:22–154` ~130-line shell innerHTML | `plugins/ia-player/assets/ia-player-shell.html` |
 | 2–6 | `ia-ui.js` modals: about 978–984, filters 1016–1054, playlist-edit 1135–1160, library-edit 1197–1218, track-edit 1262–1287 | `…/assets/modal-*.html` (one file each) |
 | 7 | `omp-favourites-ui.js:36–45` favourite prompt | `…/assets/modal-favourite-prompt.html` |
-| 8 | `omp-images.js:30–89` 60-line CSS string | `mini-apps/omp-images/omp-images.css` |
+| 8 | `omp-images.js:30–89` 60-line CSS string | `plugins/omp-images/omp-images.css` |
 | 9 | `omp-images.js:567–587` add-form builder (borderline) | extract if mechanical, else leave + note |
 | 10 | `ia3.js:1543–1593` add forms; `ia3.js:2642` notice banner | small fragment files |
 
@@ -270,7 +270,7 @@ New files in sc only:
   palette drop assigns one (verify parser tolerates missing ui:name; else ask).
 - `web/sol-bar-builder.js` — depth-1 variant over the same editing core; edits
   the flat actions-row ui:Menu.
-- `web/sol-miniapp-palette.js` — draggable cards from `source=` (palette doc);
+- `web/sol-plugins-available.js` — draggable cards from `source=` (palette doc);
   `for=` names the builder(s) it feeds; drop assigns `ui:name` +
   `ui:attribute` set. Drag-drop: use sol-feed threePanel
   (`web/sol-feed.js` ~850–1286, `web/utils/feed-edit.js`) as the reference,
@@ -286,10 +286,10 @@ New files in sc only:
 
 dk side: `data/palette.ttl` (curated ui:Menu of ui:Component entries; seeded
 once by `tools/seed-palette.mjs` from the manifests — entry attributes point
-into each mini-app's folder), `mini-apps/customize/dk-customize.html`
+into each plugin's folder), `plugins/customize/dk-customize.html`
 declaring the builders with full attributes, e.g.
 `<sol-menu-builder source="data/tabs.ttl#Tabs">`,
-`<sol-miniapp-palette source="data/palette.ttl#Palette" for="sol-menu-builder, sol-bar-builder">`.
+`<sol-plugins-available source="data/palette.ttl#Palette" for="sol-menu-builder, sol-bar-builder">`.
 Gate via existing `acl:mode acl:Write` / `if-logged-in`. Save → run generator →
 reload; same path edits existing menus. Any capability needing a new RDF
 term/HTML attribute ⇒ stop and ask.
@@ -339,24 +339,24 @@ reuses an existing one).
   `curl 'http://localhost:3002/proxy?uri=https://example.com'` works; external
   link → native reader overlay.
 - **P3 Absorb omp (1–2d):** copy omp pieces into self-contained
-  mini-app folders (ia-player with both IA libraries, omp-images with
+  plugin folders (ia-player with both IA libraries, omp-images with
   wikimedia_images, news, solid-resources, dev-tools — minus junk &
   workspaces/), rewriting the `./libraries/...` self-references at copy time;
   shell assets → assets/; conversion → tools/conversion; merge shell data/;
-  fold omp manifest entries into dk.manifest.json (paths into mini-apps/);
+  fold omp manifest entries into dk.manifest.json (paths into plugins/);
   interim `omp.html` entry (paths fixed, interop from node_modules). Verify:
   Music tab plays a track; News threePanel renders; Images render via :3002
   proxy.
 - **P4 Unified shell (2–3d):** new index.html + html-first.html;
-  mini-apps/home/home.html; merged resources/dev-tools/help; retire omp.html +
+  plugins/home/home.html; merged resources/dev-tools/help; retire omp.html +
   old sol-menu header (menu.ttl kept, pantry intact); `npm run build`. Verify:
   omp-look shell, click through EVERY tab; search/calendar/login/help/settings/
   theme/fontsize work; reader overlay still covers #dk-content.
 - **P5 JS-extraction (2–3d):** items 1–10 above, one commit each. Verify per
-  item: surface renders identically; `grep -rn 'innerHTML = \`' mini-apps/`
+  item: surface renders identically; `grep -rn 'innerHTML = \`' plugins/`
   trends to ~0 outside data-driven rendering.
 - **P6 Builders (1–2w, sc + dk):** serializer+tests → menu builder → palette →
-  bar builder → customize mini-app + palette.ttl seed → generator
+  bar builder → customize plugin + palette.ttl seed → generator
   generalization. Verify: sc tests pass (round-trip + pantry); in dk: build a
   menu, drag ia-player onto an item, save, `rdf-to-html.mjs --verify`,
   restart — new tab appears and works.
@@ -374,16 +374,16 @@ reuses an existing one).
 - **C3** refactor sol-feed onto a shared drag util — **NO:** leave sol-feed
   alone.
 - **D1** Podz: old-dk `dk-podz` + live podz dep wins (omp bundle not copied).
-- **D2** ia-player/omp-images stay dk-internal under `mini-apps/`.
+- **D2** ia-player/omp-images stay dk-internal under `plugins/`.
 - **D3** merge search-engines.ttl / calendar-settings.ttl (omp ∪ old-dk),
-  each living in its mini-app's folder (`mini-apps/search/`,
-  `mini-apps/calendar/`). *Why merge:* there is one search mini-app and one
-  calendar mini-app, and both projects' files configure that same mini-app;
+  each living in its plugin's folder (`plugins/search/`,
+  `plugins/calendar/`). *Why merge:* there is one search plugin and one
+  calendar plugin, and both projects' files configure that same plugin;
   two lists would mean one is ignored or they're unioned at runtime anyway.
-  One source of truth per mini-app, in that mini-app's folder. Easy to
+  One source of truth per plugin, in that plugin's folder. Easy to
   override if Jeff prefers one project's list to win outright.
-- **D4** Home-dashboard feeds (in mini-apps/home/) and News-tab feeds (in
-  mini-apps/news/) stay separate lists — also consistent with mini-app
+- **D4** Home-dashboard feeds (in plugins/home/) and News-tab feeds (in
+  plugins/news/) stay separate lists — also consistent with plugin
   self-containment.
 - **D5** palette drag-drop adapted (and improved — "ok but not great") from
   sol-feed's threePanel reference; sol-feed untouched.
