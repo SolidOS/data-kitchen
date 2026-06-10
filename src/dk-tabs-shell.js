@@ -65,9 +65,12 @@
       if (declared) return declared;
       try { return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch { return 'dark'; }
     }
-    const themeBtn = document.querySelector('.omp-theme');
+    // Live lookups — the buttons arrive with the html-first include, usually
+    // AFTER this module evaluates; a captured const would stay null.
+    const themeBtn = () => document.querySelector('.omp-theme');
     function syncTheme() {
-      if (themeBtn) themeBtn.textContent = effectiveTheme() === 'light' ? '☀️' : '🌙';
+      const btn = themeBtn();
+      if (btn) btn.textContent = effectiveTheme() === 'light' ? '☀️' : '🌙';
     }
     function toggleTheme() {
       const next = effectiveTheme() === 'light' ? 'dark' : 'light';
@@ -82,12 +85,18 @@
           || solDefault()?.getAttribute('fontsize')
           || 'medium';
     }
-    const fontBtn = document.querySelector('.omp-fontsize');
+    const fontBtn = () => document.querySelector('.omp-fontsize');
     function syncFontSize() {
       const size = effectiveFontSize();
-      if (fontBtn) {
-        fontBtn.dataset.size = size;
-        fontBtn.title = 'Text size: ' + size[0].toUpperCase() + size.slice(1) + ' (click to change)';
+      const btn = fontBtn();
+      if (btn) {
+        btn.dataset.size = size;
+        const title = 'Text size: ' + size[0].toUpperCase() + size.slice(1) + ' (click to change)';
+        btn.title = title;
+        // The hover tooltip comes from the INNERMOST title attribute — the
+        // sol-button's shadow trigger carries its own (copied from markup at
+        // build), which would mask the synced one. Keep it in step.
+        btn.shadowRoot?.querySelector('button')?.setAttribute('title', title);
       }
     }
     function cycleFontSize() {
@@ -98,10 +107,14 @@
       syncFontSize();
       document.dispatchEvent(new CustomEvent('omp:appearance'));
     }
-    // Plain <button> chrome (index.html) toggles on click; a <sol-button
-    // command="…"> (html-first.html) routes through the sol-command registry below.
-    if (themeBtn && themeBtn.tagName !== 'SOL-BUTTON') themeBtn.addEventListener('click', toggleTheme);
-    if (fontBtn  && fontBtn.tagName  !== 'SOL-BUTTON') fontBtn.addEventListener('click', cycleFontSize);
+    // The sol-button chrome routes through the sol-command registry below;
+    // a plain <button> (legacy) would need a direct click listener instead —
+    // wired in whenTabsReady once the include has landed.
+    function wireAppearanceButtons() {
+      const t = themeBtn(), f = fontBtn();
+      if (t && t.tagName !== 'SOL-BUTTON' && !t._dkWired) { t._dkWired = true; t.addEventListener('click', toggleTheme); }
+      if (f && f.tagName !== 'SOL-BUTTON' && !f._dkWired) { f._dkWired = true; f.addEventListener('click', cycleFontSize); }
+    }
     document.addEventListener('omp:appearance', () => { syncTheme(); syncFontSize(); });
 
     // The ⋮ menu is a <sol-dropdown-button source="./data/menu.ttl#More"> (see
@@ -227,6 +240,10 @@
       for (const el of allPanels()) el.addEventListener('omp:access', syncGating);
       solTabs.addEventListener('sol-tab-change', (e) => onTab(e.detail?.name));
       if (canWrite()) panelEl('news')?.toggleAttribute('editable', true);
+      // The appearance buttons arrived with the include — wire + sync them.
+      wireAppearanceButtons();
+      syncTheme();
+      syncFontSize();
 
       // News is the startup tab unless a saved choice says otherwise (a
       // saved key for a since-removed tab falls through to the first tab).

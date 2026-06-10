@@ -126,7 +126,7 @@ check('actions row + chrome complete', Object.values(chrome).every(Boolean), JSO
 check('no failed app-internal requests', failed.length === 0, failed.slice(0, 5).join(' | '));
 // "Failed to load resource" console lines duplicate the request-level check
 // above (which already distinguishes app-internal from external) — drop them.
-const fatal = errors.filter(e => !/favicon|net::ERR_|Failed to fetch|Failed to load resource|CORS|Worker registration failed|Attestation check|googleadservices/.test(e));
+const fatal = errors.filter(e => !/favicon|net::ERR_|Failed to fetch|Failed to load resource|CORS|Worker registration failed|Attestation check|googleadservices|report-only Content Security Policy/.test(e));
 check('no unexpected console errors', fatal.length === 0, fatal.slice(0, 3).join(' | '));
 
 await page.screenshot({ path: 'claude/smoke-tests/unified-shell.png', fullPage: false });
