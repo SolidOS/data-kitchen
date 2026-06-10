@@ -1,6 +1,13 @@
 # Data-Kitchen Consolidation Plan
 
-*Drafted 2026-06-10. Status: approved as a plan; no build phase has a GO yet.*
+*Drafted 2026-06-10. Status: **P0–P7 EXECUTED** (auto-mode run, 2026-06-10).
+P8 (push to solidOS remote, publish sol-components) remains awaiting Jeff's
+explicit per-action GO. sol-components' builder work sits on its local
+`builders` branch — sc must stay checked out on that branch for dk's
+Customize tab to work (dk links sc via file:). Verification: see
+claude/smoke-tests/ (verify-unified-shell.mjs, verify-builders.mjs — ALL
+PASS, including against the packaged build) and sc's
+scripts/verify-menu-serialize.mjs + full jest suite (1263 passed).*
 
 ## Context
 
