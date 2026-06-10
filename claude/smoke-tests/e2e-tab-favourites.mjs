@@ -33,7 +33,7 @@ try {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle2', timeout: 30000 });
   await page.waitForFunction(
-    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 4,
+    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 5,
     { timeout: 20000 });
 
   const clickTab = (id) => page.evaluate((id) =>

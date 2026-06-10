@@ -32,7 +32,7 @@ try {
 
   await page.goto(BASE, { waitUntil: 'networkidle2', timeout: 30000 });
   await page.waitForFunction(
-    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 4,
+    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 5,
     { timeout: 20000 });
   const clickTab = (id) => page.evaluate((id) =>
     document.querySelector(`#omp-tabs > .sol-tabs-bar > button[data-tab-id="${id}"]`).click(), id);

@@ -23,6 +23,19 @@
      data-defer
   >🎬 Movies</a>
 
+  <a href="./libraries/workspaces/podz-shell.html" id="panel-workspaces"
+     data-handler="podz"
+  >🗂 Workspaces</a>
+
+  <sol-search class="omp-search" title="Search"
+     source="./data/search-engines.ttl#SearchEngines"
+  ></sol-search>
+
+  <omp-calendar-popout class="omp-calendar" title="Calendar"
+     source="./data/calendar-settings.ttl#All"
+     view="agenda"
+  ></omp-calendar-popout>
+
   <sol-button class="omp-help-launch" title="Help" aria-label="Help"
      handler="sol-include"
      source="./assets/omp-help.html"

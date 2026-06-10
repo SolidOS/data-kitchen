@@ -16,7 +16,7 @@
 
     let solTabs = null;   // assigned once the included <sol-tabs> exists
     const chrome  = document.querySelector('.omp-chrome');
-    const PANEL_KEYS = ['news', 'music', 'images', 'movies'];
+    const PANEL_KEYS = ['news', 'music', 'images', 'movies', 'workspaces'];
     const panelEl   = (key) => document.getElementById('panel-' + key);
     const allPanels = () => PANEL_KEYS.map(panelEl).filter(Boolean);
     let audioName = 'music';
@@ -199,6 +199,31 @@
     // ui:name "installPod") dispatches `sol-command` on click. This registry maps
     // those keys to behaviours — it's the allow-list: an unregistered command is
     // a no-op, and nothing executes code that the RDF names.
+    // Workspaces: a tab whose bare handler ("podz") is a command. sol-tabs hands
+    // it the pane via detail.place(); we mount the vendored podz two-pane shell
+    // there, then import podz's bundle — it self-wires the splitter + cross-pane
+    // drag against the just-placed #left-pod / #right-pod. Boots once.
+    let podzBooted = false;
+    async function mountWorkspaces(params, detail) {
+      if (podzBooted || !detail?.place) return;
+      podzBooted = true;
+      if (!document.querySelector('link[data-podz-css]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = './libraries/workspaces/podz.css';
+        link.setAttribute('data-podz-css', '');
+        document.head.appendChild(link);
+      }
+      const shell = params?.href || './libraries/workspaces/podz-shell.html';
+      const html = await fetch(new URL(shell, document.baseURI)).then((r) => r.text());
+      detail.place(html);   // inserts the two-pod shell into the tab's pane
+      // podz's bundle reads window.SolidWebComponents.AuthManager at eval time;
+      // component-interop only publishes it once sol-login has loaded, so wait
+      // for interop readiness before importing the bundle.
+      try { await window.ComponentInterop?.ready; } catch {}
+      await import('../libraries/workspaces/podz.bundle.min.js');
+    }
+
     const COMMANDS = {
       guestView:     () => enterGuestPreview(),
       toggleTheme:   () => toggleTheme(),
@@ -207,8 +232,9 @@
       viewDeleted: () => activePanel()?.appAction?.('viewDeleted'),
       installPod:  () => activePanel()?.appAction?.('installPod'),
       updateApp:   () => activePanel()?.appAction?.('updateApp'),
+      podz:        (params, detail) => mountWorkspaces(params, detail),
     };
-    document.addEventListener('sol-command', (e) => COMMANDS[e.detail?.command]?.(e.detail?.params));
+    document.addEventListener('sol-command', (e) => COMMANDS[e.detail?.command]?.(e.detail?.params, e.detail));
 
     // ----- boot -----
     syncTheme();

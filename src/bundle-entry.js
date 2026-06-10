@@ -19,6 +19,8 @@ import './omp-images.js';
 // each media tab surfaces its own slice of the communal wall.)
 import { installFavouriteRouter } from './omp-favourites-ui.js';
 installFavouriteRouter();
+// <omp-calendar-popout> — the 📅 chrome button (a dropdown over <sol-calendar>).
+import './omp-calendar-popout.js';
 import './ia3.js';
 // Theme / text-size / dev-write are declared on <sol-default> (theme, fontsize,
 // solid-kitchen) and resolved by the omp.css :has() cascade + omp-boot (saved

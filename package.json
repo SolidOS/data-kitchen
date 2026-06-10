@@ -1,7 +1,9 @@
 {
-  "name": "ia-player",
+  "name": "Open Media Player",
   "version": "0.1.0",
-  "description": "Open Media Player web component",
+  "description": "Access thousands of free music, movies, images, and news",
+  "author": "Jeff Zucker",
+  "license": "MIT",
   "type": "module",
   "main": "dist/ia-player.esm.js",
   "scripts": {

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podz — sign in</title>
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #1f2933;
+    color: #e4e7eb;
+  }
+  .wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.75rem;
+    box-sizing: border-box;
+  }
+  .title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .msg   { font-size: 0.8rem; color: #9aa5b1; line-height: 1.35; }
+  .msg.err { color: #ff9b85; }
+  .spinner {
+    width: 1.4rem; height: 1.4rem;
+    border: 3px solid #3e4c59;
+    border-top-color: #4fd1c5;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 0.6rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  /* When the popup has been shrunk post-login, this compact view shows. */
+  body.parked .spinner { display: none; }
+  body.parked .title { font-size: 0.75rem; }
+  body.parked .msg { font-size: 0.65rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="spinner" id="spinner"></div>
+  <div class="title" id="title">Podz</div>
+  <div class="msg" id="msg">Connecting…</div>
+</div>
+
+<!-- Vendored into omp: authn lib from the same CDN omp's index.html uses; the
+     popup-proxy helper from the sibling sol-components (served at ../sol-components). -->
+<script src="https://cdn.jsdelivr.net/npm/@inrupt/solid-client-authn-browser@4/dist/solid-client-authn.bundle.js"></script>
+<script type="module">
+import {
+  deserializeRequest, serializeResponse,
+} from '../../../sol-components/core/popup-proxy.js';
+
+const POPUP_SRC  = 'sol-popup-auth';
+const PARENT_SRC = 'sol-popup-parent';
+
+const titleEl = document.getElementById('title');
+const msgEl   = document.getElementById('msg');
+function show(title, msg, isErr) {
+  if (title != null) titleEl.textContent = title;
+  if (msg != null)   msgEl.textContent = msg;
+  msgEl.classList.toggle('err', !!isErr);
+}
+
+const SessionClass = window.solidClientAuthn && window.solidClientAuthn.Session;
+if (!SessionClass) {
+  show('Podz', 'Auth library failed to load.', true);
+  throw new Error('popup-auth-callback: solidClientAuthn UMD not present');
+}
+
+// ---- config -------------------------------------------------------------
+// `side` and `issuer` arrive as query params on the initial open; `side`
+// is persisted in this window's sessionStorage so it survives the IDP
+// round-trip (sessionStorage is per-window — each popup has its own).
+const params = new URLSearchParams(window.location.search);
+const side   = params.get('side') || sessionStorage.getItem('podz_popup_side') || 'default';
+const issuerParam = params.get('issuer');
+sessionStorage.setItem('podz_popup_side', side);
+
+const openerOrigin = window.location.origin; // opener is the podz app, same origin
+
+// ---- namespaced storage -------------------------------------------------
+// All popups share this origin's localStorage. Namespacing each popup's
+// inrupt storage keeps two sessions from wiping each other (Phase 0 v2).
+const prefix = 'podz_popup_' + side + ':';
+const nsStorage = {
+  async get(key)      { const v = localStorage.getItem(prefix + key); return v === null ? undefined : v; },
+  async set(key, val) { localStorage.setItem(prefix + key, val); },
+  async delete(key)   { localStorage.removeItem(prefix + key); },
+};
+
+const session = new SessionClass({
+  secureStorage:   nsStorage,
+  insecureStorage: nsStorage,
+});
+
+const hasOidcParams = /[?&](code|state|error)=/.test(window.location.search);
+
+function notifyParent(msg, transfer) {
+  if (window.opener && !window.opener.closed) {
+    window.opener.postMessage(
+      Object.assign({ source: POPUP_SRC, side }, msg),
+      openerOrigin,
+      transfer || [],
+    );
+    return true;
+  }
+  return false;
+}
+
+// ---- cheap hiding -------------------------------------------------------
+// After login completes, shrink the popup, tuck it into a screen corner,
+// and send it behind the main app window. Browsers clamp the minimum
+// size and may refuse to move a window fully offscreen, so this is
+// best-effort: the window becomes a small, labelled tile rather than
+// truly invisible.
+function parkWindow() {
+  document.body.classList.add('parked');
+  show('Podz session', '(' + side + ') — keep open', false);
+  try {
+    window.resizeTo(150, 110);
+    const x = Math.max(0, (window.screen.availWidth  || 1280) - 165);
+    const y = Math.max(0, (window.screen.availHeight || 800) - 130);
+    window.moveTo(x, y);
+  } catch (_) { /* browser refused; leave as-is */ }
+  // Drop behind the main window: focus the opener, then blur self.
+  try {
+    if (window.opener && !window.opener.closed) window.opener.focus();
+    window.blur();
+  } catch (_) { /* browser refused; leave as-is */ }
+}
+
+// ---- fetch proxy --------------------------------------------------------
+window.addEventListener('message', async (e) => {
+  const d = e.data;
+  if (!d || d.source !== PARENT_SRC) return;
+  if (d.side && d.side !== side) return;
+
+  if (d.type === 'fetch') {
+    try {
+      const { url, init } = deserializeRequest(d);
+      const res = await session.fetch(url, init);
+      const payload = await serializeResponse(res);
+      notifyParent({ type: 'fetch-reply', id: d.id, ...payload });
+    } catch (err) {
+      notifyParent({ type: 'fetch-reply', id: d.id, error: err.message });
+    }
+  } else if (d.type === 'logout') {
+    try { await session.logout(); } catch (_) { /* ignore */ }
+    notifyParent({ type: 'logout-reply', id: d.id });
+    show('Podz', 'Signed out — you can close this window.', false);
+  }
+});
+
+// ---- orphan detection ---------------------------------------------------
+// If the parent podz tab is closed or navigates away, this popup is
+// useless — close it so we don't leak windows.
+setInterval(() => {
+  if (!window.opener || window.opener.closed) {
+    try { window.close(); } catch (_) { /* ignore */ }
+  }
+}, 2000);
+
+// ---- main flow ----------------------------------------------------------
+async function main() {
+  try {
+    if (hasOidcParams) {
+      show('Podz', 'Completing sign-in…');
+      await session.handleIncomingRedirect(window.location.href);
+      const info = session.info || {};
+      if (info.isLoggedIn) {
+        // Strip OIDC params so a stray reload doesn't reprocess them.
+        history.replaceState({}, '', window.location.origin + window.location.pathname);
+        const delivered = notifyParent({
+          type: 'logged-in',
+          webId: info.webId,
+          sessionId: info.sessionId,
+          issuer: info.issuer,
+        });
+        if (delivered) {
+          parkWindow();
+        } else {
+          show('Podz', 'Sign-in done, but the app window was lost. Close this window.', true);
+        }
+      } else {
+        show('Podz', 'Sign-in did not complete.', true);
+        notifyParent({ type: 'login-failed', error: 'not logged in after redirect' });
+      }
+    } else if (issuerParam) {
+      let issuer = issuerParam.endsWith('/') ? issuerParam : issuerParam + '/';
+      show('Podz', 'Redirecting to ' + new URL(issuer).host + '…');
+      await session.login({
+        oidcIssuer: issuer,
+        redirectUrl: window.location.origin + window.location.pathname,
+        clientName: 'Podz (' + side + ')',
+      });
+      // login() navigates away; nothing after this runs.
+    } else {
+      show('Podz', 'Nothing to do — open this page from the Podz app.', true);
+    }
+  } catch (err) {
+    show('Podz', 'Sign-in error: ' + err.message, true);
+    notifyParent({ type: 'login-failed', error: err.message });
+  }
+}
+
+notifyParent({ type: 'popup-ready' });
+main();
+</script>
+</body>
+</html>
+</content>
+</invoke>

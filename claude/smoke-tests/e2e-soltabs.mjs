@@ -42,11 +42,11 @@ try {
   // Tabs built from RDF (the ★ Favourites tab was retired — favourites surface
   // per media tab now).
   await page.waitForFunction(
-    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 4,
+    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 5,
     { timeout: 20000 });
   const ids = await page.evaluate(() =>
     [...document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button')].map(b => b.dataset.tabId));
-  check(JSON.stringify(ids) === JSON.stringify(['panel-news', 'panel-music', 'panel-images', 'panel-movies']),
+  check(JSON.stringify(ids) === JSON.stringify(['panel-news', 'panel-music', 'panel-images', 'panel-movies', 'panel-workspaces']),
     `tab order (data-tab-id) = ${ids.join(' · ')}`);
 
   // All four panels mounted up front (eager keep-alive).

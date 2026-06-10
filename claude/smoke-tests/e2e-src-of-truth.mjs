@@ -61,7 +61,7 @@ async function inspect(query) {
   page.on('pageerror', e => errors.push(e.message));
   await page.goto(BASE + '/index.html' + query, { waitUntil: 'domcontentloaded', timeout: 30000 });
   await page.waitForFunction(
-    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 4,
+    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 5,
     { timeout: 20000 });
   const out = await page.evaluate(() => {
     const inc = document.getElementById('omp-body');

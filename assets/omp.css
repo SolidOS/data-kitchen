@@ -212,6 +212,52 @@
          part="requires-write" (for a mixed menu where the button stays). */
     body.no-write [if-logged-in=""] { display: none; }
     body.no-write .omp-more::part(requires-write) { display: none; }
+    /* Search ⌕ — <sol-search>; style its shadow trigger like a chrome-btn. */
+    .omp-search::part(trigger) {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; padding: 0;
+      background: var(--ia-bg-btn, #26282e); color: var(--ia-text-muted, #9aa);
+      border: 1px solid var(--ia-border-btn, #34373d); border-radius: 7px;
+      font-family: var(--ia-font-display, Georgia, serif); font-size: 1rem;
+      cursor: pointer; line-height: 1;
+    }
+    .omp-search::part(trigger):hover { color: var(--ia-text-strong, #fff); border-color: var(--ia-accent, #888); }
+    /* Calendar 📅 — <omp-calendar-popout>: a chrome-btn trigger (styled by the
+       .chrome-btn class in its template) over an absolutely-anchored dropdown. */
+    .omp-calendar { position: relative; display: inline-flex; }
+    /* The tab bar clips overflow (sol-tabs-bar overflow-y:hidden), so the dropdown
+       is fixed-positioned (coords set on open) to escape the clip. */
+    .omp-calendar .omp-popout-panel {
+      position: fixed; z-index: 1000;
+      min-width: 28rem; max-width: 90vw; max-height: 70vh;
+      display: flex; flex-direction: column;
+      padding: 8px; border-radius: 8px;
+      background: var(--ia-bg-panel, #1d1f24);
+      color: var(--ia-text, #e7e7ea);
+      border: 1px solid var(--omp-popup-border, silver);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    .omp-calendar .omp-popout-panel[hidden] { display: none; }
+    .omp-calendar .omp-popout-panel sol-calendar { flex: 1 1 auto; min-height: 0; }
+
+    /* Border around the click-popups (Search, Calendar, ⋮ menu): silver in dark,
+       black in light. --omp-popup-border flips with omp's theme cascade — dark is
+       the :root base, light layered via data-theme / sol-default / system pref. */
+    :root { --omp-popup-border: silver; }
+    [data-theme="light"],
+    :root:not([data-theme]):has(sol-default[theme="light"]) { --omp-popup-border: #000; }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme]):not(:has(sol-default[theme])) { --omp-popup-border: #000; }
+    }
+    .omp-search::part(panel),
+    .omp-more::part(menu) { border: 1px solid var(--omp-popup-border, silver); }
+
+    /* The vendored podz shell (.app, id=panel-workspaces) is authored for a full
+       page (height:100vh); inside the Workspaces tab pane it must fill the pane,
+       not the viewport, or its footer/collapse controls overflow below the
+       clipped pane. */
+    #panel-workspaces { height: 100%; min-height: 0; }
+
     /* sol-login chip in the bar. */
     .omp-sollogin { display: inline-flex; }
 

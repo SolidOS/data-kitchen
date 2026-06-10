@@ -13,7 +13,7 @@ try {
   page.on('pageerror', e => errors.push(e.message));
   await page.goto(URL, { waitUntil: 'networkidle2', timeout: 30000 });
   await page.waitForFunction(
-    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 4,
+    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 5,
     { timeout: 20000 });
   // Go to Movies
   await page.evaluate(() =>

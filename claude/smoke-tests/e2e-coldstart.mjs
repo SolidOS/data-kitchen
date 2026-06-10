@@ -42,11 +42,11 @@ try {
 
   // Tab order.
   await page.waitForFunction(
-    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 4,
+    () => document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button').length === 5,
     { timeout: 20000 });
   const order = await page.evaluate(() =>
     [...document.querySelectorAll('#omp-tabs > .sol-tabs-bar > button')].map(b => b.dataset.tabId));
-  check(JSON.stringify(order) === JSON.stringify(['panel-news', 'panel-music', 'panel-images', 'panel-movies']),
+  check(JSON.stringify(order) === JSON.stringify(['panel-news', 'panel-music', 'panel-images', 'panel-movies', 'panel-workspaces']),
     `tab order = ${order.join(' · ')}`);
 
   // News active on cold start.
