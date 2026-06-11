@@ -30,4 +30,7 @@
   // Page wiring around the topmost <sol-tabs> (tab reactions, chrome
   // commands, mini player, gating). Replaces the old sol-menu nav-state.
   await import('./dk-tabs-shell.js');
+  // Keep html-first.html (the rendered shell) in step with data/tabs.ttl after a
+  // Customize save: regenerate + reload so new tabs/bar items appear at once.
+  await import('./dk-tabs-sync.js');
 })();

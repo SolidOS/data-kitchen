@@ -202,6 +202,10 @@ if (document.readyState === 'loading') {
   boot();
 }
 
-// Diagnostic / future feature-detection hook. Phase-1 interception needs no app
-// cooperation, but exposing the flag is harmless and useful later.
-contextBridge.exposeInMainWorld('dkElectron', { isElectron: true });
+// Diagnostic / feature-detection hook, plus the hard-restart bridge (the ☰
+// "Restart dk" command): a renderer can't relaunch the Electron process itself,
+// so it asks main, which calls app.relaunch() + exit.
+contextBridge.exposeInMainWorld('dkElectron', {
+  isElectron: true,
+  restart: () => ipcRenderer.send('dk:restart'),
+});

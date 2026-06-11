@@ -11,6 +11,11 @@
   sol-default, theming, shared editor system with two modes,
   package dedup), UI sketches, build order across all phases, and
   a "Next steps" section listing outstanding work.
+- **`tabs-rdf-html-asymmetry.md`** — inventory of items that live in only
+  `data/tabs.ttl` OR only `html-first.html` (pantry items, menu metadata,
+  acl:mode/icon; chrome block, wrapper attrs, hand-authored markup, skipped
+  anchor attrs). Reference for the two-way tabs-sync plan; flags what the sync
+  preserves vs. what's at risk on a round-trip.
 
 ## `smoke-tests/` — consolidation-era (2026-06-10, Playwright)
 

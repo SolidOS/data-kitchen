@@ -76,7 +76,8 @@
 # (#MainMenu above is the RETIRED old-dk header menu, kept as pantry.)
 
 <#More> a ui:Menu ; ui:label "Menu" ;
-  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreTheme> <#MoreSignIn> <#MoreGuestView> ) .
+  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreTheme> <#MoreFontSize>
+             <#MoreSignIn> <#MoreGuestView> <#MoreReload> <#MoreRestart> ) .
 
 <#MoreCustomize> a ui:Component ; ui:label "Customize…" ;
   ui:name "sol-include" ;
@@ -90,12 +91,22 @@
 # source; otherwise the global pages/settings.html. See dk-tabs-shell.
 <#MoreSettings> a ui:Component ; ui:label "Settings…" ; ui:name "settings" .
 
-<#MoreTheme> a ui:Component ; ui:label "Toggle light / dark" ; ui:name "toggleTheme" .
+# Label shows the CURRENT theme/size — dk-tabs-shell rewrites these two on open.
+<#MoreTheme> a ui:Component ; ui:label "Theme" ; ui:name "toggleTheme" .
 
 <#MoreSignIn> a ui:Component ; ui:label "Sign in…" ; ui:name "signIn" .
 
 <#MoreGuestView> a ui:Component ; ui:label "View as guest" ; ui:name "guestView" ;
   acl:mode acl:Write .
+
+# Cycle text size (moved here from the actions bar). Command — see dk-tabs-shell.
+<#MoreFontSize> a ui:Component ; ui:label "Text size" ; ui:name "cycleFontSize" .
+
+# Developer reloads (commands — see dk-tabs-shell). Reload = renderer reload
+# (picks up bundle/html/css/data); Restart = relaunch the whole app (also
+# main process + bundled servers) via the dkElectron preload bridge.
+<#MoreReload>  a ui:Component ; ui:label "Reload dk"  ; ui:name "reloadApp"  .
+<#MoreRestart> a ui:Component ; ui:label "Restart dk" ; ui:name "restartApp" .
 
 
 

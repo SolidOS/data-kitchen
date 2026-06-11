@@ -76,7 +76,8 @@
 
 <#Bar> a ui:Menu ; ui:label "actions" ;
   ui:orientation ui:Horizontal ;
-  ui:parts ( <#bar-search> <#bar-calendar> <#bar-fontsize> ) .
+  ui:parts ( <#bar-search> <#bar-calendar> ) .
+# (#bar-fontsize moved to the ☰ menu — data/menu.ttl#MoreFontSize — kept below as pantry.)
 
 <#bar-search> a ui:Component ; ui:label "Search" ; ui:name "sol-search" ;
   ui:attribute

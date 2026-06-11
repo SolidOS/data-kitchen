@@ -212,6 +212,36 @@
     }
     document.addEventListener('omp:appearance', () => { syncTheme(); syncFontSize(); });
 
+    // ☰ menu items that mirror live appearance state. The dropdown renders its
+    // items once from menu.ttl; rewrite the "Text size" and "Theme" labels to
+    // the current value whenever the popup opens (and on appearance changes while
+    // it's open). Matched by label PREFIX so it's idempotent across re-opens.
+    function syncMenuState(popup) {
+      if (!popup) return;
+      for (const btn of popup.querySelectorAll('button')) {
+        const t = (btn.textContent || '').trim();
+        if (t.startsWith('Text size')) {
+          const s = effectiveFontSize();
+          btn.textContent = `Text size: ${s[0].toUpperCase()}${s.slice(1)}`;
+        } else if (t.startsWith('Theme')) {
+          btn.textContent = effectiveTheme() === 'light' ? 'Theme: Light ☀️' : 'Theme: Dark 🌙';
+        }
+      }
+    }
+    // Hook the ☰ popup once its shadow exists (the dropdown upgrades async, so
+    // the settle loop retries until this returns true).
+    function wireMenuState() {
+      const dd = document.querySelector('sol-dropdown-button.omp-more');
+      const popup = dd && dd.shadowRoot && dd.shadowRoot.querySelector('.sol-dd-popup');
+      if (!popup) return false;
+      if (dd._dkStateWired) return true;
+      dd._dkStateWired = true;
+      new MutationObserver(() => { if (!popup.hidden) syncMenuState(popup); })
+        .observe(popup, { attributes: true, attributeFilter: ['hidden'] });
+      document.addEventListener('omp:appearance', () => { if (!popup.hidden) syncMenuState(popup); });
+      return true;
+    }
+
     // The ⋮ menu is a <sol-dropdown-button source="./data/menu.ttl#More"> (see
     // index.html): it owns its open/close + popup, its items are command items
     // that dispatch sol-command (handled by COMMANDS below), and write-only items
@@ -311,6 +341,11 @@
       guestView:     () => enterGuestPreview(),
       toggleTheme:   () => toggleTheme(),
       cycleFontSize: () => cycleFontSize(),
+      // Developer reloads (☰ menu): soft = renderer reload (picks up the rebuilt
+      // bundle/html/css/data); hard = relaunch the whole app (also main process +
+      // bundled servers) via the dkElectron preload bridge → main app.relaunch.
+      reloadApp:     () => location.reload(),
+      restartApp:    () => window.dkElectron?.restart?.(),
       // The ☰ "Sign in…" item: start the same coalesced flow a 401 does —
       // sol-login listens for sol-auth-needed, surfaces itself ([active])
       // and runs the popup login. resolve is the protocol's completion
@@ -367,7 +402,7 @@
       // Panels mount async — retry gating + audio binding until ready.
       let tries = 0;
       const settle = setInterval(() => {
-        syncGating(); bindMini(); bindAudio(); updateMini();
+        syncGating(); bindMini(); bindAudio(); updateMini(); wireMenuState();
         if (++tries >= 12 || audioEl()?._ompMiniBound) clearInterval(settle);
       }, 400);
     });
