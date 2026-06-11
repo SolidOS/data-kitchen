@@ -1,18 +1,16 @@
 // dk-tabs-sync — keep the running shell AND html-first.html in step with
 // data/tabs.ttl. On a Customize save:
 //
-//   (a) the live tab bar updates IN PLACE — sol-tabs.applyTabs() merges the new
-//       tabs into the existing <sol-tabs>, so a new/renamed tab appears at once
-//       with no reload (keep-alive panes, chrome, and listeners all survive).
+//   (a) the live shell updates IN PLACE — sol-tabs.applyTabs() merges the new
+//       tabs and applyLaunchers() rebuilds the bar items (chrome matched by class
+//       and kept), so a new/renamed tab OR bar item appears at once with no
+//       reload (keep-alive panes and listeners survive).
 //   (b) html-first.html is regenerated and PUT — tabs, bar AND the chrome block
 //       (now emitted from #Chrome) — so the file on disk mirrors the RDF.
 //
 // On load it also (c) imports a hand-edited html-first's tabs back into the RDF
 // (reverse sync), and (d) self-heals #Chrome — reinserting any mandatory chrome
 // item a hand-edit dropped, then regenerating the shell.
-//
-// Not yet: BAR edits persist to html-first but aren't live-updated (they show on
-// the next reload — Reload dk).
 
 import { rdf } from 'sol-components/core/rdf.js';
 import { parseMenuItems, rdfVal } from 'sol-components/core/menu-rdf.js';
@@ -38,11 +36,19 @@ async function syncShell() {
   const bar = parseMenuItems(store, rdf.sym(`${tabsUrl}#Bar`));
   const chromeItems = parseMenuItems(store, rdf.sym(`${tabsUrl}#Chrome`));
 
-  // (a) Live update the running tab bar in place.
+  // (a) Live update the running tab bar in place — tabs, then the bar launchers.
+  // Chrome launchers are matched by class and KEPT (not re-created), so a bar
+  // edit never disturbs the ☰ menu or sol-login.
   const solTabs = document.getElementById('dk-tabs');
   if (solTabs && typeof solTabs.applyTabs === 'function') {
     try { solTabs.applyTabs(tabs); }
-    catch (e) { console.warn('[dk-tabs-sync] live update failed', e); }
+    catch (e) { console.warn('[dk-tabs-sync] tab live update failed', e); }
+  }
+  if (solTabs && typeof solTabs.applyLaunchers === 'function') {
+    try {
+      const isChrome = (el) => /\bomp-(help-launch|more|sollogin)\b/.test(el.className || '');
+      solTabs.applyLaunchers(bar, isChrome);
+    } catch (e) { console.warn('[dk-tabs-sync] bar live update failed', e); }
   }
 
   // (b) Regenerate + persist html-first.html so the file mirrors the RDF —
