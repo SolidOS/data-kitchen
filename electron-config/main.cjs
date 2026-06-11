@@ -45,6 +45,17 @@ if (process.env.DK_RELOAD) {
   } catch (_) { /* dev-only */ }
 }
 
+// Teardown races (quit / restart / reload) can fire a window/view callback after
+// the object is gone — "Object has been destroyed" — harmless, but Electron would
+// pop its main-process error dialog. Swallow exactly that; surface anything else.
+process.on('uncaughtException', (err) => {
+  const msg = String((err && err.message) || err);
+  if (/Object has been destroyed/.test(msg)) return;
+  try {
+    require('electron').dialog.showErrorBox('A JavaScript error in the main process', (err && err.stack) || msg);
+  } catch { /* dialog unavailable */ }
+});
+
 class DesktopApp {
   constructor() {
     this.baseWindow = null;
