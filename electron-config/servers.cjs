@@ -126,8 +126,9 @@ class Servers {
   seed() {
     if (path.resolve(ENGINE_DIR) === path.resolve(POD_ROOT)) return;
     try {
-      const n = seedDefinition(ENGINE_DIR, POD_ROOT);
-      this.log(n ? `[seed] wrote ${n} definition file(s) into ${POD_ROOT}` : `[seed] pod already populated`);
+      const baselineFile = path.join(app.getPath('userData'), 'seed-baseline.json');
+      const { written, updated, kept } = seedDefinition(ENGINE_DIR, POD_ROOT, baselineFile);
+      this.log(`[seed] ${written} new, ${updated} updated, ${kept} kept (user-edited) — ${POD_ROOT}`);
     } catch (e) {
       this.log(`[seed] failed: ${e.message}`);
     }
