@@ -1,5 +1,13 @@
 # tabs.ttl ↔ html-first.html — asymmetry inventory
 
+> **STATUS 2026-06-11 — BUILT.** The two-way sync now ships: tabs, bar AND chrome
+> are modeled in `tabs.ttl` (`#Tabs`/`#Bar`/`#Chrome`); `html-first.html` is
+> regenerated on save (tabs + bar live-update in place via `applyTabs`/
+> `applyLaunchers`); a hand-edited shell's tabs import back on load (reverse sync);
+> chrome self-heals; and the former comment-loss "AT RISK" item is resolved —
+> HTML comments round-trip as `rdfs:comment` on the nearest item. Remaining open:
+> the `sol-login` hang (unrelated, deferred) and a builder UI for `#Chrome`.
+
 Reference for the two-way tabs sync plan (RDF canonical, `html-first.html` kept
 hand-editable; see `/home/jeff/.claude/plans/show-my-sc-with-parallel-planet.md`).
 Lists every item that lives in **only one** of the two representations, so the sync

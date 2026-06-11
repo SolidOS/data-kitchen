@@ -35,10 +35,12 @@ buttons, the components wired in (the manifest), settings. So the editable app
 plugin config, content) lives in the **pod root** and is served from there, while
 the read-only **engine** (component libraries, vendor bundles, compiled plugin
 `dist/`, dk's own bundle) ships in the executable and is served by the router. On
-first launch the definition is **seeded** into the pod root if absent
-(`electron-config/seed.cjs`; never overwrites edits — a newer build only fills in
-missing files). When the pod root and the repo coincide (dev default), seeding is
-a no-op and everything is served from the repo as before.
+launch the definition is **seeded-or-updated** into the pod root
+(`electron-config/seed.cjs`): missing files are filled in, and files you haven't
+edited are refreshed from a newer build — tracked by a per-file baseline hash in
+`userData`, so your edits are kept and definition changes reach the pod with no
+manual sync. When the pod root and the repo coincide (dev default), it's a no-op
+and everything is served from the repo as before.
 
 All three servers bind to `127.0.0.1` (loopback only — not reachable from the LAN).
 External content (reader/pane overlays) runs in its own session whose requests to
@@ -66,8 +68,9 @@ means editing that attribute too.
 ```
 index.html          the shell: chrome bar + <sol-include source="./html-first.html">
 html-first.html     the topmost <sol-tabs> — GENERATED from data/tabs.ttl
-                    (chrome block preserved verbatim between chrome markers)
-data/tabs.ttl       the RDF twin: #Tabs (tab menu) + #Bar (actions row)
+                    (tabs, bar AND chrome; kept in two-way sync with it)
+data/tabs.ttl       the RDF twin: #Tabs (tabs) + #Bar (actions) + #Chrome
+                    (help / ☰ menu / sign-in); rdfs:comment ↔ HTML comments
 data/menu.ttl       #More — the ☰ hamburger's standard items
 data/palette.ttl    the plugins the builders offer (a ui:Menu, curated)
 plugins/<name>/     one SELF-CONTAINED folder per plugin: its scripts,
@@ -113,19 +116,24 @@ is active (e.g. the player's Filters / View deleted / Install / Update).
   card onto a menu/bar item to assign what it mounts
 
 Saving rewrites the whole Turtle document (unreferenced "pantry" items are
-preserved). Then regenerate the declarative shell and reload:
+preserved), and `src/dk-tabs-sync.js` keeps `html-first.html` and the running
+shell in step **automatically** — no manual regenerate step:
 
-```bash
-node tools/conversion/generate-html-first.mjs           # tabs.ttl → html-first.html
-node tools/conversion/generate-html-first.mjs --verify  # round-trip check
-```
+- the live tab bar and bar launchers update **in place** (chrome untouched);
+- `html-first.html` is regenerated from the RDF and saved (the standalone
+  `node tools/conversion/generate-html-first.mjs [--verify]` does the same for a
+  build/CI check);
+- on load, a hand-edited `html-first.html`'s tabs are imported back into the RDF
+  (reverse sync), and any deleted mandatory chrome item is self-healed.
 
-The help button and the ☰ menu are **chrome** — fixed in `html-first.html`
-(between the `chrome:begin/end` markers), not bar-managed; edit them by
-hand. The bar carries search / calendar / text-size; theme toggling,
-settings, sign-in and Customize live in ☰ (their bar/tab definitions stay
-in tabs.ttl as pantry, restorable with the builders). Sign-in is
-on-demand: the hidden `sol-login` surfaces only during an auth flow.
+The help button, ☰ menu and sign-in are **chrome** — now modeled in
+`data/tabs.ttl#Chrome` (config-editable: help target, icon, ☰ menu source,
+issuers) and emitted between the `chrome:begin/end` markers. They're fixed shell
+furniture: not in the palette, and self-healed if a hand-edit deletes one.
+`rdfs:comment` on any item round-trips as the HTML comment before it. The bar
+carries search / calendar; theme, settings, sign-in and Customize live in ☰
+(their definitions stay in tabs.ttl as pantry). Sign-in is on-demand: the hidden
+`sol-login` surfaces only during an auth flow.
 
 ## Verification
 
