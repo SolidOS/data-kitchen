@@ -6,16 +6,16 @@
 //   - window.open (search, feed, region=tab/window) → native reader overlay
 //   - OIDC login popup                              → a real popup window
 //   - external <iframe> in #dk-content              → native pane overlay
-// The CSS "pivot" server (:3000) and CORS proxy (:3002) start with the app and
-// are killed on quit (servers.js).
+// The routing front server (:8000), the CSS "pivot" behind it (:8010), and the
+// CORS proxy (:8001) start with the app and are killed on quit (servers.js).
 
 const {
   app, BaseWindow, WebContentsView, BrowserWindow, ipcMain, session, screen, Menu, clipboard, shell,
 } = require('electron');
 const path = require('path');
 
-const { APP_URL } = require('./config.cjs');
-const { Servers } = require('./servers.cjs');
+const { APP_URL, PUBLIC_PORT, PROXY_PORT } = require('./config.cjs');
+const { Servers, getGateToken } = require('./servers.cjs');
 const { ExternalViews } = require('./external-views.cjs');
 
 // Dev: serve always-fresh files from the local working trees — both edited
@@ -59,6 +59,7 @@ class DesktopApp {
 
   async start() {
     Menu.setApplicationMenu(null);
+    this.installGateHeader();
     try {
       await this.servers.start();
     } catch (e) {
@@ -114,6 +115,24 @@ class DesktopApp {
     wc.loadURL(APP_URL);
   }
 
+  // The local servers require the per-install gate token (gate.cjs). Inject it
+  // on every default-session request to them, so the app just works — pages in
+  // outside browsers don't have it and get 401. Scoped to the loopback URLs
+  // only, so the token never leaves the machine; the external-views partition
+  // is a different session and stays unblessed (its loopback requests are
+  // cancelled outright in external-views.cjs).
+  installGateHeader() {
+    const token = getGateToken();
+    const urls = [];
+    for (const p of [PUBLIC_PORT, PROXY_PORT]) {
+      urls.push(`http://localhost:${p}/*`, `http://127.0.0.1:${p}/*`);
+    }
+    session.defaultSession.webRequest.onBeforeSendHeaders({ urls }, (details, callback) => {
+      details.requestHeaders['x-dk-token'] = token;
+      callback({ requestHeaders: details.requestHeaders });
+    });
+  }
+
   // Keep the app view exactly the window's content size; cheap no-op when
   // already in sync (called from events AND the watchdog interval).
   fitAppView() {
@@ -153,6 +172,10 @@ class DesktopApp {
     ipcMain.on('dk:reader-forward', () => this.external.readerForward());
     ipcMain.on('dk:reader-reload', () => this.external.readerReload());
     ipcMain.on('dk:reader-close', () => this.external.closeReader());
+    // Hard restart (☰ "Restart dk"): relaunch the whole app so a fresh process
+    // picks up main / electron-config / server / bundle changes. quit() (not
+    // exit()) so before-quit fires and the bundled servers are stopped first.
+    ipcMain.on('dk:restart', () => { app.relaunch(); app.quit(); });
   }
 
   wireContextMenu(wc) {
@@ -167,6 +190,8 @@ class DesktopApp {
           { label: 'Copy Link Address',    click: () => clipboard.writeText(params.linkURL) },
           { type: 'separator' },
         ] : []),
+        { label: 'Open dk in Browser', click: () => shell.openExternal(`${APP_URL}?dk-token=${getGateToken()}`) },
+        { type: 'separator' },
         { label: 'Toggle DevTools', click: () => wc.toggleDevTools() },
         { label: 'Inspect Element', click: () => wc.inspectElement(params.x, params.y) },
       ]).popup();

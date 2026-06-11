@@ -1,14 +1,38 @@
-// Bundled-server lifecycle: a no-auth Community Solid Server ("pivot") on :3000
-// and a CORS proxy on :3002, started with the app and killed on quit.
+// Bundled-server lifecycle, started with the app and killed on quit:
+//   - router  (:8000, PUBLIC_PORT)  — single-origin front; engine static + pod proxy
+//   - pivot   (:8010, CSS_INTERNAL_PORT) — no-auth CSS, the pod root, behind router
+//   - proxy   (:8001, PROXY_PORT)   — CORS proxy
+// Ports override via DK_PUBLIC_PORT / DK_CSS_INTERNAL_PORT / DK_PROXY_PORT.
 //
-// The dev workflow usually already runs CSS on :3000, so each server is only
-// spawned if its port is not already answering — otherwise we reuse what's
-// there (and leave it running on quit, since we didn't start it).
+// Each server is only spawned if its port is not already answering — otherwise
+// we reuse what's there (and leave it running on quit, since we didn't start it).
 
 const { spawn } = require('child_process');
+const crypto = require('crypto');
+const fs = require('fs');
 const http = require('http');
 const path = require('path');
-const { REPO_ROOT, CSS_PORT, PROXY_PORT, POD_ROOT } = require('./config.cjs');
+const { app } = require('electron');
+const {
+  REPO_ROOT, PUBLIC_PORT, CSS_INTERNAL_PORT, PROXY_PORT,
+  PUBLIC_ORIGIN, ENGINE_DIR, POD_ROOT,
+} = require('./config.cjs');
+const { seedDefinition } = require('./seed.cjs');
+
+// Per-install gate secret (see gate.cjs). Created on first launch, kept in
+// userData — outside any pod root — and handed to the spawned servers via env.
+let gateToken = null;
+function getGateToken() {
+  if (gateToken) return gateToken;
+  const file = path.join(app.getPath('userData'), 'gate-token');
+  try { gateToken = fs.readFileSync(file, 'utf8').trim(); } catch (_) {}
+  if (!gateToken) {
+    gateToken = crypto.randomBytes(32).toString('hex');
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, gateToken + '\n', { mode: 0o600 });
+  }
+  return gateToken;
+}
 
 function portAnswers(port) {
   return new Promise((resolve) => {
@@ -56,37 +80,70 @@ class Servers {
     // behave as plain node so the proxy script runs without a second runtime.
     this._spawn('proxy', process.execPath, [path.join(REPO_ROOT, 'proxy', 'index.cjs')], {
       cwd: path.join(REPO_ROOT, 'proxy'),
-      env: { ...process.env, ELECTRON_RUN_AS_NODE: '1' },
+      env: { ...process.env, ELECTRON_RUN_AS_NODE: '1', DK_GATE_TOKEN: getGateToken() },
     });
     await waitForPort(PROXY_PORT, { tries: 30 });
   }
 
   async ensureCss() {
-    if (await portAnswers(CSS_PORT)) { this.log(`[css] already up on :${CSS_PORT} — reusing`); return; }
+    if (await portAnswers(CSS_INTERNAL_PORT)) { this.log(`[css] already up on :${CSS_INTERNAL_PORT} — reusing`); return; }
     // The server runs out of pivot/ — its own dependency tree, the cwd that
     // customise-me.json's ./node_modules/mashlib paths resolve against, and a
     // PRE-COMPILED config (pivot/dist/create-app.cjs) so startup does no
     // componentsjs module scanning (see pivot/compile-config.cjs for why).
+    // It listens on the INTERNAL port but advertises the PUBLIC origin (the
+    // router fronts it), so Location/LDP URLs it generates point at the router.
     // process.execPath is the Electron binary; ELECTRON_RUN_AS_NODE makes it
     // behave as plain node.
     const cwd = path.join(REPO_ROOT, 'pivot');
     this._spawn('css', process.execPath, [
       path.join(cwd, 'run-server.cjs'),
       POD_ROOT,
-      String(CSS_PORT),
-    ], { cwd, env: { ...process.env, ELECTRON_RUN_AS_NODE: '1' } });
-    await waitForPort(CSS_PORT, { tries: 90 });
+      String(CSS_INTERNAL_PORT),
+    ], { cwd, env: {
+      ...process.env, ELECTRON_RUN_AS_NODE: '1',
+      DK_GATE_TOKEN: getGateToken(), DK_CSS_BASEURL: `${PUBLIC_ORIGIN}/`,
+    } });
+    await waitForPort(CSS_INTERNAL_PORT, { tries: 90 });
   }
 
-  // CSS serves the app, so it's the hard dependency we wait on. The proxy is
-  // only needed for CORS-restricted fetches, so it's best-effort and must not
-  // delay opening the window if it's slow or its deps aren't installed yet.
+  async ensureRouter() {
+    if (await portAnswers(PUBLIC_PORT)) { this.log(`[router] already up on :${PUBLIC_PORT} — reusing`); return; }
+    this._spawn('router', process.execPath, [path.join(REPO_ROOT, 'router', 'index.cjs')], {
+      cwd: path.join(REPO_ROOT, 'router'),
+      env: {
+        ...process.env, ELECTRON_RUN_AS_NODE: '1', DK_GATE_TOKEN: getGateToken(),
+        DK_PUBLIC_PORT: String(PUBLIC_PORT),
+        DK_CSS_INTERNAL_PORT: String(CSS_INTERNAL_PORT),
+        DK_ENGINE_DIR: ENGINE_DIR,
+      },
+    });
+    await waitForPort(PUBLIC_PORT, { tries: 30 });
+  }
+
+  // Seed the editable app definition into the pod root if it lives somewhere
+  // other than the engine dir and is missing files (never overwrites edits).
+  seed() {
+    if (path.resolve(ENGINE_DIR) === path.resolve(POD_ROOT)) return;
+    try {
+      const n = seedDefinition(ENGINE_DIR, POD_ROOT);
+      this.log(n ? `[seed] wrote ${n} definition file(s) into ${POD_ROOT}` : `[seed] pod already populated`);
+    } catch (e) {
+      this.log(`[seed] failed: ${e.message}`);
+    }
+  }
+
+  // The router is what the app loads from, so it's the hard dependency we wait
+  // on (and CSS behind it). The proxy is only needed for CORS-restricted fetches,
+  // so it's best-effort and must not delay opening the window.
   async start() {
+    this.seed();
     this.ensureProxy().catch((e) => this.log(`[proxy] not started: ${e.message}`));
     try {
       await this.ensureCss();
+      await this.ensureRouter();
     } catch (e) {
-      this.log(`[css] not started: ${e.message}`);
+      this.log(`[startup] problem: ${e.message}`);
     }
     this.log('servers ready (or reusing existing)');
   }
@@ -99,4 +156,4 @@ class Servers {
   }
 }
 
-module.exports = { Servers, portAnswers };
+module.exports = { Servers, portAnswers, getGateToken };

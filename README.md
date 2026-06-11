@@ -14,17 +14,52 @@ npm run build                  # bundles: dist/dk.bundle.js + the ia-player plug
 npm start                      # launches Electron; spawns the servers below
 ```
 
-The app view loads `http://localhost:3000/index.html`, served by:
+The app view loads `http://localhost:8000/index.html` from one origin, served by
+three loopback servers spawned by `electron-config/servers.cjs` (killed on quit;
+a server already answering on its port is reused):
 
-- **pivot** (`pivot/`) — a Community Solid Server rooted at the repo, started
-  from a **pre-compiled** componentsjs config (`pivot/dist/create-app.cjs`;
-  see `pivot/compile-config.cjs` for why and `pivot/build-compiled-config.sh`
-  to regenerate after config/dependency changes)
-- **proxy** (`proxy/index.cjs`) — a dependency-free CORS proxy on :3002
+- **router** (`router/index.cjs`, :8000) — the single public origin. Engine path
+  prefixes (`/node_modules/`, `/dist/`, `/src/`, `/assets/`, `/plugins/*/dist/`)
+  are served as static read-only files from the executable; everything else is
+  reverse-proxied to the pivot below.
+- **pivot** (`pivot/`, :8010) — a Community Solid Server rooted at the writable
+  **pod root**, behind the router. Started from a **pre-compiled** componentsjs
+  config (`pivot/dist/create-app.cjs`; see `pivot/compile-config.cjs` for why and
+  `pivot/build-compiled-config.sh` to regenerate). It advertises the public origin
+  (`DK_CSS_BASEURL`) so the URLs it generates point at the router.
+- **proxy** (`proxy/index.cjs`, :8001) — a dependency-free CORS proxy.
 
-Both are spawned by `electron-config/servers.cjs` and killed on quit; if a
-server already answers on its port it is reused. `npm run start-css` /
-`npm run start-proxy` run them standalone for browser-based development.
+**Self-hosting / redesignable.** dk is meant to be redesigned by the user — tabs,
+buttons, the components wired in (the manifest), settings. So the editable app
+**definition** (the HTML shells, `data/*.ttl`, `dk.manifest.json`, favourites,
+plugin config, content) lives in the **pod root** and is served from there, while
+the read-only **engine** (component libraries, vendor bundles, compiled plugin
+`dist/`, dk's own bundle) ships in the executable and is served by the router. On
+first launch the definition is **seeded** into the pod root if absent
+(`electron-config/seed.cjs`; never overwrites edits — a newer build only fills in
+missing files). When the pod root and the repo coincide (dev default), seeding is
+a no-op and everything is served from the repo as before.
+
+All three servers bind to `127.0.0.1` (loopback only — not reachable from the LAN).
+External content (reader/pane overlays) runs in its own session whose requests to
+loopback hosts are cancelled, so outside pages can't reach the local servers.
+
+When spawned by the app, the servers also require a **per-install gate token**
+(`electron-config/gate.cjs`): a secret generated on first launch into Electron's
+`userData/gate-token` and injected by the shell as an `x-dk-token` header on all
+app traffic — so dk needs no login, but a page in any outside browser gets a 401.
+To use dk from a regular browser, right-click → **Open dk in Browser**: it opens
+the app with `?dk-token=…`, which sets a `SameSite=Strict` cookie and redirects —
+that browser then works until the cookie expires, while foreign pages in it still
+can't ride along (no cookie attached cross-site, token unknown). Standalone runs
+(`npm run start-css` / `start-proxy`) have no `DK_GATE_TOKEN`, so they stay open
+for browser-based development.
+
+Ports are overridable with `DK_PUBLIC_PORT` / `DK_CSS_INTERNAL_PORT` /
+`DK_PROXY_PORT` (defaults 8000/8010/8001); the pod root with `DK_POD_ROOT`. Note
+that `index.html` declares the proxy URL in markup
+(`proxy="http://localhost:8001/proxy?uri="`), so overriding `DK_PROXY_PORT`
+means editing that attribute too.
 
 ## Layout
 

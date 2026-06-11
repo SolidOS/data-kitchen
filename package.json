@@ -6,7 +6,7 @@
   "main": "./electron-config/main.cjs",
   "scripts": {
     "start": "electron .",
-    "start-css": "cd pivot && node run-server.cjs .. 3000",
+    "start-css": "cd pivot && node run-server.cjs .. 8000",
     "build-pivot-config": "bash pivot/build-compiled-config.sh",
     "start-proxy": "node proxy/index.cjs",
     "build": "node esbuild.config.mjs",
@@ -33,6 +33,7 @@
     "files": [
       "electron-config/**",
       "proxy/**",
+      "router/**",
       "pivot-config/**",
       "pivot/**",
       "index.html",

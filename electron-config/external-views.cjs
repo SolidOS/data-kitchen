@@ -12,9 +12,33 @@
 // (OIDC login) is NOT handled here — main lets Electron open a true window.
 
 const path = require('path');
-const { WebContentsView, Menu, clipboard, shell } = require('electron');
+const { WebContentsView, Menu, clipboard, shell, session } = require('electron');
 
 const BAR_HEIGHT = 40;
+
+// External content gets its own session (cookie jar separate from the app's)
+// so requests from it can be filtered without touching the app view.
+const EXTERNAL_PARTITION = 'persist:external';
+
+// External pages must never reach this machine's local servers — the bundled
+// CSS and proxy are no-auth, so a hostile page could read/write through them.
+// Cancel any request from the external session to a loopback host. (The OIDC
+// login popup is a real window on the default session, so it is unaffected.)
+const LOOPBACK_HOST = /^(localhost|.+\.localhost|127\.\d+\.\d+\.\d+|0\.0\.0\.0|\[::1?\]|\[::ffff:127\.[\d.]+\])$/i;
+
+let hardened = false;
+function hardenedExternalSession() {
+  const ses = session.fromPartition(EXTERNAL_PARTITION);
+  if (!hardened) {
+    hardened = true;
+    ses.webRequest.onBeforeRequest((details, callback) => {
+      let host = '';
+      try { host = new URL(details.url).hostname; } catch (_) {}
+      callback({ cancel: LOOPBACK_HOST.test(host) });
+    });
+  }
+  return ses;
+}
 
 class ExternalViews {
   constructor(baseWindow) {
@@ -49,8 +73,9 @@ class ExternalViews {
   }
 
   _build(webPreferences, onEscape) {
+    hardenedExternalSession();
     const view = new WebContentsView({
-      webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true, ...webPreferences },
+      webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true, partition: EXTERNAL_PARTITION, ...webPreferences },
     });
     this._wireContextMenu(view);
     if (onEscape) {

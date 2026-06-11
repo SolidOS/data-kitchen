@@ -7,8 +7,18 @@
 // Started/stopped with the app (see ../electron-config/servers.cjs).
 
 const http = require('node:http');
+const { makeGate } = require('../electron-config/gate.cjs');
 
-const port = 3002;
+const port = Number(process.env.DK_PROXY_PORT) || 8001;
+const appPort = Number(process.env.DK_PUBLIC_PORT) || 8000;
+
+// Token gate (see gate.cjs); no-op when DK_GATE_TOKEN is absent (standalone dev).
+// The app's own origin is allowed by Origin/Referer too: app pages in a blessed
+// browser call the proxy with plain fetch(), which doesn't attach cookies
+// cross-port — and a hostile page can't forge its Origin.
+const gate = makeGate(process.env.DK_GATE_TOKEN, {
+  allowOrigins: [`http://localhost:${appPort}`, `http://127.0.0.1:${appPort}`],
+});
 
 // Permissive CORS on every response (replaces the express `cors()` middleware).
 const CORS = {
@@ -18,6 +28,7 @@ const CORS = {
 };
 
 const server = http.createServer(async (req, res) => {
+  if (gate(req, res)) return;
   if (req.method === 'OPTIONS') { res.writeHead(204, CORS); return res.end(); }
 
   const url = new URL(req.url, `http://localhost:${port}`);
@@ -69,4 +80,5 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(port, () => console.log(`Proxy listening on port ${port}`));
+// Loopback only — the proxy is for this machine's app, never the LAN.
+server.listen(port, '127.0.0.1', () => console.log(`Proxy listening on port ${port}`));

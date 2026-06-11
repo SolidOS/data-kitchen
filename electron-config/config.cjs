@@ -1,32 +1,46 @@
 // Central constants for the data-kitchen desktop shell.
 //
-// The web app lives at this repo's root and is served by a local Community
-// Solid Server ("pivot") rooted at the repo, plus a CORS proxy. The renderer
-// loads the app over HTTP (not file://) so the origin is real — same-origin
+// dk is a self-hosting, user-redesignable app. The editable app DEFINITION (HTML
+// shells, RDF config, favourites, content) lives in the user's writable pod root;
+// the read-only ENGINE (component libraries, vendor bundles, compiled plugin dist,
+// dk's own bundle) ships inside the executable. A single-origin ROUTING server
+// (router/index.cjs) presents both under one origin so the definition's relative
+// engine refs resolve: engine path prefixes come from the engine dir, everything
+// else is reverse-proxied to a Community Solid Server ("pivot") rooted at the pod.
+// The renderer loads over HTTP (not file://) so the origin is real — same-origin
 // checks, Solid auth and the importmap all depend on it.
 
 const path = require('path');
 
 const REPO_ROOT = path.join(__dirname, '..');
 
-const CSS_PORT   = 3000;
-const PROXY_PORT = 3002;
+// Public origin the app + blessed browsers talk to (the routing front server).
+const PUBLIC_PORT = Number(process.env.DK_PUBLIC_PORT) || 8000;
+// Pivot CSS listens here, BEHIND the router; never addressed directly by the app.
+const CSS_INTERNAL_PORT = Number(process.env.DK_CSS_INTERNAL_PORT) || 8010;
+// CORS proxy (unchanged role).
+const PROXY_PORT = Number(process.env.DK_PROXY_PORT) || 8001;
 
 module.exports = {
   REPO_ROOT,
-  CSS_PORT,
+  PUBLIC_PORT,
+  CSS_INTERNAL_PORT,
   PROXY_PORT,
-  CSS_ORIGIN:   `http://localhost:${CSS_PORT}`,
-  PROXY_ORIGIN: `http://localhost:${PROXY_PORT}`,
+  PUBLIC_ORIGIN: `http://localhost:${PUBLIC_PORT}`,
+  PROXY_ORIGIN:  `http://localhost:${PROXY_PORT}`,
 
-  // What the app view loads.
-  APP_URL: `http://localhost:${CSS_PORT}/index.html`,
+  // What the app view loads — index.html from the pod root, via the router.
+  APP_URL: `http://localhost:${PUBLIC_PORT}/index.html`,
 
-  // Folder the CSS server serves as its root: the repo itself, whose root is
-  // the web app (index.html). Override in dev with DK_POD_ROOT. If something
-  // already answers on :3000 the lifecycle reuses it instead of spawning (see
-  // servers.cjs). (Only ever passed to the spawned server as a string — the
-  // shell never reads inside it.)
+  // Read-only engine dir the router serves engine paths from. In dev this is the
+  // repo; in a packaged app it is the unpacked resources dir — both are __dirname's
+  // parent, so REPO_ROOT is correct in both.
+  ENGINE_DIR: REPO_ROOT,
+
+  // Writable pod root the user redesigns in (served by pivot, fronted by router).
+  // Defaults to the repo in dev (then engine and pod coincide and seeding is a
+  // no-op); override with DK_POD_ROOT. Only ever passed to the spawned server as a
+  // string — the shell never reads inside it.
   POD_ROOT: process.env.DK_POD_ROOT || REPO_ROOT,
 
   // The element in the web app that hosts swapped-in content. External content
