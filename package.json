@@ -15,7 +15,7 @@
     "dist": "electron-builder"
   },
   "dependencies": {
-    "component-interop": "^0.2.3",
+    "component-interop": "file:../component-interop",
     "electron-reloader": "^1.2.3",
     "mashlib": "^2.2.0",
     "podz": "file:../podz",
@@ -50,6 +50,7 @@
       "favourites/**",
       "!**/*.map",
       "!**/node_modules/sol-components/{node_modules,coverage,tests,tests-disabled,docs,drafts,examples,claude}/**",
+      "!**/node_modules/component-interop/{node_modules,tests,examples,help,claude,drafts}/**",
       "!**/node_modules/podz/node_modules/**",
       "!claude/**",
       "!tools/**",
