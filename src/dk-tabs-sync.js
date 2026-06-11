@@ -1,15 +1,18 @@
 // dk-tabs-sync — keep the running shell AND html-first.html in step with
-// data/tabs.ttl after a Customize save. On save, two things happen:
+// data/tabs.ttl. On a Customize save:
 //
 //   (a) the live tab bar updates IN PLACE — sol-tabs.applyTabs() merges the new
 //       tabs into the existing <sol-tabs>, so a new/renamed tab appears at once
 //       with no reload (keep-alive panes, chrome, and listeners all survive).
-//   (b) html-first.html is regenerated and PUT, so the file on disk mirrors the
-//       RDF — the thing someone sees opening it matches what the app renders.
+//   (b) html-first.html is regenerated and PUT — tabs, bar AND the chrome block
+//       (now emitted from #Chrome) — so the file on disk mirrors the RDF.
+//
+// On load it also (c) imports a hand-edited html-first's tabs back into the RDF
+// (reverse sync), and (d) self-heals #Chrome — reinserting any mandatory chrome
+// item a hand-edit dropped, then regenerating the shell.
 //
 // Not yet: BAR edits persist to html-first but aren't live-updated (they show on
-// the next reload — Reload dk). And importing a hand-edited html-first.html back
-// into the RDF (the reverse direction) is built (core/menu-html.js) but not wired.
+// the next reload — Reload dk).
 
 import { rdf } from 'sol-components/core/rdf.js';
 import { parseMenuItems, rdfVal } from 'sol-components/core/menu-rdf.js';
@@ -33,6 +36,7 @@ async function syncShell() {
   rdf.parse(ttl, store, tabsUrl, 'text/turtle');
   const tabs = parseMenuItems(store, rdf.sym(`${tabsUrl}#Tabs`));
   const bar = parseMenuItems(store, rdf.sym(`${tabsUrl}#Bar`));
+  const chromeItems = parseMenuItems(store, rdf.sym(`${tabsUrl}#Chrome`));
 
   // (a) Live update the running tab bar in place.
   const solTabs = document.getElementById('dk-tabs');
@@ -41,10 +45,11 @@ async function syncShell() {
     catch (e) { console.warn('[dk-tabs-sync] live update failed', e); }
   }
 
-  // (b) Regenerate + persist html-first.html so the file mirrors the RDF.
+  // (b) Regenerate + persist html-first.html so the file mirrors the RDF —
+  // including the chrome block, now emitted from #Chrome (comments and all).
   const current = await (await solFetch(shellUrl)).text();
   const { html, chrome } = generateShell({
-    tabs, bar, currentHtml: current,
+    tabs, bar, chrome: chromeItems, currentHtml: current,
     warn: (m) => console.warn('[dk-tabs-sync] ' + m),
   });
   if (!chrome) {
@@ -95,8 +100,62 @@ async function importHandEdits() {
   const res = await solFetch(tabsUrl, { method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: out });
   if (res && res.ok !== false) console.info('[dk-tabs-sync] imported hand-edited html-first.html into tabs.ttl');
 }
+// --- Self-healing chrome ---
+// The chrome items (help, ☰ menu, sign-in) are mandatory shell furniture, modeled
+// in tabs.ttl#Chrome. If a hand-edit to tabs.ttl drops one, reinsert its default
+// (the config below is app-owned, not user data) so the shell can't be bricked,
+// then regenerate html-first.html so it reappears. Runs on load.
+const CHROME_DEFAULTS = [
+  { type: 'component', id: 'chrome-help', name: '?', tag: 'sol-button',
+    comment: 'Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay.',
+    params: [['class', 'omp-help-launch'], ['title', 'Help'], ['aria-label', 'Help'],
+             ['data-handler', 'sol-include'], ['source', './help/dk.html'],
+             ['if-logged-in', './help/dk-owner.html'], ['inline', ''], ['trusted', '']] },
+  { type: 'component', id: 'chrome-menu', name: 'Menu', tag: 'sol-dropdown-button', region: 'modal',
+    comment: '☰ menu — items live in data/menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal.',
+    params: [['class', 'omp-more'], ['title', 'Menu'], ['aria-label', 'Menu'],
+             ['label', '☰'], ['source', './data/menu.ttl#More']] },
+  { type: 'component', id: 'chrome-login', name: 'Sign in', tag: 'sol-login',
+    comment: 'Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).',
+    params: [['class', 'omp-sollogin'], ['mode', 'popup'],
+             ['popup-callback', 'node_modules/podz/popup-auth-callback.html'],
+             ['issuers', 'https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com']] },
+];
+
+async function healChrome() {
+  const tabsUrl = abs(TABS_DOC);
+  const ttl = await (await solFetch(tabsUrl)).text();
+  const store = rdf.graph();
+  rdf.parse(ttl, store, tabsUrl, 'text/turtle');
+  const chromeNode = rdf.sym(`${tabsUrl}#Chrome`);
+  const present = parseMenuItems(store, chromeNode);
+  const ids = new Set(present.map((c) => c.id));
+  if (CHROME_DEFAULTS.every((d) => ids.has(d.id))) return;   // all mandatory present
+
+  // Canonical order with defaults for the missing; keep any extra chrome after.
+  const merged = CHROME_DEFAULTS.map((d) => present.find((c) => c.id === d.id) || d);
+  for (const c of present) if (!CHROME_DEFAULTS.some((d) => d.id === c.id)) merged.push(c);
+  updateMenuInStore(store, tabsUrl, `${tabsUrl}#Chrome`, { label: 'chrome', items: merged });
+  const out = await serializeMenuDocument(store, tabsUrl);
+  await solFetch(tabsUrl, { method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: out });
+
+  // Bring html-first.html back in line with the healed chrome.
+  const shellUrl = abs(SHELL);
+  const current = await (await solFetch(shellUrl)).text();
+  const tabs = parseMenuItems(store, rdf.sym(`${tabsUrl}#Tabs`));
+  const bar = parseMenuItems(store, rdf.sym(`${tabsUrl}#Bar`));
+  const { html } = generateShell({ tabs, bar, chrome: parseMenuItems(store, chromeNode), currentHtml: current });
+  if (html && html.trim() !== current.trim()) {
+    await solFetch(shellUrl, { method: 'PUT', headers: { 'Content-Type': 'text/html' }, body: html });
+  }
+  console.info('[dk-tabs-sync] reinserted missing mandatory chrome into #Chrome');
+}
+
 // Once, shortly after load (after the shell has settled).
-setTimeout(() => { importHandEdits().catch((e) => console.warn('[dk-tabs-sync] import-on-load failed', e)); }, 1500);
+setTimeout(() => {
+  importHandEdits().catch((e) => console.warn('[dk-tabs-sync] import-on-load failed', e));
+  healChrome().catch((e) => console.warn('[dk-tabs-sync] chrome heal failed', e));
+}, 1500);
 
 // sol-menu-built bubbles (composed) from sol-menu-builder / sol-bar-builder.
 // React only to saves of the tabs document, and debounce — the Tabs and Bar

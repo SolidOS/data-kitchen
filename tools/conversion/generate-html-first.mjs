@@ -34,10 +34,11 @@ const store = rdf.graph();
 rdf.parse(readFileSync(TTL, 'utf8'), store, DOC, 'text/turtle');
 const tabs = parseMenuItems(store, rdf.sym(`${DOC}#Tabs`));
 const bar = parseMenuItems(store, rdf.sym(`${DOC}#Bar`));
+const chromeItems = parseMenuItems(store, rdf.sym(`${DOC}#Chrome`));
 const current = readFileSync(OUT, 'utf8');
 
 const { html, chrome } = generateShell({
-  tabs, bar, currentHtml: current, warn: (m) => console.warn('  ! ' + m),
+  tabs, bar, chrome: chromeItems, currentHtml: current, warn: (m) => console.warn('  ! ' + m),
 });
 if (!chrome) {
   console.error('html-first.html lacks a <sol-tabs> opening tag or a <!-- chrome:begin --> … <!-- chrome:end --> block; refusing to regenerate.');

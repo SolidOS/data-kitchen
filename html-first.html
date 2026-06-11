@@ -33,10 +33,6 @@
      data-trusted
   >🛠 Dev Tools</a>
 
-  <!-- Actions row. The bar-managed plugins below come from
-       data/tabs.ttl#Bar (edited with the bar builder); the chrome block
-       (help, ⋮ menu) is fixed shell furniture preserved by the generator. -->
-
   <sol-search
      class="omp-search"
      title="Search"
@@ -49,33 +45,37 @@
      source="./plugins/calendar/calendar-settings.ttl#All"
   ></dk-calendar-popout>
 
-  <!-- chrome:begin — fixed shell chrome (help, ☰ menu, on-demand sign-in).
-       NOT bar-managed and NOT in tabs.ttl; the generator preserves this
-       block verbatim. Edit it here by hand if you must. -->
-  <sol-button class="omp-help-launch" title="Help" aria-label="Help"
+  <!-- chrome:begin -->
+  <!-- Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay. -->
+  <sol-button
+     class="omp-help-launch"
+     title="Help"
+     aria-label="Help"
      data-handler="sol-include"
      source="./help/dk.html"
      if-logged-in="./help/dk-owner.html"
-     inline trusted
+     inline
+     trusted
   >?</sol-button>
 
-  <!-- ☰ menu: items live in data/menu.ttl#More (Customize, Settings,
-       Sign in, and the owner commands — acl:Write items hide for guests).
-       Component items open in a modal (region cascade). -->
-  <sol-dropdown-button class="omp-more" title="Menu" aria-label="Menu"
-     label="☰"
+  <!-- ☰ menu — items live in data/menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal. -->
+  <sol-dropdown-button
      region="modal"
+     class="omp-more"
+     title="Menu"
+     aria-label="Menu"
+     label="☰"
      source="./data/menu.ttl#More"
   ></sol-dropdown-button>
 
-  <!-- Sign-in infrastructure: hidden until a flow needs it (the ☰ "Sign
-       in…" item or any 401 dispatches sol-auth-needed; sol-login surfaces
-       itself with [active] for the duration — see dk-chrome.css). -->
-  <sol-login class="omp-sollogin"
+  <!-- Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css). -->
+  <sol-login
+     class="omp-sollogin"
      mode="popup"
      popup-callback="node_modules/podz/popup-auth-callback.html"
      issuers="https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
   ></sol-login>
+
   <!-- chrome:end -->
 
 </sol-tabs>
