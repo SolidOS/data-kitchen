@@ -52,8 +52,8 @@ class DesktopApp {
     this.external = null;
     this.servers = new Servers({ log: (m) => console.log(m) });
     app.whenReady().then(() => this.start());
-    app.on('window-all-closed', () => { this.servers.stop(); if (process.platform !== 'darwin') app.quit(); });
-    app.on('before-quit', () => this.servers.stop());
+    app.on('window-all-closed', () => { this._stopWatchdog(); this.servers.stop(); if (process.platform !== 'darwin') app.quit(); });
+    app.on('before-quit', () => { this._stopWatchdog(); this.servers.stop(); });
     app.on('web-contents-created', (_e, wc) => this.installOpenHandler(wc));
   }
 
@@ -94,7 +94,7 @@ class DesktopApp {
                       'enter-full-screen', 'leave-full-screen']) {
       this.baseWindow.on(ev, () => this.fitAppView());
     }
-    setInterval(() => this.fitAppView(), 500);
+    this._fitTimer = setInterval(() => this.fitAppView(), 500);
 
     this.external = new ExternalViews(this.baseWindow);
     this.wireIpc();
@@ -133,13 +133,24 @@ class DesktopApp {
     });
   }
 
+  _stopWatchdog() { if (this._fitTimer) { clearInterval(this._fitTimer); this._fitTimer = null; } }
+
   // Keep the app view exactly the window's content size; cheap no-op when
-  // already in sync (called from events AND the watchdog interval).
+  // already in sync (called from events AND the watchdog interval). Guards
+  // against the window/view being torn down (quit, restart, reload) — otherwise
+  // the watchdog fires on a destroyed object and loops an uncaught exception.
   fitAppView() {
-    const { width, height } = this.baseWindow.getContentBounds();
-    const b = this.appView.getBounds();
-    if (b.width === width && b.height === height && b.x === 0 && b.y === 0) return;
-    this.appView.setBounds({ x: 0, y: 0, width, height });
+    try {
+      if (!this.baseWindow || this.baseWindow.isDestroyed()) { this._stopWatchdog(); return; }
+      const { width, height } = this.baseWindow.getContentBounds();
+      const b = this.appView.getBounds();
+      if (b.width === width && b.height === height && b.x === 0 && b.y === 0) return;
+      this.appView.setBounds({ x: 0, y: 0, width, height });
+    } catch {
+      // Window/view torn down mid-fit (quit, restart, close) — accessing it
+      // (even .isDestroyed) can throw "Object has been destroyed". Stop fitting.
+      this._stopWatchdog();
+    }
   }
 
   // Redirect window.open: OIDC login → real popup window; everything else →
