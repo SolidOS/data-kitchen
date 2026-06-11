@@ -1,5 +1,15 @@
 {
+  "@context": "https://jeff-zucker.github.io/component-interop/context.jsonld",
+  "@id": "",
+  "@type": "Manifest",
   "name": "data-kitchen",
+  "components": {
+    "ia-player": {
+      "label": "Internet Archive player",
+      "shape": "./shapes/music.shacl",
+      "help": "./plugins/ia-player/assets/ia-help.html"
+    }
+  },
   "stages": {
     "local": {
       "components": {
