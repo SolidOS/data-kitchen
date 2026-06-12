@@ -28,13 +28,34 @@ headers):
   / ☰ items following the active plugin, chrome completeness, no
   app-internal failures. Drops `unified-shell.png` as the visual baseline.
 - `verify-customize-plugins.mjs` (was verify-manage-plugins) — Customize
-  subtab 2: catalog box + topic tabs render, manifest-URL import lands and
-  files under its category, repo state restored.
-- `verify-customize-menus.mjs` (was verify-builders) — Customize subtab 1: managers render,
+  subtab 1 ("Customize Plugins, Menus, & buttons"), catalog side: catalog
+  box + topic tabs render, manifest-URL import lands and files under its
+  category, repo state restored.
+- `verify-customize-menus.mjs` (was verify-builders) — same subtab, the
+  menu/bar managers side: managers render,
   drag-payload assignment, save (PUT via pivot), generator re-emits
   html-first.html, fresh-browser reload shows the built tab, repo state
   restored. GUARDED: refuses to run with uncommitted tabs.ttl /
   html-first.html (its cleanup git-restores them).
+  (2026-06-12: the separate define-menus subtab was removed — its managers
+  were a dup of the right column here; subtab 2 is now Customize
+  Preferences, the settings page.) Also covers chip-dnd reorder of a
+  submenu's plugins.
+- `verify-live-tab-sync.mjs` (2026-06-12) — the save → live-shell pipeline:
+  an edited tab re-renders its pane at once (applyTabs change detection),
+  unchanged/renamed tabs keep their keep-alive panes, the builder status
+  covers BOTH writes ("saved ✓ (menu + shell)"), and the fingerprint rule:
+  a lagging html-first.html regenerates FROM the RDF at load (form saves
+  never silently reverted), while a genuine hand edit still imports.
+  GUARDED like verify-customize-menus.
+- `verify-link-tabs.mjs` (2026-06-12) — ui:Link tabs end to end, mirroring
+  the dk-pod Solid/Dev-Tools shapes: link + mixed submenus regenerate into
+  html (plain anchors, target= from ui:region), render as nested sub-tab
+  strips with embeds filling the pane, the self-named conversion artifact
+  stays in the data but never renders, --verify stable. GUARDED likewise.
+- `diag-accordion-targets.mjs` (2026-06-12) — the Customize drop-target
+  accordion: renamed headings, menu-open/bar-closed start, click swaps,
+  open-header no-op. Read-only.
 - Evidence screenshots from electron compositing checks:
   `overlay-below-chrome.png`, `subtabs-above-pane.png`,
   `popup-{calendar,search}-pane-blanked.png`,

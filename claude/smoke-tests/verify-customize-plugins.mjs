@@ -1,6 +1,6 @@
-// Customize subtab 2 (choose plugins) end to end:
-//   1. ☰ → Customize → subtab "2." mounts the catalog box (topic tabs) and
-//      the menu/bar managers as drop targets showing current contents
+// Customize subtab 1 (Customize Plugins, Menus, & buttons) end to end:
+//   1. ☰ → Customize (subtab 1 auto-selected) mounts the catalog box (topic
+//      tabs) and the menu/bar managers as drop targets showing current contents
 //   2. a manifest URL typed into the box imports the plugin (or reports
 //      it's already listed) — and a fresh import is filed under its
 //      manifest category (skos:member), with the topic collections intact
@@ -53,18 +53,14 @@ try {
   await page.evaluate(async () => { if (window.ComponentInterop?.ready) await window.ComponentInterop.ready; });
   await page.waitForTimeout(5000);
 
-  // --- open ☰ Customize, then its subtab 2 ---
+  // --- open ☰ Customize; subtab 1 (choose plugins) is auto-selected ---
   await page.evaluate(async () => {
     const dd = document.querySelector('sol-dropdown-button.omp-more');
     dd?.shadowRoot?.querySelector('.sol-dd-trigger')?.click();
     await new Promise(r => setTimeout(r, 800));
     [...dd.shadowRoot.querySelectorAll('.sol-dd-popup button, .sol-dd-popup a')]
       .find(b => /^customize$/i.test(b.textContent.trim()))?.click();
-    await new Promise(r => setTimeout(r, 4000));
-    const sub = document.querySelector('#dk-menu-pane .dk-customize-tabs');
-    [...(sub?.querySelectorAll(':scope > .sol-tabs-bar button') || [])]
-      .find(b => /choose plugins/i.test(b.textContent))?.click();
-    await new Promise(r => setTimeout(r, 4000));
+    await new Promise(r => setTimeout(r, 5000));
   });
 
   // --- the panel mounts: catalog box + menu/bar drop targets ---

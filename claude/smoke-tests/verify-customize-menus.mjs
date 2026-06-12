@@ -1,4 +1,4 @@
-// Customize subtab 1 (define the main menu tabs) end to end:
+// Customize subtab 1 (Customize Plugins, Menus, & buttons) end to end:
 //   1. the menu + bar managers mount and render their rows
 //   2. an edit made through the UI (add item, assign the ia-player plugin
 //      via the drag payload, rename) SAVES — the PUT lands in data/tabs.ttl
@@ -33,7 +33,7 @@ try {
   await page.evaluate(async () => { if (window.ComponentInterop?.ready) await window.ComponentInterop.ready; });
   await page.waitForTimeout(5000);
 
-  // --- open ☰ Customize; subtab 1 (define menus) is auto-selected ---
+  // --- open ☰ Customize; subtab 1 (choose plugins) is auto-selected ---
   await page.evaluate(async () => {
     const dd = document.querySelector('sol-dropdown-button.omp-more');
     dd?.shadowRoot?.querySelector('.sol-dd-trigger')?.click();
@@ -43,9 +43,10 @@ try {
     await new Promise(r => setTimeout(r, 5000));
   });
 
-  // The managers live in the menu pane, inside the define-menus include.
+  // The managers live in the menu pane, in the choose-plugins include's
+  // right-hand drop-target column.
   const mounted = await page.evaluate(() => {
-    const root = document.querySelector('#dk-menu-pane .dk-define-menus') || document;
+    const root = document.querySelector('#dk-menu-pane .dk-choose-plugins') || document;
     const menuB = root.querySelector('sol-menu-manager');
     const barB = root.querySelector('sol-button-bar-manager');
     return {
@@ -61,7 +62,7 @@ try {
   //     showing the 'drag plugins here' hint), then DROP the Music plugin
   //     on its row; everything auto-saves ---
   const saved = await page.evaluate(async () => {
-    const root = document.querySelector('#dk-menu-pane .dk-define-menus') || document;
+    const root = document.querySelector('#dk-menu-pane .dk-choose-plugins') || document;
     const builder = root.querySelector('sol-menu-manager');
     const sh = builder.shadowRoot;
     const add = sh.querySelector('.add-input');
@@ -94,7 +95,7 @@ try {
 
   // --- a SECOND plugin dropped on the same row turns it into a submenu ---
   const submenu = await page.evaluate(async () => {
-    const root = document.querySelector('#dk-menu-pane .dk-define-menus') || document;
+    const root = document.querySelector('#dk-menu-pane .dk-choose-plugins') || document;
     const builder = root.querySelector('sol-menu-manager');
     const sh = builder.shadowRoot;
     const row = [...sh.querySelectorAll('.row')].find(r => /Smoke Test Tab/.test(r.querySelector('.label')?.value || ''));
@@ -127,6 +128,34 @@ try {
     && submenu.chips.some((c) => /Music \(Internet Archive\)/.test(c)) && submenu.chips.some((c) => /Weather/.test(c)),
     JSON.stringify(submenu));
 
+  // --- chip dnd: dragging the Weather chip onto the LEFT half of the Music
+  //     chip reorders the submenu's plugins (Weather first) and auto-saves ---
+  const reordered = await page.evaluate(async () => {
+    const root = document.querySelector('#dk-menu-pane .dk-choose-plugins') || document;
+    const sh = root.querySelector('sol-menu-manager').shadowRoot;
+    const row = [...sh.querySelectorAll('.row')].find(r => /Smoke Test Tab/.test(r.querySelector('.label')?.value || ''));
+    const chips = [...row.querySelectorAll('.chip')];
+    const weather = chips.find(c => /Weather/.test(c.textContent));
+    const music = chips.find(c => /Music/.test(c.textContent));
+    const dt = new DataTransfer();
+    weather.dispatchEvent(new DragEvent('dragstart', { bubbles: true, cancelable: true, composed: true, dataTransfer: dt }));
+    const r = music.getBoundingClientRect();
+    const left = { clientX: r.left + r.width * 0.25, clientY: r.top + r.height / 2,
+                   bubbles: true, cancelable: true, composed: true, dataTransfer: dt };
+    music.dispatchEvent(new DragEvent('dragover', left));
+    music.dispatchEvent(new DragEvent('drop', left));
+    for (let i = 0; i < 40; i++) {
+      await new Promise(r2 => setTimeout(r2, 250));
+      if (/saved/.test(sh.querySelector('.builder-status')?.textContent || '')) break;
+    }
+    await new Promise(r2 => setTimeout(r2, 800));   // post-save re-render
+    const row2 = [...sh.querySelectorAll('.row')].find(x => /Smoke Test Tab/.test(x.querySelector('.label')?.value || ''));
+    return [...row2.querySelectorAll('.chip')].map(c => c.textContent);
+  });
+  check('chip dnd reorders the submenu plugins (Weather now first)',
+    reordered.length === 2 && /Weather/.test(reordered[0]) && /Music/.test(reordered[1]),
+    JSON.stringify(reordered));
+
   // --- the PUT landed on disk; the generator picks it up ---
   const ttl = readFileSync('data/tabs.ttl', 'utf8');
   check('saved RDF contains the new item', /Smoke Test Tab/.test(ttl) && /smoke/.test(ttl));
@@ -140,6 +169,11 @@ try {
   check('generator emits the submenu block with both plugins',
     /<submenu[\s\S]*?Smoke Test Tab[\s\S]*?<\/submenu>/.test(html)
     && ((html.match(/<submenu[\s\S]*?<\/submenu>/) || [''])[0].match(/<a /g) || []).length === 2);
+  check('regenerated submenu keeps the dnd order (weather before music)', (() => {
+    const block = (html.match(/<submenu[\s\S]*?<\/submenu>/) || [''])[0];
+    const w = block.indexOf('sol-weather'); const m = block.indexOf('ia-player');
+    return w >= 0 && m >= 0 && w < m;
+  })());
   check('chrome block survives regeneration', /chrome:begin/.test(html) && /omp-help-launch/.test(html) && /omp-more/.test(html));
   let verifyOk = true;
   try { execFileSync('node', ['tools/conversion/generate-html-first.mjs', '--verify']); }

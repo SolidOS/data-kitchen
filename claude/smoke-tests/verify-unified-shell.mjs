@@ -59,7 +59,8 @@ const tabs = await page.evaluate(() => {
   return [...tabset.querySelectorAll('[role="tab"], .sol-tab, a')].map(e => e.textContent.trim()).filter(Boolean);
 });
 check('sol-tabs present', Array.isArray(tabs), '');
-const want = ['News', 'Music', 'Movies', 'Images', 'Workspaces', 'Dev Tools'];
+// Dev Tools dissolved into individual catalog cards (16d8d87) — no longer a default tab.
+const want = ['News', 'Music', 'Movies', 'Images', 'Workspaces'];
 const missing = want.filter(w => !(tabs || []).some(t => t.includes(w)));
 const stray = ['Home', 'SolidOS', 'Podz', 'Customize', 'Solid Resources'].filter(w => (tabs || []).some(t => t.includes(w)));
 check('default tab set present', missing.length === 0, missing.length ? 'missing: ' + missing.join(', ') : (tabs || []).slice(0, 9).join(' | '));
@@ -148,7 +149,9 @@ const chrome = await page.evaluate(() => {
     help: !!document.querySelector('.omp-help-launch'),
     hamburger: dd?.shadowRoot?.querySelector('.sol-dd-trigger')?.textContent.trim() === '☰',
     menuHasCustomize: items.some(t => /customize/i.test(t)),
-    menuHasSettings: items.some(t => /settings/i.test(t)),
+    // Settings… left the ☰ menu 2026-06-12 — the settings page lives under
+    // Customize ▸ Customize Preferences now.
+    menuNoSettings: !items.some(t => /settings/i.test(t)),
     menuHasSignIn: items.some(t => /sign in/i.test(t)),
     settingsOutOfBar: !document.querySelector('.omp-settings-launch'),
     loginHiddenOnDemand: !!document.querySelector('sol-login.omp-sollogin') && !document.querySelector('sol-login.omp-sollogin[active]'),
