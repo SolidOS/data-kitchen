@@ -13,12 +13,12 @@
 # 2026-06-12 — see git history if it's ever wanted back.)
 
 <#More> a ui:Menu ; ui:label "Menu" ;
-  ui:parts ( <#MoreCustomize> <#MoreAllPlugins> <#MoreSettings> <#MoreTheme> <#MoreFontSize>
+  ui:parts ( <#MoreCustomize> <#MoreAllPlugins> <#MoreTheme> <#MoreFontSize>
              <#MoreSignIn> <#MoreGuestView> <#MoreReload> <#MoreRestart> ) .
 
-# Customize — subtabs: 1. define the main menu tabs (menu + bar managers),
-# 2. choose plugins (catalog + the same managers as drop targets). More
-# subtabs to come. Everything auto-saves.
+# Customize — subtabs: 1. choose plugins (catalog + menu/bar managers as
+# drop targets, auto-saves), 2. preferences (pages/settings.html). More
+# subtabs to come.
 <#MoreCustomize> a ui:Component ; ui:label "Customize" ;
   ui:name "sol-include" ;
   acl:mode acl:Write ;
@@ -34,10 +34,10 @@
     [ schema:name "source"  ; schema:value "./pages/all-plugins.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
-# Settings is a COMMAND: the shell resolves it per context — the active
-# plugin's shape (manifest dct:conformsTo) opens a sol-form for the panel's
-# source; otherwise the global pages/settings.html. See dk-tabs-shell.
-<#MoreSettings> a ui:Component ; ui:label "Settings…" ; ui:name "settings" .
+# (Settings… was removed from this menu 2026-06-12 — the global settings
+# page now lives under Customize ▸ Customize Preferences, its only route
+# in the UI. The per-context "settings" command in dk-tabs-shell still
+# exists but nothing triggers it; tabs.ttl#bar-settings is unused pantry.)
 
 # Label shows the CURRENT theme/size — dk-tabs-shell rewrites these two on open.
 <#MoreTheme> a ui:Component ; ui:label "Theme" ; ui:name "toggleTheme" .

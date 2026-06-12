@@ -99,34 +99,44 @@ Each plugin folder may carry a `manifest.ttl` describing it — existing
 <#Menu> a ui:Menu ; ui:parts ( … ) .            # ☰ contributions
 ```
 
-**Help, Settings and the ☰ menu are context-sensitive** to the active tab:
-the `?` button opens the active plugin's help (dk's own help is the
-fallback); ☰ → Settings… opens a `sol-form` over the plugin's declared
-shape and the panel's own `source` (or the global settings page without
-one); a plugin's `#Menu` items appear in ☰ below a separator while its tab
-is active (e.g. the player's Filters / View deleted / Install / Update).
+**Help and the ☰ menu are context-sensitive** to the active tab: the `?`
+button opens the active plugin's help (dk's own help is the fallback); a
+plugin's `#Menu` items appear in ☰ below a separator while its tab is
+active (e.g. the player's Filters / View deleted / Install / Update). The
+global settings page lives under **☰ → Customize ▸ Customize Preferences**
+(no Settings… item in ☰).
 
 ## Customize — build the UI with the UI
 
 **☰ → Customize** opens a sub-tabset (pages/customize.html; more subtabs
 to come):
 
-1. **Define the main menu tabs** — `<sol-menu-manager source="data/tabs.ttl#Tabs">`
-   above, `<sol-button-bar-manager source="data/tabs.ttl#Bar">` below: name
-   items, reorder, remove; drop a plugin on either. The add row is an input:
-   drop a plugin on it, or type a name + Enter for a submenu.
-2. **Choose plugins the menu should access** — the catalog
+1. **Customize Plugins, Menus, & buttons** — the catalog
    (`<sol-plugin-manager grouped source="data/plugins-catalog.ttl#Available">`,
-   topic tabs, two cards wide) beside the same menu/bar managers as drop
-   targets. Entries the menus already mount are hidden from the catalog box
+   topic tabs, two cards wide) beside the menu/bar managers as an ACCORDION
+   of drop targets (`heading=` / `accordion=` / `open` on
+   `<sol-menu-manager source="data/tabs.ttl#Tabs">` and
+   `<sol-button-bar-manager source="data/tabs.ttl#Bar">` — "Customize Menu
+   Tabs" opens first; clicking a header opens it and closes the other; both
+   headers stay visible). Name items, drag to reorder, ✕ to remove; the add
+   row is an input: drop a plugin on it, or type a name + Enter for a
+   submenu. Entries the menus already mount are hidden from the catalog box
    (the `for=` pairing) and reappear when dragged off. Drop or type a
    manifest URL to add a plugin (a `ui:Component` with `ui:name`, or a
    `ui:Link` with `ui:href` for an external app).
+2. **Customize Preferences** — the global settings page (pages/settings.html).
 
 Rows are three columns — name field | plugin chips | ✕ — and chips show the
 catalog's display names (the managers' `catalog=` attribute). A menu item
-holding several plugins lists them all as chips and its tab renders them all
-stacked in the pane. There are no Save buttons — every editor auto-saves.
+holding several plugins lists them all as chips; dragging a chip onto
+another chip's left/right half REORDERS the plugins within the item, and a
+chip dropped on another row moves the plugin there. A chip repeating its
+item's own name is the submenu-conversion artifact and is never shown — in
+the form or the shell ("a menu item that calls a submenu is not also an
+item on the submenu"). In the shell, an all-component submenu renders its
+plugins stacked in the pane; a submenu containing links renders as a nested
+sub-tab strip whose link panes embed the site (filling the pane). There are
+no Save buttons — every editor auto-saves.
 
 The catalog is ONE `#Available` list GENERATED from the flat one-file
 manifests in `plugins/` (`plugins/<entry>.ttl`) by
@@ -139,28 +149,43 @@ preserved), and `src/dk-tabs-sync.js` keeps `html-first.html` and the running
 shell in step **automatically** — no manual regenerate step:
 
 - the live tab bar and bar launchers update **in place** (chrome untouched);
+  an edited tab re-renders from its new definition while unchanged tabs keep
+  their keep-alive panes (change detection via the generator's canonical
+  emission, so renames/reorders never disturb live panes);
 - `html-first.html` is regenerated from the RDF and saved (the standalone
   `node tools/conversion/generate-html-first.mjs [--verify]` does the same for a
-  build/CI check);
-- on load, a hand-edited `html-first.html`'s tabs are imported back into the RDF
-  (reverse sync), and any deleted mandatory chrome item is self-healed.
+  build/CI check); the builders' status reports BOTH writes —
+  `saved ✓ (menu + shell)` — and a failed shell write shows in red;
+- every successful shell write stores a fingerprint (SHA-256, localStorage)
+  of the known-synced html. On load: html matching the fingerprint means
+  nobody hand-edited it, so the RDF is the source of truth and the shell
+  regenerates from it (a form save can never be silently reverted at
+  launch); html differing from the fingerprint is a genuine hand edit and
+  imports back into the RDF (reverse sync). Deleted mandatory chrome items
+  are self-healed.
+
+`ui:Link` tabs/children round-trip too: a link emits as a plain anchor with
+no `data-handler` (`target=` encodes `ui:region` — tab ↔ `_blank`, inline ↔
+`_self`); `ui:icon` has no HTML spelling and lives in the RDF only.
 
 The help button, ☰ menu and sign-in are **chrome** — now modeled in
 `data/tabs.ttl#Chrome` (config-editable: help target, icon, ☰ menu source,
 issuers) and emitted between the `chrome:begin/end` markers. They're fixed shell
 furniture: not in the plugin lists, and self-healed if a hand-edit deletes one.
 `rdfs:comment` on any item round-trips as the HTML comment before it. The bar
-carries search / calendar; theme, settings, sign-in, Manage Plugins and Manage
-Menus live in ☰ (their definitions stay in tabs.ttl as pantry). Sign-in is
-on-demand: the hidden
+carries search / calendar; theme, sign-in and Customize live in ☰ (settings
+is a Customize subtab; retired definitions stay in tabs.ttl as pantry).
+Sign-in is on-demand: the hidden
 `sol-login` surfaces only during an auth flow.
 
 ## Verification
 
 ```bash
-node claude/smoke-tests/verify-unified-shell.mjs   # every tab functional
-node claude/smoke-tests/verify-customize-menus.mjs   # subtab 1: edit → auto-save → regenerate
-node claude/smoke-tests/verify-customize-plugins.mjs # subtab 2: catalog + manifest import
+node claude/smoke-tests/verify-unified-shell.mjs     # every tab functional
+node claude/smoke-tests/verify-customize-menus.mjs   # menu/bar editors: edit → auto-save → regenerate (+ chip reorder)
+node claude/smoke-tests/verify-customize-plugins.mjs # catalog + manifest import
+node claude/smoke-tests/verify-live-tab-sync.mjs     # save → live shell + fingerprint rule
+node claude/smoke-tests/verify-link-tabs.mjs         # ui:Link submenus end to end
 ```
 
 (Both need the servers up and Chrome; see the file headers.)

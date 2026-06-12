@@ -1,16 +1,15 @@
 <!-- Customize — ☰ menu item; a sub-tabset of customization panels (more
-     subtabs to come). 1 = define the main menu tabs and button bar;
-     2 = choose plugins by dropping them onto the menu/bar. Everything in
-     both panels auto-saves; there is no Save button. -->
+     subtabs to come). 1 = choose plugins by dropping them onto the menu/bar
+     (auto-saves; no Save button); 2 = preferences (theme/font settings). -->
 <sol-tabs variant="sub" keep-alive class="dk-customize-tabs">
-  <a href="./pages/define-menus.html"
-     data-handler="sol-include"
-     data-trusted
-  >1. Define the main menu tabs</a>
   <a href="./pages/choose-plugins.html"
      data-handler="sol-include"
      data-trusted
-  >2. Choose plugins the menu should access</a>
+  >Customize Plugins, Menus, &amp; buttons</a>
+  <a href="./pages/settings.html"
+     data-handler="sol-include"
+     data-trusted
+  >Customize Preferences</a>
 </sol-tabs>
 <style>
   /* the subtab content fills the pane; the panels inside scroll their own
