@@ -20,15 +20,28 @@
   <sol-plugin-manager
       source="data/plugins-catalog.ttl#InUse"
   ></sol-plugin-manager>
+
+  <div class="dk-access">
+    <div class="dk-access-title">3. Access the Plugin</div>
+  </div>
 </div>
 <style>
-  /* Available on the LEFT, filling the space; Plugins to Use on the right,
-     one column of cards wide. Each box scrolls ITS OWN cards area — never
-     the page or the pane. */
-  .dk-manage-plugins { display: flex; align-items: stretch; gap: .8rem; padding: .8rem; flex-wrap: wrap;
+  /* Three columns, left to right: Available (two cards wide), Plugins to
+     Use (one card wide), Access (same size, empty for now). Each box
+     scrolls ITS OWN cards area — never the page or the pane.
+     --card-w mirrors the card width in the manager (18em of the user font
+     size); the column widths are cards + the box's own padding/border. */
+  .dk-manage-plugins { --card-w: calc(var(--font-size, 1rem) * 18);
+                       --col-1: calc(var(--card-w) + 1.4rem + 2px);
+                       --col-2: calc(var(--card-w) * 2 + .45rem + 1.4rem + 2px);
+                       display: flex; align-items: stretch; gap: .8rem; padding: .8rem; flex-wrap: wrap;
                        flex: 1 1 auto; min-height: 0; overflow: hidden; }
   .dk-manage-plugins-hint { flex: 1 1 100%; margin: 0; align-self: flex-start; font-size: max(16px, var(--font-size, 1rem)); color: var(--text-muted, #7f8c8d); }
   .dk-manage-plugins > sol-plugin-manager { min-height: 0; max-height: 100%; }
-  .dk-manage-plugins > sol-plugin-manager[source$="#Available"] { flex: 1 1 24rem; min-width: 20rem; }
-  .dk-manage-plugins > sol-plugin-manager[source$="#InUse"] { flex: 0 1 20rem; min-width: 16rem; }
+  .dk-manage-plugins > sol-plugin-manager[source$="#Available"] { flex: 0 1 var(--col-2); min-width: var(--col-1); }
+  .dk-manage-plugins > sol-plugin-manager[source$="#InUse"] { flex: 0 1 var(--col-1); min-width: var(--col-1); }
+  .dk-access { flex: 0 1 var(--col-1); min-width: var(--col-1); min-height: 0; max-height: 100%;
+               border: 1px solid var(--border, #d0d0d0); border-radius: 10px;
+               background: var(--surface, #fff); padding: .6rem .7rem; }
+  .dk-access-title { font-weight: 700; font-size: max(16px, var(--font-size, 1rem)); }
 </style>
