@@ -9,4 +9,4 @@
   ui:href <https://notepod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Private, shareable notes with encryption." ;
-  dct:subject "Content, Notes, Blogging and Publishing" .
+  dct:subject "Content Publishing" .

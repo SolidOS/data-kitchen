@@ -42,7 +42,7 @@
 <#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
   skos:member <#BilliPod>, <#Booklice>, <#HomeVault>, <#KeyPod>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#Synara-AI>, <#TodoPod> .
 
-<#Content-Notes-Blogging-and-Publishing> a skos:Collection ; skos:prefLabel "Content, Notes, Blogging and Publishing" ;
+<#Content-Publishing> a skos:Collection ; skos:prefLabel "Content Publishing" ;
   skos:member <#dokieli>, <#NotePod>, <#RoloPod> .
 
 <#Health> a skos:Collection ; skos:prefLabel "Health" ;
@@ -51,11 +51,8 @@
 <#Security> a skos:Collection ; skos:prefLabel "Security" ;
   skos:member <#KeyPod> .
 
-<#Chat> a skos:Collection ; skos:prefLabel "Chat" ;
-  skos:member <#Portable-LibreChat> .
-
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
-  skos:member <#Tired-Bike> .
+  skos:member <#Portable-LibreChat>, <#Tired-Bike> .
 
 <#Cooking> a skos:Collection ; skos:prefLabel "Cooking" ;
   skos:member <#Umai> .

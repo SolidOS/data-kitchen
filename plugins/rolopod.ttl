@@ -9,4 +9,4 @@
   ui:href <https://rolopod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Address book with selective sharing." ;
-  dct:subject "Content, Notes, Blogging and Publishing" .
+  dct:subject "Content Publishing" .
