@@ -105,12 +105,12 @@
       const panelSource = panel?.getAttribute?.('source');
       if (info?.shape && panelSource) {
         displayItem({
-          launcher, name: 'Settings', tag: 'sol-form',
+          launcher, id: 'MoreSettings', name: 'Settings', tag: 'sol-form',
           attrs: [['shape', info.shape], ['source', panelSource]],
         });
       } else {
         displayItem({
-          launcher, name: 'Settings', tag: 'sol-include',
+          launcher, id: 'MoreSettings', name: 'Settings', tag: 'sol-include',
           attrs: [['source', './pages/settings.html'], ['trusted', '']],
         });
       }
@@ -129,8 +129,12 @@
     // React to a tab switch: load the active panel, pause the panels we left
     // (except the audio one — it plays on under the mini player), remember it.
     function onTab(name) {
-      // Picking a tab dismisses the help overlay (the ? sol-button inline region).
+      // Picking a tab dismisses the help overlay (the ? sol-button inline
+      // region) and the ☰ menu pane (#dk-menu-pane, the data-for region the
+      // ☰ component items display in).
       document.querySelector('.omp-help-launch')?.close?.();
+      const menuPane = document.getElementById('dk-menu-pane');
+      if (menuPane) menuPane.hidden = true;
       const el = paneForName(name)?.querySelector('[id^="panel-"]');
       if (el) current = el.id.replace(/^panel-/, '');
       el?.ensureLoaded?.();
@@ -377,6 +381,16 @@
       solTabs = document.getElementById('dk-tabs');
       for (const el of allPanels()) el.addEventListener('omp:access', syncGating);
       solTabs.addEventListener('sol-tab-change', (e) => onTab(e.detail?.name));
+      // The ☰ menu pane (declared in index.html with its data-for claims) is
+      // re-homed into the tab content area so it overlays the panes — the
+      // same re-homing sol-tabs does for the bar/chrome launchers. Mounting
+      // into it (mountInTarget fires sol-tab-activate) un-hides it; picking
+      // a tab hides it again (onTab above).
+      const menuPane = document.getElementById('dk-menu-pane');
+      if (menuPane && solTabs.body) {
+        solTabs.body.appendChild(menuPane);
+        menuPane.addEventListener('sol-tab-activate', () => { menuPane.hidden = false; });
+      }
       if (canWrite()) panelEl('news')?.toggleAttribute('editable', true);
       // The appearance buttons arrived with the include — wire + sync them.
       wireAppearanceButtons();

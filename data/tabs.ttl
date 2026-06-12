@@ -142,7 +142,7 @@
 
 <#chrome-menu> a ui:Component ; ui:label "Menu" ; ui:name "sol-dropdown-button" ;
   ui:region ui:Modal ;
-  rdfs:comment "☰ menu — items live in data/menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal." ;
+  rdfs:comment "☰ menu — items live in data/menu.ttl#More (Manage Plugins, Manage Menus, Settings, Sign in, and owner commands). Component items display in the #dk-menu-pane replace pane over the tab content." ;
   ui:attribute
     [ schema:name "class" ;      schema:value "omp-more" ] ,
     [ schema:name "title" ;      schema:value "Menu" ] ,

@@ -70,7 +70,9 @@
 
 # ── The ☰ hamburger menu (chrome) ────────────────────────────────────────
 # Consumed by <sol-dropdown-button source="./data/menu.ttl#More" region="modal">
-# in html-first.html: component items open in a modal; bare-name items
+# in html-first.html: component items display in the #dk-menu-pane replace
+# pane over the tab content (it claims them by id via data-for in index.html;
+# unclaimed items would fall back to the region= modal); bare-name items
 # dispatch sol-command (resolved by the dk-tabs-shell registry); acl:Write
 # items are hidden for guests (body.no-write ::part(requires-write)).
 # (#MainMenu above is the RETIRED old-dk header menu, kept as pantry.)

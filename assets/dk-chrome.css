@@ -109,9 +109,11 @@
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-podz"].active     { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-dev-tools"].active       { background: var(--tab-devtools);   border-color: var(--tab-devtools);   color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="Favourites"].active { background: var(--tab-fav, #e6b800); border-color: var(--tab-fav, #e6b800); color: var(--tab-on); }
-    /* While help fills the tab content (a .sol-inline-panel is present), no tab
-       is the current view — drop the active highlight (the ? button takes it). */
-    #dk-tabs:has(> .sol-tabs-content > .sol-inline-panel) > .sol-tabs-bar > button.active {
+    /* While help (.sol-inline-panel) or a ☰ component item (#dk-menu-pane)
+       fills the tab content, no tab is the current view — drop the active
+       highlight. */
+    #dk-tabs:has(> .sol-tabs-content > .sol-inline-panel) > .sol-tabs-bar > button.active,
+    #dk-tabs:has(> .sol-tabs-content > .dk-menu-pane:not([hidden])) > .sol-tabs-bar > button.active {
       background: var(--ia-bg-btn, #26282e);
       border-color: var(--ia-border-btn, #34373d);
       color: var(--ia-text-muted, #9aa);
@@ -170,6 +172,17 @@
       padding: 1.5rem clamp(1rem, 5vw, 3.5rem) 2.5rem;
     }
     #dk-tabs > .sol-tabs-content > .sol-inline-panel .omp-help-doc { max-width: 56rem; margin: 0 auto; }
+    /* The ☰ menu pane (#dk-menu-pane, declared in index.html; claimed items
+       mount into it as keep-alive [data-menu-item] wrappers) replaces the tab
+       content the same way help does; picking a tab dismisses it. */
+    #dk-tabs > .sol-tabs-content > .dk-menu-pane {
+      position: absolute; inset: 0; z-index: 6;
+      overflow: auto;
+      background: var(--ia-bg-app, #15161a);
+      color: var(--ia-text, #e7e7ea);
+      padding: 1rem clamp(1rem, 4vw, 3rem) 2rem;
+    }
+    #dk-tabs > .sol-tabs-content > .dk-menu-pane[hidden] { display: none; }
     /* The A (text size) and 🌙 (theme) chrome buttons are <sol-button command="…">
        in index2; style their shadow trigger like a .chrome-btn. */
     .omp-fontsize::part(trigger),
