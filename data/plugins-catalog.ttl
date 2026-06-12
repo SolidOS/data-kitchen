@@ -37,19 +37,16 @@
   skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Sign-in>, <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Solid-File-Manager> .
 
 <#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
-  skos:member <#Dev-Tools-playgrounds>, <#0data-Hello> .
+  skos:member <#Dev-Tools-playgrounds>, <#0data-Hello>, <#KeyPod>, <#Synara-AI> .
 
 <#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
-  skos:member <#BilliPod>, <#Booklice>, <#HomeVault>, <#KeyPod>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#Synara-AI>, <#TodoPod> .
+  skos:member <#BilliPod>, <#Booklice>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#TodoPod> .
 
 <#Content-Publishing> a skos:Collection ; skos:prefLabel "Content Publishing" ;
   skos:member <#dokieli>, <#NotePod>, <#RoloPod> .
 
 <#Health> a skos:Collection ; skos:prefLabel "Health" ;
   skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
-
-<#Security> a skos:Collection ; skos:prefLabel "Security" ;
-  skos:member <#KeyPod> .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
   skos:member <#Portable-LibreChat>, <#Tired-Bike> .

@@ -9,4 +9,4 @@
   ui:href <https://ai.privatedatapod.com/> ;
   ui:region ui:Tab ;
   rdfs:comment "Privacy-first AI assistant with searchable conversation logs." ;
-  dct:subject "Productivity" .
+  dct:subject "Tech" .

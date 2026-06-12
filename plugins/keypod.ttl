@@ -9,4 +9,4 @@
   ui:href <https://keypod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Encrypted password and key-value store." ;
-  dct:subject "Productivity" , "Security" .
+  dct:subject "Tech" .
