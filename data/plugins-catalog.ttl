@@ -16,13 +16,13 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
-  ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RoloPod> <#SecureDialog> <#Solid-File-Manager> <#Solidflix> <#SolidFocus> <#SolidOS-Databrowser> <#Synara-AI> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
+  ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RoloPod> <#SecureDialog> <#Solid-File-Manager> <#Solidflix> <#SolidFocus> <#Synara-AI> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
 
 # The whole catalog in one list — the ☰ "All Plugins…" page
 # (pages/all-plugins.html) browses this.
 <#All> a ui:Menu ; ui:label "All Plugins" ;
   rdfs:comment "Every plugin in the catalog, in use or not — what pages/all-plugins.html displays. Seeded; not maintained by Manage Plugins saves." ;
-  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Dev-Tools-playgrounds> <#Search> <#Calendar> <#Sign-in> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RoloPod> <#SecureDialog> <#Solid-File-Manager> <#Solidflix> <#SolidFocus> <#SolidOS-Databrowser> <#Synara-AI> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
+  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Dev-Tools-playgrounds> <#Search> <#Calendar> <#Sign-in> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RoloPod> <#SecureDialog> <#Solid-File-Manager> <#Solidflix> <#SolidFocus> <#Synara-AI> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
 
 # Topic categories — skos:Collections over the same pool; the grouped
 # plugin manager renders these as headings. A plugin manifest's
@@ -33,17 +33,17 @@
 <#Media> a skos:Collection ; skos:prefLabel "Media" ;
   skos:member <#Music-Internet-Archive>, <#Movies-Internet-Archive>, <#Images-Wikimedia>, <#Media-Kraken>, <#MovieStar>, <#Solidflix> .
 
+<#Pod-Management> a skos:Collection ; skos:prefLabel "Pod Management" ;
+  skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Sign-in>, <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Solid-File-Manager> .
+
 <#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
-  skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Dev-Tools-playgrounds>, <#Sign-in>, <#0data-Hello> .
+  skos:member <#Dev-Tools-playgrounds>, <#0data-Hello> .
 
 <#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
   skos:member <#BilliPod>, <#Booklice>, <#HomeVault>, <#KeyPod>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#Synara-AI>, <#TodoPod> .
 
 <#Content-Notes-Blogging-and-Publishing> a skos:Collection ; skos:prefLabel "Content, Notes, Blogging and Publishing" ;
   skos:member <#dokieli>, <#NotePod>, <#RoloPod> .
-
-<#Pod-Management> a skos:Collection ; skos:prefLabel "Pod Management" ;
-  skos:member <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Solid-File-Manager>, <#SolidOS-Databrowser> .
 
 <#Health> a skos:Collection ; skos:prefLabel "Health" ;
   skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
@@ -227,12 +227,6 @@
   ui:region ui:Tab ;
   rdfs:comment "Tasks and notes, works offline." ;
   ui:href <https://focus.noeldemartin.com/> .
-
-<#SolidOS-Databrowser> a ui:Link ; ui:label "SolidOS Databrowser" ;
-  ui:icon "🐧" ;
-  ui:region ui:Tab ;
-  rdfs:comment "Browse and edit any data in your pod." ;
-  ui:href <https://solidos.github.io/mashlib/dist/browse.html> .
 
 <#Synara-AI> a ui:Link ; ui:label "Synara AI" ;
   ui:icon "🤖" ;
