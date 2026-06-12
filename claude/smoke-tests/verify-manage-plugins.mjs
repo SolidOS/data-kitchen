@@ -28,9 +28,20 @@ if (dirty) {
 }
 
 // The list each menu's ui:parts holds, as fragment names (order preserved).
+// (Index-based, not one regex over the block: the rdfs:comments contain
+// periods, and the serializer reorders/reformats on save.)
 const partsOf = (ttl, menu) => {
-  const m = ttl.match(new RegExp(`<#${menu}>[^.]*?ui:parts \\(([^)]*)\\)`, 's'));
+  const i = ttl.indexOf(`<#${menu}>`);
+  if (i < 0) return null;
+  const m = ttl.slice(i).match(/ui:parts\s*\(([^)]*)\)/);
   return m ? [...m[1].matchAll(/<#([^>]+)>/g)].map((x) => x[1]) : null;
+};
+// A subject's block: from its opener to the next top-level subject.
+const subjBlock = (ttl, frag) => {
+  const i = ttl.indexOf(`<#${frag}>`);
+  if (i < 0) return '';
+  const j = ttl.indexOf('\n<', i + 1);
+  return j < 0 ? ttl.slice(i) : ttl.slice(i, j);
 };
 
 const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
@@ -102,7 +113,7 @@ try {
   check('both lists survive the rewrite (clobber regression)',
     !!inUse && inUse.length >= 8 && !!avail && avail.length >= 5,
     `InUse=[${inUse}] Available=[${avail}]`);
-  check('the moved subject keeps its triples', /<#Calendar>[^.]*ui:name "dk-calendar-popout"/s.test(ttl));
+  check('the moved subject keeps its triples', subjBlock(ttl, 'Calendar').includes('dk-calendar-popout'));
 
   // --- the sibling box re-rendered (it lost the Calendar card) ---
   const sibling = await page.evaluate(() => {
