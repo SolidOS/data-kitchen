@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Address book with selective sharing." ;
   dct:creator "Togaware" ;
-  dct:subject "Content Publishing" .
+  dct:subject "Productivity" .

@@ -41,13 +41,13 @@
   skos:member <#Dev-Tools-playgrounds>, <#0data-Hello>, <#KeyPod>, <#Synara-AI> .
 
 <#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
-  skos:member <#BilliPod>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#TodoPod> .
+  skos:member <#BilliPod>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#RoloPod>, <#SolidFocus>, <#TodoPod> .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
   skos:member <#Booklice>, <#Portable-LibreChat>, <#Tired-Bike> .
 
 <#Content-Publishing> a skos:Collection ; skos:prefLabel "Content Publishing" ;
-  skos:member <#dokieli>, <#NotePod>, <#RoloPod> .
+  skos:member <#dokieli>, <#NotePod> .
 
 <#Health> a skos:Collection ; skos:prefLabel "Health" ;
   skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
