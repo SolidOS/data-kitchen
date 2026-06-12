@@ -58,7 +58,7 @@ try {
   });
   // the Manage Menus palette is data/plugins-catalog.ttl#InUse (9 entries), not the full pool
   check('palette renders plugin cards', mounted.palette >= 8, `cards=${mounted.palette}`);
-  check('menu builder renders the tab rows', mounted.menuRows >= 6, `rows=${mounted.menuRows}`);
+  check('menu builder renders the tab rows', mounted.menuRows >= 5, `rows=${mounted.menuRows}`);
   // the bar is down to search + calendar (fontsize/theme moved to the ☰ menu)
   check('bar builder renders the bar rows', mounted.barRows >= 2, `rows=${mounted.barRows}`);
 

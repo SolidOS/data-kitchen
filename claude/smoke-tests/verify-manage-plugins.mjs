@@ -84,7 +84,7 @@ try {
     return { inUse: info(by('InUse')), avail: info(availBox), headings, boxes: boxes.length };
   });
   check('two plugin-manager boxes mount', mounted.boxes === 2, `boxes=${mounted.boxes}`);
-  check('Plugins to Use renders its cards + title', mounted.inUse.cards >= 8 && /Plugins to Use/.test(mounted.inUse.title || ''), JSON.stringify(mounted.inUse));
+  check('Plugins to Use renders its cards + title', mounted.inUse.cards >= 7 && /Plugins to Use/.test(mounted.inUse.title || ''), JSON.stringify(mounted.inUse));
   check('Plugins Available renders its cards + title', mounted.avail.cards >= 1 && /Plugins Available/.test(mounted.avail.title || ''), JSON.stringify(mounted.avail));
   check('boxes carry the manifest-URL input row', mounted.inUse.urlRow && mounted.avail.urlRow);
   check('Available shows skos topic TABS',
@@ -124,7 +124,7 @@ try {
     !!avail && avail.includes('Calendar') && !!inUse && !inUse.includes('Calendar'),
     `InUse=${inUse?.length} Available=${avail?.length}`);
   check('both lists survive the rewrite (clobber regression)',
-    !!inUse && inUse.length >= 8 && !!avail && avail.length >= 4,
+    !!inUse && inUse.length >= 7 && !!avail && avail.length >= 4,
     `InUse=[${inUse}] Available=[${avail}]`);
   check('the moved subject keeps its triples', subjBlock(ttl, 'Calendar').includes('dk-calendar-popout'));
 
@@ -168,7 +168,7 @@ try {
   ttl = readFileSync('data/plugins-catalog.ttl', 'utf8');
   inUse = partsOf(ttl, 'InUse');
   avail = partsOf(ttl, 'Available');
-  check('lists intact after import', !!inUse && inUse.length >= 8 && !!avail && avail.length >= 5,
+  check('lists intact after import', !!inUse && inUse.length >= 7 && !!avail && avail.length >= 5,
     `InUse=${inUse?.length} Available=${avail?.length}`);
   if (/added/.test(imported.msg || '')) {
     const info = subjBlock(ttl, 'Information');

@@ -70,8 +70,7 @@ const APPS = readLinkApps();
 // skos:member = the entries). Each plugin's manifest declares the same
 // category as dct:subject, which imports use to file new entries.
 // NOTE: a bare <sol-include> is NOT a plugin (it does nothing by itself), so
-// there is deliberately no generic "Page (HTML include)" entry — only
-// concrete pages like Dev Tools that bring their own source.
+// there is deliberately no generic "Page (HTML include)" entry.
 const PLUGINS = [
   { label: 'News (three-panel feeds)', cat: 'Information', icon: '📰', tag: 'sol-feed',
     desc: 'Read news feeds in a three-panel reader: sources, headlines, article.',
@@ -94,9 +93,6 @@ const PLUGINS = [
   { label: 'SolidOS (data browser)', cat: 'Pod Management', creator: 'SolidOS Team', icon: '🐧', tag: 'dk-solidos', list: 'avail',
     desc: 'The SolidOS data browser, embedded.',
     params: [['source', './plugins/solidos/dk-solidos.html'], ['defer', '']] },
-  { label: 'Dev Tools (playgrounds)', cat: 'Tech', icon: '🛠', tag: 'sol-include',
-    desc: 'JSON-LD, RDF, SHACL and SPARQL playgrounds, plus Solid resources.',
-    params: [['source', './plugins/dev-tools/dev-tools.html'], ['trusted', '']] },
   { label: 'Search', cat: 'Information', icon: '🔍', tag: 'sol-search',
     desc: 'Search box for the button bar (pluggable search engines).',
     params: [['source', './plugins/search/search-engines.ttl#SearchEngines']] },

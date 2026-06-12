@@ -13,17 +13,17 @@
 
 <#InUse> a ui:Menu ; ui:label "Plugins to Use" ;
   rdfs:comment "The plugins this app uses — the palette Manage Menus offers for dragging onto the tab menu and button bar. Edited with Manage Plugins (drag between lists; auto-saves)." ;
-  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#Dev-Tools-playgrounds> <#Search> <#Calendar> <#Sign-in> ) .
+  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#Search> <#Calendar> <#Sign-in> ) .
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
-  ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RoloPod> <#SecureDialog> <#Solid-File-Manager> <#Solidflix> <#SolidFocus> <#Synara-AI> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
+  ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RDF-Validator> <#RoloPod> <#SecureDialog> <#SHACL-Playground> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SPARQL-Playground> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
 
 # The whole catalog in one list — the ☰ "All Plugins…" page
 # (pages/all-plugins.html) browses this.
 <#All> a ui:Menu ; ui:label "All Plugins" ;
   rdfs:comment "Every plugin in the catalog, in use or not — what pages/all-plugins.html displays. Seeded; not maintained by Manage Plugins saves." ;
-  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Dev-Tools-playgrounds> <#Search> <#Calendar> <#Sign-in> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RoloPod> <#SecureDialog> <#Solid-File-Manager> <#Solidflix> <#SolidFocus> <#Synara-AI> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
+  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Search> <#Calendar> <#Sign-in> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RDF-Validator> <#RoloPod> <#SecureDialog> <#SHACL-Playground> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SPARQL-Playground> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
 
 # Topic categories — skos:Collections over the same pool; the grouped
 # plugin manager renders these as headings. A plugin manifest's
@@ -38,13 +38,13 @@
   skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Sign-in>, <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Solid-File-Manager> .
 
 <#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
-  skos:member <#Dev-Tools-playgrounds>, <#0data-Hello>, <#KeyPod>, <#Synara-AI> .
+  skos:member <#0data-Hello>, <#JSON-LD-Playground>, <#KeyPod>, <#RDF-Validator>, <#SHACL-Playground>, <#SPARQL-Playground>, <#Synara-AI> .
 
 <#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
   skos:member <#BilliPod>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#RoloPod>, <#SolidFocus>, <#TodoPod> .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
-  skos:member <#Booklice>, <#Portable-LibreChat>, <#Tired-Bike> .
+  skos:member <#Booklice>, <#Portable-LibreChat>, <#Solid-Catalog>, <#Solid-FAQ>, <#Solid-Glossary>, <#Solid-Website>, <#Tag-Explainer>, <#Tired-Bike> .
 
 <#Content-Publishing> a skos:Collection ; skos:prefLabel "Content Publishing" ;
   skos:member <#dokieli>, <#NotePod> .
@@ -114,6 +114,13 @@
   rdfs:comment "Guided meditation timer that records your sessions." ;
   dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://innerpod.solidcommunity.au> .
+
+<#JSON-LD-Playground> a ui:Link ; ui:label "JSON-LD Playground" ;
+  ui:icon "🧩" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Try out JSON-LD documents." ;
+  dct:publisher "json-ld.org" ;
+  ui:href <https://json-ld.github.io/json-ld.org/playground/> .
 
 <#KeyPod> a ui:Link ; ui:label "KeyPod" ;
   ui:icon "🔐" ;
@@ -212,6 +219,13 @@
   dct:creator "Solid Project" ;
   ui:href <https://chat.solidproject.org/> .
 
+<#RDF-Validator> a ui:Link ; ui:label "RDF Validator" ;
+  ui:icon "🧬" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Convert and validate RDF documents." ;
+  dct:publisher "EasyRdf" ;
+  ui:href <http://easyrdf.org/converter> .
+
 <#RoloPod> a ui:Link ; ui:label "RoloPod" ;
   ui:icon "📇" ;
   ui:region ui:Tab ;
@@ -226,12 +240,47 @@
   dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://securedialog.solidcommunity.au> .
 
+<#SHACL-Playground> a ui:Link ; ui:label "SHACL Playground" ;
+  ui:icon "✅" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Validate data against SHACL shapes." ;
+  dct:publisher "shacl.org" ;
+  ui:href <https://shacl.org/playground/> .
+
+<#Solid-Catalog> a ui:Link ; ui:label "Solid Catalog" ;
+  ui:icon "🗃️" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Catalog of Solid apps, libraries and resources." ;
+  dct:publisher "Solid Community" ;
+  ui:href <https://solidproject.solidcommunity.net/catalog/> .
+
+<#Solid-FAQ> a ui:Link ; ui:label "Solid FAQ" ;
+  ui:icon "❓" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Frequently asked questions about Solid." ;
+  dct:publisher "Solid Project" ;
+  ui:href <https://solidproject.org/FAQ> .
+
 <#Solid-File-Manager> a ui:Link ; ui:label "Solid File Manager" ;
   ui:icon "📁" ;
   ui:region ui:Tab ;
   rdfs:comment "Manage the files in your pod." ;
   dct:creator "Otto AA" ;
   ui:href <https://otto-aa.github.io/solid-filemanager/> .
+
+<#Solid-Glossary> a ui:Link ; ui:label "Solid Glossary" ;
+  ui:icon "📖" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Glossary of Solid terms." ;
+  dct:publisher "Solid Community" ;
+  ui:href <https://solidproject.solidcommunity.net/glossary> .
+
+<#Solid-Website> a ui:Link ; ui:label "Solid Website" ;
+  ui:icon "🌐" ;
+  ui:region ui:Tab ;
+  rdfs:comment "The Solid Project website." ;
+  dct:publisher "Solid Project" ;
+  ui:href <https://solidproject.org> .
 
 <#Solidflix> a ui:Link ; ui:label "Solidflix" ;
   ui:icon "🎬" ;
@@ -247,12 +296,26 @@
   dct:creator "Noel De Martin" ;
   ui:href <https://focus.noeldemartin.com/> .
 
+<#SPARQL-Playground> a ui:Link ; ui:label "SPARQL Playground" ;
+  ui:icon "🔮" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Try out SPARQL queries." ;
+  dct:publisher "AtomGraph" ;
+  ui:href <https://atomgraph.github.io/SPARQL-Playground/> .
+
 <#Synara-AI> a ui:Link ; ui:label "Synara AI" ;
   ui:icon "🤖" ;
   ui:region ui:Tab ;
   rdfs:comment "Privacy-first AI assistant with searchable conversation logs." ;
   dct:creator "PrivateDataPod team" ;
   ui:href <https://ai.privatedatapod.com/> .
+
+<#Tag-Explainer> a ui:Link ; ui:label "Tag Explainer" ;
+  ui:icon "🏷️" ;
+  ui:region ui:Tab ;
+  rdfs:comment "How Solid works, explained." ;
+  dct:creator "Tim Berners-Lee" ;
+  ui:href <https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html> .
 
 <#Tired-Bike> a ui:Link ; ui:label "Tired Bike" ;
   ui:icon "🚲" ;
@@ -332,14 +395,6 @@
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
     [ schema:name "defer" ; schema:value "" ] .
-
-<#Dev-Tools-playgrounds> a ui:Component ; ui:label "Dev Tools (playgrounds)" ; ui:name "sol-include" ;
-  ui:icon "🛠" ;
-  dct:creator "Jeff Zucker" ;
-  rdfs:comment "JSON-LD, RDF, SHACL and SPARQL playgrounds, plus Solid resources." ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/dev-tools/dev-tools.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
 
 <#Search> a ui:Component ; ui:label "Search" ; ui:name "sol-search" ;
   ui:icon "🔍" ;

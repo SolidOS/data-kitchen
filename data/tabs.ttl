@@ -12,12 +12,10 @@
 # Not every defined panel is IN the menu: #panel-solidos and #panel-customize
 # (now a ☰ menu item) are PANTRY items — kept here (and in data/plugins-catalog.ttl's
 # lists) so the managers can drag them back in.
-# Solid Resources / Dev Tools are tabs whose SUBMENUS (the
-# link strips) live inside their plugin pages, never on this tabset.
 <#Tabs> a ui:Menu ; ui:label "data-kitchen" ;
   ui:orientation ui:Horizontal ;
   ui:parts ( <#panel-news> <#panel-music> <#panel-movies>
-             <#panel-images> <#panel-podz> <#panel-dev-tools> ) .
+             <#panel-images> <#panel-podz> ) .
 
 <#panel-news> a ui:Component ; ui:label "📰 News" ; ui:name "sol-feed" ;
   ui:attribute
@@ -57,12 +55,6 @@
     [ schema:name "id" ;     schema:value "panel-solidos" ] ,
     [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
     [ schema:name "defer" ;  schema:value "" ] .
-
-<#panel-dev-tools> a ui:Component ; ui:label "🛠 Dev Tools" ; ui:name "sol-include" ;
-  ui:attribute
-    [ schema:name "id" ;      schema:value "panel-dev-tools" ] ,
-    [ schema:name "source" ;  schema:value "./plugins/dev-tools/dev-tools.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
 
 <#panel-customize> a ui:Component ; ui:label "🎛 Manage Menus" ; ui:name "sol-include" ;
   acl:mode acl:Write ;
