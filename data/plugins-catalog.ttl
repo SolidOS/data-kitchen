@@ -4,34 +4,13 @@
 @prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct:    <http://purl.org/dc/terms/> .
 
-# The plugin catalog <sol-plugin-manager> manages: ONE #Available list of
-# everything the app knows (ui:Components to mount, ui:Links to external
-# apps) plus skos topic collections. In-use = mounted by data/tabs.ttl.
-# Seeded by tools/seed-plugins-catalog.mjs, edited by Customize thereafter.
-# Each entry's ui:icon is an emoji character (system emoji font — no bundled
-# image assets) and its rdfs:comment is the card blurb.
+# GENERATED from the flat plugins/*.ttl manifests by
+# tools/seed-plugins-catalog.mjs — edit a manifest (or use Customize) rather
+# than this file; re-seeding overwrites it.
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
-  rdfs:comment "Every plugin and app the catalog knows. Drag a card onto the tab menu or button bar (Customize) to use it; drop or type a manifest URL to add one. In-use means mounted by data/tabs.ttl — there is no separate list." ;
-  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Search> <#Calendar> <#Sign-in> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RDF-Validator> <#RoloPod> <#SecureDialog> <#SHACL-Playground> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SPARQL-Playground> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
-
-# Topic categories — skos:Collections over the same pool; the grouped
-# plugin manager renders these as headings. A plugin manifest's
-# dct:subject names its category; imports file entries here.
-<#Information> a skos:Collection ; skos:prefLabel "Information" ;
-  skos:member <#News-three-panel-feeds>, <#Search>, <#Calendar>, <#Weather>, <#Clock>, <#GeoPod>, <#Umai> .
-
-<#Media> a skos:Collection ; skos:prefLabel "Media" ;
-  skos:member <#Music-Internet-Archive>, <#Movies-Internet-Archive>, <#Images-Wikimedia>, <#Media-Kraken>, <#MovieStar>, <#Solidflix> .
-
-<#Pods> a skos:Collection ; skos:prefLabel "Pods" ;
-  skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Sign-in>, <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Solid-File-Manager> .
-
-<#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
-  skos:member <#0data-Hello>, <#JSON-LD-Playground>, <#KeyPod>, <#RDF-Validator>, <#SHACL-Playground>, <#SPARQL-Playground>, <#Synara-AI> .
-
-<#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
-  skos:member <#BilliPod>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#RoloPod>, <#SolidFocus>, <#TodoPod> .
+  rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means data/tabs.ttl mounts it." ;
+  ui:parts ( <#0data-Hello> <#BilliPod> <#Booklice> <#Calendar> <#Clock> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RDF-Validator> <#RoloPod> <#Search> <#SecureDialog> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SPARQL-Playground> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> <#Weather> <#Workspaces-pod-browser> ) .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
   skos:member <#Booklice>, <#Portable-LibreChat>, <#Tired-Bike> .
@@ -42,8 +21,23 @@
 <#Health> a skos:Collection ; skos:prefLabel "Health" ;
   skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
 
+<#Information> a skos:Collection ; skos:prefLabel "Information" ;
+  skos:member <#Calendar>, <#Clock>, <#GeoPod>, <#News-three-panel-feeds>, <#Search>, <#Umai>, <#Weather> .
+
+<#Media> a skos:Collection ; skos:prefLabel "Media" ;
+  skos:member <#Images-Wikimedia>, <#Media-Kraken>, <#Movies-Internet-Archive>, <#MovieStar>, <#Music-Internet-Archive>, <#Solidflix> .
+
+<#Pods> a skos:Collection ; skos:prefLabel "Pods" ;
+  skos:member <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Sign-in>, <#Solid-File-Manager>, <#SolidOS-data-browser>, <#Workspaces-pod-browser> .
+
+<#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
+  skos:member <#BilliPod>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#RoloPod>, <#SolidFocus>, <#TodoPod> .
+
 <#Solid> a skos:Collection ; skos:prefLabel "Solid" ;
   skos:member <#Solid-Catalog>, <#Solid-FAQ>, <#Solid-Glossary>, <#Solid-Website>, <#Tag-Explainer> .
+
+<#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
+  skos:member <#0data-Hello>, <#JSON-LD-Playground>, <#KeyPod>, <#RDF-Validator>, <#SHACL-Playground>, <#SPARQL-Playground>, <#Synara-AI> .
 
 <#0data-Hello> a ui:Link ; ui:label "0data Hello" ;
   ui:icon "🧪" ;
@@ -65,6 +59,22 @@
   rdfs:comment "Bookmarks you can share with a community." ;
   dct:publisher "scenaristeur" ;
   ui:href <https://scenaristeur.github.io/booklice/> .
+
+<#Calendar> a ui:Component ; ui:label "Calendar" ;
+  ui:icon "📅" ;
+  ui:name "dk-calendar-popout" ;
+  rdfs:comment "Pop-out month calendar for the button bar." ;
+  dct:creator "Jeff Zucker" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/calendar/calendar-settings.ttl#All" ] .
+
+<#Clock> a ui:Component ; ui:label "Clock" ;
+  ui:icon "🕐" ;
+  ui:name "sol-time" ;
+  rdfs:comment "Clock widget (timezone in its settings file)." ;
+  dct:creator "Jeff Zucker" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/time/time-settings.ttl#Settings" ] .
 
 <#dokieli> a ui:Link ; ui:label "dokieli" ;
   ui:icon "📝" ;
@@ -101,6 +111,14 @@
   dct:publisher "PrivateDataPod" ;
   ui:href <https://homevault.apps.privatedatapod.com/> .
 
+<#Images-Wikimedia> a ui:Component ; ui:label "Images (Wikimedia)" ;
+  ui:icon "🖼" ;
+  ui:name "omp-images" ;
+  rdfs:comment "Browse Wikimedia image galleries." ;
+  dct:creator "Jeff Zucker" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
+
 <#InnerPod> a ui:Link ; ui:label "InnerPod" ;
   ui:icon "🧘" ;
   ui:region ui:Tab ;
@@ -136,6 +154,17 @@
   dct:creator "Noel De Martin" ;
   ui:href <https://noeldemartin.github.io/media-kraken/> .
 
+<#Movies-Internet-Archive> a ui:Component ; ui:label "Movies (Internet Archive)" ;
+  ui:icon "🎬" ;
+  ui:name "ia-player" ;
+  rdfs:comment "Browse and play films from the Internet Archive." ;
+  dct:creator "Jeff Zucker" ;
+  ui:attribute
+    [ schema:name "storage-ns" ; schema:value "movies" ] ,
+    [ schema:name "favourites-only" ; schema:value "" ] ,
+    [ schema:name "defer" ; schema:value "" ] ,
+    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] .
+
 <#MovieStar> a ui:Link ; ui:label "MovieStar" ;
   ui:icon "🎬" ;
   ui:region ui:Tab ;
@@ -149,6 +178,26 @@
   rdfs:comment "Survey app for MS fatigue research, with encrypted responses." ;
   dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://msfatigue.solidcommunity.au> .
+
+<#Music-Internet-Archive> a ui:Component ; ui:label "Music (Internet Archive)" ;
+  ui:icon "🎵" ;
+  ui:name "ia-player" ;
+  rdfs:comment "Browse and play music collections from the Internet Archive." ;
+  dct:creator "Jeff Zucker" ;
+  ui:attribute
+    [ schema:name "storage-ns" ; schema:value "music" ] ,
+    [ schema:name "defer" ; schema:value "" ] ,
+    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_music/index.ttl" ] .
+
+<#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ;
+  ui:icon "📰" ;
+  ui:name "sol-feed" ;
+  rdfs:comment "Read news feeds in a three-panel reader: sources, headlines, article." ;
+  dct:creator "Jeff Zucker" ;
+  ui:attribute
+    [ schema:name "view" ; schema:value "threePanel" ] ,
+    [ schema:name "reader" ; schema:value "inline" ] ,
+    [ schema:name "source" ; schema:value "./plugins/news/feeds.ttl#Feeds" ] .
 
 <#NotePod> a ui:Link ; ui:label "NotePod" ;
   ui:icon "🗒️" ;
@@ -226,6 +275,14 @@
   dct:creator "Togaware" ;
   ui:href <https://rolopod.solidcommunity.au> .
 
+<#Search> a ui:Component ; ui:label "Search" ;
+  ui:icon "🔍" ;
+  ui:name "sol-search" ;
+  rdfs:comment "Search box for the button bar (pluggable search engines)." ;
+  dct:creator "Jeff Zucker" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/search/search-engines.ttl#SearchEngines" ] .
+
 <#SecureDialog> a ui:Link ; ui:label "SecureDialog" ;
   ui:icon "💉" ;
   ui:region ui:Tab ;
@@ -239,6 +296,16 @@
   rdfs:comment "Validate data against SHACL shapes." ;
   dct:publisher "shacl.org" ;
   ui:href <https://shacl.org/playground/> .
+
+<#Sign-in> a ui:Component ; ui:label "Sign in" ;
+  ui:icon "🔑" ;
+  ui:name "sol-login" ;
+  rdfs:comment "Solid sign-in button (popup flow)." ;
+  dct:creator "Jeff Zucker" ;
+  ui:attribute
+    [ schema:name "mode" ; schema:value "popup" ] ,
+    [ schema:name "popup-callback" ; schema:value "node_modules/podz/popup-auth-callback.html" ] ,
+    [ schema:name "issuers" ; schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .
 
 <#Solid-Catalog> a ui:Link ; ui:label "Solid Catalog" ;
   ui:icon "🗃️" ;
@@ -289,6 +356,15 @@
   dct:creator "Noel De Martin" ;
   ui:href <https://focus.noeldemartin.com/> .
 
+<#SolidOS-data-browser> a ui:Component ; ui:label "SolidOS (data browser)" ;
+  ui:icon "🐧" ;
+  ui:name "dk-solidos" ;
+  rdfs:comment "The SolidOS data browser, embedded." ;
+  dct:creator "SolidOS Team" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
+
 <#SPARQL-Playground> a ui:Link ; ui:label "SPARQL Playground" ;
   ui:icon "🔮" ;
   ui:region ui:Tab ;
@@ -338,91 +414,20 @@
   dct:publisher "PrivateDataPod" ;
   ui:href <https://vitalstats.apps.privatedatapod.com/> .
 
-<#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;
-  ui:icon "📰" ;
-  dct:creator "Jeff Zucker" ;
-  rdfs:comment "Read news feeds in a three-panel reader: sources, headlines, article." ;
-  ui:attribute
-    [ schema:name "view" ; schema:value "threePanel" ] ,
-    [ schema:name "reader" ; schema:value "inline" ] ,
-    [ schema:name "source" ; schema:value "./plugins/news/feeds.ttl#Feeds" ] .
-
-<#Music-Internet-Archive> a ui:Component ; ui:label "Music (Internet Archive)" ; ui:name "ia-player" ;
-  ui:icon "🎵" ;
-  dct:creator "Jeff Zucker" ;
-  rdfs:comment "Browse and play music collections from the Internet Archive." ;
-  ui:attribute
-    [ schema:name "storage-ns" ; schema:value "music" ] ,
-    [ schema:name "defer" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_music/index.ttl" ] .
-
-<#Movies-Internet-Archive> a ui:Component ; ui:label "Movies (Internet Archive)" ; ui:name "ia-player" ;
-  ui:icon "🎬" ;
-  dct:creator "Jeff Zucker" ;
-  rdfs:comment "Browse and play films from the Internet Archive." ;
-  ui:attribute
-    [ schema:name "storage-ns" ; schema:value "movies" ] ,
-    [ schema:name "favourites-only" ; schema:value "" ] ,
-    [ schema:name "defer" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] .
-
-<#Images-Wikimedia> a ui:Component ; ui:label "Images (Wikimedia)" ; ui:name "omp-images" ;
-  ui:icon "🖼" ;
-  dct:creator "Jeff Zucker" ;
-  rdfs:comment "Browse Wikimedia image galleries." ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
-
-<#Workspaces-pod-browser> a ui:Component ; ui:label "Workspaces (pod browser)" ; ui:name "dk-podz" ;
-  ui:icon "🗂" ;
-  dct:creator "Jeff Zucker" ;
-  rdfs:comment "Browse and manage your Solid pods and workspaces." ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#SolidOS-data-browser> a ui:Component ; ui:label "SolidOS (data browser)" ; ui:name "dk-solidos" ;
-  ui:icon "🐧" ;
-  dct:creator "SolidOS Team" ;
-  rdfs:comment "The SolidOS data browser, embedded." ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#Search> a ui:Component ; ui:label "Search" ; ui:name "sol-search" ;
-  ui:icon "🔍" ;
-  dct:creator "Jeff Zucker" ;
-  rdfs:comment "Search box for the button bar (pluggable search engines)." ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/search/search-engines.ttl#SearchEngines" ] .
-
-<#Calendar> a ui:Component ; ui:label "Calendar" ; ui:name "dk-calendar-popout" ;
-  ui:icon "📅" ;
-  dct:creator "Jeff Zucker" ;
-  rdfs:comment "Pop-out month calendar for the button bar." ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/calendar/calendar-settings.ttl#All" ] .
-
-<#Sign-in> a ui:Component ; ui:label "Sign in" ; ui:name "sol-login" ;
-  ui:icon "🔑" ;
-  dct:creator "Jeff Zucker" ;
-  rdfs:comment "Solid sign-in button (popup flow)." ;
-  ui:attribute
-    [ schema:name "mode" ; schema:value "popup" ] ,
-    [ schema:name "popup-callback" ; schema:value "node_modules/podz/popup-auth-callback.html" ] ,
-    [ schema:name "issuers" ; schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .
-
-<#Weather> a ui:Component ; ui:label "Weather" ; ui:name "sol-weather" ;
+<#Weather> a ui:Component ; ui:label "Weather" ;
   ui:icon "🌤" ;
-  dct:creator "Jeff Zucker" ;
+  ui:name "sol-weather" ;
   rdfs:comment "Weather widget (location and units in its settings file)." ;
+  dct:creator "Jeff Zucker" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/weather/weather-settings.ttl#Settings" ] .
 
-<#Clock> a ui:Component ; ui:label "Clock" ; ui:name "sol-time" ;
-  ui:icon "🕐" ;
+<#Workspaces-pod-browser> a ui:Component ; ui:label "Workspaces (pod browser)" ;
+  ui:icon "🗂" ;
+  ui:name "dk-podz" ;
+  rdfs:comment "Browse and manage your Solid pods and workspaces." ;
   dct:creator "Jeff Zucker" ;
-  rdfs:comment "Clock widget (timezone in its settings file)." ;
   ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/time/time-settings.ttl#Settings" ] .
+    [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
 
