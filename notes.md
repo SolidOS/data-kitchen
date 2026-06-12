@@ -1,16 +1,10 @@
 --------
 # TO-DO
 --------
-5. Manage Plugins
-* I want sol-plugins-available be its own "Manage Plugins" menu item
-* It should have a "Plugins to Use" box and a "Plugins Available" box
-* Users shld be able to drag between the two
-* Users shld be able to drag manifests into Plugins Available
-* Users shld be able to input a string of a manifest's url
-* Form should auto-save
-* The list of Plugins To Use is what should be in a linked but separate "Manage Menus" menu item
-* Propose a plan
-
+6. Refine plugin-manager
+* use/avail should be side by side
+* sol-include is not a plugin - it can't be added to a menu, it does nothing by itself
+* spruce up the display - get some icons (public domain or open license only) for the components, write brief descriptions
 
 
 CLAUDE: IGNORE EVERYTHING BELOW HERE
@@ -34,6 +28,16 @@ guest app - an external app displayed in main app
 --------
 # DONE
 --------
+5. Manage Plugins
+* I want sol-plugins-available be its own "Manage Plugins" menu item
+* It should have a "Plugins to Use" box and a "Plugins Available" box
+* Users shld be able to drag between the two
+* Users shld be able to drag manifests into Plugins Available
+* Users shld be able to input a string of a manifest's url
+* Form should auto-save
+* The list of Plugins To Use is what should be in a linked but separate "Manage Menus" menu item
+* Propose a plan
+
 ## 4. i want help and settings and the dropdown menu to be context sensitive to what plugin is currently in the active pane; there shld be a standard way for a plugin's manifest to point to its help file and shape file if it has one; propose solutions 
   
 ## 3. you totally misunderstood what i meant about the solid-resources and dev-tools - they should be plugins and

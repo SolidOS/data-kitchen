@@ -14,48 +14,65 @@ import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
-// Curated seed: label, tag, default attributes, list ('use' = #InUse,
-// 'avail' = #Available — i.e. whether data/tabs.ttl currently mounts it).
-// Drawn from the manifests' component lists (sol-components + dk) but
-// hand-filtered to plugin-sized pieces; paths point into each plugin's
-// self-contained folder.
+// Curated seed. Drawn from the manifests' component lists (sol-components +
+// dk) but hand-filtered to plugin-sized pieces; paths point into each
+// plugin's self-contained folder. Icons are plain emoji characters (rendered
+// by the system emoji font — Noto Emoji on Linux, OFL/Apache licensed; no
+// bundled image assets). `list` says which ui:Menu seeds the entry:
+// 'use' = #InUse (data/tabs.ttl currently mounts it), 'avail' = #Available.
+// NOTE: a bare <sol-include> is NOT a plugin (it does nothing by itself), so
+// there is deliberately no generic "Page (HTML include)" entry — only
+// concrete pages like Home / Dev Tools that bring their own source.
 const PLUGINS = [
-  ['News (three-panel feeds)', 'sol-feed', [
-    ['view', 'threePanel'], ['reader', 'inline'],
-    ['source', './plugins/news/feeds.ttl#Feeds']]],
-  ['Music (Internet Archive)', 'ia-player', [
-    ['storage-ns', 'music'], ['defer', ''],
-    ['source', './plugins/ia-player/libraries/internet_archive_music/index.ttl']]],
-  ['Movies (Internet Archive)', 'ia-player', [
-    ['storage-ns', 'movies'], ['favourites-only', ''], ['defer', ''],
-    ['source', './plugins/ia-player/libraries/internet_archive_movies/index.ttl']]],
-  ['Images (Wikimedia)', 'omp-images', [
-    ['source', './plugins/omp-images/libraries/wikimedia_images/images.ttl#Images']]],
-  ['Workspaces (pod browser)', 'dk-podz', [
-    ['source', './plugins/podz/dk-podz.html'], ['defer', '']]],
-  ['SolidOS (data browser)', 'dk-solidos', [
-    ['source', './plugins/solidos/dk-solidos.html'], ['defer', '']], 'avail'],
-  ['Home (dashboard)', 'sol-include', [
-    ['source', './plugins/home/home.html'], ['trusted', '']], 'avail'],
-  ['Dev Tools (playgrounds)', 'sol-include', [
-    ['source', './plugins/dev-tools/dev-tools.html'], ['trusted', '']]],
-  ['Page (HTML include)', 'sol-include', [
-    ['source', ''], ['trusted', '']], 'avail'],
-  ['Search', 'sol-search', [
-    ['source', './plugins/search/search-engines.ttl#SearchEngines']]],
-  ['Calendar', 'dk-calendar-popout', [
-    ['source', './plugins/calendar/calendar-settings.ttl#All']]],
-  ['Sign in', 'sol-login', [
-    ['mode', 'popup'], ['popup-callback', 'node_modules/podz/popup-auth-callback.html'],
-    ['issuers', 'https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com']]],
-  ['Theme toggle', 'sol-button', [['data-handler', 'toggleTheme'], ['title', 'Toggle light / dark']], 'avail'],
-  ['Text size', 'sol-button', [['data-handler', 'cycleFontSize'], ['title', 'Text size']], 'avail'],
+  { label: 'News (three-panel feeds)', icon: '📰', tag: 'sol-feed',
+    desc: 'Read news feeds in a three-panel reader: sources, headlines, article.',
+    params: [['view', 'threePanel'], ['reader', 'inline'],
+      ['source', './plugins/news/feeds.ttl#Feeds']] },
+  { label: 'Music (Internet Archive)', icon: '🎵', tag: 'ia-player',
+    desc: 'Browse and play music collections from the Internet Archive.',
+    params: [['storage-ns', 'music'], ['defer', ''],
+      ['source', './plugins/ia-player/libraries/internet_archive_music/index.ttl']] },
+  { label: 'Movies (Internet Archive)', icon: '🎬', tag: 'ia-player',
+    desc: 'Browse and play films from the Internet Archive.',
+    params: [['storage-ns', 'movies'], ['favourites-only', ''], ['defer', ''],
+      ['source', './plugins/ia-player/libraries/internet_archive_movies/index.ttl']] },
+  { label: 'Images (Wikimedia)', icon: '🖼', tag: 'omp-images',
+    desc: 'Browse Wikimedia image galleries.',
+    params: [['source', './plugins/omp-images/libraries/wikimedia_images/images.ttl#Images']] },
+  { label: 'Workspaces (pod browser)', icon: '🗂', tag: 'dk-podz',
+    desc: 'Browse and manage your Solid pods and workspaces.',
+    params: [['source', './plugins/podz/dk-podz.html'], ['defer', '']] },
+  { label: 'SolidOS (data browser)', icon: '🐧', tag: 'dk-solidos', list: 'avail',
+    desc: 'The SolidOS data browser, embedded.',
+    params: [['source', './plugins/solidos/dk-solidos.html'], ['defer', '']] },
+  { label: 'Home (dashboard)', icon: '🏠', tag: 'sol-include', list: 'avail',
+    desc: 'Dashboard page with clock, weather and news feeds.',
+    params: [['source', './plugins/home/home.html'], ['trusted', '']] },
+  { label: 'Dev Tools (playgrounds)', icon: '🛠', tag: 'sol-include',
+    desc: 'JSON-LD, RDF, SHACL and SPARQL playgrounds, plus Solid resources.',
+    params: [['source', './plugins/dev-tools/dev-tools.html'], ['trusted', '']] },
+  { label: 'Search', icon: '🔍', tag: 'sol-search',
+    desc: 'Search box for the button bar (pluggable search engines).',
+    params: [['source', './plugins/search/search-engines.ttl#SearchEngines']] },
+  { label: 'Calendar', icon: '📅', tag: 'dk-calendar-popout',
+    desc: 'Pop-out month calendar for the button bar.',
+    params: [['source', './plugins/calendar/calendar-settings.ttl#All']] },
+  { label: 'Sign in', icon: '🔑', tag: 'sol-login',
+    desc: 'Solid sign-in button (popup flow).',
+    params: [['mode', 'popup'], ['popup-callback', 'node_modules/podz/popup-auth-callback.html'],
+      ['issuers', 'https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com']] },
+  { label: 'Theme toggle', icon: '🌗', tag: 'sol-button', list: 'avail',
+    desc: 'Button that switches between light and dark themes.',
+    params: [['data-handler', 'toggleTheme'], ['title', 'Toggle light / dark']] },
+  { label: 'Text size', icon: '🔤', tag: 'sol-button', list: 'avail',
+    desc: 'Button that cycles the app text size.',
+    params: [['data-handler', 'cycleFontSize'], ['title', 'Text size']] },
 ];
 
 const frag = (label) => label.replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '');
 
 const inList = (which) =>
-  PLUGINS.filter((p) => (p[3] || 'use') === which).map(([l]) => `<#${frag(l)}>`).join(' ');
+  PLUGINS.filter((p) => (p.list || 'use') === which).map((p) => `<#${frag(p.label)}>`).join(' ');
 
 let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
@@ -65,6 +82,8 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 # between them; Manage Menus offers #InUse for dragging onto the menu/bar
 # managers). Two ui:Menu lists of ui:Component entries over one shared pool,
 # seeded by tools/seed-palette.mjs and edited by the manager thereafter.
+# Each entry's ui:icon is an emoji character (system emoji font — no bundled
+# image assets) and its rdfs:comment is the card blurb.
 
 <#InUse> a ui:Menu ; ui:label "Plugins to Use" ;
   rdfs:comment "The plugins this app uses — the palette Manage Menus offers for dragging onto the tab menu and button bar. Edited with Manage Plugins (drag between lists; auto-saves)." ;
@@ -75,8 +94,10 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
   ui:parts ( ${inList('avail')} ) .
 
 `;
-for (const [label, tag, params] of PLUGINS) {
-  ttl += `<#${frag(label)}> a ui:Component ; ui:label ${JSON.stringify(label)} ; ui:name ${JSON.stringify(tag)}`;
+for (const { label, icon, desc, tag, params } of PLUGINS) {
+  ttl += `<#${frag(label)}> a ui:Component ; ui:label ${JSON.stringify(label)} ; ui:name ${JSON.stringify(tag)} ;\n`;
+  ttl += `  ui:icon ${JSON.stringify(icon)} ;\n`;
+  ttl += `  rdfs:comment ${JSON.stringify(desc)}`;
   if (params.length) {
     ttl += ' ;\n  ui:attribute\n' + params.map(([k, v]) =>
       `    [ schema:name ${JSON.stringify(k)} ; schema:value ${JSON.stringify(v)} ]`).join(' ,\n');

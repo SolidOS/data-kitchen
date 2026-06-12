@@ -6,6 +6,8 @@
 # between them; Manage Menus offers #InUse for dragging onto the menu/bar
 # managers). Two ui:Menu lists of ui:Component entries over one shared pool,
 # seeded by tools/seed-palette.mjs and edited by the manager thereafter.
+# Each entry's ui:icon is an emoji character (system emoji font — no bundled
+# image assets) and its rdfs:comment is the card blurb.
 
 <#InUse> a ui:Menu ; ui:label "Plugins to Use" ;
   rdfs:comment "The plugins this app uses — the palette Manage Menus offers for dragging onto the tab menu and button bar. Edited with Manage Plugins (drag between lists; auto-saves)." ;
@@ -13,21 +15,27 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
-  ui:parts ( <#SolidOS-data-browser> <#Home-dashboard> <#Page-HTML-include> <#Theme-toggle> <#Text-size> ) .
+  ui:parts ( <#SolidOS-data-browser> <#Home-dashboard> <#Theme-toggle> <#Text-size> ) .
 
 <#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;
+  ui:icon "📰" ;
+  rdfs:comment "Read news feeds in a three-panel reader: sources, headlines, article." ;
   ui:attribute
     [ schema:name "view" ; schema:value "threePanel" ] ,
     [ schema:name "reader" ; schema:value "inline" ] ,
     [ schema:name "source" ; schema:value "./plugins/news/feeds.ttl#Feeds" ] .
 
 <#Music-Internet-Archive> a ui:Component ; ui:label "Music (Internet Archive)" ; ui:name "ia-player" ;
+  ui:icon "🎵" ;
+  rdfs:comment "Browse and play music collections from the Internet Archive." ;
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "music" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
     [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_music/index.ttl" ] .
 
 <#Movies-Internet-Archive> a ui:Component ; ui:label "Movies (Internet Archive)" ; ui:name "ia-player" ;
+  ui:icon "🎬" ;
+  rdfs:comment "Browse and play films from the Internet Archive." ;
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "movies" ] ,
     [ schema:name "favourites-only" ; schema:value "" ] ,
@@ -35,54 +43,69 @@
     [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] .
 
 <#Images-Wikimedia> a ui:Component ; ui:label "Images (Wikimedia)" ; ui:name "omp-images" ;
+  ui:icon "🖼" ;
+  rdfs:comment "Browse Wikimedia image galleries." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
 
 <#Workspaces-pod-browser> a ui:Component ; ui:label "Workspaces (pod browser)" ; ui:name "dk-podz" ;
+  ui:icon "🗂" ;
+  rdfs:comment "Browse and manage your Solid pods and workspaces." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#SolidOS-data-browser> a ui:Component ; ui:label "SolidOS (data browser)" ; ui:name "dk-solidos" ;
+  ui:icon "🐧" ;
+  rdfs:comment "The SolidOS data browser, embedded." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#Home-dashboard> a ui:Component ; ui:label "Home (dashboard)" ; ui:name "sol-include" ;
+  ui:icon "🏠" ;
+  rdfs:comment "Dashboard page with clock, weather and news feeds." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/home/home.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
 <#Dev-Tools-playgrounds> a ui:Component ; ui:label "Dev Tools (playgrounds)" ; ui:name "sol-include" ;
+  ui:icon "🛠" ;
+  rdfs:comment "JSON-LD, RDF, SHACL and SPARQL playgrounds, plus Solid resources." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/dev-tools/dev-tools.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
-<#Page-HTML-include> a ui:Component ; ui:label "Page (HTML include)" ; ui:name "sol-include" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
-
 <#Search> a ui:Component ; ui:label "Search" ; ui:name "sol-search" ;
+  ui:icon "🔍" ;
+  rdfs:comment "Search box for the button bar (pluggable search engines)." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/search/search-engines.ttl#SearchEngines" ] .
 
 <#Calendar> a ui:Component ; ui:label "Calendar" ; ui:name "dk-calendar-popout" ;
+  ui:icon "📅" ;
+  rdfs:comment "Pop-out month calendar for the button bar." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/calendar/calendar-settings.ttl#All" ] .
 
 <#Sign-in> a ui:Component ; ui:label "Sign in" ; ui:name "sol-login" ;
+  ui:icon "🔑" ;
+  rdfs:comment "Solid sign-in button (popup flow)." ;
   ui:attribute
     [ schema:name "mode" ; schema:value "popup" ] ,
     [ schema:name "popup-callback" ; schema:value "node_modules/podz/popup-auth-callback.html" ] ,
     [ schema:name "issuers" ; schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .
 
 <#Theme-toggle> a ui:Component ; ui:label "Theme toggle" ; ui:name "sol-button" ;
+  ui:icon "🌗" ;
+  rdfs:comment "Button that switches between light and dark themes." ;
   ui:attribute
     [ schema:name "data-handler" ; schema:value "toggleTheme" ] ,
     [ schema:name "title" ; schema:value "Toggle light / dark" ] .
 
 <#Text-size> a ui:Component ; ui:label "Text size" ; ui:name "sol-button" ;
+  ui:icon "🔤" ;
+  rdfs:comment "Button that cycles the app text size." ;
   ui:attribute
     [ schema:name "data-handler" ; schema:value "cycleFontSize" ] ,
     [ schema:name "title" ; schema:value "Text size" ] .
