@@ -411,7 +411,10 @@
     whenTabsReady(() => {
       solTabs = document.getElementById('dk-tabs');
       for (const el of allPanels()) el.addEventListener('omp:access', syncGating);
-      solTabs.addEventListener('sol-tab-change', (e) => onTab(e.detail?.name));
+      // Only the MAIN tabset's changes are tab picks — a sub-tabset inside a
+      // page (e.g. Customize's subtabs, living in the menu pane) bubbles the
+      // same event and must not dismiss the pane or touch panel state.
+      solTabs.addEventListener('sol-tab-change', (e) => { if (e.target === solTabs) onTab(e.detail?.name); });
       // The ☰ menu pane (declared in index.html with its data-for claims) is
       // re-homed into the tab content area so it overlays the panes — the
       // same re-homing sol-tabs does for the bar/chrome launchers. Mounting

@@ -149,7 +149,8 @@ on-demand: the hidden
 
 ```bash
 node claude/smoke-tests/verify-unified-shell.mjs   # every tab functional
-node claude/smoke-tests/verify-builders.mjs        # edit → save → regenerate → reload
+node claude/smoke-tests/verify-customize-menus.mjs   # subtab 1: edit → auto-save → regenerate
+node claude/smoke-tests/verify-customize-plugins.mjs # subtab 2: catalog + manifest import
 ```
 
 (Both need the servers up and Chrome; see the file headers.)

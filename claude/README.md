@@ -27,7 +27,7 @@ headers):
   startup), per-tab plugin checks (tracks, feeds, pod panes), context help
   / ☰ items following the active plugin, chrome completeness, no
   app-internal failures. Drops `unified-shell.png` as the visual baseline.
-- `verify-builders.mjs` — Customize end-to-end: ☰ → modal builders render,
+- `verify-customize-menus.mjs` (was verify-builders) — Customize subtab 1: managers render,
   drag-payload assignment, save (PUT via pivot), generator re-emits
   html-first.html, fresh-browser reload shows the built tab, repo state
   restored. GUARDED: refuses to run with uncommitted tabs.ttl /
