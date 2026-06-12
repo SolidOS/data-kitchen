@@ -40,16 +40,16 @@
   skos:member <#Dev-Tools-playgrounds>, <#0data-Hello>, <#KeyPod>, <#Synara-AI> .
 
 <#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
-  skos:member <#BilliPod>, <#Booklice>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#TodoPod> .
+  skos:member <#BilliPod>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#TodoPod> .
+
+<#Community> a skos:Collection ; skos:prefLabel "Community" ;
+  skos:member <#Booklice>, <#Portable-LibreChat>, <#Tired-Bike> .
 
 <#Content-Publishing> a skos:Collection ; skos:prefLabel "Content Publishing" ;
   skos:member <#dokieli>, <#NotePod>, <#RoloPod> .
 
 <#Health> a skos:Collection ; skos:prefLabel "Health" ;
   skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
-
-<#Community> a skos:Collection ; skos:prefLabel "Community" ;
-  skos:member <#Portable-LibreChat>, <#Tired-Bike> .
 
 <#0data-Hello> a ui:Link ; ui:label "0data Hello" ;
   ui:icon "🧪" ;
