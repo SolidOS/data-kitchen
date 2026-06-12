@@ -113,15 +113,18 @@ try {
       await new Promise(r => setTimeout(r, 250));
       if (/saved/.test(sh.querySelector('.builder-status')?.textContent || '')) break;
     }
+    await new Promise(r => setTimeout(r, 800));   // let the post-save re-render settle
     const row2 = [...sh.querySelectorAll('.row')].find(r => /Smoke Test Tab/.test(r.querySelector('.label')?.value || ''));
     return {
-      chip: row2?.querySelector('.chip')?.textContent,
-      childCount: row2 ? row2.closest('li').querySelectorAll('ul .row').length : -1,
+      chips: row2 ? [...row2.querySelectorAll('.chip')].map((c) => c.textContent) : [],
+      // getElementsByTagName counts true descendants only (querySelectorAll
+      // 'ul .row' would match the row via the tree's OWN ul outside the li)
+      nestedRows: row2 ? row2.closest('li').getElementsByTagName('ul').length : -1,
     };
   });
-  // childCount can transiently include a re-rendering row; the exact 2-child
-  // truth is asserted on the generated <submenu> block below.
-  check('second drop converts the item to a submenu', submenu.chip === 'submenu' && submenu.childCount >= 2,
+  check('second drop lists BOTH plugins as chips ON the row (no nested rows)',
+    submenu.chips.length === 2 && submenu.nestedRows === 0
+    && submenu.chips.some((c) => /Internet Archive/.test(c)) && submenu.chips.some((c) => /Smoke Weather/.test(c)),
     JSON.stringify(submenu));
 
   // --- the PUT landed on disk; the generator picks it up ---
