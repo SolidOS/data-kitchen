@@ -8,4 +8,5 @@
   ui:icon "🧾" ;
   ui:href <https://billipod.solidcommunity.au> ;
   ui:region ui:Tab ;
-  rdfs:comment "Track bills with payment reminders." .
+  rdfs:comment "Track bills with payment reminders." ;
+  dct:subject "Productivity" .

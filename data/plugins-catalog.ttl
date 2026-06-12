@@ -34,10 +34,10 @@
   skos:member <#Music-Internet-Archive>, <#Movies-Internet-Archive>, <#Images-Wikimedia>, <#Media-Kraken>, <#MovieStar>, <#Solidflix> .
 
 <#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
-  skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Dev-Tools-playgrounds>, <#Sign-in> .
+  skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Dev-Tools-playgrounds>, <#Sign-in>, <#0data-Hello> .
 
 <#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
-  skos:member <#0data-Hello>, <#Booklice>, <#HomeVault>, <#KeyPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#Synara-AI>, <#TodoPod> .
+  skos:member <#BilliPod>, <#Booklice>, <#HomeVault>, <#KeyPod>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#Synara-AI>, <#TodoPod> .
 
 <#Content-Notes-Blogging-and-Publishing> a skos:Collection ; skos:prefLabel "Content, Notes, Blogging and Publishing" ;
   skos:member <#dokieli>, <#NotePod>, <#RoloPod> .

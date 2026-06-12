@@ -9,4 +9,4 @@
   ui:href <https://hello.0data.app/solid/> ;
   ui:region ui:Tab ;
   rdfs:comment "Tiny demo app showing data stored in your pod." ;
-  dct:subject "Productivity" .
+  dct:subject "Tech" .
