@@ -132,10 +132,12 @@
     function onTab(name) {
       // Picking a tab dismisses the help overlay (the ? sol-button inline
       // region) and the ☰ menu pane (#dk-menu-pane, the data-for region the
-      // ☰ component items display in).
+      // ☰ component items display in) — and forgets the pane choice, so a
+      // reload comes back to the tab, not the pane.
       document.querySelector('.omp-help-launch')?.close?.();
       const menuPane = document.getElementById('dk-menu-pane');
       if (menuPane) menuPane.hidden = true;
+      try { localStorage.removeItem('dk:menu-pane-item'); } catch {}
       const el = paneForName(name)?.querySelector('[id^="panel-"]');
       if (el) current = el.id.replace(/^panel-/, '');
       el?.ensureLoaded?.();
@@ -414,11 +416,28 @@
       // re-homed into the tab content area so it overlays the panes — the
       // same re-homing sol-tabs does for the bar/chrome launchers. Mounting
       // into it (mountInTarget fires sol-tab-activate) un-hides it; picking
-      // a tab hides it again (onTab above).
+      // a tab hides it again (onTab above). The open item is remembered so a
+      // reload while e.g. Manage Plugins is showing comes back to it.
       const menuPane = document.getElementById('dk-menu-pane');
       if (menuPane && solTabs.body) {
         solTabs.body.appendChild(menuPane);
-        menuPane.addEventListener('sol-tab-activate', () => { menuPane.hidden = false; });
+        menuPane.addEventListener('sol-tab-activate', (e) => {
+          menuPane.hidden = false;
+          try { localStorage.setItem('dk:menu-pane-item', e.detail?.name || ''); } catch {}
+        });
+      }
+      // Restore the pane item from before the reload. The ☰ dropdown loads
+      // its RDF items asynchronously, so retry select() until the pane shows
+      // (or give up quietly). Only component/link items restore — a command
+      // pane (Settings) just falls back to the tab.
+      let paneSaved = null;
+      try { paneSaved = localStorage.getItem('dk:menu-pane-item'); } catch {}
+      if (paneSaved && menuPane) {
+        let tries = 0;
+        const reopen = setInterval(() => {
+          if (!menuPane.hidden || ++tries > 20) { clearInterval(reopen); return; }
+          document.querySelector('sol-dropdown-button.omp-more')?.select?.(paneSaved);
+        }, 400);
       }
       if (canWrite()) panelEl('news')?.toggleAttribute('editable', true);
       // The appearance buttons arrived with the include — wire + sync them.

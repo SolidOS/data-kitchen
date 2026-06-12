@@ -99,10 +99,10 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
   ui:parts ( ${inList('avail')} ) .
 
-# The whole catalog in one list — a standalone viewer page (not part of
-# the app) points here: claude/scratch/all-plugins.html.
+# The whole catalog in one list — the ☰ "All Plugins…" page
+# (pages/all-plugins.html) browses this.
 <#All> a ui:Menu ; ui:label "All Plugins" ;
-  rdfs:comment "Every plugin in the catalog, in use or not. Seeded; not maintained by Manage Plugins saves. Viewed by the standalone claude/scratch/all-plugins.html." ;
+  rdfs:comment "Every plugin in the catalog, in use or not — what pages/all-plugins.html displays. Seeded; not maintained by Manage Plugins saves." ;
   ui:parts ( ${PLUGINS.map((p) => `<#${frag(p.label)}>`).join(' ')} ) .
 
 # Topic categories — skos:Collections over the same pool; the grouped

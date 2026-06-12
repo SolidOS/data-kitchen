@@ -18,10 +18,10 @@
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
   ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> ) .
 
-# The whole catalog in one list — a standalone viewer page (not part of
-# the app) points here: claude/scratch/all-plugins.html.
+# The whole catalog in one list — the ☰ "All Plugins…" page
+# (pages/all-plugins.html) browses this.
 <#All> a ui:Menu ; ui:label "All Plugins" ;
-  rdfs:comment "Every plugin in the catalog, in use or not. Seeded; not maintained by Manage Plugins saves. Viewed by the standalone claude/scratch/all-plugins.html." ;
+  rdfs:comment "Every plugin in the catalog, in use or not — what pages/all-plugins.html displays. Seeded; not maintained by Manage Plugins saves." ;
   ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Dev-Tools-playgrounds> <#Search> <#Calendar> <#Sign-in> <#Weather> <#Clock> ) .
 
 # Topic categories — skos:Collections over the same pool; the grouped
