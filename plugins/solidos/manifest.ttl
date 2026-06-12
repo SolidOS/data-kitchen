@@ -7,7 +7,7 @@
   a ui:Component ;
   ui:label "SolidOS" ;
   ui:name "dk-solidos" ;
-  dct:creator "Jeff Zucker" ;
+  dct:creator "SolidOS Team" ;
   dct:hasPart <./dk-solidos.html> , <./dk-solidos.js> , <./solidos-host.html> ;
   schema:softwareHelp <./help.html> ;
   dct:subject "Tech" .

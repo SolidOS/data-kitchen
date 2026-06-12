@@ -77,7 +77,7 @@
   ui:icon "📝" ;
   ui:region ui:Tab ;
   rdfs:comment "Write and publish articles, with annotations and social interactions." ;
-  dct:creator "Sarven Capadisli" ;
+  dct:creator "Sarven Capadisli and Virginia Balseiro" ;
   ui:href <https://dokie.li/> .
 
 <#FilePod> a ui:Link ; ui:label "FilePod" ;
@@ -327,7 +327,7 @@
 
 <#SolidOS-data-browser> a ui:Component ; ui:label "SolidOS (data browser)" ; ui:name "dk-solidos" ;
   ui:icon "🐧" ;
-  dct:creator "Jeff Zucker" ;
+  dct:creator "SolidOS Team" ;
   rdfs:comment "The SolidOS data browser, embedded." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,

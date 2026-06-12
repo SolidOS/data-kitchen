@@ -9,5 +9,5 @@
   ui:href <https://dokie.li/> ;
   ui:region ui:Tab ;
   rdfs:comment "Write and publish articles, with annotations and social interactions." ;
-  dct:creator "Sarven Capadisli" ;
+  dct:creator "Sarven Capadisli and Virginia Balseiro" ;
   dct:subject "Content Publishing" .

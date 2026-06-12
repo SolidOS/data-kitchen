@@ -91,7 +91,7 @@ const PLUGINS = [
   { label: 'Workspaces (pod browser)', cat: 'Pod Management', icon: '🗂', tag: 'dk-podz',
     desc: 'Browse and manage your Solid pods and workspaces.',
     params: [['source', './plugins/podz/dk-podz.html'], ['defer', '']] },
-  { label: 'SolidOS (data browser)', cat: 'Pod Management', icon: '🐧', tag: 'dk-solidos', list: 'avail',
+  { label: 'SolidOS (data browser)', cat: 'Pod Management', creator: 'SolidOS Team', icon: '🐧', tag: 'dk-solidos', list: 'avail',
     desc: 'The SolidOS data browser, embedded.',
     params: [['source', './plugins/solidos/dk-solidos.html'], ['defer', '']] },
   { label: 'Dev Tools (playgrounds)', cat: 'Tech', icon: '🛠', tag: 'sol-include',
@@ -174,12 +174,13 @@ for (const a of APPS) {
   ttl += `  ui:href <${a.href}> .\n\n`;
 }
 
-// Every curated entry is a sol-/dk-/omp-/ia- component — all by Jeff.
+// Default author for the shipped sol-/dk-/omp-/ia- components; an entry's
+// own `creator` (e.g. SolidOS Team) overrides.
 const AUTHOR = 'Jeff Zucker';
-for (const { label, icon, desc, tag, params } of PLUGINS) {
+for (const { label, icon, desc, tag, params, creator } of PLUGINS) {
   ttl += `<#${frag(label)}> a ui:Component ; ui:label ${JSON.stringify(label)} ; ui:name ${JSON.stringify(tag)} ;\n`;
   ttl += `  ui:icon ${JSON.stringify(icon)} ;\n`;
-  ttl += `  dct:creator ${JSON.stringify(AUTHOR)} ;\n`;
+  ttl += `  dct:creator ${JSON.stringify(creator || AUTHOR)} ;\n`;
   ttl += `  rdfs:comment ${JSON.stringify(desc)}`;
   if (params.length) {
     ttl += ' ;\n  ui:attribute\n' + params.map(([k, v]) =>
