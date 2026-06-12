@@ -15,7 +15,7 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
-  ui:parts ( <#SolidOS-data-browser> <#Home-dashboard> <#Theme-toggle> <#Text-size> ) .
+  ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> <#Theme-toggle> <#Text-size> ) .
 
 <#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;
   ui:icon "📰" ;
@@ -62,13 +62,6 @@
     [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
-<#Home-dashboard> a ui:Component ; ui:label "Home (dashboard)" ; ui:name "sol-include" ;
-  ui:icon "🏠" ;
-  rdfs:comment "Dashboard page with clock, weather and news feeds." ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/home/home.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
-
 <#Dev-Tools-playgrounds> a ui:Component ; ui:label "Dev Tools (playgrounds)" ; ui:name "sol-include" ;
   ui:icon "🛠" ;
   rdfs:comment "JSON-LD, RDF, SHACL and SPARQL playgrounds, plus Solid resources." ;
@@ -95,6 +88,18 @@
     [ schema:name "mode" ; schema:value "popup" ] ,
     [ schema:name "popup-callback" ; schema:value "node_modules/podz/popup-auth-callback.html" ] ,
     [ schema:name "issuers" ; schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .
+
+<#Weather> a ui:Component ; ui:label "Weather" ; ui:name "sol-weather" ;
+  ui:icon "🌤" ;
+  rdfs:comment "Weather widget (location and units in its settings file)." ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/weather/weather-settings.ttl#Settings" ] .
+
+<#Clock> a ui:Component ; ui:label "Clock" ; ui:name "sol-time" ;
+  ui:icon "🕐" ;
+  rdfs:comment "Clock widget (timezone in its settings file)." ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "./plugins/time/time-settings.ttl#Settings" ] .
 
 <#Theme-toggle> a ui:Component ; ui:label "Theme toggle" ; ui:name "sol-button" ;
   ui:icon "🌗" ;

@@ -1,8 +1,8 @@
 // P4 verification — the unified dk shell (index.html). Loads the app as the
 // electron view would (pivot server on :3000, proxy on :3002), waits for
 // component-interop, and asserts FUNCTIONAL state per tab: the topmost
-// sol-tabs renders the full union tab row, Home is the default with its
-// dashboard widgets, ia-player lists tracks on Music, sol-feed renders on
+// sol-tabs renders the full union tab row, News is the default,
+// ia-player lists tracks on Music, sol-feed renders on
 // News, dk-podz mounts its panes on Podz, and no app-internal request fails.
 // Run from dk root with both servers up:
 //   node pivot/run-server.cjs . 3000 &   node proxy/index.cjs &
@@ -32,7 +32,7 @@ page.on('requestfailed', r => {
   if (!EXTERNAL.test(r.url())) failed.push(`${err} ${r.url()}`);
 });
 
-// Not networkidle: the Home feed aggregates many sources through the proxy
+// Not networkidle: the News feed aggregates many sources through the proxy
 // and the network never goes idle. Interop-ready + a settle pause is the
 // meaningful "app booted" signal.
 await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
@@ -51,8 +51,8 @@ async function clickTab(re, settleMs) {
   }, { source: re.source, flags: re.flags, settleMs });
 }
 
-// --- tab row renders the default set (Home and SolidOS are pantry:
-//     defined in tabs.ttl + palette but not in the menu) ---
+// --- tab row renders the default set (SolidOS is pantry — defined in
+//     tabs.ttl + palette but not in the menu; 'Home' must not reappear) ---
 const tabs = await page.evaluate(() => {
   const tabset = document.querySelector('sol-tabs');
   if (!tabset) return null;

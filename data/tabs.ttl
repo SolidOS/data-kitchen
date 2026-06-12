@@ -9,21 +9,15 @@
 # (help, ☰ menu, sign-in) — config-editable here, self-healed if deleted.
 # An rdfs:comment on an item is re-emitted as the HTML comment before it.
 
-# Not every defined panel is IN the menu: #panel-home, #panel-solidos and
-# #panel-customize (now a ☰ menu item) are PANTRY items — kept here (and in
-# data/palette.ttl's lists) so the managers can drag them back in.
+# Not every defined panel is IN the menu: #panel-solidos and #panel-customize
+# (now a ☰ menu item) are PANTRY items — kept here (and in data/palette.ttl's
+# lists) so the managers can drag them back in.
 # Solid Resources / Dev Tools are tabs whose SUBMENUS (the
 # link strips) live inside their plugin pages, never on this tabset.
 <#Tabs> a ui:Menu ; ui:label "data-kitchen" ;
   ui:orientation ui:Horizontal ;
   ui:parts ( <#panel-news> <#panel-music> <#panel-movies>
              <#panel-images> <#panel-podz> <#panel-dev-tools> ) .
-
-<#panel-home> a ui:Component ; ui:label "🏠 Home" ; ui:name "sol-include" ;
-  ui:attribute
-    [ schema:name "id" ;      schema:value "panel-home" ] ,
-    [ schema:name "source" ;  schema:value "./plugins/home/home.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
 
 <#panel-news> a ui:Component ; ui:label "📰 News" ; ui:name "sol-feed" ;
   ui:attribute

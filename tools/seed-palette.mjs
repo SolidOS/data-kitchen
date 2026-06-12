@@ -22,7 +22,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 // 'use' = #InUse (data/tabs.ttl currently mounts it), 'avail' = #Available.
 // NOTE: a bare <sol-include> is NOT a plugin (it does nothing by itself), so
 // there is deliberately no generic "Page (HTML include)" entry — only
-// concrete pages like Home / Dev Tools that bring their own source.
+// concrete pages like Dev Tools that bring their own source.
 const PLUGINS = [
   { label: 'News (three-panel feeds)', icon: '📰', tag: 'sol-feed',
     desc: 'Read news feeds in a three-panel reader: sources, headlines, article.',
@@ -45,9 +45,6 @@ const PLUGINS = [
   { label: 'SolidOS (data browser)', icon: '🐧', tag: 'dk-solidos', list: 'avail',
     desc: 'The SolidOS data browser, embedded.',
     params: [['source', './plugins/solidos/dk-solidos.html'], ['defer', '']] },
-  { label: 'Home (dashboard)', icon: '🏠', tag: 'sol-include', list: 'avail',
-    desc: 'Dashboard page with clock, weather and news feeds.',
-    params: [['source', './plugins/home/home.html'], ['trusted', '']] },
   { label: 'Dev Tools (playgrounds)', icon: '🛠', tag: 'sol-include',
     desc: 'JSON-LD, RDF, SHACL and SPARQL playgrounds, plus Solid resources.',
     params: [['source', './plugins/dev-tools/dev-tools.html'], ['trusted', '']] },
@@ -61,6 +58,12 @@ const PLUGINS = [
     desc: 'Solid sign-in button (popup flow).',
     params: [['mode', 'popup'], ['popup-callback', 'node_modules/podz/popup-auth-callback.html'],
       ['issuers', 'https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com']] },
+  { label: 'Weather', icon: '🌤', tag: 'sol-weather', list: 'avail',
+    desc: 'Weather widget (location and units in its settings file).',
+    params: [['source', './plugins/weather/weather-settings.ttl#Settings']] },
+  { label: 'Clock', icon: '🕐', tag: 'sol-time', list: 'avail',
+    desc: 'Clock widget (timezone in its settings file).',
+    params: [['source', './plugins/time/time-settings.ttl#Settings']] },
   { label: 'Theme toggle', icon: '🌗', tag: 'sol-button', list: 'avail',
     desc: 'Button that switches between light and dark themes.',
     params: [['data-handler', 'toggleTheme'], ['title', 'Toggle light / dark']] },
