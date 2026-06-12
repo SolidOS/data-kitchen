@@ -127,6 +127,9 @@ function install() {
 //   sol-button (help ?) — reflects `open` on the host while its inline
 //                         overlay is shown
 //   sol-modal           — conjured into <body> while open, removed on close
+//   #dk-menu-pane       — the ☰ component items' replace pane over the tab
+//                         content; toggles `hidden` (shown on mount, hidden
+//                         when a tab is picked)
 // Custom elements upgrade asynchronously (component-interop imports them
 // after the include lands), so shadow roots appear at different times. The
 // guard binds INCREMENTALLY — each boot tick adopts any newly-upgraded
@@ -141,7 +144,8 @@ function guardAnyOpen() {
     || guardHosts.search.some((s) => { const p = s.shadowRoot.querySelector('.panel'); return p && p.hasAttribute('open'); })
     || guardHosts.calendar.some((c) => { const p = c.querySelector('.dk-popout-panel'); return p && !p.hidden; })
     || !!document.querySelector('sol-button[open]')   // inline overlay (help ?)
-    || !!document.querySelector('sol-modal');         // conjured modal (settings, customize, …)
+    || !!document.querySelector('sol-modal')          // conjured modal
+    || !!document.querySelector('#dk-menu-pane:not([hidden])'); // ☰ items' replace pane
 }
 function guardCheck() {
   const open = guardAnyOpen();
@@ -160,11 +164,12 @@ function guardWatch(el, root, kind) {
 let guardBodyWatched = false;
 function setupMenuOverlayGuard() {
   // One body-level observer covers the light-DOM signals: sol-button's
-  // reflected `open` attribute and sol-modal elements entering/leaving.
+  // reflected `open` attribute, sol-modal elements entering/leaving, and
+  // #dk-menu-pane's `hidden` toggling.
   if (!guardBodyWatched && document.body) {
     guardBodyWatched = true;
     new MutationObserver(guardCheck).observe(document.body, {
-      childList: true, subtree: true, attributes: true, attributeFilter: ['open'],
+      childList: true, subtree: true, attributes: true, attributeFilter: ['open', 'hidden'],
     });
   }
   for (const d of document.querySelectorAll('sol-dropdown-button')) {
