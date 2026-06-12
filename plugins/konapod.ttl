@@ -9,4 +9,5 @@
   ui:href <https://konapod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Collect and analyse your car’s data." ;
+  dct:creator "Togaware" ;
   dct:subject "Productivity" .

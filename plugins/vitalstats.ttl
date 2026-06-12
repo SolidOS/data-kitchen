@@ -9,4 +9,5 @@
   ui:href <https://vitalstats.apps.privatedatapod.com/> ;
   ui:region ui:Tab ;
   rdfs:comment "Log blood pressure, weight and other vital signs." ;
+  dct:publisher "PrivateDataPod" ;
   dct:subject "Health" .

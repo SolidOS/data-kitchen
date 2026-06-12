@@ -9,4 +9,5 @@
   ui:href <https://homevault.apps.privatedatapod.com/> ;
   ui:region ui:Tab ;
   rdfs:comment "Home inventory for insurance and household records." ;
+  dct:publisher "PrivateDataPod" ;
   dct:subject "Productivity" .

@@ -2,6 +2,7 @@
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 @prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
 
 # The plugin lists <sol-plugin-manager> manages (Manage Plugins drags entries
 # between them; Manage Menus offers #InUse for dragging onto the menu/bar
@@ -55,120 +56,140 @@
   ui:icon "🧪" ;
   ui:region ui:Tab ;
   rdfs:comment "Tiny demo app showing data stored in your pod." ;
+  dct:publisher "0data" ;
   ui:href <https://hello.0data.app/solid/> .
 
 <#BilliPod> a ui:Link ; ui:label "BilliPod" ;
   ui:icon "🧾" ;
   ui:region ui:Tab ;
   rdfs:comment "Track bills with payment reminders." ;
+  dct:creator "Togaware" ;
   ui:href <https://billipod.solidcommunity.au> .
 
 <#Booklice> a ui:Link ; ui:label "Booklice" ;
   ui:icon "🔖" ;
   ui:region ui:Tab ;
   rdfs:comment "Bookmarks you can share with a community." ;
+  dct:publisher "scenaristeur" ;
   ui:href <https://scenaristeur.github.io/booklice/> .
 
 <#dokieli> a ui:Link ; ui:label "dokieli" ;
   ui:icon "📝" ;
   ui:region ui:Tab ;
   rdfs:comment "Write and publish articles, with annotations and social interactions." ;
+  dct:creator "Sarven Capadisli" ;
   ui:href <https://dokie.li/> .
 
 <#FilePod> a ui:Link ; ui:label "FilePod" ;
   ui:icon "📁" ;
   ui:region ui:Tab ;
   rdfs:comment "File browser for multiple platforms." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://filepod.solidcommunity.au> .
 
 <#GeoPod> a ui:Link ; ui:label "GeoPod" ;
   ui:icon "🗺️" ;
   ui:region ui:Tab ;
   rdfs:comment "Store points of interest and encrypted tracks on a map." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://geopod.solidcommunity.au> .
 
 <#HealthPod> a ui:Link ; ui:label "HealthPod" ;
   ui:icon "🩺" ;
   ui:region ui:Tab ;
   rdfs:comment "Manage your health data, with encryption." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://healthpod.solidcommunity.au> .
 
 <#HomeVault> a ui:Link ; ui:label "HomeVault" ;
   ui:icon "🏠" ;
   ui:region ui:Tab ;
   rdfs:comment "Home inventory for insurance and household records." ;
+  dct:publisher "PrivateDataPod" ;
   ui:href <https://homevault.apps.privatedatapod.com/> .
 
 <#InnerPod> a ui:Link ; ui:label "InnerPod" ;
   ui:icon "🧘" ;
   ui:region ui:Tab ;
   rdfs:comment "Guided meditation timer that records your sessions." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://innerpod.solidcommunity.au> .
 
 <#KeyPod> a ui:Link ; ui:label "KeyPod" ;
   ui:icon "🔐" ;
   ui:region ui:Tab ;
   rdfs:comment "Encrypted password and key-value store." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://keypod.solidcommunity.au> .
 
 <#KonaPod> a ui:Link ; ui:label "KonaPod" ;
   ui:icon "🚗" ;
   ui:region ui:Tab ;
   rdfs:comment "Collect and analyse your car’s data." ;
+  dct:creator "Togaware" ;
   ui:href <https://konapod.solidcommunity.au> .
 
 <#Media-Kraken> a ui:Link ; ui:label "Media Kraken" ;
   ui:icon "🎬" ;
   ui:region ui:Tab ;
   rdfs:comment "Track movies and build personal collections." ;
+  dct:creator "Noel De Martin" ;
   ui:href <https://noeldemartin.github.io/media-kraken/> .
 
 <#MovieStar> a ui:Link ; ui:label "MovieStar" ;
   ui:icon "🎬" ;
   ui:region ui:Tab ;
   rdfs:comment "Track what you watch, share, and get recommendations." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://moviestar.solidcommunity.au> .
 
 <#MSFatigue> a ui:Link ; ui:label "MSFatigue" ;
   ui:icon "📋" ;
   ui:region ui:Tab ;
   rdfs:comment "Survey app for MS fatigue research, with encrypted responses." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://msfatigue.solidcommunity.au> .
 
 <#NotePod> a ui:Link ; ui:label "NotePod" ;
   ui:icon "🗒️" ;
   ui:region ui:Tab ;
   rdfs:comment "Private, shareable notes with encryption." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://notepod.solidcommunity.au> .
 
 <#ODI-Solid-File-Manager> a ui:Link ; ui:label "ODI Solid File Manager" ;
   ui:icon "📁" ;
   ui:region ui:Tab ;
   rdfs:comment "Friendly file and folder manager for your pod." ;
+  dct:creator "Open Data Institute" ;
   ui:href <https://filemanager.solid-experiments.org/> .
 
 <#Penny> a ui:Link ; ui:label "Penny" ;
   ui:icon "📁" ;
   ui:region ui:Tab ;
   rdfs:comment "Browse and manage everything in your pod." ;
+  dct:creator "Vincent Tunru" ;
   ui:href <https://penny.vincenttunru.com/> .
 
 <#Pod-Drive> a ui:Link ; ui:label "Pod Drive" ;
   ui:icon "📁" ;
   ui:region ui:Tab ;
   rdfs:comment "Drive-style file manager for your pod." ;
+  dct:creator "PrivateDataPod team" ;
   ui:href <https://drive.privatedatapod.com/> .
 
 <#Pod-Pro> a ui:Link ; ui:label "Pod Pro" ;
   ui:icon "🧰" ;
   ui:region ui:Tab ;
   rdfs:comment "Power-editor for the contents of your pod." ;
+  dct:creator "Jasmine Leonard" ;
   ui:href <https://podpro.dev/> .
 
 <#Pod-Resume> a ui:Link ; ui:label "Pod Resume" ;
   ui:icon "📄" ;
   ui:region ui:Tab ;
   rdfs:comment "Résumé builder that keeps your CV history." ;
+  dct:creator "PrivateDataPod team" ;
   ui:href <https://resume.privatedatapod.com/> .
 
 <#PodCal> a ui:Link ; ui:label "PodCal" ;
@@ -181,72 +202,84 @@
   ui:icon "🔍" ;
   ui:region ui:Tab ;
   rdfs:comment "Browse and manage the resources in your pod." ;
+  dct:publisher "PodOS project" ;
   ui:href <https://browser.pod-os.org/> .
 
 <#Portable-LibreChat> a ui:Link ; ui:label "Portable LibreChat" ;
   ui:icon "💬" ;
   ui:region ui:Tab ;
   rdfs:comment "Open-source AI chat that keeps your conversations in your pod." ;
+  dct:creator "Solid Project" ;
   ui:href <https://chat.solidproject.org/> .
 
 <#RoloPod> a ui:Link ; ui:label "RoloPod" ;
   ui:icon "📇" ;
   ui:region ui:Tab ;
   rdfs:comment "Address book with selective sharing." ;
+  dct:creator "Togaware" ;
   ui:href <https://rolopod.solidcommunity.au> .
 
 <#SecureDialog> a ui:Link ; ui:label "SecureDialog" ;
   ui:icon "💉" ;
   ui:region ui:Tab ;
   rdfs:comment "Diabetes logging with encrypted storage." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://securedialog.solidcommunity.au> .
 
 <#Solid-File-Manager> a ui:Link ; ui:label "Solid File Manager" ;
   ui:icon "📁" ;
   ui:region ui:Tab ;
   rdfs:comment "Manage the files in your pod." ;
+  dct:creator "Otto AA" ;
   ui:href <https://otto-aa.github.io/solid-filemanager/> .
 
 <#Solidflix> a ui:Link ; ui:label "Solidflix" ;
   ui:icon "🎬" ;
   ui:region ui:Tab ;
   rdfs:comment "Movie tracking with personalised recommendations." ;
+  dct:creator "Oxford Human Centred Computing Group" ;
   ui:href <https://oxfordhcc.github.io/solid-media/> .
 
 <#SolidFocus> a ui:Link ; ui:label "SolidFocus" ;
   ui:icon "✅" ;
   ui:region ui:Tab ;
   rdfs:comment "Tasks and notes, works offline." ;
+  dct:creator "Noel De Martin" ;
   ui:href <https://focus.noeldemartin.com/> .
 
 <#Synara-AI> a ui:Link ; ui:label "Synara AI" ;
   ui:icon "🤖" ;
   ui:region ui:Tab ;
   rdfs:comment "Privacy-first AI assistant with searchable conversation logs." ;
+  dct:creator "PrivateDataPod team" ;
   ui:href <https://ai.privatedatapod.com/> .
 
 <#Tired-Bike> a ui:Link ; ui:label "Tired Bike" ;
   ui:icon "🚲" ;
   ui:region ui:Tab ;
   rdfs:comment "Community platform for bicycle touring." ;
+  dct:creator "Open Hospitality Network" ;
   ui:href <https://tired.bike/> .
 
 <#TodoPod> a ui:Link ; ui:label "TodoPod" ;
   ui:icon "☑️" ;
   ui:region ui:Tab ;
   rdfs:comment "Task lists in encrypted personal storage." ;
+  dct:creator "Togaware" ;
   ui:href <https://todopod.solidcommunity.au> .
 
 <#Umai> a ui:Link ; ui:label "Umai" ;
   ui:icon "🍳" ;
   ui:region ui:Tab ;
   rdfs:comment "Offline-first recipe manager." ;
+  dct:creator "Noel De Martin" ;
   ui:href <https://umai.noeldemartin.com> .
 
 <#VitalStats> a ui:Link ; ui:label "VitalStats" ;
   ui:icon "❤️" ;
   ui:region ui:Tab ;
   rdfs:comment "Log blood pressure, weight and other vital signs." ;
+  dct:publisher "PrivateDataPod" ;
   ui:href <https://vitalstats.apps.privatedatapod.com/> .
 
 <#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;

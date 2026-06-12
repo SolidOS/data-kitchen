@@ -9,4 +9,5 @@
   ui:href <https://geopod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Store points of interest and encrypted tracks on a map." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   dct:subject "Information" .

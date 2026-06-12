@@ -9,4 +9,5 @@
   ui:href <https://filemanager.solid-experiments.org/> ;
   ui:region ui:Tab ;
   rdfs:comment "Friendly file and folder manager for your pod." ;
+  dct:creator "Open Data Institute" ;
   dct:subject "Pod Management" .

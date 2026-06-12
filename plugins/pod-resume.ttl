@@ -9,4 +9,5 @@
   ui:href <https://resume.privatedatapod.com/> ;
   ui:region ui:Tab ;
   rdfs:comment "Résumé builder that keeps your CV history." ;
+  dct:creator "PrivateDataPod team" ;
   dct:subject "Productivity" .

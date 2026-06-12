@@ -9,4 +9,5 @@
   ui:href <https://otto-aa.github.io/solid-filemanager/> ;
   ui:region ui:Tab ;
   rdfs:comment "Manage the files in your pod." ;
+  dct:creator "Otto AA" ;
   dct:subject "Pod Management" .

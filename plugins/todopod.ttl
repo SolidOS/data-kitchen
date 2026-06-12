@@ -9,4 +9,5 @@
   ui:href <https://todopod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Task lists in encrypted personal storage." ;
+  dct:creator "Togaware" ;
   dct:subject "Productivity" .

@@ -9,4 +9,5 @@
   ui:href <https://umai.noeldemartin.com> ;
   ui:region ui:Tab ;
   rdfs:comment "Offline-first recipe manager." ;
+  dct:creator "Noel De Martin" ;
   dct:subject "Information" .

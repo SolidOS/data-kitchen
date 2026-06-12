@@ -9,4 +9,5 @@
   ui:href <https://securedialog.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Diabetes logging with encrypted storage." ;
+  dct:creator "Software Innovation Institute, ANU" ;
   dct:subject "Health" .

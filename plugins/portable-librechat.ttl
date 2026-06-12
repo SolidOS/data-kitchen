@@ -9,4 +9,5 @@
   ui:href <https://chat.solidproject.org/> ;
   ui:region ui:Tab ;
   rdfs:comment "Open-source AI chat that keeps your conversations in your pod." ;
+  dct:creator "Solid Project" ;
   dct:subject "Community" .

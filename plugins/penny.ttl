@@ -9,4 +9,5 @@
   ui:href <https://penny.vincenttunru.com/> ;
   ui:region ui:Tab ;
   rdfs:comment "Browse and manage everything in your pod." ;
+  dct:creator "Vincent Tunru" ;
   dct:subject "Pod Management" .

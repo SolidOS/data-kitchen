@@ -9,4 +9,5 @@
   ui:href <https://tired.bike/> ;
   ui:region ui:Tab ;
   rdfs:comment "Community platform for bicycle touring." ;
+  dct:creator "Open Hospitality Network" ;
   dct:subject "Community" .

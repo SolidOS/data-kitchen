@@ -9,4 +9,5 @@
   ui:href <https://browser.pod-os.org/> ;
   ui:region ui:Tab ;
   rdfs:comment "Browse and manage the resources in your pod." ;
+  dct:publisher "PodOS project" ;
   dct:subject "Pod Management" .

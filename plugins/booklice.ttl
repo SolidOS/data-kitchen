@@ -9,4 +9,5 @@
   ui:href <https://scenaristeur.github.io/booklice/> ;
   ui:region ui:Tab ;
   rdfs:comment "Bookmarks you can share with a community." ;
+  dct:publisher "scenaristeur" ;
   dct:subject "Community" .

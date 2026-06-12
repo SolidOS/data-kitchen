@@ -9,4 +9,5 @@
   ui:href <https://billipod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Track bills with payment reminders." ;
+  dct:creator "Togaware" ;
   dct:subject "Productivity" .

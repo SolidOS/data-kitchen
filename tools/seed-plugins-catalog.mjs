@@ -42,12 +42,15 @@ function readLinkApps() {
     const ui = (l) => { const n = store.any(subj, rdf.sym(UI_NS + l)); return n ? n.value : null; };
     const href = ui('href');
     if (!href) { console.warn(`skip ${f}: no ui:href`); continue; }
+    const dct = (l) => { const n = store.any(subj, rdf.sym(DCT_NS + l)); return n ? n.value : ''; };
     apps.push({
       label: ui('label') || f.replace(/\.ttl$/, ''),
       icon: ui('icon') || '',
       href,
       region: (ui('region') || '').split('#').pop(),
       desc: (store.any(subj, rdf.sym(RDFS_NS + 'comment')) || {}).value || '',
+      creator: dct('creator'),
+      publisher: dct('publisher'),
       cats: store.each(subj, rdf.sym(DCT_NS + 'subject'), null).map((n) => n.value),
     });
   }
@@ -130,6 +133,7 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 @prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
 
 # The plugin lists <sol-plugin-manager> manages (Manage Plugins drags entries
 # between them; Manage Menus offers #InUse for dragging onto the menu/bar
@@ -165,6 +169,8 @@ for (const a of APPS) {
   if (a.icon) ttl += `  ui:icon ${JSON.stringify(a.icon)} ;\n`;
   if (a.region) ttl += `  ui:region ui:${a.region} ;\n`;
   if (a.desc) ttl += `  rdfs:comment ${JSON.stringify(a.desc)} ;\n`;
+  if (a.creator) ttl += `  dct:creator ${JSON.stringify(a.creator)} ;\n`;
+  if (a.publisher) ttl += `  dct:publisher ${JSON.stringify(a.publisher)} ;\n`;
   ttl += `  ui:href <${a.href}> .\n\n`;
 }
 
