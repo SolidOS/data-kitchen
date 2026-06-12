@@ -28,7 +28,7 @@
 # plugin manager renders these as headings. A plugin manifest's
 # dct:subject names its category; imports file entries here.
 <#Information> a skos:Collection ; skos:prefLabel "Information" ;
-  skos:member <#News-three-panel-feeds>, <#Search>, <#Calendar>, <#Weather>, <#Clock>, <#GeoPod> .
+  skos:member <#News-three-panel-feeds>, <#Search>, <#Calendar>, <#Weather>, <#Clock>, <#GeoPod>, <#Umai> .
 
 <#Media> a skos:Collection ; skos:prefLabel "Media" ;
   skos:member <#Music-Internet-Archive>, <#Movies-Internet-Archive>, <#Images-Wikimedia>, <#Media-Kraken>, <#MovieStar>, <#Solidflix> .
@@ -50,9 +50,6 @@
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
   skos:member <#Portable-LibreChat>, <#Tired-Bike> .
-
-<#Cooking> a skos:Collection ; skos:prefLabel "Cooking" ;
-  skos:member <#Umai> .
 
 <#0data-Hello> a ui:Link ; ui:label "0data Hello" ;
   ui:icon "🧪" ;
