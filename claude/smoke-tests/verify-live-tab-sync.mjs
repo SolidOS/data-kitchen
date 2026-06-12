@@ -117,6 +117,9 @@ try {
     params: [['storage-ns', 'smoke'], ['source', './plugins/ia-player/libraries/internet_archive_music/index.ttl']],
   });
   check('first save lands (plain saved ✓ — single write)', first.ok, first.status);
+  // saved ✓ covers the RDF PUT only; the live refresh runs ~150ms later
+  // (dk-tabs-rdf debounce + fetch/parse) — give it a beat.
+  await page.waitForTimeout(1500);
   let pane = await paneInfo('Live Sync Tab');
   check('new tab pane appears live', !!pane, JSON.stringify(pane));
 
@@ -195,10 +198,12 @@ try {
     /threePanel-edit/.test(readFileSync('data/tabs.ttl', 'utf8')));
 
   // --- chrome self-heal: drop a mandatory item from #Chrome's parts ---
+  // (after a manager save the doc is in canonical rdflib form, so the item
+  // may be spelled :chrome-help OR <#chrome-help> — handle both)
   const dropped = await page.evaluate(async () => {
     const url = new URL('data/tabs.ttl', document.baseURI).href;
     const ttl = await (await fetch(url)).text();
-    const out = ttl.replace(/ui:parts \(\s*<#chrome-help>\s*<#chrome-menu>/, 'ui:parts ( <#chrome-menu>');
+    const out = ttl.replace(/(ui:parts \(\s*)(?:<#chrome-help>|:chrome-help)\s*/, '$1');
     const res = await fetch(url, { method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: out });
     return res.ok && out !== ttl;
   });
@@ -208,7 +213,7 @@ try {
   const healed = await page.evaluate(() => !!document.querySelector('.omp-help-launch'));
   check('healChrome reinserted the help button (RDF-only heal)', healed);
   check('healed tabs.ttl lists chrome-help in #Chrome parts again',
-    /chrome-help/.test((readFileSync('data/tabs.ttl', 'utf8').match(/<#Chrome>[\s\S]*?\)\s*\./) || [''])[0]));
+    /(?:<#|:)Chrome>?[\s\S]{0,200}?ui:parts \([^)]*chrome-help/.test(readFileSync('data/tabs.ttl', 'utf8')));
 
   // --- the rdf-first invariant: the whole run wrote NO .html anywhere ---
   check('zero .html PUTs across the entire run', htmlPuts.length === 0, htmlPuts.join(' '));
