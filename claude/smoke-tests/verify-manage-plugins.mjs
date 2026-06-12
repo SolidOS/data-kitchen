@@ -27,21 +27,29 @@ if (dirty) {
   process.exit(2);
 }
 
-// The list each menu's ui:parts holds, as fragment names (order preserved).
-// (Index-based, not one regex over the block: the rdfs:comments contain
-// periods, and the serializer reorders/reformats on save.)
+// Turtle helpers that accept BOTH spellings of a fragment subject: the
+// hand-written `<#Frag>` and the `:Frag` (@prefix : <#>) the rdflib
+// serializer emits after a save. Index-based, not one regex over the block:
+// the rdfs:comments contain periods, and saves reorder/reformat everything.
+const subjStart = (ttl, frag) => {
+  const i = ttl.indexOf(`<#${frag}>`);
+  if (i >= 0) return i;
+  const m = ttl.match(new RegExp(`^:${frag}\\b`, 'm'));
+  return m ? m.index : -1;
+};
+// The list a menu's ui:parts holds, as fragment names (order preserved).
 const partsOf = (ttl, menu) => {
-  const i = ttl.indexOf(`<#${menu}>`);
+  const i = subjStart(ttl, menu);
   if (i < 0) return null;
   const m = ttl.slice(i).match(/ui:parts\s*\(([^)]*)\)/);
-  return m ? [...m[1].matchAll(/<#([^>]+)>/g)].map((x) => x[1]) : null;
+  return m ? [...m[1].matchAll(/(?:<#|:)([\w-]+)/g)].map((x) => x[1]) : null;
 };
 // A subject's block: from its opener to the next top-level subject.
 const subjBlock = (ttl, frag) => {
-  const i = ttl.indexOf(`<#${frag}>`);
+  const i = subjStart(ttl, frag);
   if (i < 0) return '';
-  const j = ttl.indexOf('\n<', i + 1);
-  return j < 0 ? ttl.slice(i) : ttl.slice(i, j);
+  const at = ttl.slice(i + 1).search(/\n[<:]/);
+  return at < 0 ? ttl.slice(i) : ttl.slice(i, i + 1 + at);
 };
 
 const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
