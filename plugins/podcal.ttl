@@ -9,4 +9,4 @@
   ui:href <https://podcal.eu> ;
   ui:region ui:Tab ;
   rdfs:comment "Schedule meetings with public booking pages; syncs with your calendar." ;
-  dct:subject "Scheduling" .
+  dct:subject "Productivity" .

@@ -37,7 +37,7 @@
   skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Dev-Tools-playgrounds>, <#Sign-in> .
 
 <#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
-  skos:member <#0data-Hello>, <#Booklice>, <#HomeVault>, <#KeyPod>, <#Pod-Resume>, <#SolidFocus>, <#Synara-AI>, <#TodoPod> .
+  skos:member <#0data-Hello>, <#Booklice>, <#HomeVault>, <#KeyPod>, <#Pod-Resume>, <#PodCal>, <#SolidFocus>, <#Synara-AI>, <#TodoPod> .
 
 <#Content-Notes-Blogging-and-Publishing> a skos:Collection ; skos:prefLabel "Content, Notes, Blogging and Publishing" ;
   skos:member <#dokieli>, <#NotePod>, <#RoloPod> .
@@ -54,14 +54,8 @@
 <#Security> a skos:Collection ; skos:prefLabel "Security" ;
   skos:member <#KeyPod> .
 
-<#Scheduling> a skos:Collection ; skos:prefLabel "Scheduling" ;
-  skos:member <#PodCal> .
-
 <#Chat> a skos:Collection ; skos:prefLabel "Chat" ;
   skos:member <#Portable-LibreChat> .
-
-<#TODO-List> a skos:Collection ; skos:prefLabel "TODO List" ;
-  skos:member <#SolidFocus>, <#TodoPod> .
 
 <#Cooking> a skos:Collection ; skos:prefLabel "Cooking" ;
   skos:member <#Umai> .
