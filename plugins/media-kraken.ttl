@@ -9,4 +9,4 @@
   ui:href <https://noeldemartin.github.io/media-kraken/> ;
   ui:region ui:Tab ;
   rdfs:comment "Track movies and build personal collections." ;
-  dct:subject "Movies" .
+  dct:subject "Media" .

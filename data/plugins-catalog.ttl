@@ -31,7 +31,7 @@
   skos:member <#News-three-panel-feeds>, <#Search>, <#Calendar>, <#Weather>, <#Clock> .
 
 <#Media> a skos:Collection ; skos:prefLabel "Media" ;
-  skos:member <#Music-Internet-Archive>, <#Movies-Internet-Archive>, <#Images-Wikimedia> .
+  skos:member <#Music-Internet-Archive>, <#Movies-Internet-Archive>, <#Images-Wikimedia>, <#Media-Kraken>, <#MovieStar>, <#Solidflix> .
 
 <#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
   skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Dev-Tools-playgrounds>, <#Sign-in> .
@@ -53,9 +53,6 @@
 
 <#Security> a skos:Collection ; skos:prefLabel "Security" ;
   skos:member <#KeyPod> .
-
-<#Movies> a skos:Collection ; skos:prefLabel "Movies" ;
-  skos:member <#Media-Kraken>, <#MovieStar>, <#Solidflix> .
 
 <#Scheduling> a skos:Collection ; skos:prefLabel "Scheduling" ;
   skos:member <#PodCal> .

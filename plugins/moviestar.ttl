@@ -9,4 +9,4 @@
   ui:href <https://moviestar.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Track what you watch, share, and get recommendations." ;
-  dct:subject "Movies" .
+  dct:subject "Media" .
