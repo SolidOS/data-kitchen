@@ -113,15 +113,25 @@ to come):
 
 1. **Define the main menu tabs** — `<sol-menu-manager source="data/tabs.ttl#Tabs">`
    above, `<sol-button-bar-manager source="data/tabs.ttl#Bar">` below: name
-   items, reorder, remove; drop a plugin on either.
+   items, reorder, remove; drop a plugin on either. The add row is an input:
+   drop a plugin on it, or type a name + Enter for a submenu.
 2. **Choose plugins the menu should access** — the catalog
    (`<sol-plugin-manager grouped source="data/plugins-catalog.ttl#Available">`,
    topic tabs, two cards wide) beside the same menu/bar managers as drop
-   targets. Drop or type a manifest URL to add a plugin (a `ui:Component`
-   with `ui:name`, or a `ui:Link` with `ui:href` for an external app).
+   targets. Entries the menus already mount are hidden from the catalog box
+   (the `for=` pairing) and reappear when dragged off. Drop or type a
+   manifest URL to add a plugin (a `ui:Component` with `ui:name`, or a
+   `ui:Link` with `ui:href` for an external app).
 
-There are no Save buttons — every editor auto-saves. The catalog is ONE
-`#Available` list; "in use" simply means `data/tabs.ttl` mounts it.
+Rows are three columns — name field | plugin chips | ✕ — and chips show the
+catalog's display names (the managers' `catalog=` attribute). A menu item
+holding several plugins lists them all as chips and its tab renders them all
+stacked in the pane. There are no Save buttons — every editor auto-saves.
+
+The catalog is ONE `#Available` list GENERATED from the flat one-file
+manifests in `plugins/` (`plugins/<entry>.ttl`) by
+`tools/seed-plugins-catalog.mjs` — the seeder holds no content; edit a
+manifest and re-seed. "In use" simply means `data/tabs.ttl` mounts it.
 **☰ → All Plugins…** browses the same catalog read-mostly (guests too).
 
 Saving rewrites the whole Turtle document (unreferenced "pantry" items are
