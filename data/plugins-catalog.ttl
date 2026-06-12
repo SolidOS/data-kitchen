@@ -1,6 +1,7 @@
 @prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
 
 # The plugin lists <sol-plugin-manager> manages (Manage Plugins drags entries
 # between them; Manage Menus offers #InUse for dragging onto the menu/bar
@@ -15,7 +16,19 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
-  ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> <#Theme-toggle> <#Text-size> ) .
+  ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> ) .
+
+# Topic categories — skos:Collections over the same pool; the grouped
+# plugin manager renders these as headings. A plugin manifest's
+# dct:subject names its category; imports file entries here.
+<#Information> a skos:Collection ; skos:prefLabel "Information" ;
+  skos:member <#News-three-panel-feeds>, <#Search>, <#Calendar>, <#Weather>, <#Clock> .
+
+<#Media> a skos:Collection ; skos:prefLabel "Media" ;
+  skos:member <#Music-Internet-Archive>, <#Movies-Internet-Archive>, <#Images-Wikimedia> .
+
+<#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
+  skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Dev-Tools-playgrounds>, <#Sign-in> .
 
 <#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;
   ui:icon "📰" ;
@@ -100,18 +113,4 @@
   rdfs:comment "Clock widget (timezone in its settings file)." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/time/time-settings.ttl#Settings" ] .
-
-<#Theme-toggle> a ui:Component ; ui:label "Theme toggle" ; ui:name "sol-button" ;
-  ui:icon "🌗" ;
-  rdfs:comment "Button that switches between light and dark themes." ;
-  ui:attribute
-    [ schema:name "data-handler" ; schema:value "toggleTheme" ] ,
-    [ schema:name "title" ; schema:value "Toggle light / dark" ] .
-
-<#Text-size> a ui:Component ; ui:label "Text size" ; ui:name "sol-button" ;
-  ui:icon "🔤" ;
-  rdfs:comment "Button that cycles the app text size." ;
-  ui:attribute
-    [ schema:name "data-handler" ; schema:value "cycleFontSize" ] ,
-    [ schema:name "title" ; schema:value "Text size" ] .
 

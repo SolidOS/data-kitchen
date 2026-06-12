@@ -79,12 +79,17 @@ try {
       cards: b?.shadowRoot?.querySelectorAll('.card:not(.ghost)').length ?? -1,
       urlRow: !!b?.shadowRoot?.querySelector('.url-input'),
     });
-    return { inUse: info(by('InUse')), avail: info(by('Available')), boxes: boxes.length };
+    const availBox = by('Available');
+    const headings = [...(availBox?.shadowRoot?.querySelectorAll('.cards-group-title') || [])].map((h) => h.textContent);
+    return { inUse: info(by('InUse')), avail: info(availBox), headings, boxes: boxes.length };
   });
   check('two plugin-manager boxes mount', mounted.boxes === 2, `boxes=${mounted.boxes}`);
   check('Plugins to Use renders its cards + title', mounted.inUse.cards >= 8 && /Plugins to Use/.test(mounted.inUse.title || ''), JSON.stringify(mounted.inUse));
-  check('Plugins Available renders its cards + title', mounted.avail.cards >= 4 && /Plugins Available/.test(mounted.avail.title || ''), JSON.stringify(mounted.avail));
+  check('Plugins Available renders its cards + title', mounted.avail.cards >= 3 && /Plugins Available/.test(mounted.avail.title || ''), JSON.stringify(mounted.avail));
   check('boxes carry the manifest-URL input row', mounted.inUse.urlRow && mounted.avail.urlRow);
+  check('Available groups under skos topic headings',
+    mounted.headings.includes('Information') && mounted.headings.includes('Tech'),
+    `headings=[${mounted.headings}]`);
 
   // --- move: drop the #InUse Calendar card on the Available box ---
   const moved = await page.evaluate(async () => {
@@ -119,7 +124,7 @@ try {
     !!avail && avail.includes('Calendar') && !!inUse && !inUse.includes('Calendar'),
     `InUse=${inUse?.length} Available=${avail?.length}`);
   check('both lists survive the rewrite (clobber regression)',
-    !!inUse && inUse.length >= 8 && !!avail && avail.length >= 5,
+    !!inUse && inUse.length >= 8 && !!avail && avail.length >= 4,
     `InUse=[${inUse}] Available=[${avail}]`);
   check('the moved subject keeps its triples', subjBlock(ttl, 'Calendar').includes('dk-calendar-popout'));
 
@@ -160,8 +165,13 @@ try {
   check('lists intact after import', !!inUse && inUse.length >= 8 && !!avail && avail.length >= 5,
     `InUse=${inUse?.length} Available=${avail?.length}`);
   if (/added/.test(imported.msg || '')) {
+    const info = subjBlock(ttl, 'Information');
+    check('imported entry filed under its manifest category (skos:member)',
+      /skos:member|member/.test(info) && /News/.test(info), info.slice(0, 160));
+  }
+  if (/added/.test(imported.msg || '')) {
     check('imported manifest entry is in #Available on disk',
-      avail.some((f) => !['SolidOS-data-browser', 'Home-dashboard', 'Page-HTML-include', 'Theme-toggle', 'Text-size', 'Calendar'].includes(f)),
+      avail.some((f) => !['SolidOS-data-browser', 'Weather', 'Clock', 'Calendar'].includes(f)),
       `Available=[${avail}]`);
   }
 } finally {

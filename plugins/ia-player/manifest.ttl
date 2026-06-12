@@ -13,7 +13,8 @@
   dct:requires <./libraries/internet_archive_music/index.ttl> ,
                <./libraries/internet_archive_movies/index.ttl> ;
   schema:softwareHelp <./assets/ia-help.html> ;
-  dct:conformsTo <../../shapes/music.shacl> .
+  dct:conformsTo <../../shapes/music.shacl> ;
+  dct:subject "Media" .
 
 # ☰ contributions while an ia-player tab is active. Bare ui:name values are
 # sol-commands, routed by the shell to the active panel's appAction().

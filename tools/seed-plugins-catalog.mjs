@@ -20,56 +20,54 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 // by the system emoji font — Noto Emoji on Linux, OFL/Apache licensed; no
 // bundled image assets). `list` says which ui:Menu seeds the entry:
 // 'use' = #InUse (data/tabs.ttl currently mounts it), 'avail' = #Available.
+// `cat` is the plugin's topic category — emitted as a skos:Collection per
+// distinct value (skos:prefLabel = the heading the grouped manager shows,
+// skos:member = the entries). Each plugin's manifest declares the same
+// category as dct:subject, which imports use to file new entries.
 // NOTE: a bare <sol-include> is NOT a plugin (it does nothing by itself), so
 // there is deliberately no generic "Page (HTML include)" entry — only
 // concrete pages like Dev Tools that bring their own source.
 const PLUGINS = [
-  { label: 'News (three-panel feeds)', icon: '📰', tag: 'sol-feed',
+  { label: 'News (three-panel feeds)', cat: 'Information', icon: '📰', tag: 'sol-feed',
     desc: 'Read news feeds in a three-panel reader: sources, headlines, article.',
     params: [['view', 'threePanel'], ['reader', 'inline'],
       ['source', './plugins/news/feeds.ttl#Feeds']] },
-  { label: 'Music (Internet Archive)', icon: '🎵', tag: 'ia-player',
+  { label: 'Music (Internet Archive)', cat: 'Media', icon: '🎵', tag: 'ia-player',
     desc: 'Browse and play music collections from the Internet Archive.',
     params: [['storage-ns', 'music'], ['defer', ''],
       ['source', './plugins/ia-player/libraries/internet_archive_music/index.ttl']] },
-  { label: 'Movies (Internet Archive)', icon: '🎬', tag: 'ia-player',
+  { label: 'Movies (Internet Archive)', cat: 'Media', icon: '🎬', tag: 'ia-player',
     desc: 'Browse and play films from the Internet Archive.',
     params: [['storage-ns', 'movies'], ['favourites-only', ''], ['defer', ''],
       ['source', './plugins/ia-player/libraries/internet_archive_movies/index.ttl']] },
-  { label: 'Images (Wikimedia)', icon: '🖼', tag: 'omp-images',
+  { label: 'Images (Wikimedia)', cat: 'Media', icon: '🖼', tag: 'omp-images',
     desc: 'Browse Wikimedia image galleries.',
     params: [['source', './plugins/omp-images/libraries/wikimedia_images/images.ttl#Images']] },
-  { label: 'Workspaces (pod browser)', icon: '🗂', tag: 'dk-podz',
+  { label: 'Workspaces (pod browser)', cat: 'Tech', icon: '🗂', tag: 'dk-podz',
     desc: 'Browse and manage your Solid pods and workspaces.',
     params: [['source', './plugins/podz/dk-podz.html'], ['defer', '']] },
-  { label: 'SolidOS (data browser)', icon: '🐧', tag: 'dk-solidos', list: 'avail',
+  { label: 'SolidOS (data browser)', cat: 'Tech', icon: '🐧', tag: 'dk-solidos', list: 'avail',
     desc: 'The SolidOS data browser, embedded.',
     params: [['source', './plugins/solidos/dk-solidos.html'], ['defer', '']] },
-  { label: 'Dev Tools (playgrounds)', icon: '🛠', tag: 'sol-include',
+  { label: 'Dev Tools (playgrounds)', cat: 'Tech', icon: '🛠', tag: 'sol-include',
     desc: 'JSON-LD, RDF, SHACL and SPARQL playgrounds, plus Solid resources.',
     params: [['source', './plugins/dev-tools/dev-tools.html'], ['trusted', '']] },
-  { label: 'Search', icon: '🔍', tag: 'sol-search',
+  { label: 'Search', cat: 'Information', icon: '🔍', tag: 'sol-search',
     desc: 'Search box for the button bar (pluggable search engines).',
     params: [['source', './plugins/search/search-engines.ttl#SearchEngines']] },
-  { label: 'Calendar', icon: '📅', tag: 'dk-calendar-popout',
+  { label: 'Calendar', cat: 'Information', icon: '📅', tag: 'dk-calendar-popout',
     desc: 'Pop-out month calendar for the button bar.',
     params: [['source', './plugins/calendar/calendar-settings.ttl#All']] },
-  { label: 'Sign in', icon: '🔑', tag: 'sol-login',
+  { label: 'Sign in', cat: 'Tech', icon: '🔑', tag: 'sol-login',
     desc: 'Solid sign-in button (popup flow).',
     params: [['mode', 'popup'], ['popup-callback', 'node_modules/podz/popup-auth-callback.html'],
       ['issuers', 'https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com']] },
-  { label: 'Weather', icon: '🌤', tag: 'sol-weather', list: 'avail',
+  { label: 'Weather', cat: 'Information', icon: '🌤', tag: 'sol-weather', list: 'avail',
     desc: 'Weather widget (location and units in its settings file).',
     params: [['source', './plugins/weather/weather-settings.ttl#Settings']] },
-  { label: 'Clock', icon: '🕐', tag: 'sol-time', list: 'avail',
+  { label: 'Clock', cat: 'Information', icon: '🕐', tag: 'sol-time', list: 'avail',
     desc: 'Clock widget (timezone in its settings file).',
     params: [['source', './plugins/time/time-settings.ttl#Settings']] },
-  { label: 'Theme toggle', icon: '🌗', tag: 'sol-button', list: 'avail',
-    desc: 'Button that switches between light and dark themes.',
-    params: [['data-handler', 'toggleTheme'], ['title', 'Toggle light / dark']] },
-  { label: 'Text size', icon: '🔤', tag: 'sol-button', list: 'avail',
-    desc: 'Button that cycles the app text size.',
-    params: [['data-handler', 'cycleFontSize'], ['title', 'Text size']] },
 ];
 
 const frag = (label) => label.replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '');
@@ -77,9 +75,14 @@ const frag = (label) => label.replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '');
 const inList = (which) =>
   PLUGINS.filter((p) => (p.list || 'use') === which).map((p) => `<#${frag(p.label)}>`).join(' ');
 
+const CATS = [...new Set(PLUGINS.map((p) => p.cat).filter(Boolean))];
+const catMembers = (cat) =>
+  PLUGINS.filter((p) => p.cat === cat).map((p) => `<#${frag(p.label)}>`).join(', ');
+
 let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
 
 # The plugin lists <sol-plugin-manager> manages (Manage Plugins drags entries
 # between them; Manage Menus offers #InUse for dragging onto the menu/bar
@@ -95,6 +98,12 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
   ui:parts ( ${inList('avail')} ) .
+
+# Topic categories — skos:Collections over the same pool; the grouped
+# plugin manager renders these as headings. A plugin manifest's
+# dct:subject names its category; imports file entries here.
+${CATS.map((c) => `<#${frag(c)}> a skos:Collection ; skos:prefLabel ${JSON.stringify(c)} ;
+  skos:member ${catMembers(c)} .`).join('\n\n')}
 
 `;
 for (const { label, icon, desc, tag, params } of PLUGINS) {

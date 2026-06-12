@@ -7,4 +7,5 @@
   ui:label "News" ;
   ui:name "sol-feed" ;
   dct:hasPart <./feeds.ttl> ;
-  dct:conformsTo <../../shapes/feeds.shacl> .
+  dct:conformsTo <../../shapes/feeds.shacl> ;
+  dct:subject "Information" .

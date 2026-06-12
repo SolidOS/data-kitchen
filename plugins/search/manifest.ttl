@@ -6,4 +6,5 @@
   a ui:Component ;
   ui:label "Search" ;
   ui:name "sol-search" ;
-  dct:hasPart <./search-engines.ttl> .
+  dct:hasPart <./search-engines.ttl> ;
+  dct:subject "Information" .

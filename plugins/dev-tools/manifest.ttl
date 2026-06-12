@@ -6,4 +6,5 @@
   a ui:Component ;
   ui:label "Dev Tools" ;
   ui:name "sol-include" ;
-  dct:hasPart <./dev-tools.html> .
+  dct:hasPart <./dev-tools.html> ;
+  dct:subject "Tech" .

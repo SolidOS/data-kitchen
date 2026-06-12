@@ -7,4 +7,5 @@
   ui:label "Clock" ;
   ui:name "sol-time" ;
   dct:requires <./time-settings.ttl> ;
-  dct:conformsTo <../../node_modules/sol-components/shapes/time-settings.shacl> .
+  dct:conformsTo <../../node_modules/sol-components/shapes/time-settings.shacl> ;
+  dct:subject "Information" .

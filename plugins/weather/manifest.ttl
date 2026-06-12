@@ -7,4 +7,5 @@
   ui:label "Weather" ;
   ui:name "sol-weather" ;
   dct:requires <./weather-settings.ttl> ;
-  dct:conformsTo <../../node_modules/sol-components/shapes/weather-settings.shacl> .
+  dct:conformsTo <../../node_modules/sol-components/shapes/weather-settings.shacl> ;
+  dct:subject "Information" .

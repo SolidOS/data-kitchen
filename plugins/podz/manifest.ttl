@@ -11,4 +11,5 @@
   dct:requires <../../node_modules/podz/src/podz.css> ,
                <../../node_modules/podz/dist/podz.bundle.min.js> ,
                <../../node_modules/podz/popup-auth-callback.html> ;
-  schema:softwareHelp <./help.html> .
+  schema:softwareHelp <./help.html> ;
+  dct:subject "Tech" .
