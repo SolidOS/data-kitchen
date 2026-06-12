@@ -94,6 +94,36 @@ try {
   });
   check('auto-save round-trips (PUT via pivot server)', !!saved.ok, saved.msg || '');
 
+  // --- a SECOND plugin dropped on the same row turns it into a submenu ---
+  const submenu = await page.evaluate(async () => {
+    const root = document.querySelector('#dk-menu-pane .dk-define-menus') || document;
+    const builder = root.querySelector('sol-menu-manager');
+    const sh = builder.shadowRoot;
+    const row = [...sh.querySelectorAll('.row')].find(r => /Smoke Test Tab/.test(r.querySelector('.label')?.value || ''));
+    const dt = new DataTransfer();
+    dt.setData('application/x-sol-plugin', JSON.stringify({
+      label: 'Smoke Weather', tag: 'sol-weather',
+      params: [['source', './plugins/weather/weather-settings.ttl#Settings']],
+    }));
+    const rect = row.getBoundingClientRect();
+    const mid = { clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2, bubbles: true, cancelable: true, composed: true };
+    row.dispatchEvent(new DragEvent('dragover', { ...mid, dataTransfer: dt }));
+    row.dispatchEvent(new DragEvent('drop', { ...mid, dataTransfer: dt }));
+    for (let i = 0; i < 40; i++) {
+      await new Promise(r => setTimeout(r, 250));
+      if (/saved/.test(sh.querySelector('.builder-status')?.textContent || '')) break;
+    }
+    const row2 = [...sh.querySelectorAll('.row')].find(r => /Smoke Test Tab/.test(r.querySelector('.label')?.value || ''));
+    return {
+      chip: row2?.querySelector('.chip')?.textContent,
+      childCount: row2 ? row2.closest('li').querySelectorAll('ul .row').length : -1,
+    };
+  });
+  // childCount can transiently include a re-rendering row; the exact 2-child
+  // truth is asserted on the generated <submenu> block below.
+  check('second drop converts the item to a submenu', submenu.chip === 'submenu' && submenu.childCount >= 2,
+    JSON.stringify(submenu));
+
   // --- the PUT landed on disk; the generator picks it up ---
   const ttl = readFileSync('data/tabs.ttl', 'utf8');
   check('saved RDF contains the new item', /Smoke Test Tab/.test(ttl) && /smoke/.test(ttl));
@@ -104,6 +134,9 @@ try {
   catch (e) { genOut = String(e); }
   const html = readFileSync('html-first.html', 'utf8');
   check('generator emits the new tab into html-first.html', /Smoke Test Tab/.test(html), genOut.trim());
+  check('generator emits the submenu block with both plugins',
+    /<submenu[\s\S]*?Smoke Test Tab[\s\S]*?<\/submenu>/.test(html)
+    && ((html.match(/<submenu[\s\S]*?<\/submenu>/) || [''])[0].match(/<a /g) || []).length === 2);
   check('chrome block survives regeneration', /chrome:begin/.test(html) && /omp-help-launch/.test(html) && /omp-more/.test(html));
   let verifyOk = true;
   try { execFileSync('node', ['tools/conversion/generate-html-first.mjs', '--verify']); }
