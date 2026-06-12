@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Manage the files in your pod." ;
   dct:creator "Otto AA" ;
-  dct:subject "Pod Management" .
+  dct:subject "Pods" .

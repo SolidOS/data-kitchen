@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Drive-style file manager for your pod." ;
   dct:creator "PrivateDataPod team" ;
-  dct:subject "Pod Management" .
+  dct:subject "Pods" .

@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "File browser for multiple platforms." ;
   dct:creator "Software Innovation Institute, ANU" ;
-  dct:subject "Pod Management" .
+  dct:subject "Pods" .

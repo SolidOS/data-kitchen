@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Power-editor for the contents of your pod." ;
   dct:creator "Jasmine Leonard" ;
-  dct:subject "Pod Management" .
+  dct:subject "Pods" .

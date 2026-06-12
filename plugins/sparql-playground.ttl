@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Try out SPARQL queries." ;
   dct:publisher "AtomGraph" ;
-  dct:subject "Dev Tools" .
+  dct:subject "Tech" .

@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Validate data against SHACL shapes." ;
   dct:publisher "shacl.org" ;
-  dct:subject "Dev Tools" .
+  dct:subject "Tech" .

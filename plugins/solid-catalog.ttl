@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Catalog of Solid apps, libraries and resources." ;
   dct:publisher "Solid Community" ;
-  dct:subject "Solid Resources" .
+  dct:subject "Solid" .

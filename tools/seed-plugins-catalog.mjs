@@ -87,10 +87,10 @@ const PLUGINS = [
   { label: 'Images (Wikimedia)', cat: 'Media', icon: '🖼', tag: 'omp-images',
     desc: 'Browse Wikimedia image galleries.',
     params: [['source', './plugins/omp-images/libraries/wikimedia_images/images.ttl#Images']] },
-  { label: 'Workspaces (pod browser)', cat: 'Pod Management', icon: '🗂', tag: 'dk-podz',
+  { label: 'Workspaces (pod browser)', cat: 'Pods', icon: '🗂', tag: 'dk-podz',
     desc: 'Browse and manage your Solid pods and workspaces.',
     params: [['source', './plugins/podz/dk-podz.html'], ['defer', '']] },
-  { label: 'SolidOS (data browser)', cat: 'Pod Management', creator: 'SolidOS Team', icon: '🐧', tag: 'dk-solidos', list: 'avail',
+  { label: 'SolidOS (data browser)', cat: 'Pods', creator: 'SolidOS Team', icon: '🐧', tag: 'dk-solidos', list: 'avail',
     desc: 'The SolidOS data browser, embedded.',
     params: [['source', './plugins/solidos/dk-solidos.html'], ['defer', '']] },
   { label: 'Search', cat: 'Information', icon: '🔍', tag: 'sol-search',
@@ -99,7 +99,7 @@ const PLUGINS = [
   { label: 'Calendar', cat: 'Information', icon: '📅', tag: 'dk-calendar-popout',
     desc: 'Pop-out month calendar for the button bar.',
     params: [['source', './plugins/calendar/calendar-settings.ttl#All']] },
-  { label: 'Sign in', cat: 'Pod Management', icon: '🔑', tag: 'sol-login',
+  { label: 'Sign in', cat: 'Pods', icon: '🔑', tag: 'sol-login',
     desc: 'Solid sign-in button (popup flow).',
     params: [['mode', 'popup'], ['popup-callback', 'node_modules/podz/popup-auth-callback.html'],
       ['issuers', 'https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com']] },
@@ -119,7 +119,7 @@ const inList = (which) =>
 // Sub-topics: collections that are MEMBERS of a parent collection (SKOS
 // allows collections in collections). The grouped manager shows the parent
 // as the tab and the sub-topic as a headed group inside it.
-const SUBTOPICS = { 'Solid Resources': 'Tech', 'Dev Tools': 'Tech' };
+const SUBTOPICS = {};   // e.g. { 'Some Sub-topic': 'Parent Topic' }
 
 const CATS = [...new Set([
   ...PLUGINS.map((p) => p.cat).filter(Boolean),

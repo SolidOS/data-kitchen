@@ -34,11 +34,11 @@
 <#Media> a skos:Collection ; skos:prefLabel "Media" ;
   skos:member <#Music-Internet-Archive>, <#Movies-Internet-Archive>, <#Images-Wikimedia>, <#Media-Kraken>, <#MovieStar>, <#Solidflix> .
 
-<#Pod-Management> a skos:Collection ; skos:prefLabel "Pod Management" ;
+<#Pods> a skos:Collection ; skos:prefLabel "Pods" ;
   skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Sign-in>, <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Solid-File-Manager> .
 
 <#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
-  skos:member <#0data-Hello>, <#KeyPod>, <#Synara-AI>, <#Solid-Resources>, <#Dev-Tools> .
+  skos:member <#0data-Hello>, <#JSON-LD-Playground>, <#KeyPod>, <#RDF-Validator>, <#SHACL-Playground>, <#SPARQL-Playground>, <#Synara-AI> .
 
 <#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
   skos:member <#BilliPod>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#RoloPod>, <#SolidFocus>, <#TodoPod> .
@@ -52,10 +52,7 @@
 <#Health> a skos:Collection ; skos:prefLabel "Health" ;
   skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
 
-<#Dev-Tools> a skos:Collection ; skos:prefLabel "Dev Tools" ;
-  skos:member <#JSON-LD-Playground>, <#RDF-Validator>, <#SHACL-Playground>, <#SPARQL-Playground> .
-
-<#Solid-Resources> a skos:Collection ; skos:prefLabel "Solid Resources" ;
+<#Solid> a skos:Collection ; skos:prefLabel "Solid" ;
   skos:member <#Solid-Catalog>, <#Solid-FAQ>, <#Solid-Glossary>, <#Solid-Website>, <#Tag-Explainer> .
 
 <#0data-Hello> a ui:Link ; ui:label "0data Hello" ;

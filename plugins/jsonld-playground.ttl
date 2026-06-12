@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Try out JSON-LD documents." ;
   dct:publisher "json-ld.org" ;
-  dct:subject "Dev Tools" .
+  dct:subject "Tech" .
