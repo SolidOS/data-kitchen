@@ -21,7 +21,8 @@
 <style>
   /* menus above, bar below; each editor scrolls its own rows — never the
      page or the pane */
-  .dk-define-menus { display: flex; flex-direction: column; gap: .8rem; padding: .8rem; max-width: 60rem;
+  /* the editors fill the panel's full width */
+  .dk-define-menus { display: flex; flex-direction: column; gap: .8rem; padding: .8rem;
                      flex: 1 1 auto; min-height: 0; overflow: hidden; }
   .dk-define-menus-hint { margin: 0; flex: 0 0 auto; font-size: max(16px, var(--font-size, 1rem)); color: var(--text-muted, #7f8c8d); }
   .dk-define-menus > sol-menu-manager,
