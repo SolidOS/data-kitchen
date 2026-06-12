@@ -13,31 +13,25 @@
 # 2026-06-12 — see git history if it's ever wanted back.)
 
 <#More> a ui:Menu ; ui:label "Menu" ;
-  ui:parts ( <#MorePlugins> <#MoreAllPlugins> <#MoreCustomize> <#MoreSettings> <#MoreTheme> <#MoreFontSize>
+  ui:parts ( <#MoreCustomize> <#MoreAllPlugins> <#MoreSettings> <#MoreTheme> <#MoreFontSize>
              <#MoreSignIn> <#MoreGuestView> <#MoreReload> <#MoreRestart> ) .
 
-# Manage Plugins edits the two plugin lists (data/plugins-catalog.ttl#InUse /
-# #Available); its Plugins-to-Use list is what Manage Menus offers.
-<#MorePlugins> a ui:Component ; ui:label "Manage Plugins…" ;
+# Customize — subtabs: 1. define the main menu tabs (menu + bar managers),
+# 2. choose plugins (catalog + the same managers as drop targets). More
+# subtabs to come. Everything auto-saves.
+<#MoreCustomize> a ui:Component ; ui:label "Customize" ;
   ui:name "sol-include" ;
   acl:mode acl:Write ;
   ui:attribute
-    [ schema:name "source"  ; schema:value "./pages/manage-plugins.html" ] ,
+    [ schema:name "source"  ; schema:value "./pages/customize.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
-# The whole catalog (#All list), read-mostly — not write-gated, so guests
-# can browse it too.
+# The whole catalog (the #Available list), read-mostly — not write-gated,
+# so guests can browse it too.
 <#MoreAllPlugins> a ui:Component ; ui:label "All Plugins…" ;
   ui:name "sol-include" ;
   ui:attribute
     [ schema:name "source"  ; schema:value "./pages/all-plugins.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
-
-<#MoreCustomize> a ui:Component ; ui:label "Manage Menus…" ;
-  ui:name "sol-include" ;
-  acl:mode acl:Write ;
-  ui:attribute
-    [ schema:name "source"  ; schema:value "./pages/manage-menus.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
 # Settings is a COMMAND: the shell resolves it per context — the active

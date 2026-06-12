@@ -1,6 +1,5 @@
-// P6 verification — the Manage Menus managers work end to end:
-//   1. the three manager components mount and render (palette cards, menu
-//      rows, bar rows)
+// Customize subtab 1 (define the main menu tabs) end to end:
+//   1. the menu + bar managers mount and render their rows
 //   2. an edit made through the UI (add item, assign the ia-player plugin
 //      via the drag payload, rename) SAVES — the PUT lands in data/tabs.ttl
 //      on disk through the pivot server
@@ -34,30 +33,26 @@ try {
   await page.evaluate(async () => { if (window.ComponentInterop?.ready) await window.ComponentInterop.ready; });
   await page.waitForTimeout(5000);
 
-  // --- open Manage Menus via the ☰ hamburger (it's a menu item → modal now) ---
+  // --- open ☰ Customize; subtab 1 (define menus) is auto-selected ---
   await page.evaluate(async () => {
     const dd = document.querySelector('sol-dropdown-button.omp-more');
     dd?.shadowRoot?.querySelector('.sol-dd-trigger')?.click();
     await new Promise(r => setTimeout(r, 800));
     [...dd.shadowRoot.querySelectorAll('.sol-dd-popup button, .sol-dd-popup a')]
-      .find(b => /manage menus/i.test(b.textContent))?.click();
+      .find(b => /^customize$/i.test(b.textContent.trim()))?.click();
     await new Promise(r => setTimeout(r, 5000));
   });
 
-  // The managers live inside the conjured sol-modal's shadow body.
+  // The managers live in the menu pane, inside the define-menus include.
   const mounted = await page.evaluate(() => {
-    const root = document.querySelector('sol-modal')?.shadowRoot || document;
-    const palette = root.querySelector('sol-plugin-manager');
+    const root = document.querySelector('#dk-menu-pane .dk-define-menus') || document;
     const menuB = root.querySelector('sol-menu-manager');
     const barB = root.querySelector('sol-button-bar-manager');
     return {
-      palette: palette?.shadowRoot?.querySelectorAll('.card').length ?? -1,
       menuRows: menuB?.shadowRoot?.querySelectorAll('.row').length ?? -1,
       barRows: barB?.shadowRoot?.querySelectorAll('.row').length ?? -1,
     };
   });
-  // the Manage Menus palette is data/plugins-catalog.ttl#InUse (9 entries), not the full pool
-  check('palette renders plugin cards', mounted.palette >= 8, `cards=${mounted.palette}`);
   check('menu builder renders the tab rows', mounted.menuRows >= 5, `rows=${mounted.menuRows}`);
   // the bar is down to search + calendar (fontsize/theme moved to the ☰ menu)
   check('bar builder renders the bar rows', mounted.barRows >= 2, `rows=${mounted.barRows}`);
@@ -65,7 +60,7 @@ try {
   // --- edit: add an item, assign it the Music plugin via the drag payload,
   //     rename it, save ---
   const saved = await page.evaluate(async () => {
-    const root = document.querySelector('sol-modal')?.shadowRoot || document;
+    const root = document.querySelector('#dk-menu-pane .dk-define-menus') || document;
     const builder = root.querySelector('sol-menu-manager');
     const sh = builder.shadowRoot;
     sh.querySelector('.add-btn').click();                       // ＋ item
@@ -88,7 +83,7 @@ try {
     const input = rows2[rows2.length - 1].querySelector('.label');
     input.value = '🚬 Smoke Test Tab';
     input.dispatchEvent(new Event('input'));
-    builder.shadowRoot.querySelector('.save-btn').click();
+    // no Save button — the managers auto-save ~0.8s after the last edit
     for (let i = 0; i < 40; i++) {
       await new Promise(r => setTimeout(r, 250));
       const s = builder.shadowRoot.querySelector('.builder-status');
@@ -97,7 +92,7 @@ try {
     }
     return { ok: false, msg: 'timeout waiting for save status' };
   });
-  check('builder save round-trips (PUT via pivot server)', !!saved.ok, saved.msg || '');
+  check('auto-save round-trips (PUT via pivot server)', !!saved.ok, saved.msg || '');
 
   // --- the PUT landed on disk; the generator picks it up ---
   const ttl = readFileSync('data/tabs.ttl', 'utf8');

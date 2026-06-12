@@ -1,10 +1,18 @@
 --------
 # TO-DO
 --------
-6. Refine plugin-manager
-* use/avail should be side by side
-* sol-include is not a plugin - it can't be added to a menu, it does nothing by itself
-* spruce up the display - get some icons (public domain or open license only) for the components, write brief descriptions
+6. Refine Plugins
+* the customize button should show subtabs:
+  1. Define the main menu tabs
+  2. Choose plugins the menu should access
+* and a tab action button "save"
+* 1 shld open the menu-manager
+* 2 shld open plugins-manager
+* plugins manager page
+  * avail as is
+  * remove 3rd column
+  * expand 2nd column to be same size as avail
+  * 2nd col should show menus and button area as drop targets containing current things in them
 
 
 CLAUDE: IGNORE EVERYTHING BELOW HERE
@@ -28,6 +36,11 @@ guest app - an external app displayed in main app
 --------
 # DONE
 --------
+6. Refine plugin-manager
+* use/avail should be side by side
+* sol-include is not a plugin - it can't be added to a menu, it does nothing by itself
+* spruce up the display - get some icons (public domain or open license only) for the components, write brief descriptions
+
 5. Manage Plugins
 * I want sol-plugins-available be its own "Manage Plugins" menu item
 * It should have a "Plugins to Use" box and a "Plugins Available" box

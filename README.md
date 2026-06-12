@@ -72,7 +72,7 @@ html-first.html     the topmost <sol-tabs> — GENERATED from data/tabs.ttl
 data/tabs.ttl       the RDF twin: #Tabs (tabs) + #Bar (actions) + #Chrome
                     (help / ☰ menu / sign-in); rdfs:comment ↔ HTML comments
 data/menu.ttl       #More — the ☰ hamburger's standard items
-data/plugins-catalog.ttl    the two plugin lists (#InUse / #Available ui:Menus)
+data/plugins-catalog.ttl    the plugin catalog: one #Available list + topics
 plugins/<name>/     one SELF-CONTAINED folder per plugin: its scripts,
                     assets, pages, RDF libraries, and manifest.ttl
                     (the tree-shaking unit)
@@ -106,26 +106,23 @@ shape and the panel's own `source` (or the global settings page without
 one); a plugin's `#Menu` items appear in ☰ below a separator while its tab
 is active (e.g. the player's Filters / View deleted / Install / Update).
 
-## Manage Plugins / Manage Menus — build the UI with the UI
+## Customize — build the UI with the UI
 
-**☰ → Manage Plugins…** opens the two plugin lists, each an editable
-`<sol-plugin-manager>` box:
+**☰ → Customize** opens a sub-tabset (pages/customize.html; more subtabs
+to come):
 
-- `<sol-plugin-manager source="data/plugins-catalog.ttl#InUse">` — *Plugins to Use*
-- `<sol-plugin-manager source="data/plugins-catalog.ttl#Available">` — *Plugins Available*
+1. **Define the main menu tabs** — `<sol-menu-manager source="data/tabs.ttl#Tabs">`
+   above, `<sol-button-bar-manager source="data/tabs.ttl#Bar">` below: name
+   items, reorder, remove; drop a plugin on either.
+2. **Choose plugins the menu should access** — the catalog
+   (`<sol-plugin-manager grouped source="data/plugins-catalog.ttl#Available">`,
+   topic tabs, two cards wide) beside the same menu/bar managers as drop
+   targets. Drop or type a manifest URL to add a plugin (a `ui:Component`
+   with `ui:name`, or a `ui:Link` with `ui:href` for an external app).
 
-Drag a card between the boxes to move it (one atomic rewrite of both lists);
-drop a manifest URL on a box — or type it in the box's input row — to add a
-plugin (the manifest must offer `<> a ui:Component ; ui:name "tag"`); every
-change auto-saves to `data/plugins-catalog.ttl`.
-
-**☰ → Manage Menus…** offers the *Plugins to Use* list next to the menu/bar
-managers in a modal:
-
-- `<sol-menu-manager source="data/tabs.ttl#Tabs">` — edit the tab menu
-- `<sol-button-bar-manager source="data/tabs.ttl#Bar">` — edit the actions bar
-- `<sol-plugin-manager source="data/plugins-catalog.ttl#InUse">` — drag a plugin
-  card onto a menu/bar item to assign what it mounts
+There are no Save buttons — every editor auto-saves. The catalog is ONE
+`#Available` list; "in use" simply means `data/tabs.ttl` mounts it.
+**☰ → All Plugins…** browses the same catalog read-mostly (guests too).
 
 Saving rewrites the whole Turtle document (unreferenced "pantry" items are
 preserved), and `src/dk-tabs-sync.js` keeps `html-first.html` and the running

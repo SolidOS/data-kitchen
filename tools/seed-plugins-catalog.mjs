@@ -3,9 +3,9 @@
 // sol-components' manifest + dk.manifest.json, keeps only the entries that
 // make sense as user-placeable plugins (big tab plugins and bar buttons —
 // not low-level pieces like sol-include internals), and writes TWO ui:Menu
-// lists over one pool of ui:Component parts: #InUse (what the app mounts)
-// and #Available (on the shelf). Run once, then CURATE WITH Manage Plugins
-// (or by hand); re-running overwrites.
+// writes ONE ui:Menu list (#Available — the whole catalog) plus the topic
+// collections. Run once, then CURATE WITH the Customize page (or by hand);
+// re-running overwrites.
 //
 //   node tools/seed-plugins-catalog.mjs
 //
@@ -63,8 +63,8 @@ const APPS = readLinkApps();
 // dk) but hand-filtered to plugin-sized pieces; paths point into each
 // plugin's self-contained folder. Icons are plain emoji characters (rendered
 // by the system emoji font — Noto Emoji on Linux, OFL/Apache licensed; no
-// bundled image assets). `list` says which ui:Menu seeds the entry:
-// 'use' = #InUse (data/tabs.ttl currently mounts it), 'avail' = #Available.
+// bundled image assets). Everything seeds into the single #Available list
+// (in-use = mounted by data/tabs.ttl; no separate list).
 // `cat` is the plugin's topic category — emitted as a skos:Collection per
 // distinct value (skos:prefLabel = the heading the grouped manager shows,
 // skos:member = the entries). Each plugin's manifest declares the same
@@ -90,7 +90,7 @@ const PLUGINS = [
   { label: 'Workspaces (pod browser)', cat: 'Pods', icon: '🗂', tag: 'dk-podz',
     desc: 'Browse and manage your Solid pods and workspaces.',
     params: [['source', './plugins/podz/dk-podz.html'], ['defer', '']] },
-  { label: 'SolidOS (data browser)', cat: 'Pods', creator: 'SolidOS Team', icon: '🐧', tag: 'dk-solidos', list: 'avail',
+  { label: 'SolidOS (data browser)', cat: 'Pods', creator: 'SolidOS Team', icon: '🐧', tag: 'dk-solidos',
     desc: 'The SolidOS data browser, embedded.',
     params: [['source', './plugins/solidos/dk-solidos.html'], ['defer', '']] },
   { label: 'Search', cat: 'Information', icon: '🔍', tag: 'sol-search',
@@ -103,18 +103,15 @@ const PLUGINS = [
     desc: 'Solid sign-in button (popup flow).',
     params: [['mode', 'popup'], ['popup-callback', 'node_modules/podz/popup-auth-callback.html'],
       ['issuers', 'https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com']] },
-  { label: 'Weather', cat: 'Information', icon: '🌤', tag: 'sol-weather', list: 'avail',
+  { label: 'Weather', cat: 'Information', icon: '🌤', tag: 'sol-weather',
     desc: 'Weather widget (location and units in its settings file).',
     params: [['source', './plugins/weather/weather-settings.ttl#Settings']] },
-  { label: 'Clock', cat: 'Information', icon: '🕐', tag: 'sol-time', list: 'avail',
+  { label: 'Clock', cat: 'Information', icon: '🕐', tag: 'sol-time',
     desc: 'Clock widget (timezone in its settings file).',
     params: [['source', './plugins/time/time-settings.ttl#Settings']] },
 ];
 
 const frag = (label) => label.replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '');
-
-const inList = (which) =>
-  PLUGINS.filter((p) => (p.list || 'use') === which).map((p) => `<#${frag(p.label)}>`).join(' ');
 
 // Sub-topics: collections that are MEMBERS of a parent collection (SKOS
 // allows collections in collections). The grouped manager shows the parent
@@ -138,25 +135,15 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct:    <http://purl.org/dc/terms/> .
 
-# The plugin lists <sol-plugin-manager> manages (Manage Plugins drags entries
-# between them; Manage Menus offers #InUse for dragging onto the menu/bar
-# managers). Two ui:Menu lists of ui:Component entries over one shared pool,
-# seeded by tools/seed-plugins-catalog.mjs and edited by the manager thereafter.
+# The plugin catalog <sol-plugin-manager> manages: ONE #Available list of
+# everything the app knows (ui:Components to mount, ui:Links to external
+# apps) plus skos topic collections. In-use = mounted by data/tabs.ttl.
+# Seeded by tools/seed-plugins-catalog.mjs, edited by Customize thereafter.
 # Each entry's ui:icon is an emoji character (system emoji font — no bundled
 # image assets) and its rdfs:comment is the card blurb.
 
-<#InUse> a ui:Menu ; ui:label "Plugins to Use" ;
-  rdfs:comment "The plugins this app uses — the palette Manage Menus offers for dragging onto the tab menu and button bar. Edited with Manage Plugins (drag between lists; auto-saves)." ;
-  ui:parts ( ${inList('use')} ) .
-
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
-  rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
-  ui:parts ( ${inList('avail')} ${APPS.map((a) => `<#${frag(a.label)}>`).join(' ')} ) .
-
-# The whole catalog in one list — the ☰ "All Plugins…" page
-# (pages/all-plugins.html) browses this.
-<#All> a ui:Menu ; ui:label "All Plugins" ;
-  rdfs:comment "Every plugin in the catalog, in use or not — what pages/all-plugins.html displays. Seeded; not maintained by Manage Plugins saves." ;
+  rdfs:comment "Every plugin and app the catalog knows. Drag a card onto the tab menu or button bar (Customize) to use it; drop or type a manifest URL to add one. In-use means mounted by data/tabs.ttl — there is no separate list." ;
   ui:parts ( ${PLUGINS.map((p) => `<#${frag(p.label)}>`).join(' ')} ${APPS.map((a) => `<#${frag(a.label)}>`).join(' ')} ) .
 
 # Topic categories — skos:Collections over the same pool; the grouped

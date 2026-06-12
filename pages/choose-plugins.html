@@ -1,0 +1,44 @@
+<!-- Customize subtab 2 — choose plugins: the catalog on the left (topic
+     tabs), and on the right the main menu (above) and button bar (below) as
+     drop targets showing what's in them now. Drag a card onto either; drop
+     or type a manifest URL to add a plugin to the catalog. Every change
+     auto-saves. -->
+<div class="dk-choose-plugins">
+  <p class="dk-choose-plugins-hint">
+    Drag a plugin from <em>Plugins Available</em> onto a menu tab or a bar
+    button. Add a plugin by dropping or typing its address below the cards.
+    Changes save automatically.
+  </p>
+
+  <sol-plugin-manager
+      grouped
+      source="data/plugins-catalog.ttl#Available"
+      for="sol-menu-manager, sol-button-bar-manager"
+  ></sol-plugin-manager>
+
+  <div class="dk-choose-targets">
+    <sol-menu-manager
+        source="data/tabs.ttl#Tabs"
+    ></sol-menu-manager>
+
+    <sol-button-bar-manager
+        source="data/tabs.ttl#Bar"
+    ></sol-button-bar-manager>
+  </div>
+</div>
+<style>
+  /* two equal columns — Available (left), the menu/bar drop targets
+     (right; menus above, bar below). Every box scrolls its own list —
+     never the page or the pane. Column width = two cards + box padding,
+     tracking the font-size setting. */
+  .dk-choose-plugins { --card-w: calc(var(--font-size, 1rem) * 18);
+                       --col-2: calc(var(--card-w) * 2 + .45rem + 1.4rem + 2px);
+                       display: flex; align-items: stretch; gap: .8rem; padding: .8rem; flex-wrap: wrap;
+                       flex: 1 1 auto; min-height: 0; overflow: hidden; }
+  .dk-choose-plugins-hint { flex: 1 1 100%; margin: 0; align-self: flex-start; font-size: max(16px, var(--font-size, 1rem)); color: var(--text-muted, #7f8c8d); }
+  .dk-choose-plugins > sol-plugin-manager { flex: 0 1 var(--col-2); min-width: calc(var(--card-w) + 1.4rem + 2px); min-height: 0; max-height: 100%; }
+  .dk-choose-targets { flex: 0 1 var(--col-2); min-width: calc(var(--card-w) + 1.4rem + 2px); min-height: 0; max-height: 100%;
+                       display: flex; flex-direction: column; gap: .8rem; overflow: hidden; }
+  .dk-choose-targets > sol-menu-manager,
+  .dk-choose-targets > sol-button-bar-manager { flex: 0 1 auto; min-height: 0; }
+</style>

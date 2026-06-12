@@ -1,0 +1,23 @@
+<!-- Customize — ☰ menu item; a sub-tabset of customization panels (more
+     subtabs to come). 1 = define the main menu tabs and button bar;
+     2 = choose plugins by dropping them onto the menu/bar. Everything in
+     both panels auto-saves; there is no Save button. -->
+<sol-tabs variant="sub" keep-alive class="dk-customize-tabs">
+  <a href="./pages/define-menus.html"
+     data-handler="sol-include"
+     data-trusted
+  >1. Define the main menu tabs</a>
+  <a href="./pages/choose-plugins.html"
+     data-handler="sol-include"
+     data-trusted
+  >2. Choose plugins the menu should access</a>
+</sol-tabs>
+<style>
+  /* the subtab content fills the pane; the panels inside scroll their own
+     lists — never the page or the pane */
+  .dk-customize-tabs { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+  .dk-customize-tabs > .sol-tabs-content { flex: 1 1 auto; min-height: 0; display: flex; overflow: hidden; }
+  .dk-customize-tabs .sol-tabs-pane { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .dk-customize-tabs .sol-tabs-pane > *,
+  .dk-customize-tabs .sol-tabs-pane sol-include { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+</style>
