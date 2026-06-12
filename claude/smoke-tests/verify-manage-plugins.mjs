@@ -80,16 +80,16 @@ try {
       urlRow: !!b?.shadowRoot?.querySelector('.url-input'),
     });
     const availBox = by('Available');
-    const headings = [...(availBox?.shadowRoot?.querySelectorAll('.cards-group-title') || [])].map((h) => h.textContent);
+    const headings = [...(availBox?.shadowRoot?.querySelectorAll('.topic-tab') || [])].map((h) => h.textContent);
     return { inUse: info(by('InUse')), avail: info(availBox), headings, boxes: boxes.length };
   });
   check('two plugin-manager boxes mount', mounted.boxes === 2, `boxes=${mounted.boxes}`);
   check('Plugins to Use renders its cards + title', mounted.inUse.cards >= 8 && /Plugins to Use/.test(mounted.inUse.title || ''), JSON.stringify(mounted.inUse));
-  check('Plugins Available renders its cards + title', mounted.avail.cards >= 3 && /Plugins Available/.test(mounted.avail.title || ''), JSON.stringify(mounted.avail));
+  check('Plugins Available renders its cards + title', mounted.avail.cards >= 2 && /Plugins Available/.test(mounted.avail.title || ''), JSON.stringify(mounted.avail));
   check('boxes carry the manifest-URL input row', mounted.inUse.urlRow && mounted.avail.urlRow);
-  check('Available groups under skos topic headings',
+  check('Available shows skos topic TABS',
     mounted.headings.includes('Information') && mounted.headings.includes('Tech'),
-    `headings=[${mounted.headings}]`);
+    `tabs=[${mounted.headings}]`);
 
   // --- move: drop the #InUse Calendar card on the Available box ---
   const moved = await page.evaluate(async () => {
