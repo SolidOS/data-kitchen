@@ -13,19 +13,22 @@
   </p>
 
   <sol-plugin-manager
-      source="data/plugins-catalog.ttl#InUse"
-  ></sol-plugin-manager>
-
-  <sol-plugin-manager
       grouped
       source="data/plugins-catalog.ttl#Available"
   ></sol-plugin-manager>
+
+  <sol-plugin-manager
+      source="data/plugins-catalog.ttl#InUse"
+  ></sol-plugin-manager>
 </div>
 <style>
-  /* the two boxes sit side by side (wrapping on narrow viewports); each box
-     scrolls ITS OWN cards area — never the page or the pane */
-  .dk-manage-plugins { display: flex; flex-wrap: wrap; align-items: stretch; gap: .8rem; padding: .8rem; max-width: 72rem;
+  /* Available on the LEFT, filling the space; Plugins to Use on the right,
+     one column of cards wide. Each box scrolls ITS OWN cards area — never
+     the page or the pane. */
+  .dk-manage-plugins { display: flex; align-items: stretch; gap: .8rem; padding: .8rem; flex-wrap: wrap;
                        flex: 1 1 auto; min-height: 0; overflow: hidden; }
   .dk-manage-plugins-hint { flex: 1 1 100%; margin: 0; align-self: flex-start; font-size: max(16px, var(--font-size, 1rem)); color: var(--text-muted, #7f8c8d); }
-  .dk-manage-plugins > sol-plugin-manager { flex: 1 1 24rem; min-width: 20rem; min-height: 0; max-height: 100%; }
+  .dk-manage-plugins > sol-plugin-manager { min-height: 0; max-height: 100%; }
+  .dk-manage-plugins > sol-plugin-manager[source$="#Available"] { flex: 1 1 24rem; min-width: 20rem; }
+  .dk-manage-plugins > sol-plugin-manager[source$="#InUse"] { flex: 0 1 20rem; min-width: 16rem; }
 </style>
