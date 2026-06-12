@@ -1,5 +1,13 @@
 # tabs.ttl ↔ html-first.html — asymmetry inventory
 
+> **SUPERSEDED 2026-06-12 — rdf-first switch.** The two-way sync this document
+> inventories was retired the day after it shipped: `data/tabs.ttl` is now the
+> ONLY live artifact (rendered at runtime by `<sol-tabs from-rdf>` +
+> `src/dk-tabs-rdf.js`); `html-first.html` and `dk-tabs-sync.js` (fingerprint,
+> reverse import, dual writes) are gone. Edit-via-HTML is now an offline round
+> trip: `npm run rdf2html` / `npm run html2rdf` (tools/conversion). This file
+> stays as the historical inventory of why the sync was hard.
+
 > **STATUS 2026-06-11 — BUILT.** The two-way sync now ships: tabs, bar AND chrome
 > are modeled in `tabs.ttl` (`#Tabs`/`#Bar`/`#Chrome`); `html-first.html` is
 > regenerated on save (tabs + bar live-update in place via `applyTabs`/

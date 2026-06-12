@@ -3,6 +3,9 @@ dist/
 *.log
 .DS_Store
 
+# rdf2html's editable shell snapshot (scratch; the RDF is the source)
+tools/conversion/shell.html
+
 # the pivot server's PRE-COMPILED config is a required, committed artifact
 # (regenerating needs an isolated build — see pivot/build-compiled-config.sh)
 !pivot/dist/

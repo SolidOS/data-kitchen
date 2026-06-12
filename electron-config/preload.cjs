@@ -18,9 +18,9 @@ const CONTENT_SELECTOR = '#dk-content';
 
 // The native overlays must cover ONLY the tab content region. The whole
 // sol-tabs shell (tab bar + actions row included) lives INSIDE #dk-content
-// now (html-first.html is included into it), so overlaying the #dk-content
-// rect would obscure the chrome. Report the tabset's content element once it
-// exists; fall back to #dk-content while the include is still loading.
+// (the inline <sol-tabs> in index.html), so overlaying the #dk-content rect
+// would obscure the chrome. Report the tabset's content element once it
+// exists; fall back to #dk-content while the tabs are still building.
 function contentRegionEl() {
   return document.querySelector('.sol-tabs-content')
       || document.querySelector(CONTENT_SELECTOR);

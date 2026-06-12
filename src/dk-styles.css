@@ -13,8 +13,8 @@ body {
 
 /* sol-include's :host pins font-size to var(--font-size, 20px); make hosts
    inherit the document cascade instead so the text-size choice reaches
-   included content (the tabset lives inside the #dk-body include). An
-   author rule on the host element outranks the shadow :host rule. */
+   included content (help overlay, mini player, …). An author rule on the
+   host element outranks the shadow :host rule. */
 sol-include {
   font-size: inherit;
   color: var(--text, #212121);

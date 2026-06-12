@@ -3,8 +3,9 @@
 @prefix acl:    <http://www.w3.org/ns/auth/acl#> .
 
 # ── The ☰ hamburger menu (chrome) ────────────────────────────────────────
-# Consumed by <sol-dropdown-button source="./data/menu.ttl#More" region="modal">
-# in html-first.html: component items display in the #dk-menu-pane replace
+# Consumed by the ☰ <sol-dropdown-button source="./data/menu.ttl#More"> chrome
+# launcher (data/tabs.ttl#Chrome, built by src/dk-tabs-rdf.js): component items
+# display in the #dk-menu-pane replace
 # pane over the tab content (it claims them by id via data-for in index.html;
 # unclaimed items would fall back to the region= modal); bare-name items
 # dispatch sol-command (resolved by the dk-tabs-shell registry); acl:Write

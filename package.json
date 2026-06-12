@@ -12,6 +12,8 @@
     "build": "node esbuild.config.mjs",
     "watch": "node esbuild.config.mjs --watch",
     "serve": "python3 -m http.server 8081",
+    "rdf2html": "node tools/conversion/rdf2html.mjs",
+    "html2rdf": "node tools/conversion/html2rdf.mjs",
     "dist": "electron-builder"
   },
   "dependencies": {
@@ -37,7 +39,6 @@
       "pivot-config/**",
       "pivot/**",
       "index.html",
-      "html-first.html",
       "dk.manifest.json",
       "dist/**",
       "src/**",

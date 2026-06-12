@@ -2,27 +2,28 @@
 //   1. the menu + bar managers mount and render their rows
 //   2. an edit made through the UI (add item, assign the ia-player plugin
 //      via the drag payload, rename) SAVES — the PUT lands in data/tabs.ttl
-//      on disk through the pivot server
-//   3. tools/conversion/generate-html-first.mjs regenerates html-first.html
-//      with the new tab, and --verify round-trips
-// The test edits the REAL data/tabs.ttl + html-first.html and restores both
-// with git checkout afterwards (tree must be clean for those two files).
-// Run from dk root with both servers up.
+//      on disk through the pivot server (rdf-first: that single write IS the
+//      shell; a fresh browser renders the new tab straight from the RDF)
+//   3. tools/conversion/rdf2html.mjs emits the editable snapshot with the
+//      new tab, and --verify round-trips
+// The test edits the REAL data/tabs.ttl and restores it with git checkout
+// afterwards (the file must be clean). Run from dk root with both servers up.
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { readFileSync, rmSync } from 'node:fs';
 import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/index.mjs';
 
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };
 const restore = () => {
-  try { execFileSync('git', ['checkout', '--', 'data/tabs.ttl', 'html-first.html']); } catch {}
+  try { execFileSync('git', ['checkout', '--', 'data/tabs.ttl']); } catch {}
+  try { rmSync('tools/conversion/shell.html', { force: true }); } catch {}   // scratch snapshot of the test state
 };
 
-// GUARD: this test git-restores the two files it edits — running it with
-// uncommitted changes to them would WIPE those changes (it has, twice).
-const dirty = execFileSync('git', ['status', '--porcelain', 'data/tabs.ttl', 'html-first.html'], { encoding: 'utf8' }).trim();
+// GUARD: this test git-restores the file it edits — running it with
+// uncommitted changes to it would WIPE those changes (it has, twice).
+const dirty = execFileSync('git', ['status', '--porcelain', 'data/tabs.ttl'], { encoding: 'utf8' }).trim();
 if (dirty) {
-  console.error('ABORT: commit data/tabs.ttl and html-first.html first — this test restores them via git checkout:\n' + dirty);
+  console.error('ABORT: commit data/tabs.ttl first — this test restores it via git checkout:\n' + dirty);
   process.exit(2);
 }
 
@@ -156,43 +157,42 @@ try {
     reordered.length === 2 && /Weather/.test(reordered[0]) && /Music/.test(reordered[1]),
     JSON.stringify(reordered));
 
-  // --- the PUT landed on disk; the generator picks it up ---
+  // --- the PUT landed on disk; the snapshot generator picks it up ---
   const ttl = readFileSync('data/tabs.ttl', 'utf8');
   check('saved RDF contains the new item', /Smoke Test Tab/.test(ttl) && /smoke/.test(ttl));
   check('pantry comment-free doc still has all panels', /panel-solidos/.test(ttl) && /panel-customize/.test(ttl));
 
   let genOut = '';
-  try { genOut = execFileSync('node', ['tools/conversion/generate-html-first.mjs'], { encoding: 'utf8' }); }
+  try { genOut = execFileSync('node', ['tools/conversion/rdf2html.mjs'], { encoding: 'utf8' }); }
   catch (e) { genOut = String(e); }
-  const html = readFileSync('html-first.html', 'utf8');
-  check('generator emits the new tab into html-first.html', /Smoke Test Tab/.test(html), genOut.trim());
-  check('generator emits the submenu block with both plugins',
+  const html = readFileSync('tools/conversion/shell.html', 'utf8');
+  check('rdf2html emits the new tab into the snapshot', /Smoke Test Tab/.test(html), genOut.trim());
+  check('snapshot has the submenu block with both plugins',
     /<submenu[\s\S]*?Smoke Test Tab[\s\S]*?<\/submenu>/.test(html)
     && ((html.match(/<submenu[\s\S]*?<\/submenu>/) || [''])[0].match(/<a /g) || []).length === 2);
-  check('regenerated submenu keeps the dnd order (weather before music)', (() => {
+  check('snapshot submenu keeps the dnd order (weather before music)', (() => {
     const block = (html.match(/<submenu[\s\S]*?<\/submenu>/) || [''])[0];
     const w = block.indexOf('sol-weather'); const m = block.indexOf('ia-player');
     return w >= 0 && m >= 0 && w < m;
   })());
-  check('chrome block survives regeneration', /chrome:begin/.test(html) && /omp-help-launch/.test(html) && /omp-more/.test(html));
+  check('snapshot emits the chrome block from #Chrome', /chrome:begin/.test(html) && /omp-help-launch/.test(html) && /omp-more/.test(html));
   let verifyOk = true;
-  try { execFileSync('node', ['tools/conversion/generate-html-first.mjs', '--verify']); }
+  try { execFileSync('node', ['tools/conversion/rdf2html.mjs', '--verify']); }
   catch { verifyOk = false; }
-  check('generator --verify round-trip is stable', verifyOk);
+  check('rdf2html --verify round-trip is stable', verifyOk);
 
-  // --- the regenerated shell actually shows the new tab ---
-  // (a FRESH browser, so the old instance's HTTP cache can't serve the
-  // pre-regeneration html-first.html — electron disables its cache, plain
-  // Chrome here doesn't, and that made this check flaky)
+  // --- a fresh browser renders the new tab straight from the RDF ---
+  // (FRESH so the old instance's HTTP cache can't serve the pre-save
+  // tabs.ttl — electron disables its cache, plain Chrome here doesn't)
   const browser2 = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
   const page2 = await browser2.newPage();
   await page2.goto('http://localhost:3000/index.html', { waitUntil: 'domcontentloaded' });
   await page2.evaluate(async () => { if (window.ComponentInterop?.ready) await window.ComponentInterop.ready; });
   await page2.waitForTimeout(4000);
   const tabsNow = await page2.evaluate(() =>
-    [...document.querySelector('sol-tabs')?.querySelectorAll('a, [role="tab"]') || []].map(e => e.textContent.trim()));
+    [...document.querySelectorAll('#dk-tabs > .sol-tabs-bar button')].map(e => e.textContent.trim()));
   await browser2.close();
-  check('reloaded shell shows the built tab', tabsNow.some(t => /Smoke Test Tab/.test(t)), tabsNow.join(' | ').slice(0, 140));
+  check('fresh shell renders the built tab from the RDF', tabsNow.some(t => /Smoke Test Tab/.test(t)), tabsNow.join(' | ').slice(0, 140));
 } finally {
   restore();
   await browser.close();

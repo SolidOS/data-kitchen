@@ -4,18 +4,19 @@
 // plugin via its plugins/<id>/manifest.ttl (schema:softwareHelp,
 // dct:conformsTo, optional #Menu). (Adapted from omp-shell when
 // open_media_player was absorbed.)
-// The tabs + panels are authored declaratively in html-first.html; here we
-// react to <sol-tabs>'s sol-tab-change. Favourites are no longer a tab —
-// each media tab surfaces its own favourites.
+// The tabs + panels are modeled in data/tabs.ttl (rdf-first; rendered by
+// <sol-tabs from-rdf> + dk-tabs-rdf); here we react to <sol-tabs>'s
+// sol-tab-change. Favourites are no longer a tab — each media tab surfaces
+// its own favourites.
 
     import { rdf } from 'sol-components/core/rdf.js';
     import { loadRdfStore } from 'sol-components/core/rdf-utils.js';
     import { displayItem } from 'sol-components/core/display-target.js';
     import { solFetch } from 'sol-components/core/auth-fetch.js';
 
-    // The body UI is authored declaratively in html-first.html and loaded by the
-    // #dk-body <sol-include source="./html-first.html"> in index.html. (#dk-tabs
-    // therefore appears asynchronously — see whenTabsReady.)
+    // The body UI is modeled in data/tabs.ttl and rendered by the inline
+    // <sol-tabs id="dk-tabs" from-rdf="./data/tabs.ttl#Tabs"> in index.html.
+    // (Its panels therefore appear asynchronously — see whenTabsReady.)
 
     let solTabs = null;   // assigned once the included <sol-tabs> exists
     const chrome  = document.querySelector('.omp-chrome');
@@ -65,7 +66,7 @@
     }
 
     // Point the chrome at the active plugin: the ? button's source and the
-    // ☰ menu's context-source. Defaults stay DECLARED in html-first.html;
+    // ☰ menu's context-source. Defaults stay declared in data/tabs.ttl#Chrome;
     // this only follows the documented context, and falls back to them.
     async function applyContext() {
       const panel = activePanel();
@@ -167,8 +168,8 @@
       if (declared) return declared;
       try { return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch { return 'dark'; }
     }
-    // Live lookups — the buttons arrive with the html-first include, usually
-    // AFTER this module evaluates; a captured const would stay null.
+    // Live lookups — the buttons are built from data/tabs.ttl (dk-tabs-rdf),
+    // usually AFTER this module evaluates; a captured const would stay null.
     const themeBtn = () => document.querySelector('.omp-theme');
     function syncTheme() {
       const btn = themeBtn();
@@ -399,8 +400,8 @@
     // ----- boot -----
     syncTheme();
     syncFontSize();
-    // <sol-tabs> builds its panels asynchronously (the html-first include);
-    // wait for them, then wire tab reactions + restore the last-used tab.
+    // <sol-tabs> builds its panels asynchronously (the from-rdf load of
+    // data/tabs.ttl); wait, then wire tab reactions + restore the last-used tab.
     function whenTabsReady(cb) {
       if (panelEl('news')) return cb();
       let n = 0;

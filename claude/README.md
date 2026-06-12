@@ -11,11 +11,10 @@
   sol-default, theming, shared editor system with two modes,
   package dedup), UI sketches, build order across all phases, and
   a "Next steps" section listing outstanding work.
-- **`tabs-rdf-html-asymmetry.md`** — inventory of items that live in only
-  `data/tabs.ttl` OR only `html-first.html` (pantry items, menu metadata,
-  acl:mode/icon; chrome block, wrapper attrs, hand-authored markup, skipped
-  anchor attrs). Reference for the two-way tabs-sync plan; flags what the sync
-  preserves vs. what's at risk on a round-trip.
+- **`tabs-rdf-html-asymmetry.md`** — SUPERSEDED (2026-06-12 rdf-first
+  switch): historical inventory of items that lived in only `data/tabs.ttl`
+  OR only `html-first.html`, kept as the record of why the (retired) two-way
+  sync was hard. tabs.ttl is now the only live artifact.
 
 ## `smoke-tests/` — consolidation-era (2026-06-10, Playwright)
 
@@ -33,26 +32,28 @@ headers):
   category, repo state restored.
 - `verify-customize-menus.mjs` (was verify-builders) — same subtab, the
   menu/bar managers side: managers render,
-  drag-payload assignment, save (PUT via pivot), generator re-emits
-  html-first.html, fresh-browser reload shows the built tab, repo state
-  restored. GUARDED: refuses to run with uncommitted tabs.ttl /
-  html-first.html (its cleanup git-restores them).
+  drag-payload assignment, save (PUT via pivot — rdf-first: the single
+  write IS the shell), rdf2html emits the snapshot with the new tab,
+  fresh-browser reload renders it straight from the RDF, repo state
+  restored. GUARDED: refuses to run with uncommitted tabs.ttl (its
+  cleanup git-restores it).
   (2026-06-12: the separate define-menus subtab was removed — its managers
   were a dup of the right column here; subtab 2 is now Customize
   Preferences, the settings page.) Also covers chip-dnd reorder of a
   submenu's plugins.
-- `verify-live-tab-sync.mjs` (2026-06-12) — the save → live-shell pipeline:
-  an edited tab re-renders its pane at once (applyTabs change detection),
-  unchanged/renamed tabs keep their keep-alive panes, the builder status
-  covers BOTH writes ("saved ✓ (menu + shell)"), and the fingerprint rule:
-  a lagging html-first.html regenerates FROM the RDF at load (form saves
-  never silently reverted), while a genuine hand edit still imports.
+- `verify-live-tab-sync.mjs` (2026-06-12, rdf-first) — the save →
+  live-shell pipeline: an edited tab re-renders its pane at once (applyTabs
+  change detection), unchanged/renamed tabs keep their keep-alive panes,
+  zero .html PUTs across the whole run (single-write invariant), reload
+  renders the saved state from the RDF, out-of-band tabs.ttl edits are
+  never rewritten, and #Chrome self-heals (RDF-only).
   GUARDED like verify-customize-menus.
 - `verify-link-tabs.mjs` (2026-06-12) — ui:Link tabs end to end, mirroring
-  the dk-pod Solid/Dev-Tools shapes: link + mixed submenus regenerate into
-  html (plain anchors, target= from ui:region), render as nested sub-tab
-  strips with embeds filling the pane, the self-named conversion artifact
-  stays in the data but never renders, --verify stable. GUARDED likewise.
+  the dk-pod Solid/Dev-Tools shapes: link + mixed submenus render straight
+  from the RDF as nested sub-tab strips with embeds filling the pane, the
+  self-named conversion artifact stays in the data but never renders, and
+  the rdf2html snapshot emits them correctly (plain anchors, target= from
+  ui:region; --verify stable). GUARDED likewise.
 - `diag-accordion-targets.mjs` (2026-06-12) — the Customize drop-target
   accordion: renamed headings, menu-open/bar-closed start, click swaps,
   open-header no-op. Read-only.

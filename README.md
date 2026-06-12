@@ -66,11 +66,11 @@ means editing that attribute too.
 ## Layout
 
 ```
-index.html          the shell: chrome bar + <sol-include source="./html-first.html">
-html-first.html     the topmost <sol-tabs> — GENERATED from data/tabs.ttl
-                    (tabs, bar AND chrome; kept in two-way sync with it)
-data/tabs.ttl       the RDF twin: #Tabs (tabs) + #Bar (actions) + #Chrome
-                    (help / ☰ menu / sign-in); rdfs:comment ↔ HTML comments
+index.html          the shell: chrome bar + the inline topmost
+                    <sol-tabs from-rdf="./data/tabs.ttl#Tabs">
+data/tabs.ttl       THE shell model (rdf-first): #Tabs (tabs) + #Bar (actions)
+                    + #Chrome (help / ☰ menu / sign-in), rendered at runtime
+                    (#Bar/#Chrome built by src/dk-tabs-rdf.js)
 data/menu.ttl       #More — the ☰ hamburger's standard items
 data/plugins-catalog.ttl    the plugin catalog: one #Available list + topics
 plugins/<name>/     one SELF-CONTAINED folder per plugin: its scripts,
@@ -145,24 +145,19 @@ manifest and re-seed. "In use" simply means `data/tabs.ttl` mounts it.
 **☰ → All Plugins…** browses the same catalog read-mostly (guests too).
 
 Saving rewrites the whole Turtle document (unreferenced "pantry" items are
-preserved), and `src/dk-tabs-sync.js` keeps `html-first.html` and the running
-shell in step **automatically** — no manual regenerate step:
+preserved). The shell is **rdf-first** — `data/tabs.ttl` is the only live
+artifact, so a save IS the source of truth; there is no companion HTML file
+and no sync. `src/dk-tabs-rdf.js` reacts to a save by updating the running
+shell **in place** (no reload): an edited tab re-renders from its new
+definition while unchanged tabs keep their keep-alive panes (change detection
+via the generator's canonical emission, so renames/reorders never disturb
+live panes), and the bar launchers rebuild with the chrome kept untouched.
+Deleted mandatory chrome items are self-healed on load.
 
-- the live tab bar and bar launchers update **in place** (chrome untouched);
-  an edited tab re-renders from its new definition while unchanged tabs keep
-  their keep-alive panes (change detection via the generator's canonical
-  emission, so renames/reorders never disturb live panes);
-- `html-first.html` is regenerated from the RDF and saved (the standalone
-  `node tools/conversion/generate-html-first.mjs [--verify]` does the same for a
-  build/CI check); the builders' status reports BOTH writes —
-  `saved ✓ (menu + shell)` — and a failed shell write shows in red;
-- every successful shell write stores a fingerprint (SHA-256, localStorage)
-  of the known-synced html. On load: html matching the fingerprint means
-  nobody hand-edited it, so the RDF is the source of truth and the shell
-  regenerates from it (a form save can never be silently reverted at
-  launch); html differing from the fingerprint is a genuine hand edit and
-  imports back into the RDF (reverse sync). Deleted mandatory chrome items
-  are self-healed.
+Prefer editing the shell as HTML? Round-trip it offline: `npm run rdf2html`
+emits an editable snapshot (`tools/conversion/shell.html`), `npm run html2rdf`
+merges your edits back into `data/tabs.ttl` (pantry and `#Chrome` preserved) —
+see `tools/conversion/README.md`.
 
 `ui:Link` tabs/children round-trip too: a link emits as a plain anchor with
 no `data-handler` (`target=` encodes `ui:region` — tab ↔ `_blank`, inline ↔
@@ -182,9 +177,9 @@ Sign-in is on-demand: the hidden
 
 ```bash
 node claude/smoke-tests/verify-unified-shell.mjs     # every tab functional
-node claude/smoke-tests/verify-customize-menus.mjs   # menu/bar editors: edit → auto-save → regenerate (+ chip reorder)
+node claude/smoke-tests/verify-customize-menus.mjs   # menu/bar editors: edit → auto-save (+ chip reorder)
 node claude/smoke-tests/verify-customize-plugins.mjs # catalog + manifest import
-node claude/smoke-tests/verify-live-tab-sync.mjs     # save → live shell + fingerprint rule
+node claude/smoke-tests/verify-live-tab-sync.mjs     # save → live in-place shell update (rdf-first)
 node claude/smoke-tests/verify-link-tabs.mjs         # ui:Link submenus end to end
 ```
 

@@ -1,23 +1,23 @@
-// The save → live-shell pipeline, end to end — the three 2026-06-12 fixes:
+// The save → live-shell pipeline, end to end, under RDF-FIRST (2026-06-12):
+// data/tabs.ttl is the ONLY live artifact — no html-first.html, no fingerprint,
+// no dual writes (src/dk-tabs-rdf.js replaced dk-tabs-sync.js).
 //
 //   1. applyTabs change detection: editing an EXISTING tab's definition
 //      through the Customize form (here: a second plugin dropped on it,
 //      changing it into / growing its submenu) re-renders that tab's pane
 //      in the RUNNING shell at once, while an UNCHANGED tab keeps its
 //      keep-alive pane (same DOM node), and a rename keeps the pane too.
-//   2. both-writes status: the builder's status reports the shell write —
-//      "saved ✓ (menu + shell)" — not just the RDF PUT.
-//   3. fingerprint rule (dk-tabs-sync): on load, an html-first.html that
-//      merely LAGS tabs.ttl (it matches our last known-synced write) is
-//      regenerated FROM the RDF — the form edits are NOT reverted; an html
-//      that truly differs from our last write is a hand edit and imports
-//      into the RDF as before (HTML wins).
+//   2. single write: a Customize save PUTs tabs.ttl and NOTHING else — the
+//      whole run must see zero PUTs of any .html resource.
+//   3. persistence: after a reload the shell re-renders the saved state
+//      straight from the RDF (from-rdf + dk-tabs-rdf), and an out-of-band
+//      tabs.ttl edit simply IS the new truth — nothing reverts or rewrites it.
+//   4. chrome self-heal: dropping a mandatory item from #Chrome's parts is
+//      repaired on load (RDF-only heal) and the button reappears in the DOM.
 //
-// The test edits the REAL data/tabs.ttl + html-first.html and restores both
-// with git checkout afterwards (tree must be clean for those two files).
-// Run from dk root with the :3000 server up. One browser for the whole run —
-// the fingerprint lives in localStorage, which an ephemeral profile only
-// keeps within a single launch.
+// The test edits the REAL data/tabs.ttl and restores it with git checkout
+// afterwards (the file must be clean). Run from dk root with the :3000
+// server up.
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/index.mjs';
@@ -25,25 +25,28 @@ import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/ind
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };
 const restore = () => {
-  try { execFileSync('git', ['checkout', '--', 'data/tabs.ttl', 'html-first.html']); } catch {}
+  try { execFileSync('git', ['checkout', '--', 'data/tabs.ttl']); } catch {}
 };
 
-// GUARD: this test git-restores the two files it edits — running it with
-// uncommitted changes to them would WIPE those changes.
-const dirty = execFileSync('git', ['status', '--porcelain', 'data/tabs.ttl', 'html-first.html'], { encoding: 'utf8' }).trim();
+// GUARD: this test git-restores the file it edits — running it with
+// uncommitted changes to it would WIPE those changes.
+const dirty = execFileSync('git', ['status', '--porcelain', 'data/tabs.ttl'], { encoding: 'utf8' }).trim();
 if (dirty) {
-  console.error('ABORT: commit data/tabs.ttl and html-first.html first — this test restores them via git checkout:\n' + dirty);
+  console.error('ABORT: commit data/tabs.ttl first — this test restores it via git checkout:\n' + dirty);
   process.exit(2);
 }
 
 const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
 const page = await browser.newPage();
-// ONE browser profile for the whole run (the fingerprint lives in its
-// localStorage) — so the HTTP cache must be disabled instead of using fresh
-// browsers per reload: plain Chrome otherwise serves the PRE-regeneration
-// tabs.ttl / html-first.html after reload and the sync sees stale state.
+// Disable the HTTP cache so a reload re-fetches the just-PUT tabs.ttl.
 const cdp = await page.context().newCDPSession(page);
 await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
+
+// rdf-first means NO shell file write, ever: collect every .html PUT.
+const htmlPuts = [];
+page.on('request', (req) => {
+  if (req.method() === 'PUT' && /\.html(\?|$)/.test(req.url())) htmlPuts.push(req.url());
+});
 
 const settle = async (ms = 5000) => {
   await page.evaluate(async () => { if (window.ComponentInterop?.ready) await window.ComponentInterop.ready; });
@@ -58,8 +61,8 @@ const openCustomize = () => page.evaluate(async () => {
   await new Promise(r => setTimeout(r, 5000));
 });
 // Drop a palette payload on the menu builder row whose label matches, then
-// wait for the save round-trip AND the shell-sync status; returns the final
-// builder status text.
+// wait for the save round-trip; returns the final builder status text.
+// (Single write now — the plain "saved ✓" IS the complete save.)
 const dropOnRow = (rowRe, payload) => page.evaluate(async ({ rowRe, payload }) => {
   const builder = document.querySelector('#dk-menu-pane .dk-choose-targets sol-menu-manager');
   const sh = builder.shadowRoot;
@@ -74,7 +77,7 @@ const dropOnRow = (rowRe, payload) => page.evaluate(async ({ rowRe, payload }) =
   for (let i = 0; i < 60; i++) {
     await new Promise(r => setTimeout(r, 250));
     const s = sh.querySelector('.builder-status')?.textContent || '';
-    if (/menu \+ shell|failed/i.test(s)) return { ok: /saved/.test(s) && !/failed/i.test(s), status: s };
+    if (/saved ✓|failed/i.test(s)) return { ok: /saved ✓/.test(s) && !/failed/i.test(s), status: s };
   }
   return { ok: false, status: 'timeout: ' + (sh.querySelector('.builder-status')?.textContent || '') };
 }, { rowRe, payload });
@@ -101,7 +104,7 @@ try {
     if (pane) pane.__dkProbe = true;
   });
 
-  // --- build a new tab with ONE plugin (this part worked before) ---
+  // --- build a new tab with ONE plugin ---
   await page.evaluate(async () => {
     const sh = document.querySelector('#dk-menu-pane .dk-choose-targets sol-menu-manager').shadowRoot;
     const add = sh.querySelector('.add-input');
@@ -113,17 +116,17 @@ try {
     label: 'Smoke Music', tag: 'ia-player',
     params: [['storage-ns', 'smoke'], ['source', './plugins/ia-player/libraries/internet_archive_music/index.ttl']],
   });
-  check('first save lands and status covers BOTH writes', first.ok && /menu \+ shell/.test(first.status), first.status);
+  check('first save lands (plain saved ✓ — single write)', first.ok, first.status);
   let pane = await paneInfo('Live Sync Tab');
   check('new tab pane appears live', !!pane, JSON.stringify(pane));
 
-  // --- THE regression: a SECOND plugin on the SAME tab (definition change
-  //     on an existing tab) must re-render its live pane as the submenu ---
+  // --- a SECOND plugin on the SAME tab (definition change on an existing
+  //     tab) must re-render its live pane as the submenu ---
   const second = await dropOnRow('Live Sync Tab', {
     label: 'Smoke Weather', tag: 'sol-weather',
     params: [['source', './plugins/weather/weather-settings.ttl#Settings']],
   });
-  check('second save lands with both-writes status', second.ok && /menu \+ shell/.test(second.status), second.status);
+  check('second save lands', second.ok, second.status);
   await page.waitForTimeout(1000);
   pane = await paneInfo('Live Sync Tab');
   check('LIVE pane now shows the 2-plugin submenu (no reload)',
@@ -149,7 +152,7 @@ try {
     for (let i = 0; i < 60; i++) {
       await new Promise(r => setTimeout(r, 250));
       const s = sh.querySelector('.builder-status')?.textContent || '';
-      if (/menu \+ shell|failed/i.test(s)) return s;
+      if (/saved ✓|failed/i.test(s)) return s;
     }
     return 'timeout';
   });
@@ -162,48 +165,58 @@ try {
     return { paneKept: !!(pane && pane.__dkProbe2), btnRenamed: !!btn };
   });
   check('rename keeps the pane (same node) and relabels the button',
-    /menu \+ shell/.test(renamed) && renameKept.paneKept && renameKept.btnRenamed,
+    /saved ✓/.test(renamed) && renameKept.paneKept && renameKept.btnRenamed,
     `${renamed} ${JSON.stringify(renameKept)}`);
 
-  // --- fingerprint rule, case 1: tabs.ttl moved on, html merely LAGS (we
-  //     simulate a failed regeneration) → on reload the RDF must WIN.
-  //     NOTE the edit must be key-visible to the reverse sync: its tab key
-  //     is id|tag|params of TOP-LEVEL tabs — label-only changes and
-  //     submenu-children changes are invisible to it (pre-existing
-  //     limitations, unrelated to the fingerprint rule). So we edit the
-  //     News tab's view param. ---
-  const lagged = await page.evaluate(async () => {
+  // --- persistence: a reload re-renders the saved state from the RDF ---
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await settle(6000);
+  const reloaded = await page.evaluate(() => {
+    const btn = [...document.querySelectorAll('#dk-tabs > .sol-tabs-bar button')]
+      .find(b => /Live Sync Renamed/.test(b.textContent));
+    return { btn: !!btn, help: !!document.querySelector('.omp-help-launch'), more: !!document.querySelector('.omp-more') };
+  });
+  check('reload renders the saved tab from tabs.ttl', reloaded.btn, JSON.stringify(reloaded));
+  check('chrome launchers built from #Chrome on load', reloaded.help && reloaded.more, JSON.stringify(reloaded));
+
+  // --- out-of-band tabs.ttl edit: the RDF IS the truth; on reload nothing
+  //     reverts or rewrites it (the old fingerprint/import machinery is gone) ---
+  const edited = await page.evaluate(async () => {
     const url = new URL('data/tabs.ttl', document.baseURI).href;
     const ttl = await (await fetch(url)).text();
-    const out = ttl.replace('schema:value "threePanel"', 'schema:value "threePanel-lag"');
+    const out = ttl.replace('schema:value "threePanel"', 'schema:value "threePanel-edit"');
     const res = await fetch(url, { method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: out });
     return res.ok && out !== ttl;
   });
-  check('out-of-band tabs.ttl edit applied (simulated failed regen)', lagged);
-  await page.reload({ waitUntil: 'domcontentloaded' });
-  await settle(6000);   // importHandEdits fires 1.5s after load, then regenerates
-  const afterLag = { ttl: readFileSync('data/tabs.ttl', 'utf8'), html: readFileSync('html-first.html', 'utf8') };
-  check('RDF wins: tabs.ttl NOT reverted (form-save protection)', /threePanel-lag/.test(afterLag.ttl));
-  check('RDF wins: html-first.html regenerated from the RDF', /data-view="threePanel-lag"/.test(afterLag.html));
-
-  // --- fingerprint rule, case 2: a real HAND EDIT to html-first.html still
-  //     wins and imports into the RDF on reload ---
-  const handEdited = await page.evaluate(async () => {
-    const url = new URL('html-first.html', document.baseURI).href;
-    const html = await (await fetch(url)).text();
-    const out = html.replace('data-view="threePanel-lag"', 'data-view="threePanel-hand"');
-    const res = await fetch(url, { method: 'PUT', headers: { 'Content-Type': 'text/html' }, body: out });
-    return res.ok && out !== html;
-  });
-  check('hand edit applied to html-first.html', handEdited);
+  check('out-of-band tabs.ttl edit applied', edited);
   await page.reload({ waitUntil: 'domcontentloaded' });
   await settle(6000);
-  check('hand edit wins: imported into tabs.ttl', /threePanel-hand/.test(readFileSync('data/tabs.ttl', 'utf8')));
+  check('RDF edit untouched after reload (no machinery rewrites it)',
+    /threePanel-edit/.test(readFileSync('data/tabs.ttl', 'utf8')));
+
+  // --- chrome self-heal: drop a mandatory item from #Chrome's parts ---
+  const dropped = await page.evaluate(async () => {
+    const url = new URL('data/tabs.ttl', document.baseURI).href;
+    const ttl = await (await fetch(url)).text();
+    const out = ttl.replace(/ui:parts \(\s*<#chrome-help>\s*<#chrome-menu>/, 'ui:parts ( <#chrome-menu>');
+    const res = await fetch(url, { method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: out });
+    return res.ok && out !== ttl;
+  });
+  check('chrome-help dropped from #Chrome parts', dropped);
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await settle(6000);
+  const healed = await page.evaluate(() => !!document.querySelector('.omp-help-launch'));
+  check('healChrome reinserted the help button (RDF-only heal)', healed);
+  check('healed tabs.ttl lists chrome-help in #Chrome parts again',
+    /chrome-help/.test((readFileSync('data/tabs.ttl', 'utf8').match(/<#Chrome>[\s\S]*?\)\s*\./) || [''])[0]));
+
+  // --- the rdf-first invariant: the whole run wrote NO .html anywhere ---
+  check('zero .html PUTs across the entire run', htmlPuts.length === 0, htmlPuts.join(' '));
 } finally {
   restore();
   await browser.close();
 }
 check('repo state restored after the test',
-  !/Live Sync|threePanel-(lag|hand)/.test(readFileSync('data/tabs.ttl', 'utf8')));
+  !/Live Sync|threePanel-edit/.test(readFileSync('data/tabs.ttl', 'utf8')));
 console.log(fails.length ? `\n${fails.length} FAILURE(S)` : '\nALL PASS');
 process.exit(fails.length ? 1 : 0);

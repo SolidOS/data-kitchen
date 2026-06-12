@@ -1,25 +1,46 @@
-# conversion/ — HTML ⇄ RDF UI authoring converter
+# conversion/ — edit the shell as HTML (rdf2html ⇄ html2rdf)
 
-A standalone tool that converts an app's tabs / ⋮-menu / settings UI between
-**declarative HTML** and **`ui:` RDF/Turtle**. It was extracted from omp's
-runtime when the player went **html-first only** — omp now authors its UI in
-`html-first.html` and no longer loads the RDF variant at runtime, so this is a
-build-time/offline tool, not part of the app bundle.
+The dk shell is **rdf-first**: `data/tabs.ttl` is the only live artifact —
+the topmost tabset renders from it at runtime (the inline
+`<sol-tabs from-rdf="./data/tabs.ttl#Tabs">` in `index.html` plus
+`src/dk-tabs-rdf.js` for the `#Bar` / `#Chrome` launchers). These two scripts
+exist for people who prefer editing the shell as declarative HTML:
 
-## Scripts (run from the omp root)
+```
+npm run rdf2html      # data/tabs.ttl → tools/conversion/shell.html
+(edit the snapshot)
+npm run html2rdf      # tools/conversion/shell.html → data/tabs.ttl
+```
+
+## Scripts (run from the dk root)
 
 | npm script | command | what it does |
 |---|---|---|
-| `gen:rdf` | `node conversion/html-to-rdf.mjs [src.html] [outdir]` | HTML → RDF: derive `data/generated/{tabs,menu,settings}.ttl` from `html-first.html` + `index.html` |
-| `gen:rdf:verify` | `… --verify` | diff the output against hand-authored `data/{tabs,menu}.ttl` |
-| `gen:html` | `node conversion/rdf-to-html.mjs [rdfdir] [outdir]` | RDF → HTML: emit `*.fragment.html` for inspection/copy-paste |
-| `gen:html:verify` | `… --verify` | round-trip stability: HTML → RDF → HTML → RDF |
+| `rdf2html` | `node tools/conversion/rdf2html.mjs [out.html]` | emit the editable snapshot (default `tools/conversion/shell.html`, gitignored) |
+| — | `… --verify` | compare the snapshot against what tabs.ttl generates, don't write |
+| `html2rdf` | `node tools/conversion/html2rdf.mjs [in.html]` | merge the snapshot's tabs + bar back into `data/tabs.ttl` |
 
-## Files
-- `html-to-rdf.mjs` — HTML → RDF.
-- `rdf-to-html.mjs` — RDF → HTML.
-- `lib/html-rdf.mjs` — shared mappings + the puppeteer-based DOM parser.
+Both directions are sol-components core modules (`core/menu-generate.js` emits,
+`core/menu-html.js` harvests — exact inverses), so the snapshot round-trips:
+`rdf2html → html2rdf → rdf2html --verify` is clean.
 
-Paths are resolved relative to the omp root (one level up), so the scripts must
-be run from the omp project root (the npm scripts already do). `puppeteer-core`
-is the only runtime dependency.
+## What round-trips
+
+- **Tabs** (`#Tabs`) — lossless: label, id, handler, region, every attribute,
+  submenus, and the documentary HTML comments (`rdfs:comment`).
+- **Bar items** (`#Bar`) — best-effort: a non-button item's label is recovered
+  from its `title`; edit bar labels via the Customize builder when it matters.
+- **Chrome** (`#Chrome`) — emitted into the snapshot for reference, but **not
+  imported** by html2rdf; edit `data/tabs.ttl#Chrome` directly (it self-heals
+  if a mandatory item is dropped).
+- **Pantry** — items not in any menu survive an import untouched
+  (`updateMenuInStore` rebuilds only the two menus).
+
+html2rdf needs a DOM for the harvester, so it runs it in a headless chrome
+page (playwright-core from `../podz`, `/usr/bin/google-chrome` — the same
+launch the smoke tests use).
+
+*(The omp-era `html-to-rdf.mjs` / `rdf-to-html.mjs` pair that previously lived
+here targeted the old single-menu RDF shape and an app that loaded either
+variant at runtime; retired 2026-06-12 with the rdf-first switch — see git
+history.)*

@@ -26,7 +26,7 @@ const crypto = require('node:crypto');
 
 // Definition entries (relative to the engine dir) making up the editable surface.
 const SEED_ENTRIES = [
-  'index.html', 'html-first.html', 'dk.manifest.json',
+  'index.html', 'dk.manifest.json',
   'data', 'favourites', 'pages', 'help', 'shapes', 'plugins',
 ];
 
