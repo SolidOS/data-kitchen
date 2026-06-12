@@ -122,9 +122,11 @@ try {
       nestedRows: row2 ? row2.closest('li').getElementsByTagName('ul').length : -1,
     };
   });
+  // chips resolve to CATALOG display names (catalog= attribute), so the
+  // synthetic 'Smoke Weather' label resolves to the catalog's 'Weather'
   check('second drop lists BOTH plugins as chips ON the row (no nested rows)',
     submenu.chips.length === 2 && submenu.nestedRows === 0
-    && submenu.chips.some((c) => /Internet Archive/.test(c)) && submenu.chips.some((c) => /Smoke Weather/.test(c)),
+    && submenu.chips.some((c) => /Internet Archive/.test(c)) && submenu.chips.some((c) => /Weather/.test(c)),
     JSON.stringify(submenu));
 
   // --- the PUT landed on disk; the generator picks it up ---
