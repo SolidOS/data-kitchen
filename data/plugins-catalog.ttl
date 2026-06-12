@@ -28,7 +28,7 @@
 # plugin manager renders these as headings. A plugin manifest's
 # dct:subject names its category; imports file entries here.
 <#Information> a skos:Collection ; skos:prefLabel "Information" ;
-  skos:member <#News-three-panel-feeds>, <#Search>, <#Calendar>, <#Weather>, <#Clock> .
+  skos:member <#News-three-panel-feeds>, <#Search>, <#Calendar>, <#Weather>, <#Clock>, <#GeoPod> .
 
 <#Media> a skos:Collection ; skos:prefLabel "Media" ;
   skos:member <#Music-Internet-Archive>, <#Movies-Internet-Archive>, <#Images-Wikimedia>, <#Media-Kraken>, <#MovieStar>, <#Solidflix> .
@@ -45,9 +45,6 @@
 <#Pod-Management> a skos:Collection ; skos:prefLabel "Pod Management" ;
   skos:member <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Solid-File-Manager>, <#SolidOS-Databrowser> .
 
-<#Location> a skos:Collection ; skos:prefLabel "Location" ;
-  skos:member <#GeoPod>, <#Tired-Bike> .
-
 <#Health> a skos:Collection ; skos:prefLabel "Health" ;
   skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
 
@@ -56,6 +53,9 @@
 
 <#Chat> a skos:Collection ; skos:prefLabel "Chat" ;
   skos:member <#Portable-LibreChat> .
+
+<#Community> a skos:Collection ; skos:prefLabel "Community" ;
+  skos:member <#Tired-Bike> .
 
 <#Cooking> a skos:Collection ; skos:prefLabel "Cooking" ;
   skos:member <#Umai> .
