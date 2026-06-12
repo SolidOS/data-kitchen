@@ -174,9 +174,12 @@ for (const a of APPS) {
   ttl += `  ui:href <${a.href}> .\n\n`;
 }
 
+// Every curated entry is a sol-/dk-/omp-/ia- component — all by Jeff.
+const AUTHOR = 'Jeff Zucker';
 for (const { label, icon, desc, tag, params } of PLUGINS) {
   ttl += `<#${frag(label)}> a ui:Component ; ui:label ${JSON.stringify(label)} ; ui:name ${JSON.stringify(tag)} ;\n`;
   ttl += `  ui:icon ${JSON.stringify(icon)} ;\n`;
+  ttl += `  dct:creator ${JSON.stringify(AUTHOR)} ;\n`;
   ttl += `  rdfs:comment ${JSON.stringify(desc)}`;
   if (params.length) {
     ttl += ' ;\n  ui:attribute\n' + params.map(([k, v]) =>

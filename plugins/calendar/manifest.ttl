@@ -6,6 +6,7 @@
   a ui:Component ;
   ui:label "Calendar" ;
   ui:name "dk-calendar-popout" ;
+  dct:creator "Jeff Zucker" ;
   dct:hasPart <./dk-calendar-popout.html> , <./dk-calendar-popout.js> ;
   dct:requires <./calendar-settings.ttl> ;
   dct:subject "Information" .

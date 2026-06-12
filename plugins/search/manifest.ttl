@@ -6,5 +6,6 @@
   a ui:Component ;
   ui:label "Search" ;
   ui:name "sol-search" ;
+  dct:creator "Jeff Zucker" ;
   dct:hasPart <./search-engines.ttl> ;
   dct:subject "Information" .

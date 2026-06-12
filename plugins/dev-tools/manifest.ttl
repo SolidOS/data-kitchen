@@ -6,5 +6,6 @@
   a ui:Component ;
   ui:label "Dev Tools" ;
   ui:name "sol-include" ;
+  dct:creator "Jeff Zucker" ;
   dct:hasPart <./dev-tools.html> ;
   dct:subject "Tech" .

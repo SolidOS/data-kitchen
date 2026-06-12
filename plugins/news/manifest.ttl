@@ -6,6 +6,7 @@
   a ui:Component ;
   ui:label "News" ;
   ui:name "sol-feed" ;
+  dct:creator "Jeff Zucker" ;
   dct:hasPart <./feeds.ttl> ;
   dct:conformsTo <../../shapes/feeds.shacl> ;
   dct:subject "Information" .

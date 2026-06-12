@@ -6,6 +6,7 @@
   a ui:Component ;
   ui:label "Images" ;
   ui:name "omp-images" ;
+  dct:creator "Jeff Zucker" ;
   dct:hasPart <./omp-images.js> , <./omp-images.css> ;
   dct:requires <./libraries/wikimedia_images/images.ttl> ;
   dct:conformsTo <../../shapes/image-libraries.shacl> ;

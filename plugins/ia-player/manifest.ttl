@@ -8,6 +8,7 @@
   a ui:Component ;
   ui:label "Internet Archive player" ;
   ui:name "ia-player" ;
+  dct:creator "Jeff Zucker" ;
   dct:hasPart <./ia3.js> , <./ia-ui.js> , <./ia-rdf.js> ,
               <./assets/ia-player-shell.html> , <./assets/ia.css> ;
   dct:requires <./libraries/internet_archive_music/index.ttl> ,

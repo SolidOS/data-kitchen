@@ -284,6 +284,7 @@
 
 <#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;
   ui:icon "📰" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Read news feeds in a three-panel reader: sources, headlines, article." ;
   ui:attribute
     [ schema:name "view" ; schema:value "threePanel" ] ,
@@ -292,6 +293,7 @@
 
 <#Music-Internet-Archive> a ui:Component ; ui:label "Music (Internet Archive)" ; ui:name "ia-player" ;
   ui:icon "🎵" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Browse and play music collections from the Internet Archive." ;
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "music" ] ,
@@ -300,6 +302,7 @@
 
 <#Movies-Internet-Archive> a ui:Component ; ui:label "Movies (Internet Archive)" ; ui:name "ia-player" ;
   ui:icon "🎬" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Browse and play films from the Internet Archive." ;
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "movies" ] ,
@@ -309,12 +312,14 @@
 
 <#Images-Wikimedia> a ui:Component ; ui:label "Images (Wikimedia)" ; ui:name "omp-images" ;
   ui:icon "🖼" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Browse Wikimedia image galleries." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
 
 <#Workspaces-pod-browser> a ui:Component ; ui:label "Workspaces (pod browser)" ; ui:name "dk-podz" ;
   ui:icon "🗂" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Browse and manage your Solid pods and workspaces." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,
@@ -322,6 +327,7 @@
 
 <#SolidOS-data-browser> a ui:Component ; ui:label "SolidOS (data browser)" ; ui:name "dk-solidos" ;
   ui:icon "🐧" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "The SolidOS data browser, embedded." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
@@ -329,6 +335,7 @@
 
 <#Dev-Tools-playgrounds> a ui:Component ; ui:label "Dev Tools (playgrounds)" ; ui:name "sol-include" ;
   ui:icon "🛠" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "JSON-LD, RDF, SHACL and SPARQL playgrounds, plus Solid resources." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/dev-tools/dev-tools.html" ] ,
@@ -336,18 +343,21 @@
 
 <#Search> a ui:Component ; ui:label "Search" ; ui:name "sol-search" ;
   ui:icon "🔍" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Search box for the button bar (pluggable search engines)." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/search/search-engines.ttl#SearchEngines" ] .
 
 <#Calendar> a ui:Component ; ui:label "Calendar" ; ui:name "dk-calendar-popout" ;
   ui:icon "📅" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Pop-out month calendar for the button bar." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/calendar/calendar-settings.ttl#All" ] .
 
 <#Sign-in> a ui:Component ; ui:label "Sign in" ; ui:name "sol-login" ;
   ui:icon "🔑" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Solid sign-in button (popup flow)." ;
   ui:attribute
     [ schema:name "mode" ; schema:value "popup" ] ,
@@ -356,12 +366,14 @@
 
 <#Weather> a ui:Component ; ui:label "Weather" ; ui:name "sol-weather" ;
   ui:icon "🌤" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Weather widget (location and units in its settings file)." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/weather/weather-settings.ttl#Settings" ] .
 
 <#Clock> a ui:Component ; ui:label "Clock" ; ui:name "sol-time" ;
   ui:icon "🕐" ;
+  dct:creator "Jeff Zucker" ;
   rdfs:comment "Clock widget (timezone in its settings file)." ;
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/time/time-settings.ttl#Settings" ] .
