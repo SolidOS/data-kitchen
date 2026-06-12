@@ -57,41 +57,39 @@ try {
   // the bar is down to search + calendar (fontsize/theme moved to the ☰ menu)
   check('bar builder renders the bar rows', mounted.barRows >= 2, `rows=${mounted.barRows}`);
 
-  // --- edit: add an item, assign it the Music plugin via the drag payload,
-  //     rename it, save ---
+  // --- edit: TYPE a submenu name into the add input (Enter creates it,
+  //     showing the 'drag plugins here' hint), then DROP the Music plugin
+  //     on its row; everything auto-saves ---
   const saved = await page.evaluate(async () => {
     const root = document.querySelector('#dk-menu-pane .dk-define-menus') || document;
     const builder = root.querySelector('sol-menu-manager');
     const sh = builder.shadowRoot;
-    sh.querySelector('.add-btn').click();                       // ＋ item
+    const add = sh.querySelector('.add-input');
+    add.value = '🚬 Smoke Test Tab';
+    add.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
     await new Promise(r => setTimeout(r, 300));
-    const rows = sh.querySelectorAll('.row');
-    const newRow = rows[rows.length - 1];
+    const row = [...sh.querySelectorAll('.row')].find(r => /Smoke Test Tab/.test(r.querySelector('.label')?.value || ''));
+    const hint = row?.querySelector('.chip.empty')?.textContent || '';
     // a real DataTransfer carrying the palette payload, dropped ON the row
     const dt = new DataTransfer();
     dt.setData('application/x-sol-plugin', JSON.stringify({
       label: 'Smoke Music', tag: 'ia-player',
       params: [['storage-ns', 'smoke'], ['source', './plugins/ia-player/libraries/internet_archive_music/index.ttl']],
     }));
-    const rect = newRow.getBoundingClientRect();
+    const rect = row.getBoundingClientRect();
     const mid = { clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2, bubbles: true, cancelable: true, composed: true };
-    newRow.dispatchEvent(Object.assign(new DragEvent('dragover', { ...mid, dataTransfer: dt })));
-    newRow.dispatchEvent(Object.assign(new DragEvent('drop', { ...mid, dataTransfer: dt })));
-    await new Promise(r => setTimeout(r, 300));
-    // rename via the (re-rendered) last row's input
-    const rows2 = builder.shadowRoot.querySelectorAll('.row');
-    const input = rows2[rows2.length - 1].querySelector('.label');
-    input.value = '🚬 Smoke Test Tab';
-    input.dispatchEvent(new Event('input'));
+    row.dispatchEvent(Object.assign(new DragEvent('dragover', { ...mid, dataTransfer: dt })));
+    row.dispatchEvent(Object.assign(new DragEvent('drop', { ...mid, dataTransfer: dt })));
     // no Save button — the managers auto-save ~0.8s after the last edit
     for (let i = 0; i < 40; i++) {
       await new Promise(r => setTimeout(r, 250));
       const s = builder.shadowRoot.querySelector('.builder-status');
-      if (/saved/.test(s?.textContent || '')) return { ok: true };
-      if (/failed/.test(s?.textContent || '')) return { ok: false, msg: s.textContent };
+      if (/saved/.test(s?.textContent || '')) return { ok: true, hint };
+      if (/failed/.test(s?.textContent || '')) return { ok: false, hint, msg: s.textContent };
     }
-    return { ok: false, msg: 'timeout waiting for save status' };
+    return { ok: false, hint, msg: 'timeout waiting for save status' };
   });
+  check('typed submenu shows the drag-plugins-here hint', /drag plugins here/.test(saved.hint || ''), saved.hint || '(no hint)');
   check('auto-save round-trips (PUT via pivot server)', !!saved.ok, saved.msg || '');
 
   // --- a SECOND plugin dropped on the same row turns it into a submenu ---
@@ -126,7 +124,7 @@ try {
   // synthetic 'Smoke Weather' label resolves to the catalog's 'Weather'
   check('second drop lists BOTH plugins as chips ON the row (no nested rows)',
     submenu.chips.length === 2 && submenu.nestedRows === 0
-    && submenu.chips.some((c) => /Internet Archive/.test(c)) && submenu.chips.some((c) => /Weather/.test(c)),
+    && submenu.chips.some((c) => /Music \(Internet Archive\)/.test(c)) && submenu.chips.some((c) => /Weather/.test(c)),
     JSON.stringify(submenu));
 
   // --- the PUT landed on disk; the generator picks it up ---
