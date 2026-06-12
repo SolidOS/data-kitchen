@@ -102,7 +102,7 @@ try {
   // --- the PUT landed on disk; the generator picks it up ---
   const ttl = readFileSync('data/tabs.ttl', 'utf8');
   check('saved RDF contains the new item', /Smoke Test Tab/.test(ttl) && /smoke/.test(ttl));
-  check('pantry comment-free doc still has all panels', /panel-solidos/.test(ttl) && /panel-dev-tools/.test(ttl));
+  check('pantry comment-free doc still has all panels', /panel-solidos/.test(ttl) && /panel-customize/.test(ttl));
 
   let genOut = '';
   try { genOut = execFileSync('node', ['tools/conversion/generate-html-first.mjs'], { encoding: 'utf8' }); }
