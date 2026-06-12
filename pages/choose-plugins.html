@@ -19,10 +19,12 @@
   <div class="dk-choose-targets">
     <sol-menu-manager
         source="data/tabs.ttl#Tabs"
+        catalog="data/plugins-catalog.ttl#Available"
     ></sol-menu-manager>
 
     <sol-button-bar-manager
         source="data/tabs.ttl#Bar"
+        catalog="data/plugins-catalog.ttl#Available"
     ></sol-button-bar-manager>
   </div>
 </div>
@@ -37,7 +39,8 @@
                        flex: 1 1 auto; min-height: 0; overflow: hidden; }
   .dk-choose-plugins-hint { flex: 1 1 100%; margin: 0; align-self: flex-start; font-size: max(16px, var(--font-size, 1rem)); color: var(--text-muted, #7f8c8d); }
   .dk-choose-plugins > sol-plugin-manager { flex: 0 1 var(--col-2); min-width: calc(var(--card-w) + 1.4rem + 2px); min-height: 0; max-height: 100%; }
-  .dk-choose-targets { flex: 0 1 var(--col-2); min-width: calc(var(--card-w) + 1.4rem + 2px); min-height: 0; max-height: 100%;
+  /* the menu/bar column EXPANDS to fill the rest of the panel width */
+  .dk-choose-targets { flex: 1 1 var(--col-2); min-width: calc(var(--card-w) + 1.4rem + 2px); min-height: 0; max-height: 100%;
                        display: flex; flex-direction: column; gap: .8rem; overflow: hidden; }
   .dk-choose-targets > sol-menu-manager,
   .dk-choose-targets > sol-button-bar-manager { flex: 0 1 auto; min-height: 0; }
