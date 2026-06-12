@@ -1,13 +1,13 @@
 // Manage Plugins verification — the two <sol-plugin-manager> boxes work end
 // to end:
-//   1. ☰ → Manage Plugins… mounts both boxes (data/palette.ttl#InUse /
+//   1. ☰ → Manage Plugins… mounts both boxes (data/plugins-catalog.ttl#InUse /
 //      #Available) with their cards and titles from the RDF
 //   2. a drag from one box dropped on the other MOVES the entry — one atomic
 //      rewrite of BOTH lists (the clobber regression: saving one list must
 //      not strip the other), auto-saved through the pivot server
 //   3. a manifest URL typed into a box's input row imports the plugin (or
 //      reports it's already listed)
-// The test edits the REAL data/palette.ttl and restores it with git checkout
+// The test edits the REAL data/plugins-catalog.ttl and restores it with git checkout
 // afterwards (the file must be clean). Run from dk root with both servers up.
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
@@ -16,14 +16,14 @@ import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/ind
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };
 const restore = () => {
-  try { execFileSync('git', ['checkout', '--', 'data/palette.ttl']); } catch {}
+  try { execFileSync('git', ['checkout', '--', 'data/plugins-catalog.ttl']); } catch {}
 };
 
 // GUARD: this test git-restores the file it edits — running it with
 // uncommitted palette changes would WIPE them.
-const dirty = execFileSync('git', ['status', '--porcelain', 'data/palette.ttl'], { encoding: 'utf8' }).trim();
+const dirty = execFileSync('git', ['status', '--porcelain', 'data/plugins-catalog.ttl'], { encoding: 'utf8' }).trim();
 if (dirty) {
-  console.error('ABORT: commit data/palette.ttl first — this test restores it via git checkout:\n' + dirty);
+  console.error('ABORT: commit data/plugins-catalog.ttl first — this test restores it via git checkout:\n' + dirty);
   process.exit(2);
 }
 
@@ -92,7 +92,7 @@ try {
     const boxes = [...root.querySelectorAll('sol-plugin-manager')];
     const by = (frag) => boxes.find((b) => (b.getAttribute('source') || '').endsWith('#' + frag));
     const avail = by('Available');
-    const docUrl = new URL('data/palette.ttl', document.baseURI).href;
+    const docUrl = new URL('data/plugins-catalog.ttl', document.baseURI).href;
     const dt = new DataTransfer();
     dt.setData('application/x-sol-plugin', JSON.stringify({
       label: 'Calendar', tag: 'dk-calendar-popout',
@@ -112,7 +112,7 @@ try {
   check('drag between boxes saves (PUT via pivot server)', !!moved.ok, moved.msg || '');
 
   // --- the PUT landed on disk: membership moved, NOTHING clobbered ---
-  let ttl = readFileSync('data/palette.ttl', 'utf8');
+  let ttl = readFileSync('data/plugins-catalog.ttl', 'utf8');
   let inUse = partsOf(ttl, 'InUse');
   let avail = partsOf(ttl, 'Available');
   check('moved entry now in #Available, not #InUse',
@@ -154,7 +154,7 @@ try {
   });
   check('manifest URL import lands (added or already listed)', !!imported.ok, imported.msg || '');
 
-  ttl = readFileSync('data/palette.ttl', 'utf8');
+  ttl = readFileSync('data/plugins-catalog.ttl', 'utf8');
   inUse = partsOf(ttl, 'InUse');
   avail = partsOf(ttl, 'Available');
   check('lists intact after import', !!inUse && inUse.length >= 8 && !!avail && avail.length >= 5,
@@ -168,7 +168,7 @@ try {
   restore();
   await browser.close();
 }
-const after = readFileSync('data/palette.ttl', 'utf8');
+const after = readFileSync('data/plugins-catalog.ttl', 'utf8');
 check('repo state restored after the test', partsOf(after, 'InUse')?.includes('Calendar') === true);
 console.log(fails.length ? `\n${fails.length} FAILURE(S)` : '\nALL PASS');
 process.exit(fails.length ? 1 : 0);

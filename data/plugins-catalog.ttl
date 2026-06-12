@@ -5,7 +5,7 @@
 # The plugin lists <sol-plugin-manager> manages (Manage Plugins drags entries
 # between them; Manage Menus offers #InUse for dragging onto the menu/bar
 # managers). Two ui:Menu lists of ui:Component entries over one shared pool,
-# seeded by tools/seed-palette.mjs and edited by the manager thereafter.
+# seeded by tools/seed-plugins-catalog.mjs and edited by the manager thereafter.
 # Each entry's ui:icon is an emoji character (system emoji font — no bundled
 # image assets) and its rdfs:comment is the card blurb.
 

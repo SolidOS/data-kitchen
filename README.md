@@ -72,7 +72,7 @@ html-first.html     the topmost <sol-tabs> — GENERATED from data/tabs.ttl
 data/tabs.ttl       the RDF twin: #Tabs (tabs) + #Bar (actions) + #Chrome
                     (help / ☰ menu / sign-in); rdfs:comment ↔ HTML comments
 data/menu.ttl       #More — the ☰ hamburger's standard items
-data/palette.ttl    the two plugin lists (#InUse / #Available ui:Menus)
+data/plugins-catalog.ttl    the two plugin lists (#InUse / #Available ui:Menus)
 plugins/<name>/     one SELF-CONTAINED folder per plugin: its scripts,
                     assets, pages, RDF libraries, and manifest.ttl
                     (the tree-shaking unit)
@@ -80,7 +80,7 @@ src/                shell-only code (boot, tab wiring, auth, settings)
 electron-config/    the Electron main process (.cjs)
 pivot/ pivot-config/ proxy/   the bundled servers
 help/  pages/  assets/  shapes/  favourites/   shell-level resources
-tools/              conversion + palette seeding scripts
+tools/              conversion + plugins-catalog seeding scripts
 ```
 
 ## The plugin manifest
@@ -111,20 +111,20 @@ is active (e.g. the player's Filters / View deleted / Install / Update).
 **☰ → Manage Plugins…** opens the two plugin lists, each an editable
 `<sol-plugin-manager>` box:
 
-- `<sol-plugin-manager source="data/palette.ttl#InUse">` — *Plugins to Use*
-- `<sol-plugin-manager source="data/palette.ttl#Available">` — *Plugins Available*
+- `<sol-plugin-manager source="data/plugins-catalog.ttl#InUse">` — *Plugins to Use*
+- `<sol-plugin-manager source="data/plugins-catalog.ttl#Available">` — *Plugins Available*
 
 Drag a card between the boxes to move it (one atomic rewrite of both lists);
 drop a manifest URL on a box — or type it in the box's input row — to add a
 plugin (the manifest must offer `<> a ui:Component ; ui:name "tag"`); every
-change auto-saves to `data/palette.ttl`.
+change auto-saves to `data/plugins-catalog.ttl`.
 
 **☰ → Manage Menus…** offers the *Plugins to Use* list next to the menu/bar
 managers in a modal:
 
 - `<sol-menu-manager source="data/tabs.ttl#Tabs">` — edit the tab menu
 - `<sol-button-bar-manager source="data/tabs.ttl#Bar">` — edit the actions bar
-- `<sol-plugin-manager source="data/palette.ttl#InUse">` — drag a plugin
+- `<sol-plugin-manager source="data/plugins-catalog.ttl#InUse">` — drag a plugin
   card onto a menu/bar item to assign what it mounts
 
 Saving rewrites the whole Turtle document (unreferenced "pantry" items are

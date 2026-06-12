@@ -1,6 +1,6 @@
 <!-- Manage Menus — build the UI with the UI. The three sol-components managers:
      edit the topmost tabset (data/tabs.ttl#Tabs), the actions bar (#Bar),
-     and drag plugins in from the Plugins-to-Use list (data/palette.ttl#InUse
+     and drag plugins in from the Plugins-to-Use list (data/plugins-catalog.ttl#InUse
      — curated by the linked Manage Plugins item on the ☰ menu).
      After saving, run the generator to re-emit html-first.html:
        node tools/conversion/generate-html-first.mjs
@@ -16,7 +16,7 @@
   </p>
 
   <sol-plugin-manager
-      source="data/palette.ttl#InUse"
+      source="data/plugins-catalog.ttl#InUse"
       for="sol-menu-manager, sol-button-bar-manager"
   ></sol-plugin-manager>
 

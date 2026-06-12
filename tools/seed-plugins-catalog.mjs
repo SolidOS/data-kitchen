@@ -1,4 +1,4 @@
-// One-shot seeder for data/palette.ttl — the curated catalog of plugins
+// One-shot seeder for data/plugins-catalog.ttl — the curated catalog of plugins
 // <sol-plugin-manager> manages. Reads the component lists from
 // sol-components' manifest + dk.manifest.json, keeps only the entries that
 // make sense as user-placeable plugins (big tab plugins and bar buttons —
@@ -7,7 +7,7 @@
 // and #Available (on the shelf). Run once, then CURATE WITH Manage Plugins
 // (or by hand); re-running overwrites.
 //
-//   node tools/seed-palette.mjs
+//   node tools/seed-plugins-catalog.mjs
 import { writeFileSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -84,7 +84,7 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 # The plugin lists <sol-plugin-manager> manages (Manage Plugins drags entries
 # between them; Manage Menus offers #InUse for dragging onto the menu/bar
 # managers). Two ui:Menu lists of ui:Component entries over one shared pool,
-# seeded by tools/seed-palette.mjs and edited by the manager thereafter.
+# seeded by tools/seed-plugins-catalog.mjs and edited by the manager thereafter.
 # Each entry's ui:icon is an emoji character (system emoji font — no bundled
 # image assets) and its rdfs:comment is the card blurb.
 
@@ -108,5 +108,5 @@ for (const { label, icon, desc, tag, params } of PLUGINS) {
   ttl += ' .\n\n';
 }
 
-writeFileSync(join(root, 'data', 'palette.ttl'), ttl);
-console.log(`wrote data/palette.ttl with ${PLUGINS.length} plugins`);
+writeFileSync(join(root, 'data', 'plugins-catalog.ttl'), ttl);
+console.log(`wrote data/plugins-catalog.ttl with ${PLUGINS.length} plugins`);

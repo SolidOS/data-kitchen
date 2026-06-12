@@ -118,7 +118,7 @@ const CHROME_DEFAULTS = [
              ['data-handler', 'sol-include'], ['source', './help/dk.html'],
              ['if-logged-in', './help/dk-owner.html'], ['inline', ''], ['trusted', '']] },
   { type: 'component', id: 'chrome-menu', name: 'Menu', tag: 'sol-dropdown-button', region: 'modal',
-    comment: '☰ menu — items live in data/menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal.',
+    comment: '☰ menu — items live in data/menu.ttl#More (Manage Plugins, Manage Menus, Settings, Sign in, and owner commands). Component items display in the #dk-menu-pane replace pane over the tab content.',
     params: [['class', 'omp-more'], ['title', 'Menu'], ['aria-label', 'Menu'],
              ['label', '☰'], ['source', './data/menu.ttl#More']] },
   { type: 'component', id: 'chrome-login', name: 'Sign in', tag: 'sol-login',
@@ -164,7 +164,7 @@ setTimeout(() => {
 }, 1500);
 
 // sol-menu-built bubbles (composed) from sol-menu-manager / sol-button-bar-manager
-// (and from sol-plugin-manager, whose palette.ttl saves the filter ignores).
+// (and from sol-plugin-manager, whose plugins-catalog.ttl saves the filter ignores).
 // React only to saves of the tabs document, and debounce — the Tabs and Bar
 // managers can each fire one in quick succession.
 let timer = null;

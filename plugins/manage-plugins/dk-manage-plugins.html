@@ -1,4 +1,4 @@
-<!-- Manage Plugins — the two plugin lists (data/palette.ttl#InUse / #Available).
+<!-- Manage Plugins — the two plugin lists (data/plugins-catalog.ttl#InUse / #Available).
      Drag a card between the boxes to move it; drag a manifest URL in (or type
      it in a box's input row) to add a plugin; every change auto-saves to the
      RDF. The "Plugins to Use" list is the palette the linked Manage Menus
@@ -7,17 +7,17 @@
   <p class="dk-manage-plugins-hint">
     Drag plugins between the two lists; add one by dropping or typing its
     manifest URL. Changes save automatically
-    (<code>data/palette.ttl</code>). Put a plugin in <em>Plugins to Use</em>
+    (<code>data/plugins-catalog.ttl</code>). Put a plugin in <em>Plugins to Use</em>
     to offer it in <em>Manage Menus</em> (☰ menu), where you place it on the
     tab menu or button bar.
   </p>
 
   <sol-plugin-manager
-      source="data/palette.ttl#InUse"
+      source="data/plugins-catalog.ttl#InUse"
   ></sol-plugin-manager>
 
   <sol-plugin-manager
-      source="data/palette.ttl#Available"
+      source="data/plugins-catalog.ttl#Available"
   ></sol-plugin-manager>
 </div>
 <style>

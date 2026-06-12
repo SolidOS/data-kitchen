@@ -56,7 +56,7 @@ try {
       barRows: barB?.shadowRoot?.querySelectorAll('.row').length ?? -1,
     };
   });
-  // the Manage Menus palette is data/palette.ttl#InUse (9 entries), not the full pool
+  // the Manage Menus palette is data/plugins-catalog.ttl#InUse (9 entries), not the full pool
   check('palette renders plugin cards', mounted.palette >= 8, `cards=${mounted.palette}`);
   check('menu builder renders the tab rows', mounted.menuRows >= 6, `rows=${mounted.menuRows}`);
   // the bar is down to search + calendar (fontsize/theme moved to the ☰ menu)
@@ -102,7 +102,7 @@ try {
   // --- the PUT landed on disk; the generator picks it up ---
   const ttl = readFileSync('data/tabs.ttl', 'utf8');
   check('saved RDF contains the new item', /Smoke Test Tab/.test(ttl) && /smoke/.test(ttl));
-  check('pantry comment-free doc still has all panels', /panel-home/.test(ttl) && /panel-dev-tools/.test(ttl));
+  check('pantry comment-free doc still has all panels', /panel-solidos/.test(ttl) && /panel-dev-tools/.test(ttl));
 
   let genOut = '';
   try { genOut = execFileSync('node', ['tools/conversion/generate-html-first.mjs'], { encoding: 'utf8' }); }

@@ -10,7 +10,7 @@
 # An rdfs:comment on an item is re-emitted as the HTML comment before it.
 
 # Not every defined panel is IN the menu: #panel-solidos and #panel-customize
-# (now a ☰ menu item) are PANTRY items — kept here (and in data/palette.ttl's
+# (now a ☰ menu item) are PANTRY items — kept here (and in data/plugins-catalog.ttl's
 # lists) so the managers can drag them back in.
 # Solid Resources / Dev Tools are tabs whose SUBMENUS (the
 # link strips) live inside their plugin pages, never on this tabset.
