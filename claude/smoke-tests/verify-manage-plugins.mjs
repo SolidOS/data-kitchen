@@ -128,11 +128,17 @@ try {
     `InUse=[${inUse}] Available=[${avail}]`);
   check('the moved subject keeps its triples', subjBlock(ttl, 'Calendar').includes('dk-calendar-popout'));
 
-  // --- the sibling box re-rendered (it lost the Calendar card) ---
-  const sibling = await page.evaluate(() => {
+  // --- the sibling box re-rendered (it lost the Calendar card). The
+  // Available box shows one topic tab at a time, so select Information
+  // (Calendar's topic) before reading its cards. ---
+  const sibling = await page.evaluate(async () => {
     const root = document.querySelector('sol-modal')?.shadowRoot || document;
     const boxes = [...root.querySelectorAll('sol-plugin-manager')];
     const by = (frag) => boxes.find((b) => (b.getAttribute('source') || '').endsWith('#' + frag));
+    const availBox = by('Available');
+    [...(availBox?.shadowRoot?.querySelectorAll('.topic-tab') || [])]
+      .find((t) => t.textContent === 'Information')?.click();
+    await new Promise((r) => setTimeout(r, 400));
     const labels = (b) => [...(b?.shadowRoot?.querySelectorAll('.card .card-label') || [])].map((x) => x.textContent);
     return { inUse: labels(by('InUse')), avail: labels(by('Available')) };
   });
