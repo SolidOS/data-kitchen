@@ -11,6 +11,7 @@
     import { rdf } from 'sol-components/core/rdf.js';
     import { loadRdfStore } from 'sol-components/core/rdf-utils.js';
     import { displayItem } from 'sol-components/core/display-target.js';
+    import { solFetch } from 'sol-components/core/auth-fetch.js';
 
     // The body UI is authored declaratively in html-first.html and loaded by the
     // #dk-body <sol-include source="./html-first.html"> in index.html. (#dk-tabs
@@ -175,8 +176,35 @@
       const next = effectiveTheme() === 'light' ? 'dark' : 'light';
       docEl.setAttribute('data-theme', next);
       try { localStorage.setItem('dk:theme', next); } catch {}
+      persistAppearance('colorScheme', THEME_TERM[next]);
       syncTheme();
       document.dispatchEvent(new CustomEvent('omp:appearance'));
+    }
+    // Persist a toggle's choice into the settings RDF (the <sol-default>
+    // source document, data/data-kitchen-settings.ttl) so it survives beyond
+    // this profile's localStorage and follows the pod. localStorage stays as
+    // the before-first-paint cache (dk-boot). Guests: the PUT fails, the
+    // local toggle still applies.
+    const UI_NS = 'http://www.w3.org/ns/ui#';
+    const THEME_TERM = { light: 'LightColorScheme', dark: 'DarkColorScheme', system: 'SystemColorScheme' };
+    const FONT_TERM  = { small: 'SmallFont', medium: 'MediumFont', large: 'LargeFont' };
+    let persistQueue = Promise.resolve();
+    function persistAppearance(predicateLocal, termLocal) {
+      if (!termLocal) return;
+      persistQueue = persistQueue.then(async () => {
+        const src = solDefault()?.getAttribute('source') || 'data/data-kitchen-settings.ttl#Settings';
+        const docUrl = new URL(src.split('#')[0], document.baseURI).href;
+        const subject = rdf.sym(`${docUrl}#${src.split('#')[1] || 'Settings'}`);
+        const store = await loadRdfStore(docUrl, solFetch);
+        const doc = rdf.sym(docUrl);
+        store.removeMatches(subject, rdf.sym(UI_NS + predicateLocal), null);
+        store.add(subject, rdf.sym(UI_NS + predicateLocal), rdf.sym(UI_NS + termLocal), doc);
+        const turtle = await rdf.serialize(doc, store, docUrl, 'text/turtle');
+        const res = await solFetch(docUrl, {
+          method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: turtle,
+        });
+        if (!res || res.ok === false) throw new Error(`PUT ${docUrl} → ${res && res.status}`);
+      }).catch((e) => console.warn('[dk] appearance not saved to settings RDF:', e.message));
     }
     const SIZES = ['small', 'medium', 'large'];
     function effectiveFontSize() {
@@ -203,6 +231,7 @@
       const next = SIZES[(SIZES.indexOf(cur) + 1) % SIZES.length];
       docEl.setAttribute('data-fontsize', next);
       try { localStorage.setItem('dk:fontsize', next); } catch {}
+      persistAppearance('fontSize', FONT_TERM[next]);
       syncFontSize();
       document.dispatchEvent(new CustomEvent('omp:appearance'));
     }

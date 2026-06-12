@@ -6,7 +6,9 @@
 // RDF read lives in the component. Re-applies on `sol-default-change` (the
 // component re-resolved), `sol-form-save` (the settings page saved), and
 // system-theme change. First-run persistence is handled by sol-settings/sol-form
-// on save; until then dk falls back to system/medium.
+// on save; until then dk falls back to system/medium. The ☰ Theme / Text size
+// toggles ALSO write their choice back to the settings RDF (dk-tabs-shell
+// persistAppearance), so the file and the live state stay in agreement.
 
 const UI = 'http://www.w3.org/ns/ui#';
 const SCHEME_TO_VALUE = {
