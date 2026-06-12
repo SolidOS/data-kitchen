@@ -174,15 +174,25 @@
     #dk-tabs > .sol-tabs-content > .sol-inline-panel .omp-help-doc { max-width: 56rem; margin: 0 auto; }
     /* The ☰ menu pane (#dk-menu-pane, declared in index.html; claimed items
        mount into it as keep-alive [data-menu-item] wrappers) replaces the tab
-       content the same way help does; picking a tab dismisses it. */
+       content the same way help does; picking a tab dismisses it.
+       SCROLL RULE: the pane itself must not scroll — pages put the scroll on
+       the item that needs it (the manager boxes). overflow:auto stays ONLY as
+       the last-resort fallback for arbitrary content (e.g. the settings
+       form) that can't manage its own height. */
     #dk-tabs > .sol-tabs-content > .dk-menu-pane {
       position: absolute; inset: 0; z-index: 6;
       overflow: auto;
+      display: flex; flex-direction: column;
       background: var(--ia-bg-app, #15161a);
       color: var(--ia-text, #e7e7ea);
       padding: 1rem clamp(1rem, 4vw, 3rem) 2rem;
     }
     #dk-tabs > .sol-tabs-content > .dk-menu-pane[hidden] { display: none; }
+    #dk-tabs > .sol-tabs-content > .dk-menu-pane > [data-menu-item] {
+      flex: 1 1 auto; min-height: 0;
+      display: flex; flex-direction: column;
+    }
+    #dk-tabs > .sol-tabs-content > .dk-menu-pane > [data-menu-item][hidden] { display: none; }
     /* The A (text size) and 🌙 (theme) chrome buttons are <sol-button command="…">
        in index2; style their shadow trigger like a .chrome-btn. */
     .omp-fontsize::part(trigger),

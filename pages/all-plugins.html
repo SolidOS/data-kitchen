@@ -8,5 +8,8 @@
   ></sol-plugin-manager>
 </div>
 <style>
-  .dk-all-plugins { display: flex; flex-direction: column; padding: .8rem; max-width: 60rem; }
+  /* the box scrolls its own cards area — never the page or the pane */
+  .dk-all-plugins { display: flex; flex-direction: column; padding: .8rem; max-width: 60rem;
+                    flex: 1 1 auto; min-height: 0; overflow: hidden; }
+  .dk-all-plugins > sol-plugin-manager { flex: 1 1 auto; min-height: 0; }
 </style>
