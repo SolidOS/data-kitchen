@@ -8,9 +8,18 @@
 //   (b) html-first.html is regenerated and PUT — tabs, bar AND the chrome block
 //       (now emitted from #Chrome) — so the file on disk mirrors the RDF.
 //
+// Each (b) outcome is announced as a `sol-shell-synced` document event (detail
+// {source, ok, error?}) so the builders can show "saved" as BOTH writes landing,
+// and the written html's hash is remembered (localStorage, FP_KEY) as the
+// known-synced state.
+//
 // On load it also (c) imports a hand-edited html-first's tabs back into the RDF
-// (reverse sync), and (d) self-heals #Chrome — reinserting any mandatory chrome
-// item a hand-edit dropped, then regenerating the shell.
+// (reverse sync) — but ONLY when the html actually was hand-edited (it differs
+// from the remembered fingerprint); a stale html that simply lags the RDF (a
+// failed/interrupted regeneration) is regenerated FROM the RDF instead, so a
+// Customize save can never be silently reverted at launch. And (d) self-heals
+// #Chrome — reinserting any mandatory chrome item a hand-edit dropped, then
+// regenerating the shell.
 
 import { rdf } from 'sol-components/core/rdf.js';
 import { parseMenuItems, rdfVal } from 'sol-components/core/menu-rdf.js';
@@ -23,6 +32,30 @@ const TABS_DOC = 'data/tabs.ttl';
 const SHELL = 'html-first.html';
 
 const abs = (rel) => new URL(rel, document.baseURI).href;
+
+// --- Shell fingerprint -------------------------------------------------------
+// Hash of html-first.html at the last KNOWN-SYNCED state (we generated it, or
+// we verified/imported it as matching the RDF). Lets importHandEdits tell a
+// genuine hand edit (html ≠ fingerprint) from a stale html left by a failed /
+// interrupted regeneration (html = fingerprint, RDF moved on) — only the
+// former may overwrite the RDF. Per-install state, so localStorage, not pod.
+const FP_KEY = 'dk-shell-fingerprint';
+async function fingerprintOf(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+async function rememberShell(html) {
+  try { localStorage.setItem(FP_KEY, await fingerprintOf(html)); } catch { /* private mode etc. */ }
+}
+
+// Outcome of the html-first.html side of a save, for anyone showing save
+// status (sol-menu-manager listens): the builders' own "saved ✓" only covers
+// the RDF PUT, so a failed shell write must be surfaced separately.
+function announceSync(ok, error) {
+  document.dispatchEvent(new CustomEvent('sol-shell-synced', {
+    detail: { source: abs(TABS_DOC), ok, ...(error ? { error: String(error) } : {}) },
+  }));
+}
 
 async function syncShell() {
   const tabsUrl = abs(TABS_DOC);
@@ -60,16 +93,25 @@ async function syncShell() {
   });
   if (!chrome) {
     console.warn('[dk-tabs-sync] html-first.html lacks chrome markers; not regenerating');
+    announceSync(false, 'html-first.html lacks chrome markers');
     return;
   }
-  if (html.trim() === current.trim()) return;   // file already matches the RDF
+  if (html.trim() === current.trim()) {        // file already matches the RDF
+    await rememberShell(current);
+    announceSync(true);
+    return;
+  }
 
   const res = await solFetch(shellUrl, {
     method: 'PUT', headers: { 'Content-Type': 'text/html' }, body: html,
   });
   if (!res || res.ok === false) {
     console.warn('[dk-tabs-sync] PUT html-first.html failed', res && res.status);
+    announceSync(false, `PUT html-first.html → ${res && res.status}`);
+    return;
   }
+  await rememberShell(html);
+  announceSync(true);
 }
 
 // --- Reverse sync: import a hand-edited html-first.html back into the RDF ---
@@ -98,13 +140,35 @@ async function importHandEdits() {
   const rdfTabs = parseMenuItems(store, tabsNode);
 
   const html = await (await solFetch(shellUrl)).text();
-  const { tabs: htmlTabs } = extractFromHtml(html);
-  if (!htmlTabs.length || sameTabs(rdfTabs, htmlTabs)) return;   // empty parse / consistent → nothing
 
+  // WHO changed? If the html is byte-identical to our last known-synced
+  // write (the fingerprint), nobody hand-edited it — the RDF is the source
+  // of truth: regenerate the shell from it (a no-op when they already
+  // agree). This catches EVERY RDF-side lag, including submenu-children
+  // changes the tab key below cannot see; overwriting the RDF here would
+  // silently revert the user's Customize edits at launch.
+  let known = null;
+  try { known = localStorage.getItem(FP_KEY); } catch { /* fall through to import */ }
+  if (known && known === await fingerprintOf(html)) {
+    await syncShell();
+    return;
+  }
+
+  // The html differs from anything we wrote (or first run, no baseline
+  // yet): a hand edit — HTML wins on divergence, importing into the RDF.
+  const { tabs: htmlTabs } = extractFromHtml(html);
+  if (!htmlTabs.length) return;                                  // empty parse → nothing
+  if (sameTabs(rdfTabs, htmlTabs)) {                             // consistent → record the synced state
+    await rememberShell(html);
+    return;
+  }
   updateMenuInStore(store, tabsUrl, `${tabsUrl}#Tabs`, { ...menuMeta(store, tabsNode), items: htmlTabs });
   const out = await serializeMenuDocument(store, tabsUrl);
   const res = await solFetch(tabsUrl, { method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: out });
-  if (res && res.ok !== false) console.info('[dk-tabs-sync] imported hand-edited html-first.html into tabs.ttl');
+  if (res && res.ok !== false) {
+    await rememberShell(html);                                   // reconciled — this html is the synced state
+    console.info('[dk-tabs-sync] imported hand-edited html-first.html into tabs.ttl');
+  }
 }
 // --- Self-healing chrome ---
 // The chrome items (help, ☰ menu, sign-in) are mandatory shell furniture, modeled
@@ -152,7 +216,8 @@ async function healChrome() {
   const bar = parseMenuItems(store, rdf.sym(`${tabsUrl}#Bar`));
   const { html } = generateShell({ tabs, bar, chrome: parseMenuItems(store, chromeNode), currentHtml: current });
   if (html && html.trim() !== current.trim()) {
-    await solFetch(shellUrl, { method: 'PUT', headers: { 'Content-Type': 'text/html' }, body: html });
+    const res = await solFetch(shellUrl, { method: 'PUT', headers: { 'Content-Type': 'text/html' }, body: html });
+    if (res && res.ok !== false) await rememberShell(html);
   }
   console.info('[dk-tabs-sync] reinserted missing mandatory chrome into #Chrome');
 }
@@ -173,6 +238,9 @@ document.addEventListener('sol-menu-built', (e) => {
   if (!/\btabs\.ttl\b/.test(src)) return;
   clearTimeout(timer);
   timer = setTimeout(() => {
-    syncShell().catch((err) => console.warn('[dk-tabs-sync]', err));
+    syncShell().catch((err) => {
+      console.warn('[dk-tabs-sync]', err);
+      announceSync(false, err);
+    });
   }, 150);
 });
