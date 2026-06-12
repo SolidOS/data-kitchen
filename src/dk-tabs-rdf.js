@@ -92,7 +92,8 @@ const CHROME_DEFAULTS = [
   { type: 'component', id: 'chrome-menu', name: 'Menu', tag: 'sol-dropdown-button', region: 'modal',
     comment: '☰ menu — items live in data/menu.ttl#More (Manage Plugins, Manage Menus, Settings, Sign in, and owner commands). Component items display in the #dk-menu-pane replace pane over the tab content.',
     params: [['class', 'omp-more'], ['title', 'Menu'], ['aria-label', 'Menu'],
-             ['label', '☰'], ['source', './data/menu.ttl#More']] },
+             ['label', '☰'], ['source', './data/menu.ttl#More'],
+             ['data-settings-skip', '']] },   // menus are edited on the Customize Plugins page, not in Preferences
   { type: 'component', id: 'chrome-login', name: 'Sign in', tag: 'sol-login',
     comment: 'Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).',
     params: [['class', 'omp-sollogin'], ['mode', 'popup'],

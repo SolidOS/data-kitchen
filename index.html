@@ -55,7 +55,11 @@
          the loader list above); the #Bar / #Chrome launchers of the same
          document are built at load by src/dk-tabs-rdf.js. To edit the shell as
          HTML instead, round-trip it: npm run rdf2html / npm run html2rdf. -->
-    <sol-tabs id="dk-tabs" keep-alive from-rdf="./data/tabs.ttl#Tabs"></sol-tabs>
+    <!-- data-settings-skip: the tabset's own menu editor stays OUT of the
+         Customize Preferences accordion — tabs/menus are edited on the
+         Customize Plugins page. (sol-settings' opt-out; children like
+         search/calendar are still discovered.) -->
+    <sol-tabs id="dk-tabs" keep-alive from-rdf="./data/tabs.ttl#Tabs" data-settings-skip></sol-tabs>
 
     <!-- The ☰ menu's component items (claimed here by id via data-for) display
          in this pane, which replaces the tab content area while open — not in

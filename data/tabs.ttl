@@ -136,7 +136,8 @@
     [ schema:name "title" ;      schema:value "Menu" ] ,
     [ schema:name "aria-label" ; schema:value "Menu" ] ,
     [ schema:name "label" ;      schema:value "☰" ] ,
-    [ schema:name "source" ;     schema:value "./data/menu.ttl#More" ] .
+    [ schema:name "source" ;     schema:value "./data/menu.ttl#More" ] ,
+    [ schema:name "data-settings-skip" ; schema:value "" ] .
 
 <#chrome-login> a ui:Component ; ui:label "Sign in" ; ui:name "sol-login" ;
   rdfs:comment "Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css)." ;
