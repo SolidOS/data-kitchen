@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Frequently asked questions about Solid." ;
   dct:publisher "Solid Project" ;
-  dct:subject "Community" .
+  dct:subject "Solid Resources" .

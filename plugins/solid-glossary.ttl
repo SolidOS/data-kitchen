@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Glossary of Solid terms." ;
   dct:publisher "Solid Community" ;
-  dct:subject "Community" .
+  dct:subject "Solid Resources" .

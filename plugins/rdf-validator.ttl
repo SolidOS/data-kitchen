@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "Convert and validate RDF documents." ;
   dct:publisher "EasyRdf" ;
-  dct:subject "Tech" .
+  dct:subject "Dev Tools" .

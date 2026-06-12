@@ -116,13 +116,20 @@ const frag = (label) => label.replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '');
 const inList = (which) =>
   PLUGINS.filter((p) => (p.list || 'use') === which).map((p) => `<#${frag(p.label)}>`).join(' ');
 
+// Sub-topics: collections that are MEMBERS of a parent collection (SKOS
+// allows collections in collections). The grouped manager shows the parent
+// as the tab and the sub-topic as a headed group inside it.
+const SUBTOPICS = { 'Solid Resources': 'Tech', 'Dev Tools': 'Tech' };
+
 const CATS = [...new Set([
   ...PLUGINS.map((p) => p.cat).filter(Boolean),
   ...APPS.flatMap((a) => a.cats),
+  ...Object.keys(SUBTOPICS), ...Object.values(SUBTOPICS),
 ])];
 const catMembers = (cat) => [
   ...PLUGINS.filter((p) => p.cat === cat).map((p) => `<#${frag(p.label)}>`),
   ...APPS.filter((a) => a.cats.includes(cat)).map((a) => `<#${frag(a.label)}>`),
+  ...Object.entries(SUBTOPICS).filter(([, parent]) => parent === cat).map(([sub]) => `<#${frag(sub)}>`),
 ].join(', ');
 
 let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .

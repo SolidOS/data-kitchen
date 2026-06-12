@@ -10,4 +10,4 @@
   ui:region ui:Tab ;
   rdfs:comment "How Solid works, explained." ;
   dct:creator "Tim Berners-Lee" ;
-  dct:subject "Community" .
+  dct:subject "Solid Resources" .
