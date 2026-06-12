@@ -1,0 +1,12 @@
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ui:   <http://www.w3.org/ns/ui#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<>
+  a ui:Link ;
+  ui:label "SolidFocus" ;
+  ui:icon "✅" ;
+  ui:href <https://focus.noeldemartin.com/> ;
+  ui:region ui:Tab ;
+  rdfs:comment "Tasks and notes, works offline." ;
+  dct:subject "Productivity" , "TODO List" .

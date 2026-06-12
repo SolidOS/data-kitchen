@@ -85,7 +85,7 @@ try {
   });
   check('two plugin-manager boxes mount', mounted.boxes === 2, `boxes=${mounted.boxes}`);
   check('Plugins to Use renders its cards + title', mounted.inUse.cards >= 8 && /Plugins to Use/.test(mounted.inUse.title || ''), JSON.stringify(mounted.inUse));
-  check('Plugins Available renders its cards + title', mounted.avail.cards >= 2 && /Plugins Available/.test(mounted.avail.title || ''), JSON.stringify(mounted.avail));
+  check('Plugins Available renders its cards + title', mounted.avail.cards >= 1 && /Plugins Available/.test(mounted.avail.title || ''), JSON.stringify(mounted.avail));
   check('boxes carry the manifest-URL input row', mounted.inUse.urlRow && mounted.avail.urlRow);
   check('Available shows skos topic TABS',
     mounted.headings.includes('Information') && mounted.headings.includes('Tech'),

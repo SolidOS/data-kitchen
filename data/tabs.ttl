@@ -64,11 +64,11 @@
     [ schema:name "source" ;  schema:value "./plugins/dev-tools/dev-tools.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
-<#panel-customize> a ui:Component ; ui:label "🎛 Customize" ; ui:name "sol-include" ;
+<#panel-customize> a ui:Component ; ui:label "🎛 Manage Menus" ; ui:name "sol-include" ;
   acl:mode acl:Write ;
   ui:attribute
     [ schema:name "id" ;      schema:value "panel-customize" ] ,
-    [ schema:name "source" ;  schema:value "./plugins/customize/dk-customize.html" ] ,
+    [ schema:name "source" ;  schema:value "./pages/manage-menus.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
 <#Bar> a ui:Menu ; ui:label "actions" ;

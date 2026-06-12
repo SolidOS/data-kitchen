@@ -1,9 +1,0 @@
-@prefix :    <#> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix ui:  <http://www.w3.org/ns/ui#> .
-
-<>
-  a ui:Component ;
-  ui:label "Manage Plugins" ;
-  ui:name "sol-include" ;
-  dct:hasPart <./dk-manage-plugins.html> .

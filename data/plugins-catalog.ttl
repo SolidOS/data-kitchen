@@ -16,13 +16,13 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
-  ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> ) .
+  ui:parts ( <#SolidOS-data-browser> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RoloPod> <#SecureDialog> <#Solid-File-Manager> <#Solidflix> <#SolidFocus> <#SolidOS-Databrowser> <#Synara-AI> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
 
 # The whole catalog in one list — the ☰ "All Plugins…" page
 # (pages/all-plugins.html) browses this.
 <#All> a ui:Menu ; ui:label "All Plugins" ;
   rdfs:comment "Every plugin in the catalog, in use or not — what pages/all-plugins.html displays. Seeded; not maintained by Manage Plugins saves." ;
-  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Dev-Tools-playgrounds> <#Search> <#Calendar> <#Sign-in> <#Weather> <#Clock> ) .
+  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Dev-Tools-playgrounds> <#Search> <#Calendar> <#Sign-in> <#Weather> <#Clock> <#0data-Hello> <#BilliPod> <#Booklice> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#InnerPod> <#KeyPod> <#KonaPod> <#Media-Kraken> <#MovieStar> <#MSFatigue> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RoloPod> <#SecureDialog> <#Solid-File-Manager> <#Solidflix> <#SolidFocus> <#SolidOS-Databrowser> <#Synara-AI> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> ) .
 
 # Topic categories — skos:Collections over the same pool; the grouped
 # plugin manager renders these as headings. A plugin manifest's
@@ -35,6 +35,243 @@
 
 <#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
   skos:member <#Workspaces-pod-browser>, <#SolidOS-data-browser>, <#Dev-Tools-playgrounds>, <#Sign-in> .
+
+<#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
+  skos:member <#0data-Hello>, <#Booklice>, <#HomeVault>, <#KeyPod>, <#Pod-Resume>, <#SolidFocus>, <#Synara-AI>, <#TodoPod> .
+
+<#Content-Notes-Blogging-and-Publishing> a skos:Collection ; skos:prefLabel "Content, Notes, Blogging and Publishing" ;
+  skos:member <#dokieli>, <#NotePod>, <#RoloPod> .
+
+<#Pod-Management> a skos:Collection ; skos:prefLabel "Pod Management" ;
+  skos:member <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Solid-File-Manager>, <#SolidOS-Databrowser> .
+
+<#Location> a skos:Collection ; skos:prefLabel "Location" ;
+  skos:member <#GeoPod>, <#Tired-Bike> .
+
+<#Health> a skos:Collection ; skos:prefLabel "Health" ;
+  skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
+
+<#Security> a skos:Collection ; skos:prefLabel "Security" ;
+  skos:member <#KeyPod> .
+
+<#Movies> a skos:Collection ; skos:prefLabel "Movies" ;
+  skos:member <#Media-Kraken>, <#MovieStar>, <#Solidflix> .
+
+<#Scheduling> a skos:Collection ; skos:prefLabel "Scheduling" ;
+  skos:member <#PodCal> .
+
+<#Chat> a skos:Collection ; skos:prefLabel "Chat" ;
+  skos:member <#Portable-LibreChat> .
+
+<#TODO-List> a skos:Collection ; skos:prefLabel "TODO List" ;
+  skos:member <#SolidFocus>, <#TodoPod> .
+
+<#Cooking> a skos:Collection ; skos:prefLabel "Cooking" ;
+  skos:member <#Umai> .
+
+<#0data-Hello> a ui:Link ; ui:label "0data Hello" ;
+  ui:icon "🧪" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Tiny demo app showing data stored in your pod." ;
+  ui:href <https://hello.0data.app/solid/> .
+
+<#BilliPod> a ui:Link ; ui:label "BilliPod" ;
+  ui:icon "🧾" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Track bills with payment reminders." ;
+  ui:href <https://billipod.solidcommunity.au> .
+
+<#Booklice> a ui:Link ; ui:label "Booklice" ;
+  ui:icon "🔖" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Bookmarks you can share with a community." ;
+  ui:href <https://scenaristeur.github.io/booklice/> .
+
+<#dokieli> a ui:Link ; ui:label "dokieli" ;
+  ui:icon "📝" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Write and publish articles, with annotations and social interactions." ;
+  ui:href <https://dokie.li/> .
+
+<#FilePod> a ui:Link ; ui:label "FilePod" ;
+  ui:icon "📁" ;
+  ui:region ui:Tab ;
+  rdfs:comment "File browser for multiple platforms." ;
+  ui:href <https://filepod.solidcommunity.au> .
+
+<#GeoPod> a ui:Link ; ui:label "GeoPod" ;
+  ui:icon "🗺️" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Store points of interest and encrypted tracks on a map." ;
+  ui:href <https://geopod.solidcommunity.au> .
+
+<#HealthPod> a ui:Link ; ui:label "HealthPod" ;
+  ui:icon "🩺" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Manage your health data, with encryption." ;
+  ui:href <https://healthpod.solidcommunity.au> .
+
+<#HomeVault> a ui:Link ; ui:label "HomeVault" ;
+  ui:icon "🏠" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Home inventory for insurance and household records." ;
+  ui:href <https://homevault.apps.privatedatapod.com/> .
+
+<#InnerPod> a ui:Link ; ui:label "InnerPod" ;
+  ui:icon "🧘" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Guided meditation timer that records your sessions." ;
+  ui:href <https://innerpod.solidcommunity.au> .
+
+<#KeyPod> a ui:Link ; ui:label "KeyPod" ;
+  ui:icon "🔐" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Encrypted password and key-value store." ;
+  ui:href <https://keypod.solidcommunity.au> .
+
+<#KonaPod> a ui:Link ; ui:label "KonaPod" ;
+  ui:icon "🚗" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Collect and analyse your car’s data." ;
+  ui:href <https://konapod.solidcommunity.au> .
+
+<#Media-Kraken> a ui:Link ; ui:label "Media Kraken" ;
+  ui:icon "🎬" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Track movies and build personal collections." ;
+  ui:href <https://noeldemartin.github.io/media-kraken/> .
+
+<#MovieStar> a ui:Link ; ui:label "MovieStar" ;
+  ui:icon "🎬" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Track what you watch, share, and get recommendations." ;
+  ui:href <https://moviestar.solidcommunity.au> .
+
+<#MSFatigue> a ui:Link ; ui:label "MSFatigue" ;
+  ui:icon "📋" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Survey app for MS fatigue research, with encrypted responses." ;
+  ui:href <https://msfatigue.solidcommunity.au> .
+
+<#NotePod> a ui:Link ; ui:label "NotePod" ;
+  ui:icon "🗒️" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Private, shareable notes with encryption." ;
+  ui:href <https://notepod.solidcommunity.au> .
+
+<#ODI-Solid-File-Manager> a ui:Link ; ui:label "ODI Solid File Manager" ;
+  ui:icon "📁" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Friendly file and folder manager for your pod." ;
+  ui:href <https://filemanager.solid-experiments.org/> .
+
+<#Penny> a ui:Link ; ui:label "Penny" ;
+  ui:icon "📁" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Browse and manage everything in your pod." ;
+  ui:href <https://penny.vincenttunru.com/> .
+
+<#Pod-Drive> a ui:Link ; ui:label "Pod Drive" ;
+  ui:icon "📁" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Drive-style file manager for your pod." ;
+  ui:href <https://drive.privatedatapod.com/> .
+
+<#Pod-Pro> a ui:Link ; ui:label "Pod Pro" ;
+  ui:icon "🧰" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Power-editor for the contents of your pod." ;
+  ui:href <https://podpro.dev/> .
+
+<#Pod-Resume> a ui:Link ; ui:label "Pod Resume" ;
+  ui:icon "📄" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Résumé builder that keeps your CV history." ;
+  ui:href <https://resume.privatedatapod.com/> .
+
+<#PodCal> a ui:Link ; ui:label "PodCal" ;
+  ui:icon "📅" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Schedule meetings with public booking pages; syncs with your calendar." ;
+  ui:href <https://podcal.eu> .
+
+<#PodOS-Browser> a ui:Link ; ui:label "PodOS Browser" ;
+  ui:icon "🔍" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Browse and manage the resources in your pod." ;
+  ui:href <https://browser.pod-os.org/> .
+
+<#Portable-LibreChat> a ui:Link ; ui:label "Portable LibreChat" ;
+  ui:icon "💬" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Open-source AI chat that keeps your conversations in your pod." ;
+  ui:href <https://chat.solidproject.org/> .
+
+<#RoloPod> a ui:Link ; ui:label "RoloPod" ;
+  ui:icon "📇" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Address book with selective sharing." ;
+  ui:href <https://rolopod.solidcommunity.au> .
+
+<#SecureDialog> a ui:Link ; ui:label "SecureDialog" ;
+  ui:icon "💉" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Diabetes logging with encrypted storage." ;
+  ui:href <https://securedialog.solidcommunity.au> .
+
+<#Solid-File-Manager> a ui:Link ; ui:label "Solid File Manager" ;
+  ui:icon "📁" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Manage the files in your pod." ;
+  ui:href <https://otto-aa.github.io/solid-filemanager/> .
+
+<#Solidflix> a ui:Link ; ui:label "Solidflix" ;
+  ui:icon "🎬" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Movie tracking with personalised recommendations." ;
+  ui:href <https://oxfordhcc.github.io/solid-media/> .
+
+<#SolidFocus> a ui:Link ; ui:label "SolidFocus" ;
+  ui:icon "✅" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Tasks and notes, works offline." ;
+  ui:href <https://focus.noeldemartin.com/> .
+
+<#SolidOS-Databrowser> a ui:Link ; ui:label "SolidOS Databrowser" ;
+  ui:icon "🐧" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Browse and edit any data in your pod." ;
+  ui:href <https://solidos.github.io/mashlib/dist/browse.html> .
+
+<#Synara-AI> a ui:Link ; ui:label "Synara AI" ;
+  ui:icon "🤖" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Privacy-first AI assistant with searchable conversation logs." ;
+  ui:href <https://ai.privatedatapod.com/> .
+
+<#Tired-Bike> a ui:Link ; ui:label "Tired Bike" ;
+  ui:icon "🚲" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Community platform for bicycle touring." ;
+  ui:href <https://tired.bike/> .
+
+<#TodoPod> a ui:Link ; ui:label "TodoPod" ;
+  ui:icon "☑️" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Task lists in encrypted personal storage." ;
+  ui:href <https://todopod.solidcommunity.au> .
+
+<#Umai> a ui:Link ; ui:label "Umai" ;
+  ui:icon "🍳" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Offline-first recipe manager." ;
+  ui:href <https://umai.noeldemartin.com> .
+
+<#VitalStats> a ui:Link ; ui:label "VitalStats" ;
+  ui:icon "❤️" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Log blood pressure, weight and other vital signs." ;
+  ui:href <https://vitalstats.apps.privatedatapod.com/> .
 
 <#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;
   ui:icon "📰" ;

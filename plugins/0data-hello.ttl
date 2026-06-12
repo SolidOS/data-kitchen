@@ -1,0 +1,12 @@
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ui:   <http://www.w3.org/ns/ui#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<>
+  a ui:Link ;
+  ui:label "0data Hello" ;
+  ui:icon "🧪" ;
+  ui:href <https://hello.0data.app/solid/> ;
+  ui:region ui:Tab ;
+  rdfs:comment "Tiny demo app showing data stored in your pod." ;
+  dct:subject "Productivity" .

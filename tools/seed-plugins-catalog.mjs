@@ -8,11 +8,53 @@
 // (or by hand); re-running overwrites.
 //
 //   node tools/seed-plugins-catalog.mjs
-import { writeFileSync, readFileSync } from 'node:fs';
+//
+// Besides the curated PLUGINS table below, the seeder ingests every FLAT
+// .ttl file in plugins/ — the single-file manifests of external link apps
+// (`<> a ui:Link ; ui:href …`, e.g. the solidproject.org/apps directory).
+// Their dct:subject literals become/extend the topic collections.
+import { writeFileSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { rdf } from '../node_modules/sol-components/core/rdf.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+
+const UI_NS = 'http://www.w3.org/ns/ui#';
+const RDF_NS = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
+const RDFS_NS = 'http://www.w3.org/2000/01/rdf-schema#';
+const DCT_NS = 'http://purl.org/dc/terms/';
+
+// Flat single-file manifests in plugins/ — external link apps.
+function readLinkApps() {
+  const dir = join(root, 'plugins');
+  const apps = [];
+  for (const f of readdirSync(dir)) {
+    if (!f.endsWith('.ttl')) continue;
+    const path = join(dir, f);
+    if (!statSync(path).isFile()) continue;
+    const base = 'http://dk.invalid/plugins/' + f;
+    const store = rdf.graph();
+    try { rdf.parse(readFileSync(path, 'utf8'), store, base, 'text/turtle'); }
+    catch (e) { console.warn(`skip ${f}: ${e.message}`); continue; }
+    const subj = rdf.sym(base);
+    if (!store.statementsMatching(subj, rdf.sym(RDF_NS + 'type'), rdf.sym(UI_NS + 'Link')).length) continue;
+    const ui = (l) => { const n = store.any(subj, rdf.sym(UI_NS + l)); return n ? n.value : null; };
+    const href = ui('href');
+    if (!href) { console.warn(`skip ${f}: no ui:href`); continue; }
+    apps.push({
+      label: ui('label') || f.replace(/\.ttl$/, ''),
+      icon: ui('icon') || '',
+      href,
+      region: (ui('region') || '').split('#').pop(),
+      desc: (store.any(subj, rdf.sym(RDFS_NS + 'comment')) || {}).value || '',
+      cats: store.each(subj, rdf.sym(DCT_NS + 'subject'), null).map((n) => n.value),
+    });
+  }
+  apps.sort((a, b) => a.label.localeCompare(b.label));
+  return apps;
+}
+const APPS = readLinkApps();
 
 // Curated seed. Drawn from the manifests' component lists (sol-components +
 // dk) but hand-filtered to plugin-sized pieces; paths point into each
@@ -75,9 +117,14 @@ const frag = (label) => label.replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '');
 const inList = (which) =>
   PLUGINS.filter((p) => (p.list || 'use') === which).map((p) => `<#${frag(p.label)}>`).join(' ');
 
-const CATS = [...new Set(PLUGINS.map((p) => p.cat).filter(Boolean))];
-const catMembers = (cat) =>
-  PLUGINS.filter((p) => p.cat === cat).map((p) => `<#${frag(p.label)}>`).join(', ');
+const CATS = [...new Set([
+  ...PLUGINS.map((p) => p.cat).filter(Boolean),
+  ...APPS.flatMap((a) => a.cats),
+])];
+const catMembers = (cat) => [
+  ...PLUGINS.filter((p) => p.cat === cat).map((p) => `<#${frag(p.label)}>`),
+  ...APPS.filter((a) => a.cats.includes(cat)).map((a) => `<#${frag(a.label)}>`),
+].join(', ');
 
 let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
@@ -97,13 +144,13 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
-  ui:parts ( ${inList('avail')} ) .
+  ui:parts ( ${inList('avail')} ${APPS.map((a) => `<#${frag(a.label)}>`).join(' ')} ) .
 
 # The whole catalog in one list — the ☰ "All Plugins…" page
 # (pages/all-plugins.html) browses this.
 <#All> a ui:Menu ; ui:label "All Plugins" ;
   rdfs:comment "Every plugin in the catalog, in use or not — what pages/all-plugins.html displays. Seeded; not maintained by Manage Plugins saves." ;
-  ui:parts ( ${PLUGINS.map((p) => `<#${frag(p.label)}>`).join(' ')} ) .
+  ui:parts ( ${PLUGINS.map((p) => `<#${frag(p.label)}>`).join(' ')} ${APPS.map((a) => `<#${frag(a.label)}>`).join(' ')} ) .
 
 # Topic categories — skos:Collections over the same pool; the grouped
 # plugin manager renders these as headings. A plugin manifest's
@@ -112,6 +159,15 @@ ${CATS.map((c) => `<#${frag(c)}> a skos:Collection ; skos:prefLabel ${JSON.strin
   skos:member ${catMembers(c)} .`).join('\n\n')}
 
 `;
+// External link apps (from the flat plugins/*.ttl manifests).
+for (const a of APPS) {
+  ttl += `<#${frag(a.label)}> a ui:Link ; ui:label ${JSON.stringify(a.label)} ;\n`;
+  if (a.icon) ttl += `  ui:icon ${JSON.stringify(a.icon)} ;\n`;
+  if (a.region) ttl += `  ui:region ui:${a.region} ;\n`;
+  if (a.desc) ttl += `  rdfs:comment ${JSON.stringify(a.desc)} ;\n`;
+  ttl += `  ui:href <${a.href}> .\n\n`;
+}
+
 for (const { label, icon, desc, tag, params } of PLUGINS) {
   ttl += `<#${frag(label)}> a ui:Component ; ui:label ${JSON.stringify(label)} ; ui:name ${JSON.stringify(tag)} ;\n`;
   ttl += `  ui:icon ${JSON.stringify(icon)} ;\n`;
@@ -124,4 +180,4 @@ for (const { label, icon, desc, tag, params } of PLUGINS) {
 }
 
 writeFileSync(join(root, 'data', 'plugins-catalog.ttl'), ttl);
-console.log(`wrote data/plugins-catalog.ttl with ${PLUGINS.length} plugins`);
+console.log(`wrote data/plugins-catalog.ttl with ${PLUGINS.length} plugins + ${APPS.length} link apps in ${CATS.length} topics`);

@@ -22,7 +22,7 @@
   ui:name "sol-include" ;
   acl:mode acl:Write ;
   ui:attribute
-    [ schema:name "source"  ; schema:value "./plugins/manage-plugins/dk-manage-plugins.html" ] ,
+    [ schema:name "source"  ; schema:value "./pages/manage-plugins.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
 # The whole catalog (#All list), read-mostly — not write-gated, so guests
@@ -37,7 +37,7 @@
   ui:name "sol-include" ;
   acl:mode acl:Write ;
   ui:attribute
-    [ schema:name "source"  ; schema:value "./plugins/customize/dk-customize.html" ] ,
+    [ schema:name "source"  ; schema:value "./pages/manage-menus.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
 # Settings is a COMMAND: the shell resolves it per context — the active

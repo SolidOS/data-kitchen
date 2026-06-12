@@ -1,0 +1,12 @@
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ui:   <http://www.w3.org/ns/ui#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<>
+  a ui:Link ;
+  ui:label "Portable LibreChat" ;
+  ui:icon "💬" ;
+  ui:href <https://chat.solidproject.org/> ;
+  ui:region ui:Tab ;
+  rdfs:comment "Open-source AI chat that keeps your conversations in your pod." ;
+  dct:subject "Chat" .

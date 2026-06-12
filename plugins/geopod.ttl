@@ -1,0 +1,12 @@
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ui:   <http://www.w3.org/ns/ui#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<>
+  a ui:Link ;
+  ui:label "GeoPod" ;
+  ui:icon "🗺️" ;
+  ui:href <https://geopod.solidcommunity.au> ;
+  ui:region ui:Tab ;
+  rdfs:comment "Store points of interest and encrypted tracks on a map." ;
+  dct:subject "Location" .
