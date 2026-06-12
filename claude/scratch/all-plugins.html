@@ -1,0 +1,37 @@
+<!doctype html>
+<!-- Standalone catalog viewer — NOT part of the dk app (no menu item, no
+     pages/ wiring). One grouped plugin-manager box over the catalog's #All
+     list, so every plugin shows under its topic heading whether in use or
+     not. Open it THROUGH a server (components fetch RDF; file:// won't do):
+       dev:  node pivot/run-server.cjs . 3000  →  http://localhost:3000/claude/scratch/all-plugins.html
+       app:  http://localhost:8000/claude/scratch/all-plugins.html  (while dk runs)
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All Plugins — data-kitchen catalog</title>
+  <script src="../../node_modules/component-interop/component-interop.js"
+          data-stage="auto"
+          data-manifest="../../node_modules/sol-components/dist/sol-components.manifest.json ../../dk.manifest.json"
+          data-components="sol-plugin-manager"
+  ></script>
+  <style>
+    body { margin: 0; padding: 1.2rem; font-family: system-ui, sans-serif;
+           font-size: max(16px, 1rem); background: #15161a; color: #e7e7ea; }
+    main { max-width: 48rem; margin: 0 auto; }
+    h1 { font-size: max(16px, 1.3rem); margin: 0 0 .8rem; }
+    sol-plugin-manager { --surface: #1d1f24; --bg: #26282e; --border: #34373d;
+                         --text: #e7e7ea; --text-muted: #9aa; --hover: #2c2f36; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>All Plugins</h1>
+    <sol-plugin-manager
+        grouped
+        source="../../data/plugins-catalog.ttl#All"
+    ></sol-plugin-manager>
+  </main>
+</body>
+</html>
