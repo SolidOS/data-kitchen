@@ -76,10 +76,19 @@
 # (#MainMenu above is the RETIRED old-dk header menu, kept as pantry.)
 
 <#More> a ui:Menu ; ui:label "Menu" ;
-  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreTheme> <#MoreFontSize>
+  ui:parts ( <#MorePlugins> <#MoreCustomize> <#MoreSettings> <#MoreTheme> <#MoreFontSize>
              <#MoreSignIn> <#MoreGuestView> <#MoreReload> <#MoreRestart> ) .
 
-<#MoreCustomize> a ui:Component ; ui:label "Customize…" ;
+# Manage Plugins edits the two plugin lists (data/palette.ttl#InUse /
+# #Available); its Plugins-to-Use list is what Manage Menus offers.
+<#MorePlugins> a ui:Component ; ui:label "Manage Plugins…" ;
+  ui:name "sol-include" ;
+  acl:mode acl:Write ;
+  ui:attribute
+    [ schema:name "source"  ; schema:value "./plugins/manage-plugins/dk-manage-plugins.html" ] ,
+    [ schema:name "trusted" ; schema:value "" ] .
+
+<#MoreCustomize> a ui:Component ; ui:label "Manage Menus…" ;
   ui:name "sol-include" ;
   acl:mode acl:Write ;
   ui:attribute

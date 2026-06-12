@@ -3,15 +3,16 @@
 @prefix schema: <http://schema.org/> .
 @prefix acl:    <http://www.w3.org/ns/auth/acl#> .
 
-# RDF twin of html-first.html, kept in sync by tools/conversion (the builders
+# RDF twin of html-first.html, kept in sync by tools/conversion (the managers
 # edit this; the generator re-emits the HTML). Three menus: the topmost tabset
 # (#Tabs), the bar-managed actions row (#Bar), and the fixed shell #Chrome
 # (help, ☰ menu, sign-in) — config-editable here, self-healed if deleted.
 # An rdfs:comment on an item is re-emitted as the HTML comment before it.
 
 # Not every defined panel is IN the menu: #panel-home, #panel-solidos and
-# #panel-customize (now a ☰ menu item) are PANTRY items — kept here (and in the palette) so the builders can drag
-# them back in. Solid Resources / Dev Tools are tabs whose SUBMENUS (the
+# #panel-customize (now a ☰ menu item) are PANTRY items — kept here (and in
+# data/palette.ttl's lists) so the managers can drag them back in.
+# Solid Resources / Dev Tools are tabs whose SUBMENUS (the
 # link strips) live inside their plugin pages, never on this tabset.
 <#Tabs> a ui:Menu ; ui:label "data-kitchen" ;
   ui:orientation ui:Horizontal ;

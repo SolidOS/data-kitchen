@@ -163,9 +163,10 @@ setTimeout(() => {
   healChrome().catch((e) => console.warn('[dk-tabs-sync] chrome heal failed', e));
 }, 1500);
 
-// sol-menu-built bubbles (composed) from sol-menu-builder / sol-bar-builder.
+// sol-menu-built bubbles (composed) from sol-menu-manager / sol-button-bar-manager
+// (and from sol-plugin-manager, whose palette.ttl saves the filter ignores).
 // React only to saves of the tabs document, and debounce — the Tabs and Bar
-// builders can each fire one in quick succession.
+// managers can each fire one in quick succession.
 let timer = null;
 document.addEventListener('sol-menu-built', (e) => {
   const src = (e.detail && e.detail.source) || '';

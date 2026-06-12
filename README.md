@@ -72,7 +72,7 @@ html-first.html     the topmost <sol-tabs> — GENERATED from data/tabs.ttl
 data/tabs.ttl       the RDF twin: #Tabs (tabs) + #Bar (actions) + #Chrome
                     (help / ☰ menu / sign-in); rdfs:comment ↔ HTML comments
 data/menu.ttl       #More — the ☰ hamburger's standard items
-data/palette.ttl    the plugins the builders offer (a ui:Menu, curated)
+data/palette.ttl    the two plugin lists (#InUse / #Available ui:Menus)
 plugins/<name>/     one SELF-CONTAINED folder per plugin: its scripts,
                     assets, pages, RDF libraries, and manifest.ttl
                     (the tree-shaking unit)
@@ -106,13 +106,25 @@ shape and the panel's own `source` (or the global settings page without
 one); a plugin's `#Menu` items appear in ☰ below a separator while its tab
 is active (e.g. the player's Filters / View deleted / Install / Update).
 
-## Customize — build the UI with the UI
+## Manage Plugins / Manage Menus — build the UI with the UI
 
-**☰ → Customize…** opens the three sol-components builders in a modal:
+**☰ → Manage Plugins…** opens the two plugin lists, each an editable
+`<sol-plugin-manager>` box:
 
-- `<sol-menu-builder source="data/tabs.ttl#Tabs">` — edit the tab menu
-- `<sol-bar-builder source="data/tabs.ttl#Bar">` — edit the actions bar
-- `<sol-plugins-available source="data/palette.ttl#Palette">` — drag a plugin
+- `<sol-plugin-manager source="data/palette.ttl#InUse">` — *Plugins to Use*
+- `<sol-plugin-manager source="data/palette.ttl#Available">` — *Plugins Available*
+
+Drag a card between the boxes to move it (one atomic rewrite of both lists);
+drop a manifest URL on a box — or type it in the box's input row — to add a
+plugin (the manifest must offer `<> a ui:Component ; ui:name "tag"`); every
+change auto-saves to `data/palette.ttl`.
+
+**☰ → Manage Menus…** offers the *Plugins to Use* list next to the menu/bar
+managers in a modal:
+
+- `<sol-menu-manager source="data/tabs.ttl#Tabs">` — edit the tab menu
+- `<sol-button-bar-manager source="data/tabs.ttl#Bar">` — edit the actions bar
+- `<sol-plugin-manager source="data/palette.ttl#InUse">` — drag a plugin
   card onto a menu/bar item to assign what it mounts
 
 Saving rewrites the whole Turtle document (unreferenced "pantry" items are
@@ -129,10 +141,11 @@ shell in step **automatically** — no manual regenerate step:
 The help button, ☰ menu and sign-in are **chrome** — now modeled in
 `data/tabs.ttl#Chrome` (config-editable: help target, icon, ☰ menu source,
 issuers) and emitted between the `chrome:begin/end` markers. They're fixed shell
-furniture: not in the palette, and self-healed if a hand-edit deletes one.
+furniture: not in the plugin lists, and self-healed if a hand-edit deletes one.
 `rdfs:comment` on any item round-trips as the HTML comment before it. The bar
-carries search / calendar; theme, settings, sign-in and Customize live in ☰
-(their definitions stay in tabs.ttl as pantry). Sign-in is on-demand: the hidden
+carries search / calendar; theme, settings, sign-in, Manage Plugins and Manage
+Menus live in ☰ (their definitions stay in tabs.ttl as pantry). Sign-in is
+on-demand: the hidden
 `sol-login` surfaces only during an auth flow.
 
 ## Verification
@@ -152,7 +165,7 @@ npm run dist        # electron-builder (linux: AppImage/deb/rpm)
 
 `asar` is off: the bundled servers are spawned as plain node processes and
 read their trees from disk. Note: an AppImage mounts read-only, so in-app
-saves (favourites, settings, Customize) need a writable root — set
+saves (favourites, settings, Manage Plugins / Manage Menus) need a writable root — set
 `DK_POD_ROOT` to point the pivot server at a writable copy of the data.
 
 ## Provenance

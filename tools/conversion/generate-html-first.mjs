@@ -2,7 +2,7 @@
 /**
  * generate-html-first — re-emit html-first.html from data/tabs.ttl.
  *
- * The builders (<sol-menu-builder>/<sol-bar-builder> on the Customize tab)
+ * The managers (<sol-menu-manager>/<sol-button-bar-manager> on Manage Menus)
  * save the RDF; this script turns it back into the declarative shell. The
  * actual emission lives in sol-components core/menu-generate.js (shared with the
  * in-app tabs sync); this is just the node CLI wrapper that does the file I/O:

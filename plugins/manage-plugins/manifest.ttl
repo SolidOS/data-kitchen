@@ -4,6 +4,6 @@
 
 <>
   a ui:Component ;
-  ui:label "Manage Menus" ;
+  ui:label "Manage Plugins" ;
   ui:name "sol-include" ;
-  dct:hasPart <./dk-customize.html> .
+  dct:hasPart <./dk-manage-plugins.html> .

@@ -1,13 +1,19 @@
 @prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 
-# The plugins palette — what <sol-plugins-available> offers for dragging into
-# the menu/bar builders. A plain ui:Menu of ui:Component entries (the same
-# shape every menu uses), seeded by tools/seed-palette.mjs and curated by
-# hand thereafter.
+# The plugin lists <sol-plugin-manager> manages (Manage Plugins drags entries
+# between them; Manage Menus offers #InUse for dragging onto the menu/bar
+# managers). Two ui:Menu lists of ui:Component entries over one shared pool,
+# seeded by tools/seed-palette.mjs and edited by the manager thereafter.
 
-<#Palette> a ui:Menu ; ui:label "Available plugins" ;
-  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#SolidOS-data-browser> <#Home-dashboard> <#Dev-Tools-playgrounds> <#Page-HTML-include> <#Search> <#Calendar> <#Sign-in> <#Theme-toggle> <#Text-size> ) .
+<#InUse> a ui:Menu ; ui:label "Plugins to Use" ;
+  rdfs:comment "The plugins this app uses — the palette Manage Menus offers for dragging onto the tab menu and button bar. Edited with Manage Plugins (drag between lists; auto-saves)." ;
+  ui:parts ( <#News-three-panel-feeds> <#Music-Internet-Archive> <#Movies-Internet-Archive> <#Images-Wikimedia> <#Workspaces-pod-browser> <#Dev-Tools-playgrounds> <#Search> <#Calendar> <#Sign-in> ) .
+
+<#Available> a ui:Menu ; ui:label "Plugins Available" ;
+  rdfs:comment "Plugins on the shelf — known to the app but not in use. Drag a manifest URL (or type it) into Manage Plugins to add one; drag a card to Plugins to Use to adopt it." ;
+  ui:parts ( <#SolidOS-data-browser> <#Home-dashboard> <#Page-HTML-include> <#Theme-toggle> <#Text-size> ) .
 
 <#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ; ui:name "sol-feed" ;
   ui:attribute

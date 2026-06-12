@@ -1,5 +1,5 @@
-// P6 verification — the Customize tab's builders work end to end:
-//   1. the three builder components mount and render (palette cards, menu
+// P6 verification — the Manage Menus managers work end to end:
+//   1. the three manager components mount and render (palette cards, menu
 //      rows, bar rows)
 //   2. an edit made through the UI (add item, assign the ia-player plugin
 //      via the drag payload, rename) SAVES — the PUT lands in data/tabs.ttl
@@ -34,29 +34,30 @@ try {
   await page.evaluate(async () => { if (window.ComponentInterop?.ready) await window.ComponentInterop.ready; });
   await page.waitForTimeout(5000);
 
-  // --- open Customize via the ☰ hamburger (it's a menu item → modal now) ---
+  // --- open Manage Menus via the ☰ hamburger (it's a menu item → modal now) ---
   await page.evaluate(async () => {
     const dd = document.querySelector('sol-dropdown-button.omp-more');
     dd?.shadowRoot?.querySelector('.sol-dd-trigger')?.click();
     await new Promise(r => setTimeout(r, 800));
     [...dd.shadowRoot.querySelectorAll('.sol-dd-popup button, .sol-dd-popup a')]
-      .find(b => /customize/i.test(b.textContent))?.click();
+      .find(b => /manage menus/i.test(b.textContent))?.click();
     await new Promise(r => setTimeout(r, 5000));
   });
 
-  // The builders live inside the conjured sol-modal's shadow body.
+  // The managers live inside the conjured sol-modal's shadow body.
   const mounted = await page.evaluate(() => {
     const root = document.querySelector('sol-modal')?.shadowRoot || document;
-    const palette = root.querySelector('sol-plugins-available');
-    const menuB = root.querySelector('sol-menu-builder');
-    const barB = root.querySelector('sol-bar-builder');
+    const palette = root.querySelector('sol-plugin-manager');
+    const menuB = root.querySelector('sol-menu-manager');
+    const barB = root.querySelector('sol-button-bar-manager');
     return {
       palette: palette?.shadowRoot?.querySelectorAll('.card').length ?? -1,
       menuRows: menuB?.shadowRoot?.querySelectorAll('.row').length ?? -1,
       barRows: barB?.shadowRoot?.querySelectorAll('.row').length ?? -1,
     };
   });
-  check('palette renders plugin cards', mounted.palette >= 12, `cards=${mounted.palette}`);
+  // the Manage Menus palette is data/palette.ttl#InUse (9 entries), not the full pool
+  check('palette renders plugin cards', mounted.palette >= 8, `cards=${mounted.palette}`);
   check('menu builder renders the tab rows', mounted.menuRows >= 6, `rows=${mounted.menuRows}`);
   check('bar builder renders the bar rows', mounted.barRows >= 3, `rows=${mounted.barRows}`);
 
@@ -64,7 +65,7 @@ try {
   //     rename it, save ---
   const saved = await page.evaluate(async () => {
     const root = document.querySelector('sol-modal')?.shadowRoot || document;
-    const builder = root.querySelector('sol-menu-builder');
+    const builder = root.querySelector('sol-menu-manager');
     const sh = builder.shadowRoot;
     sh.querySelector('.add-btn').click();                       // ＋ item
     await new Promise(r => setTimeout(r, 300));

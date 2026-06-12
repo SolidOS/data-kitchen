@@ -1,6 +1,7 @@
-<!-- Customize — build the UI with the UI. The three sol-components builders:
+<!-- Manage Menus — build the UI with the UI. The three sol-components managers:
      edit the topmost tabset (data/tabs.ttl#Tabs), the actions bar (#Bar),
-     and drag plugins in from the palette (data/palette.ttl#Palette).
+     and drag plugins in from the Plugins-to-Use list (data/palette.ttl#InUse
+     — curated by the linked Manage Plugins item on the ☰ menu).
      After saving, run the generator to re-emit html-first.html:
        node tools/conversion/generate-html-first.mjs
      then reload the app. (The help button and ⋮ menu are chrome — fixed in
@@ -9,23 +10,25 @@
   <p class="dk-customize-hint">
     Name menu items and bar buttons, drag plugins onto them, reorder, save.
     Saving writes the RDF (<code>data/tabs.ttl</code>); regenerate
-    <code>html-first.html</code> and reload to see the new shell.
+    <code>html-first.html</code> and reload to see the new shell. The plugins
+    offered here are the <em>Plugins to Use</em> list — curate it with
+    <em>Manage Plugins</em> (☰ menu).
   </p>
 
-  <sol-plugins-available
-      source="data/palette.ttl#Palette"
-      for="sol-menu-builder, sol-bar-builder"
-  ></sol-plugins-available>
+  <sol-plugin-manager
+      source="data/palette.ttl#InUse"
+      for="sol-menu-manager, sol-button-bar-manager"
+  ></sol-plugin-manager>
 
-  <sol-menu-builder
+  <sol-menu-manager
       source="data/tabs.ttl#Tabs"
-  ></sol-menu-builder>
+  ></sol-menu-manager>
 
-  <sol-bar-builder
+  <sol-button-bar-manager
       source="data/tabs.ttl#Bar"
-  ></sol-bar-builder>
+  ></sol-button-bar-manager>
 </div>
 <style>
   .dk-customize { display: flex; flex-direction: column; gap: .8rem; padding: .8rem; max-width: 60rem; }
-  .dk-customize-hint { margin: 0; font-size: .85rem; color: var(--text-muted, #7f8c8d); }
+  .dk-customize-hint { margin: 0; font-size: max(16px, .85rem); color: var(--text-muted, #7f8c8d); }
 </style>

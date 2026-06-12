@@ -1,12 +1,25 @@
 --------
 # TO-DO
 --------
+5. Manage Plugins
+* I want sol-plugins-available be its own "Manage Plugins" menu item
+* It should have a "Plugins to Use" box and a "Plugins Available" box
+* Users shld be able to drag between the two
+* Users shld be able to drag manifests into Plugins Available
+* Users shld be able to input a string of a manifest's url
+* Form should auto-save
+* The list of Plugins To Use is what should be in a linked but separate "Manage Menus" menu item
+* Propose a plan
+
+
 
 CLAUDE: IGNORE EVERYTHING BELOW HERE
 
 ----------
 # THOUGHTS
 ----------
+customize menu item shld lead to
+  a submenu that lets users add/remove tabs & actions, edit tab-action settingss, edit the electron/pivot configs
 
 daughter app - an app that shares resources from main app
 
