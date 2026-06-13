@@ -23,8 +23,11 @@ const { reconcileTree } = require('./seed-core.cjs');
 // Definition entries (relative to the engine dir) making up the editable surface.
 const SEED_ENTRIES = [
   'index.html', 'dk.manifest.json',
-  'data', 'favourites', 'pages', 'help', 'shapes', 'plugins',
+  'data', 'pages', 'help', 'shapes', 'plugins',
 ];
+// NB: 'favourites' is intentionally NOT seeded — favourites are per-library
+// (each library's own <library>/favourites/, see omp-favourites-store.js) and
+// are user-generated, so dk ships none.
 
 // Within a seeded dir, never copy these subdirs — engine (plugins/<name>/dist),
 // served from the executable, or never web content (node_modules).
