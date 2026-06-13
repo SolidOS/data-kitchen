@@ -1892,7 +1892,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
   // top of createPlayer) are refreshed from the wall on `omp:favourited`.
   async function loadCommunalFavTracks() {
     try {
-      const all = await listFavourites();
+      const all = await listFavourites(writeLib()?.baseURI);   // this library's favourites
       _favRecords = all.filter(g => g.bucket === favBucket());
       // Index BOTH identities: a film is favourited under its IA item URL
       // (the Movies-column star's id) while it plays via its file URL (the
@@ -1928,6 +1928,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
         item: album.url, bucket: 'MovingImage', schemaType: 'VideoObject',
         name: album.name || album.url, link: album.url, download: false,
         thumbnail: album.thumbnail || '',
+        libraryBase: writeLib()?.baseURI,   // favourites live inside this library
       },
       bubbles: true, composed: true,
     }));
@@ -1974,6 +1975,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
         item: t.url, bucket: video ? 'MovingImage' : 'Sound',
         schemaType: video ? 'VideoObject' : 'AudioObject',
         name: t.name || t.url, link: t.url, download: true,
+        libraryBase: writeLib()?.baseURI,   // favourites live inside this library
       },
       bubbles: true, composed: true,
     }));

@@ -46,11 +46,11 @@ export function favouritePrompt(defaultTitle) {
  * Prompt + write a favourite. `fav` is the item snapshot (item, bucket,
  * schemaType, name, thumbnail, link, download). Returns the saved record or null.
  */
-export async function star(fav) {
+export async function star(fav, libraryBase) {
   const ans = await favouritePrompt(fav.name);
   if (!ans) return null;
   const full = { ...fav, contributor: ans.contributor, title: ans.title };
-  await addFavourite(full);
+  await addFavourite(full, libraryBase);   // favourites live inside the library
   document.dispatchEvent(new CustomEvent('omp:favourited', { detail: full }));
   return full;
 }
@@ -60,13 +60,14 @@ export async function star(fav) {
  * dispatching `item-favourite` with a ready snapshot ({item,bucket,schemaType,
  * name,link,download,thumbnail}). Components that emit RAW fields (e.g.
  * sol-gallery) are handled by their own host (omp-images) and carry no
- * `bucket`, so they're ignored here. Idempotent.
+ * `bucket`, so they're ignored here. The emitter includes `libraryBase` (the
+ * library the star belongs to) in the event detail. Idempotent.
  */
 export function installFavouriteRouter() {
   if (window.__ompFavRouter) return;
   window.__ompFavRouter = true;
   document.addEventListener('item-favourite', (e) => {
     const d = e.detail;
-    if (d && d.bucket && d.item) star(d).catch((err) => console.warn('[favourite]', err.message));
+    if (d && d.bucket && d.item) star(d, d.libraryBase).catch((err) => console.warn('[favourite]', err.message));
   });
 }

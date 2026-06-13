@@ -1,9 +1,14 @@
-// omp-favourites-store.js — the communal favourites wall's data layer.
+// omp-favourites-store.js — the favourites data layer.
 //
-// A shared, append-only `favourites/` folder, ONE file per star
-// (schema:BookmarkAction). Anyone can add (public Append); only the owner can
-// remove (moderation). The wall renders from these snapshots alone — it never
-// loads a source library. Records use only standard vocab:
+// Favourites are PER-LIBRARY: each library owns a `favourites/` folder inside
+// its own dir (e.g. .../libraries/internet_archive_music/favourites/), so a
+// library's stars travel with the library — consistent with every other
+// per-plugin/per-library data file. (Previously this was one communal top-level
+// wall; the communal wall was dropped, so storage follows the library now.)
+//
+// An append-only folder, ONE file per star (schema:BookmarkAction). Anyone can
+// add (public Append); only the owner can remove (moderation). Records use only
+// standard vocab:
 //
 //   <>  a schema:BookmarkAction ; dct:creator "<name>" ; dct:title "<custom>" ;
 //       dct:created "…"^^xsd:dateTime ; dct:references <ITEM> .
@@ -25,8 +30,15 @@ const NS = {
   xsd:    'http://www.w3.org/2001/XMLSchema#',
 };
 
-/** The communal favourites folder (top-level, so it's permissioned on its own). */
-export const favouritesUrl = () => new URL('dk-pod/dk/favourites/', document.baseURI).href;
+/**
+ * The favourites folder for ONE library: `<library>/favourites/`. `libraryBase`
+ * is any URL inside the library (its index/doc URL, or its dir) — ia-player
+ * passes the active lib's `baseURI`, omp-images its source doc URL.
+ */
+export const favouritesUrl = (libraryBase) => {
+  if (!libraryBase) throw new Error('favouritesUrl: a library base URL is required');
+  return new URL('favourites/', new URL(libraryBase, document.baseURI)).href;
+};
 
 const lit = (s) => JSON.stringify(String(s));
 
@@ -66,16 +78,17 @@ ${item}
 `;
 }
 
-/** POST a new favourite file to the folder (append). Returns its URL or null. */
-export async function addFavourite(f) {
-  const resp = await fetch(favouritesUrl(), {
+/** POST a new favourite file to the library's folder (append). URL or null. */
+export async function addFavourite(f, libraryBase) {
+  const folder = favouritesUrl(libraryBase);
+  const resp = await fetch(folder, {
     method: 'POST',
     headers: { 'Content-Type': 'text/turtle' },
     body: favouriteTurtle(f),
   });
   if (!resp.ok) throw new Error(`Couldn't save favourite (HTTP ${resp.status}).`);
   const loc = resp.headers.get('Location');
-  return loc ? new URL(loc, favouritesUrl()).href : null;
+  return loc ? new URL(loc, folder).href : null;
 }
 
 /** Permanently remove one favourite file (owner moderation). */
@@ -116,8 +129,8 @@ function parseFavourite(url, ttl) {
  * @returns {Promise<Array<{item,canonicalTitle,thumbnail,link,bucket,created,
  *          count,contributors:Array<{name,customTitle,file}>}>>}
  */
-export async function listFavourites() {
-  const folder = favouritesUrl();
+export async function listFavourites(libraryBase) {
+  const folder = favouritesUrl(libraryBase);
   let containerTtl;
   try {
     // no-store: after a delete, a cached listing would still name the removed

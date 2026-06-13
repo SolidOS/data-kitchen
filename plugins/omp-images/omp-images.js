@@ -255,7 +255,7 @@ class OmpImages extends HTMLElement {
   /** Read the communal wall, keep the image-collection favourites, render. */
   async _loadCommunalFavs() {
     try {
-      const all = await listFavourites();
+      const all = await listFavourites(this._docUrl());   // this library's favourites
       this._favColls = all.filter((g) => g.bucket === 'Collection' || g.schemaType === 'ImageGallery');
       this._favLandings = new Set(this._favColls.map((g) => g.link || g.item));
     } catch { this._favColls = []; this._favLandings = new Set(); }
@@ -329,7 +329,7 @@ class OmpImages extends HTMLElement {
     const saved = await star({
       item: coll.landingPage, bucket: 'Collection', schemaType: 'ImageGallery',
       name: coll.title, link: coll.landingPage, download: false,
-    });
+    }, this._docUrl());   // favourites live inside this library
     if (saved) this._loadCommunalFavs();
   }
 
