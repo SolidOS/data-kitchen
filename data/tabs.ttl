@@ -1,148 +1,342 @@
-@prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://schema.org/> .
-@prefix acl:    <http://www.w3.org/ns/auth/acl#> .
+@prefix : <#>.
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <http://schema.org/>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
 
-# THE source of the shell (rdf-first): rendered at runtime by the inline
-# <sol-tabs from-rdf> in index.html + src/dk-tabs-rdf.js; the managers edit it.
-# Three menus: the topmost tabset (#Tabs), the bar-managed actions row (#Bar),
-# and the fixed shell #Chrome (help, ☰ menu, sign-in) — config-editable here,
-# self-healed if deleted. To edit as HTML instead, round-trip offline:
-# npm run rdf2html → edit → npm run html2rdf (tools/conversion/). An
-# rdfs:comment on an item becomes the HTML comment before it in that view.
-
-# Not every defined panel is IN the menu: #panel-solidos and #panel-customize
-# (now a ☰ menu item) are PANTRY items — kept here (and in data/plugins-catalog.ttl's
-# lists) so the managers can drag them back in.
-<#Tabs> a ui:Menu ; ui:label "data-kitchen" ;
-  ui:orientation ui:Horizontal ;
-  ui:parts ( <#panel-news> <#panel-music> <#panel-movies>
-             <#panel-images> <#panel-podz> ) .
-
-<#panel-news> a ui:Component ; ui:label "📰 News" ; ui:name "sol-feed" ;
-  ui:attribute
-    [ schema:name "id" ;     schema:value "panel-news" ] ,
-    [ schema:name "view" ;   schema:value "threePanel" ] ,
-    [ schema:name "reader" ; schema:value "inline" ] ,
-    [ schema:name "source" ; schema:value "./plugins/news/feeds.ttl#Feeds" ] .
-
-<#panel-music> a ui:Component ; ui:label "🎵 Music" ; ui:name "ia-player" ;
-  ui:attribute
-    [ schema:name "id" ;         schema:value "panel-music" ] ,
-    [ schema:name "storage-ns" ; schema:value "music" ] ,
-    [ schema:name "source" ;     schema:value "./plugins/ia-player/libraries/internet_archive_music/index.ttl" ] ,
-    [ schema:name "defer" ;      schema:value "" ] .
-
-<#panel-movies> a ui:Component ; ui:label "🎬 Movies" ; ui:name "ia-player" ;
-  ui:attribute
-    [ schema:name "id" ;              schema:value "panel-movies" ] ,
-    [ schema:name "storage-ns" ;      schema:value "movies" ] ,
-    [ schema:name "source" ;          schema:value "./plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] ,
-    [ schema:name "favourites-only" ; schema:value "" ] ,
-    [ schema:name "defer" ;           schema:value "" ] .
-
-<#panel-images> a ui:Component ; ui:label "🖼 Images" ; ui:name "omp-images" ;
-  ui:attribute
-    [ schema:name "id" ;     schema:value "panel-images" ] ,
-    [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
-
-<#panel-podz> a ui:Component ; ui:label "🗂 Workspaces" ; ui:name "dk-podz" ;
-  ui:attribute
-    [ schema:name "id" ;     schema:value "panel-podz" ] ,
-    [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,
-    [ schema:name "defer" ;  schema:value "" ] .
-
-<#panel-solidos> a ui:Component ; ui:label "🐧 SolidOS" ; ui:name "dk-solidos" ;
-  ui:attribute
-    [ schema:name "id" ;     schema:value "panel-solidos" ] ,
-    [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
-    [ schema:name "defer" ;  schema:value "" ] .
-
-<#panel-customize> a ui:Component ; ui:label "🎛 Customize" ; ui:name "sol-include" ;
-  acl:mode acl:Write ;
-  ui:attribute
-    [ schema:name "id" ;      schema:value "panel-customize" ] ,
-    [ schema:name "source" ;  schema:value "./pages/customize.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
-
-<#Bar> a ui:Menu ; ui:label "actions" ;
-  ui:orientation ui:Horizontal ;
-  ui:parts ( <#bar-search> <#bar-calendar> ) .
-# (#bar-fontsize moved to the ☰ menu — data/menu.ttl#MoreFontSize — kept below as pantry.)
-
-<#bar-search> a ui:Component ; ui:label "Search" ; ui:name "sol-search" ;
-  ui:attribute
-    [ schema:name "class" ;  schema:value "omp-search" ] ,
-    [ schema:name "title" ;  schema:value "Search" ] ,
-    [ schema:name "source" ; schema:value "./plugins/search/search-engines.ttl#SearchEngines" ] .
-
-<#bar-calendar> a ui:Component ; ui:label "Calendar" ; ui:name "dk-calendar-popout" ;
-  ui:attribute
-    [ schema:name "class" ;  schema:value "omp-calendar" ] ,
-    [ schema:name "title" ;  schema:value "Calendar" ] ,
-    [ schema:name "source" ; schema:value "./plugins/calendar/calendar-settings.ttl#All" ] .
-
-<#bar-fontsize> a ui:Component ; ui:label "A" ; ui:name "sol-button" ;
-  ui:attribute
-    [ schema:name "class" ;        schema:value "omp-fontsize" ] ,
-    [ schema:name "title" ;        schema:value "Text size" ] ,
-    [ schema:name "data-handler" ; schema:value "cycleFontSize" ] .
-
-<#bar-theme> a ui:Component ; ui:label "🌙" ; ui:name "sol-button" ;
-  ui:attribute
-    [ schema:name "class" ;        schema:value "omp-theme" ] ,
-    [ schema:name "title" ;        schema:value "Toggle light / dark" ] ,
-    [ schema:name "data-handler" ; schema:value "toggleTheme" ] .
-
-<#bar-settings> a ui:Component ; ui:label "⚙" ; ui:name "sol-button" ;
-  ui:attribute
-    [ schema:name "class" ;        schema:value "omp-settings-launch" ] ,
-    [ schema:name "title" ;        schema:value "Settings" ] ,
-    [ schema:name "data-handler" ; schema:value "sol-include" ] ,
-    [ schema:name "source" ;       schema:value "./pages/settings.html" ] ,
-    [ schema:name "inline" ;       schema:value "" ] ,
-    [ schema:name "trusted" ;      schema:value "" ] .
-
-<#bar-login> a ui:Component ; ui:label "Sign in" ; ui:name "sol-login" ;
-  ui:attribute
-    [ schema:name "class" ;          schema:value "omp-sollogin" ] ,
-    [ schema:name "mode" ;           schema:value "popup" ] ,
-    [ schema:name "popup-callback" ; schema:value "node_modules/podz/popup-auth-callback.html" ] ,
-    [ schema:name "issuers" ;        schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .
-
-# Fixed shell chrome — always present (self-healed if a hand-edit deletes one).
-# Config (source, help target, icon, ☰ menu source, issuers) is editable here;
-# critical plumbing (popup-callback, region, inline/trusted) is app-supplied.
-<#Chrome> a ui:Menu ; ui:label "chrome" ;
-  ui:parts ( <#chrome-help> <#chrome-menu> <#chrome-login> ) .
-
-<#chrome-help> a ui:Component ; ui:label "?" ; ui:name "sol-button" ;
-  rdfs:comment "Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay." ;
-  ui:attribute
-    [ schema:name "class" ;        schema:value "omp-help-launch" ] ,
-    [ schema:name "title" ;        schema:value "Help" ] ,
-    [ schema:name "aria-label" ;   schema:value "Help" ] ,
-    [ schema:name "data-handler" ; schema:value "sol-include" ] ,
-    [ schema:name "source" ;       schema:value "./help/dk.html" ] ,
-    [ schema:name "if-logged-in" ; schema:value "./help/dk-owner.html" ] ,
-    [ schema:name "inline" ;       schema:value "" ] ,
-    [ schema:name "trusted" ;      schema:value "" ] .
-
-<#chrome-menu> a ui:Component ; ui:label "Menu" ; ui:name "sol-dropdown-button" ;
-  ui:region ui:Modal ;
-  rdfs:comment "☰ menu — items live in data/menu.ttl#More (Manage Plugins, Manage Menus, Settings, Sign in, and owner commands). Component items display in the #dk-menu-pane replace pane over the tab content." ;
-  ui:attribute
-    [ schema:name "class" ;      schema:value "omp-more" ] ,
-    [ schema:name "title" ;      schema:value "Menu" ] ,
-    [ schema:name "aria-label" ; schema:value "Menu" ] ,
-    [ schema:name "label" ;      schema:value "☰" ] ,
-    [ schema:name "source" ;     schema:value "./data/menu.ttl#More" ] ,
-    [ schema:name "data-settings-skip" ; schema:value "" ] .
-
-<#chrome-login> a ui:Component ; ui:label "Sign in" ; ui:name "sol-login" ;
-  rdfs:comment "Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css)." ;
-  ui:attribute
-    [ schema:name "class" ;          schema:value "omp-sollogin" ] ,
-    [ schema:name "mode" ;           schema:value "popup" ] ,
-    [ schema:name "popup-callback" ; schema:value "node_modules/podz/popup-auth-callback.html" ] ,
-    [ schema:name "issuers" ;        schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .
+:Bar
+    a ui:Menu;
+    ui:label "actions";
+    ui:orientation ui:Horizontal;
+    ui:parts ( :bar-search :bar-calendar ).
+:bar-calendar
+    a ui:Component;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-calendar" ],
+            [
+                schema:name "source";
+                schema:value "./plugins/calendar/calendar-settings.ttl#All"
+            ],
+        [ schema:name "title"; schema:value "Calendar" ];
+    ui:label "Calendar";
+    ui:name "dk-calendar-popout".
+:bar-fontsize
+    a ui:Component;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-fontsize" ],
+        [ schema:name "data-handler"; schema:value "cycleFontSize" ],
+        [ schema:name "title"; schema:value "Text size" ];
+    ui:label "A";
+    ui:name "sol-button".
+:bar-login
+    a ui:Component;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-sollogin" ],
+            [
+                schema:name "issuers";
+                schema:value
+                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
+            ],
+        [ schema:name "mode"; schema:value "popup" ],
+            [
+                schema:name "popup-callback";
+                schema:value "node_modules/podz/popup-auth-callback.html"
+            ];
+    ui:label "Sign in";
+    ui:name "sol-login".
+:bar-search
+    a ui:Component;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-search" ],
+            [
+                schema:name "source";
+                schema:value
+                "./plugins/search/search-engines.ttl#SearchEngines"
+            ],
+        [ schema:name "title"; schema:value "Search" ];
+    ui:label "Search";
+    ui:name "sol-search".
+:bar-settings
+    a ui:Component;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-settings-launch" ],
+        [ schema:name "data-handler"; schema:value "sol-include" ],
+        [ schema:name "inline"; schema:value "" ],
+        [ schema:name "source"; schema:value "./pages/settings.html" ],
+        [ schema:name "title"; schema:value "Settings" ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "⚙";
+    ui:name "sol-button".
+:bar-theme
+    a ui:Component;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-theme" ],
+        [ schema:name "data-handler"; schema:value "toggleTheme" ],
+        [ schema:name "title"; schema:value "Toggle light / dark" ];
+    ui:label "🌙";
+    ui:name "sol-button".
+:Chrome
+    a ui:Menu;
+    ui:label "chrome";
+    ui:parts ( :chrome-help :chrome-menu :chrome-login ).
+:chrome-help
+    a ui:Component;
+    rdfs:comment
+        "Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay.";
+    ui:attribute
+        [ schema:name "aria-label"; schema:value "Help" ],
+        [ schema:name "class"; schema:value "omp-help-launch" ],
+        [ schema:name "data-handler"; schema:value "sol-include" ],
+        [ schema:name "if-logged-in"; schema:value "./help/dk-owner.html" ],
+        [ schema:name "inline"; schema:value "" ],
+        [ schema:name "source"; schema:value "./help/dk.html" ],
+        [ schema:name "title"; schema:value "Help" ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "?";
+    ui:name "sol-button".
+:chrome-login
+    a ui:Component;
+    rdfs:comment
+        "Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).";
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-sollogin" ],
+            [
+                schema:name "issuers";
+                schema:value
+                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
+            ],
+        [ schema:name "mode"; schema:value "popup" ],
+            [
+                schema:name "popup-callback";
+                schema:value "node_modules/podz/popup-auth-callback.html"
+            ];
+    ui:label "Sign in";
+    ui:name "sol-login".
+:chrome-menu
+    a ui:Component;
+    rdfs:comment
+        "☰ menu — items live in data/menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal.";
+    ui:attribute
+        [ schema:name "aria-label"; schema:value "Menu" ],
+        [ schema:name "class"; schema:value "omp-more" ],
+        [ schema:name "label"; schema:value "☰" ],
+        [ schema:name "source"; schema:value "./data/menu.ttl#More" ],
+        [ schema:name "title"; schema:value "Menu" ],
+        [ schema:name "data-settings-skip"; schema:value "" ];
+    ui:label "Menu";
+    ui:name "sol-dropdown-button";
+    ui:region ui:Modal.
+:Dev-Tools
+    a ui:Component;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-dev-tools" ],
+            [
+                schema:name "source";
+                schema:value "./plugins/dev-tools/dev-tools.html"
+            ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "🛠 Dev Tools";
+    ui:name "sol-include".
+:item
+    a ui:Menu;
+    ui:label "Solid";
+    ui:parts
+            ( :Solid-FAQ-2 :Solid-Website :Tag-Explainer-2 :Solid-Catalog-2
+            :Solid-Glossary-3 ).
+:JSON-LD-Playground
+    a ui:Link;
+    ui:href "https://json-ld.github.io/json-ld.org/playground/";
+    ui:icon "🧩";
+    ui:label "JSON-LD Playground";
+    ui:region ui:Tab.
+:JSON-LD-Playground-2
+    a ui:Link;
+    ui:href "https://json-ld.github.io/json-ld.org/playground/";
+    ui:icon "🧩";
+    ui:label "JSON-LD Playground";
+    ui:region ui:Tab.
+:panel-customize
+    a ui:Component;
+    acl:mode acl:Write;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-customize" ],
+            [
+                schema:name "source";
+                schema:value "./plugins/customize/dk-customize.html"
+            ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "🎛 Customize";
+    ui:name "sol-include".
+:panel-dev-tools
+    a ui:Menu;
+    ui:label "🛠 Dev Tools";
+    ui:parts
+            ( :Dev-Tools :RDF-Validator :SHACL-Playground :JSON-LD-Playground-2
+            :SPARQL-Playground ).
+:panel-home
+    a ui:Component;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-home" ],
+        [ schema:name "source"; schema:value "./plugins/home/home.html" ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "🏠 Home";
+    ui:name "sol-include".
+:panel-images
+    a ui:Component;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-images" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:label "🖼 Images";
+    ui:name "omp-images".
+:panel-movies
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "favourites-only"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-movies" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./plugins/ia-player/libraries/internet_archive_movies/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "movies" ];
+    ui:label "🎬 Movies";
+    ui:name "ia-player".
+:panel-music
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-music" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:label "🎵 Music";
+    ui:name "ia-player".
+:panel-news
+    a ui:Component;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-news" ],
+        [ schema:name "reader"; schema:value "inline" ],
+        [ schema:name "source"; schema:value "./plugins/news/feeds.ttl#Feeds" ],
+        [ schema:name "view"; schema:value "threePanel" ];
+    ui:label "📰 News";
+    ui:name "sol-feed".
+:panel-podz
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-podz" ],
+        [ schema:name "source"; schema:value "./plugins/podz/dk-podz.html" ];
+    ui:label "🗂 Workspaces";
+    ui:name "dk-podz".
+:panel-solidos
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-solidos" ],
+            [
+                schema:name "source";
+                schema:value "./plugins/solidos/dk-solidos.html"
+            ];
+    ui:label "🐧 SolidOS";
+    ui:name "dk-solidos".
+:RDF-Validator
+    a ui:Link;
+    ui:href "http://easyrdf.org/converter";
+    ui:icon "🧬";
+    ui:label "RDF Validator";
+    ui:region ui:Tab.
+:SHACL-Playground
+    a ui:Link;
+    ui:href "https://shacl.org/playground/";
+    ui:icon "✅";
+    ui:label "SHACL Playground";
+    ui:region ui:Tab.
+:Solid
+    a ui:Link;
+    ui:href "https://solidproject.solidcommunity.net/catalog/";
+    ui:icon "🗃️";
+    ui:label "Solid";
+    ui:region ui:Tab.
+:Solid-Catalog
+    a ui:Link;
+    ui:href "https://solidproject.solidcommunity.net/catalog/";
+    ui:icon "🗃️";
+    ui:label "Solid Catalog";
+    ui:region ui:Tab.
+:Solid-Catalog-2
+    a ui:Link;
+    ui:href "https://solidproject.solidcommunity.net/catalog/";
+    ui:icon "🗃️";
+    ui:label "Solid Catalog";
+    ui:region ui:Tab.
+:Solid-FAQ
+    a ui:Link;
+    ui:href "https://solidproject.org/FAQ";
+    ui:icon "❓";
+    ui:label "Solid FAQ";
+    ui:region ui:Tab.
+:Solid-FAQ-2
+    a ui:Link;
+    ui:href "https://solidproject.org/FAQ";
+    ui:icon "❓";
+    ui:label "Solid FAQ";
+    ui:region ui:Tab.
+:Solid-Glossary
+    a ui:Link;
+    ui:href "https://solidproject.solidcommunity.net/glossary";
+    ui:icon "📖";
+    ui:label "Solid Glossary";
+    ui:region ui:Tab.
+:Solid-Glossary-2
+    a ui:Link;
+    ui:href "https://solidproject.solidcommunity.net/glossary";
+    ui:icon "📖";
+    ui:label "Solid Glossary";
+    ui:region ui:Tab.
+:Solid-Glossary-3
+    a ui:Link;
+    ui:href "https://solidproject.solidcommunity.net/glossary";
+    ui:icon "📖";
+    ui:label "Solid Glossary";
+    ui:region ui:Tab.
+:Solid-Website
+    a ui:Link;
+    ui:href "https://solidproject.org";
+    ui:icon "🌐";
+    ui:label "Solid Website";
+    ui:region ui:Tab.
+:SPARQL-Playground
+    a ui:Link;
+    ui:href "https://atomgraph.github.io/SPARQL-Playground/";
+    ui:icon "🔮";
+    ui:label "SPARQL Playground";
+    ui:region ui:Tab.
+:Tabs
+    a ui:Menu;
+    ui:label "data-kitchen";
+    ui:orientation ui:Horizontal;
+    ui:parts
+            ( :panel-news :panel-music :panel-images :panel-movies :panel-podz
+            :item :panel-dev-tools ).
+:Tag-Explainer
+    a ui:Link;
+    ui:href
+        "https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html";
+    ui:icon "🏷️";
+    ui:label "Tag Explainer";
+    ui:region ui:Tab.
+:Tag-Explainer-2
+    a ui:Link;
+    ui:href
+        "https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html";
+    ui:icon "🏷️";
+    ui:label "Tag Explainer";
+    ui:region ui:Tab.
