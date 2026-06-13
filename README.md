@@ -124,7 +124,13 @@ to come):
    (the `for=` pairing) and reappear when dragged off. Drop or type a
    manifest URL to add a plugin (a `ui:Component` with `ui:name`, or a
    `ui:Link` with `ui:href` for an external app).
-2. **Customize Preferences** — the global settings page (pages/settings.html).
+2. **Customize Preferences** — the global settings page (pages/settings.html):
+   the preferences form (color scheme, font size, CORS proxy) sits OPEN at
+   the top — no accordion to expand — and below it `<sol-settings>` collects
+   one panel per editable plugin the running page mounts (Search and
+   Calendar always; Weather/Time etc. when a tab uses them). Navigation
+   tabsets, the ☰ button, and the form itself opt out of that discovery
+   with `data-settings-skip`.
 
 Rows are three columns — name field | plugin chips | ✕ — and chips show the
 catalog's display names (the managers' `catalog=` attribute). A menu item
