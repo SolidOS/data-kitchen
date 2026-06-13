@@ -19,6 +19,7 @@ const {
 } = require('./config.cjs');
 const { seedDefinition } = require('./seed.cjs');
 const { seedPodTemplate, seedRootOwnerMeta } = require('./pod-template.cjs');
+const { seedOwnerAccount } = require('./seed-account.cjs');
 
 // Per-install gate secret (see gate.cjs). Created on first launch, kept in
 // userData — outside any pod root — and handed to the spawned servers via env.
@@ -158,10 +159,23 @@ class Servers {
     try {
       await this.ensureCss();
       await this.ensureRouter();
+      this.seedAccount();   // best-effort, fire-and-forget once CSS + router are up
     } catch (e) {
       this.log(`[startup] problem: ${e.message}`);
     }
     this.log('servers ready (or reusing existing)');
+  }
+
+  // Provision the local owner account (owner@localhost.invalid / "!secret")
+  // linked to the pod owner WebID, so THIRD-PARTY Solid apps can complete their
+  // own OIDC login against this server and act as the owner. The gate stays the
+  // real access control; "!secret" just lets the standard login form complete.
+  // Best-effort + idempotent (userData flag) — never blocks startup.
+  seedAccount() {
+    const flagFile = path.join(app.getPath('userData'), 'dk-account-seeded');
+    seedOwnerAccount({ publicOrigin: PUBLIC_ORIGIN, gateToken: getGateToken(), podRoot: POD_ROOT, flagFile })
+      .then((r) => this.log(`[seed:account] ${r.status}`))
+      .catch((e) => this.log(`[seed:account] failed: ${e.message}`));
   }
 
   stop() {
