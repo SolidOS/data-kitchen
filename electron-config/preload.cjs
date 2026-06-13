@@ -213,4 +213,9 @@ if (document.readyState === 'loading') {
 contextBridge.exposeInMainWorld('dkElectron', {
   isElectron: true,
   restart: () => ipcRenderer.send('dk:restart'),
+  // "Move my pod": main shows a folder picker, copies the pod tree there,
+  // persists the choice and relaunches. Resolves to {status,…} on
+  // cancel/error/same/nested (it relaunches on success). status values:
+  // moved | cancelled | same | nested | error.
+  moveMyPod: () => ipcRenderer.invoke('dk:move-pod'),
 });

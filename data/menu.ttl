@@ -15,7 +15,8 @@
 
 <#More> a ui:Menu ; ui:label "Menu" ;
   ui:parts ( <#MoreCustomize> <#MoreAllPlugins> <#MoreTheme> <#MoreFontSize>
-             <#MoreSignIn> <#MoreGuestView> <#MoreReload> <#MoreRestart> ) .
+             <#MoreSignIn> <#MoreGuestView> <#MoreMovePod>
+             <#MoreReload> <#MoreRestart> ) .
 
 # Customize — subtabs: 1. choose plugins (catalog + menu/bar managers as
 # drop targets, auto-saves), 2. preferences (pages/settings.html). More
@@ -54,6 +55,11 @@
 # Developer reloads (commands — see dk-tabs-shell). Reload = renderer reload
 # (picks up bundle/html/css/data); Restart = relaunch the whole app (also
 # main process + bundled servers) via the dkElectron preload bridge.
+# Move my pod — re-home the pod root to a folder you pick, then relaunch
+# (command — see dk-tabs-shell; Electron-only). Owner action.
+<#MoreMovePod> a ui:Component ; ui:label "Move my pod…" ; ui:name "moveMyPod" ;
+  acl:mode acl:Write .
+
 <#MoreReload>  a ui:Component ; ui:label "Reload dk"  ; ui:name "reloadApp"  .
 <#MoreRestart> a ui:Component ; ui:label "Restart dk" ; ui:name "restartApp" .
 

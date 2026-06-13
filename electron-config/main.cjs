@@ -10,11 +10,12 @@
 // CORS proxy (:8001) start with the app and are killed on quit (servers.js).
 
 const {
-  app, BaseWindow, WebContentsView, BrowserWindow, ipcMain, session, screen, Menu, clipboard, shell,
+  app, BaseWindow, WebContentsView, BrowserWindow, ipcMain, session, screen, Menu, clipboard, shell, dialog,
 } = require('electron');
 const path = require('path');
+const fs = require('fs');
 
-const { APP_URL, PUBLIC_PORT, PROXY_PORT } = require('./config.cjs');
+const { APP_URL, PUBLIC_PORT, PROXY_PORT, POD_ROOT, POD_POINTER } = require('./config.cjs');
 const { Servers, getGateToken } = require('./servers.cjs');
 const { ExternalViews } = require('./external-views.cjs');
 
@@ -198,6 +199,33 @@ class DesktopApp {
     // picks up main / electron-config / server / bundle changes. quit() (not
     // exit()) so before-quit fires and the bundled servers are stopped first.
     ipcMain.on('dk:restart', () => { app.relaunch(); app.quit(); });
+
+    // "Move my pod" (☰): pick a new home folder, copy the whole pod tree there
+    // (index.html, dk.manifest.json, dk-pod/, .internal/, .meta), persist the
+    // choice in userData, and relaunch so CSS re-roots there. The WebID is
+    // origin+path, so the move needs no URI rewrite. The OLD location is left
+    // in place (no auto-delete) so a failed/aborted move can't lose data.
+    ipcMain.handle('dk:move-pod', async () => {
+      const res = await dialog.showOpenDialog({
+        title: 'Choose a new home folder for your pod',
+        properties: ['openDirectory', 'createDirectory'],
+      });
+      if (res.canceled || !res.filePaths || !res.filePaths[0]) return { status: 'cancelled' };
+      const from = path.resolve(POD_ROOT);
+      const to = path.resolve(res.filePaths[0]);
+      if (to === from) return { status: 'same' };
+      if (to.startsWith(from + path.sep)) return { status: 'nested' };   // can't nest the pod in itself
+      try {
+        this.servers.stop();                                  // release CSS file locks before copying
+        await fs.promises.cp(from, to, { recursive: true, force: true });
+        fs.writeFileSync(path.join(app.getPath('userData'), POD_POINTER), to + '\n');
+      } catch (e) {
+        return { status: 'error', message: e.message };
+      }
+      app.relaunch();
+      app.quit();
+      return { status: 'moved', dest: to };
+    });
   }
 
   wireContextMenu(wc) {

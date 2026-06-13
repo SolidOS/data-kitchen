@@ -15,6 +15,10 @@ const fs = require('fs');
 
 const REPO_ROOT = path.join(__dirname, '..');
 
+// Filename (under Electron userData) where "Move my pod" persists the chosen
+// pod-root path. Read by resolvePodRoot(); written by main.cjs's dk:move-pod.
+const POD_POINTER = 'dk-pod-root';
+
 // Where the user's writable pod root lives when the app is packaged.
 // Portable-app pattern: a "data-kitchen-home" folder NEXT TO the AppImage (or
 // the executable in other packaged layouts), so the app file and its data
@@ -27,6 +31,12 @@ function resolvePodRoot() {
   if (process.env.DK_POD_ROOT) return process.env.DK_POD_ROOT;
   let app;
   try { app = require('electron').app; } catch { return REPO_ROOT; }
+  // A "Move my pod" choice (persisted in userData) wins over the install-dir
+  // default. The origin doesn't change on a move, so the WebID needs no rewrite.
+  try {
+    const saved = fs.readFileSync(path.join(app.getPath('userData'), POD_POINTER), 'utf8').trim();
+    if (saved) return saved;
+  } catch { /* no saved choice — fall through */ }
   if (!app || !app.isPackaged) return REPO_ROOT;
   const installDir = process.env.APPIMAGE
     ? path.dirname(process.env.APPIMAGE)
@@ -51,6 +61,7 @@ const PROXY_PORT = Number(process.env.DK_PROXY_PORT) || 8001;
 
 module.exports = {
   REPO_ROOT,
+  POD_POINTER,
   PUBLIC_PORT,
   CSS_INTERNAL_PORT,
   PROXY_PORT,
