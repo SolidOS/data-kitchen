@@ -30,17 +30,23 @@ a server already answering on its port is reused):
 - **proxy** (`proxy/index.cjs`, :8001) — a dependency-free CORS proxy.
 
 **Self-hosting / redesignable.** dk is meant to be redesigned by the user — tabs,
-buttons, the components wired in (the manifest), settings. So the editable app
-**definition** (the HTML shells, `data/*.ttl`, `dk.manifest.json`, favourites,
-plugin config, content) lives in the **pod root** and is served from there, while
-the read-only **engine** (component libraries, vendor bundles, compiled plugin
-`dist/`, dk's own bundle) ships in the executable and is served by the router. On
-launch the definition is **seeded-or-updated** into the pod root
-(`electron-config/seed.cjs`): missing files are filled in, and files you haven't
-edited are refreshed from a newer build — tracked by a per-file baseline hash in
-`userData`, so your edits are kept and definition changes reach the pod with no
-manual sync. When the pod root and the repo coincide (dev default), it's a no-op
-and everything is served from the repo as before.
+buttons, the components wired in (the manifest), settings. The **pod root**
+(`DK_POD_ROOT`) is a Solid storage served at `/`; the user's **home pod** lives
+at **`/dk-pod/`** — a real owner WebID `<origin>/dk-pod/profile/card#me`,
+provisioned from a template (`electron-config/pod-template.cjs`). Only
+`index.html` sits at the served root; the rest of the editable app **definition**
+(the HTML shells, `data/*.ttl`, `dk.manifest.json`, plugin config + content) is
+seeded under **`/dk-pod/dk/`**, so the root stays clean even when it's a folder
+shared with other things. The read-only **engine** (component libraries, vendor
+bundles, compiled plugin `dist/`, dk's own bundle) ships in the executable and is
+served by the router at its root paths. On launch the definition is
+**seeded-or-updated** (`electron-config/seed.cjs`): missing files filled in,
+unedited files refreshed from a newer build — tracked by a per-file baseline hash
+in `userData`, so your edits are kept and definition changes reach the pod with
+no manual sync. Favourites are **per-library** (each media library owns its
+`<library>/favourites/`), not shipped. **"Move my pod"** (☰) re-homes the pod
+root to a folder you pick and relaunches — the WebID is origin-relative, so no
+rewrite is needed.
 
 All three servers bind to `127.0.0.1` (loopback only — not reachable from the LAN).
 External content (reader/pane overlays) runs in its own session whose requests to
@@ -56,6 +62,15 @@ that browser then works until the cookie expires, while foreign pages in it stil
 can't ride along (no cookie attached cross-site, token unknown). Standalone runs
 (`npm run start-css` / `start-proxy`) have no `DK_GATE_TOKEN`, so they stay open
 for browser-based development.
+
+The gate lets **public-by-design** endpoints through un-gated — the WebID profile
+document and the OIDC discovery/provider endpoints (`/.well-known/openid-configuration`,
+`/.oidc/`) — so the owner's WebID is dereferenceable and third-party Solid apps
+can run their own OIDC login against this server with the dummy password
+**`!secret`** (the gate is the real access control; the password just completes
+the standard login form). The app and the embedded SolidOS act as the owner via a
+synthetic local session (`src/dk-owner-session.js`); `electron-config/seed-account.cjs`
+provisions the `!secret` account on launch.
 
 Ports are overridable with `DK_PUBLIC_PORT` / `DK_CSS_INTERNAL_PORT` /
 `DK_PROXY_PORT` (defaults 8000/8010/8001); the pod root with `DK_POD_ROOT`. Note
@@ -79,9 +94,17 @@ plugins/<name>/     one SELF-CONTAINED folder per plugin: its scripts,
 src/                shell-only code (boot, tab wiring, auth, settings)
 electron-config/    the Electron main process (.cjs)
 pivot/ pivot-config/ proxy/   the bundled servers
-help/  pages/  assets/  shapes/  favourites/   shell-level resources
+help/  pages/  shapes/   shell-level content (seed under /dk-pod/dk/)
+assets/             engine assets (served at /assets/, not seeded)
+pod-template/       the home-pod template (profile/card, settings, ACLs)
+                    seeded into /dk-pod/ — gives the owner WebID
 tools/              conversion + plugins-catalog seeding scripts
 ```
+
+The above is the repo (engine-source) layout. In the **served pod**, `index.html`
++ `dk.manifest.json` sit at `/`, the home pod is at `/dk-pod/` (owner WebID), and
+the content dirs above seed under `/dk-pod/dk/`. Favourites are per-library
+(`/dk-pod/dk/plugins/<plugin>/libraries/<lib>/favourites/`), not shipped.
 
 ## The plugin manifest
 
@@ -204,13 +227,16 @@ its own previous output) and are named with underscores
 
 `asar` is off: the bundled servers are spawned as plain node processes and
 read their trees from disk. An AppImage mounts **read-only**, so in-app saves
-(favourites, settings, Manage Plugins / Manage Menus) need a writable pod
-root. The packaged app provides one automatically: on launch it creates a
-**`data-kitchen-home/` folder next to the executable** (the portable-app
-pattern — app and data travel together) and seeds the definition into it; if
-that spot isn't writable it falls back to Electron's `userData`. Override the
-location with `DK_POD_ROOT`. In dev (unpackaged) the pod root is the repo, so
-this is a no-op.
+(settings, Customize edits, the home pod, plugin data) need a writable pod
+root. The packaged app provides one automatically: a **`data-kitchen-home/`
+folder next to the executable** (the portable-app pattern — app and data travel
+together); if that spot isn't writable it falls back to Electron's `userData`.
+`resolvePodRoot()` order: `DK_POD_ROOT` env → a persisted `userData/dk-pod-root`
+pointer (written by **Move my pod**) → install-dir → userData. On launch it
+seeds `index.html` at the root, the rest of the definition under `/dk-pod/dk/`,
+and provisions the `/dk-pod/` home pod + `!secret` owner account — this now runs
+in dev too, since the seed destination (`/dk-pod/dk/`) differs from the
+engine source.
 
 ## Provenance
 
