@@ -67,11 +67,11 @@ means editing that attribute too.
 
 ```
 index.html          the shell: chrome bar + the inline topmost
-                    <sol-tabs from-rdf="./data/tabs.ttl#Tabs">
-data/tabs.ttl       THE shell model (rdf-first): #Tabs (tabs) + #Bar (actions)
+                    <sol-tabs from-rdf="./data/data-kitchen-main-menu.ttl#Tabs">
+data/data-kitchen-main-menu.ttl       THE shell model (rdf-first): #Tabs (tabs) + #Bar (actions)
                     + #Chrome (help / ☰ menu / sign-in), rendered at runtime
                     (#Bar/#Chrome built by src/dk-tabs-rdf.js)
-data/menu.ttl       #More — the ☰ hamburger's standard items
+data/data-kitchen-hamburger-menu.ttl       #More — the ☰ hamburger's standard items
 data/plugins-catalog.ttl    the plugin catalog: one #Available list + topics
 plugins/<name>/     one SELF-CONTAINED folder per plugin: its scripts,
                     assets, pages, RDF libraries, and manifest.ttl
@@ -115,8 +115,8 @@ to come):
    (`<sol-plugin-manager grouped source="data/plugins-catalog.ttl#Available">`,
    topic tabs, two cards wide) beside the menu/bar managers as an ACCORDION
    of drop targets (`heading=` / `accordion=` / `open` on
-   `<sol-menu-manager source="data/tabs.ttl#Tabs">` and
-   `<sol-button-bar-manager source="data/tabs.ttl#Bar">` — "Customize Menu
+   `<sol-menu-manager source="data/data-kitchen-main-menu.ttl#Tabs">` and
+   `<sol-button-bar-manager source="data/data-kitchen-main-menu.ttl#Bar">` — "Customize Menu
    Tabs" opens first; clicking a header opens it and closes the other; both
    headers stay visible). Name items, drag to reorder, ✕ to remove; the add
    row is an input: drop a plugin on it, or type a name + Enter for a
@@ -147,11 +147,11 @@ no Save buttons — every editor auto-saves.
 The catalog is ONE `#Available` list GENERATED from the flat one-file
 manifests in `plugins/` (`plugins/<entry>.ttl`) by
 `tools/seed-plugins-catalog.mjs` — the seeder holds no content; edit a
-manifest and re-seed. "In use" simply means `data/tabs.ttl` mounts it.
+manifest and re-seed. "In use" simply means `data/data-kitchen-main-menu.ttl` mounts it.
 **☰ → All Plugins…** browses the same catalog read-mostly (guests too).
 
 Saving rewrites the whole Turtle document (unreferenced "pantry" items are
-preserved). The shell is **rdf-first** — `data/tabs.ttl` is the only live
+preserved). The shell is **rdf-first** — `data/data-kitchen-main-menu.ttl` is the only live
 artifact, so a save IS the source of truth; there is no companion HTML file
 and no sync. `src/dk-tabs-rdf.js` reacts to a save by updating the running
 shell **in place** (no reload): an edited tab re-renders from its new
@@ -162,7 +162,7 @@ Deleted mandatory chrome items are self-healed on load.
 
 Prefer editing the shell as HTML? Round-trip it offline: `npm run rdf2html`
 emits an editable snapshot (`tools/conversion/shell.html`), `npm run html2rdf`
-merges your edits back into `data/tabs.ttl` (pantry and `#Chrome` preserved) —
+merges your edits back into `data/data-kitchen-main-menu.ttl` (pantry and `#Chrome` preserved) —
 see `tools/conversion/README.md`.
 
 `ui:Link` tabs/children round-trip too: a link emits as a plain anchor with
@@ -170,7 +170,7 @@ no `data-handler` (`target=` encodes `ui:region` — tab ↔ `_blank`, inline �
 `_self`); `ui:icon` has no HTML spelling and lives in the RDF only.
 
 The help button, ☰ menu and sign-in are **chrome** — now modeled in
-`data/tabs.ttl#Chrome` (config-editable: help target, icon, ☰ menu source,
+`data/data-kitchen-main-menu.ttl#Chrome` (config-editable: help target, icon, ☰ menu source,
 issuers) and emitted between the `chrome:begin/end` markers. They're fixed shell
 furniture: not in the plugin lists, and self-healed if a hand-edit deletes one.
 `rdfs:comment` on any item round-trips as the HTML comment before it. The bar

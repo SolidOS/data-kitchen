@@ -12,7 +12,7 @@
 //      data-handler, target="_blank"; the self-named conversion artifact is
 //      kept for data fidelity) and --verify is stable over link tabs.
 //
-// The test edits the REAL data/tabs.ttl and restores it with git checkout
+// The test edits the REAL data/data-kitchen-main-menu.ttl and restores it with git checkout
 // (the file must be clean). Run from dk root with the :3000 server up.
 import { execFileSync } from 'node:child_process';
 import { readFileSync, rmSync } from 'node:fs';
@@ -21,13 +21,13 @@ import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/ind
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };
 const restore = () => {
-  try { execFileSync('git', ['checkout', '--', 'data/tabs.ttl']); } catch {}
+  try { execFileSync('git', ['checkout', '--', 'data/data-kitchen-main-menu.ttl']); } catch {}
   try { rmSync('tools/conversion/shell.html', { force: true }); } catch {}   // scratch snapshot of the test state
 };
 
-const dirty = execFileSync('git', ['status', '--porcelain', 'data/tabs.ttl'], { encoding: 'utf8' }).trim();
+const dirty = execFileSync('git', ['status', '--porcelain', 'data/data-kitchen-main-menu.ttl'], { encoding: 'utf8' }).trim();
 if (dirty) {
-  console.error('ABORT: commit data/tabs.ttl first — this test restores it via git checkout:\n' + dirty);
+  console.error('ABORT: commit data/data-kitchen-main-menu.ttl first — this test restores it via git checkout:\n' + dirty);
   process.exit(2);
 }
 
@@ -48,7 +48,7 @@ try {
   // --- out-of-band RDF edit: add a link-only submenu and a mixed submenu
   //     (modeled on the pod's :item "Solid" and :panel-dev-tools) ---
   const edited = await page.evaluate(async () => {
-    const url = new URL('data/tabs.ttl', document.baseURI).href;
+    const url = new URL('data/data-kitchen-main-menu.ttl', document.baseURI).href;
     const ttl = await (await fetch(url, { cache: 'no-store' })).text();
     // tabs.ttl ships in the managers' serialization (prefixed `:name`, the
     // #Tabs parts list ends `:item :panel-dev-tools ).`). Splice the two test
@@ -90,7 +90,7 @@ try {
   // --- reload: the shell renders the link submenus straight from the RDF ---
   await page.reload({ waitUntil: 'domcontentloaded' });
   await settle(7000);
-  const ttlAfter = readFileSync('data/tabs.ttl', 'utf8');
+  const ttlAfter = readFileSync('data/data-kitchen-main-menu.ttl', 'utf8');
   check('tabs.ttl NOT clobbered (link submenus survive the load)', /Linky/.test(ttlAfter) && /L-one/.test(ttlAfter));
 
   const live = await page.evaluate(async () => {
@@ -156,6 +156,6 @@ try {
   restore();
   await browser.close();
 }
-check('repo state restored after the test', !/Linky/.test(readFileSync('data/tabs.ttl', 'utf8')));
+check('repo state restored after the test', !/Linky/.test(readFileSync('data/data-kitchen-main-menu.ttl', 'utf8')));
 console.log(fails.length ? `\n${fails.length} FAILURE(S)` : '\nALL PASS');
 process.exit(fails.length ? 1 : 0);

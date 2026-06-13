@@ -9,7 +9,7 @@
 # than this file; re-seeding overwrites it.
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
-  rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means data/tabs.ttl mounts it." ;
+  rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means data/data-kitchen-main-menu.ttl mounts it." ;
   ui:parts ( <#0data-Hello> <#BilliPod> <#Booklice> <#Calendar> <#Clock> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RDF-Validator> <#RoloPod> <#Search> <#SecureDialog> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SPARQL-Playground> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> <#Weather> <#Workspaces-pod-browser> ) .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;

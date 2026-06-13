@@ -1,5 +1,5 @@
 // The save → live-shell pipeline, end to end, under RDF-FIRST (2026-06-12):
-// data/tabs.ttl is the ONLY live artifact — no html-first.html, no fingerprint,
+// data/data-kitchen-main-menu.ttl is the ONLY live artifact — no html-first.html, no fingerprint,
 // no dual writes (src/dk-tabs-rdf.js replaced dk-tabs-sync.js).
 //
 //   1. applyTabs change detection: editing an EXISTING tab's definition
@@ -15,7 +15,7 @@
 //   4. chrome self-heal: dropping a mandatory item from #Chrome's parts is
 //      repaired on load (RDF-only heal) and the button reappears in the DOM.
 //
-// The test edits the REAL data/tabs.ttl and restores it with git checkout
+// The test edits the REAL data/data-kitchen-main-menu.ttl and restores it with git checkout
 // afterwards (the file must be clean). Run from dk root with the :3000
 // server up.
 import { execFileSync } from 'node:child_process';
@@ -25,14 +25,14 @@ import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/ind
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };
 const restore = () => {
-  try { execFileSync('git', ['checkout', '--', 'data/tabs.ttl']); } catch {}
+  try { execFileSync('git', ['checkout', '--', 'data/data-kitchen-main-menu.ttl']); } catch {}
 };
 
 // GUARD: this test git-restores the file it edits — running it with
 // uncommitted changes to it would WIPE those changes.
-const dirty = execFileSync('git', ['status', '--porcelain', 'data/tabs.ttl'], { encoding: 'utf8' }).trim();
+const dirty = execFileSync('git', ['status', '--porcelain', 'data/data-kitchen-main-menu.ttl'], { encoding: 'utf8' }).trim();
 if (dirty) {
-  console.error('ABORT: commit data/tabs.ttl first — this test restores it via git checkout:\n' + dirty);
+  console.error('ABORT: commit data/data-kitchen-main-menu.ttl first — this test restores it via git checkout:\n' + dirty);
   process.exit(2);
 }
 
@@ -185,7 +185,7 @@ try {
   // --- out-of-band tabs.ttl edit: the RDF IS the truth; on reload nothing
   //     reverts or rewrites it (the old fingerprint/import machinery is gone) ---
   const edited = await page.evaluate(async () => {
-    const url = new URL('data/tabs.ttl', document.baseURI).href;
+    const url = new URL('data/data-kitchen-main-menu.ttl', document.baseURI).href;
     const ttl = await (await fetch(url)).text();
     const out = ttl.replace('schema:value "threePanel"', 'schema:value "threePanel-edit"');
     const res = await fetch(url, { method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: out });
@@ -195,13 +195,13 @@ try {
   await page.reload({ waitUntil: 'domcontentloaded' });
   await settle(6000);
   check('RDF edit untouched after reload (no machinery rewrites it)',
-    /threePanel-edit/.test(readFileSync('data/tabs.ttl', 'utf8')));
+    /threePanel-edit/.test(readFileSync('data/data-kitchen-main-menu.ttl', 'utf8')));
 
   // --- chrome self-heal: drop a mandatory item from #Chrome's parts ---
   // (after a manager save the doc is in canonical rdflib form, so the item
   // may be spelled :chrome-help OR <#chrome-help> — handle both)
   const dropped = await page.evaluate(async () => {
-    const url = new URL('data/tabs.ttl', document.baseURI).href;
+    const url = new URL('data/data-kitchen-main-menu.ttl', document.baseURI).href;
     const ttl = await (await fetch(url)).text();
     const out = ttl.replace(/(ui:parts \(\s*)(?:<#chrome-help>|:chrome-help)\s*/, '$1');
     const res = await fetch(url, { method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: out });
@@ -213,7 +213,7 @@ try {
   const healed = await page.evaluate(() => !!document.querySelector('.omp-help-launch'));
   check('healChrome reinserted the help button (RDF-only heal)', healed);
   check('healed tabs.ttl lists chrome-help in #Chrome parts again',
-    /(?:<#|:)Chrome>?[\s\S]{0,200}?ui:parts \([^)]*chrome-help/.test(readFileSync('data/tabs.ttl', 'utf8')));
+    /(?:<#|:)Chrome>?[\s\S]{0,200}?ui:parts \([^)]*chrome-help/.test(readFileSync('data/data-kitchen-main-menu.ttl', 'utf8')));
 
   // --- the rdf-first invariant: the whole run wrote NO .html anywhere ---
   check('zero .html PUTs across the entire run', htmlPuts.length === 0, htmlPuts.join(' '));
@@ -222,6 +222,6 @@ try {
   await browser.close();
 }
 check('repo state restored after the test',
-  !/Live Sync|threePanel-edit/.test(readFileSync('data/tabs.ttl', 'utf8')));
+  !/Live Sync|threePanel-edit/.test(readFileSync('data/data-kitchen-main-menu.ttl', 'utf8')));
 console.log(fails.length ? `\n${fails.length} FAILURE(S)` : '\nALL PASS');
 process.exit(fails.length ? 1 : 0);

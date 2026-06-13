@@ -24,7 +24,7 @@ https://github.com/solidOS/data-kitchen (Jeff controls it). It consolidates:
   `data-kitchen -> /home/jeff/data-kitchen`. Not a git repo.
 - **old dk** `/home/jeff/data-kitchen` — current web app (git repo, branch
   `main`, no remote, one dirty file `data/data-kitchen-settings.ttl`).
-  component-interop + sol-components shell; `data/menu.ttl` (ui:Menu incl.
+  component-interop + sol-components shell; `data/data-kitchen-hamburger-menu.ttl` (ui:Menu incl.
   unreferenced "pantry" items `#Forum`, `#Chat`).
 - **omp** `/home/jeff/solid/open_media_player` — look-and-feel model (git repo,
   no remote). `index.html` → `<sol-include source="./html-first.html">` →
@@ -216,8 +216,8 @@ Pre-push check: `git merge-base --is-ancestor origin/main main`; fresh
 - `#dk-content` kept ⇒ `config.js` `CONTENT_SELECTOR` + external-views work unchanged.
 - Settings URL relative (not `http://localhost:3000/...`).
 - **Canonical UI source = declarative `html-first.html`** (omp-proven;
-  inspectable/diffable; no rdflib before first paint). `data/tabs.ttl` +
-  `data/menu.ttl` kept in sync via the generator
+  inspectable/diffable; no rdflib before first paint). `data/data-kitchen-main-menu.ttl` +
+  `data/data-kitchen-hamburger-menu.ttl` kept in sync via the generator
   (`tools/conversion/rdf-to-html.mjs --verify` round trip). Builders write RDF
   → generator regenerates HTML.
 - `html-first.html`: `<sol-tabs id="dk-tabs" keep-alive>` with the union tabs
@@ -295,7 +295,7 @@ dk side: `data/palette.ttl` (curated ui:Menu of ui:Component entries; seeded
 once by `tools/seed-palette.mjs` from the manifests — entry attributes point
 into each plugin's folder), `plugins/customize/dk-customize.html`
 declaring the builders with full attributes, e.g.
-`<sol-menu-builder source="data/tabs.ttl#Tabs">`,
+`<sol-menu-builder source="data/data-kitchen-main-menu.ttl#Tabs">`,
 `<sol-plugins-available source="data/palette.ttl#Palette" for="sol-menu-builder, sol-bar-builder">`.
 Gate via existing `acl:mode acl:Write` / `if-logged-in`. Save → run generator →
 reload; same path edits existing menus. Any capability needing a new RDF

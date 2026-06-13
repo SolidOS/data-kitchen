@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
- * html2rdf — import an edited shell snapshot back into data/tabs.ttl.
+ * html2rdf — import an edited shell snapshot back into data/data-kitchen-main-menu.ttl.
  *
  * The reverse of rdf2html.mjs: harvest the snapshot's <sol-tabs> with
  * sol-components core/menu-html.js (the exact inverse of the emitter, so the
- * mappings stay single-sourced) and MERGE the result into data/tabs.ttl —
+ * mappings stay single-sourced) and MERGE the result into data/data-kitchen-main-menu.ttl —
  * updateMenuInStore rebuilds only #Tabs and #Bar, preserving pantry items,
  * #Chrome, and every unrelated statement. Chrome edits in the snapshot are
- * NOT imported (edit data/tabs.ttl#Chrome directly).
+ * NOT imported (edit data/data-kitchen-main-menu.ttl#Chrome directly).
  *
  *   npm run html2rdf                                # tools/conversion/shell.html
  *   node tools/conversion/html2rdf.mjs [in.html]    # explicit input path
@@ -27,8 +27,8 @@ const { rewriteMenuDocument } = await import(resolve(SC, 'menu-serialize.js'));
 
 const args = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 const SRC = resolve(ROOT, args[0] || 'tools/conversion/shell.html');
-const TTL = resolve(ROOT, 'data/tabs.ttl');
-const DOC = 'https://data-kitchen.invalid/data/tabs.ttl';
+const TTL = resolve(ROOT, 'data/data-kitchen-main-menu.ttl');
+const DOC = 'https://data-kitchen.invalid/data/data-kitchen-main-menu.ttl';
 
 // Run core/menu-html.js's extractFromHtml in a headless page — the module has
 // no imports, so it loads straight from a data: URL.
@@ -77,5 +77,5 @@ const out = await rewriteMenuDocument(store, DOC, [
   { iri: `${DOC}#Bar`, ...menuMeta(store, rdf.sym(`${DOC}#Bar`)), items: bar },
 ]);
 writeFileSync(TTL, out);
-console.log(`imported ${tabs.length} tabs + ${bar.length} bar items from ${args[0] || 'tools/conversion/shell.html'} into data/tabs.ttl`);
-console.log('note: the chrome block is not imported — edit data/tabs.ttl#Chrome directly.');
+console.log(`imported ${tabs.length} tabs + ${bar.length} bar items from ${args[0] || 'tools/conversion/shell.html'} into data/data-kitchen-main-menu.ttl`);
+console.log('note: the chrome block is not imported — edit data/data-kitchen-main-menu.ttl#Chrome directly.');

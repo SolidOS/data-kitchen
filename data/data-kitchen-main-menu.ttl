@@ -115,12 +115,12 @@
 :chrome-menu
     a ui:Component;
     rdfs:comment
-        "☰ menu — items live in data/menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal.";
+        "☰ menu — items live in data/data-kitchen-hamburger-menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal.";
     ui:attribute
         [ schema:name "aria-label"; schema:value "Menu" ],
         [ schema:name "class"; schema:value "omp-more" ],
         [ schema:name "label"; schema:value "☰" ],
-        [ schema:name "source"; schema:value "./dk-pod/dk/data/menu.ttl#More" ],
+        [ schema:name "source"; schema:value "./dk-pod/dk/data/data-kitchen-hamburger-menu.ttl#More" ],
         [ schema:name "title"; schema:value "Menu" ],
         [ schema:name "data-settings-skip"; schema:value "" ];
     ui:label "Menu";

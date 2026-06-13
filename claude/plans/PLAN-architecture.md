@@ -129,7 +129,7 @@ home/dashboard and podz), driven by an RDF menu. The shell unifies:
 - one OIDC session pool across all apps (login once, all apps see it),
 - one CSS theme + font-size, settable from the shell header,
 - one importmap + one set of vendor bundles so no package loads twice,
-- one menu (`<sol-menu from-rdf="data/menu.ttl">`) declared in RDF.
+- one menu (`<sol-menu from-rdf="data/data-kitchen-hamburger-menu.ttl">`) declared in RDF.
 
 Eventual delivery is Electron; this plan stays pure-web so the
 BrowserWindow wrapper is a thin afterthought.
@@ -296,7 +296,7 @@ maps depending on whether it ships pre-bundled assets.
     <dk-settings-quick></dk-settings-quick>
   </header>
 
-  <sol-menu from-rdf="data/menu.ttl" orientation="horizontal"></sol-menu>
+  <sol-menu from-rdf="data/data-kitchen-hamburger-menu.ttl" orientation="horizontal"></sol-menu>
 
   <script type="module" src="dist/dk.bundle.js"></script>
 </body>
@@ -306,7 +306,7 @@ maps depending on whether it ships pre-bundled assets.
 Everything below `<header>` is the menu, which owns the content
 region. The menu's content panel is where each app renders.
 
-## 5. The menu file (`data/menu.ttl`)
+## 5. The menu file (`data/data-kitchen-hamburger-menu.ttl`)
 
 ```turtle
 @prefix ui:     <http://www.w3.org/ns/ui#> .
@@ -947,7 +947,7 @@ gets useful screens before the editors are all wired.
 **Phase 0 — scaffold (dk only)**
 
 1. `package.json` (file: deps), `esbuild.config.mjs`, `index.html`,
-   `importmaps/local.json`, `data/menu.ttl` with just `<#Home>`.
+   `importmaps/local.json`, `data/data-kitchen-hamburger-menu.ttl` with just `<#Home>`.
 2. `<dk-dashboard>` renders a placeholder. Verifies bundle chain.
 
 **Phase 1 — apps mount (dk + a tiny swc tweak)**

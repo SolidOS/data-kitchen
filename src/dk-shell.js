@@ -35,7 +35,7 @@
   // commands, mini player, gating). Replaces the old sol-menu nav-state.
   await import('./dk-tabs-shell.js');
   // The RDF side of the shell (rdf-first): build the #Bar / #Chrome launchers
-  // from data/tabs.ttl at load, live-update the running shell in place after a
+  // from data/data-kitchen-main-menu.ttl at load, live-update the running shell in place after a
   // Customize save, and self-heal #Chrome.
   await import('./dk-tabs-rdf.js');
 })();

@@ -1,7 +1,7 @@
 # tabs.ttl ↔ html-first.html — asymmetry inventory
 
 > **SUPERSEDED 2026-06-12 — rdf-first switch.** The two-way sync this document
-> inventories was retired the day after it shipped: `data/tabs.ttl` is now the
+> inventories was retired the day after it shipped: `data/data-kitchen-main-menu.ttl` is now the
 > ONLY live artifact (rendered at runtime by `<sol-tabs from-rdf>` +
 > `src/dk-tabs-rdf.js`); `html-first.html` and `dk-tabs-sync.js` (fingerprint,
 > reverse import, dual writes) are gone. Edit-via-HTML is now an offline round
@@ -22,7 +22,7 @@ Lists every item that lives in **only one** of the two representations, so the s
 design knows what it must preserve and what is at risk of being dropped on a
 round-trip.
 
-Sources: `data/tabs.ttl`; generator `tools/conversion/generate-html-first.mjs`
+Sources: `data/data-kitchen-main-menu.ttl`; generator `tools/conversion/generate-html-first.mjs`
 (`emitTab`/`emitBarItem`); parser `node_modules/sol-components/core/menu-rdf.js`
 (`parseMenuItems`/`rdfComponent`); harvester `…/web/sol-tabs.js` (`_harvestAnchors`,
 SKIP set at `:302`); merge `…/core/menu-serialize.js` (`updateMenuInStore` `:149`).
@@ -78,7 +78,7 @@ RDF-only and at-risk. Both are wrong:
 So these are expressible in **both** and survive a round-trip — not an asymmetry.
 
 The real (smaller) point: this gating/icon wiring exists for the **☰ menu**
-(`sol-menu`, driven live from `data/menu.ttl`), but the **tab-strip path does not
+(`sol-menu`, driven live from `data/data-kitchen-hamburger-menu.ttl`), but the **tab-strip path does not
 wire it** — the generator `emitTab` doesn't emit `requires-write`/`icon`, and
 `_harvestAnchors` doesn't read them. So a tab that carried `acl:mode`/`icon` would
 lose it RDF→HTML. That's a **tab-generator gap to close if needed**, not an inherent

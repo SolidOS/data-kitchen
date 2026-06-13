@@ -4,7 +4,7 @@
 // plugin via its plugins/<id>/manifest.ttl (schema:softwareHelp,
 // dct:conformsTo, optional #Menu). (Adapted from omp-shell when
 // open_media_player was absorbed.)
-// The tabs + panels are modeled in data/tabs.ttl (rdf-first; rendered by
+// The tabs + panels are modeled in data/data-kitchen-main-menu.ttl (rdf-first; rendered by
 // <sol-tabs from-rdf> + dk-tabs-rdf); here we react to <sol-tabs>'s
 // sol-tab-change. Favourites are no longer a tab — each media tab surfaces
 // its own favourites.
@@ -14,8 +14,8 @@
     import { displayItem } from 'sol-components/core/display-target.js';
     import { solFetch } from 'sol-components/core/auth-fetch.js';
 
-    // The body UI is modeled in data/tabs.ttl and rendered by the inline
-    // <sol-tabs id="dk-tabs" from-rdf="./dk-pod/dk/data/tabs.ttl#Tabs"> in index.html.
+    // The body UI is modeled in data/data-kitchen-main-menu.ttl and rendered by the inline
+    // <sol-tabs id="dk-tabs" from-rdf="./dk-pod/dk/data/data-kitchen-main-menu.ttl#Tabs"> in index.html.
     // (Its panels therefore appear asynchronously — see whenTabsReady.)
 
     let solTabs = null;   // assigned once the included <sol-tabs> exists
@@ -66,7 +66,7 @@
     }
 
     // Point the chrome at the active plugin: the ? button's source and the
-    // ☰ menu's context-source. Defaults stay declared in data/tabs.ttl#Chrome;
+    // ☰ menu's context-source. Defaults stay declared in data/data-kitchen-main-menu.ttl#Chrome;
     // this only follows the documented context, and falls back to them.
     async function applyContext() {
       const panel = activePanel();
@@ -168,7 +168,7 @@
       if (declared) return declared;
       try { return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch { return 'dark'; }
     }
-    // Live lookups — the buttons are built from data/tabs.ttl (dk-tabs-rdf),
+    // Live lookups — the buttons are built from data/data-kitchen-main-menu.ttl (dk-tabs-rdf),
     // usually AFTER this module evaluates; a captured const would stay null.
     const themeBtn = () => document.querySelector('.omp-theme');
     function syncTheme() {
@@ -278,7 +278,7 @@
       return true;
     }
 
-    // The ⋮ menu is a <sol-dropdown-button source="./dk-pod/dk/data/menu.ttl#More"> (see
+    // The ⋮ menu is a <sol-dropdown-button source="./dk-pod/dk/data/data-kitchen-hamburger-menu.ttl#More"> (see
     // index.html): it owns its open/close + popup, its items are command items
     // that dispatch sol-command (handled by COMMANDS below), and write-only items
     // are gated by CSS (.no-write … ::part(requires-write)) — see syncGating.
@@ -408,7 +408,7 @@
     syncTheme();
     syncFontSize();
     // <sol-tabs> builds its panels asynchronously (the from-rdf load of
-    // data/tabs.ttl); wait, then wire tab reactions + restore the last-used tab.
+    // data/data-kitchen-main-menu.ttl); wait, then wire tab reactions + restore the last-used tab.
     function whenTabsReady(cb) {
       if (panelEl('news')) return cb();
       let n = 0;

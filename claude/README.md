@@ -12,7 +12,7 @@
   package dedup), UI sketches, build order across all phases, and
   a "Next steps" section listing outstanding work.
 - **`tabs-rdf-html-asymmetry.md`** — SUPERSEDED (2026-06-12 rdf-first
-  switch): historical inventory of items that lived in only `data/tabs.ttl`
+  switch): historical inventory of items that lived in only `data/data-kitchen-main-menu.ttl`
   OR only `html-first.html`, kept as the record of why the (retired) two-way
   sync was hard. tabs.ttl is now the only live artifact.
 

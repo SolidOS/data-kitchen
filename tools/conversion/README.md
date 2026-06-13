@@ -1,15 +1,15 @@
 # conversion/ — edit the shell as HTML (rdf2html ⇄ html2rdf)
 
-The dk shell is **rdf-first**: `data/tabs.ttl` is the only live artifact —
+The dk shell is **rdf-first**: `data/data-kitchen-main-menu.ttl` is the only live artifact —
 the topmost tabset renders from it at runtime (the inline
-`<sol-tabs from-rdf="./data/tabs.ttl#Tabs">` in `index.html` plus
+`<sol-tabs from-rdf="./data/data-kitchen-main-menu.ttl#Tabs">` in `index.html` plus
 `src/dk-tabs-rdf.js` for the `#Bar` / `#Chrome` launchers). These two scripts
 exist for people who prefer editing the shell as declarative HTML:
 
 ```
-npm run rdf2html      # data/tabs.ttl → tools/conversion/shell.html
+npm run rdf2html      # data/data-kitchen-main-menu.ttl → tools/conversion/shell.html
 (edit the snapshot)
-npm run html2rdf      # tools/conversion/shell.html → data/tabs.ttl
+npm run html2rdf      # tools/conversion/shell.html → data/data-kitchen-main-menu.ttl
 ```
 
 ## Scripts (run from the dk root)
@@ -18,7 +18,7 @@ npm run html2rdf      # tools/conversion/shell.html → data/tabs.ttl
 |---|---|---|
 | `rdf2html` | `node tools/conversion/rdf2html.mjs [out.html]` | emit the editable snapshot (default `tools/conversion/shell.html`, gitignored) |
 | — | `… --verify` | compare the snapshot against what tabs.ttl generates, don't write |
-| `html2rdf` | `node tools/conversion/html2rdf.mjs [in.html]` | merge the snapshot's tabs + bar back into `data/tabs.ttl` |
+| `html2rdf` | `node tools/conversion/html2rdf.mjs [in.html]` | merge the snapshot's tabs + bar back into `data/data-kitchen-main-menu.ttl` |
 
 Both directions are sol-components core modules (`core/menu-generate.js` emits,
 `core/menu-html.js` harvests — exact inverses), so the snapshot round-trips:
@@ -31,7 +31,7 @@ Both directions are sol-components core modules (`core/menu-generate.js` emits,
 - **Bar items** (`#Bar`) — best-effort: a non-button item's label is recovered
   from its `title`; edit bar labels via the Customize builder when it matters.
 - **Chrome** (`#Chrome`) — emitted into the snapshot for reference, but **not
-  imported** by html2rdf; edit `data/tabs.ttl#Chrome` directly (it self-heals
+  imported** by html2rdf; edit `data/data-kitchen-main-menu.ttl#Chrome` directly (it self-heals
   if a mandatory item is dropped).
 - **Pantry** — items not in any menu survive an import untouched
   (`updateMenuInStore` rebuilds only the two menus).
