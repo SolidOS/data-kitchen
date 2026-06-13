@@ -125,15 +125,14 @@ class Servers {
   // Seed the editable app definition into the pod root if it lives somewhere
   // other than the engine dir and is missing files (never overwrites edits).
   seed() {
-    // App definition: no-op in dev (engine === pod root); only matters packaged.
-    if (path.resolve(ENGINE_DIR) !== path.resolve(POD_ROOT)) {
-      try {
-        const baselineFile = path.join(app.getPath('userData'), 'seed-baseline.json');
-        const { written, updated, kept } = seedDefinition(ENGINE_DIR, POD_ROOT, baselineFile);
-        this.log(`[seed] ${written} new, ${updated} updated, ${kept} kept (user-edited) — ${POD_ROOT}`);
-      } catch (e) {
-        this.log(`[seed] failed: ${e.message}`);
-      }
+    // App definition → index.html + dk.manifest.json at root, the rest under
+    // dk-pod/dk/. Runs in dev too (dest differs from the engine source).
+    try {
+      const baselineFile = path.join(app.getPath('userData'), 'seed-baseline.json');
+      const { written, updated, kept } = seedDefinition(ENGINE_DIR, POD_ROOT, baselineFile);
+      this.log(`[seed] ${written} new, ${updated} updated, ${kept} kept (user-edited) — ${POD_ROOT}`);
+    } catch (e) {
+      this.log(`[seed] failed: ${e.message}`);
     }
     // Personal pod: always seeded into <podRoot>/dk-pod/ — the template lives in
     // a distinct engine dir (pod-template/), so this runs in dev too (that's how

@@ -22,7 +22,7 @@
     })();
   </script>
 
-  <link rel="stylesheet" href="../node_modules/mashlib/dist/mash.css">
+  <link rel="stylesheet" href="/node_modules/mashlib/dist/mash.css">
   <style>
     /* dk's font-size custom property → iframe root font size. */
     html { font-size: var(--font-size, inherit); }
@@ -46,16 +46,16 @@
   <script type="importmap">
   {
     "imports": {
-      "rdflib":                              "../node_modules/sol-components/dist/vendor/rdflib.js",
-      "n3":                                  "../node_modules/sol-components/dist/vendor/n3.js",
-      "dompurify":                           "../node_modules/sol-components/dist/vendor/dompurify.js",
-      "ical.js":                             "../node_modules/sol-components/dist/vendor/ical.js.js",
-      "marked":                              "../node_modules/sol-components/dist/vendor/marked.js",
-      "rdf-validate-shacl":                  "../node_modules/sol-components/dist/vendor/rdf-validate-shacl.js",
-      "@comunica/query-sparql":              "../node_modules/sol-components/dist/vendor/@comunica-query-sparql.js",
-      "solid-ui":                            "../node_modules/sol-components/dist/vendor/solid-ui.js",
-      "solid-logic":                         "../node_modules/sol-components/dist/vendor/solid-logic.js",
-      "@inrupt/solid-client-authn-browser":  "../node_modules/sol-components/dist/vendor/@inrupt-solid-client-authn-browser.js"
+      "rdflib":                              "/node_modules/sol-components/dist/vendor/rdflib.js",
+      "n3":                                  "/node_modules/sol-components/dist/vendor/n3.js",
+      "dompurify":                           "/node_modules/sol-components/dist/vendor/dompurify.js",
+      "ical.js":                             "/node_modules/sol-components/dist/vendor/ical.js.js",
+      "marked":                              "/node_modules/sol-components/dist/vendor/marked.js",
+      "rdf-validate-shacl":                  "/node_modules/sol-components/dist/vendor/rdf-validate-shacl.js",
+      "@comunica/query-sparql":              "/node_modules/sol-components/dist/vendor/@comunica-query-sparql.js",
+      "solid-ui":                            "/node_modules/sol-components/dist/vendor/solid-ui.js",
+      "solid-logic":                         "/node_modules/sol-components/dist/vendor/solid-logic.js",
+      "@inrupt/solid-client-authn-browser":  "/node_modules/sol-components/dist/vendor/@inrupt-solid-client-authn-browser.js"
     }
   }
   </script>
@@ -83,7 +83,7 @@
 
     authReady.then(() => {
       const s = document.createElement('script');
-      s.src = '../node_modules/mashlib/dist/mashlib.min.js';
+      s.src = '/node_modules/mashlib/dist/mashlib.min.js';
       s.onload = async () => {
         // mashlib's bundled solid-logic ships its own Session
         // singleton at SolidLogic.solidLogicSingleton.authn.authSession

@@ -45,11 +45,11 @@
       proxy="http://localhost:8001/proxy?uri="
       default-issuer="https://solidcommunity.net"
       shape="node_modules/sol-components/shapes/data-kitchen-settings.shacl"
-      source="data/data-kitchen-settings.ttl#Settings"
+      source="dk-pod/dk/data/data-kitchen-settings.ttl#Settings"
   ></sol-default>
 
   <nav class="omp-chrome-bar" aria-label="Controls">
-    <sol-include source="plugins/ia-player/assets/mini-player.html" trusted></sol-include>
+    <sol-include source="dk-pod/dk/plugins/ia-player/assets/mini-player.html" trusted></sol-include>
   </nav>
 
   <main id="dk-content" class="omp-panels">
@@ -62,7 +62,7 @@
          Customize Preferences accordion — tabs/menus are edited on the
          Customize Plugins page. (sol-settings' opt-out; children like
          search/calendar are still discovered.) -->
-    <sol-tabs id="dk-tabs" keep-alive from-rdf="./data/tabs.ttl#Tabs" data-settings-skip></sol-tabs>
+    <sol-tabs id="dk-tabs" keep-alive from-rdf="./dk-pod/dk/data/tabs.ttl#Tabs" data-settings-skip></sol-tabs>
 
     <!-- The ☰ menu's component items (claimed here by id via data-for) display
          in this pane, which replaces the tab content area while open — not in

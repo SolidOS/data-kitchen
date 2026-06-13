@@ -1179,7 +1179,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
   // + type-index mirror.
   async function createLocalLibrary(name) {
     const localCfg = libraryConfigs.find(c => !c.solid && isLocalLibUrl(c.url));
-    const ref = new URL(localCfg ? localCfg.url : './plugins/ia-player/libraries/_/index.ttl',
+    const ref = new URL(localCfg ? localCfg.url : './dk-pod/dk/plugins/ia-player/libraries/_/index.ttl',
                         location.href).href;
     const root = ref.match(/^(.*\/libraries\/)/)?.[1];
     if (!root) { updateStatus(status, 'Could not locate the libraries/ root.'); return; }
@@ -4253,7 +4253,7 @@ class IaPlayerElement extends HTMLElement {
       });
       return;
     }
-    const libs = loadLibraryConfigs(defaultSrc || './plugins/ia-player/libraries/internet_archive_music/index.ttl');
+    const libs = loadLibraryConfigs(defaultSrc || './dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl');
     init(this, libs);
   }
 

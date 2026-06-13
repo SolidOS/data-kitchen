@@ -8,7 +8,7 @@
     dct:title "Jaylib - Rough Drafts (2003) Full Album | J Dilla Madlib | Mixed at 89 Hz | Mastered at 48khz | m4a" ;
     dct:identifier "jaylib_rough_drafts_2003_full_album_j_dilla_madlib_mixed_at_89_hz_mastered_at_48_1" ;
     dct:isPartOf <../releases.ttl#it> ;
-    dcat:landingPage </plugins/ia-player/libraries/internet_archive_music/releases/jaylib_rough_drafts_2003_full_album_j_dilla_madlib_mixed_at_89_hz_mastered_at_48#it> ;
+    dcat:landingPage </dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/releases/jaylib_rough_drafts_2003_full_album_j_dilla_madlib_mixed_at_89_hz_mastered_at_48#it> ;
     mo:track <#t01> ;
     foaf:maker <urn:uuid:66bc0989-8767-4a65-9cd5-07a993007e78> .
 

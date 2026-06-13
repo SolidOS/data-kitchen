@@ -3,8 +3,8 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix schema: <http://schema.org/>.
 
-</plugins/ia-player/libraries/internet_archive_music/playlists/Neil_Young> a schema:ItemList, schema:MusicPlaylist, dcat:Dataset;
-    dct:isPartOf </plugins/ia-player/libraries/internet_archive_music/playlists.ttl#it>;
+</dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/playlists/Neil_Young> a schema:ItemList, schema:MusicPlaylist, dcat:Dataset;
+    dct:isPartOf </dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/playlists.ttl#it>;
     schema:itemListOrder schema:ItemListOrderAscending;
     dct:title "Neil Young";
     foaf:maker "jeffz";

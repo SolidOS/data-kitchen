@@ -26,7 +26,7 @@ const NS = {
 };
 
 /** The communal favourites folder (top-level, so it's permissioned on its own). */
-export const favouritesUrl = () => new URL('favourites/', document.baseURI).href;
+export const favouritesUrl = () => new URL('dk-pod/dk/favourites/', document.baseURI).href;
 
 const lit = (s) => JSON.stringify(String(s));
 

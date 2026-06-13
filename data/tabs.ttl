@@ -15,7 +15,7 @@
         [ schema:name "class"; schema:value "omp-calendar" ],
             [
                 schema:name "source";
-                schema:value "./plugins/calendar/calendar-settings.ttl#All"
+                schema:value "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All"
             ],
         [ schema:name "title"; schema:value "Calendar" ];
     ui:label "Calendar";
@@ -51,7 +51,7 @@
             [
                 schema:name "source";
                 schema:value
-                "./plugins/search/search-engines.ttl#SearchEngines"
+                "./dk-pod/dk/plugins/search/search-engines.ttl#SearchEngines"
             ],
         [ schema:name "title"; schema:value "Search" ];
     ui:label "Search";
@@ -62,7 +62,7 @@
         [ schema:name "class"; schema:value "omp-settings-launch" ],
         [ schema:name "data-handler"; schema:value "sol-include" ],
         [ schema:name "inline"; schema:value "" ],
-        [ schema:name "source"; schema:value "./pages/settings.html" ],
+        [ schema:name "source"; schema:value "./dk-pod/dk/pages/settings.html" ],
         [ schema:name "title"; schema:value "Settings" ],
         [ schema:name "trusted"; schema:value "" ];
     ui:label "⚙";
@@ -87,9 +87,9 @@
         [ schema:name "aria-label"; schema:value "Help" ],
         [ schema:name "class"; schema:value "omp-help-launch" ],
         [ schema:name "data-handler"; schema:value "sol-include" ],
-        [ schema:name "if-logged-in"; schema:value "./help/dk-owner.html" ],
+        [ schema:name "if-logged-in"; schema:value "./dk-pod/dk/help/dk-owner.html" ],
         [ schema:name "inline"; schema:value "" ],
-        [ schema:name "source"; schema:value "./help/dk.html" ],
+        [ schema:name "source"; schema:value "./dk-pod/dk/help/dk.html" ],
         [ schema:name "title"; schema:value "Help" ],
         [ schema:name "trusted"; schema:value "" ];
     ui:label "?";
@@ -120,7 +120,7 @@
         [ schema:name "aria-label"; schema:value "Menu" ],
         [ schema:name "class"; schema:value "omp-more" ],
         [ schema:name "label"; schema:value "☰" ],
-        [ schema:name "source"; schema:value "./data/menu.ttl#More" ],
+        [ schema:name "source"; schema:value "./dk-pod/dk/data/menu.ttl#More" ],
         [ schema:name "title"; schema:value "Menu" ],
         [ schema:name "data-settings-skip"; schema:value "" ];
     ui:label "Menu";
@@ -132,7 +132,7 @@
         [ schema:name "id"; schema:value "panel-dev-tools" ],
             [
                 schema:name "source";
-                schema:value "./plugins/dev-tools/dev-tools.html"
+                schema:value "./dk-pod/dk/plugins/dev-tools/dev-tools.html"
             ],
         [ schema:name "trusted"; schema:value "" ];
     ui:label "🛠 Dev Tools";
@@ -162,7 +162,7 @@
         [ schema:name "id"; schema:value "panel-customize" ],
             [
                 schema:name "source";
-                schema:value "./plugins/customize/dk-customize.html"
+                schema:value "./dk-pod/dk/plugins/customize/dk-customize.html"
             ],
         [ schema:name "trusted"; schema:value "" ];
     ui:label "🎛 Customize";
@@ -177,7 +177,7 @@
     a ui:Component;
     ui:attribute
         [ schema:name "id"; schema:value "panel-home" ],
-        [ schema:name "source"; schema:value "./plugins/home/home.html" ],
+        [ schema:name "source"; schema:value "./dk-pod/dk/plugins/home/home.html" ],
         [ schema:name "trusted"; schema:value "" ];
     ui:label "🏠 Home";
     ui:name "sol-include".
@@ -188,7 +188,7 @@
             [
                 schema:name "source";
                 schema:value
-                    "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
             ];
     ui:label "🖼 Images";
     ui:name "omp-images".
@@ -201,7 +201,7 @@
             [
                 schema:name "source";
                 schema:value
-                    "./plugins/ia-player/libraries/internet_archive_movies/index.ttl"
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl"
             ],
         [ schema:name "storage-ns"; schema:value "movies" ];
     ui:label "🎬 Movies";
@@ -214,7 +214,7 @@
             [
                 schema:name "source";
                 schema:value
-                    "./plugins/ia-player/libraries/internet_archive_music/index.ttl"
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl"
             ],
         [ schema:name "storage-ns"; schema:value "music" ];
     ui:label "🎵 Music";
@@ -224,7 +224,7 @@
     ui:attribute
         [ schema:name "id"; schema:value "panel-news" ],
         [ schema:name "reader"; schema:value "inline" ],
-        [ schema:name "source"; schema:value "./plugins/news/feeds.ttl#Feeds" ],
+        [ schema:name "source"; schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds" ],
         [ schema:name "view"; schema:value "threePanel" ];
     ui:label "📰 News";
     ui:name "sol-feed".
@@ -233,7 +233,7 @@
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-podz" ],
-        [ schema:name "source"; schema:value "./plugins/podz/dk-podz.html" ];
+        [ schema:name "source"; schema:value "./dk-pod/dk/plugins/podz/dk-podz.html" ];
     ui:label "🗂 Workspaces";
     ui:name "dk-podz".
 :panel-solidos
@@ -243,7 +243,7 @@
         [ schema:name "id"; schema:value "panel-solidos" ],
             [
                 schema:name "source";
-                schema:value "./plugins/solidos/dk-solidos.html"
+                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
             ];
     ui:label "🐧 SolidOS";
     ui:name "dk-solidos".

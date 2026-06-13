@@ -8,7 +8,7 @@
     dct:title "Madlib Medicine Show #2 - Flight To Brazil" ;
     dct:identifier "madlib_medicine_show_2_flight_to_brazil_1" ;
     dct:isPartOf <../releases.ttl#it> ;
-    dcat:landingPage </plugins/ia-player/libraries/internet_archive_music/releases/madlib_medicine_show_2_flight_to_brazil#it> ;
+    dcat:landingPage </dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/releases/madlib_medicine_show_2_flight_to_brazil#it> ;
     mo:track <#t01>, <#t02>, <#t03>, <#t04>, <#t05>, <#t06>, <#t07>, <#t08>, <#t09> ;
     foaf:maker <urn:uuid:66bc0989-8767-4a65-9cd5-07a993007e78> .
 

@@ -34,7 +34,7 @@
 // even when no direct adoption has happened.
 
 class DkSolidos extends HTMLElement {
-  static get template() { return 'plugins/solidos/dk-solidos.html'; }
+  static get template() { return 'dk-pod/dk/plugins/solidos/dk-solidos.html'; }
 
   static get editableWidgets() { return []; }
 
@@ -60,7 +60,7 @@ class DkSolidos extends HTMLElement {
         } else {
           // Fallback: iframe not yet ready — fall back to navigating
           // the iframe URL (works standalone via ?uri=…).
-          iframe.src = 'plugins/solidos/solidos-host.html?uri=' + encodeURIComponent(item.url);
+          iframe.src = 'dk-pod/dk/plugins/solidos/solidos-host.html?uri=' + encodeURIComponent(item.url);
         }
       };
       try { await pod.initialize(); }

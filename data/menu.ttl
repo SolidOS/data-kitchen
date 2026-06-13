@@ -3,7 +3,7 @@
 @prefix acl:    <http://www.w3.org/ns/auth/acl#> .
 
 # ── The ☰ hamburger menu (chrome) ────────────────────────────────────────
-# Consumed by the ☰ <sol-dropdown-button source="./data/menu.ttl#More"> chrome
+# Consumed by the ☰ <sol-dropdown-button source="./dk-pod/dk/data/menu.ttl#More"> chrome
 # launcher (data/tabs.ttl#Chrome, built by src/dk-tabs-rdf.js): component items
 # display in the #dk-menu-pane replace
 # pane over the tab content (it claims them by id via data-for in index.html;
@@ -24,7 +24,7 @@
   ui:name "sol-include" ;
   acl:mode acl:Write ;
   ui:attribute
-    [ schema:name "source"  ; schema:value "./pages/customize.html" ] ,
+    [ schema:name "source"  ; schema:value "./dk-pod/dk/pages/customize.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
 # The whole catalog (the #Available list), read-mostly — not write-gated,
@@ -32,7 +32,7 @@
 <#MoreAllPlugins> a ui:Component ; ui:label "All Plugins…" ;
   ui:name "sol-include" ;
   ui:attribute
-    [ schema:name "source"  ; schema:value "./pages/all-plugins.html" ] ,
+    [ schema:name "source"  ; schema:value "./dk-pod/dk/pages/all-plugins.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
 # (Settings… was removed from this menu 2026-06-12 — the global settings

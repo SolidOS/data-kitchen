@@ -7,7 +7,7 @@
 <div class="dk-choose-plugins">
   <sol-plugin-manager
       grouped
-      source="data/plugins-catalog.ttl#Available"
+      source="dk-pod/dk/data/plugins-catalog.ttl#Available"
       for="sol-menu-manager, sol-button-bar-manager"
   ></sol-plugin-manager>
 
@@ -15,15 +15,15 @@
     <sol-menu-manager
         heading="Customize Menu Tabs"
         accordion="targets" open
-        source="data/tabs.ttl#Tabs"
-        catalog="data/plugins-catalog.ttl#Available"
+        source="dk-pod/dk/data/tabs.ttl#Tabs"
+        catalog="dk-pod/dk/data/plugins-catalog.ttl#Available"
     ></sol-menu-manager>
 
     <sol-button-bar-manager
         heading="Customize Top Row Buttons"
         accordion="targets"
-        source="data/tabs.ttl#Bar"
-        catalog="data/plugins-catalog.ttl#Available"
+        source="dk-pod/dk/data/tabs.ttl#Bar"
+        catalog="dk-pod/dk/data/plugins-catalog.ttl#Available"
     ></sol-button-bar-manager>
   </div>
 </div>

@@ -15,7 +15,7 @@
     import { solFetch } from 'sol-components/core/auth-fetch.js';
 
     // The body UI is modeled in data/tabs.ttl and rendered by the inline
-    // <sol-tabs id="dk-tabs" from-rdf="./data/tabs.ttl#Tabs"> in index.html.
+    // <sol-tabs id="dk-tabs" from-rdf="./dk-pod/dk/data/tabs.ttl#Tabs"> in index.html.
     // (Its panels therefore appear asynchronously — see whenTabsReady.)
 
     let solTabs = null;   // assigned once the included <sol-tabs> exists
@@ -51,14 +51,14 @@
       if (manifestCache.has(id)) return manifestCache.get(id);
       let info = null;
       try {
-        const docUrl = new URL(`plugins/${id}/manifest.ttl`, document.baseURI).href;
+        const docUrl = new URL(`dk-pod/dk/plugins/${id}/manifest.ttl`, document.baseURI).href;
         const store = await loadRdfStore(docUrl);
         const doc = rdf.sym(docUrl);
         info = {
           help:  store.any(doc, rdf.sym(SCHEMA_HELP))?.value || null,
           shape: store.any(doc, rdf.sym(DCT_CONFORMS))?.value || null,
           menuUri: store.any(rdf.sym(`${docUrl}#Menu`), rdf.sym(UI_PARTS))
-            ? `plugins/${id}/manifest.ttl#Menu` : null,
+            ? `dk-pod/dk/plugins/${id}/manifest.ttl#Menu` : null,
         };
       } catch { info = null; }   // no manifest — perfectly fine
       manifestCache.set(id, info);
@@ -113,7 +113,7 @@
       } else {
         displayItem({
           launcher, id: 'MoreSettings', name: 'Settings', tag: 'sol-include',
-          attrs: [['source', './pages/settings.html'], ['trusted', '']],
+          attrs: [['source', './dk-pod/dk/pages/settings.html'], ['trusted', '']],
         });
       }
     }
@@ -195,7 +195,7 @@
     function persistAppearance(predicateLocal, termLocal) {
       if (!termLocal) return;
       persistQueue = persistQueue.then(async () => {
-        const src = solDefault()?.getAttribute('source') || 'data/data-kitchen-settings.ttl#Settings';
+        const src = solDefault()?.getAttribute('source') || 'dk-pod/dk/data/data-kitchen-settings.ttl#Settings';
         const docUrl = new URL(src.split('#')[0], document.baseURI).href;
         const subject = rdf.sym(`${docUrl}#${src.split('#')[1] || 'Settings'}`);
         const store = await loadRdfStore(docUrl, solFetch);
@@ -278,7 +278,7 @@
       return true;
     }
 
-    // The ⋮ menu is a <sol-dropdown-button source="./data/menu.ttl#More"> (see
+    // The ⋮ menu is a <sol-dropdown-button source="./dk-pod/dk/data/menu.ttl#More"> (see
     // index.html): it owns its open/close + popup, its items are command items
     // that dispatch sol-command (handled by COMMANDS below), and write-only items
     // are gated by CSS (.no-write … ::part(requires-write)) — see syncGating.

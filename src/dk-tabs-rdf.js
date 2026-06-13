@@ -1,7 +1,7 @@
 // dk-tabs-rdf — the RDF side of the topmost shell (rdf-first).
 //
 // data/tabs.ttl is the ONLY live artifact of the shell. index.html declares
-// <sol-tabs id="dk-tabs" from-rdf="./data/tabs.ttl#Tabs">, so sol-tabs renders
+// <sol-tabs id="dk-tabs" from-rdf="./dk-pod/dk/data/tabs.ttl#Tabs">, so sol-tabs renders
 // the tabs itself; this module covers the rest of the same document:
 //
 //   (a) on load it builds the #Bar launchers and the #Chrome furniture
@@ -29,7 +29,7 @@ import { solFetch } from 'sol-components/core/auth-fetch.js';
 
 const solTabsEl = () => document.getElementById('dk-tabs');
 
-// The shell document, as the markup declares it (from-rdf="./data/tabs.ttl#Tabs").
+// The shell document, as the markup declares it (from-rdf="./dk-pod/dk/data/tabs.ttl#Tabs").
 function tabsDocUrl() {
   const src = solTabsEl()?.getAttribute('from-rdf') || '';
   return src ? new URL(src.split('#')[0], document.baseURI).href : null;
@@ -87,12 +87,12 @@ const CHROME_DEFAULTS = [
   { type: 'component', id: 'chrome-help', name: '?', tag: 'sol-button',
     comment: 'Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay.',
     params: [['class', 'omp-help-launch'], ['title', 'Help'], ['aria-label', 'Help'],
-             ['data-handler', 'sol-include'], ['source', './help/dk.html'],
-             ['if-logged-in', './help/dk-owner.html'], ['inline', ''], ['trusted', '']] },
+             ['data-handler', 'sol-include'], ['source', './dk-pod/dk/help/dk.html'],
+             ['if-logged-in', './dk-pod/dk/help/dk-owner.html'], ['inline', ''], ['trusted', '']] },
   { type: 'component', id: 'chrome-menu', name: 'Menu', tag: 'sol-dropdown-button', region: 'modal',
     comment: '☰ menu — items live in data/menu.ttl#More (Manage Plugins, Manage Menus, Settings, Sign in, and owner commands). Component items display in the #dk-menu-pane replace pane over the tab content.',
     params: [['class', 'omp-more'], ['title', 'Menu'], ['aria-label', 'Menu'],
-             ['label', '☰'], ['source', './data/menu.ttl#More'],
+             ['label', '☰'], ['source', './dk-pod/dk/data/menu.ttl#More'],
              ['data-settings-skip', '']] },   // menus are edited on the Customize Plugins page, not in Preferences
   { type: 'component', id: 'chrome-login', name: 'Sign in', tag: 'sol-login',
     comment: 'Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).',
