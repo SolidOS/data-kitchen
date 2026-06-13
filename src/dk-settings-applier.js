@@ -68,7 +68,15 @@ function readAndApply() {
 readAndApply();
 // `sol-default-change` bubbles + is composed, so it reaches document.
 document.addEventListener('sol-default-change', readAndApply);
-document.addEventListener('sol-form-save', readAndApply);
+// A form save persists the RDF but <sol-default> still holds the old resolved
+// values — re-read its source first (its attribute changes then fire
+// sol-default-change → readAndApply). Covers the settings page's open
+// preferences form, which no <sol-settings> reload-wires.
+document.addEventListener('sol-form-save', () => {
+  const sd = document.querySelector('sol-default');
+  if (sd && typeof sd.reload === 'function') sd.reload().catch(() => {});
+  readAndApply();
+});
 
 if (window.matchMedia) {
   window.matchMedia('(prefers-color-scheme: dark)')

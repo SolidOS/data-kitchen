@@ -6,6 +6,5 @@
 <> a swc:DataKitchenSettingsFile;
     foaf:primaryTopic <#Settings>.
 <#Settings> ui:colorScheme ui:DarkColorScheme;
-    ui:editorKeys ui:DefaultKeys;
     ui:fontSize ui:MediumFont;
     ui:proxy "http://localhost:3002/proxy?uri=".
