@@ -167,12 +167,13 @@ try {
   catch (e) { genOut = String(e); }
   const html = readFileSync('tools/conversion/shell.html', 'utf8');
   check('rdf2html emits the new tab into the snapshot', /Smoke Test Tab/.test(html), genOut.trim());
+  // the snapshot now carries the curated submenus too (Solid, Dev Tools), so
+  // pick the block that is actually our Smoke Test Tab rather than the first.
+  const smokeBlock = (html.match(/<submenu[\s\S]*?<\/submenu>/g) || []).find(b => /Smoke Test Tab/.test(b)) || '';
   check('snapshot has the submenu block with both plugins',
-    /<submenu[\s\S]*?Smoke Test Tab[\s\S]*?<\/submenu>/.test(html)
-    && ((html.match(/<submenu[\s\S]*?<\/submenu>/) || [''])[0].match(/<a /g) || []).length === 2);
+    !!smokeBlock && (smokeBlock.match(/<a /g) || []).length === 2);
   check('snapshot submenu keeps the dnd order (weather before music)', (() => {
-    const block = (html.match(/<submenu[\s\S]*?<\/submenu>/) || [''])[0];
-    const w = block.indexOf('sol-weather'); const m = block.indexOf('ia-player');
+    const w = smokeBlock.indexOf('sol-weather'); const m = smokeBlock.indexOf('ia-player');
     return w >= 0 && m >= 0 && w < m;
   })());
   check('snapshot emits the chrome block from #Chrome', /chrome:begin/.test(html) && /omp-help-launch/.test(html) && /omp-more/.test(html));
