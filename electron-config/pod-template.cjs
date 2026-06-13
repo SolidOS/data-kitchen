@@ -74,7 +74,11 @@ function seedRootOwnerMeta(podRoot, publicOrigin) {
   try { current = fs.readFileSync(metaPath, 'utf8'); } catch {}
   if (current.includes(`solid:owner <${webId}>`)) return 'kept';
   if (current && !/solid:owner/.test(current)) {        // foreign .meta — append, don't clobber
-    fs.writeFileSync(metaPath, current.replace(/\s*$/, '\n') + triple + '\n');
+    // The appended triple uses solid:; declare the prefix unless the existing
+    // .meta already does, else the merged file is invalid Turtle and CSS 500s
+    // on every write (it parses .meta on writes).
+    const pfx = /@prefix\s+solid:/.test(current) ? '' : '@prefix solid: <http://www.w3.org/ns/solid/terms#>.\n';
+    fs.writeFileSync(metaPath, pfx + current.replace(/\s*$/, '\n') + triple + '\n');
     return 'appended';
   }
   fs.writeFileSync(metaPath, desired);                  // absent or stale-origin owner → (re)write
