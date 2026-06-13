@@ -194,13 +194,23 @@ node claude/smoke-tests/verify-link-tabs.mjs         # ui:Link submenus end to e
 ## Packaging
 
 ```bash
-npm run dist        # electron-builder (linux: AppImage/deb/rpm)
+npm run dist                            # electron-builder, all linux targets (AppImage/deb/rpm)
+npx electron-builder --linux AppImage   # just the AppImage
 ```
 
+Artifacts land in `release/` (kept out of `dist/` so a build never bundles
+its own previous output) and are named with underscores
+(`Solid_Data_Kitchen-<version>.AppImage`).
+
 `asar` is off: the bundled servers are spawned as plain node processes and
-read their trees from disk. Note: an AppImage mounts read-only, so in-app
-saves (favourites, settings, Manage Plugins / Manage Menus) need a writable root — set
-`DK_POD_ROOT` to point the pivot server at a writable copy of the data.
+read their trees from disk. An AppImage mounts **read-only**, so in-app saves
+(favourites, settings, Manage Plugins / Manage Menus) need a writable pod
+root. The packaged app provides one automatically: on launch it creates a
+**`data-kitchen-home/` folder next to the executable** (the portable-app
+pattern — app and data travel together) and seeds the definition into it; if
+that spot isn't writable it falls back to Electron's `userData`. Override the
+location with `DK_POD_ROOT`. In dev (unpackaged) the pod root is the repo, so
+this is a no-op.
 
 ## Provenance
 
