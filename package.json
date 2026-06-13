@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "type": "module",
   "description": "Electron app packaging a Solid server (pivot), a CORS proxy, and a shell of sol-components mini-apps.",
+  "homepage": "https://github.com/solidOS/data-kitchen",
   "main": "./electron-config/main.cjs",
   "scripts": {
     "start": "electron .",
@@ -31,6 +32,7 @@
   "build": {
     "appId": "com.data-kitchen",
     "productName": "Solid Data Kitchen",
+    "artifactName": "Solid_Data_Kitchen-${version}.${ext}",
     "asar": false,
     "files": [
       "electron-config/**",
@@ -69,7 +71,8 @@
       }
     ],
     "directories": {
-      "buildResources": "build"
+      "buildResources": "build",
+      "output": "release"
     },
     "linux": {
       "target": [

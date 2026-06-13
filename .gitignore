@@ -1,5 +1,8 @@
 node_modules/
 dist/
+# electron-builder output (kept separate from dist/ so builds don't swallow
+# their own previous artifacts via the files "dist/**" pattern)
+release/
 *.log
 .DS_Store
 

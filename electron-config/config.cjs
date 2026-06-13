@@ -11,8 +11,36 @@
 // checks, Solid auth and the importmap all depend on it.
 
 const path = require('path');
+const fs = require('fs');
 
 const REPO_ROOT = path.join(__dirname, '..');
+
+// Where the user's writable pod root lives when the app is packaged.
+// Portable-app pattern: a "data-kitchen-home" folder NEXT TO the AppImage (or
+// the executable in other packaged layouts), so the app file and its data
+// travel together. When that spot isn't writable (e.g. an /opt install), fall
+// back to Electron's per-user data dir. Dev (unpackaged) keeps pod == repo, so
+// seeding stays a no-op. DK_POD_ROOT overrides everything.
+// Eventually a user-home TEMPLATE will be planted here; today seed.cjs plants
+// the app definition.
+function resolvePodRoot() {
+  if (process.env.DK_POD_ROOT) return process.env.DK_POD_ROOT;
+  let app;
+  try { app = require('electron').app; } catch { return REPO_ROOT; }
+  if (!app || !app.isPackaged) return REPO_ROOT;
+  const installDir = process.env.APPIMAGE
+    ? path.dirname(process.env.APPIMAGE)
+    : path.dirname(app.getPath('exe'));
+  for (const base of [installDir, app.getPath('userData')]) {
+    const home = path.join(base, 'data-kitchen-home');
+    try {
+      fs.mkdirSync(home, { recursive: true });
+      fs.accessSync(home, fs.constants.W_OK);
+      return home;
+    } catch { /* not writable — try the next base */ }
+  }
+  return path.join(app.getPath('userData'), 'data-kitchen-home');
+}
 
 // Public origin the app + blessed browsers talk to (the routing front server).
 const PUBLIC_PORT = Number(process.env.DK_PUBLIC_PORT) || 8000;
@@ -38,10 +66,9 @@ module.exports = {
   ENGINE_DIR: REPO_ROOT,
 
   // Writable pod root the user redesigns in (served by pivot, fronted by router).
-  // Defaults to the repo in dev (then engine and pod coincide and seeding is a
-  // no-op); override with DK_POD_ROOT. Only ever passed to the spawned server as a
-  // string — the shell never reads inside it.
-  POD_ROOT: process.env.DK_POD_ROOT || REPO_ROOT,
+  // See resolvePodRoot() above for how it is chosen. Only ever passed to the
+  // spawned server as a string — the shell never reads inside it.
+  POD_ROOT: resolvePodRoot(),
 
   // The element in the web app that hosts swapped-in content. External content
   // (tab iframes, search/feed readers) is overlaid with native views there
