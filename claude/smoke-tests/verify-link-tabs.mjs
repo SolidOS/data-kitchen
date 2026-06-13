@@ -50,9 +50,12 @@ try {
   const edited = await page.evaluate(async () => {
     const url = new URL('data/tabs.ttl', document.baseURI).href;
     const ttl = await (await fetch(url, { cache: 'no-store' })).text();
+    // tabs.ttl ships in the managers' serialization (prefixed `:name`, the
+    // #Tabs parts list ends `:item :panel-dev-tools ).`). Splice the two test
+    // submenus onto the end of that list.
     const out = ttl
-      .replace('<#panel-images> <#panel-podz> ) .',
-               '<#panel-images> <#panel-podz> <#Linky> <#Mixed> ) .')
+      .replace(':item :panel-dev-tools ).',
+               ':item :panel-dev-tools <#Linky> <#Mixed> ).')
       + `
 <#Linky> a ui:Menu ; ui:label "🧪 Linky" ;
   ui:parts ( <#L-self> <#L-one> <#L-two> ) .
