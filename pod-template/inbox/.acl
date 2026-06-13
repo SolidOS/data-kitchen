@@ -1,0 +1,19 @@
+# ACL resource for the profile Inbox
+
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#owner>
+    a acl:Authorization;
+    acl:agent <http://localhost:3000/data-kitchen-user/profile/card#me>;
+    acl:accessTo <./>;
+    acl:default <./>;
+    acl:mode
+        acl:Read, acl:Write, acl:Control.
+
+# Appendable by authenticated, but NOT public-readable
+<#authenticated>
+    a acl:Authorization;
+    acl:agentClass acl:AuthenticatedAgent;
+    acl:accessTo <./>;
+    acl:mode acl:Append.

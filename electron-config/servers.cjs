@@ -18,6 +18,7 @@ const {
   PUBLIC_ORIGIN, ENGINE_DIR, POD_ROOT,
 } = require('./config.cjs');
 const { seedDefinition } = require('./seed.cjs');
+const { seedPodTemplate, seedRootOwnerMeta } = require('./pod-template.cjs');
 
 // Per-install gate secret (see gate.cjs). Created on first launch, kept in
 // userData — outside any pod root — and handed to the spawned servers via env.
@@ -124,13 +125,28 @@ class Servers {
   // Seed the editable app definition into the pod root if it lives somewhere
   // other than the engine dir and is missing files (never overwrites edits).
   seed() {
-    if (path.resolve(ENGINE_DIR) === path.resolve(POD_ROOT)) return;
+    // App definition: no-op in dev (engine === pod root); only matters packaged.
+    if (path.resolve(ENGINE_DIR) !== path.resolve(POD_ROOT)) {
+      try {
+        const baselineFile = path.join(app.getPath('userData'), 'seed-baseline.json');
+        const { written, updated, kept } = seedDefinition(ENGINE_DIR, POD_ROOT, baselineFile);
+        this.log(`[seed] ${written} new, ${updated} updated, ${kept} kept (user-edited) — ${POD_ROOT}`);
+      } catch (e) {
+        this.log(`[seed] failed: ${e.message}`);
+      }
+    }
+    // Personal pod: always seeded into <podRoot>/dk-pod/ — the template lives in
+    // a distinct engine dir (pod-template/), so this runs in dev too (that's how
+    // the owner WebID + storage exist for podz to discover).
     try {
-      const baselineFile = path.join(app.getPath('userData'), 'seed-baseline.json');
-      const { written, updated, kept } = seedDefinition(ENGINE_DIR, POD_ROOT, baselineFile);
-      this.log(`[seed] ${written} new, ${updated} updated, ${kept} kept (user-edited) — ${POD_ROOT}`);
+      const baselineFile = path.join(app.getPath('userData'), 'pod-seed-baseline.json');
+      const { written, updated, kept } = seedPodTemplate(
+        path.join(ENGINE_DIR, 'pod-template'), POD_ROOT, PUBLIC_ORIGIN, baselineFile);
+      // Announce the owner at the root so podz/SolidOS can discover the pod.
+      const ownerMeta = seedRootOwnerMeta(POD_ROOT, PUBLIC_ORIGIN);
+      this.log(`[seed:pod] ${written} new, ${updated} updated, ${kept} kept; owner-meta ${ownerMeta} — ${POD_ROOT}/dk-pod`);
     } catch (e) {
-      this.log(`[seed] failed: ${e.message}`);
+      this.log(`[seed:pod] failed: ${e.message}`);
     }
   }
 

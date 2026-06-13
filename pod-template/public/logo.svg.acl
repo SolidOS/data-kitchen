@@ -1,0 +1,26 @@
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#viewer>
+    a acl:Authorization;
+    acl:agentClass foaf:Agent;
+    acl:accessTo <http://localhost:3000/data-kitchen-user/public/logo.svg>;
+    acl:mode acl:Read.
+
+<#poster>
+    a acl:Authorization;
+    acl:agentClass foaf:Agent;
+    acl:accessTo <http://localhost:3000/data-kitchen-user/public/logo.svg>;
+    acl:mode acl:Append.
+
+<#editor>
+    a acl:Authorization;
+    acl:agentClass foaf:Agent;
+    acl:accessTo <http://localhost:3000/data-kitchen-user/public/logo.svg>;
+    acl:mode acl:Read, acl:Write.
+
+<#owner>
+    a acl:Authorization;
+    acl:agentClass foaf:Agent;
+    acl:accessTo <http://localhost:3000/data-kitchen-user/public/logo.svg>;
+    acl:mode acl:Read, acl:Write, acl:Append, acl:Control.

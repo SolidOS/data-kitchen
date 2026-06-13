@@ -1,0 +1,16 @@
+@prefix : <#>.
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+:ControlReadWrite
+    a acl:Authorization;
+    acl:accessTo <./>;
+    acl:agent <http://localhost:3000/data-kitchen-user/profile/card#me>;
+    acl:default <./>;
+    acl:mode acl:Control, acl:Read, acl:Write.
+:Read
+    a acl:Authorization;
+    acl:accessTo <./>;
+    acl:agentClass foaf:Agent;
+    acl:default <./>;
+    acl:mode acl:Control, acl:Read, acl:Write.

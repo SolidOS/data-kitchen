@@ -17,6 +17,12 @@ tools/conversion/shell.html
 # Community Solid Server runtime storage state (POD_ROOT = repo root)
 .internal/
 
+# The seeded personal pod instance (POD_ROOT = repo root in dev). The SOURCE is
+# the committed pod-template/; dk-pod/ is the per-machine seeded copy.
+/dk-pod/
+# Root owner announcement, seeded with the live origin (solid:owner → dk-pod WebID)
+/.meta
+
 # editor backups / autosave
 *~
 \#*\#

@@ -104,7 +104,13 @@ class DkSolidos extends HTMLElement {
       };
       const installAuthFetch = () => {
         const win = iframe.contentWindow;
-        if (win && typeof win.installAuthFetch === 'function') {
+        if (!win) return;
+        // Tell the host page who the local pod owner is, BEFORE mashlib loads,
+        // so it can show logged-in-as-owner (the local CSS is allow-all behind
+        // dk's gate — no OIDC session; identity is a synthetic overlay, matching
+        // src/dk-owner-session.js for the main page).
+        win.dkOwnerWebId = `${location.origin}/dk-pod/profile/card#me`;
+        if (typeof win.installAuthFetch === 'function') {
           win.installAuthFetch(podAuthedFetch);
         }
       };

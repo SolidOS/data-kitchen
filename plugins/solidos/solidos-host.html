@@ -110,6 +110,19 @@
               history.replaceState(null, '', clean);
             }
           }
+          // dk owner overlay: the parent (src/dk-solidos.js) sets
+          // window.dkOwnerWebId to the local pod owner. The local CSS is
+          // allow-all behind dk's gate (the REAL auth), so there's no OIDC
+          // session — overlay mashlib's session to REPORT the owner so SolidOS
+          // renders logged-in-as-owner. Only when no real session exists, so a
+          // genuine SolidOS-banner login still wins. Functional traffic already
+          // rides the parent's authed window.fetch. (approach A — synthetic id.)
+          if (window.dkOwnerWebId && sess && sess.info && !sess.info.isLoggedIn) {
+            sess.info.isLoggedIn = true;
+            sess.info.webId = window.dkOwnerWebId;
+            if (!sess.info.sessionId) sess.info.sessionId = 'dk-owner';
+            sess.fetch = (input, init) => window.fetch(input, init);
+          }
         } catch (err) {
           console.warn('[solidos-host] handleIncomingRedirect failed:', err);
         }

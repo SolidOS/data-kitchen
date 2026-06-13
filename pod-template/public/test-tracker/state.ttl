@@ -1,0 +1,5 @@
+<index.ttl#this> <http://www.w3.org/2005/01/wf/flow#stateStore> <>.
+<#Iss1767575194231> <http://www.w3.org/2005/01/wf/flow#tracker> <index.ttl#this>;
+    <http://purl.org/dc/elements/1.1/title> "create a new tracker";
+    <http://purl.org/dc/terms/created> "2026-01-05T01:06:34Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
+    a <http://www.w3.org/2005/01/wf/flow#Open>.

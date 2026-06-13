@@ -25,6 +25,10 @@
   await import('../plugins/solidos/dk-solidos.js');
   await import('../plugins/calendar/dk-calendar-popout.js');
   await import('./dk-settings-applier.js');
+  // Register the local pod owner as a logged-in session BEFORE the auth router
+  // and any widget's first authed fetch, so the app reads as the owner (and
+  // podz can discover the pod).
+  await import('./dk-owner-session.js');
   await import('./dk-auth-router.js');
   await import('./dk-auth-indicator.js');
   // Page wiring around the topmost <sol-tabs> (tab reactions, chrome

@@ -347,6 +347,7 @@
     // the attribute — to return to owner mode on dev, reload the page.
     function canWrite() {
       return !!(document.querySelector('sol-login')?.isLoggedIn)
+          || !!window.SolidWebComponents?.AuthManager?.shared?.getFirstLoggedIn()
           || !!solDefault()?.hasAttribute('solid-kitchen');
     }
     function syncGating() {

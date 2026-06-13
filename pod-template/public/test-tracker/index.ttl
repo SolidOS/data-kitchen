@@ -1,0 +1,7 @@
+<#this> <http://purl.org/dc/elements/1.1/author> <../../profile/card#me>;
+    a <http://www.w3.org/2005/01/wf/flow#Tracker>;
+    <http://purl.org/dc/elements/1.1/created> "2026-01-05T01:05:56Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
+    <http://www.w3.org/2005/01/wf/flow#issueClass> <http://www.w3.org/2005/01/wf/flow#Task>;
+    <http://www.w3.org/2005/01/wf/flow#initialState> <http://www.w3.org/2005/01/wf/flow#Open>;
+    <http://www.w3.org/2005/01/wf/flow#stateStore> <state.ttl>;
+    <http://www.w3.org/2005/01/wf/flow#assigneeClass> <http://xmlns.com/foaf/0.1/Person>.
