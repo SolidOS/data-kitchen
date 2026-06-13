@@ -139,7 +139,14 @@ customElements.whenDefined('sol-tabs').then(() => {
 let timer = null;
 document.addEventListener('sol-menu-built', (e) => {
   const src = (e.detail && e.detail.source) || '';
-  if (!/\btabs\.ttl\b/.test(src)) return;
+  // React only to saves of the tabs document itself (the #Tabs/#Bar/#Chrome
+  // doc), NOT plugins-catalog.ttl or other menus. Compare the saved doc URL to
+  // the live from-rdf source — earlier this matched a hardcoded "tabs.ttl",
+  // which silently stopped firing once the doc was renamed.
+  const want = tabsDocUrl();
+  let saved;
+  try { saved = new URL(src.split('#')[0], document.baseURI).href; } catch { return; }
+  if (!want || saved !== want) return;
   clearTimeout(timer);
   timer = setTimeout(() => {
     refreshShell().catch((err) => console.warn('[dk-tabs-rdf]', err));

@@ -130,15 +130,23 @@
 
     // React to a tab switch: load the active panel, pause the panels we left
     // (except the audio one — it plays on under the mini player), remember it.
-    function onTab(name) {
-      // Picking a tab dismisses the help overlay (the ? sol-button inline
-      // region) and the ☰ menu pane (#dk-menu-pane, the data-for region the
-      // ☰ component items display in) — and forgets the pane choice, so a
-      // reload comes back to the tab, not the pane.
-      document.querySelector('.omp-help-launch')?.close?.();
+    // Dismiss the help overlay (the ? sol-button inline region) and the ☰ menu
+    // pane (#dk-menu-pane — Customize / Manage Plugins / Settings), forgetting
+    // the pane choice so a reload returns to the tab, not the pane. Shared by a
+    // tab pick (onTab) and a bar action-link click: that click opens the native
+    // reader, which the preload guard keeps SUSPENDED while the pane is open —
+    // so the pane must go for the reader to appear.
+    function hideMenuPane() {
       const menuPane = document.getElementById('dk-menu-pane');
       if (menuPane) menuPane.hidden = true;
       try { localStorage.removeItem('dk:menu-pane-item'); } catch {}
+    }
+    function dismissPanes() {
+      document.querySelector('.omp-help-launch')?.close?.();
+      hideMenuPane();
+    }
+    function onTab(name) {
+      dismissPanes();
       const el = paneForName(name)?.querySelector('[id^="panel-"]');
       if (el) current = el.id.replace(/^panel-/, '');
       el?.ensureLoaded?.();
@@ -423,6 +431,19 @@
       // page (e.g. Customize's subtabs, living in the menu pane) bubbles the
       // same event and must not dismiss the pane or touch panel state.
       solTabs.addEventListener('sol-tab-change', (e) => { if (e.target === solTabs) onTab(e.detail?.name); });
+      // A bar action-link button opens its site in the native reader; dismiss
+      // the ☰ menu pane (Customize etc.) first, else the reader stays hidden
+      // behind it (the preload guard blanks native overlays while it's open).
+      solTabs.addEventListener('click', (e) => {
+        if (e.target.closest?.('.sol-bar-link')) dismissPanes();
+      });
+      // Opening the help overlay (? button) likewise dismisses the ☰ menu pane,
+      // so help shows over the tab content rather than stacked on Customize.
+      // Hide the pane only — keep help OPEN (don't run the full dismiss, which
+      // would close help). sol-button-activate fires {open:true} on show.
+      document.addEventListener('sol-button-activate', (e) => {
+        if (e.target?.classList?.contains('omp-help-launch') && e.detail?.open) hideMenuPane();
+      });
       // The ☰ menu pane (declared in index.html with its data-for claims) is
       // re-homed into the tab content area so it overlays the panes — the
       // same re-homing sol-tabs does for the bar/chrome launchers. Mounting
