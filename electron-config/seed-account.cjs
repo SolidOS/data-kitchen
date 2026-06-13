@@ -43,60 +43,56 @@ async function jfetch(url, { method = 'GET', body, gateToken, cookie } = {}) {
 }
 
 /**
- * Provision the owner account for third-party `!secret` logins. Best-effort:
- * resolves with a {status} object; throws only on an unexpected failure.
+ * Provision the owner account for third-party `!secret` logins. Best-effort +
+ * idempotent by checking ACTUAL state (login-first, link-aware) rather than a
+ * flag — so it correctly links an account that exists but was never linked.
  * @param {object} o
  * @param {string} o.publicOrigin  e.g. "http://localhost:8000" (no trailing /)
  * @param {string} [o.gateToken]   x-dk-token value (absent in standalone dev)
  * @param {string} o.podRoot       pod root (to write the ownership challenge)
- * @param {string} [o.flagFile]    userData flag path for idempotency
  */
-async function seedOwnerAccount({ publicOrigin, gateToken, podRoot, flagFile }) {
-  if (flagFile && fs.existsSync(flagFile)) return { status: 'already' };
+async function seedOwnerAccount({ publicOrigin, gateToken, podRoot }) {
   const accountRoot = `${publicOrigin}/.account/`;
   const webId = `${publicOrigin}/dk-pod/profile/card#me`;
 
-  // 1. create an account → authorization token (also the css-account cookie)
-  const create = await jfetch(`${accountRoot}account/`, { method: 'POST', gateToken });
-  const auth = create.json?.authorization;
-  if (!auth) throw new Error(`account create failed (HTTP ${create.status})`);
-  const cookie = `css-account=${auth}`;
-
-  // discover the authenticated controls
-  const ctrl = (await jfetch(accountRoot, { gateToken, cookie })).json?.controls || {};
-  const pwCreate = ctrl.password?.create;
-  const linkWebId = ctrl.account?.webId;
-  if (!pwCreate || !linkWebId) throw new Error('authenticated account controls missing (password.create / webId)');
-
-  // 2. add the password login
-  const pw = await jfetch(pwCreate, { method: 'POST', gateToken, cookie, body: { email: OWNER_EMAIL, password: OWNER_PASSWORD } });
-  if (pw.status >= 400) {
-    if (/already|in use|taken/i.test(pw.json?.message || '')) {
-      if (flagFile) try { fs.writeFileSync(flagFile, 'done\n'); } catch {}
-      return { status: 'already' };
-    }
-    throw new Error(`password create failed (HTTP ${pw.status}): ${pw.json?.message || ''}`);
+  // 1. Authenticate. Log in if the account already exists (avoids piling up
+  //    empty accounts); otherwise create it + set the password.
+  let cookie;
+  const login = await jfetch(`${accountRoot}login/password/`, {
+    method: 'POST', gateToken, body: { email: OWNER_EMAIL, password: OWNER_PASSWORD },
+  });
+  if (login.status < 400 && login.json?.authorization) {
+    cookie = `css-account=${login.json.authorization}`;
+  } else {
+    const create = await jfetch(`${accountRoot}account/`, { method: 'POST', gateToken });
+    if (!create.json?.authorization) throw new Error(`account create failed (HTTP ${create.status})`);
+    cookie = `css-account=${create.json.authorization}`;
+    const pwCreate = (await jfetch(accountRoot, { gateToken, cookie })).json?.controls?.password?.create;
+    if (!pwCreate) throw new Error('password.create control missing');
+    const pw = await jfetch(pwCreate, { method: 'POST', gateToken, cookie, body: { email: OWNER_EMAIL, password: OWNER_PASSWORD } });
+    if (pw.status >= 400) throw new Error(`password create failed (HTTP ${pw.status}): ${pw.json?.message || ''}`);
   }
 
-  // 3. link the EXISTING WebID — expect the ownership-token challenge
+  // 2. Ensure the WebID is linked (the POST itself tells us the state).
+  const linkWebId = (await jfetch(accountRoot, { gateToken, cookie })).json?.controls?.account?.webId;
+  if (!linkWebId) throw new Error('webId link control missing');
   let link = await jfetch(linkWebId, { method: 'POST', gateToken, cookie, body: { webId } });
-  if (link.status >= 400) {
-    const quad = link.json?.details?.quad;   // e.g. `<webid> <…#oidcIssuerRegistrationToken> "<token>".`
-    if (!quad) throw new Error(`link WebID: no challenge quad (HTTP ${link.status}): ${link.json?.message || ''}`);
-    // 4. briefly add the challenge triple to the profile we own on disk
-    const profile = path.join(podRoot, 'dk-pod', 'profile', 'card$.ttl');
-    const original = fs.readFileSync(profile, 'utf8');
-    fs.writeFileSync(profile, original.replace(/\s*$/, '\n') + quad + '\n');
-    try {
-      // 5. retry the link now that the proof is present
-      link = await jfetch(linkWebId, { method: 'POST', gateToken, cookie, body: { webId } });
-      if (link.status >= 400) throw new Error(`link WebID after challenge failed (HTTP ${link.status}): ${link.json?.message || ''}`);
-    } finally {
-      // 6. restore the profile (drop the transient triple)
-      fs.writeFileSync(profile, original);
-    }
+  if (link.status < 400) return { status: 'linked' };
+  if (/already (registered|linked)/i.test(link.json?.message || '')) return { status: 'already-linked' };
+
+  // 3. Ownership challenge: briefly add the token triple to the profile we own
+  //    on disk (CSS fetches the now-public profile to verify it), then retry.
+  const quad = link.json?.details?.quad;   // `<webid> <…#oidcIssuerRegistrationToken> "<token>".`
+  if (!quad) throw new Error(`link WebID: no challenge quad (HTTP ${link.status}): ${link.json?.message || ''}`);
+  const profile = path.join(podRoot, 'dk-pod', 'profile', 'card$.ttl');
+  const original = fs.readFileSync(profile, 'utf8');
+  fs.writeFileSync(profile, original.replace(/\s*$/, '\n') + quad + '\n');
+  try {
+    link = await jfetch(linkWebId, { method: 'POST', gateToken, cookie, body: { webId } });
+    if (link.status >= 400) throw new Error(`link WebID after challenge failed (HTTP ${link.status}): ${link.json?.message || ''}`);
+  } finally {
+    fs.writeFileSync(profile, original);   // restore — drop the transient triple
   }
-  if (flagFile) try { fs.writeFileSync(flagFile, 'done\n'); } catch {}
   return { status: 'linked' };
 }
 

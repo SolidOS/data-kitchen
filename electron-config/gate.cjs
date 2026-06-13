@@ -20,6 +20,22 @@
 const HEADER = 'x-dk-token';
 const COOKIE = 'dk-token';
 
+// Endpoints that are PUBLIC by Solid/OIDC design and must pass the gate
+// un-authenticated, otherwise third-party login is impossible:
+//   - a WebID profile document is publicly dereferenceable (it's the user's
+//     public identity; CSS's own server-side ownership check fetches it too),
+//   - the OIDC discovery + provider endpoints are how any external Solid app
+//     authenticates against this server.
+// Everything else (the rest of the pod) stays gated.
+function isPublicEndpoint(req) {
+  let p;
+  try { p = new URL(req.url, 'http://localhost').pathname; } catch { return false; }
+  if (p === '/.well-known/openid-configuration') return true;
+  if (p.startsWith('/.oidc/')) return true;
+  if (req.method === 'GET' && /\/profile\/card$/.test(p)) return true;   // any pod's public WebID doc
+  return false;
+}
+
 function cookieValue(header, name) {
   for (const part of String(header || '').split(';')) {
     const i = part.indexOf('=');
@@ -48,6 +64,8 @@ function makeGate(token, { allowOrigins = [] } = {}) {
 
     const from = req.headers.origin || req.headers.referer || '';
     if (allowOrigins.some((o) => from === o || from.startsWith(o + '/'))) return false;
+
+    if (isPublicEndpoint(req)) return false;   // public WebID / OIDC endpoints
 
     res.writeHead(401, { 'content-type': 'text/plain' });
     res.end('data-kitchen: missing or bad token\n');

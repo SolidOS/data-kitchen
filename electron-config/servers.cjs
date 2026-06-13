@@ -172,8 +172,7 @@ class Servers {
   // real access control; "!secret" just lets the standard login form complete.
   // Best-effort + idempotent (userData flag) — never blocks startup.
   seedAccount() {
-    const flagFile = path.join(app.getPath('userData'), 'dk-account-seeded');
-    seedOwnerAccount({ publicOrigin: PUBLIC_ORIGIN, gateToken: getGateToken(), podRoot: POD_ROOT, flagFile })
+    seedOwnerAccount({ publicOrigin: PUBLIC_ORIGIN, gateToken: getGateToken(), podRoot: POD_ROOT })
       .then((r) => this.log(`[seed:account] ${r.status}`))
       .catch((e) => this.log(`[seed:account] failed: ${e.message}`));
   }
