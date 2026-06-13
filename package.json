@@ -42,7 +42,7 @@
       "pivot/**",
       "index.html",
       "dk.manifest.json",
-      "dist/**",
+      "dist/dk.bundle.js",
       "src/**",
       "plugins/**",
       "assets/**",
