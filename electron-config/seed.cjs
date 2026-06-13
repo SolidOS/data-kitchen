@@ -33,10 +33,12 @@ const SEED_ENTRIES = [
 // served from the executable, or never web content (node_modules).
 const SKIP_DIR_NAMES = new Set(['dist', 'node_modules']);
 
-// Map an engine-relative path to its destination in the pod. index.html and
-// dk.manifest.json stay at the served root (both are loader-critical and their
-// internal refs assume root); all other content is tucked under dk-pod/dk/.
-const ROOT_FILES = new Set(['index.html', 'dk.manifest.json']);
+// Map an engine-relative path to its destination in the pod. Only index.html
+// stays at the served root (the home page); everything else dk uses — including
+// the loader descriptor dk.manifest.json — is tucked under dk-pod/dk/.
+// (dk.manifest.json's internal paths were made absolute/manifest-relative so it
+// resolves correctly from /dk-pod/dk/; index.html's data-manifest points there.)
+const ROOT_FILES = new Set(['index.html']);
 function podDestRel(rel) {
   return ROOT_FILES.has(rel) ? rel : path.join('dk-pod', 'dk', rel);
 }

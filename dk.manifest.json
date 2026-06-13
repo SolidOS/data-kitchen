@@ -6,8 +6,8 @@
   "components": {
     "ia-player": {
       "label": "Internet Archive player",
-      "shape": "./dk-pod/dk/shapes/music.shacl",
-      "help": "./dk-pod/dk/plugins/ia-player/assets/ia-help.html"
+      "shape": "./shapes/music.shacl",
+      "help": "./plugins/ia-player/assets/ia-help.html"
     },
     "omp-images": { "label": "Wikimedia images" },
     "dk-podz": { "label": "Pod browser" },
@@ -17,18 +17,18 @@
   "stages": {
     "local": {
       "components": {
-        "ia-player": "./plugins/ia-player/dist/ia-player.esm.js"
+        "ia-player": "/plugins/ia-player/dist/ia-player.esm.js"
       },
       "shared-modules": {
-        "podz/": "./node_modules/podz/src/"
+        "podz/": "/node_modules/podz/src/"
       }
     },
     "cdn": {
       "components": {
-        "ia-player": "./plugins/ia-player/dist/ia-player.esm.js"
+        "ia-player": "/plugins/ia-player/dist/ia-player.esm.js"
       },
       "shared-modules": {
-        "podz/": "./node_modules/podz/src/"
+        "podz/": "/node_modules/podz/src/"
       }
     }
   }
