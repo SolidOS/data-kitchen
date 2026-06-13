@@ -35,10 +35,15 @@ function applyTheme(theme) {
 }
 
 function applyFontSize(size) {
+  const s = (size === 'small' || size === 'large') ? size : 'medium';
+  // Drive the root rem size the same way the ☰/"A" button does: <html
+  // data-fontsize> → ia.css :root[data-fontsize] (and the [data-fontsize]
+  // #panel rules). Setting only --font-size below never resized the shell.
+  document.documentElement.dataset.fontsize = s;
   const map = { small: 'var(--small-font, 16px)',
                 medium: 'var(--medium-font, 20px)',
                 large: 'var(--large-font, 24px)' };
-  document.documentElement.style.setProperty('--font-size', map[size] || map.medium);
+  document.documentElement.style.setProperty('--font-size', map[s]);
 }
 
 // Cache the resolved theme/font choice in localStorage so the
