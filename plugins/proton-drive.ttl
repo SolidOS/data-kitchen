@@ -1,0 +1,13 @@
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ui:   <http://www.w3.org/ns/ui#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<>
+  a ui:Link ;
+  ui:label "Proton Drive" ;
+  ui:icon <https://drive.proton.me/assets/favicon.ico> ;
+  ui:href <https://drive.proton.me/> ;
+  ui:region ui:Tab ;
+  rdfs:comment "Encrypted file storage from Proton." ;
+  dct:publisher "Proton" ;
+  dct:subject "Other Services" .

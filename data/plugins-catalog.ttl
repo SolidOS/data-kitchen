@@ -10,10 +10,10 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means data/data-kitchen-main-menu.ttl mounts it." ;
-  ui:parts ( <#0data-Hello> <#BilliPod> <#Booklice> <#Calendar> <#Clock> <#dokieli> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#Penny> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#RDF-Validator> <#RoloPod> <#Search> <#SecureDialog> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SPARQL-Playground> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Umai> <#VitalStats> <#Weather> <#Workspaces-pod-browser> ) .
+  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SPARQL-Playground> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> <#Workspaces-pod-browser> ) .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
-  skos:member <#Booklice>, <#Portable-LibreChat>, <#Tired-Bike> .
+  skos:member <#Booklice>, <#Tired-Bike> .
 
 <#Content-Publishing> a skos:Collection ; skos:prefLabel "Content Publishing" ;
   skos:member <#dokieli>, <#NotePod> .
@@ -27,6 +27,9 @@
 <#Media> a skos:Collection ; skos:prefLabel "Media" ;
   skos:member <#Images-Wikimedia>, <#Media-Kraken>, <#Movies-Internet-Archive>, <#MovieStar>, <#Music-Internet-Archive>, <#Solidflix> .
 
+<#Other-Services> a skos:Collection ; skos:prefLabel "Other Services" ;
+  skos:member <#Bluesky>, <#CryptPad>, <#Duck-ai>, <#Element>, <#HuggingFace-Chat>, <#Lemmy>, <#LibreTranslate>, <#Mastodon>, <#Matrix-Chat>, <#OpenStreetMap>, <#Pixelfed>, <#Proton-Calendar>, <#Proton-Drive>, <#Proton-Mail>, <#SearXNG>, <#SepiaSearch>, <#Standard-Notes>, <#Tuta> .
+
 <#Pods> a skos:Collection ; skos:prefLabel "Pods" ;
   skos:member <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Sign-in>, <#Solid-File-Manager>, <#SolidOS-data-browser>, <#Workspaces-pod-browser> .
 
@@ -37,7 +40,7 @@
   skos:member <#Solid-Catalog>, <#Solid-FAQ>, <#Solid-Glossary>, <#Solid-Website>, <#Tag-Explainer> .
 
 <#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
-  skos:member <#0data-Hello>, <#JSON-LD-Playground>, <#KeyPod>, <#RDF-Validator>, <#SHACL-Playground>, <#SPARQL-Playground>, <#Synara-AI> .
+  skos:member <#0data-Hello>, <#JSON-LD-Playground>, <#KeyPod>, <#Portable-LibreChat>, <#RDF-Validator>, <#SHACL-Playground>, <#SPARQL-Playground>, <#Synara-AI> .
 
 <#0data-Hello> a ui:Link ; ui:label "0data Hello" ;
   ui:icon "🧪" ;
@@ -52,6 +55,13 @@
   rdfs:comment "Track bills with payment reminders." ;
   dct:creator "Togaware" ;
   ui:href <https://billipod.solidcommunity.au> .
+
+<#Bluesky> a ui:Link ; ui:label "Bluesky" ;
+  ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Distributed social network (AT Protocol)." ;
+  dct:publisher "Bluesky" ;
+  ui:href <https://bsky.app/> .
 
 <#Booklice> a ui:Link ; ui:label "Booklice" ;
   ui:icon "🔖" ;
@@ -76,12 +86,33 @@
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/time/time-settings.ttl#Settings" ] .
 
+<#CryptPad> a ui:Link ; ui:label "CryptPad" ;
+  ui:icon "https://cryptpad.fr/customize/favicon/main-favicon.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Encrypted collaborative documents." ;
+  dct:publisher "CryptPad" ;
+  ui:href <https://cryptpad.fr/> .
+
 <#dokieli> a ui:Link ; ui:label "dokieli" ;
   ui:icon "📝" ;
   ui:region ui:Tab ;
   rdfs:comment "Write and publish articles, with annotations and social interactions." ;
   dct:creator "Sarven Capadisli and Virginia Balseiro" ;
   ui:href <https://dokie.li/> .
+
+<#Duck-ai> a ui:Link ; ui:label "Duck.ai" ;
+  ui:icon "https://duck.ai/favicon.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Private AI chat from DuckDuckGo." ;
+  dct:publisher "DuckDuckGo" ;
+  ui:href <https://duck.ai> .
+
+<#Element> a ui:Link ; ui:label "Element" ;
+  ui:icon "https://app.element.io/vector-icons/120.570a7f9.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Matrix client for secure, decentralized chat." ;
+  dct:publisher "Element" ;
+  ui:href <https://app.element.io/> .
 
 <#FilePod> a ui:Link ; ui:label "FilePod" ;
   ui:icon "📁" ;
@@ -110,6 +141,13 @@
   rdfs:comment "Home inventory for insurance and household records." ;
   dct:publisher "PrivateDataPod" ;
   ui:href <https://homevault.apps.privatedatapod.com/> .
+
+<#HuggingFace-Chat> a ui:Link ; ui:label "HuggingFace Chat" ;
+  ui:icon "https://huggingface.co/chat/huggingchat/icon.svg" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Chat with open-source AI models." ;
+  dct:publisher "Hugging Face" ;
+  ui:href <https://huggingface.co/chat/> .
 
 <#Images-Wikimedia> a ui:Component ; ui:label "Images (Wikimedia)" ;
   ui:icon "🖼" ;
@@ -146,6 +184,34 @@
   rdfs:comment "Collect and analyse your car’s data." ;
   dct:creator "Togaware" ;
   ui:href <https://konapod.solidcommunity.au> .
+
+<#Lemmy> a ui:Link ; ui:label "Lemmy" ;
+  ui:icon "https://icons.duckduckgo.com/ip3/lemmy.world.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Federated link aggregator and forums (ActivityPub)." ;
+  dct:publisher "Lemmy" ;
+  ui:href <https://lemmy.world/> .
+
+<#LibreTranslate> a ui:Link ; ui:label "LibreTranslate" ;
+  ui:icon "https://libretranslate.com/static/favicon.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Open-source machine translation." ;
+  dct:publisher "LibreTranslate" ;
+  ui:href <https://libretranslate.com/> .
+
+<#Mastodon> a ui:Link ; ui:label "Mastodon" ;
+  ui:icon "https://mastodon.social/packs/assets/favicon-48x48-DMnduFKh.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Decentralized social network." ;
+  dct:publisher "Mastodon" ;
+  ui:href <https://mastodon.social/> .
+
+<#Matrix-Chat> a ui:Link ; ui:label "Matrix Chat" ;
+  ui:icon "https://app.cinny.in/assets/favicon-5KspoOBy.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Matrix chat room for Solid practitioners." ;
+  dct:publisher "Matrix" ;
+  ui:href <https://matrix.to/#/#solid-practitioners:matrix.org> .
 
 <#Media-Kraken> a ui:Link ; ui:label "Media Kraken" ;
   ui:icon "🎬" ;
@@ -213,12 +279,26 @@
   dct:creator "Open Data Institute" ;
   ui:href <https://filemanager.solid-experiments.org/> .
 
+<#OpenStreetMap> a ui:Link ; ui:label "OpenStreetMap" ;
+  ui:icon "https://www.openstreetmap.org/assets/apple-touch-icon-57x57-0af2b52ac2b1a8cb0aba42f17aa901bfdedb9174bd978f838e3b3e1dd8602f52.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Open, community-built maps." ;
+  dct:publisher "OpenStreetMap" ;
+  ui:href <https://www.openstreetmap.org/> .
+
 <#Penny> a ui:Link ; ui:label "Penny" ;
   ui:icon "📁" ;
   ui:region ui:Tab ;
   rdfs:comment "Browse and manage everything in your pod." ;
   dct:creator "Vincent Tunru" ;
   ui:href <https://penny.vincenttunru.com/> .
+
+<#Pixelfed> a ui:Link ; ui:label "Pixelfed" ;
+  ui:icon "https://pixelfed.social/img/favicon.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Federated photo sharing (ActivityPub)." ;
+  dct:publisher "Pixelfed" ;
+  ui:href <https://pixelfed.social/> .
 
 <#Pod-Drive> a ui:Link ; ui:label "Pod Drive" ;
   ui:icon "📁" ;
@@ -261,6 +341,27 @@
   dct:creator "Solid Project" ;
   ui:href <https://chat.solidproject.org/> .
 
+<#Proton-Calendar> a ui:Link ; ui:label "Proton Calendar" ;
+  ui:icon "https://calendar.proton.me/assets/favicon.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Encrypted calendar from Proton." ;
+  dct:publisher "Proton" ;
+  ui:href <https://calendar.proton.me/> .
+
+<#Proton-Drive> a ui:Link ; ui:label "Proton Drive" ;
+  ui:icon "https://drive.proton.me/assets/favicon.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Encrypted file storage from Proton." ;
+  dct:publisher "Proton" ;
+  ui:href <https://drive.proton.me/> .
+
+<#Proton-Mail> a ui:Link ; ui:label "Proton Mail" ;
+  ui:icon "https://mail.proton.me/assets/favicon.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Encrypted email from Proton." ;
+  dct:publisher "Proton" ;
+  ui:href <https://mail.proton.me/> .
+
 <#RDF-Validator> a ui:Link ; ui:label "RDF Validator" ;
   ui:icon "🧬" ;
   ui:region ui:Tab ;
@@ -283,12 +384,26 @@
   ui:attribute
     [ schema:name "source" ; schema:value "./plugins/search/search-engines.ttl#SearchEngines" ] .
 
+<#SearXNG> a ui:Link ; ui:label "SearXNG" ;
+  ui:icon "https://searx.be/static/themes/simple/img/favicon.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Open-source privacy metasearch." ;
+  dct:publisher "SearXNG" ;
+  ui:href <https://searx.be/> .
+
 <#SecureDialog> a ui:Link ; ui:label "SecureDialog" ;
   ui:icon "💉" ;
   ui:region ui:Tab ;
   rdfs:comment "Diabetes logging with encrypted storage." ;
   dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://securedialog.solidcommunity.au> .
+
+<#SepiaSearch> a ui:Link ; ui:label "SepiaSearch" ;
+  ui:icon "https://sepiasearch.org/img/favicon.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Search federated PeerTube videos." ;
+  dct:publisher "Framasoft" ;
+  ui:href <https://sepiasearch.org/> .
 
 <#SHACL-Playground> a ui:Link ; ui:label "SHACL Playground" ;
   ui:icon "✅" ;
@@ -372,6 +487,13 @@
   dct:publisher "AtomGraph" ;
   ui:href <https://atomgraph.github.io/SPARQL-Playground/> .
 
+<#Standard-Notes> a ui:Link ; ui:label "Standard Notes" ;
+  ui:icon "https://app.standardnotes.com/favicon/apple-touch-icon.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Open-source encrypted notes." ;
+  dct:publisher "Standard Notes" ;
+  ui:href <https://app.standardnotes.com/> .
+
 <#Synara-AI> a ui:Link ; ui:label "Synara AI" ;
   ui:icon "🤖" ;
   ui:region ui:Tab ;
@@ -399,6 +521,13 @@
   rdfs:comment "Task lists in encrypted personal storage." ;
   dct:creator "Togaware" ;
   ui:href <https://todopod.solidcommunity.au> .
+
+<#Tuta> a ui:Link ; ui:label "Tuta" ;
+  ui:icon "https://app.tuta.com/images/logo-favicon.svg" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Open-source encrypted email." ;
+  dct:publisher "Tuta" ;
+  ui:href <https://app.tuta.com/> .
 
 <#Umai> a ui:Link ; ui:label "Umai" ;
   ui:icon "🍳" ;
