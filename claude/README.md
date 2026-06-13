@@ -139,6 +139,22 @@ server up (`npm run serve`) — `node claude/smoke-tests/<file>`.
   podz bundle loads, both `sol-pod`s upgrade, and rdflib stays a single shared
   instance (no second copy).
 
+### save-500 repro (2026-06-13)
+
+Pinned down a "save failed PUT …main-menu.ttl → 500" that turned out to be a
+malformed pod `.meta` (an undeclared `solid:` prefix), NOT the menu content.
+Kept as the record of how it was isolated:
+
+- `repro-menu-save.mjs` — builds the exact Turtle body the shell PUTs (parse
+  `main-menu.ttl` → add a link to `#Tabs` → serialize) and re-parses it with
+  both rdflib and N3. Proves the BODY is valid (so the 500 is server-side).
+- `repro-put-server.cjs` — boots a throwaway pivot/CSS on a temp root with
+  `showStackTrace:true` and replays the PUT. Clean pod → 201/205, no error.
+- `repro-put-realpod.cjs` — same, but against a COPY of the real pod, which
+  surfaced the true cause: `Undefined prefix "solid:"` from the root `.meta`.
+  Fix lives in `electron-config/pod-template.cjs` (append branch now emits the
+  `@prefix solid:` line).
+
 ## What's not here
 
 - Application source (`src/`), data (`data/`), build config
