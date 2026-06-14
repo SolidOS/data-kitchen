@@ -2451,6 +2451,16 @@ function createPlayer({ libraryConfigs, libs, host }) {
   }
 
   function renderTracks() {
+    // Resume relink: after a reload, currentTrack can be a detached snapshot
+    // object (a playlist track restored before its playlist loaded). Once the
+    // live queue holds the same track (by url), point currentTrack at it — so
+    // the playing row highlights and next/prev work (both key on currentTrack.id
+    // against currentTracks). No-op in normal flow (currentTrack is in the
+    // queue) and when the playing track isn't in the current view.
+    if (currentTrack && !currentTracks.includes(currentTrack)) {
+      const liveTrack = currentTracks.find((t) => t.url === currentTrack.url);
+      if (liveTrack) currentTrack = liveTrack;
+    }
     // Whether a row gets the ⋯ kebab (≥2 actions: menu) vs the plain ✕
     // (1 action: direct remove). canEditTrack covers Edit availability
     // — kebab whenever Edit OR Visit-on-IA apply alongside Remove. The

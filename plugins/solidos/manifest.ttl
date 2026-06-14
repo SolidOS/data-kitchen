@@ -6,7 +6,6 @@
 <>
   a ui:Component ;
   ui:label "SolidOS" ;
-  ui:icon "./assets/icons/solid-logo.svg" ;
   ui:name "dk-solidos" ;
   dct:creator "SolidOS Team" ;
   dct:hasPart <./dk-solidos.html> , <./dk-solidos.js> , <./solidos-host.html> ;
