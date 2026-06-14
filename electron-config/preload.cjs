@@ -168,7 +168,13 @@ function setupMenuOverlayGuard() {
   // #dk-menu-pane's `hidden` toggling.
   if (!guardBodyWatched && document.body) {
     guardBodyWatched = true;
-    new MutationObserver(guardCheck).observe(document.body, {
+    // Re-bind on every mutation, not just at boot: the submenu-dropdown
+    // launchers (Solid Resources, Dev Tools, …) are built by sol-tabs from RDF
+    // AFTER the boot loop ends, and are rebuilt wholesale on a Customize save —
+    // each rebuild makes NEW sol-dropdown-button elements whose shadow popups
+    // would otherwise go unwatched, so opening one over an external pane would
+    // not suspend the native overlay (the popup gets occluded = "truncated").
+    new MutationObserver(() => { setupMenuOverlayGuard(); guardCheck(); }).observe(document.body, {
       childList: true, subtree: true, attributes: true, attributeFilter: ['open', 'hidden'],
     });
   }

@@ -21,6 +21,12 @@
 The living suite for the consolidated app (servers up first — see file
 headers):
 
+- **Live-app geometry diags (2026-06-14)** — `diag-live-truncation.mjs`,
+  `diag-live-settings-width.mjs`: drive the REAL running Electron app at `:8000`
+  headless (global puppeteer; load `http://localhost:8000/?dk-token=<token>` with
+  the token from `~/.config/data-kitchen/gate-token`) and dump the height/width
+  chain of the settings page + dropdown panes. Use these (not the `:8081` static
+  server, which doesn't serve the pod) to MEASURE pod-backed UI before editing.
 - `verify-unified-shell.mjs` — the whole shell, functionally: default tab
   set + pantry absences, News default, lazy media (no library fetches at
   startup), per-tab plugin checks (tracks, feeds, pod panes), context help

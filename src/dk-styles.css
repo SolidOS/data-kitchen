@@ -242,7 +242,13 @@ dk-calendar-popout .dk-popout-panel sol-calendar {
   overflow: auto;
   height: 100%;
   box-sizing: border-box;
-  max-width: 88rem;
+  /* The settings page is just a defined-width column: sol-form and the
+     sol-settings accordion both FILL it (they have no width of their own, sc),
+     so they stay even with each other automatically. width:100% gives this flex
+     child of #dk-menu-pane (a column flexbox) a definite width instead of
+     collapsing to content; margin centres it. */
+  width: 100%;
+  max-width: 46rem;
   margin: 0 auto;
 }
 .dk-settings .dk-settings-head {

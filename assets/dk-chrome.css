@@ -1,8 +1,12 @@
 /* omp shell styles — extracted from index.html (2026-05-31).
-   Theme / text-size / dev-write are declared on <sol-default> (theme, fontsize,
-   solid-kitchen). omp-boot applies a SAVED choice (localStorage) to <html
+   Theme / text-size defaults come from <sol-default>'s RDF source: sol-default
+   reads ui:colorScheme / ui:fontSize into the `color-scheme` / `font-size`
+   attributes, whose VALUES are the full UI-vocab URIs (…#DarkColorScheme,
+   …#MediumFont). dk-boot applies a SAVED choice (localStorage) to <html
    data-theme/data-fontsize> pre-paint; the DEFAULT (and the system fallback for
-   theme) is resolved by the :has() cascade below — no script, no window flag. */
+   theme) is resolved by the :has() cascade below, suffix-matching ($=) the URI
+   local name — no script, no window flag. (solid-kitchen, the dev-write flag,
+   stays a plain attribute.) */
 
     :root {
       /* Per-library tab accents (mirror the in-panel room accents). */
@@ -16,43 +20,47 @@
 
     /* ── Theme DEFAULT — when there's no explicit <html data-theme> override ──
        Saved/toggled theme lives on <html data-theme> (above + ia.css). With none
-       set, the default is read off <sol-default theme="…">; if it omits theme,
-       the system preference wins. Dark is the base (ia.css :root) so only the
-       light case needs rules. The primitives/room values mirror ia.css's
+       set, the default is read off <sol-default color-scheme="…"> (RDF-derived
+       from ui:colorScheme; the value is the full URI, so match its …#LightColorScheme
+       suffix with $=). If the attribute is absent (RDF not yet resolved, or no
+       value), the system preference wins. Dark is the base (ia.css :root) so only
+       the light case needs rules. The primitives/room values mirror ia.css's
        [data-theme="light"]; keyed via :has() so it's scriptless and pre-paint. */
-    :root:not([data-theme]):has(sol-default[theme="light"]) {
+    :root:not([data-theme]):has(sol-default[color-scheme$="LightColorScheme"]) {
       color-scheme: light;
       --ia-lift: #ffffff;  --ia-hover: #1b1712;  --ia-sink: #000000;
       --ia-base: #efe9dd;  --ia-ink: #2a2620;  --ia-accent: #b5651d;  --ia-on-accent: #ffffff;
       --tab-music: #a8581a;  --tab-movies: #1c7283;  --tab-news: #2f7d4f;  --tab-images: #7d4f9e;  --tab-on: #ffffff;
       --tab-workspaces: #4348a8;  --tab-resources: #2f5f9e;  --tab-devtools: #a83a3a;
     }
-    :root:not([data-theme]):has(sol-default[theme="light"]) .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
-    :root:not([data-theme]):has(sol-default[theme="light"]) .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
+    :root:not([data-theme]):has(sol-default[color-scheme$="LightColorScheme"]) .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
+    :root:not([data-theme]):has(sol-default[color-scheme$="LightColorScheme"]) .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
     @media (prefers-color-scheme: light) {
-      :root:not([data-theme]):not(:has(sol-default[theme])) {
+      :root:not([data-theme]):not(:has(sol-default[color-scheme])) {
         color-scheme: light;
         --ia-lift: #ffffff;  --ia-hover: #1b1712;  --ia-sink: #000000;
         --ia-base: #efe9dd;  --ia-ink: #2a2620;  --ia-accent: #b5651d;  --ia-on-accent: #ffffff;
         --tab-music: #a8581a;  --tab-movies: #1c7283;  --tab-news: #2f7d4f;  --tab-images: #7d4f9e;  --tab-on: #ffffff;
       --tab-workspaces: #4348a8;  --tab-resources: #2f5f9e;  --tab-devtools: #a83a3a;
       }
-      :root:not([data-theme]):not(:has(sol-default[theme])) .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
-      :root:not([data-theme]):not(:has(sol-default[theme])) .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
+      :root:not([data-theme]):not(:has(sol-default[color-scheme])) .ia-player-app.media-audio { --ia-base:#f7f1e4; --ia-ink:#2c2317; --ia-accent:#a8581a; --ia-on-accent:#fff; }
+      :root:not([data-theme]):not(:has(sol-default[color-scheme])) .ia-player-app.media-video { --ia-base:#e8eff2; --ia-ink:#152029; --ia-accent:#1c7283; --ia-on-accent:#fff; }
     }
 
     /* ── Text-size DEFAULT — when there's no explicit <html data-fontsize> ────
-       Read off <sol-default fontsize="…">, default medium. Drives the root
-       rem size (mirrors ia.css :root[data-fontsize]) and the per-panel
-       --font-size (mirrors the [data-fontsize] #panel rules further down). */
-    :root:not([data-fontsize]):has(sol-default[fontsize="small"])  { font-size: 16px; }
-    :root:not([data-fontsize]):has(sol-default[fontsize="large"])  { font-size: 24px; }
-    :root:not([data-fontsize]):has(sol-default[fontsize="medium"]),
-    :root:not([data-fontsize]):not(:has(sol-default[fontsize]))    { font-size: 20px; }
-    :root:not([data-fontsize]):has(sol-default[fontsize="small"]) :is(#panel-news, #panel-images) { --font-size: 16px; }
-    :root:not([data-fontsize]):has(sol-default[fontsize="large"]) :is(#panel-news, #panel-images) { --font-size: 24px; }
-    :root:not([data-fontsize]):has(sol-default[fontsize="medium"]) :is(#panel-news, #panel-images),
-    :root:not([data-fontsize]):not(:has(sol-default[fontsize]))    :is(#panel-news, #panel-images) { --font-size: 20px; }
+       Read off <sol-default font-size="…"> (RDF-derived from ui:fontSize; the
+       value is the full URI, so match its …#SmallFont / …#LargeFont suffix with
+       $=), default medium. Drives the root rem size (mirrors ia.css
+       :root[data-fontsize]) and the per-panel --font-size (mirrors the
+       [data-fontsize] #panel rules further down). */
+    :root:not([data-fontsize]):has(sol-default[font-size$="SmallFont"])  { font-size: 16px; }
+    :root:not([data-fontsize]):has(sol-default[font-size$="LargeFont"])  { font-size: 24px; }
+    :root:not([data-fontsize]):has(sol-default[font-size$="MediumFont"]),
+    :root:not([data-fontsize]):not(:has(sol-default[font-size]))    { font-size: 20px; }
+    :root:not([data-fontsize]):has(sol-default[font-size$="SmallFont"]) :is(#panel-news, #panel-images) { --font-size: 16px; }
+    :root:not([data-fontsize]):has(sol-default[font-size$="LargeFont"]) :is(#panel-news, #panel-images) { --font-size: 24px; }
+    :root:not([data-fontsize]):has(sol-default[font-size$="MediumFont"]) :is(#panel-news, #panel-images),
+    :root:not([data-fontsize]):not(:has(sol-default[font-size]))    :is(#panel-news, #panel-images) { --font-size: 20px; }
     html, body { height: 100%; margin: 0; }
     body {
       display: flex; flex-direction: column;
@@ -318,9 +326,9 @@
        the :root base, light layered via data-theme / sol-default / system pref. */
     :root { --omp-popup-border: silver; }
     [data-theme="light"],
-    :root:not([data-theme]):has(sol-default[theme="light"]) { --omp-popup-border: #000; }
+    :root:not([data-theme]):has(sol-default[color-scheme$="LightColorScheme"]) { --omp-popup-border: #000; }
     @media (prefers-color-scheme: light) {
-      :root:not([data-theme]):not(:has(sol-default[theme])) { --omp-popup-border: #000; }
+      :root:not([data-theme]):not(:has(sol-default[color-scheme])) { --omp-popup-border: #000; }
     }
     /* Search panel keeps its dk border; the ☰ menu (and every dropdown) now
        gets the silver lining from the sol-components default (sol-dropdown-

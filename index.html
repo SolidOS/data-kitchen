@@ -34,16 +34,20 @@
 </head>
 <body>
 
-  <!-- data-settings-skip: preferences render as the open form at the top of
-       the settings page (pages/settings.html), not as an accordion panel. -->
+  <!-- The shared-defaults singleton, RDF-driven like the rest of the shell: its
+       VALUES (color scheme, text size, CORS proxy) come from the `source` RDF —
+       sol-default reads each ui: predicate into a kebab attribute
+       (ui:colorScheme→color-scheme, ui:fontSize→font-size, ui:proxy→proxy). The
+       markup names ONLY the structural anchors: `source` (what it loads),
+       `shape` (the SHACL that drives the editable form), `solid-kitchen` (the
+       dev write flag), `label` (the form's title). No inline value overrides —
+       so nothing here shadows the RDF.
+       data-settings-skip: preferences render as the open form at the top of the
+       settings page (pages/settings.html), not as an accordion panel. -->
   <sol-default
       data-settings-skip
       label="Preferences"
-      theme="dark"
-      fontsize="medium"
       solid-kitchen
-      proxy="http://localhost:8001/proxy?uri="
-      default-issuer="https://solidcommunity.net"
       shape="node_modules/sol-components/shapes/data-kitchen-settings.shacl"
       source="dk-pod/dk/data/data-kitchen-settings.ttl#Settings"
   ></sol-default>

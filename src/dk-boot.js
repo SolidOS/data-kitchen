@@ -1,9 +1,14 @@
 // Runs first, synchronously, before paint: apply the user's SAVED theme / text
 // size (their explicit localStorage choice) so there's no flash. The *default*
-// when nothing is saved is declared on <sol-default theme=… fontsize=…> and
-// resolved by CSS (see dk-chrome.css cascade) — and the system preference is
-// the final fallback there. Dev write access is the `solid-kitchen` attribute
-// on <sol-default>, read by the app; there is no window global any more.
+// when nothing is saved comes from <sol-default>'s RDF source (ui:colorScheme /
+// ui:fontSize → the `color-scheme` / `font-size` attributes) and is resolved by
+// CSS (see dk-chrome.css cascade, which suffix-matches the UI-vocab URI) — with
+// the system preference as the final fallback. NOTE: the RDF-derived attributes
+// arrive after a fetch, so on a brand-new profile (empty localStorage) first
+// paint shows the system theme, then snaps to the RDF default once it resolves;
+// returning users hit the localStorage path above and never flash. Dev write
+// access is the `solid-kitchen` attribute on <sol-default>, read by the app;
+// there is no window global any more.
 (function () {
   try {
     var t = localStorage.getItem('dk:theme');

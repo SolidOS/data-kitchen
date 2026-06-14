@@ -229,14 +229,18 @@
     const docEl = document.documentElement;
     const solDefault = () => document.querySelector('sol-default');
     // The EFFECTIVE theme = explicit override (<html data-theme>, from a saved
-    // choice or the toggle) → declared default (<sol-default theme>) → system
-    // preference. The CSS cascade applies the same precedence for paint; this
-    // mirrors it so the toggle/icon reflect what's actually showing.
+    // choice or the toggle) → declared default → system preference. The declared
+    // default now comes from the RDF-derived `color-scheme` attribute (a full
+    // UI-vocab URI, e.g. …#DarkColorScheme); map its local name back to the short
+    // value via THEME_TERM. SystemColorScheme (and a missing attribute) fall
+    // through to the live system preference. The CSS cascade applies the same
+    // precedence for paint; this mirrors it so the toggle/icon reflect reality.
     function effectiveTheme() {
       const explicit = docEl.getAttribute('data-theme');
       if (explicit) return explicit;
-      const declared = solDefault()?.getAttribute('theme');
-      if (declared) return declared;
+      const scheme = solDefault()?.getAttribute('color-scheme');
+      const declared = scheme && Object.keys(THEME_TERM).find((k) => scheme.endsWith(THEME_TERM[k]));
+      if (declared && declared !== 'system') return declared;
       try { return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch { return 'dark'; }
     }
     // Live lookups — the buttons are built from data/data-kitchen-main-menu.ttl (dk-tabs-rdf),
@@ -278,13 +282,25 @@
           method: 'PUT', headers: { 'Content-Type': 'text/turtle' }, body: turtle,
         });
         if (!res || res.ok === false) throw new Error(`PUT ${docUrl} → ${res && res.status}`);
+        // The toggle just rewrote the settings doc — re-sync the live defaults
+        // and any OPEN settings form so they reflect the new value (neither
+        // watches the file; without this they'd keep showing the old choice).
+        const sd = solDefault();
+        if (sd && typeof sd.reload === 'function') { try { await sd.reload(); } catch (_) {} }
+        document.querySelectorAll('.dk-settings sol-form').forEach((f) => {
+          if (typeof f.reload === 'function') { try { f.reload(); } catch (_) {} }
+        });
       }).catch((e) => console.warn('[dk] appearance not saved to settings RDF:', e.message));
     }
     const SIZES = ['small', 'medium', 'large'];
     function effectiveFontSize() {
-      return docEl.getAttribute('data-fontsize')
-          || solDefault()?.getAttribute('fontsize')
-          || 'medium';
+      const explicit = docEl.getAttribute('data-fontsize');
+      if (explicit) return explicit;
+      // Declared default from the RDF-derived `font-size` attribute (full URI,
+      // e.g. …#MediumFont) → map its local name back via FONT_TERM.
+      const fs = solDefault()?.getAttribute('font-size');
+      const declared = fs && Object.keys(FONT_TERM).find((k) => fs.endsWith(FONT_TERM[k]));
+      return declared || 'medium';
     }
     const fontBtn = () => document.querySelector('.omp-fontsize');
     function syncFontSize() {
