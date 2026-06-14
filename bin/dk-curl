@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# dk-curl — curl against the LOCAL data-kitchen pod, with the gate token attached
+# so requests pass the bundled server's gate (electron-config/gate.cjs). Lets you
+# read and write the running pod from the shell exactly as an app would, without
+# weakening the gate — it just presents the same token the app injects.
+#
+#   dk-curl [curl options...] <path-or-url>
+#
+# The LAST argument is the target:
+#   /dk-pod/…  or  dk-pod/…  or  ./dk-pod/…   → resolved against DK_BASE
+#   http(s)://…                                → used as-is
+# DK_BASE defaults to http://localhost:8000 (the routed origin — the real path,
+# router → CSS). Set DK_BASE=http://localhost:8010 to hit the CSS pod server
+# directly. Everything else is passed straight through to curl, so all of curl's
+# flags work (-X, -H, -d, --data-binary @file, -i, -I, -o, …).
+#
+# Examples:
+#   dk-curl /dk-pod/profile/card
+#   dk-curl -i /dk-pod/dk/data/data-kitchen-settings.ttl
+#   dk-curl -X PUT -H 'content-type: text/turtle' --data-binary @note.ttl /dk-pod/dk/scratch/note.ttl
+#   echo '<a> <b> <c>.' | dk-curl -X PUT -H 'content-type: text/turtle' --data-binary @- /dk-pod/x.ttl
+#   dk-curl -X DELETE /dk-pod/dk/scratch/note.ttl
+#   DK_BASE=http://localhost:8010 dk-curl /dk-pod/dk/data/data-kitchen-settings.ttl
+set -euo pipefail
+
+tokfile="${XDG_CONFIG_HOME:-$HOME/.config}/data-kitchen/gate-token"
+tok=$(cat "$tokfile" 2>/dev/null) || {
+  echo "dk-curl: no gate token at $tokfile" >&2
+  echo "         (run the dk app once so it generates one, or set DK_BASE to an ungated server)" >&2
+  exit 1
+}
+
+base="${DK_BASE:-http://localhost:8000}"
+base="${base%/}"
+
+if [ "$#" -eq 0 ]; then
+  echo "usage: dk-curl [curl options...] <path-or-url>" >&2
+  echo "  e.g. dk-curl /dk-pod/profile/card" >&2
+  echo "       dk-curl -X PUT -H 'content-type: text/turtle' --data-binary @f.ttl /dk-pod/x.ttl" >&2
+  exit 2
+fi
+
+# Resolve the LAST argument when it's a pod-relative path; leave full URLs, flags
+# and other args untouched (so e.g. `-o /tmp/out` is never mangled).
+args=("$@")
+last=$(( $# - 1 ))
+target="${args[$last]}"
+case "$target" in
+  http://*|https://*) ;;                          # full URL — as-is
+  /*)            target="$base$target" ;;         # /dk-pod/…
+  ./dk-pod/*)    target="$base/${target#./}" ;;   # ./dk-pod/…
+  dk-pod/*)      target="$base/$target" ;;        # dk-pod/…
+  *)             ;;                               # a flag or bare word — leave for curl
+esac
+args[$last]="$target"
+
+exec curl -H "x-dk-token: $tok" "${args[@]}"

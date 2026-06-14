@@ -29,6 +29,19 @@ a server already answering on its port is reused):
   (`DK_CSS_BASEURL`) so the URLs it generates point at the router.
 - **proxy** (`proxy/index.cjs`, :8001) — a dependency-free CORS proxy.
 
+All three are bound to `127.0.0.1` and **gated** (`electron-config/gate.cjs`): the
+app's traffic carries a per-install token (Electron injects `x-dk-token`; the
+launcher wraps even stock CSS via a `net.Server.prototype.listen` intercept), and
+an unblessed local page gets `401` — necessary because CSS runs no WebACL. To
+read/write the running pod from the shell with that token attached, use
+**`bin/dk-curl`** (a thin `curl` wrapper that reads `~/.config/data-kitchen/gate-token`):
+
+```bash
+bin/dk-curl /dk-pod/profile/card                                              # GET
+bin/dk-curl -X PUT -H 'content-type: text/turtle' --data-binary @f.ttl /dk-pod/x.ttl
+DK_BASE=http://localhost:8010 bin/dk-curl /dk-pod/…                           # CSS directly
+```
+
 **Self-hosting / redesignable.** dk is meant to be redesigned by the user — tabs,
 buttons, the components wired in (the manifest), settings. The **pod root**
 (`DK_POD_ROOT`) is a Solid storage served at `/`; the user's **home pod** lives
