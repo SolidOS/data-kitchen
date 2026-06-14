@@ -4,18 +4,23 @@
 @prefix schema: <http://schema.org/>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
 
+:Apps a ui:Menu; ui:label "Apps"; ui:parts ( ).
+
 :Bar
     a ui:Menu;
     ui:label "actions";
     ui:orientation ui:Horizontal;
-    ui:parts ( :bar-search :bar-calendar ).
+    ui:parts
+            ( :Matrix-Chat-2 :Mastodon-2 :Lemmy :SepiaSearch :Pixelfed
+            :Bluesky-2 :Duck-ai-3 :bar-search :bar-calendar ).
 :bar-calendar
     a ui:Component;
     ui:attribute
         [ schema:name "class"; schema:value "omp-calendar" ],
             [
                 schema:name "source";
-                schema:value "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All"
+                schema:value
+                "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All"
             ],
         [ schema:name "title"; schema:value "Calendar" ];
     ui:label "Calendar";
@@ -62,7 +67,10 @@
         [ schema:name "class"; schema:value "omp-settings-launch" ],
         [ schema:name "data-handler"; schema:value "sol-include" ],
         [ schema:name "inline"; schema:value "" ],
-        [ schema:name "source"; schema:value "./dk-pod/dk/pages/settings.html" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/pages/settings.html"
+            ],
         [ schema:name "title"; schema:value "Settings" ],
         [ schema:name "trusted"; schema:value "" ];
     ui:label "⚙";
@@ -75,6 +83,18 @@
         [ schema:name "title"; schema:value "Toggle light / dark" ];
     ui:label "🌙";
     ui:name "sol-button".
+:Bluesky
+    a ui:Link;
+    ui:href "https://bsky.app/";
+    ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png";
+    ui:label "Bluesky";
+    ui:region ui:Tab.
+:Bluesky-2
+    a ui:Link;
+    ui:href "https://bsky.app/";
+    ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png";
+    ui:label "Bluesky";
+    ui:region ui:Tab.
 :Chrome
     a ui:Menu;
     ui:label "chrome";
@@ -87,7 +107,10 @@
         [ schema:name "aria-label"; schema:value "Help" ],
         [ schema:name "class"; schema:value "omp-help-launch" ],
         [ schema:name "data-handler"; schema:value "sol-include" ],
-        [ schema:name "if-logged-in"; schema:value "./dk-pod/dk/help/dk-owner.html" ],
+            [
+                schema:name "if-logged-in";
+                schema:value "./dk-pod/dk/help/dk-owner.html"
+            ],
         [ schema:name "inline"; schema:value "" ],
         [ schema:name "source"; schema:value "./dk-pod/dk/help/dk.html" ],
         [ schema:name "title"; schema:value "Help" ],
@@ -119,10 +142,14 @@
     ui:attribute
         [ schema:name "aria-label"; schema:value "Menu" ],
         [ schema:name "class"; schema:value "omp-more" ],
+        [ schema:name "data-settings-skip"; schema:value "" ],
         [ schema:name "label"; schema:value "☰" ],
-        [ schema:name "source"; schema:value "./dk-pod/dk/data/data-kitchen-hamburger-menu.ttl#More" ],
-        [ schema:name "title"; schema:value "Menu" ],
-        [ schema:name "data-settings-skip"; schema:value "" ];
+            [
+                schema:name "source";
+                schema:value
+                "./dk-pod/dk/data/data-kitchen-hamburger-menu.ttl#More"
+            ],
+        [ schema:name "title"; schema:value "Menu" ];
     ui:label "Menu";
     ui:name "sol-dropdown-button";
     ui:region ui:Modal.
@@ -135,11 +162,83 @@
                 schema:value "./dk-pod/dk/plugins/dev-tools/dev-tools.html"
             ],
         [ schema:name "trusted"; schema:value "" ];
-    ui:label "🛠 Dev Tools";
+    ui:label "Dev Tools";
     ui:name "sol-include".
+:Duck-ai
+    a ui:Link;
+    ui:href "https://duck.ai";
+    ui:icon "https://duck.ai/favicon.ico";
+    ui:label "Duck.ai";
+    ui:region ui:Tab.
+:Duck-ai-2
+    a ui:Link;
+    ui:href "https://duck.ai";
+    ui:icon "https://duck.ai/favicon.ico";
+    ui:label "Duck.ai";
+    ui:region ui:Tab.
+:Duck-ai-3
+    a ui:Link;
+    ui:href "https://duck.ai";
+    ui:icon "https://duck.ai/favicon.ico";
+    ui:label "Duck.ai";
+    ui:region ui:Tab.
+:HuggingFace-Chat
+    a ui:Link;
+    ui:href "https://huggingface.co/chat/";
+    ui:icon "https://huggingface.co/chat/huggingchat/icon.svg";
+    ui:label "HuggingFace Chat";
+    ui:region ui:Tab.
+:Images-Wikimedia
+    a ui:Component;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                    "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
+:Images-Wikimedia-2
+    a ui:Component;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                    "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
+:Internet-Archive-player
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:icon "🎵";
+    ui:label "Internet Archive player";
+    ui:name "ia-player".
+:Internet-Archive-player-2
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:icon "🎵";
+    ui:label "Music (Internet Archive)";
+    ui:name "ia-player".
 :item
     a ui:Menu;
-    ui:label "Solid";
+    ui:label "Solid Resources";
     ui:parts
             ( :Solid-FAQ-2 :Solid-Website :Tag-Explainer-2 :Solid-Catalog-2
             :Solid-Glossary-3 ).
@@ -155,6 +254,59 @@
     ui:icon "🧩";
     ui:label "JSON-LD Playground";
     ui:region ui:Tab.
+:Lemmy
+    a ui:Link;
+    ui:href "https://lemmy.world/";
+    ui:icon "https://icons.duckduckgo.com/ip3/lemmy.world.ico";
+    ui:label "Lemmy";
+    ui:region ui:Tab.
+:Mastodon
+    a ui:Link;
+    ui:href "https://mastodon.social/";
+    ui:icon "https://mastodon.social/packs/assets/favicon-48x48-DMnduFKh.png";
+    ui:label "Mastodon";
+    ui:region ui:Tab.
+:Mastodon-2
+    a ui:Link;
+    ui:href "https://mastodon.social/";
+    ui:icon "https://mastodon.social/packs/assets/favicon-48x48-DMnduFKh.png";
+    ui:label "Mastodon";
+    ui:region ui:Tab.
+:Matrix-Chat
+    a ui:Link;
+    ui:href "https://matrix.to/#/#solid-practitioners:matrix.org";
+    ui:icon "https://app.cinny.in/assets/favicon-5KspoOBy.ico";
+    ui:label "Matrix Chat";
+    ui:region ui:Tab.
+:Matrix-Chat-2
+    a ui:Link;
+    ui:href "https://matrix.to/#/#solid-practitioners:matrix.org";
+    ui:icon "https://app.cinny.in/assets/favicon-5KspoOBy.ico";
+    ui:label "Matrix Chat";
+    ui:region ui:Tab.
+:Media
+    a ui:Menu;
+    ui:label "Media";
+    ui:parts
+    ( :Internet-Archive-player-2 :Images-Wikimedia-2 :Movies-Internet-Archive ).
+:Movies-Internet-Archive
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "favourites-only"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./plugins/ia-player/libraries/internet_archive_movies/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "movies" ];
+    ui:icon "🎬";
+    ui:label "Movies (Internet Archive)";
+    ui:name "ia-player".
+:Music-Internet-Archive
+    a ui:Menu;
+    ui:label "Music (Internet Archive)";
+    ui:parts ( :Internet-Archive-player :Images-Wikimedia ).
 :panel-customize
     a ui:Component;
     acl:mode acl:Write;
@@ -169,7 +321,7 @@
     ui:name "sol-include".
 :panel-dev-tools
     a ui:Menu;
-    ui:label "🛠 Dev Tools";
+    ui:label "Dev Tools";
     ui:parts
             ( :Dev-Tools :RDF-Validator :SHACL-Playground :JSON-LD-Playground-2
             :SPARQL-Playground ).
@@ -177,7 +329,10 @@
     a ui:Component;
     ui:attribute
         [ schema:name "id"; schema:value "panel-home" ],
-        [ schema:name "source"; schema:value "./dk-pod/dk/plugins/home/home.html" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/home/home.html"
+            ],
         [ schema:name "trusted"; schema:value "" ];
     ui:label "🏠 Home";
     ui:name "sol-include".
@@ -224,18 +379,17 @@
     ui:attribute
         [ schema:name "id"; schema:value "panel-news" ],
         [ schema:name "reader"; schema:value "inline" ],
-        [ schema:name "source"; schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
+            ],
         [ schema:name "view"; schema:value "threePanel" ];
-    ui:label "📰 News";
+    ui:label "News";
     ui:name "sol-feed".
 :panel-podz
-    a ui:Component;
-    ui:attribute
-        [ schema:name "defer"; schema:value "" ],
-        [ schema:name "id"; schema:value "panel-podz" ],
-        [ schema:name "source"; schema:value "./dk-pod/dk/plugins/podz/dk-podz.html" ];
-    ui:label "🗂 Workspaces";
-    ui:name "dk-podz".
+    a ui:Menu;
+    ui:label "Pods";
+    ui:parts ( :Pod-browser :SolidOS-data-browser :PodOS-Browser ).
 :panel-solidos
     a ui:Component;
     ui:attribute
@@ -247,11 +401,40 @@
             ];
     ui:label "🐧 SolidOS";
     ui:name "dk-solidos".
+:Pixelfed
+    a ui:Link;
+    ui:href "https://pixelfed.social/";
+    ui:icon "https://pixelfed.social/img/favicon.png";
+    ui:label "Pixelfed";
+    ui:region ui:Tab.
+:Pod-browser
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-podz" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/podz/dk-podz.html"
+            ];
+    ui:label "Pod browser";
+    ui:name "dk-podz".
+:PodOS-Browser
+    a ui:Link;
+    ui:href "https://browser.pod-os.org/";
+    ui:icon "🔍";
+    ui:label "PodOS Browser";
+    ui:region ui:Tab.
 :RDF-Validator
     a ui:Link;
     ui:href "http://easyrdf.org/converter";
     ui:icon "🧬";
     ui:label "RDF Validator";
+    ui:region ui:Tab.
+:SepiaSearch
+    a ui:Link;
+    ui:href "https://sepiasearch.org/";
+    ui:icon "https://sepiasearch.org/img/favicon.png";
+    ui:label "SepiaSearch";
     ui:region ui:Tab.
 :SHACL-Playground
     a ui:Link;
@@ -262,7 +445,7 @@
 :Solid
     a ui:Link;
     ui:href "https://solidproject.solidcommunity.net/catalog/";
-    ui:icon "./assets/icons/solid-logo.svg";
+    ui:icon "🗃️";
     ui:label "Solid";
     ui:region ui:Tab.
 :Solid-Catalog
@@ -313,6 +496,17 @@
     ui:icon "🌐";
     ui:label "Solid Website";
     ui:region ui:Tab.
+:SolidOS-data-browser
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "./plugins/solidos/dk-solidos.html"
+            ];
+    ui:icon "🐧";
+    ui:label "SolidOS (data browser)";
+    ui:name "dk-solidos".
 :SPARQL-Playground
     a ui:Link;
     ui:href "https://atomgraph.github.io/SPARQL-Playground/";
@@ -323,9 +517,7 @@
     a ui:Menu;
     ui:label "data-kitchen";
     ui:orientation ui:Horizontal;
-    ui:parts
-            ( :panel-news :panel-music :panel-images :panel-movies :panel-podz
-            :item :panel-dev-tools ).
+    ui:parts ( :panel-news :Media :panel-podz :Apps :item :panel-dev-tools ).
 :Tag-Explainer
     a ui:Link;
     ui:href

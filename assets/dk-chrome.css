@@ -92,7 +92,7 @@
       overflow-x: visible; overflow-y: visible;
     }
     #dk-tabs > .sol-tabs-bar > button {
-      font-family: var(--ia-font-display, Georgia, serif);
+      font-family: system-ui, sans-serif;
       font-size: 0.98rem; font-weight: 600; letter-spacing: 0.01em;
       line-height: 1.2;
       color: var(--ia-text-muted, #9aa);
@@ -109,6 +109,28 @@
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-podz"].active     { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-dev-tools"].active       { background: var(--tab-devtools);   border-color: var(--tab-devtools);   color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="Favourites"].active { background: var(--tab-fav, #e6b800); border-color: var(--tab-fav, #e6b800); color: var(--tab-on); }
+    /* A submenu tab is a <sol-dropdown-button> launcher (sol-tabs
+       _buildSubmenuDropdown), not a plain <button> — so dk's tab styling can't
+       reach it via the bar-button rule. Mirror the pill look onto its shadow
+       trigger via ::part(trigger), including the per-tab-id active accents. */
+    #dk-tabs > .sol-tabs-bar > sol-dropdown-button.sol-tabs-submenu::part(trigger) {
+      font-family: system-ui, sans-serif;
+      font-size: 0.98rem; font-weight: 600; letter-spacing: 0.01em; line-height: 1.2;
+      color: var(--ia-text-muted, #9aa);
+      background: var(--ia-bg-btn, #26282e);
+      border: 1px solid var(--ia-border-btn, #34373d); border-bottom: none;
+      border-radius: 9px 9px 0 0; padding: 8px 20px; margin-bottom: 0;
+      transition: color .15s ease, background .15s ease;
+    }
+    #dk-tabs > .sol-tabs-bar > sol-dropdown-button.sol-tabs-submenu::part(trigger):hover { color: var(--ia-text-strong, #fff); }
+    #dk-tabs > .sol-tabs-bar > sol-dropdown-button.sol-tabs-submenu.active::part(trigger) {
+      background: var(--tab-resources, #5b9bd5); border-color: var(--tab-resources, #5b9bd5); color: var(--tab-on);
+    }
+    #dk-tabs > .sol-tabs-bar > sol-dropdown-button[data-tab-id="panel-podz"].active::part(trigger)      { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
+    #dk-tabs > .sol-tabs-bar > sol-dropdown-button[data-tab-id="panel-dev-tools"].active::part(trigger)  { background: var(--tab-devtools);   border-color: var(--tab-devtools);   color: var(--tab-on); }
+    #dk-tabs > .sol-tabs-bar > sol-dropdown-button[data-tab-id="item"].active::part(trigger)             { background: var(--tab-resources);  border-color: var(--tab-resources);  color: var(--tab-on); }
+    /* (Popup border is now a sol-components default: silver, via
+       --menu-popup-border — see sol-dropdown-button.js.) */
     /* While help (.sol-inline-panel) or a ☰ component item (#dk-menu-pane)
        fills the tab content, no tab is the current view — drop the active
        highlight. */
@@ -126,7 +148,11 @@
       display: flex; flex-direction: column;
       flex: 1; min-height: 0; min-width: 0; width: 100%; max-width: 100%;
     }
-    #dk-tabs .sol-tabs-pane[hidden] { display: none; }
+    /* The pane AND its keep-alive item wrappers honour [hidden] — else a
+       hidden wrapper (parked by component-mount's pruneSiblings when another
+       item is picked) keeps rendering and stacks below the active one. */
+    #dk-tabs .sol-tabs-pane[hidden],
+    #dk-tabs .sol-tabs-pane > [data-menu-item][hidden] { display: none; }
     /* sol-tabs tags mounted panels .sol-tab-embed (display:flex;column); omp-images
        is a row layout (Favourites column + browser/gallery), so restore row. */
     #dk-tabs omp-images.sol-tab-embed { flex-direction: row; }
@@ -217,15 +243,28 @@
     /* Mini audio player — shown in the chrome ONLY when an audio library is
        playing and you're viewing a different tab. Just play/pause + progress;
        the full transport stays inside the audio panel. */
+    /* The mini-player is re-homed INTO the tab bar (dk-tabs-shell homeMini),
+       between the tabs and the right-aligned .sol-tabs-launch group. Its
+       margin-left:auto + the launch group's auto split the free space equally,
+       centring it in the gap; align-self:flex-end + padding-bottom sit it on the
+       tab baseline so it's only as tall as the bar. */
     .omp-mini {
       display: flex; align-items: center; gap: 9px;
-      align-self: center; margin-left: 16px; padding-bottom: 4px;
-      flex: 0 1 360px; min-width: 0;
+      align-self: flex-end; margin-left: auto; padding-bottom: 6px;
+      flex: 0 0 auto; min-width: 0;   /* size to content — a short bar, not 360px */
     }
     .omp-mini[hidden] { display: none; }
     .omp-mini-seek {
-      flex: 1; min-width: 70px; height: 4px; cursor: pointer;
+      flex: 0 0 110px; width: 110px; min-width: 60px; height: 4px; cursor: pointer;
       accent-color: var(--tab-music, var(--ia-accent, #f0a23a));
+    }
+    /* Elapsed / total time, e.g. "1:23 / 4:05". Tabular figures so it doesn't
+       jitter as it ticks. FIXED 16px (px, not rem) so it stays the same
+       regardless of the small/medium/large text-size setting. */
+    .omp-mini-time {
+      color: var(--ia-text-muted, #9aa);
+      font-size: 16px;
+      font-variant-numeric: tabular-nums; white-space: nowrap;
     }
     /* ⋮ More menu — <sol-dropdown-button>; style its shadow trigger like a chrome-btn.
        The popup itself themes off the body --surface/--text/--border bridge. */
@@ -283,8 +322,10 @@
     @media (prefers-color-scheme: light) {
       :root:not([data-theme]):not(:has(sol-default[theme])) { --omp-popup-border: #000; }
     }
-    .omp-search::part(panel),
-    .omp-more::part(menu) { border: 1px solid var(--omp-popup-border, silver); }
+    /* Search panel keeps its dk border; the ☰ menu (and every dropdown) now
+       gets the silver lining from the sol-components default (sol-dropdown-
+       button.js, --menu-popup-border). */
+    .omp-search::part(panel) { border: 1px solid var(--omp-popup-border, silver); }
 
     /* The vendored podz shell (.app, id=panel-workspaces) is authored for a full
        page (height:100vh); inside the Workspaces tab pane it must fill the pane,

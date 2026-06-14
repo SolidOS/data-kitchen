@@ -523,6 +523,16 @@ function createPlayer({ libraryConfigs, libs, host }) {
         _lib: t._lib
       })),
       currentTrackUrl: currentTrack?.url || null,
+      // The full current track, so a reload can resume it even when it came
+      // from a PLAYLIST whose file isn't reloaded at startup (two-phase load) —
+      // restoreState falls back to this snapshot when the track isn't in the
+      // loaded library, restoring playback (src + seek + banner) without it.
+      currentTrack: currentTrack ? {
+        id: currentTrack.id, url: currentTrack.url, name: currentTrack.name,
+        artist: currentTrack.artist || '', album: currentTrack.album || '',
+        albumUrl: currentTrack.albumUrl || '', time: currentTrack.time || '',
+        _lib: currentTrack._lib
+      } : null,
       // Save playback position so reopening the page can seek back to where
       // we were. Only meaningful when audio.src matches the current track.
       currentTime: (currentTrack && audio.src === currentTrack.url && Number.isFinite(audio.currentTime))
@@ -630,9 +640,14 @@ function createPlayer({ libraryConfigs, libs, host }) {
       // isn't auto-played — browsers block autoplay without recent user
       // interaction and the toolbar Play button handles the manual case.
       if (s.currentTrackUrl) {
-        const t = libraryTracks.find(x => x.url === s.currentTrackUrl) ||
-                  currentTracks.find(x => x.url === s.currentTrackUrl);
-        if (t && (!t._lib || enabledLibIds.has(t._lib))) {
+        // Prefer the live track (full context: next/prev, table highlight);
+        // else fall back to the saved snapshot so a PLAYLIST track — absent
+        // from the startup library — still resumes playback.
+        const live = libraryTracks.find(x => x.url === s.currentTrackUrl) ||
+                     currentTracks.find(x => x.url === s.currentTrackUrl);
+        const fromSnapshot = !live && s.currentTrack && s.currentTrack.url === s.currentTrackUrl;
+        const t = live || (fromSnapshot ? s.currentTrack : null);
+        if (t && (fromSnapshot || !t._lib || enabledLibIds.has(t._lib))) {
           currentTrack = t;
           // Keep the <video> reveal (Req 4) consistent with the restored
           // media so we don't show a movie banner over the Music tab.
@@ -3913,6 +3928,11 @@ function createPlayer({ libraryConfigs, libs, host }) {
   // The panel's media element, so the chrome can show a mini transport
   // (play/pause + progress) for an audio panel while another tab is shown.
   host.getMediaElement = () => audio;
+  // The current track's display text (artist — album — title), for the chrome
+  // mini-player's hover tooltip. Empty when nothing is loaded.
+  host.nowPlayingText = () => (currentTrack
+    ? [currentTrack.artist, currentTrack.album, currentTrack.name].filter(Boolean).join(' — ')
+    : '');
 
   return container;
 }

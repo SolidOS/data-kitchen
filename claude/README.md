@@ -62,6 +62,27 @@ headers):
   `popup-{calendar,search}-pane-blanked.png`,
   `context-help-over-blanked-pane.png`, `narrow-window-wrapped-bar.png`.
 
+## `smoke-tests/` — submenu-dropdowns + mini-player (2026-06-13, puppeteer)
+
+Headless harness built while turning the tab-bar submenus into dropdowns and
+re-homing the mini-player. Self-contained (no pod): serve repo root
+(`python3 -m http.server 8081`) and run with the global puppeteer, e.g.
+`node claude/smoke-tests/diag-dropdown.mjs`. The driver imports puppeteer by
+absolute path (`$(npm root -g)/puppeteer/...`).
+
+- `dropdown-repro.html` / `dropdown-repro.ttl` — a `sol-tabs from-rdf` with a
+  plain tab + a component-submenu (Media: two clocks) + a link-submenu (Solid),
+  loading sol-components + ia.css + dk chrome. The fixture for all the below.
+- `diag-dropdown.mjs` — dumps the bar DOM, the dropdown trigger's computed
+  style, popup geometry/colours (THEME=dark, CLOBBER=1 to force --surface/
+  --text collisions), and verifies a pick mounts + the pane shows.
+- `real-menu-repro.html` / `real-menu.ttl` (a snapshot of the pod menu) +
+  `diag-realmenu.mjs` — drives the REAL menu's dropdowns: confirms each parses
+  its items and renders labels (caught the emoji-as-`<img src>` empty-entry bug
+  and the missing-`ensureLoaded` blank-pane bug).
+- Screenshots: `dropdown-repro-open.png`, `mini-layout{,2}.png` (centered
+  mini-player + time), `real-menu-{dev,pods}-open.png`, `real-pick-music.png`.
+
 ## `smoke-tests/` — pre-consolidation (old dk)
 
 Puppeteer-driven diagnostic scripts. Each opens

@@ -6,7 +6,7 @@
 <>
   a ui:Component ;
   ui:label "SolidOS (data browser)" ;
-  ui:icon "🐧" ;
+  ui:icon "./assets/icons/solid-logo.svg" ;
   ui:name "dk-solidos" ;
   rdfs:comment "The SolidOS data browser, embedded." ;
   dct:creator "SolidOS Team" ;

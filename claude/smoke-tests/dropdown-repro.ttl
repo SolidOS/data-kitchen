@@ -1,0 +1,48 @@
+@prefix :       <#> .
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
+
+# Repro menu for the submenu-as-dropdown work (sol-tabs.js _buildSubmenuDropdown).
+# One plain component tab, one submenu of components (Media), one submenu of
+# links (Solid). Mirrors the dk #Tabs shape without needing the pod.
+
+:Tabs
+    a ui:Menu;
+    ui:label "repro";
+    ui:orientation ui:Horizontal;
+    ui:parts ( :home :MediaMenu :SolidMenu ).
+
+:home
+    a ui:Component;
+    ui:label "Home";
+    ui:name "sol-time".
+
+:MediaMenu
+    a ui:Menu;
+    ui:label "Media";
+    ui:parts ( :clockA :clockB ).
+
+:clockA
+    a ui:Component;
+    ui:label "Clock A";
+    ui:name "sol-time".
+
+:clockB
+    a ui:Component;
+    ui:label "Clock B";
+    ui:name "sol-time".
+
+:SolidMenu
+    a ui:Menu;
+    ui:label "Solid";
+    ui:parts ( :ext :local ).
+
+:ext
+    a ui:Link;
+    ui:label "Example.com";
+    ui:href "https://example.com/".
+
+:local
+    a ui:Link;
+    ui:label "Local file";
+    ui:href "/claude/smoke-tests/dropdown-repro.ttl".

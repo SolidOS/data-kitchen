@@ -127,6 +127,43 @@
     function nameForKey(key) {
       return panelEl(key)?.closest('.sol-tabs-pane')?.dataset.tabName || null;
     }
+    // Re-home the mini-player into the tab bar, centred between the tabs and the
+    // right-aligned action launchers: insert it just before the .sol-tabs-launch
+    // group. Both it (margin-left:auto, see dk-chrome.css) and the launch group
+    // (its own auto margin) absorb the free space equally, so the mini lands in
+    // the middle of the gap, at tab-bar height.
+    //
+    // We HOLD the element reference: sol-tabs._renderBar / applyLaunchers (and a
+    // Customize save) do `bar.innerHTML = ''`, which would DESTROY a mini moved
+    // into the bar and orphan querySelector('.omp-mini'). Keeping the ref lets us
+    // re-insert the same element, and a MutationObserver re-homes it after any
+    // such rebuild — so the mini can't be permanently lost.
+    let miniEl = null, miniObserver = null;
+    function homeMini() {
+      if (!miniEl) miniEl = document.querySelector('.omp-mini');
+      const bar = solTabs?.querySelector(':scope > .sol-tabs-bar');
+      if (!miniEl || !bar) return;
+      const launch = bar.querySelector(':scope > .sol-tabs-launch');
+      if (!(miniEl.parentElement === bar && miniEl.nextElementSibling === launch)) {
+        if (launch) bar.insertBefore(miniEl, launch);
+        else bar.appendChild(miniEl);
+      }
+      if (!miniObserver) {
+        miniObserver = new MutationObserver(() => homeMini());
+        miniObserver.observe(bar, { childList: true });
+      }
+    }
+
+    // The submenu dropdown launcher (sol-dropdown-button) for a tab, found by
+    // its title (set to the tab name in sol-tabs._buildSubmenuDropdown). Null
+    // for a plain content tab. Used to persist/replay a submenu's pick.
+    function submenuDropdownFor(name) {
+      const bar = solTabs.querySelector(':scope > .sol-tabs-bar');
+      return bar
+        ? [...bar.querySelectorAll(':scope > sol-dropdown-button')]
+            .find((d) => d.getAttribute('title') === name) || null
+        : null;
+    }
 
     // React to a tab switch: load the active panel, pause the panels we left
     // (except the audio one — it plays on under the mini player), remember it.
@@ -147,13 +184,39 @@
     }
     function onTab(name) {
       dismissPanes();
-      const el = paneForName(name)?.querySelector('[id^="panel-"]');
+      const pane = paneForName(name);
+      // The active plugin's panel- id: inside the VISIBLE dropdown wrapper for a
+      // submenu pick, else anywhere in the pane for a plain content tab.
+      const el = pane?.querySelector(':scope > [data-menu-item]:not([hidden]) [id^="panel-"]')
+              || pane?.querySelector('[id^="panel-"]');
       if (el) current = el.id.replace(/^panel-/, '');
       el?.ensureLoaded?.();
+      // A submenu-dropdown pick mounts its plugin under a <div data-menu-item>
+      // with no panel- id, and not always marked `defer` (ia-player is, but
+      // omp-images isn't), so the lookup above misses it. Drive ensureLoaded on
+      // the VISIBLE dropdown-mounted plugin too (idempotent) — else its content
+      // (libraries/topics/playlists) never loads.
+      pane?.querySelectorAll(':scope > [data-menu-item]:not([hidden]) > *')
+        .forEach((d) => d.ensureLoaded?.());
       for (const k of PANEL_KEYS)
         if (k !== current && k !== audioName) panelEl(k)?.getMediaElement?.()?.pause?.();
-      try { localStorage.setItem('dk:active-panel', current); } catch {}
-      syncGating(); bindAudio(); updateMini();
+      // Persist the active tab AND, for a submenu, its visible pick — a reload
+      // returns to the same submenu page by replaying the pick (it's lazy-
+      // mounted, so the bare panel key can't resolve it). See the restore block.
+      try {
+        localStorage.setItem('dk:active-panel', current);
+        localStorage.setItem('dk:active-tab', name);
+        const pick = pane?.querySelector(':scope > [data-menu-item]:not([hidden])')?.dataset.menuItem;
+        if (submenuDropdownFor(name) && pick) localStorage.setItem('dk:active-pick', pick);
+        else localStorage.removeItem('dk:active-pick');
+        // When the active pick IS the audio panel (music), remember its submenu
+        // + pick so a reload can background-resume it from any tab (see restore).
+        if (current === audioName && submenuDropdownFor(name) && pick) {
+          localStorage.setItem('dk:audio-tab', name);
+          localStorage.setItem('dk:audio-pick', pick);
+        }
+      } catch {}
+      syncGating(); bindAudio(); updateMini(); homeMini();
       applyContext();   // help / ☰ follow the active plugin (async, guarded)
     }
 
@@ -299,7 +362,10 @@
     const miniBar  = () => document.querySelector('.omp-mini');
     const miniPlay = () => document.querySelector('.omp-mini-play');
     const miniSeek = () => document.querySelector('.omp-mini-seek');
+    const miniTime = () => document.querySelector('.omp-mini-time');
     const audioEl = () => panelEl(audioName)?.getMediaElement?.();
+    const fmtTime = (s) => Number.isFinite(s) && s >= 0
+      ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '0:00';
     let seeking = false;
     function updateMini() {
       const bar = miniBar(); if (!bar) return;
@@ -307,12 +373,16 @@
       const hide = (current === audioName) || !(el && el.src);
       bar.hidden = hide;
       if (hide || !el) return;
+      // Hover tooltip: the current track (artist — album — title) from the panel.
+      bar.title = panelEl(audioName)?.nowPlayingText?.() || '';
       const play = miniPlay(); if (play) play.textContent = el.paused ? '▶' : '⏸';
       const seek = miniSeek();
       if (seek && !seeking) {
         const d = el.duration || 0;
         seek.value = d ? Math.round((el.currentTime / d) * 1000) : 0;
       }
+      const time = miniTime();
+      if (time) time.textContent = `${fmtTime(el.currentTime)} / ${fmtTime(el.duration)}`;
     }
     function bindAudio() {
       const el = audioEl();
@@ -480,11 +550,55 @@
 
       // News is the startup tab unless a saved choice says otherwise (a
       // saved key for a since-removed tab falls through to the first tab).
-      let saved = 'news';
-      try { saved = localStorage.getItem('dk:active-panel') || 'news'; } catch {}
-      const savedName = nameForKey(saved);
-      if (savedName && savedName !== solTabs.activeTab) solTabs.switchTab(savedName);
-      else onTab(solTabs.activeTab);   // sync state for the already-active tab
+      let saved = 'news', savedTab = null, savedPick = null, audioTab = null, audioPick = null;
+      try {
+        saved = localStorage.getItem('dk:active-panel') || 'news';
+        savedTab = localStorage.getItem('dk:active-tab');     // captured before
+        savedPick = localStorage.getItem('dk:active-pick');   // onTab can clear it
+        audioTab = localStorage.getItem('dk:audio-tab');      // the submenu + pick
+        audioPick = localStorage.getItem('dk:audio-pick');    // that IS the music panel
+      } catch {}
+      // Prefer the persisted tab NAME — it covers submenu tabs, whose lazy
+      // picks have no mounted panel to resolve by key; fall back to the panel-
+      // key path for content tabs saved before dk:active-tab existed.
+      const targetTab = savedTab || nameForKey(saved);
+
+      // Poll a submenu's dropdown and select `pick` once its items load (they
+      // arrive async); select() is a no-op until then. Runs `done` when mounted.
+      const pollSelect = (tabName, pickName, done) => {
+        let n = 0;
+        const t = setInterval(() => {
+          submenuDropdownFor(tabName)?.select?.(pickName);
+          const mounted = paneForName(tabName)?.querySelector(':scope > [data-menu-item]');
+          if (mounted || ++n >= 25) { clearInterval(t); done?.(); }
+        }, 200);
+      };
+      // ia-player persists its track under ia-player:state:<ns>; true if music
+      // had a loaded track to resume.
+      const musicHasTrack = (() => {
+        try {
+          const s = JSON.parse(localStorage.getItem('ia-player:state:' + audioName) || 'null');
+          return !!(s && s.currentTrackUrl);
+        } catch { return false; }
+      })();
+
+      // Restore the active tab (+ its submenu pick, if any).
+      if (savedTab && savedPick) pollSelect(savedTab, savedPick);
+      if (targetTab && targetTab !== solTabs.activeTab) solTabs.switchTab(targetTab);
+      else onTab(solTabs.activeTab);
+
+      // Background-resume the music panel even when the active tab is something
+      // else (e.g. News): mount it via its dropdown — which switches to that
+      // submenu — then immediately re-assert the active tab (same tick, so no
+      // flicker). ia-player's restoreState then seeks to the saved position and
+      // the mini binds, so audio + the mini survive a reload from ANY tab.
+      if (audioTab && audioPick && musicHasTrack
+          && !(audioTab === savedTab && audioPick === savedPick)) {
+        pollSelect(audioTab, audioPick, () => {
+          if (targetTab && targetTab !== solTabs.activeTab) solTabs.switchTab(targetTab);
+          bindAudio(); updateMini();   // bind the mini in case the settle loop ended
+        });
+      }
       syncGating();
 
       // Idle-warm only the panels NOT marked defer — media tabs (music,
@@ -496,7 +610,10 @@
       // Panels mount async — retry gating + audio binding until ready.
       let tries = 0;
       const settle = setInterval(() => {
-        syncGating(); bindMini(); bindAudio(); updateMini(); wireMenuState();
+        syncGating(); bindMini(); bindAudio(); updateMini(); wireMenuState(); homeMini();
         if (++tries >= 12 || audioEl()?._ompMiniBound) clearInterval(settle);
       }, 400);
+      // A Customize save rebuilds the tab bar (sol-tabs._renderBar wipes it),
+      // dropping the re-homed mini — put it back when that happens.
+      document.addEventListener('sol-menu-built', homeMini);
     });
