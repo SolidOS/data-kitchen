@@ -11,10 +11,40 @@
   sol-default, theming, shared editor system with two modes,
   package dedup), UI sketches, build order across all phases, and
   a "Next steps" section listing outstanding work.
+- **`podz-integration-and-sol-pod-settings.md`** — DONE (2026-06-15): the
+  original direction for absorbing podz into dk + the sol-pod settings work.
+  Kept for history; the settings approach evolved past it.
+- **`rdf-driven-plugin-settings.md`** — AS BUILT (2026-06-15): the final
+  Settings-page design — `<dk-plugin-settings>` renders per-plugin settings from
+  each plugin's manifest, gated on catalog in-use status, subject via
+  `foaf:primaryTopic`. Read this for the current settings architecture.
 - **`tabs-rdf-html-asymmetry.md`** — SUPERSEDED (2026-06-12 rdf-first
   switch): historical inventory of items that lived in only `data/data-kitchen-main-menu.ttl`
   OR only `html-first.html`, kept as the record of why the (retired) two-way
   sync was hard. tabs.ttl is now the only live artifact.
+
+## `smoke-tests/` — podz absorb + RDF-driven settings (2026-06-15, Playwright)
+
+Built while absorbing podz into dk and making plugin settings RDF-driven. Served
+via the static `:8081` server with a **temporary repo-root `dk-pod` symlink →
+`~/solid/dk-pod`** so engine paths (`/node_modules`, `/dist`) and pod paths
+(`/dk-pod/dk/…`) both resolve — mimicking the electron router without a live pod.
+NOTE: the podz repo was deleted this session, so these (and all the older
+Playwright verifiers below) now import Chrome via the **`playwright-core`
+devDependency** (`import { chromium } from 'playwright-core'`), not podz's copy.
+
+- `verify-podz-absorbed.mjs` — `<dk-podz>` mounts, both `<sol-pod>` panels upgrade,
+  sol-modal/AuthManager present, relocated `podz.css`/popup-callback load, and
+  nothing requests the removed `node_modules/podz` tree.
+- `verify-sol-pod-settings.mjs` — sol-pod consumes `ui:ignorePattern` (glob
+  filtering) + `ui:editorKeys` from its data-subject doc; write-back serialization
+  round-trips; both pods carry `data-settings-skip`.
+- `verify-plugin-settings-rdf.mjs` — `<dk-plugin-settings>` renders the pod
+  browser's settings group from its manifest with the tab UNMOUNTED (manifest-
+  driven), subject via `foaf:primaryTopic`, heading "Data Kitchen Pod Browser";
+  gated out when the plugin isn't in the menu; no discovery double-list.
+- `diag-settings-discovers-sol-pod.mjs` — proved the original problem: sc's
+  `<sol-settings>` only discovers a sol-pod once it's mounted in the DOM.
 
 ## `smoke-tests/` — consolidation-era (2026-06-10, Playwright)
 

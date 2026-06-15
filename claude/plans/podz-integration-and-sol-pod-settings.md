@@ -1,4 +1,25 @@
-# Podz integration + sol-pod settings — READ THIS FIRST
+# Podz integration + sol-pod settings — DONE 2026-06-15
+
+> **STATUS: SHIPPED 2026-06-15.** Both the podz integration and the sol-pod
+> settings work are done. What actually shipped:
+> - **podz absorbed into dk** as the in-house `dk-podz` component (separate podz
+>   repo deleted; sealed bundle gone; sol-pod/sol-live-edit stayed in sc).
+>   Commit `140b8dc`.
+> - **sol-pod owns one settings doc** (`ui:ignorePattern` + `ui:editorKeys`),
+>   actually consumes it (glob filtering; live-edit inherits editorKeys + writes
+>   back); inline ⚙ panel removed. dk `5ecfa6a` / sol-components `e083df3`.
+> - **Settings page is RDF-driven + in-use-gated** via `<dk-plugin-settings>`,
+>   manifest-driven (no side file), subject via `foaf:primaryTopic`; pod-settings
+>   moved to `plugins/podz/`; relabelled "Data Kitchen Pod Browser".
+>   **See `rdf-driven-plugin-settings.md` for the as-built settings design.**
+>
+> The plan below is the original (2026-06-15) direction, kept for history; the
+> settings approach evolved past it (manifest-driven, not the discovery-only
+> pattern it assumed). Don't execute it as-is.
+
+---
+
+# (Original plan) Podz integration + sol-pod settings
 
 > Written 2026-06-15 for **the next Claude session**, by request. If you're
 > picking up the sol-pod / live-edit settings work, start here — the obvious
