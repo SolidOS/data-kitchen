@@ -11,8 +11,8 @@ import { parseMenuItems } from '../../node_modules/sol-components/core/menu-rdf.
 import { rewriteMenuDocument } from '../../node_modules/sol-components/core/menu-serialize.js';
 import N3 from '../../node_modules/n3/lib/index.js';
 
-const docUrl = 'http://localhost:8000/dk-pod/dk/data/data-kitchen-main-menu.ttl';
-const ttl = readFileSync('data/data-kitchen-main-menu.ttl', 'utf8');
+const docUrl = 'http://localhost:8000/dk-pod/dk/ui-data/data-kitchen-main-menu.ttl';
+const ttl = readFileSync('ui-data/data-kitchen-main-menu.ttl', 'utf8');
 
 const store = rdf.graph();
 rdf.parse(ttl, store, docUrl, 'text/turtle');

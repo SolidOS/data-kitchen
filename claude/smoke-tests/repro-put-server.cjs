@@ -10,7 +10,7 @@ const createApp = require('../../pivot/dist/create-app.cjs');
 
 const PORT = 8077;
 const BASE = `http://localhost:${PORT}/`;
-const REL = 'dk-pod/dk/data/data-kitchen-main-menu.ttl';
+const REL = 'dk-pod/dk/ui-data/data-kitchen-main-menu.ttl';
 const URL = BASE + REL;
 const VAR = 'urn:solid-server:default:variable:';
 
@@ -40,7 +40,7 @@ async function main() {
   console.log('pivot up on', BASE);
 
   // 1) establish the resource with the ORIGINAL repo body
-  const orig = fs.readFileSync('data/data-kitchen-main-menu.ttl', 'utf8');
+  const orig = fs.readFileSync('ui-data/data-kitchen-main-menu.ttl', 'utf8');
   await put(orig, 'original body');
 
   // 2) replay the body the smoke test built (original + Gmail + Matrix links)

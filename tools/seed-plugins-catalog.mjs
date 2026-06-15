@@ -1,4 +1,4 @@
-// Seeder for data/plugins-catalog.ttl — PURE INGESTION, no content lives in
+// Seeder for ui-data/data-kitchen-plugins-catalog.ttl — PURE INGESTION, no content lives in
 // this script. Every FLAT .ttl file in plugins/ is a manifest describing one
 // catalog entry:
 //
@@ -8,7 +8,7 @@
 // plus ui:label, ui:icon, rdfs:comment (card blurb), dct:creator /
 // dct:publisher (byline) and dct:subject literals (topic categories — one
 // skos:Collection per distinct value). The catalog is ONE #Available list of
-// everything; "in use" means data/data-kitchen-main-menu.ttl mounts it.
+// everything; "in use" means ui-data/data-kitchen-main-menu.ttl mounts it.
 //
 // Folder manifests (plugins/<id>/manifest.ttl) are a DIFFERENT thing — the
 // plugin standard (help, shapes, ☰ contributions) — and are not catalog
@@ -91,7 +91,7 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 # than this file; re-seeding overwrites it.
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
-  rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means data/data-kitchen-main-menu.ttl mounts it." ;
+  rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it." ;
   ui:parts ( ${ENTRIES.map((e) => `<#${frag(e.label)}>`).join(' ')} ) .
 
 ${CATS.map((c) => `<#${frag(c)}> a skos:Collection ; skos:prefLabel ${JSON.stringify(c)} ;
@@ -120,6 +120,6 @@ for (const e of ENTRIES) {
   }
 }
 
-writeFileSync(join(root, 'data', 'plugins-catalog.ttl'), ttl);
+writeFileSync(join(root, 'ui-data', 'data-kitchen-plugins-catalog.ttl'), ttl);
 const links = ENTRIES.filter((e) => e.kind === 'link').length;
-console.log(`wrote data/plugins-catalog.ttl: ${ENTRIES.length - links} plugins + ${links} link apps in ${CATS.length} topics (all from manifests)`);
+console.log(`wrote ui-data/data-kitchen-plugins-catalog.ttl: ${ENTRIES.length - links} plugins + ${links} link apps in ${CATS.length} topics (all from manifests)`);

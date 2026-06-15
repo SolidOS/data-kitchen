@@ -10,7 +10,7 @@ const createApp = require('../../pivot/dist/create-app.cjs');
 const PORT = 8200;                       // listen here (8000 is the live app)
 const BASE = `http://localhost:${PORT}/`; // advertise the SAME origin we listen on (allow-all; .acl not enforced)
 const ROOT = '/tmp/dkroot';              // /dk-pod/ -> /tmp/dkroot/dk-pod
-const REL = 'dk-pod/dk/data/data-kitchen-main-menu.ttl';
+const REL = 'dk-pod/dk/ui-data/data-kitchen-main-menu.ttl';
 const PUT_URL = `http://localhost:${PORT}/${REL}`;
 const VAR = 'urn:solid-server:default:variable:';
 

@@ -4,7 +4,7 @@
 //   2. a manifest URL typed into the box imports the plugin (or reports
 //      it's already listed) — and a fresh import is filed under its
 //      manifest category (skos:member), with the topic collections intact
-// The test edits the REAL data/plugins-catalog.ttl and restores it with git
+// The test edits the REAL ui-data/data-kitchen-plugins-catalog.ttl and restores it with git
 // checkout afterwards (the file must be clean). Run from dk root with both
 // servers up.
 import { execFileSync } from 'node:child_process';
@@ -14,14 +14,14 @@ import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/ind
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };
 const restore = () => {
-  try { execFileSync('git', ['checkout', '--', 'data/plugins-catalog.ttl']); } catch {}
+  try { execFileSync('git', ['checkout', '--', 'ui-data/data-kitchen-plugins-catalog.ttl']); } catch {}
 };
 
 // GUARD: this test git-restores the file it edits — running it with
 // uncommitted catalog changes would WIPE them.
-const dirty = execFileSync('git', ['status', '--porcelain', 'data/plugins-catalog.ttl'], { encoding: 'utf8' }).trim();
+const dirty = execFileSync('git', ['status', '--porcelain', 'ui-data/data-kitchen-plugins-catalog.ttl'], { encoding: 'utf8' }).trim();
 if (dirty) {
-  console.error('ABORT: commit data/plugins-catalog.ttl first — this test restores it via git checkout:\n' + dirty);
+  console.error('ABORT: commit ui-data/data-kitchen-plugins-catalog.ttl first — this test restores it via git checkout:\n' + dirty);
   process.exit(2);
 }
 
@@ -103,7 +103,7 @@ try {
   });
   check('manifest URL import lands (added or already listed)', !!imported.ok, imported.msg || '');
 
-  const ttl = readFileSync('data/plugins-catalog.ttl', 'utf8');
+  const ttl = readFileSync('ui-data/data-kitchen-plugins-catalog.ttl', 'utf8');
   const avail = partsOf(ttl, 'Available');
   check('catalog list survives the import', !!avail && avail.length >= 53, `Available=${avail?.length}`);
   if (/added/.test(imported.msg || '')) {
@@ -115,7 +115,7 @@ try {
   restore();
   await browser.close();
 }
-const after = readFileSync('data/plugins-catalog.ttl', 'utf8');
+const after = readFileSync('ui-data/data-kitchen-plugins-catalog.ttl', 'utf8');
 check('repo state restored after the test', (partsOf(after, 'Available') || []).length >= 53);
 console.log(fails.length ? `\n${fails.length} FAILURE(S)` : '\nALL PASS');
 process.exit(fails.length ? 1 : 0);

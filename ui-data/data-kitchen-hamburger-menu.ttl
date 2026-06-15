@@ -3,8 +3,8 @@
 @prefix acl:    <http://www.w3.org/ns/auth/acl#> .
 
 # ── The ☰ hamburger menu (chrome) ────────────────────────────────────────
-# Consumed by the ☰ <sol-dropdown-button source="./dk-pod/dk/data/data-kitchen-hamburger-menu.ttl#More"> chrome
-# launcher (data/data-kitchen-main-menu.ttl#Chrome, built by src/dk-tabs-rdf.js): component items
+# Consumed by the ☰ <sol-dropdown-button source="./dk-pod/dk/ui-data/data-kitchen-hamburger-menu.ttl#More"> chrome
+# launcher (ui-data/data-kitchen-main-menu.ttl#Chrome, built by src/dk-tabs-rdf.js): component items
 # display in the #dk-menu-pane replace
 # pane over the tab content (it claims them by id via data-for in index.html;
 # unclaimed items would fall back to the region= modal); bare-name items

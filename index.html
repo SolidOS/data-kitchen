@@ -49,7 +49,7 @@
       label="Preferences"
       solid-kitchen
       shape="node_modules/sol-components/shapes/data-kitchen-settings.shacl"
-      source="dk-pod/dk/data/data-kitchen-settings.ttl#Settings"
+      source="dk-pod/dk/ui-data/data-kitchen-settings.ttl#Settings"
   ></sol-default>
 
   <nav class="omp-chrome-bar" aria-label="Controls">
@@ -58,7 +58,7 @@
 
   <main id="dk-content" class="omp-panels">
     <!-- The topmost tabset renders from the RDF shell model: tabs are the
-         ui:parts of data/data-kitchen-main-menu.ttl#Tabs (via the menu-from-rdf add-on already in
+         ui:parts of ui-data/data-kitchen-main-menu.ttl#Tabs (via the menu-from-rdf add-on already in
          the loader list above); the #Bar / #Chrome launchers of the same
          document are built at load by src/dk-tabs-rdf.js. To edit the shell as
          HTML instead, round-trip it: npm run rdf2html / npm run html2rdf. -->
@@ -66,7 +66,7 @@
          Customize Preferences accordion — tabs/menus are edited on the
          Customize Plugins page. (sol-settings' opt-out; children like
          search/calendar are still discovered.) -->
-    <sol-tabs id="dk-tabs" keep-alive from-rdf="./dk-pod/dk/data/data-kitchen-main-menu.ttl#Tabs" data-settings-skip></sol-tabs>
+    <sol-tabs id="dk-tabs" keep-alive from-rdf="./dk-pod/dk/ui-data/data-kitchen-main-menu.ttl#Tabs" data-settings-skip></sol-tabs>
 
     <!-- The ☰ menu's component items (claimed here by id via data-for) display
          in this pane, which replaces the tab content area while open — not in

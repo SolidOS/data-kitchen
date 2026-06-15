@@ -50,7 +50,7 @@ const checks = `(async () => {
 const render = `(async () => {
   const div = document.createElement('div'); div.className='dk-settings'; div.id='__verify'; document.body.appendChild(div);
   div.innerHTML = '<dk-config-settings></dk-config-settings>'
-    + '<dk-issuers-editor source="./dk-pod/dk/data/data-kitchen-settings.ttl#Settings"></dk-issuers-editor>';
+    + '<dk-issuers-editor source="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Settings"></dk-issuers-editor>';
   await new Promise(r => setTimeout(r, 3000));
   const cfg = div.querySelector('dk-config-settings');
   const iss = div.querySelector('dk-issuers-editor');

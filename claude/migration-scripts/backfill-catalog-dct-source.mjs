@@ -16,7 +16,7 @@ import { rdf } from '../../node_modules/sol-components/core/rdf.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const ORIGIN = process.env.DK_BASE || 'http://localhost:8000';
-const CATALOG = `${ORIGIN}/dk-pod/dk/data/plugins-catalog.ttl`;
+const CATALOG = `${ORIGIN}/dk-pod/dk/ui-data/data-kitchen-plugins-catalog.ttl`;
 const PLUGINS = `${ORIGIN}/dk-pod/dk/plugins/`;
 const UI = 'http://www.w3.org/ns/ui#';
 const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';

@@ -26,10 +26,10 @@ const phase2Done = exists('dk-pod/dk');
 
 // (a) SAFE — renamed/removed files; the correct version lives elsewhere.
 const SAFE = [
-  ['dk-pod/dk/data/tabs.ttl',       'renamed → data-kitchen-main-menu.ttl'],
-  ['dk-pod/dk/data/menu.ttl',       'renamed → data-kitchen-hamburger-menu.ttl'],
-  ['dk-pod/dk/data/palette.ttl',    'renamed → plugins-catalog.ttl'],
-  ['dk-pod/dk/data/feeds-skos.ttl', 'removed (dead demo)'],
+  ['dk-pod/dk/ui-data/tabs.ttl',       'renamed → data-kitchen-main-menu.ttl'],
+  ['dk-pod/dk/ui-data/menu.ttl',       'renamed → data-kitchen-hamburger-menu.ttl'],
+  ['dk-pod/dk/ui-data/palette.ttl',    'renamed → plugins-catalog.ttl'],
+  ['dk-pod/dk/ui-data/feeds-skos.ttl', 'removed (dead demo)'],
   ['dk-pod/dk/favourites',          'communal wall dropped — favourites are now per-library (<library>/favourites/)'],
   ['dk-pod/dk/pages/manage-plugins.html', 'renamed → choose-plugins.html / all-plugins.html'],
   ['dk-pod/dk/plugins/manage-plugins',    'renamed → choose-plugins / all-plugins'],

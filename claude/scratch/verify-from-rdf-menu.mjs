@@ -1,4 +1,4 @@
-// One-off: verify <sol-menu from-rdf="data/data-kitchen-hamburger-menu.ttl#MainMenu"> still renders its
+// One-off: verify <sol-menu from-rdf="ui-data/data-kitchen-hamburger-menu.ttl#MainMenu"> still renders its
 // items after swc's from-rdf became an opt-in add-on. Serves data-kitchen read-
 // only and checks the rendered menu buttons in the shadow DOM. No writes.
 import { createServer } from 'node:http';

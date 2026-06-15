@@ -1,7 +1,7 @@
 // <dk-config-settings> — the Electron + Pivot group of the settings page.
 //
 // The config (window geometry, server ports, pod root) is the pod resource
-// dk-pod/dk/data/electron-config.ttl — the SOURCE OF TRUTH the user can browse.
+// dk-pod/dk/ui-data/data-kitchen-startup.ttl — the SOURCE OF TRUTH the user can browse.
 // The main process publishes it on boot and keeps it current; userData is just a
 // launch-time cache that trails it (see electron-config/main.cjs). This component
 // mounts a real shape-driven <sol-form> directly on that pod resource (CSS
@@ -18,7 +18,7 @@ import { solFetch } from 'sol-components/core/auth-fetch.js';
 
 const UI = 'http://www.w3.org/ns/ui#';
 const SCHEMA = 'http://schema.org/';
-const MIRROR = './dk-pod/dk/data/electron-config.ttl';
+const MIRROR = './dk-pod/dk/ui-data/data-kitchen-startup.ttl';
 const SHAPE  = './dk-pod/dk/shapes/electron-config.shacl';
 const CONFIG_FILE_TYPE = 'http://www.wikidata.org/entity/Q1193846';
 

@@ -26,7 +26,7 @@ const { Servers, getGateToken } = require('./servers.cjs');
 // before the pod is served) just trails it: on boot we sync userData FROM the
 // pod (pod wins), and every change is written through to the pod so it stays
 // current. CSS serves/patches it natively.
-const POD_CONFIG_URL = `${PUBLIC_ORIGIN}/dk-pod/dk/data/electron-config.ttl`;
+const POD_CONFIG_URL = `${PUBLIC_ORIGIN}/dk-pod/dk/ui-data/data-kitchen-startup.ttl`;
 const CFG_PRED = {
   publicPort:  'http://www.w3.org/ns/ui#publicPort',
   privatePort: 'http://www.w3.org/ns/ui#privatePort',

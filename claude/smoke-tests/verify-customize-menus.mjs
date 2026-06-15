@@ -1,12 +1,12 @@
 // Customize subtab 1 (Customize Plugins, Menus, & buttons) end to end:
 //   1. the menu + bar managers mount and render their rows
 //   2. an edit made through the UI (add item, assign the ia-player plugin
-//      via the drag payload, rename) SAVES — the PUT lands in data/data-kitchen-main-menu.ttl
+//      via the drag payload, rename) SAVES — the PUT lands in ui-data/data-kitchen-main-menu.ttl
 //      on disk through the pivot server (rdf-first: that single write IS the
 //      shell; a fresh browser renders the new tab straight from the RDF)
 //   3. tools/conversion/rdf2html.mjs emits the editable snapshot with the
 //      new tab, and --verify round-trips
-// The test edits the REAL data/data-kitchen-main-menu.ttl and restores it with git checkout
+// The test edits the REAL ui-data/data-kitchen-main-menu.ttl and restores it with git checkout
 // afterwards (the file must be clean). Run from dk root with both servers up.
 import { execFileSync } from 'node:child_process';
 import { readFileSync, rmSync } from 'node:fs';
@@ -15,15 +15,15 @@ import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/ind
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };
 const restore = () => {
-  try { execFileSync('git', ['checkout', '--', 'data/data-kitchen-main-menu.ttl']); } catch {}
+  try { execFileSync('git', ['checkout', '--', 'ui-data/data-kitchen-main-menu.ttl']); } catch {}
   try { rmSync('tools/conversion/shell.html', { force: true }); } catch {}   // scratch snapshot of the test state
 };
 
 // GUARD: this test git-restores the file it edits — running it with
 // uncommitted changes to it would WIPE those changes (it has, twice).
-const dirty = execFileSync('git', ['status', '--porcelain', 'data/data-kitchen-main-menu.ttl'], { encoding: 'utf8' }).trim();
+const dirty = execFileSync('git', ['status', '--porcelain', 'ui-data/data-kitchen-main-menu.ttl'], { encoding: 'utf8' }).trim();
 if (dirty) {
-  console.error('ABORT: commit data/data-kitchen-main-menu.ttl first — this test restores it via git checkout:\n' + dirty);
+  console.error('ABORT: commit ui-data/data-kitchen-main-menu.ttl first — this test restores it via git checkout:\n' + dirty);
   process.exit(2);
 }
 
@@ -158,7 +158,7 @@ try {
     JSON.stringify(reordered));
 
   // --- the PUT landed on disk; the snapshot generator picks it up ---
-  const ttl = readFileSync('data/data-kitchen-main-menu.ttl', 'utf8');
+  const ttl = readFileSync('ui-data/data-kitchen-main-menu.ttl', 'utf8');
   check('saved RDF contains the new item', /Smoke Test Tab/.test(ttl) && /smoke/.test(ttl));
   check('pantry comment-free doc still has all panels', /panel-solidos/.test(ttl) && /panel-customize/.test(ttl));
 
@@ -198,7 +198,7 @@ try {
   restore();
   await browser.close();
 }
-const ttlAfter = readFileSync('data/data-kitchen-main-menu.ttl', 'utf8');
+const ttlAfter = readFileSync('ui-data/data-kitchen-main-menu.ttl', 'utf8');
 check('repo state restored after the test', !/Smoke Test Tab/.test(ttlAfter));
 console.log(fails.length ? `\n${fails.length} FAILURE(S)` : '\nALL PASS');
 process.exit(fails.length ? 1 : 0);
