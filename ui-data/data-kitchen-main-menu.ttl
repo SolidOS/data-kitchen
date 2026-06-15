@@ -419,7 +419,7 @@
                 schema:name "source";
                 schema:value "./dk-pod/dk/plugins/podz/dk-podz.html"
             ];
-    ui:label "Pod browser";
+    ui:label "Data Kitchen Pod Browser";
     ui:name "dk-podz".
 :PodOS-Browser
     a ui:Link;

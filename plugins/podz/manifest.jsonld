@@ -20,7 +20,7 @@
   },
   "@id": "",
   "@type": "Component",
-  "label": "Workspaces",
+  "label": "Data Kitchen Pod Browser",
   "name": "dk-podz",
   "creator": "Jeff Zucker",
   "hasPart": [

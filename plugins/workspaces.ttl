@@ -5,7 +5,7 @@
 
 <>
   a ui:Component ;
-  ui:label "Workspaces (pod browser)" ;
+  ui:label "Data Kitchen Pod Browser" ;
   ui:icon "🗂" ;
   ui:name "dk-podz" ;
   rdfs:comment "Browse and manage your Solid pods and workspaces." ;

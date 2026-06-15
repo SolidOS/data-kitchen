@@ -56,6 +56,7 @@ console.log('=== dk-plugin-settings (manifest-driven, in-use-gated) ===');
 console.log(JSON.stringify(r, null, 2));
 
 const ok = r.podsMounted === 0 && r.inUseGroupRendered &&
+  r.inUseHeading === 'Data Kitchen Pod Browser' &&
   /pod-settings\.ttl#Settings$/.test(r.subjectFromPrimaryTopic || '') &&
   r.subjectFromPrimaryTopic.includes('/plugins/podz/') &&
   r.inUseHasControls > 0 && r.inUseHasHidePaths && r.inUseHasEditorKeys &&

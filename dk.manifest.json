@@ -10,7 +10,7 @@
       "help": "./plugins/ia-player/assets/ia-help.html"
     },
     "omp-images": { "label": "Wikimedia images" },
-    "dk-podz": { "label": "Pod browser" },
+    "dk-podz": { "label": "Data Kitchen Pod Browser" },
     "dk-solidos": { "label": "SolidOS data browser" },
     "dk-calendar-popout": { "label": "Calendar" }
   },
