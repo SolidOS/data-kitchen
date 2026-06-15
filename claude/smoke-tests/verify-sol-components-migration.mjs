@@ -5,7 +5,7 @@
 // console errors occur. Registration-only checks (customElements.get) are NOT
 // enough — they pass even when nothing renders. Run from dk root with the dev
 // server on :8081 (npm run serve).
-import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
 
 const URL = 'http://localhost:8081/index.html';
 const EXTERNAL = /open-meteo|w3\.org|google|esm\.sh|cdn\.|matrix|forum\.solid|solidproject|\.well-known\/solid|\.acl|\.meta/;

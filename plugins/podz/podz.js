@@ -49,10 +49,11 @@ export class SolidFileBrowser {
     // index.html), so its authenticated fetches resolve to that side's
     // session — left pod / left login, right pod / right login.
 
-    // Apply preferences
+    // Apply preferences (theme + font size). Hide-path filtering is owned by
+    // each <sol-pod> via its data-subject settings doc (ui:ignorePattern) —
+    // podz no longer pushes hide flags down.
     this.prefs = this._loadPrefs();
     this._applyPrefs(this.prefs);
-    this._applyPodPrefs();
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       if (this.prefs.theme === 'system') this._applyPrefs(this.prefs);
     });
@@ -67,11 +68,6 @@ export class SolidFileBrowser {
           this.prefs = newPrefs;
           this._savePrefs(newPrefs);
           this._applyPrefs(newPrefs);
-          this._applyPodPrefs();
-          const lp = this.elements.leftPod;
-          const rp = this.elements.rightPod;
-          if (lp.currentPath) lp.loadContainer(lp.currentPath);
-          if (rp.currentPath) rp.loadContainer(rp.currentPath);
         });
       });
     }
@@ -156,21 +152,6 @@ export class SolidFileBrowser {
       this.uiManager.setStatus(
         `Authentication required \u2014 click Log in for the ${side} panel.`, 'error');
     });
-
-    // The pod's own ⚙ settings dropdown owns the hide-pattern filters;
-    // mirror a toggle back into podz prefs so it persists across reloads.
-    // Each pod's dropdown controls only that pod during a session — the
-    // last change is what a reload restores for both.
-    pod.addEventListener('sol-prefs-change', (e) => {
-      const p = e.detail?.prefs || {};
-      this.prefs = {
-        ...this.prefs,
-        hideDot:   !!p.hideDot,
-        hideHash:  !!p.hideHash,
-        hideTilde: !!p.hideTilde,
-      };
-      this._savePrefs(this.prefs);
-    });
   }
 
   _wireLoginEvents(side, loginEl) {
@@ -206,16 +187,6 @@ export class SolidFileBrowser {
       panelEl.classList.remove('drag-over');
       await this.handleDrop(side);
     });
-  }
-
-  _applyPodPrefs() {
-    const podPrefs = {
-      hideDot: this.prefs.hideDot,
-      hideHash: this.prefs.hideHash,
-      hideTilde: this.prefs.hideTilde,
-    };
-    this.elements.leftPod.prefs = podPrefs;
-    this.elements.rightPod.prefs = podPrefs;
   }
 
   _wireSplitter() {
@@ -348,7 +319,6 @@ export class SolidFileBrowser {
     const stored = this.stateManager.loadPrefs();
     return stored || {
       theme: 'system', fontSize: 'medium',
-      hideDot: true, hideHash: true, hideTilde: true,
     };
   }
 

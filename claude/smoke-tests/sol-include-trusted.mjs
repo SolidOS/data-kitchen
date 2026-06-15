@@ -17,12 +17,11 @@
 // Run from project root:
 //   node claude/smoke-tests/sol-include-trusted.mjs
 //
-// (Imports playwright from podz's node_modules — dk doesn't carry
+// (Imports chromium from playwright-core, dk's devDependency.
 // the dependency, and pulling it in just for this smoke test isn't
 // worth the install footprint.)
 
-import playwrightPkg from '/home/jeff/solid/podz/node_modules/playwright/index.js';
-const { chromium } = playwrightPkg;
+import { chromium } from 'playwright-core';
 
 const URL = 'http://localhost:3000/data-kitchen/';
 

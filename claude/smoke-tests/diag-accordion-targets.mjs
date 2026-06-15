@@ -3,7 +3,7 @@
 // new headings show, clicking the bar header opens it AND closes the menu,
 // clicking the menu header swaps back, clicking the open header is a no-op.
 // Read-only (no saves). Run from dk root with the :3000 server up.
-import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
 
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };

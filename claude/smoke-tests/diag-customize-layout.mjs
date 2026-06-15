@@ -4,7 +4,7 @@
 // right-hand targets column wrapped BELOW the catalog (y greater) vs sat beside
 // it. Run from dk root with the app running (electron serves :8000).
 // Uses the same playwright-core driver the repo's verify-* tests use.
-import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
 
 const URL = process.env.DK_URL || 'http://localhost:8000/index.html';
 const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox', '--disable-gpu'] });

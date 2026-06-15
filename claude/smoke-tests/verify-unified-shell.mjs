@@ -7,7 +7,7 @@
 // Run from dk root with both servers up:
 //   node pivot/run-server.cjs . 3000 &   node proxy/index.cjs &
 //   node claude/smoke-tests/verify-unified-shell.mjs
-import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
 
 const URL = 'http://localhost:3000/index.html';
 // App-internal = our own origins. Everything else (news-article sites in the

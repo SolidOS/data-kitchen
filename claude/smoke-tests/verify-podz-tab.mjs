@@ -2,7 +2,7 @@
 // the refreshed ESM podz bundle. Confirms the bundle loads, shares dk's single
 // rdflib instance (no second copy), self-instantiates without error, and the
 // sol-pod elements upgrade. Run from dk root with the server on :8081.
-import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
 
 const URL = 'http://localhost:8081/index.html';
 const errors = [];

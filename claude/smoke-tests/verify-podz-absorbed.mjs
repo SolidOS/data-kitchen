@@ -7,7 +7,7 @@
 // Run from dk root with the static server on :8081 (python3 -m http.server 8081,
 // with a temporary repo-root `dk-pod` symlink -> ~/solid/dk-pod so engine + pod
 // paths both resolve, mimicking the electron router).
-import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
 
 const URL = 'http://localhost:8081/index.html';
 const errors = [];

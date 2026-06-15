@@ -1,7 +1,7 @@
 // One-off: list the accordion panel headings on Customize → Preferences
 // (what sol-settings discovers), to see exactly which editors are offered.
 // Run from dk root with the :3000 server up. Read-only.
-import { chromium } from '/home/jeff/solid/podz/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright-core';
 
 const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
 const page = await browser.newPage();
