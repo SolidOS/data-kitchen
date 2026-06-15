@@ -1,0 +1,11 @@
+@prefix : <#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+
+<>
+    a <urn:swc:shape:data-kitchen-settings:DataKitchenSettingsFile>;
+    foaf:primaryTopic :Settings.
+:Settings
+    ui:colorScheme ui:LightColorScheme;
+    ui:fontSize ui:MediumFont;
+    ui:proxy "http://localhost:8001/proxy?uri=".

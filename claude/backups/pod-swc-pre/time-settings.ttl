@@ -1,0 +1,10 @@
+@prefix schema: <http://schema.org/> .
+@prefix swc:    <urn:swc:shape:time-settings:> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix :       <#> .
+
+<> a swc:TimeSettingsFile ;
+   foaf:primaryTopic <#Settings> .
+
+<#Settings>
+  schema:timezone "Asia/Kolkata" .

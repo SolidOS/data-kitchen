@@ -1,0 +1,10 @@
+@prefix ui:   <http://www.w3.org/ns/ui#> .
+@prefix swc:  <urn:swc:shape:podz-settings:> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix :     <#> .
+
+<> a swc:PodzSettingsFile ;
+   foaf:primaryTopic <#Settings> .
+
+<#Settings>
+  ui:ignorePattern ".*", "*~", "#*#" .
