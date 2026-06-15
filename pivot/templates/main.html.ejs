@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title><%= extractTitle(htmlBody) %></title>
+  <link rel="stylesheet" href="<%= baseUrl -%>.well-known/css/styles/main.css?v=7" type="text/css">
+  <script type="text/javascript" src="<%= baseUrl -%>.well-known/css/scripts/util.js?v=7"></script>
+</head>
+<body>
+  <header>
+    <a href="<%= baseUrl %>"><img src="<%= baseUrl -%>.well-known/css/images/solid.svg" alt="[Solid logo]" /></a>
+    <h1>Pivot</h1>
+  </header>
+  <main>
+    <%- htmlBody %>
+  </main>
+  <footer>
+    <p>
+      Powered by <a href="https://github.com/solid-contrib/pivot">Pivot</a>
+      thanks to <a href="https://github.com/CommunitySolidServer/CommunitySolidServer">CSS</a>
+      and the <a href="https://solidproject.org">Solid Community</a>
+    </p>
+  </footer>
+</body>
+</html>
+
+<%
+function extractTitle(body) {
+  const match = /^<h1[^>]*>([^<]*)<\/h1>/u.exec(body);
+  return match ? match[1] : 'Solid';
+}
+%>

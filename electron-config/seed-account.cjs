@@ -29,7 +29,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const OWNER_EMAIL = 'owner@localhost.invalid';
+const OWNER_EMAIL = 'me@dk.local';
 const OWNER_PASSWORD = '!secret';
 
 async function jfetch(url, { method = 'GET', body, gateToken, cookie } = {}) {

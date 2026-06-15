@@ -1,5 +1,5 @@
 {
-    "comment": "Override parameters for the Data-Kitchen home CSS pivot server. Paths (templates/pod, ./node_modules/mashlib/*) are resolved relative to the server's working directory (pivot-config/), so spawning CSS requires mashlib + a pod template present there. Copied from the old data-kitchen build.",
+    "comment": "Override parameters for the Data-Kitchen home CSS pivot server. Paths (templates/pod) are resolved relative to the server's working directory, so spawning CSS requires a pod template present there. The SolidOS/mashlib HTML frontend (DefaultUiConverter databrowser + mashlib static assets) was removed — dk provides its own UI, and the mashlib databrowser converter 500'd on the /.account/ identity pages, breaking in-pod login.",
     "@context": [
       "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^7.0.0/components/context.jsonld",
       "https://linkedsoftwaredependencies.org/bundles/npm/@solid/pivot/^1.0.0/components/context.jsonld"
@@ -42,57 +42,6 @@
             "limit_amount": 70000000,
             "limit_unit": "bytes"
         }
-      },
-      {
-        "comment": "Serve Databrowser as default representation",
-        "@id": "urn:solid-server:default:DefaultUiConverter",
-        "@type": "ConstantConverter",
-        "contentType": "text/html",
-        "filePath": "./node_modules/mashlib/dist/databrowser.html",
-        "options_container": true,
-        "options_document": true,
-        "options_minQuality": 1,
-        "options_disabledMediaRanges": [
-          "image/*",
-          "application/pdf"
-        ]
-      },
-      {
-        "comment": "Serve Mashlib static files.",
-        "@id": "urn:solid-server:default:StaticAssetHandler",
-        "@type": "StaticAssetHandler",
-        "assets": [
-          {
-            "@type": "StaticAssetEntry",
-            "relativeUrl": "/browse.html",
-            "filePath": "./node_modules/mashlib/dist/browse.html"
-          },
-          {
-            "@type": "StaticAssetEntry",
-            "relativeUrl": "/mash.css",
-            "filePath": "./node_modules/mashlib/dist/mash.css"
-          },
-          {
-            "@type": "StaticAssetEntry",
-            "relativeUrl": "/mashlib.js",
-            "filePath": "./node_modules/mashlib/dist/mashlib.js"
-          },
-          {
-            "@type": "StaticAssetEntry",
-            "relativeUrl": "/mashlib.js.map",
-            "filePath": "./node_modules/mashlib/dist/mashlib.js.map"
-          },
-          {
-            "@type": "StaticAssetEntry",
-            "relativeUrl": "/mashlib.min.js",
-            "filePath": "./node_modules/mashlib/dist/mashlib.min.js"
-          },
-          {
-            "@type": "StaticAssetEntry",
-            "relativeUrl": "/mashlib.min.js.map",
-            "filePath": "./node_modules/mashlib/dist/mashlib.min.js.map"
-          }
-        ]
       }
     ]
   }

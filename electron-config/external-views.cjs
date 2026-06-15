@@ -13,6 +13,7 @@
 
 const path = require('path');
 const { WebContentsView, Menu, clipboard, shell, session } = require('electron');
+const { PUBLIC_PORT } = require('./config.cjs');
 
 const BAR_HEIGHT = 40;
 
@@ -20,11 +21,21 @@ const BAR_HEIGHT = 40;
 // so requests from it can be filtered without touching the app view.
 const EXTERNAL_PARTITION = 'persist:external';
 
+// Deliberately-opened apps (panes) get a third session: isolated like external,
+// but allowed to reach the local pod's PUBLIC port so they can run the pod's
+// normal login. main.cjs blesses this session's pod-origin requests with the
+// gate token. Incidental content (the reader) stays on EXTERNAL_PARTITION and
+// is fully blocked. See the trusted-guest plan.
+const TRUSTED_PARTITION = 'persist:trusted-guest';
+
 // External pages must never reach this machine's local servers — the bundled
 // CSS and proxy are no-auth, so a hostile page could read/write through them.
 // Cancel any request from the external session to a loopback host. (The OIDC
 // login popup is a real window on the default session, so it is unaffected.)
 const LOOPBACK_HOST = /^(localhost|.+\.localhost|127\.\d+\.\d+\.\d+|0\.0\.0\.0|\[::1?\]|\[::ffff:127\.[\d.]+\])$/i;
+// A loopback host the pod's PUBLIC front is served on (only localhost/127.* —
+// not 0.0.0.0 or ::1, which the front doesn't answer on).
+const POD_LOOPBACK_HOST = /^(localhost|127\.\d+\.\d+\.\d+)$/i;
 
 let hardened = false;
 function hardenedExternalSession() {
@@ -35,6 +46,26 @@ function hardenedExternalSession() {
       let host = '';
       try { host = new URL(details.url).hostname; } catch (_) {}
       callback({ cancel: LOOPBACK_HOST.test(host) });
+    });
+  }
+  return ses;
+}
+
+// Like hardenedExternalSession, but a pane may reach the pod's PUBLIC port
+// (localhost/127.* : PUBLIC_PORT). Every other loopback target — the internal
+// CSS port, the proxy, anything else — is still cancelled, so the guest can
+// talk to the pod front and nothing else on this machine.
+let trustedGuestHardened = false;
+function hardenedTrustedGuestSession() {
+  const ses = session.fromPartition(TRUSTED_PARTITION);
+  if (!trustedGuestHardened) {
+    trustedGuestHardened = true;
+    ses.webRequest.onBeforeRequest((details, callback) => {
+      let host = '', port = '';
+      try { const u = new URL(details.url); host = u.hostname; port = u.port || '80'; } catch (_) {}
+      if (!LOOPBACK_HOST.test(host)) return callback({ cancel: false });   // off-machine: allow
+      const podOk = POD_LOOPBACK_HOST.test(host) && Number(port) === PUBLIC_PORT;
+      callback({ cancel: !podOk });
     });
   }
   return ses;
@@ -72,10 +103,11 @@ class ExternalViews {
     return { x: 40, y: 120, width: Math.max(320, width - 80), height: Math.max(240, height - 160) };
   }
 
-  _build(webPreferences, onEscape) {
-    hardenedExternalSession();
+  _build(webPreferences, onEscape, partition = EXTERNAL_PARTITION) {
+    if (partition === TRUSTED_PARTITION) hardenedTrustedGuestSession();
+    else hardenedExternalSession();
     const view = new WebContentsView({
-      webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true, partition: EXTERNAL_PARTITION, ...webPreferences },
+      webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true, partition, ...webPreferences },
     });
     this._wireContextMenu(view);
     if (onEscape) {
@@ -109,7 +141,9 @@ class ExternalViews {
   openPane(url, rect) {
     if (!url) return;
     if (rect) this.paneRect = rect;
-    if (!this.pane) this.pane = this._build();
+    // A pane is a deliberately-opened app — give it the trusted-guest session so
+    // it can reach (and log into) the local pod. The reader stays external.
+    if (!this.pane) this.pane = this._build(undefined, undefined, TRUSTED_PARTITION);
     this._paneShown = true;
     if (!this._suspended) {
       this.baseWindow.contentView.addChildView(this.pane);  // on top of app view
