@@ -182,6 +182,25 @@ Kept as the record of how it was isolated:
   Fix lives in `electron-config/pod-template.cjs` (append branch now emits the
   `@prefix solid:` line).
 
+### external-apps + catalog-delete (2026-06-14)
+
+Probes for the in-app external Solid apps and the Customize catalog
+delete/provenance work:
+
+- `smoke-tests/probe-external-panes.cjs` — drives the running app to inspect
+  how the external-app tabs (GeoPod / LibreChat / PodPro) load in their panes.
+- `smoke-tests/probe-geopod-config.cjs` — checks GeoPod's config/load behaviour
+  (it's a Flutter web app; renders blank in the embedded webview — not a dk bug).
+- `smoke-tests/probe-podpro-login.cjs` — traces PodPro's OIDC login (server-side /
+  brokered; can't reach a localhost pod — not a dk bug).
+- `smoke-tests/cdp-eval.mjs` — small CDP eval helper used by the probes.
+- `migration-scripts/backfill-catalog-dct-source.mjs` — one-shot: adds
+  `dct:source <../plugins/<file>>` provenance to each entry of an existing
+  plugins catalog (so Customize's delete can also remove the plugin's manifest).
+  Used to backfill the live pod catalog.
+- `backups/plugins-catalog.pre-dctsource.ttl` — the catalog as it was before the
+  dct:source backfill.
+
 ## What's not here
 
 - Application source (`src/`), data (`data/`), build config

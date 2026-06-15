@@ -101,6 +101,9 @@ ${CATS.map((c) => `<#${frag(c)}> a skos:Collection ; skos:prefLabel ${JSON.strin
 
 for (const e of ENTRIES) {
   ttl += `<#${frag(e.label)}> a ui:${e.kind === 'link' ? 'Link' : 'Component'} ; ui:label ${JSON.stringify(e.label)} ;\n`;
+  // Provenance: the manifest this entry was generated from (relative to the
+  // catalog doc), so Customize's delete can remove the plugin's manifest too.
+  ttl += `  dct:source <../plugins/${e.file}> ;\n`;
   if (e.icon) ttl += `  ui:icon ${JSON.stringify(e.icon)} ;\n`;
   if (e.kind === 'component') ttl += `  ui:name ${JSON.stringify(e.tag)} ;\n`;
   if (e.region) ttl += `  ui:region ui:${e.region} ;\n`;
