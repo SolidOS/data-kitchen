@@ -81,6 +81,10 @@ document.addEventListener('sol-form-save', () => {
   const sd = document.querySelector('sol-default');
   if (sd && typeof sd.reload === 'function') sd.reload().catch(() => {});
   readAndApply();
+  // The Data Kitchen Pod Browser settings form (ui:ignorePattern / ui:editorKeys)
+  // saves to sol-pod's own doc; re-apply to any mounted <sol-pod> so a change
+  // shows without reopening the pod browser tab.
+  document.querySelectorAll('sol-pod').forEach((p) => { try { p.reload?.(); } catch (_) {} });
 });
 
 if (window.matchMedia) {
