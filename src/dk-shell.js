@@ -28,6 +28,9 @@
   // <dk-config-settings>: the Electron + Pivot groups of the settings page,
   // edited over the preload IPC bridge (electron-config.jsonld).
   await import('./dk-config-settings.js');
+  // <dk-plugin-settings>: per-plugin settings groups on the settings page,
+  // RDF-driven and gated on catalog in-use status.
+  await import('./dk-plugin-settings.js');
   // <dk-issuers-editor>: the sign-in issuer list (solid:oidcIssuer) on the
   // settings page's Data Kitchen group.
   await import('./dk-issuers-editor.js');

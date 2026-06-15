@@ -20,22 +20,16 @@
     ></dk-issuers-editor>
   </section>
 
-  <!-- Data Kitchen Pod Browser: the pod browser's hide-path filters
-       (ui:ignorePattern) and the live editor's keybindings (ui:editorKeys),
-       from sol-pod's own shape over its settings doc. A DIRECT form (not the
-       discovery accordion below) so it shows whether or not the pod browser tab
-       is currently mounted. Both <sol-pod>s carry data-settings-skip so the
-       discovery accordion never lists this twice; dk-settings-applier re-applies
-       a save to any mounted pods. -->
-  <section class="dk-settings-group">
-    <h3>Data Kitchen Pod Browser</h3>
-    <sol-form
-        data-settings-skip
-        subject="./dk-pod/dk/plugins/sol-pod/pod-settings.ttl#Settings"
-        save-to="./dk-pod/dk/plugins/sol-pod/pod-settings.ttl#Settings"
-        shape="node_modules/sol-components/shapes/pod-settings.shacl"
-    ></sol-form>
-  </section>
+  <!-- Per-plugin settings, RDF-driven and gated on catalog "in-use" status:
+       <dk-plugin-settings> reads the settings-groups list (source=) and renders a
+       shape-driven <sol-form> for each plugin that has settings AND is wired into
+       the active shell (menu=) — independent of whether its tab is mounted. The
+       forms carry data-settings-skip so the discovery accordion below never lists
+       them twice; dk-settings-applier re-applies a save to any mounted pods. -->
+  <dk-plugin-settings
+      source="./dk-pod/dk/ui-data/data-kitchen-settings-groups.ttl"
+      menu="./dk-pod/dk/ui-data/data-kitchen-main-menu.ttl"
+  ></dk-plugin-settings>
 
   <!-- Electron (window size/position) + Pivot (server ports, pod root). These
        live in the JSON-LD electron-config read by the desktop main process at
