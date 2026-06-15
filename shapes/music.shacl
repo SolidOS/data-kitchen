@@ -8,7 +8,7 @@
 # links its audio file(s) via mo:item (multi-valued; Music Ontology
 # sub-property of mo:available_as, "the full track").
 
-@prefix ex: <http://example.org/ia-music-shapes#> .
+@prefix : <#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -21,78 +21,78 @@
 @prefix schema: <http://schema.org/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 
-ex:GenreSchemeShape a sh:NodeShape ;
+:GenreSchemeShape a sh:NodeShape ;
     sh:targetClass skos:ConceptScheme ;
     sh:property [ sh:path skos:prefLabel ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] .
 
-ex:GenreShape a sh:NodeShape ;
+:GenreShape a sh:NodeShape ;
     sh:targetClass skos:Concept ;
     sh:property [ sh:path rdf:type ; sh:hasValue mo:Genre ] ;
     sh:property [ sh:path skos:prefLabel ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path skos:topConceptOf ; sh:node ex:GenreSchemeShape ; sh:maxCount 1 ] .
+    sh:property [ sh:path skos:topConceptOf ; sh:node :GenreSchemeShape ; sh:maxCount 1 ] .
 
-ex:AgentShape a sh:NodeShape ;
+:AgentShape a sh:NodeShape ;
     sh:targetClass foaf:Agent ;
     sh:property [ sh:path foaf:name ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path mo:genre ; sh:node ex:GenreShape ] ;
+    sh:property [ sh:path mo:genre ; sh:node :GenreShape ] ;
     sh:property [ sh:path dcat:landingPage ; sh:nodeKind sh:IRI ; sh:maxCount 1 ] ;
-    sh:property [ sh:path dcterms:source ; sh:node ex:PlaylistShape ; sh:maxCount 1 ] .
+    sh:property [ sh:path dcterms:source ; sh:node :PlaylistShape ; sh:maxCount 1 ] .
 
-ex:CatalogShape a sh:NodeShape ;
+:CatalogShape a sh:NodeShape ;
     sh:targetClass dcat:Catalog ;
     sh:property [ sh:path dcterms:title ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path dcat:catalog ; sh:node ex:CatalogShape ] ;
+    sh:property [ sh:path dcat:catalog ; sh:node :CatalogShape ] ;
     sh:property [ sh:path dcat:dataset ; sh:nodeKind sh:IRI ] ;
-    sh:property [ sh:path dcat:themeTaxonomy ; sh:node ex:GenreSchemeShape ; sh:maxCount 1 ] .
+    sh:property [ sh:path dcat:themeTaxonomy ; sh:node :GenreSchemeShape ; sh:maxCount 1 ] .
 
 # Release — mo:Release (+ dcat:Dataset). Tracks are the unordered
 # mo:track set; order is each Track's mo:track_number. NOT a
 # schema:ItemList.
-ex:ReleaseShape a sh:NodeShape ;
+:ReleaseShape a sh:NodeShape ;
     sh:targetClass mo:Release ;
     sh:property [ sh:path rdf:type ; sh:hasValue dcat:Dataset ] ;
     sh:property [ sh:path dcterms:title ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path dcterms:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path dcterms:isPartOf ; sh:node ex:CatalogShape ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path foaf:maker ; sh:node ex:AgentShape ] ;
-    sh:property [ sh:path mo:genre ; sh:node ex:GenreShape ] ;
+    sh:property [ sh:path dcterms:isPartOf ; sh:node :CatalogShape ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path foaf:maker ; sh:node :AgentShape ] ;
+    sh:property [ sh:path mo:genre ; sh:node :GenreShape ] ;
     sh:property [ sh:path dcat:landingPage ; sh:nodeKind sh:IRI ; sh:maxCount 1 ] ;
     sh:property [ sh:path dcterms:date ; sh:datatype xsd:string ; sh:maxCount 1 ] ;
     sh:property [ sh:path dcterms:rights ; sh:datatype xsd:string ; sh:maxCount 1 ] ;
     sh:property [ sh:path foaf:depiction ; sh:nodeKind sh:IRI ] ;
     sh:property [ sh:path schema:ratingValue ; sh:datatype xsd:decimal ; sh:maxCount 1 ] ;
     sh:property [ sh:path rdfs:comment ; sh:datatype xsd:string ; sh:maxCount 1 ] ;
-    sh:property [ sh:path mo:track ; sh:node ex:TrackShape ; sh:minCount 1 ] .
+    sh:property [ sh:path mo:track ; sh:node :TrackShape ; sh:minCount 1 ] .
 
 # Playlist — schema:ItemList + schema:MusicPlaylist (+ dcat:Dataset).
 # Tracks are the ordered schema:itemListElement → schema:ListItem
 # sequence. foaf:maker here is a literal curator name.
-ex:PlaylistShape a sh:NodeShape ;
+:PlaylistShape a sh:NodeShape ;
     sh:targetClass schema:MusicPlaylist ;
     sh:property [ sh:path rdf:type ; sh:hasValue schema:ItemList ] ;
     sh:property [ sh:path rdf:type ; sh:hasValue dcat:Dataset ] ;
     sh:property [ sh:path dcterms:title ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path dcterms:isPartOf ; sh:node ex:CatalogShape ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path dcterms:isPartOf ; sh:node :CatalogShape ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path schema:itemListOrder ; sh:hasValue schema:ItemListOrderAscending ] ;
     sh:property [ sh:path foaf:maker ; sh:datatype xsd:string ; sh:maxCount 1 ] ;
     sh:property [ sh:path dcterms:description ; sh:datatype xsd:string ; sh:maxCount 1 ] ;
     sh:property [ sh:path oa:styleClass ; sh:datatype xsd:string ; sh:maxCount 1 ] ;
-    sh:property [ sh:path schema:itemListElement ; sh:node ex:ListItemShape ] .
+    sh:property [ sh:path schema:itemListElement ; sh:node :ListItemShape ] .
 
 # ListItem — one ordered slot in a Playlist (schema:ListItem).
-ex:ListItemShape a sh:NodeShape ;
+:ListItemShape a sh:NodeShape ;
     sh:targetClass schema:ListItem ;
     sh:property [ sh:path schema:position ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path schema:item ; sh:node ex:TrackShape ; sh:minCount 1 ; sh:maxCount 1 ] .
+    sh:property [ sh:path schema:item ; sh:node :TrackShape ; sh:minCount 1 ; sh:maxCount 1 ] .
 
 # Track — mo:Track, defined in its Release document. dcterms:isPartOf →
 # the owning Release. The audio file(s) are linked via mo:item
 # (multi-valued).
-ex:TrackShape a sh:NodeShape ;
+:TrackShape a sh:NodeShape ;
     sh:targetClass mo:Track ;
     sh:property [ sh:path dcterms:title ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path dcterms:isPartOf ; sh:node ex:ReleaseShape ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path foaf:maker ; sh:node ex:AgentShape ] ;
+    sh:property [ sh:path dcterms:isPartOf ; sh:node :ReleaseShape ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path foaf:maker ; sh:node :AgentShape ] ;
     sh:property [ sh:path mo:track_number ; sh:datatype xsd:integer ; sh:maxCount 1 ] ;
     sh:property [ sh:path mo:duration ; sh:datatype xsd:decimal ; sh:maxCount 1 ] ;
     sh:property [ sh:path mo:bpm ; sh:datatype xsd:decimal ; sh:maxCount 1 ] ;

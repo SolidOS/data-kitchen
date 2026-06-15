@@ -1,9 +1,9 @@
 @prefix schema: <http://schema.org/> .
-@prefix swc:    <urn:swc:shape:time-settings:> .
+@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix foaf:   <http://xmlns.com/foaf/0.1/> .
 @prefix :       <#> .
 
-<> a swc:TimeSettingsFile ;
+<> a wd:Q1193846 ;
    foaf:primaryTopic <#Settings> .
 
 <#Settings>

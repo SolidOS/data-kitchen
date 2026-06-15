@@ -2,11 +2,11 @@
 @prefix schema: <http://schema.org/> .
 @prefix time:   <http://www.w3.org/2006/time#> .
 @prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix swc:    <urn:swc:shape:weather-settings:> .
+@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix foaf:   <http://xmlns.com/foaf/0.1/> .
 @prefix :       <#> .
 
-<> a swc:WeatherSettingsFile ;
+<> a wd:Q1193846 ;
    foaf:primaryTopic <#Settings> .
 
 <#Settings>

@@ -20,7 +20,7 @@ const UI = 'http://www.w3.org/ns/ui#';
 const SCHEMA = 'http://schema.org/';
 const MIRROR = './dk-pod/dk/data/electron-config.ttl';
 const SHAPE  = './dk-pod/dk/shapes/electron-config.shacl';
-const CONFIG_FILE_TYPE = 'urn:swc:shape:electron-config:ElectronConfigFile';
+const CONFIG_FILE_TYPE = 'http://www.wikidata.org/entity/Q1193846';
 
 // form field key → predicate IRI (the editable numbers; pod root is not here)
 const FIELD_PREDS = {

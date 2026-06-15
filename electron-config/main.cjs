@@ -49,7 +49,7 @@ function buildDefaultConfig() {
       schema: 'http://schema.org/',
       pim: 'http://www.w3.org/ns/pim/space#',
       foaf: 'http://xmlns.com/foaf/0.1/',
-      swc: 'urn:swc:shape:electron-config:',
+      wd: 'http://www.wikidata.org/entity/',
       publicPort: 'ui:publicPort',
       privatePort: 'ui:privatePort',
       proxyPort: 'ui:proxyPort',
@@ -61,7 +61,7 @@ function buildDefaultConfig() {
       primaryTopic: { '@id': 'foaf:primaryTopic', '@type': '@id' },
     },
     '@id': '',
-    '@type': 'swc:ElectronConfigFile',
+    '@type': 'wd:Q1193846',
     primaryTopic: {
       '@id': '#config',
       publicPort: PUBLIC_PORT,
@@ -263,7 +263,7 @@ class DesktopApp {
         stmts.push(`   <${PIM_STORAGE}> ${JSON.stringify(t.storage)}`);
       }
       const body =
-        `<> a <urn:swc:shape:electron-config:ElectronConfigFile> ;\n` +
+        `<> a <http://www.wikidata.org/entity/Q1193846> ;\n` +
         `   <http://xmlns.com/foaf/0.1/primaryTopic> <#config> .\n` +
         `<#config>\n${stmts.join(' ;\n')} .\n`;
       await fetch(POD_CONFIG_URL, {

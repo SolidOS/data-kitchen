@@ -198,8 +198,13 @@ delete/provenance work:
   `dct:source <../plugins/<file>>` provenance to each entry of an existing
   plugins catalog (so Customize's delete can also remove the plugin's manifest).
   Used to backfill the live pod catalog.
-- `backups/plugins-catalog.pre-dctsource.ttl` — the catalog as it was before the
-  dct:source backfill.
+- `backups/plugins-catalog.pre-dctsource.ttl` / `.pre-pathfix.ttl` /
+  `.pre-rebackfill.ttl` — successive snapshots of the live pod catalog before
+  the dct:source backfill, the `./plugins/` → `./dk-pod/dk/plugins/` source
+  path-fix, and the fragment-based re-backfill (the serializer had stripped
+  dct:source; `menu-serialize.js` now preserves it).
+- `backups/pod-swc-pre/` — the live pod's `*-settings.ttl` files as they were
+  before the `swc:` → `wd:Q1193846` namespace rewrite.
 
 ## What's not here
 

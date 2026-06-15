@@ -1,11 +1,11 @@
 @prefix : <#>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
-@prefix swc: <urn:swc:shape:data-kitchen-settings:>.
+@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix schema: <http://schema.org/>.
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
 
-<> a swc:DataKitchenSettingsFile;
+<> a wd:Q1193846;
     foaf:primaryTopic <#Settings>.
 <#Settings> ui:colorScheme ui:DarkColorScheme;
     ui:fontSize ui:MediumFont;

@@ -1,6 +1,5 @@
-BASE <http://example.org/ia-music-shapes#>
 
-PREFIX ex: <http://example.org/ia-music-shapes#>
+PREFIX : <#>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -49,16 +48,16 @@ PREFIX oa: <http://www.w3.org/ns/oa#>
 
 # The genre scheme — genres.ttl#Music. dcat:themeTaxonomy on the
 # Catalog points here; concepts attach via skos:topConceptOf.
-shape ex:GenreSchemeShape -> skos:ConceptScheme {
+shape :GenreSchemeShape -> skos:ConceptScheme {
   skos:prefLabel xsd:string [1..1] ;
 }
 
 # A Genre is a SKOS concept AND an mo:Genre (linkable via mo:genre),
 # a top concept of the Music scheme.
-shape ex:GenreShape -> skos:Concept {
+shape :GenreShape -> skos:Concept {
   rdf:type [ sh:hasValue mo:Genre ] ;
   skos:prefLabel xsd:string [1..1] ;
-  skos:topConceptOf @ex:GenreSchemeShape [0..1] ;
+  skos:topConceptOf @:GenreSchemeShape [0..1] ;
 }
 
 # A foaf:Agent — catalog artists (also mo:MusicArtist) and
@@ -66,11 +65,11 @@ shape ex:GenreShape -> skos:Concept {
 # converted-to-artist Agent to the Playlist that is its single source
 # of truth; its presence is also the "read albums/tracks from RDF, not
 # an archive.org search" signal.
-shape ex:AgentShape -> foaf:Agent {
+shape :AgentShape -> foaf:Agent {
   foaf:name xsd:string [1..1] ;
-  mo:genre @ex:GenreShape [0..*] ;
+  mo:genre @:GenreShape [0..*] ;
   dcat:landingPage IRI [0..1] ;
-  dcterms:source @ex:PlaylistShape [0..1] ;
+  dcterms:source @:PlaylistShape [0..1] ;
 }
 
 # Catalog — every index <#it> (the library index, plus the
@@ -78,11 +77,11 @@ shape ex:AgentShape -> foaf:Agent {
 # ARE the loader spine. dcat:catalog nests sub-catalogs; dcat:dataset
 # → member Datasets (Releases / Playlists / agents.ttl#it);
 # dcat:themeTaxonomy → the genre ConceptScheme (top-level index only).
-shape ex:CatalogShape -> dcat:Catalog {
+shape :CatalogShape -> dcat:Catalog {
   dcterms:title xsd:string [1..1] ;
-  dcat:catalog @ex:CatalogShape [0..*] ;
+  dcat:catalog @:CatalogShape [0..*] ;
   dcat:dataset IRI [0..*] ;
-  dcat:themeTaxonomy @ex:GenreSchemeShape [0..1] ;
+  dcat:themeTaxonomy @:GenreSchemeShape [0..1] ;
 }
 
 # Release — a published album / concert / IA item: mo:Release (+
@@ -91,20 +90,20 @@ shape ex:CatalogShape -> dcat:Catalog {
 # tracks are the UNORDERED mo:track set — ordering is each Track's
 # mo:track_number. dcterms:isPartOf → the releases sub-catalog is the
 # structural spine. A Release is NOT a schema:ItemList (see the header).
-shape ex:ReleaseShape -> mo:Release {
+shape :ReleaseShape -> mo:Release {
   rdf:type [ sh:hasValue dcat:Dataset ] ;
   dcterms:title xsd:string [1..1] ;
   dcterms:identifier xsd:string [1..1] ;
-  dcterms:isPartOf @ex:CatalogShape [1..1] ;
-  foaf:maker @ex:AgentShape [0..*] ;
-  mo:genre @ex:GenreShape [0..*] ;
+  dcterms:isPartOf @:CatalogShape [1..1] ;
+  foaf:maker @:AgentShape [0..*] ;
+  mo:genre @:GenreShape [0..*] ;
   dcat:landingPage IRI [0..1] ;
   dcterms:date xsd:string [0..1] ;
   dcterms:rights xsd:string [0..1] ;
   foaf:depiction IRI [0..*] ;
   schema:ratingValue xsd:decimal [0..1] ;
   rdfs:comment xsd:string [0..1] ;
-  mo:track @ex:TrackShape [1..*] ;
+  mo:track @:TrackShape [1..*] ;
 }
 
 # Playlist — a curated track list: schema:ItemList (the ordered
@@ -115,25 +114,25 @@ shape ex:ReleaseShape -> mo:Release {
 # the playlists sub-catalog is the structural spine. foaf:maker here is
 # a literal curator NAME, not an Agent IRI. oa:styleClass "hidden"
 # marks a converted-to-artist playlist shown only as its linked artist.
-shape ex:PlaylistShape -> schema:MusicPlaylist {
+shape :PlaylistShape -> schema:MusicPlaylist {
   rdf:type [ sh:hasValue schema:ItemList ] ;
   rdf:type [ sh:hasValue dcat:Dataset ] ;
   dcterms:title xsd:string [1..1] ;
-  dcterms:isPartOf @ex:CatalogShape [1..1] ;
+  dcterms:isPartOf @:CatalogShape [1..1] ;
   schema:itemListOrder [ sh:hasValue schema:ItemListOrderAscending ] ;
   foaf:maker xsd:string [0..1] ;
   dcterms:description xsd:string [0..1] ;
   oa:styleClass xsd:string [0..1] ;
-  schema:itemListElement @ex:ListItemShape [0..*] ;
+  schema:itemListElement @:ListItemShape [0..*] ;
 }
 
 # ListItem — one ordered slot in a Playlist, typed schema:ListItem
 # (hash IRIs <#eNN>). schema:position is 1-based and contiguous across
 # the playlist; schema:item → a mo:Track (a cross-document IRI into a
 # release file — playlists reference, never own, their tracks).
-shape ex:ListItemShape -> schema:ListItem {
+shape :ListItemShape -> schema:ListItem {
   schema:position xsd:integer [1..1] ;
-  schema:item @ex:TrackShape [1..1] ;
+  schema:item @:TrackShape [1..1] ;
 }
 
 # Track — a mo:Track, defined in its Release document (<#tNN>).
@@ -145,10 +144,10 @@ shape ex:ListItemShape -> schema:ListItem {
 #   The audio file(s) are linked via mo:item — the Music Ontology
 #   sub-property of mo:available_as meaning the item holds the FULL
 #   track; multi-valued, so a track can offer several formats.
-shape ex:TrackShape -> mo:Track {
+shape :TrackShape -> mo:Track {
   dcterms:title xsd:string [1..1] ;
-  dcterms:isPartOf @ex:ReleaseShape [1..1] ;
-  foaf:maker @ex:AgentShape [0..*] ;
+  dcterms:isPartOf @:ReleaseShape [1..1] ;
+  foaf:maker @:AgentShape [0..*] ;
   mo:track_number xsd:integer [0..1] ;
   mo:duration xsd:decimal [0..1] ;
   mo:bpm xsd:decimal [0..1] ;
