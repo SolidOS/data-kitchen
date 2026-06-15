@@ -21,13 +21,14 @@
   </section>
 
   <!-- Per-plugin settings, RDF-driven and gated on catalog "in-use" status:
-       <dk-plugin-settings> reads the settings-groups list (source=) and renders a
-       shape-driven <sol-form> for each plugin that has settings AND is wired into
-       the active shell (menu=) — independent of whether its tab is mounted. The
-       forms carry data-settings-skip so the discovery accordion below never lists
-       them twice; dk-settings-applier re-applies a save to any mounted pods. -->
+       <dk-plugin-settings> renders a shape-driven <sol-form> for each plugin that
+       (a) is wired into the active shell (menu=) and (b) declares settings in its
+       own manifest (shape + a settings .ttl; subject = the doc's foaf:primaryTopic)
+       — independent of whether its tab is mounted, and with nothing duplicated
+       here. The forms carry data-settings-skip so the discovery accordion below
+       never lists them twice; dk-settings-applier re-applies a save to any mounted
+       pods. -->
   <dk-plugin-settings
-      source="./dk-pod/dk/ui-data/data-kitchen-settings-groups.ttl"
       menu="./dk-pod/dk/ui-data/data-kitchen-main-menu.ttl"
   ></dk-plugin-settings>
 

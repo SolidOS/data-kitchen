@@ -60,7 +60,7 @@ const ok =
   r.leftResCount === 3 &&
   r.leftEditorKeys === 'default' &&
   JSON.stringify(r.rightPatterns) === JSON.stringify(['.*', '*~', '#*#']) &&
-  r.rightSkipsForm === true && r.leftSkipsForm === false &&
+  r.rightSkipsForm === true && r.leftSkipsForm === true &&  // both skip: the central dk-plugin-settings form is the editing surface
   JSON.stringify(r.visibleAfterFilter) === JSON.stringify(['notes.txt', 'keep.ttl']) &&
   r.serializeHasIgnore && r.serializeDefaultKeys && r.serializeEmacsKeys;
 

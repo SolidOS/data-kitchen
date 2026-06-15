@@ -1,34 +1,29 @@
 // <dk-plugin-settings> — renders the Settings page's per-plugin settings groups
-// from RDF, gated on catalog "in-use" status.
+// from RDF, gated on catalog "in-use" status. Manifest-driven: nothing about a
+// plugin's settings is duplicated here — each plugin declares its own.
 //
-// Why this exists: sc's <sol-settings> discovers settings by walking the live
-// DOM, so a plugin's settings only appear once its (often deferred) tab has been
-// opened. Instead, this dk component reads two RDF inputs and renders a
-// shape-driven <sol-form> for each plugin that has settings AND is currently in
-// use — independent of whether the plugin is mounted:
+// For each plugin currently IN USE (its ui:name is referenced in the active shell
+// menu, menu=…), this loads the plugin's manifest (plugins/<id>/manifest.jsonld)
+// and, if it declares a settings shape (dct:conformsTo) plus a settings document
+// (a .ttl in dct:requires), renders a shape-driven <sol-form> for it. The form's
+// subject is the document's own foaf:primaryTopic — the established Solid
+// "what this document is about" convention (every settings doc already declares
+// `<> foaf:primaryTopic <#Settings>`), so no settings-subject term is needed.
 //
-//   source=  a list of settings groups (ui-data/data-kitchen-settings-groups.ttl):
-//            each <#X> a ui:Component ; ui:name <tag> ; ui:label <heading> ;
-//            ui:attribute [schema:name "shape"|"subject" ; schema:value …] .
-//   menu=    the active shell config (data-kitchen-main-menu.ttl). A plugin is
-//            "in use" when its ui:name appears there (the catalog's own
-//            definition). Defaults to the page's <sol-tabs from-rdf> document.
-//
-// Pure composition over sc primitives (rdflib + <sol-form>); sc's discovery is
-// left untouched, so other apps keep zero-config auto-discovery.
+// A plugin parked in the catalog (not wired into the shell) is skipped. sc's
+// <sol-settings> DOM-discovery is left untouched, so other apps keep zero-config
+// auto-discovery.
 
 import { rdf } from 'sol-components/core/rdf.js';
 import { solFetch } from 'sol-components/core/auth-fetch.js';
 
-const UI     = 'http://www.w3.org/ns/ui#';
-const SCHEMA = 'http://schema.org/';
-const RDF_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
+const UI   = 'http://www.w3.org/ns/ui#';
+const FOAF = 'http://xmlns.com/foaf/0.1/';
 
-async function loadStore(url) {
-  const abs = new URL(url, document.baseURI).href;
-  const ttl = await (await solFetch(abs)).text();
+async function loadTurtle(url) {
+  const ttl = await (await solFetch(url)).text();
   const store = rdf.graph();
-  rdf.parse(ttl, store, abs, 'text/turtle');
+  rdf.parse(ttl, store, url, 'text/turtle');
   return store;
 }
 
@@ -37,48 +32,62 @@ class DkPluginSettings extends HTMLElement {
     if (this._rendered) return;
     this._rendered = true;
 
-    const source = this.getAttribute('source');
-    if (!source) { console.warn('[dk-plugin-settings] no source'); return; }
-    // Default the in-use source to the page's <sol-tabs from-rdf> shell doc.
     const menu = this.getAttribute('menu')
-      || document.getElementById('dk-tabs')?.getAttribute('from-rdf')
-      || null;
+      || document.getElementById('dk-tabs')?.getAttribute('from-rdf');
+    if (!menu) { console.warn('[dk-plugin-settings] no menu source'); return; }
 
     try {
-      const groupStore = await loadStore(source);
-      const inUse = menu ? await this._inUseNames(menu) : null;
-
-      for (const subj of groupStore.each(null, rdf.sym(RDF_TYPE), rdf.sym(UI + 'Component'))) {
-        const name = groupStore.any(subj, rdf.sym(UI + 'name'))?.value;
-        if (!name) continue;
-        // Gate on catalog in-use status: skip plugins not wired into the shell.
-        if (inUse && !inUse.has(name)) continue;
-
-        const attrs = {};
-        for (const a of groupStore.each(subj, rdf.sym(UI + 'attribute'))) {
-          const k = groupStore.any(a, rdf.sym(SCHEMA + 'name'))?.value;
-          const v = groupStore.any(a, rdf.sym(SCHEMA + 'value'))?.value;
-          if (k) attrs[k] = v;
-        }
-        if (!attrs.shape || !attrs.subject) continue;
-
-        const label = groupStore.any(subj, rdf.sym(UI + 'label'))?.value || name;
-        this.appendChild(this._group(label, attrs.shape, attrs.subject));
+      for (const manifestUrl of await this._inUseManifests(menu)) {
+        const group = await this._groupFor(manifestUrl);
+        if (group) this.appendChild(group);
       }
     } catch (err) {
-      console.warn(`[dk-plugin-settings] ${source}: ${err.message}`);
+      console.warn(`[dk-plugin-settings] ${err.message}`);
     }
   }
 
-  // The set of plugin ui:names referenced anywhere in the active shell doc —
-  // dk's definition of "in use" (vs parked in the catalog).
-  async _inUseNames(menuUrl) {
-    const store = await loadStore(menuUrl.split('#')[0]);
-    const names = new Set();
+  // Manifest URLs of the plugins wired into the active shell (dk's "in use" =
+  // ui:name present in the menu doc), derived from each entry's source path.
+  async _inUseManifests(menuRef) {
+    const menuUrl = new URL(menuRef.split('#')[0], document.baseURI).href;
+    const store = await loadTurtle(menuUrl);
+    const seen = new Set();
+    const out = [];
     for (const st of store.statementsMatching(null, rdf.sym(UI + 'name'), null)) {
-      names.add(st.object.value);
+      let src = null;
+      for (const a of store.each(st.subject, rdf.sym(UI + 'attribute'))) {
+        if (store.any(a, rdf.sym('http://schema.org/name'))?.value === 'source') {
+          src = store.any(a, rdf.sym('http://schema.org/value'))?.value; break;
+        }
+      }
+      const id = src && src.match(/plugins\/([^/]+)\//)?.[1];
+      if (!id || seen.has(id)) continue;
+      seen.add(id);
+      out.push(new URL(`dk-pod/dk/plugins/${id}/manifest.jsonld`, document.baseURI).href);
     }
-    return names;
+    return out;
+  }
+
+  // Build a settings group from a plugin manifest, or null if it has no settings.
+  // The manifest is JSON-LD; its keys (shape/requires/label) are read directly.
+  async _groupFor(manifestUrl) {
+    let m;
+    try { m = await (await solFetch(manifestUrl)).json(); } catch { return null; }
+    if (!m.shape) return null;                         // no settings shape → no form
+    const requires = Array.isArray(m.requires) ? m.requires : (m.requires ? [m.requires] : []);
+    const ttl = requires.find((r) => String(r).endsWith('.ttl'));
+    if (!ttl) return null;
+
+    const shape   = new URL(m.shape, manifestUrl).href;       // /node_modules/…/x.shacl
+    const docUrl  = new URL(ttl, manifestUrl).href;           // plugins/<id>/x.ttl
+    let subject;
+    try {
+      const dstore = await loadTurtle(docUrl);
+      subject = dstore.any(rdf.sym(docUrl), rdf.sym(FOAF + 'primaryTopic'))?.value;
+    } catch { return null; }
+    if (!subject) return null;
+
+    return this._group(m.label || m.name || 'Settings', shape, subject);
   }
 
   // One settings group, styled like the page's hardcoded groups. data-settings-skip
