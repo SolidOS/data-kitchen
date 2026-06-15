@@ -25,6 +25,12 @@
   await import('../plugins/solidos/dk-solidos.js');
   await import('../plugins/calendar/dk-calendar-popout.js');
   await import('./dk-settings-applier.js');
+  // <dk-config-settings>: the Electron + Pivot groups of the settings page,
+  // edited over the preload IPC bridge (electron-config.jsonld).
+  await import('./dk-config-settings.js');
+  // <dk-issuers-editor>: the sign-in issuer list (solid:oidcIssuer) on the
+  // settings page's Data Kitchen group.
+  await import('./dk-issuers-editor.js');
   // Register the local pod owner as a logged-in session BEFORE the auth router
   // and any widget's first authed fetch, so the app reads as the owner (and
   // podz can discover the pod).

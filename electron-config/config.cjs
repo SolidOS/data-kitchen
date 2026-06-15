@@ -19,6 +19,42 @@ const REPO_ROOT = path.join(__dirname, '..');
 // pod-root path. Read by resolvePodRoot(); written by main.cjs's dk:move-pod.
 const POD_POINTER = 'dk-pod-root';
 
+// JSON-LD electron/pivot config (ports, window geometry, pod root) under
+// Electron userData. Node reads it as plain JSON; the renderer edits it as a
+// real sol-form (over a pod mirror) because the doc is one RDF subject — the
+// foaf:primaryTopic node — carrying distinct predicates (ui:publicPort /
+// ui:internalPort / ui:proxyPort, schema:width/height, ui:windowX/Y,
+// pim:storage). Absent until first run / first save — every value falls back to
+// the defaults below (and the env vars still override the ports).
+const CONFIG_FILE = 'electron-config.jsonld';
+function electronApp() { try { return require('electron').app; } catch { return null; } }
+function configPath() { const a = electronApp(); return a ? path.join(a.getPath('userData'), CONFIG_FILE) : null; }
+function readConfig() {
+  const p = configPath();
+  if (!p) return null;
+  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return null; }   // absent/unreadable — use defaults
+}
+function writeConfig(cfg) {
+  const p = configPath();
+  if (!p) return false;
+  try { fs.writeFileSync(p, JSON.stringify(cfg, null, 2) + '\n'); return true; } catch { return false; }
+}
+// The single config subject (the doc's foaf:primaryTopic node); created if absent.
+function configTopic(cfg) {
+  if (!cfg.primaryTopic || typeof cfg.primaryTopic !== 'object') cfg.primaryTopic = { '@id': '#config' };
+  return cfg.primaryTopic;
+}
+const ELECTRON_CONFIG = readConfig();
+function cfgVal(key) {
+  const t = ELECTRON_CONFIG && ELECTRON_CONFIG.primaryTopic;
+  const v = t && t[key];
+  return Number.isFinite(v) ? v : undefined;
+}
+function cfgStorage() {
+  const t = ELECTRON_CONFIG && ELECTRON_CONFIG.primaryTopic;
+  return (t && typeof t.storage === 'string' && t.storage) || undefined;
+}
+
 // Where the user's writable pod root lives when the app is packaged.
 // Portable-app pattern: a "data-kitchen-home" folder NEXT TO the AppImage (or
 // the executable in other packaged layouts), so the app file and its data
@@ -29,6 +65,11 @@ const POD_POINTER = 'dk-pod-root';
 // the app definition.
 function resolvePodRoot() {
   if (process.env.DK_POD_ROOT) return process.env.DK_POD_ROOT;
+  // The JSON-LD config's pim:storage (written by "Move my pod") is the chosen
+  // root; it subsumes the legacy dk-pod-root pointer, which stays as a fallback
+  // for installs that haven't written a config yet.
+  const fromConfig = cfgStorage();
+  if (fromConfig) return fromConfig;
   let app;
   try { app = require('electron').app; } catch { return REPO_ROOT; }
   // A "Move my pod" choice (persisted in userData) wins over the install-dir
@@ -53,15 +94,22 @@ function resolvePodRoot() {
 }
 
 // Public origin the app + blessed browsers talk to (the routing front server).
-const PUBLIC_PORT = Number(process.env.DK_PUBLIC_PORT) || 8000;
+// Precedence: env var → JSON-LD config (#public/#internal/#proxy ui:portNumber)
+// → built-in default.
+const PUBLIC_PORT = Number(process.env.DK_PUBLIC_PORT) || cfgVal('publicPort') || 8000;
 // Pivot CSS listens here, BEHIND the router; never addressed directly by the app.
-const CSS_INTERNAL_PORT = Number(process.env.DK_CSS_INTERNAL_PORT) || 8010;
+const CSS_INTERNAL_PORT = Number(process.env.DK_CSS_INTERNAL_PORT) || cfgVal('privatePort') || 8010;
 // CORS proxy (unchanged role).
-const PROXY_PORT = Number(process.env.DK_PROXY_PORT) || 8001;
+const PROXY_PORT = Number(process.env.DK_PROXY_PORT) || cfgVal('proxyPort') || 8001;
 
 module.exports = {
   REPO_ROOT,
   POD_POINTER,
+  CONFIG_FILE,
+  configPath,
+  readConfig,
+  writeConfig,
+  configTopic,
   PUBLIC_PORT,
   CSS_INTERNAL_PORT,
   PROXY_PORT,

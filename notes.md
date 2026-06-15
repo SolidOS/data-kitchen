@@ -1,18 +1,29 @@
 --------
 # TO-DO
 --------
-6. Refine Plugins
-* the customize button should show subtabs:
-  1. Define the main menu tabs
-  2. Choose plugins the menu should access
-* and a tab action button "save"
-* 1 shld open the menu-manager
-* 2 shld open plugins-manager
-* plugins manager page
-  * avail as is
-  * remove 3rd column
-  * expand 2nd column to be same size as avail
-  * 2nd col should show menus and button area as drop targets containing current things in them
+9. Settings expansion
+For part B, I want these groupings and settings on the settings page
+
+Data Kitchen
+  color
+  font
+  proxy
+  help document
+  issuers (first one is default issuer) shld also capture add an issuer in dropdown
+Data Kitchen Browser
+  pathsToHide
+  editKeys
+Electron
+  width
+  height 
+  position
+Pivot
+  port
+  proxy port
+  internal port
+  root (changing initiates move-my-pod)
+
+note : default tab shld not be news, it shld be whichever tab is first
 
 
 CLAUDE: IGNORE EVERYTHING BELOW HERE
@@ -20,6 +31,12 @@ CLAUDE: IGNORE EVERYTHING BELOW HERE
 ----------
 # THOUGHTS
 ----------
+* news: way to add new feeds, edit labels
+* add Forum to Solid Resources
+* rename Data Kitchen Pod Browser
+
+
+
 customize menu item shld lead to
   a submenu that lets users add/remove tabs & actions, edit tab-action settingss, edit the electron/pivot configs
 
@@ -36,6 +53,28 @@ guest app - an external app displayed in main app
 --------
 # DONE
 --------
+8.
+we currently serve CSS with an automated login/identity; however there is no concept of the pod owner; we should be provisioning a  
+  pod similarly to the way community.net does; the template for the user-pod is at /home/jeff/data-kitchen-user which you have perms   
+  for; so that would eventually be copied into the dk-pod folder when user names its root;  it would include profile/card and thus     
+  have a webid for the user - http://localhost:port/dk-pod/profile/card#me; so this should work for mashlib - it should be able to act 
+  as logged in with that webid;  it would also be nice to let other apps use the pod but thye often want to login on their own - so    
+  we need the user to be able to fill in that apps login form and submit it and have it work against the localhost but with a dummy    
+  password like !secret which isn't acutally used, instead the login is via the token that dk already has    
+
+7. Refine Plugins
+* the customize button should show subtabs:
+  1. Define the main menu tabs
+  2. Choose plugins the menu should access
+* and a tab action button "save"
+* 1 shld open the menu-manager
+* 2 shld open plugins-manager
+* plugins manager page
+  * avail as is
+  * remove 3rd column
+  * expand 2nd column to be same size as avail
+  * 2nd col should show menus and button area as drop targets containing current things in them
+
 6. Refine plugin-manager
 * use/avail should be side by side
 * sol-include is not a plugin - it can't be added to a menu, it does nothing by itself

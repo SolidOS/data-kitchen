@@ -3,20 +3,38 @@
     <h2>Settings</h2>
   </header>
 
-  <!-- Preferences (theme / text size / proxy) — shown open on the page, not
-       behind an accordion: the same shape-driven form sol-settings would
-       build for <sol-default> (which carries data-settings-skip in
-       index.html so the accordion below doesn't repeat it). -->
-  <!-- (data-settings-skip: its shape= would otherwise make the form itself
-       show up in the accordion below.) -->
-  <sol-form
-      data-settings-skip
-      subject="./dk-pod/dk/data/data-kitchen-settings.ttl#Settings"
-      save-to="./dk-pod/dk/data/data-kitchen-settings.ttl#Settings"
-      shape="node_modules/sol-components/shapes/data-kitchen-settings.shacl"
-  ></sol-form>
+  <!-- Data Kitchen: theme / text size / CORS proxy / help document, all from the
+       shape-driven form over data-kitchen-settings.ttl; plus the sign-in issuer
+       list (first = default). data-settings-skip keeps this form out of the
+       Plugins accordion below (its shape would otherwise re-list it there). -->
+  <section class="dk-settings-group">
+    <h3>Data Kitchen</h3>
+    <sol-form
+        data-settings-skip
+        subject="./dk-pod/dk/data/data-kitchen-settings.ttl#Settings"
+        save-to="./dk-pod/dk/data/data-kitchen-settings.ttl#Settings"
+        shape="node_modules/sol-components/shapes/data-kitchen-settings.shacl"
+    ></sol-form>
+    <dk-issuers-editor
+        source="./dk-pod/dk/data/data-kitchen-settings.ttl#Settings"
+    ></dk-issuers-editor>
+  </section>
 
-  <!-- Settings of the plugins in use (search, calendar, weather, … —
-       whatever editable components the running page mounts). -->
-  <sol-settings></sol-settings>
+  <!-- The pod browser's hide-path filters and the live editor's keybindings are
+       NOT hardcoded here: sol-pod and sol-live-edit declare their own settings
+       shape + data-subject, so the <sol-settings> discovery below picks them up
+       in the Plugins accordion ONLY while they're mounted (in use). -->
+
+  <!-- Electron (window size/position) + Pivot (server ports, pod root). These
+       live in the JSON-LD electron-config read by the desktop main process at
+       launch, so this component edits them over the preload IPC bridge rather
+       than the pod RDF above. -->
+  <dk-config-settings></dk-config-settings>
+
+  <!-- Plugins: every editable widget the running page mounts (calendar, weather,
+       time, …) auto-discovered and shown as an accordion. -->
+  <section class="dk-settings-group">
+    <h3>Plugins</h3>
+    <sol-settings></sol-settings>
+  </section>
 </section>

@@ -277,6 +277,92 @@ dk-calendar-popout .dk-popout-panel sol-calendar {
   text-align: center;
 }
 
+/* Named groups (Data Kitchen, Data Kitchen Browser, Electron, Pivot, Plugins).
+   Each fills the settings column; its form/fields stay even with the others. */
+.dk-settings .dk-settings-group {
+  display: block;
+  margin: 0 0 var(--space-2xl, 24px);
+}
+.dk-settings .dk-settings-group > h3 {
+  margin: 0 0 var(--space-lg, 12px);
+  font-size: 1.15rem;
+  font-weight: var(--font-weight-bold, 600);
+  padding-bottom: var(--space-xs, 4px);
+  border-bottom: 1px solid var(--border, #9e9e9e);
+}
+.dk-settings .dk-settings-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg, 12px);
+}
+.dk-settings .dk-settings-field-label { font-size: 1rem; }
+.dk-settings .dk-settings-field-hint { color: var(--text-muted, #4d4d4d); }
+.dk-settings .dk-settings-root { flex-direction: column; align-items: stretch; }
+.dk-settings .dk-settings-root-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md, 8px);
+  margin-top: var(--space-xs, 4px);
+}
+.dk-settings .dk-settings-root-path {
+  flex: 1;
+  font-family: var(--font-mono, monospace);
+  font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-muted, #4d4d4d);
+}
+.dk-settings .dk-settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-lg, 12px);
+}
+.dk-settings .dk-settings-btn {
+  font-size: 1rem;
+  padding: var(--space-sm, 6px) var(--space-lg, 12px);
+  border: 1px solid var(--border, #9e9e9e);
+  border-radius: var(--radius-sm, 4px);
+  background: var(--surface, #fff);
+  color: inherit;
+  cursor: pointer;
+}
+.dk-settings .dk-settings-btn:hover { border-color: var(--accent, #1F618D); }
+.dk-settings .dk-settings-btn-primary {
+  background: var(--accent, #1F618D);
+  border-color: var(--accent, #1F618D);
+  color: #fff;
+}
+.dk-settings .dk-settings-status {
+  margin: var(--space-md, 8px) 0 0;
+  font-size: 1rem;
+  color: var(--text-muted, #4d4d4d);
+}
+.dk-settings .dk-settings-status[data-kind="ok"]  { color: var(--ok, #1e7e34); }
+.dk-settings .dk-settings-status[data-kind="err"] { color: var(--danger, #c0392b); }
+
+/* Issuer-list editor (Sign-in issuers; first = default). */
+.dk-settings .dk-issuers { display: flex; flex-direction: column; gap: var(--space-md, 8px); margin-top: var(--space-lg, 12px); }
+.dk-settings .dk-issuers-list { display: flex; flex-direction: column; gap: var(--space-xs, 4px); }
+.dk-settings .dk-issuer-row {
+  display: flex; align-items: center; gap: var(--space-md, 8px);
+  padding: var(--space-xs, 4px) var(--space-sm, 6px);
+  border: 1px solid var(--border, #9e9e9e); border-radius: var(--radius-sm, 4px);
+  background: var(--surface, #fff);
+}
+.dk-settings .dk-issuer-url { flex: 1; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dk-settings .dk-issuer-default { font-size: 1rem; color: var(--ok, #1e7e34); }
+.dk-settings .dk-issuers-add { display: flex; gap: var(--space-md, 8px); align-items: center; flex-wrap: wrap; }
+.dk-settings .dk-issuers-add select,
+.dk-settings .dk-issuers-add input { font-size: 1rem; padding: var(--space-xs, 4px) var(--space-sm, 6px); border-radius: var(--radius-sm, 4px); }
+.dk-settings .dk-issuer-iconbtn {
+  font-size: 1rem; line-height: 1; cursor: pointer;
+  border: 1px solid transparent; border-radius: var(--radius-sm, 4px);
+  background: none; color: var(--text-muted, #4d4d4d); padding: var(--space-xs, 4px);
+}
+.dk-settings .dk-issuer-iconbtn:hover { color: var(--accent, #1F618D); border-color: var(--border, #9e9e9e); }
+
 /* Override sol-accordion's defaults for a quieter, more editorial
    look. The accordion injects its own styles document-level; ours
    target the dk-settings scope only so other apps' accordions stay

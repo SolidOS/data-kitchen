@@ -38,7 +38,7 @@ function loadPodzBundle() {
 
 class DkPodz extends HTMLElement {
   static get template() { return 'dk-pod/dk/plugins/podz/dk-podz.html'; }
-  static get manifest() { return 'dk-pod/dk/plugins/podz/manifest.ttl'; }
+  static get manifest() { return 'dk-pod/dk/plugins/podz/manifest.jsonld'; }
 
   /**
    * Editable widgets this app hosts (read by dk-settings). Podz

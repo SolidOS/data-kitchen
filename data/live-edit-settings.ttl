@@ -1,0 +1,10 @@
+@prefix ui:   <http://www.w3.org/ns/ui#> .
+@prefix swc:  <urn:swc:shape:live-edit-settings:> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix :     <#> .
+
+<> a swc:LiveEditSettingsFile ;
+   foaf:primaryTopic <#Settings> .
+
+<#Settings>
+  ui:editorKeys ui:DefaultKeys .

@@ -15,9 +15,64 @@ const {
 const path = require('path');
 const fs = require('fs');
 
-const { APP_URL, PUBLIC_PORT, PROXY_PORT, POD_ROOT, POD_POINTER } = require('./config.cjs');
+const {
+  APP_URL, PUBLIC_ORIGIN, PUBLIC_PORT, CSS_INTERNAL_PORT, PROXY_PORT, POD_ROOT, POD_POINTER,
+  readConfig, writeConfig, configTopic,
+} = require('./config.cjs');
 const { Servers, getGateToken } = require('./servers.cjs');
+
+// The config's home is a real, browsable pod resource — the source of truth the
+// user sees and the sol-form edits. userData (what config.cjs reads at launch,
+// before the pod is served) just trails it: on boot we sync userData FROM the
+// pod (pod wins), and every change is written through to the pod so it stays
+// current. CSS serves/patches it natively.
+const POD_CONFIG_URL = `${PUBLIC_ORIGIN}/dk-pod/dk/data/electron-config.ttl`;
+const CFG_PRED = {
+  publicPort:  'http://www.w3.org/ns/ui#publicPort',
+  privatePort: 'http://www.w3.org/ns/ui#privatePort',
+  proxyPort:   'http://www.w3.org/ns/ui#proxyPort',
+  width:       'http://schema.org/width',
+  height:      'http://schema.org/height',
+  windowX:     'http://www.w3.org/ns/ui#windowX',
+  windowY:     'http://www.w3.org/ns/ui#windowY',
+};
+const PIM_STORAGE = 'http://www.w3.org/ns/pim/space#storage';
 const { ExternalViews } = require('./external-views.cjs');
+
+// A fresh JSON-LD electron/pivot config seeded with the values this process
+// booted with: one subject (foaf:primaryTopic) carrying distinct predicates, so
+// the renderer edits it as a real sol-form and Node reads it as plain JSON.
+function buildDefaultConfig() {
+  return {
+    '@context': {
+      ui: 'http://www.w3.org/ns/ui#',
+      schema: 'http://schema.org/',
+      pim: 'http://www.w3.org/ns/pim/space#',
+      foaf: 'http://xmlns.com/foaf/0.1/',
+      swc: 'urn:swc:shape:electron-config:',
+      publicPort: 'ui:publicPort',
+      privatePort: 'ui:privatePort',
+      proxyPort: 'ui:proxyPort',
+      width: 'schema:width',
+      height: 'schema:height',
+      windowX: 'ui:windowX',
+      windowY: 'ui:windowY',
+      storage: { '@id': 'pim:storage' },
+      primaryTopic: { '@id': 'foaf:primaryTopic', '@type': '@id' },
+    },
+    '@id': '',
+    '@type': 'swc:ElectronConfigFile',
+    primaryTopic: {
+      '@id': '#config',
+      publicPort: PUBLIC_PORT,
+      privatePort: CSS_INTERNAL_PORT,
+      proxyPort: PROXY_PORT,
+      storage: POD_ROOT,
+    },
+  };
+}
+// The editable numeric fields the settings form round-trips.
+const CONFIG_NUM_KEYS = ['publicPort', 'privatePort', 'proxyPort', 'width', 'height', 'windowX', 'windowY'];
 
 // Dev: serve always-fresh files from the local working trees — both edited
 // modules AND data TTLs the app re-fetches after a write (e.g. a settings
@@ -80,12 +135,24 @@ class DesktopApp {
     // Dev: the app is served from local working trees that change between
     // launches; clear the HTTP cache so edited modules are always picked up.
     try { await session.defaultSession.clearCache(); } catch (_) {}
+    // The pod resource is the source of truth: trail userData to it (and seed it
+    // if absent) now that CSS is up, BEFORE creating the window so geometry is
+    // current.
+    await this.syncConfigFromPod();
     this.createWindow();
   }
 
   createWindow() {
-    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-    this.baseWindow = new BaseWindow({ width, height, x: 0, y: 0, title: 'Solid Data Kitchen' });
+    // Window geometry: the JSON-LD config (schema:width/height, ui:windowX/Y)
+    // when present, else the full work area at the top-left.
+    const cfg = readConfig();
+    const winCfg = cfg && cfg.primaryTopic;
+    const { width: scrW, height: scrH } = screen.getPrimaryDisplay().workAreaSize;
+    const width  = (winCfg && Number.isFinite(winCfg.width))   ? winCfg.width   : scrW;
+    const height = (winCfg && Number.isFinite(winCfg.height))  ? winCfg.height  : scrH;
+    const x = (winCfg && Number.isFinite(winCfg.windowX)) ? winCfg.windowX : 0;
+    const y = (winCfg && Number.isFinite(winCfg.windowY)) ? winCfg.windowY : 0;
+    this.baseWindow = new BaseWindow({ width, height, x, y, title: 'Solid Data Kitchen' });
 
     this.appView = new WebContentsView({
       webPreferences: {
@@ -105,6 +172,11 @@ class DesktopApp {
     for (const ev of ['resize', 'resized', 'maximize', 'unmaximize', 'restore',
                       'enter-full-screen', 'leave-full-screen']) {
       this.baseWindow.on(ev, () => this.fitAppView());
+    }
+    // Remember window geometry across launches: persist (debounced) into the
+    // JSON-LD config when the user resizes or moves the window.
+    for (const ev of ['resized', 'moved']) {
+      this.baseWindow.on(ev, () => this._scheduleSaveBounds());
     }
     this._fitTimer = setInterval(() => this.fitAppView(), 500);
 
@@ -143,9 +215,91 @@ class DesktopApp {
       details.requestHeaders['x-dk-token'] = token;
       callback({ requestHeaders: details.requestHeaders });
     });
+
+    // Deliberately-opened apps (panes) run on the trusted-guest session so they
+    // can log into the local pod. Bless their pod-origin requests with the same
+    // token — but ONLY the pod's PUBLIC port, never the proxy. Everything else
+    // on this machine stays out of reach (the session itself cancels non-pod
+    // loopback in external-views.cjs).
+    const podUrls = [`http://localhost:${PUBLIC_PORT}/*`, `http://127.0.0.1:${PUBLIC_PORT}/*`];
+    session.fromPartition('persist:trusted-guest').webRequest.onBeforeSendHeaders({ urls: podUrls }, (details, callback) => {
+      details.requestHeaders['x-dk-token'] = token;
+      callback({ requestHeaders: details.requestHeaders });
+    });
   }
 
   _stopWatchdog() { if (this._fitTimer) { clearInterval(this._fitTimer); this._fitTimer = null; } }
+
+  // Debounce rapid resize/move events into one config write.
+  _scheduleSaveBounds() {
+    if (this._saveBoundsTimer) clearTimeout(this._saveBoundsTimer);
+    this._saveBoundsTimer = setTimeout(() => { this._saveBoundsTimer = null; this.saveWindowBounds(); }, 600);
+  }
+
+  // Persist the current window bounds into the config (userData + pod).
+  saveWindowBounds() {
+    try {
+      if (!this.baseWindow || this.baseWindow.isDestroyed()) return;
+      const b = this.baseWindow.getBounds();
+      const cfg = readConfig() || buildDefaultConfig();
+      const win = configTopic(cfg);
+      win.width = b.width; win.height = b.height; win.windowX = b.x; win.windowY = b.y;
+      writeConfig(cfg);
+      this.publishConfigToPod();   // keep the pod copy current
+    } catch { /* config dir unwritable — geometry just won't persist */ }
+  }
+
+  // Write the current config (userData) THROUGH to the browsable pod resource,
+  // so the pod always shows live values. Authed PUT via the gate token (CSS).
+  async publishConfigToPod() {
+    try {
+      const cfg = readConfig() || buildDefaultConfig();
+      const t = configTopic(cfg);
+      const stmts = [];
+      for (const [k, p] of Object.entries(CFG_PRED)) {
+        if (Number.isFinite(t[k])) stmts.push(`   <${p}> ${t[k]}`);
+      }
+      if (typeof t.storage === 'string' && t.storage) {
+        stmts.push(`   <${PIM_STORAGE}> ${JSON.stringify(t.storage)}`);
+      }
+      const body =
+        `<> a <urn:swc:shape:electron-config:ElectronConfigFile> ;\n` +
+        `   <http://xmlns.com/foaf/0.1/primaryTopic> <#config> .\n` +
+        `<#config>\n${stmts.join(' ;\n')} .\n`;
+      await fetch(POD_CONFIG_URL, {
+        method: 'PUT', headers: { 'content-type': 'text/turtle', 'x-dk-token': getGateToken() }, body,
+      });
+    } catch (e) { console.warn('[dk] publish config to pod failed:', e.message); }
+  }
+
+  // On boot (servers up): the pod resource is authoritative. Read it and trail
+  // userData to it; if it's absent, seed it from userData/defaults.
+  async syncConfigFromPod() {
+    let text = null;
+    try {
+      const r = await fetch(POD_CONFIG_URL, { headers: { 'x-dk-token': getGateToken(), accept: 'text/turtle' } });
+      if (r.status === 404) { await this.publishConfigToPod(); return; }
+      if (r.ok) text = await r.text();
+    } catch (e) { console.warn('[dk] read pod config failed:', e.message); return; }
+    if (!text) return;
+    try {
+      const $rdf = require('rdflib');
+      const store = $rdf.graph();
+      $rdf.parse(text, store, POD_CONFIG_URL, 'text/turtle');
+      const subj = $rdf.sym(POD_CONFIG_URL + '#config');
+      const cfg = readConfig() || buildDefaultConfig();
+      const t = configTopic(cfg);
+      let changed = false;
+      for (const [k, p] of Object.entries(CFG_PRED)) {
+        const o = store.any(subj, $rdf.sym(p));
+        const v = o && parseInt(o.value, 10);
+        if (Number.isFinite(v) && t[k] !== v) { t[k] = v; changed = true; }
+      }
+      const stor = store.any(subj, $rdf.sym(PIM_STORAGE));
+      if (stor && typeof stor.value === 'string' && t.storage !== stor.value) { t.storage = stor.value; changed = true; }
+      if (changed) writeConfig(cfg);
+    } catch (e) { console.warn('[dk] parse pod config failed:', e.message); }
+  }
 
   // Keep the app view exactly the window's content size; cheap no-op when
   // already in sync (called from events AND the watchdog interval). Guards
@@ -200,6 +354,48 @@ class DesktopApp {
     // exit()) so before-quit fires and the bundled servers are stopped first.
     ipcMain.on('dk:restart', () => { app.relaunch(); app.quit(); });
 
+    // Settings page: read the JSON-LD electron/pivot config plus the values this
+    // process actually booted with (so the UI can show current vs edited).
+    ipcMain.handle('dk:get-config', () => ({
+      config: readConfig() || buildDefaultConfig(),
+      effective: {
+        publicPort: PUBLIC_PORT, privatePort: CSS_INTERNAL_PORT, proxyPort: PROXY_PORT,
+        root: POD_ROOT,
+      },
+    }));
+
+    // Settings page: persist the edited numeric fields (read by the renderer off
+    // the sol-form's pod mirror). Window geometry applies live via setBounds; a
+    // changed port can't rebind a running server, so prompt reload-now /
+    // wait-until-next-launch (only main can relaunch).
+    ipcMain.handle('dk:save-config', async (_e, vals) => {
+      if (!vals || typeof vals !== 'object') return { status: 'error', message: 'malformed values' };
+      const cfg = readConfig() || buildDefaultConfig();
+      const t = configTopic(cfg);
+      for (const k of CONFIG_NUM_KEYS) { if (Number.isFinite(vals[k])) t[k] = vals[k]; }
+      if (!writeConfig(cfg)) return { status: 'error', message: 'could not write config' };
+      this.publishConfigToPod();   // keep the pod source-of-truth in lock-step
+
+      // Window geometry can apply immediately.
+      if (this.baseWindow && !this.baseWindow.isDestroyed()) {
+        const b = this.baseWindow.getBounds();
+        this.baseWindow.setBounds({
+          x:      Number.isFinite(t.windowX) ? t.windowX : b.x,
+          y:      Number.isFinite(t.windowY) ? t.windowY : b.y,
+          width:  Number.isFinite(t.width)   ? t.width   : b.width,
+          height: Number.isFinite(t.height)  ? t.height  : b.height,
+        });
+      }
+      const portsChanged =
+        (Number.isFinite(vals.publicPort)  && Number(vals.publicPort)  !== PUBLIC_PORT) ||
+        (Number.isFinite(vals.privatePort) && Number(vals.privatePort) !== CSS_INTERNAL_PORT) ||
+        (Number.isFinite(vals.proxyPort)   && Number(vals.proxyPort)   !== PROXY_PORT);
+      // No modal here — the sol-form autosaves per field, so the renderer
+      // surfaces a dismissible "ports changed — reload?" banner and triggers
+      // dk:restart when the user is ready.
+      return { status: 'saved', portsChanged };
+    });
+
     // "Move my pod" (☰): pick a new home folder, copy the whole pod tree there
     // (index.html, dk.manifest.json, dk-pod/, .internal/, .meta), persist the
     // choice in userData, and relaunch so CSS re-roots there. The WebID is
@@ -219,6 +415,13 @@ class DesktopApp {
         this.servers.stop();                                  // release CSS file locks before copying
         await fs.promises.cp(from, to, { recursive: true, force: true });
         fs.writeFileSync(path.join(app.getPath('userData'), POD_POINTER), to + '\n');
+        // Keep the JSON-LD config's pim:storage in sync — it's the root's
+        // primary source now; the pointer above stays as a fallback.
+        try {
+          const cfg = readConfig() || buildDefaultConfig();
+          configTopic(cfg).storage = to;
+          writeConfig(cfg);
+        } catch { /* config unwritable — pointer still carries the move */ }
       } catch (e) {
         return { status: 'error', message: e.message };
       }

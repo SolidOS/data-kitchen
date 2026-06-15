@@ -94,7 +94,7 @@
   ui:href <https://cryptpad.fr/> .
 
 <#dokieli> a ui:Link ; ui:label "dokieli" ;
-  ui:icon "📝" ;
+  ui:icon "https://dokie.li/media/images/logo.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Write and publish articles, with annotations and social interactions." ;
   dct:creator "Sarven Capadisli and Virginia Balseiro" ;

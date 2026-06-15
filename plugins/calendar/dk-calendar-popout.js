@@ -12,7 +12,7 @@
 
 class DkCalendarPopout extends HTMLElement {
   static get template() { return 'dk-pod/dk/plugins/calendar/dk-calendar-popout.html'; }
-  static get manifest() { return 'dk-pod/dk/plugins/calendar/manifest.ttl'; }
+  static get manifest() { return 'dk-pod/dk/plugins/calendar/manifest.jsonld'; }
 
   async connectedCallback() {
     if (this._rendered) return;

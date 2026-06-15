@@ -1,7 +1,7 @@
 // dk-tabs-shell — page-level wiring around the topmost <sol-tabs>: tab-change
 // reactions, chrome actions, mini audio player, guest gating, the help
 // overlay, and CONTEXT: help / settings / the ☰ menu follow the active
-// plugin via its plugins/<id>/manifest.ttl (schema:softwareHelp,
+// plugin via its plugins/<id>/manifest.jsonld (schema:softwareHelp,
 // dct:conformsTo, optional #Menu). (Adapted from omp-shell when
 // open_media_player was absorbed.)
 // The tabs + panels are modeled in data/data-kitchen-main-menu.ttl (rdf-first; rendered by
@@ -27,11 +27,11 @@
     const panelEl   = (key) => document.getElementById('panel-' + key);
     const allPanels = () => PANEL_KEYS.map(panelEl).filter(Boolean);
     let audioName = 'music';
-    let current = 'news';
+    let current = '';
     const activePanel = () => panelEl(current);
 
     // ----- plugin context (manifest-driven) -----
-    // Each plugin MAY ship plugins/<id>/manifest.ttl declaring its help file
+    // Each plugin MAY ship plugins/<id>/manifest.jsonld declaring its help file
     // (schema:softwareHelp), its settings shape (dct:conformsTo), and ☰ menu
     // contributions (<#Menu> a ui:Menu). The id is the first path segment
     // under plugins/ in the active panel's source attribute.
@@ -51,14 +51,14 @@
       if (manifestCache.has(id)) return manifestCache.get(id);
       let info = null;
       try {
-        const docUrl = new URL(`dk-pod/dk/plugins/${id}/manifest.ttl`, document.baseURI).href;
+        const docUrl = new URL(`dk-pod/dk/plugins/${id}/manifest.jsonld`, document.baseURI).href;
         const store = await loadRdfStore(docUrl);
         const doc = rdf.sym(docUrl);
         info = {
           help:  store.any(doc, rdf.sym(SCHEMA_HELP))?.value || null,
           shape: store.any(doc, rdf.sym(DCT_CONFORMS))?.value || null,
           menuUri: store.any(rdf.sym(`${docUrl}#Menu`), rdf.sym(UI_PARTS))
-            ? `dk-pod/dk/plugins/${id}/manifest.ttl#Menu` : null,
+            ? `dk-pod/dk/plugins/${id}/manifest.jsonld#Menu` : null,
         };
       } catch { info = null; }   // no manifest — perfectly fine
       manifestCache.set(id, info);
@@ -504,10 +504,17 @@
     // <sol-tabs> builds its panels asynchronously (the from-rdf load of
     // data/data-kitchen-main-menu.ttl); wait, then wire tab reactions + restore the last-used tab.
     function whenTabsReady(cb) {
-      if (panelEl('news')) return cb();
+      // Ready = the included <sol-tabs> exists and has built at least one pane.
+      // (Don't key this on a specific tab like 'news' — any tab may be first,
+      // and 'news' can be removed via Customize.)
+      const ready = () => {
+        const tabsEl = document.getElementById('dk-tabs');
+        return tabsEl && tabsEl.querySelector(':scope > .sol-tabs-content > .sol-tabs-pane');
+      };
+      if (ready()) return cb();
       let n = 0;
       const t = setInterval(() => {
-        if (panelEl('news') || ++n > 60) { clearInterval(t); cb(); }
+        if (ready() || ++n > 60) { clearInterval(t); cb(); }
       }, 50);
     }
     whenTabsReady(() => {
@@ -564,11 +571,14 @@
       syncFontSize();
       applyContext();
 
-      // News is the startup tab unless a saved choice says otherwise (a
-      // saved key for a since-removed tab falls through to the first tab).
-      let saved = 'news', savedTab = null, savedPick = null, audioTab = null, audioPick = null;
+      // The FIRST tab is the startup default unless a saved choice says
+      // otherwise. With no saved choice, targetTab stays null and we fall
+      // through to onTab(solTabs.activeTab) below — and sol-tabs defaults
+      // activeTab to the first tab. (A saved key for a since-removed tab also
+      // resolves to null here and lands on the first tab.)
+      let saved = '', savedTab = null, savedPick = null, audioTab = null, audioPick = null;
       try {
-        saved = localStorage.getItem('dk:active-panel') || 'news';
+        saved = localStorage.getItem('dk:active-panel') || '';
         savedTab = localStorage.getItem('dk:active-tab');     // captured before
         savedPick = localStorage.getItem('dk:active-pick');   // onTab can clear it
         audioTab = localStorage.getItem('dk:audio-tab');      // the submenu + pick

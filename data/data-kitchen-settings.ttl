@@ -2,9 +2,16 @@
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix swc: <urn:swc:shape:data-kitchen-settings:>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix schema: <http://schema.org/>.
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
 
 <> a swc:DataKitchenSettingsFile;
     foaf:primaryTopic <#Settings>.
 <#Settings> ui:colorScheme ui:DarkColorScheme;
     ui:fontSize ui:MediumFont;
-    ui:proxy "http://localhost:8001/proxy?uri=".
+    ui:proxy "http://localhost:8001/proxy?uri=";
+    schema:softwareHelp "./dk-pod/dk/help/dk.html";
+    solid:oidcIssuer <https://solidcommunity.net>,
+                     <https://solidweb.me>,
+                     <https://solidweb.org>,
+                     <https://login.inrupt.com>.

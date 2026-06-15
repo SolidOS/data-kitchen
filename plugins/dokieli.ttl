@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "dokieli" ;
-  ui:icon "📝" ;
+  ui:icon "https://dokie.li/media/images/logo.png" ;
   ui:href <https://dokie.li/> ;
   ui:region ui:Tab ;
   rdfs:comment "Write and publish articles, with annotations and social interactions." ;

@@ -224,4 +224,11 @@ contextBridge.exposeInMainWorld('dkElectron', {
   // cancel/error/same/nested (it relaunches on success). status values:
   // moved | cancelled | same | nested | error.
   moveMyPod: () => ipcRenderer.invoke('dk:move-pod'),
+  // Settings page: read the JSON-LD electron/pivot config (+ the effective
+  // values this process booted with) and save an edited one. saveConfig
+  // resolves to { status: 'saved' | 'saved'+pending:'next-launch' |
+  // 'relaunching' | 'error' } — main prompts reload-now vs next-launch when a
+  // port changed, and applies window-geometry edits live.
+  getConfig: () => ipcRenderer.invoke('dk:get-config'),
+  saveConfig: (cfg) => ipcRenderer.invoke('dk:save-config', cfg),
 });

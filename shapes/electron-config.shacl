@@ -1,0 +1,67 @@
+@prefix :       <#> .
+@prefix swc:    <urn:swc:shape:electron-config:> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix wd:     <http://www.wikidata.org/entity/> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
+
+swc:ElectronConfigFile
+  a rdfs:Class ;
+  rdfs:subClassOf wd:Q1193846 .
+
+:ElectronConfigFileShape
+  a sh:NodeShape ;
+  sh:targetClass swc:ElectronConfigFile ;
+  sh:property [
+    sh:path foaf:primaryTopic ;
+    sh:minCount 1 ; sh:maxCount 1 ;
+    sh:node :ElectronConfigShape ;
+  ] .
+
+:ElectronConfigShape
+  a sh:NodeShape ;
+  sh:property [
+    sh:path ui:publicPort ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Port" ;
+    sh:description "Public routing-server port — the origin clients talk to." ;
+  ] ,
+  [
+    sh:path ui:proxyPort ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Proxy port" ;
+    sh:description "CORS proxy port." ;
+  ] ,
+  [
+    sh:path ui:privatePort ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Private port" ;
+    sh:description "Private server port, behind the router." ;
+  ] ,
+  [
+    sh:path schema:width ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Width" ;
+    sh:description "Application window width, in pixels." ;
+  ] ,
+  [
+    sh:path schema:height ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Height" ;
+    sh:description "Application window height, in pixels." ;
+  ] ,
+  [
+    sh:path ui:windowX ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Position X" ;
+    sh:description "Window top-left x coordinate, in pixels." ;
+  ] ,
+  [
+    sh:path ui:windowY ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Position Y" ;
+    sh:description "Window top-left y coordinate, in pixels." ;
+  ] .
