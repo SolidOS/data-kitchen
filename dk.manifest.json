@@ -19,17 +19,13 @@
       "components": {
         "ia-player": "/plugins/ia-player/dist/ia-player.esm.js"
       },
-      "shared-modules": {
-        "podz/": "/node_modules/podz/src/"
-      }
+      "shared-modules": {}
     },
     "cdn": {
       "components": {
         "ia-player": "/plugins/ia-player/dist/ia-player.esm.js"
       },
-      "shared-modules": {
-        "podz/": "/node_modules/podz/src/"
-      }
+      "shared-modules": {}
     }
   }
 }

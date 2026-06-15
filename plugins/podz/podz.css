@@ -1,0 +1,524 @@
+/* podz.css — synced with swc's root.css.
+ *
+ * Shared theme vars (--bg, --surface, --border, --text, --accent, etc.)
+ * come from swc's web/styles/root.css and are NOT redefined here.
+ * That stylesheet is loaded by data-kitchen via its own <link> in
+ * index.html, and by standalone podz via the same <link> added to
+ * podz/index.html — so both contexts see the same swc-driven palette.
+ *
+ * Only podz-specific extension vars live in here, and they are scoped
+ * to .app so they cannot leak into a host shell. The pre-sync version
+ * (with podz's own palette + :root overrides) is preserved at
+ * claude/backups/podz.css.pre-swc-sync. */
+
+/* ── podz-specific extension vars (scoped to .app) ───────────────── */
+.app {
+  --font-sm:        var(--small-font, 16px);
+  --font-md:        var(--medium-font, 20px);
+  --font-lg:        var(--large-font, 24px);
+  --font-app:       var(--font-md);
+
+  --bg-grad-tint:   rgba(255,255,255,0.55);
+  --surface-2:      color-mix(in srgb, var(--surface) 96%, var(--text) 4%);
+  --border-soft:    color-mix(in srgb, var(--border) 50%, var(--surface) 50%);
+  --text-faint:     color-mix(in srgb, var(--text-muted) 70%, var(--surface) 30%);
+  --shadow-heavy:   rgba(0,0,0,0.28);
+  --focus-ring:     var(--accent);
+
+  --folder-color:   var(--accent-dark);
+  --file-color:     var(--text);
+
+  --error-bg:       color-mix(in srgb, var(--error) 12%, var(--surface) 88%);
+  --success-bg:     color-mix(in srgb, var(--success) 12%, var(--surface) 88%);
+  --warning-bg:     #fff4d4;
+  --warning-border: #e2b870;
+  --warning-text:   #5d4037;
+
+  --selected-bg:    color-mix(in srgb, var(--accent) 20%, var(--surface) 80%);
+  --selected-hover: color-mix(in srgb, var(--accent) 30%, var(--surface) 70%);
+}
+
+/* Dark mode covers two contexts:
+     [data-theme="dark"] .app — swc / data-kitchen convention
+     body.dark .app          — podz standalone toggle (podz.js still
+                               uses document.body.classList.toggle('dark')) */
+[data-theme="dark"] .app,
+body.dark .app {
+  --bg-grad-tint:   rgba(60,90,140,0.08);
+  --shadow-heavy:   rgba(0,0,0,0.78);
+  --warning-bg:     #2a2000;
+  --warning-border: #5a4000;
+  --warning-text:   #ffd54f;
+}
+
+/* Universal reset — safe to apply globally; no theme leak. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Standalone-podz body chrome. The :has(>.app) guard ensures these
+   rules only apply when body directly contains .app — never when
+   podz is mounted inside a host shell like data-kitchen. swc's
+   root.css provides --bg, --text, etc. at :root for the body to
+   consume. */
+html:has(> body > .app),
+body:has(> .app) {
+  height: 100%;
+  overflow: hidden;
+}
+body:has(> .app) {
+  font-family: var(--font-ui, system-ui, -apple-system, sans-serif);
+  font-size: 20px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: var(--font-ui, system-ui, -apple-system, sans-serif);
+  font-size: var(--font-app);
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -8%, var(--bg-grad-tint) 0%, transparent 55%),
+    var(--bg);
+}
+
+.app header {
+  background: var(--surface);
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 var(--border-soft), 0 6px 14px -8px var(--shadow);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  z-index: 2;
+}
+
+/* Header sol-modal trigger buttons (help + prefs) */
+.app header sol-modal::part(trigger) {
+  background: none;
+  border: none;
+  font-size: 1.3em;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.app header sol-modal::part(trigger):hover { color: var(--accent); background: var(--hover); }
+
+.app #help-modal::part(trigger) { font-weight: 700; font-size: 1.1em; }
+
+.app button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.05s, box-shadow 0.15s, color 0.15s;
+}
+
+.app button:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.app button:active { transform: translateY(1px); }
+
+.app .btn-primary  { background: var(--accent); color: #fff; }
+.app .btn-primary:hover { background: var(--accent-dark); }
+.app .btn-primary:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+.app .btn-secondary { background: var(--hover); color: var(--text); }
+.app .btn-secondary:hover { background: var(--border); }
+
+.app .btn-danger  { background: var(--error); color: #fff; }
+.app .btn-danger:hover { background: color-mix(in srgb, var(--error) 80%, black 20%); }
+.app .btn-danger:disabled { background: #ccc; cursor: not-allowed; }
+
+.app .btn-icon-danger {
+  background: none;
+  border: 1px solid var(--error);
+  color: var(--error);
+  padding: 3px 8px;
+  font-size: 0.8em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.app .btn-icon-danger:hover { background: var(--hover); }
+
+/* Status toast — appended into .app by podz so it sees scoped vars. */
+.app .status-toast {
+  position: fixed;
+  top: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9998;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 9px 12px 9px 14px;
+  font-size: 0.82em;
+  color: var(--text);
+  box-shadow: 0 2px 4px var(--shadow), 0 12px 28px -10px var(--shadow-heavy);
+  max-width: 420px;
+  min-width: 160px;
+  transition: opacity 0.4s ease;
+}
+.app .status-toast.error   { background: var(--error-bg);   border-left-color: var(--error);   color: var(--error); }
+.app .status-toast.success { background: var(--success-bg); border-left-color: var(--success); color: var(--success); }
+.app .status-toast-msg { flex: 1; min-width: 0; }
+.app .status-toast-actions {
+  display: inline-flex; gap: 4px; flex-shrink: 0;
+}
+.app .status-toast-actions:empty { display: none; }
+.app .status-toast-action {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.92em;
+  font-family: inherit;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.app .status-toast-action:hover { opacity: 1; background: var(--hover); }
+.app .status-toast-close {
+  background: none; border: none; cursor: pointer;
+  font-size: 1.1em; color: inherit; opacity: 0.55;
+  padding: 0 4px; line-height: 1; flex-shrink: 0;
+}
+.app .status-toast-close:hover { opacity: 1; }
+
+.app .container {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: 24px;
+  flex: 1;
+  overflow: hidden;
+  --split-ratio: 0.5;
+}
+
+/* Draggable vertical divider between the two panels. */
+.app .panel-splitter {
+  flex: 0 0 24px;
+  position: relative;
+  cursor: col-resize;
+  align-self: stretch;
+  background: transparent;
+  outline: none;
+}
+.app .panel-splitter::before {
+  content: '';
+  position: absolute;
+  top: 8px; bottom: 8px;
+  left: 50%; transform: translateX(-50%);
+  width: 4px;
+  border-radius: 2px;
+  background: var(--border-soft);
+  transition: background 0.15s, width 0.15s;
+}
+.app .panel-splitter:hover::before,
+.app .panel-splitter:focus-visible::before,
+.app .panel-splitter.dragging::before {
+  background: var(--accent);
+  width: 6px;
+}
+.app .panel-splitter.dragging { cursor: col-resize; }
+body.splitter-dragging { cursor: col-resize; user-select: none; }
+body.splitter-dragging * { user-select: none !important; }
+
+.app .container:has(.pod-container.panel-collapsed) .panel-splitter {
+  pointer-events: none;
+  cursor: default;
+}
+.app .container:has(.pod-container.panel-collapsed) .panel-splitter::before {
+  display: none;
+}
+
+.app .pod-container {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.6) inset,
+    0 2px 4px var(--shadow),
+    0 14px 32px -16px var(--shadow-heavy);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+[data-theme="dark"] .app .pod-container,
+body.dark .app .pod-container {
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.05) inset,
+    0 2px 6px rgba(0,0,0,0.4),
+    0 18px 36px -16px rgba(0,0,0,0.7);
+}
+.app .pod-container sol-pod {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app .pod-header {
+  padding: 12px 16px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border-soft);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.app .pod-header-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.app .pod-header select {
+  flex: 1;
+  padding: 7px 10px;
+  border: 1px solid var(--border-soft);
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-family: var(--font-mono);
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.app .pod-header select:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.app .pod-icon-btn {
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 1em;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+}
+.app .pod-icon-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--focus-bg); }
+
+.app .pod-auth-status {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+.app .pod-auth-status.logged-in { color: var(--success); }
+
+.app .pod-auth-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 10px;
+  font-size: 0.78em;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.app .pod-auth-btn:hover { background: var(--hover); }
+.app .pod-auth-btn.login  { color: var(--accent); border-color: var(--accent); }
+.app .pod-auth-btn.logout { color: var(--error);  border-color: var(--error); }
+
+/* Auth dropdown — may be appended outside .app by sol-pod. The
+   second rule re-themes it when the floating dropdown shares a host
+   context with an .app element (sibling selector). */
+.auth-dropdown {
+  position: fixed; z-index: 9999;
+  background: var(--surface, #fff); border: 1px solid var(--border, #9aa3af);
+  border-radius: 6px; box-shadow: 0 6px 18px var(--shadow, rgba(0,0,0,0.1));
+  padding: 8px; min-width: 240px; max-width: 340px;
+}
+.auth-issuer-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
+.auth-issuer-item {
+  text-align: left; background: none; border: none; padding: 5px 8px;
+  border-radius: 4px; cursor: pointer; font-size: 0.84em;
+  color: var(--text, #0f1115); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.auth-issuer-item:hover { background: var(--hover, #eef0f4); color: var(--accent, #0f4ea0); }
+.auth-custom-row { display: flex; gap: 4px; }
+.auth-issuer-input {
+  flex: 1; min-width: 0; padding: 3px 6px; font-size: 0.82em;
+  border: 1px solid var(--border, #9aa3af); border-radius: 4px;
+  background: var(--bg, #fff); color: var(--text, #0f1115);
+}
+.auth-issuer-input:focus { outline: none; border-color: var(--accent, #0f4ea0); }
+
+.app .tree-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+}
+
+.app .file-tree { list-style: none; }
+
+.app .file-tree li {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  margin: 4px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  outline: none;
+}
+
+.app .file-tree li:hover  { background: var(--hover); }
+.app .file-tree li:focus  { background: var(--focus-bg); box-shadow: 0 0 0 2px var(--accent); }
+
+.app .item-label {
+  flex: 1;
+  word-break: break-word;
+  min-width: 0;
+}
+
+.app .item-gear {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 2px 6px;
+  font-size: 1em;
+  color: var(--text-faint);
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 6px;
+  transition: color 0.15s;
+}
+.app .item-gear:hover { color: var(--accent-dark); background: var(--focus-bg); }
+
+.app .file-tree .folder { font-weight: 500; color: var(--folder-color); }
+.app .file-tree .file   { color: var(--file-color); }
+.app .file-tree li[draggable="true"] { cursor: grab; }
+.app .file-tree li.dragging          { opacity: 0.5; cursor: grabbing; }
+
+.app .pod-container.drag-over .tree-wrapper {
+  background: var(--focus-bg);
+  outline: 2px dashed #4caf50;
+  outline-offset: -2px;
+}
+
+.app .breadcrumb {
+  padding: 8px 16px;
+  background: var(--surface);
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  letter-spacing: -0.01em;
+}
+.app .breadcrumb button {
+  padding: 3px 6px;
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  font-weight: 500;
+  margin-right: 2px;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 3px;
+}
+.app .breadcrumb button:hover { background: var(--hover); color: var(--accent); }
+
+.app .loading { padding: 20px; text-align: center; color: var(--text-faint); }
+.app .empty   { padding: 20px; text-align: center; color: var(--text-faint); font-style: italic; }
+
+/* ── Panel collapse/expand ───────────────────────────────────────── */
+.app .panel-footer {
+  flex-shrink: 0;
+  padding: 4px 6px;
+  display: flex;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+.app .panel-footer-left  { justify-content: flex-start; }
+.app .panel-footer-right { justify-content: flex-end; }
+
+.app .pod-collapse-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 6px;
+  line-height: 1.4;
+  transition: color 0.15s, background 0.15s;
+}
+.app .pod-collapse-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--focus-bg); }
+
+.app .pod-container.panel-collapsed .pod-collapse-btn {
+  margin: 0 auto 8px;
+  border: none;
+  font-size: 1em;
+  padding: 6px 2px;
+}
+
+.app .pod-container.panel-collapsed {
+  flex: 0 0 28px;
+  min-width: 28px;
+  max-width: 28px;
+  overflow: hidden;
+}
+.app .pod-container.panel-collapsed sol-pod,
+.app .pod-container.panel-collapsed .pod-header,
+.app .pod-container.panel-collapsed .breadcrumb,
+.app .pod-container.panel-collapsed .tree-wrapper {
+  display: none;
+}
+.app .pod-container.panel-collapsed .panel-footer {
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  border-top: none;
+  border-right: 1px solid var(--border);
+  padding: 0;
+  justify-content: flex-end;
+  align-items: center;
+}
+.app .pod-container.panel-collapsed { position: relative; }
+.app .pod-container.panel-collapsed.right-panel .panel-footer {
+  border-left: 1px solid var(--border);
+  border-right: none;
+}
+
+.app .container:has(#right-panel.panel-collapsed) #left-panel  .panel-footer { display: none; }
+.app .container:has(#left-panel.panel-collapsed)  #right-panel .panel-footer { display: none; }
+
+.app .pod-container.panel-expanded { flex: 1 1 0; }
+
+.app .pod-collapse-btn:focus { outline: none; }
+
+.panel-hidden { display: none !important; }

@@ -23,11 +23,11 @@
   "label": "Workspaces",
   "name": "dk-podz",
   "creator": "Jeff Zucker",
-  "hasPart": ["./dk-podz.html", "./dk-podz.js"],
-  "requires": [
-    "../../node_modules/podz/src/podz.css",
-    "../../node_modules/podz/dist/podz.bundle.min.js",
-    "../../node_modules/podz/popup-auth-callback.html"
+  "hasPart": [
+    "./dk-podz.html", "./dk-podz.js",
+    "./podz.js", "./podz-ui.js", "./podz-state.js",
+    "./podz-auth.js", "./podz-pod.js", "./podz-utils.js",
+    "./podz.css", "./popup-auth-callback.html"
   ],
   "help": "./help.html",
   "subject": "Tech"

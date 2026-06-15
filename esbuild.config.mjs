@@ -29,8 +29,6 @@ const options = {
     'rdf-validate-shacl',
     'sol-components',
     'sol-components/*',
-    'podz',
-    'podz/*',
   ],
 };
 

@@ -45,7 +45,7 @@
         [ schema:name "mode"; schema:value "popup" ],
             [
                 schema:name "popup-callback";
-                schema:value "node_modules/podz/popup-auth-callback.html"
+                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
             ];
     ui:label "Sign in";
     ui:name "sol-login".
@@ -131,7 +131,7 @@
         [ schema:name "mode"; schema:value "popup" ],
             [
                 schema:name "popup-callback";
-                schema:value "node_modules/podz/popup-auth-callback.html"
+                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
             ];
     ui:label "Sign in";
     ui:name "sol-login".

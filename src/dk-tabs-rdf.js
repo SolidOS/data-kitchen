@@ -97,7 +97,7 @@ const CHROME_DEFAULTS = [
   { type: 'component', id: 'chrome-login', name: 'Sign in', tag: 'sol-login',
     comment: 'Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).',
     params: [['class', 'omp-sollogin'], ['mode', 'popup'],
-             ['popup-callback', 'node_modules/podz/popup-auth-callback.html'],
+             ['popup-callback', 'dk-pod/dk/plugins/podz/popup-auth-callback.html'],
              ['issuers', 'https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com']] },
 ];
 

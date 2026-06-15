@@ -1,20 +1,20 @@
-// dk-podz hosts the existing podz app inside its light DOM. podz's
-// source self-instantiates `new SolidFileBrowser()` on module load and
-// resolves its DOM via `document.getElementById`, so the sequence is:
-// 1) inject markup, 2) load podz.css + podz bundle.
+// dk-podz is the in-house pod-browser (the former `podz` app, absorbed into dk).
+// dk owns the shell now: it injects the two-panel markup, then constructs
+// SolidFileBrowser itself — no self-instantiating bundle. The shell modules
+// (podz.js + podz-{ui,state,auth,pod,utils}.js, podz.css) live beside this file
+// and are bundled into dist/dk.bundle.js with the rest of dk's source. The
+// sol-* custom elements (sol-pod, sol-modal, sol-pod-ops, sol-live-edit, …)
+// still come from sol-components via the component-interop importmap.
 //
-// Persistent-tabs mode (the mountInTarget default) means dk-podz
-// mounts once and stays in the DOM, hidden when other tabs are
-// active. SolidFileBrowser keeps its in-memory state across nav.
+// Persistent-tabs mode (the keep-alive default) means dk-podz mounts once and
+// stays in the DOM, hidden when other tabs are active. SolidFileBrowser keeps
+// its in-memory state across nav, so we build it a single time.
+import { SolidFileBrowser } from './podz.js';
 
-const PODZ_CSS    = 'node_modules/podz/src/podz.css';
-const PODZ_BUNDLE = 'node_modules/podz/dist/podz.bundle.min.js';
-
-let bootstrapped = false;
+const PODZ_CSS = 'dk-pod/dk/plugins/podz/podz.css';
 
 function ensurePodzCss() {
-  const existing = document.querySelector('link[data-dk-podz-css]');
-  if (existing) return;
+  if (document.querySelector('link[data-dk-podz-css]')) return;
   const link = document.createElement('link');
   link.rel = 'stylesheet';
   link.href = PODZ_CSS;
@@ -22,29 +22,17 @@ function ensurePodzCss() {
   document.head.appendChild(link);
 }
 
-let bundleLoaded = false;
-
-function loadPodzBundle() {
-  if (bundleLoaded) return Promise.resolve();
-  bundleLoaded = true;
-  // podz ships an ESM bundle now (not an IIFE <script>). Its bare imports
-  // (rdflib, sol-components/*) resolve via the page's component-interop
-  // importmap, so podz shares dk's single rdflib instance + AuthManager —
-  // import it as a module so that resolution applies. The specifier is a
-  // runtime variable so esbuild leaves this as a live dynamic import.
-  const url = new URL(PODZ_BUNDLE, document.baseURI).href;
-  return import(url);
-}
+let browser = null;
 
 class DkPodz extends HTMLElement {
   static get template() { return 'dk-pod/dk/plugins/podz/dk-podz.html'; }
   static get manifest() { return 'dk-pod/dk/plugins/podz/manifest.jsonld'; }
 
   /**
-   * Editable widgets this app hosts (read by dk-settings). Podz
-   * exposes the sol-* tools through its own modals and side-panel UI;
-   * none of them are RDF-source-driven in the same way the dashboard
-   * widgets are, so the manifest is empty for v0.
+   * Editable widgets this app hosts (read by dk-settings). The pod browser
+   * exposes the sol-* tools through its own modals and side-panel UI; none of
+   * them are RDF-source-driven the way the dashboard widgets are, so the
+   * manifest is empty for v0.
    */
   static get editableWidgets() { return []; }
 
@@ -55,15 +43,10 @@ class DkPodz extends HTMLElement {
     const tpl = await fetch(this.constructor.template);
     this.innerHTML = await tpl.text();
     ensurePodzCss();
-    if (bootstrapped) {
-      const warn = document.createElement('div');
-      warn.style.cssText = 'padding:1rem;margin:1rem;background:var(--warn-bg, #fdecea);color:var(--text, #000);border:1px solid var(--warn-border, #e53935);border-radius:var(--radius-md, 6px);';
-      warn.textContent = 'Podz is single-mount. Refresh the page to re-initialise it.';
-      this.prepend(warn);
-      return;
-    }
-    bootstrapped = true;
-    loadPodzBundle().catch(err => console.error('[dk-podz]', err));
+
+    // The shell resolves its panels via document.getElementById('left-pod' /
+    // 'right-pod'), which the template above just placed. Build it once.
+    if (!browser) browser = new SolidFileBrowser();
   }
 }
 
