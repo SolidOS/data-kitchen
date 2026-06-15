@@ -19,7 +19,7 @@ import { solFetch } from 'sol-components/core/auth-fetch.js';
 const UI = 'http://www.w3.org/ns/ui#';
 const SCHEMA = 'http://schema.org/';
 const MIRROR = './dk-pod/dk/ui-data/data-kitchen-startup.ttl';
-const SHAPE  = './dk-pod/dk/shapes/electron-config.shacl';
+const SHAPE  = './dk-pod/dk/ui-data/data-kitchen-startup-config.shacl';
 const CONFIG_FILE_TYPE = 'http://www.wikidata.org/entity/Q1193846';
 
 // form field key → predicate IRI (the editable numbers; pod root is not here)

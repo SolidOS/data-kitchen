@@ -25,6 +25,6 @@
   "creator": "Jeff Zucker",
   "hasPart": ["./omp-images.js", "./omp-images.css"],
   "requires": ["./libraries/wikimedia_images/images.ttl"],
-  "shape": "../../shapes/image-libraries.shacl",
+  "shape": "./image-libraries.shacl",
   "subject": "Media"
 }

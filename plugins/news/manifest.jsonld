@@ -24,6 +24,6 @@
   "name": "sol-feed",
   "creator": "Jeff Zucker",
   "hasPart": ["./feeds.ttl"],
-  "shape": "../../shapes/feeds.shacl",
+  "shape": "./feeds.shacl",
   "subject": "Information"
 }

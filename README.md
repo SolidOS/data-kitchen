@@ -130,7 +130,7 @@ Each plugin folder may carry a `manifest.ttl` describing it — existing
   dct:hasPart <./ia3.js> ;                      # the plugin's files
   dct:requires <./libraries/...> ;              # its data/deps
   schema:softwareHelp <./help.html> ;           # context help page
-  dct:conformsTo <../../shapes/music.shacl> .   # settings/data shape
+  dct:conformsTo <./music.shacl> .              # co-located settings/data shape
 
 <#Menu> a ui:Menu ; ui:parts ( … ) .            # ☰ contributions
 ```

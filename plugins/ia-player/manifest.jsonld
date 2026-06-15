@@ -32,7 +32,7 @@
     "./libraries/internet_archive_movies/index.ttl"
   ],
   "help": "./assets/ia-help.html",
-  "shape": "../../shapes/music.shacl",
+  "shape": "./music.shacl",
   "subject": "Media",
   "@included": [
     {
