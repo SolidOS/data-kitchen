@@ -22,7 +22,7 @@ const { reconcileTree } = require('./seed-core.cjs');
 
 // Definition entries (relative to the engine dir) making up the editable surface.
 const SEED_ENTRIES = [
-  'index.html', 'dk.manifest.json',
+  'index.html', 'dk.manifest.json', 'dokieli.manifest.json',
   'ui-data', 'pages', 'help', 'shapes', 'plugins',
 ];
 // NB: 'favourites' is intentionally NOT seeded — favourites are per-library

@@ -3,6 +3,11 @@
   "@id": "",
   "@type": "Manifest",
   "name": "data-kitchen",
+  "objects": {
+    "provides": {
+      "webid": { "respondTo": "sol-login", "sendValue": "detail.webId" }
+    }
+  },
   "components": {
     "ia-player": {
       "label": "Internet Archive player",

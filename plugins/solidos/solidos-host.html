@@ -217,9 +217,40 @@
       }
     };
 
+    // Mint a new dokieli document in folderUrl and open it for editing.
+    // Drives mashlib's bundled dokieli pane (solid-panes/dist/dokieli) — its
+    // mintNew PUTs the HTML through kb.fetcher, which rides the parent's authed
+    // window.fetch (installAuthFetch above), so creation shares dk's login +
+    // store. The editor runtime (dokieli.js/CSS) still loads from the dokie.li
+    // CDN once the doc is opened. The pane appends ".html" to newBase itself.
+    window.newDokieli = async function (folderUrl, name) {
+      if (!folderUrl) return;
+      await mashlibReady;
+      const SL    = window.SolidLogic && window.SolidLogic.solidLogicSingleton;
+      const store = SL && SL.store;
+      const pane  = window.panes && window.panes.byName && window.panes.byName('Dokieli');
+      if (!store || !pane || !pane.mintNew) {
+        console.warn('[solidos-host] dokieli pane/store not ready');
+        return;
+      }
+      if (!folderUrl.endsWith('/')) folderUrl += '/';
+      const slug = encodeURIComponent(String(name || 'note').trim().replace(/\s+/g, '-')) || 'note';
+      try {
+        const res = await pane.mintNew({ session: { store }, dom: document }, { newBase: folderUrl + slug });
+        const uri = res && res.newInstance && res.newInstance.uri;
+        if (uri) { await window.gotoSubject(uri); return uri; }
+      } catch (err) {
+        console.warn('[solidos-host] newDokieli failed:', err);
+      }
+    };
+
     // Standalone use: open plugins/solidos/solidos-host.html?uri=https://…
-    const initialUri = new URLSearchParams(window.location.search).get('uri');
+    // or ?new=<folderUrl> to mint a fresh dokieli document there.
+    const params = new URLSearchParams(window.location.search);
+    const initialUri = params.get('uri');
+    const newFolder  = params.get('new');
     if (initialUri) window.gotoSubject(initialUri);
+    else if (newFolder) window.newDokieli(newFolder);
   </script>
 </body>
 </html>

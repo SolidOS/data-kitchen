@@ -23,6 +23,7 @@
 
   await import('../plugins/podz/dk-podz.js');
   await import('../plugins/solidos/dk-solidos.js');
+  await import('../plugins/solidos/dk-dokieli.js');
   await import('../plugins/calendar/dk-calendar-popout.js');
   await import('./dk-settings-applier.js');
   // <dk-config-settings>: the Electron + Pivot groups of the settings page,

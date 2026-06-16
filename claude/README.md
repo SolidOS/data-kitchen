@@ -18,6 +18,13 @@
   Settings-page design — `<dk-plugin-settings>` renders per-plugin settings from
   each plugin's manifest, gated on catalog in-use status, subject via
   `foaf:primaryTopic`. Read this for the current settings architecture.
+- **`dokieli-in-app-and-shared-auth.md`** — AS BUILT (2026-06-15): dokieli moved
+  from an external `ui:Link` to an in-app `dk-dokieli` (subclass of `dk-solidos`,
+  reuses the authed SolidOS host + bundled dokieli pane), AND given the SolidOS
+  zero-prompt owner treatment via component-interop's capability broker — dk
+  `provides {webid}` (from the `sol-login` event), a new `dokieli.manifest.json`
+  `consumes` it, and `dokieli-adapter.js` seeds `DO.C.User.IRI`. Read for the
+  dokieli integration + the ci provides/consumes auth-sharing pattern.
 - **`tabs-rdf-html-asymmetry.md`** — SUPERSEDED (2026-06-12 rdf-first
   switch): historical inventory of items that lived in only `data/data-kitchen-main-menu.ttl`
   OR only `html-first.html`, kept as the record of why the (retired) two-way

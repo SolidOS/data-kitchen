@@ -485,12 +485,42 @@ main#dk-content > [data-menu-item] > * {
 /* dk-solidos: sol-pod sidebar + iframe main pane, split by a
    draggable vertical handle. Everything stays inside the container —
    the sidebar scrolls inside itself, sol-solidos owns the main area.
-   See src/dk-solidos.js for the splitter wiring. */
-dk-solidos {
+   See src/dk-solidos.js for the splitter wiring. dk-dokieli subclasses
+   it and shares this layout. */
+dk-solidos,
+dk-dokieli {
   display: flex;
   min-height: 0;
   min-width: 0;
   overflow: hidden;
+}
+
+/* dk-dokieli adds a thin toolbar with the "New dokieli document" button
+   above the iframe; the .dk-solidos-* rules below style the shared layout. */
+.dk-dokieli-toolbar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--surface, #ffffff);
+  border-bottom: 1px solid var(--border, #e0e0e0);
+}
+
+.dk-dokieli-new {
+  font-size: 16px;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: var(--on-accent, #ffffff);
+  background: var(--accent, #1F618D);
+  border: 1px solid var(--accent, #1F618D);
+  border-radius: 4px;
+}
+
+.dk-dokieli-new:hover,
+.dk-dokieli-new:focus {
+  filter: brightness(1.08);
+  outline: none;
 }
 
 .dk-solidos-layout {

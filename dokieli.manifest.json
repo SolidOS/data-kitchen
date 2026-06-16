@@ -1,0 +1,15 @@
+{
+  "@context": "https://jeff-zucker.github.io/component-interop/context.jsonld",
+  "@id": "",
+  "@type": "Manifest",
+  "name": "dokieli",
+  "objects": {
+    "consumes": {
+      "webid": {
+        "call": "adoptDokieliUser",
+        "from": "data-kitchen",
+        "module": "/dk-pod/dk/plugins/solidos/dokieli-adapter.js"
+      }
+    }
+  }
+}

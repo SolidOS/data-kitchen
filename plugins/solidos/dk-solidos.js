@@ -1,8 +1,11 @@
 // dk-solidos hosts a two-pane workspace: <sol-pod> sidebar on the
 // left, an iframe loading plugins/solidos/solidos-host.html on the right.
-// The host page runs mashlib + <sol-solidos> in isolation (no CSS,
-// theme, or global leaks back into dk) and exposes window.gotoSubject
-// for parent-driven navigation. Same-origin, so:
+// The host page runs mashlib in isolation (no CSS, theme, or global leaks
+// back into dk) and hand-rolls the panes glue — panes.initMainPage +
+// outliner.GotoSubject — exposed as window.gotoSubject for parent-driven
+// navigation. (sol-components ships a general <sol-solidos> that mounts
+// mashlib INLINE; dk deliberately wraps mashlib in this isolating iframe
+// instead, which is why dk-solidos exists alongside it.) Same-origin, so:
 //
 //   - parent can call into the iframe directly (no postMessage)
 //   - theme + font-size are pushed from dk into the iframe document
@@ -75,7 +78,9 @@ class DkSolidos extends HTMLElement {
         // wherever sol-pod actually landed — not just the pod root.
         const start = pod.currentPath || pod.rootUrl;
         const win = iframe.contentWindow;
-        const target = currentUri || start;
+        // Subclasses (dk-dokieli) can pin an initial landing subject;
+        // otherwise follow wherever sol-pod actually landed.
+        const target = currentUri || this._landingSubject() || start;
         if (target && win && typeof win.gotoSubject === 'function') {
           if (!currentUri) currentUri = target;
           win.gotoSubject(target);
@@ -179,10 +184,18 @@ class DkSolidos extends HTMLElement {
       };
       iframe.addEventListener('load', syncEnv);
       document.addEventListener('sol-form-save', syncEnv);
+
+      // Subclass extension point (dk-dokieli adds a "New document" button).
+      this._mountExtras(iframe, pod);
     }
 
     this._wireSplitter();
   }
+
+  // Subclass hooks. Base dk-solidos is sidebar-driven with no extra chrome;
+  // dk-dokieli overrides these to pin a landing folder and add a New button.
+  _landingSubject() { return null; }
+  _mountExtras(/* iframe, pod */) {}
 
   _wireSplitter() {
     const splitter = this.querySelector('.dk-solidos-splitter');
@@ -216,3 +229,5 @@ class DkSolidos extends HTMLElement {
 }
 
 customElements.define('dk-solidos', DkSolidos);
+
+export { DkSolidos };
