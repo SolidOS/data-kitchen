@@ -92,6 +92,7 @@ class ExternalViews {
   setPaneRect(rect) {
     this.paneRect = rect;
     if (this.pane && this._paneShown && !this._suspended) this.pane.setBounds(rect);
+    if (this._paneLoadingShown && !this._suspended) this.paneLoading.setBounds(this._paneRegion());
   }
 
   _paneRegion() { return this.paneRect || this._region(); }
@@ -143,7 +144,20 @@ class ExternalViews {
     if (rect) this.paneRect = rect;
     // A pane is a deliberately-opened app — give it the trusted-guest session so
     // it can reach (and log into) the local pod. The reader stays external.
-    if (!this.pane) this.pane = this._build(undefined, undefined, TRUSTED_PARTITION);
+    if (!this.pane) {
+      this.pane = this._build(undefined, undefined, TRUSTED_PARTITION);
+      // A slow external app (e.g. a Flutter pod that boots over several seconds)
+      // otherwise shows a blank rectangle while it fetches. Cover the pane with a
+      // "Loading…" overlay for the whole loading phase: shown when the pane
+      // starts loading, removed when it stops (success or failure).
+      const wc = this.pane.webContents;
+      wc.on('did-start-loading', () => this._showPaneLoading());
+      // Network "stopped" is NOT "painted": a Flutter app fetches CanvasKit and
+      // paints AFTER did-stop-loading, leaving an uncomfortable pause if we hide
+      // then. Hold the spinner until the app actually paints (or a safety cap).
+      wc.on('did-stop-loading', () => this._waitForPaneContentThenHide());
+      wc.on('did-fail-load', (_e, code, _d, _u, isMain) => { if (isMain && code !== -3) this._hidePaneLoading(); });
+    }
     this._paneShown = true;
     if (!this._suspended) {
       this.baseWindow.contentView.addChildView(this.pane);  // on top of app view
@@ -153,11 +167,80 @@ class ExternalViews {
   }
 
   closePane() {
+    this._hidePaneLoading();
     if (this.pane && this._paneShown) {
       this.baseWindow.contentView.removeChildView(this.pane);
       this._paneShown = false;
     }
     this.paneRect = null;
+  }
+
+  // --- pane loading overlay -----------------------------------------------
+
+  _ensurePaneLoading() {
+    if (this.paneLoading) return;
+    // Isolated session (no pod access needed); loads a local file only.
+    this.paneLoading = this._build({}, undefined, EXTERNAL_PARTITION);
+    this.paneLoading.setBackgroundColor('#f5f6f8');   // opaque, so it hides the blank pane beneath
+    this.paneLoading.webContents.loadFile(path.join(__dirname, 'pane-loading.html'));
+  }
+
+  _showPaneLoading() {
+    if (this._suspended || !this._paneShown) return;
+    this._clearPaneLoadingPoll();   // a fresh load supersedes any pending paint-wait
+    this._ensurePaneLoading();
+    this._paneLoadingShown = true;
+    this.baseWindow.contentView.addChildView(this.paneLoading);   // above the pane
+    this.paneLoading.setBounds(this._paneRegion());
+    // Name the app being loaded (best-effort; ignore if the page isn't ready yet).
+    let host = '';
+    try { host = new URL(this.pane.webContents.getURL()).host; } catch (_) {}
+    this.paneLoading.webContents.executeJavaScript(
+      `window.dkSetHost && window.dkSetHost(${JSON.stringify(host)})`).catch(() => {});
+  }
+
+  // After the network stops, poll the pane until its app has actually painted —
+  // a Flutter render root (flt-glass-pane / flutter-view) with size, or any
+  // sizable/visible content for a normal app — then drop the spinner. A safety
+  // cap hides it regardless so a quirky app never strands the overlay.
+  _waitForPaneContentThenHide() {
+    if (!this._paneLoadingShown) return;
+    this._clearPaneLoadingPoll();
+    const PAINTED = `(() => {
+      const f = document.querySelector('flt-glass-pane, flutter-view, flt-scene-host, flt-semantics-host');
+      if (f) { const r = f.getBoundingClientRect(); return r.width > 0 && r.height > 0; }
+      const b = document.body; if (!b) return false;
+      if ((b.innerText || '').trim().length > 0) return true;
+      for (const el of b.children) {
+        if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
+        const r = el.getBoundingClientRect();
+        if (r.width > 40 && r.height > 40) return true;
+      }
+      return false;
+    })()`;
+    const started = Date.now();
+    const MAX_MS = 10000;
+    let inFlight = false;
+    this._paneLoadingPoll = setInterval(async () => {
+      if (inFlight) return;
+      if (Date.now() - started > MAX_MS) { this._hidePaneLoading(); return; }
+      inFlight = true;
+      let painted = false;
+      try { painted = await this.pane.webContents.executeJavaScript(PAINTED); } catch (_) {}
+      inFlight = false;
+      if (painted) this._hidePaneLoading();
+    }, 150);
+  }
+
+  _clearPaneLoadingPoll() {
+    if (this._paneLoadingPoll) { clearInterval(this._paneLoadingPoll); this._paneLoadingPoll = null; }
+  }
+
+  _hidePaneLoading() {
+    this._clearPaneLoadingPoll();
+    if (!this._paneLoadingShown) return;
+    this._paneLoadingShown = false;
+    this.baseWindow.contentView.removeChildView(this.paneLoading);
   }
 
   // --- reader (window.open content) ---------------------------------------
@@ -214,6 +297,7 @@ class ExternalViews {
     if (this._suspended) return;
     this._suspended = true;
     if (this.pane) this.baseWindow.contentView.removeChildView(this.pane);
+    if (this._paneLoadingShown) this.baseWindow.contentView.removeChildView(this.paneLoading);
     if (this.readerBar) this.baseWindow.contentView.removeChildView(this.readerBar);
     if (this.readerContent) this.baseWindow.contentView.removeChildView(this.readerContent);
   }
@@ -224,6 +308,10 @@ class ExternalViews {
     if (this._paneShown) {
       this.baseWindow.contentView.addChildView(this.pane);
       this.pane.setBounds(this._paneRegion());
+    }
+    if (this._paneLoadingShown) {
+      this.baseWindow.contentView.addChildView(this.paneLoading);   // stays above the pane
+      this.paneLoading.setBounds(this._paneRegion());
     }
     if (this._readerShown) {
       this.baseWindow.contentView.addChildView(this.readerContent);
