@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "HuggingFace Chat" ;
-  ui:icon <https://huggingface.co/chat/huggingchat/icon.svg> ;
+  ui:icon <https://huggingface.co/chat/huggingchat/apple-touch-icon.png> ;
   ui:href <https://huggingface.co/chat/> ;
   ui:region ui:Tab ;
   rdfs:comment "Chat with open-source AI models." ;

@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "MSFatigue" ;
-  ui:icon "📋" ;
+  ui:icon <https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png> ;
   ui:href <https://msfatigue.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Survey app for MS fatigue research, with encrypted responses." ;

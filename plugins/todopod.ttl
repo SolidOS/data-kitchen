@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "TodoPod" ;
-  ui:icon "☑️" ;
+  ui:icon <https://todopod.solidcommunity.au/todopod/icons/Icon-192.png> ;
   ui:href <https://todopod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Task lists in encrypted personal storage." ;

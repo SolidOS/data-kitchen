@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "Umai" ;
-  ui:icon "🍳" ;
+  ui:icon <https://umai.noeldemartin.com/apple-touch-icon.png> ;
   ui:href <https://umai.noeldemartin.com> ;
   ui:region ui:Tab ;
   rdfs:comment "Offline-first recipe manager." ;

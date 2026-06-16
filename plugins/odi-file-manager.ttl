@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "ODI Solid File Manager" ;
-  ui:icon "📁" ;
+  ui:icon <https://filemanager.solid-experiments.org/file-manager-logo.svg> ;
   ui:href <https://filemanager.solid-experiments.org/> ;
   ui:region ui:Tab ;
   rdfs:comment "Friendly file and folder manager for your pod." ;

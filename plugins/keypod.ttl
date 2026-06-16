@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "KeyPod" ;
-  ui:icon "🔐" ;
+  ui:icon <https://keypod.solidcommunity.au/keypod/icons/Icon-192.png> ;
   ui:href <https://keypod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Encrypted password and key-value store." ;

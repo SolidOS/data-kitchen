@@ -11,18 +11,41 @@
     "name": "ui:name",
     "creator": "dct:creator",
     "subject": "dct:subject",
-    "hasPart": { "@id": "dct:hasPart", "@type": "@id" },
-    "requires": { "@id": "dct:requires", "@type": "@id" },
-    "shape": { "@id": "dct:conformsTo", "@type": "@id" },
-    "help": { "@id": "schema:softwareHelp", "@type": "@id" },
-    "mode": { "@id": "acl:mode", "@type": "@id" },
-    "parts": { "@id": "ui:parts", "@container": "@list", "@type": "@id" }
+    "hasPart": {
+      "@id": "dct:hasPart",
+      "@type": "@id"
+    },
+    "requires": {
+      "@id": "dct:requires",
+      "@type": "@id"
+    },
+    "shape": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "help": {
+      "@id": "schema:softwareHelp",
+      "@type": "@id"
+    },
+    "mode": {
+      "@id": "acl:mode",
+      "@type": "@id"
+    },
+    "parts": {
+      "@id": "ui:parts",
+      "@container": "@list",
+      "@type": "@id"
+    },
+    "icon": "ui:icon"
   },
   "@id": "",
   "@type": "Component",
   "label": "Search",
   "name": "sol-search",
   "creator": "Jeff Zucker",
-  "hasPart": ["./search-engines.ttl"],
-  "subject": "Information"
+  "hasPart": [
+    "./search-engines.ttl"
+  ],
+  "subject": "Information",
+  "icon": "🔍"
 }

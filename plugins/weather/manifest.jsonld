@@ -11,19 +11,42 @@
     "name": "ui:name",
     "creator": "dct:creator",
     "subject": "dct:subject",
-    "hasPart": { "@id": "dct:hasPart", "@type": "@id" },
-    "requires": { "@id": "dct:requires", "@type": "@id" },
-    "shape": { "@id": "dct:conformsTo", "@type": "@id" },
-    "help": { "@id": "schema:softwareHelp", "@type": "@id" },
-    "mode": { "@id": "acl:mode", "@type": "@id" },
-    "parts": { "@id": "ui:parts", "@container": "@list", "@type": "@id" }
+    "hasPart": {
+      "@id": "dct:hasPart",
+      "@type": "@id"
+    },
+    "requires": {
+      "@id": "dct:requires",
+      "@type": "@id"
+    },
+    "shape": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "help": {
+      "@id": "schema:softwareHelp",
+      "@type": "@id"
+    },
+    "mode": {
+      "@id": "acl:mode",
+      "@type": "@id"
+    },
+    "parts": {
+      "@id": "ui:parts",
+      "@container": "@list",
+      "@type": "@id"
+    },
+    "icon": "ui:icon"
   },
   "@id": "",
   "@type": "Component",
   "label": "Weather",
   "name": "sol-weather",
   "creator": "Jeff Zucker",
-  "requires": ["./weather-settings.ttl"],
+  "requires": [
+    "./weather-settings.ttl"
+  ],
   "shape": "../../node_modules/sol-components/shapes/weather-settings.shacl",
-  "subject": "Information"
+  "subject": "Information",
+  "icon": "🌤"
 }

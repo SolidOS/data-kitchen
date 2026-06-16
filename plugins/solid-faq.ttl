@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "Solid FAQ" ;
-  ui:icon "❓" ;
+  ui:icon <https://solidproject.org/favicon.ico> ;
   ui:href <https://solidproject.org/FAQ> ;
   ui:region ui:Tab ;
   rdfs:comment "Frequently asked questions about Solid." ;

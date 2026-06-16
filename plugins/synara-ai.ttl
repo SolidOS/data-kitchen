@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "Synara AI" ;
-  ui:icon "🤖" ;
+  ui:icon <https://ai.privatedatapod.com/icons/apple-touch-icon.png> ;
   ui:href <https://ai.privatedatapod.com/> ;
   ui:region ui:Tab ;
   rdfs:comment "Privacy-first AI assistant with searchable conversation logs." ;

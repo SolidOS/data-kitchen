@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "BilliPod" ;
-  ui:icon "🧾" ;
+  ui:icon <https://billipod.solidcommunity.au/billipod/icons/Icon-192.png> ;
   ui:href <https://billipod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Track bills with payment reminders." ;

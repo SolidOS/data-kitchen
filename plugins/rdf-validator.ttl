@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "RDF Validator" ;
-  ui:icon "🧬" ;
+  ui:icon <https://www.easyrdf.org/icons/apple-touch-icon-144-precomposed.png> ;
   ui:href <http://easyrdf.org/converter> ;
   ui:region ui:Tab ;
   rdfs:comment "Convert and validate RDF documents." ;

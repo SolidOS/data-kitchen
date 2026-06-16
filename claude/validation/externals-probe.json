@@ -1,0 +1,2349 @@
+[
+  {
+    "file": "0data-hello.ttl",
+    "label": "0data Hello",
+    "href": "https://hello.0data.app/solid/",
+    "oldIcon": "🧪",
+    "loaded": true,
+    "finalUrl": "https://hello.0data.app/solid/",
+    "title": "Solid Hello World Examples",
+    "bodyLen": 575,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://hello.0data.app/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://hello.0data.app/favicon.ico",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "billipod.ttl",
+    "label": "BilliPod",
+    "href": "https://billipod.solidcommunity.au",
+    "oldIcon": "🧾",
+    "loaded": true,
+    "finalUrl": "https://billipod.solidcommunity.au/",
+    "title": "billipod",
+    "bodyLen": 366,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://billipod.solidcommunity.au/billipod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://billipod.solidcommunity.au/billipod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://billipod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://billipod.solidcommunity.au/billipod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "bluesky.ttl",
+    "label": "Bluesky",
+    "href": "https://bsky.app/",
+    "oldIcon": "https://web-cdn.bsky.app/static/apple-touch-icon.png",
+    "loaded": true,
+    "finalUrl": "https://bsky.app/",
+    "title": "Discover — Bluesky",
+    "bodyLen": 628996,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://web-cdn.bsky.app/static/apple-touch-icon.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "icon",
+        "href": "https://web-cdn.bsky.app/static/favicon-32x32.png",
+        "sizes": "32x32"
+      },
+      {
+        "rel": "icon",
+        "href": "https://web-cdn.bsky.app/static/favicon-16x16.png",
+        "sizes": "16x16"
+      },
+      {
+        "rel": "mask-icon",
+        "href": "https://web-cdn.bsky.app/static/safari-pinned-tab.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://bsky.app/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://web-cdn.bsky.app/static/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "booklice.ttl",
+    "label": "Booklice",
+    "href": "https://scenaristeur.github.io/booklice/",
+    "oldIcon": "🔖",
+    "loaded": true,
+    "finalUrl": "https://scenaristeur.github.io/booklice/",
+    "title": "booklice",
+    "bodyLen": 5436,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://scenaristeur.github.io/booklice/img/icons/favicon-32x32.png",
+        "sizes": "32x32"
+      },
+      {
+        "rel": "icon",
+        "href": "https://scenaristeur.github.io/booklice/img/icons/favicon-16x16.png",
+        "sizes": "16x16"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://scenaristeur.github.io/booklice/img/icons/apple-touch-icon-152x152.png",
+        "sizes": null
+      },
+      {
+        "rel": "mask-icon",
+        "href": "https://scenaristeur.github.io/booklice/img/icons/safari-pinned-tab.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://scenaristeur.github.io/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://scenaristeur.github.io/booklice/img/icons/apple-touch-icon-152x152.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "cryptpad.ttl",
+    "label": "CryptPad",
+    "href": "https://cryptpad.fr/",
+    "oldIcon": "https://cryptpad.fr/customize/favicon/main-favicon.png",
+    "loaded": true,
+    "finalUrl": "https://cryptpad.fr/",
+    "title": "CryptPad: Collaboration suite, encrypted and open-source",
+    "bodyLen": 2397,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://cryptpad.fr/customize/favicon/main-favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://cryptpad.fr/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://cryptpad.fr/customize/favicon/main-favicon.png",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "duck-ai.ttl",
+    "label": "Duck.ai",
+    "href": "https://duck.ai",
+    "oldIcon": "https://duck.ai/favicon.ico",
+    "loaded": true,
+    "finalUrl": "https://duck.ai/",
+    "title": "Duck.ai by DuckDuckGo. Private AI chat. Free.",
+    "bodyLen": 44215,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://duck.ai/favicon-96x96.png",
+        "sizes": "96x96"
+      },
+      {
+        "rel": "icon",
+        "href": "https://duck.ai/favicon.svg",
+        "sizes": null
+      },
+      {
+        "rel": "shortcut icon",
+        "href": "https://duck.ai/favicon.ico",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://duck.ai/apple-touch-icon.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "icon",
+        "href": "https://duck.ai/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://duck.ai/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "element.ttl",
+    "label": "Element",
+    "href": "https://app.element.io/",
+    "oldIcon": "https://app.element.io/vector-icons/120.570a7f9.png",
+    "loaded": true,
+    "finalUrl": "https://app.element.io/",
+    "title": "Element",
+    "bodyLen": 1722,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://app.element.io/vector-icons/120.570a7f9.png",
+        "sizes": "120x120"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://app.element.io/vector-icons/144.5a63bf2.png",
+        "sizes": "144x144"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://app.element.io/vector-icons/152.1ccdc8a.png",
+        "sizes": "152x152"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://app.element.io/vector-icons/180.30b915f.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "icon",
+        "href": "https://app.element.io/vector-icons/24.97ab000.png",
+        "sizes": "24x24"
+      },
+      {
+        "rel": "icon",
+        "href": "https://app.element.io/vector-icons/144.5a63bf2.png",
+        "sizes": "144x144"
+      },
+      {
+        "rel": "icon",
+        "href": "https://app.element.io/vector-icons/512.7ce350d.png",
+        "sizes": "512x512"
+      },
+      {
+        "rel": "icon",
+        "href": "https://app.element.io/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://app.element.io/vector-icons/180.30b915f.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "filepod.ttl",
+    "label": "FilePod",
+    "href": "https://filepod.solidcommunity.au",
+    "oldIcon": "📁",
+    "loaded": true,
+    "finalUrl": "https://filepod.solidcommunity.au/",
+    "title": "filepod",
+    "bodyLen": 366,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://filepod.solidcommunity.au/filepod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://filepod.solidcommunity.au/filepod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://filepod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://filepod.solidcommunity.au/filepod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "geopod.ttl",
+    "label": "GeoPod",
+    "href": "https://geopod.solidcommunity.au",
+    "oldIcon": "🗺️",
+    "loaded": true,
+    "finalUrl": "https://geopod.solidcommunity.au/",
+    "title": "GeoPod - Capture Points of Interest on a Map",
+    "bodyLen": 2258,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://geopod.solidcommunity.au/geopod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://geopod.solidcommunity.au/geopod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://geopod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://geopod.solidcommunity.au/geopod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "healthpod.ttl",
+    "label": "HealthPod",
+    "href": "https://healthpod.solidcommunity.au",
+    "oldIcon": "🩺",
+    "loaded": true,
+    "finalUrl": "https://healthpod.solidcommunity.au/",
+    "title": "healthpod",
+    "bodyLen": 59,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://healthpod.solidcommunity.au/healthpod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://healthpod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "homevault.ttl",
+    "label": "HomeVault",
+    "href": "https://homevault.apps.privatedatapod.com/",
+    "oldIcon": "🏠",
+    "loaded": true,
+    "finalUrl": "https://homevault.apps.privatedatapod.com/",
+    "title": "HomeVault",
+    "bodyLen": 2831,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://homevault.apps.privatedatapod.com/icons/pwa-64x64.png",
+        "sizes": "64x64"
+      },
+      {
+        "rel": "icon",
+        "href": "https://homevault.apps.privatedatapod.com/icons/icon.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://homevault.apps.privatedatapod.com/icons/apple-touch-icon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://homevault.apps.privatedatapod.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://homevault.apps.privatedatapod.com/icons/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "huggingface-chat.ttl",
+    "label": "HuggingFace Chat",
+    "href": "https://huggingface.co/chat/",
+    "oldIcon": "https://huggingface.co/chat/huggingchat/icon.svg",
+    "loaded": true,
+    "finalUrl": "https://huggingface.co/chat/",
+    "title": "HuggingChat",
+    "bodyLen": 36781,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://huggingface.co/chat/huggingchat/icon.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://huggingface.co/chat/huggingchat/favicon.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://huggingface.co/chat/huggingchat/favicon-dark.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://huggingface.co/chat/huggingchat/apple-touch-icon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://huggingface.co/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://huggingface.co/chat/huggingchat/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "innerpod.ttl",
+    "label": "InnerPod",
+    "href": "https://innerpod.solidcommunity.au",
+    "oldIcon": "🧘",
+    "loaded": true,
+    "finalUrl": "https://innerpod.solidcommunity.au/",
+    "title": "innerpod",
+    "bodyLen": 974,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://innerpod.solidcommunity.au/innerpod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://innerpod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "jsonld-playground.ttl",
+    "label": "JSON-LD Playground",
+    "href": "https://json-ld.github.io/json-ld.org/playground/",
+    "oldIcon": "🧩",
+    "loaded": true,
+    "finalUrl": "https://json-ld.github.io/json-ld.org/playground/",
+    "title": "JSON-LD Playground",
+    "bodyLen": 35974,
+    "candidates": [
+      {
+        "rel": "shortcut icon",
+        "href": "https://json-ld.github.io/json-ld.org/favicon.ico",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://json-ld.github.io/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://json-ld.github.io/json-ld.org/favicon.ico",
+    "faviconRel": "shortcut icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "keypod.ttl",
+    "label": "KeyPod",
+    "href": "https://keypod.solidcommunity.au",
+    "oldIcon": "🔐",
+    "loaded": true,
+    "finalUrl": "https://keypod.solidcommunity.au/",
+    "title": "keypod",
+    "bodyLen": 549,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://keypod.solidcommunity.au/keypod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://keypod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "konapod.ttl",
+    "label": "KonaPod",
+    "href": "https://konapod.solidcommunity.au",
+    "oldIcon": "🚗",
+    "loaded": true,
+    "finalUrl": "https://konapod.solidcommunity.au/",
+    "title": "konapod",
+    "bodyLen": 366,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://konapod.solidcommunity.au/konapod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://konapod.solidcommunity.au/konapod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://konapod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://konapod.solidcommunity.au/konapod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "lemmy.ttl",
+    "label": "Lemmy",
+    "href": "https://lemmy.world/",
+    "oldIcon": "https://icons.duckduckgo.com/ip3/lemmy.world.ico",
+    "loaded": true,
+    "finalUrl": "https://lemmy.world/",
+    "title": "Just a moment...",
+    "bodyLen": 5129,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://lemmy.world/favicon.ico",
+        "sizes": "",
+        "fallback": true,
+        "check": {
+          "ok": false,
+          "status": 404,
+          "type": "text/html; charset=utf-8"
+        }
+      }
+    ],
+    "faviconNote": "no candidate returned 200"
+  },
+  {
+    "file": "libretranslate.ttl",
+    "label": "LibreTranslate",
+    "href": "https://libretranslate.com/",
+    "oldIcon": "https://libretranslate.com/static/favicon.ico",
+    "loaded": true,
+    "finalUrl": "https://libretranslate.com/",
+    "title": "LibreTranslate - Free and Open Source Machine Translation API 🌐",
+    "bodyLen": 17323,
+    "candidates": [
+      {
+        "rel": "shortcut icon",
+        "href": "https://libretranslate.com/static/favicon.ico",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://libretranslate.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://libretranslate.com/static/favicon.ico",
+    "faviconRel": "shortcut icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "mastodon.ttl",
+    "label": "Mastodon",
+    "href": "https://mastodon.social/",
+    "oldIcon": "https://mastodon.social/packs/assets/favicon-48x48-DMnduFKh.png",
+    "loaded": true,
+    "finalUrl": "https://mastodon.social/explore",
+    "title": "Trending - Mastodon",
+    "bodyLen": 157525,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://mastodon.social/packs/assets/favicon-16x16-74JBPGmr.png",
+        "sizes": "16x16"
+      },
+      {
+        "rel": "icon",
+        "href": "https://mastodon.social/packs/assets/favicon-32x32-CiQz7Niw.png",
+        "sizes": "32x32"
+      },
+      {
+        "rel": "icon",
+        "href": "https://mastodon.social/packs/assets/favicon-48x48-DMnduFKh.png",
+        "sizes": "48x48"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/apple-touch-icon-57x57-BsPGHSez.png",
+        "sizes": "57x57"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/apple-touch-icon-60x60-CQE7yLDO.png",
+        "sizes": "60x60"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/android-chrome-72x72-9LRpA3QN.png",
+        "sizes": "72x72"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/apple-touch-icon-76x76-BPRp9FS0.png",
+        "sizes": "76x76"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/apple-touch-icon-114x114-Ch7jwTNh.png",
+        "sizes": "114x114"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/apple-touch-icon-120x120-W9xwzzUZ.png",
+        "sizes": "120x120"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/android-chrome-144x144-D-ewI-KZ.png",
+        "sizes": "144x144"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/apple-touch-icon-152x152-s3oy-zRw.png",
+        "sizes": "152x152"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/apple-touch-icon-167x167-DdVi4pJj.png",
+        "sizes": "167x167"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/apple-touch-icon-180x180-DSCV_HvQ.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://mastodon.social/packs/assets/apple-touch-icon-1024x1024-B3Tu3EqI.png",
+        "sizes": "1024x1024"
+      },
+      {
+        "rel": "mask-icon",
+        "href": "https://mastodon.social/packs/assets/logo-symbol-icon-BQIzGafT.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://mastodon.social/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://mastodon.social/packs/assets/apple-touch-icon-1024x1024-B3Tu3EqI.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "matrix-chat.ttl",
+    "label": "Matrix Chat",
+    "href": "https://matrix.to/#/#solid-practitioners:matrix.org",
+    "oldIcon": "https://app.cinny.in/assets/favicon-5KspoOBy.ico",
+    "loaded": true,
+    "finalUrl": "https://matrix.to/#/#solid-practitioners:matrix.org",
+    "title": "You're invited to talk on Matrix",
+    "bodyLen": 2611,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://matrix.to/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://matrix.to/favicon.ico",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "text/html; charset=utf-8"
+    }
+  },
+  {
+    "file": "media-kraken.ttl",
+    "label": "Media Kraken",
+    "href": "https://noeldemartin.github.io/media-kraken/",
+    "oldIcon": "🎬",
+    "loaded": true,
+    "finalUrl": "https://noeldemartin.github.io/media-kraken/login",
+    "title": "Media Kraken",
+    "bodyLen": 7678,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://noeldemartin.github.io/media-kraken/img/icons/favicon-32x32.png",
+        "sizes": "32x32"
+      },
+      {
+        "rel": "icon",
+        "href": "https://noeldemartin.github.io/media-kraken/img/icons/favicon-16x16.png",
+        "sizes": "16x16"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png",
+        "sizes": null
+      },
+      {
+        "rel": "mask-icon",
+        "href": "https://noeldemartin.github.io/media-kraken/img/icons/safari-pinned-tab.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://noeldemartin.github.io/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "moviestar.ttl",
+    "label": "MovieStar",
+    "href": "https://moviestar.solidcommunity.au",
+    "oldIcon": "🎬",
+    "loaded": true,
+    "finalUrl": "https://moviestar.solidcommunity.au/",
+    "title": "moviestar",
+    "bodyLen": 59,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://moviestar.solidcommunity.au/moviestar/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://moviestar.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "msfatigue.ttl",
+    "label": "MSFatigue",
+    "href": "https://msfatigue.solidcommunity.au",
+    "oldIcon": "📋",
+    "loaded": true,
+    "finalUrl": "https://msfatigue.solidcommunity.au/",
+    "title": "msfatigue",
+    "bodyLen": 59,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://msfatigue.solidcommunity.au/msfatigue/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://msfatigue.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "notepod.ttl",
+    "label": "NotePod",
+    "href": "https://notepod.solidcommunity.au",
+    "oldIcon": "🗒️",
+    "loaded": true,
+    "finalUrl": "https://notepod.solidcommunity.au/",
+    "title": "notepod",
+    "bodyLen": 974,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://notepod.solidcommunity.au/notepod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://notepod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "odi-file-manager.ttl",
+    "label": "ODI Solid File Manager",
+    "href": "https://filemanager.solid-experiments.org/",
+    "oldIcon": "📁",
+    "loaded": true,
+    "finalUrl": "https://filemanager.solid-experiments.org/login",
+    "title": "Solid File Manager",
+    "bodyLen": 13050,
+    "candidates": [
+      {
+        "rel": "shortcut icon",
+        "href": "https://filemanager.solid-experiments.org/file-manager-logo.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://filemanager.solid-experiments.org/favicon.ico?favicon.0b3bf435.ico",
+        "sizes": "256x256"
+      },
+      {
+        "rel": "icon",
+        "href": "https://filemanager.solid-experiments.org/file-manager-logo.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://filemanager.solid-experiments.org/file-manager-logo.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://filemanager.solid-experiments.org/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://filemanager.solid-experiments.org/file-manager-logo.svg",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/svg+xml"
+    }
+  },
+  {
+    "file": "openstreetmap.ttl",
+    "label": "OpenStreetMap",
+    "href": "https://www.openstreetmap.org/",
+    "oldIcon": "https://www.openstreetmap.org/assets/apple-touch-icon-57x57-0af2b52ac2b1a8cb0aba42f17aa901bfdedb9174bd978f838e3b3e1dd8602f52.png",
+    "loaded": true,
+    "finalUrl": "https://www.openstreetmap.org/#map=4/38.01/-95.84",
+    "title": "OpenStreetMap",
+    "bodyLen": 43167,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://www.openstreetmap.org/assets/apple-touch-icon-57x57-0af2b52ac2b1a8cb0aba42f17aa901bfdedb9174bd978f838e3b3e1dd8602f52.png",
+        "sizes": "57x57"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://www.openstreetmap.org/assets/apple-touch-icon-60x60-cff74c9066d8e7fd08b29407712edbae5613cc9a4c03ee0398a89502a6a41d1f.png",
+        "sizes": "60x60"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://www.openstreetmap.org/assets/apple-touch-icon-72x72-63c6fdf3ddf65feebac1c0441bf6a378d1e4bde7107f598ae86733c402895eae.png",
+        "sizes": "72x72"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://www.openstreetmap.org/assets/apple-touch-icon-76x76-1740d6e7a59521693c496dd8fbe1caf3d5ad302017cb0f5073b6914b4f5b7544.png",
+        "sizes": "76x76"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://www.openstreetmap.org/assets/apple-touch-icon-114x114-20ba9df1a8f9b341040d661b7942b7b10288b9b4c4ce0663e10018958dc7f4a8.png",
+        "sizes": "114x114"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://www.openstreetmap.org/assets/apple-touch-icon-120x120-c304991e604d1be82639709b96fb87f7b6b6688cc0d04d5f6141604259299648.png",
+        "sizes": "120x120"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://www.openstreetmap.org/assets/apple-touch-icon-144x144-fbf20bdf9d2f7c1fe8eb85d7869a9bda285be88c93a39438150f5eb5955758ce.png",
+        "sizes": "144x144"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://www.openstreetmap.org/assets/apple-touch-icon-152x152-af45dc979e972cab863517b2cb33a3dcf3e04e02a2eb2734c6f93edc21fa395d.png",
+        "sizes": "152x152"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://www.openstreetmap.org/assets/apple-touch-icon-180x180-ea6361d7ae5b3f08c6290652ad703fa239364cc09c84873044f3299845f24652.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "icon",
+        "href": "https://www.openstreetmap.org/assets/favicon-32x32-99b88fcadeef736889823c8a886b89d8cada9d4423a49a27de29bacc0a6bebd1.png",
+        "sizes": "32x32"
+      },
+      {
+        "rel": "icon",
+        "href": "https://www.openstreetmap.org/assets/favicon-194x194-79d3fb0152c735866e64b1d7535d504483cd13c2fad0131a6142bd9629d30de2.png",
+        "sizes": "194x194"
+      },
+      {
+        "rel": "icon",
+        "href": "https://www.openstreetmap.org/assets/favicon-96x96-6ffbc38962fddb870f9577b76430a0ee4db5fb4eca485f850cd45436d7f3eb87.png",
+        "sizes": "96x96"
+      },
+      {
+        "rel": "icon",
+        "href": "https://www.openstreetmap.org/assets/android-chrome-192x192-f970b9be3965dfda6ea9481b305c39b2ec794e296f802235e30d4671f0f896e1.png",
+        "sizes": "192x192"
+      },
+      {
+        "rel": "icon",
+        "href": "https://www.openstreetmap.org/assets/favicon-16x16-474476c1b2381628a81361a9e2bf04b936d21f77c59e84b48c6c69ea376fb6cf.png",
+        "sizes": "16x16"
+      },
+      {
+        "rel": "mask-icon",
+        "href": "https://www.openstreetmap.org/assets/tab-icon-07d8c4247610d2f043ac298b3905536230b9615b08e23e69026c8d55790da13b.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://www.openstreetmap.org/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://www.openstreetmap.org/assets/apple-touch-icon-180x180-ea6361d7ae5b3f08c6290652ad703fa239364cc09c84873044f3299845f24652.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "penny.ttl",
+    "label": "Penny",
+    "href": "https://penny.vincenttunru.com/",
+    "oldIcon": "📁",
+    "loaded": true,
+    "finalUrl": "https://penny.vincenttunru.com/",
+    "title": "Penny",
+    "bodyLen": 8138,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://penny.vincenttunru.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://penny.vincenttunru.com/favicon.ico",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "pixelfed.ttl",
+    "label": "Pixelfed",
+    "href": "https://pixelfed.social/",
+    "oldIcon": "https://pixelfed.social/img/favicon.png",
+    "loaded": true,
+    "finalUrl": "https://pixelfed.social/",
+    "title": "pixelfed",
+    "bodyLen": 11325,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://pixelfed.social/img/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://pixelfed.social/img/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://pixelfed.social/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://pixelfed.social/img/favicon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "pod-drive.ttl",
+    "label": "Pod Drive",
+    "href": "https://drive.privatedatapod.com/",
+    "oldIcon": "📁",
+    "loaded": true,
+    "finalUrl": "https://drive.privatedatapod.com/",
+    "title": "Pod Drive",
+    "bodyLen": 3330,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://drive.privatedatapod.com/icons/pwa-64x64.png",
+        "sizes": "64x64"
+      },
+      {
+        "rel": "icon",
+        "href": "https://drive.privatedatapod.com/icons/icon.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://drive.privatedatapod.com/icons/apple-touch-icon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://drive.privatedatapod.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://drive.privatedatapod.com/icons/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "pod-pro.ttl",
+    "label": "Pod Pro",
+    "href": "https://podpro.dev/",
+    "oldIcon": "🧰",
+    "loaded": true,
+    "finalUrl": "https://podpro.dev/",
+    "title": "PodPro",
+    "bodyLen": 21773,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://podpro.dev/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://podpro.dev/favicon.ico",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "pod-resume.ttl",
+    "label": "Pod Resume",
+    "href": "https://resume.privatedatapod.com/",
+    "oldIcon": "📄",
+    "loaded": true,
+    "finalUrl": "https://resume.privatedatapod.com/",
+    "title": "Solid Resume Builder — AI-powered resumes on your pod",
+    "bodyLen": 3542,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://resume.privatedatapod.com/vite.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://resume.privatedatapod.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://resume.privatedatapod.com/vite.svg",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/svg+xml"
+    }
+  },
+  {
+    "file": "podcal.ttl",
+    "label": "PodCal",
+    "href": "https://podcal.eu",
+    "oldIcon": "📅",
+    "loaded": true,
+    "finalUrl": "https://podcal.eu/",
+    "title": "PodCal — Open-Source Scheduling You Actually Own",
+    "bodyLen": 37968,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://podcal.eu/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://podcal.eu/favicon.ico",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "text/html"
+    }
+  },
+  {
+    "file": "podos-browser.ttl",
+    "label": "PodOS Browser",
+    "href": "https://browser.pod-os.org/",
+    "oldIcon": "🔍",
+    "loaded": true,
+    "finalUrl": "https://browser.pod-os.org/",
+    "title": "PodOS Browser",
+    "bodyLen": 446,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://browser.pod-os.org/icons/favicon-196.png",
+        "sizes": "196x196"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://browser.pod-os.org/icons/apple-icon-180.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://browser.pod-os.org/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://browser.pod-os.org/icons/apple-icon-180.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "portable-librechat.ttl",
+    "label": "Portable LibreChat",
+    "href": "https://chat.solidproject.org/",
+    "oldIcon": "💬",
+    "loaded": false,
+    "loadErr": "ERR_NAME_NOT_RESOLVED (-105) loading 'https://chat.solidproject.org/'",
+    "finalUrl": "chrome-error://chromewebdata/",
+    "title": "",
+    "bodyLen": 0,
+    "mainFail": "-105 ERR_NAME_NOT_RESOLVED",
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "null/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ]
+  },
+  {
+    "file": "proton-calendar.ttl",
+    "label": "Proton Calendar",
+    "href": "https://calendar.proton.me/",
+    "oldIcon": "https://calendar.proton.me/assets/favicon.ico",
+    "loaded": true,
+    "finalUrl": "https://account.proton.me/calendar",
+    "title": "Proton",
+    "bodyLen": 11569,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/assets/favicon.ico",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/assets/favicon.ico",
+        "sizes": "1025x1025"
+      },
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/assets/static/favicon.85478299dafc69454be0.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-57x57.png",
+        "sizes": "57x57"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-60x60.png",
+        "sizes": "60x60"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-72x72.png",
+        "sizes": "72x72"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-76x76.png",
+        "sizes": "76x76"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-114x114.png",
+        "sizes": "114x114"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-120x120.png",
+        "sizes": "120x120"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-144x144.png",
+        "sizes": "144x144"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-152x152.png",
+        "sizes": "152x152"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-167x167.png",
+        "sizes": "167x167"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-180x180.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-1024x1024.png",
+        "sizes": "1024x1024"
+      },
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://account.proton.me/assets/apple-touch-icon-1024x1024.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "proton-drive.ttl",
+    "label": "Proton Drive",
+    "href": "https://drive.proton.me/",
+    "oldIcon": "https://drive.proton.me/assets/favicon.ico",
+    "loaded": true,
+    "loadErr": "ERR_ABORTED (-3) loading 'https://account.proton.me/authorize?app=proton-drive&state=Se1Yyr38InnoR8NJWxqRtL-NiusjcUAh2Z5ScG2xJvM&v=2&reason=session-expired&pv=3'",
+    "finalUrl": "https://account.proton.me/drive",
+    "title": "Proton",
+    "bodyLen": 11569,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/assets/favicon.ico",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/assets/favicon.ico",
+        "sizes": "1025x1025"
+      },
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/assets/static/favicon.85478299dafc69454be0.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-57x57.png",
+        "sizes": "57x57"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-60x60.png",
+        "sizes": "60x60"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-72x72.png",
+        "sizes": "72x72"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-76x76.png",
+        "sizes": "76x76"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-114x114.png",
+        "sizes": "114x114"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-120x120.png",
+        "sizes": "120x120"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-144x144.png",
+        "sizes": "144x144"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-152x152.png",
+        "sizes": "152x152"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-167x167.png",
+        "sizes": "167x167"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-180x180.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-1024x1024.png",
+        "sizes": "1024x1024"
+      },
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://account.proton.me/assets/apple-touch-icon-1024x1024.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "proton-mail.ttl",
+    "label": "Proton Mail",
+    "href": "https://mail.proton.me/",
+    "oldIcon": "https://mail.proton.me/assets/favicon.ico",
+    "loaded": true,
+    "finalUrl": "https://account.proton.me/mail",
+    "title": "Proton Mail: Sign-in",
+    "bodyLen": 458590,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/assets/favicon.ico",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/assets/favicon.ico",
+        "sizes": "1025x1025"
+      },
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/assets/static/favicon.85478299dafc69454be0.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-57x57.png",
+        "sizes": "57x57"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-60x60.png",
+        "sizes": "60x60"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-72x72.png",
+        "sizes": "72x72"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-76x76.png",
+        "sizes": "76x76"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-114x114.png",
+        "sizes": "114x114"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-120x120.png",
+        "sizes": "120x120"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-144x144.png",
+        "sizes": "144x144"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-152x152.png",
+        "sizes": "152x152"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-167x167.png",
+        "sizes": "167x167"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-180x180.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://account.proton.me/assets/apple-touch-icon-1024x1024.png",
+        "sizes": "1024x1024"
+      },
+      {
+        "rel": "icon",
+        "href": "https://account.proton.me/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://account.proton.me/assets/apple-touch-icon-1024x1024.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "rdf-validator.ttl",
+    "label": "RDF Validator",
+    "href": "http://easyrdf.org/converter",
+    "oldIcon": "🧬",
+    "loaded": true,
+    "finalUrl": "https://www.easyrdf.org/converter",
+    "title": "EasyRdf - Converter",
+    "bodyLen": 6167,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon-precomposed",
+        "href": "https://www.easyrdf.org/icons/apple-touch-icon-144-precomposed.png",
+        "sizes": "144x144"
+      },
+      {
+        "rel": "apple-touch-icon-precomposed",
+        "href": "https://www.easyrdf.org/icons/apple-touch-icon-114-precomposed.png",
+        "sizes": "114x114"
+      },
+      {
+        "rel": "apple-touch-icon-precomposed",
+        "href": "https://www.easyrdf.org/icons/apple-touch-icon-72-precomposed.png",
+        "sizes": "72x72"
+      },
+      {
+        "rel": "apple-touch-icon-precomposed",
+        "href": "https://www.easyrdf.org/icons/apple-touch-icon-57-precomposed.png",
+        "sizes": null
+      },
+      {
+        "rel": "shortcut icon",
+        "href": "https://www.easyrdf.org/favicon.ico",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://www.easyrdf.org/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://www.easyrdf.org/icons/apple-touch-icon-144-precomposed.png",
+    "faviconRel": "apple-touch-icon-precomposed",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "rolopod.ttl",
+    "label": "RoloPod",
+    "href": "https://rolopod.solidcommunity.au",
+    "oldIcon": "📇",
+    "loaded": true,
+    "finalUrl": "https://rolopod.solidcommunity.au/",
+    "title": "rolopod",
+    "bodyLen": 366,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://rolopod.solidcommunity.au/rolopod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://rolopod.solidcommunity.au/rolopod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://rolopod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://rolopod.solidcommunity.au/rolopod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "searxng.ttl",
+    "label": "SearXNG",
+    "href": "https://searx.be/",
+    "oldIcon": "https://searx.be/static/themes/simple/img/favicon.png",
+    "loaded": true,
+    "finalUrl": "https://searx.be/",
+    "title": "Searx Belgium",
+    "bodyLen": 4542,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://searx.be/static/themes/simple/img/favicon.png",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "href": "https://searx.be/static/themes/simple/img/favicon.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://searx.be/static/themes/simple/img/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://searx.be/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://searx.be/static/themes/simple/img/favicon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "securedialog.ttl",
+    "label": "SecureDialog",
+    "href": "https://securedialog.solidcommunity.au",
+    "oldIcon": "💉",
+    "loaded": true,
+    "finalUrl": "https://securedialog.solidcommunity.au/",
+    "title": "securedialog",
+    "bodyLen": 443,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://securedialog.solidcommunity.au/securedialog/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://securedialog.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "sepiasearch.ttl",
+    "label": "SepiaSearch",
+    "href": "https://sepiasearch.org/",
+    "oldIcon": "https://sepiasearch.org/img/favicon.png",
+    "loaded": true,
+    "finalUrl": "https://sepiasearch.org/",
+    "title": "Sepia Search",
+    "bodyLen": 3401,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://sepiasearch.org/img/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://sepiasearch.org/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://sepiasearch.org/img/favicon.png",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "shacl-playground.ttl",
+    "label": "SHACL Playground",
+    "href": "https://shacl.org/playground/",
+    "oldIcon": "✅",
+    "loaded": true,
+    "finalUrl": "https://shacl.org/playground/",
+    "title": "SHACL Playground",
+    "bodyLen": 7487,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://shacl.org/favicon.ico",
+        "sizes": "",
+        "fallback": true,
+        "check": {
+          "ok": false,
+          "status": 404,
+          "type": "text/html; charset=iso-8859-1"
+        }
+      }
+    ],
+    "faviconNote": "no candidate returned 200"
+  },
+  {
+    "file": "solid-catalog.ttl",
+    "label": "Solid Catalog",
+    "href": "https://solidproject.solidcommunity.net/catalog/",
+    "oldIcon": "🗃️",
+    "loaded": true,
+    "finalUrl": "https://solidproject.solidcommunity.net/catalog/",
+    "title": "Solid Resources Catalog",
+    "bodyLen": 9807,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://solidproject.org/assets/img/solid-emblem.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://solidproject.solidcommunity.net/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://solidproject.org/assets/img/solid-emblem.svg",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/svg+xml"
+    }
+  },
+  {
+    "file": "solid-faq.ttl",
+    "label": "Solid FAQ",
+    "href": "https://solidproject.org/FAQ",
+    "oldIcon": "❓",
+    "loaded": true,
+    "finalUrl": "https://solidproject.org/faq",
+    "title": "Frequently Asked Questions - Solid Project",
+    "bodyLen": 34409,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://solidproject.org/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://solidproject.org/favicon.ico",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "solid-file-manager.ttl",
+    "label": "Solid File Manager",
+    "href": "https://otto-aa.github.io/solid-filemanager/",
+    "oldIcon": "📁",
+    "loaded": true,
+    "finalUrl": "https://otto-aa.github.io/solid-filemanager/",
+    "title": "Solid Filemanager",
+    "bodyLen": 6199,
+    "candidates": [
+      {
+        "rel": "shortcut icon",
+        "href": "https://otto-aa.github.io/solid-filemanager/favicon.ico",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://otto-aa.github.io/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://otto-aa.github.io/solid-filemanager/favicon.ico",
+    "faviconRel": "shortcut icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "solid-glossary.ttl",
+    "label": "Solid Glossary",
+    "href": "https://solidproject.solidcommunity.net/glossary",
+    "oldIcon": "📖",
+    "loaded": true,
+    "finalUrl": "https://solidproject.solidcommunity.net/glossary",
+    "title": "Glossary of Solid Core Concepts, Terms, & Abbreviations",
+    "bodyLen": 36116,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://solidproject.solidcommunity.net/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://solidproject.solidcommunity.net/favicon.ico",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "solid-website.ttl",
+    "label": "Solid Website",
+    "href": "https://solidproject.org",
+    "oldIcon": "🌐",
+    "loaded": true,
+    "finalUrl": "https://solidproject.org/",
+    "title": "Solid: Your data, your choice - Solid Project",
+    "bodyLen": 7451,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://solidproject.org/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://solidproject.org/favicon.ico",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "solidflix.ttl",
+    "label": "Solidflix",
+    "href": "https://oxfordhcc.github.io/solid-media/",
+    "oldIcon": "🎬",
+    "loaded": true,
+    "finalUrl": "https://oxfordhcc.github.io/solid-media/login?redirect=%2Fsolid-media%2F",
+    "title": "Solidflix",
+    "bodyLen": 899,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://oxfordhcc.github.io/favicon.ico",
+        "sizes": "",
+        "fallback": true,
+        "check": {
+          "ok": false,
+          "status": 404,
+          "type": "text/html; charset=utf-8"
+        }
+      }
+    ],
+    "faviconNote": "no candidate returned 200"
+  },
+  {
+    "file": "solidfocus.ttl",
+    "label": "SolidFocus",
+    "href": "https://focus.noeldemartin.com/",
+    "oldIcon": "✅",
+    "loaded": true,
+    "finalUrl": "https://focus.noeldemartin.com/",
+    "title": "Focus",
+    "bodyLen": 62241,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://focus.noeldemartin.com/apple-touch-icon.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "icon",
+        "href": "https://focus.noeldemartin.com/favicon-32x32.png",
+        "sizes": "32x32"
+      },
+      {
+        "rel": "icon",
+        "href": "https://focus.noeldemartin.com/favicon-16x16.png",
+        "sizes": "16x16"
+      },
+      {
+        "rel": "mask-icon",
+        "href": "https://focus.noeldemartin.com/safari-pinned-tab.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://focus.noeldemartin.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://focus.noeldemartin.com/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "sparql-playground.ttl",
+    "label": "SPARQL Playground",
+    "href": "https://atomgraph.github.io/SPARQL-Playground/",
+    "oldIcon": "🔮",
+    "loaded": true,
+    "finalUrl": "https://atomgraph.github.io/SPARQL-Playground/",
+    "title": "SPARQL Playground",
+    "bodyLen": 3764,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://atomgraph.github.io/favicon.ico",
+        "sizes": "",
+        "fallback": true,
+        "check": {
+          "ok": false,
+          "status": 404,
+          "type": "text/html; charset=utf-8"
+        }
+      }
+    ],
+    "faviconNote": "no candidate returned 200"
+  },
+  {
+    "file": "standard-notes.ttl",
+    "label": "Standard Notes",
+    "href": "https://app.standardnotes.com/",
+    "oldIcon": "https://app.standardnotes.com/favicon/apple-touch-icon.png",
+    "loaded": true,
+    "finalUrl": "https://app.standardnotes.com/",
+    "title": "Notes · Standard Notes",
+    "bodyLen": 55337,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://app.standardnotes.com/favicon/apple-touch-icon.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "icon",
+        "href": "https://app.standardnotes.com/favicon/favicon-32x32.png",
+        "sizes": "32x32"
+      },
+      {
+        "rel": "icon",
+        "href": "https://app.standardnotes.com/favicon/favicon-16x16.png",
+        "sizes": "16x16"
+      },
+      {
+        "rel": "mask-icon",
+        "href": "https://app.standardnotes.com/favicon/safari-pinned-tab.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://app.standardnotes.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://app.standardnotes.com/favicon/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "synara-ai.ttl",
+    "label": "Synara AI",
+    "href": "https://ai.privatedatapod.com/",
+    "oldIcon": "🤖",
+    "loaded": true,
+    "finalUrl": "https://ai.privatedatapod.com/",
+    "title": "Synara AI",
+    "bodyLen": 3655,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://ai.privatedatapod.com/icons/icon.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://ai.privatedatapod.com/icons/apple-touch-icon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://ai.privatedatapod.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://ai.privatedatapod.com/icons/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "solid-tag-explainer.ttl",
+    "label": "Tag Explainer",
+    "href": "https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html",
+    "oldIcon": "🏷️",
+    "loaded": true,
+    "finalUrl": "https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html",
+    "title": "Solid Protocol: Tag Explainer V2 - TimBL",
+    "bodyLen": 25362,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://timbl.solidcommunity.net/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://timbl.solidcommunity.net/favicon.ico",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/vnd.microsoft.icon"
+    }
+  },
+  {
+    "file": "tired-bike.ttl",
+    "label": "Tired Bike",
+    "href": "https://tired.bike/",
+    "oldIcon": "🚲",
+    "loaded": true,
+    "finalUrl": "https://tired.bike/",
+    "title": "Tired Bike",
+    "bodyLen": 2624,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://tired.bike/favicon.ico",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://community.tired.bike/logo-new-open.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://tired.bike/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://community.tired.bike/logo-new-open.svg",
+    "faviconRel": "icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/svg+xml"
+    }
+  },
+  {
+    "file": "todopod.ttl",
+    "label": "TodoPod",
+    "href": "https://todopod.solidcommunity.au",
+    "oldIcon": "☑️",
+    "loaded": true,
+    "finalUrl": "https://todopod.solidcommunity.au/",
+    "title": "todopod",
+    "bodyLen": 366,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://todopod.solidcommunity.au/todopod/icons/Icon-192.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://todopod.solidcommunity.au/todopod/favicon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://todopod.solidcommunity.au/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://todopod.solidcommunity.au/todopod/icons/Icon-192.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "tuta.ttl",
+    "label": "Tuta",
+    "href": "https://app.tuta.com/",
+    "oldIcon": "https://app.tuta.com/images/logo-favicon.svg",
+    "loaded": true,
+    "finalUrl": "https://app.tuta.com/",
+    "title": "Tuta Mail: Login & Sign up for free",
+    "bodyLen": 120,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://app.tuta.com/images/logo-favicon.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://app.tuta.com/images/apple-touch-icon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://app.tuta.com/images/logo-favicon-192.png",
+        "sizes": "192x192"
+      },
+      {
+        "rel": "icon",
+        "href": "https://app.tuta.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://app.tuta.com/images/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "umai.ttl",
+    "label": "Umai",
+    "href": "https://umai.noeldemartin.com",
+    "oldIcon": "🍳",
+    "loaded": true,
+    "finalUrl": "https://umai.noeldemartin.com/",
+    "title": "Umai",
+    "bodyLen": 18719,
+    "candidates": [
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://umai.noeldemartin.com/apple-touch-icon.png",
+        "sizes": "180x180"
+      },
+      {
+        "rel": "icon",
+        "href": "https://umai.noeldemartin.com/favicon-32x32.png",
+        "sizes": "32x32"
+      },
+      {
+        "rel": "icon",
+        "href": "https://umai.noeldemartin.com/favicon-16x16.png",
+        "sizes": "16x16"
+      },
+      {
+        "rel": "mask-icon",
+        "href": "https://umai.noeldemartin.com/safari-pinned-tab.svg",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://umai.noeldemartin.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://umai.noeldemartin.com/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  },
+  {
+    "file": "vitalstats.ttl",
+    "label": "VitalStats",
+    "href": "https://vitalstats.apps.privatedatapod.com/",
+    "oldIcon": "❤️",
+    "loaded": true,
+    "finalUrl": "https://vitalstats.apps.privatedatapod.com/",
+    "title": "VitalStats",
+    "bodyLen": 2832,
+    "candidates": [
+      {
+        "rel": "icon",
+        "href": "https://vitalstats.apps.privatedatapod.com/icons/pwa-64x64.png",
+        "sizes": "64x64"
+      },
+      {
+        "rel": "icon",
+        "href": "https://vitalstats.apps.privatedatapod.com/icons/icon.svg",
+        "sizes": null
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png",
+        "sizes": null
+      },
+      {
+        "rel": "icon",
+        "href": "https://vitalstats.apps.privatedatapod.com/favicon.ico",
+        "sizes": "",
+        "fallback": true
+      }
+    ],
+    "favicon": "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png",
+    "faviconRel": "apple-touch-icon",
+    "faviconCheck": {
+      "ok": true,
+      "status": 200,
+      "type": "image/png"
+    }
+  }
+]

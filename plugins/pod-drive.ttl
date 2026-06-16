@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "Pod Drive" ;
-  ui:icon "📁" ;
+  ui:icon <https://drive.privatedatapod.com/icons/apple-touch-icon.png> ;
   ui:href <https://drive.privatedatapod.com/> ;
   ui:region ui:Tab ;
   rdfs:comment "Drive-style file manager for your pod." ;

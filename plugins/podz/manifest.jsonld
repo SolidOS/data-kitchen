@@ -11,12 +11,32 @@
     "name": "ui:name",
     "creator": "dct:creator",
     "subject": "dct:subject",
-    "hasPart": { "@id": "dct:hasPart", "@type": "@id" },
-    "requires": { "@id": "dct:requires", "@type": "@id" },
-    "shape": { "@id": "dct:conformsTo", "@type": "@id" },
-    "help": { "@id": "schema:softwareHelp", "@type": "@id" },
-    "mode": { "@id": "acl:mode", "@type": "@id" },
-    "parts": { "@id": "ui:parts", "@container": "@list", "@type": "@id" }
+    "hasPart": {
+      "@id": "dct:hasPart",
+      "@type": "@id"
+    },
+    "requires": {
+      "@id": "dct:requires",
+      "@type": "@id"
+    },
+    "shape": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "help": {
+      "@id": "schema:softwareHelp",
+      "@type": "@id"
+    },
+    "mode": {
+      "@id": "acl:mode",
+      "@type": "@id"
+    },
+    "parts": {
+      "@id": "ui:parts",
+      "@container": "@list",
+      "@type": "@id"
+    },
+    "icon": "ui:icon"
   },
   "@id": "",
   "@type": "Component",
@@ -24,13 +44,22 @@
   "name": "dk-podz",
   "creator": "Jeff Zucker",
   "hasPart": [
-    "./dk-podz.html", "./dk-podz.js",
-    "./podz.js", "./podz-ui.js", "./podz-state.js",
-    "./podz-auth.js", "./podz-pod.js", "./podz-utils.js",
-    "./podz.css", "./popup-auth-callback.html"
+    "./dk-podz.html",
+    "./dk-podz.js",
+    "./podz.js",
+    "./podz-ui.js",
+    "./podz-state.js",
+    "./podz-auth.js",
+    "./podz-pod.js",
+    "./podz-utils.js",
+    "./podz.css",
+    "./popup-auth-callback.html"
   ],
-  "requires": ["./pod-settings.ttl"],
+  "requires": [
+    "./pod-settings.ttl"
+  ],
   "shape": "/node_modules/sol-components/shapes/pod-settings.shacl",
   "help": "./help.html",
-  "subject": "Tech"
+  "subject": "Tech",
+  "icon": "🗂"
 }

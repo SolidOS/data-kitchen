@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "Duck.ai" ;
-  ui:icon <https://duck.ai/favicon.ico> ;
+  ui:icon <https://duck.ai/apple-touch-icon.png> ;
   ui:href <https://duck.ai> ;
   ui:region ui:Tab ;
   rdfs:comment "Private AI chat from DuckDuckGo." ;

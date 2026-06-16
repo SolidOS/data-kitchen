@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "MovieStar" ;
-  ui:icon "🎬" ;
+  ui:icon <https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png> ;
   ui:href <https://moviestar.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Track what you watch, share, and get recommendations." ;

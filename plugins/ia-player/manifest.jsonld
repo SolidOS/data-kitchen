@@ -11,12 +11,32 @@
     "name": "ui:name",
     "creator": "dct:creator",
     "subject": "dct:subject",
-    "hasPart": { "@id": "dct:hasPart", "@type": "@id" },
-    "requires": { "@id": "dct:requires", "@type": "@id" },
-    "shape": { "@id": "dct:conformsTo", "@type": "@id" },
-    "help": { "@id": "schema:softwareHelp", "@type": "@id" },
-    "mode": { "@id": "acl:mode", "@type": "@id" },
-    "parts": { "@id": "ui:parts", "@container": "@list", "@type": "@id" }
+    "hasPart": {
+      "@id": "dct:hasPart",
+      "@type": "@id"
+    },
+    "requires": {
+      "@id": "dct:requires",
+      "@type": "@id"
+    },
+    "shape": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "help": {
+      "@id": "schema:softwareHelp",
+      "@type": "@id"
+    },
+    "mode": {
+      "@id": "acl:mode",
+      "@type": "@id"
+    },
+    "parts": {
+      "@id": "ui:parts",
+      "@container": "@list",
+      "@type": "@id"
+    },
+    "icon": "ui:icon"
   },
   "@id": "",
   "@type": "Component",
@@ -24,8 +44,11 @@
   "name": "ia-player",
   "creator": "Jeff Zucker",
   "hasPart": [
-    "./ia3.js", "./ia-ui.js", "./ia-rdf.js",
-    "./assets/ia-player-shell.html", "./assets/ia.css"
+    "./ia3.js",
+    "./ia-ui.js",
+    "./ia-rdf.js",
+    "./assets/ia-player-shell.html",
+    "./assets/ia.css"
   ],
   "requires": [
     "./libraries/internet_archive_music/index.ttl",
@@ -40,11 +63,36 @@
       "@type": "Menu",
       "label": "Player",
       "parts": [
-        { "@id": "#Filters",     "@type": "Component", "label": "Filters…",            "name": "filters",     "mode": "acl:Write" },
-        { "@id": "#ViewDeleted", "@type": "Component", "label": "View deleted",        "name": "viewDeleted", "mode": "acl:Write" },
-        { "@id": "#InstallPod",  "@type": "Component", "label": "Install on my Pod…",  "name": "installPod",  "mode": "acl:Write" },
-        { "@id": "#UpdateApp",   "@type": "Component", "label": "Update app on Pod…",  "name": "updateApp",   "mode": "acl:Write" }
+        {
+          "@id": "#Filters",
+          "@type": "Component",
+          "label": "Filters…",
+          "name": "filters",
+          "mode": "acl:Write"
+        },
+        {
+          "@id": "#ViewDeleted",
+          "@type": "Component",
+          "label": "View deleted",
+          "name": "viewDeleted",
+          "mode": "acl:Write"
+        },
+        {
+          "@id": "#InstallPod",
+          "@type": "Component",
+          "label": "Install on my Pod…",
+          "name": "installPod",
+          "mode": "acl:Write"
+        },
+        {
+          "@id": "#UpdateApp",
+          "@type": "Component",
+          "label": "Update app on Pod…",
+          "name": "updateApp",
+          "mode": "acl:Write"
+        }
       ]
     }
-  ]
+  ],
+  "icon": "🎵"
 }

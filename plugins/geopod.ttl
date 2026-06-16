@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "GeoPod" ;
-  ui:icon "🗺️" ;
+  ui:icon <https://geopod.solidcommunity.au/geopod/icons/Icon-192.png> ;
   ui:href <https://geopod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Store points of interest and encrypted tracks on a map." ;

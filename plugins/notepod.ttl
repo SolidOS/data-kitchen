@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "NotePod" ;
-  ui:icon "🗒️" ;
+  ui:icon <https://notepod.solidcommunity.au/notepod/icons/Icon-192.png> ;
   ui:href <https://notepod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Private, shareable notes with encryption." ;

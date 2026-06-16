@@ -30,6 +30,36 @@
   OR only `html-first.html`, kept as the record of why the (retired) two-way
   sync was hard. tabs.ttl is now the only live artifact.
 
+## `smoke-tests/` + `validation/` — plugin icons + pane loading (2026-06-16)
+
+Built while (a) live-testing every catalog plugin inside dk and capturing real
+favicons into the manifests, and (b) adding a loading overlay to external panes.
+External apps are driven the real dk way — a `WebContentsView` on
+`persist:trusted-guest` under `xvfb-run node_modules/electron/dist/electron …`;
+components via `playwright-core` against the `:3000` pivot server.
+
+- `build-plugin-list.mjs` — parses every `plugins/*.ttl` (rdflib, same read as
+  `tools/seed-plugins-catalog.mjs`) into `claude/validation/plugin-list.json`
+  (file/kind/label/tag/href/icon), the work list the probes consume.
+- `probe-all-externals.cjs` — loads each `ui:Link` app, records loaded y/n, and
+  scrapes + verifies (200) its best favicon → `validation/externals-probe.json`.
+- `probe-components-load.mjs` — confirms each
+  `ui:Component`'s custom element defines inside dk (on-demand `ComponentInterop.load`
+  + direct module import fallback) → `validation/components-probe.json`.
+- `probe-au-render.cjs` — re-tests the Flutter `*.solidcommunity.au` pods with
+  WebGL forced on (`--enable-unsafe-swiftshader`), checking for an actual paint
+  (`flt-glass-pane`) → `validation/au-render-probe.json`. Showed the headless
+  WebGL-blocklist makes them load empty shells; a few stay blank even with GL.
+- `apply-plugin-icons.mjs` — combines the probes into
+  `validation/plugin-icon-report.json` and (with `--write`) rewrites `ui:icon`
+  in the changed `plugins/*.ttl` and adds `ui:icon` to the 9 folder
+  `manifest.jsonld`, in BOTH the repo and the pod copy.
+- `probe-pane-loading.cjs` — verifies the external-pane loading overlay: shown
+  while fetching, held past `did-stop-loading` through the boot pause, dropped
+  once the app paints (or a 10 s cap).
+- `validation/` — the JSON reports above (the `*.log` server/probe logs are
+  gitignored).
+
 ## `smoke-tests/` — podz absorb + RDF-driven settings (2026-06-15, Playwright)
 
 Built while absorbing podz into dk and making plugin settings RDF-driven. Served

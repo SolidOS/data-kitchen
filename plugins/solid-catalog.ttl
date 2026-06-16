@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "Solid Catalog" ;
-  ui:icon "🗃️" ;
+  ui:icon <https://solidproject.org/assets/img/solid-emblem.svg> ;
   ui:href <https://solidproject.solidcommunity.net/catalog/> ;
   ui:region ui:Tab ;
   rdfs:comment "Catalog of Solid apps, libraries and resources." ;

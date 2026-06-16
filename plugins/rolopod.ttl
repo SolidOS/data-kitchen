@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "RoloPod" ;
-  ui:icon "📇" ;
+  ui:icon <https://rolopod.solidcommunity.au/rolopod/icons/Icon-192.png> ;
   ui:href <https://rolopod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Address book with selective sharing." ;

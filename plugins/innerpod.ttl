@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "InnerPod" ;
-  ui:icon "🧘" ;
+  ui:icon <https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png> ;
   ui:href <https://innerpod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Guided meditation timer that records your sessions." ;

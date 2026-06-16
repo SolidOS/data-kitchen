@@ -11,19 +11,45 @@
     "name": "ui:name",
     "creator": "dct:creator",
     "subject": "dct:subject",
-    "hasPart": { "@id": "dct:hasPart", "@type": "@id" },
-    "requires": { "@id": "dct:requires", "@type": "@id" },
-    "shape": { "@id": "dct:conformsTo", "@type": "@id" },
-    "help": { "@id": "schema:softwareHelp", "@type": "@id" },
-    "mode": { "@id": "acl:mode", "@type": "@id" },
-    "parts": { "@id": "ui:parts", "@container": "@list", "@type": "@id" }
+    "hasPart": {
+      "@id": "dct:hasPart",
+      "@type": "@id"
+    },
+    "requires": {
+      "@id": "dct:requires",
+      "@type": "@id"
+    },
+    "shape": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "help": {
+      "@id": "schema:softwareHelp",
+      "@type": "@id"
+    },
+    "mode": {
+      "@id": "acl:mode",
+      "@type": "@id"
+    },
+    "parts": {
+      "@id": "ui:parts",
+      "@container": "@list",
+      "@type": "@id"
+    },
+    "icon": "ui:icon"
   },
   "@id": "",
   "@type": "Component",
   "label": "Calendar",
   "name": "dk-calendar-popout",
   "creator": "Jeff Zucker",
-  "hasPart": ["./dk-calendar-popout.html", "./dk-calendar-popout.js"],
-  "requires": ["./calendar-settings.ttl"],
-  "subject": "Information"
+  "hasPart": [
+    "./dk-calendar-popout.html",
+    "./dk-calendar-popout.js"
+  ],
+  "requires": [
+    "./calendar-settings.ttl"
+  ],
+  "subject": "Information",
+  "icon": "📅"
 }

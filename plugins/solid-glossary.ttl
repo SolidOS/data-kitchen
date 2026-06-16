@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "Solid Glossary" ;
-  ui:icon "📖" ;
+  ui:icon <https://solidproject.solidcommunity.net/favicon.ico> ;
   ui:href <https://solidproject.solidcommunity.net/glossary> ;
   ui:region ui:Tab ;
   rdfs:comment "Glossary of Solid terms." ;

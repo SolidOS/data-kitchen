@@ -1,0 +1,712 @@
+[
+  {
+    "file": "0data-hello.ttl",
+    "kind": "link",
+    "label": "0data Hello",
+    "tag": "",
+    "href": "https://hello.0data.app/solid/",
+    "icon": "🧪",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "billipod.ttl",
+    "kind": "link",
+    "label": "BilliPod",
+    "tag": "",
+    "href": "https://billipod.solidcommunity.au",
+    "icon": "🧾",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "bluesky.ttl",
+    "kind": "link",
+    "label": "Bluesky",
+    "tag": "",
+    "href": "https://bsky.app/",
+    "icon": "https://web-cdn.bsky.app/static/apple-touch-icon.png",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "booklice.ttl",
+    "kind": "link",
+    "label": "Booklice",
+    "tag": "",
+    "href": "https://scenaristeur.github.io/booklice/",
+    "icon": "🔖",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "calendar.ttl",
+    "kind": "component",
+    "label": "Calendar",
+    "tag": "dk-calendar-popout",
+    "href": "",
+    "icon": "📅",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "clock.ttl",
+    "kind": "component",
+    "label": "Clock",
+    "tag": "sol-time",
+    "href": "",
+    "icon": "🕐",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "cryptpad.ttl",
+    "kind": "link",
+    "label": "CryptPad",
+    "tag": "",
+    "href": "https://cryptpad.fr/",
+    "icon": "https://cryptpad.fr/customize/favicon/main-favicon.png",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "workspaces.ttl",
+    "kind": "component",
+    "label": "Data Kitchen Pod Browser",
+    "tag": "dk-podz",
+    "href": "",
+    "icon": "🗂",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "dokieli.ttl",
+    "kind": "component",
+    "label": "dokieli",
+    "tag": "dk-dokieli",
+    "href": "",
+    "icon": "https://dokie.li/media/images/logo.png",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "duck-ai.ttl",
+    "kind": "link",
+    "label": "Duck.ai",
+    "tag": "",
+    "href": "https://duck.ai",
+    "icon": "https://duck.ai/favicon.ico",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "element.ttl",
+    "kind": "link",
+    "label": "Element",
+    "tag": "",
+    "href": "https://app.element.io/",
+    "icon": "https://app.element.io/vector-icons/120.570a7f9.png",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "filepod.ttl",
+    "kind": "link",
+    "label": "FilePod",
+    "tag": "",
+    "href": "https://filepod.solidcommunity.au",
+    "icon": "📁",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "geopod.ttl",
+    "kind": "link",
+    "label": "GeoPod",
+    "tag": "",
+    "href": "https://geopod.solidcommunity.au",
+    "icon": "🗺️",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "healthpod.ttl",
+    "kind": "link",
+    "label": "HealthPod",
+    "tag": "",
+    "href": "https://healthpod.solidcommunity.au",
+    "icon": "🩺",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "homevault.ttl",
+    "kind": "link",
+    "label": "HomeVault",
+    "tag": "",
+    "href": "https://homevault.apps.privatedatapod.com/",
+    "icon": "🏠",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "huggingface-chat.ttl",
+    "kind": "link",
+    "label": "HuggingFace Chat",
+    "tag": "",
+    "href": "https://huggingface.co/chat/",
+    "icon": "https://huggingface.co/chat/huggingchat/icon.svg",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "images.ttl",
+    "kind": "component",
+    "label": "Images (Wikimedia)",
+    "tag": "omp-images",
+    "href": "",
+    "icon": "🖼",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "innerpod.ttl",
+    "kind": "link",
+    "label": "InnerPod",
+    "tag": "",
+    "href": "https://innerpod.solidcommunity.au",
+    "icon": "🧘",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "jsonld-playground.ttl",
+    "kind": "link",
+    "label": "JSON-LD Playground",
+    "tag": "",
+    "href": "https://json-ld.github.io/json-ld.org/playground/",
+    "icon": "🧩",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "keypod.ttl",
+    "kind": "link",
+    "label": "KeyPod",
+    "tag": "",
+    "href": "https://keypod.solidcommunity.au",
+    "icon": "🔐",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "konapod.ttl",
+    "kind": "link",
+    "label": "KonaPod",
+    "tag": "",
+    "href": "https://konapod.solidcommunity.au",
+    "icon": "🚗",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "lemmy.ttl",
+    "kind": "link",
+    "label": "Lemmy",
+    "tag": "",
+    "href": "https://lemmy.world/",
+    "icon": "https://icons.duckduckgo.com/ip3/lemmy.world.ico",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "libretranslate.ttl",
+    "kind": "link",
+    "label": "LibreTranslate",
+    "tag": "",
+    "href": "https://libretranslate.com/",
+    "icon": "https://libretranslate.com/static/favicon.ico",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "mastodon.ttl",
+    "kind": "link",
+    "label": "Mastodon",
+    "tag": "",
+    "href": "https://mastodon.social/",
+    "icon": "https://mastodon.social/packs/assets/favicon-48x48-DMnduFKh.png",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "matrix-chat.ttl",
+    "kind": "link",
+    "label": "Matrix Chat",
+    "tag": "",
+    "href": "https://matrix.to/#/#solid-practitioners:matrix.org",
+    "icon": "https://app.cinny.in/assets/favicon-5KspoOBy.ico",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "media-kraken.ttl",
+    "kind": "link",
+    "label": "Media Kraken",
+    "tag": "",
+    "href": "https://noeldemartin.github.io/media-kraken/",
+    "icon": "🎬",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "movies.ttl",
+    "kind": "component",
+    "label": "Movies (Internet Archive)",
+    "tag": "ia-player",
+    "href": "",
+    "icon": "🎬",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "moviestar.ttl",
+    "kind": "link",
+    "label": "MovieStar",
+    "tag": "",
+    "href": "https://moviestar.solidcommunity.au",
+    "icon": "🎬",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "msfatigue.ttl",
+    "kind": "link",
+    "label": "MSFatigue",
+    "tag": "",
+    "href": "https://msfatigue.solidcommunity.au",
+    "icon": "📋",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "music.ttl",
+    "kind": "component",
+    "label": "Music (Internet Archive)",
+    "tag": "ia-player",
+    "href": "",
+    "icon": "🎵",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "news.ttl",
+    "kind": "component",
+    "label": "News (three-panel feeds)",
+    "tag": "sol-feed",
+    "href": "",
+    "icon": "📰",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "notepod.ttl",
+    "kind": "link",
+    "label": "NotePod",
+    "tag": "",
+    "href": "https://notepod.solidcommunity.au",
+    "icon": "🗒️",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "odi-file-manager.ttl",
+    "kind": "link",
+    "label": "ODI Solid File Manager",
+    "tag": "",
+    "href": "https://filemanager.solid-experiments.org/",
+    "icon": "📁",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "openstreetmap.ttl",
+    "kind": "link",
+    "label": "OpenStreetMap",
+    "tag": "",
+    "href": "https://www.openstreetmap.org/",
+    "icon": "https://www.openstreetmap.org/assets/apple-touch-icon-57x57-0af2b52ac2b1a8cb0aba42f17aa901bfdedb9174bd978f838e3b3e1dd8602f52.png",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "penny.ttl",
+    "kind": "link",
+    "label": "Penny",
+    "tag": "",
+    "href": "https://penny.vincenttunru.com/",
+    "icon": "📁",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "pixelfed.ttl",
+    "kind": "link",
+    "label": "Pixelfed",
+    "tag": "",
+    "href": "https://pixelfed.social/",
+    "icon": "https://pixelfed.social/img/favicon.png",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "pod-drive.ttl",
+    "kind": "link",
+    "label": "Pod Drive",
+    "tag": "",
+    "href": "https://drive.privatedatapod.com/",
+    "icon": "📁",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "pod-pro.ttl",
+    "kind": "link",
+    "label": "Pod Pro",
+    "tag": "",
+    "href": "https://podpro.dev/",
+    "icon": "🧰",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "pod-resume.ttl",
+    "kind": "link",
+    "label": "Pod Resume",
+    "tag": "",
+    "href": "https://resume.privatedatapod.com/",
+    "icon": "📄",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "podcal.ttl",
+    "kind": "link",
+    "label": "PodCal",
+    "tag": "",
+    "href": "https://podcal.eu",
+    "icon": "📅",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "podos-browser.ttl",
+    "kind": "link",
+    "label": "PodOS Browser",
+    "tag": "",
+    "href": "https://browser.pod-os.org/",
+    "icon": "🔍",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "portable-librechat.ttl",
+    "kind": "link",
+    "label": "Portable LibreChat",
+    "tag": "",
+    "href": "https://chat.solidproject.org/",
+    "icon": "💬",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "proton-calendar.ttl",
+    "kind": "link",
+    "label": "Proton Calendar",
+    "tag": "",
+    "href": "https://calendar.proton.me/",
+    "icon": "https://calendar.proton.me/assets/favicon.ico",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "proton-drive.ttl",
+    "kind": "link",
+    "label": "Proton Drive",
+    "tag": "",
+    "href": "https://drive.proton.me/",
+    "icon": "https://drive.proton.me/assets/favicon.ico",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "proton-mail.ttl",
+    "kind": "link",
+    "label": "Proton Mail",
+    "tag": "",
+    "href": "https://mail.proton.me/",
+    "icon": "https://mail.proton.me/assets/favicon.ico",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "rdf-validator.ttl",
+    "kind": "link",
+    "label": "RDF Validator",
+    "tag": "",
+    "href": "http://easyrdf.org/converter",
+    "icon": "🧬",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "rolopod.ttl",
+    "kind": "link",
+    "label": "RoloPod",
+    "tag": "",
+    "href": "https://rolopod.solidcommunity.au",
+    "icon": "📇",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "search.ttl",
+    "kind": "component",
+    "label": "Search",
+    "tag": "sol-search",
+    "href": "",
+    "icon": "🔍",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "searxng.ttl",
+    "kind": "link",
+    "label": "SearXNG",
+    "tag": "",
+    "href": "https://searx.be/",
+    "icon": "https://searx.be/static/themes/simple/img/favicon.png",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "securedialog.ttl",
+    "kind": "link",
+    "label": "SecureDialog",
+    "tag": "",
+    "href": "https://securedialog.solidcommunity.au",
+    "icon": "💉",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "sepiasearch.ttl",
+    "kind": "link",
+    "label": "SepiaSearch",
+    "tag": "",
+    "href": "https://sepiasearch.org/",
+    "icon": "https://sepiasearch.org/img/favicon.png",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "shacl-playground.ttl",
+    "kind": "link",
+    "label": "SHACL Playground",
+    "tag": "",
+    "href": "https://shacl.org/playground/",
+    "icon": "✅",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "sign-in.ttl",
+    "kind": "component",
+    "label": "Sign in",
+    "tag": "sol-login",
+    "href": "",
+    "icon": "🔑",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "solid-catalog.ttl",
+    "kind": "link",
+    "label": "Solid Catalog",
+    "tag": "",
+    "href": "https://solidproject.solidcommunity.net/catalog/",
+    "icon": "🗃️",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "solid-faq.ttl",
+    "kind": "link",
+    "label": "Solid FAQ",
+    "tag": "",
+    "href": "https://solidproject.org/FAQ",
+    "icon": "❓",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "solid-file-manager.ttl",
+    "kind": "link",
+    "label": "Solid File Manager",
+    "tag": "",
+    "href": "https://otto-aa.github.io/solid-filemanager/",
+    "icon": "📁",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "solid-glossary.ttl",
+    "kind": "link",
+    "label": "Solid Glossary",
+    "tag": "",
+    "href": "https://solidproject.solidcommunity.net/glossary",
+    "icon": "📖",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "solid-website.ttl",
+    "kind": "link",
+    "label": "Solid Website",
+    "tag": "",
+    "href": "https://solidproject.org",
+    "icon": "🌐",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "solidflix.ttl",
+    "kind": "link",
+    "label": "Solidflix",
+    "tag": "",
+    "href": "https://oxfordhcc.github.io/solid-media/",
+    "icon": "🎬",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "solidfocus.ttl",
+    "kind": "link",
+    "label": "SolidFocus",
+    "tag": "",
+    "href": "https://focus.noeldemartin.com/",
+    "icon": "✅",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "solidos-browser.ttl",
+    "kind": "component",
+    "label": "SolidOS (data browser)",
+    "tag": "dk-solidos",
+    "href": "",
+    "icon": "🐧",
+    "iconIsUrl": false,
+    "region": ""
+  },
+  {
+    "file": "sparql-playground.ttl",
+    "kind": "link",
+    "label": "SPARQL Playground",
+    "tag": "",
+    "href": "https://atomgraph.github.io/SPARQL-Playground/",
+    "icon": "🔮",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "standard-notes.ttl",
+    "kind": "link",
+    "label": "Standard Notes",
+    "tag": "",
+    "href": "https://app.standardnotes.com/",
+    "icon": "https://app.standardnotes.com/favicon/apple-touch-icon.png",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "synara-ai.ttl",
+    "kind": "link",
+    "label": "Synara AI",
+    "tag": "",
+    "href": "https://ai.privatedatapod.com/",
+    "icon": "🤖",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "solid-tag-explainer.ttl",
+    "kind": "link",
+    "label": "Tag Explainer",
+    "tag": "",
+    "href": "https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html",
+    "icon": "🏷️",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "tired-bike.ttl",
+    "kind": "link",
+    "label": "Tired Bike",
+    "tag": "",
+    "href": "https://tired.bike/",
+    "icon": "🚲",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "todopod.ttl",
+    "kind": "link",
+    "label": "TodoPod",
+    "tag": "",
+    "href": "https://todopod.solidcommunity.au",
+    "icon": "☑️",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "tuta.ttl",
+    "kind": "link",
+    "label": "Tuta",
+    "tag": "",
+    "href": "https://app.tuta.com/",
+    "icon": "https://app.tuta.com/images/logo-favicon.svg",
+    "iconIsUrl": true,
+    "region": "Tab"
+  },
+  {
+    "file": "umai.ttl",
+    "kind": "link",
+    "label": "Umai",
+    "tag": "",
+    "href": "https://umai.noeldemartin.com",
+    "icon": "🍳",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "vitalstats.ttl",
+    "kind": "link",
+    "label": "VitalStats",
+    "tag": "",
+    "href": "https://vitalstats.apps.privatedatapod.com/",
+    "icon": "❤️",
+    "iconIsUrl": false,
+    "region": "Tab"
+  },
+  {
+    "file": "weather.ttl",
+    "kind": "component",
+    "label": "Weather",
+    "tag": "sol-weather",
+    "href": "",
+    "icon": "🌤",
+    "iconIsUrl": false,
+    "region": ""
+  }
+]

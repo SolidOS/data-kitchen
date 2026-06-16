@@ -5,7 +5,7 @@
 <>
   a ui:Link ;
   ui:label "Element" ;
-  ui:icon <https://app.element.io/vector-icons/120.570a7f9.png> ;
+  ui:icon <https://app.element.io/vector-icons/180.30b915f.png> ;
   ui:href <https://app.element.io/> ;
   ui:region ui:Tab ;
   rdfs:comment "Matrix client for secure, decentralized chat." ;
