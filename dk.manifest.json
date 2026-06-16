@@ -17,7 +17,8 @@
     "omp-images": { "label": "Wikimedia images" },
     "dk-podz": { "label": "Data Kitchen Pod Browser" },
     "dk-solidos": { "label": "SolidOS data browser" },
-    "dk-calendar-popout": { "label": "Calendar" }
+    "dk-calendar-popout": { "label": "Calendar" },
+    "dk-dokieli": { "label": "dokieli" }
   },
   "stages": {
     "local": {

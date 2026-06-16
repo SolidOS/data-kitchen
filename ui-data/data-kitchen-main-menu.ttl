@@ -153,17 +153,6 @@
     ui:label "Menu";
     ui:name "sol-dropdown-button";
     ui:region ui:Modal.
-:Dev-Tools
-    a ui:Component;
-    ui:attribute
-        [ schema:name "id"; schema:value "panel-dev-tools" ],
-            [
-                schema:name "source";
-                schema:value "./dk-pod/dk/plugins/dev-tools/dev-tools.html"
-            ],
-        [ schema:name "trusted"; schema:value "" ];
-    ui:label "Dev Tools";
-    ui:name "sol-include".
 :Duck-ai
     a ui:Link;
     ui:href "https://duck.ai";
@@ -326,7 +315,7 @@
     a ui:Menu;
     ui:label "Dev Tools";
     ui:parts
-            ( :Dev-Tools :RDF-Validator :SHACL-Playground :JSON-LD-Playground-2
+            ( :RDF-Validator :SHACL-Playground :JSON-LD-Playground-2
             :SPARQL-Playground ).
 :panel-home
     a ui:Component;
