@@ -219,6 +219,12 @@ if (document.readyState === 'loading') {
 contextBridge.exposeInMainWorld('dkElectron', {
   isElectron: true,
   restart: () => ipcRenderer.send('dk:restart'),
+  // Dismiss the native reader overlay. The reader (a window.open'd external
+  // page — duck.ai, bluesky, feed articles, search) floats above
+  // .sol-tabs-content with no tie to the tab beneath it; the shell calls this
+  // on a tab switch so the destination tab isn't left occluded. (Esc / the
+  // reader's own Close button still work too — handler at main.cjs dk:reader-close.)
+  closeReader: () => ipcRenderer.send('dk:reader-close'),
   // "Move my pod": main shows a folder picker, copies the pod tree there,
   // persists the choice and relaunches. Resolves to {status,…} on
   // cancel/error/same/nested (it relaunches on success). status values:

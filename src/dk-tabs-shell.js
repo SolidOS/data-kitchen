@@ -184,6 +184,15 @@
     }
     function onTab(name) {
       dismissPanes();
+      // Close the native reader overlay on a real tab switch. A bar action-link
+      // (duck.ai, bluesky) or a feed/search window.open mounts the reader above
+      // .sol-tabs-content with no tie to the tab beneath it; without this it
+      // floats on, occluding whatever tab we switch to. Done HERE (not in
+      // dismissPanes) because the bar-link click also runs dismissPanes — and
+      // that click is what OPENS the reader, so closing there would race it
+      // shut. onTab only fires on sol-tab-change, never on a bar-link click.
+      // (Electron only; a no-op in the browser, where window.open is a new tab.)
+      window.dkElectron?.closeReader?.();
       const pane = paneForName(name);
       // The active plugin's panel- id: inside the VISIBLE dropdown wrapper for a
       // submenu pick, else anywhere in the pane for a plain content tab.
