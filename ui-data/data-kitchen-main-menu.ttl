@@ -391,7 +391,8 @@
                 schema:name "source";
                 schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
             ];
-    ui:label "🐧 SolidOS";
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS";
     ui:name "dk-solidos".
 :Pixelfed
     a ui:Link;
@@ -496,7 +497,7 @@
                 schema:name "source";
                 schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
             ];
-    ui:icon "🐧";
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
     ui:label "SolidOS (data browser)";
     ui:name "dk-solidos".
 :SPARQL-Playground

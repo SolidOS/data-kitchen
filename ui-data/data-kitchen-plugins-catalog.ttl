@@ -543,7 +543,7 @@
 
 <#SolidOS-data-browser> a ui:Component ; ui:label "SolidOS (data browser)" ;
   dct:source <../plugins/solidos-browser.ttl> ;
-  ui:icon "🐧" ;
+  ui:icon "https://solidproject.org/assets/img/solid-emblem.svg" ;
   ui:name "dk-solidos" ;
   rdfs:comment "The SolidOS data browser, embedded." ;
   dct:creator "SolidOS Team" ;
