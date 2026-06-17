@@ -8,8 +8,9 @@
     a ui:Menu;
     ui:label "Apps";
     ui:parts
-            ( :dokieli :SolidFocus :RoloPod :KonaPod :Umai :Media-Kraken :GeoPod
-            :Solidflix :PodCal :KeyPod :NotePod-2 :SecureDialog-3 ).
+            ( :dokieli :SolidFocus :RoloPod :KonaPod :Umai :Media-Kraken
+            :GeoPod :Solidflix :PodCal :KeyPod :NotePod-2 :SecureDialog-3
+            :Synara-AI-2 ).
 :AU
     a ui:Menu;
     ui:label "Health";
@@ -647,6 +648,18 @@
     ui:href "https://atomgraph.github.io/SPARQL-Playground/";
     ui:icon "🔮";
     ui:label "SPARQL Playground";
+    ui:region ui:Tab.
+:Synara-AI
+    a ui:Link;
+    ui:href "https://ai.privatedatapod.com/";
+    ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "Synara AI";
+    ui:region ui:Tab.
+:Synara-AI-2
+    a ui:Link;
+    ui:href "https://ai.privatedatapod.com/";
+    ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "Synara AI";
     ui:region ui:Tab.
 :Tabs
     a ui:Menu;

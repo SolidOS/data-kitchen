@@ -1,17 +1,11 @@
 @prefix : <#>.
-@prefix ui: <http://www.w3.org/ns/ui#>.
-@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix schema: <http://schema.org/>.
-@prefix solid: <http://www.w3.org/ns/solid/terms#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix ent: <http://www.wikidata.org/entity/>.
 
-<> a wd:Q1193846;
-    foaf:primaryTopic <#Settings>.
-<#Settings> ui:colorScheme ui:DarkColorScheme;
-    ui:fontSize ui:MediumFont;
-    ui:proxy "http://localhost:8001/proxy?uri=";
-    schema:softwareHelp "./dk-pod/dk/help/dk.html";
-    solid:oidcIssuer <https://solidcommunity.net>,
-                     <https://solidweb.me>,
-                     <https://solidweb.org>,
-                     <https://login.inrupt.com>.
+<> a ent:Q1193846; foaf:primaryTopic :Settings.
+
+:Settings
+    ui:colorScheme ui:LightColorScheme;
+    ui:fontSize ui:LargeFont;
+    ui:proxy "http://localhost:8001/proxy?uri=".
