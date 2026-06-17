@@ -1,46 +1,59 @@
-// dk-dokieli is the dokieli plugin: the same isolated, authed SolidOS host as
-// dk-solidos (so reads/writes share dk's login + store via the iframe's
-// installAuthFetch bridge), but pinned to a dokieli documents folder and with a
-// "New dokieli document" button that drives mashlib's bundled dokieli pane.
+// dk-dokieli — dokieli as a bare in-app editor.
 //
-// Why a subclass and not a flag: the tab-shell reads each panel's `source`
-// attribute to derive its plugin id (help / settings / ☰ menu), so `source`
-// can't double as a "which mode" or landing-subject signal — a distinct element
-// keeps that intrinsic, with no new HTML attribute and no change to dk-solidos's
-// own behaviour. Creating/opening a dokieli doc rides the shared auth; only the
-// dokieli editor runtime (dokieli.js/CSS) loads from the dokie.li CDN.
-import { DkSolidos } from './dk-solidos.js';
+// Loads a dokieli document DIRECTLY in an iframe (no SolidOS browser chrome around
+// it). Opens the last-visited doc; if there is none (or it's gone), mints a BLANK
+// new dokieli document by PUTting the template into the dokieli folder and opens
+// that. The doc's editor (dokie.li runtime, same-origin) receives dk's identity +
+// authenticated fetch from the component-interop frame-sweep adapter
+// (plugins/solidos/dokieli-adapter.js), so saves ride dk's session.
+import DOKIELI_TEMPLATE from 'solid-panes/dist/dokieli/new.js';
 
-class DkDokieli extends DkSolidos {
-  // Where new dokieli documents live (and the tab's initial landing). The PUT
-  // in window.newDokieli auto-creates this container on first use.
+const LAST_KEY = 'dk-dokieli:lastDoc';
+
+class DkDokieli extends HTMLElement {
   get _folder() { return `${location.origin}/dk-pod/dokieli/`; }
 
-  _landingSubject() { return this._folder; }
+  async connectedCallback() {
+    if (this._wired) return;
+    this._wired = true;
+    this.style.display = 'block';
+    if (!this.style.height) this.style.height = '100%';
 
-  _mountExtras(iframe) {
-    const main = this.querySelector('.dk-solidos-main');
-    if (!main || main.querySelector('.dk-dokieli-toolbar')) return;
+    const iframe = document.createElement('iframe');
+    iframe.className = 'dk-dokieli-frame';
+    iframe.style.cssText = 'border:0;width:100%;height:100%;display:block';
+    this._iframe = iframe;
+    this.appendChild(iframe);
 
-    const bar = document.createElement('div');
-    bar.className = 'dk-dokieli-toolbar';
+    let uri = localStorage.getItem(LAST_KEY);
+    if (uri && !(await this._exists(uri))) uri = null;   // last doc was deleted
+    if (!uri) {
+      uri = await this._mintBlank();
+      if (uri) localStorage.setItem(LAST_KEY, uri);
+    }
+    if (uri) iframe.src = uri;
+    else iframe.srcdoc = '<p style="font:16px system-ui;padding:2rem">Could not create a dokieli document.</p>';
+  }
 
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'dk-dokieli-new';
-    btn.textContent = 'New dokieli document';
-    btn.addEventListener('click', async () => {
-      const name = prompt('New dokieli document name:', 'note');
-      if (!name) return;
-      const win = iframe.contentWindow;
-      if (win && typeof win.newDokieli === 'function') {
-        try { await win.newDokieli(this._folder, name); }
-        catch (err) { console.warn('[dk-dokieli] newDokieli failed:', err); }
-      }
-    });
+  _fetch(url, init) { return (window.dkFetch || ((u, o) => fetch(u, o)))(url, init); }
 
-    bar.appendChild(btn);
-    main.insertBefore(bar, main.firstChild);
+  async _exists(uri) {
+    try { const r = await this._fetch(uri, { method: 'HEAD' }); return !!(r && r.ok); }
+    catch (_) { return false; }
+  }
+
+  async _mintBlank() {
+    const uri = `${this._folder}note-${Date.now()}.html`;
+    try {
+      const res = await this._fetch(uri, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'text/html' },
+        body: DOKIELI_TEMPLATE,
+      });
+      if (res && (res.ok || res.status === 201 || res.status === 205 || res.status === 200)) return uri;
+      console.warn('[dk-dokieli] mint PUT status', res && res.status);
+    } catch (e) { console.warn('[dk-dokieli] mint failed:', e); }
+    return null;
   }
 }
 

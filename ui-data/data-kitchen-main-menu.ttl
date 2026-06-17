@@ -4,8 +4,22 @@
 @prefix schema: <http://schema.org/>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
 
-:Apps a ui:Menu; ui:label "Apps"; ui:parts ( ).
-
+:Apps
+    a ui:Menu;
+    ui:label "Apps";
+    ui:parts
+            ( :dokieli :SolidFocus :RoloPod :KonaPod :Umai :Media-Kraken :GeoPod
+            :Solidflix :PodCal :KeyPod :NotePod-2 :SecureDialog-3 ).
+:AU
+    a ui:Menu;
+    ui:label "Health";
+    ui:parts ( :AU-2 :VitalStats-2 :MSFatigue :HealthPod ).
+:AU-2
+    a ui:Link;
+    ui:href "https://innerpod.solidcommunity.au";
+    ui:icon "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png";
+    ui:label "InnerPod";
+    ui:region ui:Tab.
 :Bar
     a ui:Menu;
     ui:label "actions";
@@ -153,6 +167,11 @@
     ui:label "Menu";
     ui:name "sol-dropdown-button";
     ui:region ui:Modal.
+:dokieli
+    a ui:Component;
+    ui:attribute [ schema:name "defer"; schema:value "" ];
+    ui:label "dokieli";
+    ui:name "dk-dokieli".
 :Duck-ai
     a ui:Link;
     ui:href "https://duck.ai";
@@ -170,6 +189,28 @@
     ui:href "https://duck.ai";
     ui:icon "https://duck.ai/favicon.ico";
     ui:label "Duck.ai";
+    ui:region ui:Tab.
+:GeoPod
+    a ui:Link;
+    ui:href "https://geopod.solidcommunity.au";
+    ui:icon "https://geopod.solidcommunity.au/geopod/icons/Icon-192.png";
+    ui:label "GeoPod";
+    ui:region ui:Tab.
+:Health
+    a ui:Menu;
+    ui:label "Health";
+    ui:parts ( :HealthPod-2 :InnerPod :MSFatigue-2 :VitalStats-3 ).
+:HealthPod
+    a ui:Link;
+    ui:href "https://healthpod.solidcommunity.au";
+    ui:icon "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png";
+    ui:label "HealthPod";
+    ui:region ui:Tab.
+:HealthPod-2
+    a ui:Link;
+    ui:href "https://healthpod.solidcommunity.au";
+    ui:icon "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png";
+    ui:label "HealthPod";
     ui:region ui:Tab.
 :HuggingFace-Chat
     a ui:Link;
@@ -200,6 +241,12 @@
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
     ui:name "omp-images".
+:InnerPod
+    a ui:Link;
+    ui:href "https://innerpod.solidcommunity.au";
+    ui:icon "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png";
+    ui:label "InnerPod";
+    ui:region ui:Tab.
 :Internet-Archive-player
     a ui:Component;
     ui:attribute
@@ -245,6 +292,18 @@
     ui:icon "🧩";
     ui:label "JSON-LD Playground";
     ui:region ui:Tab.
+:KeyPod
+    a ui:Link;
+    ui:href "https://keypod.solidcommunity.au";
+    ui:icon "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png";
+    ui:label "KeyPod";
+    ui:region ui:Tab.
+:KonaPod
+    a ui:Link;
+    ui:href "https://konapod.solidcommunity.au";
+    ui:icon "🚗";
+    ui:label "KonaPod";
+    ui:region ui:Tab.
 :Lemmy
     a ui:Link;
     ui:href "https://lemmy.world/";
@@ -280,6 +339,13 @@
     ui:label "Media";
     ui:parts
     ( :Internet-Archive-player-2 :Images-Wikimedia-2 :Movies-Internet-Archive ).
+:Media-Kraken
+    a ui:Link;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
 :Movies-Internet-Archive
     a ui:Component;
     ui:attribute
@@ -295,10 +361,40 @@
     ui:icon "🎬";
     ui:label "Movies (Internet Archive)";
     ui:name "ia-player".
+:MovieStar
+    a ui:Link;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MSFatigue
+    a ui:Link;
+    ui:href "https://msfatigue.solidcommunity.au";
+    ui:icon "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png";
+    ui:label "MSFatigue";
+    ui:region ui:Tab.
+:MSFatigue-2
+    a ui:Link;
+    ui:href "https://msfatigue.solidcommunity.au";
+    ui:icon "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png";
+    ui:label "MSFatigue";
+    ui:region ui:Tab.
 :Music-Internet-Archive
     a ui:Menu;
     ui:label "Music (Internet Archive)";
     ui:parts ( :Internet-Archive-player :Images-Wikimedia ).
+:NotePod
+    a ui:Link;
+    ui:href "https://notepod.solidcommunity.au";
+    ui:icon "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png";
+    ui:label "NotePod";
+    ui:region ui:Tab.
+:NotePod-2
+    a ui:Link;
+    ui:href "https://notepod.solidcommunity.au";
+    ui:icon "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png";
+    ui:label "NotePod";
+    ui:region ui:Tab.
 :panel-customize
     a ui:Component;
     acl:mode acl:Write;
@@ -411,6 +507,13 @@
             ];
     ui:label "Data Kitchen Pod Browser";
     ui:name "dk-podz".
+:PodCal
+    a ui:Link;
+    ui:href "https://podcal.eu";
+    ui:icon
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23219EBC' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' stroke-width='1.5'/%3E%3Crect x='8' y='8.5' width='8' height='7.5' rx='1.25' stroke-width='1.05'/%3E%3Cpolyline points='10,12.25 11.75,14.25 15.5,11.25' stroke-width='1.6'/%3E%3C/svg%3E";
+    ui:label "PodCal";
+    ui:region ui:Tab.
 :PodOS-Browser
     a ui:Link;
     ui:href "https://browser.pod-os.org/";
@@ -422,6 +525,33 @@
     ui:href "http://easyrdf.org/converter";
     ui:icon "🧬";
     ui:label "RDF Validator";
+    ui:region ui:Tab.
+:RoloPod
+    a ui:Link;
+    ui:href "https://rolopod.solidcommunity.au";
+    ui:icon "📇";
+    ui:label "RoloPod";
+    ui:region ui:Tab.
+:SecureDialog
+    a ui:Link;
+    ui:href "https://securedialog.solidcommunity.au";
+    ui:icon
+    "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
+    ui:label "SecureDialog";
+    ui:region ui:Tab.
+:SecureDialog-2
+    a ui:Link;
+    ui:href "https://securedialog.solidcommunity.au";
+    ui:icon
+    "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
+    ui:label "SecureDialog";
+    ui:region ui:Tab.
+:SecureDialog-3
+    a ui:Link;
+    ui:href "https://securedialog.solidcommunity.au";
+    ui:icon
+    "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
+    ui:label "SecureDialog";
     ui:region ui:Tab.
 :SepiaSearch
     a ui:Link;
@@ -489,6 +619,18 @@
     ui:icon "🌐";
     ui:label "Solid Website";
     ui:region ui:Tab.
+:Solidflix
+    a ui:Link;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:SolidFocus
+    a ui:Link;
+    ui:href "https://focus.noeldemartin.com/";
+    ui:icon "✅";
+    ui:label "SolidFocus";
+    ui:region ui:Tab.
 :SolidOS-data-browser
     a ui:Component;
     ui:attribute
@@ -510,7 +652,8 @@
     a ui:Menu;
     ui:label "data-kitchen";
     ui:orientation ui:Horizontal;
-    ui:parts ( :panel-news :Media :panel-podz :Apps :item :panel-dev-tools ).
+    ui:parts
+    ( :panel-news :Media :Health :panel-podz :Apps :item :panel-dev-tools ).
 :Tag-Explainer
     a ui:Link;
     ui:href
@@ -524,4 +667,31 @@
         "https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html";
     ui:icon "🏷️";
     ui:label "Tag Explainer";
+    ui:region ui:Tab.
+:Umai
+    a ui:Link;
+    ui:href "https://umai.noeldemartin.com";
+    ui:icon "https://umai.noeldemartin.com/apple-touch-icon.png";
+    ui:label "Umai";
+    ui:region ui:Tab.
+:VitalStats
+    a ui:Link;
+    ui:href "https://vitalstats.apps.privatedatapod.com/";
+    ui:icon
+    "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "VitalStats";
+    ui:region ui:Tab.
+:VitalStats-2
+    a ui:Link;
+    ui:href "https://vitalstats.apps.privatedatapod.com/";
+    ui:icon
+    "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "VitalStats";
+    ui:region ui:Tab.
+:VitalStats-3
+    a ui:Link;
+    ui:href "https://vitalstats.apps.privatedatapod.com/";
+    ui:icon
+    "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "VitalStats";
     ui:region ui:Tab.

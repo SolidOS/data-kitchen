@@ -9,6 +9,11 @@
         "call": "adoptDokieliUser",
         "from": "data-kitchen",
         "module": "/dk-pod/dk/plugins/solidos/dokieli-adapter.js"
+      },
+      "auth": {
+        "call": "adoptDokieliFetch",
+        "from": "sol-components",
+        "module": "/dk-pod/dk/plugins/solidos/dokieli-adapter.js"
       }
     }
   }

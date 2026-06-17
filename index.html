@@ -3,6 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Wormhole guard: the app shell must never run inside a frame (opening
+       /index.html from a SolidOS listing would load the whole app recursively).
+       When framed inside SolidOS, navigate SolidOS to the /dk-pod/ container (its
+       own view); otherwise redirect the frame to /dk-pod/. -->
+  <script>
+    if (window.top !== window) {
+      try { window.stop(); } catch (_) {}
+      location.replace(location.origin + '/dk-pod/');
+    }
+  </script>
   <title>data-kitchen</title>
 
   <link rel="icon" href="data:,">
@@ -29,7 +39,7 @@
           data-stage="auto"
           data-manifest="node_modules/sol-components/dist/sol-components.manifest.json dk-pod/dk/dk.manifest.json dk-pod/dk/dokieli.manifest.json"
           data-components="sol-basic sol-pod sol-pod-extras sol-pod-ops sol-live-edit sol-time sol-weather sol-calendar sol-search sol-feed sol-gallery sol-login sol-query menu-from-rdf rdf-bundle ia-player sol-menu-manager sol-button-bar-manager sol-plugin-manager"
-          data-objects="webid:data-kitchen"
+          data-objects="webid:data-kitchen auth:sol-components"
   ></script>
   <script type="module" src="dist/dk.bundle.js"></script>
 </head>

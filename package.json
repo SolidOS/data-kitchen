@@ -20,7 +20,7 @@
   "dependencies": {
     "component-interop": "file:../component-interop",
     "electron-reloader": "^1.2.3",
-    "mashlib": "^2.2.0",
+    "mashlib": "^2.2.2",
     "sol-components": "file:../sol-components"
   },
   "devDependencies": {

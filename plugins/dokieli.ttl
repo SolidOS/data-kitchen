@@ -6,7 +6,6 @@
 <>
   a ui:Component ;
   ui:label "dokieli" ;
-  ui:icon "https://dokie.li/media/images/logo.png" ;
   ui:name "dk-dokieli" ;
   rdfs:comment "Write and publish articles, with annotations and social interactions." ;
   dct:creator "Sarven Capadisli and Virginia Balseiro" ;

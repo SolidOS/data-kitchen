@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SolidOS host</title>
+  <link rel="icon" href="data:,">
+
+  <!-- mashlib's own stylesheet. It lives INSIDE this iframe, so its global
+       selectors (html, body, a, table, button) style only this document — they
+       cannot leak into the dk chrome. This is the whole point of the iframe:
+       proper SolidOS display + zero leak. -->
+  <link rel="stylesheet" href="/node_modules/mashlib/dist/mash.css">
+  <style>
+    html, body { margin: 0; height: 100%; }
+    #solHost { height: 100vh; width: 100%; }
+  </style>
+
+  <!-- Vendored ESM deps for sol-components (same set sol-components/dashboard and
+       the old solidos-host used). sol-solidos.js + its core/* imports resolve bare
+       specifiers through this map. mashlib.min.js is a classic bundle (ignores the
+       map) and sets window.panes / Mashlib / SolidLogic / $rdf itself. -->
+  <script type="importmap">
+  {
+    "imports": {
+      "rdflib":                              "/node_modules/sol-components/dist/vendor/rdflib.js",
+      "n3":                                  "/node_modules/sol-components/dist/vendor/n3.js",
+      "dompurify":                           "/node_modules/sol-components/dist/vendor/dompurify.js",
+      "ical.js":                             "/node_modules/sol-components/dist/vendor/ical.js.js",
+      "marked":                              "/node_modules/sol-components/dist/vendor/marked.js",
+      "rdf-validate-shacl":                  "/node_modules/sol-components/dist/vendor/rdf-validate-shacl.js",
+      "@comunica/query-sparql":              "/node_modules/sol-components/dist/vendor/@comunica-query-sparql.js",
+      "solid-ui":                            "/node_modules/sol-components/dist/vendor/solid-ui.js",
+      "solid-logic":                         "/node_modules/sol-components/dist/vendor/solid-logic.js",
+      "@inrupt/solid-client-authn-browser":  "/node_modules/sol-components/dist/vendor/@inrupt-solid-client-authn-browser.js"
+    }
+  }
+  </script>
+
+  <script>
+    // The parent (plugins/solidos/dk-solidos.js) shares dk's authenticated fetch
+    // by calling adoptAuth(fetch, {webId}) on this iframe — component-interop's
+    // auth channel. getAuthFetch() (read by the patched window.fetch inside
+    // sol-solidos) returns this as window.SolidWebComponents.adoptedFetch, so every
+    // mashlib pane request inherits dk's session (local OR remote). Standalone use
+    // (?uri=… with no parent) just falls through to anonymous fetch.
+    window.SolidWebComponents = window.SolidWebComponents || {};
+    window.adoptAuth = function (fetchFn, info) {
+      if (typeof fetchFn !== 'function') return;
+      const swc = window.SolidWebComponents;
+      if (typeof swc.adoptFetch === 'function') { try { swc.adoptFetch(fetchFn, info || {}); return; } catch (_) {} }
+      swc.adoptedFetch = fetchFn;
+      if (info && info.webId) swc.adoptedWebId = info.webId;
+    };
+  </script>
+</head>
+<body>
+  <div id="solHost"></div>
+
+  <script type="module">
+    try {
+      // 1) load mashlib (classic bundle → window.panes / Mashlib / SolidLogic / $rdf)
+      await new Promise((res) => {
+        const s = document.createElement('script');
+        s.src = '/node_modules/mashlib/dist/mashlib.min.js';
+        s.onload = res; s.onerror = res;
+        document.head.appendChild(s);
+      });
+      for (let i = 0; i < 120 && !window.panes; i++) await new Promise(r => setTimeout(r, 50));
+
+      // 2) give the parent a brief moment to hand auth in before the first fetch
+      if (window.top !== window) await new Promise(r => setTimeout(r, 300));
+
+      // 3) register + mount the (fixed) sol-solidos for the requested subject.
+      //    Imported by absolute path; its `../core/*` imports resolve by URL and its
+      //    bare deps (rdflib, …) resolve through the importmap above.
+      await import('/node_modules/sol-components/web/sol-solidos.js');
+      const params = new URLSearchParams(location.search);
+      const source = params.get('source') || (location.origin + '/dk-pod/');
+      const el = document.createElement('sol-solidos');
+      el.setAttribute('source', source);
+      document.getElementById('solHost').appendChild(el);
+
+      // dk shell guard: never let SolidOS open the app shell (/index.html or the
+      // server root /) — that would load the whole app recursively (a "wormhole").
+      // Redirect such navigation to the /dk-pod/ container so the user gets the
+      // SolidOS folder view instead. Hook the outliner's GotoSubject (used by both
+      // link clicks and programmatic navigation).
+      try {
+        const outliner = window.panes.getOutliner(document);
+        if (outliner && outliner.GotoSubject && !outliner.__dkShellGuard) {
+          outliner.__dkShellGuard = true;
+          const origGoto = outliner.GotoSubject.bind(outliner);
+          outliner.GotoSubject = function (subject) {
+            let subj = subject;
+            try {
+              const uri = subject && subject.uri;
+              // The root container '/' is fine (it loads as turtle); only the app
+              // shell file /index.html must be diverted to /dk-pod/.
+              if (uri === location.origin + '/index.html') {
+                subj = window.$rdf.sym(location.origin + '/dk-pod/');
+              }
+            } catch (_) {}
+            const args = Array.prototype.slice.call(arguments);
+            args[0] = subj;
+            return origGoto.apply(this, args);
+          };
+        }
+      } catch (_) {}
+
+      // parent-driven navigation (set a new subject without reloading the iframe)
+      window.solSetSource = (uri) => { if (uri) el.setAttribute('source', uri); };
+
+      // Mint a blank dokieli document in folderUrl and open it (used by dk-dokieli
+      // when there is no last-visited doc). mintNew PUTs the dokieli template through
+      // the store's fetcher → the page's authed fetch, so it rides dk's session.
+      window.newDokieli = async (folderUrl) => {
+        const SL = window.SolidLogic && window.SolidLogic.solidLogicSingleton;
+        const store = SL && SL.store;
+        const pane = window.panes && window.panes.byName && window.panes.byName('Dokieli');
+        if (!store || !pane || !pane.mintNew || !folderUrl) return null;
+        if (!folderUrl.endsWith('/')) folderUrl += '/';
+        try {
+          const res = await pane.mintNew({ session: { store }, dom: document },
+            { newBase: folderUrl + 'note-' + Date.now() });
+          const uri = res && res.newInstance && res.newInstance.uri;
+          if (uri) { window.solSetSource(uri); return uri; }
+        } catch (e) { console.warn('[sol-solidos-host] newDokieli failed', e); }
+        return null;
+      };
+
+      window.solHostReady = true;
+    } catch (e) {
+      window.solHostError = String(e && e.stack || e);
+      console.error('[sol-solidos-host]', e);
+    }
+  </script>
+</body>
+</html>

@@ -10,7 +10,7 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it." ;
-  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SPARQL-Playground> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
+  ui:parts ( <#0data-Hello> <#Address-Book> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SPARQL-Playground> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
   skos:member <#Booklice>, <#Tired-Bike> .
@@ -22,7 +22,7 @@
   skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
 
 <#Information> a skos:Collection ; skos:prefLabel "Information" ;
-  skos:member <#Calendar>, <#Clock>, <#GeoPod>, <#News-three-panel-feeds>, <#Search>, <#Umai>, <#Weather> .
+  skos:member <#Address-Book>, <#Calendar>, <#Clock>, <#GeoPod>, <#News-three-panel-feeds>, <#Search>, <#Umai>, <#Weather> .
 
 <#Media> a skos:Collection ; skos:prefLabel "Media" ;
   skos:member <#Images-Wikimedia>, <#Media-Kraken>, <#Movies-Internet-Archive>, <#MovieStar>, <#Music-Internet-Archive>, <#Solidflix> .
@@ -49,6 +49,16 @@
   rdfs:comment "Tiny demo app showing data stored in your pod." ;
   dct:publisher "0data" ;
   ui:href <https://hello.0data.app/solid/> .
+
+<#Address-Book> a ui:Component ; ui:label "Address Book" ;
+  dct:source <../plugins/addressbook.ttl> ;
+  ui:icon "📇" ;
+  ui:name "dk-solidos" ;
+  rdfs:comment "Your contacts — a Solid address book, in the SolidOS contacts pane." ;
+  dct:creator "SolidOS Team" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "/dk-pod/contacts/index.ttl#this" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
 
 <#BilliPod> a ui:Link ; ui:label "BilliPod" ;
   dct:source <../plugins/billipod.ttl> ;
@@ -112,7 +122,6 @@
 
 <#dokieli> a ui:Component ; ui:label "dokieli" ;
   dct:source <../plugins/dokieli.ttl> ;
-  ui:icon "https://dokie.li/media/images/logo.png" ;
   ui:name "dk-dokieli" ;
   rdfs:comment "Write and publish articles, with annotations and social interactions." ;
   dct:creator "Sarven Capadisli and Virginia Balseiro" ;
