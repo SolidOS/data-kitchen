@@ -483,9 +483,7 @@
   rdfs:comment "Solid sign-in button (popup flow)." ;
   dct:creator "Jeff Zucker" ;
   ui:attribute
-    [ schema:name "mode" ; schema:value "popup" ] ,
-    [ schema:name "popup-callback" ; schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html" ] ,
-    [ schema:name "issuers" ; schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .
+    [ schema:name "mode" ; schema:value "popup" ] .
 
 <#Solid-Catalog> a ui:Link ; ui:label "Solid Catalog" ;
   dct:source <../plugins/solid-catalog.ttl> ;

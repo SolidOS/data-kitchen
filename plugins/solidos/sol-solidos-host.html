@@ -14,6 +14,18 @@
   <style>
     html, body { margin: 0; height: 100%; }
     #solHost { height: 100vh; width: 100%; }
+    #sol-loading {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      background: #1f2933;
+    }
+    #sol-loading.hidden { display: none; }
+    #sol-loading .ring {
+      width: 2.2rem; height: 2.2rem; border: 4px solid #3e4c59;
+      border-top-color: #4fd1c5; border-radius: 50%;
+      animation: sol-spin 0.8s linear infinite;
+    }
+    @keyframes sol-spin { to { transform: rotate(360deg); } }
   </style>
 
   <!-- Vendored ESM deps for sol-components (same set sol-components/dashboard and
@@ -55,7 +67,34 @@
   </script>
 </head>
 <body>
+  <div id="sol-loading" role="status" aria-label="Loading"><div class="ring"></div></div>
   <div id="solHost"></div>
+  <script>
+    // Loading spinner: SolidOS / dokieli embeds pull a large mashlib bundle and
+    // do remote pod fetches, so the frame is blank for several seconds. Show a
+    // spinner until the data browser has rendered content (or a timeout fallback).
+    (function () {
+      const spin = document.getElementById('sol-loading');
+      if (!spin) return;
+      let done = false;
+      const hide = () => {
+        if (done) return; done = true;
+        spin.classList.add('hidden');
+        try { obs.disconnect(); } catch (_) {}
+        clearTimeout(t);
+      };
+      const ready = () => {
+        const ov = document.getElementById('OutlineView');
+        if (ov && ov.childElementCount > 0) return true;
+        const dash = document.getElementById('GlobalDashboard');
+        if (dash && dash.childElementCount > 0 && !dash.hidden) return true;
+        return false;
+      };
+      const obs = new MutationObserver(() => { if (ready()) hide(); });
+      obs.observe(document.body, { childList: true, subtree: true });
+      const t = setTimeout(hide, 30000);  // fallback so we never spin forever
+    })();
+  </script>
 
   <script type="module">
     try {
@@ -79,6 +118,7 @@
       const source = params.get('source') || (location.origin + '/dk-pod/');
       const el = document.createElement('sol-solidos');
       el.setAttribute('source', source);
+      if (params.get('bar')) el.setAttribute('has-location-bar', 'true');
       document.getElementById('solHost').appendChild(el);
 
       // dk shell guard: never let SolidOS open the app shell (/index.html or the
@@ -95,9 +135,13 @@
             let subj = subject;
             try {
               const uri = subject && subject.uri;
-              // The root container '/' is fine (it loads as turtle); only the app
-              // shell file /index.html must be diverted to /dk-pod/.
-              if (uri === location.origin + '/index.html') {
+              // Both the server root '/' and the app shell '/index.html'
+              // content-negotiate to dk's own index.html (a "wormhole" that
+              // loads the whole app inside the frame and blanks the SolidOS
+              // view). Divert BOTH to the /dk-pod/ container so navigation —
+              // e.g. clicking the Solid logo to go "home" — lands on the
+              // SolidOS folder view instead.
+              if (uri === location.origin + '/index.html' || uri === location.origin + '/') {
                 subj = window.$rdf.sym(location.origin + '/dk-pod/');
               }
             } catch (_) {}
@@ -110,6 +154,10 @@
 
       // parent-driven navigation (set a new subject without reloading the iframe)
       window.solSetSource = (uri) => { if (uri) el.setAttribute('source', uri); };
+
+      // parent-fed pod-location quick-picks for the location bar dropdown (dk forwards
+      // the pods sol-pod has discovered in via dk-solidos.js).
+      window.solSetLocations = (list) => { try { el.locations = list; } catch (_) {} };
 
       // Mint a blank dokieli document in folderUrl and open it (used by dk-dokieli
       // when there is no last-visited doc). mintNew PUTs the dokieli template through

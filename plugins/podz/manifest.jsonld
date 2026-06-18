@@ -52,8 +52,7 @@
     "./podz-auth.js",
     "./podz-pod.js",
     "./podz-utils.js",
-    "./podz.css",
-    "./popup-auth-callback.html"
+    "./podz.css"
   ],
   "requires": [
     "./pod-settings.ttl"

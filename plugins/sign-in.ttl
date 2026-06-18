@@ -12,6 +12,4 @@
   dct:creator "Jeff Zucker" ;
   dct:subject "Pods" ;
   ui:attribute
-    [ schema:name "mode" ; schema:value "popup" ] ,
-    [ schema:name "popup-callback" ; schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html" ] ,
-    [ schema:name "issuers" ; schema:value "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com" ] .
+    [ schema:name "mode" ; schema:value "popup" ] .

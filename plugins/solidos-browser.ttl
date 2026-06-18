@@ -13,4 +13,5 @@
   dct:subject "Pods" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html" ] ,
+    [ schema:name "has-location-bar" ; schema:value "true" ] ,
     [ schema:name "defer" ; schema:value "" ] .

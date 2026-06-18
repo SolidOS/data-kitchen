@@ -21,8 +21,9 @@ export class SolidFileBrowser {
 
     this.elements = initializeElements();
     // Each <sol-pod> renders its own popup-mode <sol-login> in its header
-    // (configured via the side / login-mode / login-callback attributes in
-    // index.html). Grab those built-in login elements — they share one
+    // (configured via the side / login-mode attributes in index.html; the
+    // popup callback page defaults to sol-login's own packaged copy). Grab
+    // those built-in login elements — they share one
     // module-level AuthManager, with sessions keyed by side.
     this.leftLogin  = this.elements.leftPod.login;
     this.rightLogin = this.elements.rightPod.login;
@@ -30,11 +31,10 @@ export class SolidFileBrowser {
     this.uiManager = new UIManager(this.elements);
     this.stateManager = new StateManager((err, op) => {
       console.error(`[podz-state] localStorage ${op} failed:`, err);
-      this.uiManager.setStatus(
+      this._panelError(
         'Settings can’t be saved — browser storage is full or disabled. ' +
         'Layout, pod list, and preferences will not persist this session.',
-        'error'
-      );
+        [this.elements.leftPod, this.elements.rightPod]);
     });
     this.podManager = new PodManager(this.authManager);
 
@@ -145,22 +145,30 @@ export class SolidFileBrowser {
     window.addEventListener('dragend', () => this._clearDragState());
 
     pod.addEventListener('sol-status', (e) => {
-      this.uiManager.setStatus(e.detail.message, e.detail.type || '');
+      // Operation feedback from the pod: errors go in its panel (like the no-auth
+      // notice), transient progress/success in the auto-dismissing popup.
+      if ((e.detail.type || '') === 'error') this._panelError(e.detail.message, [pod]);
+      else this.uiManager.setStatus(e.detail.message, e.detail.type || '');
     });
 
-    pod.addEventListener('sol-auth-needed', () => {
-      this.uiManager.setStatus(
-        `Authentication required \u2014 click Log in for the ${side} panel.`, 'error');
-    });
+    // sol-pod already shows "Authentication required \u2014 please log in." in its own
+    // panel on sol-auth-needed, so no separate status notice is needed here.
+  }
+
+  // Put a panel-level error in the affected pod panel(s) \u2014 the same surface as the
+  // no-auth notice \u2014 rather than a status line. Transient/operational feedback (and
+  // messages with action buttons, e.g. Undo) still use the popup via setStatus.
+  _panelError(message, pods) {
+    for (const p of pods) { try { p?.showMessage?.(message, true); } catch (_) { /* pod not ready */ } }
   }
 
   _wireLoginEvents(side, loginEl) {
     // The pod re-discovers pods and reloads its container on login —
     // sol-pod owns both. podz only needs to surface a blocked popup.
     loginEl.addEventListener('sol-popup-blocked', () => {
-      this.uiManager.setStatus(
+      this._panelError(
         `Popup blocked \u2014 allow popups for this site, then click Log in for the ${side} panel again.`,
-        'error');
+        [this.elements[side === 'left' ? 'leftPod' : 'rightPod']]);
     });
   }
 
@@ -344,7 +352,8 @@ export class SolidFileBrowser {
       await this.handleRedirect();
     } catch (error) {
       console.error('Initialization error:', error);
-      this.uiManager.setStatus(`Initialization failed: ${error.message}`, 'error');
+      this._panelError(`Initialization failed: ${error.message}`,
+        [this.elements.leftPod, this.elements.rightPod]);
     }
   }
 
@@ -409,7 +418,8 @@ export class SolidFileBrowser {
         const targetPod = targetSide === 'left' ? leftPod : rightPod;
         await targetPod.loadContainer(targetUrl);
       } else {
-        this.uiManager.setStatus('Copy failed. Check console for details.', 'error');
+        this._panelError('Copy failed. Check console for details.',
+          [targetSide === 'left' ? leftPod : rightPod]);
       }
 
       this.pendingCopy = null;
@@ -631,7 +641,8 @@ export class SolidFileBrowser {
       this.uiManager.setStatus('Undone.', 'success');
     } catch (e) {
       console.error('[podz] undo failed:', e);
-      this.uiManager.setStatus(`Undo failed: ${e.message}`, 'error');
+      this._panelError(`Undo failed: ${e.message}`,
+        [this.elements.leftPod, this.elements.rightPod]);
     }
   }
 

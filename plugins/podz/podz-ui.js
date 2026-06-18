@@ -29,7 +29,10 @@ export class UIManager {
       toast.appendChild(msgSpan);
       toast.appendChild(actionsWrap);
       toast.appendChild(close);
-      document.body.appendChild(toast);
+      // Into .app (not <body>) so the scoped `.app .status-toast` rule applies —
+      // it pins the popup top-centre. Appended to <body> it was unstyled and fell
+      // to the bottom of the page (the old "bottom status line").
+      (document.querySelector('.app') || document.body).appendChild(toast);
     }
 
     clearTimeout(this._toastTimer);

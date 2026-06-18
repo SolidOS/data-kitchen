@@ -48,4 +48,7 @@
   // from ui-data/data-kitchen-main-menu.ttl at load, live-update the running shell in place after a
   // Customize save, and self-heal #Chrome.
   await import('./dk-tabs-rdf.js');
+  // Feed the sign-in issuer list from settings (solid:oidcIssuer) into every
+  // <sol-login> — chrome + each pod — so issuers are user-configured, not hardcoded.
+  await import('./dk-issuers-feed.js');
 })();

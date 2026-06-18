@@ -23,10 +23,15 @@
   <!-- Pre-paint boot: apply saved theme / text size before first paint. -->
   <script src="src/dk-boot.js"></script>
 
-  <!-- sol-login reads the inrupt auth library from the UMD global
-       window.solidClientAuthn, so the page must load it first. Vendored
-       locally (assets/vendor/) — a desktop app must not depend on a CDN. -->
-  <script src="assets/vendor/solid-client-authn.bundle.js"></script>
+  <!-- sol-login reads the inrupt auth library from a window global. sc ships
+       it only as an ESM build (which sets no global), so publish that build onto
+       window.solidClientAuthn here — no separately-vendored UMD bundle to drift.
+       The global is consumed lazily (at session creation, AuthManager._makeSession),
+       so this deferred module runs well before it's needed. -->
+  <script type="module">
+    import * as inrupt from '/node_modules/sol-components/dist/vendor/@inrupt-solid-client-authn-browser.js';
+    if (!window.solidClientAuthn) window.solidClientAuthn = inrupt;
+  </script>
 
   <!-- component-interop (parser-blocking <head> script) reads both manifests —
        sol-components' first (it owns the shared specifiers: rdflib,

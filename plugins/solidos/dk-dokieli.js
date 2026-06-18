@@ -23,7 +23,39 @@ class DkDokieli extends HTMLElement {
     if (this._wired) return;
     this._wired = true;
     this.style.display = 'block';
+    this.style.position = 'relative';   // anchor the loading overlay
     if (!this.style.height) this.style.height = '100%';
+
+    // Loading spinner: minting/opening a dokieli doc PUTs a template and pulls the
+    // dokieli runtime, so the frame is blank for several seconds. Mirror the
+    // sol-solidos-host spinner (dk-dokieli bypasses that host page, loading the doc
+    // directly, so it doesn't inherit it). Hide once the doc frame loads, with a
+    // timeout fallback so it never spins forever.
+    const spinner = document.createElement('div');
+    spinner.className = 'dk-dokieli-loading';
+    spinner.setAttribute('role', 'status');
+    spinner.setAttribute('aria-label', 'Loading');
+    spinner.style.cssText = 'position:absolute;inset:0;z-index:5;display:flex;'
+      + 'align-items:center;justify-content:center;background:#1f2933';
+    const ring = document.createElement('div');
+    ring.style.cssText = 'width:2.2rem;height:2.2rem;border:4px solid #3e4c59;'
+      + 'border-top-color:#4fd1c5;border-radius:50%;animation:dk-dokieli-spin 0.8s linear infinite';
+    spinner.appendChild(ring);
+    if (!document.getElementById('dk-dokieli-spin-style')) {
+      const st = document.createElement('style');
+      st.id = 'dk-dokieli-spin-style';
+      st.textContent = '@keyframes dk-dokieli-spin{to{transform:rotate(360deg)}}';
+      document.head.appendChild(st);
+    }
+    this.appendChild(spinner);
+    let spinnerDone = false;
+    const hideSpinner = () => {
+      if (spinnerDone) return;
+      spinnerDone = true;
+      spinner.remove();
+      clearTimeout(spinFallback);
+    };
+    const spinFallback = setTimeout(hideSpinner, 30000);
 
     const iframe = document.createElement('iframe');
     iframe.className = 'dk-dokieli-frame';
@@ -37,8 +69,15 @@ class DkDokieli extends HTMLElement {
       uri = await this._mintBlank();
       if (uri) localStorage.setItem(LAST_KEY, uri);
     }
-    if (uri) iframe.src = uri;
-    else iframe.srcdoc = '<p style="font:16px system-ui;padding:2rem">Could not create a dokieli document.</p>';
+    if (uri) {
+      // Listener added AFTER src is set so the initial about:blank load can't
+      // dismiss the spinner before the real document has loaded.
+      iframe.src = uri;
+      iframe.addEventListener('load', hideSpinner, { once: true });
+    } else {
+      iframe.srcdoc = '<p style="font:16px system-ui;padding:2rem">Could not create a dokieli document.</p>';
+      hideSpinner();
+    }
   }
 
   _fetch(url, init) { return (window.dkFetch || ((u, o) => fetch(u, o)))(url, init); }

@@ -2,10 +2,14 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix ent: <http://www.wikidata.org/entity/>.
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
 
 <> a ent:Q1193846; foaf:primaryTopic :Settings.
 
 :Settings
     ui:colorScheme ui:LightColorScheme;
     ui:fontSize ui:LargeFont;
-    ui:proxy "http://localhost:8001/proxy?uri=".
+    ui:proxy "http://localhost:8001/proxy?uri=";
+    solid:oidcIssuer
+        <https://solidcommunity.net>, <https://solidweb.me>,
+        <https://solidweb.org>, <https://login.inrupt.com>.

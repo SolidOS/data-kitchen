@@ -55,16 +55,7 @@
     a ui:Component;
     ui:attribute
         [ schema:name "class"; schema:value "omp-sollogin" ],
-            [
-                schema:name "issuers";
-                schema:value
-                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
-            ],
-        [ schema:name "mode"; schema:value "popup" ],
-            [
-                schema:name "popup-callback";
-                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
-            ];
+        [ schema:name "mode"; schema:value "popup" ];
     ui:label "Sign in";
     ui:name "sol-login".
 :bar-search
@@ -141,16 +132,7 @@
         "Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).";
     ui:attribute
         [ schema:name "class"; schema:value "omp-sollogin" ],
-            [
-                schema:name "issuers";
-                schema:value
-                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
-            ],
-        [ schema:name "mode"; schema:value "popup" ],
-            [
-                schema:name "popup-callback";
-                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
-            ];
+        [ schema:name "mode"; schema:value "popup" ];
     ui:label "Sign in";
     ui:name "sol-login".
 :chrome-menu
@@ -521,18 +503,6 @@
     a ui:Menu;
     ui:label "Pods";
     ui:parts ( :Pod-browser :SolidOS-data-browser-2 :PodOS-Browser ).
-:panel-solidos
-    a ui:Component;
-    ui:attribute
-        [ schema:name "defer"; schema:value "" ],
-        [ schema:name "id"; schema:value "panel-solidos" ],
-            [
-                schema:name "source";
-                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
-            ];
-    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
-    ui:label "SolidOS";
-    ui:name "dk-solidos".
 :Pixelfed
     a ui:Link;
     ui:href "https://pixelfed.social/";
@@ -754,7 +724,8 @@
             [
                 schema:name "source";
                 schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
-            ];
+            ],
+        [ schema:name "has-location-bar"; schema:value "true" ];
     ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
     ui:label "SolidOS (data browser)";
     ui:name "dk-solidos".

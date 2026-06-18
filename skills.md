@@ -41,10 +41,13 @@ re-renders on Customize save. The Customize page PUTs RDF back to the pod
 state. `npm run rdf2html`/`html2rdf` convert the menu both ways.
 
 **Boot sequence** (index.html, which is wormhole-guarded against recursive
-framing): `solid-client-authn.bundle.js` → **component-interop**
-(parser-blocking; parses manifests, injects the importmap, imports the
-`data-components`) → `dist/dk.bundle.js` (a direct module that waits on
-`ComponentInterop.ready`, then imports the dk modules).
+framing): **component-interop** (parser-blocking; parses manifests, injects
+the importmap, imports the `data-components`) → `dist/dk.bundle.js` (a direct
+module that waits on `ComponentInterop.ready`, then imports the dk modules).
+The inrupt auth library is published onto `window.solidClientAuthn` by a small
+`<script type=module>` from sol-components' ESM build
+(`dist/vendor/@inrupt-solid-client-authn-browser.js`) — consumed lazily at
+session creation, so no separate UMD bundle is vendored.
 
 ## component-interop = a capability broker (not just a loader)
 
@@ -95,14 +98,27 @@ appears as a ghost under "Other".
 ## Key plugins
 
 - **dk-podz** (`plugins/podz/`) — the Data Kitchen Pod Browser; keep-alive
-  (one persistent instance).
+  (one persistent instance). Messaging: panel-level errors (auth, load, copy/undo
+  failures) render **in the affected pod's panel** via `sol-pod.showMessage` (the
+  same surface as the no-auth notice); transient operation feedback uses a
+  top-centre auto-dismiss popup (`podz-ui.js` `setStatus`, appended into `.app`).
+  There is **no bottom status line**.
 - **dk-solidos** (`plugins/solidos/`) — SolidOS via a thin same-origin iframe
-  (`solidos-host.html`) running the fixed upstream sol-solidos on mashlib 2.2.2;
-  mash.css is scoped inside the iframe (zero leak). **Folders MUST be fetched as
-  turtle** (the server serves `/` as the app under text/html).
+  (`sol-solidos-host.html`, created by `dk-solidos.js`) running the fixed upstream
+  `<sol-solidos>` on mashlib 2.2.2; mash.css is scoped inside the iframe (zero leak).
+  **Folders MUST be fetched as turtle** (the server serves `/` as the app under
+  text/html); the host's `GotoSubject` guard diverts both `/` and `/index.html` to
+  `/dk-pod/` (wormhole guard), and shows a loading spinner until content renders.
+  The browser def sets `has-location-bar` → `?bar=1` → a sticky location bar
+  (Home / Back / URL box + a **Locations ▾** dropdown of discovered pods). The bar
+  is `z-index:120` and `sol-solidos._fitBar` drops mashlib's `position:fixed` banner
+  below it (else the banner paints over the bar). Locations come from the shared pod
+  registry (`core/pod-registry.js`): `dk-solidos` subscribes to it and discovers on
+  open + login (same `discoverOwnerWebIds → getStoragesFromWebIds` path as sol-pod),
+  forwarding the list into the iframe via `window.solSetLocations`.
 - **dk-dokieli** (`plugins/solidos/dk-dokieli.js`) — a standalone direct editor
   (loads the doc `.html` directly, no SolidOS browser); identity/auth via
-  `dokieli-adapter.js`.
+  `dokieli-adapter.js`. Shows a spinner overlay until the doc iframe loads.
 - **ia-player** (`plugins/ia-player/`) — Internet Archive music player.
 
 ## Pod / server / auth model

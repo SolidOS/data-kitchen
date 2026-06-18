@@ -11,6 +11,9 @@
 // a subclass `_landingSubject()`, defaulting to the pod root. This replaces the old
 // two-pane (sol-pod sidebar + hand-rolled mashlib glue) implementation.
 
+import { getRegistry } from 'sol-components/core/pod-registry.js';
+import { discoverOwnerWebIds, getStoragesFromWebIds } from 'sol-components/core/pod-ops.js';
+
 const HOST_PAGE = 'dk-pod/dk/plugins/solidos/sol-solidos-host.html';
 
 class DkSolidos extends HTMLElement {
@@ -25,21 +28,49 @@ class DkSolidos extends HTMLElement {
     const iframe = document.createElement('iframe');
     iframe.className = 'dk-solidos-frame';
     iframe.style.cssText = 'border:0;width:100%;height:100%;display:block';
-    iframe.src = `${HOST_PAGE}?source=${encodeURIComponent(this._subject())}`;
+    // Opt-in location bar: forwarded to the iframe's <sol-solidos> via ?bar=1.
+    // Only the SolidOS browser def sets has-location-bar; AddressBook / notes /
+    // meeting / chat / dokieli embeds leave it off.
+    const bar = this.hasAttribute('has-location-bar')
+      && this.getAttribute('has-location-bar') !== 'false' ? '&bar=1' : '';
+    iframe.src = `${HOST_PAGE}?source=${encodeURIComponent(this._subject())}${bar}`;
     this._iframe = iframe;
     this.appendChild(iframe);
 
-    iframe.addEventListener('load', () => this._shareAuth());
-    this._onAuthChange = () => this._shareAuth();
+    iframe.addEventListener('load', () => { this._shareAuth(); this._pushLocations(); });
+    this._onAuthChange = () => { this._shareAuth(); this._discoverLocations(); };
     document.addEventListener('sol-login', this._onAuthChange);
     document.addEventListener('sol-logout', this._onAuthChange);
 
+    // Feed the location bar's "Locations" dropdown from the shared pod registry —
+    // the pods sol-pod has discovered (default group). Seed with the current list
+    // and re-feed on every change; _pushLocations forwards it into the iframe.
+    this._reg = getRegistry();
+    this._onPods = (pods) => this.setLocations(pods);
+    this._reg.subscribe(this._onPods);
+    this.setLocations(this._reg.list());
+    // Don't depend on the Pod Browser having been opened: discover pods ourselves
+    // (same path sol-pod uses) so the dropdown is populated on first open too.
+    this._discoverLocations();
+
     this._mountExtras(iframe);
+  }
+
+  // Populate the shared pod registry the way sol-pod does, so the Locations dropdown
+  // fills even when no <sol-pod> has mounted yet. Idempotent (addAll only adds new);
+  // re-run on login so pods a fresh session reveals show up.
+  async _discoverLocations() {
+    try {
+      const webIds = await discoverOwnerWebIds();
+      const found = await getStoragesFromWebIds(webIds);
+      if (found && found.length) this._reg.addAll(found);
+    } catch (_) { /* not logged in / offline — leave the registry as-is */ }
   }
 
   disconnectedCallback() {
     document.removeEventListener('sol-login', this._onAuthChange);
     document.removeEventListener('sol-logout', this._onAuthChange);
+    if (this._reg && this._onPods) this._reg.unsubscribe(this._onPods);
   }
 
   attributeChangedCallback(name, oldV, newV) {
@@ -47,6 +78,26 @@ class DkSolidos extends HTMLElement {
       const win = this._iframe.contentWindow;
       if (win && typeof win.solSetSource === 'function') win.solSetSource(this._subject());
     }
+  }
+
+  // Feed the location bar's "Locations" dropdown with the pods sol-pod discovered.
+  // We forward the list into the iframe's <sol-solidos>. Stored so a list set before
+  // the iframe is ready (or an updated list) is (re)applied on the next iframe load.
+  setLocations(list) {
+    this._locations = Array.isArray(list) ? list.slice() : [];
+    this._pushLocations();
+  }
+
+  _pushLocations() {
+    const win = this._iframe && this._iframe.contentWindow;
+    if (!win || !this._locations || !this._locations.length) return;
+    let tries = 0;
+    const apply = () => {
+      try { if (typeof win.solSetLocations === 'function') { win.solSetLocations(this._locations.slice()); return; } }
+      catch (_) { return; }                       // cross-origin/odd state — give up
+      if (++tries < 40) setTimeout(apply, 50);    // the host publishes solSetLocations as its modules load
+    };
+    apply();
   }
 
   // The subject URI: an explicit `source` (absolute/rooted), else a subclass landing

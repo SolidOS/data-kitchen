@@ -62,6 +62,8 @@ class DkIssuersEditor extends HTMLElement {
       const r = await solFetch(docUrl, { method: 'PUT', headers: { 'content-type': 'text/turtle' }, body });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       this.status('Saved.', 'ok');
+      // Tell the live shell to re-feed every <sol-login> from the new list.
+      document.dispatchEvent(new CustomEvent('dk:issuers-changed'));
     } catch (e) {
       this.status(`Couldn't save issuers: ${e?.message || e}`, 'err');
     }
