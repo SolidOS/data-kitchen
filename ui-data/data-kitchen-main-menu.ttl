@@ -33,16 +33,19 @@
             :Bluesky-2 :Duck-ai-3 :bar-search :bar-calendar ).
 :bar-calendar
     a ui:Component;
+    ui:region ui:Dropdown;
     ui:attribute
         [ schema:name "class"; schema:value "omp-calendar" ],
+        [ schema:name "data-handler"; schema:value "sol-calendar" ],
+        [ schema:name "hide-header"; schema:value "" ],
             [
                 schema:name "source";
                 schema:value
                 "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All"
             ],
         [ schema:name "title"; schema:value "Calendar" ];
-    ui:label "Calendar";
-    ui:name "dk-calendar-popout".
+    ui:label "📅";
+    ui:name "sol-button".
 :bar-fontsize
     a ui:Component;
     ui:attribute

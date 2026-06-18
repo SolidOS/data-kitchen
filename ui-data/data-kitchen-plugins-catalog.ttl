@@ -80,10 +80,13 @@
 <#Calendar> a ui:Component ; ui:label "Calendar" ;
   dct:source <../plugins/calendar.ttl> ;
   ui:icon "📅" ;
-  ui:name "dk-calendar-popout" ;
+  ui:name "sol-button" ;
+  ui:region ui:Dropdown ;
   rdfs:comment "Pop-out month calendar for the button bar." ;
   dct:creator "Jeff Zucker" ;
   ui:attribute
+    [ schema:name "data-handler" ; schema:value "sol-calendar" ] ,
+    [ schema:name "hide-header" ; schema:value "" ] ,
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All" ] .
 
 <#Clock> a ui:Component ; ui:label "Clock" ;

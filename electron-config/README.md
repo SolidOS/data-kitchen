@@ -101,8 +101,9 @@ on capture-phase `scroll`, so the overlays stay glued as layout shifts.
 
 Because native views paint above ALL of the app's HTML, any app-drawn popup that
 overlaps the content region — a `sol-dropdown-button` popup, `sol-search` panel,
-`dk-calendar-popout`, the inline help (`sol-button[open]`), a `sol-modal`, or the
-`#dk-menu-pane` — would be occluded by the reader/pane.
+the conjured `sol-dropdown` (calendar/dropdown) surface, the inline help
+(`sol-button[open]`), a `sol-modal`, or the `#dk-menu-pane` — would be occluded
+by the reader/pane.
 
 The preload watches all those hosts (incrementally — custom elements upgrade
 async, and submenu dropdowns are built from RDF *after* boot and rebuilt on a

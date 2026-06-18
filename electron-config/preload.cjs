@@ -123,7 +123,8 @@ function install() {
 // overlays while one is open:
 //   sol-dropdown-button — shadow .sol-dd-popup toggles `hidden`
 //   sol-search          — shadow .panel toggles `open`
-//   dk-calendar-popout  — light-DOM .dk-popout-panel toggles `hidden`
+//   sol-dropdown        — conjured into <body> while open, removed on close
+//                         (the calendar/dropdown region surface; like sol-modal)
 //   sol-button (help ?) — reflects `open` on the host while its inline
 //                         overlay is shown
 //   sol-modal           — conjured into <body> while open, removed on close
@@ -136,15 +137,15 @@ function install() {
 // hosts — and reports done only once every host type present in the DOM is
 // actually watched.
 const guardBound = new Set();   // elements already being observed
-const guardHosts = { dropdown: [], search: [], calendar: [] };
+const guardHosts = { dropdown: [], search: [] };
 let guardSuspended = false;
 
 function guardAnyOpen() {
   return guardHosts.dropdown.some((d) => { const p = d.shadowRoot.querySelector('.sol-dd-popup'); return p && !p.hidden; })
     || guardHosts.search.some((s) => { const p = s.shadowRoot.querySelector('.panel'); return p && p.hasAttribute('open'); })
-    || guardHosts.calendar.some((c) => { const p = c.querySelector('.dk-popout-panel'); return p && !p.hidden; })
     || !!document.querySelector('sol-button[open]')   // inline overlay (help ?)
     || !!document.querySelector('sol-modal')          // conjured modal
+    || !!document.querySelector('sol-dropdown')       // conjured calendar/dropdown surface
     || !!document.querySelector('#dk-menu-pane:not([hidden])'); // ☰ items' replace pane
 }
 function guardCheck() {
@@ -184,12 +185,9 @@ function setupMenuOverlayGuard() {
   for (const s of document.querySelectorAll('sol-search')) {
     if (s.shadowRoot) guardWatch(s, s.shadowRoot, 'search');
   }
-  for (const c of document.querySelectorAll('dk-calendar-popout')) {
-    guardWatch(c, c, 'calendar');
-  }
   // Done when every host ELEMENT in the DOM is bound (i.e. none is still
   // awaiting upgrade). Until then the boot loop keeps calling back.
-  const pending = [...document.querySelectorAll('sol-dropdown-button, sol-search, dk-calendar-popout')]
+  const pending = [...document.querySelectorAll('sol-dropdown-button, sol-search')]
     .filter((el) => !guardBound.has(el));
   return guardBound.size > 0 && pending.length === 0;
 }

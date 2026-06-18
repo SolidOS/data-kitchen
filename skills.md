@@ -75,13 +75,24 @@ A plugin is either:
 - **`ui:Component`** — an in-app custom element. Needs `ui:name`; mounts in a tab
   pane. Attributes via `ui:attribute [ schema:name … ; schema:value … ]`.
 
-Manifests are `.ttl` files in `plugins/`. Complex plugins get a subdirectory plus
-a `manifest.jsonld` (podz, solidos, ia-player, calendar, news, search, weather,
-time). A component is "manifested" when it has an object-form ci entry
-(label / icon / shape / help). Icons are **live favicon URLs** — the renderer
-paints a URL as `<img>` and an emoji as text. Per-plugin settings are RDF-driven
-and gated on the plugin being in a menu (`src/dk-plugin-settings.js`, subject via
-`foaf:primaryTopic`).
+Manifests are `.ttl` files in `plugins/`. Complex dk-own plugins get a subdirectory
+plus a `manifest.jsonld` (podz, solidos, ia-player, news). A component is
+"manifested" when it has an object-form ci entry (label / icon / shape / help).
+Icons are **live favicon URLs** — the renderer paints a URL as `<img>` and an emoji
+as text. Per-plugin settings are RDF-driven and gated on the plugin being in a menu
+(`src/dk-plugin-settings.js`). **LIBRARY-FIRST:** for an sc component the settings
+`shape` + default `data` doc come from **sc's manifest**
+(`ComponentInterop.manifest.meta`, keyed by `ui:name` — or by `data-handler` when
+the menu item is a launcher like `sol-button`); the form edits the deployment's own
+`source` doc (subject = its `#fragment` or `foaf:primaryTopic`). `sol-time`,
+`sol-weather`, `sol-calendar`, `sol-search` are migrated this way — **no per-plugin
+`manifest.jsonld`**; only dk-own plugins still carry one (read via the fallback).
+
+**Calendar is sc, not dk:** the bar item is `<sol-button data-handler="sol-calendar"
+region=ui:Dropdown source=…>` — one click conjures a `sol-dropdown` surface (sibling
+of `sol-modal`/`sol-window` in `core/display-target.js`) hosting `<sol-calendar
+hide-header>`. `ui:Dropdown` is a `ui:Region` (ui-vocab); the old `dk-calendar-popout`
+wrapper is **deleted**. The same `region=ui:Dropdown` pattern works for any widget.
 
 **A chip = a PLUGIN (manifest entry), not a component.** One `ui:name` tag backs
 many chips (ia-player → Music & Movies; dk-solidos → browser, AddressBook, Tasks,

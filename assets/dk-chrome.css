@@ -195,6 +195,16 @@
       border-color: var(--ia-accent, #c79248);
       color: var(--ia-on-accent, #1a1a1a);
     }
+    /* Calendar 📅 — a <sol-button> launcher (region=Dropdown); style its trigger
+       as a chrome-btn like Help, with the 📅 glyph centred in the 30×30 chip. */
+    .omp-calendar::part(trigger) {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; padding: 0;
+      background: var(--ia-bg-btn, #26282e); color: var(--ia-text-muted, #9aa);
+      border: 1px solid var(--ia-border-btn, #34373d); border-radius: 7px;
+      font-size: 1.05rem; line-height: 1; cursor: pointer;
+    }
+    .omp-calendar::part(trigger):hover { color: var(--ia-text-strong, #fff); border-color: var(--ia-accent, #888); }
     /* region="inline" mounts the help into the tab content area, overlaying the
        active pane; the tab bar stays so picking a tab dismisses it. */
     #dk-tabs > .sol-tabs-content { position: relative; }

@@ -7,9 +7,12 @@
   a ui:Component ;
   ui:label "Calendar" ;
   ui:icon "📅" ;
-  ui:name "dk-calendar-popout" ;
+  ui:name "sol-button" ;
+  ui:region ui:Dropdown ;
   rdfs:comment "Pop-out month calendar for the button bar." ;
   dct:creator "Jeff Zucker" ;
   dct:subject "Information" ;
   ui:attribute
+    [ schema:name "data-handler" ; schema:value "sol-calendar" ] ,
+    [ schema:name "hide-header" ; schema:value "" ] ,
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All" ] .

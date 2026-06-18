@@ -97,15 +97,10 @@ header.dash .dash-sep {
   font-size: 0;
 }
 
-/* Header chip family: calendar pop-out, sol-button (help / settings
-   launchers), and sol-search's built-in trigger. Each chip is the
-   same fixed-size square; glyph sizes differ but the boxes don't. */
-dk-calendar-popout {
-  position: relative;
-  display: inline-flex;
-}
+/* Header chip family: sol-button (help / settings launchers) and sol-search's
+   built-in trigger. Each chip is the same fixed-size square; glyph sizes differ
+   but the boxes don't. */
 .dk-chrome sol-search::part(trigger),
-.dk-chrome dk-calendar-popout .dk-popout-trigger,
 .dk-chrome sol-button::part(trigger) {
   box-sizing: border-box;
   width:  2.6rem;
@@ -116,18 +111,12 @@ dk-calendar-popout {
   justify-content: center;
 }
 
-/* The trigger itself is a .chrome-btn chip (assets/dk-chrome.css) with a 📅
-   text glyph, like the other actions-row buttons — no extra styling here. */
-dk-calendar-popout .dk-popout-trigger[aria-expanded="true"] {
-  background: var(--hover, #eaf2fb);
-}
 /* Chrome chip icons: each chip's <button> is empty in HTML; the
    glyph is drawn entirely by CSS via mask-image of the matching SVG
    in assets/icons/. background-color is currentColor so the icon
    tracks the theme (light/dark) with the rest of the chrome.
    To add an icon-only chip elsewhere: drop an SVG in assets/icons/
    and add one mask-image line below. */
-.dk-chrome dk-calendar-popout .dk-popout-trigger::before,
 .dk-chrome sol-search::part(trigger)::before,
 .dk-chrome sol-button::part(trigger)::before {
   content: '';
@@ -138,10 +127,6 @@ dk-calendar-popout .dk-popout-trigger[aria-expanded="true"] {
   -webkit-mask-position: center;       mask-position: center;
   -webkit-mask-size: contain;          mask-size: contain;
   -webkit-mask-repeat: no-repeat;      mask-repeat: no-repeat;
-}
-.dk-chrome dk-calendar-popout .dk-popout-trigger::before {
-  -webkit-mask-image: url("../assets/icons/calendar.svg");
-          mask-image: url("../assets/icons/calendar.svg");
 }
 .dk-chrome sol-search::part(trigger)::before {
   -webkit-mask-image: url("../assets/icons/search.svg");
@@ -170,33 +155,6 @@ dk-calendar-popout .dk-popout-trigger[aria-expanded="true"] {
 /* sol-search ships an inline ⌕ glyph in its shadow template; collapse
    the font so the ::before mask is the only visible content. */
 .dk-chrome sol-search::part(trigger) { font-size: 0; }
-
-dk-calendar-popout .dk-popout-panel {
-  /* Fixed, not absolute: the actions row lives inside the sol-tabs bar,
-     which clips overflow — a fixed panel (coords set by the component on
-     open) escapes the clip. Same approach omp used. */
-  position: fixed;
-  z-index: 1000;
-  background: var(--surface, #fff);
-  color: var(--text, #000);
-  border: 1px solid var(--border, #9e9e9e);
-  border-radius: var(--radius-md, 6px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-  padding: var(--space-md, 8px);
-  min-width: 28rem;
-  max-width: 90vw;
-  max-height: 70vh;
-  /* sol-calendar manages its own internal scroll — leave overflow
-     visible here so there's a single scrollbar, not nested ones. */
-  display: flex;
-  flex-direction: column;
-}
-dk-calendar-popout .dk-popout-panel[hidden] { display: none; }
-
-dk-calendar-popout .dk-popout-panel sol-calendar {
-  flex: 1 1 auto;
-  min-height: 0;
-}
 
 /* sol-search's own trigger is a square icon button — match the chrome
    chip family by styling its exposed parts. The glyph itself reads as
