@@ -20,6 +20,11 @@
     "serve": "python3 -m http.server 8081",
     "rdf2html": "node tools/conversion/rdf2html.mjs",
     "html2rdf": "node tools/conversion/html2rdf.mjs",
+    "test": "node --test \"test/unit/**/*.test.mjs\" \"test/data/**/*.test.mjs\" \"test/roundtrip/**/*.test.mjs\" \"test/integration/**/*.test.mjs\"",
+    "test:unit": "node --test \"test/unit/**/*.test.mjs\" \"test/data/**/*.test.mjs\"",
+    "test:roundtrip": "node --test \"test/roundtrip/**/*.test.mjs\"",
+    "test:integration": "node --test \"test/integration/**/*.test.mjs\"",
+    "test:e2e": "node test/e2e/run.mjs",
     "dist": "electron-builder"
   },
   "dependencies": {
@@ -32,7 +37,9 @@
     "electron": "^40.1.0",
     "electron-builder": "^24.0.0",
     "esbuild": "^0.27.5",
-    "playwright-core": "^1.61.0"
+    "n3": "^2.0.4",
+    "playwright-core": "^1.61.0",
+    "rdf-validate-shacl": "^0.6.5"
   },
   "build": {
     "appId": "com.data-kitchen",

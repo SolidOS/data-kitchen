@@ -502,7 +502,7 @@
         [ schema:name "view"; schema:value "threePanel" ];
     ui:label "News";
     ui:name "sol-feed".
-:panel-podz
+:Pods
     a ui:Menu;
     ui:label "Pods";
     ui:parts ( :Pod-browser :SolidOS-data-browser-2 :PodOS-Browser ).
@@ -781,7 +781,7 @@
     a ui:Menu;
     ui:label "data-kitchen";
     ui:orientation ui:Horizontal;
-    ui:parts ( :panel-news :Media :Health :panel-podz :Apps :item ).
+    ui:parts ( :panel-news :Media :Health :Pods :Apps :item ).
 :Tag-Explainer
     a ui:Link;
     ui:href

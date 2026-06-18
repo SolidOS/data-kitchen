@@ -56,7 +56,7 @@
     mo:track_number 2 ;
     mo:duration 185.0 ;
     mo:bpm 96.0 ;
-    schema:ratingValue 5 ;
+    schema:ratingValue 5.0 ;
     mo:item <./woo-track3.mp3> .
 
 # Playlist — schema:ItemList + schema:MusicPlaylist. Membership is the

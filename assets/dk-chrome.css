@@ -114,7 +114,7 @@
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-movies"].active { background: var(--tab-movies); border-color: var(--tab-movies); color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-news"].active   { background: var(--tab-news);   border-color: var(--tab-news);   color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-images"].active { background: var(--tab-images); border-color: var(--tab-images); color: var(--tab-on); }
-    #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-podz"].active     { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
+    #dk-tabs > .sol-tabs-bar > button[data-tab-id="Pods"].active     { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="panel-dev-tools"].active       { background: var(--tab-devtools);   border-color: var(--tab-devtools);   color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > button[data-tab-id="Favourites"].active { background: var(--tab-fav, #e6b800); border-color: var(--tab-fav, #e6b800); color: var(--tab-on); }
     /* A submenu tab is a <sol-dropdown-button> launcher (sol-tabs
@@ -134,7 +134,7 @@
     #dk-tabs > .sol-tabs-bar > sol-dropdown-button.sol-tabs-submenu.active::part(trigger) {
       background: var(--tab-resources, #5b9bd5); border-color: var(--tab-resources, #5b9bd5); color: var(--tab-on);
     }
-    #dk-tabs > .sol-tabs-bar > sol-dropdown-button[data-tab-id="panel-podz"].active::part(trigger)      { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
+    #dk-tabs > .sol-tabs-bar > sol-dropdown-button[data-tab-id="Pods"].active::part(trigger)      { background: var(--tab-workspaces); border-color: var(--tab-workspaces); color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > sol-dropdown-button[data-tab-id="panel-dev-tools"].active::part(trigger)  { background: var(--tab-devtools);   border-color: var(--tab-devtools);   color: var(--tab-on); }
     #dk-tabs > .sol-tabs-bar > sol-dropdown-button[data-tab-id="item"].active::part(trigger)             { background: var(--tab-resources);  border-color: var(--tab-resources);  color: var(--tab-on); }
     /* (Popup border is now a sol-components default: silver, via

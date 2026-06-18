@@ -187,6 +187,15 @@ reconciled later — act on the pod without sync caveats.
 - `npm run serve` — static server on :8081 (used by smoke-tests).
 - `npm run watch` / `npm run build` — esbuild `dist/dk.bundle.js`.
 - `npm run start-css` — Pivot server on :8000 for dev.
+- `npm test` — the test suite (native `node --test`, like ci; **no app needed**):
+  `test/unit/` (gate.cjs, favourites store), `test/data/` (RDF contracts —
+  plugin Link/Component, catalog↔manifest sync, menu invariants, manifest.jsonld,
+  SHACL via `rdf-validate-shacl`), `test/roundtrip/` (rdf2html/html2rdf
+  idempotence, auto-skips without chromium), `test/integration/` (boots
+  router/proxy, drives the gate). `npm run test:e2e` drives the real shell
+  (needs the app or pod+servers). See `test/README.md`. **Gotcha:** `npm install`
+  rewrites the lockfile to the *registry* sc/ci and clobbers the local symlinks —
+  re-link `node_modules/{sol-components,component-interop}` → `../../<pkg>` after.
 - **Verify by driving the running app and measuring** (`claude/smoke-tests/`,
   Playwright) — don't theorize from CSS. "Works" must mean the UI actually
   painted (a real render root / visible content), not that an HTTP request
