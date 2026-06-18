@@ -1,0 +1,6 @@
+@prefix meeting: <http://www.w3.org/ns/pim/meeting#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+
+# Minimal SolidOS long chat. SolidOS appends dated message files as you post.
+<#this> a meeting:LongChat ;
+    dc:title "Chat" .

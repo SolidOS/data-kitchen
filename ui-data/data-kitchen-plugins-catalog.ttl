@@ -10,7 +10,7 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it." ;
-  ui:parts ( <#0data-Hello> <#Address-Book> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SPARQL-Playground> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
+  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SolidOS-AddressBook> <#SolidOS-Chat> <#SolidOS-Meeting> <#SolidOS-Notes> <#SolidOS-Tasks> <#SPARQL-Playground> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
   skos:member <#Booklice>, <#Tired-Bike> .
@@ -22,7 +22,7 @@
   skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
 
 <#Information> a skos:Collection ; skos:prefLabel "Information" ;
-  skos:member <#Address-Book>, <#Calendar>, <#Clock>, <#GeoPod>, <#News-three-panel-feeds>, <#Search>, <#Umai>, <#Weather> .
+  skos:member <#Calendar>, <#Clock>, <#GeoPod>, <#News-three-panel-feeds>, <#Search>, <#Umai>, <#Weather> .
 
 <#Media> a skos:Collection ; skos:prefLabel "Media" ;
   skos:member <#Images-Wikimedia>, <#Media-Kraken>, <#Movies-Internet-Archive>, <#MovieStar>, <#Music-Internet-Archive>, <#Solidflix> .
@@ -39,6 +39,9 @@
 <#Solid> a skos:Collection ; skos:prefLabel "Solid" ;
   skos:member <#Solid-Catalog>, <#Solid-FAQ>, <#Solid-Glossary>, <#Solid-Website>, <#Tag-Explainer> .
 
+<#SolidOS-apps> a skos:Collection ; skos:prefLabel "SolidOS apps" ;
+  skos:member <#SolidOS-AddressBook>, <#SolidOS-Chat>, <#SolidOS-Meeting>, <#SolidOS-Notes>, <#SolidOS-Tasks> .
+
 <#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
   skos:member <#0data-Hello>, <#JSON-LD-Playground>, <#KeyPod>, <#Portable-LibreChat>, <#RDF-Validator>, <#SHACL-Playground>, <#SPARQL-Playground>, <#Synara-AI> .
 
@@ -49,16 +52,6 @@
   rdfs:comment "Tiny demo app showing data stored in your pod." ;
   dct:publisher "0data" ;
   ui:href <https://hello.0data.app/solid/> .
-
-<#Address-Book> a ui:Component ; ui:label "Address Book" ;
-  dct:source <../plugins/addressbook.ttl> ;
-  ui:icon "📇" ;
-  ui:name "dk-solidos" ;
-  rdfs:comment "Your contacts — a Solid address book, in the SolidOS contacts pane." ;
-  dct:creator "SolidOS Team" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/contacts/index.ttl#this" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
 
 <#BilliPod> a ui:Link ; ui:label "BilliPod" ;
   dct:source <../plugins/billipod.ttl> ;
@@ -91,7 +84,7 @@
   rdfs:comment "Pop-out month calendar for the button bar." ;
   dct:creator "Jeff Zucker" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/calendar/calendar-settings.ttl#All" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All" ] .
 
 <#Clock> a ui:Component ; ui:label "Clock" ;
   dct:source <../plugins/clock.ttl> ;
@@ -100,7 +93,7 @@
   rdfs:comment "Clock widget (timezone in its settings file)." ;
   dct:creator "Jeff Zucker" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/time/time-settings.ttl#Settings" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/time/time-settings.ttl#Settings" ] .
 
 <#CryptPad> a ui:Link ; ui:label "CryptPad" ;
   dct:source <../plugins/cryptpad.ttl> ;
@@ -117,7 +110,7 @@
   rdfs:comment "Browse and manage your Solid pods and workspaces." ;
   dct:creator "Jeff Zucker" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/podz/dk-podz.html" ] ,
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/podz/dk-podz.html" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#dokieli> a ui:Component ; ui:label "dokieli" ;
@@ -191,7 +184,7 @@
   rdfs:comment "Browse Wikimedia image galleries." ;
   dct:creator "Jeff Zucker" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
 
 <#InnerPod> a ui:Link ; ui:label "InnerPod" ;
   dct:source <../plugins/innerpod.ttl> ;
@@ -275,7 +268,7 @@
     [ schema:name "storage-ns" ; schema:value "movies" ] ,
     [ schema:name "favourites-only" ; schema:value "" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] .
 
 <#MovieStar> a ui:Link ; ui:label "MovieStar" ;
   dct:source <../plugins/moviestar.ttl> ;
@@ -302,7 +295,7 @@
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "music" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_music/index.ttl" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl" ] .
 
 <#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ;
   dct:source <../plugins/news.ttl> ;
@@ -313,7 +306,7 @@
   ui:attribute
     [ schema:name "view" ; schema:value "threePanel" ] ,
     [ schema:name "reader" ; schema:value "inline" ] ,
-    [ schema:name "source" ; schema:value "./plugins/news/feeds.ttl#Feeds" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds" ] .
 
 <#NotePod> a ui:Link ; ui:label "NotePod" ;
   dct:source <../plugins/notepod.ttl> ;
@@ -449,7 +442,7 @@
   rdfs:comment "Search box for the button bar (pluggable search engines)." ;
   dct:creator "Jeff Zucker" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/search/search-engines.ttl#SearchEngines" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/search/search-engines.ttl#SearchEngines" ] .
 
 <#SearXNG> a ui:Link ; ui:label "SearXNG" ;
   dct:source <../plugins/searxng.ttl> ;
@@ -557,7 +550,57 @@
   rdfs:comment "The SolidOS data browser, embedded." ;
   dct:creator "SolidOS Team" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/solidos/dk-solidos.html" ] ,
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
+
+<#SolidOS-AddressBook> a ui:Component ; ui:label "SolidOS AddressBook" ;
+  dct:source <../plugins/addressbook.ttl> ;
+  ui:icon "📇" ;
+  ui:name "dk-solidos" ;
+  rdfs:comment "Your contacts — a Solid address book, in the SolidOS contacts pane." ;
+  dct:creator "SolidOS Team" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "/dk-pod/contacts/index.ttl#this" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
+
+<#SolidOS-Chat> a ui:Component ; ui:label "SolidOS Chat" ;
+  dct:source <../plugins/chat.ttl> ;
+  ui:icon "💬" ;
+  ui:name "dk-solidos" ;
+  rdfs:comment "A Solid long chat, in the SolidOS chat pane." ;
+  dct:creator "SolidOS Team" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "/dk-pod/chat/index.ttl#this" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
+
+<#SolidOS-Meeting> a ui:Component ; ui:label "SolidOS Meeting" ;
+  dct:source <../plugins/meeting.ttl> ;
+  ui:icon "🤝" ;
+  ui:name "dk-solidos" ;
+  rdfs:comment "A Solid meeting workspace, in the SolidOS meeting pane." ;
+  dct:creator "SolidOS Team" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "/dk-pod/meetings/index.ttl#this" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
+
+<#SolidOS-Notes> a ui:Component ; ui:label "SolidOS Notes" ;
+  dct:source <../plugins/notes.ttl> ;
+  ui:icon "📝" ;
+  ui:name "dk-solidos" ;
+  rdfs:comment "A Solid notepad, in the SolidOS pad pane." ;
+  dct:creator "SolidOS Team" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "/dk-pod/notes/index.ttl#this" ] ,
+    [ schema:name "defer" ; schema:value "" ] .
+
+<#SolidOS-Tasks> a ui:Component ; ui:label "SolidOS Tasks" ;
+  dct:source <../plugins/task-manager.ttl> ;
+  ui:icon "📋" ;
+  ui:name "dk-solidos" ;
+  rdfs:comment "Your tasks — a Solid issue tracker, in the SolidOS tracker pane." ;
+  dct:creator "SolidOS Team" ;
+  ui:attribute
+    [ schema:name "source" ; schema:value "/dk-pod/tasks/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#SPARQL-Playground> a ui:Link ; ui:label "SPARQL Playground" ;
@@ -639,5 +682,5 @@
   rdfs:comment "Weather widget (location and units in its settings file)." ;
   dct:creator "Jeff Zucker" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "./plugins/weather/weather-settings.ttl#Settings" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/weather/weather-settings.ttl#Settings" ] .
 

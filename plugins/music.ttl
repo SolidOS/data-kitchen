@@ -14,4 +14,4 @@
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "music" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_music/index.ttl" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl" ] .

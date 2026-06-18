@@ -5,12 +5,12 @@
 
 <>
   a ui:Component ;
-  ui:label "Address Book" ;
+  ui:label "SolidOS AddressBook" ;
   ui:icon "📇" ;
   ui:name "dk-solidos" ;
   rdfs:comment "Your contacts — a Solid address book, in the SolidOS contacts pane." ;
   dct:creator "SolidOS Team" ;
-  dct:subject "Information" ;
+  dct:subject "SolidOS apps" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/contacts/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .

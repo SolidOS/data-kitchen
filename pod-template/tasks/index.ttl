@@ -1,0 +1,6 @@
+@prefix wf: <http://www.w3.org/2005/01/wf#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+# Minimal SolidOS issue tracker. SolidOS fills in states/classes when first used.
+<#this> a wf:Tracker ;
+    dc:title "Tasks" .

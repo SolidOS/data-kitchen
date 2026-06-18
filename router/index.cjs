@@ -59,7 +59,13 @@ function serveEngine(req, res, pathname) {
   }
   fs.stat(full, (err, st) => {
     if (err || !st.isFile()) { res.writeHead(404); return res.end('not found'); }
-    res.writeHead(200, { 'content-type': MIME[path.extname(full).toLowerCase()] || 'application/octet-stream' });
+    // Dev/app server: never let the renderer serve a stale engine asset. The
+    // editable surface (incl. the symlinked sol-components sources) must reflect
+    // the file on disk on every load, so a restart picks up source edits.
+    res.writeHead(200, {
+      'content-type': MIME[path.extname(full).toLowerCase()] || 'application/octet-stream',
+      'cache-control': 'no-store',
+    });
     if (req.method === 'HEAD') return res.end();
     fs.createReadStream(full).pipe(res);
   });

@@ -1,0 +1,10 @@
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+# Minimal SolidOS/solid-ui address book. The AddressBook node (#this) is what the
+# AddressBook plugin opens; the two index docs start empty and SolidOS fills them
+# as contacts/groups are added.
+<#this> a vcard:AddressBook ;
+    dc:title "Contacts" ;
+    vcard:nameEmailIndex <people.ttl> ;
+    vcard:groupIndex <groups.ttl> .

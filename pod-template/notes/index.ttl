@@ -1,0 +1,6 @@
+@prefix pad: <http://www.w3.org/ns/pim/pad#> .
+@prefix dc:  <http://purl.org/dc/elements/1.1/> .
+
+# Minimal SolidOS notepad.
+<#this> a pad:Notepad ;
+    dc:title "Notes" .

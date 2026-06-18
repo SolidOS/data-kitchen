@@ -6,7 +6,11 @@
   "description": "Electron app packaging a Solid server (pivot), a CORS proxy, and a shell for Solid & federated apps.",
   "homepage": "https://github.com/solidOS/data-kitchen",
   "main": "./electron-config/main.cjs",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
+    "postinstall": "cd pivot && npm install",
     "start": "electron .",
     "start-css": "cd pivot && node run-server.cjs .. 8000",
     "build-pivot-config": "bash pivot/build-compiled-config.sh",
@@ -19,10 +23,10 @@
     "dist": "electron-builder"
   },
   "dependencies": {
-    "component-interop": "file:../component-interop",
+    "component-interop": "^0.3.0",
     "electron-reloader": "^1.2.3",
     "mashlib": "^2.2.2",
-    "sol-components": "file:../sol-components"
+    "sol-components": "^2.4.1"
   },
   "devDependencies": {
     "electron": "^40.1.0",

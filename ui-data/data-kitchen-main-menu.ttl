@@ -1,16 +1,19 @@
 @prefix : <#>.
 @prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix schema: <http://schema.org/>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix plu: <../plugins/>.
 
 :Apps
     a ui:Menu;
     ui:label "Apps";
     ui:parts
-            ( :dokieli :SolidFocus :RoloPod :KonaPod :Umai :Media-Kraken
-            :GeoPod :Solidflix :PodCal :KeyPod :NotePod-2 :SecureDialog-3
-            :Synara-AI-2 ).
+            ( :dokieli-2 :SolidFocus :RoloPod :KonaPod :Umai :GeoPod :PodCal
+            :KeyPod :NotePod-2 :SecureDialog-3 :Synara-AI-2
+            :SolidOS-AddressBook :SolidOS-Meeting :SolidOS-Chat :SolidOS-Tasks
+            :SolidOS-Notes ).
 :AU
     a ui:Menu;
     ui:label "Health";
@@ -173,6 +176,11 @@
     ui:attribute [ schema:name "defer"; schema:value "" ];
     ui:label "dokieli";
     ui:name "dk-dokieli".
+:dokieli-2
+    a ui:Component;
+    ui:attribute [ schema:name "defer"; schema:value "" ];
+    ui:label "dokieli";
+    ui:name "dk-dokieli".
 :Duck-ai
     a ui:Link;
     ui:href "https://duck.ai";
@@ -280,7 +288,8 @@
     ui:label "Solid Resources";
     ui:parts
             ( :Solid-FAQ-2 :Solid-Website :Tag-Explainer-2 :Solid-Catalog-2
-            :Solid-Glossary-3 ).
+            :Solid-Glossary-3 :RDF-Validator-3 :SHACL-Playground-2
+            :JSON-LD-Playground-4 ).
 :JSON-LD-Playground
     a ui:Link;
     ui:href "https://json-ld.github.io/json-ld.org/playground/";
@@ -288,6 +297,18 @@
     ui:label "JSON-LD Playground";
     ui:region ui:Tab.
 :JSON-LD-Playground-2
+    a ui:Link;
+    ui:href "https://json-ld.github.io/json-ld.org/playground/";
+    ui:icon "🧩";
+    ui:label "JSON-LD Playground";
+    ui:region ui:Tab.
+:JSON-LD-Playground-3
+    a ui:Link;
+    ui:href "https://json-ld.github.io/json-ld.org/playground/";
+    ui:icon "🧩";
+    ui:label "JSON-LD Playground";
+    ui:region ui:Tab.
+:JSON-LD-Playground-4
     a ui:Link;
     ui:href "https://json-ld.github.io/json-ld.org/playground/";
     ui:icon "🧩";
@@ -339,8 +360,17 @@
     a ui:Menu;
     ui:label "Media";
     ui:parts
-    ( :Internet-Archive-player-2 :Images-Wikimedia-2 :Movies-Internet-Archive ).
+            ( :Internet-Archive-player-2 :Images-Wikimedia-2
+            :Movies-Internet-Archive :Solidflix-4 :Media-Kraken-2 :MovieStar-4
+            ).
 :Media-Kraken
+    a ui:Link;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
+:Media-Kraken-2
     a ui:Link;
     ui:href "https://noeldemartin.github.io/media-kraken/";
     ui:icon
@@ -363,6 +393,24 @@
     ui:label "Movies (Internet Archive)";
     ui:name "ia-player".
 :MovieStar
+    a ui:Link;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MovieStar-2
+    a ui:Link;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MovieStar-3
+    a ui:Link;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MovieStar-4
     a ui:Link;
     ui:href "https://moviestar.solidcommunity.au";
     ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
@@ -408,12 +456,6 @@
         [ schema:name "trusted"; schema:value "" ];
     ui:label "🎛 Customize";
     ui:name "sol-include".
-:panel-dev-tools
-    a ui:Menu;
-    ui:label "Dev Tools";
-    ui:parts
-            ( :RDF-Validator :SHACL-Playground :JSON-LD-Playground-2
-            :SPARQL-Playground ).
 :panel-home
     a ui:Component;
     ui:attribute
@@ -478,7 +520,7 @@
 :panel-podz
     a ui:Menu;
     ui:label "Pods";
-    ui:parts ( :Pod-browser :SolidOS-data-browser :PodOS-Browser ).
+    ui:parts ( :Pod-browser :SolidOS-data-browser-2 :PodOS-Browser ).
 :panel-solidos
     a ui:Component;
     ui:attribute
@@ -521,7 +563,26 @@
     ui:icon "🔍";
     ui:label "PodOS Browser";
     ui:region ui:Tab.
+:Portable-LibreChat
+    a ui:Link;
+    dct:source plu:portable-librechat.ttl;
+    ui:href "https://chat.solidproject.org/";
+    ui:icon "💬";
+    ui:label "Portable LibreChat";
+    ui:region ui:Tab.
 :RDF-Validator
+    a ui:Link;
+    ui:href "http://easyrdf.org/converter";
+    ui:icon "🧬";
+    ui:label "RDF Validator";
+    ui:region ui:Tab.
+:RDF-Validator-2
+    a ui:Link;
+    ui:href "http://easyrdf.org/converter";
+    ui:icon "🧬";
+    ui:label "RDF Validator";
+    ui:region ui:Tab.
+:RDF-Validator-3
     a ui:Link;
     ui:href "http://easyrdf.org/converter";
     ui:icon "🧬";
@@ -561,6 +622,12 @@
     ui:label "SepiaSearch";
     ui:region ui:Tab.
 :SHACL-Playground
+    a ui:Link;
+    ui:href "https://shacl.org/playground/";
+    ui:icon "✅";
+    ui:label "SHACL Playground";
+    ui:region ui:Tab.
+:SHACL-Playground-2
     a ui:Link;
     ui:href "https://shacl.org/playground/";
     ui:icon "✅";
@@ -626,12 +693,49 @@
     ui:icon "🎬";
     ui:label "Solidflix";
     ui:region ui:Tab.
+:Solidflix-2
+    a ui:Link;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:Solidflix-3
+    a ui:Link;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:Solidflix-4
+    a ui:Link;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
 :SolidFocus
     a ui:Link;
     ui:href "https://focus.noeldemartin.com/";
     ui:icon "✅";
     ui:label "SolidFocus";
     ui:region ui:Tab.
+:SolidOS-AddressBook
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "/dk-pod/contacts/index.ttl#this"
+            ];
+    ui:icon "📇";
+    ui:label "SolidOS AddressBook";
+    ui:name "dk-solidos".
+:SolidOS-Chat
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "source"; schema:value "/dk-pod/chat/index.ttl#this" ];
+    ui:icon "💬";
+    ui:label "SolidOS Chat";
+    ui:name "dk-solidos".
 :SolidOS-data-browser
     a ui:Component;
     ui:attribute
@@ -642,6 +746,44 @@
             ];
     ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
     ui:label "SolidOS (data browser)";
+    ui:name "dk-solidos".
+:SolidOS-data-browser-2
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
+            ];
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS (data browser)";
+    ui:name "dk-solidos".
+:SolidOS-Meeting
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "/dk-pod/meetings/index.ttl#this"
+            ];
+    ui:icon "🤝";
+    ui:label "SolidOS Meeting";
+    ui:name "dk-solidos".
+:SolidOS-Notes
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "source"; schema:value "/dk-pod/notes/index.ttl#this" ];
+    ui:icon "📝";
+    ui:label "SolidOS Notes";
+    ui:name "dk-solidos".
+:SolidOS-Tasks
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "source"; schema:value "/dk-pod/tasks/index.ttl#this" ];
+    ui:icon "📋";
+    ui:label "SolidOS Tasks";
     ui:name "dk-solidos".
 :SPARQL-Playground
     a ui:Link;
@@ -665,8 +807,7 @@
     a ui:Menu;
     ui:label "data-kitchen";
     ui:orientation ui:Horizontal;
-    ui:parts
-    ( :panel-news :Media :Health :panel-podz :Apps :item :panel-dev-tools ).
+    ui:parts ( :panel-news :Media :Health :panel-podz :Apps :item ).
 :Tag-Explainer
     a ui:Link;
     ui:href

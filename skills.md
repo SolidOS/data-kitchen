@@ -17,7 +17,7 @@ and plugins are described in RDF, not hard-coded.
 
 - **dk** — `/home/jeff/Dropbox/Web/solid/data-kitchen` (also `~/s`, a symlink).
   Remote: `github.com/SolidOS/data-kitchen` (push needs an explicit per-task go).
-- **sc — sol-components** (v2.4.0, published on npm) — `../sol-components`,
+- **sc — sol-components** (v2.4.3 in `../sol-components`; npm latest 2.4.1 until republished) — `../sol-components`,
   symlinked into `node_modules/`. ~40 `sol-*` web components (web/), Node tools
   (node/), shared core (core/). **dk loads the raw `web/*.js`** — a component
   edit needs only a reload, no build. dk's own `src/` does need `npm run build`.
@@ -79,6 +79,18 @@ time). A component is "manifested" when it has an object-form ci entry
 paints a URL as `<img>` and an emoji as text. Per-plugin settings are RDF-driven
 and gated on the plugin being in a menu (`src/dk-plugin-settings.js`, subject via
 `foaf:primaryTopic`).
+
+**A chip = a PLUGIN (manifest entry), not a component.** One `ui:name` tag backs
+many chips (ia-player → Music & Movies; dk-solidos → browser, AddressBook, Tasks,
+Chat, Notes, Meeting). The Customize pantry (`sol-plugin-manager`) subtracts
+plugins already in the menu/bar by chip identity = `dct:source` (manifest), with
+a tag + `source`-attribute fallback for legacy items — never the bare tag, and
+never the render attributes (`id`/`class`/`title`/`defer`/…) a menu adds. Keep a
+plugin's `source` attribute identical in the catalog and the menu (all
+`./dk-pod/dk/plugins/…`) or it double-lists. The catalog is generated from
+`plugins/*.ttl` by `tools/seed-plugins-catalog.mjs --preserve-symlinks`;
+`dct:subject` → its category. A labelled loaded component with no catalog entry
+appears as a ghost under "Other".
 
 ## Key plugins
 

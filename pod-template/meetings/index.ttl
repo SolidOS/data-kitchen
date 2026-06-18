@@ -1,0 +1,6 @@
+@prefix meeting: <http://www.w3.org/ns/pim/meeting#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+
+# Minimal SolidOS meeting workspace.
+<#this> a meeting:Meeting ;
+    dc:title "Meeting" .

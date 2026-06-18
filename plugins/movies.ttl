@@ -15,4 +15,4 @@
     [ schema:name "storage-ns" ; schema:value "movies" ] ,
     [ schema:name "favourites-only" ; schema:value "" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] .
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] .

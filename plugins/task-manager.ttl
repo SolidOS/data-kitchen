@@ -5,12 +5,12 @@
 
 <>
   a ui:Component ;
-  ui:label "SolidOS (data browser)" ;
-  ui:icon "https://solidproject.org/assets/img/solid-emblem.svg" ;
+  ui:label "SolidOS Tasks" ;
+  ui:icon "📋" ;
   ui:name "dk-solidos" ;
-  rdfs:comment "The SolidOS data browser, embedded." ;
+  rdfs:comment "Your tasks — a Solid issue tracker, in the SolidOS tracker pane." ;
   dct:creator "SolidOS Team" ;
-  dct:subject "Pods" ;
+  dct:subject "SolidOS apps" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html" ] ,
+    [ schema:name "source" ; schema:value "/dk-pod/tasks/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
