@@ -160,7 +160,10 @@ function bindFeedShadows() {
     if (feed.shadowRoot && !feedShadowsBound.has(feed)) {
       feedShadowsBound.add(feed);
       new MutationObserver(syncArticlePane).observe(feed.shadowRoot, {
-        childList: true, subtree: true, attributes: true, attributeFilter: ['data-article-url'],
+        // `class` so the editor (feed source manager) toggling `editor-open` on
+        // .sol-feed — which hides the reading pane — re-runs syncArticlePane and
+        // tears the native article view down (and repaints it on close).
+        childList: true, subtree: true, attributes: true, attributeFilter: ['data-article-url', 'class'],
       });
     }
   }
@@ -170,7 +173,10 @@ function bindFeedShadows() {
 function syncArticlePane() {
   const pane = findArticlePane();
   const url = (pane && pane.getAttribute('data-article-url')) || '';
-  if (pane && url) {
+  // Only paint when the pane is actually on screen: while the editor (feed source
+  // manager) is open it sets .feed-reader-split to display:none, so the pane has
+  // no layout box — fall through to the close branch and remove the native view.
+  if (pane && url && pane.getClientRects().length > 0) {
     if (pane !== articlePaneEl || url !== articleUrl) {
       articlePaneEl = pane;
       articleUrl = url;
