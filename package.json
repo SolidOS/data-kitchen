@@ -31,6 +31,7 @@
     "component-interop": "^0.3.0",
     "electron-reloader": "^1.2.3",
     "mashlib": "^2.2.2",
+    "music-metadata": "^11.13.0",
     "sol-components": "^2.4.1"
   },
   "devDependencies": {

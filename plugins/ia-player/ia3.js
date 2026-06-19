@@ -1,4 +1,5 @@
 import {getAlbums, getTracks, buildArchiveQuery} from "./sources/internet-archive.js";
+import { groupReleases, buildLibraryDocs } from "./import-id3-build.js";
 import { listFavourites, removeFavouriteFile } from "../../src/shared/omp-favourites-store.js";
 // Small static fragments (esbuild text imports — markup lives in HTML files).
 import addGenreFormHtml from './assets/fragment-add-genre.html';
@@ -57,6 +58,19 @@ const BOOT_AUTH_PARAMS = (() => {
   try { return /[?&](code|state)=/.test(location.search); } catch { return false; }
 })();
 
+// A track's mo:item may be a local file:// URL (imported library — see
+// import-id3-build.js). The app view is an http origin, which Chromium forbids
+// from loading file:// directly, so the desktop shell streams local files over
+// a custom dkfile: scheme (electron-config/main.cjs installFileProtocol). Map
+// file: → dkfile: when handing a URL to the media element; everything else
+// (archive.org https URLs) passes through unchanged. Used at every audio.src
+// assignment AND the matching "is this the current track?" comparisons, so they
+// stay consistent.
+function playableUrl(url) {
+  return (typeof url === 'string' && url.startsWith('file:'))
+    ? 'dkfile:' + url.slice('file:'.length) : url;
+}
+
 function createPlayer({ libraryConfigs, libs, host }) {
   // Active media type = the (single) enabled library's declared type.
   // RUNTIME (not a const): selecting a different library in the Libraries
@@ -89,7 +103,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
     trackTable, trackHead, trackBody, trackEmpty,
     randomizeBtn, clearTracksBtn,
     helpMenuItem, helpLinkMenuItem, loginHelpMenuItem, filtersMenuItem, savePlaylistMenuItem,
-    installPodMenuItem, updateAppMenuItem, viewDeletedMenuItem,
+    installPodMenuItem, updateAppMenuItem, viewDeletedMenuItem, importMusicMenuItem,
     addPlaylistBtn, addSourceBtn,
     addGenreBtn, addArtistBtn, genreColumnFooter, artistColumnFooter,
     themeToggle, fontSizeBtn,
@@ -535,7 +549,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
       } : null,
       // Save playback position so reopening the page can seek back to where
       // we were. Only meaningful when audio.src matches the current track.
-      currentTime: (currentTrack && audio.src === currentTrack.url && Number.isFinite(audio.currentTime))
+      currentTime: (currentTrack && audio.src === playableUrl(currentTrack.url) && Number.isFinite(audio.currentTime))
         ? audio.currentTime : 0
     };
   }
@@ -657,7 +671,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
           renderTracks();
           // Pre-load audio + seek to the saved position. The seek has to
           // wait until metadata is loaded, otherwise currentTime is ignored.
-          audio.src = t.url;
+          audio.src = playableUrl(t.url);
           const seekTo = Number.isFinite(s.currentTime) && s.currentTime > 0 ? s.currentTime : 0;
           if (seekTo > 0) {
             const onMeta = () => {
@@ -1211,6 +1225,100 @@ function createPlayer({ libraryConfigs, libs, host }) {
       return;
     }
     await addLibrarySource(name, res.url);
+  }
+
+  // Import a folder of the user's OWN audio (Electron only). The main process
+  // scans the folder and parses each file's ID3/tags; here we author a "My
+  // Music" library whose mo:item points file:// at the ORIGINALS in place (never
+  // copied or modified), write it under the local libraries/ root, then load it
+  // like any other source. Embedded cover art is the only thing extracted — one
+  // image per release, written as the release's foaf:depiction.
+  async function importMusicFolder() {
+    setMenuOpen(false);
+    const dk = window.dkElectron;
+    if (!dk || typeof dk.importMusic !== 'function') {
+      updateStatus(status, 'Importing local music is only available in the Data Kitchen desktop app.');
+      return;
+    }
+    let scan;
+    try { scan = await dk.importMusic(); }
+    catch (e) { updateStatus(status, `Import failed: ${e.message}`); return; }
+    if (!scan || scan.status === 'cancelled') return;
+    if (scan.status === 'error') { updateStatus(status, `Import failed: ${scan.message || 'scan error'}`); return; }
+    const grouped = groupReleases(scan.tracks || []);
+    if (!grouped.releases.length) { updateStatus(status, 'No tagged audio files were found in that folder.'); return; }
+
+    // Locate the local libraries/ root (same as createLocalLibrary) and pick a
+    // unique slug for the imported library.
+    const localCfg = libraryConfigs.find(c => !c.solid && isLocalLibUrl(c.url));
+    const ref = new URL(localCfg ? localCfg.url : './dk-pod/dk/plugins/ia-player/libraries/_/index.ttl', location.href).href;
+    const root = ref.match(/^(.*\/libraries\/)/)?.[1];
+    if (!root) { updateStatus(status, 'Could not locate the libraries/ root.'); return; }
+    const taken = new Set(libraryConfigs.map(c => (c.url || '').match(/\/libraries\/([^/]+)\//)?.[1]).filter(Boolean));
+    let slug = 'my_music';
+    for (let n = 2; taken.has(slug); n++) slug = `my_music_${n}`;
+    const base = root + slug + '/';
+
+    // ID3 APIC format is a MIME ("image/png"); derive a file extension + a safe
+    // content-type for the cover write.
+    const coverExt = (f) => { f = String(f || '').toLowerCase();
+      return f.includes('png') ? 'png' : (f.includes('jpeg') || f.includes('jpg')) ? 'jpg'
+        : f.includes('webp') ? 'webp' : f.includes('gif') ? 'gif' : 'img'; };
+    const coverMime = (f) => String(f || '').includes('/') ? f : `image/${coverExt(f)}`;
+    const b64ToBytes = (b64) => { const bin = atob(b64); const u = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; };
+    // Same-origin PUT to the local pod (Electron injects the gate token on
+    // app→pod requests; the server is allow-all).
+    const podPut = async (url, body, ct) => {
+      const r = await fetch(url, { method: 'PUT', headers: { 'content-type': ct }, body });
+      if (!r.ok) throw new Error(`PUT ${url} → ${r.status}`);
+    };
+
+    // One cover per release (from a track with embedded art) → its filename for
+    // foaf:depiction, plus the bytes to write.
+    const covers = new Map();
+    const coverWrites = [];
+    for (const r of grouped.releases) {
+      if (!r.artFromAbsPath) continue;
+      let art; try { art = await dk.readCover(r.artFromAbsPath); } catch { art = null; }
+      if (!art || !art.base64) continue;
+      const file = `art-${r.slug}.${coverExt(art.format)}`;
+      covers.set(r.slug, { file });
+      coverWrites.push({ url: base + 'releases/' + file, mime: coverMime(art.format), base64: art.base64 });
+    }
+
+    const docs = buildLibraryDocs(grouped, { title: 'My Music', covers });
+    updateStatus(status, `Importing ${grouped.releases.length} album(s), ${scan.count} track(s)…`);
+    try {
+      for (const [rel, body] of Object.entries(docs)) await podPut(base + rel, body, 'text/turtle');
+      for (const c of coverWrites) await podPut(c.url, b64ToBytes(c.base64), c.mime);
+
+      // Record the library in libraries/imported.ttl so it survives a restart
+      // (panel mode skips localStorage; the boot reader loadImportedLibraryConfigs
+      // re-lists these). Merge with any existing members; dcat:catalog + dct:title
+      // are already in the model.
+      const importedUrl = root + 'imported.ttl';
+      let members = [];
+      try {
+        const r = await fetch(importedUrl, { headers: { accept: 'text/turtle' } });
+        if (r.ok) members = [...(await r.text()).matchAll(/<([^>]*index\.ttl[^>]*)>/g)].map((m) => m[1]);
+      } catch { /* none yet */ }
+      members = [...new Set([...members, `./${slug}/index.ttl#it`])];
+      const registry =
+`@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+<#it>
+    a dcat:Catalog ;
+    dct:title "Imported libraries" ;
+    dcat:catalog ${members.map((m) => `<${m}>`).join(', ')} .
+`;
+      await podPut(importedUrl, registry, 'text/turtle');
+    } catch (e) {
+      updateStatus(status, `Import write failed: ${e.message}`);
+      return;
+    }
+    await addLibrarySource('My Music', base + 'index.ttl');
   }
 
   function renameLibrary(id, newLabel) {
@@ -2682,7 +2790,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
     if (currentTrack && currentTrack.id !== track.id && !opts.fromHistory) recordHistory();
     currentTrack = track;
     if (autoplay) hasUserStarted = true;
-    audio.src = track.url;
+    audio.src = playableUrl(track.url);
     audio.load();
     // Track whether the loaded media is a movie, and reveal the <video>
     // accordingly (Req 4); media-audio chrome ignores has-video.
@@ -3313,7 +3421,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
         }
         // State-restore puts a track in `currentTrack` without loading the
         // audio source. First press of Play should start playback.
-        if (!audio.src || audio.src !== currentTrack.url) {
+        if (!audio.src || audio.src !== playableUrl(currentTrack.url)) {
           loadAndPlay(currentTrack);
           return;
         }
@@ -3666,6 +3774,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
       : `Installed ${r.put} files with ${r.failed.length} problem(s): ${r.failed.slice(0, 3).join('; ')}${reg}`);
   }
   installPodMenuItem?.addEventListener('click', installOnPod);
+  importMusicMenuItem?.addEventListener('click', importMusicFolder);
 
   // Push ONLY the app files (index.html + ia-player.js) to an
   // already-installed pod — for a bundle change without re-sending the
@@ -3926,6 +4035,7 @@ function createPlayer({ libraryConfigs, libs, host }) {
       viewDeleted: '.gear-view-deleted',
       installPod:  '.gear-install-pod',
       updateApp:   '.gear-update-app',
+      importMusic: '.gear-import-music',
     }[name];
     if (sel) container.querySelector(sel)?.click();
   };
@@ -4026,6 +4136,37 @@ function loadLibraryConfigs(defaultSrc) {
     console.warn('Could not read library configs from localStorage:', err);
   }
   return [{ id: 'default', label: 'Internet Archive Music', url: defaultSrc, enabled: true }];
+}
+
+// Imported libraries (the "Import music folder…" flow) can't ride localStorage
+// — the dk player runs in panel mode, where persistConfigs() is a no-op. They're
+// recorded instead in a small RDF registry, libraries/imported.ttl (a dcat:Catalog
+// whose dcat:catalog members are each imported library's index.ttl#it), which the
+// player reads at boot. Returns extra library configs (listed, loaded on demand);
+// [] when the registry is absent/unreadable. `ref` is the default source URL, used
+// only to locate the libraries/ root.
+async function loadImportedLibraryConfigs(ref) {
+  const root = String(ref || '').match(/^(.*\/libraries\/)/)?.[1];
+  if (!root) return [];
+  let text;
+  try {
+    const r = await fetch(new URL('imported.ttl', new URL(root, location.href)).href, { headers: { accept: 'text/turtle' } });
+    if (!r.ok) return [];
+    text = await r.text();
+  } catch { return []; }
+  const out = [];
+  const seen = new Set();
+  // Members are written relative (e.g. <./my_music/index.ttl#it>) so match any
+  // index.ttl reference; the libraries/ slug is read off the RESOLVED URL below.
+  for (const m of text.matchAll(/<([^>]*index\.ttl[^>]*)>/g)) {
+    let abs; try { abs = new URL(m[1], new URL(root, location.href)).href.split('#')[0]; } catch { continue; }
+    const slug = abs.match(/\/libraries\/([^/]+)\//)?.[1];
+    if (!slug || seen.has(abs) || slug === 'internet_archive_music' || slug === 'internet_archive_movies') continue;
+    seen.add(abs);
+    const label = slug.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+    out.push({ id: 'imported-' + slug, label, url: abs, enabled: false });
+  }
+  return out;
 }
 
 function saveLibraryConfigs(libs) {
@@ -4274,7 +4415,13 @@ class IaPlayerElement extends HTMLElement {
     // never read or overwrite each other's library set.
     const ns = this.getAttribute('storage-ns');
     if (ns && defaultSrc) {
-      init(this, [{ id: ns, label: ns, url: defaultSrc, enabled: true }]);
+      const base = [{ id: ns, label: ns, url: defaultSrc, enabled: true }];
+      // Append any libraries the user imported (recorded in libraries/imported.ttl)
+      // so they survive a restart. Best-effort: a missing registry just yields the
+      // single source-driven library.
+      loadImportedLibraryConfigs(defaultSrc)
+        .then((extra) => init(this, extra.length ? base.concat(extra) : base))
+        .catch(() => init(this, base));
       return;
     }
     if (!defaultSrc && !localStorage.getItem(LIB_KEY)) {

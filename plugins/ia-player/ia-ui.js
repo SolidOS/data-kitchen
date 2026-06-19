@@ -142,6 +142,7 @@ export function createPlayerUI({ mediaType = 'audio', panel = false } = {}) {
     fontSizeBtn: container.querySelector('.gear-fontsize'),
     filtersMenuItem: container.querySelector('.gear-filters'),
     viewDeletedMenuItem: container.querySelector('.gear-view-deleted'),
+    importMusicMenuItem: container.querySelector('.gear-import-music'),
     savePlaylistMenuItem: container.querySelector('.gear-save-playlist'),
     setMenuOpen,
     setPlayLabel

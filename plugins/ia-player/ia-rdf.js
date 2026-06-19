@@ -647,18 +647,21 @@ export function parseBookmarks(store, baseURI, mediaType = 'audio') {
     const genre = store.any(node, profile.genreProp)?.value;
     if (!genre) continue;
     const srcPlaylist = store.any(node, DCT('source'));
+    const landingPage = store.any(node, DCAT('landingPage'))?.value || null;
     bookmarks.push({
       node,
       label: store.any(node, profile.nameProp)?.value || 'Untitled',
       topic: genre,
-      url: store.any(node, DCAT('landingPage'))?.value || null,
+      url: landingPage,
       source: null,
       // dcterms:source → the playlist this artist is a live link to
-      // (convert-to-artist). Its presence is ALSO the "local data"
-      // signal: the UI then reads albums/tracks straight from the RDF
-      // instead of doing an archive.org search.
+      // (convert-to-artist). Its presence is ALSO the "local data" signal:
+      // the UI reads albums/tracks straight from the RDF instead of doing an
+      // archive.org search. An agent with NO archive.org landing page can
+      // likewise only be served locally (e.g. an imported library — its
+      // releases link back via foaf:maker), so treat it as local data too.
       sourcePlaylist: srcPlaylist ? srcPlaylist.value : null,
-      localData: !!srcPlaylist,
+      localData: !!srcPlaylist || !landingPage,
     });
   }
 

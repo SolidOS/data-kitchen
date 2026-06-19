@@ -130,7 +130,17 @@ appears as a ghost under "Other".
 - **dk-dokieli** (`plugins/solidos/dk-dokieli.js`) — a standalone direct editor
   (loads the doc `.html` directly, no SolidOS browser); identity/auth via
   `dokieli-adapter.js`. Shows a spinner overlay until the doc iframe loads.
-- **ia-player** (`plugins/ia-player/`) — Internet Archive music player.
+- **ia-player** (`plugins/ia-player/`) — Internet Archive music player, with a
+  **local import** path (gear ▸ "Import music folder…"): the Electron main process
+  scans a chosen folder (`import-music.mjs`, `music-metadata`) and the renderer
+  authors a "My Music" RDF library (`import-id3-build.js`, a pure/SHACL-tested
+  builder) whose `mo:item` points `file://` at the **originals in place** (never
+  copied); embedded art → `foaf:depiction`. Local audio plays via the `dkfile:`
+  scheme (see electron-config README). Imported libraries persist across restart
+  via an RDF registry `libraries/imported.ttl` (read at boot by
+  `loadImportedLibraryConfigs`). A catalog Agent with no `dcat:landingPage` is
+  treated as local data (`ia-rdf.js`), so its albums/tracks resolve from the store,
+  not an archive.org search.
 
 ## Pod / server / auth model
 

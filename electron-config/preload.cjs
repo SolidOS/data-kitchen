@@ -235,4 +235,18 @@ contextBridge.exposeInMainWorld('dkElectron', {
   // port changed, and applies window-geometry edits live.
   getConfig: () => ipcRenderer.invoke('dk:get-config'),
   saveConfig: (cfg) => ipcRenderer.invoke('dk:save-config', cfg),
+  // Import-music (ia-player): main shows a folder picker, recursively scans the
+  // audio files and parses their ID3/tags. importMusic() resolves to
+  // { status: 'scanned', root, count, tracks } | { status: 'cancelled' } |
+  // { status: 'error', message }. onImportProgress(cb) subscribes to per-file
+  // progress ({ done, total, absPath }) during a scan; returns an unsubscribe.
+  // readCover(absPath) resolves to { format, base64 } | null for one track's
+  // embedded art. The renderer turns this metadata into the library RDF.
+  importMusic: () => ipcRenderer.invoke('dk:import-music'),
+  readCover: (absPath) => ipcRenderer.invoke('dk:read-cover', absPath),
+  onImportProgress: (cb) => {
+    const h = (_e, p) => cb(p);
+    ipcRenderer.on('dk:import-progress', h);
+    return () => ipcRenderer.removeListener('dk:import-progress', h);
+  },
 });

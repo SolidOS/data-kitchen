@@ -174,11 +174,28 @@ Main → renderer:
 | Channel | To | Payload |
 |---------|----|---------|
 | `dk:reader-state` | reader toolbar | `{canGoBack, canGoForward, url}` |
+| `dk:import-progress` | ia-player | `{done, total, absPath}` during a music-folder scan |
+
+Request/response (`ipcMain.handle`, awaited from the renderer): `dk:get-config`,
+`dk:save-config`, `dk:move-pod`, and the music import pair `dk:import-music`
+(folder picker → recursive `music-metadata` scan in `import-music.mjs`; returns
+`{status, root, count, tracks}`) and `dk:read-cover` (one file's embedded art).
+
+## Local-file playback (`dkfile:`)
+
+The app view is an `http://localhost` origin, which Chromium forbids from loading
+`file://` (the block can't be lifted for the special `file:` scheme). So imported
+music — whose `mo:item` is the original's in-place `file://` URL — is streamed over
+a custom **`dkfile:`** scheme: registered privileged before `app.ready`, served
+read-only with **Range** support (seeking) by `installFileProtocol()` in
+`main.cjs`. The ia-player rewrites `file:`→`dkfile:` only at the media element; the
+RDF keeps plain `file://`.
 
 `contextBridge` surfaces (what page/JS can call):
 
 - `window.dkElectron` (app, via `preload.cjs`): `restart`, `closeReader`,
-  `moveMyPod`, `getConfig`, `saveConfig`, plus `isElectron`.
+  `moveMyPod`, `getConfig`, `saveConfig`, `importMusic`, `readCover`,
+  `onImportProgress`, plus `isElectron`.
 - `window.readerChrome` (reader toolbar, via `reader-chrome-preload.cjs`):
   `back`, `forward`, `reload`, `close`, `onState`.
 
@@ -186,7 +203,8 @@ Main → renderer:
 
 | File | Role |
 |------|------|
-| `main.cjs` | window + app view, server lifecycle, `will-navigate` → reader, `setWindowOpenHandler` (login popup vs reader), gate-token header injection, all IPC wiring |
+| `main.cjs` | window + app view, server lifecycle, `will-navigate` → reader, `setWindowOpenHandler` (login popup vs reader), gate-token header injection, the `dkfile:` local-file streamer, all IPC wiring |
+| `import-music.mjs` | main-side music scanner (ESM): recursive walk + `music-metadata` tag parse + cover extraction, behind `dk:import-music` / `dk:read-cover` |
 | `external-views.cjs` | the `ExternalViews` class: builds/positions/suspends the pane, pane-loading cover, and reader; the three hardened sessions |
 | `preload.cjs` | app preload: reports content/pane rects, detects external iframes (open/close pane), the suspend/resume guard, the `dkElectron` bridge |
 | `reader-chrome.html` | the reader's toolbar markup (Back/Forward/Reload/Close + URL) |

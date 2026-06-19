@@ -78,6 +78,13 @@
           "mode": "acl:Write"
         },
         {
+          "@id": "#ImportMusic",
+          "@type": "Component",
+          "label": "Import music folder…",
+          "name": "importMusic",
+          "mode": "acl:Write"
+        },
+        {
           "@id": "#InstallPod",
           "@type": "Component",
           "label": "Install on my Pod…",

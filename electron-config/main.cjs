@@ -10,10 +10,11 @@
 // CORS proxy (:8001) start with the app and are killed on quit (servers.js).
 
 const {
-  app, BaseWindow, WebContentsView, BrowserWindow, ipcMain, session, screen, Menu, clipboard, shell, dialog,
+  app, BaseWindow, WebContentsView, BrowserWindow, ipcMain, session, screen, Menu, clipboard, shell, dialog, protocol,
 } = require('electron');
 const path = require('path');
 const fs = require('fs');
+const { Readable } = require('node:stream');
 
 const {
   APP_URL, PUBLIC_ORIGIN, PUBLIC_PORT, CSS_INTERNAL_PORT, PROXY_PORT, POD_ROOT, POD_POINTER,
@@ -80,6 +81,21 @@ const CONFIG_NUM_KEYS = ['publicPort', 'privatePort', 'proxyPort', 'width', 'hei
 // <sol-default> re-resolves stale and theme/font changes never take effect.
 app.commandLine.appendSwitch('disable-http-cache');
 
+// Let the http-origin app view play the user's OWN imported audio. An imported
+// music library keeps the originals in place and stores file:// URLs in mo:item;
+// but Chromium blocks file:// as a local resource from a non-file origin, and
+// the block can't be lifted for the special file: scheme. So local audio is
+// served over a custom dkfile: scheme that IS fetchable/streamable from the app
+// origin — the player rewrites a track's file:// URL to dkfile: only when it
+// sets the media element src. Must be declared before app 'ready'; the bytes
+// are served read-only, with Range support, by installFileProtocol().
+const LOCAL_SCHEME = 'dkfile';
+try {
+  protocol.registerSchemesAsPrivileged([
+    { scheme: LOCAL_SCHEME, privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true, corsEnabled: true } },
+  ]);
+} catch (e) { console.warn('[dk] could not register the local-file scheme:', e.message); }
+
 const APP_ORIGIN = new URL(APP_URL).origin;
 
 // A cross-origin http(s) URL — content that should leave the app view and show
@@ -91,6 +107,18 @@ function isExternalUrl(url) {
   } catch {
     return false;
   }
+}
+
+// Content-Type for a local media file served by installFileProtocol(). Covers
+// the audio formats the importer scans; falls back to a generic stream so an
+// unknown extension still downloads rather than 415s.
+const AUDIO_MIME = {
+  '.mp3': 'audio/mpeg', '.m4a': 'audio/mp4', '.aac': 'audio/aac',
+  '.flac': 'audio/flac', '.ogg': 'audio/ogg', '.oga': 'audio/ogg',
+  '.opus': 'audio/opus', '.wav': 'audio/wav', '.weba': 'audio/webm',
+};
+function audioMime(filePath) {
+  return AUDIO_MIME[path.extname(filePath).toLowerCase()] || 'application/octet-stream';
 }
 
 // Opt-in auto-reload (DK_RELOAD=1). Off by default: it recursively watches the
@@ -135,6 +163,11 @@ class DesktopApp {
     // Dev: the app is served from local working trees that change between
     // launches; clear the HTTP cache so edited modules are always picked up.
     try { await session.defaultSession.clearCache(); } catch (_) {}
+    // Let the http-origin app view play the user's OWN local audio files: an
+    // imported music library stores file:// URLs in mo:item (the originals are
+    // never copied). webSecurity stays on; this handler only ever GETs the
+    // requested file, with Range support so the <video> element can seek.
+    this.installFileProtocol();
     // The pod resource is the source of truth: trail userData to it (and seed it
     // if absent) now that CSS is up, BEFORE creating the window so geometry is
     // current.
@@ -225,6 +258,58 @@ class DesktopApp {
     session.fromPartition('persist:trusted-guest').webRequest.onBeforeSendHeaders({ urls: podUrls }, (details, callback) => {
       details.requestHeaders['x-dk-token'] = token;
       callback({ requestHeaders: details.requestHeaders });
+    });
+  }
+
+  // Stream local files to the (http-origin) app view over the custom dkfile:
+  // scheme so a <video>/<audio> element can play the user's in-place audio
+  // (Chromium blocks file:// from a non-file origin). Read-only GET; honours the
+  // Range header (a 206 partial response) so seeking works. Scoped to the
+  // default (app) session.
+  installFileProtocol() {
+    session.defaultSession.protocol.handle(LOCAL_SCHEME, async (request) => {
+      let filePath;
+      try {
+        // The renderer rewrites file:///abs → dkfile:///abs. As a *standard*
+        // scheme Chromium folds the first path segment of dkfile:///home/… into
+        // the URL host, so reassemble the absolute path as "/<host><pathname>".
+        const u = new URL(request.url);
+        filePath = (u.host ? '/' + decodeURIComponent(u.host) : '') + decodeURIComponent(u.pathname);
+        // Windows: strip the leading slash before the drive letter (/C:/…).
+        if (process.platform === 'win32' && /^\/[A-Za-z]:/.test(filePath)) filePath = filePath.slice(1);
+      } catch {
+        return new Response('Bad file URL', { status: 400 });
+      }
+      let stat;
+      try { stat = await fs.promises.stat(filePath); }
+      catch { return new Response('Not found', { status: 404 }); }
+      if (!stat.isFile()) return new Response('Forbidden', { status: 403 });
+
+      const total = stat.size;
+      const type = audioMime(filePath);
+      const range = request.headers.get('range');
+      if (range) {
+        const m = /bytes=(\d*)-(\d*)/.exec(range) || [];
+        let start = m[1] ? parseInt(m[1], 10) : 0;
+        let end   = m[2] ? parseInt(m[2], 10) : total - 1;
+        if (!Number.isFinite(start) || start < 0) start = 0;
+        if (!Number.isFinite(end) || end >= total) end = total - 1;
+        if (start > end) return new Response('Range Not Satisfiable', { status: 416, headers: { 'Content-Range': `bytes */${total}` } });
+        const stream = fs.createReadStream(filePath, { start, end });
+        return new Response(Readable.toWeb(stream), {
+          status: 206,
+          headers: {
+            'Content-Type': type,
+            'Content-Length': String(end - start + 1),
+            'Content-Range': `bytes ${start}-${end}/${total}`,
+            'Accept-Ranges': 'bytes',
+          },
+        });
+      }
+      return new Response(Readable.toWeb(fs.createReadStream(filePath)), {
+        status: 200,
+        headers: { 'Content-Type': type, 'Content-Length': String(total), 'Accept-Ranges': 'bytes' },
+      });
     });
   }
 
@@ -429,6 +514,50 @@ class DesktopApp {
       app.quit();
       return { status: 'moved', dest: to };
     });
+
+    // Import music: pick a folder, recursively scan its audio files and parse
+    // their tags in the main process (Node + music-metadata), streaming progress
+    // back to the renderer. Returns the flat metadata; the renderer authors the
+    // library RDF and points mo:item file:// at the originals (never copied).
+    ipcMain.handle('dk:import-music', async (e) => {
+      // Test hook: DK_IMPORT_TEST_DIR bypasses the interactive folder picker so
+      // the full scan→author→write path can be driven end-to-end in e2e tests.
+      // Never set in production.
+      let root = process.env.DK_IMPORT_TEST_DIR || null;
+      if (!root) {
+        const res = await dialog.showOpenDialog({
+          title: 'Choose a folder of music to import',
+          properties: ['openDirectory'],
+        });
+        if (res.canceled || !res.filePaths || !res.filePaths[0]) return { status: 'cancelled' };
+        root = res.filePaths[0];
+      }
+      try {
+        const { scanFolder } = await this._musicScanner();
+        const send = (payload) => { try { if (!e.sender.isDestroyed()) e.sender.send('dk:import-progress', payload); } catch { /* renderer gone */ } };
+        const result = await scanFolder(root, { onProgress: send });
+        return { status: 'scanned', ...result };
+      } catch (err) {
+        return { status: 'error', message: err.message || String(err) };
+      }
+    });
+
+    // Read one file's embedded cover art (base64); the renderer requests one per
+    // release to write as the release artwork (foaf:depiction).
+    ipcMain.handle('dk:read-cover', async (_e, absPath) => {
+      if (typeof absPath !== 'string' || !absPath) return null;
+      try {
+        const { readCover } = await this._musicScanner();
+        return await readCover(absPath);
+      } catch { return null; }
+    });
+  }
+
+  // Load the ESM scanner once (music-metadata is ESM-only; main is CommonJS).
+  _musicScanner() {
+    return (this._scannerPromise ||= import(
+      require('node:url').pathToFileURL(path.join(__dirname, 'import-music.mjs')).href
+    ));
   }
 
   wireContextMenu(wc) {
