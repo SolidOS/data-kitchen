@@ -428,6 +428,10 @@ class DesktopApp {
     ipcMain.on('dk:pane-rect', (_e, rect) => this.external.setPaneRect(rect));
     ipcMain.on('dk:pane-open', (_e, { url, rect }) => this.external.openPane(url, rect));
     ipcMain.on('dk:pane-close', () => this.external.closePane());
+    // sol-feed inline article pane (locked external session, sub-region).
+    ipcMain.on('dk:article-rect', (_e, rect) => this.external.setArticleRect(rect));
+    ipcMain.on('dk:article-open', (_e, { url, rect }) => this.external.openArticlePane(url, rect));
+    ipcMain.on('dk:article-close', () => this.external.closeArticlePane());
     ipcMain.on('dk:overlays-suspend', () => this.external.suspend());
     ipcMain.on('dk:overlays-resume', () => this.external.resume());
     ipcMain.on('dk:reader-back', () => this.external.readerBack());

@@ -42,34 +42,11 @@ const server = http.createServer(async (req, res) => {
     const response = await fetch(uri);
     const type = response.headers.get('content-type') || '';
 
-    if (type.includes('text/html')) {
-      // A site that refuses framing (X-Frame-Options, or a restrictive CSP
-      // frame-ancestors) re-routes its client app on this proxy URL and
-      // renders its own 404 inside the in-pane reader iframe. For those we
-      // strip the page's scripts so the server-rendered article survives;
-      // framing-friendly pages keep their JS intact.
-      const xfo = (response.headers.get('x-frame-options') || '').toLowerCase();
-      const csp = (response.headers.get('content-security-policy') || '').toLowerCase();
-      const fa = (csp.match(/frame-ancestors([^;]*)/) || [, ''])[1];
-      const refusesFraming =
-        xfo.includes('deny') || xfo.includes('sameorigin') || (fa && !fa.includes('*'));
-
-      // Inject <base> so the article's relative assets (css/img) resolve
-      // against its real origin when shown in the in-pane reader iframe.
-      let html = await response.text();
-      const base = `<base href="${uri}">`;
-      html = /<head[^>]*>/i.test(html) ? html.replace(/<head([^>]*)>/i, `<head$1>${base}`) : base + html;
-
-      if (refusesFraming) {
-        html = html
-          .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')   // inline + external
-          .replace(/<script\b[^>]*\/>/gi, '');                  // self-closing
-        console.log('  refuses framing → stripped scripts');
-      }
-      res.writeHead(200, { ...CORS, 'content-type': 'text/html; charset=utf-8' });
-      return res.end(html);
-    }
-
+    // Everything (HTML included) is returned verbatim with permissive CORS.
+    // The proxy no longer rewrites HTML: feed articles are shown in a native
+    // view that loads the live page directly, so there is no in-iframe framing
+    // problem to work around. The proxy's remaining job is letting the app READ
+    // cross-origin feed XML / RDF / images the browser would otherwise block.
     const buf = Buffer.from(await response.arrayBuffer());
     res.writeHead(response.status || 200, { ...CORS, ...(type ? { 'content-type': type } : {}) });
     return res.end(buf);

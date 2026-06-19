@@ -216,7 +216,16 @@ reconciled later — act on the pod without sync caveats.
 
 Electron opens external URLs via `window.open` → a **native WebContentsView**,
 not iframes (avoids X-Frame-Options errors). Keep-alive external content uses an
-iframe-pane shadow driven by the tabs.
+iframe-pane shadow driven by the tabs — the shadow iframe is blanked to
+`about:blank` so the cross-origin page only ever runs in the native view, never
+in the app's gate-token session.
+
+`sol-feed` articles work the same way (no stripped-iframe reader): the reading
+pane carries the URL on `data-article-url`; dk's preload reads it via sol-feed's
+open shadow root and paints a **locked-session** (`persist:external`)
+`WebContentsView` over the pane's box. The live page runs its own JS, so a
+Cloudflare/JS gate clears. The bundled CORS proxy therefore **no longer rewrites
+HTML** — it only relays cross-origin feed XML/RDF/images the browser would block.
 
 ## Conventions & repo facts
 

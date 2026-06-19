@@ -1,7 +1,7 @@
 // Integration test for proxy/index.cjs — the CORS reader proxy. Boots the real
-// proxy (gated) plus a tiny in-test origin server, and asserts the proxy's
-// content transformation: <base> injection always, and script-stripping ONLY
-// when the upstream refuses framing (X-Frame-Options / restrictive CSP).
+// proxy (gated) plus a tiny in-test origin server, and asserts that the proxy
+// passes content through VERBATIM with permissive CORS (it no longer rewrites
+// HTML — feed articles load live in a native view, not an in-iframe proxy view).
 
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
@@ -43,22 +43,12 @@ after(async () => {
 
 const get = (path) => fetch(`${proxyBase}${path}`, { headers: { 'x-dk-token': TOKEN } });
 
-test('framing-friendly page keeps its scripts and gains a <base>', async () => {
+test('HTML is passed through verbatim with permissive CORS (no rewriting)', async () => {
   const r = await get(`/proxy?uri=${encodeURIComponent(originBase + '/frameok')}`);
   assert.equal(r.status, 200);
   assert.equal(r.headers.get('access-control-allow-origin'), '*');
   const html = await r.text();
-  assert.match(html, /<base href="[^"]*\/frameok">/);
-  assert.match(html, /<script>alert\(1\)<\/script>/, 'scripts preserved when framing is allowed');
-});
-
-test('page that refuses framing has its scripts stripped', async () => {
-  const r = await get(`/proxy?uri=${encodeURIComponent(originBase + '/frameno')}`);
-  assert.equal(r.status, 200);
-  const html = await r.text();
-  assert.doesNotMatch(html, /<script/, 'scripts stripped when framing is refused');
-  assert.match(html, /<base href=/, '<base> still injected');
-  assert.match(html, /hi/, 'server-rendered body survives');
+  assert.equal(html, PAGE, 'returned unchanged — scripts kept, no <base> injected');
 });
 
 test('OPTIONS preflight is answered with CORS once past the gate', async () => {

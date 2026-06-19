@@ -9,6 +9,13 @@
 //     overlays there), and
 //   - detects when an external iframe is mounted/removed in #dk-content,
 //     hiding it and telling main to show / hide the native pane.
+// Crucially, the external iframe is also NEUTRALIZED (its src is swapped to
+// about:blank, the real URL stashed in data-dk-external-src) so it becomes a
+// pure layout placeholder. Only the hardened native WebContentsView (loopback
+// blocked) ever loads the external content. Left live, an XFO-less cross-origin
+// page would run in the app's DEFAULT session — the one whose pod requests get
+// the gate token auto-injected — which is exactly the privilege the native-view
+// overlay exists to deny external content.
 // window.open content (search, feed, login) is handled entirely in main via
 // setWindowOpenHandler — nothing to do here.
 
@@ -47,6 +54,20 @@ function rectOf(el) {
 // The external iframe currently shadowed by the native pane, if any.
 let trackedIframe = null;
 
+// The real external URL of an adopted iframe, stashed element-side (NOT as a
+// markup attribute) because once adopted the iframe's own src is about:blank.
+// WeakMap so a removed/keep-alive-dropped iframe doesn't leak.
+const externalUrls = new WeakMap();
+
+// The external URL an iframe stands for: the stashed real URL if we've already
+// adopted it (its `data-dk-native-view` is set and src is now about:blank),
+// else a freshly-mounted external src.
+function externalUrlOf(f) {
+  if (f.dataset.dkNativeView) return externalUrls.get(f) || null;
+  const src = f.getAttribute('src');
+  return isExternal(src) ? src : null;
+}
+
 function findExternalIframe() {
   const content = document.querySelector(CONTENT_SELECTOR);
   if (!content) return null;
@@ -58,13 +79,21 @@ function findExternalIframe() {
   // wrappers with the `hidden` attribute → display:none → no client rects;
   // our own visibility:hidden still has rects, so the active pane wins). Null
   // when none is displayed, so switching to non-external content closes the pane.
+  // We match by externalUrlOf() — once adopted an iframe's src is about:blank,
+  // so the real URL is recovered from the externalUrls stash.
   let active = null;
-  for (const f of content.querySelectorAll('iframe[src]')) {
-    if (!isExternal(f.getAttribute('src'))) continue;
+  for (const f of content.querySelectorAll('iframe')) {
+    if (!externalUrlOf(f)) continue;
     if (f.getClientRects().length > 0) active = f;
   }
   return active;
 }
+
+// sol-feed inline article pane (see syncArticlePane): the reading-pane element
+// currently mirrored by a native browserview, and the URL it shows.
+let articlePaneEl = null;
+let articleUrl = '';
+const feedShadowsBound = new WeakSet();
 
 let rafPending = false;
 function report() {
@@ -78,6 +107,12 @@ function report() {
     // plugin pages draw their own chrome (e.g. a sub-tab strip) around the
     // iframe, and that must stay visible.
     if (trackedIframe) ipcRenderer.send('dk:pane-rect', rectOf(trackedIframe));
+    // Keep the article pane glued to sol-feed's reading-pane box; if that box is
+    // gone (its tab was hidden or the feed removed), close the native view.
+    if (articlePaneEl) {
+      if (articlePaneEl.getClientRects().length > 0) ipcRenderer.send('dk:article-rect', rectOf(articlePaneEl));
+      else { articlePaneEl = null; articleUrl = ''; ipcRenderer.send('dk:article-close'); }
+    }
   });
 }
 
@@ -85,12 +120,66 @@ function sync() {
   const iframe = findExternalIframe();
   if (iframe && iframe !== trackedIframe) {
     trackedIframe = iframe;
-    iframe.style.visibility = 'hidden';   // keep its layout box; native view sits on top
+    const url = externalUrlOf(iframe);
+    externalUrls.set(iframe, url);        // remember it before we blank src
     iframe.dataset.dkNativeView = '1';
-    ipcRenderer.send('dk:pane-open', { url: iframe.getAttribute('src'), rect: rectOf(iframe) });
+    iframe.style.visibility = 'hidden';   // keep its layout box; native view sits on top
+    ipcRenderer.send('dk:pane-open', { url, rect: rectOf(iframe) });
+    // Neutralize the iframe: only the hardened native WebContentsView loads the
+    // external URL. Left live, the cross-origin page would run in the app's
+    // default (gate-token-bearing) session. (src changes aren't observed — the
+    // MutationObserver below filters to the `hidden` attribute — so this is safe
+    // and won't re-enter sync().)
+    if (iframe.getAttribute('src') !== 'about:blank') iframe.src = 'about:blank';
   } else if (!iframe && trackedIframe) {
     trackedIframe = null;
     ipcRenderer.send('dk:pane-close');
+  }
+  report();
+}
+
+// --- sol-feed inline article pane -----------------------------------------
+// sol-feed (in Electron) shows a clicked article in a native browserview rather
+// than a stripped iframe: it marks its reading-pane element (.feed-article-pane,
+// inside its OPEN shadow root) with data-article-url=<the live URL>. dk paints a
+// locked WebContentsView over that element's box; an empty/removed attribute
+// closes it. querySelector can't cross a shadow boundary, so we observe each
+// sol-feed's shadowRoot directly (a cross-world MutationObserver — the same
+// technique the overlay guard uses) to notice the pane appearing and the
+// attribute changing on a click.
+function findArticlePane() {
+  for (const feed of document.querySelectorAll('sol-feed')) {
+    const pane = feed.shadowRoot && feed.shadowRoot.querySelector('.feed-article-pane');
+    if (pane) return pane;
+  }
+  return null;
+}
+
+function bindFeedShadows() {
+  for (const feed of document.querySelectorAll('sol-feed')) {
+    if (feed.shadowRoot && !feedShadowsBound.has(feed)) {
+      feedShadowsBound.add(feed);
+      new MutationObserver(syncArticlePane).observe(feed.shadowRoot, {
+        childList: true, subtree: true, attributes: true, attributeFilter: ['data-article-url'],
+      });
+    }
+  }
+  syncArticlePane();
+}
+
+function syncArticlePane() {
+  const pane = findArticlePane();
+  const url = (pane && pane.getAttribute('data-article-url')) || '';
+  if (pane && url) {
+    if (pane !== articlePaneEl || url !== articleUrl) {
+      articlePaneEl = pane;
+      articleUrl = url;
+      ipcRenderer.send('dk:article-open', { url, rect: rectOf(pane) });
+    }
+  } else if (articlePaneEl) {
+    articlePaneEl = null;
+    articleUrl = '';
+    ipcRenderer.send('dk:article-close');
   }
   report();
 }
@@ -103,7 +192,7 @@ function install() {
   // wrappers (childList) and toggles their `hidden` attribute to switch panes
   // (re-selecting an existing item is a hidden-attr change with no childList
   // change), so watch both.
-  new MutationObserver(() => sync()).observe(content, {
+  new MutationObserver(() => { sync(); bindFeedShadows(); }).observe(content, {
     childList: true, subtree: true, attributes: true, attributeFilter: ['hidden'],
   });
 
@@ -113,6 +202,7 @@ function install() {
   window.addEventListener('scroll', report, { passive: true, capture: true });
 
   sync();
+  bindFeedShadows();
   return true;
 }
 

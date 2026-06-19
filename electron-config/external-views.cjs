@@ -77,6 +77,7 @@ class ExternalViews {
     this.contentRect = null;   // latest tab-content rect (renderer coords == base coords)
     this.paneRect = null;      // latest rect of the iframe the pane shadows
     this.pane = null;
+    this.articlePane = null;   // sol-feed inline reader (locked external session)
     this.readerBar = null;
     this.readerContent = null;
   }
@@ -174,6 +175,42 @@ class ExternalViews {
     }
     this.paneRect = null;
   }
+
+  // --- article pane (sol-feed inline reader) -------------------------------
+  // A feed article shown beside sol-feed's card list. Like the pane it's a
+  // native view over a sub-region the renderer reports — but on the LOCKED
+  // external session (blocked from every loopback/pod service), because a feed
+  // article is incidental external content, not a deliberately-opened pod app.
+  // The live page runs its own JS (so e.g. a Cloudflare check clears) — the old
+  // script-stripping proxy iframe could not do that. No toolbar: it's an inline
+  // pane, not the pop-out reader.
+
+  openArticlePane(url, rect) {
+    if (!url) return;
+    if (rect) this.articleRect = rect;
+    if (!this.articlePane) this.articlePane = this._build(undefined, undefined, EXTERNAL_PARTITION);
+    this._articlePaneShown = true;
+    if (!this._suspended) {
+      this.baseWindow.contentView.addChildView(this.articlePane);   // on top of app view
+      this.articlePane.setBounds(this._articleRegion());
+    }
+    if (this.articlePane.webContents.getURL() !== url) this.articlePane.webContents.loadURL(url);
+  }
+
+  setArticleRect(rect) {
+    this.articleRect = rect;
+    if (this.articlePane && this._articlePaneShown && !this._suspended) this.articlePane.setBounds(rect);
+  }
+
+  closeArticlePane() {
+    if (this.articlePane && this._articlePaneShown) {
+      this.baseWindow.contentView.removeChildView(this.articlePane);
+      this._articlePaneShown = false;
+    }
+    this.articleRect = null;
+  }
+
+  _articleRegion() { return this.articleRect || this._region(); }
 
   // --- pane loading overlay -----------------------------------------------
 
@@ -297,6 +334,7 @@ class ExternalViews {
     if (this._suspended) return;
     this._suspended = true;
     if (this.pane) this.baseWindow.contentView.removeChildView(this.pane);
+    if (this.articlePane && this._articlePaneShown) this.baseWindow.contentView.removeChildView(this.articlePane);
     if (this._paneLoadingShown) this.baseWindow.contentView.removeChildView(this.paneLoading);
     if (this.readerBar) this.baseWindow.contentView.removeChildView(this.readerBar);
     if (this.readerContent) this.baseWindow.contentView.removeChildView(this.readerContent);
@@ -308,6 +346,10 @@ class ExternalViews {
     if (this._paneShown) {
       this.baseWindow.contentView.addChildView(this.pane);
       this.pane.setBounds(this._paneRegion());
+    }
+    if (this._articlePaneShown) {
+      this.baseWindow.contentView.addChildView(this.articlePane);
+      this.articlePane.setBounds(this._articleRegion());
     }
     if (this._paneLoadingShown) {
       this.baseWindow.contentView.addChildView(this.paneLoading);   // stays above the pane
