@@ -227,6 +227,36 @@ open shadow root and paints a **locked-session** (`persist:external`)
 Cloudflare/JS gate clears. The bundled CORS proxy therefore **no longer rewrites
 HTML** — it only relays cross-origin feed XML/RDF/images the browser would block.
 
+## Remember this IdP (durable headless login)
+
+Picking a previously-remembered issuer from the sign-in list logs in with **no
+popup**. Two tiers:
+
+- **Tier 2 (durable, CSS issuers — the local pod + solidcommunity.net, both CSS):**
+  main mints a CSS client-credential (the `/.account/` API) once and keeps it
+  encrypted with Electron `safeStorage` in `<userData>/idp-credentials.json` (0600).
+  Later clicks run a headless DPoP `client_credentials` grant
+  (`electron-config/idp-grant.cjs`, via `jose`) — no browser, **no Authorize
+  screen**. The raw password is **never** stored. All secrets stay in the MAIN
+  process; the renderer only ever gets a proxied `fetch` (IPC `dk:idp-fetch` →
+  `src/dk-idp-proxy-session.js`), never a token or key.
+- **Tier 1 (non-CSS issuers):** the `sol-components` popup attempts
+  `restorePreviousSession` (`prompt=none`) before the interactive login — silent
+  while the refresh/IdP session lasts, else it falls back. May still hit the IdP's
+  Authorize screen. (sol-components change → **npm republish**.)
+
+Triggers: the **local pod auto-mints at startup** (owner account `me@dk.local` /
+`!secret`, zero prompt). A **remote CSS issuer is offered "Remember this sign-in?"**
+right after the first interactive login (`dk:offer-remember` → a dedicated password
+`BrowserWindow`, `electron-config/remember-idp-window.html`); the password reaches
+only main, is used to mint, and is discarded. The issuer-click hook is **dk-local**
+(`src/dk-issuers-feed.js` wraps each `<sol-login>.login()`). Forgetting a local
+issuer revokes it server-side; a remote one drops only the local copy (revoking
+needs the password, which is never kept). The DPoP grant is verified against real
+CSS 7.1.9 by `claude/smoke-tests/grant-smoke.mjs`; the in-Electron UI flow is not
+yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-preload}.cjs`,
+`remember-idp-window.html`, plus `main.cjs` (IPC + auto-mint) and `preload.cjs`.
+
 ## Conventions & repo facts
 
 - `claude/` holds Claude-authored artifacts (plans, smoke-tests, validation,

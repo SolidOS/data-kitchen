@@ -21,6 +21,13 @@ const {
   readConfig, writeConfig, configTopic,
 } = require('./config.cjs');
 const { Servers, getGateToken } = require('./servers.cjs');
+const idpVault = require('./idp-vault.cjs');
+const { mintCredential, createGrantSession, revokeCredentialViaAccount } = require('./idp-grant.cjs');
+const { OWNER_EMAIL, OWNER_PASSWORD } = require('./seed-account.cjs');
+
+// The local pod owner WebID (see seed-account.cjs) — the identity the local-pod
+// client-credential is bound to.
+const OWNER_WEBID = `${PUBLIC_ORIGIN}/dk-pod/profile/card#me`;
 
 // The config's home is a real, browsable pod resource — the source of truth the
 // user sees and the sol-form edits. userData (what config.cjs reads at launch,
@@ -146,6 +153,13 @@ class DesktopApp {
     this.appView = null;
     this.external = null;
     this.servers = new Servers({ log: (m) => console.log(m) });
+    // Live headless sessions for "remember this IdP" (keyed by issuer origin).
+    // Built on demand by dk:silent-login from the encrypted vault; their .fetch
+    // backs dk:idp-fetch. The access tokens / DPoP keys live ONLY here in main.
+    this._grantSessions = new Map();
+    // Issuers the user declined to remember this run (so the post-login offer
+    // doesn't re-pop after a "Not now").
+    this._declinedRemember = new Set();
     app.whenReady().then(() => this.start());
     app.on('window-all-closed', () => { this._stopWatchdog(); this.servers.stop(); if (process.platform !== 'darwin') app.quit(); });
     app.on('before-quit', () => { this._stopWatchdog(); this.servers.stop(); });
@@ -173,6 +187,35 @@ class DesktopApp {
     // current.
     await this.syncConfigFromPod();
     this.createWindow();
+    // Zero-friction durable login for the local pod: mint its client-credential
+    // once (idempotent — skipped if already vaulted), so clicking the local
+    // issuer logs in headlessly. Best-effort + non-blocking; retries cover the
+    // race with the fire-and-forget account seeding in servers.start().
+    this.autoMintLocal();
+  }
+
+  // Mint + vault the local-pod credential if we don't already have one. The
+  // owner account/password are known to the app (seed-account.cjs), so this needs
+  // no prompt. Retries a few times because the account is seeded asynchronously.
+  async autoMintLocal() {
+    if (!idpVault.isAvailable() || idpVault.getCredential(PUBLIC_ORIGIN)) return;
+    for (let attempt = 0; attempt < 5; attempt++) {
+      try {
+        const rec = await mintCredential({
+          origin: PUBLIC_ORIGIN, email: OWNER_EMAIL, password: OWNER_PASSWORD,
+          webId: OWNER_WEBID, gateToken: getGateToken(),
+        });
+        idpVault.putCredential(PUBLIC_ORIGIN, {
+          clientId: rec.clientId, secret: rec.secret, webId: rec.webId,
+          tokenEndpoint: rec.tokenEndpoint, resource: rec.resource, issuerOrigin: rec.issuerOrigin,
+        });
+        console.log('[idp] local pod credential minted + vaulted');
+        return;
+      } catch (e) {
+        if (attempt === 4) { console.warn('[idp] local auto-mint gave up:', e.message); return; }
+        await new Promise((r) => setTimeout(r, 2000));   // wait for account seeding
+      }
+    }
   }
 
   createWindow() {
@@ -555,6 +598,157 @@ class DesktopApp {
         return await readCover(absPath);
       } catch { return null; }
     });
+
+    // ── "Remember this IdP" — durable, headless per-issuer login ─────────────
+    // Secrets stay in main: the renderer only ever names an issuer and receives a
+    // proxied fetch (dk:idp-fetch); it never sees a token or the DPoP key.
+
+    // Mint + vault a durable client-credential. The local pod uses its known
+    // owner account (no creds needed); a remote CSS issuer supplies email+password
+    // ONCE — used transiently to mint, then discarded (only {id,secret} is stored).
+    ipcMain.handle('dk:remember-idp', (_e, { issuer, email, password } = {}) =>
+      this._rememberIdp(issuer, email, password));
+
+    // Post-login offer: the renderer reports a real (non-local) sign-in; if the
+    // issuer is a CSS account API we can durably remember, isn't already
+    // remembered, and wasn't declined this run, open the dedicated password
+    // window. The decision + any secret stay in main.
+    ipcMain.handle('dk:offer-remember', async (_e, { issuer } = {}) => {
+      if (!issuer || !idpVault.isAvailable() || this._isLocalIssuer(issuer)) return { offered: false };
+      const key = idpVault.issuerKey(issuer);
+      if (idpVault.getCredential(issuer) || this._declinedRemember.has(key)) return { offered: false };
+      if (!await this._isCssRememberable(issuer)) return { offered: false };
+      this.openRememberWindow(issuer);
+      return { offered: true };
+    });
+
+    // The dedicated "Remember this sign-in" window (remember-idp-window.html via
+    // its own preload) talks to main over these channels — the password reaches
+    // ONLY main, is used to mint, and is never persisted or sent to the app view.
+    ipcMain.handle('dk:remember-context', () => ({ issuer: this._rememberIssuer || null }));
+    ipcMain.handle('dk:remember-submit', async (_e, { email, password } = {}) => {
+      const issuer = this._rememberIssuer;
+      if (!issuer) return { status: 'error', message: 'no pending issuer' };
+      const r = await this._rememberIdp(issuer, email, password);
+      if (r.status === 'remembered' && this._rememberWin && !this._rememberWin.isDestroyed()) this._rememberWin.close();
+      return r;
+    });
+    ipcMain.handle('dk:remember-cancel', () => {
+      if (this._rememberIssuer) this._declinedRemember.add(idpVault.issuerKey(this._rememberIssuer));
+      if (this._rememberWin && !this._rememberWin.isDestroyed()) this._rememberWin.close();
+      return { status: 'cancelled' };
+    });
+
+    // Which issuers have a stored credential (origins only — never secrets), so
+    // the renderer knows when to take the silent path.
+    ipcMain.handle('dk:get-remembered-idp', () => (idpVault.isAvailable() ? idpVault.listIssuers() : []));
+
+    // Drop a remembered issuer; for the local pod we also revoke server-side (we
+    // still hold its password). Remote credentials can only be dropped locally
+    // (revoking needs the account password, which we never kept) — note it.
+    ipcMain.handle('dk:forget-idp', async (_e, { issuer } = {}) => {
+      if (!issuer) return { status: 'error', message: 'no issuer' };
+      this._grantSessions.delete(idpVault.issuerKey(issuer));
+      const rec = idpVault.getCredential(issuer);
+      let revoked = false;
+      if (rec && this._isLocalIssuer(issuer)) {
+        try { revoked = await revokeCredentialViaAccount({ origin: PUBLIC_ORIGIN, email: OWNER_EMAIL, password: OWNER_PASSWORD, gateToken: getGateToken(), resource: rec.resource }); }
+        catch (e) { console.warn('[idp] server-side revoke failed:', e.message); }
+      }
+      idpVault.forgetCredential(issuer);
+      return { status: 'forgotten', revoked };
+    });
+
+    // Build the headless session from the vaulted credential and confirm it still
+    // works (warmup forces a fresh grant — fails if revoked/expired). On success
+    // the session is cached for dk:idp-fetch; the renderer then registers it. On
+    // failure the renderer falls back to the normal interactive login.
+    ipcMain.handle('dk:silent-login', async (_e, { issuer } = {}) => {
+      if (!issuer) return { status: 'error', message: 'no issuer' };
+      const rec = idpVault.getCredential(issuer);
+      if (!rec) return { status: 'none' };
+      try {
+        const opts = this._isLocalIssuer(issuer) ? { gateToken: getGateToken(), gatedOrigin: PUBLIC_ORIGIN } : {};
+        const sess = createGrantSession(rec, opts);
+        const webId = await sess.warmup();
+        this._grantSessions.set(idpVault.issuerKey(issuer), sess);
+        return { status: 'ok', webId, issuer: idpVault.issuerKey(issuer) };
+      } catch (e) {
+        return { status: 'error', message: e.message };
+      }
+    });
+
+    // Per-request proxy for MainProxySession.fetch (src/dk-idp-proxy-session.js):
+    // run the request under the issuer's headless session in main, return a
+    // serialized response. The token/DPoP key never cross to the renderer.
+    ipcMain.handle('dk:idp-fetch', async (_e, { issuer, url, init } = {}) => {
+      const sess = this._grantSessions.get(idpVault.issuerKey(issuer || ''));
+      if (!sess) return { error: 'no-session' };
+      try {
+        const res = await sess.fetch(url, init || {});
+        const body = await res.arrayBuffer();
+        return { ok: true, status: res.status, statusText: res.statusText, headers: [...res.headers], body };
+      } catch (e) {
+        return { error: e.message };
+      }
+    });
+  }
+
+  // Is this issuer our bundled local pod (the gated loopback origin)?
+  _isLocalIssuer(issuer) {
+    try { return idpVault.issuerKey(issuer) === idpVault.issuerKey(PUBLIC_ORIGIN); }
+    catch { return false; }
+  }
+
+  // Mint a durable client-credential and vault it (shared by the app IPC and the
+  // dedicated window). Local pod uses its known owner account; a remote CSS issuer
+  // supplies email+password transiently — only {id,secret} is ever stored.
+  async _rememberIdp(issuer, email, password) {
+    if (!issuer) return { status: 'error', message: 'no issuer' };
+    if (!idpVault.isAvailable()) return { status: 'unavailable' };
+    try {
+      const rec = this._isLocalIssuer(issuer)
+        ? await mintCredential({ origin: PUBLIC_ORIGIN, email: OWNER_EMAIL, password: OWNER_PASSWORD, webId: OWNER_WEBID, gateToken: getGateToken() })
+        : await mintCredential({ origin: new URL(issuer).origin, email, password });
+      idpVault.putCredential(issuer, {
+        clientId: rec.clientId, secret: rec.secret, webId: rec.webId,
+        tokenEndpoint: rec.tokenEndpoint, resource: rec.resource, issuerOrigin: rec.issuerOrigin,
+      });
+      return { status: 'remembered', webId: rec.webId };
+    } catch (e) {
+      return { status: 'error', message: e.message };
+    }
+  }
+
+  // Does this issuer expose a CSS account API we can mint a durable credential
+  // against? (The unauthenticated password-login control is the tell.) Non-CSS
+  // issuers return false → no remember offer (Tier 1 only).
+  async _isCssRememberable(issuer) {
+    try {
+      const res = await fetch(`${new URL(issuer).origin}/.account/`, { headers: { accept: 'application/json' } });
+      if (!res.ok) return false;
+      const j = await res.json().catch(() => null);
+      return !!(j && j.controls && j.controls.password && j.controls.password.login);
+    } catch { return false; }
+  }
+
+  // The dedicated, minimal window that collects the account email+password ONCE
+  // for a remote CSS issuer. A separate BrowserWindow (not an app modal) keeps the
+  // password out of the app renderer entirely; it posts straight to main.
+  openRememberWindow(issuer) {
+    if (this._rememberWin && !this._rememberWin.isDestroyed()) { this._rememberWin.focus(); return; }
+    this._rememberIssuer = issuer;
+    const win = new BrowserWindow({
+      width: 460, height: 430, resizable: false, autoHideMenuBar: true, title: 'Remember this sign-in',
+      parent: this.baseWindow || undefined, modal: false,
+      webPreferences: {
+        preload: path.join(__dirname, 'remember-idp-preload.cjs'),
+        contextIsolation: true, nodeIntegration: false,
+      },
+    });
+    this._rememberWin = win;
+    win.on('closed', () => { if (this._rememberWin === win) { this._rememberWin = null; this._rememberIssuer = null; } });
+    win.loadFile(path.join(__dirname, 'remember-idp-window.html'));
   }
 
   // Load the ESM scanner once (music-metadata is ESM-only; main is CommonJS).

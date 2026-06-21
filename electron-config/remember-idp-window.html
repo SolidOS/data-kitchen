@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+  "Remember this sign-in" — the dedicated, minimal window offered right after a
+  first interactive login to a CSS issuer. It collects the account email+password
+  ONCE; main exchanges them for a durable, revocable app key (a client-credential)
+  so later sign-ins to this issuer are automatic. The password is never stored and
+  never reaches the app — it goes only to the main process (see the preload).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>Remember this sign-in</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0; padding: 22px 24px;
+    font: 16px/1.5 system-ui, -apple-system, sans-serif;
+    background: #f4f5f7; color: #1d2126;
+  }
+  h1 { font-size: 19px; margin: 0 0 6px; }
+  p { margin: 0 0 14px; }
+  .host { font-weight: 600; }
+  label { display: block; font-size: 16px; margin: 12px 0 4px; }
+  input {
+    width: 100%; box-sizing: border-box; padding: 9px 11px;
+    font-size: 16px; border: 1px solid #c3c8d0; border-radius: 6px;
+    background: #ffffff; color: #1d2126;   /* inputs lighter than the page */
+  }
+  input:focus { outline: 2px solid #3b82f6; border-color: #3b82f6; }
+  .row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+  button {
+    font-size: 16px; padding: 9px 16px; border-radius: 6px; cursor: pointer;
+    border: 1px solid #c3c8d0; background: #ffffff; color: #1d2126;
+  }
+  button.primary { background: #2563eb; border-color: #2563eb; color: #fff; }
+  button:disabled { opacity: .55; cursor: default; }
+  .msg { min-height: 20px; margin-top: 12px; font-size: 15px; color: #b00020; }
+  .note { font-size: 14px; color: #555c66; }
+</style>
+</head>
+<body>
+  <h1>Remember this sign-in?</h1>
+  <p>Sign in to <span class="host" id="host">this provider</span> automatically next
+     time, without typing your password.</p>
+  <label for="email">Account email</label>
+  <input id="email" type="email" autocomplete="off" autofocus>
+  <label for="password">Account password</label>
+  <input id="password" type="password" autocomplete="off">
+  <p class="note">We exchange these once for a revocable app key. Your password is
+     never stored — only the key, encrypted on this device. Remove it any time.</p>
+  <div class="msg" id="msg"></div>
+  <div class="row">
+    <button id="cancel">Not now</button>
+    <button id="remember" class="primary">Remember</button>
+  </div>
+<script>
+  const D = window.rememberIdpDialog;
+  const $ = (id) => document.getElementById(id);
+  const msg = $('msg');
+
+  (async () => {
+    try {
+      const { issuer } = await D.context();
+      if (issuer) $('host').textContent = new URL(issuer).host;
+    } catch (_) { /* leave the default label */ }
+  })();
+
+  async function remember() {
+    const email = $('email').value.trim();
+    const password = $('password').value;
+    if (!email || !password) { msg.textContent = 'Enter your account email and password.'; return; }
+    $('remember').disabled = $('cancel').disabled = true;
+    msg.style.color = '#555c66'; msg.textContent = 'Setting up…';
+    try {
+      const r = await D.submit(email, password);
+      if (r && r.status === 'remembered') return;   // main closes this window
+      msg.style.color = '#b00020';
+      msg.textContent = (r && r.message) ? ('Could not remember: ' + r.message) : 'Could not remember this provider.';
+    } catch (e) {
+      msg.style.color = '#b00020';
+      msg.textContent = 'Could not remember: ' + e.message;
+    }
+    $('remember').disabled = $('cancel').disabled = false;
+  }
+
+  $('remember').addEventListener('click', remember);
+  $('cancel').addEventListener('click', () => D.cancel());
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') remember();
+    if (e.key === 'Escape') D.cancel();
+  });
+</script>
+</body>
+</html>

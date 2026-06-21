@@ -345,4 +345,29 @@ contextBridge.exposeInMainWorld('dkElectron', {
     ipcRenderer.on('dk:import-progress', h);
     return () => ipcRenderer.removeListener('dk:import-progress', h);
   },
+
+  // "Remember this IdP" — durable, headless per-issuer login. Secrets stay in
+  // main; the renderer only names issuers and gets back status / a proxied fetch.
+  //   rememberIdp(issuer, {email,password}?) → {status:'remembered'|'unavailable'|'error', webId?}
+  //     (local pod needs no creds; a remote CSS issuer supplies them once).
+  //   getRememberedIdps() → [issuerOrigin, …] (no secrets).
+  //   forgetIdp(issuer) → {status:'forgotten', revoked}.
+  //   silentLogin(issuer) → {status:'ok'|'none'|'error', webId?, issuer?}; on 'ok'
+  //     main has armed a session and idpFetch(issuer,…) will authenticate.
+  //   idpFetch(issuer, url, init) → plain {status, statusText, headers:[[k,v]…],
+  //     body:ArrayBuffer}; the caller reconstructs a Response in the main world
+  //     (a Response can't cross contextBridge intact — src/dk-idp-proxy-session.js).
+  rememberIdp: (issuer, creds) => ipcRenderer.invoke('dk:remember-idp', { issuer, ...(creds || {}) }),
+  // After a real (non-local) sign-in, ask main to offer remembering it — main
+  // decides (CSS-capable, not already remembered/declined) and, if so, opens the
+  // dedicated password window. Returns { offered }.
+  offerRemember: (issuer) => ipcRenderer.invoke('dk:offer-remember', { issuer }),
+  getRememberedIdps: () => ipcRenderer.invoke('dk:get-remembered-idp'),
+  forgetIdp: (issuer) => ipcRenderer.invoke('dk:forget-idp', { issuer }),
+  silentLogin: (issuer) => ipcRenderer.invoke('dk:silent-login', { issuer }),
+  idpFetch: async (issuer, url, init) => {
+    const r = await ipcRenderer.invoke('dk:idp-fetch', { issuer, url, init });
+    if (!r || r.error) throw new Error(r ? r.error : 'idp-fetch failed');
+    return { status: r.status, statusText: r.statusText, headers: r.headers, body: r.body };
+  },
 });
