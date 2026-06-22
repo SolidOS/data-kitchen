@@ -667,6 +667,10 @@ class DesktopApp {
       if (!issuer) return { status: 'error', message: 'no issuer' };
       const rec = idpVault.getCredential(issuer);
       if (!rec) return { status: 'none' };
+      // A headless grant needs no popup, so this little window is the only
+      // visible sign an auto-login is happening; open it for the grant and
+      // close it however the grant ends.
+      const statusWin = this.openAutoLoginWindow(issuer);
       try {
         const opts = this._isLocalIssuer(issuer) ? { gateToken: getGateToken(), gatedOrigin: PUBLIC_ORIGIN } : {};
         const sess = createGrantSession(rec, opts);
@@ -675,6 +679,8 @@ class DesktopApp {
         return { status: 'ok', webId, issuer: idpVault.issuerKey(issuer) };
       } catch (e) {
         return { status: 'error', message: e.message };
+      } finally {
+        this.closeAutoLoginWindow(statusWin);
       }
     });
 
@@ -749,6 +755,34 @@ class DesktopApp {
     this._rememberWin = win;
     win.on('closed', () => { if (this._rememberWin === win) { this._rememberWin = null; this._rememberIssuer = null; } });
     win.loadFile(path.join(__dirname, 'remember-idp-window.html'));
+  }
+
+  // The transient "Logging in automatically…" window shown while a remembered
+  // issuer completes its headless grant (dk:silent-login). Frameless, centred,
+  // on top; no input or IPC — main opens it and closes it.
+  openAutoLoginWindow(issuer) {
+    let host = issuer;
+    try { host = new URL(issuer).host; } catch { /* keep raw */ }
+    const win = new BrowserWindow({
+      width: 360, height: 116, frame: false, resizable: false, alwaysOnTop: true,
+      skipTaskbar: true, backgroundColor: '#1d2126', show: false,
+      parent: this.baseWindow || undefined,
+      webPreferences: { contextIsolation: true, nodeIntegration: false },
+    });
+    win._openedAt = Date.now();
+    win.once('ready-to-show', () => { try { win.center(); win.show(); } catch { /* window gone */ } });
+    win.loadFile(path.join(__dirname, 'auto-login-window.html'), { search: 'host=' + encodeURIComponent(host) });
+    return win;
+  }
+
+  // Close the auto-login window, but keep it visible a beat (even when the grant
+  // returns in well under a second) so it reads as a message, not a flicker.
+  closeAutoLoginWindow(win) {
+    if (!win || win.isDestroyed()) return;
+    const MIN_MS = 700;
+    const wait = Math.max(0, MIN_MS - (Date.now() - (win._openedAt || 0)));
+    const finish = () => { try { if (!win.isDestroyed()) win.close(); } catch { /* window gone */ } };
+    if (wait === 0) finish(); else setTimeout(finish, wait);
   }
 
   // Load the ESM scanner once (music-metadata is ESM-only; main is CommonJS).

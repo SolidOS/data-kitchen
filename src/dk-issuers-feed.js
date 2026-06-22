@@ -66,6 +66,11 @@ function installRememberHook(el) {
           const side = el._side || 'default';
           const am = window.SolidWebComponents?.AuthManager?.shared;
           am?.sessions.set(side, createMainProxySession(r.issuer, r.webId));
+          // Repaint the button to its logged-in state and wire the authed fetch
+          // into rdflib — the interactive popup path does both (sol-login.js
+          // _onPopupMessage); the silent path bypasses login(), so do it here too.
+          try { el._updateUI?.(); } catch { /* shadow not ready */ }
+          try { el._integrateWithRdflib?.(); } catch { /* optional */ }
           el.dispatchEvent(new CustomEvent('sol-login', {
             bubbles: true, composed: true,
             detail: { webId: r.webId, issuer: r.issuer, side },

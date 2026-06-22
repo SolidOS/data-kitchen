@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+  "Logging in automatically" — a small, frameless status window shown by main
+  (electron-config/main.cjs dk:silent-login) for the brief moment a remembered
+  issuer signs in headlessly via its durable credential. No popup/password is
+  needed for the silent grant, so this window is the only visible cue that an
+  auto-login is happening; main opens it when the grant starts and closes it
+  when the grant resolves. Purely informational — no IPC, no input.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>Logging in…</title>
+<style>
+  :root { color-scheme: light dark; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex; align-items: center; gap: 14px;
+    padding: 0 22px; box-sizing: border-box;
+    font: 15px/1.45 system-ui, -apple-system, sans-serif;
+    background: #1d2126; color: #f4f5f7;
+  }
+  .spinner {
+    width: 26px; height: 26px; flex: 0 0 auto;
+    border: 3px solid rgba(255,255,255,.25); border-top-color: #4f9cff;
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .text { min-width: 0; }
+  .title { font-weight: 600; }
+  .host { color: #9fb3c8; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style>
+</head>
+<body>
+  <div class="spinner" aria-hidden="true"></div>
+  <div class="text">
+    <div class="title">Logging in automatically…</div>
+    <div class="host" id="host"></div>
+  </div>
+<script>
+  const host = new URLSearchParams(location.search).get('host') || '';
+  if (host) document.getElementById('host').textContent = host;
+</script>
+</body>
+</html>

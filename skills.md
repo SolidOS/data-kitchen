@@ -183,6 +183,35 @@ form complete so an external app can authenticate and come back as the pod owner
 account HTTP API and satisfies the ownership challenge by briefly writing the
 challenge triple into the on-disk profile, then restoring it; idempotent.)
 
+### "Remember this IdP" — durable, headless per-issuer login
+
+A signed-in CSS issuer can be REMEMBERED so later visits sign in with no popup.
+Secrets stay in Electron **main**; the renderer only ever names an issuer and gets
+back a proxied fetch.
+- **Remember** (one-time): after a real interactive login, `src/dk-issuers-feed.js`
+  (renderer) calls `dkElectron.offerRemember(issuer)`; main confirms it's a CSS
+  account API and opens a dedicated password window (`remember-idp-window.html`).
+  The password is used ONCE to mint a revocable client-credential
+  (`idp-grant.cjs`) and discarded — only `{clientId, secret, webId, tokenEndpoint}`
+  is kept, encrypted per-issuer with Electron `safeStorage` in `idp-vault.cjs`
+  (`<userData>/idp-credentials.json`, never in the pod). The local pod is auto-minted
+  on boot (`autoMintLocal`, known owner creds).
+- **Silent re-login**: `dk-issuers-feed.js` wraps every `<sol-login>.login()`; for a
+  remembered origin it calls `dkElectron.silentLogin()` → main runs a headless DPoP
+  `client_credentials` grant (`createGrantSession`) and registers a
+  `createMainProxySession` (`src/dk-idp-proxy-session.js`) under the element's side
+  in the shared `AuthManager`. Each `.fetch()` is proxied over IPC (`dk:idp-fetch`)
+  so the token / DPoP key never leave main. The hook then repaints the button
+  (`el._updateUI()`) and wires rdflib (`el._integrateWithRdflib()`), and main shows a
+  brief "Logging in automatically…" window (`auto-login-window.html`) for the grant.
+- Issuers come from SETTINGS (`data-kitchen-settings.ttl#Settings solid:oidcIssuer`),
+  never hardcoded. Pods use `login-mode="popup"`; the popup callback
+  (sc `web/popup-auth-callback.html`) carries the chosen issuer through the IdP
+  round-trip via per-window `sessionStorage` — inrupt's `session.info` has **no
+  `issuer`** field, so without this the post-login remember-offer never fires.
+- **`dist/` is gitignored** — after pulling renderer (`src/`) changes you MUST
+  `npm run build`, or the app silently runs a stale bundle without the feature.
+
 ## The two-copies rule (IMPORTANT)
 
 dk content (`ui-data/`, `pages/`, `plugins/`) exists as **two separate, unlinked
