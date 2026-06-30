@@ -57,6 +57,40 @@ adb install -r build/app/outputs/flutter-apk/app-debug.apk
 First launch extracts the bundled CSS `node_modules` (~19.5k files) on-device
 (~8 s) and seeds the pod, then the WebView loads the frontend.
 
+**Iterating:** after changing shell assets (re-run `prepare-node-project.sh` +
+rebuild), a plain `adb install -r` is enough — **no `pm clear` needed**. The
+on-device extraction sentinels (`.engine-extracted`, `.dk-seeded`,
+`node_modules/.extracted`) record the **source tarball's byte size**, so a
+changed bundle re-extracts itself on the next launch. (The engine and pod live
+outside `nodejs-project`, which `node_flutter` resets on reinstall, so a bare
+"done" flag there used to survive updates and serve a stale tree — see
+`ensureExtract` in `nodejs-src/main.js`. The engine is wiped+re-extracted; the
+pod is overlaid so CSS's account store and user data survive.)
+
+## Mobile UI (phone look & feel)
+
+The dk shell is the **same** `index.html` the desktop Electron app loads — the
+phone styling is layered on without touching desktop, scoped entirely behind a
+touch media query (`@media (hover: none) and (pointer: coarse)`): desktop is a
+mouse pointer, so those rules are unreachable there by construction. Pieces:
+
+- **Shell chrome** (`../assets/dk-chrome.css`): room tabs → a horizontal-scroll
+  strip; chrome actions (`.sol-tabs-launch`) → a fixed bottom dock; mini-player
+  → sticky above it; safe-area insets via `env()` (needs `viewport-fit=cover`
+  on the `<meta name=viewport>` in `../index.html`).
+- **Phone text tiers**: 14 / 16 / 18px (small/medium/large), down from desktop's
+  16/20/24, also in `dk-chrome.css`. The phone has no "A" button, so
+  `../src/dk-settings-applier.js` **defaults a touch device to the small tier**
+  (14px) when there's no saved `dk:fontsize` choice.
+- **News feed** (`sol-feed`, in sol-components): on touch, `_readerInline()` is
+  off → full-width article list + pop-out reader instead of the desktop's
+  side-by-side reading pane; the source picker is a horizontal scroll strip.
+
+Verify the phone look from the desktop app via CDP by emulating the touch media
+features (`pointer:coarse` / `hover:none`) — both the CSS and the `matchMedia()`
+gates respond to it, so it faithfully reproduces the phone path. See
+`../claude/smoke-tests/cdp-verify-mobile.mjs`.
+
 ## Verify (on a connected device)
 
 ```bash
@@ -102,10 +136,12 @@ nodejs-mobile is a constrained runtime; several things needed solving:
 ## Known limitations / TODO
 
 - dk shell runs in **degraded mode**: no Electron bridge, so settings save,
-  music import, the IdP vault, and native content panes show notices. A
-  Flutter↔JS bridge would restore them. One unguarded
+  music import, the IdP vault, and the inline native reader pane show notices /
+  don't render. A Flutter↔JS bridge would restore them. One unguarded
   `window.dkElectron.restart()` (`../src/dk-config-settings.js`) can throw on the
-  settings page.
+  settings page. (The news feed works regardless: on touch it uses the pop-out
+  reader, so tapping an article navigates the WebView to it — use the Flutter
+  home button to return.)
 - `node_flutter`'s `flutter-bridge` linked binding doesn't register (readiness is
   done by HTTP polling instead).
 - Node runs via `Nodejs.start()` (app-process), not the foreground service —
