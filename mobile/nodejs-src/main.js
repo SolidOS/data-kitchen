@@ -83,34 +83,62 @@ const PROXY_PORT = 8001;
 // (container listings, Location, WebID) since the app loads from the router.
 const PUBLIC_ORIGIN = `http://localhost:${PUBLIC_PORT}/`;
 
-// Expand the bundled dependency tree on first run (idempotent: keyed on a
-// sentinel so an app update re-extracts a fresh tree).
+// Expand the bundled tarballs into the writable filesDir. Each extraction's
+// sentinel records the SOURCE TARBALL'S BYTE SIZE, and we re-extract whenever the
+// current tarball's size differs from the recorded one — that is what makes an
+// app update actually take effect:
+//   • node_modules lives INSIDE nodejs-project, which node_flutter wipes &
+//     re-copies whenever the APK's lastUpdateTime changes (i.e. every reinstall),
+//     so its sentinel is already gone after an update and it re-extracts anyway.
+//   • the dk ENGINE and POD live OUTSIDE nodejs-project (filesDir/engine,
+//     filesDir/pod), which node_flutter never touches — so a bare "done" flag
+//     there SURVIVES reinstalls and keeps serving the STALE tree (the bug that
+//     used to need a manual `pm clear`). node_flutter does re-copy the .nmz on
+//     reinstall, so keying the sentinel on the fresh tarball's size lets a
+//     changed bundle re-extract on its own.
+// (A pre-existing ISO-timestamp sentinel from the old scheme never equals a size,
+// so it harmlessly forces exactly one re-extract on upgrade to this code.)
+function tarballSize(tarball) {
+  try { return String(fs.statSync(tarball).size); } catch (_) { return ''; }
+}
+function sentinelFresh(sentinelPath, fingerprint) {
+  try { return fs.readFileSync(sentinelPath, 'utf8').trim() === fingerprint; }
+  catch (_) { return false; }
+}
+
 function ensureNodeModules() {
+  if (!fs.existsSync(TARBALL)) { log('FATAL: node_modules.nmz missing'); return; }
   const sentinel = path.join(NODE_MODULES, '.extracted');
-  if (fs.existsSync(sentinel)) return;
-  if (!fs.existsSync(TARBALL)) { log('FATAL: node_modules.tar.gz missing'); return; }
-  log('first run: extracting node_modules…');
+  const fp = tarballSize(TARBALL);
+  if (sentinelFresh(sentinel, fp)) return;
+  log('extracting node_modules (first run or bundle changed)…');
   const t0 = Date.now();
   fs.rmSync(NODE_MODULES, { recursive: true, force: true });
   const { extractTarGz } = require('./untar.cjs');
   const n = extractTarGz(TARBALL, PROJECT_DIR);             // tar contains node_modules/…
   applyPatches();
-  fs.writeFileSync(sentinel, new Date().toISOString());
+  fs.writeFileSync(sentinel, fp);
   log(`extracted ${n} files in ${Date.now() - t0}ms`);
 }
 
-// Extract a bundled tarball into destDir once (idempotent via a sentinel).
-// Used for the dk read-only ENGINE and the pod-seed (dk app definition).
-function ensureExtract(tarball, destDir, sentinelName, label) {
-  const sentinel = path.join(destDir, sentinelName);
-  if (fs.existsSync(sentinel)) return;
+// Extract a bundled tarball into destDir, re-extracting when the bundle changes
+// (sentinel = source tarball size; see ensureNodeModules). clearFirst wipes
+// destDir before extracting — set it for the read-only ENGINE so files dropped
+// from a newer bundle don't linger, but NOT for the writable POD, which is
+// overlaid (the seed updates its own files while CSS's account/data store and
+// any user pod content are preserved).
+function ensureExtract(tarball, destDir, sentinelName, label, clearFirst) {
   if (!fs.existsSync(tarball)) { log('skip ' + label + ' — ' + path.basename(tarball) + ' missing'); return; }
-  log('first run: extracting ' + label + '…');
+  const sentinel = path.join(destDir, sentinelName);
+  const fp = tarballSize(tarball);
+  if (sentinelFresh(sentinel, fp)) return;
+  log('extracting ' + label + ' (first run or bundle changed)…');
   const t0 = Date.now();
+  if (clearFirst) fs.rmSync(destDir, { recursive: true, force: true });
   fs.mkdirSync(destDir, { recursive: true });
   const { extractTarGz } = require('./untar.cjs');
   const n = extractTarGz(tarball, destDir);
-  fs.writeFileSync(sentinel, new Date().toISOString());
+  fs.writeFileSync(sentinel, fp);
   log('extracted ' + label + ' (' + n + ' files) in ' + (Date.now() - t0) + 'ms');
 }
 
@@ -148,8 +176,8 @@ async function main() {
   // dist, assets) the router serves; and the dk app definition seeded into the
   // pod (index.html + dk-pod/dk/…). Both ship as separate tarballs; absent for a
   // mashlib-only build, in which case the router just fronts CSS.
-  ensureExtract(ENGINE_TARBALL, ENGINE_DIR, '.engine-extracted', 'dk engine');
-  ensureExtract(POD_SEED_TARBALL, POD_ROOT, '.dk-seeded', 'dk pod seed');
+  ensureExtract(ENGINE_TARBALL, ENGINE_DIR, '.engine-extracted', 'dk engine', true);
+  ensureExtract(POD_SEED_TARBALL, POD_ROOT, '.dk-seeded', 'dk pod seed', false);
 
   // The mashlib-databrowser config (create-app-mobile.cjs) has relative
   // filePaths like ./node_modules/mashlib/dist/databrowser.html — resolved
