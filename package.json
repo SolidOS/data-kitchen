@@ -25,6 +25,7 @@
     "test:roundtrip": "node --test \"test/roundtrip/**/*.test.mjs\"",
     "test:integration": "node --test \"test/integration/**/*.test.mjs\"",
     "test:e2e": "node test/e2e/run.mjs",
+    "test:mobile": "node --test \"mobile/test/node/**/*.test.mjs\"",
     "dist": "electron-builder"
   },
   "dependencies": {
