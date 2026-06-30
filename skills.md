@@ -226,6 +226,17 @@ reconciled later — act on the pod without sync caveats.
 - `npm run serve` — static server on :8081 (used by smoke-tests).
 - `npm run watch` / `npm run build` — esbuild `dist/dk.bundle.js`.
 - `npm run start-css` — Pivot server on :8000 for dev.
+- **Packaging desktop apps** (`electron-builder`, output → `release/`): `npm run
+  dist` builds the **host** OS's full targets (Linux AppImage/deb/rpm, Win
+  nsis+portable, Mac dmg+zip). `npm run dist:cross` builds **all three from Linux,
+  wine-free** — Linux AppImage + Mac `.zip` (a `.app`) + Win `.zip` (runnable
+  app); cross-built apps are **unsigned**. Artifacts are
+  `Solid_Data_Kitchen-<ver>-<os>-<arch>.<ext>` (the `${os}-${arch}` token keeps
+  the Win/Mac zips from colliding). Linux caveats: the Mac **dmg** needs the
+  macOS-only `dmg-license` (use the zip), and the Win **nsis/portable installers**
+  need `wine` (the zip needs none — `win.signAndEditExecutable:false` skips the
+  wine-only rcedit step). Real installers + signing build on their native OS / CI.
+  iOS isn't wired (the vendored `node_flutter` is Android-only — see `mobile/`).
 - `npm test` — the test suite (native `node --test`, like ci; **no app needed**):
   `test/unit/` (gate.cjs, favourites store), `test/data/` (RDF contracts —
   plugin Link/Component, catalog↔manifest sync, menu invariants, manifest.jsonld,

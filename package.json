@@ -26,7 +26,8 @@
     "test:integration": "node --test \"test/integration/**/*.test.mjs\"",
     "test:e2e": "node test/e2e/run.mjs",
     "test:mobile": "node --test \"mobile/test/node/**/*.test.mjs\"",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "dist:cross": "electron-builder --linux --mac zip --win zip"
   },
   "dependencies": {
     "component-interop": "^0.3.0",
@@ -46,7 +47,7 @@
   "build": {
     "appId": "com.data-kitchen",
     "productName": "Solid Data Kitchen",
-    "artifactName": "Solid_Data_Kitchen-${version}.${ext}",
+    "artifactName": "Solid_Data_Kitchen-${version}-${os}-${arch}.${ext}",
     "asar": false,
     "files": [
       "electron-config/**",
@@ -99,7 +100,8 @@
       "target": [
         "portable",
         "nsis"
-      ]
+      ],
+      "signAndEditExecutable": false
     },
     "mac": {
       "target": [
