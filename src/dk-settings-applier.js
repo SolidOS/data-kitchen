@@ -35,7 +35,19 @@ function applyTheme(theme) {
 }
 
 function applyFontSize(size) {
-  const s = (size === 'small' || size === 'large') ? size : 'medium';
+  let s = (size === 'small' || size === 'large') ? size : 'medium';
+  // Phone default: the shared RDF default (LargeFont) is sized for a desktop and
+  // is too large on a phone, where there's no "A" button to dial it down. So on a
+  // coarse-pointer / touch device with NO explicit saved choice (dk:fontsize),
+  // default to the small tier (14px on phones, per the dk-chrome.css mobile
+  // tiers). Desktop (fine pointer) and any explicit choice are unaffected.
+  try {
+    if (!localStorage.getItem('dk:fontsize') &&
+        typeof matchMedia === 'function' &&
+        matchMedia('(hover: none) and (pointer: coarse)').matches) {
+      s = 'small';
+    }
+  } catch (_) { /* no matchMedia / storage — keep the RDF-resolved size */ }
   // Drive the root rem size the same way the ☰/"A" button does: <html
   // data-fontsize> → ia.css :root[data-fontsize] (and the [data-fontsize]
   // #panel rules). Setting only --font-size below never resized the shell.

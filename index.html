@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- viewport-fit=cover lets the mobile look's env(safe-area-inset-*) rules
+       (in dk-chrome.css, behind a touch media query) read the notch / home-bar
+       insets on phones. Inert on desktop Electron (no insets → env() is 0). -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <!-- Wormhole guard: the app shell must never run inside a frame (opening
        /index.html from a SolidOS listing would load the whole app recursively).
        When framed inside SolidOS, navigate SolidOS to the /dk-pod/ container (its

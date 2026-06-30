@@ -421,3 +421,161 @@
     [data-fontsize="small"]  #panel-images { --font-size: 16px; }
     [data-fontsize="medium"] #panel-images { --font-size: 20px; }
     [data-fontsize="large"]  #panel-images { --font-size: 24px; }
+
+    /* ════════════════════════════════════════════════════════════════════
+       MOBILE LOOK & FEEL — phones only (Android + iOS)
+       ────────────────────────────────────────────────────────────────────
+       Scoped behind a TOUCH media query. Desktop Electron is a mouse pointer
+       (pointer:fine / hover:hover), so this whole block is UNREACHABLE there —
+       the desktop chrome above is left exactly as-is, by construction.
+
+       Pure CSS: it re-homes the EXISTING shell elements into native phone
+       ergonomics with no DOM or JS changes (which would belong in
+       sol-components, not dk):
+         • room tabs (.sol-tabs-bar)        → one horizontal-scroll strip, top
+         • chrome actions (.sol-tabs-launch) → a fixed bottom action bar (thumb)
+         • now-playing (.omp-mini)           → a sticky bar above the action bar
+         • safe-area insets (notch / home indicator) via env() — needs
+           viewport-fit=cover on the <meta name=viewport> (set in index.html).
+       Palette/type are inherited from the existing --ia-* / --tab-* theme; only
+       layout and touch sizing change. Signature: the strip's bottom rail takes
+       the CURRENT room's accent, so the room you're in is unmistakable on a
+       small screen (mirrors the desktop per-room tab colours).
+       ════════════════════════════════════════════════════════════════════ */
+    @media (hover: none) and (pointer: coarse) {
+      :root {
+        --dk-m-safe-top:    env(safe-area-inset-top, 0px);
+        --dk-m-safe-bottom: env(safe-area-inset-bottom, 0px);
+        --dk-m-actionbar:   60px;   /* bottom action-bar height (excl. safe area) */
+      }
+
+      /* ── Phone text scale ──────────────────────────────────────────────────
+         The desktop tiers (16 / 20 / 24px, default LargeFont) are oversized on a
+         ~390px phone. Phones get their own smaller tiers — 14 / 16 / 18px — which
+         stay legible at phone pixel density (the desktop 16px floor is a
+         desktop-only rule). The A button still steps through all three. Both
+         sources of the root size are overridden: the saved choice on
+         <html data-fontsize> (set by dk-boot / ia.css) and the RDF default driven
+         by <sol-default font-size>. The #panel-news / #panel-images --font-size
+         (sol-feed's base size) is scaled to match so the feed shrinks too. */
+      html:root[data-fontsize="small"]  { font-size: 14px; }
+      html:root[data-fontsize="medium"] { font-size: 16px; }
+      html:root[data-fontsize="large"]  { font-size: 18px; }
+      :root:not([data-fontsize]):has(sol-default[font-size$="SmallFont"])  { font-size: 14px; }
+      :root:not([data-fontsize]):has(sol-default[font-size$="MediumFont"]) { font-size: 16px; }
+      :root:not([data-fontsize]):has(sol-default[font-size$="LargeFont"])  { font-size: 18px; }
+      :root:not([data-fontsize]):not(:has(sol-default[font-size]))         { font-size: 16px; }
+
+      html:root[data-fontsize="small"]  :is(#panel-news, #panel-images) { --font-size: 14px; }
+      html:root[data-fontsize="medium"] :is(#panel-news, #panel-images) { --font-size: 16px; }
+      html:root[data-fontsize="large"]  :is(#panel-news, #panel-images) { --font-size: 18px; }
+      :root:not([data-fontsize]):has(sol-default[font-size$="SmallFont"])  :is(#panel-news, #panel-images) { --font-size: 14px; }
+      :root:not([data-fontsize]):has(sol-default[font-size$="MediumFont"]) :is(#panel-news, #panel-images) { --font-size: 16px; }
+      :root:not([data-fontsize]):has(sol-default[font-size$="LargeFont"])  :is(#panel-news, #panel-images) { --font-size: 18px; }
+      :root:not([data-fontsize]):not(:has(sol-default[font-size]))         :is(#panel-news, #panel-images) { --font-size: 16px; }
+
+      html, body { height: 100%; }
+      body { min-height: 100dvh; }
+
+      /* The chrome nav only hosted the mini-player until it's re-homed into the
+         tab bar; once empty it's dead weight on a phone. */
+      .omp-chrome-bar { display: none; }
+
+      /* ── Top: the room tabs become one horizontal-scroll strip ────────── */
+      #dk-tabs > .sol-tabs-bar {
+        position: sticky; top: 0; z-index: 30;
+        flex-wrap: nowrap;
+        overflow-x: auto; overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        gap: 8px;
+        padding: calc(var(--dk-m-safe-top) + 8px) 12px 0;
+        /* Signature rail — recoloured per active room by the :has() rules below. */
+        border-bottom: 3px solid var(--ia-border, #2a2d33);
+      }
+      #dk-tabs > .sol-tabs-bar::-webkit-scrollbar { display: none; }
+
+      /* Touch-sized, snap-aligned pills (≥44px tall, ≥16px type). */
+      #dk-tabs > .sol-tabs-bar > button,
+      #dk-tabs > .sol-tabs-bar > sol-dropdown-button.sol-tabs-submenu::part(trigger) {
+        min-height: 44px;
+        padding: 10px 18px;
+        font-size: 1rem;
+        border-radius: 11px 11px 0 0;
+      }
+      #dk-tabs > .sol-tabs-bar > button,
+      #dk-tabs > .sol-tabs-bar > sol-dropdown-button {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+      }
+
+      /* Signature: the strip's bottom rail picks up the active room's accent. */
+      #dk-tabs > .sol-tabs-bar:has(> button[data-tab-id="panel-music"].active)  { border-bottom-color: var(--tab-music); }
+      #dk-tabs > .sol-tabs-bar:has(> button[data-tab-id="panel-movies"].active) { border-bottom-color: var(--tab-movies); }
+      #dk-tabs > .sol-tabs-bar:has(> button[data-tab-id="panel-news"].active)   { border-bottom-color: var(--tab-news); }
+      #dk-tabs > .sol-tabs-bar:has(> button[data-tab-id="panel-images"].active) { border-bottom-color: var(--tab-images); }
+      #dk-tabs > .sol-tabs-bar:has(> button[data-tab-id="Favourites"].active)   { border-bottom-color: var(--tab-fav, #e6b800); }
+      #dk-tabs > .sol-tabs-bar:has(> sol-dropdown-button[data-tab-id="Pods"].active)          { border-bottom-color: var(--tab-workspaces); }
+      #dk-tabs > .sol-tabs-bar:has(> sol-dropdown-button[data-tab-id="panel-dev-tools"].active) { border-bottom-color: var(--tab-devtools); }
+
+      /* ── Content reserves room for the fixed bottom bar(s) ────────────── */
+      .omp-panels { padding-bottom: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom)); }
+      body:has(.omp-mini:not([hidden])) .omp-panels {
+        padding-bottom: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom) + 46px);
+      }
+
+      /* ── Bottom: the launch group becomes a fixed thumb-zone dock ─────────
+         This group holds BOTH the quick-launch app chips (.sol-bar-link) AND
+         the chrome controls (search / calendar / help / ⋮) — together more than
+         fit one phone-width row, so the dock scrolls horizontally (momentum +
+         snap) and nothing clips off-screen. A phone dock of app shortcuts +
+         controls is a natural home for them. */
+      #dk-tabs > .sol-tabs-bar > .sol-tabs-launch {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+        height: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom));
+        padding: 0 8px var(--dk-m-safe-bottom);
+        display: flex; align-items: center; justify-content: flex-start; gap: 6px;
+        overflow-x: auto; overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        background: var(--ia-bg-elev, #181a1f);
+        border-top: 1px solid var(--ia-border, #2a2d33);
+      }
+      #dk-tabs > .sol-tabs-bar > .sol-tabs-launch::-webkit-scrollbar { display: none; }
+      #dk-tabs > .sol-tabs-bar > .sol-tabs-launch > * {
+        flex: 0 0 auto; scroll-snap-align: start;
+      }
+      /* Touch-size the quick-launch app chips (each holds a favicon <img>). */
+      #dk-tabs > .sol-tabs-bar > .sol-tabs-launch > .sol-bar-link {
+        min-width: 48px; height: 44px; padding: 0 6px;
+        display: inline-flex; align-items: center; justify-content: center;
+      }
+      /* 44×44 touch targets for every chrome control in the dock. */
+      .omp-search::part(trigger),   .omp-calendar::part(trigger),
+      .omp-more::part(trigger),     .omp-theme::part(trigger),
+      .omp-fontsize::part(trigger), .omp-help-launch::part(trigger) {
+        width: 44px; height: 44px; border-radius: 12px; font-size: 1.25rem;
+      }
+      .omp-fontsize[data-size="small"]::part(trigger)  { font-size: 16px; }
+      .omp-fontsize[data-size="medium"]::part(trigger) { font-size: 19px; }
+      .omp-fontsize[data-size="large"]::part(trigger)  { font-size: 23px; }
+
+      /* ── Now-playing: sticky bar floated just above the action bar ────── */
+      .omp-mini:not([hidden]) {
+        position: fixed; left: 0; right: 0; z-index: 39;
+        bottom: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom));
+        margin: 0; padding: 9px 14px;
+        display: flex; align-items: center; gap: 12px;
+        background: var(--ia-bg-panel, #1d1f24);
+        border-top: 1px solid var(--ia-border, #2a2d33);
+      }
+      .omp-mini-seek { flex: 1 1 auto; width: auto; height: 6px; }
+
+      /* ── Inline panels (help / settings / customize) clear the bottom bar ── */
+      #dk-tabs > .sol-tabs-content > .sol-inline-panel,
+      #dk-tabs > .sol-tabs-content > .dk-menu-pane {
+        padding-left:  clamp(1rem, 5vw, 2rem);
+        padding-right: clamp(1rem, 5vw, 2rem);
+        padding-bottom: calc(var(--dk-m-safe-bottom) + 1.5rem);
+      }
+    }
