@@ -21,7 +21,10 @@ const APP_IRI = 'urn:solid-server:default:App';
 
 async function main() {
   const mainModulePath = path.resolve(process.argv[2] || process.cwd());
-  const configPath = path.join(mainModulePath, '..', 'pivot-config', 'dk-pivot.json');
+  // Entry config defaults to the desktop one; DK_PIVOT_ENTRY selects a variant
+  // (e.g. dk-pivot-mobile.json for the mashlib-databrowser mobile build).
+  const entry = process.env.DK_PIVOT_ENTRY || 'dk-pivot.json';
+  const configPath = path.join(mainModulePath, '..', 'pivot-config', entry);
   const constructionStrategy = new ConstructionStrategyCommonJsString({ asFunction: true, req: require });
   const manager = await ComponentsManager.build({
     mainModulePath,

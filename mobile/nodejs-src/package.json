@@ -1,0 +1,8 @@
+{
+  "name": "dk-pod-node",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "main.js",
+  "description": "In-process Node bootstrap for the dk-pod Android app: Community Solid Server (pivot) + (later) router + proxy, all in one nodejs-mobile process."
+}

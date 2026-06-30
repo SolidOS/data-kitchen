@@ -1,0 +1,48 @@
+{
+  "comment": "MOBILE-ONLY override: serve the SolidOS/mashlib databrowser as the default text/html representation, plus mashlib's static assets. The stock base (css:config/util/index/default.json + http/static/default.json, imported via no-auth.json) already defines DefaultUiConverter (UnsupportedAsyncHandler) and StaticAssetHandler, so these MUST use ComponentsJS `Override` (a plain re-definition errors with 'more than one component types'). Override can change the @type (see the QuotaStrategy override in customise-me.json). Desktop dk does NOT use this (it removed the databrowser because it 500'd on /.account/ login pages); the mobile app is a no-auth pod with an in-app WebView. filePaths resolve relative to the server cwd (mobile main.js chdir's into the nodejs-project dir, which holds node_modules/mashlib).",
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^7.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/pivot/^1.0.0/components/context.jsonld"
+  ],
+  "@graph": [
+    {
+      "comment": "Serve Databrowser as default representation for text/html.",
+      "@type": "Override",
+      "overrideInstance": { "@id": "urn:solid-server:default:DefaultUiConverter" },
+      "overrideParameters": {
+        "@type": "ConstantConverter",
+        "contentType": "text/html",
+        "filePath": "./node_modules/mashlib/dist/databrowser.html",
+        "options_container": true,
+        "options_document": true,
+        "options_minQuality": 1,
+        "options_disabledMediaRanges": [
+          "image/*",
+          "application/pdf"
+        ]
+      }
+    },
+    {
+      "comment": "Serve mashlib static files (databrowser.html loads /mashlib.min.js and /mash.css).",
+      "@type": "Override",
+      "overrideInstance": { "@id": "urn:solid-server:default:StaticAssetHandler" },
+      "overrideParameters": {
+        "@type": "StaticAssetHandler",
+        "options_expires": 86400,
+        "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+        "assets": [
+          { "@type": "StaticAssetEntry", "relativeUrl": "/browse.html", "filePath": "./node_modules/mashlib/dist/browse.html" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mash.css", "filePath": "./node_modules/mashlib/dist/mash.css" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mashlib.js", "filePath": "./node_modules/mashlib/dist/mashlib.js" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mashlib.js.map", "filePath": "./node_modules/mashlib/dist/mashlib.js.map" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mashlib.min.js", "filePath": "./node_modules/mashlib/dist/mashlib.min.js" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mashlib.min.js.map", "filePath": "./node_modules/mashlib/dist/mashlib.min.js.map" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/841.mashlib.js", "filePath": "./node_modules/mashlib/dist/841.mashlib.js" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/841.mashlib.map", "filePath": "./node_modules/mashlib/dist/841.mashlib.map" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/841.mashlib.min.js", "filePath": "./node_modules/mashlib/dist/841.mashlib.min.js" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/841.mashlib.min.js.map", "filePath": "./node_modules/mashlib/dist/841.mashlib.min.js.map" }
+        ]
+      }
+    }
+  ]
+}

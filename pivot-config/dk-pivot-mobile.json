@@ -1,0 +1,12 @@
+{
+  "comment": "MOBILE entry config: the same no-auth base + data-kitchen overrides as dk-pivot.json, PLUS mobile-databrowser.json which re-enables the SolidOS/mashlib databrowser as the frontend. Imported last so its DefaultUiConverter/StaticAssetHandler @ids win. Compiled to pivot/dist/create-app-mobile.cjs via `bash pivot/build-compiled-config.sh mobile`; used only by the mobile app (mobile/tool/prepare-node-project.sh). Desktop keeps dk-pivot.json (no databrowser).",
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^7.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/pivot/^1.0.0/components/context.jsonld"
+  ],
+  "import": [
+    "./no-auth.json",
+    "./customise-me.json",
+    "./mobile-databrowser.json"
+  ]
+}

@@ -1,0 +1,98 @@
+group = "org.binbard.node_flutter"
+version = "1.0-SNAPSHOT"
+
+buildscript {
+    ext.kotlin_version = "1.8.22"
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.7.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+
+android {
+    namespace = "org.binbard.node_flutter"
+    
+    compileSdk = 35
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += "src/main/kotlin"
+            jniLibs.srcDirs = ['libs/bin']
+
+            assets.srcDirs += ['src/main/assets'] 
+        }
+        test {
+            java.srcDirs += "src/test/kotlin"
+        }
+    }
+
+    defaultConfig {
+        minSdk = 21
+
+        // Add NDK configuration. x86_64 dropped: we vendor libnode.so only for
+        // phone ABIs (no emulator), so the CMake build must not target x86_64.
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+        
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+                arguments "-DANDROID_STL=c++_shared"
+            }
+        }
+
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+    }
+
+    dependencies {
+        testImplementation("org.jetbrains.kotlin:kotlin-test")
+        testImplementation("org.mockito:mockito-core:5.0.0")
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+
+            testLogging {
+               events "passed", "skipped", "failed", "standardOut", "standardError"
+               outputs.upToDateWhen {false}
+               showStandardStreams = true
+            }
+        }
+    }
+}

@@ -28,6 +28,13 @@ No setup or install needed, just download and run. Downloads for Linux, Windows,
 * Customizable native app triggers (run Claude Code or any native app with a click)
 * Runs flutter apps from ANU
 
+## Android (experimental)
+
+An Android port lives in [`mobile/`](mobile/) — a Flutter app that runs the same
+CSS/pivot pod + router + proxy on the phone (via nodejs-mobile) and renders
+either the dk shell or the SolidOS/mashlib databrowser in a WebView. See
+[`mobile/README.md`](mobile/README.md).
+
 ## License
 
 MIT (c) 2019,2026, Jeff Zucker
