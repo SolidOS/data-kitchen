@@ -36,22 +36,44 @@ Flutter app (one process)
 
 ## Build & run
 
-Prereqs: Flutter SDK, Android SDK + **NDK 27.0.12077973** (the vendored plugin
-pins it), and a JDK 17+ (Flutter's Gradle build needs `javac`).
+Prereqs: Flutter SDK, Android SDK + **NDK 28.2.13676358** (pinned in
+`android/app/build.gradle.kts`), and a **JDK 21** (the build auto-uses `~/jdk-21`
+when `JAVA_HOME` is unset).
+
+**One command** — runs the whole chain and produces the single installable APK:
+
+```bash
+npm run dist:android            # = bash mobile/tool/build-apk.sh  (release APK)
+```
+
+It leaves the APK at `mobile/build/app/outputs/flutter-apk/app-release.apk` and
+copies it to `release/Solid_Data_Kitchen-<version>-android.apk` (next to the
+desktop electron-builder artifacts). The release build is signed with the
+**debug** key (`build.gradle.kts` has no release `signingConfig`), so it installs
+by sideload but is **not** Play-Store ready — add a keystore for that. Pass
+`--debug` for a dev build; `FORCE_CONFIG=1` to also recompile the CSS config.
+
+```bash
+adb install -r release/Solid_Data_Kitchen-*-android.apk
+```
+
+The chain `build-apk.sh` sequences (each step is also runnable on its own):
 
 ```bash
 # 1. one-time: fetch the nodejs-mobile prebuilt (libnode.so, gitignored)
 bash mobile/tool/fetch-libnode.sh
 
-# 2. one-time / when pivot config changes: compile the mobile CSS config
+# 2. the dk frontend bundle (dist/dk.bundle.js)
+npm run build
+
+# 3. one-time / when pivot config changes: compile the mobile CSS config
 bash pivot/build-compiled-config.sh mobile      # -> pivot/dist/create-app-mobile.cjs
 
-# 3. assemble the Node project bundle (gitignored; re-run after editing nodejs-src/)
+# 4. assemble the Node project bundle (gitignored; re-run after editing nodejs-src/)
 bash mobile/tool/prepare-node-project.sh
 
-# 4. build + install
-cd mobile && flutter pub get && flutter build apk --debug
-adb install -r build/app/outputs/flutter-apk/app-debug.apk
+# 5. build the APK
+cd mobile && flutter pub get && flutter build apk --release
 ```
 
 First launch extracts the bundled CSS `node_modules` (~19.5k files) on-device
@@ -74,17 +96,26 @@ phone styling is layered on without touching desktop, scoped entirely behind a
 touch media query (`@media (hover: none) and (pointer: coarse)`): desktop is a
 mouse pointer, so those rules are unreachable there by construction. Pieces:
 
-- **Shell chrome** (`../assets/dk-chrome.css`): room tabs → a horizontal-scroll
-  strip; chrome actions (`.sol-tabs-launch`) → a fixed bottom dock; mini-player
-  → sticky above it; safe-area insets via `env()` (needs `viewport-fit=cover`
-  on the `<meta name=viewport>` in `../index.html`).
+- **Navigator** — on a coarse pointer `<sol-tabs>` (in sol-components) swaps its
+  tab strip for a full-width **trigger pill** that opens a themed **bottom sheet**
+  (an *accordion*: the ~7 top-level rooms show collapsed, a submenu's leaves
+  reveal on tap, one group open at a time). Built by `_renderNavSheet` /
+  `_buildSheet`; themed in `../assets/dk-chrome.css`. A submenu of **external
+  links** (e.g. Apps) never becomes the active room — a link leaf opens in the
+  reader overlay (below) and the current room stays put, so its empty pane is
+  never shown. The launch chips move into a "Launch" group; the bottom dock is
+  slimmed to search · calendar · ? · ☰ (theme/text-size live in the ☰ menu).
+- **Article / external-link reader** (`lib/main.dart`) — tapping a news article
+  or a launch chip would otherwise navigate the single WebView away from the
+  shell (killing feed keep-alive). Instead `onNavigationRequest` diverts any
+  external host to a **dismissible overlay**: a second WebView (with a ✕ / host /
+  reload bar) layered over the *untouched* shell WebView. ✕ or Android back
+  (`PopScope`) closes it and the feeds are exactly as they were; a redirect back
+  to `localhost` (OIDC login) hands off to the shell.
 - **Phone text tiers**: 14 / 16 / 18px (small/medium/large), down from desktop's
-  16/20/24, also in `dk-chrome.css`. The phone has no "A" button, so
+  16/20/24, in `dk-chrome.css`. The phone has no "A" button, so
   `../src/dk-settings-applier.js` **defaults a touch device to the small tier**
   (14px) when there's no saved `dk:fontsize` choice.
-- **News feed** (`sol-feed`, in sol-components): on touch, `_readerInline()` is
-  off → full-width article list + pop-out reader instead of the desktop's
-  side-by-side reading pane; the source picker is a horizontal scroll strip.
 
 Verify the phone look from the desktop app via CDP by emulating the touch media
 features (`pointer:coarse` / `hover:none`) — both the CSS and the `matchMedia()`
@@ -136,12 +167,11 @@ nodejs-mobile is a constrained runtime; several things needed solving:
 ## Known limitations / TODO
 
 - dk shell runs in **degraded mode**: no Electron bridge, so settings save,
-  music import, the IdP vault, and the inline native reader pane show notices /
-  don't render. A Flutter↔JS bridge would restore them. One unguarded
-  `window.dkElectron.restart()` (`../src/dk-config-settings.js`) can throw on the
-  settings page. (The news feed works regardless: on touch it uses the pop-out
-  reader, so tapping an article navigates the WebView to it — use the Flutter
-  home button to return.)
+  music import, and the IdP vault show notices / don't render. A Flutter↔JS
+  bridge would restore them. One unguarded `window.dkElectron.restart()`
+  (`../src/dk-config-settings.js`) can throw on the settings page. (Articles no
+  longer use the desktop native reader — they open in the Dart overlay above, so
+  the news feed is fully usable.)
 - `node_flutter`'s `flutter-bridge` linked binding doesn't register (readiness is
   done by HTTP polling instead).
 - Node runs via `Nodejs.start()` (app-process), not the foreground service —

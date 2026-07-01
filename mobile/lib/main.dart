@@ -58,6 +58,12 @@ class _PodPageState extends State<PodPage> {
   bool _ready = false;
   bool _starting = true;
   WebViewController? _web;
+  // A dismissible reader overlay for external links (news articles, launch
+  // chips). It layers a SECOND WebView over the shell — the shell WebView is
+  // never navigated, so its loaded feeds survive (keep-alive), matching the
+  // desktop native reader. Null = no overlay.
+  WebViewController? _overlay;
+  String? _overlayUrl;
 
   @override
   void initState() {
@@ -133,6 +139,17 @@ class _PodPageState extends State<PodPage> {
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0xFFFFFFFF))
       ..setNavigationDelegate(NavigationDelegate(
+        // A top-level navigation to an EXTERNAL host is a news article / launch
+        // chip trying to take over the shell (sol-feed's window.open becomes a
+        // same-WebView navigation here). Divert it to a dismissible overlay and
+        // leave the shell — and its loaded feeds — exactly where they were.
+        onNavigationRequest: (req) {
+          if (req.isMainFrame && _isExternal(req.url)) {
+            _openOverlay(req.url);
+            return NavigationDecision.prevent;
+          }
+          return NavigationDecision.navigate;
+        },
         onWebResourceError: (e) => _append('web error: ${e.errorCode} ${e.description}'),
       ))
       ..loadRequest(Uri.parse(kFrontendUrl));
@@ -141,6 +158,91 @@ class _PodPageState extends State<PodPage> {
       _ready = true;
       _starting = false;
     });
+  }
+
+  // A URL is "external" (opens in the overlay) when it's http(s) to a host other
+  // than the app origin. Same-origin (localhost / 127.0.0.1) and non-http
+  // schemes (data:, about:, blob:) load in place.
+  bool _isExternal(String url) {
+    final u = Uri.tryParse(url);
+    if (u == null) return false;
+    if (u.scheme != 'http' && u.scheme != 'https') return false;
+    return u.host != 'localhost' && u.host != '127.0.0.1';
+  }
+
+  void _openOverlay(String url) {
+    final c = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0xFFFFFFFF))
+      ..setNavigationDelegate(NavigationDelegate(
+        // If the article/login navigates BACK to the app origin (e.g. an OIDC
+        // redirect), close the overlay and hand that URL to the shell so login
+        // completes there.
+        onNavigationRequest: (req) {
+          if (req.isMainFrame && !_isExternal(req.url)) {
+            _closeOverlay();
+            _web?.loadRequest(Uri.parse(req.url));
+            return NavigationDecision.prevent;
+          }
+          return NavigationDecision.navigate;
+        },
+      ))
+      ..loadRequest(Uri.parse(url));
+    setState(() {
+      _overlay = c;
+      _overlayUrl = url;
+    });
+  }
+
+  void _closeOverlay() {
+    if (_overlay == null) return;
+    setState(() {
+      _overlay = null;
+      _overlayUrl = null;
+    });
+  }
+
+  // The reader overlay: a slim bar (✕ close, host, reload) over a second WebView
+  // showing the article. Full-screen on top of the shell; ✕ or Android back
+  // dismiss it.
+  Widget _buildOverlay(BuildContext context) {
+    final host = Uri.tryParse(_overlayUrl ?? '')?.host ?? '';
+    return Positioned.fill(
+      child: Material(
+        color: Colors.white,
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                height: 50,
+                color: const Color(0xFF1D1F24),
+                padding: const EdgeInsets.only(left: 4, right: 8),
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.close, color: Colors.white),
+                      tooltip: 'Close',
+                      onPressed: _closeOverlay,
+                    ),
+                    Expanded(
+                      child: Text(host,
+                          style: const TextStyle(color: Colors.white, fontSize: 16),
+                          overflow: TextOverflow.ellipsis),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.refresh, color: Colors.white),
+                      tooltip: 'Reload',
+                      onPressed: () => _overlay?.reload(),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(child: WebViewWidget(controller: _overlay!)),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   void _showLog() {
@@ -163,19 +265,33 @@ class _PodPageState extends State<PodPage> {
   @override
   Widget build(BuildContext context) {
     if (_ready && _web != null) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Data Kitchen Pod'),
-          actions: [
-            IconButton(icon: const Icon(Icons.home), tooltip: 'Pod root',
-                onPressed: () => _web!.loadRequest(Uri.parse(kFrontendUrl))),
-            IconButton(icon: const Icon(Icons.refresh), tooltip: 'Reload',
-                onPressed: () => _web!.reload()),
-            IconButton(icon: const Icon(Icons.bug_report), tooltip: 'Boot log',
-                onPressed: _showLog),
-          ],
+      final overlaid = _overlay != null;
+      return PopScope(
+        // Android back closes the overlay first (don't exit the app / never
+        // touch the shell WebView).
+        canPop: !overlaid,
+        onPopInvokedWithResult: (didPop, result) { if (!didPop) _closeOverlay(); },
+        child: Scaffold(
+          appBar: overlaid
+              ? null   // the overlay owns the top bar while it's open
+              : AppBar(
+                  title: const Text('Data Kitchen Pod'),
+                  actions: [
+                    IconButton(icon: const Icon(Icons.home), tooltip: 'Pod root',
+                        onPressed: () => _web!.loadRequest(Uri.parse(kFrontendUrl))),
+                    IconButton(icon: const Icon(Icons.refresh), tooltip: 'Reload',
+                        onPressed: () => _web!.reload()),
+                    IconButton(icon: const Icon(Icons.bug_report), tooltip: 'Boot log',
+                        onPressed: _showLog),
+                  ],
+                ),
+          body: Stack(
+            children: [
+              WebViewWidget(controller: _web!),   // the shell — never navigated away
+              if (overlaid) _buildOverlay(context),
+            ],
+          ),
         ),
-        body: WebViewWidget(controller: _web!),
       );
     }
 

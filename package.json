@@ -27,7 +27,8 @@
     "test:e2e": "node test/e2e/run.mjs",
     "test:mobile": "node --test \"mobile/test/node/**/*.test.mjs\"",
     "dist": "electron-builder",
-    "dist:cross": "electron-builder --linux --mac zip --win zip"
+    "dist:cross": "electron-builder --linux --mac zip --win zip",
+    "dist:android": "bash mobile/tool/build-apk.sh"
   },
   "dependencies": {
     "component-interop": "^0.3.0",

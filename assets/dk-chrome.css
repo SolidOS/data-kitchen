@@ -429,18 +429,23 @@
        (pointer:fine / hover:hover), so this whole block is UNREACHABLE there —
        the desktop chrome above is left exactly as-is, by construction.
 
-       Pure CSS: it re-homes the EXISTING shell elements into native phone
-       ergonomics with no DOM or JS changes (which would belong in
-       sol-components, not dk):
-         • room tabs (.sol-tabs-bar)        → one horizontal-scroll strip, top
-         • chrome actions (.sol-tabs-launch) → a fixed bottom action bar (thumb)
-         • now-playing (.omp-mini)           → a sticky bar above the action bar
+       Navigation is the native <select> that <sol-tabs> builds for itself on a
+       coarse pointer (sol-components: _renderSelect — every room + submenu leaf
+       in one OS picker, replacing the cramped horizontal tab strip). This block
+       only THEMES that select and re-homes the rest into phone ergonomics, with
+       no dk-side DOM/JS:
+         • the select (.sol-tabs-select)     → themed full-width navigator, top
+         • launch group (.sol-tabs-launch)   → a slim fixed bottom dock (thumb):
+             app chips → folded into the select's "Launch" group (hidden here);
+             theme / text-size → live in the ☰ menu (hidden here);
+             keeps search · calendar · ☰ · help · sign-in
+         • now-playing (.omp-mini)           → a sticky bar above the dock
          • safe-area insets (notch / home indicator) via env() — needs
            viewport-fit=cover on the <meta name=viewport> (set in index.html).
        Palette/type are inherited from the existing --ia-* / --tab-* theme; only
-       layout and touch sizing change. Signature: the strip's bottom rail takes
-       the CURRENT room's accent, so the room you're in is unmistakable on a
-       small screen (mirrors the desktop per-room tab colours).
+       layout and touch sizing change. Signature: the bar's bottom rail takes the
+       CURRENT room's accent (driven by the hidden tab buttons' .active state, so
+       it survives the strip→select swap), unmistakable on a small screen.
        ════════════════════════════════════════════════════════════════════ */
     @media (hover: none) and (pointer: coarse) {
       :root {
@@ -518,23 +523,64 @@
       #dk-tabs > .sol-tabs-bar:has(> sol-dropdown-button[data-tab-id="Pods"].active)          { border-bottom-color: var(--tab-workspaces); }
       #dk-tabs > .sol-tabs-bar:has(> sol-dropdown-button[data-tab-id="panel-dev-tools"].active) { border-bottom-color: var(--tab-devtools); }
 
+      /* The strip the sheet replaces — hidden on phones. dk's id-level button
+         rules out-rank sol-components' generic hide, so re-assert it here.
+         :not(.sol-tabs-navtrigger) is essential — the trigger is itself a
+         <button> child of the bar, so a bare `> button` hide would hide it too. */
+      #dk-tabs > .sol-tabs-bar > button:not(.sol-tabs-navtrigger),
+      #dk-tabs > .sol-tabs-bar > sol-dropdown-button { display: none; }
+
+      /* ── Bottom-sheet navigator: warm dk theming + per-room accents ──────
+         Structure ships in sol-components; here we tint it to dk's cream/green
+         palette and colour every room by its existing --tab-* accent — the same
+         colours the desktop tabs and the active rail use — so the sheet reads as
+         dk's own room directory, not a generic list. The sheet is mounted on
+         <body>, so it's themed by global selectors (it exists only on a coarse
+         pointer, inside this media block). */
+      /* The trigger is a <button>, so dk's desktop tab-button rule (same
+         #dk-tabs specificity) bleeds in — restate the full look here so it wins
+         (border, radius, colour, size), not just the background. */
+      #dk-tabs > .sol-tabs-bar > .sol-tabs-navtrigger {
+        margin-bottom: 8px;
+        padding: 0 16px; min-height: 50px;
+        font-size: 1.05rem; font-weight: 600;
+        color: var(--ia-text, #2a2620);
+        background: var(--ia-lift, #fff);
+        border: 1px solid var(--ia-border, #d8cdb5);
+        border-radius: 14px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.16);
+      }
+      .sol-tabs-sheet-panel  { background: var(--ia-bg-elev, #f7f1e4); }
+      .sol-tabs-sheet-grabber{ background: var(--ia-border, #cbbfa6); }
+      .sol-tabs-sheet-grouphead{ color: var(--ia-text-muted, #8c826b); }
+      .sol-tabs-sheet-item   { color: var(--ia-text, #2a2620); }
+      .sol-tabs-sheet-item:active { background: var(--ia-bg-btn, rgba(0,0,0,.06)); }
+      /* Map each room id → its --tab-* accent (trigger dot, row rail, active tint). */
+      .sol-tabs-navtrigger[data-tab-id="panel-news"],      .sol-tabs-sheet-item[data-tab-id="panel-news"]      { --row-accent: var(--tab-news); }
+      .sol-tabs-navtrigger[data-tab-id="panel-music"],     .sol-tabs-sheet-item[data-tab-id="panel-music"]     { --row-accent: var(--tab-music); }
+      .sol-tabs-navtrigger[data-tab-id="panel-movies"],    .sol-tabs-sheet-item[data-tab-id="panel-movies"]    { --row-accent: var(--tab-movies); }
+      .sol-tabs-navtrigger[data-tab-id="panel-images"],    .sol-tabs-sheet-item[data-tab-id="panel-images"]    { --row-accent: var(--tab-images); }
+      .sol-tabs-navtrigger[data-tab-id="Pods"],            .sol-tabs-sheet-item[data-tab-id="Pods"]            { --row-accent: var(--tab-workspaces); }
+      .sol-tabs-navtrigger[data-tab-id="item"],            .sol-tabs-sheet-item[data-tab-id="item"]            { --row-accent: var(--tab-resources); }
+      .sol-tabs-navtrigger[data-tab-id="panel-dev-tools"], .sol-tabs-sheet-item[data-tab-id="panel-dev-tools"] { --row-accent: var(--tab-devtools); }
+
       /* ── Content reserves room for the fixed bottom bar(s) ────────────── */
       .omp-panels { padding-bottom: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom)); }
       body:has(.omp-mini:not([hidden])) .omp-panels {
         padding-bottom: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom) + 46px);
       }
 
-      /* ── Bottom: the launch group becomes a fixed thumb-zone dock ─────────
-         This group holds BOTH the quick-launch app chips (.sol-bar-link) AND
-         the chrome controls (search / calendar / help / ⋮) — together more than
-         fit one phone-width row, so the dock scrolls horizontally (momentum +
-         snap) and nothing clips off-screen. A phone dock of app shortcuts +
-         controls is a natural home for them. */
+      /* ── Bottom: the launch group becomes a slim fixed thumb-zone dock ────
+         The app chips moved into the navigator's "Launch" group and theme /
+         text-size live in the ☰ menu (both hidden just below), so the dock is
+         down to a handful of chrome controls — search · calendar · ☰ · help ·
+         sign-in. They spread evenly across the dock; overflow-scroll stays as a
+         fallback for a very narrow phone. */
       #dk-tabs > .sol-tabs-bar > .sol-tabs-launch {
         position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
         height: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom));
         padding: 0 8px var(--dk-m-safe-bottom);
-        display: flex; align-items: center; justify-content: flex-start; gap: 6px;
+        display: flex; align-items: center; justify-content: space-evenly; gap: 6px;
         overflow-x: auto; overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x proximity;
@@ -545,11 +591,12 @@
       #dk-tabs > .sol-tabs-bar > .sol-tabs-launch > * {
         flex: 0 0 auto; scroll-snap-align: start;
       }
-      /* Touch-size the quick-launch app chips (each holds a favicon <img>). */
-      #dk-tabs > .sol-tabs-bar > .sol-tabs-launch > .sol-bar-link {
-        min-width: 48px; height: 44px; padding: 0 6px;
-        display: inline-flex; align-items: center; justify-content: center;
-      }
+      /* App chips now live in the navigator's "Launch" optgroup; theme and
+         text-size are in the ☰ menu (<#MoreTheme> / <#MoreFontSize>). Drop all
+         three from the dock so it stays a slim row of essentials. */
+      #dk-tabs > .sol-tabs-bar > .sol-tabs-launch > .sol-bar-link,
+      #dk-tabs > .sol-tabs-bar > .sol-tabs-launch > .omp-theme,
+      #dk-tabs > .sol-tabs-bar > .sol-tabs-launch > .omp-fontsize { display: none; }
       /* 44×44 touch targets for every chrome control in the dock. */
       .omp-search::part(trigger),   .omp-calendar::part(trigger),
       .omp-more::part(trigger),     .omp-theme::part(trigger),
