@@ -8,7 +8,7 @@ import { createRequire } from 'node:module';
 import { makeReq, makeRes } from '../helpers/mock-http.mjs';
 
 const require = createRequire(import.meta.url);
-const { makeGate } = require('../../electron-config/gate.cjs');
+const { makeGate, blessNonce, validBless } = require('../../electron-config/gate.cjs');
 
 const TOKEN = 'sekret-123';
 
@@ -63,6 +63,28 @@ test('blessing flow: ?dk-token=<secret> sets a strict cookie and redirects witho
   assert.match(setCookie, /HttpOnly/);
   // location keeps other params, drops dk-token
   assert.equal(res.headers['location'], '/dk/page?keep=1');
+});
+
+test('bless nonce: ?dk-bless=<nonce> blesses without the durable token in the URL', () => {
+  const gate = makeGate(TOKEN);
+  const res = makeRes();
+  const nonce = blessNonce(TOKEN);
+  assert.ok(!nonce.includes(TOKEN), 'the nonce does not contain the durable token');
+  const req = makeReq({ url: `/dk/page?dk-bless=${encodeURIComponent(nonce)}&keep=1` });
+  assert.equal(gate(req, res), true);
+  assert.equal(res.statusCode, 302);
+  assert.match(res.headers['set-cookie'], new RegExp(`dk-token=${TOKEN}`));
+  assert.equal(res.headers['location'], '/dk/page?keep=1');   // dk-bless stripped
+});
+
+test('validBless: round-trips, rejects tamper / expiry / wrong token', () => {
+  const now = 1_000_000;
+  assert.equal(validBless(TOKEN, blessNonce(TOKEN, now), now), true);
+  assert.equal(validBless(TOKEN, blessNonce(TOKEN, now), now + 130_000), false); // expired (>120s)
+  assert.equal(validBless(TOKEN, blessNonce('other-token', now), now), false);   // wrong token
+  assert.equal(validBless(TOKEN, blessNonce(TOKEN, now) + 'x', now), false);      // tampered mac
+  assert.equal(validBless(TOKEN, 'not-a-nonce', now), false);
+  assert.equal(validBless(TOKEN, '', now), false);
 });
 
 test('allowOrigins: exact origin match passes (proxy use)', () => {

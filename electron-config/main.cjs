@@ -21,6 +21,8 @@ const {
   readConfig, writeConfig, configTopic,
 } = require('./config.cjs');
 const { Servers, getGateToken } = require('./servers.cjs');
+const { blessNonce } = require('./gate.cjs');
+const { LibraryRoots } = require('./library-roots.cjs');
 const idpVault = require('./idp-vault.cjs');
 const { mintCredential, createGrantSession, revokeCredentialViaAccount } = require('./idp-grant.cjs');
 const { OWNER_EMAIL, OWNER_PASSWORD } = require('./seed-account.cjs');
@@ -168,6 +170,8 @@ class DesktopApp {
 
   async start() {
     Menu.setApplicationMenu(null);
+    // dkfile: allow-list (imported music folders); persisted in userData.
+    this._libraryRoots = new LibraryRoots(app.getPath('userData'));
     this.installGateHeader();
     try {
       await this.servers.start();
@@ -322,6 +326,12 @@ class DesktopApp {
         if (process.platform === 'win32' && /^\/[A-Za-z]:/.test(filePath)) filePath = filePath.slice(1);
       } catch {
         return new Response('Bad file URL', { status: 400 });
+      }
+      // Only serve files under a folder the user explicitly imported — a track's
+      // mo:item file:// URL is attacker-influenceable, so an unrestricted handler
+      // would be an arbitrary local-file read within the app origin.
+      if (!this._libraryRoots || !this._libraryRoots.isAllowed(filePath)) {
+        return new Response('Forbidden', { status: 403 });
       }
       let stat;
       try { stat = await fs.promises.stat(filePath); }
@@ -579,6 +589,9 @@ class DesktopApp {
         if (res.canceled || !res.filePaths || !res.filePaths[0]) return { status: 'cancelled' };
         root = res.filePaths[0];
       }
+      // Authorize dkfile: to serve tracks under this folder (the mo:item file://
+      // originals live here). Persisted, so playback survives a restart.
+      this._libraryRoots.add(root);
       try {
         const { scanFolder } = await this._musicScanner();
         const send = (payload) => { try { if (!e.sender.isDestroyed()) e.sender.send('dk:import-progress', payload); } catch { /* renderer gone */ } };
@@ -593,6 +606,8 @@ class DesktopApp {
     // release to write as the release artwork (foaf:depiction).
     ipcMain.handle('dk:read-cover', async (_e, absPath) => {
       if (typeof absPath !== 'string' || !absPath) return null;
+      // Same allow-list as dkfile: — only read art from an imported library folder.
+      if (!this._libraryRoots || !this._libraryRoots.isAllowed(absPath)) return null;
       try {
         const { readCover } = await this._musicScanner();
         return await readCover(absPath);
@@ -804,7 +819,7 @@ class DesktopApp {
           { label: 'Copy Link Address',    click: () => clipboard.writeText(params.linkURL) },
           { type: 'separator' },
         ] : []),
-        { label: 'Open dk in Browser', click: () => shell.openExternal(`${APP_URL}?dk-token=${getGateToken()}`) },
+        { label: 'Open dk in Browser', click: () => shell.openExternal(`${APP_URL}?dk-bless=${blessNonce(getGateToken())}`) },
         { type: 'separator' },
         { label: 'Toggle DevTools', click: () => wc.toggleDevTools() },
         { label: 'Inspect Element', click: () => wc.inspectElement(params.x, params.y) },

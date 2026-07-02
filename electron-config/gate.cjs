@@ -17,8 +17,33 @@
 
 'use strict';
 
+const crypto = require('node:crypto');
+
 const HEADER = 'x-dk-token';
 const COOKIE = 'dk-token';
+
+// A short-lived "bless" nonce so the DURABLE token never has to appear in a URL
+// (which would leak it into the external browser's history / address bar). Main
+// hands the browser `?dk-bless=<ts>.<hmac>`; the gate recomputes the HMAC from the
+// token it already holds and checks the timestamp window — no shared state, and
+// the nonce reveals nothing about the token and expires.
+const BLESS_TTL_MS = 120_000;
+function blessNonce(token, now = Date.now()) {
+  const ts = String(now);
+  const mac = crypto.createHmac('sha256', token).update(ts).digest('base64url');
+  return `${ts}.${mac}`;
+}
+function validBless(token, nonce, now = Date.now()) {
+  if (!token || !nonce) return false;
+  const i = String(nonce).indexOf('.');
+  if (i < 0) return false;
+  const ts = nonce.slice(0, i);
+  const t = Number(ts);
+  if (!Number.isFinite(t) || Math.abs(now - t) > BLESS_TTL_MS) return false;
+  const expect = crypto.createHmac('sha256', token).update(ts).digest('base64url');
+  try { return crypto.timingSafeEqual(Buffer.from(nonce.slice(i + 1)), Buffer.from(expect)); }
+  catch { return false; }   // length mismatch etc.
+}
 
 // Endpoints that are PUBLIC by Solid/OIDC design and must pass the gate
 // un-authenticated, otherwise third-party login is impossible:
@@ -52,8 +77,12 @@ function makeGate(token, { allowOrigins = [] } = {}) {
     if (cookieValue(req.headers.cookie, COOKIE) === token) return false;
 
     const url = new URL(req.url, 'http://localhost');
-    if (url.searchParams.get(COOKIE) === token) {
+    // Bless a browser via ?dk-token=<secret> (legacy) or the leak-free
+    // ?dk-bless=<nonce> — either way, answer with the cookie and strip the param.
+    const blessParam = url.searchParams.get('dk-bless');
+    if (url.searchParams.get(COOKIE) === token || validBless(token, blessParam)) {
       url.searchParams.delete(COOKIE);
+      url.searchParams.delete('dk-bless');
       res.writeHead(302, {
         'set-cookie': `${COOKIE}=${token}; Path=/; HttpOnly; SameSite=Strict; Max-Age=31536000`,
         'location': url.pathname + url.search,
@@ -80,4 +109,4 @@ function makeGate(token, { allowOrigins = [] } = {}) {
   return gate;
 }
 
-module.exports = { makeGate };
+module.exports = { makeGate, blessNonce, validBless };
