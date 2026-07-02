@@ -33,11 +33,10 @@ function summarize(report) {
 }
 
 // --- bundled sample data that conforms today (regression protection) ---
+// The media shapes/data (music, images) moved to the open-media-player
+// package, which carries its own tests/shapes.test.mjs for them.
 const conformingCases = [
   ['news feeds',           'plugins/news/feeds.shacl',                   'plugins/news/feeds.ttl'],
-  ['image collections',    'plugins/omp-images/images.shacl',            'plugins/omp-images/libraries/wikimedia_images/images.ttl'],
-  ['image libraries',      'plugins/omp-images/image-libraries.shacl',   'plugins/omp-images/libraries/wikimedia_images/images.ttl'],
-  ['image topics',         'plugins/omp-images/image-topics.shacl',      'plugins/omp-images/libraries/wikimedia_images/images.ttl'],
 ];
 
 for (const [label, shape, data] of conformingCases) {
@@ -46,28 +45,3 @@ for (const [label, shape, data] of conformingCases) {
     assert.ok(report.conforms, `expected conformance, violations:\n   ${summarize(report)}`);
   });
 }
-
-// --- the music shape: a richer, cross-referencing model (catalog → release →
-//     track → playlist), exercised by the bundled music-example.ttl ---
-const MUSIC_SHAPE = 'plugins/ia-player/music.shacl';
-const musicExample = readFileSync(P('plugins/ia-player/music-example.ttl'), 'utf8');
-
-test('music-example conforms to music.shacl', async () => {
-  const report = await validate(MUSIC_SHAPE, musicExample);
-  assert.ok(report.conforms, `expected conformance, violations:\n   ${summarize(report)}`);
-});
-
-test('music shape has teeth: a Release without a title is rejected', async () => {
-  // Remove the release's required dcterms:title → ReleaseShape must flag it.
-  const broken = musicExample.replace(/dcterms:title "Woo Warriors at the Soho" ;\n\s*/, '');
-  const report = await validate(MUSIC_SHAPE, broken);
-  assert.equal(report.conforms, false, 'a Release missing dcterms:title must NOT conform');
-});
-
-test('music shape has teeth: a track rating must be a decimal, not an integer', async () => {
-  // TrackShape wants schema:ratingValue as xsd:decimal; an integer must fail.
-  // (This is exactly the nit music-example.ttl used to carry.)
-  const broken = musicExample.replace('schema:ratingValue 5.0 ;', 'schema:ratingValue 5 ;');
-  const report = await validate(MUSIC_SHAPE, broken);
-  assert.equal(report.conforms, false, 'an integer ratingValue must NOT conform');
-});

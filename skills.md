@@ -130,7 +130,10 @@ appears as a ghost under "Other".
 - **dk-dokieli** (`plugins/solidos/dk-dokieli.js`) — a standalone direct editor
   (loads the doc `.html` directly, no SolidOS browser); identity/auth via
   `dokieli-adapter.js`. Shows a spinner overlay until the doc iframe loads.
-- **ia-player** (`plugins/ia-player/`) — Internet Archive music player, with a
+- **ia-player** (from the `open-media-player` package — sibling working tree in
+  dev via the `node_modules/open-media-player` symlink; sources in its
+  `src/ia-player/`, rebuild ITS bundle with `npm run build` there after edits) —
+  Internet Archive music player, with a
   **local import** path (gear ▸ "Import music folder…"): the Electron main process
   scans a chosen folder (`import-music.mjs`, `music-metadata`) and the renderer
   authors a "My Music" RDF library (`import-id3-build.js`, a pure/SHACL-tested

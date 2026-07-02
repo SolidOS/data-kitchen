@@ -2,7 +2,7 @@
 // ESM (music-metadata is ESM-only) — main.cjs loads it via dynamic import().
 //
 // Split of concerns: this module ONLY reads the filesystem and parses tags. It
-// returns plain metadata objects; the renderer (plugins/ia-player/import-id3.js)
+// returns plain metadata objects; the renderer (open-media-player's ia-player)
 // groups them into releases and authors the library RDF. The originals are
 // never copied or modified — mo:item will point file:// at them in place.
 //

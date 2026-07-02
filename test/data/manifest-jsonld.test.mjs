@@ -1,4 +1,5 @@
-// The dk-own plugins (podz, solidos, ia-player, news, omp-images) carry a
+// The dk-own plugins (podz, solidos, news; ia-player/omp-images moved to the
+// open-media-player package) carry a
 // folder manifest.jsonld (the plugin standard: help, shapes, parts). Each must
 // be valid JSON, declare the required component fields, and every file it
 // references must exist on disk — a stale path means a broken help link or an
@@ -18,7 +19,7 @@ const manifestDirs = readdirSync(pluginsDir, { withFileTypes: true })
   .map((d) => d.name);
 
 test('found folder manifests to validate', () => {
-  assert.ok(manifestDirs.length >= 5, `expected the dk-own plugin manifests, got ${manifestDirs.length}`);
+  assert.ok(manifestDirs.length >= 3, `expected the dk-own plugin manifests, got ${manifestDirs.length}`);
 });
 
 for (const name of manifestDirs) {

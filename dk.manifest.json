@@ -9,27 +9,17 @@
     }
   },
   "components": {
-    "ia-player": {
-      "label": "Internet Archive player",
-      "shape": "./shapes/music.shacl",
-      "help": "./plugins/ia-player/assets/ia-help.html"
-    },
-    "omp-images": { "label": "Wikimedia images" },
     "dk-podz": { "label": "Data Kitchen Pod Browser" },
     "dk-solidos": { "label": "SolidOS data browser" },
     "dk-dokieli": { "label": "dokieli" }
   },
   "stages": {
     "local": {
-      "components": {
-        "ia-player": "/plugins/ia-player/dist/ia-player.esm.js"
-      },
+      "components": {},
       "shared-modules": {}
     },
     "cdn": {
-      "components": {
-        "ia-player": "/plugins/ia-player/dist/ia-player.esm.js"
-      },
+      "components": {},
       "shared-modules": {}
     }
   }

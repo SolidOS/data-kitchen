@@ -35,6 +35,7 @@
     "electron-reloader": "^1.2.3",
     "mashlib": "^2.2.2",
     "music-metadata": "^11.13.0",
+    "open-media-player": "^0.1.0",
     "sol-components": "^2.4.1"
   },
   "devDependencies": {
@@ -70,6 +71,7 @@
       "!**/*.map",
       "!**/node_modules/sol-components/{node_modules,coverage,tests,tests-disabled,docs,drafts,examples,claude}/**",
       "!**/node_modules/component-interop/{node_modules,tests,examples,help,claude,drafts}/**",
+      "!**/node_modules/open-media-player/{node_modules,tests,tools,claude,drafts}/**",
       "!claude/**",
       "!tools/**",
       "!test/**",

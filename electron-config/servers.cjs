@@ -17,7 +17,7 @@ const {
   REPO_ROOT, PUBLIC_PORT, CSS_INTERNAL_PORT, PROXY_PORT,
   PUBLIC_ORIGIN, ENGINE_DIR, POD_ROOT,
 } = require('./config.cjs');
-const { seedDefinition } = require('./seed.cjs');
+const { seedDefinition, seedMediaPlugins } = require('./seed.cjs');
 const { seedPodTemplate, seedRootOwnerMeta } = require('./pod-template.cjs');
 const { seedOwnerAccount } = require('./seed-account.cjs');
 
@@ -132,6 +132,12 @@ class Servers {
       const baselineFile = path.join(app.getPath('userData'), 'seed-baseline.json');
       const { written, updated, kept } = seedDefinition(ENGINE_DIR, POD_ROOT, baselineFile);
       this.log(`[seed] ${written} new, ${updated} updated, ${kept} kept (user-edited) — ${POD_ROOT}`);
+      // Media plugins (ia-player / omp-images) ship in the open-media-player
+      // package; seed their pod content from there (same destinations as when
+      // they lived in plugins/ — see seed.cjs).
+      const ompDir = path.join(ENGINE_DIR, 'node_modules', 'open-media-player');
+      const m = seedMediaPlugins(ompDir, POD_ROOT, baselineFile);
+      this.log(`[seed omp] ${m.written} new, ${m.updated} updated, ${m.kept} kept (user-edited)`);
     } catch (e) {
       this.log(`[seed] failed: ${e.message}`);
     }

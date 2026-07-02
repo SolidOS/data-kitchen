@@ -32,35 +32,15 @@ const options = {
   ],
 };
 
-// The ia-player plugin bundle (absorbed from open_media_player; defines
-// <ia-player> and <omp-images>). rdflib stays external — component-interop's
-// injected importmap maps it to the one shared instance. CSS/HTML are inlined
-// as text by bundle-init.js (slated for extraction to sol-include files).
-const iaPlayerOptions = {
-  entryPoints: ['plugins/ia-player/bundle-entry.js'],
-  outfile: 'plugins/ia-player/dist/ia-player.esm.js',
-  format: 'esm',
-  bundle: true,
-  minify: true,
-  target: ['es2020'],
-  platform: 'browser',
-  mainFields: ['module', 'browser', 'main'],
-  conditions: ['module', 'import', 'browser', 'default'],
-  treeShaking: true,
-  legalComments: 'none',
-  logLevel: 'info',
-  external: ['rdflib'],
-  loader: { '.css': 'text', '.html': 'text' },
-  define: { __OMP_BUILD__: JSON.stringify(`dk ${new Date().toISOString()}`) },
-};
+// The ia-player plugin bundle (<ia-player> + <omp-images>) is no longer built
+// here — it ships prebuilt in the open-media-player package (sibling working
+// tree in dev via the node_modules symlink; `npm run build` THERE after
+// editing its src/).
 
 if (watch) {
   const ctx = await esbuild.context(options);
-  const iaCtx = await esbuild.context(iaPlayerOptions);
   await ctx.watch();
-  await iaCtx.watch();
-  console.log('esbuild: watching src/ and plugins/');
+  console.log('esbuild: watching src/');
 } else {
   await esbuild.build(options);
-  await esbuild.build(iaPlayerOptions);
 }

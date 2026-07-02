@@ -17,6 +17,7 @@
 
 'use strict';
 
+const fs = require('node:fs');
 const path = require('node:path');
 const { reconcileTree } = require('./seed-core.cjs');
 
@@ -56,4 +57,69 @@ function seedDefinition(engineDir, podRoot, baselineFile) {
   });
 }
 
-module.exports = { seedDefinition, SEED_ENTRIES };
+// ── media plugins (from the open-media-player package) ──────────────────
+//
+// The ia-player / omp-images plugin content no longer lives in this repo — it
+// ships in the open-media-player npm package (sibling working tree in dev via
+// the node_modules symlink). Seed it into the SAME pod destinations as before
+// (dk-pod/dk/plugins/{ia-player,omp-images}/…), so plugin TTLs, the catalog,
+// menus, and favourites keep their URLs unchanged.
+//
+// The package lays files out differently (libraries/ and shapes/ at its root,
+// sources under src/<plugin>/), so destRel maps package paths onto the pod
+// plugin layout, and the two folder manifest.jsonld files get their relative
+// refs mapped back from package layout to pod layout.
+//
+// Library trees are seeded whole-or-not-at-all: a pod library we did not
+// write (no baseline for its index.ttl but the tree exists) is user-owned —
+// possibly still on the older extensionless releases/playlists naming — and
+// mixing package-style files into it could tear it, so it is skipped
+// entirely.
+
+const MEDIA_ENTRIES = ['src/ia-player', 'src/omp-images', 'shapes'];
+
+function mediaDestRel(rel) {
+  const p = rel.split(path.sep).join('/');
+  let out;
+  if (p.startsWith('src/ia-player/')) out = 'plugins/ia-player/' + p.slice('src/ia-player/'.length);
+  else if (p.startsWith('src/omp-images/')) out = 'plugins/omp-images/' + p.slice('src/omp-images/'.length);
+  else if (p.startsWith('libraries/wikimedia_images/')) out = 'plugins/omp-images/' + p;
+  else if (p.startsWith('libraries/')) out = 'plugins/ia-player/' + p;
+  else if (p.startsWith('shapes/')) {
+    const base = p.slice('shapes/'.length);
+    out = (base.startsWith('image') ? 'plugins/omp-images/' : 'plugins/ia-player/') + base;
+  } else out = p;
+  return path.join('dk-pod', 'dk', out);
+}
+
+// Map the package-layout relative refs in a folder manifest.jsonld back to the
+// pod plugin layout it is being seeded into.
+function mediaTransform(buf, rel) {
+  const p = rel.split(path.sep).join('/');
+  if (!p.endsWith('/manifest.jsonld')) return buf;
+  return Buffer.from(String(buf)
+    .replaceAll('../../libraries/', './libraries/')
+    .replaceAll('../../shapes/', './'));
+}
+
+function seedMediaPlugins(packageDir, podRoot, baselineFile) {
+  let baseline = {};
+  try { baseline = JSON.parse(fs.readFileSync(baselineFile, 'utf8')); } catch { /* first run */ }
+  const entries = [...MEDIA_ENTRIES];
+  const libsDir = path.join(packageDir, 'libraries');
+  for (const lib of fs.existsSync(libsDir) ? fs.readdirSync(libsDir) : []) {
+    const seededBefore = Object.keys(baseline).some((k) => k.startsWith(`libraries/${lib}/`));
+    const destDir = path.dirname(path.join(podRoot, mediaDestRel(path.join('libraries', lib, 'x'))));
+    if (!seededBefore && fs.existsSync(destDir)) continue;   // pre-existing user tree
+    entries.push(`libraries/${lib}`);
+  }
+  return reconcileTree(packageDir, podRoot, {
+    entries,
+    skipDirs: SKIP_DIR_NAMES,
+    destRel: mediaDestRel,
+    transform: mediaTransform,
+    baselineFile,
+  });
+}
+
+module.exports = { seedDefinition, seedMediaPlugins, SEED_ENTRIES };
