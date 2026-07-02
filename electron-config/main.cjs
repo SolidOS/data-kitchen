@@ -467,7 +467,9 @@ class DesktopApp {
           action: 'allow',
           overrideBrowserWindowOptions: {
             width: 480, height: 620, autoHideMenuBar: true,
-            webPreferences: { contextIsolation: true, nodeIntegration: false },
+            // sandbox:true like every other view — it's just an external IdP login
+            // page, so it needs no privileged APIs.
+            webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true },
           },
         };
       }
