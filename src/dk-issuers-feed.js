@@ -12,15 +12,12 @@ import { rdf } from 'sol-components/core/rdf.js';
 import { loadRdfStore } from 'sol-components/core/rdf-utils.js';
 import { solFetch } from 'sol-components/core/auth-fetch.js';
 import { createMainProxySession } from './dk-idp-proxy-session.js';
+import { DEFAULT_OIDC_ISSUERS as FALLBACK } from './shared/oidc-issuers.js';
 
 const SOLID_OIDC = 'http://www.w3.org/ns/solid/terms#oidcIssuer';
 const SETTINGS = './dk-pod/dk/ui-data/data-kitchen-settings.ttl';
-// Last-resort only: the settings doc is seeded with these, so this is reached
-// just if the doc can't be read at all.
-const FALLBACK = [
-  'https://solidcommunity.net', 'https://solidweb.me',
-  'https://solidweb.org', 'https://login.inrupt.com',
-];
+// FALLBACK (the curated defaults) is last-resort only: the settings doc is seeded
+// with these, so it is reached just if the doc can't be read at all.
 
 let issuers = FALLBACK.slice();
 let version = 0;               // bumped on each (re)load so fed elements re-apply

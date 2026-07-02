@@ -9,18 +9,10 @@
 import { rdf } from 'sol-components/core/rdf.js';
 import { loadRdfStore } from 'sol-components/core/rdf-utils.js';
 import { solFetch } from 'sol-components/core/auth-fetch.js';
+import { DEFAULT_OIDC_ISSUERS as CURATED } from './shared/oidc-issuers.js';
+import { esc } from './shared/html-escape.js';
 
 const SOLID_OIDC = 'http://www.w3.org/ns/solid/terms#oidcIssuer';
-const CURATED = [
-  'https://solidcommunity.net',
-  'https://solidweb.me',
-  'https://solidweb.org',
-  'https://login.inrupt.com',
-];
-
-function esc(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
 
 class DkIssuersEditor extends HTMLElement {
   async connectedCallback() {

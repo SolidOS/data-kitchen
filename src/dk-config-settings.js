@@ -15,6 +15,7 @@
 import { rdf } from 'sol-components/core/rdf.js';
 import { loadRdfStore } from 'sol-components/core/rdf-utils.js';
 import { solFetch } from 'sol-components/core/auth-fetch.js';
+import { esc } from './shared/html-escape.js';
 
 const UI = 'http://www.w3.org/ns/ui#';
 const SCHEMA = 'http://schema.org/';
@@ -32,10 +33,6 @@ const FIELD_PREDS = {
   windowX:     UI + 'windowX',
   windowY:     UI + 'windowY',
 };
-
-function esc(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
 
 class DkConfigSettings extends HTMLElement {
   async connectedCallback() {

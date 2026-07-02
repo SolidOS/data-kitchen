@@ -58,13 +58,11 @@ function applyFontSize(size) {
   document.documentElement.style.setProperty('--font-size', map[s]);
 }
 
-// Cache the resolved theme/font choice in localStorage so the
-// before-first-paint inline script in index.html can apply them
-// synchronously without waiting for the cross-origin fetch.
-function cacheForFastPaint(theme, fontSize) {
-  try { localStorage.setItem('data-kitchen-settings', JSON.stringify({ theme, fontSize })); }
-  catch (_) {}
-}
+// Fast-paint (no flash on next launch) is handled by the keys dk-boot.js reads —
+// dk:theme / dk:fontsize — which the ☰ Theme / Text-size toggles write on an
+// explicit user choice (dk-tabs-shell). The applier does NOT cache the
+// RDF-resolved values into those keys: in particular the phone small-default
+// below keys off dk:fontsize being ABSENT until the user picks a size.
 
 let currentTheme = 'system';
 
@@ -79,7 +77,6 @@ function readAndApply() {
   currentTheme = theme;
   applyTheme(theme);
   applyFontSize(size);
-  cacheForFastPaint(theme, size);
 }
 
 readAndApply();

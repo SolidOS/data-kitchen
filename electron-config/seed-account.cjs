@@ -28,19 +28,10 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { jfetch } = require('./jfetch.cjs');
 
 const OWNER_EMAIL = 'me@dk.local';
 const OWNER_PASSWORD = '!secret';
-
-async function jfetch(url, { method = 'GET', body, gateToken, cookie } = {}) {
-  const headers = { accept: 'application/json' };
-  if (body !== undefined) headers['content-type'] = 'application/json';
-  if (gateToken) headers['x-dk-token'] = gateToken;
-  if (cookie) headers.cookie = cookie;
-  const res = await fetch(url, { method, headers, body: body === undefined ? undefined : JSON.stringify(body) });
-  let json = null; try { json = await res.json(); } catch { /* non-JSON */ }
-  return { status: res.status, json };
-}
 
 /**
  * Provision the owner account for third-party `!secret` logins. Best-effort +
