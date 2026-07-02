@@ -75,8 +75,8 @@ class DkIssuersEditor extends HTMLElement {
         <span class="dk-issuer-url" title="${esc(url)}">${esc(url)}</span>
         ${i === 0
           ? '<span class="dk-issuer-default">default</span>'
-          : `<button type="button" class="dk-issuer-iconbtn" data-act="default" data-i="${i}" title="Make default">★</button>`}
-        <button type="button" class="dk-issuer-iconbtn" data-act="remove" data-i="${i}" title="Remove">✕</button>
+          : `<button type="button" class="dk-issuer-iconbtn" data-act="default" data-i="${i}" title="Make default" aria-label="Make ${esc(url)} the default issuer">★</button>`}
+        <button type="button" class="dk-issuer-iconbtn" data-act="remove" data-i="${i}" title="Remove" aria-label="Remove ${esc(url)}">✕</button>
       </div>`).join('');
 
     const options = CURATED.map((u) => `<option value="${esc(u)}">${esc(u)}</option>`).join('');

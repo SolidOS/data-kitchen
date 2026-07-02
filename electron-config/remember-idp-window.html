@@ -35,8 +35,19 @@
   }
   button.primary { background: #2563eb; border-color: #2563eb; color: #fff; }
   button:disabled { opacity: .55; cursor: default; }
-  .msg { min-height: 20px; margin-top: 12px; font-size: 15px; color: #b00020; }
-  .note { font-size: 14px; color: #555c66; }
+  .msg { min-height: 20px; margin-top: 12px; font-size: 16px; color: #b00020; }
+  .note { font-size: 16px; color: #555c66; }
+
+  /* Honour a dark OS preference — the dialog declares color-scheme: light dark
+     but its colours were hardcoded light, so dark-mode users got a light box. */
+  @media (prefers-color-scheme: dark) {
+    body   { background: #1d2126; color: #e6e8eb; }
+    input  { background: #2a2f36; color: #e6e8eb; border-color: #454b54; }
+    button { background: #2a2f36; color: #e6e8eb; border-color: #454b54; }
+    button.primary { background: #2563eb; border-color: #2563eb; color: #fff; }
+    .note  { color: #9aa0a8; }
+    .msg   { color: #ff6b6b; }
+  }
 </style>
 </head>
 <body>
