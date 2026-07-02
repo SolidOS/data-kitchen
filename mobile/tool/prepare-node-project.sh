@@ -30,6 +30,10 @@ mkdir -p "$PROJ/dist"
 
 echo "[prepare] copying node source + compiled CSS config + patches"
 cp "$SRC/main.js" "$SRC/untar.cjs" "$SRC/proxy.js" "$SRC/router.js" "$SRC/connect-agent.js" "$SRC/package.json" "$PROJ/"
+# Shared router/proxy core (server-core.cjs) lives at the repo root; router.js and
+# proxy.js require it as a sibling ('./server-core.cjs'). Copy the REAL file (not
+# the nodejs-src symlink, which would break in the flat bundle).
+cp "$REPO/server-core.cjs" "$PROJ/"
 cp "$CREATE_APP" "$PROJ/dist/create-app.cjs"
 mkdir -p "$PROJ/patches"
 cp "$SRC/patches/"*.cjs "$PROJ/patches/"

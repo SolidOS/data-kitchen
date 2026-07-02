@@ -8,53 +8,18 @@
 
 const http = require('node:http');
 const { makeGate } = require('../electron-config/gate.cjs');
-
-// ─── SSRF guard ───────────────────────────────────────────────────────────────
-// The gate limits WHO may call the proxy; this limits WHAT it may fetch. A pod
-// doc or feed the app reads is attacker-influenceable, so the proxy must not be
-// turned into a confused deputy against loopback / private / cloud-metadata
-// addresses. Only http/https to a non-private host is allowed. NOTE: this checks
-// the literal host at each redirect hop; a hostname that DNS-resolves to a
-// private IP (rebinding) is a known residual, to be closed when this moves into
-// the shared router/proxy core (plan item C1).
-function isBlockedHost(host) {
-  const h = String(host || '').toLowerCase().replace(/^\[|\]$/g, '');
-  if (!h || h === 'localhost' || h.endsWith('.localhost')) return true;
-  if (h === '::1' || h === '::' || h === '0.0.0.0') return true;
-  if (h.startsWith('fe80:') || h.startsWith('fc') || h.startsWith('fd')) return true; // v6 link-local / ULA
-  const m = h.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
-  if (m) {
-    const [a, b] = [Number(m[1]), Number(m[2])];
-    if (a === 127 || a === 10 || a === 0) return true;
-    if (a === 169 && b === 254) return true;            // link-local + cloud metadata
-    if (a === 172 && b >= 16 && b <= 31) return true;   // 172.16/12
-    if (a === 192 && b === 168) return true;            // 192.168/16
-    if (a === 100 && b >= 64 && b <= 127) return true;  // CGNAT 100.64/10
-  }
-  return false;
-}
-
-// Opt-in escape hatch: hostnames listed in DK_PROXY_ALLOW_HOSTS (comma-separated)
-// bypass isBlockedHost, for a deployment that legitimately proxies a known
-// internal service. Empty by default, so loopback/private stay blocked.
-const ALLOW_HOSTS = new Set(
-  (process.env.DK_PROXY_ALLOW_HOSTS || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean),
-);
-
-function assertProxyTarget(uri) {
-  let u;
-  try { u = new URL(uri); } catch { throw new Error('invalid url'); }
-  if (u.protocol !== 'http:' && u.protocol !== 'https:') throw new Error('scheme not allowed');
-  const host = u.hostname.toLowerCase().replace(/^\[|\]$/g, '');
-  if (!ALLOW_HOSTS.has(host) && isBlockedHost(u.hostname)) throw new Error('host not allowed');
-  return u;
-}
+// SSRF guard shared with the mobile proxy (server-core.cjs). The gate limits WHO
+// may call the proxy; this limits WHAT it may fetch (no loopback/private/metadata,
+// http(s) only), re-checked at every redirect hop. Opt-in DK_PROXY_ALLOW_HOSTS
+// bypasses the block for a named internal host.
+const { assertProxyTarget, makeAllowHosts } = require('../server-core.cjs');
+const ALLOW_HOSTS = makeAllowHosts(process.env.DK_PROXY_ALLOW_HOSTS);
 
 // fetch() that follows redirects manually so every hop is re-validated.
 async function fetchGuarded(uri, max = 5) {
   let url = uri;
   for (let hop = 0; hop <= max; hop++) {
-    assertProxyTarget(url);
+    assertProxyTarget(url, ALLOW_HOSTS);
     const r = await fetch(url, { redirect: 'manual' });
     if (r.status >= 300 && r.status < 400) {
       const loc = r.headers.get('location');
@@ -108,8 +73,7 @@ const server = http.createServer(async (req, res) => {
     return res.end(buf);
   } catch (error) {
     console.log(error);
-    const blocked = /not allowed|invalid url/.test(error && error.message);
-    res.writeHead(blocked ? 403 : 500, CORS);
+    res.writeHead(error && error.blocked ? 403 : 500, CORS);
     res.end(String(error));
   }
 });

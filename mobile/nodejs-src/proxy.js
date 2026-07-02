@@ -12,6 +12,11 @@
 
 const http = require('node:http');
 const https = require('node:https');
+// SSRF guard shared with the desktop proxy (server-core.cjs, via a sibling
+// symlink). Mobile runs the proxy UN-gated (loopback inside the app sandbox), so
+// this is the ONLY limit on what it may fetch — refuse loopback/private/metadata
+// targets and non-http(s) schemes, at every redirect hop.
+const { assertProxyTarget, makeAllowHosts } = require('./server-core.cjs');
 
 const CORS = {
   'access-control-allow-origin': '*',
@@ -19,49 +24,12 @@ const CORS = {
   'access-control-allow-headers': '*',
 };
 
-// ─── SSRF guard ───────────────────────────────────────────────────────────────
-// Mobile runs the proxy un-gated (loopback inside the app sandbox), so this is
-// the ONLY limit on what it may fetch. A pod doc or feed the app reads is
-// attacker-influenceable, so refuse loopback / private / cloud-metadata targets
-// and non-http(s) schemes. Checked at every redirect hop. (Kept identical to
-// desktop proxy/index.cjs for the eventual shared core — plan item C1. Residual:
-// a hostname that DNS-resolves to a private IP is not caught here.)
-function isBlockedHost(host) {
-  const h = String(host || '').toLowerCase().replace(/^\[|\]$/g, '');
-  if (!h || h === 'localhost' || h.endsWith('.localhost')) return true;
-  if (h === '::1' || h === '::' || h === '0.0.0.0') return true;
-  if (h.startsWith('fe80:') || h.startsWith('fc') || h.startsWith('fd')) return true; // v6 link-local / ULA
-  const m = h.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
-  if (m) {
-    const [a, b] = [Number(m[1]), Number(m[2])];
-    if (a === 127 || a === 10 || a === 0) return true;
-    if (a === 169 && b === 254) return true;            // link-local + cloud metadata
-    if (a === 172 && b >= 16 && b <= 31) return true;   // 172.16/12
-    if (a === 192 && b === 168) return true;            // 192.168/16
-    if (a === 100 && b >= 64 && b <= 127) return true;  // CGNAT 100.64/10
-  }
-  return false;
-}
-
-// Opt-in escape hatch: hostnames in DK_PROXY_ALLOW_HOSTS (comma-separated) bypass
-// isBlockedHost. Empty by default, so loopback/private stay blocked.
-const ALLOW_HOSTS = new Set(
-  (process.env.DK_PROXY_ALLOW_HOSTS || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean),
-);
-
-function assertProxyTarget(uri) {
-  let u;
-  try { u = new URL(uri); } catch { const e = new Error('invalid url'); e.blocked = true; throw e; }
-  if (u.protocol !== 'http:' && u.protocol !== 'https:') { const e = new Error('scheme not allowed'); e.blocked = true; throw e; }
-  const host = u.hostname.toLowerCase().replace(/^\[|\]$/g, '');
-  if (!ALLOW_HOSTS.has(host) && isBlockedHost(u.hostname)) { const e = new Error('host not allowed'); e.blocked = true; throw e; }
-  return u;
-}
+const ALLOW_HOSTS = makeAllowHosts(process.env.DK_PROXY_ALLOW_HOSTS);
 
 // GET a URL, following up to `max` redirects. Calls cb(err, {status, type, buf}).
 function fetchUpstream(uri, cb, max = 5) {
   let target;
-  try { target = assertProxyTarget(uri); } catch (e) { return cb(e); }
+  try { target = assertProxyTarget(uri, ALLOW_HOSTS); } catch (e) { return cb(e); }
   const mod = target.protocol === 'https:' ? https : http;
   const req = mod.get(target, (res) => {
     const { statusCode = 0, headers } = res;
