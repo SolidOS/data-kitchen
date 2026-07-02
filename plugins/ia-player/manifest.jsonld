@@ -52,7 +52,8 @@
   ],
   "requires": [
     "./libraries/internet_archive_music/index.ttl",
-    "./libraries/internet_archive_movies/index.ttl"
+    "./libraries/internet_archive_movies/index.ttl",
+    "./libraries/internet_archive_spoken_word/index.ttl"
   ],
   "help": "./assets/ia-help.html",
   "shape": "./music.shacl",

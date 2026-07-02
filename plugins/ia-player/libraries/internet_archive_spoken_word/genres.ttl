@@ -1,0 +1,7 @@
+@prefix : <./genres.ttl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+<#SpokenWord> a skos:ConceptScheme; skos:prefLabel "Spoken Word".
+<#Poetry> a skos:Concept; skos:prefLabel "Poetry"; skos:topConceptOf <#SpokenWord>.
+<#Fiction> a skos:Concept; skos:prefLabel "Myths, Texts & Fiction"; skos:topConceptOf <#SpokenWord>.
+<#Society> a skos:Concept; skos:prefLabel "Society"; skos:topConceptOf <#SpokenWord>.

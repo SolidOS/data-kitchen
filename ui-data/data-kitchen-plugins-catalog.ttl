@@ -10,7 +10,7 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it." ;
-  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SolidOS-AddressBook> <#SolidOS-Chat> <#SolidOS-Meeting> <#SolidOS-Notes> <#SolidOS-Tasks> <#SPARQL-Playground> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
+  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SolidOS-AddressBook> <#SolidOS-Chat> <#SolidOS-Meeting> <#SolidOS-Notes> <#SolidOS-Tasks> <#SPARQL-Playground> <#Spoken-Word-Internet-Archive> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
   skos:member <#Booklice>, <#Tired-Bike> .
@@ -25,7 +25,7 @@
   skos:member <#Calendar>, <#Clock>, <#GeoPod>, <#News-three-panel-feeds>, <#Search>, <#Umai>, <#Weather> .
 
 <#Media> a skos:Collection ; skos:prefLabel "Media" ;
-  skos:member <#Images-Wikimedia>, <#Media-Kraken>, <#Movies-Internet-Archive>, <#MovieStar>, <#Music-Internet-Archive>, <#Solidflix> .
+  skos:member <#Images-Wikimedia>, <#Media-Kraken>, <#Movies-Internet-Archive>, <#MovieStar>, <#Music-Internet-Archive>, <#Solidflix>, <#Spoken-Word-Internet-Archive> .
 
 <#Other-Services> a skos:Collection ; skos:prefLabel "Other Services" ;
   skos:member <#Bluesky>, <#CryptPad>, <#Duck-ai>, <#Element>, <#HuggingFace-Chat>, <#Lemmy>, <#LibreTranslate>, <#Mastodon>, <#Matrix-Chat>, <#OpenStreetMap>, <#Pixelfed>, <#Proton-Calendar>, <#Proton-Drive>, <#Proton-Mail>, <#SearXNG>, <#SepiaSearch>, <#Standard-Notes>, <#Tuta> .
@@ -611,6 +611,17 @@
   rdfs:comment "Try out SPARQL queries." ;
   dct:publisher "AtomGraph" ;
   ui:href <https://atomgraph.github.io/SPARQL-Playground/> .
+
+<#Spoken-Word-Internet-Archive> a ui:Component ; ui:label "Spoken Word (Internet Archive)" ;
+  dct:source <../plugins/spoken-word.ttl> ;
+  ui:icon "🎙️" ;
+  ui:name "ia-player" ;
+  rdfs:comment "Browse and play poetry, audiobooks, and talks from the Internet Archive." ;
+  dct:creator "Jeff Zucker" ;
+  ui:attribute
+    [ schema:name "storage-ns" ; schema:value "spoken-word" ] ,
+    [ schema:name "defer" ; schema:value "" ] ,
+    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_spoken_word/index.ttl" ] .
 
 <#Standard-Notes> a ui:Link ; ui:label "Standard Notes" ;
   dct:source <../plugins/standard-notes.ttl> ;

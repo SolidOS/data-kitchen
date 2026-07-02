@@ -345,7 +345,8 @@
     a ui:Menu;
     ui:label "Media";
     ui:parts
-            ( :Internet-Archive-player-2 :Images-Wikimedia-2
+            ( :Internet-Archive-player-2 :Spoken-Word-Internet-Archive
+            :Images-Wikimedia-2
             :Movies-Internet-Archive :Solidflix-4 :Media-Kraken-2 :MovieStar-4
             ).
 :Media-Kraken
@@ -765,6 +766,20 @@
     ui:icon "🔮";
     ui:label "SPARQL Playground";
     ui:region ui:Tab.
+:Spoken-Word-Internet-Archive
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-spoken-word" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_spoken_word/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "spoken-word" ];
+    ui:icon "🎙️";
+    ui:label "Spoken Word (Internet Archive)";
+    ui:name "ia-player".
 :Synara-AI
     a ui:Link;
     ui:href "https://ai.privatedatapod.com/";

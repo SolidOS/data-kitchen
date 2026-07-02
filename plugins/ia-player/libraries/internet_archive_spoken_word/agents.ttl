@@ -1,0 +1,161 @@
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix : <./agents.ttl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix genres: <./genres.ttl#>.
+
+<#it> a dcat:Dataset;
+    dct:title "Speakers".
+<urn:uuid:fa5d0f73-cf6b-40b2-bad3-9825249fa10d> a foaf:Agent;
+    foaf:name "Amiri Baraka";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Baraka%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:de113398-4340-4850-82da-118a95048a62> a foaf:Agent;
+    foaf:name "Gregory Bateson";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Bateson%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:3ddbc924-ef82-4733-a3b9-4b711c307f28> a foaf:Agent;
+    foaf:name "William Burroughs";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Burroughs%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:52c73a9c-a90b-4dac-bd4d-61ca288f1e08> a foaf:Agent;
+    foaf:name "Gregory Corso";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Corso%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:f1657508-c7bf-471a-8ac4-4678f0c8562b> a foaf:Agent;
+    foaf:name "Diane diPrima";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22DiPrima%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:5a297bc4-2115-45a2-91e8-ab4d44db88ee> a foaf:Agent;
+    foaf:name "Nikki Giovanni";
+    dcat:landingPage <https://archive.org/search?query=creator%3A%22Nikki+Giovanni%22&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:1fef3e72-5f44-4bab-b800-bcc8fde96032> a foaf:Agent;
+    foaf:name "Allen Ginsberg";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Ginsberg%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:88f8c5f8-b11c-4029-a798-cb15dd241b37> a foaf:Agent;
+    foaf:name "Joy Harjo";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Harjo%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:80ab4d0a-40aa-41fd-b2eb-12be38720326> a foaf:Agent;
+    foaf:name "Bobbie Louise Hawkins";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Hawkins%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:e2be1f2d-9649-438b-a148-07575b43cefa> a foaf:Agent;
+    foaf:name "Gil Scott-Heron";
+    dcat:landingPage <https://archive.org/search?query=creator%3A%22Gil+Scott-Heron%22&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:9baaf32a-c655-4970-a240-662bb39763b3> a foaf:Agent;
+    foaf:name "Joanne Kyger";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Kyger%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:f4210023-564a-4a36-8332-2114a7534a4e> a foaf:Agent;
+    foaf:name "Langston Hughes";
+    dcat:landingPage <https://archive.org/search?query=creator%3A%22Langston+Hughes%22&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:93abbbe6-4427-403a-87a5-eee428d58d8e> a foaf:Agent;
+    foaf:name "Michael McClure";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22McClure%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:4a7e501f-8dd5-4960-9f5c-41202c12fc8a> a foaf:Agent;
+    foaf:name "Ishmael Reed";
+    dcat:landingPage <https://archive.org/search?query=creator%3A%22Ishmael+Reed%22&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:ece9013a-301a-47a7-8751-10521fc50aa6> a foaf:Agent;
+    foaf:name "Jerome Rothenberg";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Rothenberg%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:079df324-fcd6-4eb0-9485-ed504c7f02fb> a foaf:Agent;
+    foaf:name "Gary Snyder";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Snyder%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:b2044c53-bc9d-4162-8e68-7fb5c1df6f58> a foaf:Agent;
+    foaf:name "Anne Waldman";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Waldman%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:00b65c29-824f-4554-ac47-06b6a06da6f5> a foaf:Agent;
+    foaf:name "Philip Whalen";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28naropa%29&and%5B%5D=creator%3A%28%22Whalen%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Poetry.
+<urn:uuid:58d13c77-7c15-4abe-be36-187e355c7e86> a foaf:Agent;
+    foaf:name "Ancient Texts";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Ancient+Texts%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:8b723662-4647-402f-9cbe-2988a6f661dc> a foaf:Agent;
+    foaf:name "Classics";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Classics%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:ffecc135-ea2e-461a-a524-de0b5d3b6098> a foaf:Agent;
+    foaf:name "Fable";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Fable%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:ffe7a76d-4a9e-4147-9874-4a2079b02e0d> a foaf:Agent;
+    foaf:name "Fairy";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Fairy%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:2945f0ce-fcd8-454b-8df3-361904be0ca1> a foaf:Agent;
+    foaf:name "Fantasy";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Fantasy%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:4d4b6c14-e972-4012-9604-022de4a5676f> a foaf:Agent;
+    foaf:name "Horror";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Horror%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:05a691a1-589a-42b9-8ff5-b216d5d6b675> a foaf:Agent;
+    foaf:name "Humor";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Humor%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:414d7609-7dac-4943-ba0b-f006bb0b98ca> a foaf:Agent;
+    foaf:name "Literature";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Literature%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:3fc56dad-11a4-4fc5-bfca-27d1dbbe0fea> a foaf:Agent;
+    foaf:name "Mystery";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Mystery%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:05c5947f-fbeb-45b5-ac0c-16d8b6d4f79f> a foaf:Agent;
+    foaf:name "Myth";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Myth%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:51e02d55-30dd-4ae9-af1a-a3792a82b87a> a foaf:Agent;
+    foaf:name "Romance";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Romance%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:da19f34c-aa3c-4815-be76-b36ecb20e9af> a foaf:Agent;
+    foaf:name "Science Fiction";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Science+Fiction%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Fiction.
+<urn:uuid:125ea34c-a584-407f-a514-3ae681122866> a foaf:Agent;
+    foaf:name "Economics";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Economics%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Society.
+<urn:uuid:e1a4bb5a-1d70-40b6-91fb-2a21a6de6004> a foaf:Agent;
+    foaf:name "Feminism";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Feminism%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Society.
+<urn:uuid:c3a139b8-f3a3-47f8-855e-68daca0d54b2> a foaf:Agent;
+    foaf:name "History";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22History%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Society.
+<urn:uuid:dc14e702-dbf8-44f9-bfcb-95cef7600e15> a foaf:Agent;
+    foaf:name "Language";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Language%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Society.
+<urn:uuid:d1949256-70f9-4fee-a0f6-793f33392f60> a foaf:Agent;
+    foaf:name "Politics";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Politics%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Society.
+<urn:uuid:aab423d0-c6d7-4389-b5d7-8de692479c25> a foaf:Agent;
+    foaf:name "Psychology";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Psychology%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Society.
+<urn:uuid:01ada7fa-757e-4a2c-ad21-8b89600cd590> a foaf:Agent;
+    foaf:name "Slavery";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Slavery%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Society.
+<urn:uuid:a062e801-718d-4b5e-8797-c5f897897eeb> a foaf:Agent;
+    foaf:name "Socialism";
+    dcat:landingPage <https://archive.org/search?query=collection%3A%28librivoxaudio%29&and%5B%5D=subject%3A%28%22Socialism%22%29&and%5B%5D=mediatype%3A%22audio%22>;
+    mo:genre genres:Society.
