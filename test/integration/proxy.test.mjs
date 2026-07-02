@@ -2,6 +2,11 @@
 // proxy (gated) plus a tiny in-test origin server, and asserts that the proxy
 // passes content through VERBATIM with permissive CORS (it no longer rewrites
 // HTML — feed articles load live in a native view, not an in-iframe proxy view).
+//
+// The in-test upstream is on loopback, which the SSRF guard now blocks by
+// default; the proxy is started with DK_PROXY_ALLOW_HOSTS=127.0.0.1 so the
+// passthrough case can be exercised, while the SSRF tests below confirm that
+// OTHER internal/metadata targets and non-http schemes are still refused.
 
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
@@ -32,6 +37,7 @@ before(async () => {
   proc = startServer(join(root, 'proxy/index.cjs'), {
     DK_PROXY_PORT: String(proxyPort),
     DK_GATE_TOKEN: TOKEN,
+    DK_PROXY_ALLOW_HOSTS: '127.0.0.1',   // permit the loopback test upstream
   });
   await waitForServer(`${proxyBase}/`, { headers: { 'x-dk-token': TOKEN } });
 });
@@ -49,6 +55,22 @@ test('HTML is passed through verbatim with permissive CORS (no rewriting)', asyn
   assert.equal(r.headers.get('access-control-allow-origin'), '*');
   const html = await r.text();
   assert.equal(html, PAGE, 'returned unchanged — scripts kept, no <base> injected');
+});
+
+test('SSRF: a non-allowlisted internal target is refused (403)', async () => {
+  // 169.254.169.254 = cloud-metadata; blocked even though 127.0.0.1 is allowed.
+  const r = await get(`/proxy?uri=${encodeURIComponent('http://169.254.169.254/latest/meta-data/')}`);
+  assert.equal(r.status, 403);
+});
+
+test('SSRF: a private-range target is refused (403)', async () => {
+  const r = await get(`/proxy?uri=${encodeURIComponent('http://10.0.0.1/')}`);
+  assert.equal(r.status, 403);
+});
+
+test('SSRF: a non-http(s) scheme is refused (403)', async () => {
+  const r = await get(`/proxy?uri=${encodeURIComponent('file:///etc/passwd')}`);
+  assert.equal(r.status, 403);
 });
 
 test('OPTIONS preflight is answered with CORS once past the gate', async () => {

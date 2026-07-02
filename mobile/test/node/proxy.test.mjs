@@ -11,6 +11,10 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const HERE = path.dirname(fileURLToPath(import.meta.url));
+// The upstream stand-in is on loopback, which the SSRF guard blocks by default;
+// allowlist it (read once at module load) so the passthrough cases run. The
+// SSRF tests below use OTHER internal targets to confirm the guard is active.
+process.env.DK_PROXY_ALLOW_HOSTS = '127.0.0.1';
 const proxy = require(path.join(HERE, '..', '..', 'nodejs-src', 'proxy.js'));
 
 const noop = () => {};
@@ -130,7 +134,22 @@ test('502 when the upstream fetch fails', async () => {
   assert.match(r.body, /proxy fetch failed/);
 });
 
-test('502 (not a crash) for a malformed uri', async () => {
+test('403 (not a crash) for a malformed uri', async () => {
   const r = await req('/proxy?uri=not-a-valid-url');
-  assert.equal(r.status, 502);
+  assert.equal(r.status, 403);   // rejected by the SSRF guard before any fetch
+});
+
+test('SSRF: a non-allowlisted internal target is refused (403)', async () => {
+  const r = await req(`/proxy?uri=${encodeURIComponent('http://169.254.169.254/latest/meta-data/')}`);
+  assert.equal(r.status, 403);
+});
+
+test('SSRF: a private-range target is refused (403)', async () => {
+  const r = await req(`/proxy?uri=${encodeURIComponent('http://10.0.0.1/')}`);
+  assert.equal(r.status, 403);
+});
+
+test('SSRF: a non-http(s) scheme is refused (403)', async () => {
+  const r = await req(`/proxy?uri=${encodeURIComponent('file:///etc/passwd')}`);
+  assert.equal(r.status, 403);
 });

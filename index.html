@@ -6,16 +6,12 @@
        (in dk-chrome.css, behind a touch media query) read the notch / home-bar
        insets on phones. Inert on desktop Electron (no insets → env() is 0). -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <!-- Wormhole guard: the app shell must never run inside a frame (opening
-       /index.html from a SolidOS listing would load the whole app recursively).
-       When framed inside SolidOS, navigate SolidOS to the /dk-pod/ container (its
-       own view); otherwise redirect the frame to /dk-pod/. -->
-  <script>
-    if (window.top !== window) {
-      try { window.stop(); } catch (_) {}
-      location.replace(location.origin + '/dk-pod/');
-    }
-  </script>
+  <!-- Wormhole guard (must run first): the app shell must never run inside a
+       frame — opening /index.html from a SolidOS listing would load the whole app
+       recursively. Externalized to src/ so this page can carry a strict CSP with
+       no inline scripts; still a classic parser-blocking script, so it runs before
+       anything else. -->
+  <script src="src/dk-wormhole-guard.js"></script>
   <title>data-kitchen</title>
 
   <link rel="icon" href="data:,">
@@ -28,13 +24,10 @@
 
   <!-- sol-login reads the inrupt auth library from a window global. sc ships
        it only as an ESM build (which sets no global), so publish that build onto
-       window.solidClientAuthn here — no separately-vendored UMD bundle to drift.
-       The global is consumed lazily (at session creation, AuthManager._makeSession),
-       so this deferred module runs well before it's needed. -->
-  <script type="module">
-    import * as inrupt from '/node_modules/sol-components/dist/vendor/@inrupt-solid-client-authn-browser.js';
-    if (!window.solidClientAuthn) window.solidClientAuthn = inrupt;
-  </script>
+       window.solidClientAuthn (see src/dk-inrupt-global.js) — no separately-vendored
+       UMD bundle to drift. Externalized to src/ so this page can carry a strict CSP
+       with no inline scripts. -->
+  <script type="module" src="src/dk-inrupt-global.js"></script>
 
   <!-- component-interop (parser-blocking <head> script) reads both manifests —
        sol-components' first (it owns the shared specifiers: rdflib,
