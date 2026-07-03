@@ -171,6 +171,27 @@ un-gated so external Solid login works: OIDC discovery/provider
 (public WebID docs). Everything else → bare 401, no CORS. **No token → gate off**
 (standalone dev runs stay open). `bin/dk-curl` attaches the token automatically.
 
+**"Open dk in Browser" uses a leak-free bless (2026-07):** rather than putting the
+durable `?dk-token=<secret>` in the URL (which leaks into browser history), the menu
+hands off `?dk-bless=<ts>.<hmac>` — a stateless, time-limited HMAC of the token
+(`gate.cjs` `blessNonce`/`validBless`); the gate recomputes it from the token it holds.
+
+### More security surface (2026-07 review)
+
+- **App-shell CSP (`router/index.cjs` `serveShell`):** the shell (`/`, `/index.html`)
+  is served with a per-response nonce stamped on every `<script>` + a matching
+  nonce-based CSP. `component-interop` propagates that nonce to the importmap it
+  injects. So a `<script>` written into a pod doc (via `sol-include … trusted`) has no
+  nonce and is **blocked** — the backstop for pod-HTML injection.
+- **CORS proxy SSRF guard + shared server core:** `server-core.cjs` (repo root, shared
+  by the desktop `router/`+`proxy/` AND the mobile `nodejs-src/` forks via a symlink)
+  holds `isEnginePath`/`serveEngine`/`proxyToCss`/`forwardUpgrade` + the SSRF guard
+  (`assertProxyTarget` — refuses non-http(s)/loopback/private/metadata, per redirect
+  hop; opt-in `DK_PROXY_ALLOW_HOSTS`).
+- **`dkfile:` is allow-listed:** it (and `dk:read-cover`) only serve files under a
+  folder the user imported via "Import music" (`electron-config/library-roots.cjs`,
+  persisted) — no more arbitrary local-file read via a crafted `mo:item file://`.
+
 ### `dk-pod` / `!secret` — third-party login account
 
 dk itself uses a **synthetic owner session** (`src/dk-owner-session.js`) and
