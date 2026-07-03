@@ -537,3 +537,25 @@ dk-dokieli {
   border: 0;
   background: var(--surface, #ffffff);
 }
+
+/* Skip link — off-screen until it receives keyboard focus, then it slides into
+   the top-left. Lets keyboard users jump past the chrome bar to #dk-content
+   (which has tabindex="-1" so it can accept the focus). */
+.dk-skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 10000;
+  padding: 8px 14px;
+  background: var(--surface, #fff);
+  color: var(--text, #111);
+  border: 1px solid var(--border, #9e9e9e);
+  border-radius: 6px;
+  font-size: 16px;
+  transition: top 0.15s ease;
+}
+.dk-skip-link:focus {
+  top: 8px;
+  outline: 2px solid var(--accent, #1F618D);
+}
+#dk-content:focus { outline: none; }

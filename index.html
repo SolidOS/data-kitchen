@@ -46,6 +46,10 @@
 </head>
 <body>
 
+  <!-- Skip link: first focusable element, hidden until focused (see dk-styles.css),
+       so keyboard users can jump past the chrome bar straight to the content. -->
+  <a class="dk-skip-link" href="#dk-content">Skip to content</a>
+
   <!-- The shared-defaults singleton, RDF-driven like the rest of the shell: its
        VALUES (color scheme, text size, CORS proxy) come from the `source` RDF —
        sol-default reads each ui: predicate into a kebab attribute
@@ -68,7 +72,7 @@
     <sol-include source="dk-pod/dk/plugins/ia-player/assets/mini-player.html" trusted></sol-include>
   </nav>
 
-  <main id="dk-content" class="omp-panels">
+  <main id="dk-content" class="omp-panels" tabindex="-1">
     <!-- The topmost tabset renders from the RDF shell model: tabs are the
          ui:parts of ui-data/data-kitchen-main-menu.ttl#Tabs (via the menu-from-rdf add-on already in
          the loader list above); the #Bar / #Chrome launchers of the same
