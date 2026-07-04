@@ -28,7 +28,9 @@
     "test:mobile": "node --test \"mobile/test/node/**/*.test.mjs\"",
     "dist": "electron-builder",
     "dist:cross": "electron-builder --linux --mac zip --win zip",
-    "dist:android": "bash mobile/tool/build-apk.sh"
+    "dist:android": "bash mobile/tool/build-apk.sh",
+    "release:prep": "node tools/prepare-release.mjs",
+    "release:check": "node tools/prepare-release.mjs --check"
   },
   "dependencies": {
     "component-interop": "^0.3.0",

@@ -164,6 +164,22 @@ nodejs-mobile is a constrained runtime; several things needed solving:
 - **Broken global `fetch` (undici)** → unused; CSS uses node-fetch/http, routed
   via the global agents.
 
+## Updates
+
+On startup (once the frontend opens) the app asks GitHub Releases whether a
+newer version exists (`_checkForUpdates` in `lib/main.dart`; the app's own
+version is stamped by `build-apk.sh` via `--dart-define=DK_VERSION`, so plain
+`flutter run` dev builds skip the check). If newer, a dialog offers to open
+the release APK in the browser — Android's download + package-installer flow
+does the install.
+
+**Signing caveat:** an in-place APK upgrade (which preserves all app data,
+including the on-device pod) requires the new APK to be **signed with the same
+key** as the installed one. Releases are currently signed with this machine's
+debug keystore — fine while every release is built here, but a dedicated
+release keystore is the durable answer. An APK with a different key forces
+uninstall/reinstall, which WOULD wipe on-device data.
+
 ## Known limitations / TODO
 
 - dk shell runs in **degraded mode**: no Electron bridge, so settings save,

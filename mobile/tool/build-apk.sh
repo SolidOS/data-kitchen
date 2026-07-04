@@ -104,7 +104,10 @@ bash "$MOBILE/tool/prepare-node-project.sh"
 
 echo "[build-apk] === 5/5  flutter build apk --$MODE ==="
 echo "[build-apk] flutter: $FLUTTER"
-( cd "$MOBILE" && "$FLUTTER" pub get && "$FLUTTER" build apk "--$MODE" )
+# DK_VERSION feeds the in-app update check (lib/main.dart kAppVersion) — the
+# same package.json version that names the release artifact below.
+DK_VERSION="$(node -p "require('$REPO/package.json').version" 2>/dev/null || echo 0.0.0)"
+( cd "$MOBILE" && "$FLUTTER" pub get && "$FLUTTER" build apk "--$MODE" --dart-define=DK_VERSION="$DK_VERSION" )
 
 APK="$MOBILE/build/app/outputs/flutter-apk/app-$MODE.apk"
 [ -f "$APK" ] || { echo "ERROR: expected APK not found at $APK"; exit 1; }

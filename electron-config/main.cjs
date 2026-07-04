@@ -23,6 +23,7 @@ const {
 const { Servers, getGateToken } = require('./servers.cjs');
 const { blessNonce } = require('./gate.cjs');
 const { LibraryRoots } = require('./library-roots.cjs');
+const { checkForUpdates } = require('./update-check.cjs');
 const idpVault = require('./idp-vault.cjs');
 const { mintCredential, createGrantSession, revokeCredentialViaAccount } = require('./idp-grant.cjs');
 const { OWNER_EMAIL, OWNER_PASSWORD } = require('./seed-account.cjs');
@@ -196,6 +197,10 @@ class DesktopApp {
     // issuer logs in headlessly. Best-effort + non-blocking; retries cover the
     // race with the fire-and-forget account seeding in servers.start().
     this.autoMintLocal();
+    // Startup update check (GitHub Releases) — non-blocking; silent unless a
+    // newer release exists, then asks before doing anything (update-check.cjs).
+    checkForUpdates(this.baseWindow)
+      .catch((e) => console.warn('[update] check failed:', e.message));
   }
 
   // Mint + vault the local-pod credential if we don't already have one. The
@@ -291,8 +296,28 @@ class DesktopApp {
     for (const p of [PUBLIC_PORT, PROXY_PORT]) {
       urls.push(`http://localhost:${p}/*`, `http://127.0.0.1:${p}/*`);
     }
-    session.defaultSession.webRequest.onBeforeSendHeaders({ urls }, (details, callback) => {
-      details.requestHeaders['x-dk-token'] = token;
+    // Media-host identification rides the SAME listener — Electron keeps only
+    // one onBeforeSendHeaders per session, so a second call would silently
+    // replace the gate hook. Internet Archive / Wikimedia requests (API calls
+    // AND media streams) get the open-media-player token appended to the real
+    // User-Agent — the only place it CAN be set: Chromium drops a JS fetch
+    // UA override, and IA's CORS refuses every custom header (Wikimedia API
+    // calls additionally carry omp's Api-User-Agent from the renderer).
+    let ompUserAgent = '';
+    try { ompUserAgent = 'open-media-player/' + require('open-media-player/package.json').version; }
+    catch (_) { /* package absent → requests keep the default UA */ }
+    const mediaUrls = ['https://archive.org/*', 'https://*.archive.org/*', 'https://*.wikimedia.org/*'];
+    const isMediaHost = (h) => h === 'archive.org' || h.endsWith('.archive.org')
+      || h === 'wikimedia.org' || h.endsWith('.wikimedia.org');
+    session.defaultSession.webRequest.onBeforeSendHeaders({ urls: [...urls, ...mediaUrls] }, (details, callback) => {
+      let hostname = '';
+      try { hostname = new URL(details.url).hostname; } catch (_) {}
+      if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        details.requestHeaders['x-dk-token'] = token;
+      } else if (ompUserAgent && isMediaHost(hostname)) {
+        details.requestHeaders['User-Agent'] =
+          `${details.requestHeaders['User-Agent'] || ''} ${ompUserAgent}`.trim();
+      }
       callback({ requestHeaders: details.requestHeaders });
     });
 

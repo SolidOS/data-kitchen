@@ -43,6 +43,10 @@ dependencies:
   # In-app WebView that renders the frontend the pod serves (SolidOS/mashlib).
   webview_flutter: ^4.10.0
 
+  # Open the update APK in the system browser (startup update check) so
+  # Android's download + package-installer flow handles the install.
+  url_launcher: ^6.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

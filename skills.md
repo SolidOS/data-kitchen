@@ -134,7 +134,12 @@ appears as a ghost under "Other".
   dev via the `node_modules/open-media-player` symlink; sources in its
   `src/ia-player/`, rebuild ITS bundle with `npm run build` there after edits) —
   Internet Archive music player, with a
-  **local import** path (gear ▸ "Import music folder…"): the Electron main process
+  **local import** path — **PARKED 2026-07-04** (UI entry points hidden: gear
+  "Import music folder…" + "+ Library" commented out in omp
+  `assets/ia-player-shell.html`, imported-library boot listing gated by
+  `LOCAL_MEDIA_IMPORT_PARKED` in omp `ia3.js`; the Electron backend, pod data,
+  and `dkfile:` scheme are all intact — flip the flag + uncomment to restore.
+  How it works when live — (gear ▸ "Import music folder…"): the Electron main process
   scans a chosen folder (`import-music.mjs`, `music-metadata`) and the renderer
   authors a "My Music" RDF library (`import-id3-build.js`, a pure/SHACL-tested
   builder) whose `mo:item` points `file://` at the **originals in place** (never
@@ -191,6 +196,8 @@ hands off `?dk-bless=<ts>.<hmac>` — a stateless, time-limited HMAC of the toke
 - **`dkfile:` is allow-listed:** it (and `dk:read-cover`) only serve files under a
   folder the user imported via "Import music" (`electron-config/library-roots.cjs`,
   persisted) — no more arbitrary local-file read via a crafted `mo:item file://`.
+  (The import UI is parked as of 2026-07-04 — see the ia-player entry above —
+  but the scheme + allow-list stay wired for existing imports and the restore.)
 
 ### `dk-pod` / `!secret` — third-party login account
 
@@ -320,6 +327,37 @@ needs the password, which is never kept). The DPoP grant is verified against rea
 CSS 7.1.9 by `claude/smoke-tests/grant-smoke.mjs`; the in-Electron UI flow is not
 yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-preload}.cjs`,
 `remember-idp-window.html`, plus `main.cjs` (IPC + auto-mint) and `preload.cjs`.
+
+## Updates & releases (2026-07)
+
+- **Startup update check** (`electron-config/update-check.cjs`, hooked at the
+  end of `start()` in `main.cjs`): asks GitHub Releases
+  (`api.github.com/repos/SolidOS/data-kitchen/releases/latest`) whether a newer
+  version exists; silent on any failure. If newer → native dialog (data-safety
+  wording: updates replace only the app; pod/settings/logins live in userData /
+  beside-exe `data-kitchen-home`, untouched). Linux AppImage: full auto —
+  download beside the AppImage (taskbar progress), sha512-verify against the
+  release's `latest.json`, atomic in-place rename, offer restart. mac/win:
+  download to Downloads, verify, reveal with "quit and replace" instructions.
+  Gates: packaged-only; `DK_UPDATE_CHECK=0` off; `DK_UPDATE_FORCE=1` +
+  `DK_UPDATE_REPO=<owner/repo | http://mock>` for dev testing. Tag parse
+  requires two dotted parts so legacy junk tags (`v.04`) can't look newer.
+- **Android**: same check in `mobile/lib/main.dart` (`_checkForUpdates`, fired
+  when the frontend opens); version stamped by `build-apk.sh`
+  `--dart-define=DK_VERSION=<package.json version>` (dev builds = 0.0.0 →
+  skipped). Update = open the release APK in the browser (`url_launcher`);
+  in-place install keeps on-device data ONLY with the same signing key — keep
+  building releases with the same keystore (currently the machine debug key).
+- **Release workflow — keep `release/*` fresh before a dk push**: before any
+  push that ships user-facing changes run `npm run release:check`; if stale,
+  rebuild (`npm run dist:cross` + `npm run dist:android`), then
+  `npm run release:prep` (`tools/prepare-release.mjs`: normalizes artifact
+  stems, prunes electron-builder intermediates, writes `release/latest.json`
+  with hex sha512s, prints the `gh release create v<version> …` command).
+  Publishing the GitHub Release is ALWAYS a separate explicit act (run the
+  printed command yourself). Tags are `v<semver>` going forward. `release/`
+  itself stays gitignored — GitHub Releases is the distribution channel (the
+  old Pages URL was never configured; README now points at releases/latest).
 
 ## Conventions & repo facts
 

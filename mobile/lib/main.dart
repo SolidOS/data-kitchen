@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:node_flutter/node_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'forward_proxy.dart';
@@ -23,6 +25,16 @@ import 'forward_proxy.dart';
 // any RDF container). Swap kFrontendUrl between them to pick the frontend.
 const String kPodOrigin = 'http://localhost:8000';
 const String kFrontendUrl = '$kPodOrigin/index.html'; // dk shell (mashlib: '$kPodOrigin/')
+
+// Startup update check (mirrors the desktop electron-config/update-check.cjs).
+// kAppVersion is stamped by build-apk.sh (--dart-define=DK_VERSION=<package.json
+// version>, the same version that names the release APK); '0.0.0' means a dev
+// build (flutter run without the define) — the check is skipped then.
+// DK_UPDATE_URL overrides the API base for mock testing.
+const String kAppVersion = String.fromEnvironment('DK_VERSION', defaultValue: '0.0.0');
+const bool kUpdateCheck = bool.fromEnvironment('DK_UPDATE_CHECK', defaultValue: true);
+const String kUpdateUrl = String.fromEnvironment('DK_UPDATE_URL',
+    defaultValue: 'https://api.github.com/repos/SolidOS/data-kitchen/releases/latest');
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -158,6 +170,84 @@ class _PodPageState extends State<PodPage> {
       _ready = true;
       _starting = false;
     });
+    _checkForUpdates();   // fire-and-forget; silent unless a newer release exists
+  }
+
+  // ── startup update check ──────────────────────────────────────────────────
+  // Ask GitHub Releases for the latest version; if newer than this build,
+  // offer to open the release APK in the system browser (Android's download +
+  // package-installer flow takes over — no silent self-install). An in-place
+  // APK upgrade keeps all app data, including the on-device pod, as long as
+  // the new APK is signed with the same key (see mobile/README.md).
+  //
+  // Tag parse requires two dotted parts so the repo's legacy junk tags
+  // ("v.04" → bare "04") can't masquerade as a newer version.
+  static List<int>? _parseVersion(String tag) {
+    final m = RegExp(r'(\d+(?:\.\d+)+)').firstMatch(tag);
+    if (m == null) return null;
+    return m.group(1)!.split('.').map(int.parse).toList();
+  }
+
+  static int _compareVersions(List<int> a, List<int> b) {
+    for (var i = 0; i < (a.length > b.length ? a.length : b.length); i++) {
+      final d = (i < a.length ? a[i] : 0) - (i < b.length ? b[i] : 0);
+      if (d != 0) return d;
+    }
+    return 0;
+  }
+
+  Future<void> _checkForUpdates() async {
+    if (!kUpdateCheck || kAppVersion == '0.0.0') return;   // dev build → skip
+    final current = _parseVersion(kAppVersion);
+    if (current == null) return;
+    Map<String, dynamic> release;
+    try {
+      final client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+      try {
+        final req = await client.getUrl(Uri.parse(kUpdateUrl));
+        req.headers.set('accept', 'application/json');
+        req.headers.set('user-agent', 'data-kitchen/$kAppVersion');
+        final resp = await req.close();
+        if (resp.statusCode != 200) return;
+        release = jsonDecode(await resp.transform(utf8.decoder).join())
+            as Map<String, dynamic>;
+      } finally {
+        client.close();
+      }
+    } catch (_) {
+      return;   // offline / rate-limited — never bother the user
+    }
+    final latest = _parseVersion('${release['tag_name']}');
+    if (latest == null || _compareVersions(latest, current) <= 0) return;
+    final assets = (release['assets'] as List?) ?? const [];
+    final apk = assets.cast<Map<String, dynamic>?>().firstWhere(
+      (a) => (a?['name'] as String? ?? '').endsWith('-android.apk'),
+      orElse: () => null,
+    );
+    if (apk == null || !mounted) return;
+
+    final latestStr = latest.join('.');
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Update available'),
+        content: Text(
+          'Data Kitchen $latestStr is available (you have $kAppVersion).\n\n'
+          'Updating replaces only the app itself — your pod and settings '
+          'stay on this device and are not touched.\n\n'
+          'The new version downloads in your browser; open it when the '
+          'download finishes to install.',
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Later')),
+          FilledButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Update now')),
+        ],
+      ),
+    );
+    if (ok == true) {
+      await launchUrl(Uri.parse('${apk['browser_download_url']}'),
+          mode: LaunchMode.externalApplication);
+    }
   }
 
   // A URL is "external" (opens in the overlay) when it's http(s) to a host other
