@@ -43,7 +43,8 @@ const gate = makeGate(process.env.DK_GATE_TOKEN, {
 // Allowances: script-src https://esm.sh (sol-pod-ops dynamic-imports marked@9);
 // style-src 'unsafe-inline' (web components inject styles); img/connect/frame open
 // enough for live favicons, feed images, the CORS proxy + CSS websocket on sibling
-// ports, and external API reads. Add 'wasm-unsafe-eval' to script-src only if a
+// ports, and external API reads; media-src open for IA streaming tracks (https:),
+// imported local folders (dkfile:), and the local proxy ports. Add 'wasm-unsafe-eval' to script-src only if a
 // dependency proves to need it.
 function shellCsp(nonce) {
   return [
@@ -51,6 +52,7 @@ function shellCsp(nonce) {
     `script-src 'self' 'nonce-${nonce}' https://esm.sh`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https: http:",
+    "media-src 'self' dkfile: https: http://localhost:* http://127.0.0.1:*",
     "font-src 'self' data:",
     "connect-src 'self' https: http://localhost:* http://127.0.0.1:* ws://localhost:* ws://127.0.0.1:*",
     "frame-src 'self' https: http:",
