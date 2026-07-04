@@ -10,10 +10,10 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it." ;
-  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SolidOS-AddressBook> <#SolidOS-Chat> <#SolidOS-Meeting> <#SolidOS-Notes> <#SolidOS-Tasks> <#SPARQL-Playground> <#Spoken-Word-Internet-Archive> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
+  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Forum> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SolidOS-AddressBook> <#SolidOS-Chat> <#SolidOS-Meeting> <#SolidOS-Notes> <#SolidOS-Tasks> <#SPARQL-Playground> <#Spoken-Word-Internet-Archive> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
-  skos:member <#Booklice>, <#Tired-Bike> .
+  skos:member <#Booklice>, <#Solid-Forum>, <#Tired-Bike> .
 
 <#Content-Publishing> a skos:Collection ; skos:prefLabel "Content Publishing" ;
   skos:member <#dokieli>, <#NotePod> .
@@ -512,6 +512,14 @@
   dct:creator "Otto AA" ;
   ui:href <https://otto-aa.github.io/solid-filemanager/> .
 
+<#Solid-Forum> a ui:Link ; ui:label "Solid Forum" ;
+  dct:source <../plugins/solid-forum.ttl> ;
+  ui:icon "https://solidproject.org/favicon.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "The Solid community discussion forum." ;
+  dct:publisher "Solid Project" ;
+  ui:href <https://forum.solidproject.org/> .
+
 <#Solid-Glossary> a ui:Link ; ui:label "Solid Glossary" ;
   dct:source <../plugins/solid-glossary.ttl> ;
   ui:icon "https://solidproject.solidcommunity.net/favicon.ico" ;
@@ -552,6 +560,7 @@
   dct:creator "SolidOS Team" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html" ] ,
+    [ schema:name "has-location-bar" ; schema:value "true" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#SolidOS-AddressBook> a ui:Component ; ui:label "SolidOS AddressBook" ;
