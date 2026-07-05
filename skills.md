@@ -129,6 +129,20 @@ rules against the pod data and lists any double-listed cards.
   same surface as the no-auth notice); transient operation feedback uses a
   top-centre auto-dismiss popup (`podz-ui.js` `setStatus`, appended into `.app`).
   There is **no bottom status line**.
+  Layout (since 2026-07-05): **single-panel default** — one browser at a fixed
+  px width (default 420, `#left-panel`), pod-ops open **inline** in `#ops-panel`
+  on the right (fresh `<sol-pod-ops>` per activation via sol-pod's public
+  `podClickAction` hook; Esc/✕ close + focus-restore; `sol-navigate` closes +
+  reloads). The ◫◫ footer toggle (`_setMode`) switches to the classic
+  **dual-browser** view where `podClickAction = null` so the ops **modal**
+  returns; collapse buttons are dual-only. Splitter branches by mode: px model
+  in single (drag / dblclick+Home reset 420 / arrows ±16 Shift ±48, inert while
+  ops empty), untouched ratio model in dual. Persistence: `mode` +
+  `singleLeftWidth` ride the existing `podz_v4` layout blob (absent mode ⇒
+  single). No sol-components changes (one private call:
+  `pod._persistEditorKeys?.()`). Probe:
+  `claude/smoke-tests/verify-podz-single-panel.mjs` (27 checks, needs the app
+  running with `--remote-debugging-port=9222`).
 - **SolidOS pane data contracts** (bit dk 2026-07-05): the pod seeds under
   `pod-template/` (and the live pod's copies) must carry the structure the
   SolidOS panes hard-require, mirroring what the panes write on create —
