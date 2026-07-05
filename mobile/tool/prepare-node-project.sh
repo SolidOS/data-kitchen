@@ -46,11 +46,17 @@ cp "$SRC/patches/"*.cjs "$PROJ/patches/"
 if [ -e "$REPO/dist/dk.bundle.js" ] && [ -e "$REPO/node_modules/sol-components" ]; then
   echo "[prepare] tarring dk engine (engine.nmz)…"
   PLUGIN_DIST=$(cd "$REPO" && ls -d plugins/*/dist 2>/dev/null || true)
+  # open-media-player: the media tabs' package since the 2026-07-02 cutover
+  # (index.html data-manifest loads node_modules/open-media-player/…) — the
+  # engine must carry its manifest + dist bundle + src (runtime-fetched
+  # assets: help/about pages, shell fragments). Symlinked in dev like
+  # sol-components; tar -h dereferences.
+  OMP="node_modules/open-media-player/omp.manifest.json node_modules/open-media-player/dist node_modules/open-media-player/src"
   tar czhf "$PROJ/engine.nmz" -C "$REPO" \
     --exclude='*/node_modules' --exclude='*/.git' --exclude='*/tests' \
     --exclude='*/tests-disabled' --exclude='*/coverage' --exclude='*/docs' \
     --exclude='*/examples' --exclude='*/drafts' --exclude='*/claude' --exclude='*.map' \
-    node_modules/sol-components node_modules/component-interop dist src assets $PLUGIN_DIST
+    node_modules/sol-components node_modules/component-interop $OMP dist src assets $PLUGIN_DIST
   echo "[prepare] engine.nmz = $(du -h "$PROJ/engine.nmz" | cut -f1)"
 
   # pod-seed.nmz: dk's app DEFINITION seeded into the pod (index.html at root;

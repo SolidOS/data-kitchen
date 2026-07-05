@@ -328,6 +328,42 @@ CSS 7.1.9 by `claude/smoke-tests/grant-smoke.mjs`; the in-Electron UI flow is no
 yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-preload}.cjs`,
 `remember-idp-window.html`, plus `main.cjs` (IPC + auto-mint) and `preload.cjs`.
 
+## Phone media player (M1, 2026-07-04, verified on the S23)
+
+- **ia-player's Android layer** (omp, all behind the coarse-pointer gate —
+  desktop unreachable by construction): tracklist is the stage (two-line
+  rows: title over dim artist, time + ⋯ right, playing-row accent spine);
+  transport docks at the bottom (`.ia-phone-dock`, built in `createPlayerUI`'s
+  `isPhone` branch — same nodes moved, wiring intact; times on the
+  now-playing line so the 28px seek strip gets the full row); the sources
+  column + browser cascade hide and their LIVE listbox ULs move into a
+  **`<sol-sheet>`** behind the toolbar's Browse pill (native exclusive
+  `<details name>` sections; genre pick auto-opens Artists, artist opens
+  Albums, album closes the sheet over the just-prepended queue).
+- **`<sol-sheet>`** (sc `web/sol-sheet.js`): 4th surface (modal/window/
+  dropdown/sheet). Pointer-agnostic, no media queries inside; scrim + panel,
+  Escape/scrim dismiss, focus trap, and the back-gesture contract (show()
+  pushes a history entry; popstate closes). Registered in the loader
+  manifest (local+cdn) + sol-full. **Closed = inert** (`pointer-events:none`
+  + visibility on scrim AND panel) — regression-tested; an invisible
+  full-viewport scrim once swallowed every tap in the app.
+- **Three on-device bugs worth remembering:** (1) that scrim; (2) a bare
+  `1fr` grid track's automatic minimum is its content min-width — the
+  nowrap now-playing line inflated the app column to ~1100px and pushed the
+  Browse pill off-screen → phone grid uses `minmax(0,1fr)`; (3) the search
+  form needed `flex: 1 1 0` + `min-width:0` (its desktop min-width kept the
+  toolbar overflowing).
+- **Engine packer fix:** `mobile/tool/prepare-node-project.sh` now packs
+  `node_modules/open-media-player` (manifest + dist + src) into engine.nmz —
+  the media tabs had been DEAD on the phone since the 2026-07-02 cutover
+  (only verified headless desktop back then).
+- **Phone WebView is now debuggable** (`AndroidWebViewController.enableDebugging`
+  in `mobile/lib/main.dart`): `adb shell cat /proc/net/unix | grep
+  webview_devtools_remote` → `adb forward tcp:9223 localabstract:<sock>` →
+  CDP at :9223 (screenshot/drive the REAL on-device DOM). Use TRUSTED input
+  (`Input.dispatchTouchEvent`), not synthetic `.click()`.
+- M2 (movies) / M3 (images) / M4 (feed chip alignment) not started.
+
 ## Updates & releases (2026-07)
 
 - **Startup update check** (`electron-config/update-check.cjs`, hooked at the

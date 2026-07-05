@@ -47,6 +47,10 @@ dependencies:
   # Android's download + package-installer flow handles the install.
   url_launcher: ^6.3.0
 
+  # Direct dependency (not just transitive) so main.dart can import the
+  # Android platform class to enable WebView remote debugging.
+  webview_flutter_android: ^4.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

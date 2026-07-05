@@ -8,4 +8,5 @@ nodejs-project/connect-agent.js
 nodejs-project/node_modules.nmz
 nodejs-project/untar.cjs
 nodejs-project/engine.nmz
+nodejs-project/server-core.cjs
 nodejs-project/main.js

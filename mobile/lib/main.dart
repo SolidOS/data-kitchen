@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:node_flutter/node_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_android/webview_flutter_android.dart';
 
 import 'forward_proxy.dart';
 
@@ -38,6 +39,12 @@ const String kUpdateUrl = String.fromEnvironment('DK_UPDATE_URL',
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  // WebView remote debugging: lets chrome://inspect (or CDP over
+  // `adb forward localabstract:webview_devtools_remote_<pid>`) attach to the
+  // shell WebView — the only way to see/drive the real on-device DOM.
+  if (WebViewPlatform.instance is AndroidWebViewPlatform) {
+    AndroidWebViewController.enableDebugging(true);
+  }
   runApp(const DkPodApp());
 }
 

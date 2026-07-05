@@ -122,6 +122,30 @@ features (`pointer:coarse` / `hover:none`) — both the CSS and the `matchMedia(
 gates respond to it, so it faithfully reproduces the phone path. See
 `../claude/smoke-tests/cdp-verify-mobile.mjs`.
 
+### Media player phone layer (2026-07-04)
+
+The Music / Spoken Word rooms get a phone-specific ia-player layout from the
+open-media-player package (same coarse-pointer gating as the shell): tracklist
+as the stage, bottom transport dock, and a Browse bottom sheet (sol-sheet)
+holding the library/playlist/genre/artist/album lists. The engine tar packs
+`node_modules/open-media-player` for this (prepare-node-project.sh) — without
+it the media tabs 404 on-device.
+
+### WebView remote debugging
+
+`main()` enables WebView debugging, so the on-device shell can be inspected
+from the desk:
+
+```bash
+adb shell cat /proc/net/unix | grep -o 'webview_devtools_remote_[0-9]*'
+adb forward tcp:9223 localabstract:webview_devtools_remote_<pid>
+curl localhost:9223/json      # CDP targets; attach like any Chrome page
+```
+
+Use trusted input (`Input.dispatchTouchEvent`) when driving it — synthetic
+`el.click()` misses some handler paths. Note the Node server suspends when
+the app leaves the foreground; wake + re-launch before probing.
+
 ## Verify (on a connected device)
 
 ```bash
