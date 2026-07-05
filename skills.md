@@ -40,6 +40,13 @@ re-renders on Customize save. The Customize page PUTs RDF back to the pod
 (**single-write invariant — RDF is the only source**); a reload renders the fresh
 state. `npm run rdf2html`/`html2rdf` convert the menu both ways.
 
+**Chrome mini-player** (`src/dk-tabs-shell.js`): shows whenever the music
+panel's audio has a src AND the music view is not the one on screen. Visibility
+is decided by layout (`panelEl('music').offsetParent !== null`), NOT the
+`current` panel tracker — `current` only updates when the picked item carries a
+`panel-*` id, which only the media plugins do, so keying on it hid the mini on
+every non-media item (fixed 2026-07-05).
+
 **Boot sequence** (index.html, which is wormhole-guarded against recursive
 framing): **component-interop** (parser-blocking; parses manifests, injects
 the importmap, imports the `data-components`) → `dist/dk.bundle.js` (a direct
@@ -99,12 +106,20 @@ many chips (ia-player → Music & Movies; dk-solidos → browser, AddressBook, T
 Chat, Notes, Meeting). The Customize pantry (`sol-plugin-manager`) subtracts
 plugins already in the menu/bar by chip identity = `dct:source` (manifest), with
 a tag + `source`-attribute fallback for legacy items — never the bare tag, and
-never the render attributes (`id`/`class`/`title`/`defer`/…) a menu adds. Keep a
-plugin's `source` attribute identical in the catalog and the menu (all
-`./dk-pod/dk/plugins/…`) or it double-lists. The catalog is generated from
-`plugins/*.ttl` by `tools/seed-plugins-catalog.mjs --preserve-symlinks`;
-`dct:subject` → its category. A labelled loaded component with no catalog entry
-appears as a ghost under "Other".
+never the render attributes (`id`/`class`/`title`/`defer`/…) a menu adds.
+**Since 2026-07-05 every menu/bar item carries `dct:source plu:<manifest>.ttl`**
+(pod + repo menus; `menu-serialize` snapshots and re-attaches it across Customize
+saves), so the param-path-form fallback no longer decides anything — when adding
+a menu item, give it its `dct:source` or it may double-list (label mismatches
+like "News" vs "News (three-panel feeds)" defeat label-based tooling). The
+catalog is generated from `plugins/*.ttl` by `tools/seed-plugins-catalog.mjs
+--preserve-symlinks`; `dct:subject` → its category. A labelled loaded component
+with no catalog entry appears as a ghost under "Other". **Topic tabs always
+render** — a topic whose plugins are all in use shows an "empty — every plugin
+in this topic is already on a menu or bar" hint instead of vanishing (only the
+synthetic "Other" hides when empty). Audit tool:
+`claude/validation/audit-double-listed.mjs` replays the exact in-use matching
+rules against the pod data and lists any double-listed cards.
 
 ## Key plugins
 
@@ -114,6 +129,14 @@ appears as a ghost under "Other".
   same surface as the no-auth notice); transient operation feedback uses a
   top-centre auto-dismiss popup (`podz-ui.js` `setStatus`, appended into `.app`).
   There is **no bottom status line**.
+- **SolidOS pane data contracts** (bit dk 2026-07-05): the pod seeds under
+  `pod-template/` (and the live pod's copies) must carry the structure the
+  SolidOS panes hard-require, mirroring what the panes write on create —
+  a notepad needs the `pad:next` linked list (self-loop = canonical empty pad;
+  missing → "Inconsistent data … No initial next pointer"), a meeting needs
+  `meeting:toolList ( <the meeting itself> )` (missing → TypeError on
+  `.elements`); a tracker needs `a wf:Tracker`. Fix in BOTH
+  `pod-template/{meetings,notes}/index.ttl` and `~/solid/dk-pod/{…}`.
 - **dk-solidos** (`plugins/solidos/`) — SolidOS via a thin same-origin iframe
   (`sol-solidos-host.html`, created by `dk-solidos.js`) running the fixed upstream
   `<sol-solidos>` on mashlib 2.2.2; mash.css is scoped inside the iframe (zero leak).
@@ -282,6 +305,12 @@ reconciled later — act on the pod without sync caveats.
   painted (a real render root / visible content), not that an HTTP request
   returned. Some external catalog pods (`*.solidcommunity.au`) are
   Flutter/CanvasKit needing WebGL and load as empty shells under headless probes.
+- **Stale-server relaunch gotcha:** main reuses servers "already up" on
+  :8000/:8001/:8010. Launching a new instance while a previous one is still
+  dying makes the new one reuse servers that vanish moments later, stranding it
+  (blank library loads, `Failed to fetch`). After killing an instance, wait
+  until `ss -ltn` shows 8000/8001/8010/9222 all free before relaunching; the
+  startup log line to check is `[router] already up on :8000 — reusing`.
 
 ## External content
 
@@ -297,6 +326,19 @@ open shadow root and paints a **locked-session** (`persist:external`)
 `WebContentsView` over the pane's box. The live page runs its own JS, so a
 Cloudflare/JS gate clears. The bundled CORS proxy therefore **no longer rewrites
 HTML** — it only relays cross-origin feed XML/RDF/images the browser would block.
+
+**Pane loading overlay** (`electron-config/external-views.cjs` +
+`pane-loading.html`): the app pane shows a "Loading… <host>" overlay from
+`did-start-loading` until the page actually *paints* (poll; 10s cap). Two
+2026-07-05 fixes: `_showPaneLoading` records `_paneLoadingShown` even while the
+views are **suspended** (a dropdown pick fires did-start-loading while the popup
+still has views suspended; dropping the request left the pane blank for the
+whole load — `resume()` re-attaches from the flag), and the overlay names the
+app from `_paneUrl` (the openPane target) because `webContents.getURL()` still
+reports the *replaced* page until the new load commits. The **reader** and the
+**feed article pane** still have no loading overlay (known gap). Popups
+suspend all native views, so the pane region is blank while a menu is open —
+by design.
 
 ## Remember this IdP (durable headless login)
 
