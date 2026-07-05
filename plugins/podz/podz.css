@@ -522,3 +522,84 @@ body.dark .app .pod-container {
 .app .pod-collapse-btn:focus { outline: none; }
 
 .panel-hidden { display: none !important; }
+
+/* ── Single-panel / dual-browser modes ───────────────────────────── */
+/* Single (default): one browser panel on the left + the inline ops
+   panel on the right. Dual: the classic two-browser view; ops go to
+   the modal as before. */
+.app .container.mode-single #right-panel { display: none; }
+.app .container.mode-dual   #ops-panel   { display: none; }
+
+/* Collapse is a dual-mode concept — single mode has one browser panel. */
+.app .container.mode-single .pod-collapse-btn { display: none; }
+
+/* Mode toggle button — same chrome as the collapse buttons, but its
+   own class so the single-mode hiding above doesn't take it too. */
+.app .mode-toggle-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 6px;
+  line-height: 1.4;
+  transition: color 0.15s, background 0.15s;
+}
+.app .mode-toggle-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--focus-bg); }
+.app .mode-toggle-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.app .mode-toggle-btn:focus { outline: none; }
+
+/* ── Inline ops panel (single mode) ──────────────────────────────── */
+.app .ops-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border-soft);
+  flex-shrink: 0;
+}
+.app .ops-panel-title {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app .ops-panel-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.app .ops-panel-body sol-pod-ops { flex: 1; min-height: 0; }
+
+/* Quiet empty surface + hint while nothing is open. */
+.app #ops-panel.ops-empty {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.app #ops-panel.ops-empty .ops-panel-header { display: none; }
+.app #ops-panel.ops-empty .ops-panel-body { align-items: center; justify-content: center; }
+.app .ops-empty-hint {
+  color: var(--text-faint);
+  font-style: italic;
+  text-align: center;
+  padding: 24px;
+  max-width: 32em;
+}
+.app #ops-panel:not(.ops-empty) .ops-empty-hint { display: none; }
+.app #ops-panel:focus { outline: none; }
+
+/* Splitter is inert while the ops side is empty. */
+.app .container.mode-single:has(#ops-panel.ops-empty) .panel-splitter {
+  pointer-events: none;
+  cursor: default;
+}
+.app .container.mode-single:has(#ops-panel.ops-empty) .panel-splitter::before {
+  display: none;
+}

@@ -88,6 +88,28 @@ export class SolidFileBrowser {
     // Wire splitter — drag to resize, double-click to reset, arrows to nudge.
     this._wireSplitter();
 
+    // Single-panel (default) vs dual-browser mode. Single shows one
+    // browser at a fixed width and opens pod-ops in the inline right
+    // panel; dual is the classic two-browser view with the ops modal.
+    // Guards allow legacy markup without the mode elements (stays dual).
+    const modeBtn = document.getElementById('mode-toggle-btn');
+    if (modeBtn && document.getElementById('ops-panel')) {
+      const layout = this.stateManager.loadLayout() || {};
+      this._singleWidth = Number.isFinite(layout.singleLeftWidth) ? layout.singleLeftWidth : 420;
+      modeBtn.addEventListener('click', (e) => {
+        e.currentTarget.blur();
+        this._setMode(this._mode === 'single' ? 'dual' : 'single');
+      });
+      document.getElementById('ops-close-btn').addEventListener('click', () => this._closeOpsPanel());
+      document.getElementById('ops-panel').addEventListener('keydown', (e) => {
+        // Yield to editors that claim Escape (e.g. vim keys in Live Edit).
+        if (e.key === 'Escape' && !e.defaultPrevented) { e.stopPropagation(); this._closeOpsPanel(); }
+      });
+      this._setMode(layout.mode === 'dual' ? 'dual' : 'single', { persist: false });
+    } else {
+      this._mode = 'dual';
+    }
+
     // Ctrl/Cmd+Z triggers the last drag-drop undo unless an input has focus.
     window.addEventListener('keydown', (e) => {
       if (!(e.key === 'z' || e.key === 'Z') || e.shiftKey || e.altKey) return;
@@ -209,18 +231,31 @@ export class SolidFileBrowser {
     const initial = typeof layout.splitRatio === 'number' ? layout.splitRatio : 0.5;
     this._applySplitRatio(this._clampRatio(initial));
 
-    const setFromClientX = (clientX) => {
+    // Usable width between the container's padding edges, minus the
+    // splitter itself — the space the two panels share.
+    const usableWidth = () => {
       const rect = container.getBoundingClientRect();
       const padLeft = parseFloat(getComputedStyle(container).paddingLeft) || 0;
       const padRight = parseFloat(getComputedStyle(container).paddingRight) || 0;
-      const usable = rect.width - padLeft - padRight - splitter.offsetWidth;
+      return rect.width - padLeft - padRight - splitter.offsetWidth;
+    };
+
+    const setFromClientX = (clientX) => {
+      const rect = container.getBoundingClientRect();
+      const padLeft = parseFloat(getComputedStyle(container).paddingLeft) || 0;
+      const usable = usableWidth();
       if (usable <= 0) return;
       const leftWidth = clientX - rect.left - padLeft;
-      this._applySplitRatio(this._clampRatio(leftWidth / usable));
+      if (this._mode === 'single') {
+        this._applySingleWidth(this._clampSingleWidth(leftWidth, usable));
+      } else {
+        this._applySplitRatio(this._clampRatio(leftWidth / usable));
+      }
     };
 
     let pointerId = null;
     splitter.addEventListener('pointerdown', (e) => {
+      if (this._splitterInert()) return;
       if (left.classList.contains('panel-collapsed') || right.classList.contains('panel-collapsed')) return;
       pointerId = e.pointerId;
       splitter.setPointerCapture(pointerId);
@@ -238,17 +273,43 @@ export class SolidFileBrowser {
       pointerId = null;
       splitter.classList.remove('dragging');
       document.body.classList.remove('splitter-dragging');
-      this._persistSplitRatio();
+      if (this._mode === 'single') this._persistSingleWidth();
+      else this._persistSplitRatio();
     };
     splitter.addEventListener('pointerup', endDrag);
     splitter.addEventListener('pointercancel', endDrag);
 
     splitter.addEventListener('dblclick', () => {
-      this._applySplitRatio(0.5);
-      this._persistSplitRatio();
+      if (this._splitterInert()) return;
+      if (this._mode === 'single') {
+        this._applySingleWidth(420);
+        this._persistSingleWidth();
+      } else {
+        this._applySplitRatio(0.5);
+        this._persistSplitRatio();
+      }
     });
 
     splitter.addEventListener('keydown', (e) => {
+      if (this._splitterInert()) return;
+      if (this._mode === 'single') {
+        const step = e.shiftKey ? 48 : 16;
+        const usable = usableWidth();
+        if (e.key === 'ArrowLeft') {
+          this._applySingleWidth(this._clampSingleWidth(this._singleWidth - step, usable));
+          this._persistSingleWidth();
+          e.preventDefault();
+        } else if (e.key === 'ArrowRight') {
+          this._applySingleWidth(this._clampSingleWidth(this._singleWidth + step, usable));
+          this._persistSingleWidth();
+          e.preventDefault();
+        } else if (e.key === 'Home') {
+          this._applySingleWidth(420);
+          this._persistSingleWidth();
+          e.preventDefault();
+        }
+        return;
+      }
       const cur = this._splitRatio ?? 0.5;
       const step = e.shiftKey ? 0.05 : 0.02;
       if (e.key === 'ArrowLeft') {
@@ -265,6 +326,15 @@ export class SolidFileBrowser {
         e.preventDefault();
       }
     });
+  }
+
+  // The splitter has nothing to resize against while single mode's ops
+  // panel is empty (CSS also hides its handle / blocks pointer events —
+  // this covers the keyboard paths).
+  _splitterInert() {
+    if (this._mode !== 'single') return false;
+    const ops = document.getElementById('ops-panel');
+    return !ops || ops.classList.contains('ops-empty');
   }
 
   _clampRatio(r) {
@@ -289,6 +359,116 @@ export class SolidFileBrowser {
   _persistSplitRatio() {
     const existing = this.stateManager.loadLayout() || {};
     this.stateManager.saveLayout({ ...existing, splitRatio: this._splitRatio });
+  }
+
+  // ── Single-panel mode + inline ops panel ──────────────────────────
+
+  _setMode(mode, { persist = true } = {}) {
+    this._mode = mode;
+    const container = document.querySelector('.container');
+    const modeBtn = document.getElementById('mode-toggle-btn');
+    if (!container || !modeBtn) return;
+    container.classList.toggle('mode-single', mode === 'single');
+    container.classList.toggle('mode-dual', mode === 'dual');
+
+    if (mode === 'single') {
+      // Collapse is meaningless with one browser panel — expand anything
+      // collapsed (reuses _collapsePanel's own restore + persistence path,
+      // which also clears the inline flex that would fight the fixed width).
+      for (const side of ['left', 'right']) {
+        const panel = document.getElementById(`${side}-panel`);
+        if (panel?.classList.contains('panel-collapsed')) this._collapsePanel(side);
+      }
+      this.elements.leftPod.podClickAction = (item, pod) => this._openOpsPanel(item, pod);
+      this._applySingleWidth(this._singleWidth ?? 420);
+    } else {
+      // Back to the classic view: gear/double-click opens the modal again.
+      this.elements.leftPod.podClickAction = null;
+      this._closeOpsPanel({ restoreFocus: false });
+      this._applySplitRatio(this._splitRatio ?? 0.5);
+    }
+
+    modeBtn.setAttribute('aria-pressed', String(mode === 'dual'));
+    modeBtn.title = mode === 'dual' ? 'Single-panel view' : 'Show two pod panels';
+    if (persist) {
+      const existing = this.stateManager.loadLayout() || {};
+      this.stateManager.saveLayout({ ...existing, mode });
+    }
+  }
+
+  _openOpsPanel(item, pod) {
+    const panel = document.getElementById('ops-panel');
+    const body = document.getElementById('ops-panel-body');
+    if (!panel || !body) return;
+
+    this._opsReturn = { pod, url: item.url };   // focus-restore target
+
+    // Fresh instance per item — re-targeting a live sol-pod-ops double-loads
+    // (the `item` setter and the `source` attribute each trigger a load).
+    body.querySelector('sol-pod-ops')?.remove();
+    const ops = document.createElement('sol-pod-ops');
+    ops.item = item;                            // pre-connect: stores, no load
+    const login = pod.login;
+    if (login?.fetchFor) ops.fetchFn = login.fetchFor(item.url, pod.side);
+    ops.editorKeys = pod.editorKeys;
+    ops.setAttribute('source', item.url);
+
+    ops.addEventListener('sol-status', (e) => {
+      // Same routing as _wirePodEvents: errors in the panel, progress in the toast.
+      if ((e.detail.type || '') === 'error') this._panelError(e.detail.message, [pod]);
+      else this.uiManager.setStatus(e.detail.message, e.detail.type || '');
+    });
+    // sol-pod has no public persist API for editor keys (the modal path
+    // calls this same method internally) — optional-chained on purpose.
+    ops.addEventListener('sol-editor-keys-change', (e) => pod._persistEditorKeys?.(e.detail.keys));
+    ops.addEventListener('sol-navigate', async () => {
+      // Rename/delete/create finished — the item may no longer exist.
+      this._closeOpsPanel({ restoreFocus: false });
+      if (pod.currentPath) await pod.loadContainer(pod.currentPath);
+    });
+
+    document.getElementById('ops-panel-title').textContent = item.isContainer
+      ? `Folder: ${item.displayName || item.name}`
+      : (item.displayName || item.name);
+    body.appendChild(ops);                      // connectedCallback → one load
+    panel.classList.remove('ops-empty');
+    this._applySingleWidth(this._singleWidth ?? 420);
+    panel.focus();                              // focus in — no trap, it's a panel
+  }
+
+  _closeOpsPanel({ restoreFocus = true } = {}) {
+    const panel = document.getElementById('ops-panel');
+    if (!panel || panel.classList.contains('ops-empty')) return;
+    document.getElementById('ops-panel-body').querySelector('sol-pod-ops')?.remove();
+    panel.classList.add('ops-empty');
+    if (restoreFocus && this._opsReturn) {
+      const { pod, url } = this._opsReturn;
+      const li = pod.shadowRoot?.querySelector(`li[data-url="${CSS.escape(url)}"]`);
+      if (li) li.focus();
+      else pod.shadowRoot?.querySelector('.tree-wrapper')?.focus?.();
+    }
+    this._opsReturn = null;
+  }
+
+  _applySingleWidth(px) {
+    this._singleWidth = px;
+    const left = document.getElementById('left-panel');
+    const ops = document.getElementById('ops-panel');
+    if (!left || !ops) return;
+    left.style.flex = `0 0 ${px}px`;
+    ops.style.flex = '1 1 0';
+  }
+
+  _clampSingleWidth(px, usable) {
+    const min = 300;
+    // Keep the ops side usable — it is meant to be the wider panel.
+    const max = Math.max(min, usable - 360);
+    return Math.min(max, Math.max(min, Number.isFinite(px) ? px : 420));
+  }
+
+  _persistSingleWidth() {
+    const existing = this.stateManager.loadLayout() || {};
+    this.stateManager.saveLayout({ ...existing, singleLeftWidth: this._singleWidth });
   }
 
   _collapsePanel(side) {
@@ -346,8 +526,11 @@ export class SolidFileBrowser {
   async initialize() {
     try {
       const layout = this.stateManager.loadLayout();
-      if (layout?.leftCollapsed)  this._collapsePanel('left');
-      if (layout?.rightCollapsed) this._collapsePanel('right');
+      // Collapse is a dual-mode concept; single mode keeps its fixed width.
+      if (this._mode === 'dual') {
+        if (layout?.leftCollapsed)  this._collapsePanel('left');
+        if (layout?.rightCollapsed) this._collapsePanel('right');
+      }
 
       await this.handleRedirect();
     } catch (error) {

@@ -1,5 +1,5 @@
 <div class="app">
-  <div class="container">
+  <div class="container mode-single">
     <div class="pod-container left-panel" id="left-panel">
       <sol-pod id="left-pod" side="left" login-mode="popup"
         data-subject="./dk-pod/dk/plugins/podz/pod-settings.ttl#Settings"
@@ -8,6 +8,9 @@
       <div class="panel-footer panel-footer-left">
         <button id="collapse-left-btn" class="pod-collapse-btn"
           title="Collapse panel" aria-label="Collapse left panel">«</button>
+        <button id="mode-toggle-btn" class="mode-toggle-btn"
+          title="Show two pod panels" aria-pressed="false"
+          aria-label="Toggle dual pod-browser panels">◫◫</button>
       </div>
     </div>
     <div id="panel-splitter" class="panel-splitter"
@@ -22,6 +25,17 @@
       <div class="panel-footer panel-footer-right">
         <button id="collapse-right-btn" class="pod-collapse-btn"
           title="Collapse panel" aria-label="Collapse right panel">»</button>
+      </div>
+    </div>
+    <div class="pod-container ops-panel ops-empty" id="ops-panel" tabindex="-1"
+         role="region" aria-labelledby="ops-panel-title">
+      <div class="ops-panel-header">
+        <span id="ops-panel-title" class="ops-panel-title"></span>
+        <button id="ops-close-btn" class="pod-icon-btn"
+          title="Close (Esc)" aria-label="Close operations panel">✕</button>
+      </div>
+      <div id="ops-panel-body" class="ops-panel-body">
+        <p class="ops-empty-hint">Double-click an item — or click its ⚙ — to open it here.</p>
       </div>
     </div>
   </div>
