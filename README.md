@@ -2,7 +2,7 @@
 
 <b style="color:red">Work In Progress</b> - everything should work but help may be sketchy.
 
-This native app for Linux, Windows, Mac, and Android turns your computer, phone, or tablet into a Solid pod only you can access. It mounts a local version of Pivot/CSS, a proxy server and the Data-Kitchen frontend. Data Kitchen comes pre-loaded with dozens of Solid apps and widgets includings SolidOS and a variety of open source resources - players for the Internet Archive and Wikimedia, access to Mastodon, Peertube, and more.
+This native app for Linux, Windows, Mac, and Android turns your computer, phone, or tablet into a Solid pod only you can access. It mounts a local version of Pivot/CSS, a proxy server and the Data-Kitchen frontend. Data Kitchen comes pre-loaded with dozens of Solid apps and widgets including SolidOS and a variety of open source resources - players for the Internet Archive and Wikimedia, access to Mastodon, Peertube, and more.
 
 No setup or install needed, just download and run. Downloads for all platforms are on the [releases page](https://github.com/SolidOS/data-kitchen/releases/latest). The app checks for new releases at startup and offers to update itself — your pod and settings are never touched by an update.
 
@@ -27,6 +27,10 @@ An Android port lives in [`mobile/`](mobile/) — a Flutter app that runs the sa
 CSS/pivot pod + router + proxy on the phone (via nodejs-mobile) and renders
 either the dk shell or the SolidOS/mashlib databrowser in a WebView. See
 [`mobile/README.md`](mobile/README.md).
+
+## Transparency
+
+Although most of this app was designed prior to my use of AI, this version includes refactoring and new code created using a carefully monitored claude Opus 4.8.
 
 ## License
 
