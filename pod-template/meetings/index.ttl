@@ -1,6 +1,15 @@
 @prefix meeting: <http://www.w3.org/ns/pim/meeting#> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix ui:      <http://www.w3.org/ns/ui#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-# Minimal SolidOS meeting workspace.
+# Minimal SolidOS meeting workspace — mirrors what the SolidOS meeting pane
+# writes when it creates a new meeting: the pane's tab widget REQUIRES the
+# meeting:toolList collection (it starts with the meeting itself = the
+# Details tab) and crashes without it.
 <#this> a meeting:Meeting ;
-    dc:title "Meeting" .
+    dc:title "Meeting" ;
+    dc:author </dk-pod/profile/card#me> ;
+    dc:created "2026-07-05T12:00:00Z"^^xsd:dateTime ;
+    ui:backgroundColor "#ddddcc"^^xsd:color ;
+    meeting:toolList ( <#this> ) .

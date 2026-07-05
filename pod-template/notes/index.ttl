@@ -1,6 +1,13 @@
 @prefix pad: <http://www.w3.org/ns/pim/pad#> .
 @prefix dc:  <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-# Minimal SolidOS notepad.
+# Minimal SolidOS notepad — mirrors what the pad pane writes when it creates a
+# new pad: the pane REQUIRES the pad:next linked list ("No initial next
+# pointer" abort without it); a pad:next self-loop is the canonical empty pad
+# (the pane adds the first line itself).
 <#this> a pad:Notepad ;
-    dc:title "Notes" .
+    dc:title "Notes" ;
+    dc:author </dk-pod/profile/card#me> ;
+    dc:created "2026-07-05T12:00:00Z"^^xsd:dateTime ;
+    pad:next <#this> .
