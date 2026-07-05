@@ -160,6 +160,10 @@ class ExternalViews {
       wc.on('did-fail-load', (_e, code, _d, _u, isMain) => { if (isMain && code !== -3) this._hidePaneLoading(); });
     }
     this._paneShown = true;
+    // Remember what the pane was ASKED to load: at did-start-loading time
+    // webContents.getURL() still returns the page being replaced (it only
+    // updates on commit), so the overlay must name the app from this instead.
+    this._paneUrl = url;
     if (!this._suspended) {
       this.baseWindow.contentView.addChildView(this.pane);  // on top of app view
       this.pane.setBounds(this._paneRegion());
@@ -223,15 +227,23 @@ class ExternalViews {
   }
 
   _showPaneLoading() {
-    if (this._suspended || !this._paneShown) return;
+    if (!this._paneShown) return;
     this._clearPaneLoadingPoll();   // a fresh load supersedes any pending paint-wait
     this._ensurePaneLoading();
+    // Record the logical state even while suspended: picking an app from a
+    // dropdown fires did-start-loading while the popup still has the views
+    // suspended — dropping the request here left the pane BLANK for the whole
+    // load (the overlay only blipped on a later stray load event). Only the
+    // attach is deferred; resume() re-adds the overlay from _paneLoadingShown.
     this._paneLoadingShown = true;
-    this.baseWindow.contentView.addChildView(this.paneLoading);   // above the pane
-    this.paneLoading.setBounds(this._paneRegion());
-    // Name the app being loaded (best-effort; ignore if the page isn't ready yet).
+    if (!this._suspended) {
+      this.baseWindow.contentView.addChildView(this.paneLoading);   // above the pane
+      this.paneLoading.setBounds(this._paneRegion());
+    }
+    // Name the app being loaded — from the openPane target, NOT getURL(),
+    // which still reports the replaced page until the new load commits.
     let host = '';
-    try { host = new URL(this.pane.webContents.getURL()).host; } catch (_) {}
+    try { host = new URL(this._paneUrl || this.pane.webContents.getURL()).host; } catch (_) {}
     this.paneLoading.webContents.executeJavaScript(
       `window.dkSetHost && window.dkSetHost(${JSON.stringify(host)})`).catch(() => {});
   }
