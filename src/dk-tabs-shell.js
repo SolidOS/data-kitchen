@@ -389,13 +389,23 @@
     const miniSeek = () => document.querySelector('.omp-mini-seek');
     const miniTime = () => document.querySelector('.omp-mini-time');
     const audioEl = () => panelEl(audioName)?.getMediaElement?.();
+    // Is the audio panel the view actually on screen? Keyed on layout, not the
+    // `current` tracker: `current` only updates when the picked item carries a
+    // panel-* id, and most menu items (apps, submenu picks) don't — leaving it
+    // stale at 'music' and wrongly hiding the mini on every non-media item.
+    // Keep-alive panes and hidden [data-menu-item] wrappers are display:none,
+    // so offsetParent is null whenever the panel isn't the visible view.
+    const audioPanelVisible = () => {
+      const p = panelEl(audioName);
+      return !!p && p.offsetParent !== null;
+    };
     const fmtTime = (s) => Number.isFinite(s) && s >= 0
       ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '0:00';
     let seeking = false;
     function updateMini() {
       const bar = miniBar(); if (!bar) return;
       const el = audioEl();
-      const hide = (current === audioName) || !(el && el.src);
+      const hide = audioPanelVisible() || !(el && el.src);
       bar.hidden = hide;
       if (hide || !el) return;
       // Hover tooltip: the current track (artist — album — title) from the panel.
