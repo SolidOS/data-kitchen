@@ -27,7 +27,7 @@
     "test:e2e": "node test/e2e/run.mjs",
     "test:mobile": "node --test \"mobile/test/node/**/*.test.mjs\"",
     "dist": "electron-builder",
-    "dist:cross": "electron-builder --linux --mac zip --win zip",
+    "dist:cross": "electron-builder --linux AppImage --mac zip --win zip",
     "dist:android": "bash mobile/tool/build-apk.sh",
     "release:prep": "node tools/prepare-release.mjs",
     "release:check": "node tools/prepare-release.mjs --check"
