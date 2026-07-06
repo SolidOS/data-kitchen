@@ -426,8 +426,9 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   webview_devtools_remote` → `adb forward tcp:9223 localabstract:<sock>` →
   CDP at :9223 (screenshot/drive the REAL on-device DOM). Use TRUSTED input
   (`Input.dispatchTouchEvent`), not synthetic `.click()`.
-- **M2–M4 built 2026-07-06, CDP-verified on desktop touch emulation; the
-  on-device S23 pass is still owed.** M2 (omp): phone movies split the stage —
+- **M2–M4 built 2026-07-06 and VERIFIED ON THE S23** (trusted-touch CDP pass,
+  real Wikimedia data + real swipe: `cdp-verify-phone-m2m4.mjs`, all green;
+  also desktop touch emulation). M2 (omp): phone movies split the stage —
   video/film-intro 16:9 pinned under the returned toolbar (desktop hides it;
   the film-search form now stays in the phone toolbar instead of riding
   .ia-nowplaying into the dock), Favorites film list beneath, touch intro
