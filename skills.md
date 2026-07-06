@@ -426,7 +426,18 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   webview_devtools_remote` → `adb forward tcp:9223 localabstract:<sock>` →
   CDP at :9223 (screenshot/drive the REAL on-device DOM). Use TRUSTED input
   (`Input.dispatchTouchEvent`), not synthetic `.click()`.
-- M2 (movies) / M3 (images) / M4 (feed chip alignment) not started.
+- **M2–M4 built 2026-07-06, CDP-verified on desktop touch emulation; the
+  on-device S23 pass is still owed.** M2 (omp): phone movies split the stage —
+  video/film-intro 16:9 pinned under the returned toolbar (desktop hides it;
+  the film-search form now stays in the phone toolbar instead of riding
+  .ia-nowplaying into the dock), Favorites film list beneath, touch intro
+  hint. M3 (omp + sc): omp-images phone = two snap-scrolling chip rows
+  (★ Favorites + topics / collections; thin skin over the same selection
+  methods) over sol-gallery's new 2-column square grid + full-bleed
+  swipe-stepping lightbox (caption bottom, 44px ✕). M4 (sc + dk-chrome.css):
+  ONE shared phone chip — navigator trigger, feed source chips, Browse pills
+  all 44px / 0 16px / stadium / 16px floor; feed cards got breathing room.
+  Probes: `claude/smoke-tests/cdp-verify-m{2-movies,3-images,4-chips}.mjs`.
 
 ## Updates & releases (2026-07)
 

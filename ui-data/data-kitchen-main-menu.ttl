@@ -500,7 +500,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "id"; schema:value "panel-customize" ],
             [
                 schema:name "source";
-                schema:value "./dk-pod/dk/plugins/customize/dk-customize.html"
+                schema:value "./dk-pod/dk/pages/customize.html"
             ],
         [ schema:name "trusted"; schema:value "" ];
     ui:label "🎛 Customize";
