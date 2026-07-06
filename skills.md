@@ -31,7 +31,12 @@ and plugins are described in RDF, not hard-coded.
 
 The UI renders from `.ttl` in `ui-data/`:
 - `data-kitchen-main-menu.ttl#Tabs` — the tabs/menu tree (also `#Bar`, `#Chrome`)
-- `data-kitchen-hamburger-menu.ttl` — Help / Settings / Customize actions
+- `data-kitchen-hamburger-menu.ttl` — the ☰ menu: Customize (plugin chooser
+  only), Settings (direct item since 2026-07-06), Theme, Text size, Restart dk.
+  (Sign in… / View as guest / Reload dk removed 2026-07-06; their commands
+  survive in dk-tabs-shell. Settings previously hid under Customize ▸
+  Preferences — `pages/customize.html` is now a single-subtab tabset, and
+  sol-tabs auto-hides the bar for one tab.)
 - `data-kitchen-plugins-catalog.ttl` — every available plugin (Customize source)
 - `data-kitchen-settings.ttl`, `data-kitchen-startup-config.shacl`
 
@@ -170,7 +175,10 @@ rules against the pod data and lists any double-listed cards.
 - **ia-player** (from the `open-media-player` package — sibling working tree in
   dev via the `node_modules/open-media-player` symlink; sources in its
   `src/ia-player/`, rebuild ITS bundle with `npm run build` there after edits) —
-  Internet Archive music player, with a
+  Internet Archive music player. **In dk its gear menu hides three items**
+  (Filters…, Install on my Pod…, Update app on Pod…) via a dk-side rule at the
+  end of `src/dk-styles.css` — the gear is light DOM; standalone omp keeps
+  them. Also with a
   **local import** path — **PARKED 2026-07-04** (UI entry points hidden: gear
   "Import music folder…" + "+ Library" commented out in omp
   `assets/ia-player-shell.html`, imported-library boot listing gated by

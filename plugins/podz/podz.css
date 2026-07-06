@@ -78,7 +78,7 @@ body:has(> .app) {
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   font-family: var(--font-ui, system-ui, -apple-system, sans-serif);
   font-size: var(--font-app);
   color: var(--text);
@@ -301,8 +301,9 @@ body.dark .app .pod-container {
   border-radius: 5px;
   font-size: 0.9em;
   font-family: var(--font-mono);
-  background: var(--surface);
-  color: var(--text);
+  background: var(--input-bg, #eef);
+  color: var(--input-text, #1a1a1a);
+  border-color: var(--input-border, #9aa0a8);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 .app .pod-header select:focus-visible {
@@ -367,8 +368,8 @@ body.dark .app .pod-container {
 .auth-custom-row { display: flex; gap: 4px; }
 .auth-issuer-input {
   flex: 1; min-width: 0; padding: 3px 6px; font-size: 0.82em;
-  border: 1px solid var(--border, #9aa3af); border-radius: 4px;
-  background: var(--bg, #fff); color: var(--text, #0f1115);
+  border: 1px solid var(--input-border, #9aa0a8); border-radius: 4px;
+  background: var(--input-bg, #eef); color: var(--input-text, #1a1a1a);
 }
 .auth-issuer-input:focus { outline: none; border-color: var(--accent, #0f4ea0); }
 

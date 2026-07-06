@@ -14,12 +14,11 @@
 # 2026-06-12 — see git history if it's ever wanted back.)
 
 <#More> a ui:Menu ; ui:label "Menu" ;
-  ui:parts ( <#MoreCustomize> <#MoreTheme> <#MoreFontSize>
-             <#MoreSignIn> <#MoreGuestView> <#MoreReload> <#MoreRestart> ) .
+  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreTheme> <#MoreFontSize> <#MoreRestart> ) .
 
-# Customize — subtabs: 1. choose plugins (catalog + menu/bar managers as
-# drop targets, auto-saves), 2. preferences (pages/settings.html). More
-# subtabs to come.
+# Customize — choose plugins (catalog + menu/bar managers as drop targets,
+# auto-saves). (The Preferences subtab moved out 2026-07-06 — settings is a
+# direct menu item below.)
 <#MoreCustomize> a ui:Component ; ui:label "Customize" ;
   ui:name "sol-include" ;
   acl:mode acl:Write ;
@@ -27,27 +26,27 @@
     [ schema:name "source"  ; schema:value "./dk-pod/dk/pages/customize.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
-
-# (Settings… was removed from this menu 2026-06-12 — the global settings
-# page now lives under Customize ▸ Customize Preferences, its only route
-# in the UI. The per-context "settings" command in dk-tabs-shell still
-# exists but nothing triggers it; tabs.ttl#bar-settings is unused pantry.)
+# Settings — the global settings page, a direct item again as of 2026-07-06
+# (it lived under Customize ▸ Customize Preferences from 2026-06-12).
+<#MoreSettings> a ui:Component ; ui:label "Settings" ;
+  ui:name "sol-include" ;
+  acl:mode acl:Write ;
+  ui:attribute
+    [ schema:name "source"  ; schema:value "./dk-pod/dk/pages/settings.html" ] ,
+    [ schema:name "trusted" ; schema:value "" ] .
 
 # Label shows the CURRENT theme/size — dk-tabs-shell rewrites these two on open.
 <#MoreTheme> a ui:Component ; ui:label "Theme" ; ui:name "toggleTheme" .
 
-<#MoreSignIn> a ui:Component ; ui:label "Sign in…" ; ui:name "signIn" .
-
-<#MoreGuestView> a ui:Component ; ui:label "View as guest" ; ui:name "guestView" ;
-  acl:mode acl:Write .
+# (Sign in… / View as guest / Reload dk were removed from this menu
+# 2026-07-06 — the signIn/guestView/reloadApp commands still exist in
+# dk-tabs-shell; see git history for the old items.)
 
 # Cycle text size (moved here from the actions bar). Command — see dk-tabs-shell.
 <#MoreFontSize> a ui:Component ; ui:label "Text size" ; ui:name "cycleFontSize" .
 
-# Developer reloads (commands — see dk-tabs-shell). Reload = renderer reload
-# (picks up bundle/html/css/data); Restart = relaunch the whole app (also
-# main process + bundled servers) via the dkElectron preload bridge.
-<#MoreReload>  a ui:Component ; ui:label "Reload dk"  ; ui:name "reloadApp"  .
+# Developer restart (command — see dk-tabs-shell): relaunch the whole app
+# (also main process + bundled servers) via the dkElectron preload bridge.
 <#MoreRestart> a ui:Component ; ui:label "Restart dk" ; ui:name "restartApp" .
 
 

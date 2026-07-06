@@ -559,3 +559,12 @@ dk-dokieli {
   outline: 2px solid var(--accent, #1F618D);
 }
 #dk-content:focus { outline: none; }
+
+/* Media gear menu (ia-player panels, light DOM): Filters… and the two
+   on-Pod items (Install on my Pod… / Update app on Pod…) don't apply
+   inside data-kitchen — hidden here, dk-side, so standalone
+   open-media-player keeps them. The extra .menu-item class outranks
+   ia.css's later-loaded `.gear-menu .menu-item { display: flex }`. */
+.gear-menu .menu-item.gear-filters,
+.gear-menu .menu-item.gear-install-pod,
+.gear-menu .menu-item.gear-update-app { display: none; }

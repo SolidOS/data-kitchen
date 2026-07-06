@@ -1,17 +1,14 @@
 <!-- Customize — ☰ menu item; a sub-tabset of customization panels (more
      subtabs to come). 1 = choose plugins by dropping them onto the menu/bar
-     (auto-saves; no Save button); 2 = preferences (theme/font settings). -->
+     (auto-saves; no Save button). (The Preferences subtab moved out
+     2026-07-06 — Settings is a direct ☰ item now.) -->
 <!-- data-settings-skip: this navigation tabset is not a user setting — keep
-     its menu editor out of the Customize Preferences accordion. -->
+     its menu editor out of the settings accordion. -->
 <sol-tabs variant="sub" keep-alive class="dk-customize-tabs" data-settings-skip>
   <a href="./dk-pod/dk/pages/choose-plugins.html"
      data-handler="sol-include"
      data-trusted
   >Customize Plugins, Menus, &amp; buttons</a>
-  <a href="./dk-pod/dk/pages/settings.html"
-     data-handler="sol-include"
-     data-trusted
-  >Customize Preferences</a>
 </sol-tabs>
 <style>
   /* the subtab content fills the pane; the panels inside scroll their own
