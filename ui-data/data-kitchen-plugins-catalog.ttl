@@ -10,7 +10,7 @@
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
   rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it." ;
-  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Forum> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SolidOS-AddressBook> <#SolidOS-Chat> <#SolidOS-Meeting> <#SolidOS-Notes> <#SolidOS-Tasks> <#SPARQL-Playground> <#Spoken-Word-Internet-Archive> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
+  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#Gmail> <#Google-Calendar> <#Google-Maps> <#Google-Messages> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Forum> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SolidOS-AddressBook> <#SolidOS-Chat> <#SolidOS-Meeting> <#SolidOS-Notes> <#SolidOS-Tasks> <#SPARQL-Playground> <#Spoken-Word-Internet-Archive> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
 
 <#Community> a skos:Collection ; skos:prefLabel "Community" ;
   skos:member <#Booklice>, <#Solid-Forum>, <#Tired-Bike> .
@@ -28,7 +28,7 @@
   skos:member <#Images-Wikimedia>, <#Media-Kraken>, <#Movies-Internet-Archive>, <#MovieStar>, <#Music-Internet-Archive>, <#Solidflix>, <#Spoken-Word-Internet-Archive> .
 
 <#Other-Services> a skos:Collection ; skos:prefLabel "Other Services" ;
-  skos:member <#Bluesky>, <#CryptPad>, <#Duck-ai>, <#Element>, <#HuggingFace-Chat>, <#Lemmy>, <#LibreTranslate>, <#Mastodon>, <#Matrix-Chat>, <#OpenStreetMap>, <#Pixelfed>, <#Proton-Calendar>, <#Proton-Drive>, <#Proton-Mail>, <#SearXNG>, <#SepiaSearch>, <#Standard-Notes>, <#Tuta> .
+  skos:member <#Bluesky>, <#CryptPad>, <#Duck-ai>, <#Element>, <#Gmail>, <#Google-Calendar>, <#Google-Maps>, <#Google-Messages>, <#HuggingFace-Chat>, <#Lemmy>, <#LibreTranslate>, <#Mastodon>, <#Matrix-Chat>, <#OpenStreetMap>, <#Pixelfed>, <#Proton-Calendar>, <#Proton-Drive>, <#Proton-Mail>, <#SearXNG>, <#SepiaSearch>, <#Standard-Notes>, <#Tuta> .
 
 <#Pods> a skos:Collection ; skos:prefLabel "Pods" ;
   skos:member <#Data-Kitchen-Pod-Browser>, <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Sign-in>, <#Solid-File-Manager>, <#SolidOS-data-browser> .
@@ -156,6 +156,38 @@
   rdfs:comment "Store points of interest and encrypted tracks on a map." ;
   dct:creator "Software Innovation Institute, ANU" ;
   ui:href <https://geopod.solidcommunity.au> .
+
+<#Gmail> a ui:Link ; ui:label "Gmail" ;
+  dct:source <../plugins/gmail.ttl> ;
+  ui:icon "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Google email." ;
+  dct:publisher "Google" ;
+  ui:href <https://mail.google.com/mail/u/0/> .
+
+<#Google-Calendar> a ui:Link ; ui:label "Google Calendar" ;
+  dct:source <../plugins/google-calendar.ttl> ;
+  ui:icon "https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_22.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Your Google calendar." ;
+  dct:publisher "Google" ;
+  ui:href <https://calendar.google.com/calendar/u/0/r> .
+
+<#Google-Maps> a ui:Link ; ui:label "Google Maps" ;
+  dct:source <../plugins/google-maps.ttl> ;
+  ui:icon "https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Maps and directions." ;
+  dct:publisher "Google" ;
+  ui:href <https://www.google.com/maps/> .
+
+<#Google-Messages> a ui:Link ; ui:label "Google Messages" ;
+  dct:source <../plugins/google-messages.ttl> ;
+  ui:icon "https://ssl.gstatic.com/android-messages-web/images/2022.3/1x/messages_2022_96dp.png" ;
+  ui:region ui:Tab ;
+  rdfs:comment "Text messaging on the web." ;
+  dct:publisher "Google" ;
+  ui:href <https://messages.google.com/web/u/0/conversations> .
 
 <#HealthPod> a ui:Link ; ui:label "HealthPod" ;
   dct:source <../plugins/healthpod.ttl> ;

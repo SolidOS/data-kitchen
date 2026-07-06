@@ -11,9 +11,8 @@
     ui:label "Apps";
     ui:parts
             ( :dokieli-2 :SolidFocus :RoloPod :KonaPod :Umai :GeoPod :PodCal
-            :KeyPod :NotePod-2 :SecureDialog-3 :Synara-AI-2
-            :SolidOS-AddressBook :SolidOS-Meeting :SolidOS-Chat :SolidOS-Tasks
-            :SolidOS-Notes ).
+            :NotePod-2 :SolidOS-Meeting :SolidOS-Chat :SolidOS-AddressBook
+            :SolidOS-Tasks :SolidOS-Notes ).
 :AU
     a ui:Menu;
     ui:label "Health";
@@ -35,7 +34,6 @@
 :bar-calendar
     a ui:Component;
     dct:source plu:calendar.ttl;
-    ui:region ui:Dropdown;
     ui:attribute
         [ schema:name "class"; schema:value "omp-calendar" ],
         [ schema:name "data-handler"; schema:value "sol-calendar" ],
@@ -47,7 +45,8 @@
             ],
         [ schema:name "title"; schema:value "Calendar" ];
     ui:label "📅";
-    ui:name "sol-button".
+    ui:name "sol-button";
+    ui:region ui:Dropdown.
 :bar-fontsize
     a ui:Component;
     ui:attribute
@@ -61,7 +60,16 @@
     dct:source plu:sign-in.ttl;
     ui:attribute
         [ schema:name "class"; schema:value "omp-sollogin" ],
-        [ schema:name "mode"; schema:value "popup" ];
+            [
+                schema:name "issuers";
+                schema:value
+                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
+            ],
+        [ schema:name "mode"; schema:value "popup" ],
+            [
+                schema:name "popup-callback";
+                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
+            ];
     ui:label "Sign in";
     ui:name "sol-login".
 :bar-search
@@ -113,6 +121,8 @@
     ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png";
     ui:label "Bluesky";
     ui:region ui:Tab.
+:Calendar
+a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
 :Chrome
     a ui:Menu;
     ui:label "chrome";
@@ -142,7 +152,16 @@
         "Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).";
     ui:attribute
         [ schema:name "class"; schema:value "omp-sollogin" ],
-        [ schema:name "mode"; schema:value "popup" ];
+            [
+                schema:name "issuers";
+                schema:value
+                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
+            ],
+        [ schema:name "mode"; schema:value "popup" ],
+            [
+                schema:name "popup-callback";
+                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
+            ];
     ui:label "Sign in";
     ui:name "sol-login".
 :chrome-menu
@@ -208,7 +227,8 @@
 :Health
     a ui:Menu;
     ui:label "Health";
-    ui:parts ( :HealthPod-2 :InnerPod :MSFatigue-2 :VitalStats-3 ).
+    ui:parts
+    ( :HealthPod-2 :InnerPod :MSFatigue-2 :VitalStats-3 :SecureDialog-4 ).
 :HealthPod
     a ui:Link;
     dct:source plu:healthpod.ttl;
@@ -292,11 +312,10 @@
     ui:name "ia-player".
 :item
     a ui:Menu;
-    ui:label "Solid Resources";
+    ui:label "About Solid";
     ui:parts
-            ( :Solid-FAQ-2 :Solid-Website :Tag-Explainer-2 :Solid-Catalog-2
-            :Solid-Glossary-3 :RDF-Validator-3 :SHACL-Playground-2
-            :JSON-LD-Playground-4 ).
+            ( :Solid-FAQ-2 :Solid-Forum :Solid-Website :Tag-Explainer-2
+            :Solid-Catalog-2 :Solid-Glossary-3 ).
 :JSON-LD-Playground
     a ui:Link;
     dct:source plu:jsonld-playground.ttl;
@@ -311,21 +330,14 @@
     ui:icon "🧩";
     ui:label "JSON-LD Playground";
     ui:region ui:Tab.
-:JSON-LD-Playground-3
-    a ui:Link;
-    dct:source plu:jsonld-playground.ttl;
-    ui:href "https://json-ld.github.io/json-ld.org/playground/";
-    ui:icon "🧩";
-    ui:label "JSON-LD Playground";
-    ui:region ui:Tab.
-:JSON-LD-Playground-4
-    a ui:Link;
-    dct:source plu:jsonld-playground.ttl;
-    ui:href "https://json-ld.github.io/json-ld.org/playground/";
-    ui:icon "🧩";
-    ui:label "JSON-LD Playground";
-    ui:region ui:Tab.
 :KeyPod
+    a ui:Link;
+    dct:source plu:keypod.ttl;
+    ui:href "https://keypod.solidcommunity.au";
+    ui:icon "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png";
+    ui:label "KeyPod";
+    ui:region ui:Tab.
+:KeyPod-2
     a ui:Link;
     dct:source plu:keypod.ttl;
     ui:href "https://keypod.solidcommunity.au";
@@ -379,9 +391,8 @@
     ui:label "Media";
     ui:parts
             ( :Internet-Archive-player-2 :Spoken-Word-Internet-Archive
-            :Images-Wikimedia-2
-            :Movies-Internet-Archive :Solidflix-4 :Media-Kraken-2 :MovieStar-4
-            ).
+            :Images-Wikimedia-2 :Movies-Internet-Archive :Media-Kraken-3
+            :Solidflix-2 :MovieStar-4 ).
 :Media-Kraken
     a ui:Link;
     dct:source plu:media-kraken.ttl;
@@ -391,6 +402,14 @@
     ui:label "Media Kraken";
     ui:region ui:Tab.
 :Media-Kraken-2
+    a ui:Link;
+    dct:source plu:media-kraken.ttl;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
+:Media-Kraken-3
     a ui:Link;
     dct:source plu:media-kraken.ttl;
     ui:href "https://noeldemartin.github.io/media-kraken/";
@@ -486,6 +505,12 @@
         [ schema:name "trusted"; schema:value "" ];
     ui:label "🎛 Customize";
     ui:name "sol-include".
+:panel-dev-tools
+    a ui:Menu;
+    ui:label "Dev Tools";
+    ui:parts
+            ( :RDF-Validator :SHACL-Playground :JSON-LD-Playground-2
+            :SPARQL-Playground :Synara-AI-3 ).
 :panel-home
     a ui:Component;
     ui:attribute
@@ -548,10 +573,18 @@
         [ schema:name "view"; schema:value "threePanel" ];
     ui:label "News";
     ui:name "sol-feed".
-:Pods
-    a ui:Menu;
-    ui:label "Pods";
-    ui:parts ( :Pod-browser :SolidOS-data-browser-2 :PodOS-Browser ).
+:panel-solidos
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-solidos" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
+            ];
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS";
+    ui:name "dk-solidos".
 :Pixelfed
     a ui:Link;
     dct:source plu:pixelfed.ttl;
@@ -586,28 +619,11 @@
     ui:icon "🔍";
     ui:label "PodOS Browser";
     ui:region ui:Tab.
-:Portable-LibreChat
-    a ui:Link;
-    dct:source plu:portable-librechat.ttl;
-    ui:href "https://chat.solidproject.org/";
-    ui:icon "💬";
-    ui:label "Portable LibreChat";
-    ui:region ui:Tab.
+:Pods
+    a ui:Menu;
+    ui:label "Pods";
+    ui:parts ( :Pod-browser :SolidOS-data-browser :PodOS-Browser :KeyPod-2 ).
 :RDF-Validator
-    a ui:Link;
-    dct:source plu:rdf-validator.ttl;
-    ui:href "http://easyrdf.org/converter";
-    ui:icon "🧬";
-    ui:label "RDF Validator";
-    ui:region ui:Tab.
-:RDF-Validator-2
-    a ui:Link;
-    dct:source plu:rdf-validator.ttl;
-    ui:href "http://easyrdf.org/converter";
-    ui:icon "🧬";
-    ui:label "RDF Validator";
-    ui:region ui:Tab.
-:RDF-Validator-3
     a ui:Link;
     dct:source plu:rdf-validator.ttl;
     ui:href "http://easyrdf.org/converter";
@@ -645,6 +661,14 @@
     "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
     ui:label "SecureDialog";
     ui:region ui:Tab.
+:SecureDialog-4
+    a ui:Link;
+    dct:source plu:securedialog.ttl;
+    ui:href "https://securedialog.solidcommunity.au";
+    ui:icon
+    "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
+    ui:label "SecureDialog";
+    ui:region ui:Tab.
 :SepiaSearch
     a ui:Link;
     dct:source plu:sepiasearch.ttl;
@@ -653,13 +677,6 @@
     ui:label "SepiaSearch";
     ui:region ui:Tab.
 :SHACL-Playground
-    a ui:Link;
-    dct:source plu:shacl-playground.ttl;
-    ui:href "https://shacl.org/playground/";
-    ui:icon "✅";
-    ui:label "SHACL Playground";
-    ui:region ui:Tab.
-:SHACL-Playground-2
     a ui:Link;
     dct:source plu:shacl-playground.ttl;
     ui:href "https://shacl.org/playground/";
@@ -699,6 +716,13 @@
     ui:href "https://solidproject.org/FAQ";
     ui:icon "❓";
     ui:label "Solid FAQ";
+    ui:region ui:Tab.
+:Solid-Forum
+    a ui:Link;
+    dct:source plu:solid-forum.ttl;
+    ui:href "https://forum.solidproject.org/";
+    ui:icon "https://solidproject.org/favicon.ico";
+    ui:label "Solid Forum";
     ui:region ui:Tab.
 :Solid-Glossary
     a ui:Link;
@@ -742,20 +766,6 @@
     ui:icon "🎬";
     ui:label "Solidflix";
     ui:region ui:Tab.
-:Solidflix-3
-    a ui:Link;
-    dct:source plu:solidflix.ttl;
-    ui:href "https://oxfordhcc.github.io/solid-media/";
-    ui:icon "🎬";
-    ui:label "Solidflix";
-    ui:region ui:Tab.
-:Solidflix-4
-    a ui:Link;
-    dct:source plu:solidflix.ttl;
-    ui:href "https://oxfordhcc.github.io/solid-media/";
-    ui:icon "🎬";
-    ui:label "Solidflix";
-    ui:region ui:Tab.
 :SolidFocus
     a ui:Link;
     dct:source plu:solidfocus.ttl;
@@ -789,23 +799,11 @@
     dct:source plu:solidos-browser.ttl;
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
+        [ schema:name "has-location-bar"; schema:value "true" ],
             [
                 schema:name "source";
                 schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
             ];
-    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
-    ui:label "SolidOS (data browser)";
-    ui:name "dk-solidos".
-:SolidOS-data-browser-2
-    a ui:Component;
-    dct:source plu:solidos-browser.ttl;
-    ui:attribute
-        [ schema:name "defer"; schema:value "" ],
-            [
-                schema:name "source";
-                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
-            ],
-        [ schema:name "has-location-bar"; schema:value "true" ];
     ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
     ui:label "SolidOS (data browser)";
     ui:name "dk-solidos".
@@ -875,11 +873,18 @@
     ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png";
     ui:label "Synara AI";
     ui:region ui:Tab.
+:Synara-AI-3
+    a ui:Link;
+    dct:source plu:synara-ai.ttl;
+    ui:href "https://ai.privatedatapod.com/";
+    ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "Synara AI";
+    ui:region ui:Tab.
 :Tabs
     a ui:Menu;
     ui:label "data-kitchen";
     ui:orientation ui:Horizontal;
-    ui:parts ( :panel-news :Media :Health :Pods :Apps :item ).
+    ui:parts ( :panel-news :Media :Health :Pods :Apps :item :panel-dev-tools ).
 :Tag-Explainer
     a ui:Link;
     dct:source plu:solid-tag-explainer.ttl;

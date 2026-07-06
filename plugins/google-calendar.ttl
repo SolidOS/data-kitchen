@@ -1,0 +1,13 @@
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ui:   <http://www.w3.org/ns/ui#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<>
+  a ui:Link ;
+  ui:label "Google Calendar" ;
+  ui:icon <https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_22.ico> ;
+  ui:href <https://calendar.google.com/calendar/u/0/r> ;
+  ui:region ui:Tab ;
+  rdfs:comment "Your Google calendar." ;
+  dct:publisher "Google" ;
+  dct:subject "Other Services" .
