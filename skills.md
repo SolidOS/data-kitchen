@@ -17,7 +17,7 @@ and plugins are described in RDF, not hard-coded.
 
 - **dk** — `/home/jeff/Dropbox/Web/solid/data-kitchen` (also `~/s`, a symlink).
   Remote: `github.com/SolidOS/data-kitchen` (push needs an explicit per-task go).
-- **sc — sol-components** (v2.5.0, published on npm 2026-07-06) — `../sol-components`,
+- **sc — sol-components** (v2.6.0 in `../sol-components`; npm latest 2.5.0 until republished) — `../sol-components`,
   symlinked into `node_modules/`. ~40 `sol-*` web components (web/), Node tools
   (node/), shared core (core/). **dk loads the raw `web/*.js`** — a component
   edit needs only a reload, no build. dk's own `src/` does need `npm run build`.
@@ -392,7 +392,7 @@ CSS 7.1.9 by `claude/smoke-tests/grant-smoke.mjs`; the in-Electron UI flow is no
 yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-preload}.cjs`,
 `remember-idp-window.html`, plus `main.cjs` (IPC + auto-mint) and `preload.cjs`.
 
-## Phone media player (M1, 2026-07-04, verified on the S23)
+## Phone media player (M1–M4, verified on the S23)
 
 - **ia-player's Android layer** (omp, all behind the coarse-pointer gate —
   desktop unreachable by construction): tracklist is the stage (two-line
