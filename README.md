@@ -4,7 +4,7 @@
 
 This native app for Linux, Windows, Mac, and Android turns your computer, phone, or tablet into a Solid pod only you can access. It mounts a local version of Pivot/CSS, a proxy server and the Data-Kitchen frontend. Data Kitchen comes pre-loaded with dozens of Solid apps and widgets including SolidOS and a variety of open source resources - players for the Internet Archive and Wikimedia, access to Mastodon, Peertube, and more.
 
-No setup or install needed, just download and run. Downloads for all platforms are on the [releases page](https://github.com/SolidOS/data-kitchen/releases/latest). The app checks for new releases at startup and offers to update itself — your pod and settings are never touched by an update.
+No setup or install needed, just download and run. Downloads for all platforms are on the [releases page](https://github.com/SolidOS/data-kitchen/releases/latest) — see the per-platform [install & run guide](https://github.com/SolidOS/data-kitchen/releases/latest/download/INSTALL.md) for the two or three clicks each OS needs. The app checks for new releases at startup and offers to update itself — your pod and settings are never touched by an update.
 
 ## Features
 
