@@ -17,7 +17,7 @@ and plugins are described in RDF, not hard-coded.
 
 - **dk** — `/home/jeff/Dropbox/Web/solid/data-kitchen` (also `~/s`, a symlink).
   Remote: `github.com/SolidOS/data-kitchen` (push needs an explicit per-task go).
-- **sc — sol-components** (v2.5.0 in `../sol-components`; npm latest 2.4.3 until republished) — `../sol-components`,
+- **sc — sol-components** (v2.5.0, published on npm 2026-07-06) — `../sol-components`,
   symlinked into `node_modules/`. ~40 `sol-*` web components (web/), Node tools
   (node/), shared core (core/). **dk loads the raw `web/*.js`** — a component
   edit needs only a reload, no build. dk's own `src/` does need `npm run build`.
