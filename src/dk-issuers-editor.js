@@ -43,14 +43,21 @@ class DkIssuersEditor extends HTMLElement {
   async persist() {
     try {
       const docUrl = this.docUrl();
-      const store = this._store || await loadRdfStore(docUrl, solFetch);
+      // ALWAYS re-read the live doc before the read-modify-write PUT. The
+      // page-open snapshot (this._store) can be minutes old — persisting
+      // from it would silently revert any OTHER settings (theme, font,
+      // proxy) written to the doc since the page opened.
+      const store = await loadRdfStore(docUrl, solFetch);
+      this._store = store;
       const subj = rdf.sym(this.subjectUrl());
       const pred = rdf.sym(SOLID_OIDC);
       const doc = rdf.sym(docUrl);
       store.removeMatches(subj, pred, null);
       for (const url of this.issuers) store.add(subj, pred, rdf.sym(url), doc);
-      const body = await new Promise((res, rej) =>
-        rdf.serialize(doc, store, docUrl, 'text/turtle', (err, str) => (err ? rej(err) : res(str))));
+      // rdf.serialize (sc facade) is PROMISE-only — a passed callback is
+      // silently dropped, which left this save hanging forever (the editor's
+      // add/remove/default buttons did nothing server-side).
+      const body = await rdf.serialize(doc, store, docUrl, 'text/turtle');
       const r = await solFetch(docUrl, { method: 'PUT', headers: { 'content-type': 'text/turtle' }, body });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       this.status('Saved.', 'ok');
