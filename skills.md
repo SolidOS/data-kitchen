@@ -75,8 +75,13 @@ dk uses this for shared auth: `dk.manifest.json` **provides** `webid` (from the
 in once. index.html names manifests + components + objects via `data-manifest`,
 `data-components`, `data-objects`, `data-stage="auto"`.
 
-The manifest shape is published and validates (ci 0.3.0: `context.jsonld` +
-`ns#` vocab + `shapes/manifest.shaclc` / `.ttl`). The `ci:` namespace
+The manifest shape is published and validates (ci ≥0.5.0: `context.jsonld` +
+`ns#` vocab + `shapes/manifest.shaclc` / `.ttl`). Since ci 0.5.0 / sc 2.7.0
+the manifest shape covers only the ENVELOPE; the shared item shapes
+(ui:Component / ui:Link — menus, palette cards, and manifest entries are all
+the same shapes) live in sol-components `shapes/menu.shacl`, and validators
+compose the two files (see test/data/menu-shacl.test.mjs). A manifest entry
+may be a ui:Link as well as a ui:Component. The `ci:` namespace
 (jeff-zucker.github.io/component-interop) is authoritative.
 
 ## Plugin system
