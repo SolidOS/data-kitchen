@@ -8,7 +8,7 @@ the user.
 ## What dk is
 
 An Electron "pod-in-a-box": it bundles a Solid server (Pivot/CSS, mashlib 2.2.2),
-a CORS proxy, and an **RDF-first shell** for Solid & federated apps. v2.0.0, ESM.
+a CORS proxy, and an **RDF-first shell** for Solid & federated apps. v2.1.0, ESM.
 Consolidated from three former repos (electron, old data-kitchen,
 open_media_player). The UI is fully customizable through forms — menus, buttons,
 and plugins are described in RDF, not hard-coded.
