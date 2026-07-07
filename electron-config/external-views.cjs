@@ -71,6 +71,102 @@ function hardenedTrustedGuestSession() {
   return ses;
 }
 
+// One "Loading… <host>" cover for one native view (pane / article / reader).
+// Owns its own overlay view, logical-shown flag (survives suspend/resume) and
+// the paint-poll that keeps the spinner up until the target actually PAINTS
+// (network-idle is not painted — e.g. a Flutter app fetches CanvasKit after
+// did-stop-loading). One instance per target, so a pane and an article can
+// load at the same time without stealing each other's cover.
+class LoadingOverlay {
+  constructor(host, { region, targetView }) {
+    this.host = host;            // the ExternalViews instance
+    this.region = region;        // () => bounds to cover
+    this.targetView = targetView;// () => the covered WebContentsView (for the paint poll)
+    this.view = null;
+    this.shown = false;          // logical state — resume() re-attaches from it
+    this._poll = null;
+  }
+
+  _ensure() {
+    if (this.view) return;
+    // Isolated session (no pod access needed); loads a local file only.
+    this.view = this.host._build({}, undefined, EXTERNAL_PARTITION);
+    this.view.setBackgroundColor('#f5f6f8');   // opaque, so it hides the blank view beneath
+    this.view.webContents.loadFile(path.join(__dirname, 'pane-loading.html'));
+  }
+
+  // urlHint = what the target was ASKED to load: at did-start-loading time
+  // webContents.getURL() still reports the page being replaced.
+  show(urlHint) {
+    this._clearPoll();             // a fresh load supersedes any pending paint-wait
+    this._ensure();
+    // Record the logical state even while suspended (a popup pick fires
+    // did-start-loading while views are suspended); only the attach defers.
+    this.shown = true;
+    if (!this.host._suspended) {
+      this.host.baseWindow.contentView.addChildView(this.view);   // above the target
+      this.view.setBounds(this.region());
+    }
+    let hostName = '';
+    try { hostName = new URL(urlHint || this.targetView()?.webContents.getURL()).host; } catch (_) {}
+    this.view.webContents.executeJavaScript(
+      `window.dkSetHost && window.dkSetHost(${JSON.stringify(hostName)})`).catch(() => {});
+  }
+
+  // After the network stops, poll the target until it has actually painted —
+  // a Flutter render root with size, or any sizable/visible content — then
+  // drop the spinner. A safety cap hides it regardless.
+  waitThenHide() {
+    if (!this.shown) return;
+    this._clearPoll();
+    const PAINTED = `(() => {
+      const f = document.querySelector('flt-glass-pane, flutter-view, flt-scene-host, flt-semantics-host');
+      if (f) { const r = f.getBoundingClientRect(); return r.width > 0 && r.height > 0; }
+      const b = document.body; if (!b) return false;
+      if ((b.innerText || '').trim().length > 0) return true;
+      for (const el of b.children) {
+        if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
+        const r = el.getBoundingClientRect();
+        if (r.width > 40 && r.height > 40) return true;
+      }
+      return false;
+    })()`;
+    const started = Date.now();
+    const MAX_MS = 10000;
+    let inFlight = false;
+    this._poll = setInterval(async () => {
+      if (inFlight) return;
+      if (Date.now() - started > MAX_MS) { this.hide(); return; }
+      inFlight = true;
+      let painted = false;
+      try { painted = await this.targetView()?.webContents.executeJavaScript(PAINTED); } catch (_) {}
+      inFlight = false;
+      if (painted) this.hide();
+    }, 150);
+  }
+
+  hide() {
+    this._clearPoll();
+    if (!this.shown) return;
+    this.shown = false;
+    this.host.baseWindow.contentView.removeChildView(this.view);
+  }
+
+  layout() {
+    if (this.shown && !this.host._suspended && this.view) this.view.setBounds(this.region());
+  }
+
+  detach()  { if (this.shown && this.view) this.host.baseWindow.contentView.removeChildView(this.view); }
+  reattach() {
+    if (this.shown && this.view) {
+      this.host.baseWindow.contentView.addChildView(this.view);
+      this.view.setBounds(this.region());
+    }
+  }
+
+  _clearPoll() { if (this._poll) { clearInterval(this._poll); this._poll = null; } }
+}
+
 class ExternalViews {
   constructor(baseWindow) {
     this.baseWindow = baseWindow;
@@ -80,11 +176,16 @@ class ExternalViews {
     this.articlePane = null;   // sol-feed inline reader (locked external session)
     this.readerBar = null;
     this.readerContent = null;
+    // Loading covers — one per target so concurrent loads don't fight.
+    this.paneLoading    = new LoadingOverlay(this, { region: () => this._paneRegion(),    targetView: () => this.pane });
+    this.articleLoading = new LoadingOverlay(this, { region: () => this._articleRegion(), targetView: () => this.articlePane });
+    this.readerLoading  = new LoadingOverlay(this, { region: () => this._readerContentRegion(), targetView: () => this.readerContent });
   }
 
   setContentRect(rect) {
     this.contentRect = rect;
     if (this._readerShown) this._layoutReader();
+    this.readerLoading.layout();
   }
 
   // The pane shadows the page's external <iframe> exactly — the plugin page
@@ -93,7 +194,7 @@ class ExternalViews {
   setPaneRect(rect) {
     this.paneRect = rect;
     if (this.pane && this._paneShown && !this._suspended) this.pane.setBounds(rect);
-    if (this._paneLoadingShown && !this._suspended) this.paneLoading.setBounds(this._paneRegion());
+    this.paneLoading.layout();
   }
 
   _paneRegion() { return this.paneRect || this._region(); }
@@ -152,12 +253,12 @@ class ExternalViews {
       // "Loading…" overlay for the whole loading phase: shown when the pane
       // starts loading, removed when it stops (success or failure).
       const wc = this.pane.webContents;
-      wc.on('did-start-loading', () => this._showPaneLoading());
+      wc.on('did-start-loading', () => { if (this._paneShown) this.paneLoading.show(this._paneUrl); });
       // Network "stopped" is NOT "painted": a Flutter app fetches CanvasKit and
       // paints AFTER did-stop-loading, leaving an uncomfortable pause if we hide
       // then. Hold the spinner until the app actually paints (or a safety cap).
-      wc.on('did-stop-loading', () => this._waitForPaneContentThenHide());
-      wc.on('did-fail-load', (_e, code, _d, _u, isMain) => { if (isMain && code !== -3) this._hidePaneLoading(); });
+      wc.on('did-stop-loading', () => this.paneLoading.waitThenHide());
+      wc.on('did-fail-load', (_e, code, _d, _u, isMain) => { if (isMain && code !== -3) this.paneLoading.hide(); });
     }
     this._paneShown = true;
     // Remember what the pane was ASKED to load: at did-start-loading time
@@ -172,7 +273,7 @@ class ExternalViews {
   }
 
   closePane() {
-    this._hidePaneLoading();
+    this.paneLoading.hide();
     if (this.pane && this._paneShown) {
       this.baseWindow.contentView.removeChildView(this.pane);
       this._paneShown = false;
@@ -192,8 +293,15 @@ class ExternalViews {
   openArticlePane(url, rect) {
     if (!url) return;
     if (rect) this.articleRect = rect;
-    if (!this.articlePane) this.articlePane = this._build(undefined, undefined, EXTERNAL_PARTITION);
+    if (!this.articlePane) {
+      this.articlePane = this._build(undefined, undefined, EXTERNAL_PARTITION);
+      const wc = this.articlePane.webContents;
+      wc.on('did-start-loading', () => { if (this._articlePaneShown) this.articleLoading.show(this._articleUrl); });
+      wc.on('did-stop-loading', () => this.articleLoading.waitThenHide());
+      wc.on('did-fail-load', (_e, code, _d, _u, isMain) => { if (isMain && code !== -3) this.articleLoading.hide(); });
+    }
     this._articlePaneShown = true;
+    this._articleUrl = url;   // did-start-loading still sees the replaced page's URL
     if (!this._suspended) {
       this.baseWindow.contentView.addChildView(this.articlePane);   // on top of app view
       this.articlePane.setBounds(this._articleRegion());
@@ -204,9 +312,11 @@ class ExternalViews {
   setArticleRect(rect) {
     this.articleRect = rect;
     if (this.articlePane && this._articlePaneShown && !this._suspended) this.articlePane.setBounds(rect);
+    this.articleLoading.layout();
   }
 
   closeArticlePane() {
+    this.articleLoading.hide();
     if (this.articlePane && this._articlePaneShown) {
       this.baseWindow.contentView.removeChildView(this.articlePane);
       this._articlePaneShown = false;
@@ -215,82 +325,6 @@ class ExternalViews {
   }
 
   _articleRegion() { return this.articleRect || this._region(); }
-
-  // --- pane loading overlay -----------------------------------------------
-
-  _ensurePaneLoading() {
-    if (this.paneLoading) return;
-    // Isolated session (no pod access needed); loads a local file only.
-    this.paneLoading = this._build({}, undefined, EXTERNAL_PARTITION);
-    this.paneLoading.setBackgroundColor('#f5f6f8');   // opaque, so it hides the blank pane beneath
-    this.paneLoading.webContents.loadFile(path.join(__dirname, 'pane-loading.html'));
-  }
-
-  _showPaneLoading() {
-    if (!this._paneShown) return;
-    this._clearPaneLoadingPoll();   // a fresh load supersedes any pending paint-wait
-    this._ensurePaneLoading();
-    // Record the logical state even while suspended: picking an app from a
-    // dropdown fires did-start-loading while the popup still has the views
-    // suspended — dropping the request here left the pane BLANK for the whole
-    // load (the overlay only blipped on a later stray load event). Only the
-    // attach is deferred; resume() re-adds the overlay from _paneLoadingShown.
-    this._paneLoadingShown = true;
-    if (!this._suspended) {
-      this.baseWindow.contentView.addChildView(this.paneLoading);   // above the pane
-      this.paneLoading.setBounds(this._paneRegion());
-    }
-    // Name the app being loaded — from the openPane target, NOT getURL(),
-    // which still reports the replaced page until the new load commits.
-    let host = '';
-    try { host = new URL(this._paneUrl || this.pane.webContents.getURL()).host; } catch (_) {}
-    this.paneLoading.webContents.executeJavaScript(
-      `window.dkSetHost && window.dkSetHost(${JSON.stringify(host)})`).catch(() => {});
-  }
-
-  // After the network stops, poll the pane until its app has actually painted —
-  // a Flutter render root (flt-glass-pane / flutter-view) with size, or any
-  // sizable/visible content for a normal app — then drop the spinner. A safety
-  // cap hides it regardless so a quirky app never strands the overlay.
-  _waitForPaneContentThenHide() {
-    if (!this._paneLoadingShown) return;
-    this._clearPaneLoadingPoll();
-    const PAINTED = `(() => {
-      const f = document.querySelector('flt-glass-pane, flutter-view, flt-scene-host, flt-semantics-host');
-      if (f) { const r = f.getBoundingClientRect(); return r.width > 0 && r.height > 0; }
-      const b = document.body; if (!b) return false;
-      if ((b.innerText || '').trim().length > 0) return true;
-      for (const el of b.children) {
-        if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
-        const r = el.getBoundingClientRect();
-        if (r.width > 40 && r.height > 40) return true;
-      }
-      return false;
-    })()`;
-    const started = Date.now();
-    const MAX_MS = 10000;
-    let inFlight = false;
-    this._paneLoadingPoll = setInterval(async () => {
-      if (inFlight) return;
-      if (Date.now() - started > MAX_MS) { this._hidePaneLoading(); return; }
-      inFlight = true;
-      let painted = false;
-      try { painted = await this.pane.webContents.executeJavaScript(PAINTED); } catch (_) {}
-      inFlight = false;
-      if (painted) this._hidePaneLoading();
-    }, 150);
-  }
-
-  _clearPaneLoadingPoll() {
-    if (this._paneLoadingPoll) { clearInterval(this._paneLoadingPoll); this._paneLoadingPoll = null; }
-  }
-
-  _hidePaneLoading() {
-    this._clearPaneLoadingPoll();
-    if (!this._paneLoadingShown) return;
-    this._paneLoadingShown = false;
-    this.baseWindow.contentView.removeChildView(this.paneLoading);
-  }
 
   // --- reader (window.open content) ---------------------------------------
 
@@ -310,6 +344,15 @@ class ExternalViews {
     };
     wc.on('did-navigate', pushState);
     wc.on('did-navigate-in-page', pushState);
+    // Loading cover over the content area (the bar stays interactive).
+    wc.on('did-start-loading', () => { if (this._readerShown) this.readerLoading.show(this._readerUrl); });
+    wc.on('did-stop-loading', () => this.readerLoading.waitThenHide());
+    wc.on('did-fail-load', (_e, code, _d, _u, isMain) => { if (isMain && code !== -3) this.readerLoading.hide(); });
+  }
+
+  _readerContentRegion() {
+    const r = this._region();
+    return { x: r.x, y: r.y + BAR_HEIGHT, width: r.width, height: Math.max(0, r.height - BAR_HEIGHT) };
   }
 
   _layoutReader() {
@@ -322,6 +365,7 @@ class ExternalViews {
     if (!url) return;
     this._ensureReader();
     this._readerShown = true;
+    this._readerUrl = url;   // did-start-loading still sees the replaced page's URL
     if (!this._suspended) {
       this.baseWindow.contentView.addChildView(this.readerContent);  // above pane + app
       this.baseWindow.contentView.addChildView(this.readerBar);
@@ -333,6 +377,7 @@ class ExternalViews {
 
   closeReader() {
     if (!this._readerShown) return;
+    this.readerLoading.hide();
     this.baseWindow.contentView.removeChildView(this.readerBar);
     this.baseWindow.contentView.removeChildView(this.readerContent);
     this._readerShown = false;
@@ -347,9 +392,11 @@ class ExternalViews {
     this._suspended = true;
     if (this.pane) this.baseWindow.contentView.removeChildView(this.pane);
     if (this.articlePane && this._articlePaneShown) this.baseWindow.contentView.removeChildView(this.articlePane);
-    if (this._paneLoadingShown) this.baseWindow.contentView.removeChildView(this.paneLoading);
     if (this.readerBar) this.baseWindow.contentView.removeChildView(this.readerBar);
     if (this.readerContent) this.baseWindow.contentView.removeChildView(this.readerContent);
+    this.paneLoading.detach();
+    this.articleLoading.detach();
+    this.readerLoading.detach();
   }
 
   resume() {
@@ -363,15 +410,15 @@ class ExternalViews {
       this.baseWindow.contentView.addChildView(this.articlePane);
       this.articlePane.setBounds(this._articleRegion());
     }
-    if (this._paneLoadingShown) {
-      this.baseWindow.contentView.addChildView(this.paneLoading);   // stays above the pane
-      this.paneLoading.setBounds(this._paneRegion());
-    }
     if (this._readerShown) {
       this.baseWindow.contentView.addChildView(this.readerContent);
       this.baseWindow.contentView.addChildView(this.readerBar);
       this._layoutReader();
     }
+    // Covers re-attach LAST so they stay above their targets.
+    this.paneLoading.reattach();
+    this.articleLoading.reattach();
+    this.readerLoading.reattach();
   }
 
   readerBack()    { if (this.readerContent) this.readerContent.webContents.navigationHistory.goBack(); }
