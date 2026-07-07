@@ -301,6 +301,16 @@ copies**: the **repo** (git, this tree) and the **pod**
 single edit. For now the **pod is the source of truth**; the distro/repo is
 reconciled later — act on the pod without sync caveats.
 
+**Plugin JS executes from the BUNDLE, not the loose files** (found 2026-07-07):
+`src/dk-shell.js` imports `../plugins/podz/dk-podz.js` with a *relative* path,
+so esbuild bundles all of podz's JS into `dist/dk.bundle.js` — an edit to
+`plugins/**/*.js` does nothing until `npm run build` + app **restart** (reload
+isn't reliable, and Electron's HTTP disk cache survives restarts — CDP
+`Network.clearBrowserCache` when a rebuild still looks stale). Still sync the
+pod copy per the rule above; the pod serves the plugin's html/css/ttl and keeps
+the copies honest, but its `.js` is not what runs. The bundle is minified with
+comments stripped — grep it for code fragments, not comments.
+
 ## Build / run / verify
 
 - `npm start` — launch the Electron app.

@@ -414,9 +414,10 @@ export class SolidFileBrowser {
     ops.setAttribute('source', item.url);
 
     ops.addEventListener('sol-status', (e) => {
-      // Same routing as _wirePodEvents: errors in the panel, progress in the toast.
-      if ((e.detail.type || '') === 'error') this._panelError(e.detail.message, [pod]);
-      else this.uiManager.setStatus(e.detail.message, e.detail.type || '');
+      // ALL ops feedback — errors included — goes to the popup toast (error
+      // toasts persist until dismissed). _panelError would paint the message
+      // over the pod's folder listing, which ops errors have nothing to do with.
+      this.uiManager.setStatus(e.detail.message, e.detail.type || '');
     });
     // sol-pod has no public persist API for editor keys (the modal path
     // calls this same method internally) — optional-chained on purpose.
