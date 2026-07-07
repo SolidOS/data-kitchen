@@ -481,7 +481,11 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   itself stays gitignored — GitHub Releases is the distribution channel (the
   old Pages URL was never configured; README now points at releases/latest).
 
-## Release variants (2026-07-06)
+## Release variants (2026-07-06) — PARKED
+
+**PARKED by Jeff 2026-07-06 — do not extend or ship without his go.** The
+system is dormant: the mobile APK seed loop is reverted (swap line commented
+in prepare-node-project.sh), variant tests need DK_VARIANTS=1. What exists:
 
 Three variants, one assembler. Repo top-level content = the BASE (electron)
 variant; `variants/{web,mobile}/` hold whole-file overlays + an EXCLUDE list.
