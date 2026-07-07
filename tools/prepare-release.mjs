@@ -123,12 +123,12 @@ To publish (explicit step — run it yourself when ready):
   gh release create v${version} \\
     release/${PLATFORMS.linux.name} release/${PLATFORMS.mac.name} \\
     release/${PLATFORMS.win.name} release/${PLATFORMS.android.name} \\
-    release/latest.json release/INSTALL.md \\
-    --repo SolidOS/data-kitchen --title "v${version}" --notes "Data Kitchen ${version}"
+    release/latest.json \\
+    --repo SolidOS/data-kitchen --title "v${version}" --notes-file INSTALL.md
 `);
-// INSTALL.md (the per-platform install & run guide) lives untracked in
-// release/ and ships as a release asset — the README links to it via
-// releases/latest/download/INSTALL.md, so every release must carry it.
-if (!checkOnly && !existsSync(join(releaseDir, 'INSTALL.md'))) {
-  console.warn('[release] WARNING: release/INSTALL.md is missing — the README\'s install-guide link will 404 on the next release.');
+// The release BODY is the per-platform install & run guide — the tracked
+// repo-root INSTALL.md (user-facing, not a developer changelog). It is not
+// shipped as an asset; the release page itself is the guide.
+if (!checkOnly && !existsSync(join(root, 'INSTALL.md'))) {
+  console.warn('[release] WARNING: INSTALL.md is missing at repo root — the release-notes body (gh --notes-file) needs it.');
 }
