@@ -121,6 +121,30 @@
     ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png";
     ui:label "Bluesky";
     ui:region ui:Tab.
+:Booklice
+    a ui:Link;
+    dct:source plu:booklice.ttl;
+    ui:href "https://scenaristeur.github.io/booklice/";
+    ui:icon
+        "https://scenaristeur.github.io/booklice/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Booklice";
+    ui:region ui:Tab.
+:Booklice-2
+    a ui:Link;
+    dct:source plu:booklice.ttl;
+    ui:href "https://scenaristeur.github.io/booklice/";
+    ui:icon
+        "https://scenaristeur.github.io/booklice/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Booklice";
+    ui:region ui:Tab.
+:Booklice-3
+    a ui:Link;
+    dct:source plu:booklice.ttl;
+    ui:href "https://scenaristeur.github.io/booklice/";
+    ui:icon
+        "https://scenaristeur.github.io/booklice/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Booklice";
+    ui:region ui:Tab.
 :Calendar
 a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
 :Chrome
