@@ -281,7 +281,12 @@ back a proxied fetch.
   (`el._updateUI()`) and wires rdflib (`el._integrateWithRdflib()`), and main shows a
   brief "Logging in automatically…" window (`auto-login-window.html`) for the grant.
 - Issuers come from SETTINGS (`data-kitchen-settings.ttl#Settings solid:oidcIssuer`),
-  never hardcoded. Pods use `login-mode="popup"`; the popup callback
+  never hardcoded. The dk-issuers-editor's save was DEAD until 2026-07-06 (it
+  used a callback with sc's promise-only rdf.serialize — hung forever); its
+  persist() also re-reads the live doc now so an issuer edit can't revert
+  interleaved settings writes. CAVEAT: the "first issuer = default" order does
+  NOT survive rdflib serialization (the serializer orders objects itself) —
+  a durable fix needs an RDF list or a default-issuer predicate (Jeff's call). Pods use `login-mode="popup"`; the popup callback
   (sc `web/popup-auth-callback.html`) carries the chosen issuer through the IdP
   round-trip via per-window `sessionStorage` — inrupt's `session.info` has **no
   `issuer`** field, so without this the post-login remember-offer never fires.
@@ -357,8 +362,9 @@ views are **suspended** (a dropdown pick fires did-start-loading while the popup
 still has views suspended; dropping the request left the pane blank for the
 whole load — `resume()` re-attaches from the flag), and the overlay names the
 app from `_paneUrl` (the openPane target) because `webContents.getURL()` still
-reports the *replaced* page until the new load commits. The **reader** and the
-**feed article pane** still have no loading overlay (known gap). Popups
+reports the *replaced* page until the new load commits. Since 2026-07-06 the **reader** and the **feed article pane** have the same
+cover — a LoadingOverlay helper (one instance per target: pane/article/reader)
+owns each view, its logical-shown state, and the paint-poll. Popups
 suspend all native views, so the pane region is blank while a menu is open —
 by design.
 
@@ -404,6 +410,10 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   **`<sol-sheet>`** behind the toolbar's Browse pill (native exclusive
   `<details name>` sections; genre pick auto-opens Artists, artist opens
   Albums, album closes the sheet over the just-prepended queue).
+- The phone NAV sheet (sol-tabs) rides `<sol-sheet>` since 2026-07-06 — the
+  scrim/panel/grip/trap/back-gesture come from the primitive; sol-tabs keeps
+  the list/accordion/accents; dk themes the panel via `--menu-bg`
+  (dk-chrome.css). sol-sheet's trap now filters to VISIBLE focusables.
 - **`<sol-sheet>`** (sc `web/sol-sheet.js`): 4th surface (modal/window/
   dropdown/sheet). Pointer-agnostic, no media queries inside; scrim + panel,
   Escape/scrim dismiss, focus trap, and the back-gesture contract (show()
@@ -470,6 +480,32 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   printed command yourself). Tags are `v<semver>` going forward. `release/`
   itself stays gitignored — GitHub Releases is the distribution channel (the
   old Pages URL was never configured; README now points at releases/latest).
+
+## Release variants (2026-07-06)
+
+Three variants, one assembler. Repo top-level content = the BASE (electron)
+variant; `variants/{web,mobile}/` hold whole-file overlays + an EXCLUDE list.
+`tools/assemble-variant.mjs <base|web|mobile> <out>` materializes the seeded
+tree with seed.cjs's own SEED_ENTRIES (imported — one source of truth), bakes
+in the media-plugin content `seedMediaPlugins` provides at boot (static trees
+have no boot seeder), and REGENERATES the variant catalog from the assembled
+manifests (`seed-plugins-catalog.mjs --plugins-dir/--out`).
+
+- **Web demo** (read-only, root-hosted): `npm run dist:web` → `release/web/`
+  + `Solid_Data_Kitchen-<ver>-web.zip`; `npm run serve:web` (:8082) serves it
+  with correct .ttl/.jsonld types. Menus: Media / Apps(links) / Solid
+  Resources / Dev Tools; ☰ = Theme + Text size; no ui:proxy. Verified in
+  headless chromium (`claude/smoke-tests/verify-web-demo.mjs`): boots, plays
+  IA music, writes 405 quietly. Read-only-ness is CONTENT, not code switches.
+- **Mobile**: electron set minus Dev Tools; `prepare-node-project.sh` builds
+  pod-seed.nmz via the assembler now.
+- **pull-defaults** (`npm run pull-defaults [--dry-run]`): pod→repo snapshot
+  of the saveable defaults (menus/settings/flat manifests/feeds sanitized);
+  reports (never copies) plugin CODE drift. Don't run blind: the live pod's
+  issuer ORDER is serializer-scrambled (see the issuers caveat above).
+- Tests: menu invariants run per-variant via `test/helpers/menu-invariants.mjs`
+  + `test/data/variant-{menus,hygiene}.test.mjs` (no localhost in web TTL,
+  reachable menu parts resolve, mobile ships the full plugin set).
 
 ## Conventions & repo facts
 
