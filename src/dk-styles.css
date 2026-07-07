@@ -406,6 +406,60 @@ header.dash .dash-sep {
   width: 100%;
 }
 
+/* ── Settings page, phone (coarse pointer, no hover) ─────────────────
+   Touch reflow only: stacked field rows, 44px targets, readable issuer
+   URLs. Desktop is untouched by construction. */
+@media (hover: none) and (pointer: coarse) {
+  .dk-settings {
+    padding: var(--space-xl, 16px);
+  }
+  .dk-settings .dk-settings-field {
+    flex-wrap: wrap;
+  }
+  .dk-settings .dk-settings-field-label { flex: 1 1 100%; }
+  .dk-settings .dk-settings-btn {
+    min-height: 44px;
+    font-size: max(16px, 1em);
+  }
+  .dk-settings .sol-accordion-wrapper summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md, 8px);
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+  /* Issuer editor: a truncated issuer URL is unverifiable on a phone —
+     wrap it instead; ★/✕ become real touch targets. */
+  .dk-settings .dk-issuer-row { min-height: 44px; box-sizing: border-box; }
+  .dk-settings .dk-issuer-url {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    overflow-wrap: anywhere;
+  }
+  .dk-settings .dk-issuer-iconbtn {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: max(16px, 1em);
+  }
+  .dk-settings .dk-issuers-add {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dk-settings .dk-issuers-add select,
+  .dk-settings .dk-issuers-add input {
+    min-height: 44px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: max(16px, 1em);
+  }
+  /* Electron/Pivot config edits the DESKTOP app process — dead weight
+     on the phone build (its JS already degrades to a hint without
+     window.dkElectron; on phone we drop even the hint). */
+  .dk-settings dk-config-settings { display: none; }
+}
+
 main#dk-content {
   flex: 1 1 auto;
   min-height: 0;

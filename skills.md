@@ -449,6 +449,36 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   ONE shared phone chip — navigator trigger, feed source chips, Browse pills
   all 44px / 0 16px / stadium / 16px floor; feed cards got breathing room.
   Probes: `claude/smoke-tests/cdp-verify-m{2-movies,3-images,4-chips}.mjs`.
+- **M5–M6 (2026-07-07): phone Settings + phone Customize, VERIFIED ON THE
+  S23** (Electron probes `cdp-verify-m{5-settings,6-customize}.mjs` +
+  on-device `cdp-verify-phone-m5m6-device.mjs`, all green; plan + status in
+  `claude/plans/mobile-customize-settings-plan.md`).
+  - **Customize tap model** (drag-drop is dead on touch): tapping a catalog
+    card opens a body-mounted `sol-sheet.sol-plugin-sheet` "Add to…" listing
+    the paired managers + their submenus; picking calls the new sc APIs
+    `SolMenuManager.addPlugin(payload, {submenuId})` / `placeTargets` getter
+    (same `_itemFromPlugin` → `_touch()` save path as a drop). Coarse-only
+    ▲▼ row reorder + submenu-chip ✕; grip hidden. Phone skin in sc
+    `sol-builders-css.js`; page stacks one column (editors capped
+    `min(40dvh, 50%)` — **container-relative, never bare dvh**: S23 bars/
+    dock/46px gesture inset eat half the viewport). **Dropped on phone:**
+    chip half-drop reorder, drag-off, submenu-by-second-drop, catalog↔catalog
+    moves, AND the manifest-URL row (measured: it cost 94px of a ~175px box
+    and collapsed the card list to 21px). dk themes the sheet next to the
+    nav sheet's rule in dk-chrome.css.
+  - **Settings**: sc `sol-form-css.js` phone block (1-col shape grid, 44px
+    controls) fixes the main form + every dk-plugin-settings/sol-settings
+    form at once; dk-styles issuer rows 44px with wrapping URLs;
+    `dk-config-settings` hidden on phone (CSS).
+  - **placeAnchored now flips vertically** (sc `core/anchor-place.js`):
+    dropdowns anchored to the phone's bottom dock (☰, calendar) used to open
+    BELOW the viewport. `sol-dropdown` gained a phone max-width cap.
+  - **Probe gotchas**: the shell BLOCKS `Page.reload` (wormhole guard) — CDP
+    reloads are silent no-ops, treat emulation flips as live; sc `web/*.js`
+    edits are NEVER picked up mid-session — restart the app; row taps need
+    `scrollIntoView` first; "remove from menu" keeps pantry RDF (assert
+    `ui:parts`, not full-text); the device pod refreshes dk pages from the
+    packed seed at boot, so page edits ride an APK rebuild.
 
 ## Updates & releases (2026-07)
 

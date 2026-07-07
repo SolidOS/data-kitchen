@@ -552,8 +552,10 @@
         border-radius: 999px;
         box-shadow: 0 1px 3px rgba(0,0,0,.16);
       }
-      /* The sheet surface is <sol-sheet>'s shadow panel; theme via its var. */
-      sol-sheet.sol-tabs-sheet { --menu-bg: var(--ia-bg-elev, #f7f1e4); }
+      /* The sheet surface is <sol-sheet>'s shadow panel; theme via its var.
+         Same treatment for the Customize "Add to…" sheet. */
+      sol-sheet.sol-tabs-sheet,
+      sol-sheet.sol-plugin-sheet { --menu-bg: var(--ia-bg-elev, #f7f1e4); }
       .sol-tabs-sheet-grouphead{ color: var(--ia-text-muted, #8c826b); }
       .sol-tabs-sheet-item   { color: var(--ia-text, #2a2620); }
       .sol-tabs-sheet-item:active { background: var(--ia-bg-btn, rgba(0,0,0,.06)); }
@@ -620,11 +622,15 @@
       }
       .omp-mini-seek { flex: 1 1 auto; width: auto; height: 6px; }
 
-      /* ── Inline panels (help / settings / customize) clear the bottom bar ── */
+      /* ── Inline panels (help / settings / customize) breathing room ──
+         No dock reservation here: .omp-panels already pads the whole tab
+         area above the fixed dock, so adding the actionbar height again
+         DOUBLE-reserves it — measured on the S23 it cost the customize
+         page ~100px of a 351px pane. */
       #dk-tabs > .sol-tabs-content > .sol-inline-panel,
       #dk-tabs > .sol-tabs-content > .dk-menu-pane {
         padding-left:  clamp(1rem, 5vw, 2rem);
         padding-right: clamp(1rem, 5vw, 2rem);
-        padding-bottom: calc(var(--dk-m-safe-bottom) + 1.5rem);
+        padding-bottom: calc(var(--dk-m-safe-bottom) + 1rem);
       }
     }
