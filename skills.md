@@ -17,11 +17,11 @@ and plugins are described in RDF, not hard-coded.
 
 - **dk** — `/home/jeff/Dropbox/Web/solid/data-kitchen` (also `~/s`, a symlink).
   Remote: `github.com/SolidOS/data-kitchen` (push needs an explicit per-task go).
-- **sc — sol-components** (v2.6.0 in `../sol-components`; npm latest 2.5.0 until republished) — `../sol-components`,
+- **sc — sol-components** (v2.7.0 in `../sol-components`; npm latest 2.5.0 until republished) — `../sol-components`,
   symlinked into `node_modules/`. ~40 `sol-*` web components (web/), Node tools
   (node/), shared core (core/). **dk loads the raw `web/*.js`** — a component
   edit needs only a reload, no build. dk's own `src/` does need `npm run build`.
-- **ci — component-interop** (v0.3.0, NOT on npm) — `../component-interop`,
+- **ci — component-interop** (v0.5.0 in `../component-interop`; npm latest 0.4.0 until republished — publish sc 2.7.0 FIRST, ci devDeps it) — `../component-interop`,
   symlinked into `node_modules/`. Single-file zero-dep broker + loader.
 
 > Solid stack order is always foundational → higher-level:
