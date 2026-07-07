@@ -1,0 +1,937 @@
+# WEB DEMO VARIANT of the base main menu (variants/web overlay).
+# Derived from ui-data/data-kitchen-main-menu.ttl: Tabs keep only the
+# podless groups (Media / Apps-as-links / Solid Resources / Dev Tools);
+# Apps drops the pod-backed components. Regenerate by re-deriving from
+# the base after menu changes.
+@prefix : <#>.
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <http://schema.org/>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix plu: <../plugins/>.
+
+:Apps
+    a ui:Menu;
+    ui:label "Apps";
+    ui:parts
+            ( :SolidFocus :RoloPod :KonaPod :Umai :GeoPod :PodCal :NotePod-2 ).
+:AU
+    a ui:Menu;
+    ui:label "Health";
+    ui:parts ( :AU-2 :VitalStats-2 :MSFatigue :HealthPod ).
+:AU-2
+    a ui:Link;
+    dct:source plu:innerpod.ttl;
+    ui:href "https://innerpod.solidcommunity.au";
+    ui:icon "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png";
+    ui:label "InnerPod";
+    ui:region ui:Tab.
+:Bar
+    a ui:Menu;
+    ui:label "actions";
+    ui:orientation ui:Horizontal;
+    ui:parts
+            ( :Matrix-Chat-2 :Mastodon-2 :Lemmy :SepiaSearch :Pixelfed
+            :Bluesky-2 :Duck-ai-3 :bar-search :bar-calendar ).
+:bar-calendar
+    a ui:Component;
+    dct:source plu:calendar.ttl;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-calendar" ],
+        [ schema:name "data-handler"; schema:value "sol-calendar" ],
+        [ schema:name "hide-header"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All"
+            ],
+        [ schema:name "title"; schema:value "Calendar" ];
+    ui:label "📅";
+    ui:name "sol-button";
+    ui:region ui:Dropdown.
+:bar-fontsize
+    a ui:Component;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-fontsize" ],
+        [ schema:name "data-handler"; schema:value "cycleFontSize" ],
+        [ schema:name "title"; schema:value "Text size" ];
+    ui:label "A";
+    ui:name "sol-button".
+:bar-login
+    a ui:Component;
+    dct:source plu:sign-in.ttl;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-sollogin" ],
+            [
+                schema:name "issuers";
+                schema:value
+                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
+            ],
+        [ schema:name "mode"; schema:value "popup" ],
+            [
+                schema:name "popup-callback";
+                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
+            ];
+    ui:label "Sign in";
+    ui:name "sol-login".
+:bar-search
+    a ui:Component;
+    dct:source plu:search.ttl;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-search" ],
+            [
+                schema:name "source";
+                schema:value
+                "./dk-pod/dk/plugins/search/search-engines.ttl#SearchEngines"
+            ],
+        [ schema:name "title"; schema:value "Search" ];
+    ui:label "Search";
+    ui:name "sol-search".
+:bar-settings
+    a ui:Component;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-settings-launch" ],
+        [ schema:name "data-handler"; schema:value "sol-include" ],
+        [ schema:name "inline"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/pages/settings.html"
+            ],
+        [ schema:name "title"; schema:value "Settings" ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "⚙";
+    ui:name "sol-button".
+:bar-theme
+    a ui:Component;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-theme" ],
+        [ schema:name "data-handler"; schema:value "toggleTheme" ],
+        [ schema:name "title"; schema:value "Toggle light / dark" ];
+    ui:label "🌙";
+    ui:name "sol-button".
+:Bluesky
+    a ui:Link;
+    dct:source plu:bluesky.ttl;
+    ui:href "https://bsky.app/";
+    ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png";
+    ui:label "Bluesky";
+    ui:region ui:Tab.
+:Bluesky-2
+    a ui:Link;
+    dct:source plu:bluesky.ttl;
+    ui:href "https://bsky.app/";
+    ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png";
+    ui:label "Bluesky";
+    ui:region ui:Tab.
+:Calendar
+a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
+:Chrome
+    a ui:Menu;
+    ui:label "chrome";
+    ui:parts ( :chrome-help :chrome-menu :chrome-login ).
+:chrome-help
+    a ui:Component;
+    rdfs:comment
+        "Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay.";
+    ui:attribute
+        [ schema:name "aria-label"; schema:value "Help" ],
+        [ schema:name "class"; schema:value "omp-help-launch" ],
+        [ schema:name "data-handler"; schema:value "sol-include" ],
+            [
+                schema:name "if-logged-in";
+                schema:value "./dk-pod/dk/help/dk-owner.html"
+            ],
+        [ schema:name "inline"; schema:value "" ],
+        [ schema:name "source"; schema:value "./dk-pod/dk/help/dk.html" ],
+        [ schema:name "title"; schema:value "Help" ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "?";
+    ui:name "sol-button".
+:chrome-login
+    a ui:Component;
+    dct:source plu:sign-in.ttl;
+    rdfs:comment
+        "Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).";
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-sollogin" ],
+            [
+                schema:name "issuers";
+                schema:value
+                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
+            ],
+        [ schema:name "mode"; schema:value "popup" ],
+            [
+                schema:name "popup-callback";
+                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
+            ];
+    ui:label "Sign in";
+    ui:name "sol-login".
+:chrome-menu
+    a ui:Component;
+    rdfs:comment
+        "☰ menu — items live in ui-data/data-kitchen-hamburger-menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal.";
+    ui:attribute
+        [ schema:name "aria-label"; schema:value "Menu" ],
+        [ schema:name "class"; schema:value "omp-more" ],
+        [ schema:name "data-settings-skip"; schema:value "" ],
+        [ schema:name "label"; schema:value "☰" ],
+            [
+                schema:name "source";
+                schema:value
+                "./dk-pod/dk/ui-data/data-kitchen-hamburger-menu.ttl#More"
+            ],
+        [ schema:name "title"; schema:value "Menu" ];
+    ui:label "Menu";
+    ui:name "sol-dropdown-button";
+    ui:region ui:Modal.
+:dokieli
+    a ui:Component;
+    dct:source plu:dokieli.ttl;
+    ui:attribute [ schema:name "defer"; schema:value "" ];
+    ui:icon "https://dokie.li/media/images/logo.png";
+    ui:label "dokieli";
+    ui:name "dk-dokieli".
+:dokieli-2
+    a ui:Component;
+    dct:source plu:dokieli.ttl;
+    ui:attribute [ schema:name "defer"; schema:value "" ];
+    ui:icon "https://dokie.li/media/images/logo.png";
+    ui:label "dokieli";
+    ui:name "dk-dokieli".
+:Duck-ai
+    a ui:Link;
+    dct:source plu:duck-ai.ttl;
+    ui:href "https://duck.ai";
+    ui:icon "https://duck.ai/favicon.ico";
+    ui:label "Duck.ai";
+    ui:region ui:Tab.
+:Duck-ai-2
+    a ui:Link;
+    dct:source plu:duck-ai.ttl;
+    ui:href "https://duck.ai";
+    ui:icon "https://duck.ai/favicon.ico";
+    ui:label "Duck.ai";
+    ui:region ui:Tab.
+:Duck-ai-3
+    a ui:Link;
+    dct:source plu:duck-ai.ttl;
+    ui:href "https://duck.ai";
+    ui:icon "https://duck.ai/favicon.ico";
+    ui:label "Duck.ai";
+    ui:region ui:Tab.
+:GeoPod
+    a ui:Link;
+    dct:source plu:geopod.ttl;
+    ui:href "https://geopod.solidcommunity.au";
+    ui:icon "https://geopod.solidcommunity.au/geopod/icons/Icon-192.png";
+    ui:label "GeoPod";
+    ui:region ui:Tab.
+:Health
+    a ui:Menu;
+    ui:label "Health";
+    ui:parts
+    ( :HealthPod-2 :InnerPod :MSFatigue-2 :VitalStats-3 :SecureDialog-4 ).
+:HealthPod
+    a ui:Link;
+    dct:source plu:healthpod.ttl;
+    ui:href "https://healthpod.solidcommunity.au";
+    ui:icon "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png";
+    ui:label "HealthPod";
+    ui:region ui:Tab.
+:HealthPod-2
+    a ui:Link;
+    dct:source plu:healthpod.ttl;
+    ui:href "https://healthpod.solidcommunity.au";
+    ui:icon "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png";
+    ui:label "HealthPod";
+    ui:region ui:Tab.
+:HuggingFace-Chat
+    a ui:Link;
+    dct:source plu:huggingface-chat.ttl;
+    ui:href "https://huggingface.co/chat/";
+    ui:icon "https://huggingface.co/chat/huggingchat/icon.svg";
+    ui:label "HuggingFace Chat";
+    ui:region ui:Tab.
+:Images-Wikimedia
+    a ui:Component;
+    dct:source plu:images.ttl;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
+:Images-Wikimedia-2
+    a ui:Component;
+    dct:source plu:images.ttl;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-images" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
+:InnerPod
+    a ui:Link;
+    dct:source plu:innerpod.ttl;
+    ui:href "https://innerpod.solidcommunity.au";
+    ui:icon "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png";
+    ui:label "InnerPod";
+    ui:region ui:Tab.
+:Internet-Archive-player
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:icon "🎵";
+    ui:label "Internet Archive player";
+    ui:name "ia-player".
+:Internet-Archive-player-2
+    a ui:Component;
+    dct:source plu:music.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-music" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:icon "🎵";
+    ui:label "Music (Internet Archive)";
+    ui:name "ia-player".
+:item
+    a ui:Menu;
+    ui:label "About Solid";
+    ui:parts
+            ( :Solid-FAQ-2 :Solid-Forum :Solid-Website :Tag-Explainer-2
+            :Solid-Catalog-2 :Solid-Glossary-3 ).
+:JSON-LD-Playground
+    a ui:Link;
+    dct:source plu:jsonld-playground.ttl;
+    ui:href "https://json-ld.github.io/json-ld.org/playground/";
+    ui:icon "🧩";
+    ui:label "JSON-LD Playground";
+    ui:region ui:Tab.
+:JSON-LD-Playground-2
+    a ui:Link;
+    dct:source plu:jsonld-playground.ttl;
+    ui:href "https://json-ld.github.io/json-ld.org/playground/";
+    ui:icon "🧩";
+    ui:label "JSON-LD Playground";
+    ui:region ui:Tab.
+:KeyPod
+    a ui:Link;
+    dct:source plu:keypod.ttl;
+    ui:href "https://keypod.solidcommunity.au";
+    ui:icon "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png";
+    ui:label "KeyPod";
+    ui:region ui:Tab.
+:KeyPod-2
+    a ui:Link;
+    dct:source plu:keypod.ttl;
+    ui:href "https://keypod.solidcommunity.au";
+    ui:icon "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png";
+    ui:label "KeyPod";
+    ui:region ui:Tab.
+:KonaPod
+    a ui:Link;
+    dct:source plu:konapod.ttl;
+    ui:href "https://konapod.solidcommunity.au";
+    ui:icon "🚗";
+    ui:label "KonaPod";
+    ui:region ui:Tab.
+:Lemmy
+    a ui:Link;
+    dct:source plu:lemmy.ttl;
+    ui:href "https://lemmy.world/";
+    ui:icon "https://icons.duckduckgo.com/ip3/lemmy.world.ico";
+    ui:label "Lemmy";
+    ui:region ui:Tab.
+:Mastodon
+    a ui:Link;
+    dct:source plu:mastodon.ttl;
+    ui:href "https://mastodon.social/";
+    ui:icon "https://mastodon.social/packs/assets/favicon-48x48-DMnduFKh.png";
+    ui:label "Mastodon";
+    ui:region ui:Tab.
+:Mastodon-2
+    a ui:Link;
+    dct:source plu:mastodon.ttl;
+    ui:href "https://mastodon.social/";
+    ui:icon "https://mastodon.social/packs/assets/favicon-48x48-DMnduFKh.png";
+    ui:label "Mastodon";
+    ui:region ui:Tab.
+:Matrix-Chat
+    a ui:Link;
+    dct:source plu:matrix-chat.ttl;
+    ui:href "https://matrix.to/#/#solid-practitioners:matrix.org";
+    ui:icon "https://app.cinny.in/assets/favicon-5KspoOBy.ico";
+    ui:label "Matrix Chat";
+    ui:region ui:Tab.
+:Matrix-Chat-2
+    a ui:Link;
+    dct:source plu:matrix-chat.ttl;
+    ui:href "https://matrix.to/#/#solid-practitioners:matrix.org";
+    ui:icon "https://app.cinny.in/assets/favicon-5KspoOBy.ico";
+    ui:label "Matrix Chat";
+    ui:region ui:Tab.
+:Media
+    a ui:Menu;
+    ui:label "Media";
+    ui:parts
+            ( :Internet-Archive-player-2 :Spoken-Word-Internet-Archive
+            :Images-Wikimedia-2 :Movies-Internet-Archive :Media-Kraken-3
+            :Solidflix-2 :MovieStar-4 ).
+:Media-Kraken
+    a ui:Link;
+    dct:source plu:media-kraken.ttl;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
+:Media-Kraken-2
+    a ui:Link;
+    dct:source plu:media-kraken.ttl;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
+:Media-Kraken-3
+    a ui:Link;
+    dct:source plu:media-kraken.ttl;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
+:Movies-Internet-Archive
+    a ui:Component;
+    dct:source plu:movies.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "favourites-only"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-movies" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "movies" ];
+    ui:icon "🎬";
+    ui:label "Movies (Internet Archive)";
+    ui:name "ia-player".
+:MovieStar
+    a ui:Link;
+    dct:source plu:moviestar.ttl;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MovieStar-2
+    a ui:Link;
+    dct:source plu:moviestar.ttl;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MovieStar-3
+    a ui:Link;
+    dct:source plu:moviestar.ttl;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MovieStar-4
+    a ui:Link;
+    dct:source plu:moviestar.ttl;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MSFatigue
+    a ui:Link;
+    dct:source plu:msfatigue.ttl;
+    ui:href "https://msfatigue.solidcommunity.au";
+    ui:icon "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png";
+    ui:label "MSFatigue";
+    ui:region ui:Tab.
+:MSFatigue-2
+    a ui:Link;
+    dct:source plu:msfatigue.ttl;
+    ui:href "https://msfatigue.solidcommunity.au";
+    ui:icon "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png";
+    ui:label "MSFatigue";
+    ui:region ui:Tab.
+:Music-Internet-Archive
+    a ui:Menu;
+    ui:label "Music (Internet Archive)";
+    ui:parts ( :Internet-Archive-player :Images-Wikimedia ).
+:NotePod
+    a ui:Link;
+    dct:source plu:notepod.ttl;
+    ui:href "https://notepod.solidcommunity.au";
+    ui:icon "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png";
+    ui:label "NotePod";
+    ui:region ui:Tab.
+:NotePod-2
+    a ui:Link;
+    dct:source plu:notepod.ttl;
+    ui:href "https://notepod.solidcommunity.au";
+    ui:icon "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png";
+    ui:label "NotePod";
+    ui:region ui:Tab.
+:panel-customize
+    a ui:Component;
+    acl:mode acl:Write;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-customize" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/pages/customize.html"
+            ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "🎛 Customize";
+    ui:name "sol-include".
+:panel-dev-tools
+    a ui:Menu;
+    ui:label "Dev Tools";
+    ui:parts
+            ( :RDF-Validator :SHACL-Playground :JSON-LD-Playground-2
+            :SPARQL-Playground :Synara-AI-3 ).
+:panel-home
+    a ui:Component;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-home" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/home/home.html"
+            ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "🏠 Home";
+    ui:name "sol-include".
+:panel-images
+    a ui:Component;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-images" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:label "🖼 Images";
+    ui:name "omp-images".
+:panel-movies
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "favourites-only"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-movies" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "movies" ];
+    ui:label "🎬 Movies";
+    ui:name "ia-player".
+:panel-music
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-music" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:label "🎵 Music";
+    ui:name "ia-player".
+:panel-news
+    a ui:Component;
+    dct:source plu:news.ttl;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-news" ],
+        [ schema:name "reader"; schema:value "inline" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
+            ],
+        [ schema:name "view"; schema:value "threePanel" ];
+    ui:label "News";
+    ui:name "sol-feed".
+:panel-solidos
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-solidos" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
+            ];
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS";
+    ui:name "dk-solidos".
+:Pixelfed
+    a ui:Link;
+    dct:source plu:pixelfed.ttl;
+    ui:href "https://pixelfed.social/";
+    ui:icon "https://pixelfed.social/img/favicon.png";
+    ui:label "Pixelfed";
+    ui:region ui:Tab.
+:Pod-browser
+    a ui:Component;
+    dct:source plu:workspaces.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-podz" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/podz/dk-podz.html"
+            ];
+    ui:label "Data Kitchen Pod Browser";
+    ui:name "dk-podz".
+:PodCal
+    a ui:Link;
+    dct:source plu:podcal.ttl;
+    ui:href "https://podcal.eu";
+    ui:icon
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23219EBC' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' stroke-width='1.5'/%3E%3Crect x='8' y='8.5' width='8' height='7.5' rx='1.25' stroke-width='1.05'/%3E%3Cpolyline points='10,12.25 11.75,14.25 15.5,11.25' stroke-width='1.6'/%3E%3C/svg%3E";
+    ui:label "PodCal";
+    ui:region ui:Tab.
+:PodOS-Browser
+    a ui:Link;
+    dct:source plu:podos-browser.ttl;
+    ui:href "https://browser.pod-os.org/";
+    ui:icon "🔍";
+    ui:label "PodOS Browser";
+    ui:region ui:Tab.
+:Pods
+    a ui:Menu;
+    ui:label "Pods";
+    ui:parts ( :Pod-browser :SolidOS-data-browser :PodOS-Browser :KeyPod-2 ).
+:RDF-Validator
+    a ui:Link;
+    dct:source plu:rdf-validator.ttl;
+    ui:href "http://easyrdf.org/converter";
+    ui:icon "🧬";
+    ui:label "RDF Validator";
+    ui:region ui:Tab.
+:RoloPod
+    a ui:Link;
+    dct:source plu:rolopod.ttl;
+    ui:href "https://rolopod.solidcommunity.au";
+    ui:icon "📇";
+    ui:label "RoloPod";
+    ui:region ui:Tab.
+:SecureDialog
+    a ui:Link;
+    dct:source plu:securedialog.ttl;
+    ui:href "https://securedialog.solidcommunity.au";
+    ui:icon
+    "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
+    ui:label "SecureDialog";
+    ui:region ui:Tab.
+:SecureDialog-2
+    a ui:Link;
+    dct:source plu:securedialog.ttl;
+    ui:href "https://securedialog.solidcommunity.au";
+    ui:icon
+    "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
+    ui:label "SecureDialog";
+    ui:region ui:Tab.
+:SecureDialog-3
+    a ui:Link;
+    dct:source plu:securedialog.ttl;
+    ui:href "https://securedialog.solidcommunity.au";
+    ui:icon
+    "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
+    ui:label "SecureDialog";
+    ui:region ui:Tab.
+:SecureDialog-4
+    a ui:Link;
+    dct:source plu:securedialog.ttl;
+    ui:href "https://securedialog.solidcommunity.au";
+    ui:icon
+    "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
+    ui:label "SecureDialog";
+    ui:region ui:Tab.
+:SepiaSearch
+    a ui:Link;
+    dct:source plu:sepiasearch.ttl;
+    ui:href "https://sepiasearch.org/";
+    ui:icon "https://sepiasearch.org/img/favicon.png";
+    ui:label "SepiaSearch";
+    ui:region ui:Tab.
+:SHACL-Playground
+    a ui:Link;
+    dct:source plu:shacl-playground.ttl;
+    ui:href "https://shacl.org/playground/";
+    ui:icon "✅";
+    ui:label "SHACL Playground";
+    ui:region ui:Tab.
+:Solid
+    a ui:Link;
+    ui:href "https://solidproject.solidcommunity.net/catalog/";
+    ui:icon "🗃️";
+    ui:label "Solid";
+    ui:region ui:Tab.
+:Solid-Catalog
+    a ui:Link;
+    dct:source plu:solid-catalog.ttl;
+    ui:href "https://solidproject.solidcommunity.net/catalog/";
+    ui:icon "🗃️";
+    ui:label "Solid Catalog";
+    ui:region ui:Tab.
+:Solid-Catalog-2
+    a ui:Link;
+    dct:source plu:solid-catalog.ttl;
+    ui:href "https://solidproject.solidcommunity.net/catalog/";
+    ui:icon "🗃️";
+    ui:label "Solid Catalog";
+    ui:region ui:Tab.
+:Solid-FAQ
+    a ui:Link;
+    dct:source plu:solid-faq.ttl;
+    ui:href "https://solidproject.org/FAQ";
+    ui:icon "❓";
+    ui:label "Solid FAQ";
+    ui:region ui:Tab.
+:Solid-FAQ-2
+    a ui:Link;
+    dct:source plu:solid-faq.ttl;
+    ui:href "https://solidproject.org/FAQ";
+    ui:icon "❓";
+    ui:label "Solid FAQ";
+    ui:region ui:Tab.
+:Solid-Forum
+    a ui:Link;
+    dct:source plu:solid-forum.ttl;
+    ui:href "https://forum.solidproject.org/";
+    ui:icon "https://solidproject.org/favicon.ico";
+    ui:label "Solid Forum";
+    ui:region ui:Tab.
+:Solid-Glossary
+    a ui:Link;
+    dct:source plu:solid-glossary.ttl;
+    ui:href "https://solidproject.solidcommunity.net/glossary";
+    ui:icon "📖";
+    ui:label "Solid Glossary";
+    ui:region ui:Tab.
+:Solid-Glossary-2
+    a ui:Link;
+    dct:source plu:solid-glossary.ttl;
+    ui:href "https://solidproject.solidcommunity.net/glossary";
+    ui:icon "📖";
+    ui:label "Solid Glossary";
+    ui:region ui:Tab.
+:Solid-Glossary-3
+    a ui:Link;
+    dct:source plu:solid-glossary.ttl;
+    ui:href "https://solidproject.solidcommunity.net/glossary";
+    ui:icon "📖";
+    ui:label "Solid Glossary";
+    ui:region ui:Tab.
+:Solid-Website
+    a ui:Link;
+    dct:source plu:solid-website.ttl;
+    ui:href "https://solidproject.org";
+    ui:icon "🌐";
+    ui:label "Solid Website";
+    ui:region ui:Tab.
+:Solidflix
+    a ui:Link;
+    dct:source plu:solidflix.ttl;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:Solidflix-2
+    a ui:Link;
+    dct:source plu:solidflix.ttl;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:SolidFocus
+    a ui:Link;
+    dct:source plu:solidfocus.ttl;
+    ui:href "https://focus.noeldemartin.com/";
+    ui:icon "✅";
+    ui:label "SolidFocus";
+    ui:region ui:Tab.
+:SolidOS-AddressBook
+    a ui:Component;
+    dct:source plu:addressbook.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "/dk-pod/contacts/index.ttl#this"
+            ];
+    ui:icon "📇";
+    ui:label "SolidOS AddressBook";
+    ui:name "dk-solidos".
+:SolidOS-Chat
+    a ui:Component;
+    dct:source plu:chat.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "source"; schema:value "/dk-pod/chat/index.ttl#this" ];
+    ui:icon "💬";
+    ui:label "SolidOS Chat";
+    ui:name "dk-solidos".
+:SolidOS-data-browser
+    a ui:Component;
+    dct:source plu:solidos-browser.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "has-location-bar"; schema:value "true" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
+            ];
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS (data browser)";
+    ui:name "dk-solidos".
+:SolidOS-Meeting
+    a ui:Component;
+    dct:source plu:meeting.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "/dk-pod/meetings/index.ttl#this"
+            ];
+    ui:icon "🤝";
+    ui:label "SolidOS Meeting";
+    ui:name "dk-solidos".
+:SolidOS-Notes
+    a ui:Component;
+    dct:source plu:notes.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "source"; schema:value "/dk-pod/notes/index.ttl#this" ];
+    ui:icon "📝";
+    ui:label "SolidOS Notes";
+    ui:name "dk-solidos".
+:SolidOS-Tasks
+    a ui:Component;
+    dct:source plu:task-manager.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "source"; schema:value "/dk-pod/tasks/index.ttl#this" ];
+    ui:icon "📋";
+    ui:label "SolidOS Tasks";
+    ui:name "dk-solidos".
+:SPARQL-Playground
+    a ui:Link;
+    dct:source plu:sparql-playground.ttl;
+    ui:href "https://atomgraph.github.io/SPARQL-Playground/";
+    ui:icon "🔮";
+    ui:label "SPARQL Playground";
+    ui:region ui:Tab.
+:Spoken-Word-Internet-Archive
+    a ui:Component;
+    dct:source plu:spoken-word.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-spoken-word" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_spoken_word/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "spoken-word" ];
+    ui:icon "🎙️";
+    ui:label "Spoken Word (Internet Archive)";
+    ui:name "ia-player".
+:Synara-AI
+    a ui:Link;
+    dct:source plu:synara-ai.ttl;
+    ui:href "https://ai.privatedatapod.com/";
+    ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "Synara AI";
+    ui:region ui:Tab.
+:Synara-AI-2
+    a ui:Link;
+    dct:source plu:synara-ai.ttl;
+    ui:href "https://ai.privatedatapod.com/";
+    ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "Synara AI";
+    ui:region ui:Tab.
+:Synara-AI-3
+    a ui:Link;
+    dct:source plu:synara-ai.ttl;
+    ui:href "https://ai.privatedatapod.com/";
+    ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "Synara AI";
+    ui:region ui:Tab.
+:Tabs
+    a ui:Menu;
+    ui:label "data-kitchen";
+    ui:orientation ui:Horizontal;
+    ui:parts ( :Media :Apps :item :panel-dev-tools ).
+:Tag-Explainer
+    a ui:Link;
+    dct:source plu:solid-tag-explainer.ttl;
+    ui:href
+        "https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html";
+    ui:icon "🏷️";
+    ui:label "Tag Explainer";
+    ui:region ui:Tab.
+:Tag-Explainer-2
+    a ui:Link;
+    dct:source plu:solid-tag-explainer.ttl;
+    ui:href
+        "https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html";
+    ui:icon "🏷️";
+    ui:label "Tag Explainer";
+    ui:region ui:Tab.
+:Umai
+    a ui:Link;
+    dct:source plu:umai.ttl;
+    ui:href "https://umai.noeldemartin.com";
+    ui:icon "https://umai.noeldemartin.com/apple-touch-icon.png";
+    ui:label "Umai";
+    ui:region ui:Tab.
+:VitalStats
+    a ui:Link;
+    dct:source plu:vitalstats.ttl;
+    ui:href "https://vitalstats.apps.privatedatapod.com/";
+    ui:icon
+    "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "VitalStats";
+    ui:region ui:Tab.
+:VitalStats-2
+    a ui:Link;
+    dct:source plu:vitalstats.ttl;
+    ui:href "https://vitalstats.apps.privatedatapod.com/";
+    ui:icon
+    "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "VitalStats";
+    ui:region ui:Tab.
+:VitalStats-3
+    a ui:Link;
+    dct:source plu:vitalstats.ttl;
+    ui:href "https://vitalstats.apps.privatedatapod.com/";
+    ui:icon
+    "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "VitalStats";
+    ui:region ui:Tab.

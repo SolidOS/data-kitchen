@@ -15,6 +15,9 @@
 // entries.
 //
 //   node tools/seed-plugins-catalog.mjs      (re-running overwrites)
+//   node tools/seed-plugins-catalog.mjs --plugins-dir <dir> --out <file>
+//     (variant assembly: read manifests from <dir>, write the catalog to
+//      <file> — defaults preserve the classic in-repo behavior)
 
 import { writeFileSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -22,6 +25,12 @@ import { dirname, join } from 'node:path';
 import { rdf } from '../node_modules/sol-components/core/rdf.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const argOf = (flag) => {
+  const i = process.argv.indexOf(flag);
+  return i !== -1 ? process.argv[i + 1] : null;
+};
+const PLUGINS_DIR = argOf('--plugins-dir') || join(root, 'plugins');
+const OUT_FILE = argOf('--out') || join(root, 'ui-data', 'data-kitchen-plugins-catalog.ttl');
 
 const UI_NS = 'http://www.w3.org/ns/ui#';
 const RDF_NS = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
@@ -30,7 +39,7 @@ const DCT_NS = 'http://purl.org/dc/terms/';
 const SCHEMA_NS = 'http://schema.org/';
 
 function readEntries() {
-  const dir = join(root, 'plugins');
+  const dir = PLUGINS_DIR;
   const entries = [];
   for (const f of readdirSync(dir).sort()) {
     if (!f.endsWith('.ttl')) continue;
@@ -120,6 +129,6 @@ for (const e of ENTRIES) {
   }
 }
 
-writeFileSync(join(root, 'ui-data', 'data-kitchen-plugins-catalog.ttl'), ttl);
+writeFileSync(OUT_FILE, ttl);
 const links = ENTRIES.filter((e) => e.kind === 'link').length;
-console.log(`wrote ui-data/data-kitchen-plugins-catalog.ttl: ${ENTRIES.length - links} plugins + ${links} link apps in ${CATS.length} topics (all from manifests)`);
+console.log(`wrote ${OUT_FILE}: ${ENTRIES.length - links} plugins + ${links} link apps in ${CATS.length} topics (all from manifests)`);

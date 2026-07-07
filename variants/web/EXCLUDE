@@ -1,0 +1,22 @@
+# WEB DEMO EXCLUDES (base-relative paths omitted from the assembled tree).
+# Pod-dependent plugins: their manifests would put dead entries in the demo
+# catalog (D6), and news' feeds.ttl carries a machine-absolute prefix.
+plugins/news.ttl
+plugins/news
+plugins/workspaces.ttl
+plugins/podz
+plugins/solidos-browser.ttl
+# plugins/solidos CODE ships (dokieli.manifest.json eager-loads its consumer
+# module; excluding the dir 404s it) — only the MANIFESTS above are dropped.
+plugins/addressbook.ttl
+plugins/chat.ttl
+plugins/meeting.ttl
+plugins/notes.ttl
+plugins/task-manager.ttl
+plugins/dokieli.ttl
+# Health apps are pod-write externals — the demo menu drops the group, so
+# their catalog entries would only tease broken flows.
+plugins/innerpod.ttl
+plugins/healthpod.ttl
+plugins/msfatigue.ttl
+plugins/vitalstats.ttl

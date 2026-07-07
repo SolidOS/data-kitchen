@@ -62,14 +62,12 @@ if [ -e "$REPO/dist/dk.bundle.js" ] && [ -e "$REPO/node_modules/sol-components" 
   # pod-seed.nmz: dk's app DEFINITION seeded into the pod (index.html at root;
   # everything else under dk-pod/dk/ — matches electron-config/seed.cjs). plugin
   # dist/node_modules are engine, not pod, so prune them.
-  echo "[prepare] building dk pod seed (pod-seed.nmz)…"
+  # The MOBILE VARIANT (variants/mobile overlay: the electron set minus Dev
+  # Tools) is assembled by the shared assembler — one source of truth with
+  # electron seeding (seed.cjs rules) and the web demo build.
+  echo "[prepare] building dk pod seed (pod-seed.nmz, mobile variant)…"
   SEED="$(mktemp -d)"
-  cp "$REPO/index.html" "$SEED/"
-  mkdir -p "$SEED/dk-pod/dk"
-  for e in dk.manifest.json dokieli.manifest.json ui-data pages help shapes plugins; do
-    [ -e "$REPO/$e" ] && cp -rL "$REPO/$e" "$SEED/dk-pod/dk/$e" 2>/dev/null || true
-  done
-  find "$SEED/dk-pod/dk/plugins" -depth -type d \( -name dist -o -name node_modules \) -exec rm -rf {} + 2>/dev/null || true
+  node --preserve-symlinks "$REPO/tools/assemble-variant.mjs" mobile "$SEED"
   find "$SEED" -name '*.map' -delete 2>/dev/null || true
   tar czf "$PROJ/pod-seed.nmz" -C "$SEED" index.html dk-pod
   rm -rf "$SEED"

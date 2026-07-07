@@ -28,6 +28,9 @@
     "test:mobile": "node --test \"mobile/test/node/**/*.test.mjs\"",
     "dist": "electron-builder",
     "dist:cross": "electron-builder --linux AppImage --mac zip --win zip",
+    "dist:web": "node --preserve-symlinks tools/build-web.mjs",
+    "serve:web": "node tools/serve-static.mjs",
+    "pull-defaults": "node --preserve-symlinks tools/pull-defaults.mjs",
     "dist:android": "bash mobile/tool/build-apk.sh",
     "release:prep": "node tools/prepare-release.mjs",
     "release:check": "node tools/prepare-release.mjs --check"
@@ -77,6 +80,7 @@
       "!**/node_modules/open-media-player/{node_modules,tests,tools,claude,drafts}/**",
       "!claude/**",
       "!tools/**",
+      "!variants/**",
       "!test/**",
       "!.internal/**",
       "!notes.md"
