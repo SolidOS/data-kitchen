@@ -1,15 +1,14 @@
 # Installing Solid Data Kitchen
 
-Grab the file for your platform from the
-[latest release](https://github.com/SolidOS/data-kitchen/releases/latest),
-then follow the matching section below. Every install is self-contained: the
-app bundles its own Solid pod server — no account, sign-up, or separate server
-needed. Your data (pod contents, settings, logins) lives outside the app and
-survives every update.
+Pick your platform below — each section starts with the download link.
+Every install is self-contained: the app bundles its own Solid pod server —
+no account, sign-up, or separate server needed. Your data (pod contents,
+settings, logins) lives outside the app and survives every update.
 
-## Linux — `Solid_Data_Kitchen-<version>-linux.AppImage`
+## Linux
 
-1. Download the `.AppImage`.
+1. Download
+   [Solid_Data_Kitchen-<version>-linux.AppImage](https://github.com/SolidOS/data-kitchen/releases/download/v<version>/Solid_Data_Kitchen-<version>-linux.AppImage).
 2. Make it executable and run it:
 
    ```bash
@@ -23,9 +22,11 @@ survives every update.
    download it, verifies the checksum, swaps the AppImage in place, and
    restarts.
 
-## macOS — `Solid_Data_Kitchen-<version>-mac-x64.zip`
+## macOS
 
-1. Download and unzip; drag **Solid Data Kitchen.app** into Applications
+1. Download
+   [Solid_Data_Kitchen-<version>-mac-x64.zip](https://github.com/SolidOS/data-kitchen/releases/download/v<version>/Solid_Data_Kitchen-<version>-mac-x64.zip),
+   unzip it, and drag **Solid Data Kitchen.app** into Applications
    (or run it from anywhere).
 2. The app is unsigned, so the first launch needs one extra step:
    **right-click (Control-click) the app → Open → Open**. macOS remembers
@@ -34,21 +35,25 @@ survives every update.
    folder, verifies it, and shows you where it is — quit and replace the
    app to update.
 
-## Windows — `Solid_Data_Kitchen-<version>-win-x64.zip`
+## Windows
 
-1. Download and unzip anywhere (a folder in your home directory is fine).
+1. Download
+   [Solid_Data_Kitchen-<version>-win-x64.zip](https://github.com/SolidOS/data-kitchen/releases/download/v<version>/Solid_Data_Kitchen-<version>-win-x64.zip)
+   and unzip it anywhere (a folder in your home directory is fine).
 2. Run **Solid Data Kitchen.exe** inside the unzipped folder.
 3. The app is unsigned, so SmartScreen may object on first run: click
    **More info → Run anyway**.
 4. Updates work like macOS: the app downloads and verifies the new zip,
    then you quit and replace the folder.
 
-## Android — `Solid_Data_Kitchen-<version>-android.apk`
+## Android
 
 Requires Android 7.0 (API 24) or newer. The APK is distributed here, not
 through the Play Store, so it installs by sideload:
 
-1. Download the `.apk` on the phone (or copy it over).
+1. Download
+   [Solid_Data_Kitchen-<version>-android.apk](https://github.com/SolidOS/data-kitchen/releases/download/v<version>/Solid_Data_Kitchen-<version>-android.apk)
+   on the phone (or copy it over).
 2. Open it. Android will ask you to allow installs from your browser or
    file manager — allow it for this install.
 3. Confirm the install prompt (the app is signed with a development key,

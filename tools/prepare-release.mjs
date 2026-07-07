@@ -117,6 +117,20 @@ writeFileSync(manifestPath, JSON.stringify(
 console.log(`[release] wrote latest.json for v${version}`);
 
 // ── 4. the publish command (printed, never run) ─────────────────────────────
+// ── 4. release notes ────────────────────────────────────────────────────────
+// The release BODY is the per-platform install & run guide — the tracked
+// repo-root INSTALL.md (user-facing, not a developer changelog; not an
+// asset). Its download links carry <version> tokens; substitute them so the
+// notes link the release's own artifacts directly.
+const installMd = join(root, 'INSTALL.md');
+if (!existsSync(installMd)) {
+  console.warn('[release] WARNING: INSTALL.md is missing at repo root — the release-notes body needs it.');
+} else if (!checkOnly) {
+  writeFileSync(join(releaseDir, 'RELEASE_NOTES.md'),
+    readFileSync(installMd, 'utf8').replaceAll('<version>', version));
+  console.log(`[release] wrote RELEASE_NOTES.md (INSTALL.md with <version> → ${version})`);
+}
+
 console.log(`
 To publish (explicit step — run it yourself when ready):
 
@@ -124,11 +138,5 @@ To publish (explicit step — run it yourself when ready):
     release/${PLATFORMS.linux.name} release/${PLATFORMS.mac.name} \\
     release/${PLATFORMS.win.name} release/${PLATFORMS.android.name} \\
     release/latest.json \\
-    --repo SolidOS/data-kitchen --title "v${version}" --notes-file INSTALL.md
+    --repo SolidOS/data-kitchen --title "v${version}" --notes-file release/RELEASE_NOTES.md
 `);
-// The release BODY is the per-platform install & run guide — the tracked
-// repo-root INSTALL.md (user-facing, not a developer changelog). It is not
-// shipped as an asset; the release page itself is the guide.
-if (!checkOnly && !existsSync(join(root, 'INSTALL.md'))) {
-  console.warn('[release] WARNING: INSTALL.md is missing at repo root — the release-notes body (gh --notes-file) needs it.');
-}
