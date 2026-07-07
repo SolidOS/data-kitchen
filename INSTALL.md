@@ -5,6 +5,9 @@ Every install is self-contained: the app bundles its own Solid pod server —
 no account, sign-up, or separate server needed. Your data (pod contents,
 settings, logins) lives outside the app and survives every update.
 
+Download the executable into a folder that you want to be the root of your
+local pod. Any existing or new folder. You can change this later if needed.
+
 ## Linux
 
 1. Download
