@@ -552,8 +552,8 @@
         border-radius: 999px;
         box-shadow: 0 1px 3px rgba(0,0,0,.16);
       }
-      .sol-tabs-sheet-panel  { background: var(--ia-bg-elev, #f7f1e4); }
-      .sol-tabs-sheet-grabber{ background: var(--ia-border, #cbbfa6); }
+      /* The sheet surface is <sol-sheet>'s shadow panel; theme via its var. */
+      sol-sheet.sol-tabs-sheet { --menu-bg: var(--ia-bg-elev, #f7f1e4); }
       .sol-tabs-sheet-grouphead{ color: var(--ia-text-muted, #8c826b); }
       .sol-tabs-sheet-item   { color: var(--ia-text, #2a2620); }
       .sol-tabs-sheet-item:active { background: var(--ia-bg-btn, rgba(0,0,0,.06)); }

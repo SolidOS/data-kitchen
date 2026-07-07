@@ -13,3 +13,4 @@ key.properties
 **/*.keystore
 **/*.jks
 keystore.properties
+build/
