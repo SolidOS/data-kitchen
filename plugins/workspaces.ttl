@@ -6,7 +6,7 @@
 <>
   a ui:Component ;
   ui:label "Data Kitchen Pod Browser" ;
-  ui:icon "🗂" ;
+  ui:icon "./assets/dk-logo.png" ;
   ui:name "dk-podz" ;
   rdfs:comment "Browse and manage your Solid pods and workspaces." ;
   dct:creator "Jeff Zucker" ;
