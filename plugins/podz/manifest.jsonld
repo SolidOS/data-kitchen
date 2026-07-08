@@ -60,5 +60,5 @@
   "shape": "/node_modules/sol-components/shapes/pod-settings.shacl",
   "help": "./help.html",
   "subject": "Tech",
-  "icon": "./assets/dk-logo.png"
+  "icon": "/assets/dk-logo.png"
 }

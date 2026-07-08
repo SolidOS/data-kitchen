@@ -603,6 +603,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
 :Pod-browser
     a ui:Component;
     dct:source plu:workspaces.ttl;
+    ui:icon "/assets/dk-logo.png";
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-podz" ],

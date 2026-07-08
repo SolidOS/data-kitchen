@@ -108,7 +108,7 @@
 
 <#Data-Kitchen-Pod-Browser> a ui:Component ; ui:label "Data Kitchen Pod Browser" ;
   dct:source <../plugins/workspaces.ttl> ;
-  ui:icon "./assets/dk-logo.png" ;
+  ui:icon "/assets/dk-logo.png" ;
   ui:name "dk-podz" ;
   rdfs:comment "Browse and manage your Solid pods and workspaces." ;
   dct:creator "Jeff Zucker" ;
