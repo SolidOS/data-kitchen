@@ -4,7 +4,7 @@
   "type": "commonjs",
   "description": "Dedicated install for the bundled Solid server. Kept separate from the app root so componentsjs' module scan only sees the server's own dependency tree — scanning the root (with its file:-linked sol-components/podz) drags in nested packages whose component contexts need remote lookups and breaks startup. customise-me.json's ./node_modules/mashlib paths also resolve here (the server runs with this folder as cwd).",
   "dependencies": {
-    "@solid/pivot": "^1.6.4"
+    "@solid/pivot": "^1.8.0"
   },
   "overrides": {
     "parse-url": "^8.1.0",
