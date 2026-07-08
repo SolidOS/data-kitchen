@@ -239,7 +239,7 @@ class DesktopApp {
     const y = (winCfg && Number.isFinite(winCfg.windowY)) ? winCfg.windowY : 0;
     this.baseWindow = new BaseWindow({
       width, height, x, y, title: 'Solid Data Kitchen',
-      icon: path.join(__dirname, '..', 'assets', 'dk-logo.png'),
+      icon: path.join(__dirname, '..', 'assets', 'icons', 'dk-512.png'),
     });
 
     this.appView = new WebContentsView({

@@ -99,6 +99,7 @@
       "output": "release"
     },
     "linux": {
+      "icon": "assets/icons/dk-512.png",
       "target": [
         "AppImage",
         "deb",
@@ -107,6 +108,7 @@
       "category": "Utility"
     },
     "win": {
+      "icon": "assets/dk-logo.ico",
       "target": [
         "portable",
         "nsis"
@@ -114,6 +116,7 @@
       "signAndEditExecutable": false
     },
     "mac": {
+      "icon": "assets/icons/dk-512.png",
       "target": [
         "dmg",
         "zip"
