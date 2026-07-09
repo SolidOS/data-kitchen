@@ -94,12 +94,19 @@ const PUBLIC_ORIGIN = `http://localhost:${PUBLIC_PORT}/`;
 //     filesDir/pod), which node_flutter never touches — so a bare "done" flag
 //     there SURVIVES reinstalls and keeps serving the STALE tree (the bug that
 //     used to need a manual `pm clear`). node_flutter does re-copy the .nmz on
-//     reinstall, so keying the sentinel on the fresh tarball's size lets a
+//     reinstall, so keying the sentinel on the fresh tarball's CONTENT lets a
 //     changed bundle re-extract on its own.
-// (A pre-existing ISO-timestamp sentinel from the old scheme never equals a size,
-// so it harmlessly forces exactly one re-extract on upgrade to this code.)
-function tarballSize(tarball) {
-  try { return String(fs.statSync(tarball).size); } catch (_) { return ''; }
+// The fingerprint is a sha1 of the tarball, not its size: two consecutive
+// engine builds with a small code delta really did land on the SAME byte size
+// (gzip padding), silently serving the stale tree — the exact bug the size
+// scheme was meant to fix. Hashing ~50MB adds well under a second to boot.
+// (A pre-existing size/timestamp sentinel from the old schemes never equals a
+// sha1, so it harmlessly forces exactly one re-extract on upgrade to this code.)
+function tarballFingerprint(tarball) {
+  try {
+    const crypto = require('node:crypto');
+    return crypto.createHash('sha1').update(fs.readFileSync(tarball)).digest('hex');
+  } catch (_) { return ''; }
 }
 function sentinelFresh(sentinelPath, fingerprint) {
   try { return fs.readFileSync(sentinelPath, 'utf8').trim() === fingerprint; }
@@ -109,7 +116,7 @@ function sentinelFresh(sentinelPath, fingerprint) {
 function ensureNodeModules() {
   if (!fs.existsSync(TARBALL)) { log('FATAL: node_modules.nmz missing'); return; }
   const sentinel = path.join(NODE_MODULES, '.extracted');
-  const fp = tarballSize(TARBALL);
+  const fp = tarballFingerprint(TARBALL);
   if (sentinelFresh(sentinel, fp)) return;
   log('extracting node_modules (first run or bundle changed)…');
   const t0 = Date.now();
@@ -130,7 +137,7 @@ function ensureNodeModules() {
 function ensureExtract(tarball, destDir, sentinelName, label, clearFirst) {
   if (!fs.existsSync(tarball)) { log('skip ' + label + ' — ' + path.basename(tarball) + ' missing'); return; }
   const sentinel = path.join(destDir, sentinelName);
-  const fp = tarballSize(tarball);
+  const fp = tarballFingerprint(tarball);
   if (sentinelFresh(sentinel, fp)) return;
   log('extracting ' + label + ' (first run or bundle changed)…');
   const t0 = Date.now();

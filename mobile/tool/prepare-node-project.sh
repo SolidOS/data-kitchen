@@ -52,11 +52,18 @@ if [ -e "$REPO/dist/dk.bundle.js" ] && [ -e "$REPO/node_modules/sol-components" 
   # assets: help/about pages, shell fragments). Symlinked in dev like
   # sol-components; tar -h dereferences.
   OMP="node_modules/open-media-player/omp.manifest.json node_modules/open-media-player/dist node_modules/open-media-player/src"
+  # mashlib: the SolidOS plugin's iframe hosts (plugins/solidos/*-host.html) load
+  # /node_modules/mashlib/dist/mashlib.min.js + mash.css, and the router serves
+  # /node_modules/ from THIS engine — without it SolidOS 404s on-device (the
+  # v2.1.1 "mashlib not loaded" bug). Ship the minified bundle, its lazy chunk
+  # and images; the 7MB un-minified mashlib.js and *.map stay out.
+  MASHLIB="node_modules/mashlib/dist"
   tar czhf "$PROJ/engine.nmz" -C "$REPO" \
     --exclude='*/node_modules' --exclude='*/.git' --exclude='*/tests' \
     --exclude='*/tests-disabled' --exclude='*/coverage' --exclude='*/docs' \
     --exclude='*/examples' --exclude='*/drafts' --exclude='*/claude' --exclude='*.map' \
-    node_modules/sol-components node_modules/component-interop $OMP dist src assets $PLUGIN_DIST
+    --exclude='mashlib/dist/mashlib.js' --exclude='mashlib/dist/841.mashlib.js' \
+    node_modules/sol-components node_modules/component-interop $OMP $MASHLIB dist src assets $PLUGIN_DIST
   echo "[prepare] engine.nmz = $(du -h "$PROJ/engine.nmz" | cut -f1)"
 
   # pod-seed.nmz: dk's app DEFINITION seeded into the pod (index.html at root;

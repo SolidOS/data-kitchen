@@ -63,6 +63,9 @@ class Servers {
   constructor({ log = console.log } = {}) {
     this.log = log;
     this.children = [];   // only the ones WE spawned (so we only kill those)
+    // Why the hard dependencies (CSS/router) didn't come up, if they didn't —
+    // surfaced on the startup-error page (main.cjs showStartupError).
+    this.startupError = null;
   }
 
   _spawn(label, command, args, opts) {
@@ -160,6 +163,7 @@ class Servers {
   // on (and CSS behind it). The proxy is only needed for CORS-restricted fetches,
   // so it's best-effort and must not delay opening the window.
   async start() {
+    this.startupError = null;
     this.seed();
     this.ensureProxy().catch((e) => this.log(`[proxy] not started: ${e.message}`));
     try {
@@ -167,6 +171,7 @@ class Servers {
       await this.ensureRouter();
       this.seedAccount();   // best-effort, fire-and-forget once CSS + router are up
     } catch (e) {
+      this.startupError = e.message;
       this.log(`[startup] problem: ${e.message}`);
     }
     this.log('servers ready (or reusing existing)');

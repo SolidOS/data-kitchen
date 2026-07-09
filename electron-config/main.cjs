@@ -21,6 +21,7 @@ const {
   readConfig, writeConfig, configTopic,
 } = require('./config.cjs');
 const { Servers, getGateToken } = require('./servers.cjs');
+const { initFileLog, getLogPath } = require('./log.cjs');
 const { blessNonce } = require('./gate.cjs');
 const { LibraryRoots } = require('./library-roots.cjs');
 const { checkForUpdates } = require('./update-check.cjs');
@@ -170,6 +171,11 @@ class DesktopApp {
   }
 
   async start() {
+    // First thing, so the server spawn/seed lines below are captured: mirror
+    // console output to <userData>/dk.log — the packaged app (esp. the Windows
+    // zip) has no terminal, and this file is what a bug report can include.
+    const logPath = initFileLog(app.getPath('userData'));
+    if (logPath) console.log(`[dk] v${app.getVersion()} — logging to ${logPath}`);
     Menu.setApplicationMenu(null);
     // dkfile: allow-list (imported music folders); persisted in userData.
     this._libraryRoots = new LibraryRoots(app.getPath('userData'));
@@ -274,7 +280,14 @@ class DesktopApp {
 
     const wc = this.appView.webContents;
     wc.on('did-finish-load', () => console.log(`[app] loaded ${wc.getURL()}`));
-    wc.on('did-fail-load', (_e, code, desc, url) => console.log(`[app] load failed (${code} ${desc}) ${url}`));
+    // A failed main-frame load would leave the user staring at a blank window
+    // with zero diagnostics (the v2.1.1 Windows report) — show what failed
+    // instead. -3 = ERR_ABORTED, the normal noise of an interrupted/redirected
+    // navigation, never a dead end.
+    wc.on('did-fail-load', (_e, code, desc, url, isMainFrame) => {
+      console.error(`[app] load failed (${code} ${desc}) ${url}`);
+      if (isMainFrame && code !== -3) this.showStartupError(url, `${desc || 'error'} (${code})`);
+    });
 
     // A plain link to another site would otherwise navigate the whole app view
     // away (header and all, no way back). Keep the app put; show the external
@@ -285,6 +298,43 @@ class DesktopApp {
     });
 
     wc.loadURL(APP_URL);
+  }
+
+  // Replace a blank failed window with a static page saying what failed, what
+  // the servers reported, and where the log file is. Generated inline and
+  // loaded as a data: URL — no scripts, all content fixed at generation time;
+  // "Try again" is a plain link back to the app URL.
+  showStartupError(failedUrl, reason) {
+    const esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const rows = [
+      ['Failed to load', failedUrl],
+      ['Reason', reason],
+      ['Server startup', this.servers.startupError || 'no error reported'],
+      ['Log file', getLogPath() || 'unavailable'],
+    ].map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('');
+    const html = `<!doctype html><html><head><meta charset="utf-8">
+      <title>Solid Data Kitchen — startup problem</title>
+      <style>
+        body { font: 16px/1.5 system-ui, sans-serif; margin: 3rem auto; max-width: 42rem; padding: 0 1rem; color: #222; }
+        h1 { font-size: 1.4rem; }
+        table { border-collapse: collapse; margin: 1rem 0; }
+        th, td { text-align: left; vertical-align: top; padding: .3rem .8rem .3rem 0; font-size: 16px; }
+        th { white-space: nowrap; color: #555; font-weight: 600; }
+        td { word-break: break-all; }
+        a.retry { display: inline-block; margin-top: .5rem; padding: .5rem 1.2rem;
+                  background: #1a5fb4; color: #fff; border-radius: 6px; text-decoration: none; }
+      </style></head><body>
+      <h1>Solid Data Kitchen could not start its local server</h1>
+      <p>The app page did not load. This usually means the bundled pod server
+      failed to start, or another program is already using its port
+      (${PUBLIC_PORT} / ${CSS_INTERNAL_PORT}).</p>
+      <table>${rows}</table>
+      <p>If this keeps happening, please include the log file in a bug report.</p>
+      <a class="retry" href="${esc(APP_URL)}">Try again</a>
+      </body></html>`;
+    this.appView.webContents
+      .loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html))
+      .catch((e) => console.error('[app] error page failed to load:', e.message));
   }
 
   // The local servers require the per-install gate token (gate.cjs). Inject it

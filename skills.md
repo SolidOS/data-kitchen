@@ -8,7 +8,7 @@ the user.
 ## What dk is
 
 An Electron "pod-in-a-box": it bundles a Solid server (Pivot/CSS, mashlib 2.2.2),
-a CORS proxy, and an **RDF-first shell** for Solid & federated apps. v2.1.0, ESM.
+a CORS proxy, and an **RDF-first shell** for Solid & federated apps. v2.1.2, ESM.
 Consolidated from three former repos (electron, old data-kitchen,
 open_media_player). The UI is fully customizable through forms — menus, buttons,
 and plugins are described in RDF, not hard-coded.
@@ -17,7 +17,8 @@ and plugins are described in RDF, not hard-coded.
 
 - **dk** — `/home/jeff/Dropbox/Web/solid/data-kitchen` (also `~/s`, a symlink).
   Remote: `github.com/SolidOS/data-kitchen` (push needs an explicit per-task go).
-- **sc — sol-components** (v2.7.1, published on npm 2026-07-08) — `../sol-components`,
+- **sc — sol-components** (v2.7.2 in-tree — npm still has 2.7.1 (2026-07-08);
+  the 2.7.2 publish is OWED, needs Jeff's OTP) — `../sol-components`,
   symlinked into `node_modules/`. ~40 `sol-*` web components (web/), Node tools
   (node/), shared core (core/). **dk loads the raw `web/*.js`** — a component
   edit needs only a reload, no build. dk's own `src/` does need `npm run build`.
@@ -295,6 +296,19 @@ back a proxied fetch.
   (sc `web/popup-auth-callback.html`) carries the chosen issuer through the IdP
   round-trip via per-window `sessionStorage` — inrupt's `session.info` has **no
   `issuer`** field, so without this the post-login remember-offer never fires.
+- **Android login = redirect, not popup (sc 2.7.2, 2026-07-09).** The Android
+  System WebView has no multi-window support, so sol-login detects the
+  `"; wv)"` UA token and coerces `mode="popup"` back to the classic full-page
+  redirect; the Flutter shell's overlay intercepts the IdP round-trip and
+  hands the redirect back to the shell. Redirect mode is also hardened
+  against dk's synthetic owner session (`src/dk-owner-session.js`, a
+  method-less logged-in object on the `'default'` tag): `handleIncomingRedirect`
+  skips session-shaped objects, `ensureAuthenticated` only short-circuits when
+  the session COVERS the requested origin (and mints a real session when the
+  tag-holder can't login), and the button's login-vs-logout basis plus the
+  redirect session tag are side-scoped (`_displaySession`). Verified on the
+  S23 by real trusted-tap UI drive (`claude/smoke-tests/
+  cdp-verify-android-login-flow.mjs`); full credential round-trip = Jeff.
 - **`dist/` is gitignored** — after pulling renderer (`src/`) changes you MUST
   `npm run build`, or the app silently runs a stale bundle without the feature.
 
@@ -333,6 +347,17 @@ comments stripped — grep it for code fragments, not comments.
   need `wine` (the zip needs none — `win.signAndEditExecutable:false` skips the
   wine-only rcedit step). Real installers + signing build on their native OS / CI.
   iOS isn't wired (the vendored `node_flutter` is Android-only — see `mobile/`).
+- **Startup diagnostics (v2.1.2, 2026-07-09 — the "Windows blank page" report):**
+  `electron-config/log.cjs` mirrors all console output to `<userData>/dk.log`
+  (previous run kept once as `dk.log.old`) — a packaged app has no terminal, so
+  this file is what a bug report can include. A failed main-frame load
+  (anything but ERR_ABORTED) now shows a static error page instead of a blank
+  window (`main.cjs showStartupError`: failed URL, reason, `Servers.
+  startupError`, log path, retry link — generated inline as a `data:` URL, no
+  scripts). Verified live: happy path logs + loads; router forced onto port 1
+  → error page with "port 1 never came up". NOTE: `ensureCss/ensureRouter`
+  still REUSE any process answering their port — a foreign service on :8000
+  would be loaded as the app; dk.log now at least records it.
 - `npm test` — the test suite (native `node --test`, like ci; **no app needed**):
   `test/unit/` (gate.cjs, favourites store), `test/data/` (RDF contracts —
   plugin Link/Component, catalog↔manifest sync, menu invariants, manifest.jsonld,
@@ -446,6 +471,26 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   `node_modules/open-media-player` (manifest + dist + src) into engine.nmz —
   the media tabs had been DEAD on the phone since the 2026-07-02 cutover
   (only verified headless desktop back then).
+- **mashlib in engine.nmz (v2.1.2, 2026-07-09):** the SolidOS iframe hosts
+  load `/node_modules/mashlib/dist/mashlib.min.js` + `mash.css` from the
+  ENGINE, which never shipped mashlib → SolidOS 404'd on-device (the v2.1.1
+  "mashlib not loaded" report). The packer now includes `mashlib/dist`
+  (minified bundle + lazy chunk + css + images; the 7MB un-minified bundle
+  and maps stay out — ~+1MB compressed). Probe:
+  `claude/smoke-tests/cdp-verify-android-mashlib-login.mjs` (serves, executes,
+  PAINTS).
+- **Extraction sentinel is a sha1, not a size (v2.1.2):** two consecutive
+  engine builds with a small code delta really did land on the SAME tarball
+  byte size, so `ensureExtract` kept serving the STALE engine after an APK
+  upgrade (`mobile/nodejs-src/main.js tarballFingerprint`). Any old
+  size/timestamp sentinel mismatches a sha1, so upgrading to this code forces
+  exactly one re-extract.
+- **Phone layout observations (2026-07-09, flagged not fixed):** in LANDSCAPE
+  the viewport is ~274 CSS px tall — podz's `sol-pod` (flex:1, basis 0)
+  collapses to height 0 and `.panel-footer` paints over (and eats taps in)
+  the header band, so Log in is untappable in landscape (portrait is fine).
+  Also: adb-injected Android back (`input keyevent 4`) does NOT dismiss the
+  reader/login overlay even though the on-screen ✕ does.
 - **Phone WebView is now debuggable** (`AndroidWebViewController.enableDebugging`
   in `mobile/lib/main.dart`): `adb shell cat /proc/net/unix | grep
   webview_devtools_remote` → `adb forward tcp:9223 localabstract:<sock>` →
