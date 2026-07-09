@@ -449,7 +449,10 @@
        ════════════════════════════════════════════════════════════════════ */
     @media (hover: none) and (pointer: coarse) {
       :root {
-        --dk-m-safe-top:    env(safe-area-inset-top, 0px);
+        /* 0, NOT env(safe-area-inset-top): the Flutter shell already keeps the
+           WebView below the status bar, so the env() inset double-counted and
+           painted a dead ~33px band above the navigator pill (Jeff 2026-07-09). */
+        --dk-m-safe-top:    0px;
         --dk-m-safe-bottom: env(safe-area-inset-bottom, 0px);
         --dk-m-actionbar:   60px;   /* bottom action-bar height (excl. safe area) */
       }
@@ -570,9 +573,6 @@
 
       /* ── Content reserves room for the fixed bottom bar(s) ────────────── */
       .omp-panels { padding-bottom: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom)); }
-      body:has(.omp-mini:not([hidden])) .omp-panels {
-        padding-bottom: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom) + 46px);
-      }
 
       /* ── Bottom: the launch group becomes a slim fixed thumb-zone dock ────
          The app chips moved into the navigator's "Launch" group and theme /
@@ -611,16 +611,10 @@
       .omp-fontsize[data-size="medium"]::part(trigger) { font-size: 19px; }
       .omp-fontsize[data-size="large"]::part(trigger)  { font-size: 23px; }
 
-      /* ── Now-playing: sticky bar floated just above the action bar ────── */
-      .omp-mini:not([hidden]) {
-        position: fixed; left: 0; right: 0; z-index: 39;
-        bottom: calc(var(--dk-m-actionbar) + var(--dk-m-safe-bottom));
-        margin: 0; padding: 9px 14px;
-        display: flex; align-items: center; gap: 12px;
-        background: var(--ia-bg-panel, #1d1f24);
-        border-top: 1px solid var(--ia-border, #2a2d33);
-      }
-      .omp-mini-seek { flex: 1 1 auto; width: auto; height: 6px; }
+      /* ── Now-playing: NO mini-player on the phone (Jeff 2026-07-09) ────
+         The desktop chrome keeps it; on a phone it burned a 49px sticky band
+         above the dock. Playback control lives in the media rooms. */
+      .omp-mini { display: none !important; }
 
       /* ── Inline panels (help / settings / customize) breathing room ──
          No dock reservation here: .omp-panels already pads the whole tab

@@ -379,7 +379,13 @@ export class SolidFileBrowser {
         const panel = document.getElementById(`${side}-panel`);
         if (panel?.classList.contains('panel-collapsed')) this._collapsePanel(side);
       }
-      this.elements.leftPod.podClickAction = (item, pod) => this._openOpsPanel(item, pod);
+      // Phone (coarse pointer): the inline ops panel sits to the RIGHT of a
+      // full-width pod panel — off screen. Keep the classic MODAL pod-ops
+      // there (Jeff 2026-07-09); inline ops is a desktop-only affordance.
+      const coarse = window.matchMedia?.('(hover: none) and (pointer: coarse)').matches;
+      this.elements.leftPod.podClickAction = coarse
+        ? null
+        : (item, pod) => this._openOpsPanel(item, pod);
       this._applySingleWidth(this._singleWidth ?? 420);
     } else {
       // Back to the classic view: gear/double-click opens the modal again.
