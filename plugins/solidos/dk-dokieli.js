@@ -17,7 +17,7 @@ const DOKIELI_TEMPLATE =
 const LAST_KEY = 'dk-dokieli:lastDoc';
 
 class DkDokieli extends HTMLElement {
-  get _folder() { return `${location.origin}/dk-pod/dokieli/`; }
+  get _folder() { return `${location.origin}/dk-pod/solidos-apps/dokieli/`; }
 
   async connectedCallback() {
     if (this._wired) return;

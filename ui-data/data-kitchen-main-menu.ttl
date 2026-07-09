@@ -789,7 +789,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
-                schema:value "/dk-pod/contacts/index.ttl#this"
+                schema:value "/dk-pod/solidos-apps/contacts/index.ttl#this"
             ];
     ui:icon "📇";
     ui:label "SolidOS AddressBook";
@@ -799,7 +799,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     dct:source plu:chat.ttl;
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
-        [ schema:name "source"; schema:value "/dk-pod/chat/index.ttl#this" ];
+        [ schema:name "source"; schema:value "/dk-pod/solidos-apps/chat/index.ttl#this" ];
     ui:icon "💬";
     ui:label "SolidOS Chat";
     ui:name "dk-solidos".
@@ -823,7 +823,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
-                schema:value "/dk-pod/meetings/index.ttl#this"
+                schema:value "/dk-pod/solidos-apps/meetings/index.ttl#this"
             ];
     ui:icon "🤝";
     ui:label "SolidOS Meeting";
@@ -833,7 +833,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     dct:source plu:notes.ttl;
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
-        [ schema:name "source"; schema:value "/dk-pod/notes/index.ttl#this" ];
+        [ schema:name "source"; schema:value "/dk-pod/solidos-apps/notes/index.ttl#this" ];
     ui:icon "📝";
     ui:label "SolidOS Notes";
     ui:name "dk-solidos".
@@ -842,7 +842,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     dct:source plu:task-manager.ttl;
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
-        [ schema:name "source"; schema:value "/dk-pod/tasks/index.ttl#this" ];
+        [ schema:name "source"; schema:value "/dk-pod/solidos-apps/tasks/index.ttl#this" ];
     ui:icon "📋";
     ui:label "SolidOS Tasks";
     ui:name "dk-solidos".
