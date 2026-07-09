@@ -51,7 +51,9 @@ panel's audio has a src AND the music view is not the one on screen. Visibility
 is decided by layout (`panelEl('music').offsetParent !== null`), NOT the
 `current` panel tracker — `current` only updates when the picked item carries a
 `panel-*` id, which only the media plugins do, so keying on it hid the mini on
-every non-media item (fixed 2026-07-05).
+every non-media item (fixed 2026-07-05). **Hidden on the PHONE entirely**
+(Jeff 2026-07-09; `dk-chrome.css` coarse-pointer block — its sticky-bar
+styling and padding reservation are gone too; desktop keeps it).
 
 **Boot sequence** (index.html, which is wormhole-guarded against recursive
 framing): **component-interop** (parser-blocking; parses manifests, injects
@@ -518,6 +520,26 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   screenshots; the login probe now GATES on the button being fully inside the
   visual viewport — CDP taps land on layout coordinates, so only a viewport
   check catches offscreen UI).
+- **Login button paints correctly after redirect (sc, 2026-07-09):**
+  sol-login `initialize()` is SINGLE-FLIGHT — sol-pod's mount and podz's
+  handleRedirect both call it; two concurrent runs raced the OIDC code
+  exchange and left "Log in" painted on a logged-in session. It also always
+  paints from real session state (even when redirect processing throws) and
+  announces the SIDE session's webId in its sol-login event — not
+  getFirstLoggedIn(), which on dk is the synthetic owner (that mis-announce
+  would have made pod adoption walk the wrong profile on fresh devices).
+- **Phone chrome pass (dk baf81b7, 2026-07-09):** the ~33px dead band above
+  the navigator pill was env(safe-area-inset-top) double-counting (the
+  Flutter shell already insets the WebView — `--dk-m-safe-top` is 0 now);
+  the mini-player is hidden on phones (see above); and pod-ops uses the
+  classic MODAL on coarse pointers (podz skips the inline podClickAction —
+  the inline panel sat right of the full-width panel, off screen; inline
+  ops stays desktop-only).
+- **KNOWN GAP (Jeff's call):** redirect-mode sessions do NOT survive app
+  restarts — no restorePreviousSession wiring on this path (Tier-1 restore
+  exists only in the popup path). After an update/restart the user must log
+  in again; the last-visited restore can land on an auth-required container
+  showing "Authentication required — please log in".
 - **Still open (2026-07-09):** adb-injected Android back (`input keyevent 4`)
   does NOT dismiss the reader/login overlay even though the on-screen ✕ does.
 - **Phone WebView is now debuggable** (`AndroidWebViewController.enableDebugging`
