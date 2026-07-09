@@ -156,6 +156,19 @@ rules against the pod data and lists any double-listed cards.
   `pod._persistEditorKeys?.()`). Probe:
   `claude/smoke-tests/verify-podz-single-panel.mjs` (27 checks, needs the app
   running with `--remote-debugging-port=9222`).
+- **SolidOS app containers live under `dk-pod/solidos-apps/`** (Jeff,
+  2026-07-09, dk 24cc2f7): chat, contacts, meetings, notes, tasks, dokieli
+  (+ dokieli's `scripts/` and `media/` satellites). In lockstep everywhere:
+  `pod-template/solidos-apps/…` (fresh pods are born with it), the five
+  menu/catalog `source` paths, the type indexes
+  (public → `solidos-apps/contacts`, private → `solidos-apps/tasks/main`),
+  and `dk-dokieli.js _folder` (BUNDLED — rebuild). Deleted from the live pod
+  the same day: `friends$.ttl` (Solidflix stub), the movies containers + their
+  privateTypeIndex registrations, and a stray root dokieli doc;
+  `test-resources/` kept. Pre-move backup:
+  `claude/backups/dk-pod-pre-solidos-apps-move-2026-07-09.tgz`. GOTCHA: CSS
+  won't DELETE non-empty containers — recursive LDP walk must resolve EVERY
+  `<iri>` in the container doc (naive `ldp:contains` regexes miss members).
 - **SolidOS pane data contracts** (bit dk 2026-07-05): the pod seeds under
   `pod-template/` (and the live pod's copies) must carry the structure the
   SolidOS panes hard-require, mirroring what the panes write on create —
@@ -163,7 +176,8 @@ rules against the pod data and lists any double-listed cards.
   missing → "Inconsistent data … No initial next pointer"), a meeting needs
   `meeting:toolList ( <the meeting itself> )` (missing → TypeError on
   `.elements`); a tracker needs `a wf:Tracker`. Fix in BOTH
-  `pod-template/{meetings,notes}/index.ttl` and `~/solid/dk-pod/{…}`.
+  `pod-template/solidos-apps/{meetings,notes}/index.ttl` and
+  `~/solid/dk-pod/solidos-apps/{…}`.
 - **dk-solidos** (`plugins/solidos/`) — SolidOS via a thin same-origin iframe
   (`sol-solidos-host.html`, created by `dk-solidos.js`) running the fixed upstream
   `<sol-solidos>` on mashlib 2.2.2; mash.css is scoped inside the iframe (zero leak).
