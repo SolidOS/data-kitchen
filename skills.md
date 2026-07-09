@@ -17,7 +17,7 @@ and plugins are described in RDF, not hard-coded.
 
 - **dk** — `/home/jeff/Dropbox/Web/solid/data-kitchen` (also `~/s`, a symlink).
   Remote: `github.com/SolidOS/data-kitchen` (push needs an explicit per-task go).
-- **sc — sol-components** (v2.7.1 in `../sol-components`; npm 2.7.0 — republish owed: live-edit/wac fixes + rdflib-2.4.0 vendor) — `../sol-components`,
+- **sc — sol-components** (v2.7.1, published on npm 2026-07-08) — `../sol-components`,
   symlinked into `node_modules/`. ~40 `sol-*` web components (web/), Node tools
   (node/), shared core (core/). **dk loads the raw `web/*.js`** — a component
   edit needs only a reload, no build. dk's own `src/` does need `npm run build`.
@@ -399,7 +399,7 @@ popup**. Two tiers:
 - **Tier 1 (non-CSS issuers):** the `sol-components` popup attempts
   `restorePreviousSession` (`prompt=none`) before the interactive login — silent
   while the refresh/IdP session lasts, else it falls back. May still hit the IdP's
-  Authorize screen. (sol-components change → **npm republish**.)
+  Authorize screen. (Published in sc 2.7.1.)
 
 Triggers: the **local pod auto-mints at startup** (owner account `me@dk.local` /
 `!secret`, zero prompt). A **remote CSS issuer is offered "Remember this sign-in?"**
