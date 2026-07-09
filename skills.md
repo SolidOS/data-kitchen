@@ -296,6 +296,18 @@ back a proxied fetch.
   (sc `web/popup-auth-callback.html`) carries the chosen issuer through the IdP
   round-trip via per-window `sessionStorage` — inrupt's `session.info` has **no
   `issuer`** field, so without this the post-login remember-offer never fires.
+- **Pod locations come from the WebID PROFILE, never from the IdP
+  (2026-07-09, Jeff-directed).** On login, sol-pod walks the WebID's
+  `pim:storage` (following `owl:sameAs`) and adds those storages to the pod
+  registry, non-silently → podz persists them (`_adoptLoginStorages`). The
+  OIDC issuer origin is a login service, NOT a pod: podz's old fresh-session
+  fallback that assigned the issuer as the right pod's `source` (which
+  registered + persisted it) is REMOVED (`_chooseFreshRightTarget`), and
+  `staleProviderRoots()` heals already-polluted lists (origin-root on a
+  storage's base domain, not itself a storage → dropped; localhost never).
+  PodRegistry has remove()/removeAll now. "Add a Pod…" itself was verified
+  working all along (adds + persists across restart) — the missing pods were
+  the profile storages.
 - **Android login = redirect, not popup (sc 2.7.2, 2026-07-09).** The Android
   System WebView has no multi-window support, so sol-login detects the
   `"; wv)"` UA token and coerces `mode="popup"` back to the classic full-page

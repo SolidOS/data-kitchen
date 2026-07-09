@@ -637,7 +637,7 @@ export class SolidFileBrowser {
       //      user's home pod when served from a Solid origin.
       //   2. Init right — if the left landed on a no-auth URL, point
       //      right at the first remote pod now known to the registry
-      //      (or a configured OIDC issuer as a fallback).
+      //      (no issuer fallback — an IdP origin is not a pod location).
       await this.elements.leftPod.initialize();
       await this._initializeRightPodWithFreshDefault();
     }
@@ -658,14 +658,16 @@ export class SolidFileBrowser {
    * Pick a starting URL for the right panel on a fresh session.
    *
    * Returns null (= use right pod's own default initialization) unless
-   * the left panel landed on a localhost URL. When it did, picks:
+   * the left panel landed on a localhost URL. When it did, picks the
+   * first pod in the shared registry (leftPod.storages) whose host isn't
+   * localhost — typically something discovery turned up.
    *
-   *   1. The first pod in the shared registry (leftPod.storages) whose
-   *      host isn't localhost — typically something discovery turned up.
-   *   2. Failing that, the first <sol-login issuers="..."> entry
-   *      whose host isn't localhost. These are the providers the user
-   *      is offered as login options; their origins make sensible
-   *      "show me this provider's root" defaults.
+   * NO issuer fallback: an OIDC issuer origin is a login service, not a
+   * pod location. Pods enter the registry from WebID-profile storages
+   * (sol-pod._adoptLoginStorages on login) or an explicit "Add a Pod…" —
+   * never from the configured IdP list. (The old fallback assigned the
+   * issuer origin as the right pod's `source`, which registered — and
+   * persisted — the IdP as a pod.)
    *
    * Note: we intentionally use a direct URL check here rather than
    * `authManager.isNoAuth(url)`. AuthManager.isNoAuth requires a
@@ -675,16 +677,7 @@ export class SolidFileBrowser {
   _chooseFreshRightTarget() {
     const leftUrl = this.elements.leftPod.rootUrl;
     if (!leftUrl || !this._isLocalUrl(leftUrl)) return null;
-
-    let target = this.elements.leftPod.storages.find(u => !this._isLocalUrl(u));
-    if (!target) {
-      const issuers = this.rightLogin?.issuers || this.leftLogin?.issuers || [];
-      for (const origin of issuers) {
-        const url = origin.endsWith('/') ? origin : origin + '/';
-        if (!this._isLocalUrl(url)) { target = url; break; }
-      }
-    }
-    return target || null;
+    return this.elements.leftPod.storages.find(u => !this._isLocalUrl(u)) || null;
   }
 
   _isLocalUrl(url) {
