@@ -8,7 +8,7 @@ the user.
 ## What dk is
 
 An Electron "pod-in-a-box": it bundles a Solid server (Pivot/CSS, mashlib 2.2.2),
-a CORS proxy, and an **RDF-first shell** for Solid & federated apps. v2.1.2, ESM.
+a CORS proxy, and an **RDF-first shell** for Solid & federated apps. v2.1.3, ESM.
 Consolidated from three former repos (electron, old data-kitchen,
 open_media_player). The UI is fully customizable through forms — menus, buttons,
 and plugins are described in RDF, not hard-coded.
@@ -485,12 +485,29 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   upgrade (`mobile/nodejs-src/main.js tarballFingerprint`). Any old
   size/timestamp sentinel mismatches a sha1, so upgrading to this code forces
   exactly one re-extract.
-- **Phone layout observations (2026-07-09, flagged not fixed):** in LANDSCAPE
-  the viewport is ~274 CSS px tall — podz's `sol-pod` (flex:1, basis 0)
-  collapses to height 0 and `.panel-footer` paints over (and eats taps in)
-  the header band, so Log in is untappable in landscape (portrait is fine).
-  Also: adb-injected Android back (`input keyevent 4`) does NOT dismiss the
-  reader/login overlay even though the on-screen ✕ does.
+- **The phone has a PERSONAL POD now (v2.1.3, 2026-07-09):** mobile never ran
+  the pod-template seeders, so the device had NO `dk-pod/profile/card#me`, no
+  `pim:storage`, no root owner `.meta` — podz said "no pods".
+  `mobile/nodejs-src/main.js` now runs the SAME
+  `seedPodTemplate`/`seedRootOwnerMeta` as desktop at every boot
+  (`pod-template.cjs` + `seed-core.cjs` + `pod-template/` staged by
+  prepare-node-project.sh); baseline in filesDir (outside nodejs-project) so
+  user pod edits survive APK upgrades. NOTE: CSS re-serializes `.meta` with
+  FULL IRIs — probe for `solid/terms#owner`, not the `solid:` prefix.
+- **podz phone layout (v2.1.3):** podz.js applies the single-panel width as
+  an INLINE `flex: 0 0 420px` with no viewport clamp — on a 360px portrait
+  phone that pushed Log in / gear OFF SCREEN behind overflow:hidden. Fix in
+  podz.css (repo AND desktop pod copy): `.app .pod-container` gets
+  `max-width: 100%` (max-width beats flex-basis → min(420, container)), and
+  a `(hover:none)` `min-height: 380px` stops the LANDSCAPE collapse (274px
+  viewport → sol-pod flexed to 0, footer painted over and ate the header's
+  taps); the dk-podz pane host scrolls (`overflow:auto`) so the scrollbar is
+  on the item. Both verified on-device (computed styles + eyeballed
+  screenshots; the login probe now GATES on the button being fully inside the
+  visual viewport — CDP taps land on layout coordinates, so only a viewport
+  check catches offscreen UI).
+- **Still open (2026-07-09):** adb-injected Android back (`input keyevent 4`)
+  does NOT dismiss the reader/login overlay even though the on-screen ✕ does.
 - **Phone WebView is now debuggable** (`AndroidWebViewController.enableDebugging`
   in `mobile/lib/main.dart`): `adb shell cat /proc/net/unix | grep
   webview_devtools_remote` → `adb forward tcp:9223 localabstract:<sock>` →

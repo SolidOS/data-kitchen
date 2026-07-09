@@ -34,6 +34,13 @@ cp "$SRC/main.js" "$SRC/untar.cjs" "$SRC/proxy.js" "$SRC/router.js" "$SRC/connec
 # proxy.js require it as a sibling ('./server-core.cjs'). Copy the REAL file (not
 # the nodejs-src symlink, which would break in the flat bundle).
 cp "$REPO/server-core.cjs" "$PROJ/"
+# Personal-pod seeder — the SAME code desktop runs (electron-config/): main.js
+# requires './pod-template.cjs', which requires './seed-core.cjs' as a sibling;
+# the template tree ships alongside. Without these the phone pod had no
+# profile/card#me / pim:storage / root owner .meta → podz said "no pods"
+# (v2.1.2 report).
+cp "$REPO/electron-config/pod-template.cjs" "$REPO/electron-config/seed-core.cjs" "$PROJ/"
+cp -rL "$REPO/pod-template" "$PROJ/pod-template"
 cp "$CREATE_APP" "$PROJ/dist/create-app.cjs"
 mkdir -p "$PROJ/patches"
 cp "$SRC/patches/"*.cjs "$PROJ/patches/"

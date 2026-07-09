@@ -186,6 +186,25 @@ async function main() {
   ensureExtract(ENGINE_TARBALL, ENGINE_DIR, '.engine-extracted', 'dk engine', true);
   ensureExtract(POD_SEED_TARBALL, POD_ROOT, '.dk-seeded', 'dk pod seed', false);
 
+  // Personal pod — the SAME seeder desktop runs at every launch
+  // (electron-config/pod-template.cjs + seed-core.cjs, staged as siblings by
+  // prepare-node-project.sh with the pod-template/ tree): plants
+  // dk-pod/profile/card#me (WebID + pim:storage), settings/inbox/public/ACLs,
+  // and the root .meta solid:owner triple podz discovery scans. Without this
+  // the phone had NO personal pod at all — podz said "no pods" (v2.1.2
+  // report). The baseline lives in filesDir, OUTSIDE nodejs-project (which
+  // APK updates wipe), so user-edited pod files survive upgrades unclobbered.
+  try {
+    const { seedPodTemplate, seedRootOwnerMeta } = require('./pod-template.cjs');
+    const origin = PUBLIC_ORIGIN.replace(/\/$/, '');
+    const baselineFile = path.resolve(PROJECT_DIR, '..', 'pod-seed-baseline.json');
+    const t = seedPodTemplate(path.join(PROJECT_DIR, 'pod-template'), POD_ROOT, origin, baselineFile);
+    const meta = seedRootOwnerMeta(POD_ROOT, origin);
+    log(`pod template: ${t.written} new, ${t.updated} updated, ${t.kept} kept; owner-meta ${meta}`);
+  } catch (e) {
+    log('pod template seed FAILED: ' + e.message);
+  }
+
   // The mashlib-databrowser config (create-app-mobile.cjs) has relative
   // filePaths like ./node_modules/mashlib/dist/databrowser.html — resolved
   // against cwd at runtime. Point cwd at the project dir so they resolve.

@@ -252,6 +252,12 @@ body.splitter-dragging * { user-select: none !important; }
 .app .pod-container {
   flex: 1 1 0;
   min-width: 0;
+  /* podz.js applies the single-panel width as an INLINE flex-basis (420px by
+     default, _applySingleWidth) with no viewport clamp — on a 360px-wide
+     phone that pushed the header's right side (Log in, gear) OFF SCREEN
+     behind overflow:hidden. max-width wins over flex-basis, so the panel is
+     effectively min(420px, container). Desktop never hits the cap. */
+  max-width: 100%;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -603,4 +609,15 @@ body.dark .app .pod-container {
 }
 .app .container.mode-single:has(#ops-panel.ops-empty) .panel-splitter::before {
   display: none;
+}
+
+/* ── phone (coarse pointer) ─────────────────────────────────────────────
+   In a short viewport (phone landscape ~274 CSS px) the pane gives the pod
+   panel so little height that sol-pod (flex:1, basis 0) collapsed to 0 and
+   the panel footer painted over — and swallowed taps for — the header band
+   (Log in was untappable). Give the panel a real working height instead:
+   the dk-podz pane host scrolls (overflow:auto), so the SCROLLBAR IS ON THE
+   ITEM, never the page. Desktop is untouched. */
+@media (hover: none) and (pointer: coarse) {
+  .app .pod-container { min-height: 380px; }
 }

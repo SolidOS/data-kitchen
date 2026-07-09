@@ -1,3 +1,14 @@
 nodejs-project
 nodejs-project/dist
 nodejs-project/patches
+nodejs-project/pod-template
+nodejs-project/pod-template/meetings
+nodejs-project/pod-template/contacts
+nodejs-project/pod-template/profile
+nodejs-project/pod-template/chat
+nodejs-project/pod-template/notes
+nodejs-project/pod-template/tasks
+nodejs-project/pod-template/settings
+nodejs-project/pod-template/inbox
+nodejs-project/pod-template/public
+nodejs-project/pod-template/public/test-tracker
