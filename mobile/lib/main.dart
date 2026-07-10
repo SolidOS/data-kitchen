@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:node_flutter/node_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -84,9 +85,19 @@ class _PodPageState extends State<PodPage> {
   WebViewController? _overlay;
   String? _overlayUrl;
 
+  // Activity-level back-key bridge: the overlay WebView (a native platform
+  // view) swallows KEYCODE_BACK before PopScope sees it, so MainActivity
+  // intercepts the key while an overlay is open (we tell it via
+  // setOverlayOpen) and asks us to close it.
+  static const MethodChannel _backChannel = MethodChannel('dk/back');
+
   @override
   void initState() {
     super.initState();
+    _backChannel.setMethodCallHandler((call) async {
+      if (call.method == 'closeOverlay') _closeOverlay();
+      return null;
+    });
     _boot();
   }
 
@@ -289,6 +300,7 @@ class _PodPageState extends State<PodPage> {
       _overlay = c;
       _overlayUrl = url;
     });
+    _backChannel.invokeMethod('setOverlayOpen', true).catchError((_) {});
   }
 
   void _closeOverlay() {
@@ -297,6 +309,7 @@ class _PodPageState extends State<PodPage> {
       _overlay = null;
       _overlayUrl = null;
     });
+    _backChannel.invokeMethod('setOverlayOpen', false).catchError((_) {});
   }
 
   // The reader overlay: a slim bar (✕ close, host, reload) over a second WebView

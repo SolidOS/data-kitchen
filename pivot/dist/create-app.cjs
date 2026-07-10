@@ -50,7 +50,7 @@ const urn_solid_server_default_DefaultUiConverter = new (require('@solid/communi
 const urn_solid_server_default_WebSocket2023Emitter = new (require('@solid/community-server').WebSocket2023Emitter)(urn_solid_server_default_WebSocketMap);
 const df_1771_1 = new (require('@solid/community-server').AbsolutePathInteractionRoute)(getVariableValue('urn:solid-server:default:variable:baseUrl'), undefined);
 const urn_solid_server_default_StreamingHttp2023Emitter = new (require('@solid/community-server').StreamingHttp2023Emitter)(urn_solid_server_default_StreamingHttpMap);
-const urn_solid_server_default_IdentifierGenerator = new (require('@solid/community-server').SuffixIdentifierGenerator)(getVariableValue('urn:solid-server:default:variable:baseUrl'));
+const urn_solid_server_default_StorageLocationStrategy = new (require('@solid/community-server').RootStorageLocationStrategy)(getVariableValue('urn:solid-server:default:variable:baseUrl'));
 const urn_solid_server_default_MetadataWriter_WwwAuth = new (require('@solid/community-server').WwwAuthMetadataWriter)('Bearer scope="openid webid"');
 const urn_solid_server_default_EmptyErrorHandler = new (require('@solid/community-server').EmptyErrorHandler)(undefined, undefined);
 const urn_solid_server_default_LoggerInitializer = new (require('@solid/community-server').LoggerInitializer)(urn_solid_server_default_LoggerFactory);
@@ -77,6 +77,7 @@ const urn_solid_server_default_TemplateEngine = new (require('@solid/community-s
   df_1757_0,
   df_1757_2
 ]);
+const urn_solid_server_default_IdentifierGenerator = new (require('@solid/community-server').SuffixIdentifierGenerator)(getVariableValue('urn:solid-server:default:variable:baseUrl'));
 const df_1947_0 = new (require('@solid/community-server').AbsolutePathInteractionRoute)(getVariableValue('urn:solid-server:default:variable:baseUrl'), undefined);
 const df_1825_0 = new (require('@solid/community-server').BasicConditionsParser)(urn_solid_server_default_ETagHandler);
 const df_1729_13 = new (require('@solid/community-server').UnsupportedMediaTypeHttpError)(undefined, undefined);
@@ -108,7 +109,7 @@ const urn_solid_server_default_StaticAssetHandler = new (require('@solid/communi
 ], getVariableValue('urn:solid-server:default:variable:baseUrl'), {
   'expires': 86400
 });
-const urn_solid_server_default_StorageLocationStrategy = new (require('@solid/community-server').PodStorageLocationStrategy)(urn_solid_server_default_IdentifierGenerator);
+const urn_solid_server_default_MetadataWriter_StorageDescription = new (require('@solid/community-server').StorageDescriptionAdvertiser)(urn_solid_server_default_StorageLocationStrategy, '.well-known/solid');
 const urn_solid_server_default_PreferenceParser = new (require('@solid/community-server').UnionPreferenceParser)([
   df_1823_0,
   df_1823_2
@@ -185,7 +186,6 @@ const urn_solid_server_default_FileSystemResourceLocker = new (require('@solid/c
 const urn_solid_server_default_WebhookRoute = new (require('@solid/community-server').RelativePathInteractionRoute)(urn_solid_server_default_NotificationRoute, '/WebhookChannel2023/', undefined);
 const urn_solid_server_default_StreamingHTTP2023Route = new (require('@solid/community-server').RelativePathInteractionRoute)(urn_solid_server_default_NotificationRoute, '/StreamingHTTPChannel2023/', undefined);
 const urn_solid_server_default_WebSocket2023Route = new (require('@solid/community-server').RelativePathInteractionRoute)(urn_solid_server_default_NotificationRoute, '/WebSocketChannel2023/', undefined);
-const urn_solid_server_default_MetadataWriter_StorageDescription = new (require('@solid/community-server').StorageDescriptionAdvertiser)(urn_solid_server_default_StorageLocationStrategy, '.well-known/solid');
 const urn_solid_server_default_QuotaValidator = new (require('@solid/community-server').QuotaValidator)(urn_solid_server_default_QuotaStrategy);
 const df_1835_4 = new (require('@solid/community-server').LinkRelObject)('http://www.w3.org/1999/02/22-rdf-syntax-ns#type', undefined, [
   'http://www.w3.org/ns/ldp#BasicContainer',
@@ -660,7 +660,7 @@ const df_1919_5 = new (require('@solid/community-server').DeleteClientCredential
 const df_1765_5 = new (require('@solid/pivot').FedcmHttpHandler)(getVariableValue('urn:solid-server:default:variable:baseUrl'), urn_solid_server_default_CookieStore, urn_solid_server_default_WebIdStore);
 const df_1911_0 = new (require('@solid/community-server').AccountPromptFactory)(urn_solid_server_default_WebIdStore, urn_solid_server_default_CookieStore, 'css-account');
 const urn_solid_server_default_CreateClientCredentialsHandler = new (require('@solid/community-server').CreateClientCredentialsHandler)(urn_solid_server_default_WebIdStore, urn_solid_server_default_ClientCredentialsStore, urn_solid_server_default_AccountClientCredentialsIdRoute);
-const df_1933_1 = new (require('@solid/community-server').UnlinkWebIdHandler)(urn_solid_server_default_WebIdStore, urn_solid_server_default_AccountWebIdLinkRoute);
+const df_1931_1 = new (require('@solid/community-server').UnlinkWebIdHandler)(urn_solid_server_default_WebIdStore, urn_solid_server_default_AccountWebIdLinkRoute);
 const urn_solid_server_default_V6MigrationInitializer = new (require('@solid/community-server').V6MigrationInitializer)({
   'setupStorage': urn_solid_server_default_V6MigrationSetupStorage,
   'versionKey': 'current-server-version',
@@ -750,7 +750,7 @@ const df_1919_6 = new (require('@solid/community-server').MethodFilterHandler)([
 const df_1917_0 = new (require('@solid/community-server').ViewInteractionHandler)(urn_solid_server_default_CreateClientCredentialsHandler);
 const urn_solid_server_default_WebIdLinkHandler = new (require('@solid/community-server').MethodFilterHandler)([
   'DELETE'
-], df_1933_1);
+], df_1931_1);
 const urn_solid_server_default_V6MigrationHandler = new (require('@solid/community-server').ConditionalHandler)(urn_solid_server_default_V6MigrationInitializer, urn_solid_server_default_SetupStorage, 'v6-migration', true, true);
 const urn_solid_server_default_WebSocket2023Router = new (require('@solid/community-server').OperationRouterHandler)({
   'baseUrl': getVariableValue('urn:solid-server:default:variable:baseUrl'),
@@ -1018,11 +1018,11 @@ const urn_solid_server_default_InteractionRouteHandler = new (require('@solid/co
   urn_solid_server_default_OidcConsentRouter,
   urn_solid_server_default_OidcForgetWebIdRouter,
   urn_solid_server_default_OidcPromptRouter,
-  urn_solid_server_default_OidcPickWebIdRouter,
   urn_solid_server_default_AccountPasswordRouter,
   urn_solid_server_default_ForgotPasswordRouter,
   urn_solid_server_default_LoginPasswordRouter,
   urn_solid_server_default_ResetPasswordRouter,
+  urn_solid_server_default_OidcPickWebIdRouter,
   urn_solid_server_default_AccountPasswordIdRouter
 ]);
 const urn_solid_server_default_NotificationReadWriteHandler = new (require('@solid/community-server').OperationRouterHandler)({

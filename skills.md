@@ -191,6 +191,34 @@ rules against the pod data and lists any double-listed cards.
   registry (`core/pod-registry.js`): `dk-solidos` subscribes to it and discovers on
   open + login (same `discoverOwnerWebIds → getStoragesFromWebIds` path as sol-pod),
   forwarding the list into the iframe via `window.solSetLocations`.
+- **Pod locations persist in RDF (2026-07-10):** the pod list behind every pod
+  selector lives as `#Locations` in `ui-data/data-kitchen-settings.ttl` — a
+  `schema:ItemList` of `schema:ListItem` entries (`schema:item` storage URL,
+  optional `schema:name` label, REQUIRED integer `schema:position`; shape:
+  sc `shapes/pod-locations.shacl` + generated `.shaclc` twin, model authored
+  by Jeff). Edited on the Settings page by a shape-driven `<sol-form>` rolodex
+  (`ui:sortedBy schema:position` → ↑/↓ arrows swap positions; Add mints the
+  membership triple + `schema:ListItem` type + next position).
+  `src/dk-locations-feed.js` is the two-way bridge: boot seeds the registry in
+  position order (silent) BEFORE podz/dk-solidos import; `sol-form-save` on the
+  settings doc re-syncs; NON-silent registry changes (discovery, user-added
+  pods) auto-persist back as new entries. podz's localStorage `sessionPods`
+  persistence is RETIRED (dk-boot one-shot `-v3` wipes the stale field; the
+  `podz_v4` blob keeps layout/selection/prefs). Ordering caveat: a reorder in
+  the form reaches the dropdowns on the next app start (the registry has no
+  reorder primitive). Diagnostic handle: `window.dkPodRegistry`. Demo: sc
+  `examples/pod-locations.html` (form + RDF + SHACL + shaclc, verified
+  headless). Probe: `claude/smoke-tests/cdp-verify-pod-locations.mjs`
+  (snapshots + restores the settings doc — rerunnable).
+- **sol-form editability model (2026-07-10, Jeff's rule):** every
+  `<sol-form>` WITHOUT the `no-edit` attribute is fully editable — fields,
+  Add/Delete, record search, reorder — everywhere, plain web included.
+  Whether an edit persists is the SERVER's call (write access), not the
+  form's. The old gates are gone: the `editable` attribute is no longer read
+  and `kitchenLoggedIn()` no longer participates. Shape+subject container
+  rolodexes (search engines, pod locations) got Add/Delete this way; their
+  Add writes the container membership triple + the `sh:class` type + the
+  next `ui:sortedBy` position (`buildAddInserts`, exported for tests).
 - **dk-dokieli** (`plugins/solidos/dk-dokieli.js`) — a standalone direct editor
   (loads the doc `.html` directly, no SolidOS browser); identity/auth via
   `dokieli-adapter.js`. Shows a spinner overlay until the doc iframe loads.
@@ -643,8 +671,32 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
      is one-shot even outside the host page.
   3. `plugins/solidos/dk-solidos.js` re-seats the host page if the frame
      ever really navigates away (capped at 3).
-- **Still open (2026-07-09):** adb-injected Android back (`input keyevent 4`)
-  does NOT dismiss the reader/login overlay even though the on-screen ✕ does.
+- **FIXED 2026-07-10: Android back dismisses the reader/login overlay.**
+  Root cause: the overlay WebView is a native platform view that swallows
+  KEYCODE_BACK before Flutter's PopScope ever sees it (measured: back
+  backgrounds the app with no overlay, does nothing with one open).
+  `MainActivity.kt` now intercepts in `dispatchKeyEvent` while an overlay is
+  up (Dart flags it over the `dk/back` MethodChannel) and asks Dart to close
+  it; no overlay → normal back. S23-verified both ways (uiautomator view dump
+  — the lingering CDP target after close is just the undisposed controller,
+  not a visible overlay).
+- **FIXED 2026-07-10 (code shipped; positive test needs a real login):
+  phone sessions restore across app restarts.** sol-login's redirect-mode
+  boot only completed in-flight logins; now `handleIncomingRedirect()` also
+  does a Tier-1 boot restore — it rebuilds the stored session (deterministic
+  `sol_<tag>_<origin>` id via the persisted side-origins) and calls
+  `handleIncomingRedirect({restorePreviousSession:true})`: silent via refresh
+  token in the common case; a failed prompt=none bounce is one-shot (the
+  wormhole-guard loop breaker clears dead state). Popup mode (desktop)
+  untouched. Test: log in on the phone, force-stop, reopen → still signed in.
+- **FIXED 2026-07-10: the StorageDescriptionAdvertiser "Unable to find
+  storage root" log error** on every request to `/`: the config imported
+  `css:config/storage/location/pod.json` (storages = pods) while dk serves
+  the whole tree with root at `/`. Now `root.json` (the base URL is the
+  storage root). One line in `pivot-config/no-auth.json` + BOTH compiled
+  configs regenerated (`bash pivot/build-compiled-config.sh` and `… mobile` —
+  the compile takes several minutes; run in background). Verified on a
+  standalone server: zero advertiser errors, containers serve normally.
 - **Phone WebView is now debuggable** (`AndroidWebViewController.enableDebugging`
   in `mobile/lib/main.dart`): `adb shell cat /proc/net/unix | grep
   webview_devtools_remote` → `adb forward tcp:9223 localabstract:<sock>` →

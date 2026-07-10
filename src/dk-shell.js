@@ -21,6 +21,12 @@
     await interop.ready;
   }
 
+  // Pod locations: seed the shared pod registry from settings RDF
+  // (#Locations, schema:position order) BEFORE podz / dk-solidos mount, so
+  // their discovery results append after the configured list instead of
+  // racing it. Two-way: the feed also persists runtime discoveries back
+  // into the settings doc.
+  await import('./dk-locations-feed.js');
   await import('../plugins/podz/dk-podz.js');
   await import('../plugins/solidos/dk-solidos.js');
   await import('../plugins/solidos/dk-dokieli.js');

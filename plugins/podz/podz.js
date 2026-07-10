@@ -127,12 +127,9 @@ export class SolidFileBrowser {
     this._wirePodEvents('left', this.elements.leftPod);
     this._wirePodEvents('right', this.elements.rightPod);
 
-    // The pods own the shared pod registry; persist it whenever it grows.
-    // The event bubbles from either pod (and may fire once per pod) —
-    // one document-level listener and an idempotent save cover it.
-    document.addEventListener('sol-pod-pods-changed', (e) => {
-      this.stateManager.saveSessionPods(e.detail.pods || []);
-    });
+    // Pod-list persistence lives in src/dk-locations-feed.js now: the shared
+    // registry syncs two-way with #Locations in the settings RDF, so podz
+    // neither saves nor seeds the list itself.
 
     // Wire cross-panel drag-and-drop
     this._wireDropZone('left', document.getElementById('left-panel'));
@@ -623,10 +620,8 @@ export class SolidFileBrowser {
     await this.leftLogin.initialize();
     await this.rightLogin.initialize();
 
-    // Seed the pods' shared registry with the persisted pod list before
-    // they initialize — discovery then adds to it. Both pods are in
-    // sol-pod's default group, so seeding one feeds both.
-    this.elements.leftPod.seedPods(this.stateManager.loadSessionPods());
+    // The shared registry is already seeded from settings RDF (#Locations)
+    // by dk-locations-feed before podz mounts — discovery adds to it.
 
     const oauthState = this.stateManager.load();
     const restoreFrom = oauthState || this.stateManager.loadPodSelection();

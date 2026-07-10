@@ -3,6 +3,7 @@
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix ent: <http://www.wikidata.org/entity/>.
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
+@prefix schema: <http://schema.org/>.
 
 <> a ent:Q1193846; foaf:primaryTopic :Settings.
 
@@ -13,3 +14,24 @@
     solid:oidcIssuer
         <https://solidcommunity.net>, <https://solidweb.me>,
         <https://solidweb.org>, <https://login.inrupt.com>.
+
+# Pod locations: the ordered storage list feeding every pod selector (podz
+# Pod Browser, SolidOS Locations dropdown). Edited on the Settings page via
+# the pod-locations.shacl rolodex; synced into the runtime pod registry by
+# src/dk-locations-feed.js, which also appends runtime-discovered pods here.
+# schema:item URLs are RELATIVE so they resolve against the live origin
+# (<../../> = /dk-pod/, <../../../> = the server root /).
+:Locations a schema:ItemList;
+    schema:name "Pod locations";
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :loc1, :loc2.
+
+:loc1 a schema:ListItem;
+    schema:item <../../>;
+    schema:name "Data Kitchen Pod";
+    schema:position 1.
+
+:loc2 a schema:ListItem;
+    schema:item <../../../>;
+    schema:name "Local Root";
+    schema:position 2.

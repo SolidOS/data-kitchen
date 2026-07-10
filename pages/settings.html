@@ -18,6 +18,17 @@
     <dk-issuers-editor
         source="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Settings"
     ></dk-issuers-editor>
+    <!-- Pod locations: the ordered storage list feeding every pod selector
+         (podz Pod Browser, SolidOS Locations). Shape-driven rolodex over
+         #Locations in the same settings doc — reorder with the ↑/↓ arrows
+         (schema:position); src/dk-locations-feed.js syncs the list into the
+         shared runtime pod registry. -->
+    <sol-form
+        data-settings-skip
+        subject="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Locations"
+        save-to="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Locations"
+        shape="node_modules/sol-components/shapes/pod-locations.shacl"
+    ></sol-form>
   </section>
 
   <!-- Per-plugin settings, RDF-driven and gated on catalog "in-use" status:

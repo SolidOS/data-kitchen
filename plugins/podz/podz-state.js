@@ -10,11 +10,10 @@
  *                                because its lifetime is fundamentally
  *                                different.
  *
- * On first load after upgrade, the four legacy keys (podzPanelLayout,
- * podzPodSelection, podz_session_pods, solidFileBrowserPrefs_v3) are
- * read once and merged into the unified blob. Legacy keys are not
- * deleted — a one-version overlap lets users downgrade without losing
- * state.
+ * On first load after upgrade, the three legacy keys (podzPanelLayout,
+ * podzPodSelection, solidFileBrowserPrefs_v3) are read once and merged
+ * into the unified blob. Legacy keys are not deleted — a one-version
+ * overlap lets users downgrade without losing state.
  */
 
 const STORAGE_KEY = 'podz_v4';
@@ -23,7 +22,6 @@ const OAUTH_KEY = 'solidFileBrowserState';
 const LEGACY_KEYS = {
   layout:      'podzPanelLayout',
   selection:   'podzPodSelection',
-  sessionPods: 'podz_session_pods',
   prefs:       'solidFileBrowserPrefs_v3',
 };
 
@@ -135,15 +133,8 @@ export class StateManager {
   }
   loadPodSelection() { return this._blob.selection ? { ...this._blob.selection } : null; }
 
-  // ── Session pods list ──────────────────────────────────────────────
-
-  saveSessionPods(arr) {
-    this._blob.sessionPods = Array.isArray(arr) ? [...arr] : [];
-    this._save();
-  }
-  loadSessionPods() {
-    return Array.isArray(this._blob.sessionPods) ? [...this._blob.sessionPods] : [];
-  }
+  // (The session pods list used to persist here; the pod list now lives in
+  // settings RDF — #Locations — synced by src/dk-locations-feed.js.)
 
   // ── User preferences ───────────────────────────────────────────────
 

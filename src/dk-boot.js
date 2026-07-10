@@ -18,13 +18,13 @@
   } catch (e) {}
 })();
 
-// One-shot: wipe podz's persisted pod-registry seed AND the last-viewed pod
-// selection so the next dk load takes podz's fresh-session path
-// (leftPod.initialize() with no `source=` and an empty registry →
-// sol-pod.discover() actually runs). Bump the flag (v2 → v3 → …) to re-clear.
+// One-shot: wipe podz's RETIRED sessionPods field (the pod list persists in
+// settings RDF now — #Locations, synced by dk-locations-feed) and the
+// last-viewed pod selection so the next dk load takes podz's fresh-session
+// path. Bump the flag (v3 → v4 → …) to re-clear.
 (function () {
   try {
-    if (localStorage.getItem('dk-cleared-session-pods-v2')) return;
+    if (localStorage.getItem('dk-cleared-session-pods-v3')) return;
     var raw = localStorage.getItem('podz_v4');
     if (raw) {
       var blob = JSON.parse(raw);
@@ -35,6 +35,6 @@
     // Legacy keys, in case an old podz version still wrote them.
     localStorage.removeItem('podz_session_pods');
     localStorage.removeItem('podzPodSelection');
-    localStorage.setItem('dk-cleared-session-pods-v2', '1');
+    localStorage.setItem('dk-cleared-session-pods-v3', '1');
   } catch (e) {}
 })();
