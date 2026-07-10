@@ -8,7 +8,7 @@ the user.
 ## What dk is
 
 An Electron "pod-in-a-box": it bundles a Solid server (Pivot/CSS, mashlib 2.2.2),
-a CORS proxy, and an **RDF-first shell** for Solid & federated apps. v2.1.3, ESM.
+a CORS proxy, and an **RDF-first shell** for Solid & federated apps. v2.1.4, ESM.
 Consolidated from three former repos (electron, old data-kitchen,
 open_media_player). The UI is fully customizable through forms — menus, buttons,
 and plugins are described in RDF, not hard-coded.
@@ -375,6 +375,17 @@ comments stripped — grep it for code fragments, not comments.
   need `wine` (the zip needs none — `win.signAndEditExecutable:false` skips the
   wine-only rcedit step). Real installers + signing build on their native OS / CI.
   iOS isn't wired (the vendored `node_flutter` is Android-only — see `mobile/`).
+- **Desktop packaging: `server-core.cjs` MUST be in build.files (v2.1.4,
+  2026-07-10 — the Win11 "port 8000 never came up" report):** the 2026-07-02
+  de-fork moved shared router/proxy code to repo-root `server-core.cjs`, but
+  electron-builder's `build.files` never listed it — every packaged desktop
+  build v2.1.0–v2.1.3 shipped a proxy+router that died at require time
+  (`Cannot find module '../server-core.cjs'`), so ports 8000/8001 never came
+  up while CSS on 8010 ran fine. Dev runs (repo tree) and Android
+  (prepare.sh copies it) never showed it. Fixed by adding `server-core.cjs`
+  to `build.files`; packaged zips are now checked for the file before
+  release. Lesson: a root-level shared module is invisible to every `dir/**`
+  glob — launch-test the PACKAGED artifact, not just `npm start`.
 - **Startup diagnostics (v2.1.2, 2026-07-09 — the "Windows blank page" report):**
   `electron-config/log.cjs` mirrors all console output to `<userData>/dk.log`
   (previous run kept once as `dk.log.old`) — a packaged app has no terminal, so
@@ -610,16 +621,28 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   - Deferred/parked from the plan: landscape music chrome; a phone home
     for time/weather/shell sign-in (Jeff's call). Plan + survey:
     `claude/plans/android-ui-phone-polish-plan.md`.
-- **OPEN BUG (pre-existing, diagnosed 2026-07-09): SolidOS iframe
-  navigates itself off the host page on Android.** ~1.5s after a clean
-  boot (host + sol-solidos + bar all present at 600ms) the iframe
-  NAVIGATES to `http://localhost:8000/dk-pod/` — CSS's own container
-  data-browser page — discarding the wormhole-guarded host and the bar.
-  Mobile-UA path only (desktop/emulation never navigate, so all prior
-  checks passed). User sees a functional mashlib listing, but NO dk
-  location bar. The sc re-seat watcher can't help across a real
-  navigation. Needs its own investigation + go. Repro: device CDP
-  timeline poll (see the android-ui-phone-polish plan).
+- **FIXED 2026-07-10 (v2.1.4): the Android SolidOS navigate-away /
+  refresh-loop bug.** Root cause was AUTH, not layout: the phone's
+  redirect-flow login leaves a solid-client-authn session
+  (`solidClientAuthn:currentSession` / `currentUrl`) in the shared
+  `localhost:8000` localStorage; mashlib's bundled authn inside the
+  SolidOS iframe "restored" it with a real full-frame redirect to the
+  IdP (`prompt=none`). When the IdP answered `interaction_required`, the
+  bounce (`index.html?error=…`) hit the wormhole guard → `/dk-pod/` →
+  the mashlib databrowser there re-attempted → a ~1.1s refresh loop.
+  Desktop never reproduces because its logins live in separate Electron
+  storage partitions. Three-leg fix, all S23-verified via
+  `claude/smoke-tests/cdp-diagnose-solidos-refresh.mjs` (zero frame
+  navigations, bar mounted, shim active):
+  1. `plugins/solidos/sol-solidos-host.html` shadows `localStorage` for
+     that document only, hiding `solidClientAuthn:*` / `oidc.*` keys from
+     mashlib (dk still shares auth via adoptAuth; the shell's storage is
+     untouched).
+  2. `src/dk-wormhole-guard.js` clears the dead session keys when a
+     failed silent re-auth bounces in with `?error=…&state=…` — the loop
+     is one-shot even outside the host page.
+  3. `plugins/solidos/dk-solidos.js` re-seats the host page if the frame
+     ever really navigates away (capped at 3).
 - **Still open (2026-07-09):** adb-injected Android back (`input keyevent 4`)
   does NOT dismiss the reader/login overlay even though the on-screen ✕ does.
 - **Phone WebView is now debuggable** (`AndroidWebViewController.enableDebugging`

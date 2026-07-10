@@ -34,10 +34,26 @@ class DkSolidos extends HTMLElement {
     const bar = this.hasAttribute('has-location-bar')
       && this.getAttribute('has-location-bar') !== 'false' ? '&bar=1' : '';
     iframe.src = `${HOST_PAGE}?source=${encodeURIComponent(this._subject())}${bar}`;
+    this._hostSrc = iframe.src;
     this._iframe = iframe;
     this.appendChild(iframe);
 
-    iframe.addEventListener('load', () => { this._shareAuth(); this._pushLocations(); });
+    iframe.addEventListener('load', () => {
+      // Auth/SolidOS code inside the frame can REALLY navigate it off the host
+      // page (the GotoSubject guard only diverts subjects, not navigations) —
+      // seen on Android, where mashlib's session restore redirected the frame
+      // to the IdP. A frame off the host page has lost the location bar and
+      // the wormhole guard, so re-seat the host (capped: a boot that keeps
+      // escaping must not ping-pong forever).
+      let away = false;
+      try { away = !/\/sol-solidos-host\.html$/.test(iframe.contentWindow.location.pathname); }
+      catch (_) { away = true; }     // cross-origin — certainly not the host page
+      if (away) {
+        if ((this._reseats = (this._reseats || 0) + 1) <= 3) iframe.src = this._hostSrc;
+        return;
+      }
+      this._shareAuth(); this._pushLocations();
+    });
     this._onAuthChange = () => { this._shareAuth(); this._discoverLocations(); };
     document.addEventListener('sol-login', this._onAuthChange);
     document.addEventListener('sol-logout', this._onAuthChange);

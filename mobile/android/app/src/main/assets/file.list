@@ -6,6 +6,12 @@ nodejs-project/package.json
 nodejs-project/patches/marked.cjs
 nodejs-project/pod-template/robots.txt.acl
 nodejs-project/pod-template/README.acl
+nodejs-project/pod-template/test-resources/markdown.md
+nodejs-project/pod-template/test-resources/html.html
+nodejs-project/pod-template/test-resources/mermaid.mmd$.bin
+nodejs-project/pod-template/test-resources/turtle.ttl
+nodejs-project/pod-template/test-resources/turtle.ttl.acl
+nodejs-project/pod-template/test-resources/.acl
 nodejs-project/pod-template/.meta
 nodejs-project/pod-template/profile/card$.ttl
 nodejs-project/pod-template/profile/card.acl

@@ -2,6 +2,7 @@ nodejs-project
 nodejs-project/dist
 nodejs-project/patches
 nodejs-project/pod-template
+nodejs-project/pod-template/test-resources
 nodejs-project/pod-template/profile
 nodejs-project/pod-template/settings
 nodejs-project/pod-template/inbox

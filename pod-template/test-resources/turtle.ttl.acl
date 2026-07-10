@@ -1,0 +1,21 @@
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#public>
+    a acl:Authorization;
+    acl:accessTo <http://localhost:3000/data-kitchen-user/test-resources/turtle.ttl>;
+    acl:mode acl:Read;
+    acl:agentClass foaf:Agent.
+
+<#authenticated>
+    a acl:Authorization;
+    acl:accessTo <http://localhost:3000/data-kitchen-user/test-resources/turtle.ttl>;
+    acl:mode acl:Read;
+    acl:agentClass acl:AuthenticatedAgent.
+
+<#agent1>
+    a acl:Authorization;
+    acl:accessTo <http://localhost:3000/data-kitchen-user/test-resources/turtle.ttl>;
+    acl:mode acl:Read, acl:Append, acl:Write, acl:Control;
+    acl:agent <http://localhost:3000/data-kitchen-user/profile/card#me>.
+

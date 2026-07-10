@@ -6,6 +6,41 @@
   <title>SolidOS host</title>
   <link rel="icon" href="data:,">
 
+  <script>
+    // mashlib's bundled solid-client-authn must NEVER see the shell's login
+    // state. On Android the whole app shares one localhost origin, and the
+    // shell's redirect-flow login leaves solidClientAuthn:* / oidc.* session
+    // state in localStorage; mashlib's boot would "restore" that session with
+    // a real full-frame redirect to the IdP, navigating SolidOS away (the
+    // phone-only refresh loop — 2026-07-10). Shadow localStorage for THIS
+    // document only, hiding those keys: the shell's storage is untouched, and
+    // the panes still get dk's session via adoptAuth below. Must run before
+    // any other script so nothing captures the real storage first.
+    (function () {
+      const HIDE = /^(solidClientAuthn:|oidc\.)/;
+      const real = window.localStorage;
+      const visible = () => {
+        const ks = [];
+        for (let i = 0; i < real.length; i++) {
+          const k = real.key(i);
+          if (!HIDE.test(k)) ks.push(k);
+        }
+        return ks;
+      };
+      const shim = {
+        getItem: (k) => (HIDE.test(String(k)) ? null : real.getItem(k)),
+        setItem: (k, v) => { if (!HIDE.test(String(k))) real.setItem(k, v); },
+        removeItem: (k) => { if (!HIDE.test(String(k))) real.removeItem(k); },
+        key: (i) => visible()[i] ?? null,
+        clear: () => { for (const k of visible()) real.removeItem(k); },
+        get length() { return visible().length; },
+      };
+      try {
+        Object.defineProperty(window, 'localStorage', { value: shim, configurable: true });
+      } catch (_) { /* platform refused — fall back to the real storage */ }
+    })();
+  </script>
+
   <!-- mashlib's own stylesheet. It lives INSIDE this iframe, so its global
        selectors (html, body, a, table, button) style only this document — they
        cannot leak into the dk chrome. This is the whole point of the iframe:

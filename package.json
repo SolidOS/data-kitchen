@@ -1,7 +1,7 @@
 {
   "name": "data-kitchen",
   "author": "Jeff Zucker <dubzed@gmail.com>",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "type": "module",
   "description": "Electron app packaging a Solid server (pivot), a CORS proxy, and a shell for Solid & federated apps.",
   "homepage": "https://github.com/solidOS/data-kitchen",
@@ -60,6 +60,7 @@
       "electron-config/**",
       "proxy/**",
       "router/**",
+      "server-core.cjs",
       "pivot-config/**",
       "pivot/**",
       "index.html",
