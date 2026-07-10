@@ -554,6 +554,72 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   exists only in the popup path). After an update/restart the user must log
   in again; the last-visited restore can land on an auth-required container
   showing "Authentication required — please log in".
+- **Phone-polish batch (2026-07-09 evening, Jeff GO'd item-by-item then "all
+  the others"; ALL S23-verified via `claude/smoke-tests/
+  cdp-verify-phone-batch{,-device}.mjs` + eyeballed screenshots in
+  `claude/plans/android-ui-survey/`):** every fix coarse-gated
+  (`hover:none`+`pointer:coarse`), desktop regression-probed unchanged.
+  - **sol-wac** = stacked per-who cards on phone: each mode cell's checkbox
+    now sits in a `label.acl-mode-chip` with a `span.acl-mode-tag` (hidden
+    on desktop; the 44px chip face on phone — CSS-only re-lay of the same
+    table DOM, `input:checked + tag` styling, no `:has()`).
+  - **sol-login dropdown**: viewport cap + 44px wrapping rows (the 44ch
+    min-width floors beat the 90vw max-width — min-width WINS over
+    max-width; that plus content-box was the whole overflow).
+  - **sol-live-edit**: phone stacks editor OVER preview 50/50, resizer
+    (horizontal drag math) hidden; sol-modal ✕ 44px under coarse.
+  - **core/anchor-place.js clamps X** now (right-aligned panels never go
+    x<0 — was the calendar at x=−146 over the dock); sol-calendar phone
+    rows wrap (date+time line, `.cal-row-body` full-width beneath).
+  - **sol-search**: panel viewport cap, 44px controls; input bg moved to
+    the `--input-*` tokens (standing rule — UNGATED, desktop too).
+  - **sol-pod**: 44px tree rows + item/crumb gears. **sol-feed**: phone
+    title `max-height: calc(3lh + .55rem)` — line-clamp only paints the
+    ellipsis, the CLIP is the box bottom, so any box taller than 3 lines
+    shows a sliver of line 4 (cap = lines + TOP padding only).
+  - **sol-tabs.setNavLabel(text)**: host names a non-room screen on the
+    phone pill; cleared by the next switchTab. dk wires it to the ☰ menu
+    pane (`sol-tab-activate` names it, `hideMenuPane` clears). NOTE:
+    Settings/Customize mount into `#dk-menu-pane` (index.html `data-for`
+    claims) — NOT a conjured modal.
+  - **dk**: podz ◫◫ hidden on coarse PORTRAIT (portrait dual = 142px
+    panels); help/dk{,-owner}.html copy is pointer-conditional
+    (`.dk-mouse`/`.dk-touch` spans, media-gated); sol-menu-manager's adder
+    placeholder says "Tap a plugin below…" on coarse; omp tracklist
+    zebra/selected/playing paint the ROW (tds transparent) on the phone
+    grid (omp 0.3.2).
+  - **sol-solidos bar**: two rows on phone (Home/Back/Locations over
+    URL+Go); host page (`sol-solidos-host.html`, POD copy is what runs)
+    un-floors mashlib's 375px body min-width + pads outline rows. sc also
+    gained defensive bar survival: `_barEl` handle + `_keepBarAlive()`
+    re-seats the wired bar at body level if solid-ui's mobile layout
+    rebuilds the body, bar CSS selectors location-independent, `_fitBar`
+    document fallbacks.
+  - **dk-dokieli** injects coarse-gated overflow guards + 44px buttons
+    into its same-origin doc iframe (`_injectPhoneCss`; best-effort —
+    full editor chrome pending live DO init).
+  - **HARD LESSON (bit twice, sol-search + sol-login, the latter only ON
+    DEVICE):** a viewport `max-width` cap on a padded box MUST set
+    `box-sizing: border-box` — content-box lets padding+border push past
+    the cap; and device fonts differ from emulation, so a box that stays
+    under its cap in emulation can hit it on the phone. Also: CDP
+    **emulation dies with the session that set it** — measurements from a
+    second WS connection are hybrid garbage; and iframe module boot can
+    LOSE a cold-boot race after an engine re-extract (retry via src
+    re-set).
+  - Deferred/parked from the plan: landscape music chrome; a phone home
+    for time/weather/shell sign-in (Jeff's call). Plan + survey:
+    `claude/plans/android-ui-phone-polish-plan.md`.
+- **OPEN BUG (pre-existing, diagnosed 2026-07-09): SolidOS iframe
+  navigates itself off the host page on Android.** ~1.5s after a clean
+  boot (host + sol-solidos + bar all present at 600ms) the iframe
+  NAVIGATES to `http://localhost:8000/dk-pod/` — CSS's own container
+  data-browser page — discarding the wormhole-guarded host and the bar.
+  Mobile-UA path only (desktop/emulation never navigate, so all prior
+  checks passed). User sees a functional mashlib listing, but NO dk
+  location bar. The sc re-seat watcher can't help across a real
+  navigation. Needs its own investigation + go. Repro: device CDP
+  timeline poll (see the android-ui-phone-polish plan).
 - **Still open (2026-07-09):** adb-injected Android back (`input keyevent 4`)
   does NOT dismiss the reader/login overlay even though the on-screen ✕ does.
 - **Phone WebView is now debuggable** (`AndroidWebViewController.enableDebugging`

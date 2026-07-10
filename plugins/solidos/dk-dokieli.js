@@ -73,7 +73,7 @@ class DkDokieli extends HTMLElement {
       // Listener added AFTER src is set so the initial about:blank load can't
       // dismiss the spinner before the real document has loaded.
       iframe.src = uri;
-      iframe.addEventListener('load', hideSpinner, { once: true });
+      iframe.addEventListener('load', () => { hideSpinner(); this._injectPhoneCss(); }, { once: true });
     } else {
       iframe.srcdoc = '<p style="font:16px system-ui;padding:2rem">Could not create a dokieli document.</p>';
       hideSpinner();
@@ -81,6 +81,32 @@ class DkDokieli extends HTMLElement {
   }
 
   _fetch(url, init) { return (window.dkFetch || ((u, o) => fetch(u, o)))(url, init); }
+
+  // Best-effort phone fit for dokieli's editor chrome (third-party CSS we
+  // don't control): the doc iframe is same-origin (a pod document), so the
+  // host can drop a coarse-gated style into it. Overflow guards + 44px
+  // targets only — desktop-in-iframe is untouched by the media query.
+  _injectPhoneCss() {
+    try {
+      const doc = this._iframe?.contentDocument;
+      if (!doc || doc.getElementById('dk-dokieli-phone-css')) return;
+      const st = doc.createElement('style');
+      st.id = 'dk-dokieli-phone-css';
+      st.textContent = `
+        @media (hover: none) and (pointer: coarse) {
+          aside.do { max-width: 100vw !important; box-sizing: border-box; }
+          .do fieldset, .do details, .do dl {
+            max-width: calc(100vw - 1rem) !important; min-width: 0 !important;
+          }
+          .do input, .do select, .do textarea {
+            max-width: 100% !important; min-width: 0 !important;
+          }
+          .do button { min-height: 44px; min-width: 44px; }
+          #document-menu { max-width: 100vw !important; }
+        }`;
+      (doc.head || doc.documentElement).appendChild(st);
+    } catch (_) { /* cross-origin or torn-down frame — skip quietly */ }
+  }
 
   async _exists(uri) {
     try { const r = await this._fetch(uri, { method: 'HEAD' }); return !!(r && r.ok); }

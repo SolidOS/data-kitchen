@@ -10,32 +10,42 @@
     border-top: 1px solid var(--ia-border, #2a2d33);
     font-size: .94em; opacity: .85;
   }
+  /* Pointer-conditional copy: .dk-mouse shows on desktop, .dk-touch on
+     phones (coarse pointer) — same doc, wording matches the device. */
+  .dk-help-doc .dk-touch { display: none; }
+  @media (hover: none) and (pointer: coarse) {
+    .dk-help-doc .dk-mouse { display: none; }
+    .dk-help-doc .dk-touch { display: revert; }
+  }
 </style>
 <div class="dk-help-doc">
   <p>You're signed in — as well as browsing, you can curate everything here.</p>
 
   <h3>📰 News</h3>
   <ul>
-    <li>Pick a <strong>topic</strong>, then a <strong>source</strong>, to read its latest stories; click an article to open it in a reader.</li>
-    <li>Rename a topic, drag a source between topics to re-file it, <strong>＋</strong> add a feed, or <strong>✕</strong> remove one. Use <strong>⋮ → View deleted</strong> to restore.</li>
+    <li>Pick a <strong>topic</strong>, then a <strong>source</strong>, to read its latest stories; <span class="dk-mouse">click</span><span class="dk-touch">tap</span> an article to open it in a reader.</li>
+    <li class="dk-mouse">Rename a topic, drag a source between topics to re-file it, <strong>＋</strong> add a feed, or <strong>✕</strong> remove one. Use <strong>⋮ → View deleted</strong> to restore.</li>
+    <li class="dk-touch">Rename a topic, <strong>＋</strong> add a feed, or <strong>✕</strong> remove one. Use <strong>⋮ → View deleted</strong> to restore.</li>
   </ul>
 
   <h3>🎵 Music &amp; 🎬 Movies</h3>
   <ul>
-    <li>Browse by genre / film-type → artist / collection → album → track, or search the Internet Archive and click to play.</li>
+    <li>Browse by genre / film-type → artist / collection → album → track, or search the Internet Archive and <span class="dk-mouse">click</span><span class="dk-touch">tap</span> to play.</li>
     <li>In the music tracklist, <strong>🎲</strong> shuffles the play order and <strong>🧹</strong> clears the whole tracklist.</li>
-    <li>Keep listening with the mini-player while you visit other tabs.</li>
+    <li class="dk-mouse">Keep listening with the mini-player while you visit other tabs.</li>
+    <li class="dk-touch">Music keeps playing while you visit other tabs.</li>
   </ul>
 
   <h3>🖼 Images</h3>
   <ul>
-    <li>Drill <strong>Library → Topic → Collection</strong>, then scroll the grid; click a picture for the full-size view.</li>
+    <li>Drill <strong>Library → Topic → Collection</strong>, then scroll the grid; <span class="dk-mouse">click</span><span class="dk-touch">tap</span> a picture for the full-size view.</li>
     <li><strong>＋</strong> add your own topics and collections.</li>
   </ul>
 
   <h3>🗂 Data Kitchen Pod Browser &amp; <img src="https://solidproject.org/assets/img/solid-emblem.svg" alt="SolidOS" style="height:1em;vertical-align:-0.15em"> SolidOS</h3>
   <ul>
-    <li><strong>Data Kitchen Pod Browser</strong>: sign in to a pod on either side and drag resources between panes.</li>
+    <li class="dk-mouse"><strong>Data Kitchen Pod Browser</strong>: sign in to a pod on either side and drag resources between panes.</li>
+    <li class="dk-touch"><strong>Data Kitchen Pod Browser</strong>: sign in, then tap an item's gear for its operations (view, copy, rename, permissions).</li>
     <li><strong>SolidOS</strong>: the pod tree's Solid logo opens any resource in the data browser; your sign-in is shared into the browser pane.</li>
   </ul>
 

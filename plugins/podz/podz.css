@@ -621,3 +621,10 @@ body.dark .app .pod-container {
 @media (hover: none) and (pointer: coarse) {
   .app .pod-container { min-height: 380px; }
 }
+
+/* Phone portrait: two side-by-side browsers get ~142px each — filenames
+   wrap letter-by-letter. Hide the ◫◫ dual-mode toggle; single-panel is
+   the phone mode (landscape keeps the choice, desktop is untouched). */
+@media (hover: none) and (pointer: coarse) and (orientation: portrait) {
+  .app .mode-toggle-btn { display: none; }
+}

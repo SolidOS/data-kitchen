@@ -116,6 +116,10 @@
           attrs: [['source', './dk-pod/dk/pages/settings.html'], ['trusted', '']],
         });
       }
+      // No pill wiring needed here: #dk-menu-pane claims MoreSettings via
+      // data-for, so displayItem mounts into the pane — whose
+      // sol-tab-activate handler names it on the phone pill, and
+      // hideMenuPane/switchTab restore the room name on close.
     }
 
     // sol-tabs pane ↔ panel-key bridge.
@@ -177,6 +181,9 @@
       const menuPane = document.getElementById('dk-menu-pane');
       if (menuPane) menuPane.hidden = true;
       try { localStorage.removeItem('dk:menu-pane-item'); } catch {}
+      // Pane gone → the phone navigator pill goes back to naming the active
+      // room (no-op on desktop, where sol-tabs has no pill).
+      solTabs?.setNavLabel?.(null);
     }
     function dismissPanes() {
       document.querySelector('.omp-help-launch')?.close?.();
@@ -568,6 +575,9 @@
         menuPane.addEventListener('sol-tab-activate', (e) => {
           menuPane.hidden = false;
           try { localStorage.setItem('dk:menu-pane-item', e.detail?.name || ''); } catch {}
+          // The pane now covers the room — name it on the phone navigator
+          // pill (Customize etc.); cleared again by hideMenuPane/switchTab.
+          if (e.detail?.name) solTabs?.setNavLabel?.(e.detail.name);
         });
       }
       // Restore the pane item from before the reload. The ☰ dropdown loads

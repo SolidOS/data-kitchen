@@ -10,6 +10,13 @@
     border-top: 1px solid var(--ia-border, #2a2d33);
     font-size: .94em; opacity: .85;
   }
+  /* Pointer-conditional copy: .dk-mouse shows on desktop, .dk-touch on
+     phones (coarse pointer) — same doc, wording matches the device. */
+  .dk-help-doc .dk-touch { display: none; }
+  @media (hover: none) and (pointer: coarse) {
+    .dk-help-doc .dk-mouse { display: none; }
+    .dk-help-doc .dk-touch { display: revert; }
+  }
 </style>
 <div class="dk-help-doc">
   <p>Welcome to <strong>data-kitchen</strong> — one shell, many plugins, one
@@ -24,27 +31,30 @@
   <h3>📰 News</h3>
   <ul>
     <li>Pick a <strong>topic</strong> across the top, then a <strong>source</strong> below it to see its latest stories.</li>
-    <li>Click any article to open it in a reader.</li>
+    <li><span class="dk-mouse">Click</span><span class="dk-touch">Tap</span> any article to open it in a reader.</li>
   </ul>
 
   <h3>🎵 Music &amp; 🎬 Movies</h3>
   <ul>
     <li>Browse by genre / film-type → artist / collection → album → track.</li>
-    <li>Search the Internet Archive and click to play.</li>
+    <li>Search the Internet Archive and <span class="dk-mouse">click</span><span class="dk-touch">tap</span> to play.</li>
     <li>In the music tracklist, <strong>🎲</strong> shuffles the play order and <strong>🧹</strong> clears the whole tracklist.</li>
-    <li>Keep listening with the mini-player while you visit other tabs.</li>
+    <li class="dk-mouse">Keep listening with the mini-player while you visit other tabs.</li>
+    <li class="dk-touch">Music keeps playing while you visit other tabs.</li>
   </ul>
 
   <h3>🖼 Images</h3>
   <ul>
     <li>Drill <strong>Library → Topic → Collection</strong>, then scroll the picture grid.</li>
-    <li>Click a picture for the full-size view — use ← → to page, click to zoom to 100%, or open it on Wikimedia Commons.</li>
+    <li class="dk-mouse">Click a picture for the full-size view — use ← → to page, click to zoom to 100%, or open it on Wikimedia Commons.</li>
+    <li class="dk-touch">Tap a picture for the full-size view — swipe to page, or open it on Wikimedia Commons.</li>
   </ul>
 
   <h3>🗂 Data Kitchen Pod Browser &amp; <img src="https://solidproject.org/assets/img/solid-emblem.svg" alt="SolidOS" style="height:1em;vertical-align:-0.15em"> SolidOS</h3>
   <ul>
-    <li><strong>Data Kitchen Pod Browser</strong>: a two-pane Solid pod browser — sign in to a pod on either side and drag resources between them.</li>
-    <li><strong>SolidOS</strong>: a pod tree on the left, the SolidOS data browser on the right; click the Solid logo next to a tree item to open it on the right.</li>
+    <li class="dk-mouse"><strong>Data Kitchen Pod Browser</strong>: a two-pane Solid pod browser — sign in to a pod on either side and drag resources between them.</li>
+    <li class="dk-touch"><strong>Data Kitchen Pod Browser</strong>: browse a Solid pod — sign in, then tap an item's gear for its operations (view, copy, rename, permissions).</li>
+    <li><strong>SolidOS</strong>: a pod tree on the left, the SolidOS data browser on the right; <span class="dk-mouse">click</span><span class="dk-touch">tap</span> the Solid logo next to a tree item to open it on the right.</li>
   </ul>
 
   <h3>🛠 Dev Tools</h3>
