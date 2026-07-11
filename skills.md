@@ -414,6 +414,19 @@ comments stripped — grep it for code fragments, not comments.
   to `build.files`; packaged zips are now checked for the file before
   release. Lesson: a root-level shared module is invisible to every `dir/**`
   glob — launch-test the PACKAGED artifact, not just `npm start`.
+- **Same hole again, data edition (v2.1.5, 2026-07-10 — the Windows
+  "404 on the local WebID" reports):** `pod-template/**` was ALSO never in
+  `build.files` — packaged desktop builds shipped the personal-pod SEEDER
+  but not the template data, so fresh installs never got
+  `dk-pod/profile/card` (no WebID → discovery/podz degrade). Telltale log
+  line: `[seed:pod] 0 new, 0 updated, 0 kept` (healthy ≈ 30+ kept). Android
+  unaffected (prepare.sh copies the dir). Fixed + guarded by
+  **`tools/packaged-smoke.mjs`** (`npm run release:smoke`; run automatically
+  by `release:prep` while `release/linux-unpacked/` exists, skip with
+  `--no-smoke`): static boot-critical-file assertions on the packed tree,
+  then a real boot of the packed binary against a THROWAWAY pod home on
+  spare ports (18400/18410/18401) asserting the seed plants files, the WebID
+  card exists on disk, the app page loads, and the router answers.
 - **Startup diagnostics (v2.1.2, 2026-07-09 — the "Windows blank page" report):**
   `electron-config/log.cjs` mirrors all console output to `<userData>/dk.log`
   (previous run kept once as `dk.log.old`) — a packaged app has no terminal, so

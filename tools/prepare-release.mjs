@@ -48,6 +48,20 @@ const PRUNE = [/-unpacked$/, /^mac$/, /\.nsis\.7z$/, /^builder-debug\.yml$/,
 function fail(msg) { console.error(`[release] STALE: ${msg}`); process.exit(1); }
 
 if (!existsSync(releaseDir)) fail(`release/ does not exist — build first (npm run dist:cross / dist:android)`);
+
+// ── 0. packaged-app smoke test (tools/packaged-smoke.mjs) ───────────────────
+// Runs while linux-unpacked still exists (step 2 prunes it). Catches
+// "ships but cannot boot" holes — two build.files omissions (server-core.cjs,
+// pod-template/) reached users before this existed. Skip with --no-smoke.
+if (!checkOnly && !process.argv.includes('--no-smoke')) {
+  if (existsSync(join(releaseDir, 'linux-unpacked'))) {
+    const { spawnSync } = await import('node:child_process');
+    const r = spawnSync(process.execPath, [join(root, 'tools', 'packaged-smoke.mjs')], { stdio: 'inherit' });
+    if (r.status !== 0) fail('packaged smoke test FAILED — do not release this build');
+  } else {
+    console.warn('[release] WARNING: linux-unpacked/ missing — packaged smoke test SKIPPED (rebuild with dist:cross to re-verify)');
+  }
+}
 let entries = readdirSync(releaseDir);
 
 // ── 1. locate + normalize names ─────────────────────────────────────────────

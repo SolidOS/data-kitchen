@@ -20,8 +20,11 @@ function scratchRepo(version = '9.9.9') {
   writeFileSync(join(dir, 'package.json'), JSON.stringify({ version }));
   return dir;
 }
+// --no-smoke: the packaged-boot smoke test (tools/packaged-smoke.mjs) is out
+// of scope here — this suite exercises normalize/prune/latest.json against a
+// scratch layout whose fake linux-unpacked/ could never boot.
 const run = (dir, ...args) =>
-  execFileSync(process.execPath, [join(dir, 'tools', 'prepare-release.mjs'), ...args],
+  execFileSync(process.execPath, [join(dir, 'tools', 'prepare-release.mjs'), '--no-smoke', ...args],
     { encoding: 'utf8' });
 
 test('prep normalizes stems, prunes intermediates, writes latest.json; check passes after', () => {

@@ -4,7 +4,7 @@
 
 This native app for Linux, Windows, Mac, and Android turns your computer, phone, or tablet into a Solid pod only you can access. It mounts a local version of Pivot/CSS, a proxy server and the Data-Kitchen frontend. Data Kitchen comes pre-loaded with dozens of Solid apps and widgets including SolidOS and a variety of open source resources - players for the Internet Archive and Wikimedia, access to Mastodon, Peertube, and more.
 
-No setup or install needed, just download and run. Downloads for all platforms are on the [releases page](https://github.com/SolidOS/data-kitchen/releases/latest), whose notes are the per-platform [install & run guide](INSTALL.md) — the two or three clicks each OS needs. The app checks for new releases at startup and offers to update itself — your pod and settings are never touched by an update.
+No setup or install needed, just download and run. Downloads for all platforms are on the [releases page](https://github.com/SolidOS/data-kitchen/releases/latest).
 
 ## Features
 
@@ -19,7 +19,15 @@ No setup or install needed, just download and run. Downloads for all platforms a
   * No RDF or coding knowledge is required of the end user
   * Forms can be auto-generated from SHACL using solid-ui forms
   * Form submissions are self-validating against the SHACL 
+* App checks for new releases at startup and offers to update itself
 
+## Special Note on Logging-In
+
+The local pod is protected by the electron/flutter router which sits in front of a pivot/css that does not require authorization.  The protection comes from the router, not from login authorization.  This works seamlessly for Data Kitchen native apps like the Data Kitchen Pod Browser, but other apps may need to observe a login flow.  If an app asks you for a login to your Data Kitchen Pod, use these vaues:
+```
+**user:** dk-pod
+**pass:** !secret
+```
 
 ## Android (experimental)
 
@@ -27,6 +35,20 @@ An Android port lives in [`mobile/`](mobile/) — a Flutter app that runs the sa
 CSS/pivot pod + router + proxy on the phone (via nodejs-mobile) and renders
 either the dk shell or the SolidOS/mashlib databrowser in a WebView. See
 [`mobile/README.md`](mobile/README.md).
+
+## Troubleshooting
+
+** The main log file is `dk.log`.** Every line the app and its bundled servers print is mirrored here, timestamped — this is the file to attach to any bug report. Locations:
+
+- Linux: `~/.config/data-kitchen/dk.log`
+- Windows: `C:\Users\<you>\AppData\Roaming\data-kitchen\dk.log`
+- macOS: `~/Library/Application Support/data-kitchen/dk.log`
+
+The previous run is kept alongside as `dk.log.old`, so a crash-then-relaunch doesn't destroy the evidence.
+
+## Acknowledgements
+
+Many thanks to Alain Bourgeois (@bourgeoa) for debugging assistance.
 
 ## Transparency
 
