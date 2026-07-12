@@ -7,7 +7,7 @@
 <> a ent:Q1193846; foaf:primaryTopic :Settings.
 
 :Settings
-    ui:colorScheme ui:LightColorScheme;
+    ui:colorScheme ui:SystemColorScheme;
     ui:fontSize ui:MediumFont;
     ui:proxy "http://localhost:8001/proxy?uri=".
 

@@ -27,8 +27,8 @@ No setup or install needed, just download and run. Downloads for all platforms a
 
 The local pod is protected by the electron/flutter router which sits in front of a pivot/css that does not require authentication.  The protection comes from the router, not from login authenticatin.  All apps still need to be manually authorized but the login itself is a dummy. This works seamlessly for Data Kitchen native apps like the Data Kitchen Pod Browser, but other apps may need to observe a login flow.  If an app asks you for a login to your Data Kitchen Pod, use these values:
 ```
-**user:** dk-pod
-**pass:** !secret
+user: me@dk.local
+pass: !secret
 ```
 
 ## Android (experimental)
