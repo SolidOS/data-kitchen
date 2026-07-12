@@ -29,8 +29,8 @@
     ui:label "actions";
     ui:orientation ui:Horizontal;
     ui:parts
-            ( :Matrix-Chat-2 :Mastodon-2 :Lemmy :SepiaSearch :Pixelfed
-            :Bluesky-2 :Duck-ai-3 :bar-search :bar-calendar ).
+            ( :Matrix-Chat-2 :Mastodon-2 :Bluesky-2 :OpenStreetMap-2 :Duck-ai-3
+            :bar-search :bar-calendar ).
 :bar-calendar
     a ui:Component;
     dct:source plu:calendar.ttl;
@@ -55,9 +55,6 @@
         [ schema:name "title"; schema:value "Text size" ];
     ui:label "A";
     ui:name "sol-button".
-# data-settings-skip: the Search plugin's manifest already puts a Search group
-# on the Settings page — without the skip, sol-settings discovery would list
-# this mounted widget a second time.
 :bar-search
     a ui:Component;
     dct:source plu:search.ttl;
@@ -118,10 +115,8 @@
     ui:region ui:Tab.
 :Calendar
 a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
-:Chrome
-    a ui:Menu;
-    ui:label "chrome";
-    ui:parts ( :chrome-help :chrome-menu ).
+:Chrome a ui:Menu; ui:label "chrome"; ui:parts ( :chrome-help :chrome-menu ).
+
 :chrome-help
     a ui:Component;
     rdfs:comment
@@ -158,6 +153,29 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     ui:label "Menu";
     ui:name "sol-dropdown-button";
     ui:region ui:Modal.
+:Data-Kitchen-Pod-Browser
+    a ui:Component;
+    dct:source plu:workspaces.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/podz/dk-podz.html"
+            ];
+    ui:icon "/assets/dk-logo.png";
+    ui:label "Data Kitchen Pod Browser";
+    ui:name "dk-podz".
+:Data-Kitchen-Pod-Browser-2
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/podz/dk-podz.html"
+            ];
+    ui:icon "/assets/dk-logo.png";
+    ui:label "Data Kitchen Pod Browser";
+    ui:name "dk-podz".
 :dokieli
     a ui:Component;
     dct:source plu:dokieli.ttl;
@@ -243,6 +261,40 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     dct:source plu:images.ttl;
     ui:attribute
         [ schema:name "id"; schema:value "panel-images" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
+:Images-Wikimedia-3
+    a ui:Component;
+    dct:source plu:images.ttl;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
+:Images-Wikimedia-4
+    a ui:Component;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
+:Images-Wikimedia-5
+    a ui:Component;
+    ui:attribute
             [
                 schema:name "source";
                 schema:value
@@ -366,9 +418,23 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     a ui:Menu;
     ui:label "Media";
     ui:parts
-            ( :Internet-Archive-player-2 :Spoken-Word-Internet-Archive
+            ( :News-2 :Internet-Archive-player-2 :Spoken-Word-Internet-Archive
             :Images-Wikimedia-2 :Movies-Internet-Archive :Media-Kraken-3
             :Solidflix-2 :MovieStar-4 ).
+:Media-2
+    a ui:Menu;
+    dct:source plu:images.ttl;
+    ui:label "Media";
+    ui:parts
+            ( :Music-Internet-Archive-2 :Spoken-Word-Internet-Archive-2
+            :Images-Wikimedia-5 :MovieStar-7 ).
+:Media-3
+    a ui:Menu;
+    ui:label "Media";
+    ui:parts
+            ( :News-three-panel-feeds-3 :Music-Internet-Archive-4
+            :Movies-Internet-Archive-4 :Spoken-Word-Internet-Archive-3
+            :Media-Kraken-8 :Solidflix-8 :MovieStar-8 ).
 :Media-Kraken
     a ui:Link;
     dct:source plu:media-kraken.ttl;
@@ -393,6 +459,42 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
     ui:label "Media Kraken";
     ui:region ui:Tab.
+:Media-Kraken-4
+    a ui:Link;
+    dct:source plu:media-kraken.ttl;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
+:Media-Kraken-5
+    a ui:Link;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
+:Media-Kraken-6
+    a ui:Link;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
+:Media-Kraken-7
+    a ui:Link;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
+:Media-Kraken-8
+    a ui:Link;
+    ui:href "https://noeldemartin.github.io/media-kraken/";
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken";
+    ui:region ui:Tab.
 :Movies-Internet-Archive
     a ui:Component;
     dct:source plu:movies.ttl;
@@ -407,6 +509,49 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ],
         [ schema:name "storage-ns"; schema:value "movies" ];
     ui:icon "🎬";
+    ui:label "Movies (Internet Archive)";
+    ui:name "ia-player".
+:Movies-Internet-Archive-2
+    a ui:Component;
+    dct:source plu:movies.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "favourites-only"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "movies" ];
+    ui:icon "🎬";
+    ui:label "Movies (Internet Archive)";
+    ui:name "ia-player".
+:Movies-Internet-Archive-3
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "favourites-only"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "movies" ];
+    ui:icon "🎬";
+    ui:label "Movies (Internet Archive)";
+    ui:name "ia-player".
+:Movies-Internet-Archive-4
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "favourites-only"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "movies" ];
+    ui:icon "🖼";
     ui:label "Movies (Internet Archive)";
     ui:name "ia-player".
 :MovieStar
@@ -437,6 +582,32 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
     ui:label "MovieStar";
     ui:region ui:Tab.
+:MovieStar-5
+    a ui:Link;
+    dct:source plu:moviestar.ttl;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MovieStar-6
+    a ui:Link;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MovieStar-7
+    a ui:Link;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
+:MovieStar-8
+    a ui:Link;
+    dct:source plu:moviestar.ttl;
+    ui:href "https://moviestar.solidcommunity.au";
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar";
+    ui:region ui:Tab.
 :MSFatigue
     a ui:Link;
     dct:source plu:msfatigue.ttl;
@@ -455,6 +626,110 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     a ui:Menu;
     ui:label "Music (Internet Archive)";
     ui:parts ( :Internet-Archive-player :Images-Wikimedia ).
+:Music-Internet-Archive-2
+    a ui:Component;
+    dct:source plu:music.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:icon "🎵";
+    ui:label "Music (Internet Archive)";
+    ui:name "ia-player".
+:Music-Internet-Archive-3
+    a ui:Component;
+    dct:source plu:music.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:icon "🎵";
+    ui:label "Music (Internet Archive)";
+    ui:name "ia-player".
+:Music-Internet-Archive-4
+    a ui:Component;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:icon "🎵";
+    ui:label "Music (Internet Archive)";
+    ui:name "ia-player".
+:News
+    a ui:Component;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-news" ],
+        [ schema:name "reader"; schema:value "inline" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
+            ],
+        [ schema:name "view"; schema:value "threePanel" ];
+    ui:icon "📰";
+    ui:label "News";
+    ui:name "sol-feed".
+:News-2
+    a ui:Component;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-news" ],
+        [ schema:name "reader"; schema:value "inline" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
+            ],
+        [ schema:name "view"; schema:value "threePanel" ];
+    ui:icon "📰";
+    ui:label "News";
+    ui:name "sol-feed".
+:News-three-panel-feeds
+    a ui:Component;
+    dct:source plu:news.ttl;
+    ui:attribute
+        [ schema:name "reader"; schema:value "inline" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
+            ],
+        [ schema:name "view"; schema:value "threePanel" ];
+    ui:icon "📰";
+    ui:label "News (three-panel feeds)";
+    ui:name "sol-feed".
+:News-three-panel-feeds-2
+    a ui:Component;
+    ui:attribute
+        [ schema:name "reader"; schema:value "inline" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
+            ],
+        [ schema:name "view"; schema:value "threePanel" ];
+    ui:icon "📰";
+    ui:label "News (three-panel feeds)";
+    ui:name "sol-feed".
+:News-three-panel-feeds-3
+    a ui:Component;
+    ui:attribute
+        [ schema:name "reader"; schema:value "inline" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
+            ],
+        [ schema:name "view"; schema:value "threePanel" ];
+    ui:icon "📰";
+    ui:label "News (three-panel feeds)";
+    ui:name "sol-feed".
 :NotePod
     a ui:Link;
     dct:source plu:notepod.ttl;
@@ -468,6 +743,21 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     ui:href "https://notepod.solidcommunity.au";
     ui:icon "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png";
     ui:label "NotePod";
+    ui:region ui:Tab.
+:OpenStreetMap
+    a ui:Link;
+    dct:source plu:openstreetmap.ttl;
+    ui:href "https://www.openstreetmap.org/";
+    ui:icon
+        "https://www.openstreetmap.org/assets/apple-touch-icon-180x180-ea6361d7ae5b3f08c6290652ad703fa239364cc09c84873044f3299845f24652.png";
+    ui:label "OpenStreetMap";
+    ui:region ui:Tab.
+:OpenStreetMap-2
+    a ui:Link;
+    ui:href "https://www.openstreetmap.org/";
+    ui:icon
+        "https://www.openstreetmap.org/assets/apple-touch-icon-180x180-ea6361d7ae5b3f08c6290652ad703fa239364cc09c84873044f3299845f24652.png";
+    ui:label "OpenStreetMap";
     ui:region ui:Tab.
 :panel-customize
     a ui:Component;
@@ -562,6 +852,31 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
     ui:label "SolidOS";
     ui:name "dk-solidos".
+:Penny
+    a ui:Link;
+    dct:source plu:penny.ttl;
+    ui:href "https://penny.vincenttunru.com/";
+    ui:icon "https://penny.vincenttunru.com/favicon.ico";
+    ui:label "Penny";
+    ui:region ui:Tab.
+:Penny-2
+    a ui:Link;
+    ui:href "https://penny.vincenttunru.com/";
+    ui:icon "https://penny.vincenttunru.com/favicon.ico";
+    ui:label "Penny";
+    ui:region ui:Tab.
+:Penny-3
+    a ui:Link;
+    ui:href "https://penny.vincenttunru.com/";
+    ui:icon "https://penny.vincenttunru.com/favicon.ico";
+    ui:label "Penny";
+    ui:region ui:Tab.
+:Penny-4
+    a ui:Link;
+    ui:href "https://penny.vincenttunru.com/";
+    ui:icon "https://penny.vincenttunru.com/favicon.ico";
+    ui:label "Penny";
+    ui:region ui:Tab.
 :Pixelfed
     a ui:Link;
     dct:source plu:pixelfed.ttl;
@@ -572,7 +887,6 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
 :Pod-browser
     a ui:Component;
     dct:source plu:workspaces.ttl;
-    ui:icon "/assets/dk-logo.png";
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-podz" ],
@@ -580,6 +894,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
                 schema:name "source";
                 schema:value "./dk-pod/dk/plugins/podz/dk-podz.html"
             ];
+    ui:icon "/assets/dk-logo.png";
     ui:label "Data Kitchen Pod Browser";
     ui:name "dk-podz".
 :PodCal
@@ -597,10 +912,23 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     ui:icon "🔍";
     ui:label "PodOS Browser";
     ui:region ui:Tab.
+:PodOS-Browser-2
+    a ui:Link;
+    dct:source plu:podos-browser.ttl;
+    ui:href "https://browser.pod-os.org/";
+    ui:icon "https://browser.pod-os.org/icons/apple-icon-180.png";
+    ui:label "PodOS Browser";
+    ui:region ui:Tab.
 :Pods
     a ui:Menu;
     ui:label "Pods";
     ui:parts ( :Pod-browser :SolidOS-data-browser :PodOS-Browser :KeyPod-2 ).
+:Pods-2
+    a ui:Menu;
+    ui:label "Pods";
+    ui:parts
+            ( :Data-Kitchen-Pod-Browser-2 :SolidOS-data-browser-4
+            :PodOS-Browser-2 :Penny-4 ).
 :RDF-Validator
     a ui:Link;
     dct:source plu:rdf-validator.ttl;
@@ -744,6 +1072,43 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     ui:icon "🎬";
     ui:label "Solidflix";
     ui:region ui:Tab.
+:Solidflix-3
+    a ui:Link;
+    dct:source plu:solidflix.ttl;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:Solidflix-4
+    a ui:Link;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:Solidflix-5
+    a ui:Link;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:Solidflix-6
+    a ui:Link;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:Solidflix-7
+    a ui:Link;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
+:Solidflix-8
+    a ui:Link;
+    ui:href "https://oxfordhcc.github.io/solid-media/";
+    ui:icon "🎬";
+    ui:label "Solidflix";
+    ui:region ui:Tab.
 :SolidFocus
     a ui:Link;
     dct:source plu:solidfocus.ttl;
@@ -768,13 +1133,54 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     dct:source plu:chat.ttl;
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
-        [ schema:name "source"; schema:value "/dk-pod/solidos-apps/chat/index.ttl#this" ];
+            [
+                schema:name "source";
+                schema:value "/dk-pod/solidos-apps/chat/index.ttl#this"
+            ];
     ui:icon "💬";
     ui:label "SolidOS Chat";
     ui:name "dk-solidos".
 :SolidOS-data-browser
     a ui:Component;
     dct:source plu:solidos-browser.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "has-location-bar"; schema:value "true" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
+            ];
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS (data browser)";
+    ui:name "dk-solidos".
+:SolidOS-data-browser-2
+    a ui:Component;
+    dct:source plu:solidos-browser.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "has-location-bar"; schema:value "true" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
+            ];
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS (data browser)";
+    ui:name "dk-solidos".
+:SolidOS-data-browser-3
+    a ui:Component;
+    dct:source plu:solidos-browser.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "has-location-bar"; schema:value "true" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
+            ];
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS (data browser)";
+    ui:name "dk-solidos".
+:SolidOS-data-browser-4
+    a ui:Component;
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "has-location-bar"; schema:value "true" ],
@@ -802,7 +1208,10 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     dct:source plu:notes.ttl;
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
-        [ schema:name "source"; schema:value "/dk-pod/solidos-apps/notes/index.ttl#this" ];
+            [
+                schema:name "source";
+                schema:value "/dk-pod/solidos-apps/notes/index.ttl#this"
+            ];
     ui:icon "📝";
     ui:label "SolidOS Notes";
     ui:name "dk-solidos".
@@ -811,7 +1220,10 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     dct:source plu:task-manager.ttl;
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
-        [ schema:name "source"; schema:value "/dk-pod/solidos-apps/tasks/index.ttl#this" ];
+            [
+                schema:name "source";
+                schema:value "/dk-pod/solidos-apps/tasks/index.ttl#this"
+            ];
     ui:icon "📋";
     ui:label "SolidOS Tasks";
     ui:name "dk-solidos".
@@ -828,6 +1240,34 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     ui:attribute
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-spoken-word" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_spoken_word/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "spoken-word" ];
+    ui:icon "🎙️";
+    ui:label "Spoken Word (Internet Archive)";
+    ui:name "ia-player".
+:Spoken-Word-Internet-Archive-2
+    a ui:Component;
+    dct:source plu:spoken-word.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_spoken_word/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "spoken-word" ];
+    ui:icon "🎙️";
+    ui:label "Spoken Word (Internet Archive)";
+    ui:name "ia-player".
+:Spoken-Word-Internet-Archive-3
+    a ui:Component;
+    dct:source plu:spoken-word.ttl;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
                 schema:value
@@ -862,7 +1302,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     a ui:Menu;
     ui:label "data-kitchen";
     ui:orientation ui:Horizontal;
-    ui:parts ( :panel-news :Media :Health :Pods :Apps :item :panel-dev-tools ).
+    ui:parts ( :Pods-2 :Media-3 :Health :Apps :item :panel-dev-tools ).
 :Tag-Explainer
     a ui:Link;
     dct:source plu:solid-tag-explainer.ttl;
