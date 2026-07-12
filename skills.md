@@ -828,6 +828,16 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
 
 ## Updates & releases (2026-07)
 
+- **Every release starts with `npm run pull-defaults` (standing rule,
+  2026-07-12):** before any `release:prep`/packaging, sync the repo's seed set
+  to the live dev pod (`tools/pull-defaults.mjs` — menus, bar/buttons,
+  settings, flat plugin manifests, news feeds; it is NOT chained into
+  `release:prep`). Hand-reconcile whatever it reports as code drift and show
+  Jeff before continuing. Two fixed reconcile rules: the repo's
+  `ui-data/data-kitchen-settings.ttl` always ships
+  `ui:colorScheme ui:SystemColorScheme` whatever the pod says (leave the pod's
+  own value alone), and losing repo-side `#` comments to the pod's
+  re-serialization is fine.
 - **Startup update check** (`electron-config/update-check.cjs`, hooked at the
   end of `start()` in `main.cjs`): asks GitHub Releases
   (`api.github.com/repos/SolidOS/data-kitchen/releases/latest`) whether a newer
