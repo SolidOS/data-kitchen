@@ -1,12 +1,15 @@
 @prefix :       <#> .
 @prefix sh:     <http://www.w3.org/ns/shacl#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 @prefix wd:     <http://www.wikidata.org/entity/> .
 @prefix foaf:   <http://xmlns.com/foaf/0.1/> .
 @prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix schema: <http://schema.org/> .
 
+# The Electron half of the startup config (data-kitchen-startup.ttl#config):
+# application-window geometry. The server half lives in
+# data-kitchen-startup-pivot.shacl — the Settings page renders each as its
+# own group/chip.
 
 :ElectronConfigFileShape
   a sh:NodeShape ;
@@ -14,30 +17,12 @@
   sh:property [
     sh:path foaf:primaryTopic ;
     sh:minCount 1 ; sh:maxCount 1 ;
-    sh:node :ElectronConfigShape ;
+    sh:node :ElectronWindowShape ;
   ] .
 
-:ElectronConfigShape
+:ElectronWindowShape
   a sh:NodeShape ;
   sh:property [
-    sh:path ui:publicPort ;
-    sh:datatype xsd:integer ; sh:maxCount 1 ;
-    sh:name "Port" ;
-    sh:description "Public routing-server port — the origin clients talk to." ;
-  ] ,
-  [
-    sh:path ui:proxyPort ;
-    sh:datatype xsd:integer ; sh:maxCount 1 ;
-    sh:name "Proxy port" ;
-    sh:description "CORS proxy port." ;
-  ] ,
-  [
-    sh:path ui:privatePort ;
-    sh:datatype xsd:integer ; sh:maxCount 1 ;
-    sh:name "Private port" ;
-    sh:description "Private server port, behind the router." ;
-  ] ,
-  [
     sh:path schema:width ;
     sh:datatype xsd:integer ; sh:maxCount 1 ;
     sh:name "Width" ;

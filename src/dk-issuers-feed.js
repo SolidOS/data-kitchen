@@ -1,12 +1,15 @@
 // dk-issuers-feed — single source of truth for the sign-in issuer list.
 //
-// Issuers come from SETTINGS, never hardcoded: the `solid:oidcIssuer` list on
-// ui-data/data-kitchen-settings.ttl#Settings (edited on the Settings page via
-// <dk-issuers-editor>; first = default). This module reads that list and applies
-// it to every <sol-login> in the app — the chrome "Sign in" and each <sol-pod>'s
-// built-in login (via the pod's `.login` getter) — so all of them offer exactly
+// Issuers come from SETTINGS, never hardcoded: the `#Issuers` schema:ItemList
+// in ui-data/data-kitchen-settings.ttl (entries are schema:ListItem nodes —
+// schema:item issuer URL, schema:name label, schema:position order — edited on
+// the Settings page via the oidc-issuers.shacl rolodex; position 1 = the
+// default). Same positioned-list model as #Locations / dk-locations-feed.
+// This module reads that list position-sorted and applies it to every
+// <sol-login> in the app — each <sol-pod>'s built-in login (via the pod's
+// `.login` getter) and any standalone login — so all of them offer exactly
 // the issuers the user configured. It re-applies live when the list is edited
-// (the editor dispatches `dk:issuers-changed`), and picks up logins that mount
+// (`sol-form-save` on the settings doc), and picks up logins that mount
 // later (pods, healed chrome) via a MutationObserver.
 import { rdf } from 'sol-components/core/rdf.js';
 import { loadRdfStore } from 'sol-components/core/rdf-utils.js';
@@ -14,10 +17,14 @@ import { solFetch } from 'sol-components/core/auth-fetch.js';
 import { createMainProxySession } from './dk-idp-proxy-session.js';
 import { DEFAULT_OIDC_ISSUERS as FALLBACK } from './shared/oidc-issuers.js';
 
-const SOLID_OIDC = 'http://www.w3.org/ns/solid/terms#oidcIssuer';
 const SETTINGS = './dk-pod/dk/ui-data/data-kitchen-settings.ttl';
 // FALLBACK (the curated defaults) is last-resort only: the settings doc is seeded
 // with these, so it is reached just if the doc can't be read at all.
+
+const SCHEMA = 'http://schema.org/';
+const ELEM = rdf.sym(`${SCHEMA}itemListElement`);
+const ITEM = rdf.sym(`${SCHEMA}item`);
+const POS = rdf.sym(`${SCHEMA}position`);
 
 let issuers = FALLBACK.slice();
 let version = 0;               // bumped on each (re)load so fed elements re-apply
@@ -27,8 +34,15 @@ async function load() {
   try {
     const docUrl = new URL(SETTINGS, document.baseURI).href;
     const store = await loadRdfStore(docUrl, solFetch);
-    const list = store.each(rdf.sym(docUrl + '#Settings'), rdf.sym(SOLID_OIDC))
-      .map((o) => o.value.replace(/\/$/, ''));
+    const entries = [];
+    for (const subj of store.each(rdf.sym(docUrl + '#Issuers'), ELEM)) {
+      const item = store.any(subj, ITEM);
+      if (!item || !item.value) continue;
+      const n = parseInt(store.anyValue(subj, POS), 10);
+      entries.push({ url: item.value.replace(/\/$/, ''), pos: Number.isFinite(n) ? n : Infinity });
+    }
+    entries.sort((a, b) => a.pos - b.pos);
+    const list = [...new Set(entries.map((e) => e.url))];
     if (list.length) issuers = list;
   } catch { /* keep the previous list / fallback */ }
   version += 1;
@@ -115,6 +129,12 @@ if (window.dkElectron?.offerRemember) {
   new MutationObserver(scheduleScan).observe(document.documentElement, {
     childList: true, subtree: true,
   });
-  // Re-apply when the user edits the list on the Settings page.
-  document.addEventListener('dk:issuers-changed', async () => { await load(); scan(); });
+  // Re-apply when the user edits the list on the Settings page (the #Issuers
+  // rolodex fires sol-form-save on the settings doc; #Settings/#Locations
+  // saves share the doc — a re-read on those is harmless).
+  const docUrl = new URL(SETTINGS, document.baseURI).href;
+  document.addEventListener('sol-form-save', async (e) => {
+    if (e.detail?.target !== docUrl) return;
+    await load(); scan();
+  });
 })();

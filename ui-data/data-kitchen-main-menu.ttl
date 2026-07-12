@@ -55,11 +55,15 @@
         [ schema:name "title"; schema:value "Text size" ];
     ui:label "A";
     ui:name "sol-button".
+# data-settings-skip: the Search plugin's manifest already puts a Search group
+# on the Settings page — without the skip, sol-settings discovery would list
+# this mounted widget a second time.
 :bar-search
     a ui:Component;
     dct:source plu:search.ttl;
     ui:attribute
         [ schema:name "class"; schema:value "omp-search" ],
+        [ schema:name "data-settings-skip"; schema:value "" ],
             [
                 schema:name "source";
                 schema:value
@@ -543,6 +547,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
                 schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
             ],
         [ schema:name "view"; schema:value "threePanel" ];
+    ui:icon "📰";
     ui:label "News";
     ui:name "sol-feed".
 :panel-solidos

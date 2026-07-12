@@ -2,7 +2,6 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix ent: <http://www.wikidata.org/entity/>.
-@prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix schema: <http://schema.org/>.
 
 <> a ent:Q1193846; foaf:primaryTopic :Settings.
@@ -10,10 +9,36 @@
 :Settings
     ui:colorScheme ui:LightColorScheme;
     ui:fontSize ui:MediumFont;
-    ui:proxy "http://localhost:8001/proxy?uri=";
-    solid:oidcIssuer
-        <https://solidcommunity.net>, <https://solidweb.me>,
-        <https://solidweb.org>, <https://login.inrupt.com>.
+    ui:proxy "http://localhost:8001/proxy?uri=".
+
+# Sign-in issuers: the ordered Solid OIDC issuer list offered by every
+# <sol-login> in the app (position 1 = the default). Edited on the Settings
+# page via the oidc-issuers.shacl rolodex; applied to the login buttons by
+# src/dk-issuers-feed.js. Same positioned-list model as :Locations below.
+:Issuers a schema:ItemList;
+    schema:name "Sign-in issuers";
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :iss1, :iss2, :iss3, :iss4.
+
+:iss1 a schema:ListItem;
+    schema:item <https://solidcommunity.net>;
+    schema:name "solidcommunity.net";
+    schema:position 1.
+
+:iss2 a schema:ListItem;
+    schema:item <https://solidweb.me>;
+    schema:name "solidweb.me";
+    schema:position 2.
+
+:iss3 a schema:ListItem;
+    schema:item <https://solidweb.org>;
+    schema:name "solidweb.org";
+    schema:position 3.
+
+:iss4 a schema:ListItem;
+    schema:item <https://login.inrupt.com>;
+    schema:name "login.inrupt.com";
+    schema:position 4.
 
 # Pod locations: the ordered storage list feeding every pod selector (podz
 # Pod Browser, SolidOS Locations dropdown). Edited on the Settings page via

@@ -475,9 +475,11 @@ class DesktopApp {
       for (const [k, p] of Object.entries(CFG_PRED)) {
         if (Number.isFinite(t[k])) stmts.push(`   <${p}> ${t[k]}`);
       }
-      if (typeof t.storage === 'string' && t.storage) {
-        stmts.push(`   <${PIM_STORAGE}> ${JSON.stringify(t.storage)}`);
-      }
+      // Always publish the pod root: the chosen one (config pim:storage) or,
+      // when none is set yet, the root this process actually booted with — so
+      // the settings form's Pod Root field always shows the live value.
+      const storage = (typeof t.storage === 'string' && t.storage) || POD_ROOT;
+      if (storage) stmts.push(`   <${PIM_STORAGE}> ${JSON.stringify(storage)}`);
       const body =
         `<> a <http://www.wikidata.org/entity/Q1193846> ;\n` +
         `   <http://xmlns.com/foaf/0.1/primaryTopic> <#config> .\n` +
@@ -514,6 +516,10 @@ class DesktopApp {
       const stor = store.any(subj, $rdf.sym(PIM_STORAGE));
       if (stor && typeof stor.value === 'string' && t.storage !== stor.value) { t.storage = stor.value; changed = true; }
       if (changed) writeConfig(cfg);
+      // Republish so the doc always carries the full current state — notably
+      // the pim:storage line (the effective root when none is chosen), which
+      // the settings form's Pod Root field reads. Idempotent when unchanged.
+      await this.publishConfigToPod();
     } catch (e) { console.warn('[dk] parse pod config failed:', e.message); }
   }
 
@@ -595,6 +601,19 @@ class DesktopApp {
       const cfg = readConfig() || buildDefaultConfig();
       const t = configTopic(cfg);
       for (const k of CONFIG_NUM_KEYS) { if (Number.isFinite(vals[k])) t[k] = vals[k]; }
+      // Pod Root (pim:storage): adopt an edited path into the config at once —
+      // it becomes the root on the next launch (data is NOT moved; the app just
+      // re-roots there). Adopting immediately also keeps publishConfigToPod
+      // from wiping a doc-only edit on the next republish (window resize).
+      if (typeof vals.storage === 'string' && vals.storage.trim()) {
+        const to = path.resolve(vals.storage.trim());
+        const cur = (typeof t.storage === 'string' && t.storage) ? path.resolve(t.storage) : path.resolve(POD_ROOT);
+        if (to !== cur) {
+          t.storage = to;
+          // Keep the legacy pointer in step — it's the boot fallback.
+          try { fs.writeFileSync(path.join(app.getPath('userData'), POD_POINTER), to + '\n'); } catch { /* pointer optional */ }
+        }
+      }
       if (!writeConfig(cfg)) return { status: 'error', message: 'could not write config' };
       this.publishConfigToPod();   // keep the pod source-of-truth in lock-step
 
@@ -616,40 +635,6 @@ class DesktopApp {
       // surfaces a dismissible "ports changed — reload?" banner and triggers
       // dk:restart when the user is ready.
       return { status: 'saved', portsChanged };
-    });
-
-    // "Move my pod" (☰): pick a new home folder, copy the whole pod tree there
-    // (index.html, dk.manifest.json, dk-pod/, .internal/, .meta), persist the
-    // choice in userData, and relaunch so CSS re-roots there. The WebID is
-    // origin+path, so the move needs no URI rewrite. The OLD location is left
-    // in place (no auto-delete) so a failed/aborted move can't lose data.
-    ipcMain.handle('dk:move-pod', async () => {
-      const res = await dialog.showOpenDialog({
-        title: 'Choose a new home folder for your pod',
-        properties: ['openDirectory', 'createDirectory'],
-      });
-      if (res.canceled || !res.filePaths || !res.filePaths[0]) return { status: 'cancelled' };
-      const from = path.resolve(POD_ROOT);
-      const to = path.resolve(res.filePaths[0]);
-      if (to === from) return { status: 'same' };
-      if (to.startsWith(from + path.sep)) return { status: 'nested' };   // can't nest the pod in itself
-      try {
-        this.servers.stop();                                  // release CSS file locks before copying
-        await fs.promises.cp(from, to, { recursive: true, force: true });
-        fs.writeFileSync(path.join(app.getPath('userData'), POD_POINTER), to + '\n');
-        // Keep the JSON-LD config's pim:storage in sync — it's the root's
-        // primary source now; the pointer above stays as a fallback.
-        try {
-          const cfg = readConfig() || buildDefaultConfig();
-          configTopic(cfg).storage = to;
-          writeConfig(cfg);
-        } catch { /* config unwritable — pointer still carries the move */ }
-      } catch (e) {
-        return { status: 'error', message: e.message };
-      }
-      app.relaunch();
-      app.quit();
-      return { status: 'moved', dest: to };
     });
 
     // Import music: pick a folder, recursively scan its audio files and parse

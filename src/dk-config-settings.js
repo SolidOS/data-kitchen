@@ -1,16 +1,23 @@
-// <dk-config-settings> — the Electron + Pivot group of the settings page.
+// <dk-config-settings> — the Electron and Pivot groups of the settings page
+// (two sibling sections, so the settings chip nav gives each its own chip).
 //
 // The config (window geometry, server ports, pod root) is the pod resource
 // dk-pod/dk/ui-data/data-kitchen-startup.ttl — the SOURCE OF TRUTH the user can browse.
 // The main process publishes it on boot and keeps it current; userData is just a
 // launch-time cache that trails it (see electron-config/main.cjs). This component
-// mounts a real shape-driven <sol-form> directly on that pod resource (CSS
-// handles GET/PATCH), so the fields match every other setting; on each save it
-// reads the resource back as RDF and pushes the numbers to userData via the IPC
-// saveConfig (so they survive the next launch and the window applies live). It
-// never overwrites the resource on open — only seeds it if absent. Pod root
-// stays read-only with a "Move my pod" button (a path edit wouldn't move the
-// data). Outside Electron we show a short notice.
+// mounts real shape-driven <sol-form>s directly on that pod resource (CSS
+// handles GET/PATCH), so the fields match every other setting: the Electron
+// section edits the window geometry (data-kitchen-startup-electron.shacl),
+// the Pivot section the server ports (data-kitchen-startup-pivot.shacl). On
+// each save it reads the resource back as RDF and pushes the values to
+// userData via the IPC saveConfig (so they survive the next launch). Window
+// geometry applies LIVE (setBounds on save) so the Electron section needs no
+// reload; the Pivot section (ports, pod root) carries a permanent "Needs
+// reload for changes" row with a Reload button.
+// It never overwrites the resource on open — only seeds it if absent.
+// Pod Root (pim:storage) is a plain form field: editing it points the app at
+// that folder on the next reload — the data is NOT moved. Outside Electron we
+// show a short notice.
 
 import { rdf } from 'sol-components/core/rdf.js';
 import { loadRdfStore } from 'sol-components/core/rdf-utils.js';
@@ -20,10 +27,11 @@ import { esc } from './shared/html-escape.js';
 const UI = 'http://www.w3.org/ns/ui#';
 const SCHEMA = 'http://schema.org/';
 const MIRROR = './dk-pod/dk/ui-data/data-kitchen-startup.ttl';
-const SHAPE  = './dk-pod/dk/ui-data/data-kitchen-startup-config.shacl';
+const SHAPE_ELECTRON = './dk-pod/dk/ui-data/data-kitchen-startup-electron.shacl';
+const SHAPE_PIVOT    = './dk-pod/dk/ui-data/data-kitchen-startup-pivot.shacl';
 const CONFIG_FILE_TYPE = 'http://www.wikidata.org/entity/Q1193846';
 
-// form field key → predicate IRI (the editable numbers; pod root is not here)
+// form field key → predicate IRI (the editable numbers)
 const FIELD_PREDS = {
   publicPort:  UI + 'publicPort',
   proxyPort:   UI + 'proxyPort',
@@ -33,6 +41,12 @@ const FIELD_PREDS = {
   windowX:     UI + 'windowX',
   windowY:     UI + 'windowY',
 };
+// Pod Root — a string path, synced separately from the numbers.
+const PIM_STORAGE = 'http://www.w3.org/ns/pim/space#storage';
+// The runtime CORS-proxy URL (ui:proxy on the main settings doc) follows the
+// proxy PORT edited here — components read the URL, the user edits the port.
+const SETTINGS_DOC = './dk-pod/dk/ui-data/data-kitchen-settings.ttl';
+const UI_PROXY = UI + 'proxy';
 
 class DkConfigSettings extends HTMLElement {
   async connectedCallback() {
@@ -40,15 +54,16 @@ class DkConfigSettings extends HTMLElement {
     this._rendered = true;
     const dk = (typeof window !== 'undefined') ? window.dkElectron : null;
     if (!dk || typeof dk.getConfig !== 'function') {
-      this.innerHTML =
-        `<section class="dk-settings-group"><h3>Electron &amp; Pivot</h3>` +
+      const hint =
         `<p class="dk-settings-hint">Window size, position, server ports and the pod root are part of the ` +
-        `desktop app — open Data Kitchen as the Electron app to edit them.</p></section>`;
+        `desktop app — open Data Kitchen as the Electron app to edit them.</p>`;
+      this.innerHTML =
+        `<section class="dk-settings-group"><h3>Electron</h3>${hint}</section>` +
+        `<section class="dk-settings-group"><h3>Pivot</h3>${hint}</section>`;
       return;
     }
     try {
-      const { config, effective } = await dk.getConfig();
-      this._effective = effective || {};
+      const { config } = await dk.getConfig();
       await this.ensureMirror(config);
       this.render();
       this.wire();
@@ -81,46 +96,55 @@ class DkConfigSettings extends HTMLElement {
   }
 
   render() {
-    const root = this._effective.root || '';
-    this.innerHTML = `
-      <section class="dk-settings-group">
-        <h3>Electron &amp; Pivot</h3>
+    const reloadRow = `
+        <div class="dk-settings-actions">
+          <span class="dk-settings-field-hint">Needs reload for changes.</span>
+          <button type="button" class="dk-settings-btn dk-settings-btn-primary" data-act="reload">Reload now</button>
+        </div>`;
+    const form = (shape) => `
         <sol-form
             data-settings-skip
             subject="${esc(this.subjectUrl())}"
             save-to="${esc(this.subjectUrl())}"
-            shape="${esc(new URL(SHAPE, document.baseURI).href)}"></sol-form>
-        <div class="dk-settings-field dk-settings-root">
-          <span class="dk-settings-field-label">Root <span class="dk-settings-field-hint">(pod home — changing it moves your pod)</span></span>
-          <span class="dk-settings-root-row">
-            <span class="dk-settings-root-path" title="${esc(root)}">${esc(root) || '—'}</span>
-            <button type="button" class="dk-settings-btn" data-act="move">Move my pod…</button>
-          </span>
-        </div>
+            shape="${esc(new URL(shape, document.baseURI).href)}"></sol-form>`;
+    this.innerHTML = `
+      <section class="dk-settings-group">
+        <h3>Electron</h3>
+        ${form(SHAPE_ELECTRON)}
         <p class="dk-settings-status" data-status hidden></p>
-        <div class="dk-settings-actions" data-reload hidden>
-          <span class="dk-settings-field-hint">Server ports changed — restart to apply.</span>
-          <button type="button" class="dk-settings-btn dk-settings-btn-primary" data-act="reload">Reload now</button>
-        </div>
+      </section>
+      <section class="dk-settings-group">
+        <h3>Pivot</h3>
+        ${form(SHAPE_PIVOT)}
+        <p class="dk-settings-status" data-status hidden></p>
+        ${reloadRow}
       </section>`;
   }
 
   wire() {
-    this.querySelector('sol-form')?.addEventListener('sol-form-save', () => this.syncBack());
-    this.querySelector('[data-act="move"]')?.addEventListener('click', () => this.movePod());
-    this.querySelector('[data-act="reload"]')?.addEventListener('click', () => window.dkElectron.restart());
+    this.querySelectorAll('sol-form').forEach((f) => {
+      f.addEventListener('sol-form-save', () => this.syncBack(f.closest('section')));
+    });
+    this.querySelectorAll('[data-act="reload"]').forEach((b) => {
+      b.addEventListener('click', () => window.dkElectron.restart());
+    });
   }
 
-  status(msg, kind) {
-    const el = this.querySelector('[data-status]');
+  // Status messages land in the section the action happened in (each section
+  // has its own [data-status]); with no section given, use the Pivot one
+  // (the last — where the Move button lives).
+  status(msg, kind, section) {
+    const el = section
+      ? section.querySelector('[data-status]')
+      : [...this.querySelectorAll('[data-status]')].pop();
     if (!el) return;
     el.textContent = msg || '';
     el.hidden = !msg;
     el.dataset.kind = kind || '';
   }
 
-  // Read the freshly-edited mirror as RDF and push the numbers to userData.
-  async syncBack() {
+  // Read the freshly-edited mirror as RDF and push the values to userData.
+  async syncBack(section) {
     try {
       const store = await loadRdfStore(this.mirrorUrl(), solFetch);
       const subj = rdf.sym(this.subjectUrl());
@@ -129,30 +153,51 @@ class DkConfigSettings extends HTMLElement {
         const o = store.any(subj, rdf.sym(pred));
         if (o) { const n = parseInt(o.value, 10); if (Number.isFinite(n)) vals[k] = n; }
       }
+      const stor = store.any(subj, rdf.sym(PIM_STORAGE));
+      if (stor && stor.value.trim()) vals.storage = stor.value.trim();
       const r = await window.dkElectron.saveConfig(vals);
       if (r?.status === 'saved') {
-        this.status('Saved.', 'ok');
-        const banner = this.querySelector('[data-reload]');
-        if (banner) banner.hidden = !r.portsChanged;
+        this.status('Saved.', 'ok', section);
+        if (Number.isFinite(vals.proxyPort)) this.syncProxyUrl(vals.proxyPort);
       } else {
-        this.status(`Couldn't save: ${r?.message || 'unknown error'}`, 'err');
+        this.status(`Couldn't save: ${r?.message || 'unknown error'}`, 'err', section);
       }
     } catch (e) {
-      this.status(`Couldn't save: ${e?.message || e}`, 'err');
+      this.status(`Couldn't save: ${e?.message || e}`, 'err', section);
     }
   }
 
-  async movePod() {
-    this.status('Choose a new home folder…');
+  // Keep the runtime proxy URL in step with the edited port: rewrite the PORT
+  // inside the existing ui:proxy value on the main settings doc (host/path
+  // untouched). Goes through the SHARED rdf store and its updater — the same
+  // graph the settings forms and feeds use — then announces the change with
+  // the standard sol-form-save signal so dk-settings-applier re-applies it.
+  // (Until the user hits Reload the proxy still runs on the old port — the
+  // section's permanent "Needs reload for changes" row is the contract.)
+  async syncProxyUrl(proxyPort) {
     try {
-      const r = await window.dkElectron.moveMyPod();
-      if (r?.status === 'moved') this.status('Pod moved — restarting…');
-      else if (r?.status === 'cancelled') this.status('');
-      else if (r?.status === 'same') this.status('That is already the pod root.', 'err');
-      else if (r?.status === 'nested') this.status("Can't move the pod inside itself.", 'err');
-      else this.status(`Move failed: ${r?.message || 'unknown error'}`, 'err');
+      const docUrl = new URL(SETTINGS_DOC, document.baseURI).href;
+      const s = rdf.store;
+      if (!s.fetcher) s.fetcher = new (rdf.Fetcher)(s);
+      if (!s.updater) s.updater = new (rdf.UpdateManager)(s);
+      await rdf.load(docUrl);
+      const doc = rdf.sym(docUrl);
+      const subj = rdf.sym(docUrl + '#Settings');
+      const cur = s.any(subj, rdf.sym(UI_PROXY), null, doc);
+      if (!cur) return;                          // no proxy configured — nothing to follow
+      const u = new URL(cur.value);
+      if (u.port === String(proxyPort)) return;  // already in step
+      u.port = String(proxyPort);
+      await new Promise((resolve, reject) => s.updater.update(
+        [rdf.st(subj, rdf.sym(UI_PROXY), cur, doc)],
+        [rdf.st(subj, rdf.sym(UI_PROXY), rdf.literal(u.href), doc)],
+        (_u, ok, msg) => (ok ? resolve() : reject(new Error(msg))),
+      ));
+      document.dispatchEvent(new CustomEvent('sol-form-save', {
+        detail: { subject: subj.value, target: docUrl },
+      }));
     } catch (e) {
-      this.status(`Move failed: ${e?.message || e}`, 'err');
+      console.warn('[dk-config-settings] proxy URL sync failed:', e?.message || e);
     }
   }
 }

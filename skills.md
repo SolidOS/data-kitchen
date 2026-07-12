@@ -51,7 +51,9 @@ The UI renders from `.ttl` in `ui-data/`:
   podz, SolidOS, and other apps carry their own sol-logins. dk-auth-router
   works off the shared AuthManager and never needed the element.
 - `data-kitchen-plugins-catalog.ttl` — every available plugin (Customize source)
-- `data-kitchen-settings.ttl`, `data-kitchen-startup-config.shacl`
+- `data-kitchen-settings.ttl`; `data-kitchen-startup-{electron,pivot}.shacl`
+  (the old combined `data-kitchen-startup-config.shacl` is split in two —
+  window geometry vs ports + pod root — one Settings chip each)
 
 Flow: `src/dk-tabs-rdf.js` builds Bar/Chrome launchers from the RDF at load and
 re-renders on Customize save. The Customize page PUTs RDF back to the pod
@@ -66,6 +68,9 @@ is decided by layout (`panelEl('music').offsetParent !== null`), NOT the
 every non-media item (fixed 2026-07-05). **Hidden on the PHONE entirely**
 (Jeff 2026-07-09; `dk-chrome.css` coarse-pointer block — its sticky-bar
 styling and padding reservation are gone too; desktop keeps it).
+**Play/pause ONLY since 2026-07-12** — the seek slider + time readout are
+gone from omp's `mini-player.html` fragment (dk-tabs-shell's wiring
+tolerates their absence; the hover tooltip still names the track).
 
 **Boot sequence** (index.html, which is wormhole-guarded against recursive
 framing): **component-interop** (parser-blocking; parses manifests, injects
@@ -148,6 +153,14 @@ rules against the pod data and lists any double-listed cards.
 
 ## Key plugins
 
+- **sol-pod UX (2026-07-12):** a plain SINGLE click on a file opens its
+  actions (inline ops / podClickAction / modal — same routing as the gear);
+  modifier clicks stay pure selection for drag/copy. The pod dropdown's add
+  entry is "＋ Add a Pod Location..."; the search placeholder is "Type to
+  autocomplete search files ...". **pod-ops View-first (2026-07-12):**
+  html / markdown / mermaid files open on a code-free View tab (the same
+  preview live-edit shows — html iframe, marked, the shared mermaid
+  renderer) with Live Edit one tab over; csv/turtle keep Live Edit first.
 - **dk-podz** (`plugins/podz/`) — the Data Kitchen Pod Browser; keep-alive
   (one persistent instance). Messaging: panel-level errors (auth, load, copy/undo
   failures) render **in the affected pod's panel** via `sol-pod.showMessage` (the
@@ -222,6 +235,37 @@ rules against the pod data and lists any double-listed cards.
   `examples/pod-locations.html` (form + RDF + SHACL + shaclc, verified
   headless). Probe: `claude/smoke-tests/cdp-verify-pod-locations.mjs`
   (snapshots + restores the settings doc — rerunnable).
+- **Sign-in issuers persist as a positioned list (2026-07-12):** `#Issuers`
+  in the settings doc — same `schema:ItemList`/`schema:position` model as
+  `#Locations` (shape: sc `shapes/oidc-issuers.shacl`; position 1 = the
+  default). `src/dk-issuers-feed.js` reads it position-sorted and re-applies
+  on `sol-form-save` — a reorder reaches the login buttons LIVE (no
+  restart, unlike locations). The old `solid:oidcIssuer` triples and
+  `<dk-issuers-editor>` (with its curated add-dropdown) are GONE — Add is a
+  typed URL in the rolodex; the curated list survives only as the TTL seed +
+  `src/shared/oidc-issuers.js` fallback. This RESOLVED the old
+  "issuer order doesn't survive rdflib serialization" caveat.
+- **Settings page = chip nav (2026-07-12):** `<sol-settings-nav>` (sc,
+  loaded via sol-basic) renders one chip per `section` with a direct
+  heading under its parent; exactly ONE group shows at a time (hidden attr
+  + inline display — author `display:block` beats `[hidden]` alone). Chips
+  derive from markup/runtime sections: Preferences, Pod locations, Sign-in
+  issuers, per-plugin groups (dk-plugin-settings), per-widget groups
+  (sol-settings), Electron, Pivot. Default selection TRACKS the first chip
+  until the user picks one. sc's `<sol-settings>` renders flat
+  `<section><h3>…</h3>editor</section>` per discovered widget now — the
+  accordion rendering is DELETED, an empty sol-settings renders NOTHING.
+  The chrome search-bar menu entry carries `data-settings-skip` so
+  discovery doesn't double-list Search. Podz's settings chip is "Browser
+  ignore paths" (the manifest.jsonld label — its only display use); the
+  `ui:editorKeys` field is out of the form (live-edit manages it; the
+  triple stays in pod-settings.ttl). Preferences lost the CORS-proxy field
+  (the proxy is configured via its PORT in Pivot, and
+  `dk-config-settings.syncProxyUrl` rewrites the `ui:proxy` URL's port on
+  every Pivot save). Pivot has a plain **Pod Root** field (pim:storage —
+  saveConfig adopts it; re-roots on reload, data NOT moved; "Move my pod"
+  + dk:move-pod are REMOVED) and a permanent "Needs reload for changes."
+  row; Electron (window geometry) applies live, no reload row.
 - **sol-form editability model (2026-07-10, Jeff's rule):** every
   `<sol-form>` WITHOUT the `no-edit` attribute is fully editable — fields,
   Add/Delete, record search, reorder — everywhere, plain web included.
@@ -256,6 +300,21 @@ rules against the pod data and lists any double-listed cards.
   `loadImportedLibraryConfigs`). A catalog Agent with no `dcat:landingPage` is
   treated as local data (`ia-rdf.js`), so its albums/tracks resolve from the store,
   not an archive.org search.
+
+## Assorted 2026-07-12 facts
+
+- **Tab icons:** sol-tabs paints a tab's `ui:icon` before its name (emoji as
+  text, URL as `<img>`, class `.sol-tab-icon`) — News carries `ui:icon "📰"`
+  in the menus now. Music still has 🎵 embedded in its LABEL (predates this).
+- **Anchored dropdowns never overhang:** `core/anchor-place.js` clamps BOTH
+  viewport edges, and `sol-dropdown-button` re-places on rAF + a popup
+  ResizeObserver (the ☰ popup used to grow past the right edge after its
+  first placement).
+- **NEVER kill dk port-holders by bare port** — Jeff's own app's servers look
+  identical to a test instance's. Only kill processes attributable to MY
+  instance; better: run tests ISOLATED (throwaway `DK_POD_ROOT` +
+  `DK_PUBLIC_PORT=18400 DK_CSS_INTERNAL_PORT=18410 DK_PROXY_PORT=18401` +
+  `--remote-debugging-port=9223`) so Jeff's session is never touched.
 
 ## Pod / server / auth model
 
@@ -342,13 +401,9 @@ back a proxied fetch.
   so the token / DPoP key never leave main. The hook then repaints the button
   (`el._updateUI()`) and wires rdflib (`el._integrateWithRdflib()`), and main shows a
   brief "Logging in automatically…" window (`auto-login-window.html`) for the grant.
-- Issuers come from SETTINGS (`data-kitchen-settings.ttl#Settings solid:oidcIssuer`),
-  never hardcoded. The dk-issuers-editor's save was DEAD until 2026-07-06 (it
-  used a callback with sc's promise-only rdf.serialize — hung forever); its
-  persist() also re-reads the live doc now so an issuer edit can't revert
-  interleaved settings writes. CAVEAT: the "first issuer = default" order does
-  NOT survive rdflib serialization (the serializer orders objects itself) —
-  a durable fix needs an RDF list or a default-issuer predicate (Jeff's call). Pods use `login-mode="popup"`; the popup callback
+- Issuers come from SETTINGS (`data-kitchen-settings.ttl#Issuers` — the
+  positioned schema:ItemList; see the RDF-first section above), never
+  hardcoded; position 1 is the default. Pods use `login-mode="popup"`; the popup callback
   (sc `web/popup-auth-callback.html`) carries the chosen issuer through the IdP
   round-trip via per-window `sessionStorage` — inrupt's `session.info` has **no
   `issuer`** field, so without this the post-login remember-offer never fires.

@@ -1,4 +1,6 @@
-# Solid Data Kitchen - pod in a box
+# ![data-kitchen-logo](./assets/icons/dk-64.png) Solid Data Kitchen - pod in a box
+
+
 
 <b style="color:red">Work In Progress</b> - everything should work but help may be sketchy.
 
@@ -23,7 +25,7 @@ No setup or install needed, just download and run. Downloads for all platforms a
 
 ## Special Note on Logging-In
 
-The local pod is protected by the electron/flutter router which sits in front of a pivot/css that does not require authorization.  The protection comes from the router, not from login authorization.  This works seamlessly for Data Kitchen native apps like the Data Kitchen Pod Browser, but other apps may need to observe a login flow.  If an app asks you for a login to your Data Kitchen Pod, use these vaues:
+The local pod is protected by the electron/flutter router which sits in front of a pivot/css that does not require authentication.  The protection comes from the router, not from login authenticatin.  All apps still need to be manually authorized but the login itself is a dummy. This works seamlessly for Data Kitchen native apps like the Data Kitchen Pod Browser, but other apps may need to observe a login flow.  If an app asks you for a login to your Data Kitchen Pod, use these values:
 ```
 **user:** dk-pod
 **pass:** !secret

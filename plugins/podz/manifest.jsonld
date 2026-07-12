@@ -40,7 +40,7 @@
   },
   "@id": "",
   "@type": "Component",
-  "label": "Data Kitchen Pod Browser",
+  "label": "Browser ignore paths",
   "name": "dk-podz",
   "creator": "Jeff Zucker",
   "hasPart": [

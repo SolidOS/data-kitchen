@@ -235,13 +235,16 @@ header.dash .dash-sep {
   text-align: center;
 }
 
-/* Named groups (Data Kitchen, Data Kitchen Browser, Electron, Pivot, Plugins).
-   Each fills the settings column; its form/fields stay even with the others. */
-.dk-settings .dk-settings-group {
+/* Named groups (hand-authored .dk-settings-group sections AND the sections
+   sol-settings generates per discovered widget). Each fills the settings
+   column; its form/fields stay even with the others. */
+.dk-settings .dk-settings-group,
+.dk-settings sol-settings > section {
   display: block;
   margin: 0 0 var(--space-2xl, 24px);
 }
-.dk-settings .dk-settings-group > h3 {
+.dk-settings .dk-settings-group > h3,
+.dk-settings sol-settings > section > h3 {
   margin: 0 0 var(--space-lg, 12px);
   font-size: 1.15rem;
   font-weight: var(--font-weight-bold, 600);
@@ -256,25 +259,11 @@ header.dash .dash-sep {
 }
 .dk-settings .dk-settings-field-label { font-size: 1rem; }
 .dk-settings .dk-settings-field-hint { color: var(--text-muted, #4d4d4d); }
-.dk-settings .dk-settings-root { flex-direction: column; align-items: stretch; }
-.dk-settings .dk-settings-root-row {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md, 8px);
-  margin-top: var(--space-xs, 4px);
-}
-.dk-settings .dk-settings-root-path {
-  flex: 1;
-  font-family: var(--font-mono, monospace);
-  font-size: 1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: var(--text-muted, #4d4d4d);
-}
 .dk-settings .dk-settings-actions {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: var(--space-lg, 12px);
   margin-top: var(--space-lg, 12px);
 }
 .dk-settings .dk-settings-btn {
@@ -300,115 +289,20 @@ header.dash .dash-sep {
 .dk-settings .dk-settings-status[data-kind="ok"]  { color: var(--ok, #1e7e34); }
 .dk-settings .dk-settings-status[data-kind="err"] { color: var(--danger, #c0392b); }
 
-/* Issuer-list editor (Sign-in issuers; first = default). */
-.dk-settings .dk-issuers { display: flex; flex-direction: column; gap: var(--space-md, 8px); margin-top: var(--space-lg, 12px); }
-.dk-settings .dk-issuers-list { display: flex; flex-direction: column; gap: var(--space-xs, 4px); }
-.dk-settings .dk-issuer-row {
-  display: flex; align-items: center; gap: var(--space-md, 8px);
-  padding: var(--space-xs, 4px) var(--space-sm, 6px);
-  border: 1px solid var(--border, #9e9e9e); border-radius: var(--radius-sm, 4px);
-  background: var(--surface, #fff);
-}
-.dk-settings .dk-issuer-url { flex: 1; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.dk-settings .dk-issuer-default { font-size: 1rem; color: var(--ok, #1e7e34); }
-.dk-settings .dk-issuers-add { display: flex; gap: var(--space-md, 8px); align-items: center; flex-wrap: wrap; }
-.dk-settings .dk-issuers-add select,
-.dk-settings .dk-issuers-add input { font-size: 1rem; padding: var(--space-xs, 4px) var(--space-sm, 6px); border-radius: var(--radius-sm, 4px); }
-.dk-settings .dk-issuer-iconbtn {
-  font-size: 1rem; line-height: 1; cursor: pointer;
-  border: 1px solid transparent; border-radius: var(--radius-sm, 4px);
-  background: none; color: var(--text-muted, #4d4d4d); padding: var(--space-xs, 4px);
-}
-.dk-settings .dk-issuer-iconbtn:hover { color: var(--accent, #1F618D); border-color: var(--border, #9e9e9e); }
+/* Settings chip nav: <sol-settings-nav> (sol-components) carries its own
+   chip styles on the shared tokens (--accent/--surface/--border), so the
+   dk theme applies with no per-app rules here. */
 
-/* Override sol-accordion's defaults for a quieter, more editorial
-   look. The accordion injects its own styles document-level; ours
-   target the dk-settings scope only so other apps' accordions stay
-   on the swc defaults. */
-.dk-settings .sol-accordion-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md, 8px);
-}
-.dk-settings .sol-accordion-wrapper details {
-  margin-bottom: 0;
-  border: 1px solid var(--border, #9e9e9e);
-  border-radius: var(--radius-md, 6px);
-  background: var(--surface, #fff);
-  box-shadow: 0 1px 0 var(--shadow, rgba(0,0,0,0.06));
-  overflow: hidden;
-  transition: box-shadow 160ms ease, border-color 160ms ease;
-}
-.dk-settings .sol-accordion-wrapper details[open] {
-  border-color: var(--accent, #1F618D);
-  box-shadow: 0 6px 18px -8px var(--shadow, rgba(0,0,0,0.18));
-}
-.dk-settings .sol-accordion-wrapper summary {
-  padding: var(--space-lg, 12px) var(--space-xl, 16px);
-  background: transparent;
-  border-radius: 0;
-  font-weight: var(--font-weight-bold, 600);
-  font-size: 1rem;
-  color: var(--text, #000);
-  letter-spacing: -0.005em;
-  position: relative;
-}
-.dk-settings .sol-accordion-wrapper summary:hover {
-  background: var(--hover, #eaf2fb);
-}
-.dk-settings .sol-accordion-wrapper details[open] > summary {
-  border-bottom: 1px solid var(--border, #9e9e9e);
-  border-radius: 0;
-  background: linear-gradient(
-    to bottom,
-    color-mix(in srgb, var(--accent, #1F618D) 6%, transparent),
-    transparent
-  );
-}
-.dk-settings .sol-accordion-wrapper summary::after {
-  content: '+';
-  font-family: var(--font-mono, monospace);
-  font-weight: 400;
-  font-size: 1.25rem;
-  line-height: 1;
-  color: var(--text-muted, #4d4d4d);
-  transition: transform 200ms ease, color 200ms ease;
-}
-.dk-settings .sol-accordion-wrapper details[open] > summary::after {
-  content: '−';
-  color: var(--accent, #1F618D);
-  transform: none;
-}
-.dk-settings .sol-accordion-wrapper .accordion-body {
-  padding: var(--space-xl, 16px);
-  background: var(--surface, #fff);
-}
-/* sol-form's :host rule sets display:flex + flex:1 + min-height:0,
-   which would collapse to 0 height inside a non-flex parent. Make
-   the section a flex column so sol-form's native flex layout fills
-   it — but DON'T force a min-height, let the form size to its own
-   content. (Previously we hard-coded 18rem; that left a tall empty
-   strip below short forms like Time's single field.) */
-.dk-settings .sol-accordion-wrapper .accordion-content-section {
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-}
 .dk-settings .dk-settings-loading {
   padding: var(--space-md, 8px) 0;
   color: var(--text-muted, #4d4d4d);
   font-style: italic;
   font-size: 0.9rem;
 }
-.dk-settings .accordion-content-section sol-form {
-  display: flex;
-  flex: 0 1 auto;
-  width: 100%;
-}
 
 /* ── Settings page, phone (coarse pointer, no hover) ─────────────────
-   Touch reflow only: stacked field rows, 44px targets, readable issuer
-   URLs. Desktop is untouched by construction. */
+   Touch reflow only: stacked field rows, 44px targets. Desktop is
+   untouched by construction. */
 @media (hover: none) and (pointer: coarse) {
   .dk-settings {
     padding: var(--space-xl, 16px);
@@ -428,31 +322,6 @@ header.dash .dash-sep {
     gap: var(--space-md, 8px);
     min-height: 44px;
     box-sizing: border-box;
-  }
-  /* Issuer editor: a truncated issuer URL is unverifiable on a phone —
-     wrap it instead; ★/✕ become real touch targets. */
-  .dk-settings .dk-issuer-row { min-height: 44px; box-sizing: border-box; }
-  .dk-settings .dk-issuer-url {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
-    overflow-wrap: anywhere;
-  }
-  .dk-settings .dk-issuer-iconbtn {
-    min-width: 44px;
-    min-height: 44px;
-    font-size: max(16px, 1em);
-  }
-  .dk-settings .dk-issuers-add {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .dk-settings .dk-issuers-add select,
-  .dk-settings .dk-issuers-add input {
-    min-height: 44px;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: max(16px, 1em);
   }
   /* Electron/Pivot config edits the DESKTOP app process — dead weight
      on the phone build (its JS already degrades to a hint without

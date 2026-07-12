@@ -319,11 +319,6 @@ contextBridge.exposeInMainWorld('dkElectron', {
   // on a tab switch so the destination tab isn't left occluded. (Esc / the
   // reader's own Close button still work too — handler at main.cjs dk:reader-close.)
   closeReader: () => ipcRenderer.send('dk:reader-close'),
-  // "Move my pod": main shows a folder picker, copies the pod tree there,
-  // persists the choice and relaunches. Resolves to {status,…} on
-  // cancel/error/same/nested (it relaunches on success). status values:
-  // moved | cancelled | same | nested | error.
-  moveMyPod: () => ipcRenderer.invoke('dk:move-pod'),
   // Settings page: read the JSON-LD electron/pivot config (+ the effective
   // values this process booted with) and save an edited one. saveConfig
   // resolves to { status: 'saved' | 'saved'+pending:'next-launch' |

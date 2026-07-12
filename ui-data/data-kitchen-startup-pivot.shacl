@@ -1,0 +1,48 @@
+@prefix :       <#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix wd:     <http://www.wikidata.org/entity/> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix pim:    <http://www.w3.org/ns/pim/space#> .
+
+# The Pivot half of the startup config (data-kitchen-startup.ttl#config):
+# the bundled servers' ports and the pod root. The window half lives in
+# data-kitchen-startup-electron.shacl — the Settings page renders each as
+# its own group/chip.
+
+:PivotConfigFileShape
+  a sh:NodeShape ;
+  sh:targetClass wd:Q1193846 ;
+  sh:property [
+    sh:path foaf:primaryTopic ;
+    sh:minCount 1 ; sh:maxCount 1 ;
+    sh:node :PivotPortsShape ;
+  ] .
+
+:PivotPortsShape
+  a sh:NodeShape ;
+  sh:property [
+    sh:path ui:publicPort ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Port" ;
+    sh:description "Public routing-server port — the origin clients talk to." ;
+  ] ,
+  [
+    sh:path ui:proxyPort ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Proxy port" ;
+    sh:description "CORS proxy port." ;
+  ] ,
+  [
+    sh:path ui:privatePort ;
+    sh:datatype xsd:integer ; sh:maxCount 1 ;
+    sh:name "Private port" ;
+    sh:description "Private server port, behind the router." ;
+  ] ,
+  [
+    sh:path pim:storage ;
+    sh:datatype xsd:string ; sh:maxCount 1 ;
+    sh:name "Pod Root" ;
+    sh:description "Filesystem folder served as the pod home. Changing it points the app at that folder on the next reload — the data is NOT moved." ;
+  ] .

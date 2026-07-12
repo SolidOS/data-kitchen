@@ -37,9 +37,6 @@
   // <dk-plugin-settings>: per-plugin settings groups on the settings page,
   // RDF-driven and gated on catalog in-use status.
   await import('./dk-plugin-settings.js');
-  // <dk-issuers-editor>: the sign-in issuer list (solid:oidcIssuer) on the
-  // settings page's Data Kitchen group.
-  await import('./dk-issuers-editor.js');
   // Register the local pod owner as a logged-in session BEFORE the auth router
   // and any widget's first authed fetch, so the app reads as the owner (and
   // podz can discover the pod).
@@ -53,7 +50,8 @@
   // from ui-data/data-kitchen-main-menu.ttl at load, live-update the running shell in place after a
   // Customize save, and self-heal #Chrome.
   await import('./dk-tabs-rdf.js');
-  // Feed the sign-in issuer list from settings (solid:oidcIssuer) into every
-  // <sol-login> — chrome + each pod — so issuers are user-configured, not hardcoded.
+  // Feed the sign-in issuer list from settings (the #Issuers positioned list,
+  // edited on the settings page's rolodex) into every <sol-login> — each pod's
+  // login and any standalone one — so issuers are user-configured, not hardcoded.
   await import('./dk-issuers-feed.js');
 })();

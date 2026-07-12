@@ -503,12 +503,6 @@
       // bundled servers) via the dkElectron preload bridge → main app.relaunch.
       reloadApp:     () => location.reload(),
       restartApp:    () => window.dkElectron?.restart?.(),
-      // "Move my pod" (owner): main shows a folder picker, copies the pod there,
-      // persists the choice and relaunches. Electron-only (no-op in a browser).
-      moveMyPod:     async () => {
-        const r = await window.dkElectron?.moveMyPod?.();
-        if (r && r.status === 'error') console.error('[dk] Move my pod failed:', r.message);
-      },
       // The ☰ "Sign in…" item: start the same coalesced flow a 401 does —
       // sol-login listens for sol-auth-needed, surfaces itself ([active])
       // and runs the popup login. resolve is the protocol's completion

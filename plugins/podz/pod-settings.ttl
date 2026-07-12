@@ -6,9 +6,10 @@
 # sol-pod's single settings document — owned by the sol-pod component.
 # Holds both the hide-path filters (ui:ignorePattern) the pod browser applies
 # and the live-editor keybinding mode (ui:editorKeys) that sol-live-edit
-# inherits. The central <sol-settings> page edits it (via pod-settings.shacl,
-# resolved from each <sol-pod>'s data-subject); live-edit pushes keybinding
-# changes back here.
+# inherits. The central Settings page edits ONLY the hide paths (via
+# pod-settings.shacl — the "Browser ignore paths" group); ui:editorKeys is
+# the live editor's own concern, managed and pushed back here by the plugin
+# itself.
 <> a wd:Q1193846 ;
    foaf:primaryTopic <#Settings> .
 

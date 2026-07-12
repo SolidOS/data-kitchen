@@ -3,26 +3,34 @@
     <h2>Settings</h2>
   </header>
 
-  <!-- Data Kitchen: theme / text size / CORS proxy / help document, all from the
-       shape-driven form over data-kitchen-settings.ttl; plus the sign-in issuer
-       list (first = default). data-settings-skip keeps this form out of the
-       Plugins accordion below (its shape would otherwise re-list it there). -->
+  <!-- Chip nav (sol-components): one chip per settings group below, exactly
+       one group shown at a time. Chips are derived from the groups' own <h3>
+       labels — including the per-plugin groups dk-plugin-settings appends at
+       runtime, so a plugin the user adds in Customize gets its own chip
+       automatically. Loaded with the sol-basic set. -->
+  <sol-settings-nav></sol-settings-nav>
+
+  <!-- Data Kitchen preferences: theme / text size / CORS proxy / help document,
+       all from the shape-driven form over data-kitchen-settings.ttl.
+       data-settings-skip keeps this form out of the Plugins accordion below
+       (its shape would otherwise re-list it there). -->
   <section class="dk-settings-group">
-    <h3>Data Kitchen</h3>
+    <h3>Preferences</h3>
     <sol-form
         data-settings-skip
         subject="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Settings"
         save-to="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Settings"
         shape="node_modules/sol-components/shapes/data-kitchen-settings.shacl"
     ></sol-form>
-    <dk-issuers-editor
-        source="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Settings"
-    ></dk-issuers-editor>
-    <!-- Pod locations: the ordered storage list feeding every pod selector
-         (podz Pod Browser, SolidOS Locations). Shape-driven rolodex over
-         #Locations in the same settings doc — reorder with the ↑/↓ arrows
-         (schema:position); src/dk-locations-feed.js syncs the list into the
-         shared runtime pod registry. -->
+  </section>
+
+  <!-- Pod locations: the ordered storage list feeding every pod selector
+       (podz Pod Browser, SolidOS Locations). Shape-driven rolodex over
+       #Locations in the settings doc — reorder with the ↑/↓ arrows
+       (schema:position); src/dk-locations-feed.js syncs the list into the
+       shared runtime pod registry. -->
+  <section class="dk-settings-group">
+    <h3>Pod locations</h3>
     <sol-form
         data-settings-skip
         subject="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Locations"
@@ -31,14 +39,29 @@
     ></sol-form>
   </section>
 
+  <!-- Sign-in issuers: the ordered OIDC issuer list every <sol-login> offers
+       (position 1 = the default). Shape-driven rolodex over #Issuers —
+       reorder with the ↑/↓ arrows (schema:position); src/dk-issuers-feed.js
+       re-applies the list to the login buttons on save. -->
+  <section class="dk-settings-group">
+    <h3>Sign-in issuers</h3>
+    <sol-form
+        data-settings-skip
+        subject="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Issuers"
+        save-to="./dk-pod/dk/ui-data/data-kitchen-settings.ttl#Issuers"
+        shape="node_modules/sol-components/shapes/oidc-issuers.shacl"
+    ></sol-form>
+  </section>
+
   <!-- Per-plugin settings, RDF-driven and gated on catalog "in-use" status:
-       <dk-plugin-settings> renders a shape-driven <sol-form> for each plugin that
-       (a) is wired into the active shell (menu=) and (b) declares settings in its
-       own manifest (shape + a settings .ttl; subject = the doc's foaf:primaryTopic)
-       — independent of whether its tab is mounted, and with nothing duplicated
-       here. The forms carry data-settings-skip so the discovery accordion below
-       never lists them twice; dk-settings-applier re-applies a save to any mounted
-       pods. -->
+       <dk-plugin-settings> renders a shape-driven <sol-form> group for each
+       plugin that (a) is wired into the active shell (menu=) and (b) declares
+       settings in its own manifest (shape + a settings .ttl; subject = the
+       doc's foaf:primaryTopic) — independent of whether its tab is mounted,
+       and with nothing duplicated here. Each group gets its own chip above.
+       The forms carry data-settings-skip so the discovery accordion below
+       never lists them twice; dk-settings-applier re-applies a save to any
+       mounted pods. -->
   <dk-plugin-settings
       menu="./dk-pod/dk/ui-data/data-kitchen-main-menu.ttl"
   ></dk-plugin-settings>
@@ -49,10 +72,8 @@
        than the pod RDF above. -->
   <dk-config-settings></dk-config-settings>
 
-  <!-- Plugins: every editable widget the running page mounts (calendar, weather,
-       time, …) auto-discovered and shown as an accordion. -->
-  <section class="dk-settings-group">
-    <h3>Plugins</h3>
-    <sol-settings></sol-settings>
-  </section>
+  <!-- Every editable widget the running page mounts (calendar, weather,
+       time, …), auto-discovered by sol-settings — which renders one section
+       per widget, so each one gets its own chip in the nav above. -->
+  <sol-settings></sol-settings>
 </section>

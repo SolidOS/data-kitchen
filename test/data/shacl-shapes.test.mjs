@@ -46,35 +46,42 @@ for (const [label, shape, data] of conformingCases) {
   });
 }
 
-// --- pod locations (#Locations in the settings doc) ---
-// The Settings-page rolodex (sc shapes/pod-locations.shacl) and
-// src/dk-locations-feed.js both rely on this contract: every entry is a
-// schema:ListItem with an IRI schema:item and a unique integer
-// schema:position (reorder swaps and the feed's max+1 depend on it).
+// --- positioned lists in the settings doc (#Locations, #Issuers) ---
+// The Settings-page rolodexes (sc shapes/pod-locations.shacl and
+// oidc-issuers.shacl), src/dk-locations-feed.js, and src/dk-issuers-feed.js
+// all rely on this contract: every entry is a schema:ListItem with an IRI
+// schema:item and a unique integer schema:position (reorder swaps, the
+// locations feed's max+1, and the issuer default = position 1 depend on it).
 
 const SCHEMA = 'http://schema.org/';
 const settingsTtl = readFileSync(P('ui-data/data-kitchen-settings.ttl'), 'utf8');
 
-test('pod locations conform to pod-locations.shacl', async () => {
-  const report = await validate(
-    'node_modules/sol-components/shapes/pod-locations.shacl', settingsTtl);
-  assert.ok(report.conforms, `expected conformance, violations:\n   ${summarize(report)}`);
-});
+const positionedLists = [
+  ['pod locations', '#Locations', 'node_modules/sol-components/shapes/pod-locations.shacl'],
+  ['sign-in issuers', '#Issuers', 'node_modules/sol-components/shapes/oidc-issuers.shacl'],
+];
 
-test('pod locations list invariants (≥1 entry, unique integer positions)', () => {
-  const store = parse(settingsTtl, 'http://dk.invalid/dk-pod/dk/ui-data/data-kitchen-settings.ttl');
-  const list = 'http://dk.invalid/dk-pod/dk/ui-data/data-kitchen-settings.ttl#Locations';
-  const entries = store.getObjects(list, `${SCHEMA}itemListElement`, null);
-  assert.ok(entries.length >= 1, 'the seed must ship at least one location');
-  const positions = entries.map((e) => {
-    const pos = store.getObjects(e, `${SCHEMA}position`, null);
-    assert.equal(pos.length, 1, `${e.value} needs exactly one schema:position`);
-    const n = Number(pos[0].value);
-    assert.ok(Number.isInteger(n), `${e.value} position must be an integer`);
-    const items = store.getObjects(e, `${SCHEMA}item`, null);
-    assert.equal(items.length, 1, `${e.value} needs exactly one schema:item`);
-    assert.equal(items[0].termType, 'NamedNode', `${e.value} schema:item must be an IRI`);
-    return n;
+for (const [label, frag, shape] of positionedLists) {
+  test(`${label} conform to ${shape.split('/').pop()}`, async () => {
+    const report = await validate(shape, settingsTtl);
+    assert.ok(report.conforms, `expected conformance, violations:\n   ${summarize(report)}`);
   });
-  assert.equal(new Set(positions).size, positions.length, 'positions must be unique');
-});
+
+  test(`${label} list invariants (≥1 entry, unique integer positions)`, () => {
+    const store = parse(settingsTtl, 'http://dk.invalid/dk-pod/dk/ui-data/data-kitchen-settings.ttl');
+    const list = `http://dk.invalid/dk-pod/dk/ui-data/data-kitchen-settings.ttl${frag}`;
+    const entries = store.getObjects(list, `${SCHEMA}itemListElement`, null);
+    assert.ok(entries.length >= 1, `the seed must ship at least one ${label.replace(/s$/, '')}`);
+    const positions = entries.map((e) => {
+      const pos = store.getObjects(e, `${SCHEMA}position`, null);
+      assert.equal(pos.length, 1, `${e.value} needs exactly one schema:position`);
+      const n = Number(pos[0].value);
+      assert.ok(Number.isInteger(n), `${e.value} position must be an integer`);
+      const items = store.getObjects(e, `${SCHEMA}item`, null);
+      assert.equal(items.length, 1, `${e.value} needs exactly one schema:item`);
+      assert.equal(items[0].termType, 'NamedNode', `${e.value} schema:item must be an IRI`);
+      return n;
+    });
+    assert.equal(new Set(positions).size, positions.length, 'positions must be unique');
+  });
+}

@@ -194,8 +194,10 @@ RDF keeps plain `file://`.
 `contextBridge` surfaces (what page/JS can call):
 
 - `window.dkElectron` (app, via `preload.cjs`): `restart`, `closeReader`,
-  `moveMyPod`, `getConfig`, `saveConfig`, `importMusic`, `readCover`,
-  `onImportProgress`, plus `isElectron`.
+  `getConfig`, `saveConfig`, `importMusic`, `readCover`,
+  `onImportProgress`, plus `isElectron`. (Pod Root is a plain field in the
+  Pivot settings form — `saveConfig` adopts an edited `storage` path, which
+  re-roots the app on the next reload; nothing is moved.)
 - `window.readerChrome` (reader toolbar, via `reader-chrome-preload.cjs`):
   `back`, `forward`, `reload`, `close`, `onState`.
 
