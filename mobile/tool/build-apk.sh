@@ -107,7 +107,15 @@ echo "[build-apk] flutter: $FLUTTER"
 # DK_VERSION feeds the in-app update check (lib/main.dart kAppVersion) — the
 # same package.json version that names the release artifact below.
 DK_VERSION="$(node -p "require('$REPO/package.json').version" 2>/dev/null || echo 0.0.0)"
-( cd "$MOBILE" && "$FLUTTER" pub get && "$FLUTTER" build apk "--$MODE" --dart-define=DK_VERSION="$DK_VERSION" )
+# Stamp the Android package metadata with the same version: --build-name →
+# versionName, --build-number → versionCode (pubspec's 1.0.0 default would
+# show otherwise). versionCode must be a monotonic integer: major*10000 +
+# minor*100 + patch (2.1.6 → 20106) — keep this formula or upgrades break.
+DK_VERSION_CODE="$(node -p "(([a,b,c])=>a*10000+b*100+c)('$DK_VERSION'.split('.').map(Number))" 2>/dev/null || echo 1)"
+echo "[build-apk] version $DK_VERSION (versionCode $DK_VERSION_CODE)"
+( cd "$MOBILE" && "$FLUTTER" pub get && "$FLUTTER" build apk "--$MODE" \
+    --dart-define=DK_VERSION="$DK_VERSION" \
+    --build-name="$DK_VERSION" --build-number="$DK_VERSION_CODE" )
 
 APK="$MOBILE/build/app/outputs/flutter-apk/app-$MODE.apk"
 [ -f "$APK" ] || { echo "ERROR: expected APK not found at $APK"; exit 1; }
