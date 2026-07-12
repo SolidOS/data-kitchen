@@ -38,6 +38,18 @@ The UI renders from `.ttl` in `ui-data/`:
   survive in dk-tabs-shell. Settings previously hid under Customize ▸
   Preferences — `pages/customize.html` is now a single-subtab tabset, and
   sol-tabs auto-hides the bar for one tab.)
+  **The ☰ shows MORE than this TTL when a plugin is active**: dk-tabs-shell's
+  applyContext() sets the dropdown's `context-source` to the active plugin's
+  manifest `#Menu`, appending those items below a separator. That's where
+  "Filters…/View deleted/Install on my Pod…/Update app…" came from on media
+  tabs (ia-player's manifest) — REMOVED 2026-07-10 per Jeff (the manifest
+  #Menu block deleted in omp src + the pod copy). When hunting a mystery ☰
+  item, check the active plugin's manifest.jsonld, not just the hamburger TTL.
+- **The chrome has NO sign-in (2026-07-10):** `:chrome-login`/`:bar-login`
+  removed from the main-menu TTL AND from dk-tabs-rdf's self-healing
+  CHROME_DEFAULTS (it would have re-inserted them). News/media need no login;
+  podz, SolidOS, and other apps carry their own sol-logins. dk-auth-router
+  works off the shared AuthManager and never needed the element.
 - `data-kitchen-plugins-catalog.ttl` — every available plugin (Customize source)
 - `data-kitchen-settings.ttl`, `data-kitchen-startup-config.shacl`
 

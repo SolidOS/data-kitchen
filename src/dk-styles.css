@@ -614,11 +614,14 @@ dk-dokieli {
 }
 #dk-content:focus { outline: none; }
 
-/* Media gear menu (ia-player panels, light DOM): Filters… and the two
-   on-Pod items (Install on my Pod… / Update app on Pod…) don't apply
-   inside data-kitchen — hidden here, dk-side, so standalone
-   open-media-player keeps them. The extra .menu-item class outranks
-   ia.css's later-loaded `.gear-menu .menu-item { display: flex }`. */
+/* Media gear/☰ menu (ia-player panels, light DOM): the media-library
+   management items (Filters…, View deleted, Install on my Pod…, Update app
+   on Pod…, Import music…) don't apply inside data-kitchen — hidden here,
+   dk-side, so standalone open-media-player keeps them. Help / About /
+   Login help stay. The extra .menu-item class outranks ia.css's
+   later-loaded `.gear-menu .menu-item { display: flex }`. */
 .gear-menu .menu-item.gear-filters,
+.gear-menu .menu-item.gear-view-deleted,
 .gear-menu .menu-item.gear-install-pod,
-.gear-menu .menu-item.gear-update-app { display: none; }
+.gear-menu .menu-item.gear-update-app,
+.gear-menu .menu-item.gear-import-music { display: none; }

@@ -55,23 +55,6 @@
         [ schema:name "title"; schema:value "Text size" ];
     ui:label "A";
     ui:name "sol-button".
-:bar-login
-    a ui:Component;
-    dct:source plu:sign-in.ttl;
-    ui:attribute
-        [ schema:name "class"; schema:value "omp-sollogin" ],
-            [
-                schema:name "issuers";
-                schema:value
-                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
-            ],
-        [ schema:name "mode"; schema:value "popup" ],
-            [
-                schema:name "popup-callback";
-                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
-            ];
-    ui:label "Sign in";
-    ui:name "sol-login".
 :bar-search
     a ui:Component;
     dct:source plu:search.ttl;
@@ -134,7 +117,7 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
 :Chrome
     a ui:Menu;
     ui:label "chrome";
-    ui:parts ( :chrome-help :chrome-menu :chrome-login ).
+    ui:parts ( :chrome-help :chrome-menu ).
 :chrome-help
     a ui:Component;
     rdfs:comment
@@ -153,25 +136,6 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "trusted"; schema:value "" ];
     ui:label "?";
     ui:name "sol-button".
-:chrome-login
-    a ui:Component;
-    dct:source plu:sign-in.ttl;
-    rdfs:comment
-        "Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).";
-    ui:attribute
-        [ schema:name "class"; schema:value "omp-sollogin" ],
-            [
-                schema:name "issuers";
-                schema:value
-                    "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
-            ],
-        [ schema:name "mode"; schema:value "popup" ],
-            [
-                schema:name "popup-callback";
-                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
-            ];
-    ui:label "Sign in";
-    ui:name "sol-login".
 :chrome-menu
     a ui:Component;
     rdfs:comment

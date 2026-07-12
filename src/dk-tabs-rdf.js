@@ -79,10 +79,12 @@ async function refreshShell() {
 }
 
 // --- (c) Self-healing chrome ---
-// The chrome items (help, ☰ menu, sign-in) are mandatory shell furniture,
-// modeled in tabs.ttl#Chrome so their wiring (which help file, which menu
-// document, the issuer list) stays user-editable data. If a hand-edit drops
-// one, reinsert its default (this config is app-owned, not user data).
+// The chrome items (help, ☰ menu) are mandatory shell furniture, modeled in
+// tabs.ttl#Chrome so their wiring (which help file, which menu document)
+// stays user-editable data. If a hand-edit drops one, reinsert its default
+// (this config is app-owned, not user data). The chrome sign-in was REMOVED
+// 2026-07-10: the shell needs no login (news/media are public) — podz,
+// SolidOS, and other apps carry their own sol-logins.
 const CHROME_DEFAULTS = [
   { type: 'component', id: 'chrome-help', name: '?', tag: 'sol-button',
     comment: 'Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay.',
@@ -94,9 +96,6 @@ const CHROME_DEFAULTS = [
     params: [['class', 'omp-more'], ['title', 'Menu'], ['aria-label', 'Menu'],
              ['label', '☰'], ['source', './dk-pod/dk/ui-data/data-kitchen-hamburger-menu.ttl#More'],
              ['data-settings-skip', '']] },   // menus are edited on the Customize Plugins page, not in Preferences
-  { type: 'component', id: 'chrome-login', name: 'Sign in', tag: 'sol-login',
-    comment: 'Sign-in — hidden until a flow needs it; sol-login surfaces itself with [active] for the duration (see dk-chrome.css).',
-    params: [['class', 'omp-sollogin'], ['mode', 'popup']] },
 ];
 
 async function healChrome() {

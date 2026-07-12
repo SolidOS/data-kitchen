@@ -31,8 +31,9 @@ export function registerMenuInvariants(label, menuPath) {
 
   t('#Chrome carries the self-healing chrome items', () => {
     // src/dk-tabs-rdf.js#healChrome re-inserts these if absent; they must exist in
-    // the shipped menu so a fresh load renders help / hamburger / login.
-    for (const item of ['chrome-help', 'chrome-menu', 'chrome-login']) {
+    // the shipped menu so a fresh load renders help / hamburger. (The chrome
+    // sign-in was removed 2026-07-10 — apps carry their own logins.)
+    for (const item of ['chrome-help', 'chrome-menu']) {
       assert.ok(isType(store, M(item), 'Component'), `#${item} should be a ui:Component`);
     }
   });
