@@ -494,6 +494,28 @@ comments stripped — grep it for code fragments, not comments.
   then a real boot of the packed binary against a THROWAWAY pod home on
   spare ports (18400/18410/18401) asserting the seed plants files, the WebID
   card exists on disk, the app page loads, and the router answers.
+- **Mac hardening (2026-07-13, v2.1.7):** the mac zip is the artifact nobody
+  can test locally (no mac, no testers), so it gets three layers:
+  1. `packaged-smoke.mjs` section **1b** statically checks the unpacked mac
+     .app (`release/mac/`, present until release:prep prunes it): the same
+     REQUIRED list, plus main-binary exec bit, framework symlinks intact,
+     extraResources landed, Info.plist version. `SMOKE_MAC_APP=<path/to.app>`
+     mode runs those checks AND a real boot of that bundle — used by
+     **`.github/workflows/mac-smoke.yml`**, which downloads the released mac
+     zip onto a `macos-14` (Apple Silicon) runner on every release publish
+     (or manual dispatch with a tag) and boots it like a user would.
+  2. `release:prep` step **1.5** injects **`READ ME FIRST.txt`**
+     (`tools/mac-first-open.txt` — the Gatekeeper first-launch walkthrough;
+     the app is UNSIGNED since it's cross-built on linux) into the mac zip
+     next to the .app, then refreshes latest-mac.yml's sha512/size.
+  3. Mac runtime fixes in v2.1.7: role-based application menu on darwin
+     (`Menu.setApplicationMenu(null)` kills Cmd+C/V/X/A on mac — only
+     there), pod root resolves BESIDE the .app bundle (`dirname(exe)` is
+     Contents/MacOS *inside* it → pod died with every "replace the app"
+     update, and translocated bundles are read-only), and window-all-closed
+     quits on every platform (no activate handler → mac dock zombie).
+  Next rungs when wanted: ad-hoc signing via `rcodesign` (works on linux, no
+  Apple account; prerequisite for an arm64 zip), then notarization ($99/yr).
 - **Startup diagnostics (v2.1.2, 2026-07-09 — the "Windows blank page" report):**
   `electron-config/log.cjs` mirrors all console output to `<userData>/dk.log`
   (previous run kept once as `dk.log.old`) — a packaged app has no terminal, so

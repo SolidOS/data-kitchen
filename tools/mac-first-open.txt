@@ -1,0 +1,52 @@
+Solid Data Kitchen - macOS first launch
+=======================================
+
+This app is not signed with an Apple developer certificate yet, so
+macOS blocks the first launch of anything downloaded from the
+internet. That block is expected and takes under a minute to clear.
+Pick the section for your macOS version:
+
+macOS 15 (Sequoia) or newer
+---------------------------
+1. Double-click "Solid Data Kitchen.app". macOS refuses to open it -
+   that's fine, the attempt registers the app with Security settings.
+2. Open System Settings > Privacy & Security and scroll down to the
+   Security section.
+3. You'll see a note that "Solid Data Kitchen" was blocked. Click
+   "Open Anyway" and confirm.
+4. Launch the app again. Later launches are normal double-clicks.
+
+macOS 14 (Sonoma) or older
+--------------------------
+1. Right-click (or Control-click) "Solid Data Kitchen.app" and choose
+   Open.
+2. In the warning dialog, click Open. (If the dialog has no Open
+   button, close it and repeat the right-click > Open once more.)
+3. macOS remembers the choice; later launches are normal
+   double-clicks.
+
+If macOS says the app is "damaged"
+----------------------------------
+It isn't - that message is how newer macOS versions describe the
+missing signature on a quarantined download. Clear the quarantine
+flag in Terminal:
+
+    xattr -cr "/path/to/Solid Data Kitchen.app"
+
+Tip: type  xattr -cr  followed by a space, then drag the app icon
+into the Terminal window to fill in the path, and press Return.
+
+Apple Silicon (M1/M2/M3/M4) Macs
+--------------------------------
+This build is Intel (x64). The first launch may offer to install
+Rosetta - accept, it's a quick one-time Apple download and the app
+runs fine under it.
+
+What the app does on your machine
+---------------------------------
+Solid Data Kitchen runs a personal data server on your own computer
+(localhost only). It makes no outside connections except the ones you
+ask for - opening a web resource, connecting to a pod, or checking
+for a newer release.
+
+Problems? https://github.com/SolidOS/data-kitchen/issues

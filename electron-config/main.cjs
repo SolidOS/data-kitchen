@@ -165,7 +165,11 @@ class DesktopApp {
     // doesn't re-pop after a "Not now").
     this._declinedRemember = new Set();
     app.whenReady().then(() => this.start());
-    app.on('window-all-closed', () => { this._stopWatchdog(); this.servers.stop(); if (process.platform !== 'darwin') app.quit(); });
+    // Quit on window close on EVERY platform, mac included. The mac stay-
+    // resident convention is a trap here: the servers stop with the window and
+    // nothing re-creates it (no activate handler), so a lingering dock icon
+    // would be a zombie shell over dead servers.
+    app.on('window-all-closed', () => { this._stopWatchdog(); this.servers.stop(); app.quit(); });
     app.on('before-quit', () => { this._stopWatchdog(); this.servers.stop(); });
     app.on('web-contents-created', (_e, wc) => this.installOpenHandler(wc));
   }
@@ -176,7 +180,13 @@ class DesktopApp {
     // zip) has no terminal, and this file is what a bug report can include.
     const logPath = initFileLog(app.getPath('userData'));
     if (logPath) console.log(`[dk] v${app.getVersion()} — logging to ${logPath}`);
-    Menu.setApplicationMenu(null);
+    // No menu bar — EXCEPT on macOS, where the application menu is what
+    // provides the standard key bindings: a null menu kills Cmd+C/V/X/A in
+    // every input field plus Cmd+Q/W/M/H. Minimal role-based menu there.
+    // (No viewMenu: its Cmd+R reload is deliberately blocked in this shell.)
+    Menu.setApplicationMenu(process.platform === 'darwin'
+      ? Menu.buildFromTemplate([{ role: 'appMenu' }, { role: 'editMenu' }, { role: 'windowMenu' }])
+      : null);
     // dkfile: allow-list (imported music folders); persisted in userData.
     this._libraryRoots = new LibraryRoots(app.getPath('userData'));
     this.installGateHeader();

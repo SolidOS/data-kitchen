@@ -1,0 +1,55 @@
+# Boots the released mac zip on a real Apple Silicon runner — the project has
+# no mac testers, so this is the only execution the mac artifact gets before
+# users do. Runs automatically when a release is published, and on demand from
+# the Actions tab (pick a tag, or leave empty for the latest release).
+#
+# The heavy lifting is tools/packaged-smoke.mjs in SMOKE_MAC_APP mode: the
+# same static file checks as the local gate, then a real boot against a
+# throwaway pod home — seed plants files, WebID card exists, app page loads,
+# router answers.
+name: mac-smoke
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to test (e.g. v2.1.7); empty = latest release'
+        required: false
+        default: ''
+
+jobs:
+  boot:
+    # Apple Silicon — the x64 app runs under Rosetta here, same as real users.
+    runs-on: macos-14
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4        # for tools/packaged-smoke.mjs + package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Download the release's mac zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG='${{ github.event.inputs.tag || github.event.release.tag_name }}'
+          if [ -z "$TAG" ]; then
+            TAG=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName)
+          fi
+          echo "testing release $TAG"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern '*-mac-x64.zip' --dir "$RUNNER_TEMP/dk"
+
+      - name: Unzip like a user
+        run: |
+          ditto -x -k "$RUNNER_TEMP"/dk/*-mac-x64.zip "$RUNNER_TEMP/dk/unzipped"
+          xattr -cr "$RUNNER_TEMP/dk/unzipped" || true
+
+      - name: Static checks + boot the packaged app
+        run: |
+          SMOKE_EXPECT_VERSION="${TAG#v}" \
+          SMOKE_MAC_APP="$RUNNER_TEMP/dk/unzipped/Solid Data Kitchen.app" \
+          node tools/packaged-smoke.mjs

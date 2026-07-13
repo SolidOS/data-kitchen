@@ -303,6 +303,40 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
     ui:name "omp-images".
+:Images-Wikimedia-6
+    a ui:Component;
+    dct:source plu:images.ttl;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
+:Images-Wikimedia-7
+    a ui:Component;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
+:Images-Wikimedia-8
+    a ui:Component;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)";
+    ui:name "omp-images".
 :InnerPod
     a ui:Link;
     dct:source plu:innerpod.ttl;
@@ -433,8 +467,9 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
     ui:label "Media";
     ui:parts
             ( :News-three-panel-feeds-3 :Music-Internet-Archive-4
-            :Movies-Internet-Archive-4 :Spoken-Word-Internet-Archive-3
-            :Media-Kraken-8 :Solidflix-8 :MovieStar-8 ).
+            :Movies-Internet-Archive-4 :Images-Wikimedia-8
+            :Spoken-Word-Internet-Archive-3 :Media-Kraken-8 :Solidflix-8
+            :MovieStar-8 ).
 :Media-Kraken
     a ui:Link;
     dct:source plu:media-kraken.ttl;

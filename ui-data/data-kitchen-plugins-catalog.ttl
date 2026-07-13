@@ -603,7 +603,7 @@
   rdfs:comment "Your contacts — a Solid address book, in the SolidOS contacts pane." ;
   dct:creator "SolidOS Team" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/solidos-apps/contacts/index.ttl#this" ] ,
+    [ schema:name "source" ; schema:value "/dk-pod/contacts/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#SolidOS-Chat> a ui:Component ; ui:label "SolidOS Chat" ;
@@ -613,7 +613,7 @@
   rdfs:comment "A Solid long chat, in the SolidOS chat pane." ;
   dct:creator "SolidOS Team" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/solidos-apps/chat/index.ttl#this" ] ,
+    [ schema:name "source" ; schema:value "/dk-pod/chat/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#SolidOS-Meeting> a ui:Component ; ui:label "SolidOS Meeting" ;
@@ -623,7 +623,7 @@
   rdfs:comment "A Solid meeting workspace, in the SolidOS meeting pane." ;
   dct:creator "SolidOS Team" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/solidos-apps/meetings/index.ttl#this" ] ,
+    [ schema:name "source" ; schema:value "/dk-pod/meetings/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#SolidOS-Notes> a ui:Component ; ui:label "SolidOS Notes" ;
@@ -633,7 +633,7 @@
   rdfs:comment "A Solid notepad, in the SolidOS pad pane." ;
   dct:creator "SolidOS Team" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/solidos-apps/notes/index.ttl#this" ] ,
+    [ schema:name "source" ; schema:value "/dk-pod/notes/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#SolidOS-Tasks> a ui:Component ; ui:label "SolidOS Tasks" ;
@@ -643,7 +643,7 @@
   rdfs:comment "Your tasks — a Solid issue tracker, in the SolidOS tracker pane." ;
   dct:creator "SolidOS Team" ;
   ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/solidos-apps/tasks/index.ttl#this" ] ,
+    [ schema:name "source" ; schema:value "/dk-pod/tasks/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
 
 <#SPARQL-Playground> a ui:Link ; ui:label "SPARQL Playground" ;

@@ -79,9 +79,19 @@ function resolvePodRoot() {
     if (saved) return saved;
   } catch { /* no saved choice — fall through */ }
   if (!app || !app.isPackaged) return REPO_ROOT;
-  const installDir = process.env.APPIMAGE
-    ? path.dirname(process.env.APPIMAGE)
-    : path.dirname(app.getPath('exe'));
+  // "Beside the app file" per platform. linux: beside the AppImage. mac:
+  // beside the .app BUNDLE — dirname(exe) would be Contents/MacOS/ inside it,
+  // so the pod would die with every "replace the app to update", and a
+  // quarantined (translocated) bundle is read-only anyway. win: beside the exe.
+  let installDir;
+  if (process.env.APPIMAGE) {
+    installDir = path.dirname(process.env.APPIMAGE);
+  } else if (process.platform === 'darwin') {
+    // exe = <install dir>/Solid Data Kitchen.app/Contents/MacOS/<binary>
+    installDir = path.resolve(path.dirname(app.getPath('exe')), '..', '..', '..');
+  } else {
+    installDir = path.dirname(app.getPath('exe'));
+  }
   for (const base of [installDir, app.getPath('userData')]) {
     const home = path.join(base, 'data-kitchen-home');
     try {

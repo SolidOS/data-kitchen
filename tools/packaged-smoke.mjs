@@ -6,6 +6,14 @@
 //
 //   1. STATIC  — required files exist in release/linux-unpacked/resources/app
 //                (fails on any build.files omission of a boot-critical path).
+//   1b. MAC    — the same REQUIRED list against the unpacked mac .app in
+//                release/mac/ (present between dist:cross and release:prep's
+//                prune), plus mac-only shape checks: main binary + exec bit,
+//                framework symlinks intact, extraResources landed, Info.plist
+//                version matches package.json. A mac binary can't BOOT on
+//                linux, so this static pass is the only LOCAL mac gate; the
+//                mac-smoke GitHub workflow boots the shipped zip on a real
+//                mac runner via SMOKE_MAC_APP mode (see Usage below).
 //   2. BOOT    — launch the packed binary against a THROWAWAY pod home on
 //                spare ports; assert the personal-pod seed plants files (the
 //                WebID card — the v2.1.4 Windows 404), the app page loads,
@@ -15,14 +23,22 @@
 // Usage:  node tools/packaged-smoke.mjs          (after `npm run dist:cross`)
 //         SKIP_BOOT=1 node tools/packaged-smoke.mjs   (static checks only —
 //                                                      e.g. headless CI without a display)
+//         SMOKE_MAC_APP="/path/to/Solid Data Kitchen.app" node tools/packaged-smoke.mjs
+//             mac-artifact mode (a real mac, e.g. the mac-smoke GitHub
+//             workflow): skip the linux checks, run the mac static checks
+//             against THAT .app and BOOT its binary. SMOKE_EXPECT_VERSION
+//             overrides the Info.plist version to assert (defaults to
+//             package.json's — pass it when testing an older release).
 // Run automatically by tools/prepare-release.mjs while linux-unpacked exists.
 import { spawn } from 'node:child_process';
-import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { existsSync, lstatSync, mkdtempSync, readFileSync, rmSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
+const MAC_APP = process.env.SMOKE_MAC_APP || '';
 const unpacked = join(root, 'release', 'linux-unpacked');
 const appDir = join(unpacked, 'resources', 'app');
 
@@ -33,7 +49,7 @@ const PROXY_PORT = 18401;
 function fail(msg) { console.error(`[smoke] FAIL: ${msg}`); process.exit(1); }
 function ok(msg) { console.log(`[smoke] ok — ${msg}`); }
 
-if (!existsSync(appDir)) fail(`no ${appDir} — run \`npm run dist:cross\` first`);
+if (!MAC_APP && !existsSync(appDir)) fail(`no ${appDir} — run \`npm run dist:cross\` first`);
 
 // ── 1. static: every boot-critical path must be in the packed tree ──────────
 // One entry per subsystem that dies silently when its files are missing.
@@ -57,21 +73,72 @@ const REQUIRED = [
   'node_modules/mashlib/dist/mashlib.min.js',
   'node_modules/open-media-player/omp.manifest.json',
 ];
-const missing = REQUIRED.filter((r) => !existsSync(join(appDir, r)));
-if (missing.length) fail(`packed app is missing:\n  ${missing.join('\n  ')}\n→ check build.files in package.json`);
-ok(`all ${REQUIRED.length} boot-critical files present in the packed tree`);
+if (!MAC_APP) {
+  const missing = REQUIRED.filter((r) => !existsSync(join(appDir, r)));
+  if (missing.length) fail(`packed app is missing:\n  ${missing.join('\n  ')}\n→ check build.files in package.json`);
+  ok(`all ${REQUIRED.length} boot-critical files present in the packed tree`);
+}
+
+// ── 1b. mac static: same holes + mac-only bundle shape ──────────────────────
+// The mac zip ships with ZERO testing otherwise — a mac binary can't boot on
+// linux, but every packaging-class failure so far (v2.1.4, v2.1.5) was
+// STATICALLY visible. release/mac/ exists between dist:cross and the
+// release:prep prune; when it's absent the mac build simply wasn't (re)built,
+// which deserves a loud warning, not a fail. In SMOKE_MAC_APP mode the .app
+// was named explicitly, so missing IS a failure.
+const macApp = MAC_APP || join(root, 'release', 'mac', `${pkg.build.productName}.app`);
+if (!existsSync(macApp)) {
+  if (MAC_APP) fail(`SMOKE_MAC_APP points at ${macApp} but it does not exist`);
+  console.warn(`[smoke] WARNING: ${macApp} missing — mac checks SKIPPED (run dist:cross to re-verify the mac build)`);
+} else {
+  const macAppDir = join(macApp, 'Contents', 'Resources', 'app');
+  const macMissing = REQUIRED.filter((r) => !existsSync(join(macAppDir, r)));
+  if (macMissing.length) fail(`mac .app is missing:\n  ${macMissing.join('\n  ')}\n→ check build.files in package.json`);
+  ok(`mac: all ${REQUIRED.length} boot-critical files present in the .app`);
+
+  // extraResources — the linux BOOT test covers this implicitly; mac never boots
+  // here, so assert the CSS install landed where servers.cjs expects it.
+  const cssPkg = join(macAppDir, 'pivot', 'node_modules', '@solid', 'community-server', 'package.json');
+  if (!existsSync(cssPkg)) fail('mac .app has no pivot/node_modules — extraResources did not land');
+  ok('mac: pivot/node_modules (extraResources) present');
+
+  // The launchable binary must exist and be executable — a zip/copy step that
+  // drops mode bits produces an .app that finder refuses to open.
+  const macBin = join(macApp, 'Contents', 'MacOS', pkg.build.productName);
+  if (!existsSync(macBin)) fail(`mac .app has no Contents/MacOS/${pkg.build.productName} binary`);
+  if (!(statSync(macBin).mode & 0o111)) fail('mac main binary is not executable — mode bits were lost');
+  ok('mac: main binary present and executable');
+
+  // Framework symlinks (Versions/A indirection) must survive as REAL symlinks —
+  // a copy that materializes or drops them yields a corrupt bundle after unzip.
+  const fwLink = join(macApp, 'Contents', 'Frameworks',
+    'Electron Framework.framework', 'Electron Framework');
+  if (!existsSync(fwLink)) fail('Electron Framework symlink is missing or dangling in the mac .app');
+  if (!lstatSync(fwLink).isSymbolicLink()) fail('Electron Framework is not a symlink — bundle structure was flattened');
+  ok('mac: framework symlinks intact');
+
+  // Version stamp — a stale release/mac/ from a previous build otherwise
+  // passes every file check and ships the WRONG app.
+  const expectVersion = process.env.SMOKE_EXPECT_VERSION || pkg.version;
+  const plist = readFileSync(join(macApp, 'Contents', 'Info.plist'), 'utf8');
+  const m = plist.match(/<key>CFBundleShortVersionString<\/key>\s*<string>([^<]+)<\/string>/);
+  if (!m) fail('mac Info.plist has no CFBundleShortVersionString');
+  if (m[1] !== expectVersion) fail(`mac .app is v${m[1]}, expected v${expectVersion} — stale build/artifact`);
+  ok(`mac: Info.plist version ${m[1]} matches expected v${expectVersion}`);
+}
 
 if (process.env.SKIP_BOOT === '1') { console.log('[smoke] SKIP_BOOT=1 — boot test skipped'); process.exit(0); }
 
 // ── 2. boot: packed binary, throwaway home, spare ports ─────────────────────
-// The app binary is named after package.json "name" (electron-builder's
+// linux: the binary is named after package.json "name" (electron-builder's
 // linux executableName default) — never guess by mode bits alone, the dir is
 // full of executable Electron helpers (chrome-sandbox, crashpad, *.so).
-const appName = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).name;
-const bin = [appName, appName.toLowerCase()]
-  .map((n) => join(unpacked, n))
-  .find((f) => existsSync(f));
-if (!bin) fail(`no ${appName} binary found in linux-unpacked/`);
+// SMOKE_MAC_APP mode: the bundle's Contents/MacOS/<productName> binary.
+const appName = pkg.name;
+const bin = MAC_APP
+  ? join(macApp, 'Contents', 'MacOS', pkg.build.productName)
+  : [appName, appName.toLowerCase()].map((n) => join(unpacked, n)).find((f) => existsSync(f));
+if (!bin || !existsSync(bin)) fail(MAC_APP ? `no binary at ${bin}` : `no ${appName} binary found in linux-unpacked/`);
 
 const tmp = mkdtempSync(join(tmpdir(), 'dk-smoke-'));
 const podHome = join(tmp, 'pod');

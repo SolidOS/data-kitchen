@@ -31,10 +31,22 @@ local pod. Any existing or new folder. You can change this later if needed.
    [Solid_Data_Kitchen-<version>-mac-x64.zip](https://github.com/SolidOS/data-kitchen/releases/download/v<version>/Solid_Data_Kitchen-<version>-mac-x64.zip),
    unzip it, and drag **Solid Data Kitchen.app** into Applications
    (or run it from anywhere).
-2. The app is unsigned, so the first launch needs one extra step:
-   **right-click (Control-click) the app → Open → Open**. macOS remembers
-   the choice; later launches are normal double-clicks.
-3. When a newer release exists, the app downloads it to your Downloads
+2. The app is unsigned, so macOS blocks the first launch — that's
+   expected, and the **READ ME FIRST.txt** beside the app in the zip has
+   the full walkthrough. In short:
+   - **macOS 15 (Sequoia) or newer:** double-click the app once (macOS
+     refuses to open it), then go to **System Settings → Privacy &
+     Security**, scroll down to Security, and click **Open Anyway**.
+   - **macOS 14 (Sonoma) or older:** **right-click (Control-click) the
+     app → Open → Open**.
+   - If macOS says the app is "damaged", it isn't — clear the download
+     quarantine flag in Terminal:
+     `xattr -cr "/path/to/Solid Data Kitchen.app"`.
+
+   macOS remembers the choice; later launches are normal double-clicks.
+3. On Apple Silicon (M-series) Macs the first launch may offer to
+   install Rosetta — accept; this Intel build runs fine under it.
+4. When a newer release exists, the app downloads it to your Downloads
    folder, verifies it, and shows you where it is — quit and replace the
    app to update.
 

@@ -19,8 +19,7 @@
 <#00011> a dcat:Dataset, rss:channel;
     dct:title "Al Jazeera";
     dcat:accessURL <http://www.aljazeera.com/xml/rss/all.xml>;
-    dcat:theme <#News>;
-    <http://schema.org/position> 5.
+    dcat:theme <#News>.
 <#00012> a dcat:Dataset, rss:channel;
     dct:title "NY Times";
     dcat:accessURL <https://rss.nytimes.com/services/xml/rss/nyt/World.xml>;
@@ -33,7 +32,7 @@
     dct:title "Truthout";
     dcat:accessURL <https://www.truth-out.org/feed?format=feed>;
     dcat:theme <#News>;
-    <http://schema.org/position> 2.
+    <http://schema.org/position> 10.
 <#00021> a dcat:Dataset, rss:channel;
     dct:title "The Intercept";
     dcat:accessURL <https://theintercept.com/feed/?lang=en>;
@@ -50,12 +49,12 @@
     dct:title "Smithsonian";
     dcat:accessURL <https://www.smithsonianmag.com/rss/latest_articles/>;
     dcat:theme <#SciTech>;
-    <http://schema.org/position> 0.
+    <http://schema.org/position> 12.
 <#00015> a dcat:Dataset, rss:channel;
     dct:title "Scientific American";
     dcat:accessURL <http://rss.sciam.com/ScientificAmerican-Global>;
     dcat:theme <#SciTech>;
-    <http://schema.org/position> 1.
+    <http://schema.org/position> 13.
 <#00016> a dcat:Dataset, rss:channel;
     dct:title "Wired";
     dcat:accessURL <https://www.wired.com/feed/rss>;
@@ -67,8 +66,7 @@
 <#00018> a dcat:Dataset, rss:channel;
     dct:title "The Verge";
     dcat:accessURL <https://www.theverge.com/rss/index.xml>;
-    dcat:theme <#SciTech>;
-    <http://schema.org/position> 5.
+    dcat:theme <#SciTech>.
 <#00019> a dcat:Dataset, rss:channel;
     dct:title "Ars Technica";
     dcat:accessURL <https://feeds.arstechnica.com/arstechnica/index>;
@@ -77,7 +75,7 @@
     dct:title "404 Media";
     dcat:accessURL <https://www.404media.co/rss/>;
     dcat:theme <#SciTech>;
-    <http://schema.org/position> 4.
+    <http://schema.org/position> 14.
 <#00030> a dcat:Dataset, rss:channel;
     dct:title "Wedistribute";
     dcat:accessURL <https://wedistribute.org/feed/>;
@@ -90,7 +88,7 @@
     dct:title "Cory Doctorow";
     dcat:accessURL <https://doctorow.medium.com/feed>;
     dcat:theme <#Culture>;
-    <http://schema.org/position> 1.
+    <http://schema.org/position> 15.
 <#00029> a dcat:Dataset, rss:channel;
     dct:title "Open Culture";
     dcat:accessURL <https://www.openculture.com/feed/rss2>;
@@ -107,7 +105,7 @@
     dct:title "Jacobin";
     dcat:accessURL <https://jacobin.com/feed/>;
     dcat:theme <#Culture>;
-    <http://schema.org/position> 6.
+    <http://schema.org/position> 16.
 <#00023> a dcat:Dataset, rss:channel;
     dct:title "Vox";
     dcat:accessURL <https://www.vox.com/rss/index.xml>;
@@ -120,7 +118,7 @@
     dct:title "The Guardian";
     dcat:accessURL <https://www.theguardian.com/us-news/rss>;
     dcat:theme <#News>;
-    <http://schema.org/position> 4.
+    <http://schema.org/position> 11.
 <#00045> a dcat:Dataset, rss:channel;
     dct:title "Mother Jones";
     dcat:accessURL <https://www.motherjones.com/feed/>;
@@ -133,7 +131,7 @@
     dct:title "Boing Boing";
     dcat:accessURL <https://boingboing.net/feed>;
     dcat:theme <#Culture>;
-    <http://schema.org/position> 3.
+    <http://schema.org/position> 17.
 <#xkcd> a dcat:Dataset, rss:channel;
     dct:title "XKCD";
     dcat:accessURL <https://xkcd.com/rss.xml>;
@@ -142,7 +140,7 @@
     dct:title "Vice";
     dcat:accessURL <https://www.vice.com/en/feed/>;
     dcat:theme <#Culture>;
-    <http://schema.org/position> 10.
+    <http://schema.org/position> 18.
 <#6507c185-5d9e-4669-97c3-ad3d577a0d70> a dcat:Dataset, rss:channel;
     dct:title "Electronic Freedom Foundation";
     dcat:accessURL <https://www.eff.org/rss/updates.xml>;
