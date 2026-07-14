@@ -301,6 +301,29 @@ rules against the pod data and lists any double-listed cards.
   treated as local data (`ia-rdf.js`), so its albums/tracks resolve from the store,
   not an archive.org search.
 
+## Media libraries availability sweep (2026-07-14)
+
+- `claude/validation/check-media-libraries.mjs` sweeps all four media rooms'
+  remote catalogs (movies/music/spoken = archive.org via ia-player's own
+  query+cull logic; images = Wikimedia Commons categoryinfo) and reports
+  dead collections / unplayable items; results merge into
+  `media-sweep-results.json`, write-up in `media-availability-report.md`
+  (same folder). The media LIBRARIES live in TWO copies: the pod
+  (`~/solid/dk-pod/dk/plugins/{ia-player,omp-images}/libraries/…`) and the
+  **omp repo** (`../open-media-player/libraries/…`) — dk's repo holds only
+  the bundle. Pod resources exist twice on disk (`X.ttl` AND the
+  extensionless resource's `X$.ttl` backing file, which can use
+  extensionless refs) — edit BOTH variants.
+- 2026-07-14 prune (`claude/migration-scripts/remove-dead-media-2026-07-14.mjs`):
+  removed 3 dark movie collections, 1 dark music collection, Ishmael Reed
+  (spoken), 49 dead Commons categories, 12 dark pinned releases + 2 dead
+  tracks, 79 dead playlist entries; the emptied Stevie_Wonder +
+  Wilson_Pickett playlists were then deleted (41 remain). Post-prune sweep:
+  0 problems. GOTCHAS learned: Wikimedia 429s concurrent anonymous API
+  calls (serial POSTs + Retry-After); IA advancedsearch rows cap = 10000
+  (same as the app); a playlist whose every entry dies needs its
+  `schema:itemListElement` property dropped, not an empty object list.
+
 ## Assorted 2026-07-12 facts
 
 - **Tab icons:** sol-tabs paints a tab's `ui:icon` before its name (emoji as
