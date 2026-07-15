@@ -658,6 +658,16 @@ comments stripped — grep it for code fragments, not comments.
   painted (a real render root / visible content), not that an HTTP request
   returned. Some external catalog pods (`*.solidcommunity.au`) are
   Flutter/CanvasKit needing WebGL and load as empty shells under headless probes.
+- **On-phone verify gotchas (2026-07-15, v2.1.8 S23 run):** a LOCKED or dozing
+  phone reads as "page loaded but nothing painted" — document complete, body
+  rect 0×0, `Page.captureScreenshot` hangs, and the WebView's devtools `/json`
+  goes silent between commands. Wake + have Jeff unlock BEFORE trusting any
+  paint probe (`wm dismiss-keyguard` is useless against a PIN); use
+  `adb shell svc power stayon usb` while testing and revert after. Also:
+  `innerText` stops at shadow roots, so nav-label checks must deep-walk
+  shadow DOM — `claude/smoke-tests/cdp-verify-phone-release-boot.mjs` is the
+  reusable release-boot probe (target discovery via
+  `adb forward tcp:9223 localabstract:webview_devtools_remote_<pid>`).
 - **Stale-server relaunch gotcha:** main reuses servers "already up" on
   :8000/:8001/:8010. Launching a new instance while a previous one is still
   dying makes the new one reuse servers that vanish moments later, stranding it
@@ -966,6 +976,13 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
     packed seed at boot, so page edits ride an APK rebuild.
 
 ## Updates & releases (2026-07)
+
+- **v2.1.8 (2026-07-15):** first release carrying the sol-load boot /
+  ci-elimination / one-lookup-settings work. Reconcile repaired v2.1.7's
+  accidental DarkColorScheme and established the Locations-trim rule (below).
+  Smoke gate + mac-smoke workflow green; S23 sideload verified same day.
+  sc 2.7.4 + omp 0.3.4 published to npm the same day (sc 2.7.4 is what makes
+  the help docs' CDN `sol-load.js` snippet resolve).
 
 - **Every release starts with `npm run pull-defaults` (standing rule,
   2026-07-12):** before any `release:prep`/packaging, sync the repo's seed set
