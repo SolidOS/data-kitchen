@@ -2,9 +2,9 @@
  * Podz auth — surfaces AuthManager from sol-components' shared surface.
  *
  * Prerequisite: window.SolidWebComponents.AuthManager — published when
- * <sol-login> loads (component-interop aliases window.SolidWebComponents to its
- * surface). A host (e.g. data-kitchen) loads sol-login via component-interop's
- * data-components and waits for ComponentInterop.ready BEFORE constructing the
+ * <sol-login> loads (sol-components' services root owns window.SolidWebComponents;
+ * a ci host aliases it). A host (e.g. data-kitchen) loads sol-login via the
+ * loader's data-components and waits for solLoadReady BEFORE constructing the
  * pod browser, so AuthManager is in place by the time this evaluates.
  *
  * The inrupt Session library (imported via sc core/inrupt-global) is loaded by

@@ -1,24 +1,22 @@
 // dk is loaded directly as a module (index.html: <script type="module"
-// src="dist/dk.bundle.js">), AFTER the component-interop loader tag. The loader
-// reads sol-components' manifest + dk's, injects the importmap, and import()s
-// every sol-* component dk uses — the basic/pod family, the dashboard widgets,
-// login/query, and the rdf editing stack (the rdf-bundle). So this module pulls
-// in NO sol-* components or libs itself; it just waits for the loader to finish,
-// then wires up dk's own modules.
+// src="dist/dk.bundle.js">), AFTER the sol-load bootstrap tag. sol-load
+// injects the import map (which also resolves THIS bundle's externals —
+// rdflib, sol-components/*, …) and imports every component named in its
+// data-components — the basic/pod/form bundles, the bar widgets, login,
+// and the managers. So this module pulls in NO sol-* components itself; it
+// waits for the loader to finish, then wires up dk's own modules.
 //
 // IMPORTANT: keep this a fire-and-forget async IIFE, NOT a top-level await.
-// component-interop sets window.ComponentInterop.ready synchronously from the
-// <head> tag (before this module runs), so the guard below is always defined;
-// the IIFE pattern also keeps dk out of any import-chain deadlock if the bundle
-// is ever loaded via the loader instead. We wait on ComponentInterop.ready —
-// sol-components aliases window.SolidWebComponents to the same object once a sol
-// module runs, but ComponentInterop is the one guaranteed present here.
+// sol-load sets window.solLoadReady synchronously from its <head> tag
+// (before this module runs), so the guard below is always defined. The
+// ComponentInterop fallback keeps dk bootable under ci-driven hosts.
 (async () => {
-  const interop = (typeof window !== 'undefined')
-    ? (window.ComponentInterop || window.SolidWebComponents)
+  const ready = (typeof window !== 'undefined')
+    ? (window.solLoadReady
+       || (window.ComponentInterop || window.SolidWebComponents)?.ready)
     : null;
-  if (interop?.ready) {
-    await interop.ready;
+  if (ready) {
+    await ready;
   }
 
   // Pod locations: seed the shared pod registry from settings RDF

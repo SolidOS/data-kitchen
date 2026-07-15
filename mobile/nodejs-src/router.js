@@ -4,7 +4,7 @@
 //
 // dk's renderer loads the editable app DEFINITION (index.html + dk-pod/dk/…)
 // from the writable pod (CSS) and the read-only ENGINE (sol-components,
-// component-interop, dk's bundle, plugin dist, assets) from a shipped dir, and
+// dk's bundle, plugin dist, assets) from a shipped dir, and
 // references the engine by plain relative paths — so both must appear under ONE
 // origin. This server is that origin (:8000): engine path prefixes are served
 // from engineDir; everything else is reverse-proxied to CSS (the pod).

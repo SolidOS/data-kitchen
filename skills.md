@@ -73,9 +73,19 @@ gone from omp's `mini-player.html` fragment (dk-tabs-shell's wiring
 tolerates their absence; the hover tooltip still names the track).
 
 **Boot sequence** (index.html, which is wormhole-guarded against recursive
-framing): **component-interop** (parser-blocking; parses manifests, injects
-the importmap, imports the `data-components`) → `dist/dk.bundle.js` (a direct
-module that waits on `ComponentInterop.ready`, then imports the dk modules).
+framing): **sol-load** (sc's ci-free bootstrap, since 2026-07-14 —
+parser-blocking classic script; injects the NONCE-PROPAGATED importmap and
+imports the 11 `data-components`) → `dist/dk.bundle.js` (a direct module
+that waits on `window.solLoadReady` — ci fallback kept — then imports the
+dk modules). **component-interop is OFF dk's page**: the dep moved to
+devDependencies (the manifest-envelope tests still validate against its
+shapes), the dokieli identity adapter is PARKED (dokieli runs as an
+external app; the in-app dk-dokieli editor still saves via imported
+dkFetch), dk.manifest.json / dokieli.manifest.json are dormant files, and
+build-web / packaged-smoke / the mobile packer no longer ship ci.
+`window.ComponentInterop` still EXISTS at runtime — it's sc's services
+surface aliasing itself to both names (core/services.js), not the broker.
+data-handler needs no ci: sol-button consumes it natively.
 The inrupt auth library is published onto `window.solidClientAuthn` by a small
 `<script type=module>` from sol-components' ESM build
 (`dist/vendor/@inrupt-solid-client-authn-browser.js`) — consumed lazily at

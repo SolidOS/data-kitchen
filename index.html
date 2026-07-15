@@ -26,20 +26,19 @@
        core/inrupt-global (resolved by the import map to the vendored ESM
        build — one shared instance, no window global since 2026-07-14). -->
 
-  <!-- component-interop (parser-blocking <head> script) reads both manifests —
-       sol-components' first (it owns the shared specifiers: rdflib,
-       solid-logic, solid-ui, …; merge is first-wins), dk's second (adds the
-       ia-player plugin bundle and podz) — injects the stage-selected
-       importmap, then import()s each data-components entry. Pane widgets not listed
-       here (sol-time, sol-weather, sol-query) lazy-load on first mount via
-       ensureHandler; the media player loads via its menu items' ui:module. dk's OWN bundle
-       is loaded directly as a module below (not via the loader), so it stays
-       out of the loader's import chain. -->
-  <script src="node_modules/component-interop/component-interop.js"
-          data-stage="auto"
-          data-manifest="node_modules/sol-components/dist/sol-components.manifest.json dk-pod/dk/dk.manifest.json dk-pod/dk/dokieli.manifest.json node_modules/open-media-player/omp.manifest.json"
+  <!-- sol-load (sol-components' ci-free bootstrap, 2026-07-14): injects the
+       import map (every specifier dk uses — rdflib, solid-logic, solid-ui,
+       sol-components/* — resolved relative to the sol-components package,
+       nonce-propagated for this shell's CSP) and imports the components
+       named below. Pane widgets not listed (sol-time, sol-weather,
+       sol-query) lazy-load on first mount via ensureHandler; the media
+       player loads via its menu items' ui:module. dk's OWN bundle is loaded
+       directly as a module below and resolves its externals through the
+       same map. component-interop is no longer on this page — the dokieli
+       identity adapter it brokered is PARKED (dokieli runs as an external
+       app; see plugins/solidos/dokieli-adapter.js). -->
+  <script src="node_modules/sol-components/web/sol-load.js"
           data-components="sol-basic sol-pod-bundle sol-form-bundle sol-calendar sol-search sol-feed sol-gallery sol-login sol-menu-manager sol-button-bar-manager sol-plugin-manager"
-          data-objects="webid:data-kitchen auth:sol-components"
   ></script>
   <script type="module" src="dist/dk.bundle.js"></script>
 </head>

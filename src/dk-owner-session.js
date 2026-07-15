@@ -55,7 +55,7 @@ function register() {
 }
 
 // The swc bundle (hence AuthManager) is ready by the time dk-shell imports this
-// (after ComponentInterop.ready); retry briefly in case the namespace alias lags.
+// (after solLoadReady); retry briefly in case the namespace alias lags.
 if (!register()) {
   let tries = 0;
   const timer = setInterval(() => {

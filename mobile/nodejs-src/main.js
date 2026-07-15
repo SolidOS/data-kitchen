@@ -179,7 +179,7 @@ async function main() {
   log('Node ' + process.version + ' / ' + process.arch + ' — booting pod server');
   ensureNodeModules();
   fs.mkdirSync(POD_ROOT, { recursive: true });
-  // dk read-only engine (sol-components, component-interop, dk bundle, plugin
+  // dk read-only engine (sol-components, dk bundle, plugin
   // dist, assets) the router serves; and the dk app definition seeded into the
   // pod (index.html + dk-pod/dk/…). Both ship as separate tarballs; absent for a
   // mashlib-only build, in which case the router just fronts CSS.

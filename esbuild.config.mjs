@@ -2,7 +2,7 @@ import * as esbuild from 'esbuild';
 
 const watch = process.argv.includes('--watch');
 
-// The importmap is no longer hand-maintained here — component-interop injects a
+// The importmap is no longer hand-maintained here — sol-load injects a
 // stage-selected importmap at runtime (see index.html / data-stage), generated
 // from sol-components' manifest. So there's nothing to sync before the build.
 // dk.bundle.js still externalizes its deps (below); the loader's injected map

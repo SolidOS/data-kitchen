@@ -1,6 +1,6 @@
 // Build the STATIC WEB DEMO (read-only, root-hosted — see the variants plan,
 // D5): engine files at the site root exactly as the router serves them
-// (/node_modules/{sol-components,component-interop}, /dist/dk.bundle.js,
+// (/node_modules/sol-components, /dist/dk.bundle.js,
 // /src/, /assets/, /plugins/*/dist/, plus node_modules/open-media-player the
 // omp manifest names), the web-variant seeded content beside them, and
 // .nojekyll for GitHub Pages.
@@ -40,7 +40,6 @@ execFileSync(process.execPath, [
 ], { stdio: 'inherit' });
 
 copyPruned('node_modules/sol-components');
-copyPruned('node_modules/component-interop');
 copyPruned('node_modules/open-media-player/omp.manifest.json');
 copyPruned('node_modules/open-media-player/dist');
 copyPruned('node_modules/open-media-player/src');

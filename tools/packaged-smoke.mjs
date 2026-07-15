@@ -69,7 +69,7 @@ const REQUIRED = [
   'pages/settings.html',
   'plugins/solidos/sol-solidos-host.html',
   'node_modules/sol-components/web/sol-form.js',
-  'node_modules/component-interop/component-interop.js',
+  'node_modules/sol-components/web/sol-load.js',
   'node_modules/mashlib/dist/mashlib.min.js',
   'node_modules/open-media-player/omp.manifest.json',
 ];

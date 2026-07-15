@@ -37,7 +37,6 @@
     "release:smoke": "node tools/packaged-smoke.mjs"
   },
   "dependencies": {
-    "component-interop": "^0.3.0",
     "electron-reloader": "^1.2.3",
     "mashlib": "^2.2.2",
     "music-metadata": "^11.13.0",
@@ -50,7 +49,8 @@
     "esbuild": "^0.28.1",
     "n3": "^2.0.4",
     "playwright-core": "^1.61.0",
-    "rdf-validate-shacl": "^0.6.5"
+    "rdf-validate-shacl": "^0.6.5",
+    "component-interop": "^0.3.0"
   },
   "build": {
     "appId": "com.data-kitchen",
@@ -79,7 +79,6 @@
       "favourites/**",
       "!**/*.map",
       "!**/node_modules/sol-components/{node_modules,coverage,tests,tests-disabled,docs,drafts,examples,claude}/**",
-      "!**/node_modules/component-interop/{node_modules,tests,examples,help,claude,drafts}/**",
       "!**/node_modules/open-media-player/{node_modules,tests,tools,claude,drafts}/**",
       "!claude/**",
       "!tools/**",

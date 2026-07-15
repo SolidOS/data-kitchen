@@ -2,7 +2,7 @@
 // Boots the real router in front of a FAKE CSS upstream that returns an HTML shell,
 // and asserts the shell is served with a nonce-based CSP whose nonce matches the
 // nonce stamped onto every <script>, freshly minted per response — so the app's own
-// scripts (and component-interop's nonce-propagated importmap) run while a <script>
+// scripts (and sol-load's nonce-propagated importmap) run while a <script>
 // injected into a pod doc, having no nonce, is blocked.
 
 import { test, before, after } from 'node:test';

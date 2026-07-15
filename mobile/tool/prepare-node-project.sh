@@ -47,7 +47,7 @@ cp "$SRC/patches/"*.cjs "$PROJ/patches/"
 
 # --- dk frontend (second frontend, alongside mashlib) -----------------------
 # engine.nmz: the read-only dk ENGINE the router serves (sol-components +
-# component-interop [dev symlinks -> tar -h to deref], dk's bundle, plugin dist,
+# [dev symlinks -> tar -h to deref], dk's bundle, plugin dist,
 # assets). sol-components/dist/vendor self-contains rdflib/solid-ui/etc., so this
 # stays ~16MB. Nested node_modules/tests/docs pruned (match electron-builder).
 if [ -e "$REPO/dist/dk.bundle.js" ] && [ -e "$REPO/node_modules/sol-components" ]; then
@@ -70,7 +70,7 @@ if [ -e "$REPO/dist/dk.bundle.js" ] && [ -e "$REPO/node_modules/sol-components" 
     --exclude='*/tests-disabled' --exclude='*/coverage' --exclude='*/docs' \
     --exclude='*/examples' --exclude='*/drafts' --exclude='*/claude' --exclude='*.map' \
     --exclude='mashlib/dist/mashlib.js' --exclude='mashlib/dist/841.mashlib.js' \
-    node_modules/sol-components node_modules/component-interop $OMP $MASHLIB dist src assets $PLUGIN_DIST
+    node_modules/sol-components $OMP $MASHLIB dist src assets $PLUGIN_DIST
   echo "[prepare] engine.nmz = $(du -h "$PROJ/engine.nmz" | cut -f1)"
 
   # pod-seed.nmz: dk's app DEFINITION seeded into the pod (index.html at root;

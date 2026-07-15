@@ -1,3 +1,10 @@
+// ⚠ PARKED 2026-07-14 — component-interop no longer runs on dk's page, so
+// nothing calls this adapter's registerConsumer hooks. dokieli runs as an
+// external app (its own login against the local pod via me@dk.local); the
+// in-app dk-dokieli editor keeps working through its imported dkFetch. If
+// the in-app DO machinery ever goes live, wire adoptDokieliUser (from the
+// sol-login event) + adoptDokieliFetch (from sc's solFetch) DIRECTLY.
+//
 // dokieli-adapter.js — component-interop CONSUMER: bridge dk's owner identity AND
 // dk's live authenticated fetch into the embedded dokieli editor, so dokieli
 // treats you as logged-in (like SolidOS does) without its own OIDC prompt, AND
