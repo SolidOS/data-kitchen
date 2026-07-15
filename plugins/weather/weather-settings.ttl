@@ -13,5 +13,5 @@
   geo:lat 45.52 ;
   geo:long -122.68 ;
   schema:addressLocality "Portland, OR" ;
-  ui:temperatureUnit ui:Both ;
+  ui:temperatureUnit ui:Celsius, ui:Fahrenheit ;
   time:hours 12 .

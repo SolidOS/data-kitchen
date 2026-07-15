@@ -9,7 +9,7 @@
   ui:icon "📋" ;
   ui:name "dk-solidos" ;
   rdfs:comment "Your tasks — a Solid issue tracker, in the SolidOS tracker pane." ;
-  dct:creator "SolidOS Team" ;
+  dct:publisher "SolidOS Team" ;
   dct:subject "SolidOS apps" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/tasks/index.ttl#this" ] ,

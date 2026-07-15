@@ -8,8 +8,10 @@
   ui:label "Weather" ;
   ui:icon "🌤" ;
   ui:name "sol-weather" ;
+  dct:conformsTo </node_modules/sol-components/shapes/weather-settings.shacl> ;
+  dct:references </node_modules/sol-components/data/weather-settings.ttl> ;
   rdfs:comment "Weather widget (location and units in its settings file)." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   dct:subject "Information" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/weather/weather-settings.ttl#Settings" ] .

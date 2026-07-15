@@ -12,6 +12,7 @@
 // two-pane (sol-pod sidebar + hand-rolled mashlib glue) implementation.
 
 import { getRegistry } from 'sol-components/core/pod-registry.js';
+import { dkFetch as dkAuthFetch } from '../../src/dk-auth-router.js';
 import { discoverOwnerWebIds, getStoragesFromWebIds } from 'sol-components/core/pod-ops.js';
 
 const HOST_PAGE = 'dk-pod/dk/plugins/solidos/sol-solidos-host.html';
@@ -132,7 +133,7 @@ class DkSolidos extends HTMLElement {
   _shareAuth() {
     const win = this._iframe && this._iframe.contentWindow;
     if (!win) return;
-    const base = window.dkFetch || ((u, o) => fetch(u, o));
+    const base = dkAuthFetch;
     // Containers (URLs whose path ends in '/') must be fetched as RDF. The local
     // server content-negotiates '/' to the app's index.html (a wormhole) under
     // Accept: text/html, and other folders to the Pivot HTML view — so force

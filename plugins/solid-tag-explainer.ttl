@@ -9,5 +9,5 @@
   ui:href <https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html> ;
   ui:region ui:Tab ;
   rdfs:comment "How Solid works, explained." ;
-  dct:creator "Tim Berners-Lee" ;
+  dct:publisher "Tim Berners-Lee" ;
   dct:subject "Solid" .

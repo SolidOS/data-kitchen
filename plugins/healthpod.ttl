@@ -9,5 +9,5 @@
   ui:href <https://healthpod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Manage your health data, with encryption." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   dct:subject "Health" .

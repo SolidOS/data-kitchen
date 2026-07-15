@@ -68,21 +68,34 @@ class DkPluginSettings extends HTMLElement {
         if (an === 'source') src = store.any(a, rdf.sym('http://schema.org/value'))?.value;
         else if (an === 'data-handler') handler = store.any(a, rdf.sym('http://schema.org/value'))?.value;
       }
+      // dct:source — the chip's plugin doc (its manifest), which carries the
+      // settings pointers (dct:conformsTo / dct:references).
+      const manifest = store.any(st.subject, rdf.sym('http://purl.org/dc/terms/source'))?.value || null;
       const id = src && src.match(/plugins\/([^/]+)\//)?.[1];
       if (!id || seen.has(id)) continue;
       seen.add(id);
-      out.push({ id, name, src, handler });
+      out.push({ id, name, src, handler, manifest });
     }
     return out;
   }
 
-  // A component's display metadata as parsed from the loaded component-library
-  // manifest(s) by component-interop — keyed by ui:name. shape/data are already
-  // resolved to absolute document URLs against the library that declared them.
-  async _libMeta(name) {
-    if (!name) return null;
-    try { await window.ComponentInterop?.ready; } catch {}
-    return window.ComponentInterop?.manifest?.meta?.[name] || null;
+  // A plugin's settings description, read from ITS OWN plugin doc (the menu
+  // item's dct:source manifest): dct:conformsTo = the SHACL shape driving the
+  // form, dct:references = the library's default data doc, ui:label = the
+  // group heading. One description system for sc, dk-own, and third-party
+  // components alike — no JSON manifest, no component-interop.
+  async _pluginDocMeta(manifestUrl) {
+    if (!manifestUrl) return null;
+    const abs = new URL(manifestUrl, document.baseURI).href;
+    let mstore;
+    try { mstore = await loadTurtle(abs); } catch { return null; }
+    const subj = rdf.sym(abs);
+    const val = (pred) => mstore.any(subj, rdf.sym(pred))?.value || null;
+    const shape = val('http://purl.org/dc/terms/conformsTo');
+    const data = val('http://purl.org/dc/terms/references');
+    const label = val(UI + 'label');
+    if (!shape) return null;
+    return { shape, data, label };
   }
 
   // Build a settings group for an in-use plugin, or null if it has no settings.
@@ -92,10 +105,7 @@ class DkPluginSettings extends HTMLElement {
   // (the entry's `source`). Components no library describes fall back to a dk
   // per-plugin manifest.jsonld.
   async _groupFor(entry) {
-    // The settings-bearing component is the entry's data-handler when it's a
-    // launcher (<sol-button data-handler="sol-calendar" region="dropdown">), else
-    // the entry's own ui:name.
-    const meta = await this._libMeta(entry.handler || entry.name);
+    const meta = await this._pluginDocMeta(entry.manifest);
     if (meta?.shape && meta?.data) {
       const subject = await this._subjectOf(entry.src);
       if (!subject) return null;

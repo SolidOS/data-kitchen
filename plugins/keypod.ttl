@@ -9,5 +9,5 @@
   ui:href <https://keypod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Encrypted password and key-value store." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   dct:subject "Tech" .

@@ -9,7 +9,7 @@
   ui:icon "📝" ;
   ui:name "dk-solidos" ;
   rdfs:comment "A Solid notepad, in the SolidOS pad pane." ;
-  dct:creator "SolidOS Team" ;
+  dct:publisher "SolidOS Team" ;
   dct:subject "SolidOS apps" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/notes/index.ttl#this" ] ,

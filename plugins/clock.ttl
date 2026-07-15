@@ -8,8 +8,10 @@
   ui:label "Clock" ;
   ui:icon "🕐" ;
   ui:name "sol-time" ;
+  dct:conformsTo </node_modules/sol-components/shapes/time-settings.shacl> ;
+  dct:references </node_modules/sol-components/data/time-settings.ttl> ;
   rdfs:comment "Clock widget (timezone in its settings file)." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   dct:subject "Information" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/time/time-settings.ttl#Settings" ] .

@@ -9,7 +9,7 @@
   ui:icon "🔑" ;
   ui:name "sol-login" ;
   rdfs:comment "Solid sign-in button (popup flow)." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   dct:subject "Pods" ;
   ui:attribute
     [ schema:name "mode" ; schema:value "popup" ] .

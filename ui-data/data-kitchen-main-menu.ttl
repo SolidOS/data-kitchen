@@ -255,7 +255,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ];
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
-    ui:name "omp-images".
+    ui:name "omp-images";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Images-Wikimedia-2
     a ui:Component;
     dct:source plu:images.ttl;
@@ -268,7 +269,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ];
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
-    ui:name "omp-images".
+    ui:name "omp-images";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Images-Wikimedia-3
     a ui:Component;
     dct:source plu:images.ttl;
@@ -280,7 +282,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ];
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
-    ui:name "omp-images".
+    ui:name "omp-images";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Images-Wikimedia-4
     a ui:Component;
     ui:attribute
@@ -291,7 +294,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ];
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
-    ui:name "omp-images".
+    ui:name "omp-images";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Images-Wikimedia-5
     a ui:Component;
     ui:attribute
@@ -302,7 +306,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ];
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
-    ui:name "omp-images".
+    ui:name "omp-images";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Images-Wikimedia-6
     a ui:Component;
     dct:source plu:images.ttl;
@@ -314,7 +319,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ];
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
-    ui:name "omp-images".
+    ui:name "omp-images";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Images-Wikimedia-7
     a ui:Component;
     ui:attribute
@@ -325,7 +331,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ];
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
-    ui:name "omp-images".
+    ui:name "omp-images";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Images-Wikimedia-8
     a ui:Component;
     ui:attribute
@@ -336,7 +343,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ];
     ui:icon "🖼";
     ui:label "Images (Wikimedia)";
-    ui:name "omp-images".
+    ui:name "omp-images";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :InnerPod
     a ui:Link;
     dct:source plu:innerpod.ttl;
@@ -356,7 +364,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "music" ];
     ui:icon "🎵";
     ui:label "Internet Archive player";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Internet-Archive-player-2
     a ui:Component;
     dct:source plu:music.ttl;
@@ -371,7 +380,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "music" ];
     ui:icon "🎵";
     ui:label "Music (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :item
     a ui:Menu;
     ui:label "About Solid";
@@ -545,7 +555,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "movies" ];
     ui:icon "🎬";
     ui:label "Movies (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Movies-Internet-Archive-2
     a ui:Component;
     dct:source plu:movies.ttl;
@@ -560,7 +571,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "movies" ];
     ui:icon "🎬";
     ui:label "Movies (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Movies-Internet-Archive-3
     a ui:Component;
     ui:attribute
@@ -574,7 +586,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "movies" ];
     ui:icon "🎬";
     ui:label "Movies (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Movies-Internet-Archive-4
     a ui:Component;
     ui:attribute
@@ -588,7 +601,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "movies" ];
     ui:icon "🖼";
     ui:label "Movies (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :MovieStar
     a ui:Link;
     dct:source plu:moviestar.ttl;
@@ -674,7 +688,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "music" ];
     ui:icon "🎵";
     ui:label "Music (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Music-Internet-Archive-3
     a ui:Component;
     dct:source plu:music.ttl;
@@ -688,7 +703,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "music" ];
     ui:icon "🎵";
     ui:label "Music (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Music-Internet-Archive-4
     a ui:Component;
     ui:attribute
@@ -701,7 +717,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "music" ];
     ui:icon "🎵";
     ui:label "Music (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :News
     a ui:Component;
     ui:attribute
@@ -833,7 +850,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
                     "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
             ];
     ui:label "🖼 Images";
-    ui:name "omp-images".
+    ui:name "omp-images";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :panel-movies
     a ui:Component;
     ui:attribute
@@ -847,7 +865,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ],
         [ schema:name "storage-ns"; schema:value "movies" ];
     ui:label "🎬 Movies";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :panel-music
     a ui:Component;
     ui:attribute
@@ -860,7 +879,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
             ],
         [ schema:name "storage-ns"; schema:value "music" ];
     ui:label "🎵 Music";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :panel-news
     a ui:Component;
     dct:source plu:news.ttl;
@@ -1283,7 +1303,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "spoken-word" ];
     ui:icon "🎙️";
     ui:label "Spoken Word (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Spoken-Word-Internet-Archive-2
     a ui:Component;
     dct:source plu:spoken-word.ttl;
@@ -1297,7 +1318,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "spoken-word" ];
     ui:icon "🎙️";
     ui:label "Spoken Word (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Spoken-Word-Internet-Archive-3
     a ui:Component;
     dct:source plu:spoken-word.ttl;
@@ -1311,7 +1333,8 @@ a ui:Component; ui:icon "📅"; ui:label "Calendar"; ui:name "sol-calendar".
         [ schema:name "storage-ns"; schema:value "spoken-word" ];
     ui:icon "🎙️";
     ui:label "Spoken Word (Internet Archive)";
-    ui:name "ia-player".
+    ui:name "ia-player";
+    ui:module </node_modules/open-media-player/dist/ia-player.esm.js>.
 :Synara-AI
     a ui:Link;
     dct:source plu:synara-ai.ttl;

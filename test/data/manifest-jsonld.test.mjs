@@ -32,7 +32,7 @@ for (const name of manifestDirs) {
     assert.equal(m['@type'], 'Component', '@type must be "Component"');
     assert.ok(typeof m.label === 'string' && m.label, 'needs a label');
     assert.ok(typeof m.name === 'string' && m.name, 'needs a component name');
-    assert.ok(typeof m.creator === 'string' && m.creator, 'needs a creator');
+    assert.ok(typeof m.publisher === 'string' && m.publisher, 'needs a publisher');
 
     // Every referenced resource must resolve. Absolute paths (e.g. a shared
     // sol-components shape) resolve against the repo root; relative ones against

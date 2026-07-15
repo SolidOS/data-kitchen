@@ -8,8 +8,9 @@
   ui:label "Movies (Internet Archive)" ;
   ui:icon "🎬" ;
   ui:name "ia-player" ;
+  ui:module </node_modules/open-media-player/dist/ia-player.esm.js> ;
   rdfs:comment "Browse and play films from the Internet Archive." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   dct:subject "Media" ;
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "movies" ] ,

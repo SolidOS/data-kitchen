@@ -33,13 +33,15 @@
        sol-components' first (it owns the shared specifiers: rdflib,
        solid-logic, solid-ui, …; merge is first-wins), dk's second (adds the
        ia-player plugin bundle and podz) — injects the stage-selected
-       importmap, then import()s each data-components entry. dk's OWN bundle
+       importmap, then import()s each data-components entry. Pane widgets not listed
+       here (sol-time, sol-weather, sol-query) lazy-load on first mount via
+       ensureHandler; the media player loads via its menu items' ui:module. dk's OWN bundle
        is loaded directly as a module below (not via the loader), so it stays
        out of the loader's import chain. -->
   <script src="node_modules/component-interop/component-interop.js"
           data-stage="auto"
           data-manifest="node_modules/sol-components/dist/sol-components.manifest.json dk-pod/dk/dk.manifest.json dk-pod/dk/dokieli.manifest.json node_modules/open-media-player/omp.manifest.json"
-          data-components="sol-basic sol-pod sol-pod-extras sol-pod-ops sol-live-edit sol-time sol-weather sol-calendar sol-search sol-feed sol-gallery sol-login sol-query menu-from-rdf rdf-bundle ia-player sol-menu-manager sol-button-bar-manager sol-plugin-manager"
+          data-components="sol-basic sol-pod-bundle sol-form-bundle sol-calendar sol-search sol-feed sol-gallery sol-login sol-menu-manager sol-button-bar-manager sol-plugin-manager"
           data-objects="webid:data-kitchen auth:sol-components"
   ></script>
   <script type="module" src="dist/dk.bundle.js"></script>

@@ -222,7 +222,7 @@ rules against the pod data and lists any double-listed cards.
   optional `schema:name` label, REQUIRED integer `schema:position`; shape:
   sc `shapes/pod-locations.shacl` + generated `.shaclc` twin, model authored
   by Jeff). Edited on the Settings page by a shape-driven `<sol-form>` rolodex
-  (`ui:sortedBy schema:position` → ↑/↓ arrows swap positions; Add mints the
+  (`ui:sortBy schema:position` → ↑/↓ arrows swap positions; Add mints the
   membership triple + `schema:ListItem` type + next position).
   `src/dk-locations-feed.js` is the two-way bridge: boot seeds the registry in
   position order (silent) BEFORE podz/dk-solidos import; `sol-form-save` on the
@@ -231,7 +231,7 @@ rules against the pod data and lists any double-listed cards.
   persistence is RETIRED (dk-boot one-shot `-v3` wipes the stale field; the
   `podz_v4` blob keeps layout/selection/prefs). Ordering caveat: a reorder in
   the form reaches the dropdowns on the next app start (the registry has no
-  reorder primitive). Diagnostic handle: `window.dkPodRegistry`. Demo: sc
+  reorder primitive). Diagnostic access: dispatch `dk-diag-pod-registry` with a detail object (the window.dkPodRegistry global is gone 2026-07-14). Demo: sc
   `examples/pod-locations.html` (form + RDF + SHACL + shaclc, verified
   headless). Probe: `claude/smoke-tests/cdp-verify-pod-locations.mjs`
   (snapshots + restores the settings doc — rerunnable).
@@ -274,7 +274,7 @@ rules against the pod data and lists any double-listed cards.
   and `kitchenLoggedIn()` no longer participates. Shape+subject container
   rolodexes (search engines, pod locations) got Add/Delete this way; their
   Add writes the container membership triple + the `sh:class` type + the
-  next `ui:sortedBy` position (`buildAddInserts`, exported for tests).
+  next `ui:sortBy` position (`buildAddInserts`, exported for tests).
 - **dk-dokieli** (`plugins/solidos/dk-dokieli.js`) — a standalone direct editor
   (loads the doc `.html` directly, no SolidOS browser); identity/auth via
   `dokieli-adapter.js`. Shows a spinner overlay until the doc iframe loads.
@@ -300,6 +300,76 @@ rules against the pod data and lists any double-listed cards.
   `loadImportedLibraryConfigs`). A catalog Agent with no `dcat:landingPage` is
   treated as local data (`ia-rdf.js`), so its albums/tracks resolve from the store,
   not an archive.org search.
+
+## 2026-07-14 plugin architecture overhaul (one big day)
+
+- **sol-load (sc `web/sol-load.js`)** — ci-free bootstrap: ONE classic script
+  tag injects the import map (baked at build, root-relative — same tag works
+  from node_modules/pod/CDN, carries the page's CSP nonce-less inline map…
+  place BEFORE any module script) and imports its `data-components`. Exposes
+  `window.solLoad()` / `solLoadReady`. Skips injection if a map already
+  resolves rdflib (ci coexistence). Map regenerates via `npm run
+  build:importmaps` (also bakes into sol-load between markers).
+  Bundles (sol-full is REMOVED; package.json "./web" export → sol-basic):
+  `sol-basic` (everyday UI + menu-from-rdf — from-rdf works out of the box),
+  `sol-pod-bundle` (pod+ops+wac+live-edit), `sol-form-bundle` (=
+  core/rdf-bundle; `rdf-bundle` importmap alias kept).
+- **sc help pages are ci-free** except authoring-components / shared-resources
+  (ci is their topic); install-modes.html rewritten around sol-load.
+  `SolidWebComponents.ready` → `window.solLoadReady` in the two pages that
+  scripted it.
+- **menu-consumer define-before-register race FIXED** (core/menu-consumer.js):
+  an element upgrading before its module's registerMenuConsumer() call, with
+  the add-on already installed, was neither wired nor parked → empty
+  tabs/menus ~50% of parallel-import loads. ci's sequential loading always
+  masked it. deferUntilLoader now wires the class + re-drives via
+  queueMicrotask. GOTCHA pair: dropdown/tab triggers live in SHADOW roots
+  (light-DOM textContent probes see nothing), and the browser HTTP cache can
+  serve a stale module straight through a "fix isn't working" panic — verify
+  on a fresh port.
+- **Plugin description system unified (RDF, no ui:Plugin class):** ui:Link +
+  ui:Component both carry the plugin surface — dct:publisher (dct:creator
+  COLLAPSED into it everywhere: shapes, parse, serialize, byline, ttls ×3
+  copies, manifest.jsonld files), dct:conformsTo (settings shape),
+  dct:references (default data), schema:softwareHelp. NEW TERM `ui:module`
+  (the ES module defining ui:name's element — in the PENDING w3c PR, 47
+  terms, still NOT submitted; artifacts claude/prs/w3c-ns-ui-vocab/).
+- **sc components are plain plugins:** sc `plugins/*.ttl` (7) are the SOURCE;
+  `dist/sol-components.manifest.json` is GENERATED from them
+  (tools/build-manifest.mjs + tools/manifest-base.json envelope; drift-guard
+  test). omp likewise ships plugins/{ia-player,omp-images}.ttl.
+- **dk settings = one lookup:** dk-plugin-settings reads the menu item's
+  dct:source plugin doc (conformsTo/references/label); manifest.jsonld
+  fallback stays for dk-own plugins; the sc-JSON branch (core/manifest.js
+  helper) is retired from dk (helper remains as a JSON bridge).
+  `tools/seed-sc-plugins.mjs` merges sc's canonical pointers into dk's
+  deployment ttls (matches ui:name OR data-handler — catches the calendar
+  launcher); run after sc updates, `--pod` for pod copies.
+- **Lazy mount:** renderComponentItem→ensureHandler imports a menu item's
+  `ui:module` URL for ANY tag (http(s)-only; CSP gates foreign origins);
+  menu-serialize + the plugin-manager install path round-trip it. sc `sol-*`
+  tags ALWAYS lazy-loaded via sibling import when RDF-mounted. A dk plugin =
+  one ttl + one self-contained ESM (demo: claude/smoke-tests/demo-star/).
+- **Boot shrink:** index.html data-components (repo + ~/solid/index.html — the
+  SHELL IS SERVED FROM THE POD ROOT copy) is now 11 tokens: sol-basic
+  sol-pod-bundle sol-form-bundle sol-calendar sol-search sol-feed sol-gallery
+  sol-login + 3 managers. ia-player/omp-images load via ui:module on the 23
+  media menu items (menus ×3 copies); sol-time/weather/query lazy via
+  sibling-ensure. KEEP-EAGER reasons: managers+form stack are raw tags in
+  included pages (no ensure pass); omp's bundle uses sol-feed/sol-gallery as
+  page-provided tags; bar-calendar's conjure path doesn't ensure.
+- **Window globals gone (all but dkElectron):** dkFetch/dkActiveAuthTag are
+  dk-auth-router MODULE EXPORTS (dk-solidos/dk-dokieli import them);
+  dkPodRegistry replaced by the `dk-diag-pod-registry` request-event (the
+  registry is bundle-internal — console import() gets a second instance).
+  window.solidClientAuthn removal is PLANNED ONLY (auth-critical — do with a
+  login-verified sc release): claude/plans/remove-window-globals.md.
+- **sol-weather units:** ui:temperatureUnit is REPEATABLE (ui:Both is gone
+  from vocab/shapes/data/code — both units listed = show both; shape [1..2]
+  renders as one multiselect Choice via the existing ui:multiselect path).
+- **sortBy:** ui:sortedBy renamed to ui:sortBy everywhere (sc code+shapes+
+  examples, dk docs); ui-vocab.ttl no longer defines ui:name/ui:sortBy
+  (upstream w3c terms used as-is).
 
 ## Media libraries availability sweep (2026-07-14)
 

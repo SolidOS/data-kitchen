@@ -9,5 +9,5 @@
   ui:href <https://innerpod.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Guided meditation timer that records your sessions." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   dct:subject "Health" .

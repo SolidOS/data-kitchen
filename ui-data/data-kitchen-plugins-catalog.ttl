@@ -58,7 +58,7 @@
   ui:icon "https://billipod.solidcommunity.au/billipod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Track bills with payment reminders." ;
-  dct:creator "Togaware" ;
+  dct:publisher "Togaware" ;
   ui:href <https://billipod.solidcommunity.au> .
 
 <#Bluesky> a ui:Link ; ui:label "Bluesky" ;
@@ -83,7 +83,7 @@
   ui:name "sol-button" ;
   ui:region ui:Dropdown ;
   rdfs:comment "Pop-out month calendar for the button bar." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "data-handler" ; schema:value "sol-calendar" ] ,
     [ schema:name "hide-header" ; schema:value "" ] ,
@@ -94,7 +94,7 @@
   ui:icon "🕐" ;
   ui:name "sol-time" ;
   rdfs:comment "Clock widget (timezone in its settings file)." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/time/time-settings.ttl#Settings" ] .
 
@@ -111,7 +111,7 @@
   ui:icon "/assets/dk-logo.png" ;
   ui:name "dk-podz" ;
   rdfs:comment "Browse and manage your Solid pods and workspaces." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/podz/dk-podz.html" ] ,
     [ schema:name "defer" ; schema:value "" ] .
@@ -121,7 +121,7 @@
   ui:icon "https://dokie.li/media/images/logo.png" ;
   ui:name "dk-dokieli" ;
   rdfs:comment "Write and publish articles, with annotations and social interactions." ;
-  dct:creator "Sarven Capadisli and Virginia Balseiro" ;
+  dct:publisher "Sarven Capadisli and Virginia Balseiro" ;
   ui:attribute
     [ schema:name "defer" ; schema:value "" ] .
 
@@ -146,7 +146,7 @@
   ui:icon "https://filepod.solidcommunity.au/filepod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "File browser for multiple platforms." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://filepod.solidcommunity.au> .
 
 <#GeoPod> a ui:Link ; ui:label "GeoPod" ;
@@ -154,7 +154,7 @@
   ui:icon "https://geopod.solidcommunity.au/geopod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Store points of interest and encrypted tracks on a map." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://geopod.solidcommunity.au> .
 
 <#Gmail> a ui:Link ; ui:label "Gmail" ;
@@ -194,7 +194,7 @@
   ui:icon "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Manage your health data, with encryption." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://healthpod.solidcommunity.au> .
 
 <#HomeVault> a ui:Link ; ui:label "HomeVault" ;
@@ -218,7 +218,7 @@
   ui:icon "🖼" ;
   ui:name "omp-images" ;
   rdfs:comment "Browse Wikimedia image galleries." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
 
@@ -227,7 +227,7 @@
   ui:icon "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Guided meditation timer that records your sessions." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://innerpod.solidcommunity.au> .
 
 <#JSON-LD-Playground> a ui:Link ; ui:label "JSON-LD Playground" ;
@@ -243,7 +243,7 @@
   ui:icon "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Encrypted password and key-value store." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://keypod.solidcommunity.au> .
 
 <#KonaPod> a ui:Link ; ui:label "KonaPod" ;
@@ -251,7 +251,7 @@
   ui:icon "https://konapod.solidcommunity.au/konapod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Collect and analyse your car’s data." ;
-  dct:creator "Togaware" ;
+  dct:publisher "Togaware" ;
   ui:href <https://konapod.solidcommunity.au> .
 
 <#Lemmy> a ui:Link ; ui:label "Lemmy" ;
@@ -291,7 +291,7 @@
   ui:icon "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Track movies and build personal collections." ;
-  dct:creator "Noel De Martin" ;
+  dct:publisher "Noel De Martin" ;
   ui:href <https://noeldemartin.github.io/media-kraken/> .
 
 <#Movies-Internet-Archive> a ui:Component ; ui:label "Movies (Internet Archive)" ;
@@ -299,7 +299,7 @@
   ui:icon "🎬" ;
   ui:name "ia-player" ;
   rdfs:comment "Browse and play films from the Internet Archive." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "movies" ] ,
     [ schema:name "favourites-only" ; schema:value "" ] ,
@@ -311,7 +311,7 @@
   ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Track what you watch, share, and get recommendations." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://moviestar.solidcommunity.au> .
 
 <#MSFatigue> a ui:Link ; ui:label "MSFatigue" ;
@@ -319,7 +319,7 @@
   ui:icon "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Survey app for MS fatigue research, with encrypted responses." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://msfatigue.solidcommunity.au> .
 
 <#Music-Internet-Archive> a ui:Component ; ui:label "Music (Internet Archive)" ;
@@ -327,7 +327,7 @@
   ui:icon "🎵" ;
   ui:name "ia-player" ;
   rdfs:comment "Browse and play music collections from the Internet Archive." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "music" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
@@ -338,7 +338,7 @@
   ui:icon "📰" ;
   ui:name "sol-feed" ;
   rdfs:comment "Read news feeds in a three-panel reader: sources, headlines, article." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "view" ; schema:value "threePanel" ] ,
     [ schema:name "reader" ; schema:value "inline" ] ,
@@ -349,7 +349,7 @@
   ui:icon "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Private, shareable notes with encryption." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://notepod.solidcommunity.au> .
 
 <#ODI-Solid-File-Manager> a ui:Link ; ui:label "ODI Solid File Manager" ;
@@ -357,7 +357,7 @@
   ui:icon "https://filemanager.solid-experiments.org/file-manager-logo.svg" ;
   ui:region ui:Tab ;
   rdfs:comment "Friendly file and folder manager for your pod." ;
-  dct:creator "Open Data Institute" ;
+  dct:publisher "Open Data Institute" ;
   ui:href <https://filemanager.solid-experiments.org/> .
 
 <#OpenStreetMap> a ui:Link ; ui:label "OpenStreetMap" ;
@@ -373,7 +373,7 @@
   ui:icon "https://penny.vincenttunru.com/favicon.ico" ;
   ui:region ui:Tab ;
   rdfs:comment "Browse and manage everything in your pod." ;
-  dct:creator "Vincent Tunru" ;
+  dct:publisher "Vincent Tunru" ;
   ui:href <https://penny.vincenttunru.com/> .
 
 <#Pixelfed> a ui:Link ; ui:label "Pixelfed" ;
@@ -389,7 +389,7 @@
   ui:icon "https://drive.privatedatapod.com/icons/apple-touch-icon.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Drive-style file manager for your pod." ;
-  dct:creator "PrivateDataPod team" ;
+  dct:publisher "PrivateDataPod team" ;
   ui:href <https://drive.privatedatapod.com/> .
 
 <#Pod-Pro> a ui:Link ; ui:label "Pod Pro" ;
@@ -397,7 +397,7 @@
   ui:icon "https://podpro.dev/favicon.ico" ;
   ui:region ui:Tab ;
   rdfs:comment "Power-editor for the contents of your pod." ;
-  dct:creator "Jasmine Leonard" ;
+  dct:publisher "Jasmine Leonard" ;
   ui:href <https://podpro.dev/> .
 
 <#Pod-Resume> a ui:Link ; ui:label "Pod Resume" ;
@@ -405,7 +405,7 @@
   ui:icon "https://resume.privatedatapod.com/vite.svg" ;
   ui:region ui:Tab ;
   rdfs:comment "Résumé builder that keeps your CV history." ;
-  dct:creator "PrivateDataPod team" ;
+  dct:publisher "PrivateDataPod team" ;
   ui:href <https://resume.privatedatapod.com/> .
 
 <#PodCal> a ui:Link ; ui:label "PodCal" ;
@@ -428,7 +428,7 @@
   ui:icon "💬" ;
   ui:region ui:Tab ;
   rdfs:comment "Open-source AI chat that keeps your conversations in your pod." ;
-  dct:creator "Solid Project" ;
+  dct:publisher "Solid Project" ;
   ui:href <https://chat.solidproject.org/> .
 
 <#Proton-Calendar> a ui:Link ; ui:label "Proton Calendar" ;
@@ -468,7 +468,7 @@
   ui:icon "https://rolopod.solidcommunity.au/rolopod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Address book with selective sharing." ;
-  dct:creator "Togaware" ;
+  dct:publisher "Togaware" ;
   ui:href <https://rolopod.solidcommunity.au> .
 
 <#Search> a ui:Component ; ui:label "Search" ;
@@ -476,7 +476,7 @@
   ui:icon "🔍" ;
   ui:name "sol-search" ;
   rdfs:comment "Search box for the button bar (pluggable search engines)." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/search/search-engines.ttl#SearchEngines" ] .
 
@@ -493,7 +493,7 @@
   ui:icon "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Diabetes logging with encrypted storage." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://securedialog.solidcommunity.au> .
 
 <#SepiaSearch> a ui:Link ; ui:label "SepiaSearch" ;
@@ -517,7 +517,7 @@
   ui:icon "🔑" ;
   ui:name "sol-login" ;
   rdfs:comment "Solid sign-in button (popup flow)." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "mode" ; schema:value "popup" ] .
 
@@ -542,7 +542,7 @@
   ui:icon "https://otto-aa.github.io/solid-filemanager/favicon.ico" ;
   ui:region ui:Tab ;
   rdfs:comment "Manage the files in your pod." ;
-  dct:creator "Otto AA" ;
+  dct:publisher "Otto AA" ;
   ui:href <https://otto-aa.github.io/solid-filemanager/> .
 
 <#Solid-Forum> a ui:Link ; ui:label "Solid Forum" ;
@@ -574,7 +574,7 @@
   ui:icon "🎬" ;
   ui:region ui:Tab ;
   rdfs:comment "Movie tracking with personalised recommendations." ;
-  dct:creator "Oxford Human Centred Computing Group" ;
+  dct:publisher "Oxford Human Centred Computing Group" ;
   ui:href <https://oxfordhcc.github.io/solid-media/> .
 
 <#SolidFocus> a ui:Link ; ui:label "SolidFocus" ;
@@ -582,7 +582,7 @@
   ui:icon "https://focus.noeldemartin.com/apple-touch-icon.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Tasks and notes, works offline." ;
-  dct:creator "Noel De Martin" ;
+  dct:publisher "Noel De Martin" ;
   ui:href <https://focus.noeldemartin.com/> .
 
 <#SolidOS-data-browser> a ui:Component ; ui:label "SolidOS (data browser)" ;
@@ -590,7 +590,7 @@
   ui:icon "https://solidproject.org/assets/img/solid-emblem.svg" ;
   ui:name "dk-solidos" ;
   rdfs:comment "The SolidOS data browser, embedded." ;
-  dct:creator "SolidOS Team" ;
+  dct:publisher "SolidOS Team" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html" ] ,
     [ schema:name "has-location-bar" ; schema:value "true" ] ,
@@ -601,7 +601,7 @@
   ui:icon "📇" ;
   ui:name "dk-solidos" ;
   rdfs:comment "Your contacts — a Solid address book, in the SolidOS contacts pane." ;
-  dct:creator "SolidOS Team" ;
+  dct:publisher "SolidOS Team" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/contacts/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
@@ -611,7 +611,7 @@
   ui:icon "💬" ;
   ui:name "dk-solidos" ;
   rdfs:comment "A Solid long chat, in the SolidOS chat pane." ;
-  dct:creator "SolidOS Team" ;
+  dct:publisher "SolidOS Team" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/chat/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
@@ -621,7 +621,7 @@
   ui:icon "🤝" ;
   ui:name "dk-solidos" ;
   rdfs:comment "A Solid meeting workspace, in the SolidOS meeting pane." ;
-  dct:creator "SolidOS Team" ;
+  dct:publisher "SolidOS Team" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/meetings/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
@@ -631,7 +631,7 @@
   ui:icon "📝" ;
   ui:name "dk-solidos" ;
   rdfs:comment "A Solid notepad, in the SolidOS pad pane." ;
-  dct:creator "SolidOS Team" ;
+  dct:publisher "SolidOS Team" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/notes/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
@@ -641,7 +641,7 @@
   ui:icon "📋" ;
   ui:name "dk-solidos" ;
   rdfs:comment "Your tasks — a Solid issue tracker, in the SolidOS tracker pane." ;
-  dct:creator "SolidOS Team" ;
+  dct:publisher "SolidOS Team" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/tasks/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .
@@ -659,7 +659,7 @@
   ui:icon "🎙️" ;
   ui:name "ia-player" ;
   rdfs:comment "Browse and play poetry, audiobooks, and talks from the Internet Archive." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "spoken-word" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
@@ -678,7 +678,7 @@
   ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Privacy-first AI assistant with searchable conversation logs." ;
-  dct:creator "PrivateDataPod team" ;
+  dct:publisher "PrivateDataPod team" ;
   ui:href <https://ai.privatedatapod.com/> .
 
 <#Tag-Explainer> a ui:Link ; ui:label "Tag Explainer" ;
@@ -686,7 +686,7 @@
   ui:icon "https://timbl.solidcommunity.net/favicon.ico" ;
   ui:region ui:Tab ;
   rdfs:comment "How Solid works, explained." ;
-  dct:creator "Tim Berners-Lee" ;
+  dct:publisher "Tim Berners-Lee" ;
   ui:href <https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html> .
 
 <#Tired-Bike> a ui:Link ; ui:label "Tired Bike" ;
@@ -694,7 +694,7 @@
   ui:icon "https://community.tired.bike/logo-new-open.svg" ;
   ui:region ui:Tab ;
   rdfs:comment "Community platform for bicycle touring." ;
-  dct:creator "Open Hospitality Network" ;
+  dct:publisher "Open Hospitality Network" ;
   ui:href <https://tired.bike/> .
 
 <#TodoPod> a ui:Link ; ui:label "TodoPod" ;
@@ -702,7 +702,7 @@
   ui:icon "https://todopod.solidcommunity.au/todopod/icons/Icon-192.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Task lists in encrypted personal storage." ;
-  dct:creator "Togaware" ;
+  dct:publisher "Togaware" ;
   ui:href <https://todopod.solidcommunity.au> .
 
 <#Tuta> a ui:Link ; ui:label "Tuta" ;
@@ -718,7 +718,7 @@
   ui:icon "https://umai.noeldemartin.com/apple-touch-icon.png" ;
   ui:region ui:Tab ;
   rdfs:comment "Offline-first recipe manager." ;
-  dct:creator "Noel De Martin" ;
+  dct:publisher "Noel De Martin" ;
   ui:href <https://umai.noeldemartin.com> .
 
 <#VitalStats> a ui:Link ; ui:label "VitalStats" ;
@@ -734,7 +734,7 @@
   ui:icon "🌤" ;
   ui:name "sol-weather" ;
   rdfs:comment "Weather widget (location and units in its settings file)." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/weather/weather-settings.ttl#Settings" ] .
 

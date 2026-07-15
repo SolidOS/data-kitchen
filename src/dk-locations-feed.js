@@ -182,10 +182,14 @@ function onRegistryChange(snapshot, silent) {
   }
 }
 
-// Diagnostic handle (CDP probes / console): the shared registry this feed
-// syncs — page-side import() can't reach the app's module instance once the
-// loader's importmap is consumed.
-window.dkPodRegistry = registry;
+// Diagnostic access WITHOUT a window global (2026-07-14): the registry is
+// bundle-internal (a console import() gets a second instance), so probes
+// dispatch 'dk-diag-pod-registry' with a detail object and read the
+// registry off it:  const d = {}; document.dispatchEvent(
+//   new CustomEvent('dk-diag-pod-registry', { detail: d })); d.registry
+document.addEventListener('dk-diag-pod-registry', (e) => {
+  if (e.detail) e.detail.registry = registry;
+});
 
 try {
   await rdf.load(docUrl);

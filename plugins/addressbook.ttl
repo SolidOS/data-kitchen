@@ -9,7 +9,7 @@
   ui:icon "📇" ;
   ui:name "dk-solidos" ;
   rdfs:comment "Your contacts — a Solid address book, in the SolidOS contacts pane." ;
-  dct:creator "SolidOS Team" ;
+  dct:publisher "SolidOS Team" ;
   dct:subject "SolidOS apps" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/contacts/index.ttl#this" ] ,

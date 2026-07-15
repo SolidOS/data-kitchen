@@ -9,7 +9,7 @@
     "Menu": "ui:Menu",
     "label": "ui:label",
     "name": "ui:name",
-    "creator": "dct:creator",
+    "publisher": "dct:publisher",
     "subject": "dct:subject",
     "hasPart": {
       "@id": "dct:hasPart",
@@ -42,7 +42,7 @@
   "@type": "Component",
   "label": "SolidOS",
   "name": "dk-solidos",
-  "creator": "SolidOS Team",
+  "publisher": "SolidOS Team",
   "hasPart": [
     "./dk-solidos.html",
     "./dk-solidos.js",

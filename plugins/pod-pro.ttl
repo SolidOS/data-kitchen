@@ -9,5 +9,5 @@
   ui:href <https://podpro.dev/> ;
   ui:region ui:Tab ;
   rdfs:comment "Power-editor for the contents of your pod." ;
-  dct:creator "Jasmine Leonard" ;
+  dct:publisher "Jasmine Leonard" ;
   dct:subject "Pods" .

@@ -9,5 +9,5 @@
   ui:href <https://drive.privatedatapod.com/> ;
   ui:region ui:Tab ;
   rdfs:comment "Drive-style file manager for your pod." ;
-  dct:creator "PrivateDataPod team" ;
+  dct:publisher "PrivateDataPod team" ;
   dct:subject "Pods" .

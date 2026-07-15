@@ -8,8 +8,9 @@
   ui:label "Images (Wikimedia)" ;
   ui:icon "🖼" ;
   ui:name "omp-images" ;
+  ui:module </node_modules/open-media-player/dist/ia-player.esm.js> ;
   rdfs:comment "Browse Wikimedia image galleries." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   dct:subject "Media" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .

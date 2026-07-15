@@ -70,7 +70,6 @@ function readEntries() {
       href: ui('href'),
       region: (ui('region') || '').split('#').pop(),
       desc: (store.any(subj, rdf.sym(RDFS_NS + 'comment')) || {}).value || '',
-      creator: dct('creator'),
       publisher: dct('publisher'),
       cats: store.each(subj, rdf.sym(DCT_NS + 'subject'), null).map((n) => n.value),
       params,
@@ -117,7 +116,6 @@ for (const e of ENTRIES) {
   if (e.kind === 'component') ttl += `  ui:name ${JSON.stringify(e.tag)} ;\n`;
   if (e.region) ttl += `  ui:region ui:${e.region} ;\n`;
   if (e.desc) ttl += `  rdfs:comment ${JSON.stringify(e.desc)} ;\n`;
-  if (e.creator) ttl += `  dct:creator ${JSON.stringify(e.creator)} ;\n`;
   if (e.publisher) ttl += `  dct:publisher ${JSON.stringify(e.publisher)} ;\n`;
   if (e.kind === 'link') {
     ttl += `  ui:href <${e.href}> .\n\n`;

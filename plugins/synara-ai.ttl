@@ -9,5 +9,5 @@
   ui:href <https://ai.privatedatapod.com/> ;
   ui:region ui:Tab ;
   rdfs:comment "Privacy-first AI assistant with searchable conversation logs." ;
-  dct:creator "PrivateDataPod team" ;
+  dct:publisher "PrivateDataPod team" ;
   dct:subject "Tech" .

@@ -9,5 +9,5 @@
   ui:href <https://moviestar.solidcommunity.au> ;
   ui:region ui:Tab ;
   rdfs:comment "Track what you watch, share, and get recommendations." ;
-  dct:creator "Software Innovation Institute, ANU" ;
+  dct:publisher "Software Innovation Institute, ANU" ;
   dct:subject "Media" .

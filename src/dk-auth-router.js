@@ -1,9 +1,11 @@
-// dk-auth-router parses the URL fragment for `auth=<tag>` and exposes
-// `window.dkActiveAuthTag` + `window.dkFetch(url, init?)`. Components
-// that do ad-hoc authenticated fetches at dk level can call dkFetch;
-// it routes via the shared AuthManager so the active tag's session is
-// used. When no tag is set, AuthManager.fetchFor walks all sessions in
+// dk-auth-router parses the URL fragment for `auth=<tag>` and exports
+// `dkFetch(url, init?)` (+ `getActiveAuthTag()`). Components that do
+// ad-hoc authenticated fetches at dk level import dkFetch; it routes
+// via the shared AuthManager so the active tag's session is used. When
+// no tag is set, AuthManager.fetchFor walks all sessions in
 // registration order and uses the first that covers the origin.
+// (Formerly window.dkFetch / window.dkActiveAuthTag — module exports
+// since 2026-07-14; every consumer lives in dk's own bundle.)
 
 function parseHashTag() {
   const h = location.hash || '';
@@ -26,9 +28,12 @@ function findAuthManager() {
       ?? null;
 }
 
+let activeAuthTag = null;
+export function getActiveAuthTag() { return activeAuthTag; }
+
 function updateActiveTag() {
   const tag = parseHashTag();
-  window.dkActiveAuthTag = tag;  // may be null — fetchFor handles that
+  activeAuthTag = tag;  // may be null — fetchFor handles that
   document.dispatchEvent(new CustomEvent('dk-active-auth-change', {
     bubbles: false,
     detail: { tag },
@@ -40,13 +45,13 @@ function updateActiveTag() {
 // triggers the chrome's <sol-login> auto-prompt + retry. The active
 // auth tag (from #auth=…) is threaded through as `init.authTag` so
 // AuthManager picks the right session when multiple are active.
-window.dkFetch = async function dkFetch(url, init) {
+export async function dkFetch(url, init) {
   const am = findAuthManager();
   if (!am) return fetch(url, init);
   const { solFetch } = await import('sol-components/core/auth-fetch.js');
-  const merged = { ...(init || {}), authTag: window.dkActiveAuthTag || undefined };
+  const merged = { ...(init || {}), authTag: activeAuthTag || undefined };
   return solFetch(url, merged);
-};
+}
 
 updateActiveTag();
 window.addEventListener('hashchange', updateActiveTag);

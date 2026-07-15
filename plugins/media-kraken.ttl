@@ -9,5 +9,5 @@
   ui:href <https://noeldemartin.github.io/media-kraken/> ;
   ui:region ui:Tab ;
   rdfs:comment "Track movies and build personal collections." ;
-  dct:creator "Noel De Martin" ;
+  dct:publisher "Noel De Martin" ;
   dct:subject "Media" .

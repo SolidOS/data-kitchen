@@ -37,7 +37,7 @@ const ownerSession = {
 function register() {
   const am = window.SolidWebComponents?.AuthManager?.shared;
   if (!am) return false;
-  // 'default' is the tag AuthManager.getWebId()/window.dkFetch use when no
+  // 'default' is the tag AuthManager.getWebId()/dkFetch use when no
   // `#auth=` tag is set. Embedded logins (podz, SolidOS) register under their
   // own side tags, so this never clobbers a real session the user establishes —
   // and we only seed 'default' if nothing logged-in already holds it.

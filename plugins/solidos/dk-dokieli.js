@@ -11,6 +11,7 @@
 // ({default: "...", __esModule: true}) rather than the string — which would PUT
 // "[object Object]" as the doc body. Coerce to the actual template string.
 import DOKIELI_NEW from 'solid-panes/dist/dokieli/new.js';
+import { dkFetch } from '../../src/dk-auth-router.js';
 const DOKIELI_TEMPLATE =
   typeof DOKIELI_NEW === 'string' ? DOKIELI_NEW : (DOKIELI_NEW && DOKIELI_NEW.default) || DOKIELI_NEW;
 
@@ -80,7 +81,7 @@ class DkDokieli extends HTMLElement {
     }
   }
 
-  _fetch(url, init) { return (window.dkFetch || ((u, o) => fetch(u, o)))(url, init); }
+  _fetch(url, init) { return dkFetch(url, init); }
 
   // Best-effort phone fit for dokieli's editor chrome (third-party CSS we
   // don't control): the doc iframe is same-origin (a pod document), so the

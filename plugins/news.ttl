@@ -9,7 +9,7 @@
   ui:icon "📰" ;
   ui:name "sol-feed" ;
   rdfs:comment "Read news feeds in a three-panel reader: sources, headlines, article." ;
-  dct:creator "Jeff Zucker" ;
+  dct:publisher "Jeff Zucker" ;
   dct:subject "Information" ;
   ui:attribute
     [ schema:name "view" ; schema:value "threePanel" ] ,

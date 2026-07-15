@@ -9,7 +9,7 @@
     "Menu": "ui:Menu",
     "label": "ui:label",
     "name": "ui:name",
-    "creator": "dct:creator",
+    "publisher": "dct:publisher",
     "subject": "dct:subject",
     "hasPart": {
       "@id": "dct:hasPart",
@@ -42,7 +42,7 @@
   "@type": "Component",
   "label": "News",
   "name": "sol-feed",
-  "creator": "Jeff Zucker",
+  "publisher": "Jeff Zucker",
   "hasPart": [
     "./feeds.ttl"
   ],
