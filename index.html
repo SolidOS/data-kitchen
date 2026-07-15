@@ -22,12 +22,9 @@
   <!-- Pre-paint boot: apply saved theme / text size before first paint. -->
   <script src="src/dk-boot.js"></script>
 
-  <!-- sol-login reads the inrupt auth library from a window global. sc ships
-       it only as an ESM build (which sets no global), so publish that build onto
-       window.solidClientAuthn (see src/dk-inrupt-global.js) — no separately-vendored
-       UMD bundle to drift. Externalized to src/ so this page can carry a strict CSP
-       with no inline scripts. -->
-  <script type="module" src="src/dk-inrupt-global.js"></script>
+  <!-- sol-login imports the inrupt auth library through sc's
+       core/inrupt-global (resolved by the import map to the vendored ESM
+       build — one shared instance, no window global since 2026-07-14). -->
 
   <!-- component-interop (parser-blocking <head> script) reads both manifests —
        sol-components' first (it owns the shared specifiers: rdflib,

@@ -7,7 +7,7 @@
  * data-components and waits for ComponentInterop.ready BEFORE constructing the
  * pod browser, so AuthManager is in place by the time this evaluates.
  *
- * The inrupt Session library (window.solidClientAuthn) is now loaded lazily by
+ * The inrupt Session library (imported via sc core/inrupt-global) is loaded by
  * sol-components' auth capability when a login actually runs, so it is NOT
  * checked here — podz consumes AuthManager, not the raw inrupt global.
  */

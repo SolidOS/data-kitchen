@@ -362,8 +362,11 @@ rules against the pod data and lists any double-listed cards.
   dk-auth-router MODULE EXPORTS (dk-solidos/dk-dokieli import them);
   dkPodRegistry replaced by the `dk-diag-pod-registry` request-event (the
   registry is bundle-internal — console import() gets a second instance).
-  window.solidClientAuthn removal is PLANNED ONLY (auth-critical — do with a
-  login-verified sc release): claude/plans/remove-window-globals.md.
+  window.solidClientAuthn is REMOVED too (same day): sol-login/sol-form
+  import inrupt via sc core/inrupt-global exports; dk-inrupt-global.js
+  deleted from bundle + both shells; VERIFIED by a driven interactive popup
+  login (CSS form → Authorize → "Log out"). inrupt's own
+  solidClientAuthn:* localStorage keys are untouched.
 - **sol-weather units:** ui:temperatureUnit is REPEATABLE (ui:Both is gone
   from vocab/shapes/data/code — both units listed = show both; shape [1..2]
   renders as one multiselect Choice via the existing ui:multiselect path).
