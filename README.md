@@ -1,7 +1,5 @@
 # ![data-kitchen-logo](./assets/icons/dk-64.png) Solid Data Kitchen - pod in a box
 
-
-
 <b style="color:red">Work In Progress</b> - everything should work but help may be sketchy.
 
 This native app for Linux, Windows, Mac, and Android turns your computer, phone, or tablet into a Solid pod only you can access. It mounts a local version of Pivot/CSS, a proxy server and the Data-Kitchen frontend. Data Kitchen comes pre-loaded with dozens of Solid apps and widgets including SolidOS and a variety of open source resources - players for the Internet Archive and Wikimedia, access to Mastodon, Peertube, and more.
@@ -22,6 +20,8 @@ No setup or install needed, just download and run. Downloads for all platforms a
   * Forms can be auto-generated from SHACL using solid-ui forms
   * Form submissions are self-validating against the SHACL 
 * App checks for new releases at startup and offers to update itself
+* Showcase of dozens of Solid apps that work on local and remote pods without download
+* Access to over a quarter of million open culture items
 
 ## Special Note on Logging-In
 

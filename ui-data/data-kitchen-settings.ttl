@@ -3,52 +3,41 @@
 @prefix schema: <http://schema.org/>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix ent: <http://www.wikidata.org/entity/>.
-@prefix dk: <../../>.
-@prefix loc: </>.
 
-<> a ent:Q1193846; foaf:primaryTopic :Settings.
-
-:iss1
-    a schema:ListItem;
-    schema:item <https://solidcommunity.net>;
-    schema:name "solidcommunity.net";
-    schema:position 1 .
-:iss2
-    a schema:ListItem;
-    schema:item <https://solidweb.me>;
-    schema:name "solidweb.me";
-    schema:position 2 .
-:iss3
-    a schema:ListItem;
-    schema:item <https://solidweb.org>;
-    schema:name "solidweb.org";
-    schema:position 3 .
-:iss4
-    a schema:ListItem;
-    schema:item <https://login.inrupt.com>;
-    schema:name "login.inrupt.com";
-    schema:position 4 .
-:Issuers
-    a schema:ItemList;
-    schema:itemListElement :iss1, :iss2, :iss3, :iss4;
-    schema:itemListOrder schema:ItemListOrderAscending;
-    schema:name "Sign-in issuers".
-:loc1
-    a schema:ListItem;
-    schema:item dk:;
-    schema:name "Data Kitchen Pod";
-    schema:position 1 .
-:loc2
-    a schema:ListItem;
-    schema:item loc:;
-    schema:name "Local Root";
-    schema:position 2 .
-:Locations
-    a schema:ItemList;
-    schema:itemListElement :loc1, :loc2;
-    schema:itemListOrder schema:ItemListOrderAscending;
-    schema:name "Pod locations".
-:Settings
-    ui:colorScheme ui:DarkColorScheme;
+<> a ent:Q1193846;
+    foaf:primaryTopic <#Settings>.
+<#Settings> ui:colorScheme ui:SystemColorScheme;
     ui:fontSize ui:MediumFont;
     ui:proxy "http://localhost:8001/proxy?uri=".
+<#iss1> a schema:ListItem;
+    schema:item <https://solidcommunity.net>;
+    schema:name "solidcommunity.net";
+    schema:position 1.
+<#iss2> a schema:ListItem;
+    schema:item <https://solidweb.me>;
+    schema:name "solidweb.me";
+    schema:position 2.
+<#iss3> a schema:ListItem;
+    schema:item <https://solidweb.org>;
+    schema:name "solidweb.org";
+    schema:position 3.
+<#iss4> a schema:ListItem;
+    schema:item <https://login.inrupt.com>;
+    schema:name "login.inrupt.com";
+    schema:position 4.
+<#Issuers> a schema:ItemList;
+    schema:name "Sign-in issuers";
+    schema:itemListElement <#iss1>, <#iss2>, <#iss3>, <#iss4>;
+    schema:itemListOrder schema:ItemListOrderAscending.
+<#loc1> a schema:ListItem;
+    schema:item <../../>;
+    schema:name "Data Kitchen Pod";
+    schema:position 1.
+<#loc2> a schema:ListItem;
+    schema:item <../../../>;
+    schema:name "Local Root";
+    schema:position 2.
+<#Locations> a schema:ItemList;
+    schema:name "Pod locations";
+    schema:itemListElement <#loc1>, <#loc2>;
+    schema:itemListOrder schema:ItemListOrderAscending.
