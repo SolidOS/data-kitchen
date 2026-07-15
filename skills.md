@@ -639,7 +639,18 @@ comments stripped — grep it for code fragments, not comments.
   SHACL via `rdf-validate-shacl`), `test/roundtrip/` (rdf2html/html2rdf
   idempotence, auto-skips without chromium), `test/integration/` (boots
   router/proxy, drives the gate). `npm run test:e2e` drives the real shell
-  (needs the app or pod+servers). See `test/README.md`. **Gotcha:** `npm install`
+  (needs the app or pod+servers). See `test/README.md`.
+  **⚠ test:e2e server mode is STALE (found 2026-07-14):** its harness
+  (`claude/smoke-tests/verify-unified-shell.mjs`, written 2026-06-15) asserts
+  June-era shell conventions (Settings *out* of ☰, ☰ plugin items below a
+  separator, a "Workspaces" tab, `dk-calendar-popout` in the bar), and its
+  fixture — the gitignored repo-root `dk-pod/` — is a 2026-07-10 partial copy
+  of the live pod's *customized* menus (9/23 `ui:module` refs). It fails 9
+  checks identically on any recent commit; not a code regression (verified by
+  a baseline worktree run). Needs a decision on what server-mode e2e should
+  assert and which fixture to serve (pod-template seed?) before it's trusted
+  again. The packaged-app CDP suite + `release:smoke` are the live gates.
+  **Gotcha:** `npm install`
   rewrites the lockfile to the *registry* sc/ci and clobbers the local symlinks —
   re-link `node_modules/{sol-components,component-interop}` → `../../<pkg>` after.
 - **Verify by driving the running app and measuring** (`claude/smoke-tests/`,
