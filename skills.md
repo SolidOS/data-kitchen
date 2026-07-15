@@ -972,11 +972,17 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   to the live dev pod (`tools/pull-defaults.mjs` — menus, bar/buttons,
   settings, flat plugin manifests, news feeds; it is NOT chained into
   `release:prep`). Hand-reconcile whatever it reports as code drift and show
-  Jeff before continuing. Two fixed reconcile rules: the repo's
+  Jeff before continuing. Three fixed reconcile rules: the repo's
   `ui-data/data-kitchen-settings.ttl` always ships
   `ui:colorScheme ui:SystemColorScheme` whatever the pod says (leave the pod's
-  own value alone), and losing repo-side `#` comments to the pod's
-  re-serialization is fine.
+  own value alone — v2.1.7 accidentally shipped DarkColorScheme, repaired in
+  v2.1.8); losing repo-side `#` comments to the pod's re-serialization is
+  fine; and the shipped `:Locations` list is ONLY the generic loc1/loc2
+  (Data Kitchen Pod + Local Root) — runtime-discovered/personal pods that
+  dk-locations-feed appended pod-side (Jeff's solidcommunity/inrupt pods,
+  dev localhost ports) get trimmed on pull (Jeff, 2026-07-15). Also strip
+  serializer-baked absolute `http://localhost:8000/...` prefix declarations
+  the pull leaves in the header when the body no longer uses them.
 - **Startup update check** (`electron-config/update-check.cjs`, hooked at the
   end of `start()` in `main.cjs`): asks GitHub Releases
   (`api.github.com/repos/SolidOS/data-kitchen/releases/latest`) whether a newer
