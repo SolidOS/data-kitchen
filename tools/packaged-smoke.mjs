@@ -29,8 +29,18 @@
 //             against THAT .app and BOOT its binary. SMOKE_EXPECT_VERSION
 //             overrides the Info.plist version to assert (defaults to
 //             package.json's — pass it when testing an older release).
+//         SMOKE_VIDEO=1  additionally boots with a CDP port and runs the
+//             video-playback probe (tools/video-playback-probe.mjs)
+//             against the booted app — codec matrix + a real
+//             archive.org h.264 stream (+ DRIVE_MOVIES=1 drives the Movies
+//             room). Added for the "videos do not play on macOS" reports
+//             (2026-07-16). Needs node ≥22 (global WebSocket) — the
+//             mac-smoke workflow's node 24 qualifies. On darwin this mode
+//             boots WITHOUT --disable-gpu so the decode path matches what
+//             users run (GPU/VideoToolbox is the prime mac suspect).
+//             SMOKE_CDP_PORT overrides the debug port (default 9333).
 // Run automatically by tools/prepare-release.mjs while linux-unpacked exists.
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, lstatSync, mkdtempSync, readFileSync, rmSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -46,7 +56,22 @@ const PORT = 18400;                       // spare ports — never the live 8000
 const CSS_PORT = 18410;
 const PROXY_PORT = 18401;
 
-function fail(msg) { console.error(`[smoke] FAIL: ${msg}`); process.exit(1); }
+// process.exit() SKIPS finally blocks — a fail() after the boot spawn must
+// kill the app itself or it survives as a zombie holding the smoke ports
+// (bit 2026-07-16: a failed video probe left the app + servers running, and
+// the next boot adopted the dying servers).
+let bootedChild = null;
+function fail(msg) {
+  console.error(`[smoke] FAIL: ${msg}`);
+  if (bootedChild && bootedChild.exitCode === null) {
+    try { bootedChild.kill('SIGTERM'); } catch {}
+    // synchronous 2s grace so the app can take its server children with it,
+    // then make sure it is gone
+    try { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 2000); } catch {}
+    try { bootedChild.kill('SIGKILL'); } catch {}
+  }
+  process.exit(1);
+}
 function ok(msg) { console.log(`[smoke] ok — ${msg}`); }
 
 if (!MAC_APP && !existsSync(appDir)) fail(`no ${appDir} — run \`npm run dist:cross\` first`);
@@ -144,16 +169,29 @@ const tmp = mkdtempSync(join(tmpdir(), 'dk-smoke-'));
 const podHome = join(tmp, 'pod');
 const userData = join(tmp, 'userData');
 
+const VIDEO = process.env.SMOKE_VIDEO === '1';
+const CDP_PORT = process.env.SMOKE_CDP_PORT || '9333';
+const bootArgs = ['--no-sandbox', `--user-data-dir=${userData}`];
+// --disable-gpu stays for the plain boot test (headless-CI friendly), but the
+// video phase must exercise the same GPU decode path users get — on darwin
+// especially, where hardware H.264 decode is the prime failure suspect.
+if (!(VIDEO && process.platform === 'darwin')) bootArgs.push('--disable-gpu');
+if (VIDEO) bootArgs.push(`--remote-debugging-port=${CDP_PORT}`);
+
 console.log(`[smoke] booting ${bin}\n[smoke] pod home ${podHome}, ports ${PORT}/${CSS_PORT}/${PROXY_PORT}`);
-const child = spawn(bin, ['--no-sandbox', '--disable-gpu', `--user-data-dir=${userData}`], {
-  env: {
-    ...process.env,
-    DK_POD_ROOT: podHome,
-    DK_PUBLIC_PORT: String(PORT),
-    DK_CSS_INTERNAL_PORT: String(CSS_PORT),
-    DK_PROXY_PORT: String(PROXY_PORT),
-  },
-});
+const childEnv = {
+  ...process.env,
+  DK_POD_ROOT: podHome,
+  DK_PUBLIC_PORT: String(PORT),
+  DK_CSS_INTERNAL_PORT: String(CSS_PORT),
+  DK_PROXY_PORT: String(PROXY_PORT),
+};
+// When packaged-smoke itself runs under `ELECTRON_RUN_AS_NODE=1 electron`
+// (the local node is too old for the probe's WebSocket), that variable must
+// not reach the app binary — it would boot as a bare node process.
+delete childEnv.ELECTRON_RUN_AS_NODE;
+const child = spawn(bin, bootArgs, { env: childEnv });
+bootedChild = child;
 
 let log = '';
 const onData = (d) => { log += d.toString(); };
@@ -192,10 +230,42 @@ try {
   if (!res) fail(`router on :${PORT} did not answer`);
   ok(`router answers on :${PORT} (HTTP ${res.status})`);
 
+  if (VIDEO) {
+    // CDP must be answering before the probe connects.
+    let cdpUp = false;
+    for (let i = 0; i < 20 && !cdpUp; i++) {
+      cdpUp = await fetch(`http://localhost:${CDP_PORT}/json`, { signal: AbortSignal.timeout(2000) })
+        .then((r) => r.ok).catch(() => false);
+      if (!cdpUp) await new Promise((r) => setTimeout(r, 1000));
+    }
+    if (!cdpUp) fail(`CDP endpoint on :${CDP_PORT} never answered`);
+    ok(`CDP endpoint answers on :${CDP_PORT}`);
+    // give the shell a moment to finish rendering before the probe drives it
+    await new Promise((r) => setTimeout(r, 8000));
+    // lives in tools/ (not claude/smoke-tests/) because claude/ is gitignored
+    // and the mac-smoke workflow needs the probe in the checkout
+    const probe = join(root, 'tools', 'video-playback-probe.mjs');
+    console.log('[smoke] running video-playback probe…');
+    const pr = spawnSync(process.execPath, [probe], {
+      env: { ...process.env, CDP_PORT },
+      stdio: 'inherit',
+      timeout: 300_000,
+    });
+    if (pr.status !== 0) fail('video-playback probe failed (see output above)');
+    ok('video playback verified');
+  }
+
   console.log('[smoke] PASS — packaged app boots, seeds, and serves');
 } finally {
+  // graceful first (lets the app take its CSS/proxy children down), then
+  // hard — and only THEN delete the throwaway home. The old unref'd timers
+  // never fired: process.exit(0) below ran before them.
   child.kill('SIGTERM');
-  setTimeout(() => { try { child.kill('SIGKILL'); } catch {} }, 3000).unref();
-  setTimeout(() => { try { rmSync(tmp, { recursive: true, force: true }); } catch {} }, 4000).unref();
+  const dead = await new Promise((res) => {
+    const to = setTimeout(() => res(false), 3000);
+    child.once('exit', () => { clearTimeout(to); res(true); });
+  });
+  if (!dead) { try { child.kill('SIGKILL'); } catch {} }
+  try { rmSync(tmp, { recursive: true, force: true }); } catch {}
 }
 process.exit(0);

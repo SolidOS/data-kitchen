@@ -53,3 +53,21 @@ jobs:
           SMOKE_EXPECT_VERSION="${TAG#v}" \
           SMOKE_MAC_APP="$RUNNER_TEMP/dk/unzipped/Solid Data Kitchen.app" \
           node tools/packaged-smoke.mjs
+
+      # Video-playback probe (the 2026-07-16 "videos do not play on macOS"
+      # reports): a second boot WITH the GPU (users run with it; the plain
+      # smoke boot disables it) + CDP, then codec matrix + a real archive.org
+      # h.264 stream + a drive of the actual Movies room.
+      - name: Video playback probe
+        run: |
+          # the first boot's server children can outlive their SIGKILLed app —
+          # wait for the smoke ports to free so this boot can't adopt dying
+          # servers (the stale-server relaunch gotcha)
+          for i in $(seq 1 30); do
+            lsof -nP -iTCP:18400 -iTCP:18410 -iTCP:18401 -sTCP:LISTEN >/dev/null 2>&1 || break
+            sleep 2
+          done
+          SMOKE_EXPECT_VERSION="${TAG#v}" \
+          SMOKE_MAC_APP="$RUNNER_TEMP/dk/unzipped/Solid Data Kitchen.app" \
+          SMOKE_VIDEO=1 DRIVE_MOVIES=1 \
+          node tools/packaged-smoke.mjs
