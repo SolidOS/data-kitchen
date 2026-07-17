@@ -7,7 +7,6 @@
   ui:label "HomeVault" ;
   ui:icon <https://homevault.apps.privatedatapod.com/icons/apple-touch-icon.png> ;
   ui:href <https://homevault.apps.privatedatapod.com/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Home inventory for insurance and household records." ;
   dct:publisher "PrivateDataPod" ;
   dct:subject "Productivity" .

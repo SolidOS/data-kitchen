@@ -7,7 +7,6 @@
   ui:label "Pixelfed" ;
   ui:icon <https://pixelfed.social/img/favicon.png> ;
   ui:href <https://pixelfed.social/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Federated photo sharing (ActivityPub)." ;
   dct:publisher "Pixelfed" ;
   dct:subject "Other Services" .

@@ -10,7 +10,6 @@
   ui:name "sol-button" ;
   dct:conformsTo </node_modules/sol-components/shapes/calendar-settings.shacl> ;
   dct:references </node_modules/sol-components/data/calendar-settings.ttl> ;
-  ui:region ui:Dropdown ;
   rdfs:comment "Pop-out month calendar for the button bar." ;
   dct:publisher "Jeff Zucker" ;
   dct:subject "Information" ;

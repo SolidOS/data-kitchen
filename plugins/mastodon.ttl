@@ -7,7 +7,6 @@
   ui:label "Mastodon" ;
   ui:icon <https://mastodon.social/packs/assets/apple-touch-icon-1024x1024-B3Tu3EqI.png> ;
   ui:href <https://mastodon.social/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Decentralized social network." ;
   dct:publisher "Mastodon" ;
   dct:subject "Other Services" .

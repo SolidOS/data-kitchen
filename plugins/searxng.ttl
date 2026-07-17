@@ -7,7 +7,6 @@
   ui:label "SearXNG" ;
   ui:icon <https://searx.be/static/themes/simple/img/favicon.png> ;
   ui:href <https://searx.be/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Open-source privacy metasearch." ;
   dct:publisher "SearXNG" ;
   dct:subject "Other Services" .

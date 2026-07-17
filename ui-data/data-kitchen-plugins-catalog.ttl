@@ -48,7 +48,6 @@
 <#0data-Hello> a ui:Link ; ui:label "0data Hello" ;
   dct:source <../plugins/0data-hello.ttl> ;
   ui:icon "https://hello.0data.app/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Tiny demo app showing data stored in your pod." ;
   dct:publisher "0data" ;
   ui:href <https://hello.0data.app/solid/> .
@@ -56,7 +55,6 @@
 <#BilliPod> a ui:Link ; ui:label "BilliPod" ;
   dct:source <../plugins/billipod.ttl> ;
   ui:icon "https://billipod.solidcommunity.au/billipod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Track bills with payment reminders." ;
   dct:publisher "Togaware" ;
   ui:href <https://billipod.solidcommunity.au> .
@@ -64,7 +62,6 @@
 <#Bluesky> a ui:Link ; ui:label "Bluesky" ;
   dct:source <../plugins/bluesky.ttl> ;
   ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Distributed social network (AT Protocol)." ;
   dct:publisher "Bluesky" ;
   ui:href <https://bsky.app/> .
@@ -72,7 +69,6 @@
 <#Booklice> a ui:Link ; ui:label "Booklice" ;
   dct:source <../plugins/booklice.ttl> ;
   ui:icon "https://scenaristeur.github.io/booklice/img/icons/apple-touch-icon-152x152.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Bookmarks you can share with a community." ;
   dct:publisher "scenaristeur" ;
   ui:href <https://scenaristeur.github.io/booklice/> .
@@ -81,7 +77,6 @@
   dct:source <../plugins/calendar.ttl> ;
   ui:icon "📅" ;
   ui:name "sol-button" ;
-  ui:region ui:Dropdown ;
   rdfs:comment "Pop-out month calendar for the button bar." ;
   dct:publisher "Jeff Zucker" ;
   ui:attribute
@@ -101,7 +96,6 @@
 <#CryptPad> a ui:Link ; ui:label "CryptPad" ;
   dct:source <../plugins/cryptpad.ttl> ;
   ui:icon "https://cryptpad.fr/customize/favicon/main-favicon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Encrypted collaborative documents." ;
   dct:publisher "CryptPad" ;
   ui:href <https://cryptpad.fr/> .
@@ -128,7 +122,6 @@
 <#Duck-ai> a ui:Link ; ui:label "Duck.ai" ;
   dct:source <../plugins/duck-ai.ttl> ;
   ui:icon "https://duck.ai/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Private AI chat from DuckDuckGo." ;
   dct:publisher "DuckDuckGo" ;
   ui:href <https://duck.ai> .
@@ -136,7 +129,6 @@
 <#Element> a ui:Link ; ui:label "Element" ;
   dct:source <../plugins/element.ttl> ;
   ui:icon "https://app.element.io/vector-icons/180.30b915f.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Matrix client for secure, decentralized chat." ;
   dct:publisher "Element" ;
   ui:href <https://app.element.io/> .
@@ -144,7 +136,6 @@
 <#FilePod> a ui:Link ; ui:label "FilePod" ;
   dct:source <../plugins/filepod.ttl> ;
   ui:icon "https://filepod.solidcommunity.au/filepod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "File browser for multiple platforms." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://filepod.solidcommunity.au> .
@@ -152,7 +143,6 @@
 <#GeoPod> a ui:Link ; ui:label "GeoPod" ;
   dct:source <../plugins/geopod.ttl> ;
   ui:icon "https://geopod.solidcommunity.au/geopod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Store points of interest and encrypted tracks on a map." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://geopod.solidcommunity.au> .
@@ -160,7 +150,6 @@
 <#Gmail> a ui:Link ; ui:label "Gmail" ;
   dct:source <../plugins/gmail.ttl> ;
   ui:icon "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Google email." ;
   dct:publisher "Google" ;
   ui:href <https://mail.google.com/mail/u/0/> .
@@ -168,7 +157,6 @@
 <#Google-Calendar> a ui:Link ; ui:label "Google Calendar" ;
   dct:source <../plugins/google-calendar.ttl> ;
   ui:icon "https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_22.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Your Google calendar." ;
   dct:publisher "Google" ;
   ui:href <https://calendar.google.com/calendar/u/0/r> .
@@ -176,7 +164,6 @@
 <#Google-Maps> a ui:Link ; ui:label "Google Maps" ;
   dct:source <../plugins/google-maps.ttl> ;
   ui:icon "https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Maps and directions." ;
   dct:publisher "Google" ;
   ui:href <https://www.google.com/maps/> .
@@ -184,7 +171,6 @@
 <#Google-Messages> a ui:Link ; ui:label "Google Messages" ;
   dct:source <../plugins/google-messages.ttl> ;
   ui:icon "https://ssl.gstatic.com/android-messages-web/images/2022.3/1x/messages_2022_96dp.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Text messaging on the web." ;
   dct:publisher "Google" ;
   ui:href <https://messages.google.com/web/u/0/conversations> .
@@ -192,7 +178,6 @@
 <#HealthPod> a ui:Link ; ui:label "HealthPod" ;
   dct:source <../plugins/healthpod.ttl> ;
   ui:icon "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Manage your health data, with encryption." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://healthpod.solidcommunity.au> .
@@ -200,7 +185,6 @@
 <#HomeVault> a ui:Link ; ui:label "HomeVault" ;
   dct:source <../plugins/homevault.ttl> ;
   ui:icon "https://homevault.apps.privatedatapod.com/icons/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Home inventory for insurance and household records." ;
   dct:publisher "PrivateDataPod" ;
   ui:href <https://homevault.apps.privatedatapod.com/> .
@@ -208,7 +192,6 @@
 <#HuggingFace-Chat> a ui:Link ; ui:label "HuggingFace Chat" ;
   dct:source <../plugins/huggingface-chat.ttl> ;
   ui:icon "https://huggingface.co/chat/huggingchat/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Chat with open-source AI models." ;
   dct:publisher "Hugging Face" ;
   ui:href <https://huggingface.co/chat/> .
@@ -225,7 +208,6 @@
 <#InnerPod> a ui:Link ; ui:label "InnerPod" ;
   dct:source <../plugins/innerpod.ttl> ;
   ui:icon "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Guided meditation timer that records your sessions." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://innerpod.solidcommunity.au> .
@@ -233,7 +215,6 @@
 <#JSON-LD-Playground> a ui:Link ; ui:label "JSON-LD Playground" ;
   dct:source <../plugins/jsonld-playground.ttl> ;
   ui:icon "https://json-ld.github.io/json-ld.org/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Try out JSON-LD documents." ;
   dct:publisher "json-ld.org" ;
   ui:href <https://json-ld.github.io/json-ld.org/playground/> .
@@ -241,7 +222,6 @@
 <#KeyPod> a ui:Link ; ui:label "KeyPod" ;
   dct:source <../plugins/keypod.ttl> ;
   ui:icon "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Encrypted password and key-value store." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://keypod.solidcommunity.au> .
@@ -249,7 +229,6 @@
 <#KonaPod> a ui:Link ; ui:label "KonaPod" ;
   dct:source <../plugins/konapod.ttl> ;
   ui:icon "https://konapod.solidcommunity.au/konapod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Collect and analyse your car’s data." ;
   dct:publisher "Togaware" ;
   ui:href <https://konapod.solidcommunity.au> .
@@ -257,7 +236,6 @@
 <#Lemmy> a ui:Link ; ui:label "Lemmy" ;
   dct:source <../plugins/lemmy.ttl> ;
   ui:icon "https://icons.duckduckgo.com/ip3/lemmy.world.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Federated link aggregator and forums (ActivityPub)." ;
   dct:publisher "Lemmy" ;
   ui:href <https://lemmy.world/> .
@@ -265,7 +243,6 @@
 <#LibreTranslate> a ui:Link ; ui:label "LibreTranslate" ;
   dct:source <../plugins/libretranslate.ttl> ;
   ui:icon "https://libretranslate.com/static/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Open-source machine translation." ;
   dct:publisher "LibreTranslate" ;
   ui:href <https://libretranslate.com/> .
@@ -273,7 +250,6 @@
 <#Mastodon> a ui:Link ; ui:label "Mastodon" ;
   dct:source <../plugins/mastodon.ttl> ;
   ui:icon "https://mastodon.social/packs/assets/apple-touch-icon-1024x1024-B3Tu3EqI.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Decentralized social network." ;
   dct:publisher "Mastodon" ;
   ui:href <https://mastodon.social/> .
@@ -281,7 +257,6 @@
 <#Matrix-Chat> a ui:Link ; ui:label "Matrix Chat" ;
   dct:source <../plugins/matrix-chat.ttl> ;
   ui:icon "https://matrix.to/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Matrix chat room for Solid practitioners." ;
   dct:publisher "Matrix" ;
   ui:href <https://matrix.to/#/#solid-practitioners:matrix.org> .
@@ -289,7 +264,6 @@
 <#Media-Kraken> a ui:Link ; ui:label "Media Kraken" ;
   dct:source <../plugins/media-kraken.ttl> ;
   ui:icon "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Track movies and build personal collections." ;
   dct:publisher "Noel De Martin" ;
   ui:href <https://noeldemartin.github.io/media-kraken/> .
@@ -309,7 +283,6 @@
 <#MovieStar> a ui:Link ; ui:label "MovieStar" ;
   dct:source <../plugins/moviestar.ttl> ;
   ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Track what you watch, share, and get recommendations." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://moviestar.solidcommunity.au> .
@@ -317,7 +290,6 @@
 <#MSFatigue> a ui:Link ; ui:label "MSFatigue" ;
   dct:source <../plugins/msfatigue.ttl> ;
   ui:icon "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Survey app for MS fatigue research, with encrypted responses." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://msfatigue.solidcommunity.au> .
@@ -347,7 +319,6 @@
 <#NotePod> a ui:Link ; ui:label "NotePod" ;
   dct:source <../plugins/notepod.ttl> ;
   ui:icon "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Private, shareable notes with encryption." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://notepod.solidcommunity.au> .
@@ -355,7 +326,6 @@
 <#ODI-Solid-File-Manager> a ui:Link ; ui:label "ODI Solid File Manager" ;
   dct:source <../plugins/odi-file-manager.ttl> ;
   ui:icon "https://filemanager.solid-experiments.org/file-manager-logo.svg" ;
-  ui:region ui:Tab ;
   rdfs:comment "Friendly file and folder manager for your pod." ;
   dct:publisher "Open Data Institute" ;
   ui:href <https://filemanager.solid-experiments.org/> .
@@ -363,7 +333,6 @@
 <#OpenStreetMap> a ui:Link ; ui:label "OpenStreetMap" ;
   dct:source <../plugins/openstreetmap.ttl> ;
   ui:icon "https://www.openstreetmap.org/assets/apple-touch-icon-180x180-ea6361d7ae5b3f08c6290652ad703fa239364cc09c84873044f3299845f24652.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Open, community-built maps." ;
   dct:publisher "OpenStreetMap" ;
   ui:href <https://www.openstreetmap.org/> .
@@ -371,7 +340,6 @@
 <#Penny> a ui:Link ; ui:label "Penny" ;
   dct:source <../plugins/penny.ttl> ;
   ui:icon "https://penny.vincenttunru.com/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Browse and manage everything in your pod." ;
   dct:publisher "Vincent Tunru" ;
   ui:href <https://penny.vincenttunru.com/> .
@@ -379,7 +347,6 @@
 <#Pixelfed> a ui:Link ; ui:label "Pixelfed" ;
   dct:source <../plugins/pixelfed.ttl> ;
   ui:icon "https://pixelfed.social/img/favicon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Federated photo sharing (ActivityPub)." ;
   dct:publisher "Pixelfed" ;
   ui:href <https://pixelfed.social/> .
@@ -387,7 +354,6 @@
 <#Pod-Drive> a ui:Link ; ui:label "Pod Drive" ;
   dct:source <../plugins/pod-drive.ttl> ;
   ui:icon "https://drive.privatedatapod.com/icons/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Drive-style file manager for your pod." ;
   dct:publisher "PrivateDataPod team" ;
   ui:href <https://drive.privatedatapod.com/> .
@@ -395,7 +361,6 @@
 <#Pod-Pro> a ui:Link ; ui:label "Pod Pro" ;
   dct:source <../plugins/pod-pro.ttl> ;
   ui:icon "https://podpro.dev/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Power-editor for the contents of your pod." ;
   dct:publisher "Jasmine Leonard" ;
   ui:href <https://podpro.dev/> .
@@ -403,7 +368,6 @@
 <#Pod-Resume> a ui:Link ; ui:label "Pod Resume" ;
   dct:source <../plugins/pod-resume.ttl> ;
   ui:icon "https://resume.privatedatapod.com/vite.svg" ;
-  ui:region ui:Tab ;
   rdfs:comment "Résumé builder that keeps your CV history." ;
   dct:publisher "PrivateDataPod team" ;
   ui:href <https://resume.privatedatapod.com/> .
@@ -411,14 +375,12 @@
 <#PodCal> a ui:Link ; ui:label "PodCal" ;
   dct:source <../plugins/podcal.ttl> ;
   ui:icon "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23219EBC' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' stroke-width='1.5'/%3E%3Crect x='8' y='8.5' width='8' height='7.5' rx='1.25' stroke-width='1.05'/%3E%3Cpolyline points='10,12.25 11.75,14.25 15.5,11.25' stroke-width='1.6'/%3E%3C/svg%3E" ;
-  ui:region ui:Tab ;
   rdfs:comment "Schedule meetings with public booking pages; syncs with your calendar." ;
   ui:href <https://podcal.eu> .
 
 <#PodOS-Browser> a ui:Link ; ui:label "PodOS Browser" ;
   dct:source <../plugins/podos-browser.ttl> ;
   ui:icon "https://browser.pod-os.org/icons/apple-icon-180.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Browse and manage the resources in your pod." ;
   dct:publisher "PodOS project" ;
   ui:href <https://browser.pod-os.org/> .
@@ -426,7 +388,6 @@
 <#Portable-LibreChat> a ui:Link ; ui:label "Portable LibreChat" ;
   dct:source <../plugins/portable-librechat.ttl> ;
   ui:icon "💬" ;
-  ui:region ui:Tab ;
   rdfs:comment "Open-source AI chat that keeps your conversations in your pod." ;
   dct:publisher "Solid Project" ;
   ui:href <https://chat.solidproject.org/> .
@@ -434,7 +395,6 @@
 <#Proton-Calendar> a ui:Link ; ui:label "Proton Calendar" ;
   dct:source <../plugins/proton-calendar.ttl> ;
   ui:icon "https://account.proton.me/assets/apple-touch-icon-1024x1024.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Encrypted calendar from Proton." ;
   dct:publisher "Proton" ;
   ui:href <https://calendar.proton.me/> .
@@ -442,7 +402,6 @@
 <#Proton-Drive> a ui:Link ; ui:label "Proton Drive" ;
   dct:source <../plugins/proton-drive.ttl> ;
   ui:icon "https://account.proton.me/assets/apple-touch-icon-1024x1024.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Encrypted file storage from Proton." ;
   dct:publisher "Proton" ;
   ui:href <https://drive.proton.me/> .
@@ -450,7 +409,6 @@
 <#Proton-Mail> a ui:Link ; ui:label "Proton Mail" ;
   dct:source <../plugins/proton-mail.ttl> ;
   ui:icon "https://account.proton.me/assets/apple-touch-icon-1024x1024.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Encrypted email from Proton." ;
   dct:publisher "Proton" ;
   ui:href <https://mail.proton.me/> .
@@ -458,7 +416,6 @@
 <#RDF-Validator> a ui:Link ; ui:label "RDF Validator" ;
   dct:source <../plugins/rdf-validator.ttl> ;
   ui:icon "https://www.easyrdf.org/icons/apple-touch-icon-144-precomposed.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Convert and validate RDF documents." ;
   dct:publisher "EasyRdf" ;
   ui:href <http://easyrdf.org/converter> .
@@ -466,7 +423,6 @@
 <#RoloPod> a ui:Link ; ui:label "RoloPod" ;
   dct:source <../plugins/rolopod.ttl> ;
   ui:icon "https://rolopod.solidcommunity.au/rolopod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Address book with selective sharing." ;
   dct:publisher "Togaware" ;
   ui:href <https://rolopod.solidcommunity.au> .
@@ -483,7 +439,6 @@
 <#SearXNG> a ui:Link ; ui:label "SearXNG" ;
   dct:source <../plugins/searxng.ttl> ;
   ui:icon "https://searx.be/static/themes/simple/img/favicon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Open-source privacy metasearch." ;
   dct:publisher "SearXNG" ;
   ui:href <https://searx.be/> .
@@ -491,7 +446,6 @@
 <#SecureDialog> a ui:Link ; ui:label "SecureDialog" ;
   dct:source <../plugins/securedialog.ttl> ;
   ui:icon "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Diabetes logging with encrypted storage." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   ui:href <https://securedialog.solidcommunity.au> .
@@ -499,7 +453,6 @@
 <#SepiaSearch> a ui:Link ; ui:label "SepiaSearch" ;
   dct:source <../plugins/sepiasearch.ttl> ;
   ui:icon "https://sepiasearch.org/img/favicon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Search federated PeerTube videos." ;
   dct:publisher "Framasoft" ;
   ui:href <https://sepiasearch.org/> .
@@ -507,7 +460,6 @@
 <#SHACL-Playground> a ui:Link ; ui:label "SHACL Playground" ;
   dct:source <../plugins/shacl-playground.ttl> ;
   ui:icon "✅" ;
-  ui:region ui:Tab ;
   rdfs:comment "Validate data against SHACL shapes." ;
   dct:publisher "shacl.org" ;
   ui:href <https://shacl.org/playground/> .
@@ -524,7 +476,6 @@
 <#Solid-Catalog> a ui:Link ; ui:label "Solid Catalog" ;
   dct:source <../plugins/solid-catalog.ttl> ;
   ui:icon "https://solidproject.org/assets/img/solid-emblem.svg" ;
-  ui:region ui:Tab ;
   rdfs:comment "Catalog of Solid apps, libraries and resources." ;
   dct:publisher "Solid Community" ;
   ui:href <https://solidproject.solidcommunity.net/catalog/> .
@@ -532,7 +483,6 @@
 <#Solid-FAQ> a ui:Link ; ui:label "Solid FAQ" ;
   dct:source <../plugins/solid-faq.ttl> ;
   ui:icon "https://solidproject.org/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Frequently asked questions about Solid." ;
   dct:publisher "Solid Project" ;
   ui:href <https://solidproject.org/FAQ> .
@@ -540,7 +490,6 @@
 <#Solid-File-Manager> a ui:Link ; ui:label "Solid File Manager" ;
   dct:source <../plugins/solid-file-manager.ttl> ;
   ui:icon "https://otto-aa.github.io/solid-filemanager/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Manage the files in your pod." ;
   dct:publisher "Otto AA" ;
   ui:href <https://otto-aa.github.io/solid-filemanager/> .
@@ -548,7 +497,6 @@
 <#Solid-Forum> a ui:Link ; ui:label "Solid Forum" ;
   dct:source <../plugins/solid-forum.ttl> ;
   ui:icon "https://solidproject.org/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "The Solid community discussion forum." ;
   dct:publisher "Solid Project" ;
   ui:href <https://forum.solidproject.org/> .
@@ -556,7 +504,6 @@
 <#Solid-Glossary> a ui:Link ; ui:label "Solid Glossary" ;
   dct:source <../plugins/solid-glossary.ttl> ;
   ui:icon "https://solidproject.solidcommunity.net/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "Glossary of Solid terms." ;
   dct:publisher "Solid Community" ;
   ui:href <https://solidproject.solidcommunity.net/glossary> .
@@ -564,7 +511,6 @@
 <#Solid-Website> a ui:Link ; ui:label "Solid Website" ;
   dct:source <../plugins/solid-website.ttl> ;
   ui:icon "https://solidproject.org/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "The Solid Project website." ;
   dct:publisher "Solid Project" ;
   ui:href <https://solidproject.org> .
@@ -572,7 +518,6 @@
 <#Solidflix> a ui:Link ; ui:label "Solidflix" ;
   dct:source <../plugins/solidflix.ttl> ;
   ui:icon "🎬" ;
-  ui:region ui:Tab ;
   rdfs:comment "Movie tracking with personalised recommendations." ;
   dct:publisher "Oxford Human Centred Computing Group" ;
   ui:href <https://oxfordhcc.github.io/solid-media/> .
@@ -580,7 +525,6 @@
 <#SolidFocus> a ui:Link ; ui:label "SolidFocus" ;
   dct:source <../plugins/solidfocus.ttl> ;
   ui:icon "https://focus.noeldemartin.com/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Tasks and notes, works offline." ;
   dct:publisher "Noel De Martin" ;
   ui:href <https://focus.noeldemartin.com/> .
@@ -649,7 +593,6 @@
 <#SPARQL-Playground> a ui:Link ; ui:label "SPARQL Playground" ;
   dct:source <../plugins/sparql-playground.ttl> ;
   ui:icon "🔮" ;
-  ui:region ui:Tab ;
   rdfs:comment "Try out SPARQL queries." ;
   dct:publisher "AtomGraph" ;
   ui:href <https://atomgraph.github.io/SPARQL-Playground/> .
@@ -668,7 +611,6 @@
 <#Standard-Notes> a ui:Link ; ui:label "Standard Notes" ;
   dct:source <../plugins/standard-notes.ttl> ;
   ui:icon "https://app.standardnotes.com/favicon/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Open-source encrypted notes." ;
   dct:publisher "Standard Notes" ;
   ui:href <https://app.standardnotes.com/> .
@@ -676,7 +618,6 @@
 <#Synara-AI> a ui:Link ; ui:label "Synara AI" ;
   dct:source <../plugins/synara-ai.ttl> ;
   ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Privacy-first AI assistant with searchable conversation logs." ;
   dct:publisher "PrivateDataPod team" ;
   ui:href <https://ai.privatedatapod.com/> .
@@ -684,7 +625,6 @@
 <#Tag-Explainer> a ui:Link ; ui:label "Tag Explainer" ;
   dct:source <../plugins/solid-tag-explainer.ttl> ;
   ui:icon "https://timbl.solidcommunity.net/favicon.ico" ;
-  ui:region ui:Tab ;
   rdfs:comment "How Solid works, explained." ;
   dct:publisher "Tim Berners-Lee" ;
   ui:href <https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html> .
@@ -692,7 +632,6 @@
 <#Tired-Bike> a ui:Link ; ui:label "Tired Bike" ;
   dct:source <../plugins/tired-bike.ttl> ;
   ui:icon "https://community.tired.bike/logo-new-open.svg" ;
-  ui:region ui:Tab ;
   rdfs:comment "Community platform for bicycle touring." ;
   dct:publisher "Open Hospitality Network" ;
   ui:href <https://tired.bike/> .
@@ -700,7 +639,6 @@
 <#TodoPod> a ui:Link ; ui:label "TodoPod" ;
   dct:source <../plugins/todopod.ttl> ;
   ui:icon "https://todopod.solidcommunity.au/todopod/icons/Icon-192.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Task lists in encrypted personal storage." ;
   dct:publisher "Togaware" ;
   ui:href <https://todopod.solidcommunity.au> .
@@ -708,7 +646,6 @@
 <#Tuta> a ui:Link ; ui:label "Tuta" ;
   dct:source <../plugins/tuta.ttl> ;
   ui:icon "https://app.tuta.com/images/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Open-source encrypted email." ;
   dct:publisher "Tuta" ;
   ui:href <https://app.tuta.com/> .
@@ -716,7 +653,6 @@
 <#Umai> a ui:Link ; ui:label "Umai" ;
   dct:source <../plugins/umai.ttl> ;
   ui:icon "https://umai.noeldemartin.com/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Offline-first recipe manager." ;
   dct:publisher "Noel De Martin" ;
   ui:href <https://umai.noeldemartin.com> .
@@ -724,7 +660,6 @@
 <#VitalStats> a ui:Link ; ui:label "VitalStats" ;
   dct:source <../plugins/vitalstats.ttl> ;
   ui:icon "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png" ;
-  ui:region ui:Tab ;
   rdfs:comment "Log blood pressure, weight and other vital signs." ;
   dct:publisher "PrivateDataPod" ;
   ui:href <https://vitalstats.apps.privatedatapod.com/> .

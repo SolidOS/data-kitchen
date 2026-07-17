@@ -7,7 +7,6 @@
   ui:label "Solid Forum" ;
   ui:icon <https://solidproject.org/favicon.ico> ;
   ui:href <https://forum.solidproject.org/> ;
-  ui:region ui:Tab ;
   rdfs:comment "The Solid community discussion forum." ;
   dct:publisher "Solid Project" ;
   dct:subject "Community" .

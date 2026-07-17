@@ -7,7 +7,6 @@
   ui:label "Bluesky" ;
   ui:icon <https://web-cdn.bsky.app/static/apple-touch-icon.png> ;
   ui:href <https://bsky.app/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Distributed social network (AT Protocol)." ;
   dct:publisher "Bluesky" ;
   dct:subject "Other Services" .

@@ -7,7 +7,6 @@
   ui:label "CryptPad" ;
   ui:icon <https://cryptpad.fr/customize/favicon/main-favicon.png> ;
   ui:href <https://cryptpad.fr/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Encrypted collaborative documents." ;
   dct:publisher "CryptPad" ;
   dct:subject "Other Services" .

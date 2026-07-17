@@ -7,7 +7,6 @@
   ui:label "Tuta" ;
   ui:icon <https://app.tuta.com/images/apple-touch-icon.png> ;
   ui:href <https://app.tuta.com/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Open-source encrypted email." ;
   dct:publisher "Tuta" ;
   dct:subject "Other Services" .

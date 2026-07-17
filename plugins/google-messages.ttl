@@ -7,7 +7,6 @@
   ui:label "Google Messages" ;
   ui:icon <https://ssl.gstatic.com/android-messages-web/images/2022.3/1x/messages_2022_96dp.png> ;
   ui:href <https://messages.google.com/web/u/0/conversations> ;
-  ui:region ui:Tab ;
   rdfs:comment "Text messaging on the web." ;
   dct:publisher "Google" ;
   dct:subject "Other Services" .

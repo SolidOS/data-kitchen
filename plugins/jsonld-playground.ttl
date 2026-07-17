@@ -7,7 +7,6 @@
   ui:label "JSON-LD Playground" ;
   ui:icon <https://json-ld.github.io/json-ld.org/favicon.ico> ;
   ui:href <https://json-ld.github.io/json-ld.org/playground/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Try out JSON-LD documents." ;
   dct:publisher "json-ld.org" ;
   dct:subject "Tech" .

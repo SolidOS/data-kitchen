@@ -7,7 +7,6 @@
   ui:label "NotePod" ;
   ui:icon <https://notepod.solidcommunity.au/notepod/icons/Icon-192.png> ;
   ui:href <https://notepod.solidcommunity.au> ;
-  ui:region ui:Tab ;
   rdfs:comment "Private, shareable notes with encryption." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   dct:subject "Content Publishing" .

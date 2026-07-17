@@ -1,6 +1,5 @@
 @prefix ui:     <http://www.w3.org/ns/ui#> .
 @prefix schema: <http://schema.org/> .
-@prefix acl:    <http://www.w3.org/ns/auth/acl#> .
 
 # ── The ☰ hamburger menu (chrome) ────────────────────────────────────────
 # Consumed by the ☰ <sol-dropdown-button source="./dk-pod/dk/ui-data/data-kitchen-hamburger-menu.ttl#More"> chrome
@@ -8,8 +7,9 @@
 # display in the #dk-menu-pane replace
 # pane over the tab content (it claims them by id via data-for in index.html;
 # unclaimed items would fall back to the region= modal); bare-name items
-# dispatch sol-command (resolved by the dk-tabs-shell registry); acl:Write
-# items are hidden for guests (body.no-write ::part(requires-write)).
+# dispatch sol-command (resolved by the dk-tabs-shell registry); items with
+# a boolean if-logged-in attribute are hidden for guests
+# (body.no-write ::part(requires-write)).
 # (The RETIRED old-dk #MainMenu block that used to sit above was removed
 # 2026-06-12 — see git history if it's ever wanted back.)
 
@@ -21,8 +21,8 @@
 # direct menu item below.)
 <#MoreCustomize> a ui:Component ; ui:label "Customize" ;
   ui:name "sol-include" ;
-  acl:mode acl:Write ;
   ui:attribute
+    [ schema:name "if-logged-in" ; schema:value "" ] ,
     [ schema:name "source"  ; schema:value "./dk-pod/dk/pages/customize.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 
@@ -30,8 +30,8 @@
 # (it lived under Customize ▸ Customize Preferences from 2026-06-12).
 <#MoreSettings> a ui:Component ; ui:label "Settings" ;
   ui:name "sol-include" ;
-  acl:mode acl:Write ;
   ui:attribute
+    [ schema:name "if-logged-in" ; schema:value "" ] ,
     [ schema:name "source"  ; schema:value "./dk-pod/dk/pages/settings.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .
 

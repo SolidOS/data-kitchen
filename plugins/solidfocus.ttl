@@ -7,7 +7,6 @@
   ui:label "SolidFocus" ;
   ui:icon <https://focus.noeldemartin.com/apple-touch-icon.png> ;
   ui:href <https://focus.noeldemartin.com/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Tasks and notes, works offline." ;
   dct:publisher "Noel De Martin" ;
   dct:subject "Productivity" .

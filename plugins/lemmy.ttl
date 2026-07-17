@@ -7,7 +7,6 @@
   ui:label "Lemmy" ;
   ui:icon <https://icons.duckduckgo.com/ip3/lemmy.world.ico> ;
   ui:href <https://lemmy.world/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Federated link aggregator and forums (ActivityPub)." ;
   dct:publisher "Lemmy" ;
   dct:subject "Other Services" .

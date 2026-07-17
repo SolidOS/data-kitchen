@@ -7,7 +7,6 @@
   ui:label "TodoPod" ;
   ui:icon <https://todopod.solidcommunity.au/todopod/icons/Icon-192.png> ;
   ui:href <https://todopod.solidcommunity.au> ;
-  ui:region ui:Tab ;
   rdfs:comment "Task lists in encrypted personal storage." ;
   dct:publisher "Togaware" ;
   dct:subject "Productivity" .

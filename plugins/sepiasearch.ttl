@@ -7,7 +7,6 @@
   ui:label "SepiaSearch" ;
   ui:icon <https://sepiasearch.org/img/favicon.png> ;
   ui:href <https://sepiasearch.org/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Search federated PeerTube videos." ;
   dct:publisher "Framasoft" ;
   dct:subject "Other Services" .

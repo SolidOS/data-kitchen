@@ -7,7 +7,6 @@
   ui:label "SPARQL Playground" ;
   ui:icon "🔮" ;
   ui:href <https://atomgraph.github.io/SPARQL-Playground/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Try out SPARQL queries." ;
   dct:publisher "AtomGraph" ;
   dct:subject "Tech" .

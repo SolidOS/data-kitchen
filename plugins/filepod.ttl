@@ -7,7 +7,6 @@
   ui:label "FilePod" ;
   ui:icon <https://filepod.solidcommunity.au/filepod/icons/Icon-192.png> ;
   ui:href <https://filepod.solidcommunity.au> ;
-  ui:region ui:Tab ;
   rdfs:comment "File browser for multiple platforms." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   dct:subject "Pods" .

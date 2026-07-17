@@ -7,7 +7,6 @@
   ui:label "Solid Website" ;
   ui:icon <https://solidproject.org/favicon.ico> ;
   ui:href <https://solidproject.org> ;
-  ui:region ui:Tab ;
   rdfs:comment "The Solid Project website." ;
   dct:publisher "Solid Project" ;
   dct:subject "Solid" .

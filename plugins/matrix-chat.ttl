@@ -7,7 +7,6 @@
   ui:label "Matrix Chat" ;
   ui:icon <https://matrix.to/favicon.ico> ;
   ui:href <https://matrix.to/#/#solid-practitioners:matrix.org> ;
-  ui:region ui:Tab ;
   rdfs:comment "Matrix chat room for Solid practitioners." ;
   dct:publisher "Matrix" ;
   dct:subject "Other Services" .

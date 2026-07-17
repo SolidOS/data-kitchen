@@ -7,7 +7,6 @@
   ui:label "Umai" ;
   ui:icon <https://umai.noeldemartin.com/apple-touch-icon.png> ;
   ui:href <https://umai.noeldemartin.com> ;
-  ui:region ui:Tab ;
   rdfs:comment "Offline-first recipe manager." ;
   dct:publisher "Noel De Martin" ;
   dct:subject "Information" .

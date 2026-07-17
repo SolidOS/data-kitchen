@@ -7,7 +7,6 @@
   ui:label "Solidflix" ;
   ui:icon "🎬" ;
   ui:href <https://oxfordhcc.github.io/solid-media/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Movie tracking with personalised recommendations." ;
   dct:publisher "Oxford Human Centred Computing Group" ;
   dct:subject "Media" .

@@ -7,7 +7,6 @@
   ui:label "0data Hello" ;
   ui:icon <https://hello.0data.app/favicon.ico> ;
   ui:href <https://hello.0data.app/solid/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Tiny demo app showing data stored in your pod." ;
   dct:publisher "0data" ;
   dct:subject "Tech" .

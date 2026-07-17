@@ -7,7 +7,6 @@
   ui:label "Google Maps" ;
   ui:icon <https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico> ;
   ui:href <https://www.google.com/maps/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Maps and directions." ;
   dct:publisher "Google" ;
   dct:subject "Other Services" .

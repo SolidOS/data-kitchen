@@ -7,7 +7,6 @@
   ui:label "Standard Notes" ;
   ui:icon <https://app.standardnotes.com/favicon/apple-touch-icon.png> ;
   ui:href <https://app.standardnotes.com/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Open-source encrypted notes." ;
   dct:publisher "Standard Notes" ;
   dct:subject "Other Services" .

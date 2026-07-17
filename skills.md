@@ -136,10 +136,41 @@ the menu item is a launcher like `sol-button`); the form edits the deployment's 
 `manifest.jsonld`**; only dk-own plugins still carry one (read via the fallback).
 
 **Calendar is sc, not dk:** the bar item is `<sol-button data-handler="sol-calendar"
-region=ui:Dropdown source=…>` — one click conjures a `sol-dropdown` surface (sibling
+region="dropdown" source=…>` — one click conjures a `sol-dropdown` surface (sibling
 of `sol-modal`/`sol-window` in `core/display-target.js`) hosting `<sol-calendar
-hide-header>`. `ui:Dropdown` is a `ui:Region` (ui-vocab); the old `dk-calendar-popout`
-wrapper is **deleted**. The same `region=ui:Dropdown` pattern works for any widget.
+hide-header>`. The old `dk-calendar-popout` wrapper is **deleted**. The same
+`region="dropdown"` attribute pattern works for any widget.
+
+**Placement + gating are ATTRIBUTES, not RDF terms (2026-07-17 migrations):**
+- **`ui:region` is retired from stored component data.** A component item's
+  placement is a `region` ui:attribute (`[ schema:name "region"; schema:value
+  "dropdown" ]` — bare lowercase SURFACE_KEYWORDS: tab/window/modal/floating/
+  dropdown); sc's parse lifts it into `desc.region` (the in-memory field every
+  consumer still uses) and serialize writes it back as the attribute, never
+  the triple. The triple still READS (legacy, converts on save) and remains
+  the spelling for `ui:Link` items (no attribute channel). The ~220 redundant
+  `ui:region ui:Tab` triples were deleted outright (tree position implies
+  tab); only two items carry the attribute: `:bar-calendar` ("dropdown") and
+  `:chrome-menu` ("modal"). Plugin manifests (`plugins/*.ttl`) carry NO
+  placement at all — it's the deployment's decision — so a FRESH calendar
+  install lands as a tab until the owner adds the attribute (open design
+  thread: default region attr on the chip, or a bar-container default, or a
+  plugin-manifest editor — all discussed 2026-07-17, none built).
+  `seed-plugins-catalog.mjs` neither reads nor emits region.
+- **`acl:mode acl:Write` is gone from dk data.** Owner-gating is the boolean
+  `if-logged-in` attribute (`[ schema:name "if-logged-in"; schema:value "" ]`)
+  on `<#MoreCustomize>`/`<#MoreSettings>` (hamburger) and `:panel-customize`.
+  sc `gatedByParams()` (menu-rdf) maps an EMPTY-valued `if-logged-in` /
+  `requires-write` param → `requiresWrite` → `part="requires-write"`; the
+  VALUED form stays sol-include's alternate-source switch (Help "?"), NOT a
+  gate. acl:mode still reads (legacy) and serialize emits it only for items
+  not gated via params. The manifests' dead `acl`/`mode` @context entries
+  were stripped (dk ×3, omp ×2, pod ×5).
+- **KNOWN BUG (pre-existing, chip filed):** "View as guest" is a no-op in the
+  desktop app — the synthetic owner session keeps `canWrite()` true, so
+  `body.no-write` never engages. The CSS gate itself works (verified by
+  forcing the class). Probes: `claude/smoke-tests/cdp-verify-gate-migration.mjs`
+  + `cdp-verify-region-migration.mjs` (isolated instance, CDP 9223).
 
 **A chip = a PLUGIN (manifest entry), not a component.** One `ui:name` tag backs
 many chips (ia-player → Music & Movies; dk-solidos → browser, AddressBook, Tasks,
@@ -348,6 +379,13 @@ rules against the pod data and lists any double-listed cards.
   `dist/sol-components.manifest.json` is GENERATED from them
   (tools/build-manifest.mjs + tools/manifest-base.json envelope; drift-guard
   test). omp likewise ships plugins/{ia-player,omp-images}.ttl.
+- **sc `shapes/*.shaclc` are GENERATED twins** (2026-07-17): `.shacl` is
+  canonical; `scripts/regen-shaclc.mjs` refreshes twins, `--check` compares
+  without writing, and `tests/core/shaclc-generated.test.js` is the standing
+  drift guard (runs on every sc `npm test`; comparison is quad-based, so
+  comment-only edits don't trip it). dk's `feeds.shaclc` + omp's four twins
+  DON'T match what this generator emits (different provenance/formatting —
+  unresolved, left alone).
 - **dk settings = one lookup:** dk-plugin-settings reads the menu item's
   dct:source plugin doc (conformsTo/references/label); manifest.jsonld
   fallback stays for dk-own plugins; the sc-JSON branch (core/manifest.js
@@ -622,6 +660,27 @@ comments stripped — grep it for code fragments, not comments.
      quits on every platform (no activate handler → mac dock zombie).
   Next rungs when wanted: ad-hoc signing via `rcodesign` (works on linux, no
   Apple account; prerequisite for an arm64 zip), then notarization ($99/yr).
+- **Mac VIDEO verified working (2026-07-17, the "videos do not play on
+  macOS" reports):** mac-smoke gained a second "Video playback probe" step —
+  `SMOKE_VIDEO=1` boots the .app WITH the GPU (the plain smoke boot uses
+  `--disable-gpu`; users don't) + a CDP port, then runs
+  **`tools/video-playback-probe.mjs`** (in tools/, NOT claude/, because
+  claude/ is gitignored and CI needs it): codec matrix via canPlayType, a
+  synthetic archive.org h.264 stream (retries once — /download/ 500s
+  transiently), and a DRIVE_MOVIES=1 drive of the real Movies room. The
+  v2.1.8 zip PASSED everything on the macos-14 runner (h.264 "probably",
+  frames decoded, a real film streamed) — so the user reports are likely an
+  older broken release (v2.1.0–2.1.5 were variously DOA), a film whose only
+  derivative is unplayable, or machine-local. Notable: **Chromium dropped
+  Theora — `.ogv` plays NOWHERE now**, but omp's VIDEO_EXTS/format-regex
+  still treat it as playable (flagged, untouched); IA "512Kb MPEG4"
+  derivatives are actually h.264 (ffprobe-confirmed) despite the name.
+  packaged-smoke teardown fixes from the same session: `fail()` used
+  `process.exit()`, which SKIPS `finally` — post-boot failures left a zombie
+  app whose orphaned servers strand the next boot (the stale-server gotcha);
+  now SIGTERM → 2s grace → SIGKILL in fail() AND the happy path (whose
+  unref'd timers never fired), and `ELECTRON_RUN_AS_NODE` is scrubbed from
+  the app's env so locals can run the smoke via electron-as-node.
 - **Startup diagnostics (v2.1.2, 2026-07-09 — the "Windows blank page" report):**
   `electron-config/log.cjs` mirrors all console output to `<userData>/dk.log`
   (previous run kept once as `dk.log.old`) — a packaged app has no terminal, so

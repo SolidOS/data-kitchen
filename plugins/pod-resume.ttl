@@ -7,7 +7,6 @@
   ui:label "Pod Resume" ;
   ui:icon <https://resume.privatedatapod.com/vite.svg> ;
   ui:href <https://resume.privatedatapod.com/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Résumé builder that keeps your CV history." ;
   dct:publisher "PrivateDataPod team" ;
   dct:subject "Productivity" .

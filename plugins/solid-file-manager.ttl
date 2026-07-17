@@ -7,7 +7,6 @@
   ui:label "Solid File Manager" ;
   ui:icon <https://otto-aa.github.io/solid-filemanager/favicon.ico> ;
   ui:href <https://otto-aa.github.io/solid-filemanager/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Manage the files in your pod." ;
   dct:publisher "Otto AA" ;
   dct:subject "Pods" .

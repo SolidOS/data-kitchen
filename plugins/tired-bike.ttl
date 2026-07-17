@@ -7,7 +7,6 @@
   ui:label "Tired Bike" ;
   ui:icon <https://community.tired.bike/logo-new-open.svg> ;
   ui:href <https://tired.bike/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Community platform for bicycle touring." ;
   dct:publisher "Open Hospitality Network" ;
   dct:subject "Community" .

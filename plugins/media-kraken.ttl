@@ -7,7 +7,6 @@
   ui:label "Media Kraken" ;
   ui:icon <https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png> ;
   ui:href <https://noeldemartin.github.io/media-kraken/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Track movies and build personal collections." ;
   dct:publisher "Noel De Martin" ;
   dct:subject "Media" .

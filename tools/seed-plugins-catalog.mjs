@@ -3,7 +3,10 @@
 // catalog entry:
 //
 //   <> a ui:Component ; ui:name "tag" ; ui:attribute […]   a mountable plugin
-//   <> a ui:Link ; ui:href <url> ; ui:region ui:Tab        an external app
+//   <> a ui:Link ; ui:href <url>                           an external app
+//
+// (Manifests carry NO ui:region since 2026-07-17 — placement is the enclosing
+// app's design decision, expressed as a `region` attribute on the MENU item.)
 //
 // plus ui:label, ui:icon, rdfs:comment (card blurb), dct:creator /
 // dct:publisher (byline) and dct:subject literals (topic categories — one
@@ -68,7 +71,9 @@ function readEntries() {
       icon: ui('icon'),
       tag: ui('name'),
       href: ui('href'),
-      region: (ui('region') || '').split('#').pop(),
+      // ui:region retired from manifests 2026-07-17 — placement is the
+      // enclosing app's decision (a `region` attribute on the MENU item),
+      // never the plugin's. Not read, not emitted.
       desc: (store.any(subj, rdf.sym(RDFS_NS + 'comment')) || {}).value || '',
       publisher: dct('publisher'),
       cats: store.each(subj, rdf.sym(DCT_NS + 'subject'), null).map((n) => n.value),
@@ -114,7 +119,6 @@ for (const e of ENTRIES) {
   ttl += `  dct:source <../plugins/${e.file}> ;\n`;
   if (e.icon) ttl += `  ui:icon ${JSON.stringify(e.icon)} ;\n`;
   if (e.kind === 'component') ttl += `  ui:name ${JSON.stringify(e.tag)} ;\n`;
-  if (e.region) ttl += `  ui:region ui:${e.region} ;\n`;
   if (e.desc) ttl += `  rdfs:comment ${JSON.stringify(e.desc)} ;\n`;
   if (e.publisher) ttl += `  dct:publisher ${JSON.stringify(e.publisher)} ;\n`;
   if (e.kind === 'link') {

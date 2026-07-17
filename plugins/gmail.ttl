@@ -7,7 +7,6 @@
   ui:label "Gmail" ;
   ui:icon <https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico> ;
   ui:href <https://mail.google.com/mail/u/0/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Google email." ;
   dct:publisher "Google" ;
   dct:subject "Other Services" .

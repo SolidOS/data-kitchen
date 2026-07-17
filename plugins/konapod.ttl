@@ -7,7 +7,6 @@
   ui:label "KonaPod" ;
   ui:icon <https://konapod.solidcommunity.au/konapod/icons/Icon-192.png> ;
   ui:href <https://konapod.solidcommunity.au> ;
-  ui:region ui:Tab ;
   rdfs:comment "Collect and analyse your car’s data." ;
   dct:publisher "Togaware" ;
   dct:subject "Productivity" .

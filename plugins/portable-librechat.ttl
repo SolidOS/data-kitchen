@@ -7,7 +7,6 @@
   ui:label "Portable LibreChat" ;
   ui:icon "💬" ;
   ui:href <https://chat.solidproject.org/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Open-source AI chat that keeps your conversations in your pod." ;
   dct:publisher "Solid Project" ;
   dct:subject "Tech" .

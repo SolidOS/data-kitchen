@@ -7,7 +7,6 @@
   ui:label "SecureDialog" ;
   ui:icon <https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png> ;
   ui:href <https://securedialog.solidcommunity.au> ;
-  ui:region ui:Tab ;
   rdfs:comment "Diabetes logging with encrypted storage." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   dct:subject "Health" .

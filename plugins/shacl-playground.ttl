@@ -7,7 +7,6 @@
   ui:label "SHACL Playground" ;
   ui:icon "✅" ;
   ui:href <https://shacl.org/playground/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Validate data against SHACL shapes." ;
   dct:publisher "shacl.org" ;
   dct:subject "Tech" .

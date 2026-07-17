@@ -7,7 +7,6 @@
   ui:label "Pod Pro" ;
   ui:icon <https://podpro.dev/favicon.ico> ;
   ui:href <https://podpro.dev/> ;
-  ui:region ui:Tab ;
   rdfs:comment "Power-editor for the contents of your pod." ;
   dct:publisher "Jasmine Leonard" ;
   dct:subject "Pods" .
