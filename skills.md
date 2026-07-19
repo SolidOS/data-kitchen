@@ -241,6 +241,68 @@ hides when empty). Audit tool: `claude/validation/audit-entry-references.mjs`
 `*.invalid` origin leaks); `audit-double-listed.mjs` is retired with the
 model that made doubles possible.
 
+## App Builder (2026-07-19)
+
+Users build STANDALONE apps on the pod. Entry: catalog `:App-Builder` (UI
+Controls, catalog-only — place via Customize); its page
+`pages/app-builder.html` is ONE `<sol-app-builder apps-root="dk-pod/apps/"
+presets=… catalog=…>` tag. A built app = `/dk-pod/apps/<slug>/` holding
+`app.ttl` (`schema:WebApplication`: `schema:name`, `ui:icon`, `ui:layout`),
+`layout.ttl` (the `ui:Layout` tree), `app-menu.ttl` (seeded newborn menu),
+GENERATED `index.html` + `app.css`. **The folder IS the registry** (a child
+container whose app.ttl holds a WebApplication); the pod docs are the wizard
+state, so any step can be re-entered and re-opening an app just works.
+
+- **NEW ui: TERMS (Jeff-approved 2026-07-19):** `ui:Layout` (a page
+  arrangement whose `ui:parts` render SIMULTANEOUSLY — vs `ui:Menu` whose
+  parts are alternatives; nested Layout = split, `ui:Component` leaf =
+  content slot; empty layout = placeholder pane), `ui:layout` (app → root
+  layout), `ui:columns` (grid column count). Also approved reuse:
+  `ui:attribute` on layout nodes (emitted HTML attrs) and
+  `schema:additionalType` → semantic tag (SiteNavigationElement→nav,
+  WPHeader→header, WPFooter→footer, WPSideBar→aside; the root's first
+  unmarked layout child emits `<main>`, else `<div>`). Layout orientation
+  defaults VERTICAL (a page stacks; menus default horizontal). Terms in sc
+  `data/ui-vocab.ttl`; `shapes/layout.shacl` (+ generated shaclc twin) also
+  IS the custom-layout editor (shape-driven sol-form — no bespoke editor).
+  **NOT yet in the pending w3c ns-ui PR batch** (its own ask later).
+- **sc pieces:** `core/layout-generate.js` (`generateAppHtml` /
+  `generateAppCss` / `seedAppMenu` / `parseLayoutTree` / `menuSourcesIn`) —
+  the RDF layout compiles at SAVE time into READABLE html (one sol-load tag,
+  every element names its module/source/from-rdf; leaves emit via
+  menu-generate's `emitBarItem`, so page markup ≡ menu markup; NO runtime
+  region conjuring). Presets in `data/layouts/` (classic-shell, single-page,
+  sidebar, dashboard-grid + `index.ttl`, an RDF index — never a directory
+  listing; relative URLs mean copy-in needs no rewriting).
+  `web/sol-app-builder.js` renders in **LIGHT DOM** (the pantry's `for`
+  selector sees only page DOM); steps Apps → Layout → Menus & plugins →
+  Publish, free jump-in. Menus step embeds `sol-menu-manager` per `from-rdf`
+  doc + `<sol-plugin-manager for="#sab-managers sol-menu-manager">` (explicit
+  pairing — self-discovery would find dk's own slots). Non-sol-* leaves get
+  their own visible `<script type=module src=…>`; `components-base` attr
+  picks /node_modules (default) or a CDN base for portable folders.
+- **Menus stay runtime-rendered** (`from-rdf`) — menu edits need NO
+  regeneration; only a LAYOUT change does (explicit Regenerate button).
+- **Publish = catalog-only:** appends a `ui:Plugin` (kind ui:Link,
+  `schema:url` the app's index.html, `dct:subject "My Apps"`) to the
+  catalog. PATCH (sparql-update) first; on failure — CSS's "Lock expired"
+  500 on the big catalog doc, the same scar sol-form hit — falls back to
+  full-IRI append + whole-doc PUT.
+- Seeding on preset pick: each `from-rdf` doc missing on the pod gets
+  `seedAppMenu` (orientation: sol-menu consumer → Vertical, else
+  Horizontal); a `sol-include source="content.html"` leaf gets a starter
+  content.html.
+- **Tests:** sc `tests/core/layout-generate.test.js` +
+  `tests/core/layout-shacl.test.js` + `tests/web/sol-app-builder.test.js`
+  (jest's rdflib mock has NO turtle lists/blank nodes — fixtures parse with
+  n3 INTO the mock store); dk contract suite covers the catalog entry.
+  Probe: `claude/smoke-tests/cdp-verify-app-builder.mjs` (13 checks,
+  isolated instance; the catalog check POLLS — the write can be slow).
+- `~/solid/dk-pod/apps/` exists on the live pod; fresh installs create it on
+  first app save (the builder tolerates the 404 listing). `sol-app-builder`
+  is in both index.html copies' data-components; sol-load's baked map was
+  regenerated (`npm run build:importmaps`).
+
 ## Key plugins
 
 - **sol-pod UX (2026-07-12):** a plain SINGLE click on a file opens its

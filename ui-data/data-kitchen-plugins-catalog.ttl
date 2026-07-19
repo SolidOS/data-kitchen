@@ -73,6 +73,24 @@
     schema:url sol:;
     ui:icon "https://hello.0data.app/favicon.ico";
     ui:label "0data Hello".
+:App-Builder
+    a ui:Plugin;
+    dct:publisher "Jeff Zucker";
+    dct:source plug:app-builder.ttl;
+    dct:subject "UI Controls";
+    schema:additionalType ui:Component;
+    schema:description
+        "Build your own app: pick a layout, add menus and plugins, publish to your pod.";
+    schema:url we:sol-include.js;
+    ui:attribute
+        [ schema:name "if-logged-in"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/pages/app-builder.html"
+            ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:icon "🏗️";
+    ui:label "App Builder".
 :Available
     a ui:Menu;
     rdfs:comment
@@ -97,7 +115,8 @@
             :SolidOS-Meeting :SolidOS-Notes :SolidOS-Tasks :SPARQL-Playground
             :Spoken-Word-Internet-Archive :Standard-Notes :Synara-AI
             :Tag-Explainer :Tired-Bike :TodoPod :Tuta :Umai :VitalStats
-            :Weather :Theme :Text-size :Restart-dk :Customize :Settings ).
+            :Weather :Theme :Text-size :Restart-dk :Customize :Settings
+            :App-Builder ).
 :BilliPod
     a ui:Plugin;
     dct:publisher "Togaware";
@@ -1075,7 +1094,8 @@
     ui:label "Tuta".
 :UI-Controls
     a skos:Collection;
-    skos:member :Customize, :Restart-dk, :Settings, :Text-size, :Theme;
+    skos:member
+    :App-Builder, :Customize, :Restart-dk, :Settings, :Text-size, :Theme;
     skos:prefLabel "UI Controls".
 :Umai
     a ui:Plugin;
