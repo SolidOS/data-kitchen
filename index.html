@@ -18,6 +18,11 @@
   <link rel="stylesheet" href="node_modules/sol-components/web/styles/root.css">
   <link rel="stylesheet" href="src/dk-styles.css">
   <link rel="stylesheet" href="assets/dk-chrome.css">
+  <!-- The omp theme tokens (--ia-*) are the app-wide light/dark palette:
+       dk-chrome.css bridges the swc tokens onto them, so the SHELL needs
+       them from first paint — not only once a media room has imported the
+       ia-player bundle (which injects this same sheet). -->
+  <link rel="stylesheet" href="dk-pod/dk/plugins/ia-player/assets/ia.css">
 
   <!-- Pre-paint boot: apply saved theme / text size before first paint. -->
   <script src="src/dk-boot.js"></script>
@@ -32,7 +37,7 @@
        nonce-propagated for this shell's CSP) and imports the components
        named below. Pane widgets not listed (sol-time, sol-weather,
        sol-query) lazy-load on first mount via ensureHandler; the media
-       player loads via its menu items' ui:module. dk's OWN bundle is loaded
+       player loads via its menu entries' schema:url modules. dk's OWN bundle is loaded
        directly as a module below and resolves its externals through the
        same map. component-interop is no longer on this page — the dokieli
        identity adapter it brokered is PARKED (dokieli runs as an external
@@ -87,7 +92,7 @@
          a modal. dk-tabs-shell re-homes it into the tabset's content once the
          shell is built and hides it again when a tab is picked. -->
     <div id="dk-menu-pane" class="dk-menu-pane"
-         data-for="MoreCustomize MoreAllPlugins MoreSettings" hidden></div>
+         data-for="Customize Settings" hidden></div>
   </main>
 
 </body>

@@ -14,15 +14,20 @@ import { NS, sym, loadGraph, isType } from '../helpers/rdf.mjs';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const pluginsDir = join(root, 'plugins');
 
-// The plugin files that the seeder WOULD include (Link+href or Component+name).
+// The plugin files that the seeder WOULD include: unified ui:Plugin entries
+// whose kind carries its payload (Link+href or Component+module — Command
+// entries are seeded by the tool itself, not from files).
 const validPlugins = readdirSync(pluginsDir)
   .filter((f) => f.endsWith('.ttl'))
   .filter((f) => {
     const base = 'http://dk.invalid/plugins/' + f;
     const store = loadGraph(join(pluginsDir, f), base);
     const subj = sym(base);
-    if (isType(store, subj, 'Link')) return !!store.any(subj, sym(NS.ui + 'href'));
-    if (isType(store, subj, 'Component')) return !!store.any(subj, sym(NS.ui + 'name'));
+    if (!isType(store, subj, 'Plugin')) return false;
+    const kind = store.any(subj, sym(NS.schema + 'additionalType'));
+    if (!kind) return false;
+    if (kind.value === NS.ui + 'Link') return !!store.any(subj, sym(NS.schema + 'url'));
+    if (kind.value === NS.ui + 'Component') return !!store.any(subj, sym(NS.schema + 'url'));
     return false;
   });
 

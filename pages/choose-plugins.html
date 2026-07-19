@@ -1,67 +1,22 @@
-<!-- Customize subtab 1 — choose plugins: the catalog on the left (topic
-     tabs), and on the right the menu-tabs and top-row-buttons editors as an
-     accordion of drop targets (menu open first; clicking a header opens it
-     and closes the other — both headers always visible). Drag a card onto
-     either; drop or type a manifest URL to add a plugin to the catalog.
-     Every change auto-saves. -->
+<!-- Customize subtab 1 — choose plugins. ONE component does everything
+     (plugin-manifest-unification, 2026-07-18): <sol-plugin-manager> gathers
+     + presents the catalog of ui:Plugin entries (topic tabs, drag/drop, ＋
+     manifest URL) AND — having no `for` attribute — DISCOVERS the app's
+     plugin-holding UI slots (any element declaring a menu source whose root
+     menus hold plugin references: today the tab tree, the button bar, and
+     the ☰ menu) and presents a "Customize <label>" editor for each. Every
+     change auto-saves; each box scrolls its own list, never the page. -->
 <div class="dk-choose-plugins">
   <sol-plugin-manager
       grouped
       source="dk-pod/dk/ui-data/data-kitchen-plugins-catalog.ttl#Available"
-      for="sol-menu-manager, sol-button-bar-manager"
   ></sol-plugin-manager>
-
-  <div class="dk-choose-targets">
-    <sol-menu-manager
-        heading="Customize Menu Tabs"
-        accordion="targets" open
-        source="dk-pod/dk/ui-data/data-kitchen-main-menu.ttl#Tabs"
-        catalog="dk-pod/dk/ui-data/data-kitchen-plugins-catalog.ttl#Available"
-    ></sol-menu-manager>
-
-    <sol-button-bar-manager
-        heading="Customize Top Row Buttons"
-        accordion="targets"
-        source="dk-pod/dk/ui-data/data-kitchen-main-menu.ttl#Bar"
-        catalog="dk-pod/dk/ui-data/data-kitchen-plugins-catalog.ttl#Available"
-    ></sol-button-bar-manager>
-  </div>
 </div>
 <style>
-  /* two equal columns — Available (left), the menu/bar drop targets
-     (right; menus above, bar below). Every box scrolls its own list —
-     never the page or the pane. Column width = two cards + box padding,
-     tracking the font-size setting. */
-  .dk-choose-plugins { --card-w: calc(var(--font-size, 1rem) * 18);
-                       --col-2: calc(var(--card-w) * 2 + .45rem + 1.4rem + 2px);
-                       display: flex; align-items: stretch; gap: .8rem; flex-wrap: wrap;
-                       /* panels sit exactly 1rem below the subtab bar (the sub
-                          variant's bar already brings 12px margin-bottom) */
-                       padding: calc(1rem - 12px) .8rem .8rem;
-                       flex: 1 1 auto; min-height: 0; overflow: hidden; }
-  /* Each column takes a ONE-card flex-basis and grows to fill — both end up
-     ~half the panel (still ~2 cards wide) without the wrap decision tracking
-     the font size. A two-card (--col-2) basis summed past the panel width at
-     large font and stacked the columns into one. */
-  .dk-choose-plugins > sol-plugin-manager { flex: 1 1 var(--card-w); min-width: calc(var(--card-w) + 1.4rem + 2px); min-height: 0; max-height: 100%; }
-  /* the menu/bar column EXPANDS to fill the rest of the panel width */
-  .dk-choose-targets { flex: 1 1 var(--card-w); min-width: calc(var(--card-w) + 1.4rem + 2px); min-height: 0; max-height: 100%;
-                       display: flex; flex-direction: column; gap: .8rem; overflow: hidden; }
-  .dk-choose-targets > sol-menu-manager,
-  .dk-choose-targets > sol-button-bar-manager { flex: 0 1 auto; min-height: 0; }
-
-  /* Phone (coarse pointer): ONE column — current state (menu/bar editors)
-     on top, the catalog "shelf" below. Tap a card → the "Add to…" sheet;
-     rows reorder with ▲▼ (both live in sol-components). Each box still
-     scrolls its own list; the page never scrolls. */
-  @media (hover: none) and (pointer: coarse) {
-    .dk-choose-plugins { flex-direction: column; flex-wrap: nowrap;
-                         gap: .6rem; padding: .4rem .5rem .5rem; }
-    /* current state (the editors) reads first; the catalog shelf below.
-       Cap the editors against the CONTAINER, not the viewport — on a real
-       phone the bars/dock/safe-areas eat half the dvh and a 40dvh cap left
-       the catalog ~70px (clipped, untappable on the S23). */
-    .dk-choose-targets { order: 1; flex: 0 1 auto; max-height: min(40dvh, 50%); min-width: 0; }
-    .dk-choose-plugins > sol-plugin-manager { order: 2; flex: 1 1 auto; min-width: 0; min-height: 0; }
-  }
+  /* The component owns the cards|targets two-region layout; the page only
+     sizes the pane box. Panels sit 1rem below the subtab bar (the sub
+     variant's bar already brings 12px margin-bottom). */
+  .dk-choose-plugins { display: flex; flex: 1 1 auto; min-height: 0; overflow: hidden;
+                       padding: calc(1rem - 12px) .8rem .8rem; }
+  .dk-choose-plugins > sol-plugin-manager { flex: 1 1 auto; min-width: 0; min-height: 0; }
 </style>

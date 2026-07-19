@@ -6,9 +6,9 @@
 //   variants/<name>/EXCLUDE                base-relative paths to omit
 //                                          (one per line, # comments)
 //
-// The variant catalog is REGENERATED from the assembled plugins/*.ttl (via
-// tools/seed-plugins-catalog.mjs), never hand-overlaid — the catalog↔manifest
-// contract holds per variant.
+// The variant catalog is the base WORKING catalog FILTERED to the assembled
+// plugin set (plugin-manifest-unification 2026-07-18 — regeneration from
+// seeds would lose merged deployment config).
 //
 //   node tools/assemble-variant.mjs <base|web|mobile> <outDir>
 //
@@ -17,7 +17,6 @@
 import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, existsSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, relative, sep } from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -135,7 +134,7 @@ export function resolveVariantFiles(variant = 'base') {
   return files;
 }
 
-function main() {
+async function main() {
   const [variant, outDir] = process.argv.slice(2);
   if (!variant || !outDir) {
     console.error('usage: node tools/assemble-variant.mjs <base|web|mobile> <outDir>');
@@ -160,13 +159,54 @@ function main() {
       cpSync(src, to);
     }
   }
-  // Regenerate the catalog from the ASSEMBLED manifests (post-overlay/exclude).
-  execFileSync(process.execPath, [
-    '--preserve-symlinks', join(root, 'tools', 'seed-plugins-catalog.mjs'),
-    '--plugins-dir', join(outDir, 'dk-pod', 'dk', 'plugins'),
-    '--out', join(outDir, 'dk-pod', 'dk', 'ui-data', 'data-kitchen-plugins-catalog.ttl'),
-  ], { stdio: 'inherit' });
+  // The catalog is the WORKING copy of the unified ui:Plugin entries
+  // (plugin-manifest-unification, 2026-07-18) — it carries merged deployment
+  // config (region/label/gating attributes) that a from-seeds regeneration
+  // would LOSE. So the variant catalog = the base catalog FILTERED: entries
+  // whose dct:source manifest was excluded are dropped (from the #Available
+  // list, the topic collections, and their bodies).
+  await filterCatalog(
+    join(outDir, 'dk-pod', 'dk', 'ui-data', 'data-kitchen-plugins-catalog.ttl'),
+    join(outDir, 'dk-pod', 'dk', 'plugins'),
+  );
   console.log(`[assemble] ${variant}: ${files.size} files → ${outDir}`);
+}
+
+// Drop catalog entries whose source manifest is not in the assembled
+// plugins/ dir (i.e. was EXCLUDEd) — via rdflib, never text surgery: remove
+// the entry bodies (incl. attribute blanks), prune them from the #Available
+// parts Collection and from skos:member lists, then reserialize.
+async function filterCatalog(catPath, pluginsDir) {
+  if (!existsSync(catPath)) return;
+  const SC = join(root, 'node_modules', 'sol-components', 'core');
+  const { rdf } = await import(join(SC, 'rdf.js'));
+  const { serializeMenuDocument } = await import(join(SC, 'menu-serialize.js'));
+  const UI = 'http://www.w3.org/ns/ui#';
+  const DCT = 'http://purl.org/dc/terms/';
+  const SKOS = 'http://www.w3.org/2004/02/skos/core#';
+  const DOC = 'https://assemble.invalid/ui-data/data-kitchen-plugins-catalog.ttl';
+  const present = new Set(readdirSync(pluginsDir).filter((f) => f.endsWith('.ttl')));
+  const store = rdf.graph();
+  rdf.parse(readFileSync(catPath, 'utf8'), store, DOC, 'text/turtle');
+  const gone = new Set();
+  for (const st of store.statementsMatching(null, rdf.sym(DCT + 'source'), null)) {
+    if (!present.has(st.object.value.split('/').pop())) gone.add(st.subject.value);
+  }
+  if (!gone.size) return;
+  for (const v of gone) {
+    const node = rdf.sym(v);
+    for (const b of store.each(node, rdf.sym(UI + 'attribute'), null)) store.removeMatches(b, null, null);
+    store.removeMatches(node, null, null);
+    // skos:member references
+    store.removeMatches(null, rdf.sym(SKOS + 'member'), node);
+  }
+  // prune from the #Available parts Collection (Collection terms mutate in place)
+  for (const st of store.statementsMatching(null, rdf.sym(UI + 'parts'), null)) {
+    const c = st.object;
+    if (c && c.elements) c.elements = c.elements.filter((e) => !gone.has(e.value));
+  }
+  writeFileSync(catPath, await serializeMenuDocument(store, DOC));
+  console.log(`[assemble] catalog filtered: dropped ${gone.size} excluded entries`);
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) main();

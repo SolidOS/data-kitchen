@@ -1,0 +1,19 @@
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+# The host app's COMMAND REGISTRY document. A ui:Command plugin entry's
+# schema:url points at a fragment here — the hyphen-free fragment name IS
+# the key the shell dispatches as a sol-command event. The runtime registry
+# (src/dk-tabs-shell.js) is the allow-list; a fragment listed here but not
+# registered there is a no-op. No code is loaded or executed from RDF.
+
+:toggleTheme
+    a ui:Command;
+    rdfs:comment "Cycle the app theme (light / dark / system).".
+:cycleFontSize
+    a ui:Command;
+    rdfs:comment "Cycle the app text size.".
+:restartApp
+    a ui:Command;
+    rdfs:comment "Restart the Data Kitchen desktop app.".

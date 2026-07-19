@@ -1,14 +1,14 @@
 @prefix dct:    <http://purl.org/dc/terms/> .
 @prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Component ;
+  a ui:Plugin ;
+  schema:additionalType ui:Component ;
   ui:label "SolidOS (data browser)" ;
   ui:icon "https://solidproject.org/assets/img/solid-emblem.svg" ;
-  ui:name "dk-solidos" ;
-  rdfs:comment "The SolidOS data browser, embedded." ;
+  schema:url </dk-pod/dk/plugins/solidos/dk-solidos.js> ;
+  schema:description "The SolidOS data browser, embedded." ;
   dct:publisher "SolidOS Team" ;
   dct:subject "Pods" ;
   ui:attribute

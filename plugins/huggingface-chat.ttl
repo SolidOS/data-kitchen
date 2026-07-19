@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "HuggingFace Chat" ;
   ui:icon <https://huggingface.co/chat/huggingchat/apple-touch-icon.png> ;
-  ui:href <https://huggingface.co/chat/> ;
-  rdfs:comment "Chat with open-source AI models." ;
+  schema:url <https://huggingface.co/chat/> ;
+  schema:description "Chat with open-source AI models." ;
   dct:publisher "Hugging Face" ;
   dct:subject "Other Services" .

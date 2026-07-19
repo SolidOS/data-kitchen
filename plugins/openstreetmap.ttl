@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "OpenStreetMap" ;
   ui:icon <https://www.openstreetmap.org/assets/apple-touch-icon-180x180-ea6361d7ae5b3f08c6290652ad703fa239364cc09c84873044f3299845f24652.png> ;
-  ui:href <https://www.openstreetmap.org/> ;
-  rdfs:comment "Open, community-built maps." ;
+  schema:url <https://www.openstreetmap.org/> ;
+  schema:description "Open, community-built maps." ;
   dct:publisher "OpenStreetMap" ;
   dct:subject "Other Services" .

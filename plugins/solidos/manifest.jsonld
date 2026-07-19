@@ -7,7 +7,7 @@
     "Component": "ui:Component",
     "Menu": "ui:Menu",
     "label": "ui:label",
-    "name": "ui:name",
+    "name": "schema:name",
     "publisher": "dct:publisher",
     "subject": "dct:subject",
     "hasPart": {

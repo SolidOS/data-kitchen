@@ -50,7 +50,11 @@ The UI renders from `.ttl` in `ui-data/`:
   CHROME_DEFAULTS (it would have re-inserted them). News/media need no login;
   podz, SolidOS, and other apps carry their own sol-logins. dk-auth-router
   works off the shared AuthManager and never needed the element.
-- `data-kitchen-plugins-catalog.ttl` — every available plugin (Customize source)
+- `data-kitchen-plugins-catalog.ttl` — every plugin as a `ui:Plugin` entry
+  (the ONE description each menu references — see "Plugin system"). Menus are
+  reference lists over it; slot labels renamed 2026-07-18 for the discovered
+  Customize headings: `#Tabs` "Menu Tabs", `#Bar` "Top Row Buttons", `#More`
+  "☰ Menu".
 - `data-kitchen-settings.ttl`; `data-kitchen-startup-{electron,pivot}.shacl`
   (the old combined `data-kitchen-startup-config.shacl` is split in two —
   window geometry vs ports + pod root — one Settings chip each)
@@ -114,26 +118,51 @@ compose the two files (see test/data/menu-shacl.test.mjs). A manifest entry
 may be a ui:Link as well as a ui:Component. The `ci:` namespace
 (jeff-zucker.github.io/component-interop) is authoritative.
 
-## Plugin system
+## Plugin system (UNIFIED MODEL, 2026-07-18 — plugin-manifest-unification)
 
-A plugin is either:
-- **`ui:Link`** — an external app. Needs `ui:href`; opens in a native reader
-  overlay (see "External content" below).
-- **`ui:Component`** — an in-app custom element. Needs `ui:name`; mounts in a tab
-  pane. Attributes via `ui:attribute [ schema:name … ; schema:value … ]`.
+**One `ui:Plugin` entity = manifest = catalog card = mounted item.** Every
+entry lives in `ui-data/data-kitchen-plugins-catalog.ttl` (the owner's live
+working copy; `plugins/*.ttl` remain upstream SEEDS) and carries a REQUIRED
+`schema:additionalType` discriminator plus **ONE payload predicate —
+`schema:url`** (2026-07-19; replaced the ui:href/ui:module/ui:name trio) —
+which the kind interprets:
+- **`ui:Link`** — external app; `schema:url` is the URL to open (native
+  reader overlay — see "External content" below).
+- **`ui:Component`** — in-app custom element; `schema:url` is the ES module
+  (**the element tag DERIVES from its filename**, e.g. `sol-clock.esm.js` →
+  `<sol-clock>`; there is no separate tag predicate).
+- **`ui:Command`** — `schema:url` is a fragment IRI in the command REGISTRY
+  doc `ui-data/data-kitchen-commands.ttl` (`#restartApp`, `#toggleTheme`,
+  `#cycleFontSize`) — the hyphen-free fragment is the key; dispatch-only,
+  allow-listed in dk-tabs-shell. reloadApp/guestView/signIn stay
+  registry-only (no entries, but the registry doc could list them later).
 
-Manifests are `.ttl` files in `plugins/`. Complex dk-own plugins get a subdirectory
-plus a `manifest.jsonld` (podz, solidos, ia-player, news). A component is
-"manifested" when it has an object-form ci entry (label / icon / shape / help).
-Icons are **live favicon URLs** — the renderer paints a URL as `<img>` and an emoji
-as text. Per-plugin settings are RDF-driven and gated on the plugin being in a menu
-(`src/dk-plugin-settings.js`). **LIBRARY-FIRST:** for an sc component the settings
-`shape` + default `data` doc come from **sc's manifest**
-(`ComponentInterop.manifest.meta`, keyed by `ui:name` — or by `data-handler` when
-the menu item is a launcher like `sol-button`); the form edits the deployment's own
-`source` doc (subject = its `#fragment` or `foaf:primaryTopic`). `sol-time`,
-`sol-weather`, `sol-calendar`, `sol-search` are migrated this way — **no per-plugin
-`manifest.jsonld`**; only dk-own plugins still carry one (read via the fallback).
+`:PluginShape` in sc `shapes/menu.shacl` constrains the one url per kind via
+`sh:xone` (IRI-or-string / tag-shaped module filename / hyphen-free
+#fragment). Shared metadata: `ui:label` (ONE label everywhere — card title AND
+menu text; display overrides go through a `label` ui:attribute),
+`schema:description` (card blurb — NOT rdfs:comment, which stays a free
+documentary note), `dct:publisher`, `dct:subject` (topic categories →
+Customize tabs), `dct:conformsTo`/`dct:references`/`schema:softwareHelp`
+(settings shape / data doc / help), `ui:icon` (live favicon URL painted as
+`<img>`, emoji as text), `ui:attribute` pairs (region, if-logged-in, …).
+
+**Menus are REFERENCE lists**: `ui:parts ( data:Calendar … )` with
+`@prefix data: <data-kitchen-plugins-catalog.ttl#>`. One placement per entry
+(want two placements → second entry with its own label). In-use = referenced
+by a menu; the pantry subtracts by entry identity. sc's parse resolves
+references cross-doc (`loadReferencedDocs`) into the same in-memory item
+descriptions consumers always used; legacy inline ui:Component/ui:Link items
+still parse, and serialize PRESERVES the form it read (bare refs re-emit as
+bare refs; a drop/addPlugin whose payload carries its catalog identity lands
+as a bare reference, never an inline copy). `manifest.jsonld` files are
+DORMANT (facts folded into entries 2026-07-18; kept only for possible ci use).
+
+Per-plugin settings are RDF-driven and gated on the plugin being in a menu
+(`src/dk-plugin-settings.js`, rewritten entry-first): settings meta
+(`dct:conformsTo` shape, `dct:references` data doc, help) reads off the
+ui:Plugin ENTRY; subject = the item's `source` attr fragment/primaryTopic,
+else the referenced doc's `foaf:primaryTopic`. The jsonld fallback is retired.
 
 **Calendar is sc, not dk:** the bar item is `<sol-button data-handler="sol-calendar"
 region="dropdown" source=…>` — one click conjures a `sol-dropdown` surface (sibling
@@ -150,13 +179,13 @@ hide-header>`. The old `dk-calendar-popout` wrapper is **deleted**. The same
   the triple. The triple still READS (legacy, converts on save) and remains
   the spelling for `ui:Link` items (no attribute channel). The ~220 redundant
   `ui:region ui:Tab` triples were deleted outright (tree position implies
-  tab); only two items carry the attribute: `:bar-calendar` ("dropdown") and
-  `:chrome-menu` ("modal"). Plugin manifests (`plugins/*.ttl`) carry NO
+  tab); only two items carry the attribute: the Calendar entry ("dropdown")
+  and `:chrome-menu` ("modal"). Plugin seeds (`plugins/*.ttl`) carry NO
   placement at all — it's the deployment's decision — so a FRESH calendar
-  install lands as a tab until the owner adds the attribute (open design
-  thread: default region attr on the chip, or a bar-container default, or a
-  plugin-manifest editor — all discussed 2026-07-17, none built).
-  `seed-plugins-catalog.mjs` neither reads nor emits region.
+  install lands as a tab until the owner adds the attribute. The
+  plugin-manifest EDITOR discussed 2026-07-17 is BUILT (2026-07-18, ✎ on a
+  pantry card — see "Plugin system"); the owner adds/edits the region
+  attribute there. `seed-plugins-catalog.mjs` neither reads nor emits region.
 - **`acl:mode acl:Write` is gone from dk data.** Owner-gating is the boolean
   `if-logged-in` attribute (`[ schema:name "if-logged-in"; schema:value "" ]`)
   on `<#MoreCustomize>`/`<#MoreSettings>` (hamburger) and `:panel-customize`.
@@ -172,25 +201,45 @@ hide-header>`. The old `dk-calendar-popout` wrapper is **deleted**. The same
   forcing the class). Probes: `claude/smoke-tests/cdp-verify-gate-migration.mjs`
   + `cdp-verify-region-migration.mjs` (isolated instance, CDP 9223).
 
-**A chip = a PLUGIN (manifest entry), not a component.** One `ui:name` tag backs
-many chips (ia-player → Music & Movies; dk-solidos → browser, AddressBook, Tasks,
-Chat, Notes, Meeting). The Customize pantry (`sol-plugin-manager`) subtracts
-plugins already in the menu/bar by chip identity = `dct:source` (manifest), with
-a tag + `source`-attribute fallback for legacy items — never the bare tag, and
-never the render attributes (`id`/`class`/`title`/`defer`/…) a menu adds.
-**Since 2026-07-05 every menu/bar item carries `dct:source plu:<manifest>.ttl`**
-(pod + repo menus; `menu-serialize` snapshots and re-attaches it across Customize
-saves), so the param-path-form fallback no longer decides anything — when adding
-a menu item, give it its `dct:source` or it may double-list (label mismatches
-like "News" vs "News (three-panel feeds)" defeat label-based tooling). The
-catalog is generated from `plugins/*.ttl` by `tools/seed-plugins-catalog.mjs
---preserve-symlinks`; `dct:subject` → its category. A labelled loaded component
-with no catalog entry appears as a ghost under "Other". **Topic tabs always
-render** — a topic whose plugins are all in use shows an "empty — every plugin
-in this topic is already on a menu or bar" hint instead of vanishing (only the
-synthetic "Other" hides when empty). Audit tool:
-`claude/validation/audit-double-listed.mjs` replays the exact in-use matching
-rules against the pod data and lists any double-listed cards.
+**A chip = a ui:Plugin ENTRY, not a component.** One module/tag backs many
+entries (ia-player → Music & Movies; dk-solidos → browser, AddressBook, Tasks,
+Chat, Notes, Meeting). Double-listing is structurally impossible now (one
+entry, at most one referencing menu).
+
+**The Customize page is ONE tag** (`pages/choose-plugins.html`):
+`<sol-plugin-manager grouped source=…#Available>`. With no `for` attribute the
+pantry SELF-DISCOVERS the app's plugin-holding UI slots — it scans the
+document's declared menu sources (`[from-rdf], [source]`), keeps each doc's
+root ui:Menus whose tree holds ≥1 ui:Plugin reference, and emits one editor
+per slot ("Customize Menu Tabs" / "Customize Top Row Buttons" /
+"Customize ☰ Menu" — heading = "Customize " + the root's ui:label;
+`sol-button-bar-manager` only for a FLAT `ui:Horizontal` root, a root with
+submenus gets `sol-menu-manager` whatever its orientation). Chrome (`#Chrome`)
+holds no plugin references, so it never becomes a slot. `for` = legacy
+hand-placed pairing, suppresses discovery.
+
+**The entry EDITOR (✎ on an owned card, stage 6):** opens a modal
+`<sol-form>` driven by `:PluginShape` (sc ships the shape beside its
+components) with subject = the entry IRI. shape-to-form picks the entry's
+`sh:xone` branch by its `schema:additionalType` (kind-aware payload field);
+a Component's/Command's `schema:url` renders as a STATIC row (guard rails —
+it names the tag / the key), a Link's is editable. Field edits PATCH the
+catalog through solFetch (the gate-token
+path — a bare fetch 401s); closing a dirty editor reloads the pantry and the
+slot editors (chips re-resolve labels/icons from the entries). The entry IS
+live config — the next parse propagates edits, no reinstall.
+
+The catalog is RECONCILED (not regenerated) from `plugins/*.ttl` seeds by
+`tools/seed-plugins-catalog.mjs` — additive only: new entries, missing
+settings pointers, derived skos topic collections; drift is REPORTED, owner
+edits never overwritten (`--force` = full regen). `dct:subject` → topic tabs.
+A labelled loaded component with no catalog entry appears as a ghost under
+"Other". **Topic tabs always render** — a topic whose plugins are all in use
+shows an "empty — …" hint instead of vanishing (only the synthetic "Other"
+hides when empty). Audit tool: `claude/validation/audit-entry-references.mjs`
+(dangling refs, one-placement, payload checks, local-path existence,
+`*.invalid` origin leaks); `audit-double-listed.mjs` is retired with the
+model that made doubles possible.
 
 ## Key plugins
 
@@ -391,18 +440,19 @@ rules against the pod data and lists any double-listed cards.
   fallback stays for dk-own plugins; the sc-JSON branch (core/manifest.js
   helper) is retired from dk (helper remains as a JSON bridge).
   `tools/seed-sc-plugins.mjs` merges sc's canonical pointers into dk's
-  deployment ttls (matches ui:name OR data-handler — catches the calendar
-  launcher); run after sc updates, `--pod` for pod copies.
+  deployment ttls (matches the schema:url-derived tag OR data-handler —
+  catches the calendar launcher); run after sc updates, `--pod` for pod
+  copies.
 - **Lazy mount:** renderComponentItem→ensureHandler imports a menu item's
-  `ui:module` URL for ANY tag (http(s)-only; CSP gates foreign origins);
+  `schema:url` module for ANY tag (http(s)-only; CSP gates foreign origins);
   menu-serialize + the plugin-manager install path round-trip it. sc `sol-*`
   tags ALWAYS lazy-loaded via sibling import when RDF-mounted. A dk plugin =
   one ttl + one self-contained ESM (demo: claude/smoke-tests/demo-star/).
 - **Boot shrink:** index.html data-components (repo + ~/solid/index.html — the
   SHELL IS SERVED FROM THE POD ROOT copy) is now 11 tokens: sol-basic
   sol-pod-bundle sol-form-bundle sol-calendar sol-search sol-feed sol-gallery
-  sol-login + 3 managers. ia-player/omp-images load via ui:module on the 23
-  media menu items (menus ×3 copies); sol-time/weather/query lazy via
+  sol-login + 3 managers. ia-player/omp-images load via the media entries'
+  schema:url modules; sol-time/weather/query lazy via
   sibling-ensure. KEEP-EAGER reasons: managers+form stack are raw tags in
   included pages (no ensure pass); omp's bundle uses sol-feed/sol-gallery as
   page-provided tags; bar-calendar's conjure path doesn't ensure.

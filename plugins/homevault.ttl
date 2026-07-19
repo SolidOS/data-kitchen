@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "HomeVault" ;
   ui:icon <https://homevault.apps.privatedatapod.com/icons/apple-touch-icon.png> ;
-  ui:href <https://homevault.apps.privatedatapod.com/> ;
-  rdfs:comment "Home inventory for insurance and household records." ;
+  schema:url <https://homevault.apps.privatedatapod.com/> ;
+  schema:description "Home inventory for insurance and household records." ;
   dct:publisher "PrivateDataPod" ;
   dct:subject "Productivity" .

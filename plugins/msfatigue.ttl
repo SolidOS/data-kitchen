@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "MSFatigue" ;
   ui:icon <https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png> ;
-  ui:href <https://msfatigue.solidcommunity.au> ;
-  rdfs:comment "Survey app for MS fatigue research, with encrypted responses." ;
+  schema:url <https://msfatigue.solidcommunity.au> ;
+  schema:description "Survey app for MS fatigue research, with encrypted responses." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   dct:subject "Health" .

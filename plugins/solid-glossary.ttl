@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "Solid Glossary" ;
   ui:icon <https://solidproject.solidcommunity.net/favicon.ico> ;
-  ui:href <https://solidproject.solidcommunity.net/glossary> ;
-  rdfs:comment "Glossary of Solid terms." ;
+  schema:url <https://solidproject.solidcommunity.net/glossary> ;
+  schema:description "Glossary of Solid terms." ;
   dct:publisher "Solid Community" ;
   dct:subject "Solid" .

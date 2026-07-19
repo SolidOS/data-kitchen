@@ -1,54 +1,9 @@
-@prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix data: <data-kitchen-plugins-catalog.ttl#>.
 
-# ── The ☰ hamburger menu (chrome) ────────────────────────────────────────
-# Consumed by the ☰ <sol-dropdown-button source="./dk-pod/dk/ui-data/data-kitchen-hamburger-menu.ttl#More"> chrome
-# launcher (ui-data/data-kitchen-main-menu.ttl#Chrome, built by src/dk-tabs-rdf.js): component items
-# display in the #dk-menu-pane replace
-# pane over the tab content (it claims them by id via data-for in index.html;
-# unclaimed items would fall back to the region= modal); bare-name items
-# dispatch sol-command (resolved by the dk-tabs-shell registry); items with
-# a boolean if-logged-in attribute are hidden for guests
-# (body.no-write ::part(requires-write)).
-# (The RETIRED old-dk #MainMenu block that used to sit above was removed
-# 2026-06-12 — see git history if it's ever wanted back.)
-
-<#More> a ui:Menu ; ui:label "Menu" ;
-  ui:parts ( <#MoreCustomize> <#MoreSettings> <#MoreTheme> <#MoreFontSize> <#MoreRestart> ) .
-
-# Customize — choose plugins (catalog + menu/bar managers as drop targets,
-# auto-saves). (The Preferences subtab moved out 2026-07-06 — settings is a
-# direct menu item below.)
-<#MoreCustomize> a ui:Component ; ui:label "Customize" ;
-  ui:name "sol-include" ;
-  ui:attribute
-    [ schema:name "if-logged-in" ; schema:value "" ] ,
-    [ schema:name "source"  ; schema:value "./dk-pod/dk/pages/customize.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
-
-# Settings — the global settings page, a direct item again as of 2026-07-06
-# (it lived under Customize ▸ Customize Preferences from 2026-06-12).
-<#MoreSettings> a ui:Component ; ui:label "Settings" ;
-  ui:name "sol-include" ;
-  ui:attribute
-    [ schema:name "if-logged-in" ; schema:value "" ] ,
-    [ schema:name "source"  ; schema:value "./dk-pod/dk/pages/settings.html" ] ,
-    [ schema:name "trusted" ; schema:value "" ] .
-
-# Label shows the CURRENT theme/size — dk-tabs-shell rewrites these two on open.
-<#MoreTheme> a ui:Component ; ui:label "Theme" ; ui:name "toggleTheme" .
-
-# (Sign in… / View as guest / Reload dk were removed from this menu
-# 2026-07-06 — the signIn/guestView/reloadApp commands still exist in
-# dk-tabs-shell; see git history for the old items.)
-
-# Cycle text size (moved here from the actions bar). Command — see dk-tabs-shell.
-<#MoreFontSize> a ui:Component ; ui:label "Text size" ; ui:name "cycleFontSize" .
-
-# Developer restart (command — see dk-tabs-shell): relaunch the whole app
-# (also main process + bundled servers) via the dkElectron preload bridge.
-<#MoreRestart> a ui:Component ; ui:label "Restart dk" ; ui:name "restartApp" .
-
-
-
-
+:More
+    a ui:Menu;
+    ui:label "☰ Menu";
+    ui:parts
+    ( data:Customize data:Settings data:Theme data:Text-size data:Restart-dk ).

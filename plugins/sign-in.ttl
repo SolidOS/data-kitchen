@@ -1,14 +1,14 @@
 @prefix dct:    <http://purl.org/dc/terms/> .
 @prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Component ;
+  a ui:Plugin ;
+  schema:additionalType ui:Component ;
   ui:label "Sign in" ;
   ui:icon "🔑" ;
-  ui:name "sol-login" ;
-  rdfs:comment "Solid sign-in button (popup flow)." ;
+  schema:url </node_modules/sol-components/web/sol-login.js> ;
+  schema:description "Solid sign-in button (popup flow)." ;
   dct:publisher "Jeff Zucker" ;
   dct:subject "Pods" ;
   ui:attribute

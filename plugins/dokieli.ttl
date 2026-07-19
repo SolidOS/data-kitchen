@@ -1,14 +1,14 @@
 @prefix dct:    <http://purl.org/dc/terms/> .
 @prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Component ;
+  a ui:Plugin ;
+  schema:additionalType ui:Component ;
   ui:label "dokieli" ;
   ui:icon <https://dokie.li/media/images/logo.png> ;
-  ui:name "dk-dokieli" ;
-  rdfs:comment "Write and publish articles, with annotations and social interactions." ;
+  schema:url </dk-pod/dk/plugins/solidos/dk-dokieli.js> ;
+  schema:description "Write and publish articles, with annotations and social interactions." ;
   dct:publisher "Sarven Capadisli and Virginia Balseiro" ;
   dct:subject "Content Publishing" ;
   ui:attribute

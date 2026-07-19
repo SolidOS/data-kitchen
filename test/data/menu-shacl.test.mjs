@@ -45,7 +45,16 @@ if (!existsSync(SHAPES_PATH)) {
   ];
   for (const doc of menuDocs) {
     test(`${doc} conforms to the shared menu shapes`, async () => {
-      const report = await validate(readFileSync(P(doc), 'utf8'), `http://dk.invalid/${doc}`);
+      // Menus are REFERENCE lists over the catalog's ui:Plugin entries
+      // (2026-07-18) — the members' types live in the catalog doc, so menus
+      // validate COMPOSED with it, exactly as the runtime loads them
+      // (loadReferencedDocs pulls the catalog into the same store).
+      const store = parse(readFileSync(P(doc), 'utf8'), `http://dk.invalid/${doc}`);
+      if (doc !== 'ui-data/data-kitchen-plugins-catalog.ttl') {
+        store.addQuads(new Parser({ baseIRI: 'http://dk.invalid/ui-data/data-kitchen-plugins-catalog.ttl' })
+          .parse(readFileSync(P('ui-data/data-kitchen-plugins-catalog.ttl'), 'utf8')));
+      }
+      const report = await new SHACLValidator(shapes).validate(store);
       assert.ok(report.conforms, `expected conformance, violations:\n   ${summarize(report)}`);
     });
   }
@@ -68,8 +77,9 @@ if (!existsSync(SHAPES_PATH)) {
   test('a menu member without ui:label fails (menu-context strictness)', async () => {
     const report = await validate(`
 @prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
 <#Menu> a ui:Menu ; ui:label "m" ; ui:parts ( <#NoLabel> ) .
-<#NoLabel> a ui:Component ; ui:name "sol-thing" .
+<#NoLabel> a ui:Component ; schema:url <https://example.org/web/sol-thing.js> .
 `);
     assert.equal(report.conforms, false, 'label-less menu member must not conform');
   });

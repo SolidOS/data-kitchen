@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "KeyPod" ;
   ui:icon <https://keypod.solidcommunity.au/keypod/icons/Icon-192.png> ;
-  ui:href <https://keypod.solidcommunity.au> ;
-  rdfs:comment "Encrypted password and key-value store." ;
+  schema:url <https://keypod.solidcommunity.au> ;
+  schema:description "Encrypted password and key-value store." ;
   dct:publisher "Software Innovation Institute, ANU" ;
   dct:subject "Tech" .

@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "RoloPod" ;
   ui:icon <https://rolopod.solidcommunity.au/rolopod/icons/Icon-192.png> ;
-  ui:href <https://rolopod.solidcommunity.au> ;
-  rdfs:comment "Address book with selective sharing." ;
+  schema:url <https://rolopod.solidcommunity.au> ;
+  schema:description "Address book with selective sharing." ;
   dct:publisher "Togaware" ;
   dct:subject "Productivity" .

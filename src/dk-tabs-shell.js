@@ -357,13 +357,20 @@
     // it's open). Matched by label PREFIX so it's idempotent across re-opens.
     function syncMenuState(popup) {
       if (!popup) return;
+      // Rows may start with an entry ICON before the label (ui:Plugin entries
+      // carry ui:icon), so match anywhere and rewrite only the label TEXT
+      // NODE — replacing textContent would destroy the icon element.
+      const setLabel = (btn, text) => {
+        const tn = [...btn.childNodes].find((n) => n.nodeType === Node.TEXT_NODE);
+        if (tn) tn.data = text; else btn.textContent = text;
+      };
       for (const btn of popup.querySelectorAll('button')) {
         const t = (btn.textContent || '').trim();
-        if (t.startsWith('Text size')) {
+        if (t.includes('Text size')) {
           const s = effectiveFontSize();
-          btn.textContent = `Text size: ${s[0].toUpperCase()}${s.slice(1)}`;
-        } else if (t.startsWith('Theme')) {
-          btn.textContent = effectiveTheme() === 'light' ? 'Theme: Light ☀️' : 'Theme: Dark 🌙';
+          setLabel(btn, `Text size: ${s[0].toUpperCase()}${s.slice(1)}`);
+        } else if (t.includes('Theme')) {
+          setLabel(btn, effectiveTheme() === 'light' ? 'Theme: Light ☀️' : 'Theme: Dark 🌙');
         }
       }
     }

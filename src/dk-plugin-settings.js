@@ -1,26 +1,31 @@
 // <dk-plugin-settings> — renders the Settings page's per-plugin settings groups
-// from RDF, gated on catalog "in-use" status. Manifest-driven: nothing about a
-// plugin's settings is duplicated here — each plugin declares its own.
+// from RDF, gated on "in use" (the plugin is wired into the active shell menu).
 //
-// For each plugin currently IN USE (its ui:name is referenced in the active shell
-// menu, menu=…), the settings shape comes LIBRARY-FIRST: if the component's
-// library manifest (e.g. sol-components) declares a settings shape (dct:conformsTo)
-// plus a default data doc (dct:references), those library facts describe the
-// settings and we render a shape-driven <sol-form> editing the deployment's own
-// document (the menu entry's `source`). Components no library describes fall back
-// to a dk per-plugin manifest (plugins/<id>/manifest.jsonld) carrying the same
-// shape + a settings .ttl in dct:requires. Either way the form's subject is the
-// source document's #fragment, or its foaf:primaryTopic — the established Solid
-// "what this document is about" convention — so no settings-subject term is needed.
+// UNIFIED MODEL (plugin-manifest-unification, 2026-07-18): menus are REFERENCE
+// lists over ui:Plugin entries in the catalog doc; the ENTRY is the working
+// copy of the plugin's description and carries its settings pointers —
+//   dct:conformsTo       the SHACL shape driving the form
+//   dct:references       the default/live data doc
+//   ui:label             the group heading
+// One lookup, one description system for sc, dk-own, and third-party plugins
+// alike. The old manifest.jsonld fallback is RETIRED (decision 4) — the
+// .jsonld files stay on disk for possible component-interop use only.
+// Legacy inline menu items (third-party menus) still resolve via their
+// dct:source manifest doc.
 //
-// A plugin parked in the catalog (not wired into the shell) is skipped. sc's
-// <sol-settings> DOM-discovery is left untouched, so other apps keep zero-config
-// auto-discovery.
+// The form edits the deployment's live doc: subject = the entry's `source`
+// attribute when it names a settings document (fragment or foaf:primaryTopic),
+// else the dct:references doc's primaryTopic (e.g. podz, whose `source` is its
+// HTML panel). Groups dedupe by the plugins/<id>/ dir of the settings doc, so
+// the three ia-player rooms share one group as before.
 
 import { rdf } from 'sol-components/core/rdf.js';
 import { solFetch } from 'sol-components/core/auth-fetch.js';
+import { parseMenuItems, loadReferencedDocs } from 'sol-components/core/menu-rdf.js';
 
 const UI   = 'http://www.w3.org/ns/ui#';
+const RDF_ = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
+const DCT  = 'http://purl.org/dc/terms/';
 const FOAF = 'http://xmlns.com/foaf/0.1/';
 
 async function loadTurtle(url) {
@@ -49,106 +54,86 @@ class DkPluginSettings extends HTMLElement {
     }
   }
 
-  // The plugins wired into the active shell (dk's "in use" = ui:name present in
-  // the menu doc). Each entry carries: name (the component tag / ui:name), handler
-  // (the `data-handler` when the entry is a launcher like <sol-button>, naming the
-  // actual settings-bearing component), src (the settings DOCUMENT the entry edits,
-  // from its `source` attribute), and id (the plugins/<id>/ folder, for the
-  // per-plugin-manifest fallback).
+  // Every component plugin wired into the active shell. Parses the menu doc
+  // with the shared sc machinery (references resolve into the catalog via
+  // loadReferencedDocs), walking every ui:Menu in the doc.
   async _inUseEntries(menuRef) {
     const menuUrl = new URL(menuRef.split('#')[0], document.baseURI).href;
     const store = await loadTurtle(menuUrl);
-    const seen = new Set();
+    await loadReferencedDocs(store, menuUrl, solFetch);
     const out = [];
-    for (const st of store.statementsMatching(null, rdf.sym(UI + 'name'), null)) {
-      const name = st.object?.value;
-      let src = null, handler = null;
-      for (const a of store.each(st.subject, rdf.sym(UI + 'attribute'))) {
-        const an = store.any(a, rdf.sym('http://schema.org/name'))?.value;
-        if (an === 'source') src = store.any(a, rdf.sym('http://schema.org/value'))?.value;
-        else if (an === 'data-handler') handler = store.any(a, rdf.sym('http://schema.org/value'))?.value;
+    const seen = new Set();
+    const walk = (items) => {
+      for (const it of items || []) {
+        if (it.type === 'submenu') { walk(it.children); continue; }
+        if (it.type !== 'component' || !it.tag) continue;
+        const params = Object.fromEntries(it.params || []);
+        out.push({
+          name: it.tag,
+          handler: params['data-handler'] || null,
+          src: params.source || null,
+          label: it.name || null,
+          entryIri: it.entry || null,
+          manifest: it.manifest || null,
+        });
       }
-      // dct:source — the chip's plugin doc (its manifest), which carries the
-      // settings pointers (dct:conformsTo / dct:references).
-      const manifest = store.any(st.subject, rdf.sym('http://purl.org/dc/terms/source'))?.value || null;
-      const id = src && src.match(/plugins\/([^/]+)\//)?.[1];
-      if (!id || seen.has(id)) continue;
-      seen.add(id);
-      out.push({ id, name, src, handler, manifest });
+    };
+    for (const menuNode of store.each(null, rdf.sym(RDF_ + 'type'), rdf.sym(UI + 'Menu'))) {
+      if (menuNode.value.split('#')[0] !== menuUrl) continue;   // this doc's menus only
+      walk(parseMenuItems(store, menuNode));
     }
-    return out;
+    // the settings STORE for entry lookups (the referenced catalog is loaded)
+    this._store = store;
+    return out.filter((e) => !seen.has(e.entryIri || e.name) && seen.add(e.entryIri || e.name));
   }
 
-  // A plugin's settings description, read from ITS OWN plugin doc (the menu
-  // item's dct:source manifest): dct:conformsTo = the SHACL shape driving the
-  // form, dct:references = the library's default data doc, ui:label = the
-  // group heading. One description system for sc, dk-own, and third-party
-  // components alike — no JSON manifest, no component-interop.
-  async _pluginDocMeta(manifestUrl) {
-    if (!manifestUrl) return null;
-    const abs = new URL(manifestUrl, document.baseURI).href;
-    let mstore;
-    try { mstore = await loadTurtle(abs); } catch { return null; }
-    const subj = rdf.sym(abs);
-    const val = (pred) => mstore.any(subj, rdf.sym(pred))?.value || null;
-    const shape = val('http://purl.org/dc/terms/conformsTo');
-    const data = val('http://purl.org/dc/terms/references');
-    const label = val(UI + 'label');
-    if (!shape) return null;
-    return { shape, data, label };
+  // Settings pointers for an in-use plugin: from its ui:Plugin ENTRY (already
+  // in the parse store — no extra fetch) or, for a legacy inline item, from
+  // its dct:source manifest doc.
+  async _settingsMeta(entry) {
+    const read = (store, subjIri) => {
+      const subj = rdf.sym(subjIri);
+      const val = (pred) => store.any(subj, rdf.sym(pred))?.value || null;
+      const shape = val(DCT + 'conformsTo');
+      const data = val(DCT + 'references');
+      const label = val(UI + 'label');
+      return shape ? { shape, data, label } : null;
+    };
+    if (entry.entryIri) return read(this._store, entry.entryIri);
+    if (!entry.manifest) return null;
+    const abs = new URL(entry.manifest, document.baseURI).href;
+    try { return read(await loadTurtle(abs), abs); } catch { return null; }
   }
 
-  // Build a settings group for an in-use plugin, or null if it has no settings.
-  // Library-first: when the component's library manifest (e.g. sol-components)
-  // declares both a settings `shape` AND a default `data` doc, those library facts
-  // ARE its settings description — render a form over the deployment's own document
-  // (the entry's `source`). Components no library describes fall back to a dk
-  // per-plugin manifest.jsonld.
+  // Build a settings group, or null when the plugin declares no settings
+  // (no shape, or no resolvable subject). Dedupe by the settings doc's
+  // plugins/<id>/ dir so plugins sharing one settings home (the ia-player
+  // rooms) render one group.
   async _groupFor(entry) {
-    const meta = await this._pluginDocMeta(entry.manifest);
-    if (meta?.shape && meta?.data) {
-      const subject = await this._subjectOf(entry.src);
-      if (!subject) return null;
-      return this._group(meta.label || entry.handler || entry.name || 'Settings', meta.shape, subject);
-    }
-    return this._groupFromManifest(entry.id);
+    const meta = await this._settingsMeta(entry);
+    if (!meta?.shape) return null;
+    const subject = await this._subjectOf(entry.src) || await this._subjectOf(meta.data);
+    if (!subject) return null;
+    const home = subject.match(/plugins\/([^/]+)\//)?.[1] || subject;
+    this._homes = this._homes || new Set();
+    if (this._homes.has(home)) return null;
+    this._homes.add(home);
+    return this._group(meta.label || entry.label || entry.handler || entry.name || 'Settings',
+      meta.shape, subject);
   }
 
-  // The settings subject for an in-use entry's `source`: the document's own
-  // fragment when the source names one (`…/x.ttl#Settings`), else the doc's
-  // foaf:primaryTopic — the established "what this document is about" convention.
+  // The settings subject for a doc: its own fragment when the URL names one
+  // (`…/x.ttl#Settings`), else the doc's foaf:primaryTopic — the established
+  // "what this document is about" convention. Non-ttl docs resolve to null.
   async _subjectOf(src) {
     if (!src) return null;
     const abs = new URL(src, document.baseURI).href;
     if (abs.includes('#')) return abs;
+    if (!/\.ttl$/.test(abs.split('?')[0])) return null;
     try {
       const dstore = await loadTurtle(abs);
       return dstore.any(rdf.sym(abs), rdf.sym(FOAF + 'primaryTopic'))?.value || null;
     } catch { return null; }
-  }
-
-  // Fallback: a dk per-plugin manifest (plugins/<id>/manifest.jsonld), read as
-  // plain JSON-LD — its keys (shape/requires/label) drive the form directly.
-  async _groupFromManifest(id) {
-    if (!id) return null;
-    const manifestUrl = new URL(`dk-pod/dk/plugins/${id}/manifest.jsonld`, document.baseURI).href;
-    let m;
-    try { m = await (await solFetch(manifestUrl)).json(); } catch { return null; }
-    if (!m.shape) return null;                         // no settings shape → no form
-    const requires = Array.isArray(m.requires) ? m.requires : (m.requires ? [m.requires] : []);
-    const ttl = requires.find((r) => String(r).endsWith('.ttl'));
-    if (!ttl) return null;
-
-    const shape   = new URL(m.shape, manifestUrl).href;       // /node_modules/…/x.shacl
-    const docUrl  = new URL(ttl, manifestUrl).href;           // plugins/<id>/x.ttl
-    let subject;
-    try {
-      const dstore = await loadTurtle(docUrl);
-      subject = dstore.any(rdf.sym(docUrl), rdf.sym(FOAF + 'primaryTopic'))?.value;
-    } catch { return null; }
-    if (!subject) return null;
-
-    return this._group(m.label || m.name || 'Settings', shape, subject);
   }
 
   // One settings group, styled like the page's hardcoded groups. data-settings-skip

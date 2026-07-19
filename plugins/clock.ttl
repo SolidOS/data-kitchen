@@ -1,16 +1,16 @@
 @prefix dct:    <http://purl.org/dc/terms/> .
 @prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Component ;
+  a ui:Plugin ;
+  schema:additionalType ui:Component ;
   ui:label "Clock" ;
   ui:icon "🕐" ;
-  ui:name "sol-time" ;
+  schema:url </node_modules/sol-components/web/sol-time.js> ;
   dct:conformsTo </node_modules/sol-components/shapes/time-settings.shacl> ;
   dct:references </node_modules/sol-components/data/time-settings.ttl> ;
-  rdfs:comment "Clock widget (timezone in its settings file)." ;
+  schema:description "Clock widget (timezone in its settings file)." ;
   dct:publisher "Jeff Zucker" ;
   dct:subject "Information" ;
   ui:attribute

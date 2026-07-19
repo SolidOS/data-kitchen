@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "JSON-LD Playground" ;
   ui:icon <https://json-ld.github.io/json-ld.org/favicon.ico> ;
-  ui:href <https://json-ld.github.io/json-ld.org/playground/> ;
-  rdfs:comment "Try out JSON-LD documents." ;
+  schema:url <https://json-ld.github.io/json-ld.org/playground/> ;
+  schema:description "Try out JSON-LD documents." ;
   dct:publisher "json-ld.org" ;
   dct:subject "Tech" .

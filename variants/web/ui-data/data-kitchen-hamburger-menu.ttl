@@ -1,16 +1,6 @@
-@prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix schema: <http://schema.org/> .
-@prefix acl:    <http://www.w3.org/ns/auth/acl#> .
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix data: <data-kitchen-plugins-catalog.ttl#>.
 
-# WEB DEMO VARIANT of the ☰ menu (variants/web overlay). The demo is a
-# read-only static site: Customize and Settings write to the pod and
-# Restart is Electron-only, so only the appearance items remain (their
-# choices persist in localStorage; the RDF write fails quietly).
+:More a ui:Menu; ui:label "☰ Menu"; ui:parts ( data:Theme data:Text-size ).
 
-<#More> a ui:Menu ; ui:label "Menu" ;
-  ui:parts ( <#MoreTheme> <#MoreFontSize> ) .
-
-# Label shows the CURRENT theme/size — dk-tabs-shell rewrites these two on open.
-<#MoreTheme> a ui:Component ; ui:label "Theme" ; ui:name "toggleTheme" .
-
-<#MoreFontSize> a ui:Component ; ui:label "Text size" ; ui:name "cycleFontSize" .

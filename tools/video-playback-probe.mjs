@@ -130,7 +130,7 @@ if (DRIVE) {
     return 'clicked:' + movies.textContent.trim().slice(0, 30);
   `);
   console.log('  nav:', nav);
-  // lazy ui:module mount + cold-cache library load — poll up to 90s for a
+  // lazy module (schema:url) mount + cold-cache library load — poll up to 90s for a
   // visible room, re-clicking the Movies trigger every 20s (a click that
   // landed before the menu tree finished wiring selects nothing).
   let mounted = false;

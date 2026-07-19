@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "SearXNG" ;
   ui:icon <https://searx.be/static/themes/simple/img/favicon.png> ;
-  ui:href <https://searx.be/> ;
-  rdfs:comment "Open-source privacy metasearch." ;
+  schema:url <https://searx.be/> ;
+  schema:description "Open-source privacy metasearch." ;
   dct:publisher "SearXNG" ;
   dct:subject "Other Services" .

@@ -23,7 +23,7 @@
 // (tools/conversion/).
 
 import { rdf } from 'sol-components/core/rdf.js';
-import { parseMenuItems } from 'sol-components/core/menu-rdf.js';
+import { parseMenuItems, loadReferencedDocs } from 'sol-components/core/menu-rdf.js';
 import { updateMenuInStore, serializeMenuDocument } from 'sol-components/core/menu-serialize.js';
 import { solFetch } from 'sol-components/core/auth-fetch.js';
 
@@ -45,6 +45,9 @@ async function loadShellModel() {
   const ttl = await (await solFetch(tabsUrl)).text();
   const store = rdf.graph();
   rdf.parse(ttl, store, tabsUrl, 'text/turtle');
+  // reference-style parts point at ui:Plugin entries (the catalog doc) —
+  // pull those docs into the store so parseMenuItems can resolve them
+  await loadReferencedDocs(store, tabsUrl, solFetch);
   return {
     tabsUrl,
     store,
@@ -85,13 +88,18 @@ async function refreshShell() {
 // (this config is app-owned, not user data). The chrome sign-in was REMOVED
 // 2026-07-10: the shell needs no login (news/media are public) — podz,
 // SolidOS, and other apps carry their own sol-logins.
+// Each default carries its module URL — serialization writes it as the
+// single schema:url payload (the retired ui:name spelling is never
+// written); the tag derives from the filename.
 const CHROME_DEFAULTS = [
   { type: 'component', id: 'chrome-help', name: '?', tag: 'sol-button',
+    module: '/node_modules/sol-components/web/sol-button.js',
     comment: 'Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay.',
     params: [['class', 'omp-help-launch'], ['title', 'Help'], ['aria-label', 'Help'],
              ['data-handler', 'sol-include'], ['source', './dk-pod/dk/help/dk.html'],
              ['if-logged-in', './dk-pod/dk/help/dk-owner.html'], ['inline', ''], ['trusted', '']] },
   { type: 'component', id: 'chrome-menu', name: 'Menu', tag: 'sol-dropdown-button', region: 'modal',
+    module: '/node_modules/sol-components/web/sol-dropdown-button.js',
     comment: '☰ menu — items live in ui-data/data-kitchen-hamburger-menu.ttl#More (Manage Plugins, Manage Menus, Settings, Sign in, and owner commands). Component items display in the #dk-menu-pane replace pane over the tab content.',
     params: [['class', 'omp-more'], ['title', 'Menu'], ['aria-label', 'Menu'],
              ['label', '☰'], ['source', './dk-pod/dk/ui-data/data-kitchen-hamburger-menu.ttl#More'],

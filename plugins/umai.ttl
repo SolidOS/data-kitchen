@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "Umai" ;
   ui:icon <https://umai.noeldemartin.com/apple-touch-icon.png> ;
-  ui:href <https://umai.noeldemartin.com> ;
-  rdfs:comment "Offline-first recipe manager." ;
+  schema:url <https://umai.noeldemartin.com> ;
+  schema:description "Offline-first recipe manager." ;
   dct:publisher "Noel De Martin" ;
   dct:subject "Information" .

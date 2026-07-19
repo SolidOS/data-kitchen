@@ -38,20 +38,31 @@ export function registerMenuInvariants(label, menuPath) {
     }
   });
 
-  t('every ui:Link in the menu has ui:href', () => {
+  t('every ui:Link in the menu has a schema:url', () => {
     const offenders = store.statementsMatching(null, sym(NS.rdf + 'type'), sym(NS.ui + 'Link'))
       .map((st) => st.subject)
-      .filter((s) => !store.any(s, sym(NS.ui + 'href')))
+      .filter((s) => !store.any(s, sym(NS.schema + 'url')))
       .map((s) => s.value.split('#').pop());
-    assert.deepEqual(offenders, [], `ui:Link without ui:href: ${offenders.join(', ')}`);
+    assert.deepEqual(offenders, [], `ui:Link without schema:url: ${offenders.join(', ')}`);
   });
 
-  t('every ui:Component in the menu has a non-empty ui:name', () => {
+  t('every ui:Component in the menu has a tag-shaped schema:url module', () => {
+    const TAG_RE = /\/[a-z][a-z0-9]*(-[a-z0-9]+)+(\.esm|\.min)?\.js$/;
     const offenders = store.statementsMatching(null, sym(NS.rdf + 'type'), sym(NS.ui + 'Component'))
       .map((st) => st.subject)
-      .filter((s) => !store.any(s, sym(NS.ui + 'name'))?.value?.trim())
+      .filter((s) => !TAG_RE.test(store.any(s, sym(NS.schema + 'url'))?.value || ''))
       .map((s) => s.value.split('#').pop());
-    assert.deepEqual(offenders, [], `ui:Component without ui:name: ${offenders.join(', ')}`);
+    assert.deepEqual(offenders, [], `ui:Component without a tag-shaped schema:url: ${offenders.join(', ')}`);
+  });
+
+  t('the retired payload trio appears nowhere', () => {
+    const offenders = [];
+    for (const pred of ['name', 'href', 'module']) {
+      for (const st of store.statementsMatching(null, sym(NS.ui + pred), null)) {
+        offenders.push(`ui:${pred} on ${st.subject.value.split('#').pop()}`);
+      }
+    }
+    assert.deepEqual(offenders, []);
   });
 
   t('every ui:attribute node has schema:name and schema:value', () => {

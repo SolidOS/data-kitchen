@@ -48,12 +48,17 @@ const BANNER = `<!-- Editable HTML snapshot of the dk shell, generated from ui-d
 
 const store = rdf.graph();
 rdf.parse(readFileSync(TTL, 'utf8'), store, DOC, 'text/turtle');
+// the catalog doc: reference-style parts point at its ui:Plugin entries
+const CATDOC = DOC.replace(/[^/]+$/, 'data-kitchen-plugins-catalog.ttl');
+const CAT_TTL = TTL.replace(/[^/]+$/, 'data-kitchen-plugins-catalog.ttl');
+if (existsSync(CAT_TTL)) rdf.parse(readFileSync(CAT_TTL, 'utf8'), store, CATDOC, 'text/turtle');
 const tabs = parseMenuItems(store, rdf.sym(`${DOC}#Tabs`));
 const bar = parseMenuItems(store, rdf.sym(`${DOC}#Bar`));
 const chromeItems = parseMenuItems(store, rdf.sym(`${DOC}#Chrome`));
 
 const { html } = generateShell({
   tabs, bar, chrome: chromeItems, currentHtml: SKELETON, warn: (m) => console.warn('  ! ' + m),
+  docUrl: DOC,
 });
 const text = BANNER + html;
 

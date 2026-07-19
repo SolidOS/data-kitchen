@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "Pixelfed" ;
   ui:icon <https://pixelfed.social/img/favicon.png> ;
-  ui:href <https://pixelfed.social/> ;
-  rdfs:comment "Federated photo sharing (ActivityPub)." ;
+  schema:url <https://pixelfed.social/> ;
+  schema:description "Federated photo sharing (ActivityPub)." ;
   dct:publisher "Pixelfed" ;
   dct:subject "Other Services" .

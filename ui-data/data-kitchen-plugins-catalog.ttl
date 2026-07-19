@@ -1,675 +1,1116 @@
-@prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://schema.org/> .
-@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
-@prefix dct:    <http://purl.org/dc/terms/> .
-
-# GENERATED from the flat plugins/*.ttl manifests by
-# tools/seed-plugins-catalog.mjs — edit a manifest (or use Customize) rather
-# than this file; re-seeding overwrites it.
-
-<#Available> a ui:Menu ; ui:label "Plugins Available" ;
-  rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it." ;
-  ui:parts ( <#0data-Hello> <#BilliPod> <#Bluesky> <#Booklice> <#Calendar> <#Clock> <#CryptPad> <#Data-Kitchen-Pod-Browser> <#dokieli> <#Duck-ai> <#Element> <#FilePod> <#GeoPod> <#Gmail> <#Google-Calendar> <#Google-Maps> <#Google-Messages> <#HealthPod> <#HomeVault> <#HuggingFace-Chat> <#Images-Wikimedia> <#InnerPod> <#JSON-LD-Playground> <#KeyPod> <#KonaPod> <#Lemmy> <#LibreTranslate> <#Mastodon> <#Matrix-Chat> <#Media-Kraken> <#Movies-Internet-Archive> <#MovieStar> <#MSFatigue> <#Music-Internet-Archive> <#News-three-panel-feeds> <#NotePod> <#ODI-Solid-File-Manager> <#OpenStreetMap> <#Penny> <#Pixelfed> <#Pod-Drive> <#Pod-Pro> <#Pod-Resume> <#PodCal> <#PodOS-Browser> <#Portable-LibreChat> <#Proton-Calendar> <#Proton-Drive> <#Proton-Mail> <#RDF-Validator> <#RoloPod> <#Search> <#SearXNG> <#SecureDialog> <#SepiaSearch> <#SHACL-Playground> <#Sign-in> <#Solid-Catalog> <#Solid-FAQ> <#Solid-File-Manager> <#Solid-Forum> <#Solid-Glossary> <#Solid-Website> <#Solidflix> <#SolidFocus> <#SolidOS-data-browser> <#SolidOS-AddressBook> <#SolidOS-Chat> <#SolidOS-Meeting> <#SolidOS-Notes> <#SolidOS-Tasks> <#SPARQL-Playground> <#Spoken-Word-Internet-Archive> <#Standard-Notes> <#Synara-AI> <#Tag-Explainer> <#Tired-Bike> <#TodoPod> <#Tuta> <#Umai> <#VitalStats> <#Weather> ) .
-
-<#Community> a skos:Collection ; skos:prefLabel "Community" ;
-  skos:member <#Booklice>, <#Solid-Forum>, <#Tired-Bike> .
-
-<#Content-Publishing> a skos:Collection ; skos:prefLabel "Content Publishing" ;
-  skos:member <#dokieli>, <#NotePod> .
-
-<#Health> a skos:Collection ; skos:prefLabel "Health" ;
-  skos:member <#HealthPod>, <#InnerPod>, <#MSFatigue>, <#SecureDialog>, <#VitalStats> .
-
-<#Information> a skos:Collection ; skos:prefLabel "Information" ;
-  skos:member <#Calendar>, <#Clock>, <#GeoPod>, <#News-three-panel-feeds>, <#Search>, <#Umai>, <#Weather> .
-
-<#Media> a skos:Collection ; skos:prefLabel "Media" ;
-  skos:member <#Images-Wikimedia>, <#Media-Kraken>, <#Movies-Internet-Archive>, <#MovieStar>, <#Music-Internet-Archive>, <#Solidflix>, <#Spoken-Word-Internet-Archive> .
-
-<#Other-Services> a skos:Collection ; skos:prefLabel "Other Services" ;
-  skos:member <#Bluesky>, <#CryptPad>, <#Duck-ai>, <#Element>, <#Gmail>, <#Google-Calendar>, <#Google-Maps>, <#Google-Messages>, <#HuggingFace-Chat>, <#Lemmy>, <#LibreTranslate>, <#Mastodon>, <#Matrix-Chat>, <#OpenStreetMap>, <#Pixelfed>, <#Proton-Calendar>, <#Proton-Drive>, <#Proton-Mail>, <#SearXNG>, <#SepiaSearch>, <#Standard-Notes>, <#Tuta> .
-
-<#Pods> a skos:Collection ; skos:prefLabel "Pods" ;
-  skos:member <#Data-Kitchen-Pod-Browser>, <#FilePod>, <#ODI-Solid-File-Manager>, <#Penny>, <#Pod-Drive>, <#Pod-Pro>, <#PodOS-Browser>, <#Sign-in>, <#Solid-File-Manager>, <#SolidOS-data-browser> .
-
-<#Productivity> a skos:Collection ; skos:prefLabel "Productivity" ;
-  skos:member <#BilliPod>, <#HomeVault>, <#KonaPod>, <#Pod-Resume>, <#PodCal>, <#RoloPod>, <#SolidFocus>, <#TodoPod> .
-
-<#Solid> a skos:Collection ; skos:prefLabel "Solid" ;
-  skos:member <#Solid-Catalog>, <#Solid-FAQ>, <#Solid-Glossary>, <#Solid-Website>, <#Tag-Explainer> .
-
-<#SolidOS-apps> a skos:Collection ; skos:prefLabel "SolidOS apps" ;
-  skos:member <#SolidOS-AddressBook>, <#SolidOS-Chat>, <#SolidOS-Meeting>, <#SolidOS-Notes>, <#SolidOS-Tasks> .
-
-<#Tech> a skos:Collection ; skos:prefLabel "Tech" ;
-  skos:member <#0data-Hello>, <#JSON-LD-Playground>, <#KeyPod>, <#Portable-LibreChat>, <#RDF-Validator>, <#SHACL-Playground>, <#SPARQL-Playground>, <#Synara-AI> .
-
-<#0data-Hello> a ui:Link ; ui:label "0data Hello" ;
-  dct:source <../plugins/0data-hello.ttl> ;
-  ui:icon "https://hello.0data.app/favicon.ico" ;
-  rdfs:comment "Tiny demo app showing data stored in your pod." ;
-  dct:publisher "0data" ;
-  ui:href <https://hello.0data.app/solid/> .
-
-<#BilliPod> a ui:Link ; ui:label "BilliPod" ;
-  dct:source <../plugins/billipod.ttl> ;
-  ui:icon "https://billipod.solidcommunity.au/billipod/icons/Icon-192.png" ;
-  rdfs:comment "Track bills with payment reminders." ;
-  dct:publisher "Togaware" ;
-  ui:href <https://billipod.solidcommunity.au> .
-
-<#Bluesky> a ui:Link ; ui:label "Bluesky" ;
-  dct:source <../plugins/bluesky.ttl> ;
-  ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png" ;
-  rdfs:comment "Distributed social network (AT Protocol)." ;
-  dct:publisher "Bluesky" ;
-  ui:href <https://bsky.app/> .
-
-<#Booklice> a ui:Link ; ui:label "Booklice" ;
-  dct:source <../plugins/booklice.ttl> ;
-  ui:icon "https://scenaristeur.github.io/booklice/img/icons/apple-touch-icon-152x152.png" ;
-  rdfs:comment "Bookmarks you can share with a community." ;
-  dct:publisher "scenaristeur" ;
-  ui:href <https://scenaristeur.github.io/booklice/> .
-
-<#Calendar> a ui:Component ; ui:label "Calendar" ;
-  dct:source <../plugins/calendar.ttl> ;
-  ui:icon "📅" ;
-  ui:name "sol-button" ;
-  rdfs:comment "Pop-out month calendar for the button bar." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "data-handler" ; schema:value "sol-calendar" ] ,
-    [ schema:name "hide-header" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All" ] .
-
-<#Clock> a ui:Component ; ui:label "Clock" ;
-  dct:source <../plugins/clock.ttl> ;
-  ui:icon "🕐" ;
-  ui:name "sol-time" ;
-  rdfs:comment "Clock widget (timezone in its settings file)." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/time/time-settings.ttl#Settings" ] .
-
-<#CryptPad> a ui:Link ; ui:label "CryptPad" ;
-  dct:source <../plugins/cryptpad.ttl> ;
-  ui:icon "https://cryptpad.fr/customize/favicon/main-favicon.png" ;
-  rdfs:comment "Encrypted collaborative documents." ;
-  dct:publisher "CryptPad" ;
-  ui:href <https://cryptpad.fr/> .
-
-<#Data-Kitchen-Pod-Browser> a ui:Component ; ui:label "Data Kitchen Pod Browser" ;
-  dct:source <../plugins/workspaces.ttl> ;
-  ui:icon "/assets/dk-logo.png" ;
-  ui:name "dk-podz" ;
-  rdfs:comment "Browse and manage your Solid pods and workspaces." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/podz/dk-podz.html" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#dokieli> a ui:Component ; ui:label "dokieli" ;
-  dct:source <../plugins/dokieli.ttl> ;
-  ui:icon "https://dokie.li/media/images/logo.png" ;
-  ui:name "dk-dokieli" ;
-  rdfs:comment "Write and publish articles, with annotations and social interactions." ;
-  dct:publisher "Sarven Capadisli and Virginia Balseiro" ;
-  ui:attribute
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#Duck-ai> a ui:Link ; ui:label "Duck.ai" ;
-  dct:source <../plugins/duck-ai.ttl> ;
-  ui:icon "https://duck.ai/apple-touch-icon.png" ;
-  rdfs:comment "Private AI chat from DuckDuckGo." ;
-  dct:publisher "DuckDuckGo" ;
-  ui:href <https://duck.ai> .
-
-<#Element> a ui:Link ; ui:label "Element" ;
-  dct:source <../plugins/element.ttl> ;
-  ui:icon "https://app.element.io/vector-icons/180.30b915f.png" ;
-  rdfs:comment "Matrix client for secure, decentralized chat." ;
-  dct:publisher "Element" ;
-  ui:href <https://app.element.io/> .
-
-<#FilePod> a ui:Link ; ui:label "FilePod" ;
-  dct:source <../plugins/filepod.ttl> ;
-  ui:icon "https://filepod.solidcommunity.au/filepod/icons/Icon-192.png" ;
-  rdfs:comment "File browser for multiple platforms." ;
-  dct:publisher "Software Innovation Institute, ANU" ;
-  ui:href <https://filepod.solidcommunity.au> .
-
-<#GeoPod> a ui:Link ; ui:label "GeoPod" ;
-  dct:source <../plugins/geopod.ttl> ;
-  ui:icon "https://geopod.solidcommunity.au/geopod/icons/Icon-192.png" ;
-  rdfs:comment "Store points of interest and encrypted tracks on a map." ;
-  dct:publisher "Software Innovation Institute, ANU" ;
-  ui:href <https://geopod.solidcommunity.au> .
-
-<#Gmail> a ui:Link ; ui:label "Gmail" ;
-  dct:source <../plugins/gmail.ttl> ;
-  ui:icon "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" ;
-  rdfs:comment "Google email." ;
-  dct:publisher "Google" ;
-  ui:href <https://mail.google.com/mail/u/0/> .
-
-<#Google-Calendar> a ui:Link ; ui:label "Google Calendar" ;
-  dct:source <../plugins/google-calendar.ttl> ;
-  ui:icon "https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_22.ico" ;
-  rdfs:comment "Your Google calendar." ;
-  dct:publisher "Google" ;
-  ui:href <https://calendar.google.com/calendar/u/0/r> .
-
-<#Google-Maps> a ui:Link ; ui:label "Google Maps" ;
-  dct:source <../plugins/google-maps.ttl> ;
-  ui:icon "https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico" ;
-  rdfs:comment "Maps and directions." ;
-  dct:publisher "Google" ;
-  ui:href <https://www.google.com/maps/> .
-
-<#Google-Messages> a ui:Link ; ui:label "Google Messages" ;
-  dct:source <../plugins/google-messages.ttl> ;
-  ui:icon "https://ssl.gstatic.com/android-messages-web/images/2022.3/1x/messages_2022_96dp.png" ;
-  rdfs:comment "Text messaging on the web." ;
-  dct:publisher "Google" ;
-  ui:href <https://messages.google.com/web/u/0/conversations> .
-
-<#HealthPod> a ui:Link ; ui:label "HealthPod" ;
-  dct:source <../plugins/healthpod.ttl> ;
-  ui:icon "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png" ;
-  rdfs:comment "Manage your health data, with encryption." ;
-  dct:publisher "Software Innovation Institute, ANU" ;
-  ui:href <https://healthpod.solidcommunity.au> .
-
-<#HomeVault> a ui:Link ; ui:label "HomeVault" ;
-  dct:source <../plugins/homevault.ttl> ;
-  ui:icon "https://homevault.apps.privatedatapod.com/icons/apple-touch-icon.png" ;
-  rdfs:comment "Home inventory for insurance and household records." ;
-  dct:publisher "PrivateDataPod" ;
-  ui:href <https://homevault.apps.privatedatapod.com/> .
-
-<#HuggingFace-Chat> a ui:Link ; ui:label "HuggingFace Chat" ;
-  dct:source <../plugins/huggingface-chat.ttl> ;
-  ui:icon "https://huggingface.co/chat/huggingchat/apple-touch-icon.png" ;
-  rdfs:comment "Chat with open-source AI models." ;
-  dct:publisher "Hugging Face" ;
-  ui:href <https://huggingface.co/chat/> .
-
-<#Images-Wikimedia> a ui:Component ; ui:label "Images (Wikimedia)" ;
-  dct:source <../plugins/images.ttl> ;
-  ui:icon "🖼" ;
-  ui:name "omp-images" ;
-  rdfs:comment "Browse Wikimedia image galleries." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .
-
-<#InnerPod> a ui:Link ; ui:label "InnerPod" ;
-  dct:source <../plugins/innerpod.ttl> ;
-  ui:icon "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png" ;
-  rdfs:comment "Guided meditation timer that records your sessions." ;
-  dct:publisher "Software Innovation Institute, ANU" ;
-  ui:href <https://innerpod.solidcommunity.au> .
-
-<#JSON-LD-Playground> a ui:Link ; ui:label "JSON-LD Playground" ;
-  dct:source <../plugins/jsonld-playground.ttl> ;
-  ui:icon "https://json-ld.github.io/json-ld.org/favicon.ico" ;
-  rdfs:comment "Try out JSON-LD documents." ;
-  dct:publisher "json-ld.org" ;
-  ui:href <https://json-ld.github.io/json-ld.org/playground/> .
-
-<#KeyPod> a ui:Link ; ui:label "KeyPod" ;
-  dct:source <../plugins/keypod.ttl> ;
-  ui:icon "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png" ;
-  rdfs:comment "Encrypted password and key-value store." ;
-  dct:publisher "Software Innovation Institute, ANU" ;
-  ui:href <https://keypod.solidcommunity.au> .
-
-<#KonaPod> a ui:Link ; ui:label "KonaPod" ;
-  dct:source <../plugins/konapod.ttl> ;
-  ui:icon "https://konapod.solidcommunity.au/konapod/icons/Icon-192.png" ;
-  rdfs:comment "Collect and analyse your car’s data." ;
-  dct:publisher "Togaware" ;
-  ui:href <https://konapod.solidcommunity.au> .
-
-<#Lemmy> a ui:Link ; ui:label "Lemmy" ;
-  dct:source <../plugins/lemmy.ttl> ;
-  ui:icon "https://icons.duckduckgo.com/ip3/lemmy.world.ico" ;
-  rdfs:comment "Federated link aggregator and forums (ActivityPub)." ;
-  dct:publisher "Lemmy" ;
-  ui:href <https://lemmy.world/> .
-
-<#LibreTranslate> a ui:Link ; ui:label "LibreTranslate" ;
-  dct:source <../plugins/libretranslate.ttl> ;
-  ui:icon "https://libretranslate.com/static/favicon.ico" ;
-  rdfs:comment "Open-source machine translation." ;
-  dct:publisher "LibreTranslate" ;
-  ui:href <https://libretranslate.com/> .
-
-<#Mastodon> a ui:Link ; ui:label "Mastodon" ;
-  dct:source <../plugins/mastodon.ttl> ;
-  ui:icon "https://mastodon.social/packs/assets/apple-touch-icon-1024x1024-B3Tu3EqI.png" ;
-  rdfs:comment "Decentralized social network." ;
-  dct:publisher "Mastodon" ;
-  ui:href <https://mastodon.social/> .
-
-<#Matrix-Chat> a ui:Link ; ui:label "Matrix Chat" ;
-  dct:source <../plugins/matrix-chat.ttl> ;
-  ui:icon "https://matrix.to/favicon.ico" ;
-  rdfs:comment "Matrix chat room for Solid practitioners." ;
-  dct:publisher "Matrix" ;
-  ui:href <https://matrix.to/#/#solid-practitioners:matrix.org> .
-
-<#Media-Kraken> a ui:Link ; ui:label "Media Kraken" ;
-  dct:source <../plugins/media-kraken.ttl> ;
-  ui:icon "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png" ;
-  rdfs:comment "Track movies and build personal collections." ;
-  dct:publisher "Noel De Martin" ;
-  ui:href <https://noeldemartin.github.io/media-kraken/> .
-
-<#Movies-Internet-Archive> a ui:Component ; ui:label "Movies (Internet Archive)" ;
-  dct:source <../plugins/movies.ttl> ;
-  ui:icon "🎬" ;
-  ui:name "ia-player" ;
-  rdfs:comment "Browse and play films from the Internet Archive." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "storage-ns" ; schema:value "movies" ] ,
-    [ schema:name "favourites-only" ; schema:value "" ] ,
-    [ schema:name "defer" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl" ] .
-
-<#MovieStar> a ui:Link ; ui:label "MovieStar" ;
-  dct:source <../plugins/moviestar.ttl> ;
-  ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png" ;
-  rdfs:comment "Track what you watch, share, and get recommendations." ;
-  dct:publisher "Software Innovation Institute, ANU" ;
-  ui:href <https://moviestar.solidcommunity.au> .
-
-<#MSFatigue> a ui:Link ; ui:label "MSFatigue" ;
-  dct:source <../plugins/msfatigue.ttl> ;
-  ui:icon "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png" ;
-  rdfs:comment "Survey app for MS fatigue research, with encrypted responses." ;
-  dct:publisher "Software Innovation Institute, ANU" ;
-  ui:href <https://msfatigue.solidcommunity.au> .
-
-<#Music-Internet-Archive> a ui:Component ; ui:label "Music (Internet Archive)" ;
-  dct:source <../plugins/music.ttl> ;
-  ui:icon "🎵" ;
-  ui:name "ia-player" ;
-  rdfs:comment "Browse and play music collections from the Internet Archive." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "storage-ns" ; schema:value "music" ] ,
-    [ schema:name "defer" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl" ] .
-
-<#News-three-panel-feeds> a ui:Component ; ui:label "News (three-panel feeds)" ;
-  dct:source <../plugins/news.ttl> ;
-  ui:icon "📰" ;
-  ui:name "sol-feed" ;
-  rdfs:comment "Read news feeds in a three-panel reader: sources, headlines, article." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "view" ; schema:value "threePanel" ] ,
-    [ schema:name "reader" ; schema:value "inline" ] ,
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds" ] .
-
-<#NotePod> a ui:Link ; ui:label "NotePod" ;
-  dct:source <../plugins/notepod.ttl> ;
-  ui:icon "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png" ;
-  rdfs:comment "Private, shareable notes with encryption." ;
-  dct:publisher "Software Innovation Institute, ANU" ;
-  ui:href <https://notepod.solidcommunity.au> .
-
-<#ODI-Solid-File-Manager> a ui:Link ; ui:label "ODI Solid File Manager" ;
-  dct:source <../plugins/odi-file-manager.ttl> ;
-  ui:icon "https://filemanager.solid-experiments.org/file-manager-logo.svg" ;
-  rdfs:comment "Friendly file and folder manager for your pod." ;
-  dct:publisher "Open Data Institute" ;
-  ui:href <https://filemanager.solid-experiments.org/> .
-
-<#OpenStreetMap> a ui:Link ; ui:label "OpenStreetMap" ;
-  dct:source <../plugins/openstreetmap.ttl> ;
-  ui:icon "https://www.openstreetmap.org/assets/apple-touch-icon-180x180-ea6361d7ae5b3f08c6290652ad703fa239364cc09c84873044f3299845f24652.png" ;
-  rdfs:comment "Open, community-built maps." ;
-  dct:publisher "OpenStreetMap" ;
-  ui:href <https://www.openstreetmap.org/> .
-
-<#Penny> a ui:Link ; ui:label "Penny" ;
-  dct:source <../plugins/penny.ttl> ;
-  ui:icon "https://penny.vincenttunru.com/favicon.ico" ;
-  rdfs:comment "Browse and manage everything in your pod." ;
-  dct:publisher "Vincent Tunru" ;
-  ui:href <https://penny.vincenttunru.com/> .
-
-<#Pixelfed> a ui:Link ; ui:label "Pixelfed" ;
-  dct:source <../plugins/pixelfed.ttl> ;
-  ui:icon "https://pixelfed.social/img/favicon.png" ;
-  rdfs:comment "Federated photo sharing (ActivityPub)." ;
-  dct:publisher "Pixelfed" ;
-  ui:href <https://pixelfed.social/> .
-
-<#Pod-Drive> a ui:Link ; ui:label "Pod Drive" ;
-  dct:source <../plugins/pod-drive.ttl> ;
-  ui:icon "https://drive.privatedatapod.com/icons/apple-touch-icon.png" ;
-  rdfs:comment "Drive-style file manager for your pod." ;
-  dct:publisher "PrivateDataPod team" ;
-  ui:href <https://drive.privatedatapod.com/> .
-
-<#Pod-Pro> a ui:Link ; ui:label "Pod Pro" ;
-  dct:source <../plugins/pod-pro.ttl> ;
-  ui:icon "https://podpro.dev/favicon.ico" ;
-  rdfs:comment "Power-editor for the contents of your pod." ;
-  dct:publisher "Jasmine Leonard" ;
-  ui:href <https://podpro.dev/> .
-
-<#Pod-Resume> a ui:Link ; ui:label "Pod Resume" ;
-  dct:source <../plugins/pod-resume.ttl> ;
-  ui:icon "https://resume.privatedatapod.com/vite.svg" ;
-  rdfs:comment "Résumé builder that keeps your CV history." ;
-  dct:publisher "PrivateDataPod team" ;
-  ui:href <https://resume.privatedatapod.com/> .
-
-<#PodCal> a ui:Link ; ui:label "PodCal" ;
-  dct:source <../plugins/podcal.ttl> ;
-  ui:icon "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23219EBC' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' stroke-width='1.5'/%3E%3Crect x='8' y='8.5' width='8' height='7.5' rx='1.25' stroke-width='1.05'/%3E%3Cpolyline points='10,12.25 11.75,14.25 15.5,11.25' stroke-width='1.6'/%3E%3C/svg%3E" ;
-  rdfs:comment "Schedule meetings with public booking pages; syncs with your calendar." ;
-  ui:href <https://podcal.eu> .
-
-<#PodOS-Browser> a ui:Link ; ui:label "PodOS Browser" ;
-  dct:source <../plugins/podos-browser.ttl> ;
-  ui:icon "https://browser.pod-os.org/icons/apple-icon-180.png" ;
-  rdfs:comment "Browse and manage the resources in your pod." ;
-  dct:publisher "PodOS project" ;
-  ui:href <https://browser.pod-os.org/> .
-
-<#Portable-LibreChat> a ui:Link ; ui:label "Portable LibreChat" ;
-  dct:source <../plugins/portable-librechat.ttl> ;
-  ui:icon "💬" ;
-  rdfs:comment "Open-source AI chat that keeps your conversations in your pod." ;
-  dct:publisher "Solid Project" ;
-  ui:href <https://chat.solidproject.org/> .
-
-<#Proton-Calendar> a ui:Link ; ui:label "Proton Calendar" ;
-  dct:source <../plugins/proton-calendar.ttl> ;
-  ui:icon "https://account.proton.me/assets/apple-touch-icon-1024x1024.png" ;
-  rdfs:comment "Encrypted calendar from Proton." ;
-  dct:publisher "Proton" ;
-  ui:href <https://calendar.proton.me/> .
-
-<#Proton-Drive> a ui:Link ; ui:label "Proton Drive" ;
-  dct:source <../plugins/proton-drive.ttl> ;
-  ui:icon "https://account.proton.me/assets/apple-touch-icon-1024x1024.png" ;
-  rdfs:comment "Encrypted file storage from Proton." ;
-  dct:publisher "Proton" ;
-  ui:href <https://drive.proton.me/> .
-
-<#Proton-Mail> a ui:Link ; ui:label "Proton Mail" ;
-  dct:source <../plugins/proton-mail.ttl> ;
-  ui:icon "https://account.proton.me/assets/apple-touch-icon-1024x1024.png" ;
-  rdfs:comment "Encrypted email from Proton." ;
-  dct:publisher "Proton" ;
-  ui:href <https://mail.proton.me/> .
-
-<#RDF-Validator> a ui:Link ; ui:label "RDF Validator" ;
-  dct:source <../plugins/rdf-validator.ttl> ;
-  ui:icon "https://www.easyrdf.org/icons/apple-touch-icon-144-precomposed.png" ;
-  rdfs:comment "Convert and validate RDF documents." ;
-  dct:publisher "EasyRdf" ;
-  ui:href <http://easyrdf.org/converter> .
-
-<#RoloPod> a ui:Link ; ui:label "RoloPod" ;
-  dct:source <../plugins/rolopod.ttl> ;
-  ui:icon "https://rolopod.solidcommunity.au/rolopod/icons/Icon-192.png" ;
-  rdfs:comment "Address book with selective sharing." ;
-  dct:publisher "Togaware" ;
-  ui:href <https://rolopod.solidcommunity.au> .
-
-<#Search> a ui:Component ; ui:label "Search" ;
-  dct:source <../plugins/search.ttl> ;
-  ui:icon "🔍" ;
-  ui:name "sol-search" ;
-  rdfs:comment "Search box for the button bar (pluggable search engines)." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/search/search-engines.ttl#SearchEngines" ] .
-
-<#SearXNG> a ui:Link ; ui:label "SearXNG" ;
-  dct:source <../plugins/searxng.ttl> ;
-  ui:icon "https://searx.be/static/themes/simple/img/favicon.png" ;
-  rdfs:comment "Open-source privacy metasearch." ;
-  dct:publisher "SearXNG" ;
-  ui:href <https://searx.be/> .
-
-<#SecureDialog> a ui:Link ; ui:label "SecureDialog" ;
-  dct:source <../plugins/securedialog.ttl> ;
-  ui:icon "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png" ;
-  rdfs:comment "Diabetes logging with encrypted storage." ;
-  dct:publisher "Software Innovation Institute, ANU" ;
-  ui:href <https://securedialog.solidcommunity.au> .
-
-<#SepiaSearch> a ui:Link ; ui:label "SepiaSearch" ;
-  dct:source <../plugins/sepiasearch.ttl> ;
-  ui:icon "https://sepiasearch.org/img/favicon.png" ;
-  rdfs:comment "Search federated PeerTube videos." ;
-  dct:publisher "Framasoft" ;
-  ui:href <https://sepiasearch.org/> .
-
-<#SHACL-Playground> a ui:Link ; ui:label "SHACL Playground" ;
-  dct:source <../plugins/shacl-playground.ttl> ;
-  ui:icon "✅" ;
-  rdfs:comment "Validate data against SHACL shapes." ;
-  dct:publisher "shacl.org" ;
-  ui:href <https://shacl.org/playground/> .
-
-<#Sign-in> a ui:Component ; ui:label "Sign in" ;
-  dct:source <../plugins/sign-in.ttl> ;
-  ui:icon "🔑" ;
-  ui:name "sol-login" ;
-  rdfs:comment "Solid sign-in button (popup flow)." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "mode" ; schema:value "popup" ] .
-
-<#Solid-Catalog> a ui:Link ; ui:label "Solid Catalog" ;
-  dct:source <../plugins/solid-catalog.ttl> ;
-  ui:icon "https://solidproject.org/assets/img/solid-emblem.svg" ;
-  rdfs:comment "Catalog of Solid apps, libraries and resources." ;
-  dct:publisher "Solid Community" ;
-  ui:href <https://solidproject.solidcommunity.net/catalog/> .
-
-<#Solid-FAQ> a ui:Link ; ui:label "Solid FAQ" ;
-  dct:source <../plugins/solid-faq.ttl> ;
-  ui:icon "https://solidproject.org/favicon.ico" ;
-  rdfs:comment "Frequently asked questions about Solid." ;
-  dct:publisher "Solid Project" ;
-  ui:href <https://solidproject.org/FAQ> .
-
-<#Solid-File-Manager> a ui:Link ; ui:label "Solid File Manager" ;
-  dct:source <../plugins/solid-file-manager.ttl> ;
-  ui:icon "https://otto-aa.github.io/solid-filemanager/favicon.ico" ;
-  rdfs:comment "Manage the files in your pod." ;
-  dct:publisher "Otto AA" ;
-  ui:href <https://otto-aa.github.io/solid-filemanager/> .
-
-<#Solid-Forum> a ui:Link ; ui:label "Solid Forum" ;
-  dct:source <../plugins/solid-forum.ttl> ;
-  ui:icon "https://solidproject.org/favicon.ico" ;
-  rdfs:comment "The Solid community discussion forum." ;
-  dct:publisher "Solid Project" ;
-  ui:href <https://forum.solidproject.org/> .
-
-<#Solid-Glossary> a ui:Link ; ui:label "Solid Glossary" ;
-  dct:source <../plugins/solid-glossary.ttl> ;
-  ui:icon "https://solidproject.solidcommunity.net/favicon.ico" ;
-  rdfs:comment "Glossary of Solid terms." ;
-  dct:publisher "Solid Community" ;
-  ui:href <https://solidproject.solidcommunity.net/glossary> .
-
-<#Solid-Website> a ui:Link ; ui:label "Solid Website" ;
-  dct:source <../plugins/solid-website.ttl> ;
-  ui:icon "https://solidproject.org/favicon.ico" ;
-  rdfs:comment "The Solid Project website." ;
-  dct:publisher "Solid Project" ;
-  ui:href <https://solidproject.org> .
-
-<#Solidflix> a ui:Link ; ui:label "Solidflix" ;
-  dct:source <../plugins/solidflix.ttl> ;
-  ui:icon "🎬" ;
-  rdfs:comment "Movie tracking with personalised recommendations." ;
-  dct:publisher "Oxford Human Centred Computing Group" ;
-  ui:href <https://oxfordhcc.github.io/solid-media/> .
-
-<#SolidFocus> a ui:Link ; ui:label "SolidFocus" ;
-  dct:source <../plugins/solidfocus.ttl> ;
-  ui:icon "https://focus.noeldemartin.com/apple-touch-icon.png" ;
-  rdfs:comment "Tasks and notes, works offline." ;
-  dct:publisher "Noel De Martin" ;
-  ui:href <https://focus.noeldemartin.com/> .
-
-<#SolidOS-data-browser> a ui:Component ; ui:label "SolidOS (data browser)" ;
-  dct:source <../plugins/solidos-browser.ttl> ;
-  ui:icon "https://solidproject.org/assets/img/solid-emblem.svg" ;
-  ui:name "dk-solidos" ;
-  rdfs:comment "The SolidOS data browser, embedded." ;
-  dct:publisher "SolidOS Team" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html" ] ,
-    [ schema:name "has-location-bar" ; schema:value "true" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#SolidOS-AddressBook> a ui:Component ; ui:label "SolidOS AddressBook" ;
-  dct:source <../plugins/addressbook.ttl> ;
-  ui:icon "📇" ;
-  ui:name "dk-solidos" ;
-  rdfs:comment "Your contacts — a Solid address book, in the SolidOS contacts pane." ;
-  dct:publisher "SolidOS Team" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/contacts/index.ttl#this" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#SolidOS-Chat> a ui:Component ; ui:label "SolidOS Chat" ;
-  dct:source <../plugins/chat.ttl> ;
-  ui:icon "💬" ;
-  ui:name "dk-solidos" ;
-  rdfs:comment "A Solid long chat, in the SolidOS chat pane." ;
-  dct:publisher "SolidOS Team" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/chat/index.ttl#this" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#SolidOS-Meeting> a ui:Component ; ui:label "SolidOS Meeting" ;
-  dct:source <../plugins/meeting.ttl> ;
-  ui:icon "🤝" ;
-  ui:name "dk-solidos" ;
-  rdfs:comment "A Solid meeting workspace, in the SolidOS meeting pane." ;
-  dct:publisher "SolidOS Team" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/meetings/index.ttl#this" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#SolidOS-Notes> a ui:Component ; ui:label "SolidOS Notes" ;
-  dct:source <../plugins/notes.ttl> ;
-  ui:icon "📝" ;
-  ui:name "dk-solidos" ;
-  rdfs:comment "A Solid notepad, in the SolidOS pad pane." ;
-  dct:publisher "SolidOS Team" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/notes/index.ttl#this" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#SolidOS-Tasks> a ui:Component ; ui:label "SolidOS Tasks" ;
-  dct:source <../plugins/task-manager.ttl> ;
-  ui:icon "📋" ;
-  ui:name "dk-solidos" ;
-  rdfs:comment "Your tasks — a Solid issue tracker, in the SolidOS tracker pane." ;
-  dct:publisher "SolidOS Team" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "/dk-pod/tasks/index.ttl#this" ] ,
-    [ schema:name "defer" ; schema:value "" ] .
-
-<#SPARQL-Playground> a ui:Link ; ui:label "SPARQL Playground" ;
-  dct:source <../plugins/sparql-playground.ttl> ;
-  ui:icon "🔮" ;
-  rdfs:comment "Try out SPARQL queries." ;
-  dct:publisher "AtomGraph" ;
-  ui:href <https://atomgraph.github.io/SPARQL-Playground/> .
-
-<#Spoken-Word-Internet-Archive> a ui:Component ; ui:label "Spoken Word (Internet Archive)" ;
-  dct:source <../plugins/spoken-word.ttl> ;
-  ui:icon "🎙️" ;
-  ui:name "ia-player" ;
-  rdfs:comment "Browse and play poetry, audiobooks, and talks from the Internet Archive." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "storage-ns" ; schema:value "spoken-word" ] ,
-    [ schema:name "defer" ; schema:value "" ] ,
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_spoken_word/index.ttl" ] .
-
-<#Standard-Notes> a ui:Link ; ui:label "Standard Notes" ;
-  dct:source <../plugins/standard-notes.ttl> ;
-  ui:icon "https://app.standardnotes.com/favicon/apple-touch-icon.png" ;
-  rdfs:comment "Open-source encrypted notes." ;
-  dct:publisher "Standard Notes" ;
-  ui:href <https://app.standardnotes.com/> .
-
-<#Synara-AI> a ui:Link ; ui:label "Synara AI" ;
-  dct:source <../plugins/synara-ai.ttl> ;
-  ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png" ;
-  rdfs:comment "Privacy-first AI assistant with searchable conversation logs." ;
-  dct:publisher "PrivateDataPod team" ;
-  ui:href <https://ai.privatedatapod.com/> .
-
-<#Tag-Explainer> a ui:Link ; ui:label "Tag Explainer" ;
-  dct:source <../plugins/solid-tag-explainer.ttl> ;
-  ui:icon "https://timbl.solidcommunity.net/favicon.ico" ;
-  rdfs:comment "How Solid works, explained." ;
-  dct:publisher "Tim Berners-Lee" ;
-  ui:href <https://timbl.solidcommunity.net/2023/03%20EWADA/TAGExplainerforSolid.html> .
-
-<#Tired-Bike> a ui:Link ; ui:label "Tired Bike" ;
-  dct:source <../plugins/tired-bike.ttl> ;
-  ui:icon "https://community.tired.bike/logo-new-open.svg" ;
-  rdfs:comment "Community platform for bicycle touring." ;
-  dct:publisher "Open Hospitality Network" ;
-  ui:href <https://tired.bike/> .
-
-<#TodoPod> a ui:Link ; ui:label "TodoPod" ;
-  dct:source <../plugins/todopod.ttl> ;
-  ui:icon "https://todopod.solidcommunity.au/todopod/icons/Icon-192.png" ;
-  rdfs:comment "Task lists in encrypted personal storage." ;
-  dct:publisher "Togaware" ;
-  ui:href <https://todopod.solidcommunity.au> .
-
-<#Tuta> a ui:Link ; ui:label "Tuta" ;
-  dct:source <../plugins/tuta.ttl> ;
-  ui:icon "https://app.tuta.com/images/apple-touch-icon.png" ;
-  rdfs:comment "Open-source encrypted email." ;
-  dct:publisher "Tuta" ;
-  ui:href <https://app.tuta.com/> .
-
-<#Umai> a ui:Link ; ui:label "Umai" ;
-  dct:source <../plugins/umai.ttl> ;
-  ui:icon "https://umai.noeldemartin.com/apple-touch-icon.png" ;
-  rdfs:comment "Offline-first recipe manager." ;
-  dct:publisher "Noel De Martin" ;
-  ui:href <https://umai.noeldemartin.com> .
-
-<#VitalStats> a ui:Link ; ui:label "VitalStats" ;
-  dct:source <../plugins/vitalstats.ttl> ;
-  ui:icon "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png" ;
-  rdfs:comment "Log blood pressure, weight and other vital signs." ;
-  dct:publisher "PrivateDataPod" ;
-  ui:href <https://vitalstats.apps.privatedatapod.com/> .
-
-<#Weather> a ui:Component ; ui:label "Weather" ;
-  dct:source <../plugins/weather.ttl> ;
-  ui:icon "🌤" ;
-  ui:name "sol-weather" ;
-  rdfs:comment "Weather widget (location and units in its settings file)." ;
-  dct:publisher "Jeff Zucker" ;
-  ui:attribute
-    [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/weather/weather-settings.ttl#Settings" ] .
-
+@prefix : <#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <http://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix sol: <https://hello.0data.app/solid/>.
+@prefix bsky: <https://bsky.app/>.
+@prefix boo: <https://scenaristeur.github.io/booklice/>.
+@prefix cry: <https://cryptpad.fr/>.
+@prefix we: </node_modules/sol-components/web/>.
+@prefix app: <https://app.element.io/>.
+@prefix n0: <https://mail.google.com/mail/u/0/>.
+@prefix n1: <https://calendar.google.com/calendar/u/0/>.
+@prefix maps: <https://www.google.com/maps/>.
+@prefix n2: <https://messages.google.com/web/u/0/>.
+@prefix hom: <https://homevault.apps.privatedatapod.com/>.
+@prefix chat: <https://huggingface.co/chat/>.
+@prefix pla: <https://json-ld.github.io/json-ld.org/playground/>.
+@prefix lemmy: <https://lemmy.world/>.
+@prefix lib: <https://libretranslate.com/>.
+@prefix mas: <https://mastodon.social/>.
+@prefix media: <https://noeldemartin.github.io/media-kraken/>.
+@prefix fil: <https://filemanager.solid-experiments.org/>.
+@prefix www: <https://www.openstreetmap.org/>.
+@prefix penny: <https://penny.vincenttunru.com/>.
+@prefix pix: <https://pixelfed.social/>.
+@prefix drive: <https://drive.privatedatapod.com/>.
+@prefix pod: <https://podpro.dev/>.
+@prefix res: <https://resume.privatedatapod.com/>.
+@prefix bro: <https://browser.pod-os.org/>.
+@prefix cha: <https://chat.solidproject.org/>.
+@prefix ca: <https://calendar.proton.me/>.
+@prefix dri: <https://drive.proton.me/>.
+@prefix mail: <https://mail.proton.me/>.
+@prefix eas: <http://easyrdf.org/>.
+@prefix searx: <https://searx.be/>.
+@prefix sep: <https://sepiasearch.org/>.
+@prefix pl: <https://shacl.org/playground/>.
+@prefix cat: <https://solidproject.solidcommunity.net/catalog/>.
+@prefix soli: <https://solidproject.org/>.
+@prefix s: <https://otto-aa.github.io/solid-filemanager/>.
+@prefix forum: <https://forum.solidproject.org/>.
+@prefix sol0: <https://solidproject.solidcommunity.net/>.
+@prefix sol1: <https://oxfordhcc.github.io/solid-media/>.
+@prefix focus: <https://focus.noeldemartin.com/>.
+@prefix SPA: <https://atomgraph.github.io/SPARQL-Playground/>.
+@prefix ap: <https://app.standardnotes.com/>.
+@prefix ai: <https://ai.privatedatapod.com/>.
+@prefix tired: <https://tired.bike/>.
+@prefix a: <https://app.tuta.com/>.
+@prefix vit: <https://vitalstats.apps.privatedatapod.com/>.
+@prefix plug: <../plugins/>.
+@prefix sha: </node_modules/sol-components/shapes/>.
+@prefix po: <../plugins/podz/>.
+@prefix sol2: <../plugins/solidos/>.
+@prefix dis: </node_modules/open-media-player/dist/>.
+@prefix ia: <../plugins/ia-player/>.
+@prefix int: <../plugins/ia-player/libraries/internet_archive_movies/>.
+@prefix ass: <../plugins/ia-player/assets/>.
+@prefix in: <../plugins/ia-player/libraries/internet_archive_music/>.
+@prefix inte: <../plugins/ia-player/libraries/internet_archive_spoken_word/>.
+@prefix dat: </node_modules/sol-components/data/>.
+@prefix data: <data-kitchen-commands.ttl#>.
+@prefix n4: <https://timbl.solidcommunity.net/2023/03%20EWADA/>.
+
+:0data-Hello
+    a ui:Plugin;
+    dct:publisher "0data";
+    dct:source plug:0data-hello.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Tiny demo app showing data stored in your pod.";
+    schema:url sol:;
+    ui:icon "https://hello.0data.app/favicon.ico";
+    ui:label "0data Hello".
+:Available
+    a ui:Menu;
+    rdfs:comment
+        "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it.";
+    ui:label "Plugins Available";
+    ui:parts
+            ( :0data-Hello :BilliPod :Bluesky :Booklice :Calendar :Clock
+            :CryptPad :Data-Kitchen-Pod-Browser :dokieli :Duck-ai :Element
+            :FilePod :GeoPod :Gmail :Google-Calendar :Google-Maps
+            :Google-Messages :HealthPod :HomeVault :HuggingFace-Chat
+            :Images-Wikimedia :InnerPod :JSON-LD-Playground :KeyPod :KonaPod
+            :Lemmy :LibreTranslate :Mastodon :Matrix-Chat :Media-Kraken
+            :Movies-Internet-Archive :MovieStar :MSFatigue
+            :Music-Internet-Archive :News-three-panel-feeds :NotePod
+            :ODI-Solid-File-Manager :OpenStreetMap :Penny :Pixelfed :Pod-Drive
+            :Pod-Pro :Pod-Resume :PodCal :PodOS-Browser :Portable-LibreChat
+            :Proton-Calendar :Proton-Drive :Proton-Mail :RDF-Validator :RoloPod
+            :Search :SearXNG :SecureDialog :SepiaSearch :SHACL-Playground
+            :Sign-in :Solid-Catalog :Solid-FAQ :Solid-File-Manager :Solid-Forum
+            :Solid-Glossary :Solid-Website :Solidflix :SolidFocus
+            :SolidOS-data-browser :SolidOS-AddressBook :SolidOS-Chat
+            :SolidOS-Meeting :SolidOS-Notes :SolidOS-Tasks :SPARQL-Playground
+            :Spoken-Word-Internet-Archive :Standard-Notes :Synara-AI
+            :Tag-Explainer :Tired-Bike :TodoPod :Tuta :Umai :VitalStats
+            :Weather :Theme :Text-size :Restart-dk :Customize :Settings ).
+:BilliPod
+    a ui:Plugin;
+    dct:publisher "Togaware";
+    dct:source plug:billipod.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Track bills with payment reminders.";
+    schema:url <https://billipod.solidcommunity.au>;
+    ui:icon "https://billipod.solidcommunity.au/billipod/icons/Icon-192.png";
+    ui:label "BilliPod".
+:Bluesky
+    a ui:Plugin;
+    dct:publisher "Bluesky";
+    dct:source plug:bluesky.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Distributed social network (AT Protocol).";
+    schema:url bsky:;
+    ui:icon "https://web-cdn.bsky.app/static/apple-touch-icon.png";
+    ui:label "Bluesky".
+:Booklice
+    a ui:Plugin;
+    dct:publisher "scenaristeur";
+    dct:source plug:booklice.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Bookmarks you can share with a community.";
+    schema:url boo:;
+    ui:icon
+        "https://scenaristeur.github.io/booklice/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Booklice".
+:Calendar
+    a ui:Plugin;
+    dct:conformsTo sha:calendar-settings.shacl;
+    dct:publisher "Jeff Zucker";
+    dct:references dat:calendar-settings.ttl;
+    dct:source plug:calendar.ttl;
+    schema:additionalType ui:Component;
+    schema:description "Pop-out month calendar for the button bar.";
+    schema:url we:sol-button.js;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-calendar" ],
+        [ schema:name "data-handler"; schema:value "sol-calendar" ],
+        [ schema:name "hide-header"; schema:value "" ],
+        [ schema:name "label"; schema:value "📅" ],
+        [ schema:name "region"; schema:value "dropdown" ],
+            [
+                schema:name "source";
+                schema:value
+                "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All"
+            ],
+        [ schema:name "title"; schema:value "Calendar" ];
+    ui:icon "📅";
+    ui:label "Calendar".
+:Clock
+    a ui:Plugin;
+    dct:conformsTo sha:time-settings.shacl;
+    dct:publisher "Jeff Zucker";
+    dct:references dat:time-settings.ttl;
+    dct:source plug:clock.ttl;
+    schema:additionalType ui:Component;
+    schema:description "Clock widget (timezone in its settings file).";
+    schema:url we:sol-time.js;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                "./dk-pod/dk/plugins/time/time-settings.ttl#Settings"
+            ];
+    ui:icon "🕐";
+    ui:label "Clock".
+:Community
+    a skos:Collection;
+    skos:member :Booklice, :Solid-Forum, :Tired-Bike;
+    skos:prefLabel "Community".
+:Content-Publishing
+    a skos:Collection;
+    skos:member :dokieli, :NotePod;
+    skos:prefLabel "Content Publishing".
+:CryptPad
+    a ui:Plugin;
+    dct:publisher "CryptPad";
+    dct:source plug:cryptpad.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Encrypted collaborative documents.";
+    schema:url cry:;
+    ui:icon "https://cryptpad.fr/customize/favicon/main-favicon.png";
+    ui:label "CryptPad".
+:Customize
+    a ui:Plugin;
+    dct:subject "UI Controls";
+    schema:additionalType ui:Component;
+    schema:description "Choose plugins for your menus and bar.";
+    schema:url we:sol-include.js;
+    ui:attribute
+        [ schema:name "if-logged-in"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/pages/customize.html"
+            ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "Customize".
+:Data-Kitchen-Pod-Browser
+    a ui:Plugin;
+    dct:conformsTo sha:pod-settings.shacl;
+    dct:publisher "Jeff Zucker";
+    dct:references po:pod-settings.ttl;
+    dct:source plug:workspaces.ttl;
+    schema:additionalType ui:Component;
+    schema:description "Browse and manage your Solid pods and workspaces.";
+    schema:softwareHelp po:help.html;
+    schema:url po:dk-podz.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-podz" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/podz/dk-podz.html"
+            ];
+    ui:icon "/assets/dk-logo.png";
+    ui:label "Data Kitchen Pod Browser".
+:dokieli
+    a ui:Plugin;
+    dct:publisher "Sarven Capadisli and Virginia Balseiro";
+    dct:source plug:dokieli.ttl;
+    schema:additionalType ui:Component;
+    schema:description
+    "Write and publish articles, with annotations and social interactions.";
+    schema:url sol2:dk-dokieli.js;
+    ui:attribute [ schema:name "defer"; schema:value "" ];
+    ui:icon "https://dokie.li/media/images/logo.png";
+    ui:label "dokieli".
+:Duck-ai
+    a ui:Plugin;
+    dct:publisher "DuckDuckGo";
+    dct:source plug:duck-ai.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Private AI chat from DuckDuckGo.";
+    schema:url <https://duck.ai>;
+    ui:icon "https://duck.ai/apple-touch-icon.png";
+    ui:label "Duck.ai".
+:Element
+    a ui:Plugin;
+    dct:publisher "Element";
+    dct:source plug:element.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Matrix client for secure, decentralized chat.";
+    schema:url app:;
+    ui:icon "https://app.element.io/vector-icons/180.30b915f.png";
+    ui:label "Element".
+:FilePod
+    a ui:Plugin;
+    dct:publisher "Software Innovation Institute, ANU";
+    dct:source plug:filepod.ttl;
+    schema:additionalType ui:Link;
+    schema:description "File browser for multiple platforms.";
+    schema:url <https://filepod.solidcommunity.au>;
+    ui:icon "https://filepod.solidcommunity.au/filepod/icons/Icon-192.png";
+    ui:label "FilePod".
+:GeoPod
+    a ui:Plugin;
+    dct:publisher "Software Innovation Institute, ANU";
+    dct:source plug:geopod.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+    "Store points of interest and encrypted tracks on a map.";
+    schema:url <https://geopod.solidcommunity.au>;
+    ui:icon "https://geopod.solidcommunity.au/geopod/icons/Icon-192.png";
+    ui:label "GeoPod".
+:Gmail
+    a ui:Plugin;
+    dct:publisher "Google";
+    dct:source plug:gmail.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Google email.";
+    schema:url n0:;
+    ui:icon "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico";
+    ui:label "Gmail".
+:Google-Calendar
+    a ui:Plugin;
+    dct:publisher "Google";
+    dct:source plug:google-calendar.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Your Google calendar.";
+    schema:url n1:r;
+    ui:icon
+        "https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_22.ico";
+    ui:label "Google Calendar".
+:Google-Maps
+    a ui:Plugin;
+    dct:publisher "Google";
+    dct:source plug:google-maps.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Maps and directions.";
+    schema:url maps:;
+    ui:icon
+    "https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico";
+    ui:label "Google Maps".
+:Google-Messages
+    a ui:Plugin;
+    dct:publisher "Google";
+    dct:source plug:google-messages.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Text messaging on the web.";
+    schema:url n2:conversations;
+    ui:icon
+        "https://ssl.gstatic.com/android-messages-web/images/2022.3/1x/messages_2022_96dp.png";
+    ui:label "Google Messages".
+:Health
+    a skos:Collection;
+    skos:member :HealthPod, :InnerPod, :MSFatigue, :SecureDialog, :VitalStats;
+    skos:prefLabel "Health".
+:HealthPod
+    a ui:Plugin;
+    dct:publisher "Software Innovation Institute, ANU";
+    dct:source plug:healthpod.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Manage your health data, with encryption.";
+    schema:url <https://healthpod.solidcommunity.au>;
+    ui:icon "https://healthpod.solidcommunity.au/healthpod/icons/Icon-192.png";
+    ui:label "HealthPod".
+:HomeVault
+    a ui:Plugin;
+    dct:publisher "PrivateDataPod";
+    dct:source plug:homevault.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Home inventory for insurance and household records.";
+    schema:url hom:;
+    ui:icon
+    "https://homevault.apps.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "HomeVault".
+:HuggingFace-Chat
+    a ui:Plugin;
+    dct:publisher "Hugging Face";
+    dct:source plug:huggingface-chat.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Chat with open-source AI models.";
+    schema:url chat:;
+    ui:icon "https://huggingface.co/chat/huggingchat/apple-touch-icon.png";
+    ui:label "HuggingFace Chat".
+:Images-Wikimedia
+    a ui:Plugin;
+    dct:publisher "Jeff Zucker";
+    dct:source plug:images.ttl;
+    schema:additionalType ui:Component;
+    schema:description "Browse Wikimedia image galleries.";
+    schema:url dis:omp-images.esm.js;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-images" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
+            ];
+    ui:icon "🖼";
+    ui:label "Images (Wikimedia)".
+:Information
+    a skos:Collection;
+    skos:member
+        :Calendar, :Clock, :GeoPod, :News-three-panel-feeds, :Search, :Umai,
+        :Weather;
+    skos:prefLabel "Information".
+:InnerPod
+    a ui:Plugin;
+    dct:publisher "Software Innovation Institute, ANU";
+    dct:source plug:innerpod.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Guided meditation timer that records your sessions.";
+    schema:url <https://innerpod.solidcommunity.au>;
+    ui:icon "https://innerpod.solidcommunity.au/innerpod/icons/Icon-192.png";
+    ui:label "InnerPod".
+:JSON-LD-Playground
+    a ui:Plugin;
+    dct:publisher "json-ld.org";
+    dct:source plug:jsonld-playground.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Try out JSON-LD documents.";
+    schema:url pla:;
+    ui:icon "https://json-ld.github.io/json-ld.org/favicon.ico";
+    ui:label "JSON-LD Playground".
+:KeyPod
+    a ui:Plugin;
+    dct:publisher "Software Innovation Institute, ANU";
+    dct:source plug:keypod.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Encrypted password and key-value store.";
+    schema:url <https://keypod.solidcommunity.au>;
+    ui:icon "https://keypod.solidcommunity.au/keypod/icons/Icon-192.png";
+    ui:label "KeyPod".
+:KonaPod
+    a ui:Plugin;
+    dct:publisher "Togaware";
+    dct:source plug:konapod.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Collect and analyse your car’s data.";
+    schema:url <https://konapod.solidcommunity.au>;
+    ui:icon "https://konapod.solidcommunity.au/konapod/icons/Icon-192.png";
+    ui:label "KonaPod".
+:Lemmy
+    a ui:Plugin;
+    dct:publisher "Lemmy";
+    dct:source plug:lemmy.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Federated link aggregator and forums (ActivityPub).";
+    schema:url lemmy:;
+    ui:icon "https://icons.duckduckgo.com/ip3/lemmy.world.ico";
+    ui:label "Lemmy".
+:LibreTranslate
+    a ui:Plugin;
+    dct:publisher "LibreTranslate";
+    dct:source plug:libretranslate.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Open-source machine translation.";
+    schema:url lib:;
+    ui:icon "https://libretranslate.com/static/favicon.ico";
+    ui:label "LibreTranslate".
+:Mastodon
+    a ui:Plugin;
+    dct:publisher "Mastodon";
+    dct:source plug:mastodon.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Decentralized social network.";
+    schema:url mas:;
+    ui:icon
+        "https://mastodon.social/packs/assets/apple-touch-icon-1024x1024-B3Tu3EqI.png";
+    ui:label "Mastodon".
+:Matrix-Chat
+    a ui:Plugin;
+    dct:publisher "Matrix";
+    dct:source plug:matrix-chat.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Matrix chat room for Solid practitioners.";
+    schema:url <https://matrix.to/#/#solid-practitioners:matrix.org>;
+    ui:icon "https://matrix.to/favicon.ico";
+    ui:label "Matrix Chat".
+:Media
+    a skos:Collection;
+    skos:member
+        :Images-Wikimedia, :Media-Kraken, :Movies-Internet-Archive, :MovieStar,
+        :Music-Internet-Archive, :Solidflix, :Spoken-Word-Internet-Archive;
+    skos:prefLabel "Media".
+:Media-Kraken
+    a ui:Plugin;
+    dct:publisher "Noel De Martin";
+    dct:source plug:media-kraken.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Track movies and build personal collections.";
+    schema:url media:;
+    ui:icon
+        "https://noeldemartin.github.io/media-kraken/img/icons/apple-touch-icon-152x152.png";
+    ui:label "Media Kraken".
+:Movies-Internet-Archive
+    a ui:Plugin;
+    dct:conformsTo ia:music.shacl;
+    dct:publisher "Jeff Zucker";
+    dct:references int:index.ttl;
+    dct:source plug:movies.ttl;
+    schema:additionalType ui:Component;
+    schema:description "Browse and play films from the Internet Archive.";
+    schema:softwareHelp ass:ia-help.html;
+    schema:url dis:ia-player.esm.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "favourites-only"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-movies" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "movies" ];
+    ui:icon "🎬";
+    ui:label "Movies (Internet Archive)".
+:MovieStar
+    a ui:Plugin;
+    dct:publisher "Software Innovation Institute, ANU";
+    dct:source plug:moviestar.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Track what you watch, share, and get recommendations.";
+    schema:url <https://moviestar.solidcommunity.au>;
+    ui:icon "https://moviestar.solidcommunity.au/moviestar/icons/Icon-192.png";
+    ui:label "MovieStar".
+:MSFatigue
+    a ui:Plugin;
+    dct:publisher "Software Innovation Institute, ANU";
+    dct:source plug:msfatigue.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+    "Survey app for MS fatigue research, with encrypted responses.";
+    schema:url <https://msfatigue.solidcommunity.au>;
+    ui:icon "https://msfatigue.solidcommunity.au/msfatigue/icons/Icon-192.png";
+    ui:label "MSFatigue".
+:Music-Internet-Archive
+    a ui:Plugin;
+    dct:conformsTo ia:music.shacl;
+    dct:publisher "Jeff Zucker";
+    dct:references in:index.ttl;
+    dct:source plug:music.ttl;
+    schema:additionalType ui:Component;
+    schema:description
+    "Browse and play music collections from the Internet Archive.";
+    schema:softwareHelp ass:ia-help.html;
+    schema:url dis:ia-player.esm.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-music" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "music" ];
+    ui:icon "🎵";
+    ui:label "Music (Internet Archive)".
+:News-three-panel-feeds
+    a ui:Plugin;
+    dct:publisher "Jeff Zucker";
+    dct:source plug:news.ttl;
+    schema:additionalType ui:Component;
+    schema:description
+    "Read news feeds in a three-panel reader: sources, headlines, article.";
+    schema:url we:sol-feed.js;
+    ui:attribute
+        [ schema:name "id"; schema:value "panel-news" ],
+        [ schema:name "reader"; schema:value "inline" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
+            ],
+        [ schema:name "view"; schema:value "threePanel" ];
+    ui:icon "📰";
+    ui:label "News (three-panel feeds)".
+:NotePod
+    a ui:Plugin;
+    dct:publisher "Software Innovation Institute, ANU";
+    dct:source plug:notepod.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Private, shareable notes with encryption.";
+    schema:url <https://notepod.solidcommunity.au>;
+    ui:icon "https://notepod.solidcommunity.au/notepod/icons/Icon-192.png";
+    ui:label "NotePod".
+:ODI-Solid-File-Manager
+    a ui:Plugin;
+    dct:publisher "Open Data Institute";
+    dct:source plug:odi-file-manager.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Friendly file and folder manager for your pod.";
+    schema:url fil:;
+    ui:icon "https://filemanager.solid-experiments.org/file-manager-logo.svg";
+    ui:label "ODI Solid File Manager".
+:OpenStreetMap
+    a ui:Plugin;
+    dct:publisher "OpenStreetMap";
+    dct:source plug:openstreetmap.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Open, community-built maps.";
+    schema:url www:;
+    ui:icon
+        "https://www.openstreetmap.org/assets/apple-touch-icon-180x180-ea6361d7ae5b3f08c6290652ad703fa239364cc09c84873044f3299845f24652.png";
+    ui:label "OpenStreetMap".
+:Other-Services
+    a skos:Collection;
+    skos:member
+        :Bluesky, :CryptPad, :Duck-ai, :Element, :Gmail, :Google-Calendar,
+        :Google-Maps, :Google-Messages, :HuggingFace-Chat, :Lemmy,
+        :LibreTranslate, :Mastodon, :Matrix-Chat, :OpenStreetMap, :Pixelfed,
+        :Proton-Calendar, :Proton-Drive, :Proton-Mail, :SearXNG, :SepiaSearch,
+        :Standard-Notes, :Tuta;
+    skos:prefLabel "Other Services".
+:Penny
+    a ui:Plugin;
+    dct:publisher "Vincent Tunru";
+    dct:source plug:penny.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Browse and manage everything in your pod.";
+    schema:url penny:;
+    ui:icon "https://penny.vincenttunru.com/favicon.ico";
+    ui:label "Penny".
+:Pixelfed
+    a ui:Plugin;
+    dct:publisher "Pixelfed";
+    dct:source plug:pixelfed.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Federated photo sharing (ActivityPub).";
+    schema:url pix:;
+    ui:icon "https://pixelfed.social/img/favicon.png";
+    ui:label "Pixelfed".
+:Pod-Drive
+    a ui:Plugin;
+    dct:publisher "PrivateDataPod team";
+    dct:source plug:pod-drive.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Drive-style file manager for your pod.";
+    schema:url drive:;
+    ui:icon "https://drive.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "Pod Drive".
+:Pod-Pro
+    a ui:Plugin;
+    dct:publisher "Jasmine Leonard";
+    dct:source plug:pod-pro.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Power-editor for the contents of your pod.";
+    schema:url pod:;
+    ui:icon "https://podpro.dev/favicon.ico";
+    ui:label "Pod Pro".
+:Pod-Resume
+    a ui:Plugin;
+    dct:publisher "PrivateDataPod team";
+    dct:source plug:pod-resume.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Résumé builder that keeps your CV history.";
+    schema:url res:;
+    ui:icon "https://resume.privatedatapod.com/vite.svg";
+    ui:label "Pod Resume".
+:PodCal
+    a ui:Plugin;
+    dct:source plug:podcal.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+    "Schedule meetings with public booking pages; syncs with your calendar.";
+    schema:url <https://podcal.eu>;
+    ui:icon
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23219EBC' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' stroke-width='1.5'/%3E%3Crect x='8' y='8.5' width='8' height='7.5' rx='1.25' stroke-width='1.05'/%3E%3Cpolyline points='10,12.25 11.75,14.25 15.5,11.25' stroke-width='1.6'/%3E%3C/svg%3E";
+    ui:label "PodCal".
+:PodOS-Browser
+    a ui:Plugin;
+    dct:publisher "PodOS project";
+    dct:source plug:podos-browser.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Browse and manage the resources in your pod.";
+    schema:url bro:;
+    ui:icon "https://browser.pod-os.org/icons/apple-icon-180.png";
+    ui:label "PodOS Browser".
+:Pods
+    a skos:Collection;
+    skos:member
+        :Data-Kitchen-Pod-Browser, :FilePod, :ODI-Solid-File-Manager, :Penny,
+        :Pod-Drive, :Pod-Pro, :PodOS-Browser, :Sign-in, :Solid-File-Manager,
+        :SolidOS-data-browser;
+    skos:prefLabel "Pods".
+:Portable-LibreChat
+    a ui:Plugin;
+    dct:publisher "Solid Project";
+    dct:source plug:portable-librechat.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+    "Open-source AI chat that keeps your conversations in your pod.";
+    schema:url cha:;
+    ui:icon "💬";
+    ui:label "Portable LibreChat".
+:Productivity
+    a skos:Collection;
+    skos:member
+        :BilliPod, :HomeVault, :KonaPod, :Pod-Resume, :PodCal, :RoloPod,
+        :SolidFocus, :TodoPod;
+    skos:prefLabel "Productivity".
+:Proton-Calendar
+    a ui:Plugin;
+    dct:publisher "Proton";
+    dct:source plug:proton-calendar.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Encrypted calendar from Proton.";
+    schema:url ca:;
+    ui:icon "https://account.proton.me/assets/apple-touch-icon-1024x1024.png";
+    ui:label "Proton Calendar".
+:Proton-Drive
+    a ui:Plugin;
+    dct:publisher "Proton";
+    dct:source plug:proton-drive.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Encrypted file storage from Proton.";
+    schema:url dri:;
+    ui:icon "https://account.proton.me/assets/apple-touch-icon-1024x1024.png";
+    ui:label "Proton Drive".
+:Proton-Mail
+    a ui:Plugin;
+    dct:publisher "Proton";
+    dct:source plug:proton-mail.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Encrypted email from Proton.";
+    schema:url mail:;
+    ui:icon "https://account.proton.me/assets/apple-touch-icon-1024x1024.png";
+    ui:label "Proton Mail".
+:RDF-Validator
+    a ui:Plugin;
+    dct:publisher "EasyRdf";
+    dct:source plug:rdf-validator.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Convert and validate RDF documents.";
+    schema:url eas:converter;
+    ui:icon
+    "https://www.easyrdf.org/icons/apple-touch-icon-144-precomposed.png";
+    ui:label "RDF Validator".
+:Restart-dk
+    a ui:Plugin;
+    dct:subject "UI Controls";
+    schema:additionalType ui:Command;
+    schema:description "Restart the Data Kitchen app.";
+    schema:url data:restartApp;
+    ui:icon "🔄";
+    ui:label "Restart dk".
+:RoloPod
+    a ui:Plugin;
+    dct:publisher "Togaware";
+    dct:source plug:rolopod.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Address book with selective sharing.";
+    schema:url <https://rolopod.solidcommunity.au>;
+    ui:icon "https://rolopod.solidcommunity.au/rolopod/icons/Icon-192.png";
+    ui:label "RoloPod".
+:Search
+    a ui:Plugin;
+    dct:conformsTo sha:search-engines.shacl;
+    dct:publisher "Jeff Zucker";
+    dct:references dat:search-engines.ttl;
+    dct:source plug:search.ttl;
+    schema:additionalType ui:Component;
+    schema:description
+    "Search box for the button bar (pluggable search engines).";
+    schema:url we:sol-search.js;
+    ui:attribute
+        [ schema:name "class"; schema:value "omp-search" ],
+        [ schema:name "data-settings-skip"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value
+                "./dk-pod/dk/plugins/search/search-engines.ttl#SearchEngines"
+            ],
+        [ schema:name "title"; schema:value "Search" ];
+    ui:icon "🔍";
+    ui:label "Search".
+:SearXNG
+    a ui:Plugin;
+    dct:publisher "SearXNG";
+    dct:source plug:searxng.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Open-source privacy metasearch.";
+    schema:url searx:;
+    ui:icon "https://searx.be/static/themes/simple/img/favicon.png";
+    ui:label "SearXNG".
+:SecureDialog
+    a ui:Plugin;
+    dct:publisher "Software Innovation Institute, ANU";
+    dct:source plug:securedialog.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Diabetes logging with encrypted storage.";
+    schema:url <https://securedialog.solidcommunity.au>;
+    ui:icon
+    "https://securedialog.solidcommunity.au/securedialog/icons/Icon-192.png";
+    ui:label "SecureDialog".
+:SepiaSearch
+    a ui:Plugin;
+    dct:publisher "Framasoft";
+    dct:source plug:sepiasearch.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Search federated PeerTube videos.";
+    schema:url sep:;
+    ui:icon "https://sepiasearch.org/img/favicon.png";
+    ui:label "SepiaSearch".
+:Settings
+    a ui:Plugin;
+    dct:subject "UI Controls";
+    schema:additionalType ui:Component;
+    schema:description "Global Data Kitchen settings.";
+    schema:url we:sol-include.js;
+    ui:attribute
+        [ schema:name "if-logged-in"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/pages/settings.html"
+            ],
+        [ schema:name "trusted"; schema:value "" ];
+    ui:label "Settings".
+:SHACL-Playground
+    a ui:Plugin;
+    dct:publisher "shacl.org";
+    dct:source plug:shacl-playground.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Validate data against SHACL shapes.";
+    schema:url pl:;
+    ui:icon "✅";
+    ui:label "SHACL Playground".
+:Sign-in
+    a ui:Plugin;
+    dct:publisher "Jeff Zucker";
+    dct:source plug:sign-in.ttl;
+    schema:additionalType ui:Component;
+    schema:description "Solid sign-in button (popup flow).";
+    schema:url we:sol-login.js;
+    ui:attribute [ schema:name "mode"; schema:value "popup" ];
+    ui:icon "🔑";
+    ui:label "Sign in".
+:Solid
+    a skos:Collection;
+    skos:member
+    :Solid-Catalog, :Solid-FAQ, :Solid-Glossary, :Solid-Website, :Tag-Explainer;
+    skos:prefLabel "Solid".
+:Solid-Catalog
+    a ui:Plugin;
+    dct:publisher "Solid Community";
+    dct:source plug:solid-catalog.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Catalog of Solid apps, libraries and resources.";
+    schema:url cat:;
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "Solid Catalog".
+:Solid-FAQ
+    a ui:Plugin;
+    dct:publisher "Solid Project";
+    dct:source plug:solid-faq.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Frequently asked questions about Solid.";
+    schema:url soli:FAQ;
+    ui:icon "https://solidproject.org/favicon.ico";
+    ui:label "Solid FAQ".
+:Solid-File-Manager
+    a ui:Plugin;
+    dct:publisher "Otto AA";
+    dct:source plug:solid-file-manager.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Manage the files in your pod.";
+    schema:url s:;
+    ui:icon "https://otto-aa.github.io/solid-filemanager/favicon.ico";
+    ui:label "Solid File Manager".
+:Solid-Forum
+    a ui:Plugin;
+    dct:publisher "Solid Project";
+    dct:source plug:solid-forum.ttl;
+    schema:additionalType ui:Link;
+    schema:description "The Solid community discussion forum.";
+    schema:url forum:;
+    ui:icon "https://solidproject.org/favicon.ico";
+    ui:label "Solid Forum".
+:Solid-Glossary
+    a ui:Plugin;
+    dct:publisher "Solid Community";
+    dct:source plug:solid-glossary.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Glossary of Solid terms.";
+    schema:url sol0:glossary;
+    ui:icon "https://solidproject.solidcommunity.net/favicon.ico";
+    ui:label "Solid Glossary".
+:Solid-Website
+    a ui:Plugin;
+    dct:publisher "Solid Project";
+    dct:source plug:solid-website.ttl;
+    schema:additionalType ui:Link;
+    schema:description "The Solid Project website.";
+    schema:url <https://solidproject.org>;
+    ui:icon "https://solidproject.org/favicon.ico";
+    ui:label "Solid Website".
+:Solidflix
+    a ui:Plugin;
+    dct:publisher "Oxford Human Centred Computing Group";
+    dct:source plug:solidflix.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Movie tracking with personalised recommendations.";
+    schema:url sol1:;
+    ui:icon "🎬";
+    ui:label "Solidflix".
+:SolidFocus
+    a ui:Plugin;
+    dct:publisher "Noel De Martin";
+    dct:source plug:solidfocus.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Tasks and notes, works offline.";
+    schema:url focus:;
+    ui:icon "https://focus.noeldemartin.com/apple-touch-icon.png";
+    ui:label "SolidFocus".
+:SolidOS-AddressBook
+    a ui:Plugin;
+    dct:publisher "SolidOS Team";
+    dct:source plug:addressbook.ttl;
+    schema:additionalType ui:Component;
+    schema:description
+    "Your contacts — a Solid address book, in the SolidOS contacts pane.";
+    schema:url sol2:dk-solidos.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "/dk-pod/solidos-apps/contacts/index.ttl#this"
+            ];
+    ui:icon "📇";
+    ui:label "SolidOS AddressBook".
+:SolidOS-apps
+    a skos:Collection;
+    skos:member
+        :SolidOS-AddressBook, :SolidOS-Chat, :SolidOS-Meeting, :SolidOS-Notes,
+        :SolidOS-Tasks;
+    skos:prefLabel "SolidOS apps".
+:SolidOS-Chat
+    a ui:Plugin;
+    dct:publisher "SolidOS Team";
+    dct:source plug:chat.ttl;
+    schema:additionalType ui:Component;
+    schema:description "A Solid long chat, in the SolidOS chat pane.";
+    schema:url sol2:dk-solidos.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "/dk-pod/solidos-apps/chat/index.ttl#this"
+            ];
+    ui:icon "💬";
+    ui:label "SolidOS Chat".
+:SolidOS-data-browser
+    a ui:Plugin;
+    dct:publisher "SolidOS Team";
+    dct:source plug:solidos-browser.ttl;
+    schema:additionalType ui:Component;
+    schema:description "The SolidOS data browser, embedded.";
+    schema:softwareHelp sol2:help.html;
+    schema:url sol2:dk-solidos.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "has-location-bar"; schema:value "true" ],
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
+            ];
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS (data browser)".
+:SolidOS-Meeting
+    a ui:Plugin;
+    dct:publisher "SolidOS Team";
+    dct:source plug:meeting.ttl;
+    schema:additionalType ui:Component;
+    schema:description
+    "A Solid meeting workspace, in the SolidOS meeting pane.";
+    schema:url sol2:dk-solidos.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "/dk-pod/solidos-apps/meetings/index.ttl#this"
+            ];
+    ui:icon "🤝";
+    ui:label "SolidOS Meeting".
+:SolidOS-Notes
+    a ui:Plugin;
+    dct:publisher "SolidOS Team";
+    dct:source plug:notes.ttl;
+    schema:additionalType ui:Component;
+    schema:description "A Solid notepad, in the SolidOS pad pane.";
+    schema:url sol2:dk-solidos.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "/dk-pod/solidos-apps/notes/index.ttl#this"
+            ];
+    ui:icon "📝";
+    ui:label "SolidOS Notes".
+:SolidOS-Tasks
+    a ui:Plugin;
+    dct:publisher "SolidOS Team";
+    dct:source plug:task-manager.ttl;
+    schema:additionalType ui:Component;
+    schema:description
+    "Your tasks — a Solid issue tracker, in the SolidOS tracker pane.";
+    schema:url sol2:dk-solidos.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+            [
+                schema:name "source";
+                schema:value "/dk-pod/solidos-apps/tasks/index.ttl#this"
+            ];
+    ui:icon "📋";
+    ui:label "SolidOS Tasks".
+:SPARQL-Playground
+    a ui:Plugin;
+    dct:publisher "AtomGraph";
+    dct:source plug:sparql-playground.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Try out SPARQL queries.";
+    schema:url SPA:;
+    ui:icon "🔮";
+    ui:label "SPARQL Playground".
+:Spoken-Word-Internet-Archive
+    a ui:Plugin;
+    dct:conformsTo ia:music.shacl;
+    dct:publisher "Jeff Zucker";
+    dct:references inte:index.ttl;
+    dct:source plug:spoken-word.ttl;
+    schema:additionalType ui:Component;
+    schema:description
+    "Browse and play poetry, audiobooks, and talks from the Internet Archive.";
+    schema:softwareHelp ass:ia-help.html;
+    schema:url dis:ia-player.esm.js;
+    ui:attribute
+        [ schema:name "defer"; schema:value "" ],
+        [ schema:name "id"; schema:value "panel-spoken-word" ],
+            [
+                schema:name "source";
+                schema:value
+                    "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_spoken_word/index.ttl"
+            ],
+        [ schema:name "storage-ns"; schema:value "spoken-word" ];
+    ui:icon "🎙️";
+    ui:label "Spoken Word (Internet Archive)".
+:Standard-Notes
+    a ui:Plugin;
+    dct:publisher "Standard Notes";
+    dct:source plug:standard-notes.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Open-source encrypted notes.";
+    schema:url ap:;
+    ui:icon "https://app.standardnotes.com/favicon/apple-touch-icon.png";
+    ui:label "Standard Notes".
+:Synara-AI
+    a ui:Plugin;
+    dct:publisher "PrivateDataPod team";
+    dct:source plug:synara-ai.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+    "Privacy-first AI assistant with searchable conversation logs.";
+    schema:url ai:;
+    ui:icon "https://ai.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "Synara AI".
+:Tag-Explainer
+    a ui:Plugin;
+    dct:publisher "Tim Berners-Lee";
+    dct:source plug:solid-tag-explainer.ttl;
+    schema:additionalType ui:Link;
+    schema:description "How Solid works, explained.";
+    schema:url n4:TAGExplainerforSolid.html;
+    ui:icon "https://timbl.solidcommunity.net/favicon.ico";
+    ui:label "Tag Explainer".
+:Tech
+    a skos:Collection;
+    skos:member
+        :0data-Hello, :JSON-LD-Playground, :KeyPod, :Portable-LibreChat,
+        :RDF-Validator, :SHACL-Playground, :SPARQL-Playground, :Synara-AI;
+    skos:prefLabel "Tech".
+:Text-size
+    a ui:Plugin;
+    dct:subject "UI Controls";
+    schema:additionalType ui:Command;
+    schema:description "Cycle the interface text size.";
+    schema:url data:cycleFontSize;
+    ui:icon "A";
+    ui:label "Text size".
+:Theme
+    a ui:Plugin;
+    dct:subject "UI Controls";
+    schema:additionalType ui:Command;
+    schema:description "Toggle the light / dark color scheme.";
+    schema:url data:toggleTheme;
+    ui:icon "🌙";
+    ui:label "Theme".
+:Tired-Bike
+    a ui:Plugin;
+    dct:publisher "Open Hospitality Network";
+    dct:source plug:tired-bike.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Community platform for bicycle touring.";
+    schema:url tired:;
+    ui:icon "https://community.tired.bike/logo-new-open.svg";
+    ui:label "Tired Bike".
+:TodoPod
+    a ui:Plugin;
+    dct:publisher "Togaware";
+    dct:source plug:todopod.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Task lists in encrypted personal storage.";
+    schema:url <https://todopod.solidcommunity.au>;
+    ui:icon "https://todopod.solidcommunity.au/todopod/icons/Icon-192.png";
+    ui:label "TodoPod".
+:Tuta
+    a ui:Plugin;
+    dct:publisher "Tuta";
+    dct:source plug:tuta.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Open-source encrypted email.";
+    schema:url a:;
+    ui:icon "https://app.tuta.com/images/apple-touch-icon.png";
+    ui:label "Tuta".
+:UI-Controls
+    a skos:Collection;
+    skos:member :Customize, :Restart-dk, :Settings, :Text-size, :Theme;
+    skos:prefLabel "UI Controls".
+:Umai
+    a ui:Plugin;
+    dct:publisher "Noel De Martin";
+    dct:source plug:umai.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Offline-first recipe manager.";
+    schema:url <https://umai.noeldemartin.com>;
+    ui:icon "https://umai.noeldemartin.com/apple-touch-icon.png";
+    ui:label "Umai".
+:VitalStats
+    a ui:Plugin;
+    dct:publisher "PrivateDataPod";
+    dct:source plug:vitalstats.ttl;
+    schema:additionalType ui:Link;
+    schema:description "Log blood pressure, weight and other vital signs.";
+    schema:url vit:;
+    ui:icon
+    "https://vitalstats.apps.privatedatapod.com/icons/apple-touch-icon.png";
+    ui:label "VitalStats".
+:Weather
+    a ui:Plugin;
+    dct:conformsTo sha:weather-settings.shacl;
+    dct:publisher "Jeff Zucker";
+    dct:references dat:weather-settings.ttl;
+    dct:source plug:weather.ttl;
+    schema:additionalType ui:Component;
+    schema:description
+    "Weather widget (location and units in its settings file).";
+    schema:url we:sol-weather.js;
+    ui:attribute
+            [
+                schema:name "source";
+                schema:value
+                "./dk-pod/dk/plugins/weather/weather-settings.ttl#Settings"
+            ];
+    ui:icon "🌤";
+    ui:label "Weather".

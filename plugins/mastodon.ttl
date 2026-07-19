@@ -1,12 +1,13 @@
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix ui:   <http://www.w3.org/ns/ui#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Link ;
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
   ui:label "Mastodon" ;
   ui:icon <https://mastodon.social/packs/assets/apple-touch-icon-1024x1024-B3Tu3EqI.png> ;
-  ui:href <https://mastodon.social/> ;
-  rdfs:comment "Decentralized social network." ;
+  schema:url <https://mastodon.social/> ;
+  schema:description "Decentralized social network." ;
   dct:publisher "Mastodon" ;
   dct:subject "Other Services" .

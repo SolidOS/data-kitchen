@@ -1,15 +1,14 @@
 @prefix dct:    <http://purl.org/dc/terms/> .
 @prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Component ;
+  a ui:Plugin ;
+  schema:additionalType ui:Component ;
   ui:label "Images (Wikimedia)" ;
   ui:icon "🖼" ;
-  ui:name "omp-images" ;
-  ui:module </node_modules/open-media-player/dist/ia-player.esm.js> ;
-  rdfs:comment "Browse Wikimedia image galleries." ;
+  schema:url </node_modules/open-media-player/dist/omp-images.esm.js> ;
+  schema:description "Browse Wikimedia image galleries." ;
   dct:publisher "Jeff Zucker" ;
   dct:subject "Media" ;
   ui:attribute

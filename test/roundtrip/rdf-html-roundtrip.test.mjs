@@ -18,6 +18,9 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const SC = resolve(ROOT, 'node_modules/sol-components/core');
 const DOC = 'https://data-kitchen.invalid/ui-data/data-kitchen-main-menu.ttl';
 const TTL = resolve(ROOT, 'ui-data/data-kitchen-main-menu.ttl');
+const CATDOC = 'https://data-kitchen.invalid/ui-data/data-kitchen-plugins-catalog.ttl';
+const CAT_TTL = resolve(ROOT, 'ui-data/data-kitchen-plugins-catalog.ttl');
+const ENTRY_DOCS = ['data-kitchen-plugins-catalog.ttl', CATDOC];
 const SKELETON = '<sol-tabs id="dk-tabs" keep-alive>\n  <!-- chrome:begin -->\n  <!-- chrome:end -->\n</sol-tabs>\n';
 
 const { rdf } = await import(resolve(SC, 'rdf.js'));
@@ -32,8 +35,16 @@ const emit = (store) => generateShell({
   chrome: parseMenuItems(store, sym('Chrome')),
   currentHtml: SKELETON,
   warn: () => {},
+  docUrl: DOC,
 }).html;
-const parse = (ttl) => { const s = rdf.graph(); rdf.parse(ttl, s, DOC, 'text/turtle'); return s; };
+// the menu references ui:Plugin entries in the catalog doc — load BOTH so
+// parse resolves them (per-doc graphs keep serialization doc-scoped)
+const parse = (ttl) => {
+  const s = rdf.graph();
+  rdf.parse(ttl, s, DOC, 'text/turtle');
+  rdf.parse(readFileSync(CAT_TTL, 'utf8'), s, CATDOC, 'text/turtle');
+  return s;
+};
 const menuMeta = (store, node) => {
   const o = rdfVal(store, node, 'orientation');
   return {
@@ -58,10 +69,16 @@ async function extractFromHtmlInPage(html) {
   const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
   try {
     const page = await browser.newPage();
-    return await page.evaluate(async ({ modUrl, html }) => {
+    const res = await page.evaluate(async ({ modUrl, html, entryDocs }) => {
       const { extractFromHtml } = await import(modUrl);
-      return extractFromHtml(html);
-    }, { modUrl, html });
+      return extractFromHtml(html, { entryDocs });
+    }, { modUrl, html, entryDocs: ENTRY_DOCS });
+    const abs = (items) => { for (const it of items || []) {
+      if (it.entry) it.entry = new URL(it.entry, DOC).href;
+      if (it.children) abs(it.children);
+    } };
+    abs(res.tabs); abs(res.bar);
+    return res;
   } finally {
     await browser.close();
   }

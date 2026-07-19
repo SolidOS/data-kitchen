@@ -6,20 +6,21 @@
 //   npm run pull-defaults            (DK_POD=<dir> overrides ~/solid/dk-pod/dk)
 //   npm run pull-defaults -- --dry-run
 //
-// COPIES:  ui-data/data-kitchen-{main-menu,hamburger-menu,settings}.ttl,
+// COPIES:  ui-data/data-kitchen-{main-menu,hamburger-menu,settings,
+//          plugins-catalog}.ttl (the catalog IS owner config now),
 //          every FLAT plugins/*.ttl manifest, plugins/news/feeds.ttl
 //          (SANITIZED: an absolute @prefix : <http://localhost:8000/…#> is
 //          rewritten to the document-relative <#> so no machine port ships).
 // EXCLUDES (deliberate):
 //          ui-data/data-kitchen-startup.ttl        machine ports — never ships
-//          ui-data/data-kitchen-plugins-catalog.ttl regenerated after the pull
 //          plugin DIR contents except news/feeds.ttl — repo owns code, the pod
 //            copies of podz/solidos/ia-player code may be stale
 //          favourites/, libraries/*/, scratch/     user data, never defaults
 // REPORTS (doesn't touch): pod↔repo diffs in plugin CODE files, for hand
 //          reconciliation.
 //
-// Idempotent. Ends by regenerating the catalog and printing git status.
+// Idempotent. Ends by RECONCILING the catalog (seed-plugins-catalog's
+// non-destructive default: add-new + drift report) and printing git status.
 
 import { copyFileSync, existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -55,6 +56,10 @@ console.log(`[pull-defaults] pod: ${pod}${dry ? ' (dry-run)' : ''}`);
 pull('ui-data/data-kitchen-main-menu.ttl');
 pull('ui-data/data-kitchen-hamburger-menu.ttl');
 pull('ui-data/data-kitchen-settings.ttl');
+// The catalog is the OWNER'S WORKING COPY of the unified ui:Plugin entries
+// (plugin-manifest-unification, 2026-07-18) — it is PULLED like the menus,
+// never regenerated (regeneration would discard owner edits).
+pull('ui-data/data-kitchen-plugins-catalog.ttl');
 pull('plugins/news/feeds.ttl', sanitizeFeeds);
 for (const f of readdirSync(join(pod, 'plugins')).sort()) {
   if (!f.endsWith('.ttl')) continue;
@@ -79,6 +84,9 @@ for (const rel of CODE_REPORT) {
 }
 
 if (!dry && changed.length) {
+  // RECONCILE (not regenerate): seed-plugins-catalog's default mode adds
+  // entries for any new seeds and reports seed↔entry drift; owner entries
+  // are never touched.
   execFileSync(process.execPath, ['--preserve-symlinks', join(root, 'tools', 'seed-plugins-catalog.mjs')], { stdio: 'inherit' });
 }
 if (!dry) execSync('git status --short', { cwd: root, stdio: 'inherit' });

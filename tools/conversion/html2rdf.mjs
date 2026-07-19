@@ -32,6 +32,11 @@ const DOC = 'https://data-kitchen.invalid/ui-data/data-kitchen-main-menu.ttl';
 
 // Run core/menu-html.js's extractFromHtml in a headless page — the module has
 // no imports, so it loads straight from a data: URL.
+// Reference anchors name the catalog doc — as generated (relative basename)
+// or absolute; harvested refs resolve to absolute entry IRIs below.
+const CATDOC = 'data-kitchen-plugins-catalog.ttl';
+const ENTRY_DOCS = [CATDOC];
+
 async function extract(html) {
   let chromium;
   try {
@@ -45,10 +50,10 @@ async function extract(html) {
   const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
   try {
     const page = await browser.newPage();
-    return await page.evaluate(async ({ modUrl, html }) => {
+    return await page.evaluate(async ({ modUrl, html, entryDocs }) => {
       const { extractFromHtml } = await import(modUrl);
-      return extractFromHtml(html);
-    }, { modUrl, html });
+      return extractFromHtml(html, { entryDocs });
+    }, { modUrl, html, entryDocs: ENTRY_DOCS });
   } finally {
     await browser.close();
   }
@@ -65,6 +70,12 @@ function menuMeta(store, node) {
 }
 
 const { tabs, bar } = await extract(readFileSync(SRC, 'utf8'));
+// harvested references are as-written (relative) — resolve against the doc
+const absEntries = (items) => { for (const it of items || []) {
+  if (it.entry) it.entry = new URL(it.entry, DOC).href;
+  if (it.children) absEntries(it.children);
+} };
+absEntries(tabs); absEntries(bar);
 if (!tabs.length) {
   console.error(`no <sol-tabs> tab anchors found in ${SRC} — nothing imported`);
   process.exit(1);

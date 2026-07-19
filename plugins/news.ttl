@@ -1,14 +1,14 @@
 @prefix dct:    <http://purl.org/dc/terms/> .
 @prefix ui:     <http://www.w3.org/ns/ui#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 
 <>
-  a ui:Component ;
+  a ui:Plugin ;
+  schema:additionalType ui:Component ;
   ui:label "News (three-panel feeds)" ;
   ui:icon "📰" ;
-  ui:name "sol-feed" ;
-  rdfs:comment "Read news feeds in a three-panel reader: sources, headlines, article." ;
+  schema:url </node_modules/sol-components/web/sol-feed.js> ;
+  schema:description "Read news feeds in a three-panel reader: sources, headlines, article." ;
   dct:publisher "Jeff Zucker" ;
   dct:subject "Information" ;
   ui:attribute
