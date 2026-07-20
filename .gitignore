@@ -30,6 +30,7 @@ tools/conversion/shell.html
 
 # machine-local Claude Code settings (permission grants, etc.)
 .claude/settings.local.json
+.claude/launch.json
 
 # Personal notes + Claude session artifacts — not for the public repo
 notes.md

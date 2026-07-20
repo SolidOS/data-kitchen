@@ -312,8 +312,8 @@ state, so any step can be re-entered and re-opening an app just works.
   sidebar, dashboard-grid + `index.ttl`, an RDF index — never a directory
   listing; relative URLs mean copy-in needs no rewriting).
   `web/sol-app-builder.js` renders in **LIGHT DOM** (the pantry's `for`
-  selector sees only page DOM); steps Apps → Layout → Menus & plugins →
-  Publish, free jump-in. Menus step embeds `sol-menu-manager` per `from-rdf`
+  selector sees only page DOM); five steps (see 07-20 below), free jump-in.
+  The Plugins step embeds `sol-menu-manager` per `from-rdf`
   doc + `<sol-plugin-manager for="#sab-managers sol-menu-manager">` (explicit
   pairing — self-discovery would find dk's own slots). Non-sol-* leaves get
   their own visible `<script type=module src=…>`; `components-base` attr
@@ -339,6 +339,58 @@ state, so any step can be re-entered and re-opening an app just works.
   first app save (the builder tolerates the 404 listing). `sol-app-builder`
   is in both index.html copies' data-components; sol-load's baked map was
   regenerated (`npm run build:importmaps`).
+
+### WordPress-style redesign (2026-07-20)
+
+- **Five steps** (Jeff's naming): 1. Create/Choose App · 2. Select Layout ·
+  3. Add Menus and Content · 4. Add Plugins · 5. Publish. Picking a layout
+  advances straight to step 3.
+- **Structural presets** replace the old four on the index (old .ttl files
+  stay on disk for existing apps): `banner-main`, `banner-left-sidebar`,
+  `banner-right-sidebar`, `banner-two-sidebars`, `banner-main-footer` in sc
+  `data/layouts/`. Like WordPress themes they SHIP WITH theme chrome —
+  banner ☰ (`sol-dropdown-button from-rdf app-menu.ttl#More`), sidebar
+  `sol-menu` opening into `.app-main`, content includes — which step 3
+  surfaces as ORDINARY removable/movable element rows. New class values:
+  `app-banner`, `app-footer` (join `app-side`/`app-main`). No new RDF terms.
+- **Select Layout cards carry a schematic DERIVED from each preset's RDF**
+  (`parseLayoutTree` → nested boxes; aria-hidden, the ≥16px title/description
+  stay the accessible text) — a user-supplied presets index gets correct
+  diagrams for free.
+- **Step 3 = region panels** mirroring the tree (semantic badge, rows per
+  leaf with visible from-rdf/source, Move ↑↓ / Remove / Edit-menu accordion
+  mounting `sol-menu-manager` in place, per-region Add-element palette:
+  Menu w/ "items open into" pane picker over empty class-bearing regions,
+  Tabs, Page content, Sign in/Clock/Calendar widgets, catalog ui:Component
+  chips). Saves rewrite layout.ttl via **NEW sc `core/layout-serialize.js`**
+  (`serializeLayout`/`addLeaf`/`removeLeaf`/`moveLeaf`; whole-doc PUT —
+  ui:attribute blanks can't be SPARQL-DELETEd; round-trips exactly what
+  parseLayoutTree reads, foreign hand-added triples drop on builder saves).
+- **Generated apps got standard chrome:** head emits sc
+  `web/scripts/prefs.js` + **NEW `web/scripts/app-commands.js`**
+  (sol-command allow-list implementing `toggleTheme`/`cycleFontSize`, stored
+  under swc-* prefs keys); app.css now APPLIES the theme vars
+  (`html { background: var(--bg); color: var(--text) }`, body font vars) —
+  root.css is variables-only, pages must apply (recurring lesson). The
+  `<main>` claim recurses into wrapper rows (banner + row(aside, main) emits
+  aside+main as siblings); sidebar rail `aside { flex: 0 0 14rem }`, middle
+  row stretches, scroll stays on `main`.
+- **Seeding is per-leaf** (`_seedDocsForLeaf`, runs on preset pick AND on
+  element add): a `#More` from-rdf seeds the ☰ menu (Help link → seeded
+  full-page help.html, Theme/Text size `ui:Command` items →
+  `app-commands.ttl#toggleTheme`/`#cycleFontSize`, seeded registry doc);
+  multi-menu docs APPEND missing fragments (app-menu.ttl holds #Menu AND
+  #More — Turtle re-declares prefixes mid-doc fine).
+- Command keys are hyphen-free schema:url fragments (`commandKeyFromUrl`);
+  menu-from-rdf ships inside sol-basic so generated pages need no extra
+  loader entry.
+- Tests: NEW sc `tests/core/layout-serialize.test.js` (round-trip all nine
+  presets, determinism, editors) + rewritten
+  `tests/web/sol-app-builder.test.js` (7 tests, five-step flow).
+- **Standalone Solid App Builder** lives at `~/solid/sol-app-builder/` — its
+  own git repo (index.html + help.html, sc via node_modules symlink like the
+  other siblings), served by dk `bin/standalone-pod.sh` (no-auth pivot on
+  :3000, root ~/solid — gate off because no DK_GATE_TOKEN; loopback-only).
 
 ## Key plugins
 
