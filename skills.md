@@ -206,6 +206,15 @@ reversal of the 07-17 retirement):**
   "region"; schema:value "modal" ]`, e.g. `:chrome-menu` in the main menu);
   sc's parse lifts either spelling into `desc.region` (attribute pair wins if
   both present). `if-logged-in` gating stays an attribute everywhere.
+- **A `ui:region` ON A MENU is the default for members that carry none of
+  their own** (item region always wins; submenus inherit until one sets its
+  own). Parse marks inherited values `regionInherited` so saves never
+  materialize the default onto items; menu-serialize round-trips the
+  menu-level triple like `ui:orientation`. Purely additive — no menu sets
+  one yet. NB the `'tab'` runtime keyword means BROWSER tab
+  (`window.open`), not the app tabset — the tabset/button-bar → pane
+  default is structural (`fallbackEl` in sc display-target.js), stays in
+  HTML by decision 2026-07-20.
 - Plugin seeds (`plugins/*.ttl` manifests) still carry NO placement — it's
   the deployment's decision — so a FRESH calendar install lands as a tab
   until the owner sets region on the entry. The
