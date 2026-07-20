@@ -83,9 +83,10 @@ function readEntries() {
       icon: ui('icon'),
       module: moduleUrl,
       href: hrefUrl,
-      // ui:region retired from manifests 2026-07-17 — placement is the
-      // enclosing app's decision (a `region` attribute on the MENU item),
-      // never the plugin's. Not read, not emitted.
+      // ui:region stays out of MANIFESTS (2026-07-17) — placement is the
+      // deployment's decision, never the provenance doc's. It lives on the
+      // editable CATALOG ENTRY as a ui:region triple (restored 2026-07-20);
+      // the seeder neither reads nor emits it, and reconcile preserves it.
       desc: (store.any(subj, rdf.sym(SCHEMA_NS + 'description')) || {}).value
          || (store.any(subj, rdf.sym(RDFS_NS + 'comment')) || {}).value || '',
       publisher: dct('publisher'),

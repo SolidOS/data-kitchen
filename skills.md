@@ -194,19 +194,21 @@ of `sol-modal`/`sol-window` in `core/display-target.js`) hosting `<sol-calendar
 hide-header>`. The old `dk-calendar-popout` wrapper is **deleted**. The same
 `region="dropdown"` attribute pattern works for any widget.
 
-**Placement + gating are ATTRIBUTES, not RDF terms (2026-07-17 migrations):**
-- **`ui:region` is retired from stored component data.** A component item's
-  placement is a `region` ui:attribute (`[ schema:name "region"; schema:value
-  "dropdown" ]` — bare lowercase SURFACE_KEYWORDS: tab/window/modal/floating/
-  dropdown); sc's parse lifts it into `desc.region` (the in-memory field every
-  consumer still uses) and serialize writes it back as the attribute, never
-  the triple. The triple still READS (legacy, converts on save) and remains
-  the spelling for `ui:Link` items (no attribute channel). The ~220 redundant
-  `ui:region ui:Tab` triples were deleted outright (tree position implies
-  tab); only two items carry the attribute: the Calendar entry ("dropdown")
-  and `:chrome-menu` ("modal"). Plugin seeds (`plugins/*.ttl`) carry NO
-  placement at all — it's the deployment's decision — so a FRESH calendar
-  install lands as a tab until the owner adds the attribute. The
+**Placement: `ui:region` on CATALOG ENTRIES; attributes elsewhere (2026-07-20
+reversal of the 07-17 retirement):**
+- **A `ui:Plugin` catalog entry carries `ui:region <ui:Region IRI>`** (e.g.
+  `ui:region ui:Dropdown` on the Calendar entry) — the entry is the editable
+  deployment config, differentiated from the provenance manifest, so
+  deployment aspects are first-class there. `:PluginShape` constrains it with
+  `sh:in` over the seven ui-vocab regions (Inline/Element/Modal/Floating/
+  Window/Tab/Dropdown) and the ✎ editor renders it as a constrained field.
+- **INLINE menu items keep the `region` ui:attribute channel** (`[ schema:name
+  "region"; schema:value "modal" ]`, e.g. `:chrome-menu` in the main menu);
+  sc's parse lifts either spelling into `desc.region` (attribute pair wins if
+  both present). `if-logged-in` gating stays an attribute everywhere.
+- Plugin seeds (`plugins/*.ttl` manifests) still carry NO placement — it's
+  the deployment's decision — so a FRESH calendar install lands as a tab
+  until the owner sets region on the entry. The
   plugin-manifest EDITOR discussed 2026-07-17 is BUILT (2026-07-18, ✎ on a
   pantry card — see "Plugin system"); the owner adds/edits the region
   attribute there. `seed-plugins-catalog.mjs` neither reads nor emits region.

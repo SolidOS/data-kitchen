@@ -158,7 +158,6 @@
         [ schema:name "data-handler"; schema:value "sol-calendar" ],
         [ schema:name "hide-header"; schema:value "" ],
         [ schema:name "label"; schema:value "📅" ],
-        [ schema:name "region"; schema:value "dropdown" ],
             [
                 schema:name "source";
                 schema:value
@@ -166,7 +165,8 @@
             ],
         [ schema:name "title"; schema:value "Calendar" ];
     ui:icon "📅";
-    ui:label "Calendar".
+    ui:label "Calendar";
+    ui:region ui:Dropdown.
 :Clock
     a ui:Plugin;
     dct:conformsTo sha:time-settings.shacl;
