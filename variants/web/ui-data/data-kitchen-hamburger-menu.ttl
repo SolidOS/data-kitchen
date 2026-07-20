@@ -1,6 +1,11 @@
 @prefix : <#>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix data: <data-kitchen-plugins-catalog.ttl#>.
+@prefix schema: <http://schema.org/>.
 
-:More a ui:Menu; ui:label "☰ Menu"; ui:parts ( data:Theme data:Text-size ).
+:More a ui:Menu; ui:label "☰ Menu"; schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :More-Theme, :More-Text-size.
 
+
+:More-Theme a schema:ListItem; schema:item data:Theme; schema:position 1.
+:More-Text-size a schema:ListItem; schema:item data:Text-size; schema:position 2.

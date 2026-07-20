@@ -37,7 +37,7 @@
     // under plugins/ in the active panel's source attribute.
     const SCHEMA_HELP  = 'http://schema.org/softwareHelp';
     const DCT_CONFORMS = 'http://purl.org/dc/terms/conformsTo';
-    const UI_PARTS     = 'http://www.w3.org/ns/ui#parts';
+    const SCHEMA_ELEM  = 'http://schema.org/itemListElement';
     const manifestCache = new Map();   // id → {help, shape, menuUri} | null
 
     function pluginIdFor(el) {
@@ -57,7 +57,7 @@
         info = {
           help:  store.any(doc, rdf.sym(SCHEMA_HELP))?.value || null,
           shape: store.any(doc, rdf.sym(DCT_CONFORMS))?.value || null,
-          menuUri: store.any(rdf.sym(`${docUrl}#Menu`), rdf.sym(UI_PARTS))
+          menuUri: store.any(rdf.sym(`${docUrl}#Menu`), rdf.sym(SCHEMA_ELEM))
             ? `dk-pod/dk/plugins/${id}/manifest.jsonld#Menu` : null,
         };
       } catch { info = null; }   // no manifest — perfectly fine

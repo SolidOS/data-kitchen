@@ -18,7 +18,8 @@ export function registerMenuInvariants(label, menuPath) {
   for (const frag of ['Tabs', 'Bar', 'Chrome']) {
     t(`#${frag} is a ui:Menu`, () => {
       assert.ok(isType(store, M(frag), 'Menu'), `#${frag} must be a ui:Menu`);
-      assert.ok(store.any(M(frag), sym(NS.ui + 'parts')), `#${frag} must have ui:parts`);
+      assert.ok(store.any(M(frag), sym(NS.schema + 'itemListElement')),
+        `#${frag} must have schema:itemListElement membership`);
     });
   }
 
@@ -79,7 +80,10 @@ export function registerMenuInvariants(label, menuPath) {
   return store;
 }
 
-/** Every menu subject REACHABLE from the roots' ui:parts (submenus walked). */
+/** Every menu subject REACHABLE from the roots' membership (submenus walked).
+ *  Membership is schema:itemListElement — a positioned schema:ListItem
+ *  wrapper (schema:item names the member) or, for unordered sets, the member
+ *  directly. Wrapper nodes themselves are not "parts"; their targets are. */
 export function reachableParts(store, roots = ['Tabs', 'Bar', 'Chrome']) {
   const M = (frag) => sym(MENU_DOC + '#' + frag);
   const seen = new Set();
@@ -88,9 +92,9 @@ export function reachableParts(store, roots = ['Tabs', 'Bar', 'Chrome']) {
     const node = queue.shift();
     if (seen.has(node.value)) continue;
     seen.add(node.value);
-    const parts = store.any(node, sym(NS.ui + 'parts'));
-    if (!parts) continue;
-    for (const el of parts.elements || []) queue.push(el);
+    for (const entry of store.each(node, sym(NS.schema + 'itemListElement'), null)) {
+      queue.push(store.any(entry, sym(NS.schema + 'item')) || entry);
+    }
   }
   return [...seen].map((v) => sym(v));
 }

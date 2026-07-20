@@ -26,11 +26,6 @@
       "@id": "schema:softwareHelp",
       "@type": "@id"
     },
-    "parts": {
-      "@id": "ui:parts",
-      "@container": "@list",
-      "@type": "@id"
-    },
     "icon": "ui:icon"
   },
   "@id": "",

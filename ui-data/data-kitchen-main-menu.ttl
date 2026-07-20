@@ -3,26 +3,26 @@
 @prefix schema: <http://schema.org/>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix data: <data-kitchen-plugins-catalog.ttl#>.
+@prefix web: </node_modules/sol-components/web/>.
+@prefix plu: <../plugins/>.
 
 :Apps
     a ui:Menu;
     ui:label "Apps";
-    ui:parts
-            ( data:dokieli data:SolidFocus data:RoloPod data:KonaPod data:Umai
-            data:GeoPod data:PodCal data:NotePod data:SolidOS-Meeting
-            data:SolidOS-Chat data:SolidOS-AddressBook data:SolidOS-Tasks
-            data:SolidOS-Notes ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Apps-dokieli, :Apps-SolidFocus, :Apps-RoloPod, :Apps-KonaPod, :Apps-Umai, :Apps-GeoPod, :Apps-PodCal, :Apps-NotePod, :Apps-SolidOS-Meeting, :Apps-SolidOS-Chat, :Apps-SolidOS-AddressBook, :Apps-SolidOS-Tasks, :Apps-SolidOS-Notes.
 :Bar
     a ui:Menu;
     ui:label "Top Row Buttons";
     ui:orientation ui:Horizontal;
-    ui:parts
-            ( data:Matrix-Chat data:Mastodon data:Bluesky data:OpenStreetMap
-            data:Duck-ai data:Search data:Calendar ).
-:Chrome a ui:Menu; ui:label "chrome"; ui:parts ( :chrome-help :chrome-menu ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Bar-Matrix-Chat, :Bar-Mastodon, :Bar-Bluesky, :Bar-OpenStreetMap, :Bar-Duck-ai, :Bar-Search, :Bar-Calendar.
+:Chrome a ui:Menu; ui:label "chrome"; schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Chrome-chrome-help, :Chrome-chrome-menu.
 
 :chrome-help
     a ui:Component;
+    schema:url web:sol-button.js;
     rdfs:comment
         "Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay.";
     ui:attribute
@@ -37,10 +37,10 @@
         [ schema:name "source"; schema:value "./dk-pod/dk/help/dk.html" ],
         [ schema:name "title"; schema:value "Help" ],
         [ schema:name "trusted"; schema:value "" ];
-    ui:label "?";
-    schema:url </node_modules/sol-components/web/sol-button.js>.
+    ui:label "?".
 :chrome-menu
     a ui:Component;
+    schema:url web:sol-dropdown-button.js;
     rdfs:comment
         "☰ menu — items live in ui-data/data-kitchen-hamburger-menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal.";
     ui:attribute
@@ -55,42 +55,101 @@
                 "./dk-pod/dk/ui-data/data-kitchen-hamburger-menu.ttl#More"
             ],
         [ schema:name "title"; schema:value "Menu" ];
-    ui:label "Menu";
-    schema:url </node_modules/sol-components/web/sol-dropdown-button.js>.
+    ui:label "Menu".
 :Health
     a ui:Menu;
     ui:label "Health";
-    ui:parts
-            ( data:HealthPod data:InnerPod data:MSFatigue data:VitalStats
-            data:SecureDialog ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Health-HealthPod, :Health-InnerPod, :Health-MSFatigue, :Health-VitalStats, :Health-SecureDialog.
 :item
     a ui:Menu;
     ui:label "About Solid";
-    ui:parts
-            ( data:Solid-FAQ data:Solid-Forum data:Solid-Website
-            data:Tag-Explainer data:Solid-Catalog data:Solid-Glossary ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :item-Solid-FAQ, :item-Solid-Forum, :item-Solid-Website, :item-Tag-Explainer, :item-Solid-Catalog, :item-Solid-Glossary.
 :Media-3
     a ui:Menu;
     ui:label "Media";
-    ui:parts
-            ( data:News-three-panel-feeds data:Music-Internet-Archive
-            data:Movies-Internet-Archive data:Images-Wikimedia
-            data:Spoken-Word-Internet-Archive data:Media-Kraken data:Solidflix
-            data:MovieStar ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Media-3-News-three-panel-feeds, :Media-3-Music-Internet-Archive, :Media-3-Movies-Internet-Archive, :Media-3-Images-Wikimedia, :Media-3-Spoken-Word-Internet-Archive, :Media-3-Media-Kraken, :Media-3-Solidflix, :Media-3-MovieStar.
 :panel-dev-tools
     a ui:Menu;
     ui:label "Dev Tools";
-    ui:parts
-            ( data:RDF-Validator data:SHACL-Playground data:JSON-LD-Playground
-            data:SPARQL-Playground data:Synara-AI ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :panel-dev-tools-RDF-Validator, :panel-dev-tools-SHACL-Playground, :panel-dev-tools-JSON-LD-Playground, :panel-dev-tools-SPARQL-Playground, :panel-dev-tools-Synara-AI.
 :Pods-2
     a ui:Menu;
     ui:label "Pods";
-    ui:parts
-            ( data:Data-Kitchen-Pod-Browser data:SolidOS-data-browser
-            data:PodOS-Browser data:Penny ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Pods-2-Data-Kitchen-Pod-Browser, :Pods-2-SolidOS-data-browser, :Pods-2-PodOS-Browser, :Pods-2-Penny.
 :Tabs
     a ui:Menu;
     ui:label "Menu Tabs";
     ui:orientation ui:Horizontal;
-    ui:parts ( :Pods-2 :Media-3 :Health :Apps :item :panel-dev-tools ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Tabs-Pods-2, :Tabs-Media-3, :Tabs-Health, :Tabs-Apps, :Tabs-item, :Tabs-panel-dev-tools, :Tabs-app-builder.ttl.
+
+:Apps-dokieli a schema:ListItem; schema:item data:dokieli; schema:position 1.
+:Apps-SolidFocus a schema:ListItem; schema:item data:SolidFocus; schema:position 2.
+:Apps-RoloPod a schema:ListItem; schema:item data:RoloPod; schema:position 3.
+:Apps-KonaPod a schema:ListItem; schema:item data:KonaPod; schema:position 4.
+:Apps-Umai a schema:ListItem; schema:item data:Umai; schema:position 5.
+:Apps-GeoPod a schema:ListItem; schema:item data:GeoPod; schema:position 6.
+:Apps-PodCal a schema:ListItem; schema:item data:PodCal; schema:position 7.
+:Apps-NotePod a schema:ListItem; schema:item data:NotePod; schema:position 8.
+:Apps-SolidOS-Meeting a schema:ListItem; schema:item data:SolidOS-Meeting; schema:position 9.
+:Apps-SolidOS-Chat a schema:ListItem; schema:item data:SolidOS-Chat; schema:position 10.
+:Apps-SolidOS-AddressBook a schema:ListItem; schema:item data:SolidOS-AddressBook; schema:position 11.
+:Apps-SolidOS-Tasks a schema:ListItem; schema:item data:SolidOS-Tasks; schema:position 12.
+:Apps-SolidOS-Notes a schema:ListItem; schema:item data:SolidOS-Notes; schema:position 13.
+
+:Bar-Matrix-Chat a schema:ListItem; schema:item data:Matrix-Chat; schema:position 1.
+:Bar-Mastodon a schema:ListItem; schema:item data:Mastodon; schema:position 2.
+:Bar-Bluesky a schema:ListItem; schema:item data:Bluesky; schema:position 3.
+:Bar-OpenStreetMap a schema:ListItem; schema:item data:OpenStreetMap; schema:position 4.
+:Bar-Duck-ai a schema:ListItem; schema:item data:Duck-ai; schema:position 5.
+:Bar-Search a schema:ListItem; schema:item data:Search; schema:position 6.
+:Bar-Calendar a schema:ListItem; schema:item data:Calendar; schema:position 7.
+
+:Chrome-chrome-help a schema:ListItem; schema:item :chrome-help; schema:position 1.
+:Chrome-chrome-menu a schema:ListItem; schema:item :chrome-menu; schema:position 2.
+
+:Health-HealthPod a schema:ListItem; schema:item data:HealthPod; schema:position 1.
+:Health-InnerPod a schema:ListItem; schema:item data:InnerPod; schema:position 2.
+:Health-MSFatigue a schema:ListItem; schema:item data:MSFatigue; schema:position 3.
+:Health-VitalStats a schema:ListItem; schema:item data:VitalStats; schema:position 4.
+:Health-SecureDialog a schema:ListItem; schema:item data:SecureDialog; schema:position 5.
+
+:item-Solid-FAQ a schema:ListItem; schema:item data:Solid-FAQ; schema:position 1.
+:item-Solid-Forum a schema:ListItem; schema:item data:Solid-Forum; schema:position 2.
+:item-Solid-Website a schema:ListItem; schema:item data:Solid-Website; schema:position 3.
+:item-Tag-Explainer a schema:ListItem; schema:item data:Tag-Explainer; schema:position 4.
+:item-Solid-Catalog a schema:ListItem; schema:item data:Solid-Catalog; schema:position 5.
+:item-Solid-Glossary a schema:ListItem; schema:item data:Solid-Glossary; schema:position 6.
+
+:Media-3-News-three-panel-feeds a schema:ListItem; schema:item data:News-three-panel-feeds; schema:position 1.
+:Media-3-Music-Internet-Archive a schema:ListItem; schema:item data:Music-Internet-Archive; schema:position 2.
+:Media-3-Movies-Internet-Archive a schema:ListItem; schema:item data:Movies-Internet-Archive; schema:position 3.
+:Media-3-Images-Wikimedia a schema:ListItem; schema:item data:Images-Wikimedia; schema:position 4.
+:Media-3-Spoken-Word-Internet-Archive a schema:ListItem; schema:item data:Spoken-Word-Internet-Archive; schema:position 5.
+:Media-3-Media-Kraken a schema:ListItem; schema:item data:Media-Kraken; schema:position 6.
+:Media-3-Solidflix a schema:ListItem; schema:item data:Solidflix; schema:position 7.
+:Media-3-MovieStar a schema:ListItem; schema:item data:MovieStar; schema:position 8.
+
+:panel-dev-tools-RDF-Validator a schema:ListItem; schema:item data:RDF-Validator; schema:position 1.
+:panel-dev-tools-SHACL-Playground a schema:ListItem; schema:item data:SHACL-Playground; schema:position 2.
+:panel-dev-tools-JSON-LD-Playground a schema:ListItem; schema:item data:JSON-LD-Playground; schema:position 3.
+:panel-dev-tools-SPARQL-Playground a schema:ListItem; schema:item data:SPARQL-Playground; schema:position 4.
+:panel-dev-tools-Synara-AI a schema:ListItem; schema:item data:Synara-AI; schema:position 5.
+
+:Pods-2-Data-Kitchen-Pod-Browser a schema:ListItem; schema:item data:Data-Kitchen-Pod-Browser; schema:position 1.
+:Pods-2-SolidOS-data-browser a schema:ListItem; schema:item data:SolidOS-data-browser; schema:position 2.
+:Pods-2-PodOS-Browser a schema:ListItem; schema:item data:PodOS-Browser; schema:position 3.
+:Pods-2-Penny a schema:ListItem; schema:item data:Penny; schema:position 4.
+
+:Tabs-Pods-2 a schema:ListItem; schema:item :Pods-2; schema:position 1.
+:Tabs-Media-3 a schema:ListItem; schema:item :Media-3; schema:position 2.
+:Tabs-Health a schema:ListItem; schema:item :Health; schema:position 3.
+:Tabs-Apps a schema:ListItem; schema:item :Apps; schema:position 4.
+:Tabs-item a schema:ListItem; schema:item :item; schema:position 5.
+:Tabs-panel-dev-tools a schema:ListItem; schema:item :panel-dev-tools; schema:position 6.
+:Tabs-app-builder.ttl a schema:ListItem; schema:item plu:app-builder.ttl; schema:position 7.

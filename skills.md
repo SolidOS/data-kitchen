@@ -137,9 +137,18 @@ which the kind interprets:
   allow-listed in dk-tabs-shell. reloadApp/guestView/signIn stay
   registry-only (no entries, but the registry doc could list them later).
 
-`:PluginShape` in sc `shapes/menu.shacl` constrains the one url per kind via
-`sh:xone` (IRI-or-string / tag-shaped module filename / hyphen-free
-#fragment). Shared metadata: `ui:label` (ONE label everywhere — card title AND
+`:PluginShape` in sc `shapes/menu.shacl` (MIXIN rewrite 2026-07-19: concise
+shapes, card/settings metadata PLUGIN-ONLY, retired spellings deleted)
+constrains the one url per kind via `sh:xone` branches that DELEGATE to the
+kind shapes via `sh:node` — `:LinkShape` (IRI-or-string) / `:ComponentShape`
+(tag-shaped module filename) / `:CommandShape` (hyphen-free #fragment; NO
+targetClass so bare registry fragments stay unbound) — each kind shape owns
+its complete, REQUIRED `schema:url`. Shared blocks are node-level mixins
+(`:IconMixin`, `:AttributedMixin`) which sc's forms expand via
+`effectiveProperties()` (shape-to-form.js — dedup by path). Membership
+helper shapes: `:OrderedItemShape` (positioned ListItem wrapper) /
+`:UnorderedItemShape` (direct member + the reachable-label rule).
+Shared metadata: `ui:label` (ONE label everywhere — card title AND
 menu text; display overrides go through a `label` ui:attribute),
 `schema:description` (card blurb — NOT rdfs:comment, which stays a free
 documentary note), `dct:publisher`, `dct:subject` (topic categories →
@@ -147,16 +156,31 @@ Customize tabs), `dct:conformsTo`/`dct:references`/`schema:softwareHelp`
 (settings shape / data doc / help), `ui:icon` (live favicon URL painted as
 `<img>`, emoji as text), `ui:attribute` pairs (region, if-logged-in, …).
 
-**Menus are REFERENCE lists**: `ui:parts ( data:Calendar … )` with
-`@prefix data: <data-kitchen-plugins-catalog.ttl#>`. One placement per entry
-(want two placements → second entry with its own label). In-use = referenced
-by a menu; the pantry subtracts by entry identity. sc's parse resolves
-references cross-doc (`loadReferencedDocs`) into the same in-memory item
-descriptions consumers always used; legacy inline ui:Component/ui:Link items
-still parse, and serialize PRESERVES the form it read (bare refs re-emit as
-bare refs; a drop/addPlugin whose payload carries its catalog identity lands
-as a bare reference, never an inline copy). `manifest.jsonld` files are
-DORMANT (facts folded into entries 2026-07-18; kept only for possible ci use).
+**Menus are REFERENCE lists, membership is positioned schema:ListItem
+wrappers** (2026-07-19 — `ui:parts` rdf:Collections RETIRED everywhere except
+the ui:Form forms vocab): a curated menu carries one `schema:itemListElement`
+triple per member pointing at a placement wrapper —
+`:More-Customize a schema:ListItem; schema:item data:Customize;
+schema:position 1.` — plus `schema:itemListOrder schema:ItemListOrderAscending`
+(`@prefix data: <data-kitchen-plugins-catalog.ttl#>`). Same idiom as
+`#Locations`/`#Issuers`; wrappers exist so position lives on the PLACEMENT,
+never the shared entry. The catalog `#Available` is an unordered SET — direct
+membership, no wrappers (add plugin = ONE inserted triple; prune = one
+delete). Reorder = swap two `schema:position` literals; add/remove = the
+wrapper's few triples — statement-level PATCHes are now possible (the editors
+still whole-doc-rewrite via `updateMenuInStore`, wrapper fragments are
+deterministic `<menuFrag>-<memberFrag>`). Reader rule: an entry carrying
+`schema:item` is a wrapper (deref + sort by position); otherwise the entry IS
+the member. One placement per entry (want two placements → second entry with
+its own label). In-use = referenced by a menu; the pantry subtracts by entry
+identity. sc's parse resolves references cross-doc (`loadReferencedDocs`
+follows `itemListElement`/`schema:item`) into the same in-memory item
+descriptions consumers always used; serialize PRESERVES reference form (bare
+refs re-emit as bare refs, never an inline copy). One-shot converter:
+`claude/migration-scripts/migrate-menus-itemlist.mjs` (text-based, keeps
+comments; the LIVE pod at `~/solid` still needs it). `manifest.jsonld` files
+are DORMANT (facts folded into entries 2026-07-18; the dead `ui:parts`
+context term and dk-pod ia-player's stale `#Menu` block were dropped).
 
 Per-plugin settings are RDF-driven and gated on the plugin being in a menu
 (`src/dk-plugin-settings.js`, rewritten entry-first): settings meta
@@ -254,8 +278,10 @@ container whose app.ttl holds a WebApplication); the pod docs are the wizard
 state, so any step can be re-entered and re-opening an app just works.
 
 - **NEW ui: TERMS (Jeff-approved 2026-07-19):** `ui:Layout` (a page
-  arrangement whose `ui:parts` render SIMULTANEOUSLY — vs `ui:Menu` whose
-  parts are alternatives; nested Layout = split, `ui:Component` leaf =
+  arrangement whose members render SIMULTANEOUSLY — vs `ui:Menu` whose
+  members are alternatives; membership = the same positioned
+  `schema:itemListElement` wrappers as menus since the ui:parts retirement;
+  nested Layout = split, `ui:Component` leaf =
   content slot; empty layout = placeholder pane), `ui:layout` (app → root
   layout), `ui:columns` (grid column count). Also approved reuse:
   `ui:attribute` on layout nodes (emitted HTML attrs) and
@@ -1143,7 +1169,7 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
     reloads are silent no-ops, treat emulation flips as live; sc `web/*.js`
     edits are NEVER picked up mid-session — restart the app; row taps need
     `scrollIntoView` first; "remove from menu" keeps pantry RDF (assert
-    `ui:parts`, not full-text); the device pod refreshes dk pages from the
+    membership triples, not full-text); the device pod refreshes dk pages from the
     packed seed at boot, so page edits ride an APK rebuild.
 
 ## Updates & releases (2026-07)

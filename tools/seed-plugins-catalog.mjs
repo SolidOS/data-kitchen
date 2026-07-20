@@ -220,9 +220,9 @@ async function reconcileCatalog() {
       store.add(b, rdf.sym(SCHEMA + 'value'), lit(v ?? ''), doc);
       store.add(node, rdf.sym(UI + 'attribute'), b, doc);
     }
-    // append to #Available (a Collection term — mutate in place)
-    const avail = store.any(rdf.sym(CATDOC + '#Available'), rdf.sym(UI + 'parts'));
-    if (avail && avail.elements) avail.elements.push(node);
+    // append to #Available — direct membership, ONE triple (the unordered
+    // set form: no wrapper, no position)
+    store.add(rdf.sym(CATDOC + '#Available'), rdf.sym(SCHEMA + 'itemListElement'), node, doc);
     added++;
     console.log(`+ added entry #${frag(e.label)} (${e.file || 'built-in'})`);
   }
@@ -300,8 +300,8 @@ let ttl = `@prefix ui:     <http://www.w3.org/ns/ui#> .
 # than this file; re-seeding overwrites it.
 
 <#Available> a ui:Menu ; ui:label "Plugins Available" ;
-  rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it." ;
-  ui:parts ( ${ENTRIES.map((e) => `<#${frag(e.label)}>`).join(' ')} ) .
+  rdfs:comment "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it. Direct membership (an unordered set): adding a plugin is one schema:itemListElement triple." ;
+  schema:itemListElement ${ENTRIES.map((e) => `<#${frag(e.label)}>`).join(', ')} .
 
 ${CATS.map((c) => `<#${frag(c)}> a skos:Collection ; skos:prefLabel ${JSON.stringify(c)} ;
   skos:member ${catMembers(c)} .`).join('\n\n')}

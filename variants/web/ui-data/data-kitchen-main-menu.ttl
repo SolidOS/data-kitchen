@@ -9,20 +9,19 @@
 :Apps
     a ui:Menu;
     ui:label "Apps";
-    ui:parts
-            ( data:SolidFocus data:RoloPod data:KonaPod data:Umai data:GeoPod
-            data:PodCal data:NotePod ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Apps-SolidFocus, :Apps-RoloPod, :Apps-KonaPod, :Apps-Umai, :Apps-GeoPod, :Apps-PodCal, :Apps-NotePod.
 :Bar
     a ui:Menu;
     ui:label "Top Row Buttons";
     ui:orientation ui:Horizontal;
-    ui:parts
-            ( data:Matrix-Chat data:Mastodon data:Lemmy data:SepiaSearch
-            data:Pixelfed data:Bluesky data:Duck-ai data:Search data:Calendar ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Bar-Matrix-Chat, :Bar-Mastodon, :Bar-Lemmy, :Bar-SepiaSearch, :Bar-Pixelfed, :Bar-Bluesky, :Bar-Duck-ai, :Bar-Search, :Bar-Calendar.
 :Chrome
     a ui:Menu;
     ui:label "chrome";
-    ui:parts ( :chrome-help :chrome-menu :chrome-login ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Chrome-chrome-help, :Chrome-chrome-menu, :Chrome-chrome-login.
 :chrome-help
     a ui:Component;
     rdfs:comment
@@ -81,24 +80,69 @@
 :item
     a ui:Menu;
     ui:label "About Solid";
-    ui:parts
-            ( data:Solid-FAQ data:Solid-Forum data:Solid-Website
-            data:Tag-Explainer data:Solid-Catalog data:Solid-Glossary ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :item-Solid-FAQ, :item-Solid-Forum, :item-Solid-Website, :item-Tag-Explainer, :item-Solid-Catalog, :item-Solid-Glossary.
 :Media
     a ui:Menu;
     ui:label "Media";
-    ui:parts
-            ( data:Music-Internet-Archive data:Spoken-Word-Internet-Archive
-            data:Images-Wikimedia data:Movies-Internet-Archive
-            data:Media-Kraken data:Solidflix data:MovieStar ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Media-Music-Internet-Archive, :Media-Spoken-Word-Internet-Archive, :Media-Images-Wikimedia, :Media-Movies-Internet-Archive, :Media-Media-Kraken, :Media-Solidflix, :Media-MovieStar.
 :panel-dev-tools
     a ui:Menu;
     ui:label "Dev Tools";
-    ui:parts
-            ( data:RDF-Validator data:SHACL-Playground data:JSON-LD-Playground
-            data:SPARQL-Playground data:Synara-AI ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :panel-dev-tools-RDF-Validator, :panel-dev-tools-SHACL-Playground, :panel-dev-tools-JSON-LD-Playground, :panel-dev-tools-SPARQL-Playground, :panel-dev-tools-Synara-AI.
 :Tabs
     a ui:Menu;
     ui:label "Menu Tabs";
     ui:orientation ui:Horizontal;
-    ui:parts ( :Media :Apps :item :panel-dev-tools ).
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:itemListElement :Tabs-Media, :Tabs-Apps, :Tabs-item, :Tabs-panel-dev-tools.
+
+:Apps-SolidFocus a schema:ListItem; schema:item data:SolidFocus; schema:position 1.
+:Apps-RoloPod a schema:ListItem; schema:item data:RoloPod; schema:position 2.
+:Apps-KonaPod a schema:ListItem; schema:item data:KonaPod; schema:position 3.
+:Apps-Umai a schema:ListItem; schema:item data:Umai; schema:position 4.
+:Apps-GeoPod a schema:ListItem; schema:item data:GeoPod; schema:position 5.
+:Apps-PodCal a schema:ListItem; schema:item data:PodCal; schema:position 6.
+:Apps-NotePod a schema:ListItem; schema:item data:NotePod; schema:position 7.
+
+:Bar-Matrix-Chat a schema:ListItem; schema:item data:Matrix-Chat; schema:position 1.
+:Bar-Mastodon a schema:ListItem; schema:item data:Mastodon; schema:position 2.
+:Bar-Lemmy a schema:ListItem; schema:item data:Lemmy; schema:position 3.
+:Bar-SepiaSearch a schema:ListItem; schema:item data:SepiaSearch; schema:position 4.
+:Bar-Pixelfed a schema:ListItem; schema:item data:Pixelfed; schema:position 5.
+:Bar-Bluesky a schema:ListItem; schema:item data:Bluesky; schema:position 6.
+:Bar-Duck-ai a schema:ListItem; schema:item data:Duck-ai; schema:position 7.
+:Bar-Search a schema:ListItem; schema:item data:Search; schema:position 8.
+:Bar-Calendar a schema:ListItem; schema:item data:Calendar; schema:position 9.
+
+:Chrome-chrome-help a schema:ListItem; schema:item :chrome-help; schema:position 1.
+:Chrome-chrome-menu a schema:ListItem; schema:item :chrome-menu; schema:position 2.
+:Chrome-chrome-login a schema:ListItem; schema:item :chrome-login; schema:position 3.
+
+:item-Solid-FAQ a schema:ListItem; schema:item data:Solid-FAQ; schema:position 1.
+:item-Solid-Forum a schema:ListItem; schema:item data:Solid-Forum; schema:position 2.
+:item-Solid-Website a schema:ListItem; schema:item data:Solid-Website; schema:position 3.
+:item-Tag-Explainer a schema:ListItem; schema:item data:Tag-Explainer; schema:position 4.
+:item-Solid-Catalog a schema:ListItem; schema:item data:Solid-Catalog; schema:position 5.
+:item-Solid-Glossary a schema:ListItem; schema:item data:Solid-Glossary; schema:position 6.
+
+:Media-Music-Internet-Archive a schema:ListItem; schema:item data:Music-Internet-Archive; schema:position 1.
+:Media-Spoken-Word-Internet-Archive a schema:ListItem; schema:item data:Spoken-Word-Internet-Archive; schema:position 2.
+:Media-Images-Wikimedia a schema:ListItem; schema:item data:Images-Wikimedia; schema:position 3.
+:Media-Movies-Internet-Archive a schema:ListItem; schema:item data:Movies-Internet-Archive; schema:position 4.
+:Media-Media-Kraken a schema:ListItem; schema:item data:Media-Kraken; schema:position 5.
+:Media-Solidflix a schema:ListItem; schema:item data:Solidflix; schema:position 6.
+:Media-MovieStar a schema:ListItem; schema:item data:MovieStar; schema:position 7.
+
+:panel-dev-tools-RDF-Validator a schema:ListItem; schema:item data:RDF-Validator; schema:position 1.
+:panel-dev-tools-SHACL-Playground a schema:ListItem; schema:item data:SHACL-Playground; schema:position 2.
+:panel-dev-tools-JSON-LD-Playground a schema:ListItem; schema:item data:JSON-LD-Playground; schema:position 3.
+:panel-dev-tools-SPARQL-Playground a schema:ListItem; schema:item data:SPARQL-Playground; schema:position 4.
+:panel-dev-tools-Synara-AI a schema:ListItem; schema:item data:Synara-AI; schema:position 5.
+
+:Tabs-Media a schema:ListItem; schema:item :Media; schema:position 1.
+:Tabs-Apps a schema:ListItem; schema:item :Apps; schema:position 2.
+:Tabs-item a schema:ListItem; schema:item :item; schema:position 3.
+:Tabs-panel-dev-tools a schema:ListItem; schema:item :panel-dev-tools; schema:position 4.

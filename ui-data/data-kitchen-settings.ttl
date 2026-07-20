@@ -2,42 +2,83 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix schema: <http://schema.org/>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
-@prefix ent: <http://www.wikidata.org/entity/>.
+@prefix dk: <../../>.
+@prefix loc: </>.
+@prefix lo: <http://localhost:3101/>.
+@prefix jeff: <https://jeff-zucker.solidcommunity.net/>.
+@prefix jef: <https://jeff-zucker.solidcommunity.net:8443/>.
+@prefix je: <https://jeffzucker.inrupt.net/>.
+@prefix sol: <https://solidproject.solidcommunity.net/>.
+@prefix wd: <http://www.wikidata.org/entity/>.
 
-<> a ent:Q1193846;
-    foaf:primaryTopic <#Settings>.
-<#Settings> ui:colorScheme ui:SystemColorScheme;
-    ui:fontSize ui:MediumFont;
-    ui:proxy "http://localhost:8001/proxy?uri=".
-<#iss1> a schema:ListItem;
+<> a wd:Q1193846; foaf:primaryTopic :Settings.
+
+:iss1
+    a schema:ListItem;
     schema:item <https://solidcommunity.net>;
     schema:name "solidcommunity.net";
-    schema:position 1.
-<#iss2> a schema:ListItem;
+    schema:position 1 .
+:iss2
+    a schema:ListItem;
     schema:item <https://solidweb.me>;
     schema:name "solidweb.me";
-    schema:position 2.
-<#iss3> a schema:ListItem;
+    schema:position 2 .
+:iss3
+    a schema:ListItem;
     schema:item <https://solidweb.org>;
     schema:name "solidweb.org";
-    schema:position 3.
-<#iss4> a schema:ListItem;
+    schema:position 3 .
+:iss4
+    a schema:ListItem;
     schema:item <https://login.inrupt.com>;
     schema:name "login.inrupt.com";
-    schema:position 4.
-<#Issuers> a schema:ItemList;
-    schema:name "Sign-in issuers";
-    schema:itemListElement <#iss1>, <#iss2>, <#iss3>, <#iss4>;
-    schema:itemListOrder schema:ItemListOrderAscending.
-<#loc1> a schema:ListItem;
-    schema:item <../../>;
+    schema:position 4 .
+:Issuers
+    a schema:ItemList;
+    schema:itemListElement :iss1, :iss2, :iss3, :iss4;
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:name "Sign-in issuers".
+:loc1
+    a schema:ListItem;
+    schema:item dk:;
     schema:name "Data Kitchen Pod";
-    schema:position 1.
-<#loc2> a schema:ListItem;
-    schema:item <../../../>;
+    schema:position 1 .
+:loc2
+    a schema:ListItem;
+    schema:item loc:;
     schema:name "Local Root";
-    schema:position 2.
-<#Locations> a schema:ItemList;
-    schema:name "Pod locations";
-    schema:itemListElement <#loc1>, <#loc2>;
-    schema:itemListOrder schema:ItemListOrderAscending.
+    schema:position 2 .
+:loc3
+    a schema:ListItem;
+    schema:item lo:;
+    schema:name "localhost:3101";
+    schema:position 3 .
+:loc4
+    a schema:ListItem;
+    schema:item jeff:;
+    schema:name "jeff-zucker.solidcommunity.net";
+    schema:position 4 .
+:loc5
+    a schema:ListItem;
+    schema:item jef:;
+    schema:name "jeff-zucker.solidcommunity.net:8443";
+    schema:position 5 .
+:loc6
+    a schema:ListItem;
+    schema:item je:;
+    schema:name "jeffzucker.inrupt.net";
+    schema:position 6 .
+:loc7
+    a schema:ListItem;
+    schema:item sol:;
+    schema:name "solidproject.solidcommunity.net";
+    schema:position 7 .
+:Locations
+    a schema:ItemList;
+    schema:itemListElement :loc1, :loc2, :loc3, :loc4, :loc5, :loc6, :loc7;
+    schema:itemListOrder schema:ItemListOrderAscending;
+    schema:name "Pod locations".
+:Settings
+    ui:colorScheme ui:LightColorScheme;
+    ui:fontSize ui:MediumFont;
+    ui:proxy "http://localhost:8001/proxy?uri=".

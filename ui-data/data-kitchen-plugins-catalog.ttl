@@ -93,30 +93,29 @@
     ui:label "App Builder".
 :Available
     a ui:Menu;
+    schema:itemListElement
+        :0data-Hello, :App-Builder, :BilliPod, :Bluesky, :Booklice, :Calendar,
+        :Clock, :CryptPad, :Customize, :Data-Kitchen-Pod-Browser, :dokieli,
+        :Duck-ai, :Element, :FilePod, :GeoPod, :Gmail, :Google-Calendar,
+        :Google-Maps, :Google-Messages, :HealthPod, :HomeVault,
+        :HuggingFace-Chat, :Images-Wikimedia, :InnerPod, :JSON-LD-Playground,
+        :KeyPod, :KonaPod, :Lemmy, :LibreTranslate, :Mastodon, :Matrix-Chat,
+        :Media-Kraken, :Movies-Internet-Archive, :MovieStar, :MSFatigue,
+        :Music-Internet-Archive, :News-three-panel-feeds, :NotePod,
+        :ODI-Solid-File-Manager, :OpenStreetMap, :Penny, :Pixelfed, :Pod-Drive,
+        :Pod-Pro, :Pod-Resume, :PodCal, :PodOS-Browser, :Portable-LibreChat,
+        :Proton-Calendar, :Proton-Drive, :Proton-Mail, :RDF-Validator,
+        :Restart-dk, :RoloPod, :Search, :SearXNG, :SecureDialog, :SepiaSearch,
+        :Settings, :SHACL-Playground, :Sign-in, :Solid-Catalog, :Solid-FAQ,
+        :Solid-File-Manager, :Solid-Forum, :Solid-Glossary, :Solid-Website,
+        :Solidflix, :SolidFocus, :SolidOS-AddressBook, :SolidOS-Chat,
+        :SolidOS-data-browser, :SolidOS-Meeting, :SolidOS-Notes, :SolidOS-Tasks,
+        :SPARQL-Playground, :Spoken-Word-Internet-Archive, :Standard-Notes,
+        :Synara-AI, :Tag-Explainer, :Text-size, :Theme, :Tired-Bike, :TodoPod,
+        :Tuta, :Umai, :VitalStats, :Weather;
     rdfs:comment
         "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it.";
-    ui:label "Plugins Available";
-    ui:parts
-            ( :0data-Hello :BilliPod :Bluesky :Booklice :Calendar :Clock
-            :CryptPad :Data-Kitchen-Pod-Browser :dokieli :Duck-ai :Element
-            :FilePod :GeoPod :Gmail :Google-Calendar :Google-Maps
-            :Google-Messages :HealthPod :HomeVault :HuggingFace-Chat
-            :Images-Wikimedia :InnerPod :JSON-LD-Playground :KeyPod :KonaPod
-            :Lemmy :LibreTranslate :Mastodon :Matrix-Chat :Media-Kraken
-            :Movies-Internet-Archive :MovieStar :MSFatigue
-            :Music-Internet-Archive :News-three-panel-feeds :NotePod
-            :ODI-Solid-File-Manager :OpenStreetMap :Penny :Pixelfed :Pod-Drive
-            :Pod-Pro :Pod-Resume :PodCal :PodOS-Browser :Portable-LibreChat
-            :Proton-Calendar :Proton-Drive :Proton-Mail :RDF-Validator :RoloPod
-            :Search :SearXNG :SecureDialog :SepiaSearch :SHACL-Playground
-            :Sign-in :Solid-Catalog :Solid-FAQ :Solid-File-Manager :Solid-Forum
-            :Solid-Glossary :Solid-Website :Solidflix :SolidFocus
-            :SolidOS-data-browser :SolidOS-AddressBook :SolidOS-Chat
-            :SolidOS-Meeting :SolidOS-Notes :SolidOS-Tasks :SPARQL-Playground
-            :Spoken-Word-Internet-Archive :Standard-Notes :Synara-AI
-            :Tag-Explainer :Tired-Bike :TodoPod :Tuta :Umai :VitalStats
-            :Weather :Theme :Text-size :Restart-dk :Customize :Settings
-            :App-Builder ).
+    ui:label "Plugins Available".
 :BilliPod
     a ui:Plugin;
     dct:publisher "Togaware";

@@ -200,10 +200,17 @@ async function filterCatalog(catPath, pluginsDir) {
     // skos:member references
     store.removeMatches(null, rdf.sym(SKOS + 'member'), node);
   }
-  // prune from the #Available parts Collection (Collection terms mutate in place)
-  for (const st of store.statementsMatching(null, rdf.sym(UI + 'parts'), null)) {
-    const c = st.object;
-    if (c && c.elements) c.elements = c.elements.filter((e) => !gone.has(e.value));
+  // prune membership: #Available's direct triples point straight at the gone
+  // entry; a curated menu would reference it through a schema:ListItem
+  // wrapper (schema:item) — drop the wrapper and its membership triple too.
+  const SCHEMA = 'http://schema.org/';
+  for (const v of gone) {
+    const node = rdf.sym(v);
+    store.removeMatches(null, rdf.sym(SCHEMA + 'itemListElement'), node);
+    for (const st of store.statementsMatching(null, rdf.sym(SCHEMA + 'item'), node)) {
+      store.removeMatches(null, rdf.sym(SCHEMA + 'itemListElement'), st.subject);
+      store.removeMatches(st.subject, null, null);
+    }
   }
   writeFileSync(catPath, await serializeMenuDocument(store, DOC));
   console.log(`[assemble] catalog filtered: dropped ${gone.size} excluded entries`);

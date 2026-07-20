@@ -46,13 +46,19 @@ if (!existsSync(SHAPES_PATH)) {
   for (const doc of menuDocs) {
     test(`${doc} conforms to the shared menu shapes`, async () => {
       // Menus are REFERENCE lists over the catalog's ui:Plugin entries
-      // (2026-07-18) — the members' types live in the catalog doc, so menus
-      // validate COMPOSED with it, exactly as the runtime loads them
-      // (loadReferencedDocs pulls the catalog into the same store).
+      // (2026-07-18) — and a placement wrapper's schema:item may also point
+      // straight at a flat plugins/*.ttl manifest doc (the pod does this for
+      // e.g. app-builder.ttl). Members' types live in those docs, so menus
+      // validate COMPOSED with them, exactly as the runtime loads them
+      // (loadReferencedDocs pulls every referenced doc into the same store).
       const store = parse(readFileSync(P(doc), 'utf8'), `http://dk.invalid/${doc}`);
       if (doc !== 'ui-data/data-kitchen-plugins-catalog.ttl') {
         store.addQuads(new Parser({ baseIRI: 'http://dk.invalid/ui-data/data-kitchen-plugins-catalog.ttl' })
           .parse(readFileSync(P('ui-data/data-kitchen-plugins-catalog.ttl'), 'utf8')));
+        for (const f of readdirSync(P('plugins')).filter((n) => n.endsWith('.ttl'))) {
+          store.addQuads(new Parser({ baseIRI: `http://dk.invalid/plugins/${f}` })
+            .parse(readFileSync(P(join('plugins', f)), 'utf8')));
+        }
       }
       const report = await new SHACLValidator(shapes).validate(store);
       assert.ok(report.conforms, `expected conformance, violations:\n   ${summarize(report)}`);
@@ -78,7 +84,9 @@ if (!existsSync(SHAPES_PATH)) {
     const report = await validate(`
 @prefix ui: <http://www.w3.org/ns/ui#> .
 @prefix schema: <http://schema.org/> .
-<#Menu> a ui:Menu ; ui:label "m" ; ui:parts ( <#NoLabel> ) .
+<#Menu> a ui:Menu ; ui:label "m" ;
+  schema:itemListElement <#Menu-NoLabel> .
+<#Menu-NoLabel> a schema:ListItem ; schema:item <#NoLabel> ; schema:position 1 .
 <#NoLabel> a ui:Component ; schema:url <https://example.org/web/sol-thing.js> .
 `);
     assert.equal(report.conforms, false, 'label-less menu member must not conform');
