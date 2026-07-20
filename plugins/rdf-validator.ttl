@@ -10,4 +10,4 @@
   schema:url <http://easyrdf.org/converter> ;
   schema:description "Convert and validate RDF documents." ;
   dct:publisher "EasyRdf" ;
-  dct:subject "Tech" .
+  schema:keywords "Tech" .

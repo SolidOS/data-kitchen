@@ -10,7 +10,7 @@
   schema:url </node_modules/sol-components/web/sol-feed.js> ;
   schema:description "Read news feeds in a three-panel reader: sources, headlines, article." ;
   dct:publisher "Jeff Zucker" ;
-  dct:subject "Information" ;
+  schema:keywords "Information" ;
   ui:attribute
     [ schema:name "view" ; schema:value "threePanel" ] ,
     [ schema:name "reader" ; schema:value "inline" ] ,

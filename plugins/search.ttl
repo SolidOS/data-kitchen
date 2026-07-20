@@ -12,6 +12,6 @@
   dct:conformsTo </node_modules/sol-components/shapes/search-engines.shacl> ;
   dct:references </node_modules/sol-components/data/search-engines.ttl> ;
     dct:publisher "Jeff Zucker" ;
-  dct:subject "Information" ;
+  schema:keywords "Information" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/search/search-engines.ttl#SearchEngines" ] .

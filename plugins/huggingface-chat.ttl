@@ -10,4 +10,4 @@
   schema:url <https://huggingface.co/chat/> ;
   schema:description "Chat with open-source AI models." ;
   dct:publisher "Hugging Face" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

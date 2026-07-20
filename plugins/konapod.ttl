@@ -10,4 +10,4 @@
   schema:url <https://konapod.solidcommunity.au> ;
   schema:description "Collect and analyse your car’s data." ;
   dct:publisher "Togaware" ;
-  dct:subject "Productivity" .
+  schema:keywords "Productivity" .

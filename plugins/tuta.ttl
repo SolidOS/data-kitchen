@@ -10,4 +10,4 @@
   schema:url <https://app.tuta.com/> ;
   schema:description "Open-source encrypted email." ;
   dct:publisher "Tuta" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

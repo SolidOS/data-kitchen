@@ -10,4 +10,4 @@
   schema:url <https://innerpod.solidcommunity.au> ;
   schema:description "Guided meditation timer that records your sessions." ;
   dct:publisher "Software Innovation Institute, ANU" ;
-  dct:subject "Health" .
+  schema:keywords "Health" .

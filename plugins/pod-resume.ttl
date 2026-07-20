@@ -10,4 +10,4 @@
   schema:url <https://resume.privatedatapod.com/> ;
   schema:description "Résumé builder that keeps your CV history." ;
   dct:publisher "PrivateDataPod team" ;
-  dct:subject "Productivity" .
+  schema:keywords "Productivity" .

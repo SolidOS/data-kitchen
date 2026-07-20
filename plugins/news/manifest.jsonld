@@ -9,7 +9,7 @@
     "label": "ui:label",
     "name": "schema:name",
     "publisher": "dct:publisher",
-    "subject": "dct:subject",
+    "keywords": "schema:keywords",
     "hasPart": {
       "@id": "dct:hasPart",
       "@type": "@id"
@@ -37,6 +37,6 @@
     "./feeds.ttl"
   ],
   "shape": "./feeds.shacl",
-  "subject": "Information",
+  "keywords": "Information",
   "icon": "📰"
 }

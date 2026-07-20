@@ -10,4 +10,4 @@
   schema:url <https://securedialog.solidcommunity.au> ;
   schema:description "Diabetes logging with encrypted storage." ;
   dct:publisher "Software Innovation Institute, ANU" ;
-  dct:subject "Health" .
+  schema:keywords "Health" .

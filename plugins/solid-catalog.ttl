@@ -10,4 +10,4 @@
   schema:url <https://solidproject.solidcommunity.net/catalog/> ;
   schema:description "Catalog of Solid apps, libraries and resources." ;
   dct:publisher "Solid Community" ;
-  dct:subject "Solid" .
+  schema:keywords "Solid" .

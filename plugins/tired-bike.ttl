@@ -10,4 +10,4 @@
   schema:url <https://tired.bike/> ;
   schema:description "Community platform for bicycle touring." ;
   dct:publisher "Open Hospitality Network" ;
-  dct:subject "Community" .
+  schema:keywords "Community" .

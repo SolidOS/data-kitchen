@@ -10,4 +10,4 @@
   schema:url <https://searx.be/> ;
   schema:description "Open-source privacy metasearch." ;
   dct:publisher "SearXNG" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

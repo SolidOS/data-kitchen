@@ -12,7 +12,7 @@
   dct:references </node_modules/sol-components/data/calendar-settings.ttl> ;
   schema:description "Pop-out month calendar for the button bar." ;
   dct:publisher "Jeff Zucker" ;
-  dct:subject "Information" ;
+  schema:keywords "Information" ;
   ui:attribute
     [ schema:name "data-handler" ; schema:value "sol-calendar" ] ,
     [ schema:name "hide-header" ; schema:value "" ] ,

@@ -9,4 +9,4 @@
   ui:icon "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23219EBC' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' stroke-width='1.5'/%3E%3Crect x='8' y='8.5' width='8' height='7.5' rx='1.25' stroke-width='1.05'/%3E%3Cpolyline points='10,12.25 11.75,14.25 15.5,11.25' stroke-width='1.6'/%3E%3C/svg%3E" ;
   schema:url <https://podcal.eu> ;
   schema:description "Schedule meetings with public booking pages; syncs with your calendar." ;
-  dct:subject "Productivity" .
+  schema:keywords "Productivity" .

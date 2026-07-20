@@ -10,4 +10,4 @@
   schema:url <https://browser.pod-os.org/> ;
   schema:description "Browse and manage the resources in your pod." ;
   dct:publisher "PodOS project" ;
-  dct:subject "Pods" .
+  schema:keywords "Pods" .

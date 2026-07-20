@@ -10,4 +10,4 @@
   schema:url <https://filemanager.solid-experiments.org/> ;
   schema:description "Friendly file and folder manager for your pod." ;
   dct:publisher "Open Data Institute" ;
-  dct:subject "Pods" .
+  schema:keywords "Pods" .

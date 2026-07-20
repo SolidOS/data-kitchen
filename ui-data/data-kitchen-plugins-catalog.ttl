@@ -77,7 +77,7 @@
     a ui:Plugin;
     dct:publisher "Jeff Zucker";
     dct:source plug:app-builder.ttl;
-    dct:subject "UI Controls";
+    schema:keywords "UI Controls";
     schema:additionalType ui:Component;
     schema:description
         "Build your own app: pick a layout, add menus and plugins, publish to your pod.";
@@ -203,7 +203,7 @@
     ui:label "CryptPad".
 :Customize
     a ui:Plugin;
-    dct:subject "UI Controls";
+    schema:keywords "UI Controls";
     schema:additionalType ui:Component;
     schema:description "Choose plugins for your menus and bar.";
     schema:url we:sol-include.js;
@@ -708,7 +708,7 @@
     ui:label "RDF Validator".
 :Restart-dk
     a ui:Plugin;
-    dct:subject "UI Controls";
+    schema:keywords "UI Controls";
     schema:additionalType ui:Command;
     schema:description "Restart the Data Kitchen app.";
     schema:url data:restartApp;
@@ -774,7 +774,7 @@
     ui:label "SepiaSearch".
 :Settings
     a ui:Plugin;
-    dct:subject "UI Controls";
+    schema:keywords "UI Controls";
     schema:additionalType ui:Component;
     schema:description "Global Data Kitchen settings.";
     schema:url we:sol-include.js;
@@ -1050,7 +1050,7 @@
     skos:prefLabel "Tech".
 :Text-size
     a ui:Plugin;
-    dct:subject "UI Controls";
+    schema:keywords "UI Controls";
     schema:additionalType ui:Command;
     schema:description "Cycle the interface text size.";
     schema:url data:cycleFontSize;
@@ -1058,7 +1058,7 @@
     ui:label "Text size".
 :Theme
     a ui:Plugin;
-    dct:subject "UI Controls";
+    schema:keywords "UI Controls";
     schema:additionalType ui:Command;
     schema:description "Toggle the light / dark color scheme.";
     schema:url data:toggleTheme;

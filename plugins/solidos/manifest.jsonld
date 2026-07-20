@@ -9,7 +9,7 @@
     "label": "ui:label",
     "name": "schema:name",
     "publisher": "dct:publisher",
-    "subject": "dct:subject",
+    "keywords": "schema:keywords",
     "hasPart": {
       "@id": "dct:hasPart",
       "@type": "@id"
@@ -39,6 +39,6 @@
     "./solidos-host.html"
   ],
   "help": "./help.html",
-  "subject": "Tech",
+  "keywords": "Tech",
   "icon": "https://solidproject.org/assets/img/solid-emblem.svg"
 }

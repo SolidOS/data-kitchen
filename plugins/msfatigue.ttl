@@ -10,4 +10,4 @@
   schema:url <https://msfatigue.solidcommunity.au> ;
   schema:description "Survey app for MS fatigue research, with encrypted responses." ;
   dct:publisher "Software Innovation Institute, ANU" ;
-  dct:subject "Health" .
+  schema:keywords "Health" .

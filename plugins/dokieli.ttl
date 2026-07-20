@@ -10,6 +10,6 @@
   schema:url </dk-pod/dk/plugins/solidos/dk-dokieli.js> ;
   schema:description "Write and publish articles, with annotations and social interactions." ;
   dct:publisher "Sarven Capadisli and Virginia Balseiro" ;
-  dct:subject "Content Publishing" ;
+  schema:keywords "Content Publishing" ;
   ui:attribute
     [ schema:name "defer" ; schema:value "" ] .

@@ -10,4 +10,4 @@
   schema:url <https://messages.google.com/web/u/0/conversations> ;
   schema:description "Text messaging on the web." ;
   dct:publisher "Google" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

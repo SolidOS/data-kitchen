@@ -10,4 +10,4 @@
   schema:url <https://filepod.solidcommunity.au> ;
   schema:description "File browser for multiple platforms." ;
   dct:publisher "Software Innovation Institute, ANU" ;
-  dct:subject "Pods" .
+  schema:keywords "Pods" .

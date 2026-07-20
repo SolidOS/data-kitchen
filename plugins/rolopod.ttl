@@ -10,4 +10,4 @@
   schema:url <https://rolopod.solidcommunity.au> ;
   schema:description "Address book with selective sharing." ;
   dct:publisher "Togaware" ;
-  dct:subject "Productivity" .
+  schema:keywords "Productivity" .

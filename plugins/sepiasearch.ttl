@@ -10,4 +10,4 @@
   schema:url <https://sepiasearch.org/> ;
   schema:description "Search federated PeerTube videos." ;
   dct:publisher "Framasoft" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

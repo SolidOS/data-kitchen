@@ -10,4 +10,4 @@
   schema:url <https://cryptpad.fr/> ;
   schema:description "Encrypted collaborative documents." ;
   dct:publisher "CryptPad" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

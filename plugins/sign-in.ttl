@@ -10,6 +10,6 @@
   schema:url </node_modules/sol-components/web/sol-login.js> ;
   schema:description "Solid sign-in button (popup flow)." ;
   dct:publisher "Jeff Zucker" ;
-  dct:subject "Pods" ;
+  schema:keywords "Pods" ;
   ui:attribute
     [ schema:name "mode" ; schema:value "popup" ] .

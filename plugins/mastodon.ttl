@@ -10,4 +10,4 @@
   schema:url <https://mastodon.social/> ;
   schema:description "Decentralized social network." ;
   dct:publisher "Mastodon" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

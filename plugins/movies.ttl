@@ -10,7 +10,7 @@
   schema:url </node_modules/open-media-player/dist/ia-player.esm.js> ;
   schema:description "Browse and play films from the Internet Archive." ;
   dct:publisher "Jeff Zucker" ;
-  dct:subject "Media" ;
+  schema:keywords "Media" ;
   ui:attribute
     [ schema:name "storage-ns" ; schema:value "movies" ] ,
     [ schema:name "favourites-only" ; schema:value "" ] ,

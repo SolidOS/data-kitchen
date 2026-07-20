@@ -10,4 +10,4 @@
   schema:url <https://oxfordhcc.github.io/solid-media/> ;
   schema:description "Movie tracking with personalised recommendations." ;
   dct:publisher "Oxford Human Centred Computing Group" ;
-  dct:subject "Media" .
+  schema:keywords "Media" .

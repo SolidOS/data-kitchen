@@ -10,4 +10,4 @@
   schema:url <https://hello.0data.app/solid/> ;
   schema:description "Tiny demo app showing data stored in your pod." ;
   dct:publisher "0data" ;
-  dct:subject "Tech" .
+  schema:keywords "Tech" .

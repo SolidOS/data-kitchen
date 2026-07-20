@@ -10,4 +10,4 @@
   schema:url <https://todopod.solidcommunity.au> ;
   schema:description "Task lists in encrypted personal storage." ;
   dct:publisher "Togaware" ;
-  dct:subject "Productivity" .
+  schema:keywords "Productivity" .

@@ -10,4 +10,4 @@
   schema:url <https://focus.noeldemartin.com/> ;
   schema:description "Tasks and notes, works offline." ;
   dct:publisher "Noel De Martin" ;
-  dct:subject "Productivity" .
+  schema:keywords "Productivity" .

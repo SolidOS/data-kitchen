@@ -10,4 +10,4 @@
   schema:url <https://vitalstats.apps.privatedatapod.com/> ;
   schema:description "Log blood pressure, weight and other vital signs." ;
   dct:publisher "PrivateDataPod" ;
-  dct:subject "Health" .
+  schema:keywords "Health" .

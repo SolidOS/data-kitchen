@@ -9,7 +9,7 @@
     "label": "ui:label",
     "name": "schema:name",
     "publisher": "dct:publisher",
-    "subject": "dct:subject",
+    "keywords": "schema:keywords",
     "hasPart": {
       "@id": "dct:hasPart",
       "@type": "@id"
@@ -49,6 +49,6 @@
   ],
   "shape": "/node_modules/sol-components/shapes/pod-settings.shacl",
   "help": "./help.html",
-  "subject": "Tech",
+  "keywords": "Tech",
   "icon": "/assets/dk-logo.png"
 }

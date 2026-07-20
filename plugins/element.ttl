@@ -10,4 +10,4 @@
   schema:url <https://app.element.io/> ;
   schema:description "Matrix client for secure, decentralized chat." ;
   dct:publisher "Element" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

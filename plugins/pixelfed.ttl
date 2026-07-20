@@ -10,4 +10,4 @@
   schema:url <https://pixelfed.social/> ;
   schema:description "Federated photo sharing (ActivityPub)." ;
   dct:publisher "Pixelfed" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

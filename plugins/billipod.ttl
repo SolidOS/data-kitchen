@@ -10,4 +10,4 @@
   schema:url <https://billipod.solidcommunity.au> ;
   schema:description "Track bills with payment reminders." ;
   dct:publisher "Togaware" ;
-  dct:subject "Productivity" .
+  schema:keywords "Productivity" .

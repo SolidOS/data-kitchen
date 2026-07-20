@@ -14,7 +14,7 @@
 // app's design decision, expressed as a `region` attribute on the MENU item.)
 //
 // plus ui:label, ui:icon, rdfs:comment (card blurb), dct:creator /
-// dct:publisher (byline) and dct:subject literals (topic categories — one
+// dct:publisher (byline) and schema:keywords literals (topic categories — one
 // skos:Collection per distinct value). The catalog is ONE #Available list of
 // everything; "in use" means ui-data/data-kitchen-main-menu.ttl mounts it.
 //
@@ -89,7 +89,7 @@ function readEntries() {
       desc: (store.any(subj, rdf.sym(SCHEMA_NS + 'description')) || {}).value
          || (store.any(subj, rdf.sym(RDFS_NS + 'comment')) || {}).value || '',
       publisher: dct('publisher'),
-      cats: store.each(subj, rdf.sym(DCT_NS + 'subject'), null).map((n) => n.value),
+      cats: store.each(subj, rdf.sym(SCHEMA_NS + 'keywords'), null).map((n) => n.value),
       // settings pointers (dk-plugin-settings reads these off the ENTRY)
       conformsTo: dct('conformsTo'),
       references: store.each(subj, rdf.sym(DCT_NS + 'references'), null).map((n) => n.value),
@@ -213,7 +213,7 @@ async function reconcileCatalog() {
     if (e.kind === 'link') store.add(node, rdf.sym(SCHEMA + 'url'), rdf.sym(e.href), doc);
     if (e.desc) store.add(node, rdf.sym(SCHEMA + 'description'), lit(e.desc), doc);
     if (e.publisher) store.add(node, rdf.sym(DCT + 'publisher'), lit(e.publisher), doc);
-    for (const c of e.cats) store.add(node, rdf.sym(DCT + 'subject'), lit(c), doc);
+    for (const c of e.cats) store.add(node, rdf.sym(SCHEMA + 'keywords'), lit(c), doc);
     for (const [k, v] of e.params) {
       const b = rdf.blankNode();
       store.add(b, rdf.sym(SCHEMA + 'name'), lit(k), doc);
@@ -229,10 +229,10 @@ async function reconcileCatalog() {
 
   // Topic collections are a DERIVED index. Membership is the UNION of:
   //   (a) the EXISTING collections (owner-curated membership survives),
-  //   (b) the seeds' dct:subject categories (entries carry no subject
+  //   (b) the seeds' schema:keywords categories (entries carry no keyword
   //       triples — the generated catalog only ever expressed topics as
   //       collections; deriving from entries alone WIPES the topics),
-  //   (c) any dct:subject an owner added to an entry directly.
+  //   (c) any schema:keywords an owner added to an entry directly.
   const byCat = new Map();
   const addTo = (cat, iri) => {
     if (!cat || !iri) return;
@@ -254,9 +254,9 @@ async function reconcileCatalog() {
     const iri = entryBySource.get(e.file);
     for (const c of e.cats) addTo(c, iri);
   }
-  // (c) entry-level dct:subject (owner edits)
+  // (c) entry-level schema:keywords (owner edits)
   for (const s of store.each(null, typeN, rdf.sym(UI + 'Plugin'))) {
-    for (const c of store.each(s, rdf.sym(DCT + 'subject'), null)) addTo(c.value, s.value);
+    for (const c of store.each(s, rdf.sym(SCHEMA + 'keywords'), null)) addTo(c.value, s.value);
   }
   for (const st of [...store.statementsMatching(null, typeN, rdf.sym(SKOS + 'Collection'))]) {
     store.removeMatches(st.subject, null, null);
@@ -284,7 +284,7 @@ if (_existsSync(OUT_FILE)
 }
 
 
-// One topic collection per distinct dct:subject value.
+// One topic collection per distinct schema:keywords value.
 const CATS = [...new Set(ENTRIES.flatMap((e) => e.cats))].sort((a, b) => a.localeCompare(b));
 const catMembers = (cat) =>
   ENTRIES.filter((e) => e.cats.includes(cat)).map((e) => `<#${frag(e.label)}>`).join(', ');

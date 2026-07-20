@@ -10,4 +10,4 @@
   schema:url <https://drive.privatedatapod.com/> ;
   schema:description "Drive-style file manager for your pod." ;
   dct:publisher "PrivateDataPod team" ;
-  dct:subject "Pods" .
+  schema:keywords "Pods" .

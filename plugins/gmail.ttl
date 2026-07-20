@@ -10,4 +10,4 @@
   schema:url <https://mail.google.com/mail/u/0/> ;
   schema:description "Google email." ;
   dct:publisher "Google" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

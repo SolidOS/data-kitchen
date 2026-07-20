@@ -10,4 +10,4 @@
   schema:url <https://geopod.solidcommunity.au> ;
   schema:description "Store points of interest and encrypted tracks on a map." ;
   dct:publisher "Software Innovation Institute, ANU" ;
-  dct:subject "Information" .
+  schema:keywords "Information" .

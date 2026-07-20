@@ -10,4 +10,4 @@
   schema:url <https://forum.solidproject.org/> ;
   schema:description "The Solid community discussion forum." ;
   dct:publisher "Solid Project" ;
-  dct:subject "Community" .
+  schema:keywords "Community" .

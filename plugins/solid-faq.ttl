@@ -10,4 +10,4 @@
   schema:url <https://solidproject.org/FAQ> ;
   schema:description "Frequently asked questions about Solid." ;
   dct:publisher "Solid Project" ;
-  dct:subject "Solid" .
+  schema:keywords "Solid" .

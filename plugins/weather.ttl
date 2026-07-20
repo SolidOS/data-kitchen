@@ -12,6 +12,6 @@
   dct:references </node_modules/sol-components/data/weather-settings.ttl> ;
   schema:description "Weather widget (location and units in its settings file)." ;
   dct:publisher "Jeff Zucker" ;
-  dct:subject "Information" ;
+  schema:keywords "Information" ;
   ui:attribute
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/weather/weather-settings.ttl#Settings" ] .

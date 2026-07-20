@@ -10,4 +10,4 @@
   schema:url <https://lemmy.world/> ;
   schema:description "Federated link aggregator and forums (ActivityPub)." ;
   dct:publisher "Lemmy" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

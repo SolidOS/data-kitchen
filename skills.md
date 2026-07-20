@@ -151,7 +151,7 @@ helper shapes: `:OrderedItemShape` (positioned ListItem wrapper) /
 Shared metadata: `ui:label` (ONE label everywhere — card title AND
 menu text; display overrides go through a `label` ui:attribute),
 `schema:description` (card blurb — NOT rdfs:comment, which stays a free
-documentary note), `dct:publisher`, `dct:subject` (topic categories →
+documentary note), `dct:publisher`, `schema:keywords` (topic categories →
 Customize tabs), `dct:conformsTo`/`dct:references`/`schema:softwareHelp`
 (settings shape / data doc / help), `ui:icon` (live favicon URL painted as
 `<img>`, emoji as text), `ui:attribute` pairs (region, if-logged-in, …).
@@ -256,7 +256,7 @@ live config — the next parse propagates edits, no reinstall.
 The catalog is RECONCILED (not regenerated) from `plugins/*.ttl` seeds by
 `tools/seed-plugins-catalog.mjs` — additive only: new entries, missing
 settings pointers, derived skos topic collections; drift is REPORTED, owner
-edits never overwritten (`--force` = full regen). `dct:subject` → topic tabs.
+edits never overwritten (`--force` = full regen). `schema:keywords` → topic tabs.
 A labelled loaded component with no catalog entry appears as a ghost under
 "Other". **Topic tabs always render** — a topic whose plugins are all in use
 shows an "empty — …" hint instead of vanishing (only the synthetic "Other"
@@ -310,7 +310,7 @@ state, so any step can be re-entered and re-opening an app just works.
 - **Menus stay runtime-rendered** (`from-rdf`) — menu edits need NO
   regeneration; only a LAYOUT change does (explicit Regenerate button).
 - **Publish = catalog-only:** appends a `ui:Plugin` (kind ui:Link,
-  `schema:url` the app's index.html, `dct:subject "My Apps"`) to the
+  `schema:url` the app's index.html, `schema:keywords "My Apps"`) to the
   catalog. PATCH (sparql-update) first; on failure — CSS's "Lock expired"
   500 on the big catalog doc, the same scar sol-form hit — falls back to
   full-IRI append + whole-doc PUT.
@@ -518,11 +518,13 @@ state, so any step can be re-entered and re-opening an app just works.
   test). omp likewise ships plugins/{ia-player,omp-images}.ttl.
 - **sc `shapes/*.shaclc` are GENERATED twins** (2026-07-17): `.shacl` is
   canonical; `scripts/regen-shaclc.mjs` refreshes twins, `--check` compares
-  without writing, and `tests/core/shaclc-generated.test.js` is the standing
-  drift guard (runs on every sc `npm test`; comparison is quad-based, so
-  comment-only edits don't trip it). dk's `feeds.shaclc` + omp's four twins
-  DON'T match what this generator emits (different provenance/formatting —
-  unresolved, left alone).
+  without writing (byte comparison), and `tests/core/shaclc-generated.test.js`
+  is the standing drift guard (runs on every sc `npm test`). House style
+  (2026-07-20, Jeff's format): annotation blocks span three lines — property
+  line ends `%`, one indented line of `sh:name ; sh:description`, closing
+  `% .` at property indent; blank line between shapes. dk's `feeds.shaclc` +
+  omp's four twins DON'T match what this generator emits (different
+  provenance/formatting — unresolved, left alone).
 - **dk settings = one lookup:** dk-plugin-settings reads the menu item's
   dct:source plugin doc (conformsTo/references/label); manifest.jsonld
   fallback stays for dk-own plugins; the sc-JSON branch (core/manifest.js

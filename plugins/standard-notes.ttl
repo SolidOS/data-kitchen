@@ -10,4 +10,4 @@
   schema:url <https://app.standardnotes.com/> ;
   schema:description "Open-source encrypted notes." ;
   dct:publisher "Standard Notes" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

@@ -10,4 +10,4 @@
   schema:url <https://moviestar.solidcommunity.au> ;
   schema:description "Track what you watch, share, and get recommendations." ;
   dct:publisher "Software Innovation Institute, ANU" ;
-  dct:subject "Media" .
+  schema:keywords "Media" .

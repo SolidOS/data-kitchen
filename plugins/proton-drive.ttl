@@ -10,4 +10,4 @@
   schema:url <https://drive.proton.me/> ;
   schema:description "Encrypted file storage from Proton." ;
   dct:publisher "Proton" ;
-  dct:subject "Other Services" .
+  schema:keywords "Other Services" .

@@ -10,4 +10,4 @@
   schema:url <https://penny.vincenttunru.com/> ;
   schema:description "Browse and manage everything in your pod." ;
   dct:publisher "Vincent Tunru" ;
-  dct:subject "Pods" .
+  schema:keywords "Pods" .

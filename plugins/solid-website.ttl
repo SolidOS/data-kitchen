@@ -10,4 +10,4 @@
   schema:url <https://solidproject.org> ;
   schema:description "The Solid Project website." ;
   dct:publisher "Solid Project" ;
-  dct:subject "Solid" .
+  schema:keywords "Solid" .

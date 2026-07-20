@@ -10,4 +10,4 @@
   schema:url <https://json-ld.github.io/json-ld.org/playground/> ;
   schema:description "Try out JSON-LD documents." ;
   dct:publisher "json-ld.org" ;
-  dct:subject "Tech" .
+  schema:keywords "Tech" .

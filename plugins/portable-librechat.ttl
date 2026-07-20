@@ -10,4 +10,4 @@
   schema:url <https://chat.solidproject.org/> ;
   schema:description "Open-source AI chat that keeps your conversations in your pod." ;
   dct:publisher "Solid Project" ;
-  dct:subject "Tech" .
+  schema:keywords "Tech" .

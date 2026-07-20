@@ -10,4 +10,4 @@
   schema:url <https://ai.privatedatapod.com/> ;
   schema:description "Privacy-first AI assistant with searchable conversation logs." ;
   dct:publisher "PrivateDataPod team" ;
-  dct:subject "Tech" .
+  schema:keywords "Tech" .

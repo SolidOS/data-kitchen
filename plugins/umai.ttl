@@ -10,4 +10,4 @@
   schema:url <https://umai.noeldemartin.com> ;
   schema:description "Offline-first recipe manager." ;
   dct:publisher "Noel De Martin" ;
-  dct:subject "Information" .
+  schema:keywords "Information" .

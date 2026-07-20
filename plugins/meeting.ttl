@@ -10,7 +10,7 @@
   schema:url </dk-pod/dk/plugins/solidos/dk-solidos.js> ;
   schema:description "A Solid meeting workspace, in the SolidOS meeting pane." ;
   dct:publisher "SolidOS Team" ;
-  dct:subject "SolidOS apps" ;
+  schema:keywords "SolidOS apps" ;
   ui:attribute
     [ schema:name "source" ; schema:value "/dk-pod/meetings/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .

@@ -5,7 +5,7 @@
  *
  * sc's ttl is the library's self-description (settings shape, default data,
  * help). dk's plugins/<x>.ttl is the deployment layer: same component, plus
- * dk-specific facts (dct:subject category, ui:attribute source → the pod's
+ * dk-specific facts (schema:keywords category, ui:attribute source → the pod's
  * settings doc). This seeder copies the SETTINGS POINTERS across so
  * dk-plugin-settings can drive a form from the deployment doc alone:
  *

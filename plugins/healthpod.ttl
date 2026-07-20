@@ -10,4 +10,4 @@
   schema:url <https://healthpod.solidcommunity.au> ;
   schema:description "Manage your health data, with encryption." ;
   dct:publisher "Software Innovation Institute, ANU" ;
-  dct:subject "Health" .
+  schema:keywords "Health" .
