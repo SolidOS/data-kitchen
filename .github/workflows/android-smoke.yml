@@ -1,0 +1,49 @@
+# Static smoke over the released Android APK — the artifact GitHub runners
+# cannot boot (the APK ships full native payloads only for the arm ABIs; GH
+# runners can't emulate arm64 Android — real boots stay on the sideload
+# device). Every packaging failure that reached users was statically
+# visible, and tools/android-apk-smoke.mjs asserts exactly that class:
+# per-ABI native sets (libnode etc.), the nodejs-mobile project payload
+# (engine/node_modules/pod-seed tarballs, WebID card seed), and the
+# versionName stamp. Runs on release publish, and on demand from the
+# Actions tab (pick a tag, or leave empty for the latest release).
+name: android-smoke
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to test (e.g. v2.1.9); empty = latest release'
+        required: false
+        default: ''
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4        # for tools/android-apk-smoke.mjs + package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Download the release's APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG='${{ github.event.inputs.tag || github.event.release.tag_name }}'
+          if [ -z "$TAG" ]; then
+            TAG=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName)
+          fi
+          echo "testing release $TAG"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern '*-android.apk' --dir "$RUNNER_TEMP/dk"
+
+      - name: APK payload checks
+        run: |
+          SMOKE_EXPECT_VERSION="${TAG#v}" \
+          SMOKE_APK="$(ls "$RUNNER_TEMP"/dk/*-android.apk)" \
+          node tools/android-apk-smoke.mjs

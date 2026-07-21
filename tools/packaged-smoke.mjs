@@ -29,6 +29,12 @@
 //             against THAT .app and BOOT its binary. SMOKE_EXPECT_VERSION
 //             overrides the Info.plist version to assert (defaults to
 //             package.json's — pass it when testing an older release).
+//         SMOKE_WIN_APP="/path/to/unzipped-win-dir" node tools/packaged-smoke.mjs
+//             windows-artifact mode (the win-smoke GitHub workflow): the dir
+//             is the unzipped win zip (exe at its root). Same REQUIRED list
+//             against resources/app, exe + extraResources + version checks,
+//             then BOOT the exe. SKIP_BOOT=1 makes it a static-only pass
+//             (usable on any OS — the win statics are plain file checks).
 //         SMOKE_VIDEO=1  additionally boots with a CDP port and runs the
 //             video-playback probe (tools/video-playback-probe.mjs)
 //             against the booted app — codec matrix + a real
@@ -49,6 +55,7 @@ import { dirname, join } from 'node:path';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
 const MAC_APP = process.env.SMOKE_MAC_APP || '';
+const WIN_APP = process.env.SMOKE_WIN_APP || '';
 const unpacked = join(root, 'release', 'linux-unpacked');
 const appDir = join(unpacked, 'resources', 'app');
 
@@ -74,7 +81,7 @@ function fail(msg) {
 }
 function ok(msg) { console.log(`[smoke] ok — ${msg}`); }
 
-if (!MAC_APP && !existsSync(appDir)) fail(`no ${appDir} — run \`npm run dist:cross\` first`);
+if (!MAC_APP && !WIN_APP && !existsSync(appDir)) fail(`no ${appDir} — run \`npm run dist:cross\` first`);
 
 // ── 1. static: every boot-critical path must be in the packed tree ──────────
 // One entry per subsystem that dies silently when its files are missing.
@@ -98,7 +105,7 @@ const REQUIRED = [
   'node_modules/mashlib/dist/mashlib.min.js',
   'node_modules/open-media-player/omp.manifest.json',
 ];
-if (!MAC_APP) {
+if (!MAC_APP && !WIN_APP) {
   const missing = REQUIRED.filter((r) => !existsSync(join(appDir, r)));
   if (missing.length) fail(`packed app is missing:\n  ${missing.join('\n  ')}\n→ check build.files in package.json`);
   ok(`all ${REQUIRED.length} boot-critical files present in the packed tree`);
@@ -112,7 +119,9 @@ if (!MAC_APP) {
 // which deserves a loud warning, not a fail. In SMOKE_MAC_APP mode the .app
 // was named explicitly, so missing IS a failure.
 const macApp = MAC_APP || join(root, 'release', 'mac', `${pkg.build.productName}.app`);
-if (!existsSync(macApp)) {
+if (WIN_APP) {
+  // windows-artifact mode — the mac tree is not on this runner
+} else if (!existsSync(macApp)) {
   if (MAC_APP) fail(`SMOKE_MAC_APP points at ${macApp} but it does not exist`);
   console.warn(`[smoke] WARNING: ${macApp} missing — mac checks SKIPPED (run dist:cross to re-verify the mac build)`);
 } else {
@@ -152,6 +161,38 @@ if (!existsSync(macApp)) {
   ok(`mac: Info.plist version ${m[1]} matches expected v${expectVersion}`);
 }
 
+// ── 1c. win static: same holes against the win tree ─────────────────────────
+// The win zip's root IS the app dir (exe beside resources/). Locally
+// release/win-unpacked exists between dist:cross and release:prep's prune —
+// absent means the win build wasn't (re)built: warn, don't fail. In
+// SMOKE_WIN_APP mode the dir was named explicitly, so missing IS a failure.
+const winDir = WIN_APP || join(root, 'release', 'win-unpacked');
+if (MAC_APP) {
+  // mac-artifact mode — the win tree is not on this runner
+} else if (!existsSync(winDir)) {
+  if (WIN_APP) fail(`SMOKE_WIN_APP points at ${winDir} but it does not exist`);
+  console.warn(`[smoke] WARNING: ${winDir} missing — win checks SKIPPED (run dist:cross to re-verify the win build)`);
+} else {
+  const winAppDir = join(winDir, 'resources', 'app');
+  const winMissing = REQUIRED.filter((r) => !existsSync(join(winAppDir, r)));
+  if (winMissing.length) fail(`win tree is missing:\n  ${winMissing.join('\n  ')}\n→ check build.files in package.json`);
+  ok(`win: all ${REQUIRED.length} boot-critical files present`);
+
+  const winCssPkg = join(winAppDir, 'pivot', 'node_modules', '@solid', 'community-server', 'package.json');
+  if (!existsSync(winCssPkg)) fail('win tree has no pivot/node_modules — extraResources did not land');
+  ok('win: pivot/node_modules (extraResources) present');
+
+  const winExe = join(winDir, `${pkg.build.productName}.exe`);
+  if (!existsSync(winExe)) fail(`win tree has no ${pkg.build.productName}.exe`);
+  ok('win: main exe present');
+
+  // Version stamp — a stale zip otherwise passes every file check.
+  const expectVersion = process.env.SMOKE_EXPECT_VERSION || pkg.version;
+  const winPkg = JSON.parse(readFileSync(join(winAppDir, 'package.json'), 'utf8'));
+  if (winPkg.version !== expectVersion) fail(`win tree is v${winPkg.version}, expected v${expectVersion} — stale build/artifact`);
+  ok(`win: packaged version ${winPkg.version} matches expected v${expectVersion}`);
+}
+
 if (process.env.SKIP_BOOT === '1') { console.log('[smoke] SKIP_BOOT=1 — boot test skipped'); process.exit(0); }
 
 // ── 2. boot: packed binary, throwaway home, spare ports ─────────────────────
@@ -162,8 +203,10 @@ if (process.env.SKIP_BOOT === '1') { console.log('[smoke] SKIP_BOOT=1 — boot t
 const appName = pkg.name;
 const bin = MAC_APP
   ? join(macApp, 'Contents', 'MacOS', pkg.build.productName)
-  : [appName, appName.toLowerCase()].map((n) => join(unpacked, n)).find((f) => existsSync(f));
-if (!bin || !existsSync(bin)) fail(MAC_APP ? `no binary at ${bin}` : `no ${appName} binary found in linux-unpacked/`);
+  : WIN_APP
+    ? join(winDir, `${pkg.build.productName}.exe`)
+    : [appName, appName.toLowerCase()].map((n) => join(unpacked, n)).find((f) => existsSync(f));
+if (!bin || !existsSync(bin)) fail((MAC_APP || WIN_APP) ? `no binary at ${bin}` : `no ${appName} binary found in linux-unpacked/`);
 
 const tmp = mkdtempSync(join(tmpdir(), 'dk-smoke-'));
 const podHome = join(tmp, 'pod');

@@ -1,0 +1,58 @@
+# Boots the released windows zip on a real windows runner — same role as
+# mac-smoke: the win artifact is cross-built on linux and otherwise ships
+# with zero execution. Runs automatically when a release is published, and
+# on demand from the Actions tab (pick a tag, or leave empty for the latest
+# release).
+#
+# The heavy lifting is tools/packaged-smoke.mjs in SMOKE_WIN_APP mode: the
+# same static file checks as the local gate (REQUIRED list, extraResources,
+# exe, version stamp), then a real boot against a throwaway pod home — seed
+# plants files, WebID card exists, app page loads, router answers.
+name: win-smoke
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to test (e.g. v2.1.9); empty = latest release'
+        required: false
+        default: ''
+
+jobs:
+  boot:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4        # for tools/packaged-smoke.mjs + package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Download the release's win zip
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG='${{ github.event.inputs.tag || github.event.release.tag_name }}'
+          if [ -z "$TAG" ]; then
+            TAG=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName)
+          fi
+          echo "testing release $TAG"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern '*-win-x64.zip' --dir "$RUNNER_TEMP/dk"
+
+      - name: Unzip like a user
+        shell: pwsh
+        run: |
+          $zip = Get-ChildItem "$env:RUNNER_TEMP/dk" -Filter '*-win-x64.zip' | Select-Object -First 1
+          Expand-Archive -Path $zip.FullName -DestinationPath "$env:RUNNER_TEMP/dk/unzipped"
+
+      - name: Static checks + boot the packaged app
+        shell: bash
+        run: |
+          SMOKE_EXPECT_VERSION="${TAG#v}" \
+          SMOKE_WIN_APP="$RUNNER_TEMP/dk/unzipped" \
+          node tools/packaged-smoke.mjs
