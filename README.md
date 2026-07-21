@@ -54,7 +54,7 @@ The previous run is kept alongside as `dk.log.old`, so a crash-then-relaunch doe
 
 ## Acknowledgements
 
-Many thanks to Alain Bourgeois (@bourgeoa) for debugging assistance.
+Many thanks to Alain Bourgeois (@bourgeoa) and Robert Kahn for debugging assistance.
 
 ## Transparency
 

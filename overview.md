@@ -16,9 +16,12 @@ These shapes are meant to support host apps in which
 [Solid Data Kitchen](https://github.com/SolidOS/data-kitchen#-solid-data-kitchen---pod-in-a-box) is a complete working example of a host app matching this decription and using the shapes.  In particular look at the Customize page (click hamburger menu in upper right) which presents a drag and drop plugin manager and the Settings page (same hamburger menu) which presents an integrated configuration manager for a number of plugins.
 
 ## The informal discussion below is based on these formal elements :
-* [Proposed additions to the ui: ontology](https://github.com/jeff-zucker/sol-components/blob/main/data/ui-vocab.ttl)
+* [Proposed additions to the ui: ontology](https://github.com/w3c/ns/pull/35)
 * [The Menu and Plugin Shapes in SHACL](https://github.com/jeff-zucker/sol-components/blob/main/shapes/menu.shacl)
-* [The Menu and Plugin Shapes in SHACLC](https://github.com/jeff-zucker/sol-components/blob/main/shapes/menu.shaclc)
+
+**Issues and PRs related to the UI as RDF approach outlined here should be filed against those resources.**
+
+The Menu and Plugin shapes are also available as [SHACLC](https://github.com/jeff-zucker/sol-components/blob/main/shapes/menu.shaclc)
 
 See also
 * [An example plugin catalog following the shape](https://github.com/SolidOS/data-kitchen/blob/main/ui-data/data-kitchen-plugins-catalog.ttl)
@@ -32,14 +35,13 @@ Exactly one - A collection of named actions which may be displayed as a visual m
 Exactly one - The display label for the menu.
 
 ### `ui:orientation`
-Exactly one - The orientation of the menu; a ui:TemperatureUnit instance e.g.`ui:Horizontal`
+Exactly one - The orientation of the menu; a `ui:Orientation` instance e.g. `ui:Vertical`
 
 ### `ui:region`
-Zero or one - The default target for menu items; a ui:Region instance e.g. `ui:Modal`
+Zero or one - The target for menu items; a `ui:Region` instance e.g. `ui:Modal`. Note: it should be expected that a menu or tab component will have its own display region which will be, by default, where its items are displayed when selected.  This predicate is for situations in which the user wants to override the default and send menu output elsewhere. This predicate can also occur on menu items to override that item's display region rather than the whole menu.
 
 ### `schema:itemListElement`
-Zero or more - The menu items.  Each one points at either a `ui:Menu` (a submenu of the menu it occurs in) or a `ui:Plugin` (an action to be performed).
-
+Zero or more - The menu items.  Each one points at either a `ui:Menu` (a submenu of the menu it occurs in) or a `ui:Plugin` (an action to be performed).  Note : when ordered, menus are stored with positioned slots for each item rather than as an rdf first-rest Collection.  This means that changes in order are atomic and can be handled with patch rather than needing to PUT the entire file.
 
 ## The Plugin Shape
 
