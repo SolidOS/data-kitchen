@@ -76,28 +76,224 @@
 :Available
     a ui:Menu;
     schema:itemListElement
-        :0data-Hello, :BilliPod, :Bluesky, :Booklice, :Calendar,
-        :Clock, :CryptPad, :Customize, :Data-Kitchen-Pod-Browser, :dokieli,
-        :Duck-ai, :Element, :FilePod, :GeoPod, :Gmail, :Google-Calendar,
-        :Google-Maps, :Google-Messages, :HealthPod, :HomeVault,
-        :HuggingFace-Chat, :Images-Wikimedia, :InnerPod, :JSON-LD-Playground,
-        :KeyPod, :KonaPod, :Lemmy, :LibreTranslate, :Mastodon, :Matrix-Chat,
-        :Media-Kraken, :Movies-Internet-Archive, :MovieStar, :MSFatigue,
-        :Music-Internet-Archive, :News-three-panel-feeds, :NotePod,
-        :ODI-Solid-File-Manager, :OpenStreetMap, :Penny, :Pixelfed, :Pod-Drive,
-        :Pod-Pro, :Pod-Resume, :PodCal, :PodOS-Browser, :Portable-LibreChat,
-        :Proton-Calendar, :Proton-Drive, :Proton-Mail, :RDF-Validator,
-        :Restart-dk, :RoloPod, :Search, :SearXNG, :SecureDialog, :SepiaSearch,
-        :Settings, :SHACL-Playground, :Sign-in, :Solid-Catalog, :Solid-FAQ,
-        :Solid-File-Manager, :Solid-Forum, :Solid-Glossary, :Solid-Website,
-        :Solid-World-Videos, :Solidflix, :SolidFocus, :SolidOS-AddressBook, :SolidOS-Chat,
-        :SolidOS-data-browser, :SolidOS-Meeting, :SolidOS-Notes, :SolidOS-Tasks,
-        :SPARQL-Playground, :Spoken-Word-Internet-Archive, :Standard-Notes,
-        :Synara-AI, :Tag-Explainer, :Text-size, :Theme, :Tired-Bike, :TodoPod,
-        :Tuta, :Umai, :VitalStats, :Weather;
+        :Available-0data-Hello, :Available-BilliPod, :Available-Bluesky,
+        :Available-Booklice, :Available-Calendar, :Available-Clock,
+        :Available-CryptPad, :Available-Customize,
+        :Available-Data-Kitchen-Pod-Browser, :Available-dokieli,
+        :Available-Duck-ai, :Available-Element, :Available-FilePod,
+        :Available-GeoPod, :Available-Gmail, :Available-Google-Calendar,
+        :Available-Google-Maps, :Available-Google-Messages,
+        :Available-HealthPod, :Available-HomeVault, :Available-HuggingFace-Chat,
+        :Available-Images-Wikimedia, :Available-InnerPod,
+        :Available-JSON-LD-Playground, :Available-KeyPod, :Available-KonaPod,
+        :Available-Lemmy, :Available-LibreTranslate, :Available-Mastodon,
+        :Available-Matrix-Chat, :Available-Media-Kraken,
+        :Available-Movies-Internet-Archive, :Available-MovieStar,
+        :Available-MSFatigue, :Available-Music-Internet-Archive,
+        :Available-News-three-panel-feeds, :Available-NotePod,
+        :Available-ODI-Solid-File-Manager, :Available-OpenStreetMap,
+        :Available-Penny, :Available-Pixelfed, :Available-Pod-Drive,
+        :Available-Pod-Pro, :Available-Pod-Resume, :Available-PodCal,
+        :Available-PodOS-Browser, :Available-Portable-LibreChat,
+        :Available-Proton-Calendar, :Available-Proton-Drive,
+        :Available-Proton-Mail, :Available-RDF-Validator, :Available-Restart-dk,
+        :Available-RoloPod, :Available-Search, :Available-SearXNG,
+        :Available-SecureDialog, :Available-SepiaSearch, :Available-Settings,
+        :Available-SHACL-Playground, :Available-Sign-in,
+        :Available-Solid-Catalog, :Available-Solid-FAQ,
+        :Available-Solid-File-Manager, :Available-Solid-Forum,
+        :Available-Solid-Glossary, :Available-Solid-Website,
+        :Available-Solid-World-Videos, :Available-Solidflix,
+        :Available-SolidFocus, :Available-SolidOS-AddressBook,
+        :Available-SolidOS-Chat, :Available-SolidOS-data-browser,
+        :Available-SolidOS-Meeting, :Available-SolidOS-Notes,
+        :Available-SolidOS-Tasks, :Available-SPARQL-Playground,
+        :Available-Spoken-Word-Internet-Archive, :Available-Standard-Notes,
+        :Available-Synara-AI, :Available-Tag-Explainer, :Available-Text-size,
+        :Available-Theme, :Available-Tired-Bike, :Available-TodoPod,
+        :Available-Tuta, :Available-Umai, :Available-VitalStats,
+        :Available-Weather;
     rdfs:comment
         "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it.";
     ui:label "Plugins Available".
+:Available-0data-Hello
+a schema:ListItem; schema:item :0data-Hello; schema:position 1 .
+:Available-BilliPod a schema:ListItem; schema:item :BilliPod; schema:position 2 .
+
+:Available-Bluesky a schema:ListItem; schema:item :Bluesky; schema:position 3 .
+
+:Available-Booklice a schema:ListItem; schema:item :Booklice; schema:position 4 .
+
+:Available-Calendar a schema:ListItem; schema:item :Calendar; schema:position 5 .
+
+:Available-Clock a schema:ListItem; schema:item :Clock; schema:position 6 .
+
+:Available-CryptPad a schema:ListItem; schema:item :CryptPad; schema:position 7 .
+
+:Available-Customize
+a schema:ListItem; schema:item :Customize; schema:position 86 .
+:Available-Data-Kitchen-Pod-Browser
+a schema:ListItem; schema:item :Data-Kitchen-Pod-Browser; schema:position 8 .
+:Available-dokieli a schema:ListItem; schema:item :dokieli; schema:position 9 .
+
+:Available-Duck-ai a schema:ListItem; schema:item :Duck-ai; schema:position 10 .
+
+:Available-Element a schema:ListItem; schema:item :Element; schema:position 11 .
+
+:Available-FilePod a schema:ListItem; schema:item :FilePod; schema:position 12 .
+
+:Available-GeoPod a schema:ListItem; schema:item :GeoPod; schema:position 13 .
+
+:Available-Gmail a schema:ListItem; schema:item :Gmail; schema:position 14 .
+
+:Available-Google-Calendar
+a schema:ListItem; schema:item :Google-Calendar; schema:position 15 .
+:Available-Google-Maps
+a schema:ListItem; schema:item :Google-Maps; schema:position 16 .
+:Available-Google-Messages
+a schema:ListItem; schema:item :Google-Messages; schema:position 17 .
+:Available-HealthPod
+a schema:ListItem; schema:item :HealthPod; schema:position 18 .
+:Available-HomeVault
+a schema:ListItem; schema:item :HomeVault; schema:position 19 .
+:Available-HuggingFace-Chat
+a schema:ListItem; schema:item :HuggingFace-Chat; schema:position 20 .
+:Available-Images-Wikimedia
+a schema:ListItem; schema:item :Images-Wikimedia; schema:position 21 .
+:Available-InnerPod a schema:ListItem; schema:item :InnerPod; schema:position 22 .
+
+:Available-JSON-LD-Playground
+a schema:ListItem; schema:item :JSON-LD-Playground; schema:position 23 .
+:Available-KeyPod a schema:ListItem; schema:item :KeyPod; schema:position 24 .
+
+:Available-KonaPod a schema:ListItem; schema:item :KonaPod; schema:position 25 .
+
+:Available-Lemmy a schema:ListItem; schema:item :Lemmy; schema:position 26 .
+
+:Available-LibreTranslate
+a schema:ListItem; schema:item :LibreTranslate; schema:position 27 .
+:Available-Mastodon a schema:ListItem; schema:item :Mastodon; schema:position 28 .
+
+:Available-Matrix-Chat
+a schema:ListItem; schema:item :Matrix-Chat; schema:position 29 .
+:Available-Media-Kraken
+a schema:ListItem; schema:item :Media-Kraken; schema:position 30 .
+:Available-Movies-Internet-Archive
+a schema:ListItem; schema:item :Movies-Internet-Archive; schema:position 31 .
+:Available-MovieStar
+a schema:ListItem; schema:item :MovieStar; schema:position 32 .
+:Available-MSFatigue
+a schema:ListItem; schema:item :MSFatigue; schema:position 33 .
+:Available-Music-Internet-Archive
+a schema:ListItem; schema:item :Music-Internet-Archive; schema:position 34 .
+:Available-News-three-panel-feeds
+a schema:ListItem; schema:item :News-three-panel-feeds; schema:position 35 .
+:Available-NotePod a schema:ListItem; schema:item :NotePod; schema:position 36 .
+
+:Available-ODI-Solid-File-Manager
+a schema:ListItem; schema:item :ODI-Solid-File-Manager; schema:position 37 .
+:Available-OpenStreetMap
+a schema:ListItem; schema:item :OpenStreetMap; schema:position 38 .
+:Available-Penny a schema:ListItem; schema:item :Penny; schema:position 39 .
+
+:Available-Pixelfed a schema:ListItem; schema:item :Pixelfed; schema:position 40 .
+
+:Available-Pod-Drive
+a schema:ListItem; schema:item :Pod-Drive; schema:position 41 .
+:Available-Pod-Pro a schema:ListItem; schema:item :Pod-Pro; schema:position 42 .
+
+:Available-Pod-Resume
+a schema:ListItem; schema:item :Pod-Resume; schema:position 43 .
+:Available-PodCal a schema:ListItem; schema:item :PodCal; schema:position 44 .
+
+:Available-PodOS-Browser
+a schema:ListItem; schema:item :PodOS-Browser; schema:position 45 .
+:Available-Portable-LibreChat
+a schema:ListItem; schema:item :Portable-LibreChat; schema:position 46 .
+:Available-Proton-Calendar
+a schema:ListItem; schema:item :Proton-Calendar; schema:position 47 .
+:Available-Proton-Drive
+a schema:ListItem; schema:item :Proton-Drive; schema:position 48 .
+:Available-Proton-Mail
+a schema:ListItem; schema:item :Proton-Mail; schema:position 49 .
+:Available-RDF-Validator
+a schema:ListItem; schema:item :RDF-Validator; schema:position 50 .
+:Available-Restart-dk
+a schema:ListItem; schema:item :Restart-dk; schema:position 85 .
+:Available-RoloPod a schema:ListItem; schema:item :RoloPod; schema:position 51 .
+
+:Available-Search a schema:ListItem; schema:item :Search; schema:position 52 .
+
+:Available-SearXNG a schema:ListItem; schema:item :SearXNG; schema:position 53 .
+
+:Available-SecureDialog
+a schema:ListItem; schema:item :SecureDialog; schema:position 54 .
+:Available-SepiaSearch
+a schema:ListItem; schema:item :SepiaSearch; schema:position 55 .
+:Available-Settings a schema:ListItem; schema:item :Settings; schema:position 87 .
+
+:Available-SHACL-Playground
+a schema:ListItem; schema:item :SHACL-Playground; schema:position 56 .
+:Available-Sign-in a schema:ListItem; schema:item :Sign-in; schema:position 57 .
+
+:Available-Solid-Catalog
+a schema:ListItem; schema:item :Solid-Catalog; schema:position 58 .
+:Available-Solid-FAQ
+a schema:ListItem; schema:item :Solid-FAQ; schema:position 59 .
+:Available-Solid-File-Manager
+a schema:ListItem; schema:item :Solid-File-Manager; schema:position 60 .
+:Available-Solid-Forum
+a schema:ListItem; schema:item :Solid-Forum; schema:position 61 .
+:Available-Solid-Glossary
+a schema:ListItem; schema:item :Solid-Glossary; schema:position 62 .
+:Available-Solid-Website
+a schema:ListItem; schema:item :Solid-Website; schema:position 63 .
+:Available-Solid-World-Videos
+a schema:ListItem; schema:item :Solid-World-Videos; schema:position 88 .
+:Available-Solidflix
+a schema:ListItem; schema:item :Solidflix; schema:position 64 .
+:Available-SolidFocus
+a schema:ListItem; schema:item :SolidFocus; schema:position 65 .
+:Available-SolidOS-AddressBook
+a schema:ListItem; schema:item :SolidOS-AddressBook; schema:position 67 .
+:Available-SolidOS-Chat
+a schema:ListItem; schema:item :SolidOS-Chat; schema:position 68 .
+:Available-SolidOS-data-browser
+a schema:ListItem; schema:item :SolidOS-data-browser; schema:position 66 .
+:Available-SolidOS-Meeting
+a schema:ListItem; schema:item :SolidOS-Meeting; schema:position 69 .
+:Available-SolidOS-Notes
+a schema:ListItem; schema:item :SolidOS-Notes; schema:position 70 .
+:Available-SolidOS-Tasks
+a schema:ListItem; schema:item :SolidOS-Tasks; schema:position 71 .
+:Available-SPARQL-Playground
+a schema:ListItem; schema:item :SPARQL-Playground; schema:position 72 .
+:Available-Spoken-Word-Internet-Archive
+    a schema:ListItem;
+    schema:item :Spoken-Word-Internet-Archive;
+    schema:position 73 .
+:Available-Standard-Notes
+a schema:ListItem; schema:item :Standard-Notes; schema:position 74 .
+:Available-Synara-AI
+a schema:ListItem; schema:item :Synara-AI; schema:position 75 .
+:Available-Tag-Explainer
+a schema:ListItem; schema:item :Tag-Explainer; schema:position 76 .
+:Available-Text-size
+a schema:ListItem; schema:item :Text-size; schema:position 84 .
+:Available-Theme a schema:ListItem; schema:item :Theme; schema:position 83 .
+
+:Available-Tired-Bike
+a schema:ListItem; schema:item :Tired-Bike; schema:position 77 .
+:Available-TodoPod a schema:ListItem; schema:item :TodoPod; schema:position 78 .
+
+:Available-Tuta a schema:ListItem; schema:item :Tuta; schema:position 79 .
+
+:Available-Umai a schema:ListItem; schema:item :Umai; schema:position 80 .
+
+:Available-VitalStats
+a schema:ListItem; schema:item :VitalStats; schema:position 81 .
+:Available-Weather a schema:ListItem; schema:item :Weather; schema:position 82 .
+
 :BilliPod
     a ui:Plugin;
     dct:publisher "Togaware";
@@ -132,9 +328,6 @@
     dct:publisher "Jeff Zucker";
     dct:references dat:calendar-settings.ttl;
     dct:source plug:calendar.ttl;
-    schema:additionalType ui:Component;
-    schema:description "Pop-out month calendar for the button bar.";
-    schema:url we:sol-button.js;
     schema:additionalProperty
         [ schema:name "class"; schema:value "omp-calendar" ],
         [ schema:name "data-handler"; schema:value "sol-calendar" ],
@@ -146,6 +339,9 @@
                 "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All"
             ],
         [ schema:name "title"; schema:value "Calendar" ];
+    schema:additionalType ui:Component;
+    schema:description "Pop-out month calendar for the button bar.";
+    schema:url we:sol-button.js;
     ui:icon "📅";
     ui:label "Calendar";
     ui:region ui:Dropdown.
@@ -155,15 +351,15 @@
     dct:publisher "Jeff Zucker";
     dct:references dat:time-settings.ttl;
     dct:source plug:clock.ttl;
-    schema:additionalType ui:Component;
-    schema:description "Clock widget (timezone in its settings file).";
-    schema:url we:sol-time.js;
     schema:additionalProperty
             [
                 schema:name "source";
                 schema:value
                 "./dk-pod/dk/plugins/time/time-settings.ttl#Settings"
             ];
+    schema:additionalType ui:Component;
+    schema:description "Clock widget (timezone in its settings file).";
+    schema:url we:sol-time.js;
     ui:icon "🕐";
     ui:label "Clock".
 :Community
@@ -185,10 +381,6 @@
     ui:label "CryptPad".
 :Customize
     a ui:Plugin;
-    schema:keywords "UI Controls";
-    schema:additionalType ui:Component;
-    schema:description "Choose plugins for your menus and bar.";
-    schema:url we:sol-include.js;
     schema:additionalProperty
         [ schema:name "if-logged-in"; schema:value "" ],
             [
@@ -196,6 +388,10 @@
                 schema:value "./dk-pod/dk/pages/customize.html"
             ],
         [ schema:name "trusted"; schema:value "" ];
+    schema:additionalType ui:Component;
+    schema:description "Choose plugins for your menus and bar.";
+    schema:keywords "UI Controls";
+    schema:url we:sol-include.js;
     ui:label "Customize".
 :Data-Kitchen-Pod-Browser
     a ui:Plugin;
@@ -203,10 +399,6 @@
     dct:publisher "Jeff Zucker";
     dct:references po:pod-settings.ttl;
     dct:source plug:workspaces.ttl;
-    schema:additionalType ui:Component;
-    schema:description "Browse and manage your Solid pods and workspaces.";
-    schema:softwareHelp po:help.html;
-    schema:url po:dk-podz.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-podz" ],
@@ -214,17 +406,21 @@
                 schema:name "source";
                 schema:value "./dk-pod/dk/plugins/podz/dk-podz.html"
             ];
+    schema:additionalType ui:Component;
+    schema:description "Browse and manage your Solid pods and workspaces.";
+    schema:softwareHelp po:help.html;
+    schema:url po:dk-podz.js;
     ui:icon "/assets/dk-logo.png";
     ui:label "Data Kitchen Pod Browser".
 :dokieli
     a ui:Plugin;
     dct:publisher "Sarven Capadisli and Virginia Balseiro";
     dct:source plug:dokieli.ttl;
+    schema:additionalProperty [ schema:name "defer"; schema:value "" ];
     schema:additionalType ui:Component;
     schema:description
     "Write and publish articles, with annotations and social interactions.";
     schema:url sol2:dk-dokieli.js;
-    schema:additionalProperty [ schema:name "defer"; schema:value "" ];
     ui:icon "https://dokie.li/media/images/logo.png";
     ui:label "dokieli".
 :Duck-ai
@@ -339,9 +535,6 @@
     a ui:Plugin;
     dct:publisher "Jeff Zucker";
     dct:source plug:images.ttl;
-    schema:additionalType ui:Component;
-    schema:description "Browse Wikimedia image galleries.";
-    schema:url dis:omp-images.esm.js;
     schema:additionalProperty
         [ schema:name "id"; schema:value "panel-images" ],
             [
@@ -349,6 +542,9 @@
                 schema:value
                     "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images"
             ];
+    schema:additionalType ui:Component;
+    schema:description "Browse Wikimedia image galleries.";
+    schema:url dis:omp-images.esm.js;
     ui:icon "🖼";
     ui:label "Images (Wikimedia)".
 :Information
@@ -452,10 +648,6 @@
     dct:publisher "Jeff Zucker";
     dct:references int:index.ttl;
     dct:source plug:movies.ttl;
-    schema:additionalType ui:Component;
-    schema:description "Browse and play films from the Internet Archive.";
-    schema:softwareHelp ass:ia-help.html;
-    schema:url dis:ia-player.esm.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "favourites-only"; schema:value "" ],
@@ -466,6 +658,10 @@
                     "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_movies/index.ttl"
             ],
         [ schema:name "storage-ns"; schema:value "movies" ];
+    schema:additionalType ui:Component;
+    schema:description "Browse and play films from the Internet Archive.";
+    schema:softwareHelp ass:ia-help.html;
+    schema:url dis:ia-player.esm.js;
     ui:icon "🎬";
     ui:label "Movies (Internet Archive)".
 :MovieStar
@@ -493,11 +689,6 @@
     dct:publisher "Jeff Zucker";
     dct:references in:index.ttl;
     dct:source plug:music.ttl;
-    schema:additionalType ui:Component;
-    schema:description
-    "Browse and play music collections from the Internet Archive.";
-    schema:softwareHelp ass:ia-help.html;
-    schema:url dis:ia-player.esm.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-music" ],
@@ -507,16 +698,17 @@
                     "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_music/index.ttl"
             ],
         [ schema:name "storage-ns"; schema:value "music" ];
+    schema:additionalType ui:Component;
+    schema:description
+    "Browse and play music collections from the Internet Archive.";
+    schema:softwareHelp ass:ia-help.html;
+    schema:url dis:ia-player.esm.js;
     ui:icon "🎵";
     ui:label "Music (Internet Archive)".
 :News-three-panel-feeds
     a ui:Plugin;
     dct:publisher "Jeff Zucker";
     dct:source plug:news.ttl;
-    schema:additionalType ui:Component;
-    schema:description
-    "Read news feeds in a three-panel reader: sources, headlines, article.";
-    schema:url we:sol-feed.js;
     schema:additionalProperty
         [ schema:name "id"; schema:value "panel-news" ],
         [ schema:name "reader"; schema:value "inline" ],
@@ -525,6 +717,10 @@
                 schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds"
             ],
         [ schema:name "view"; schema:value "threePanel" ];
+    schema:additionalType ui:Component;
+    schema:description
+    "Read news feeds in a three-panel reader: sources, headlines, article.";
+    schema:url we:sol-feed.js;
     ui:icon "📰";
     ui:label "News (three-panel feeds)".
 :NotePod
@@ -690,9 +886,9 @@
     ui:label "RDF Validator".
 :Restart-dk
     a ui:Plugin;
-    schema:keywords "UI Controls";
     schema:additionalType ui:Command;
     schema:description "Restart the Data Kitchen app.";
+    schema:keywords "UI Controls";
     schema:url data:restartApp;
     ui:icon "🔄";
     ui:label "Restart dk".
@@ -711,10 +907,6 @@
     dct:publisher "Jeff Zucker";
     dct:references dat:search-engines.ttl;
     dct:source plug:search.ttl;
-    schema:additionalType ui:Component;
-    schema:description
-    "Search box for the button bar (pluggable search engines).";
-    schema:url we:sol-search.js;
     schema:additionalProperty
         [ schema:name "class"; schema:value "omp-search" ],
         [ schema:name "data-settings-skip"; schema:value "" ],
@@ -724,6 +916,10 @@
                 "./dk-pod/dk/plugins/search/search-engines.ttl#SearchEngines"
             ],
         [ schema:name "title"; schema:value "Search" ];
+    schema:additionalType ui:Component;
+    schema:description
+    "Search box for the button bar (pluggable search engines).";
+    schema:url we:sol-search.js;
     ui:icon "🔍";
     ui:label "Search".
 :SearXNG
@@ -756,10 +952,6 @@
     ui:label "SepiaSearch".
 :Settings
     a ui:Plugin;
-    schema:keywords "UI Controls";
-    schema:additionalType ui:Component;
-    schema:description "Global Data Kitchen settings.";
-    schema:url we:sol-include.js;
     schema:additionalProperty
         [ schema:name "if-logged-in"; schema:value "" ],
             [
@@ -767,6 +959,10 @@
                 schema:value "./dk-pod/dk/pages/settings.html"
             ],
         [ schema:name "trusted"; schema:value "" ];
+    schema:additionalType ui:Component;
+    schema:description "Global Data Kitchen settings.";
+    schema:keywords "UI Controls";
+    schema:url we:sol-include.js;
     ui:label "Settings".
 :SHACL-Playground
     a ui:Plugin;
@@ -781,10 +977,10 @@
     a ui:Plugin;
     dct:publisher "Jeff Zucker";
     dct:source plug:sign-in.ttl;
+    schema:additionalProperty [ schema:name "mode"; schema:value "popup" ];
     schema:additionalType ui:Component;
     schema:description "Solid sign-in button (popup flow).";
     schema:url we:sol-login.js;
-    schema:additionalProperty [ schema:name "mode"; schema:value "popup" ];
     ui:icon "🔑";
     ui:label "Sign in".
 :Solid
@@ -876,16 +1072,16 @@
     a ui:Plugin;
     dct:publisher "SolidOS Team";
     dct:source plug:addressbook.ttl;
-    schema:additionalType ui:Component;
-    schema:description
-    "Your contacts — a Solid address book, in the SolidOS contacts pane.";
-    schema:url sol2:dk-solidos.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
                 schema:value "/dk-pod/solidos-apps/contacts/index.ttl#this"
             ];
+    schema:additionalType ui:Component;
+    schema:description
+    "Your contacts — a Solid address book, in the SolidOS contacts pane.";
+    schema:url sol2:dk-solidos.js;
     ui:icon "📇";
     ui:label "SolidOS AddressBook".
 :SolidOS-apps
@@ -898,25 +1094,21 @@
     a ui:Plugin;
     dct:publisher "SolidOS Team";
     dct:source plug:chat.ttl;
-    schema:additionalType ui:Component;
-    schema:description "A Solid long chat, in the SolidOS chat pane.";
-    schema:url sol2:dk-solidos.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
                 schema:value "/dk-pod/solidos-apps/chat/index.ttl#this"
             ];
+    schema:additionalType ui:Component;
+    schema:description "A Solid long chat, in the SolidOS chat pane.";
+    schema:url sol2:dk-solidos.js;
     ui:icon "💬";
     ui:label "SolidOS Chat".
 :SolidOS-data-browser
     a ui:Plugin;
     dct:publisher "SolidOS Team";
     dct:source plug:solidos-browser.ttl;
-    schema:additionalType ui:Component;
-    schema:description "The SolidOS data browser, embedded.";
-    schema:softwareHelp sol2:help.html;
-    schema:url sol2:dk-solidos.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "has-location-bar"; schema:value "true" ],
@@ -924,53 +1116,57 @@
                 schema:name "source";
                 schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
             ];
+    schema:additionalType ui:Component;
+    schema:description "The SolidOS data browser, embedded.";
+    schema:softwareHelp sol2:help.html;
+    schema:url sol2:dk-solidos.js;
     ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
     ui:label "SolidOS (data browser)".
 :SolidOS-Meeting
     a ui:Plugin;
     dct:publisher "SolidOS Team";
     dct:source plug:meeting.ttl;
-    schema:additionalType ui:Component;
-    schema:description
-    "A Solid meeting workspace, in the SolidOS meeting pane.";
-    schema:url sol2:dk-solidos.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
                 schema:value "/dk-pod/solidos-apps/meetings/index.ttl#this"
             ];
+    schema:additionalType ui:Component;
+    schema:description
+    "A Solid meeting workspace, in the SolidOS meeting pane.";
+    schema:url sol2:dk-solidos.js;
     ui:icon "🤝";
     ui:label "SolidOS Meeting".
 :SolidOS-Notes
     a ui:Plugin;
     dct:publisher "SolidOS Team";
     dct:source plug:notes.ttl;
-    schema:additionalType ui:Component;
-    schema:description "A Solid notepad, in the SolidOS pad pane.";
-    schema:url sol2:dk-solidos.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
                 schema:value "/dk-pod/solidos-apps/notes/index.ttl#this"
             ];
+    schema:additionalType ui:Component;
+    schema:description "A Solid notepad, in the SolidOS pad pane.";
+    schema:url sol2:dk-solidos.js;
     ui:icon "📝";
     ui:label "SolidOS Notes".
 :SolidOS-Tasks
     a ui:Plugin;
     dct:publisher "SolidOS Team";
     dct:source plug:task-manager.ttl;
-    schema:additionalType ui:Component;
-    schema:description
-    "Your tasks — a Solid issue tracker, in the SolidOS tracker pane.";
-    schema:url sol2:dk-solidos.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
                 schema:value "/dk-pod/solidos-apps/tasks/index.ttl#this"
             ];
+    schema:additionalType ui:Component;
+    schema:description
+    "Your tasks — a Solid issue tracker, in the SolidOS tracker pane.";
+    schema:url sol2:dk-solidos.js;
     ui:icon "📋";
     ui:label "SolidOS Tasks".
 :SPARQL-Playground
@@ -988,11 +1184,6 @@
     dct:publisher "Jeff Zucker";
     dct:references inte:index.ttl;
     dct:source plug:spoken-word.ttl;
-    schema:additionalType ui:Component;
-    schema:description
-    "Browse and play poetry, audiobooks, and talks from the Internet Archive.";
-    schema:softwareHelp ass:ia-help.html;
-    schema:url dis:ia-player.esm.js;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-spoken-word" ],
@@ -1002,6 +1193,11 @@
                     "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_spoken_word/index.ttl"
             ],
         [ schema:name "storage-ns"; schema:value "spoken-word" ];
+    schema:additionalType ui:Component;
+    schema:description
+    "Browse and play poetry, audiobooks, and talks from the Internet Archive.";
+    schema:softwareHelp ass:ia-help.html;
+    schema:url dis:ia-player.esm.js;
     ui:icon "🎙️";
     ui:label "Spoken Word (Internet Archive)".
 :Standard-Notes
@@ -1040,17 +1236,17 @@
     skos:prefLabel "Tech".
 :Text-size
     a ui:Plugin;
-    schema:keywords "UI Controls";
     schema:additionalType ui:Command;
     schema:description "Cycle the interface text size.";
+    schema:keywords "UI Controls";
     schema:url data:cycleFontSize;
     ui:icon "A";
     ui:label "Text size".
 :Theme
     a ui:Plugin;
-    schema:keywords "UI Controls";
     schema:additionalType ui:Command;
     schema:description "Toggle the light / dark color scheme.";
+    schema:keywords "UI Controls";
     schema:url data:toggleTheme;
     ui:icon "🌙";
     ui:label "Theme".
@@ -1083,8 +1279,7 @@
     ui:label "Tuta".
 :UI-Controls
     a skos:Collection;
-    skos:member
-    :Customize, :Restart-dk, :Settings, :Text-size, :Theme;
+    skos:member :Customize, :Restart-dk, :Settings, :Text-size, :Theme;
     skos:prefLabel "UI Controls".
 :Umai
     a ui:Plugin;
@@ -1111,15 +1306,15 @@
     dct:publisher "Jeff Zucker";
     dct:references dat:weather-settings.ttl;
     dct:source plug:weather.ttl;
-    schema:additionalType ui:Component;
-    schema:description
-    "Weather widget (location and units in its settings file).";
-    schema:url we:sol-weather.js;
     schema:additionalProperty
             [
                 schema:name "source";
                 schema:value
                 "./dk-pod/dk/plugins/weather/weather-settings.ttl#Settings"
             ];
+    schema:additionalType ui:Component;
+    schema:description
+    "Weather widget (location and units in its settings file).";
+    schema:url we:sol-weather.js;
     ui:icon "🌤";
     ui:label "Weather".
