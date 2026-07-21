@@ -158,7 +158,12 @@ Customize tabs), `dct:conformsTo`/`dct:references`/`schema:softwareHelp`
 2026-07-20: `ui:hoverTitle` (ci manifests' `title` key is now a `ui:label`
 alias) and `schema:itemListOrder` (wrapper `schema:position` alone orders).
 `data/ui-vocab.ttl` descriptions are Jeff's (from drafts/plugin-shape.md)
-and the file is WRITE-FROZEN — no edits without a go naming it.
+and the file is WRITE-FROZEN — no edits without a go naming it. It is the
+SOURCE OF TRUTH for the W3C PR: `claude/prs/w3c-ns-ui-vocab/merge-ui-vocab.mjs`
+parses it and restyles it into upstream `ui.ttl`, hard-coding nothing.
+**SUBMITTED 2026-07-21 as https://github.com/w3c/ns/pull/35** (48 terms,
++181/−1). `rdfs:isDefinedBy` was dropped from the vocab that day (28
+statements, read by no code; upstream carries it on only 24 of its 81 terms).
 
 **Menus are REFERENCE lists, membership is positioned schema:ListItem
 wrappers** (2026-07-19 — `ui:parts` rdf:Collections RETIRED everywhere except
@@ -625,8 +630,8 @@ state, so any step can be re-entered and re-opening an app just works.
   COLLAPSED into it everywhere: shapes, parse, serialize, byline, ttls ×3
   copies, manifest.jsonld files), dct:conformsTo (settings shape),
   dct:references (default data), schema:softwareHelp. NEW TERM `ui:module`
-  (the ES module defining ui:name's element — in the PENDING w3c PR, 47
-  terms, still NOT submitted; artifacts claude/prs/w3c-ns-ui-vocab/).
+  (the ES module defining ui:name's element — later retired; the w3c PR that
+  eventually shipped is #35, 48 terms, submitted 2026-07-21).
 - **sc components are plain plugins:** sc `plugins/*.ttl` (7) are the SOURCE;
   `dist/sol-components.manifest.json` is GENERATED from them
   (tools/build-manifest.mjs + tools/manifest-base.json envelope; drift-guard
