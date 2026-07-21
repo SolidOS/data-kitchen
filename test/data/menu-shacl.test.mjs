@@ -48,7 +48,7 @@ if (!existsSync(SHAPES_PATH)) {
       // Menus are REFERENCE lists over the catalog's ui:Plugin entries
       // (2026-07-18) — and a placement wrapper's schema:item may also point
       // straight at a flat plugins/*.ttl manifest doc (the pod does this for
-      // e.g. app-builder.ttl). Members' types live in those docs, so menus
+      // e.g. solid-world-videos.ttl). Members' types live in those docs, so menus
       // validate COMPOSED with them, exactly as the runtime loads them
       // (loadReferencedDocs pulls every referenced doc into the same store).
       const store = parse(readFileSync(P(doc), 'utf8'), `http://dk.invalid/${doc}`);

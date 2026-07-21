@@ -73,28 +73,10 @@
     schema:url sol:;
     ui:icon "https://hello.0data.app/favicon.ico";
     ui:label "0data Hello".
-:App-Builder
-    a ui:Plugin;
-    dct:publisher "Jeff Zucker";
-    dct:source plug:app-builder.ttl;
-    schema:keywords "UI Controls";
-    schema:additionalType ui:Component;
-    schema:description
-        "Build your own app: pick a layout, add menus and plugins, publish to your pod.";
-    schema:url we:sol-include.js;
-    schema:additionalProperty
-        [ schema:name "if-logged-in"; schema:value "" ],
-            [
-                schema:name "source";
-                schema:value "./dk-pod/dk/pages/app-builder.html"
-            ],
-        [ schema:name "trusted"; schema:value "" ];
-    ui:icon "🏗️";
-    ui:label "App Builder".
 :Available
     a ui:Menu;
     schema:itemListElement
-        :0data-Hello, :App-Builder, :BilliPod, :Bluesky, :Booklice, :Calendar,
+        :0data-Hello, :BilliPod, :Bluesky, :Booklice, :Calendar,
         :Clock, :CryptPad, :Customize, :Data-Kitchen-Pod-Browser, :dokieli,
         :Duck-ai, :Element, :FilePod, :GeoPod, :Gmail, :Google-Calendar,
         :Google-Maps, :Google-Messages, :HealthPod, :HomeVault,
@@ -108,7 +90,7 @@
         :Restart-dk, :RoloPod, :Search, :SearXNG, :SecureDialog, :SepiaSearch,
         :Settings, :SHACL-Playground, :Sign-in, :Solid-Catalog, :Solid-FAQ,
         :Solid-File-Manager, :Solid-Forum, :Solid-Glossary, :Solid-Website,
-        :Solidflix, :SolidFocus, :SolidOS-AddressBook, :SolidOS-Chat,
+        :Solid-World-Videos, :Solidflix, :SolidFocus, :SolidOS-AddressBook, :SolidOS-Chat,
         :SolidOS-data-browser, :SolidOS-Meeting, :SolidOS-Notes, :SolidOS-Tasks,
         :SPARQL-Playground, :Spoken-Word-Internet-Archive, :Standard-Notes,
         :Synara-AI, :Tag-Explainer, :Text-size, :Theme, :Tired-Bike, :TodoPod,
@@ -864,6 +846,14 @@
     schema:url <https://solidproject.org>;
     ui:icon "https://solidproject.org/favicon.ico";
     ui:label "Solid Website".
+:Solid-World-Videos
+    a ui:Plugin;
+    dct:source plug:solid-world-videos.ttl;
+    schema:additionalType ui:Link;
+    schema:url "https://vimeo.com/solidworld";
+    ui:icon "https://solidproject.org/favicon.ico";
+    ui:label "Solid World Videos";
+    ui:region ui:Element.
 :Solidflix
     a ui:Plugin;
     dct:publisher "Oxford Human Centred Computing Group";
@@ -1094,7 +1084,7 @@
 :UI-Controls
     a skos:Collection;
     skos:member
-    :App-Builder, :Customize, :Restart-dk, :Settings, :Text-size, :Theme;
+    :Customize, :Restart-dk, :Settings, :Text-size, :Theme;
     skos:prefLabel "UI Controls".
 :Umai
     a ui:Plugin;

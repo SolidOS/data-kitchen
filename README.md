@@ -23,6 +23,10 @@ No setup or install needed, just download and run. Downloads for all platforms a
 * Showcase of dozens of Solid apps that work on local and remote pods without download
 * Access to over a quarter of million open culture items
 
+## Technical Details of the RDF and SHACL
+
+Not needed for using Data Kitchen, but if you're curious, see [An RDF based architecture for code-free, user-managed UI and plugins](overview.md)
+
 ## Special Note on Logging-In
 
 The local pod is protected by the electron/flutter router which sits in front of a pivot/css that does not require authentication.  The protection comes from the router, not from login authenticatin.  All apps still need to be manually authorized but the login itself is a dummy. This works seamlessly for Data Kitchen native apps like the Data Kitchen Pod Browser, but other apps may need to observe a login flow.  If an app asks you for a login to your Data Kitchen Pod, use these values:

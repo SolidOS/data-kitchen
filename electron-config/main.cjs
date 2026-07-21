@@ -257,6 +257,9 @@ class DesktopApp {
       width, height, x, y, title: 'Solid Data Kitchen',
       icon: path.join(__dirname, '..', 'assets', 'icons', 'dk-512.png'),
     });
+    // Startup default is FULL SCREEN (maximized). The saved geometry above
+    // still matters: it is what unmaximize restores to.
+    this.baseWindow.maximize();
 
     this.appView = new WebContentsView({
       webPreferences: {

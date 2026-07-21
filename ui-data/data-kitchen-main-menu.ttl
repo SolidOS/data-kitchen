@@ -61,7 +61,7 @@
 :item
     a ui:Menu;
     ui:label "About Solid";
-    schema:itemListElement :item-Solid-FAQ, :item-Solid-Forum, :item-Solid-Website, :item-Tag-Explainer, :item-Solid-Catalog, :item-Solid-Glossary.
+    schema:itemListElement :item-Solid-FAQ, :item-Solid-Forum, :item-Solid-Website, :item-Tag-Explainer, :item-Solid-Catalog, :item-Solid-Glossary, :item-Solid-World-Videos.
 :Media-3
     a ui:Menu;
     ui:label "Media";
@@ -78,7 +78,7 @@
     a ui:Menu;
     ui:label "Menu Tabs";
     ui:orientation ui:Horizontal;
-    schema:itemListElement :Tabs-Pods-2, :Tabs-Media-3, :Tabs-Health, :Tabs-Apps, :Tabs-item, :Tabs-panel-dev-tools, :Tabs-app-builder.ttl.
+    schema:itemListElement :Tabs-Pods-2, :Tabs-Media-3, :Tabs-Health, :Tabs-Apps, :Tabs-item, :Tabs-panel-dev-tools.
 
 :Apps-dokieli a schema:ListItem; schema:item data:dokieli; schema:position 1.
 :Apps-SolidFocus a schema:ListItem; schema:item data:SolidFocus; schema:position 2.
@@ -117,6 +117,7 @@
 :item-Tag-Explainer a schema:ListItem; schema:item data:Tag-Explainer; schema:position 4.
 :item-Solid-Catalog a schema:ListItem; schema:item data:Solid-Catalog; schema:position 5.
 :item-Solid-Glossary a schema:ListItem; schema:item data:Solid-Glossary; schema:position 6.
+:item-Solid-World-Videos a schema:ListItem; schema:item plu:solid-world-videos.ttl; schema:position 7.
 
 :Media-3-News-three-panel-feeds a schema:ListItem; schema:item data:News-three-panel-feeds; schema:position 1.
 :Media-3-Music-Internet-Archive a schema:ListItem; schema:item data:Music-Internet-Archive; schema:position 2.
@@ -144,4 +145,3 @@
 :Tabs-Apps a schema:ListItem; schema:item :Apps; schema:position 4.
 :Tabs-item a schema:ListItem; schema:item :item; schema:position 5.
 :Tabs-panel-dev-tools a schema:ListItem; schema:item :panel-dev-tools; schema:position 6.
-:Tabs-app-builder.ttl a schema:ListItem; schema:item plu:app-builder.ttl; schema:position 7.

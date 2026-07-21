@@ -269,6 +269,29 @@ catalog through solFetch (the gate-token
 path — a bare fetch 401s); closing a dirty editor reloads the pantry and the
 slot editors (chips re-resolve labels/icons from the entries). The entry IS
 live config — the next parse propagates edits, no reinstall.
+**Chip ✎ (2026-07-20):** mounted-plugin chips in the "Customize …" boxes
+carry the same pencil — the pantry sets `editPlugin` on its paired managers
+(discovery and legacy `for` alike); reference-style chips only. Either side,
+avail or used, opens the same populated form.
+
+**The plugin CREATOR (＋ add in the pantry head, 2026-07-20):** the
+manifest-URL input row AND URL-drop import are GONE (card drops stay — chip
+drag-off depends on them). ＋ add opens a `:PluginShape`-driven form over a
+LOCAL draft graph (`about:sol-plugin-new` in the shared store; an updater
+shim routes its PATCHes locally, so the server sees nothing until Create;
+close discards). Picking the kind re-renders the form so the kind's
+`schema:url` contract appears. Create → PUT flat manifest to
+`plugins/<label-slug>.ttl` (collision-suffixed; a Link with no icon defaults
+to `<origin>/favicon.ico`), then the catalog entry generated from it —
+body + `dct:source` + `#Available` membership + `schema:keywords` skos
+filing — in one catalog PUT. Optional single-pick enums (region etc.)
+lead with a "default (recommended)" row = NO triple (picking it deletes an
+existing one; region then inherits the menu default) — generic
+shape-to-form behavior, so the ✎ editor gets it too. GOTCHA: never adopt
+sol-form's raw CSS into the pantry shadow — its `:host{flex-direction:
+column}` collapses the cards|targets row (rescoped to `.creator-body`).
+Probe: `claude/smoke-tests/cdp-verify-plugin-creator.mjs` (19 checks,
+isolated instance).
 
 The catalog is RECONCILED (not regenerated) from `plugins/*.ttl` seeds by
 `tools/seed-plugins-catalog.mjs` — additive only: new entries, missing
@@ -282,7 +305,16 @@ hides when empty). Audit tool: `claude/validation/audit-entry-references.mjs`
 `*.invalid` origin leaks); `audit-double-listed.mjs` is retired with the
 model that made doubles possible.
 
-## App Builder (2026-07-19)
+## App Builder (2026-07-19; REMOVED from dk 2026-07-20 evening)
+
+**dk no longer ships the App Builder** (repo↔pod sync, Jeff's call): the
+`:App-Builder` catalog entry, `plugins/app-builder.ttl`,
+`pages/app-builder.html` and index.html's `sol-app-builder` loader tag are
+all gone (repo AND live pod). The `sol-app-builder` component, its sc tests,
+and the STANDALONE builder repo (`~/solid/sol-app-builder/`, served by
+`bin/standalone-pod.sh`) remain. Existing generated apps under
+`/dk-pod/apps/` (jz1, jz2) were left untouched. History below kept for the
+sc pieces.
 
 Users build STANDALONE apps on the pod. Entry: catalog `:App-Builder` (UI
 Controls, catalog-only — place via Customize); its page
@@ -524,6 +556,9 @@ state, so any step can be re-entered and re-opening an app just works.
   saveConfig adopts it; re-roots on reload, data NOT moved; "Move my pod"
   + dk:move-pod are REMOVED) and a permanent "Needs reload for changes."
   row; Electron (window geometry) applies live, no reload row.
+  **Startup is MAXIMIZED (2026-07-20, Jeff's call)** — createWindow calls
+  `baseWindow.maximize()` right after creation; the saved geometry still
+  applies (it's what unmaximize restores to).
 - **sol-form editability model (2026-07-10, Jeff's rule):** every
   `<sol-form>` WITHOUT the `no-edit` attribute is fully editable — fields,
   Add/Delete, record search, reorder — everywhere, plain web included.
