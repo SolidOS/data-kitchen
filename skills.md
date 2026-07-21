@@ -915,6 +915,19 @@ comments stripped — grep it for code fragments, not comments.
      quits on every platform (no activate handler → mac dock zombie).
   Next rungs when wanted: ad-hoc signing via `rcodesign` (works on linux, no
   Apple account; prerequisite for an arm64 zip), then notarization ($99/yr).
+- **win-smoke + android-smoke workflows (2026-07-20):** mac-smoke's siblings,
+  both on release publish + manual dispatch. `win-smoke.yml` (windows-latest):
+  `SMOKE_WIN_APP=<unzipped zip dir>` mode in packaged-smoke.mjs — REQUIRED
+  statics + extraResources/exe/version + a REAL boot (native runner, boots in
+  seconds — no Rosetta tax). `android-smoke.yml` (ubuntu):
+  `tools/android-apk-smoke.mjs` static payload gate — per-ABI native sets
+  with truncation guards, nodejs-project payload (engine/node_modules/
+  pod-seed nmz + WebID card seed), aapt versionName. STATIC ONLY because the
+  APK ships full native libs for arm ABIs only (x86_64 has no libnode.so)
+  and GH runners can't emulate arm64 Android — real boots stay on the
+  sideload device. Both verified green against v2.1.9. Local: win statics
+  also run in the plain gate while release/win-unpacked exists;
+  `SKIP_BOOT=1 SMOKE_WIN_APP=<dir>` works on any OS.
 - **Mac VIDEO verified working (2026-07-17, the "videos do not play on
   macOS" reports):** mac-smoke gained a second "Video playback probe" step —
   `SMOKE_VIDEO=1` boots the .app WITH the GPU (the plain smoke boot uses
