@@ -446,7 +446,7 @@
     schema:additionalType ui:Link;
     schema:description "Matrix chat room for Solid practitioners.";
     schema:url <https://matrix.to/#/#solid-practitioners:matrix.org>;
-    ui:icon "https://matrix.to/favicon.ico";
+    ui:icon "https://app.cinny.in/assets/favicon-5KspoOBy.ico";
     ui:label "Matrix Chat".
 :Media
     a skos:Collection;

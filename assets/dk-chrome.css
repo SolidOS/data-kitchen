@@ -297,7 +297,9 @@
       width: 30px; height: 30px; padding: 0;
       background: var(--ia-bg-btn, #26282e); color: var(--ia-text-muted, #9aa);
       border: 1px solid var(--ia-border-btn, #34373d); border-radius: 7px;
-      font-family: var(--ia-font-display, Georgia, serif); font-size: 1rem;
+      /* ⌕ is a thin outline glyph — needs a bigger em than the emoji chips
+         (📅 at 1.05rem) to carry the same visual weight in the 30px chip. */
+      font-family: var(--ia-font-display, Georgia, serif); font-size: 1.4rem;
       cursor: pointer; line-height: 1;
     }
     .omp-search::part(trigger):hover { color: var(--ia-text-strong, #fff); border-color: var(--ia-accent, #888); }

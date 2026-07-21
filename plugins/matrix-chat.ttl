@@ -6,7 +6,7 @@
   a ui:Plugin ;
   schema:additionalType ui:Link ;
   ui:label "Matrix Chat" ;
-  ui:icon <https://matrix.to/favicon.ico> ;
+  ui:icon <https://app.cinny.in/assets/favicon-5KspoOBy.ico> ;
   schema:url <https://matrix.to/#/#solid-practitioners:matrix.org> ;
   schema:description "Matrix chat room for Solid practitioners." ;
   dct:publisher "Matrix" ;

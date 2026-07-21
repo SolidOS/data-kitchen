@@ -492,6 +492,17 @@ state, so any step can be re-entered and re-opening an app just works.
   typed URL in the rolodex; the curated list survives only as the TTL seed +
   `src/shared/oidc-issuers.js` fallback. This RESOLVED the old
   "issuer order doesn't survive rdflib serialization" caveat.
+- **Issuers are login-only — NEVER dereferenced (2026-07-20):** `#Issuers`
+  members are IdP endpoints, fetched only during an explicit login;
+  `#Locations` members are pods a user may open. Neither is menu material.
+  The Customize hang (serial timeouts on solidweb.me / :8443 / inrupt.net)
+  came from sc `loadReferencedDocs` sweeping the whole shared store's
+  `schema:itemListElement` triples AND `sol-plugin-manager` slot discovery
+  resolving refs for every `[source]` doc on the page — settings doc
+  included. Fixed in sc: the loader follows only membership stated in its
+  own call's docs (graph-term check) with failed docs fetched once, and
+  slot discovery skips docs with no `ui:Menu` before resolving refs
+  (sc `tests/core/menu-referenced-docs.test.js`).
 - **Settings page = chip nav (2026-07-12):** `<sol-settings-nav>` (sc,
   loaded via sol-basic) renders one chip per `section` with a direct
   heading under its parent; exactly ONE group shows at a time (hidden attr
