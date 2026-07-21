@@ -11,7 +11,7 @@
   schema:description "Browse and play poetry, audiobooks, and talks from the Internet Archive." ;
   dct:publisher "Jeff Zucker" ;
   schema:keywords "Media" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "storage-ns" ; schema:value "spoken-word" ] ,
     [ schema:name "defer" ; schema:value "" ] ,
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/ia-player/libraries/internet_archive_spoken_word/index.ttl" ] .

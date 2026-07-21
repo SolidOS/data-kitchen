@@ -11,7 +11,7 @@
   schema:description "Read news feeds in a three-panel reader: sources, headlines, article." ;
   dct:publisher "Jeff Zucker" ;
   schema:keywords "Information" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "view" ; schema:value "threePanel" ] ,
     [ schema:name "reader" ; schema:value "inline" ] ,
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/news/feeds.ttl#Feeds" ] .

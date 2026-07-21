@@ -9,15 +9,13 @@
 :Apps
     a ui:Menu;
     ui:label "Apps";
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :Apps-dokieli, :Apps-SolidFocus, :Apps-RoloPod, :Apps-KonaPod, :Apps-Umai, :Apps-GeoPod, :Apps-PodCal, :Apps-NotePod, :Apps-SolidOS-Meeting, :Apps-SolidOS-Chat, :Apps-SolidOS-AddressBook, :Apps-SolidOS-Tasks, :Apps-SolidOS-Notes.
 :Bar
     a ui:Menu;
     ui:label "Top Row Buttons";
     ui:orientation ui:Horizontal;
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :Bar-Matrix-Chat, :Bar-Mastodon, :Bar-Bluesky, :Bar-OpenStreetMap, :Bar-Duck-ai, :Bar-Search, :Bar-Calendar.
-:Chrome a ui:Menu; ui:label "chrome"; schema:itemListOrder schema:ItemListOrderAscending;
+:Chrome a ui:Menu; ui:label "chrome"; 
     schema:itemListElement :Chrome-chrome-help, :Chrome-chrome-menu.
 
 :chrome-help
@@ -25,7 +23,7 @@
     schema:url web:sol-button.js;
     rdfs:comment
         "Help — opens ./help/dk.html (or ./help/dk-owner.html when signed in) in a trusted inline overlay.";
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "aria-label"; schema:value "Help" ],
         [ schema:name "class"; schema:value "omp-help-launch" ],
         [ schema:name "data-handler"; schema:value "sol-include" ],
@@ -43,7 +41,7 @@
     schema:url web:sol-dropdown-button.js;
     rdfs:comment
         "☰ menu — items live in ui-data/data-kitchen-hamburger-menu.ttl#More (Customize, Settings, Sign in, and owner commands). Component items open in a modal.";
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "aria-label"; schema:value "Menu" ],
         [ schema:name "class"; schema:value "omp-more" ],
         [ schema:name "data-settings-skip"; schema:value "" ],
@@ -59,33 +57,27 @@
 :Health
     a ui:Menu;
     ui:label "Health";
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :Health-HealthPod, :Health-InnerPod, :Health-MSFatigue, :Health-VitalStats, :Health-SecureDialog.
 :item
     a ui:Menu;
     ui:label "About Solid";
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :item-Solid-FAQ, :item-Solid-Forum, :item-Solid-Website, :item-Tag-Explainer, :item-Solid-Catalog, :item-Solid-Glossary.
 :Media-3
     a ui:Menu;
     ui:label "Media";
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :Media-3-News-three-panel-feeds, :Media-3-Music-Internet-Archive, :Media-3-Movies-Internet-Archive, :Media-3-Images-Wikimedia, :Media-3-Spoken-Word-Internet-Archive, :Media-3-Media-Kraken, :Media-3-Solidflix, :Media-3-MovieStar.
 :panel-dev-tools
     a ui:Menu;
     ui:label "Dev Tools";
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :panel-dev-tools-RDF-Validator, :panel-dev-tools-SHACL-Playground, :panel-dev-tools-JSON-LD-Playground, :panel-dev-tools-SPARQL-Playground, :panel-dev-tools-Synara-AI.
 :Pods-2
     a ui:Menu;
     ui:label "Pods";
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :Pods-2-Data-Kitchen-Pod-Browser, :Pods-2-SolidOS-data-browser, :Pods-2-PodOS-Browser, :Pods-2-Penny.
 :Tabs
     a ui:Menu;
     ui:label "Menu Tabs";
     ui:orientation ui:Horizontal;
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :Tabs-Pods-2, :Tabs-Media-3, :Tabs-Health, :Tabs-Apps, :Tabs-item, :Tabs-panel-dev-tools, :Tabs-app-builder.ttl.
 
 :Apps-dokieli a schema:ListItem; schema:item data:dokieli; schema:position 1.

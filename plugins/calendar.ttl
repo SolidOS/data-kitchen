@@ -13,7 +13,7 @@
   schema:description "Pop-out month calendar for the button bar." ;
   dct:publisher "Jeff Zucker" ;
   schema:keywords "Information" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "data-handler" ; schema:value "sol-calendar" ] ,
     [ schema:name "hide-header" ; schema:value "" ] ,
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/calendar/calendar-settings.ttl#All" ] .

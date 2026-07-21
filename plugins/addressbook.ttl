@@ -11,6 +11,6 @@
   schema:description "Your contacts — a Solid address book, in the SolidOS contacts pane." ;
   dct:publisher "SolidOS Team" ;
   schema:keywords "SolidOS apps" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "source" ; schema:value "/dk-pod/contacts/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .

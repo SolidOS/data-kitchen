@@ -11,6 +11,6 @@
   schema:description "A Solid meeting workspace, in the SolidOS meeting pane." ;
   dct:publisher "SolidOS Team" ;
   schema:keywords "SolidOS apps" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "source" ; schema:value "/dk-pod/meetings/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .

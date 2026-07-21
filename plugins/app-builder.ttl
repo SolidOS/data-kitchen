@@ -11,7 +11,7 @@
   schema:description "Build your own app: pick a layout, add menus and plugins, publish to your pod." ;
   dct:publisher "Jeff Zucker" ;
   schema:keywords "UI Controls" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "if-logged-in" ; schema:value "" ] ,
     [ schema:name "source" ; schema:value "./dk-pod/dk/pages/app-builder.html" ] ,
     [ schema:name "trusted" ; schema:value "" ] .

@@ -11,6 +11,6 @@
   schema:description "A Solid long chat, in the SolidOS chat pane." ;
   dct:publisher "SolidOS Team" ;
   schema:keywords "SolidOS apps" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "source" ; schema:value "/dk-pod/chat/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .

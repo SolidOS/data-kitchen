@@ -68,18 +68,18 @@ for (const f of files) {
   });
 }
 
-test('every ui:attribute blank node carries schema:name and schema:value', () => {
+test('every schema:additionalProperty blank node carries schema:name and schema:value', () => {
   for (const f of files) {
     const base = 'http://dk.invalid/plugins/' + f;
     const store = loadGraph(join(dir, f), base);
-    for (const st of store.statementsMatching(null, sym(NS.ui + 'attribute'), null)) {
+    for (const st of store.statementsMatching(null, sym(NS.schema + 'additionalProperty'), null)) {
       const b = st.object;
       const k = store.any(b, sym(NS.schema + 'name'));
-      assert.ok(k && k.value, `${f}: ui:attribute missing schema:name`);
+      assert.ok(k && k.value, `${f}: schema:additionalProperty missing schema:name`);
       // schema:value may legitimately be the empty string (boolean attrs like defer);
       // the predicate must still be present.
       assert.ok(store.any(b, sym(NS.schema + 'value')) !== undefined,
-        `${f}: ui:attribute "${k && k.value}" missing schema:value`);
+        `${f}: schema:additionalProperty "${k && k.value}" missing schema:value`);
     }
   }
 });

@@ -6,7 +6,6 @@
 :More
     a ui:Menu;
     ui:label "☰ Menu";
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :More-Customize, :More-Settings, :More-Theme, :More-Text-size, :More-Restart-dk.
 
 :More-Customize a schema:ListItem; schema:item data:Customize; schema:position 1.

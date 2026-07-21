@@ -36,7 +36,6 @@
 :Issuers
     a schema:ItemList;
     schema:itemListElement :iss1, :iss2, :iss3, :iss4;
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:name "Sign-in issuers".
 :loc1
     a schema:ListItem;
@@ -76,7 +75,6 @@
 :Locations
     a schema:ItemList;
     schema:itemListElement :loc1, :loc2, :loc3, :loc4, :loc5, :loc6, :loc7;
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:name "Pod locations".
 :Settings
     ui:colorScheme ui:LightColorScheme;

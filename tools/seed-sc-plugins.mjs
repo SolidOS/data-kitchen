@@ -5,13 +5,13 @@
  *
  * sc's ttl is the library's self-description (settings shape, default data,
  * help). dk's plugins/<x>.ttl is the deployment layer: same component, plus
- * dk-specific facts (schema:keywords category, ui:attribute source → the pod's
+ * dk-specific facts (schema:keywords category, schema:additionalProperty source → the pod's
  * settings doc). This seeder copies the SETTINGS POINTERS across so
  * dk-plugin-settings can drive a form from the deployment doc alone:
  *
  *   dct:conformsTo      → rewritten to /node_modules/sol-components/…
  *   dct:references      → rewritten likewise (the library DEFAULT data doc;
- *                         the deployment's live doc stays in ui:attribute)
+ *                         the deployment's live doc stays in schema:additionalProperty)
  *   schema:softwareHelp → rewritten likewise
  *
  * Idempotent: pointers are replaced, never duplicated. Matching is by

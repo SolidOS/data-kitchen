@@ -149,20 +149,26 @@ its complete, REQUIRED `schema:url`. Shared blocks are node-level mixins
 helper shapes: `:OrderedItemShape` (positioned ListItem wrapper) /
 `:UnorderedItemShape` (direct member + the reachable-label rule).
 Shared metadata: `ui:label` (ONE label everywhere — card title AND
-menu text; display overrides go through a `label` ui:attribute),
+menu text; display overrides go through a `label` attribute pair),
 `schema:description` (card blurb — NOT rdfs:comment, which stays a free
 documentary note), `dct:publisher`, `schema:keywords` (topic categories →
 Customize tabs), `dct:conformsTo`/`dct:references`/`schema:softwareHelp`
 (settings shape / data doc / help), `ui:icon` (live favicon URL painted as
-`<img>`, emoji as text), `ui:attribute` pairs (region, if-logged-in, …).
+`<img>`, emoji as text), `schema:additionalProperty` pairs (region, if-logged-in, …; the ui:attribute spelling was RETIRED 2026-07-20). Also retired
+2026-07-20: `ui:hoverTitle` (ci manifests' `title` key is now a `ui:label`
+alias) and `schema:itemListOrder` (wrapper `schema:position` alone orders).
+`data/ui-vocab.ttl` descriptions are Jeff's (from drafts/plugin-shape.md)
+and the file is WRITE-FROZEN — no edits without a go naming it.
 
 **Menus are REFERENCE lists, membership is positioned schema:ListItem
 wrappers** (2026-07-19 — `ui:parts` rdf:Collections RETIRED everywhere except
 the ui:Form forms vocab): a curated menu carries one `schema:itemListElement`
 triple per member pointing at a placement wrapper —
 `:More-Customize a schema:ListItem; schema:item data:Customize;
-schema:position 1.` — plus `schema:itemListOrder schema:ItemListOrderAscending`
-(`@prefix data: <data-kitchen-plugins-catalog.ttl#>`). Same idiom as
+schema:position 1.` (`@prefix data: <data-kitchen-plugins-catalog.ttl#>`);
+ordering comes from the wrappers' `schema:position` alone —
+`schema:itemListOrder` was RETIRED everywhere 2026-07-20 (nothing ever read
+it). Same idiom as
 `#Locations`/`#Issuers`; wrappers exist so position lives on the PLACEMENT,
 never the shared entry. The catalog `#Available` is an unordered SET — direct
 membership, no wrappers (add plugin = ONE inserted triple; prune = one
@@ -202,7 +208,7 @@ reversal of the 07-17 retirement):**
   deployment aspects are first-class there. `:PluginShape` constrains it with
   `sh:in` over the seven ui-vocab regions (Inline/Element/Modal/Floating/
   Window/Tab/Dropdown) and the ✎ editor renders it as a constrained field.
-- **INLINE menu items keep the `region` ui:attribute channel** (`[ schema:name
+- **INLINE menu items keep the `region` attribute-pair channel (schema:additionalProperty)** (`[ schema:name
   "region"; schema:value "modal" ]`, e.g. `:chrome-menu` in the main menu);
   sc's parse lifts either spelling into `desc.region` (attribute pair wins if
   both present). `if-logged-in` gating stays an attribute everywhere.
@@ -295,7 +301,7 @@ state, so any step can be re-entered and re-opening an app just works.
   nested Layout = split, `ui:Component` leaf =
   content slot; empty layout = placeholder pane), `ui:layout` (app → root
   layout), `ui:columns` (grid column count). Also approved reuse:
-  `ui:attribute` on layout nodes (emitted HTML attrs) and
+  `schema:additionalProperty` on layout nodes (emitted HTML attrs; was ui:attribute until 2026-07-20) and
   `schema:additionalType` → semantic tag (SiteNavigationElement→nav,
   WPHeader→header, WPFooter→footer, WPSideBar→aside; the root's first
   unmarked layout child emits `<main>`, else `<div>`). Layout orientation
@@ -364,7 +370,7 @@ state, so any step can be re-entered and re-opening an app just works.
   Tabs, Page content, Sign in/Clock/Calendar widgets, catalog ui:Component
   chips). Saves rewrite layout.ttl via **NEW sc `core/layout-serialize.js`**
   (`serializeLayout`/`addLeaf`/`removeLeaf`/`moveLeaf`; whole-doc PUT —
-  ui:attribute blanks can't be SPARQL-DELETEd; round-trips exactly what
+  attribute-pair blanks can't be SPARQL-DELETEd; round-trips exactly what
   parseLayoutTree reads, foreign hand-added triples drop on builder saves).
 - **Generated apps got standard chrome:** head emits sc
   `web/scripts/prefs.js` + **NEW `web/scripts/app-commands.js`**

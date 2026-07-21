@@ -3,7 +3,7 @@
 // catalog entry:
 //
 //   <> a ui:Plugin ; schema:additionalType ui:Component ;
-//      schema:url <…/sol-thing.js> ; ui:attribute […]      a mountable plugin
+//      schema:url <…/sol-thing.js> ; schema:additionalProperty […]      a mountable plugin
 //   <> a ui:Plugin ; schema:additionalType ui:Link ;
 //      schema:url <url>                                    an external app
 //
@@ -73,7 +73,7 @@ function readEntries() {
     const moduleUrl = isComponent ? payload : '';
     if (isLink && !hrefUrl) { console.warn(`skip ${f}: Link kind without schema:url`); continue; }
     if (isComponent && !moduleUrl) { console.warn(`skip ${f}: Component kind without schema:url`); continue; }
-    const params = store.each(subj, rdf.sym(UI_NS + 'attribute'), null).map((b) => [
+    const params = store.each(subj, rdf.sym(SCHEMA_NS + 'additionalProperty'), null).map((b) => [
       (store.any(b, rdf.sym(SCHEMA_NS + 'name')) || {}).value || '',
       (store.any(b, rdf.sym(SCHEMA_NS + 'value')) || {}).value || '',
     ]).filter(([k]) => k);
@@ -219,7 +219,7 @@ async function reconcileCatalog() {
       const b = rdf.blankNode();
       store.add(b, rdf.sym(SCHEMA + 'name'), lit(k), doc);
       store.add(b, rdf.sym(SCHEMA + 'value'), lit(v ?? ''), doc);
-      store.add(node, rdf.sym(UI + 'attribute'), b, doc);
+      store.add(node, rdf.sym(SCHEMA + 'additionalProperty'), b, doc);
     }
     // append to #Available — direct membership, ONE triple (the unordered
     // set form: no wrapper, no position)
@@ -327,7 +327,7 @@ for (const e of ENTRIES) {
   if (e.kind === 'link') {
     ttl += `  schema:url <${e.href}> .\n\n`;
   } else if (e.params.length) {
-    ttl += '  ui:attribute\n' + e.params.map(([k, v]) =>
+    ttl += '  schema:additionalProperty\n' + e.params.map(([k, v]) =>
       `    [ schema:name ${JSON.stringify(k)} ; schema:value ${JSON.stringify(v)} ]`).join(' ,\n') + ' .\n\n';
   } else {
     ttl = ttl.replace(/ ;\n$/, ' .\n') + '\n';

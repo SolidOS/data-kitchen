@@ -13,5 +13,5 @@
   dct:references </node_modules/sol-components/data/search-engines.ttl> ;
     dct:publisher "Jeff Zucker" ;
   schema:keywords "Information" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/search/search-engines.ttl#SearchEngines" ] .

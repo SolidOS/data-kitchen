@@ -66,14 +66,14 @@ export function registerMenuInvariants(label, menuPath) {
     assert.deepEqual(offenders, []);
   });
 
-  t('every ui:attribute node has schema:name and schema:value', () => {
-    for (const st of store.statementsMatching(null, sym(NS.ui + 'attribute'), null)) {
+  t('every schema:additionalProperty node has schema:name and schema:value', () => {
+    for (const st of store.statementsMatching(null, sym(NS.schema + 'additionalProperty'), null)) {
       const b = st.object;
       const owner = st.subject.value.split('#').pop();
       const k = store.any(b, sym(NS.schema + 'name'));
-      assert.ok(k && k.value, `${owner}: ui:attribute missing schema:name`);
+      assert.ok(k && k.value, `${owner}: schema:additionalProperty missing schema:name`);
       assert.ok(store.any(b, sym(NS.schema + 'value')) !== undefined,
-        `${owner}: ui:attribute "${k && k.value}" missing schema:value`);
+        `${owner}: schema:additionalProperty "${k && k.value}" missing schema:value`);
     }
   });
 

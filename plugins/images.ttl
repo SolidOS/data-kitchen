@@ -11,5 +11,5 @@
   schema:description "Browse Wikimedia image galleries." ;
   dct:publisher "Jeff Zucker" ;
   schema:keywords "Media" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/omp-images/libraries/wikimedia_images/images.ttl#Images" ] .

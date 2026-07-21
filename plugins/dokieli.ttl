@@ -11,5 +11,5 @@
   schema:description "Write and publish articles, with annotations and social interactions." ;
   dct:publisher "Sarven Capadisli and Virginia Balseiro" ;
   schema:keywords "Content Publishing" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "defer" ; schema:value "" ] .

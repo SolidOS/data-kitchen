@@ -5,7 +5,6 @@
 
 <#SearchEngines> a schema:ItemList;
     schema:name "Search Engines";
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement <#ddg>, <#google>, <#wp>, <#prefix>, <#lov>, <#ety>, <#yt>, <#archive>, <#dbpedia>.
 <#ddg> a hydra:IriTemplate;
     dct:title "DuckDuckGo";

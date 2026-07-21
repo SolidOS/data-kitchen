@@ -3,7 +3,7 @@
 @prefix data: <data-kitchen-plugins-catalog.ttl#>.
 @prefix schema: <http://schema.org/>.
 
-:More a ui:Menu; ui:label "☰ Menu"; schema:itemListOrder schema:ItemListOrderAscending;
+:More a ui:Menu; ui:label "☰ Menu"; 
     schema:itemListElement :More-Theme, :More-Text-size.
 
 

@@ -11,6 +11,6 @@
   schema:description "Your tasks — a Solid issue tracker, in the SolidOS tracker pane." ;
   dct:publisher "SolidOS Team" ;
   schema:keywords "SolidOS apps" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "source" ; schema:value "/dk-pod/tasks/index.ttl#this" ] ,
     [ schema:name "defer" ; schema:value "" ] .

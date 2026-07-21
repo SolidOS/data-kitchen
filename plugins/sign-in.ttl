@@ -11,5 +11,5 @@
   schema:description "Solid sign-in button (popup flow)." ;
   dct:publisher "Jeff Zucker" ;
   schema:keywords "Pods" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "mode" ; schema:value "popup" ] .

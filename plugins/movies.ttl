@@ -11,7 +11,7 @@
   schema:description "Browse and play films from the Internet Archive." ;
   dct:publisher "Jeff Zucker" ;
   schema:keywords "Media" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "storage-ns" ; schema:value "movies" ] ,
     [ schema:name "favourites-only" ; schema:value "" ] ,
     [ schema:name "defer" ; schema:value "" ] ,

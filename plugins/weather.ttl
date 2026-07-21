@@ -13,5 +13,5 @@
   schema:description "Weather widget (location and units in its settings file)." ;
   dct:publisher "Jeff Zucker" ;
   schema:keywords "Information" ;
-  ui:attribute
+  schema:additionalProperty
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/weather/weather-settings.ttl#Settings" ] .

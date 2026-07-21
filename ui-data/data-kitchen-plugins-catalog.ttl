@@ -82,7 +82,7 @@
     schema:description
         "Build your own app: pick a layout, add menus and plugins, publish to your pod.";
     schema:url we:sol-include.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "if-logged-in"; schema:value "" ],
             [
                 schema:name "source";
@@ -153,7 +153,7 @@
     schema:additionalType ui:Component;
     schema:description "Pop-out month calendar for the button bar.";
     schema:url we:sol-button.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "class"; schema:value "omp-calendar" ],
         [ schema:name "data-handler"; schema:value "sol-calendar" ],
         [ schema:name "hide-header"; schema:value "" ],
@@ -176,7 +176,7 @@
     schema:additionalType ui:Component;
     schema:description "Clock widget (timezone in its settings file).";
     schema:url we:sol-time.js;
-    ui:attribute
+    schema:additionalProperty
             [
                 schema:name "source";
                 schema:value
@@ -207,7 +207,7 @@
     schema:additionalType ui:Component;
     schema:description "Choose plugins for your menus and bar.";
     schema:url we:sol-include.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "if-logged-in"; schema:value "" ],
             [
                 schema:name "source";
@@ -225,7 +225,7 @@
     schema:description "Browse and manage your Solid pods and workspaces.";
     schema:softwareHelp po:help.html;
     schema:url po:dk-podz.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-podz" ],
             [
@@ -242,7 +242,7 @@
     schema:description
     "Write and publish articles, with annotations and social interactions.";
     schema:url sol2:dk-dokieli.js;
-    ui:attribute [ schema:name "defer"; schema:value "" ];
+    schema:additionalProperty [ schema:name "defer"; schema:value "" ];
     ui:icon "https://dokie.li/media/images/logo.png";
     ui:label "dokieli".
 :Duck-ai
@@ -360,7 +360,7 @@
     schema:additionalType ui:Component;
     schema:description "Browse Wikimedia image galleries.";
     schema:url dis:omp-images.esm.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "id"; schema:value "panel-images" ],
             [
                 schema:name "source";
@@ -474,7 +474,7 @@
     schema:description "Browse and play films from the Internet Archive.";
     schema:softwareHelp ass:ia-help.html;
     schema:url dis:ia-player.esm.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "favourites-only"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-movies" ],
@@ -516,7 +516,7 @@
     "Browse and play music collections from the Internet Archive.";
     schema:softwareHelp ass:ia-help.html;
     schema:url dis:ia-player.esm.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-music" ],
             [
@@ -535,7 +535,7 @@
     schema:description
     "Read news feeds in a three-panel reader: sources, headlines, article.";
     schema:url we:sol-feed.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "id"; schema:value "panel-news" ],
         [ schema:name "reader"; schema:value "inline" ],
             [
@@ -733,7 +733,7 @@
     schema:description
     "Search box for the button bar (pluggable search engines).";
     schema:url we:sol-search.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "class"; schema:value "omp-search" ],
         [ schema:name "data-settings-skip"; schema:value "" ],
             [
@@ -778,7 +778,7 @@
     schema:additionalType ui:Component;
     schema:description "Global Data Kitchen settings.";
     schema:url we:sol-include.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "if-logged-in"; schema:value "" ],
             [
                 schema:name "source";
@@ -802,7 +802,7 @@
     schema:additionalType ui:Component;
     schema:description "Solid sign-in button (popup flow).";
     schema:url we:sol-login.js;
-    ui:attribute [ schema:name "mode"; schema:value "popup" ];
+    schema:additionalProperty [ schema:name "mode"; schema:value "popup" ];
     ui:icon "🔑";
     ui:label "Sign in".
 :Solid
@@ -890,7 +890,7 @@
     schema:description
     "Your contacts — a Solid address book, in the SolidOS contacts pane.";
     schema:url sol2:dk-solidos.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
@@ -911,7 +911,7 @@
     schema:additionalType ui:Component;
     schema:description "A Solid long chat, in the SolidOS chat pane.";
     schema:url sol2:dk-solidos.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
@@ -927,7 +927,7 @@
     schema:description "The SolidOS data browser, embedded.";
     schema:softwareHelp sol2:help.html;
     schema:url sol2:dk-solidos.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "has-location-bar"; schema:value "true" ],
             [
@@ -944,7 +944,7 @@
     schema:description
     "A Solid meeting workspace, in the SolidOS meeting pane.";
     schema:url sol2:dk-solidos.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
@@ -959,7 +959,7 @@
     schema:additionalType ui:Component;
     schema:description "A Solid notepad, in the SolidOS pad pane.";
     schema:url sol2:dk-solidos.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
@@ -975,7 +975,7 @@
     schema:description
     "Your tasks — a Solid issue tracker, in the SolidOS tracker pane.";
     schema:url sol2:dk-solidos.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
             [
                 schema:name "source";
@@ -1003,7 +1003,7 @@
     "Browse and play poetry, audiobooks, and talks from the Internet Archive.";
     schema:softwareHelp ass:ia-help.html;
     schema:url dis:ia-player.esm.js;
-    ui:attribute
+    schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
         [ schema:name "id"; schema:value "panel-spoken-word" ],
             [
@@ -1125,7 +1125,7 @@
     schema:description
     "Weather widget (location and units in its settings file).";
     schema:url we:sol-weather.js;
-    ui:attribute
+    schema:additionalProperty
             [
                 schema:name "source";
                 schema:value

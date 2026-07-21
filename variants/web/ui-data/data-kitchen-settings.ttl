@@ -17,7 +17,6 @@
 # the base variant's :Locations.
 :Issuers a schema:ItemList;
     schema:name "Sign-in issuers";
-    schema:itemListOrder schema:ItemListOrderAscending;
     schema:itemListElement :iss1, :iss2, :iss3, :iss4.
 
 :iss1 a schema:ListItem;
