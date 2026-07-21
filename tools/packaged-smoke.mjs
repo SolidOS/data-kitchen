@@ -45,6 +45,8 @@
 //             boots WITHOUT --disable-gpu so the decode path matches what
 //             users run (GPU/VideoToolbox is the prime mac suspect).
 //             SMOKE_CDP_PORT overrides the debug port (default 9333).
+//         SMOKE_STEP_TIMEOUT_S=n  per-check boot-wait window in seconds
+//             (default 120; each until() check gets its own fresh window).
 // Run automatically by tools/prepare-release.mjs while linux-unpacked exists.
 import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, lstatSync, mkdtempSync, readFileSync, rmSync, statSync } from 'node:fs';
@@ -241,9 +243,14 @@ const onData = (d) => { log += d.toString(); };
 child.stdout.on('data', onData);
 child.stderr.on('data', onData);
 
-const DEADLINE = Date.now() + 120_000;
+// Each until() gets its OWN window, not a shared budget — on the mac-smoke
+// Rosetta runner (v2.1.9) seeding alone took 52s of a shared 120s and the
+// page-load check then timed out; a re-dispatch passed. SMOKE_STEP_TIMEOUT_S
+// overrides the per-check window (seconds).
+const STEP_TIMEOUT = (Number(process.env.SMOKE_STEP_TIMEOUT_S) || 120) * 1000;
 const until = async (name, test) => {
-  while (Date.now() < DEADLINE) {
+  const deadline = Date.now() + STEP_TIMEOUT;
+  while (Date.now() < deadline) {
     const m = test();
     if (m) { ok(name); return m; }
     if (child.exitCode !== null) break;
