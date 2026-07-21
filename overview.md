@@ -16,7 +16,7 @@ These shapes are meant to support host apps in which
 [Solid Data Kitchen](https://github.com/SolidOS/data-kitchen#-solid-data-kitchen---pod-in-a-box) is a complete working example of a host app matching this decription and using the shapes.  In particular look at the Customize page (click hamburger menu in upper right) which presents a drag and drop plugin manager and the Settings page (same hamburger menu) which presents an integrated configuration manager for a number of plugins.
 
 ## The informal discussion below is based on these formal elements :
-* [Proposed additions to the ui: ontology](https://github.com/w3c/ns/pull/35)
+* [The ui: ontology](https://www.w3.org/ns/ui) — the terms used here were [merged into the W3C namespace](https://github.com/w3c/ns/pull/35) on 2026-07-21
 * [The Menu and Plugin Shapes in SHACL](https://github.com/jeff-zucker/sol-components/blob/main/shapes/menu.shacl)
 
 **Issues and PRs related to the UI as RDF approach outlined here should be filed against those resources.**

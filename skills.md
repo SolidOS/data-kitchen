@@ -161,8 +161,9 @@ alias) and `schema:itemListOrder` (wrapper `schema:position` alone orders).
 and the file is WRITE-FROZEN — no edits without a go naming it. It is the
 SOURCE OF TRUTH for the W3C PR: `claude/prs/w3c-ns-ui-vocab/merge-ui-vocab.mjs`
 parses it and restyles it into upstream `ui.ttl`, hard-coding nothing.
-**SUBMITTED 2026-07-21 as https://github.com/w3c/ns/pull/35** (48 terms,
-+181/−1). `rdfs:isDefinedBy` was dropped from the vocab that day (28
+**MERGED 2026-07-21 via https://github.com/w3c/ns/pull/35** (48 terms,
++181/−1) — the terms are now official and serve from https://www.w3.org/ns/ui.
+`rdfs:isDefinedBy` was dropped from the vocab that day (28
 statements, read by no code; upstream carries it on only 24 of its 81 terms).
 
 **Menus are REFERENCE lists, membership is positioned schema:ListItem
