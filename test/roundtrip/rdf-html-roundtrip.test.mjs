@@ -98,6 +98,46 @@ async function roundtrip(ttl) {
   ]);
 }
 
+// A ui:Link's schema:additionalProperty pairs become search params on the URL
+// it opens (2026-07-22). They ride the HTML anchor as data-* the same way
+// component params do, so the conversion scripts must not drop them. Synthetic
+// rather than live data: no shipped link carries params yet, and this must not
+// depend on one continuing to.
+const LINK_TTL = `
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix schema: <http://schema.org/>.
+
+:Tabs a ui:Menu; ui:label "Tabs"; schema:itemListElement :T1.
+:T1 a schema:ListItem; schema:item :Ext; schema:position 1.
+:Ext a ui:Link; ui:label "Ext"; ui:region ui:Tab;
+    schema:url "https://example.org/a";
+    schema:additionalProperty
+        [ schema:name "time"; schema:value "local" ],
+        [ schema:name "defer"; schema:value "" ].
+`;
+
+test('a ui:Link keeps its params across rdf2html → html2rdf', { skip: SKIP }, async () => {
+  const html1 = emit(parse(LINK_TTL));
+  assert.match(html1, /data-time="local"/, 'param written onto the anchor');
+  assert.match(html1, /data-defer/, 'empty-valued param written as a bare attribute');
+  assert.match(html1, /href="https:\/\/example\.org\/a"/, 'href itself stays clean');
+
+  const ttl1 = await roundtrip(LINK_TTL);
+  assert.match(ttl1, /"time"/, 'param name survives back into RDF');
+  assert.match(ttl1, /"local"/, 'param value survives back into RDF');
+  assert.match(ttl1, /"defer"/, 'empty-valued param survives back into RDF');
+
+  // rdflib's turtle serializer sorts a subject's additionalProperty blank nodes
+  // alphabetically, so the FIRST write normalizes authored param order once
+  // (here time,defer → defer,time) and every pass after that is stable. Param
+  // order carries no meaning — they are name/value pairs — so the contract to
+  // hold is convergence, not preservation of the authored order.
+  const html2 = emit(parse(ttl1));
+  const html3 = emit(parse(await roundtrip(ttl1)));
+  assert.equal(html3, html2, 'stable once the first write has normalized param order');
+});
+
 test('rdf2html → html2rdf → rdf2html round-trips the live menu unchanged', { skip: SKIP }, async () => {
   // The full contract: emit the live menu to HTML, import it back, re-emit — the
   // snapshot must be byte-for-byte identical. This requires every menu node to

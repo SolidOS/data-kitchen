@@ -127,13 +127,23 @@ working copy; `plugins/*.ttl` remain upstream SEEDS) and carries a REQUIRED
 `schema:url`** (2026-07-19; replaced the ui:href/ui:module/ui:name trio) —
 which the kind interprets:
 - **`ui:Link`** — external app; `schema:url` is the URL to open (native
-  reader overlay — see "External content" below).
+  reader overlay — see "External content" below). Its
+  `schema:additionalProperty` pairs become **SEARCH PARAMS** on that URL
+  (2026-07-22, `hrefWithParams` in sc `core/rdf-render.js`): merged once in
+  `renderLinkItem` so the embedded (iframe / sol-include) and popped-out
+  (`window.open` for the tab/window regions) paths agree. An empty value is a
+  bare flag (`?defer`); a same-named key already in the URL is replaced; the
+  structural params `region` / `if-logged-in` / `requires-write` are held back
+  so dk's gating vocabulary never leaks to a third-party site.
 - **`ui:Component`** — in-app custom element; `schema:url` is the ES module
   (**the element tag DERIVES from its filename**, e.g. `sol-clock.esm.js` →
   `<sol-clock>`; there is no separate tag predicate).
 - **`ui:Command`** — `schema:url` is a fragment IRI in the command REGISTRY
   doc `ui-data/data-kitchen-commands.ttl` (`#restartApp`, `#toggleTheme`,
-  `#cycleFontSize`) — the hyphen-free fragment is the key; dispatch-only,
+  `#cycleFontSize`) — the hyphen-free fragment is the key; its
+  `schema:additionalProperty` pairs arrive as the handler's ARGS OBJECT
+  (`detail.params`), never a query string — a command url is a registry
+  fragment, not a fetched URL; dispatch-only,
   allow-listed in dk-tabs-shell. reloadApp/guestView/signIn stay
   registry-only (no entries, but the registry doc could list them later).
 
@@ -143,7 +153,10 @@ constrains the one url per kind via `sh:xone` branches that DELEGATE to the
 kind shapes via `sh:node` — `:LinkShape` (IRI-or-string) / `:ComponentShape`
 (tag-shaped module filename) / `:CommandShape` (hyphen-free #fragment; NO
 targetClass so bare registry fragments stay unbound) — each kind shape owns
-its complete, REQUIRED `schema:url`. Shared blocks are node-level mixins
+its complete, REQUIRED `schema:url`. All three kind shapes carry
+`:AttributedMixin` (2026-07-22 — Link and Command gained it so an INLINE
+`a ui:Link` / `a ui:Command` may carry params, as catalog entries already
+could through `:PluginShape`). Shared blocks are node-level mixins
 (`:IconMixin`, `:AttributedMixin`) which sc's forms expand via
 `effectiveProperties()` (shape-to-form.js — dedup by path). Membership
 helper shapes: `:OrderedItemShape` (positioned ListItem wrapper) /
@@ -154,7 +167,10 @@ menu text; display overrides go through a `label` attribute pair),
 documentary note), `dct:publisher`, `schema:keywords` (topic categories →
 Customize tabs), `dct:conformsTo`/`dct:references`/`schema:softwareHelp`
 (settings shape / data doc / help), `ui:icon` (live favicon URL painted as
-`<img>`, emoji as text), `schema:additionalProperty` pairs (region, if-logged-in, …; the ui:attribute spelling was RETIRED 2026-07-20). Also retired
+`<img>`, emoji as text), `schema:additionalProperty` pairs (region,
+if-logged-in, …; the ui:attribute spelling was RETIRED 2026-07-20) — ONE
+channel, read per kind: HTML attributes on a Component, search params on a
+Link, args on a Command. Also retired
 2026-07-20: `ui:hoverTitle` (ci manifests' `title` key is now a `ui:label`
 alias) and `schema:itemListOrder` (wrapper `schema:position` alone orders).
 `data/ui-vocab.ttl` descriptions are Jeff's (from drafts/plugin-shape.md)
