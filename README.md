@@ -35,6 +35,46 @@ user: me@dk.local
 pass: !secret
 ```
 
+## Reaching your pod from outside the app
+
+The local pod sits behind a gate (see *Special Note on Logging-In*), so a plain
+browser tab or a plain `curl` gets turned away. Two supported ways in:
+
+### Open dk in your web browser
+
+Right-click on a Data Kitchen page and choose **Open dk in Browser**. That opens
+the running app in your normal browser, already admitted — you get the same
+Data Kitchen, with your bookmarks, extensions and devtools.
+
+The link carries a short-lived one-time nonce (`?dk-bless=…`) rather than the
+gate token itself, so the durable token never lands in your browser history or
+address bar. The nonce is valid for two minutes and the gate strips it from the
+URL once it has set the session cookie. Re-run the menu item whenever you need a
+fresh tab. Right-clicking a link — on a dk page or in an embedded external view
+— also offers **Open Link in Browser** for that one link.
+
+### `bin/dk-curl` — curl the pod from the shell
+
+[`bin/dk-curl`](bin/dk-curl) is `curl` with the gate token attached, so you can
+read and write the running pod from a terminal exactly as an app would. It
+doesn't weaken the gate — it presents the same token the app injects, read from
+`~/.config/data-kitchen/gate-token` (the app generates it on first run).
+
+```sh
+bin/dk-curl /dk-pod/profile/card                     # read
+bin/dk-curl -i /dk-pod/dk/data/data-kitchen-settings.ttl
+bin/dk-curl -X PUT -H 'content-type: text/turtle' \
+            --data-binary @note.ttl /dk-pod/dk/scratch/note.ttl
+bin/dk-curl -X DELETE /dk-pod/dk/scratch/note.ttl
+```
+
+The **last** argument is the target: `/dk-pod/…` (also `dk-pod/…` or
+`./dk-pod/…`) resolves against `DK_BASE`, while a full `http(s)://` URL is used
+as-is. Everything else passes straight through to curl, so all its flags work.
+`DK_BASE` defaults to `http://localhost:8000` (the routed origin — the real
+path); set `DK_BASE=http://localhost:8010` to talk to the CSS pod server
+directly.
+
 ## Android (experimental)
 
 An Android port lives in [`mobile/`](mobile/) — a Flutter app that runs the same
