@@ -858,6 +858,40 @@ pod copy per the rule above; the pod serves the plugin's html/css/ttl and keeps
 the copies honest, but its `.js` is not what runs. The bundle is minified with
 comments stripped — grep it for code fragments, not comments.
 
+## Publishing sc: esm.sh rewrites bare specifiers (2026-07-22)
+
+**In sc source, a bare specifier that only the importmap can resolve is a
+publishing bug.** esm.sh resolves bare specifiers at PUBLISH time and bakes
+absolute URLs into the built `.mjs`, so the consuming page's importmap never
+gets a say. `core/rdf-bundle.js` imported `sol-form`/`sol-modal`/`sol-settings`/
+`sol-tree-edit` by importmap nickname; esm.sh read them as npm packages and
+emitted `https://esm.sh/sol-form` → **404**, rejecting the whole bundle import
+and killing the RDF editing stack for every esm.sh consumer (the ci demo's
+Forms tab). Fixed in **2.8.1** by importing those parts by PATH
+(`../web/sol-form.js`) — same modules, so instances still dedupe. Real npm
+packages (`solid-logic`, `solid-ui`) stay bare so the importmap keeps them to
+one instance. `tests/web/sol-bundles.test.js` guards both halves.
+
+**dk is immune** — it resolves sc through the symlinked `node_modules` and
+sol-load's baked map, never through esm.sh. Verified in the running app:
+`sol-form` → `node_modules/sol-components/web/sol-form.js`, the same URL the
+relative path lands on.
+
+**Comunica is on jsDelivr, not esm.sh** (`tools/external-deps.json` `cdn`):
+esm.sh cannot build `@comunica/query-sparql@5` by any route — default and
+`?target=es2022` throw "Class constructor E cannot be invoked without 'new'",
+`?bundle` throws "Class extends value undefined", `?target=esnext` fails on a
+y18n default export. `cdn.jsdelivr.net/npm/@comunica/query-sparql@5/+esm`
+builds and constructs. sol-query silently falls back to rdflib when the engine
+won't load, so a "working" query may not be Comunica — check which engine ran.
+`core/utils.js` holds the specifier in a VARIABLE (`import(COMUNICA)`) so the
+publish-time rewrite can't see through it. dk uses the vendored copy either way.
+
+**The ci demo's `examples/sol-components.manifest.json` is a hand-copied
+snapshot** of sc's `dist/` manifest — no sync script. Refresh it with `cp`
+whenever sc's components change; it had drifted a month (still listed the
+retired `sol-full`).
+
 ## Build / run / verify
 
 - `npm start` — launch the Electron app.
