@@ -18,6 +18,7 @@
     "build": "node esbuild.config.mjs",
     "watch": "node esbuild.config.mjs --watch",
     "serve": "python3 -m http.server 8081",
+    "build-shell": "node tools/build-shell.mjs",
     "rdf2html": "node tools/conversion/rdf2html.mjs",
     "html2rdf": "node tools/conversion/html2rdf.mjs",
     "test": "node --test \"test/unit/**/*.test.mjs\" \"test/data/**/*.test.mjs\" \"test/roundtrip/**/*.test.mjs\" \"test/integration/**/*.test.mjs\"",
