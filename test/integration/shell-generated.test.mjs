@@ -25,10 +25,12 @@ test('the generated region keeps the anchors dk CSS + runtime depend on', () => 
   const region = readFileSync(resolve(ROOT, 'index.html'), 'utf8')
     .match(/<!-- shell:begin[\s\S]*?<!-- shell:end -->/)[0];
   // dk-chrome.css / dk-tabs-shell key off these — a regeneration must not drop them.
+  // (The ☰ menu targets #dk-menu-pane via `ui:region` now, so the pane carries
+  // its id, not data-for.)
   for (const anchor of [
     'class="omp-chrome-bar', 'id="dk-content"', 'class="omp-panels',
     'id="dk-tabs"', 'from-rdf="./dk-pod/dk/ui-data/data-kitchen-main-menu.ttl#Tabs"',
-    'id="dk-menu-pane"', 'data-for="Customize Settings"',
+    'id="dk-menu-pane"',
   ]) {
     assert.ok(region.includes(anchor), `shell region lost anchor: ${anchor}`);
   }

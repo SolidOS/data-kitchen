@@ -105,21 +105,23 @@
       const panel = activePanel();
       const info = await pluginManifest(pluginIdFor(panel));
       const panelSource = panel?.getAttribute?.('source');
+      // This is dk-specific dispatch (not through the #More menu's rendering),
+      // so the menu's `ui:region "#dk-menu-pane"` doesn't reach it. Target the
+      // pane explicitly with fallbackEl — the data-for claim is gone, so
+      // resolveRegion falls through to this element (its sol-tab-activate
+      // handler still names it on the phone pill; hideMenuPane/switchTab close).
+      const fallbackEl = document.getElementById('dk-menu-pane');
       if (info?.shape && panelSource) {
         displayItem({
           launcher, id: 'MoreSettings', name: 'Settings', tag: 'sol-form',
-          attrs: [['shape', info.shape], ['source', panelSource]],
+          attrs: [['shape', info.shape], ['source', panelSource]], fallbackEl,
         });
       } else {
         displayItem({
           launcher, id: 'MoreSettings', name: 'Settings', tag: 'sol-include',
-          attrs: [['source', './dk-pod/dk/pages/settings.html'], ['trusted', '']],
+          attrs: [['source', './dk-pod/dk/pages/settings.html'], ['trusted', '']], fallbackEl,
         });
       }
-      // No pill wiring needed here: #dk-menu-pane claims MoreSettings via
-      // data-for, so displayItem mounts into the pane — whose
-      // sol-tab-activate handler names it on the phone pill, and
-      // hideMenuPane/switchTab restore the room name on close.
     }
 
     // sol-tabs pane ↔ panel-key bridge.

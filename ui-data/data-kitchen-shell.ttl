@@ -2,6 +2,7 @@
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix schema: <http://schema.org/>.
 @prefix ui:    <http://www.w3.org/ns/ui#>.
+@prefix xhv:   <http://www.w3.org/1999/xhtml/vocab#>.
 @prefix web:   </node_modules/sol-components/web/>.
 @prefix menu:  <data-kitchen-main-menu.ttl#>.
 
@@ -20,8 +21,11 @@
     ui:layout :Shell .
 
 # The shell stacks vertically: the control bar on top, the content below.
+# xhv:role "document" declares the app is a document (not an application-mode
+# widget). It is IGNORED for emission — the root IS the <body> — but required.
 :Shell a ui:Layout ;
     ui:label "dk shell" ;
+    xhv:role "document" ;
     ui:orientation ui:Vertical ;
     schema:itemListElement
         [ a schema:ListItem ; schema:item :ChromeBar ; schema:position 1 ] ,
@@ -34,8 +38,8 @@
 # The ARIA `role` names the element (navigation → <nav>); the native <nav>
 # carries the role implicitly, so no role= attribute is emitted.
 :ChromeBar a ui:Layout ;
+    xhv:role "navigation" ;                                          # → <nav>
     schema:additionalProperty
-        [ schema:name "role"       ; schema:value "navigation" ] ,   # → <nav>
         [ schema:name "class"      ; schema:value "omp-chrome-bar" ] ,
         [ schema:name "aria-label" ; schema:value "Controls" ] ;
     schema:itemListElement
@@ -52,8 +56,8 @@
 # leaf; the menu-pane is a sibling AFTER it (role-less → <div>).
 :Content a ui:Layout ;
     ui:orientation ui:Vertical ;
+    xhv:role "main" ;                                                # → <main>
     schema:additionalProperty
-        [ schema:name "role"     ; schema:value "main" ] ,           # → <main>
         [ schema:name "id"       ; schema:value "dk-content" ] ,
         [ schema:name "class"    ; schema:value "omp-panels" ] ,
         [ schema:name "tabindex" ; schema:value "-1" ] ;
@@ -74,11 +78,14 @@
 # The ☰-menu landing pane — a role-less region → <div>. Its authored position
 # (a sibling after :Content, vs. inside it as the old hand-written shell had it)
 # is invisible: dk-tabs-shell re-homes it into the tabset's content at runtime.
-# Customize / Settings mount here via data-for.
+# The ☰ menu (#More) targets THIS pane via `ui:region "#dk-menu-pane"`; no
+# data-for (the binding is menu-side). role="region" (+ aria-label) → <section>:
+# it's a labelled content area, not the primary <main> (that's the tabset).
 :MenuPane a ui:Layout ;
-    rdfs:comment "The ☰ menu's items (claimed by data-for) display here while open; dk-tabs-shell re-homes it into the tabset at runtime." ;
+    xhv:role "region" ;
+    rdfs:comment "The ☰ menu's items display here while open (the menu targets #dk-menu-pane via ui:region); dk-tabs-shell re-homes it into the tabset at runtime." ;
     schema:additionalProperty
-        [ schema:name "id"       ; schema:value "dk-menu-pane" ] ,
-        [ schema:name "class"    ; schema:value "dk-menu-pane" ] ,
-        [ schema:name "data-for" ; schema:value "Customize Settings" ] ,
-        [ schema:name "hidden"   ; schema:value "" ] .
+        [ schema:name "id"         ; schema:value "dk-menu-pane" ] ,
+        [ schema:name "class"      ; schema:value "dk-menu-pane" ] ,
+        [ schema:name "aria-label" ; schema:value "Menu" ] ,
+        [ schema:name "hidden"     ; schema:value "" ] .

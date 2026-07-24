@@ -1,0 +1,56 @@
+// dk's shell layout (ui-data/data-kitchen-shell.ttl) must conform to
+// sol-components' layout.shacl (+ menu.shacl for its ui:Component leaves). This
+// is what makes the shared layout shape actually CONSTRAIN dk — the App-Builder
+// preset layouts are unshipped, so dk's shell is the live conformance target.
+//
+// It enforces, among other things, that every region declares an xhv:role.
+
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import { Parser, Store } from 'n3';
+import SHACLValidator from 'rdf-validate-shacl';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const P = (rel) => join(root, rel);
+const SHAPES = 'node_modules/sol-components/shapes';
+
+function parse(text, base) {
+  return new Store(new Parser({ baseIRI: base }).parse(text));
+}
+const summarize = (report) => report.results.slice(0, 10).map((r) =>
+  `${(r.focusNode?.value || '').split(/[#/]/).pop()} ${(r.path?.value || '').split(/[#/]/).pop()} ` +
+  `${r.message.map((m) => m.value).join('; ') || r.sourceConstraintComponent?.value?.split('#').pop()}`,
+).join('\n   ');
+
+// layout.shacl + menu.shacl composed (component leaves validate against menu.shacl).
+function shapes() {
+  const s = new Store();
+  for (const f of ['layout.shacl', 'menu.shacl']) {
+    for (const q of new Parser({ baseIRI: `http://shapes/${f}` })
+      .parse(readFileSync(P(`${SHAPES}/${f}`), 'utf8'))) s.add(q);
+  }
+  return s;
+}
+
+test('data-kitchen-shell.ttl conforms to layout.shacl (+ menu.shacl)', async () => {
+  const data = parse(
+    readFileSync(P('ui-data/data-kitchen-shell.ttl'), 'utf8'),
+    'https://data-kitchen.invalid/ui-data/data-kitchen-shell.ttl',
+  );
+  const report = await new SHACLValidator(shapes()).validate(data);
+  assert.ok(report.conforms, `shell violated layout.shacl:\n   ${summarize(report)}`);
+});
+
+test('the ☰ menu targets the pane via ui:region "#dk-menu-pane" (menu-side binding, no data-for)', () => {
+  const menu = readFileSync(P('ui-data/data-kitchen-hamburger-menu.ttl'), 'utf8');
+  // The binding is menu-side now: #More names the pane, the pane no longer
+  // claims items with data-for. (ui:region target-string validity is covered
+  // by sol-components' menu.shacl tests; full menu conformance here would need
+  // the plugins catalog loaded, which is a separate doc.)
+  assert.match(menu, /:More\b[\s\S]*?ui:region\s+"#dk-menu-pane"/, 'the #More menu must name the pane via ui:region');
+  const shell = readFileSync(P('ui-data/data-kitchen-shell.ttl'), 'utf8');
+  assert.doesNotMatch(shell, /schema:name\s+"data-for"/, 'the shell pane must not declare a data-for attribute anymore');
+});
