@@ -1,7 +1,8 @@
 // dk's shell layout (ui-data/data-kitchen-shell.ttl) must conform to
-// sol-components' layout.shacl (+ menu.shacl for its ui:Component leaves). This
-// is what makes the shared layout shape actually CONSTRAIN dk — the App-Builder
-// preset layouts are unshipped, so dk's shell is the live conformance target.
+// sol-components' ui.shacl (the layout shapes, plus the menu/plugin shapes its
+// ui:Component leaves validate against — one file now). This is what makes the
+// shared layout shape actually CONSTRAIN dk — the App-Builder preset layouts are
+// unshipped, so dk's shell is the live conformance target.
 //
 // It enforces, among other things, that every region declares an xhv:role.
 
@@ -25,23 +26,22 @@ const summarize = (report) => report.results.slice(0, 10).map((r) =>
   `${r.message.map((m) => m.value).join('; ') || r.sourceConstraintComponent?.value?.split('#').pop()}`,
 ).join('\n   ');
 
-// layout.shacl + menu.shacl composed (component leaves validate against menu.shacl).
+// ui.shacl holds the layout + menu/plugin shapes (component leaves validate too).
 function shapes() {
   const s = new Store();
-  for (const f of ['layout.shacl', 'menu.shacl']) {
-    for (const q of new Parser({ baseIRI: `http://shapes/${f}` })
-      .parse(readFileSync(P(`${SHAPES}/${f}`), 'utf8'))) s.add(q);
-  }
+  const f = 'ui.shacl';
+  for (const q of new Parser({ baseIRI: `http://shapes/${f}` })
+    .parse(readFileSync(P(`${SHAPES}/${f}`), 'utf8'))) s.add(q);
   return s;
 }
 
-test('data-kitchen-shell.ttl conforms to layout.shacl (+ menu.shacl)', async () => {
+test('data-kitchen-shell.ttl conforms to ui.shacl', async () => {
   const data = parse(
     readFileSync(P('ui-data/data-kitchen-shell.ttl'), 'utf8'),
     'https://data-kitchen.invalid/ui-data/data-kitchen-shell.ttl',
   );
   const report = await new SHACLValidator(shapes()).validate(data);
-  assert.ok(report.conforms, `shell violated layout.shacl:\n   ${summarize(report)}`);
+  assert.ok(report.conforms, `shell violated ui.shacl:\n   ${summarize(report)}`);
 });
 
 test('the ☰ menu binds to the pane via ui:region shell:MenuPane (menu-side node link, no data-for)', () => {

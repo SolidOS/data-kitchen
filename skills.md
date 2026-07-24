@@ -113,7 +113,7 @@ The manifest shape is published and validates (ci ≥0.5.0: `context.jsonld` +
 `ns#` vocab + `shapes/manifest.shaclc` / `.ttl`). Since ci 0.5.0 / sc 2.7.0
 the manifest shape covers only the ENVELOPE; the shared item shapes
 (ui:Component / ui:Link — menus, palette cards, and manifest entries are all
-the same shapes) live in sol-components `shapes/menu.shacl`, and validators
+the same shapes) live in sol-components `shapes/ui.shacl`, and validators
 compose the two files (see test/data/menu-shacl.test.mjs). A manifest entry
 may be a ui:Link as well as a ui:Component. The `ci:` namespace
 (jeff-zucker.github.io/component-interop) is authoritative.
@@ -147,7 +147,7 @@ which the kind interprets:
   allow-listed in dk-tabs-shell. reloadApp/guestView/signIn stay
   registry-only (no entries, but the registry doc could list them later).
 
-`:PluginShape` in sc `shapes/menu.shacl` (MIXIN rewrite 2026-07-19: concise
+`:PluginShape` in sc `shapes/ui.shacl` (MIXIN rewrite 2026-07-19: concise
 shapes, card/settings metadata PLUGIN-ONLY, retired spellings deleted)
 constrains the one url per kind via `sh:xone` branches that DELEGATE to the
 kind shapes via `sh:node` — `:LinkShape` (IRI-or-string) / `:ComponentShape`
@@ -243,16 +243,18 @@ reversal of the 07-17 retirement):**
   (`window.open`), not the app tabset — the tabset/button-bar → pane
   default is structural (`fallbackEl` in sc display-target.js), stays in
   HTML by decision 2026-07-20.
-- **A `ui:region` value that is NOT a Region kind is a TARGET SELECTOR
-  (2026-07-22).** `ui:region "#dk-menu-pane"` (or `"main"`, etc.) is kept
-  verbatim and handed to display-target's `resolveRegion`/`safeQuery` — the
-  menu says "my items display over THERE" menu-side, so the target pane no
+- **A `ui:region` value that is NOT a Region kind is a TARGET REGION NODE
+  (2026-07-24, replacing the 07-22 selector string).** `ui:region shell:MenuPane`
+  links the menu to the layout region NODE; the DOM selector (`#dk-menu-pane`) is
+  DERIVED from that node's own `id` (`schema:additionalProperty`), never stored —
+  the menu says "my items display over THERE" menu-side, so the target pane no
   longer has to CLAIM them with `data-for` from the other side. The ☰ (`#More`)
   menu uses this; `data-kitchen-shell.ttl`'s pane dropped `data-for`, and
   `dk-tabs-shell`'s `openSettings` reroutes off it (targets the pane through
-  `fallbackEl` for Customize + Settings). `menu.shacl` widens `ui:region` to
-  (kind | string); `regionToken` passes non-kinds through; menu-serialize
-  round-trips kind→`ui:<Kind>`, target→literal.
+  `fallbackEl` for Customize + Settings). `ui.shacl` allows `ui:region` as
+  (kind | `sh:class ui:Layout` node | string); `regionToken(store, node)`
+  resolves a target node to `#<id>` (and `loadReferencedDocs` follows it to load
+  the target's doc); menu-serialize round-trips kind→`ui:<Kind>`, target→node ref.
 - Plugin seeds (`plugins/*.ttl` manifests) still carry NO placement — it's
   the deployment's decision — so a FRESH calendar install lands as a tab
   until the owner sets region on the entry. The
@@ -369,16 +371,20 @@ state, so any step can be re-entered and re-opening an app just works.
   `schema:additionalType` → semantic tag (SiteNavigationElement→nav,
   WPHeader→header, WPFooter→footer, WPSideBar→aside; the root's first
   unmarked layout child emits `<main>`, else `<div>`). **ROLE is now the
-  standard `xhv:role` predicate (2026-07-22), REQUIRED by `layout.shacl`
+  standard `xhv:role` predicate (2026-07-22), REQUIRED by `ui.shacl`
   (`sh:minCount 1`)** and constrained to the landmark set
   (banner/main/navigation/contentinfo/region + document/application for the
   root). Landmark tokens map to native elements (banner→header, main→main,
   navigation→nav, contentinfo→footer, region→section+aria-label); `additionalType`
-  is the LEGACY fallback. For the ROOT layout the compiler IGNORES the role
-  (it may meaningfully say `xhv:role "document"`) and emits `<body>` + the
-  root's class/attrs. Layout orientation
+  is the LEGACY fallback (DROPPED from `ui.shacl` 2026-07-24 — compiler-only
+  back-compat now, no longer in the shape contract). **`ui:label` is also REQUIRED
+  on every layout (2026-07-24) and emitted as the landmark's `aria-label`** — a
+  plain `<div>` gets none, an explicit `aria-label`/`aria-labelledby` wins, and the
+  root's label is not emitted (`<body>` isn't a landmark). For the ROOT layout the
+  compiler IGNORES the role (it may meaningfully say `xhv:role "document"`) and
+  emits `<body>` + the root's class/attrs. Layout orientation
   defaults VERTICAL (a page stacks; menus default horizontal). Terms in sc
-  `data/ui-vocab.ttl`; `shapes/layout.shacl` (+ generated shaclc twin) also
+  `data/ui-vocab.ttl`; `shapes/ui.shacl` (+ generated shaclc twin) also
   IS the custom-layout editor (shape-driven sol-form — no bespoke editor).
   **NOT yet in the pending w3c ns-ui PR batch** (its own ask later).
 - **sc pieces:** `core/layout-generate.js` (`generateAppHtml` /
@@ -1250,7 +1256,7 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
     phone pill; cleared by the next switchTab. dk wires it to the ☰ menu
     pane (`sol-tab-activate` names it, `hideMenuPane` clears). NOTE:
     Settings/Customize mount into `#dk-menu-pane` — NOT a conjured modal.
-    The ☰ menu binds there via `ui:region "#dk-menu-pane"` (menu-side);
+    The ☰ menu binds there via `ui:region shell:MenuPane` (menu-side node ref);
     `openSettings` targets it through `fallbackEl` (the old `data-for` pane
     claim was retired 2026-07-22).
   - **dk**: podz ◫◫ hidden on coarse PORTRAIT (portrait dual = 142px

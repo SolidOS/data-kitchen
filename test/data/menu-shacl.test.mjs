@@ -1,5 +1,5 @@
 // Validate dk's menus and plugin docs against the SHARED item shapes in
-// sol-components' shapes/menu.shacl (ui:Menu / ui:Link / ui:Component — the
+// sol-components' shapes/ui.shacl (ui:Menu / ui:Link / ui:Component — the
 // same shapes palette cards and component-interop manifest entries use).
 // Same harness pattern as shacl-shapes.test.mjs: n3 + rdf-validate-shacl.
 //
@@ -18,7 +18,7 @@ import SHACLValidator from 'rdf-validate-shacl';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const P = (rel) => join(root, rel);
 
-const SHAPES_PATH = P('node_modules/sol-components/shapes/menu.shacl');
+const SHAPES_PATH = P('node_modules/sol-components/shapes/ui.shacl');
 
 function parse(text, base = 'http://dk.invalid/') {
   return new Store(new Parser({ baseIRI: base }).parse(text));
@@ -32,9 +32,9 @@ function summarize(report) {
 }
 
 if (!existsSync(SHAPES_PATH)) {
-  console.warn('warn: sol-components shapes/menu.shacl not found — menu SHACL tests skipped');
+  console.warn('warn: sol-components shapes/ui.shacl not found — menu SHACL tests skipped');
 } else {
-  const shapes = parse(readFileSync(SHAPES_PATH, 'utf8'), 'http://dk.invalid/shapes/menu.shacl');
+  const shapes = parse(readFileSync(SHAPES_PATH, 'utf8'), 'http://dk.invalid/shapes/ui.shacl');
   const validate = async (dataText, base) =>
     new SHACLValidator(shapes).validate(parse(dataText, base));
 

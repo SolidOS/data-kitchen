@@ -17,11 +17,11 @@ These shapes are meant to support host apps in which
 
 ## The informal discussion below is based on these formal elements :
 * [The ui: ontology](https://www.w3.org/ns/ui) — the terms used here were [merged into the W3C namespace](https://github.com/w3c/ns/pull/35) on 2026-07-21
-* [The Menu and Plugin Shapes in SHACL](https://github.com/jeff-zucker/sol-components/blob/main/shapes/menu.shacl)
+* [The UI Shapes in SHACL](https://github.com/jeff-zucker/sol-components/blob/main/shapes/ui.shacl) — menus, plugin entries, and app layouts, in one file
 
 **Issues and PRs related to the UI as RDF approach outlined here should be filed against those resources.**
 
-The Menu and Plugin shapes are also available as [SHACLC](https://github.com/jeff-zucker/sol-components/blob/main/shapes/menu.shaclc)
+The UI shapes are also available as [SHACLC](https://github.com/jeff-zucker/sol-components/blob/main/shapes/ui.shaclc)
 
 See also
 * [An example plugin catalog following the shape](https://github.com/SolidOS/data-kitchen/blob/main/ui-data/data-kitchen-plugins-catalog.ttl)
