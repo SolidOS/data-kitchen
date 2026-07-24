@@ -243,6 +243,16 @@ reversal of the 07-17 retirement):**
   (`window.open`), not the app tabset — the tabset/button-bar → pane
   default is structural (`fallbackEl` in sc display-target.js), stays in
   HTML by decision 2026-07-20.
+- **A `ui:region` value that is NOT a Region kind is a TARGET SELECTOR
+  (2026-07-22).** `ui:region "#dk-menu-pane"` (or `"main"`, etc.) is kept
+  verbatim and handed to display-target's `resolveRegion`/`safeQuery` — the
+  menu says "my items display over THERE" menu-side, so the target pane no
+  longer has to CLAIM them with `data-for` from the other side. The ☰ (`#More`)
+  menu uses this; `data-kitchen-shell.ttl`'s pane dropped `data-for`, and
+  `dk-tabs-shell`'s `openSettings` reroutes off it (targets the pane through
+  `fallbackEl` for Customize + Settings). `menu.shacl` widens `ui:region` to
+  (kind | string); `regionToken` passes non-kinds through; menu-serialize
+  round-trips kind→`ui:<Kind>`, target→literal.
 - Plugin seeds (`plugins/*.ttl` manifests) still carry NO placement — it's
   the deployment's decision — so a FRESH calendar install lands as a tab
   until the owner sets region on the entry. The
@@ -358,7 +368,15 @@ state, so any step can be re-entered and re-opening an app just works.
   `schema:additionalProperty` on layout nodes (emitted HTML attrs; was ui:attribute until 2026-07-20) and
   `schema:additionalType` → semantic tag (SiteNavigationElement→nav,
   WPHeader→header, WPFooter→footer, WPSideBar→aside; the root's first
-  unmarked layout child emits `<main>`, else `<div>`). Layout orientation
+  unmarked layout child emits `<main>`, else `<div>`). **ROLE is now the
+  standard `xhv:role` predicate (2026-07-22), REQUIRED by `layout.shacl`
+  (`sh:minCount 1`)** and constrained to the landmark set
+  (banner/main/navigation/contentinfo/region + document/application for the
+  root). Landmark tokens map to native elements (banner→header, main→main,
+  navigation→nav, contentinfo→footer, region→section+aria-label); `additionalType`
+  is the LEGACY fallback. For the ROOT layout the compiler IGNORES the role
+  (it may meaningfully say `xhv:role "document"`) and emits `<body>` + the
+  root's class/attrs. Layout orientation
   defaults VERTICAL (a page stacks; menus default horizontal). Terms in sc
   `data/ui-vocab.ttl`; `shapes/layout.shacl` (+ generated shaclc twin) also
   IS the custom-layout editor (shape-driven sol-form — no bespoke editor).
@@ -1231,8 +1249,10 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   - **sol-tabs.setNavLabel(text)**: host names a non-room screen on the
     phone pill; cleared by the next switchTab. dk wires it to the ☰ menu
     pane (`sol-tab-activate` names it, `hideMenuPane` clears). NOTE:
-    Settings/Customize mount into `#dk-menu-pane` (index.html `data-for`
-    claims) — NOT a conjured modal.
+    Settings/Customize mount into `#dk-menu-pane` — NOT a conjured modal.
+    The ☰ menu binds there via `ui:region "#dk-menu-pane"` (menu-side);
+    `openSettings` targets it through `fallbackEl` (the old `data-for` pane
+    claim was retired 2026-07-22).
   - **dk**: podz ◫◫ hidden on coarse PORTRAIT (portrait dual = 142px
     panels); help/dk{,-owner}.html copy is pointer-conditional
     (`.dk-mouse`/`.dk-touch` spans, media-gated); sol-menu-manager's adder

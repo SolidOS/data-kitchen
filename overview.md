@@ -38,7 +38,7 @@ Exactly one - The display label for the menu.
 Exactly one - The orientation of the menu; a `ui:Orientation` instance e.g. `ui:Vertical`
 
 ### `ui:region`
-Zero or one - The target for menu items; a `ui:Region` instance e.g. `ui:Modal`. Note: it should be expected that a menu or tab component will have its own display region which will be, by default, where its items are displayed when selected.  This predicate is for situations in which the user wants to override the default and send menu output elsewhere. This predicate can also occur on menu items to override that item's display region rather than the whole menu.
+Zero or one - The target for menu items. Its value is EITHER a `ui:Region` instance e.g. `ui:Modal` (a display KIND), OR a string that is a CSS selector naming the element the items should display in, e.g. `"#dk-menu-pane"` or `"main"` (a display TARGET). Note: it should be expected that a menu or tab component will have its own display region which will be, by default, where its items are displayed when selected.  This predicate is for situations in which the user wants to override the default and send menu output elsewhere. This predicate can also occur on menu items to override that item's display region rather than the whole menu.
 
 ### `schema:itemListElement`
 Zero or more - The menu items.  Each one points at either a `ui:Menu` (a submenu of the menu it occurs in) or a `ui:Plugin` (an action to be performed).  Note : when ordered, menus are stored with positioned slots for each item rather than as an rdf first-rest Collection.  This means that changes in order are atomic and can be handled with patch rather than needing to PUT the entire file.
