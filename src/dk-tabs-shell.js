@@ -106,7 +106,7 @@
       const info = await pluginManifest(pluginIdFor(panel));
       const panelSource = panel?.getAttribute?.('source');
       // This is dk-specific dispatch (not through the #More menu's rendering),
-      // so the menu's `ui:region "#dk-menu-pane"` doesn't reach it. Target the
+      // so the menu's `ui:region :MenuPane` binding doesn't reach it. Target the
       // pane explicitly with fallbackEl — the data-for claim is gone, so
       // resolveRegion falls through to this element (its sol-tab-activate
       // handler still names it on the phone pill; hideMenuPane/switchTab close).

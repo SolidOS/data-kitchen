@@ -59,6 +59,12 @@ if (!existsSync(SHAPES_PATH)) {
           store.addQuads(new Parser({ baseIRI: `http://dk.invalid/plugins/${f}` })
             .parse(readFileSync(P(join('plugins', f)), 'utf8')));
         }
+        // The shell doc defines the ui:Layout regions a menu's ui:region binds
+        // to (e.g. #More → shell:MenuPane): the target's `a ui:Layout` type must
+        // be in the graph for the region shape's sh:class branch — the runtime
+        // pulls it in the same way (loadReferencedDocs follows ui:region nodes).
+        store.addQuads(new Parser({ baseIRI: 'http://dk.invalid/ui-data/data-kitchen-shell.ttl' })
+          .parse(readFileSync(P('ui-data/data-kitchen-shell.ttl'), 'utf8')));
       }
       const report = await new SHACLValidator(shapes).validate(store);
       assert.ok(report.conforms, `expected conformance, violations:\n   ${summarize(report)}`);

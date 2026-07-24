@@ -2,11 +2,15 @@
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix data: <data-kitchen-plugins-catalog.ttl#>.
 @prefix schema: <http://schema.org/>.
+@prefix shell: <data-kitchen-shell.ttl#>.
 
+# ui:region names the LAYOUT REGION the ☰ menu's items display in — a node link
+# to shell:MenuPane, not a selector. The renderer derives that region's DOM id
+# (#dk-menu-pane) from the target node itself (menu-rdf regionToken).
 :More
     a ui:Menu;
     ui:label "☰ Menu";
-    ui:region "#dk-menu-pane";
+    ui:region shell:MenuPane;
     schema:itemListElement :More-Customize, :More-Settings, :More-Theme, :More-Text-size, :More-Restart-dk.
 
 :More-Customize a schema:ListItem; schema:item data:Customize; schema:position 1.

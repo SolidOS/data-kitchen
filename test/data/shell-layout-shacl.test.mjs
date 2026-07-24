@@ -44,13 +44,16 @@ test('data-kitchen-shell.ttl conforms to layout.shacl (+ menu.shacl)', async () 
   assert.ok(report.conforms, `shell violated layout.shacl:\n   ${summarize(report)}`);
 });
 
-test('the ☰ menu targets the pane via ui:region "#dk-menu-pane" (menu-side binding, no data-for)', () => {
+test('the ☰ menu binds to the pane via ui:region shell:MenuPane (menu-side node link, no data-for)', () => {
   const menu = readFileSync(P('ui-data/data-kitchen-hamburger-menu.ttl'), 'utf8');
-  // The binding is menu-side now: #More names the pane, the pane no longer
-  // claims items with data-for. (ui:region target-string validity is covered
-  // by sol-components' menu.shacl tests; full menu conformance here would need
-  // the plugins catalog loaded, which is a separate doc.)
-  assert.match(menu, /:More\b[\s\S]*?ui:region\s+"#dk-menu-pane"/, 'the #More menu must name the pane via ui:region');
+  // The binding is menu-side and a NODE reference now: #More names the pane
+  // region as a resource (shell:MenuPane), not a "#dk-menu-pane" selector string;
+  // the renderer derives the DOM id from the target node. The pane no longer
+  // claims items with data-for. (ui:region node resolution is covered by
+  // sol-components' menu-rdf tests; full menu conformance here would need the
+  // plugins catalog loaded, which is a separate doc.)
+  assert.match(menu, /:More\b[\s\S]*?ui:region\s+shell:MenuPane/, 'the #More menu must bind to the pane node via ui:region');
+  assert.match(menu, /@prefix\s+shell:\s+<data-kitchen-shell\.ttl#>/, 'the shell: prefix must resolve to the shell doc');
   const shell = readFileSync(P('ui-data/data-kitchen-shell.ttl'), 'utf8');
   assert.doesNotMatch(shell, /schema:name\s+"data-for"/, 'the shell pane must not declare a data-for attribute anymore');
 });
