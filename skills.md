@@ -161,6 +161,27 @@ could through `:PluginShape`). Shared blocks are node-level mixins
 `effectiveProperties()` (shape-to-form.js — dedup by path). Membership
 helper shapes: `:OrderedItemShape` (positioned ListItem wrapper) /
 `:UnorderedItemShape` (direct member + the reachable-label rule).
+
+MENU VARIANTS (2026-07-25): `:TabbedMenuShape` (1+ items, any may be a
+submenu) / `:ButtonMenuShape` (exactly 1 item, and it IS a submenu — the ☰
+trigger and the list it drops) / `:ButtonBarShape` (1+ items, NONE a
+submenu). Each is `sh:node :MenuShape` plus its own membership property —
+`effectiveProperties()` dedups by path so the strict rule replaces the
+permissive one in forms, while validation intersects both. Their member
+helpers: `:FlatMemberShape` / `:SubmenuMemberShape` and the ordered wrappers
+`:OrderedFlatItemShape` / `:OrderedSubmenuItemShape`. NO `sh:targetClass` —
+all three are `ui:Menu`, so they are reached BY NAME:
+
+    shape="…/shapes/ui.shacl#ButtonBarShape"
+
+`parseShape` (core/shape-to-form.js) now takes a FRAGMENT as selection rule
+0 — it names the shape outright; the document is still what gets parsed.
+Without a fragment the old inference runs unchanged (targetClass → sh:node
+wrapper → first NodeShape), so every existing caller is untouched. A
+fragment naming no shape warns and falls back. This is the only way to have
+more than one shape per class. The app builder's Customize tab is what points
+at them by name: opening a menu element mounts its KIND's shape beside the
+manager that edits its items.
 Shared metadata: `ui:label` (ONE label everywhere — card title AND
 menu text; display overrides go through a `label` attribute pair),
 `schema:description` (card blurb — NOT rdfs:comment, which stays a free
