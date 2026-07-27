@@ -694,11 +694,21 @@ export class SolidFileBrowser {
   async handleDrop(targetSide) {
     if (!this.draggedItems.length || this.draggedSourceSide === targetSide) return;
     const sourceSide = this.draggedSourceSide;
-    const targetUrl = this.currentPaths[targetSide];
+    const targetPod = targetSide === 'left' ? this.elements.leftPod : this.elements.rightPod;
+    const sourcePod = sourceSide === 'left' ? this.elements.leftPod : this.elements.rightPod;
+    // Live paths from the pod components — the cached currentPaths can go
+    // stale and silently redirect the drop (worst case onto the source
+    // itself, where move = copy-onto-self + delete = data loss).
+    const targetUrl = targetPod.currentPath || this.currentPaths[targetSide];
     if (!targetUrl) return;
 
     const items = this.draggedItems.slice();
-    const sourceContainer = this.currentPaths[sourceSide];
+    const sourceContainer = sourcePod.currentPath || this.currentPaths[sourceSide];
+
+    if (targetUrl === sourceContainer) {
+      this.uiManager.setStatus('Source and destination are the same folder — nothing moved.', 'error');
+      return;
+    }
 
     // No pre-flight auth check: anon PUT may succeed against a publicly-
     // writable target, and when it doesn't, the underlying solFetch fires
@@ -713,8 +723,15 @@ export class SolidFileBrowser {
     const succeeded = [];
     const partial = []; // copied but delete-source failed (move only)
     const failed = [];
+    const skipped = []; // source and destination URL are identical
 
     for (const it of items) {
+      const suffix = it.isContainer ? '/' : '';
+      if (it.url === targetUrl + it.name + suffix
+          || it.url === targetUrl + encodeURIComponent(it.name) + suffix) {
+        skipped.push(it);
+        continue;
+      }
       this.uiManager.setStatus(`${verb} ${it.name}...`, '');
       const copyResult = it.isContainer
         ? await this.podManager.copyFolder(it.url, targetUrl, it.name,
@@ -728,13 +745,11 @@ export class SolidFileBrowser {
       succeeded.push(it);
     }
 
-    this._reportDropResult({ mode, items, succeeded, partial, failed, sourceSide, targetSide, targetUrl, sourceContainer });
+    this._reportDropResult({ mode, items, succeeded, partial, failed, skipped, sourceSide, targetSide, targetUrl, sourceContainer });
 
-    const targetPod = targetSide === 'left' ? this.elements.leftPod : this.elements.rightPod;
     await targetPod.loadContainer(targetUrl);
-    if (mode === 'move' && this.currentPaths[sourceSide]) {
-      const sourcePod = sourceSide === 'left' ? this.elements.leftPod : this.elements.rightPod;
-      await sourcePod.loadContainer(this.currentPaths[sourceSide]);
+    if (mode === 'move' && sourceContainer) {
+      await sourcePod.loadContainer(sourceContainer);
     }
     this.pendingCopy = null;
     this.saveState();
@@ -745,7 +760,7 @@ export class SolidFileBrowser {
    * the user can act on them; offers Undo when at least one item moved
    * or copied successfully.
    */
-  _reportDropResult({ mode, items, succeeded, partial, failed, sourceSide, targetSide, targetUrl, sourceContainer }) {
+  _reportDropResult({ mode, items, succeeded, partial, failed, skipped = [], sourceSide, targetSide, targetUrl, sourceContainer }) {
     const verbDone = mode === 'move' ? 'Moved' : 'Copied';
     const total = items.length;
     const ok = succeeded.length;
@@ -753,6 +768,7 @@ export class SolidFileBrowser {
     const problems = [];
     if (failed.length)  problems.push(`failed: ${failed.map(it => it.name).join(', ')}`);
     if (partial.length) problems.push(`copied but kept original (delete failed): ${partial.map(it => it.name).join(', ')}`);
+    if (skipped.length) problems.push(`already at destination (skipped): ${skipped.map(it => it.name).join(', ')}`);
 
     let message;
     let type;
@@ -762,6 +778,9 @@ export class SolidFileBrowser {
     } else if (ok > 0) {
       message = `${verbDone} ${ok}/${total}. ${problems.join(' — ')}`;
       type = 'error';
+    } else if (!failed.length && !partial.length && skipped.length) {
+      message = `Nothing to do — ${problems.join(' — ')}`;
+      type = '';
     } else {
       message = `${verbDone === 'Moved' ? 'Move' : 'Copy'} failed. ${problems.join(' — ')}`;
       type = 'error';
