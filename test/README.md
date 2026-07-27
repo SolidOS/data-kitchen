@@ -20,7 +20,7 @@ npm run test:e2e    # drives the real shell — needs the pod/servers (see below
 | `test/data/`       | RDF data contracts: every `plugins/*.ttl` is `ui:Link` XOR `ui:Component`; catalog ↔ manifests stay in sync; `#Tabs/#Bar/#Chrome` menu invariants; folder `manifest.jsonld` fields + paths resolve; sample data validates against the SHACL shapes (`rdf-validate-shacl`). | nothing |
 | `test/roundtrip/`  | `rdf2html`/`html2rdf` conversion converges to a stable fixed point (idempotent), in-memory via the sol-components core modules. | chromium (auto-skips if absent) |
 | `test/integration/`| Boots the real `router/index.cjs` and `proxy/index.cjs` on ephemeral ports and drives them over HTTP — gate pass/401/blessing, engine serving, proxy `<base>` injection + script-stripping. | nothing |
-| `test/e2e/`        | Drives the real shell (`run.mjs`) and asserts the RDF-first UI paints, by sequencing the harnesses in `claude/smoke-tests/`. | running app or pod+servers |
+| `test/e2e/`        | Drives the real shell (`run.mjs` + `verify-unified-shell.mjs`; CDP-mode harnesses stay in the local-only `claude/smoke-tests/`) and asserts the RDF-first UI paints. | assembled tree or running app |
 
 `test/helpers/` holds shared doubles: `mock-http.mjs` (req/res for the gate),
 `rdf.mjs` (the shared rdflib singleton + `loadGraph`), `spawn-server.mjs`
@@ -30,7 +30,7 @@ npm run test:e2e    # drives the real shell — needs the pod/servers (see below
 
 `npm run test:e2e` auto-detects its environment:
 - an Electron dk app already exposing CDP (`electron . --remote-debugging-port=9222`) → runs the CDP harnesses against it;
-- otherwise it boots pivot (:3000) + proxy (:3002) from the repo and runs the headless-browser harnesses. This needs the pod to be seeded (pivot serves it) — see `skills.md`.
+- otherwise it assembles the BASE VARIANT (the exact seeded tree a release ships) to a temp dir, symlinks the shell code (`src/ dist/ assets/ node_modules/`) beside it, serves it with pivot on :3050 (`DK_E2E_PORT` overrides — never :3000, that's the machine's standing pod server), and runs the headless-browser harnesses against it.
 
 ## Conventions
 

@@ -6,28 +6,36 @@
 //   • If an Electron dk app is already exposing CDP on :9222
 //     (electron . --remote-debugging-port=9222), the CDP harnesses run against
 //     it (no servers started here).
-//   • Otherwise pivot (:3000) + proxy (:3002) are booted from the repo and the
-//     headless-browser harnesses run against them.
+//   • Otherwise the BASE VARIANT is assembled to a temp dir (the exact seeded
+//     tree a release ships — not the working repo, whose dk-pod/ is the
+//     owner's personal pod) and pivot serves it on :3050. The port is not
+//     :3000 — that is the machine's standing pod server, which serves ~/solid
+//     and must never be reused (or killed) for tests.
 //
-// The harnesses themselves live in claude/smoke-tests/ (already exit-code
-// driven). This runner just provisions, sequences, and aggregates them.
+// The server-mode harness lives beside this runner (tracked); the CDP
+// harnesses live in claude/smoke-tests/ (local-only). This runner just
+// provisions, sequences, and aggregates them.
 
-import { spawn } from 'node:child_process';
+import { spawn, execFileSync } from 'node:child_process';
+import { mkdtempSync, rmSync, symlinkSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const here = dirname(fileURLToPath(import.meta.url));
+const root = join(here, '..', '..');
 const SMOKE = join(root, 'claude', 'smoke-tests');
+const E2E_PORT = process.env.DK_E2E_PORT || '3050';
 
 // harness file → the servers it expects (started here if not already up).
-const CDP_HARNESSES = ['verify-settings.mjs'];
-const SERVER_HARNESSES = ['verify-unified-shell.mjs'];
+const CDP_HARNESSES = [join(SMOKE, 'verify-settings.mjs')];
+const SERVER_HARNESSES = [join(here, 'verify-unified-shell.mjs')];
 
-function run(file) {
+function run(file, env = {}) {
   return new Promise((resolve) => {
     console.log(`\n──▶ ${file}`);
-    const p = spawn(process.execPath, [join(SMOKE, file)], { cwd: root, stdio: 'inherit' });
-    p.on('exit', (code) => resolve({ file, ok: code === 0 }));
+    const p = spawn(process.execPath, [file], { cwd: root, env: { ...process.env, ...env }, stdio: 'inherit' });
+    p.on('exit', (code) => resolve({ file: file.split('/').pop(), ok: code === 0 }));
   });
 }
 
@@ -48,26 +56,34 @@ async function waitUntil(url, tries = 120, delay = 250) {
 
 const cdpUp = await reachable('http://localhost:9222/json');
 const servers = [];
-let harnesses;
+let assembled = null;
+const results = [];
 
 if (cdpUp) {
   console.log('• detected a running dk app on CDP :9222 — using CDP harnesses');
-  harnesses = CDP_HARNESSES;
+  for (const h of CDP_HARNESSES) results.push(await run(h));
 } else {
-  console.log('• no CDP app; booting pivot (:3000) + proxy (:3002)');
-  servers.push(startServer(['pivot/run-server.cjs', '.', '3000']));
-  servers.push(startServer(['proxy/index.cjs'], { DK_PROXY_PORT: '3002', DK_PUBLIC_PORT: '3000' }));
-  if (!(await waitUntil('http://localhost:3000/index.html'))) {
-    console.error('✖ pivot did not come up on :3000 — is the pod seeded? (see skills.md)');
-    servers.forEach((s) => s.kill('SIGKILL'));
+  console.log(`• no CDP app; assembling the base variant and booting pivot (:${E2E_PORT})`);
+  if (await reachable(`http://localhost:${E2E_PORT}/`)) {
+    console.error(`✖ :${E2E_PORT} is already in use — set DK_E2E_PORT to a free port`);
     process.exit(2);
   }
-  harnesses = SERVER_HARNESSES;
+  assembled = mkdtempSync(join(tmpdir(), 'dk-e2e-'));
+  execFileSync(process.execPath, ['--preserve-symlinks', join(root, 'tools', 'assemble-variant.mjs'), 'base', assembled], { stdio: 'inherit' });
+  // The assembled tree is POD content; the shell's own code ships as electron
+  // app resources — supply it from the repo so the page can boot.
+  for (const d of ['node_modules', 'src', 'dist', 'assets']) symlinkSync(join(root, d), join(assembled, d));
+  servers.push(startServer(['pivot/run-server.cjs', assembled, E2E_PORT]));
+  if (!(await waitUntil(`http://localhost:${E2E_PORT}/index.html`))) {
+    console.error(`✖ pivot did not come up on :${E2E_PORT}`);
+    servers.forEach((s) => s.kill('SIGKILL'));
+    rmSync(assembled, { recursive: true, force: true });
+    process.exit(2);
+  }
+  for (const h of SERVER_HARNESSES) results.push(await run(h, { DK_E2E_PORT: E2E_PORT }));
 }
-
-const results = [];
-for (const h of harnesses) results.push(await run(h));
 servers.forEach((s) => s.kill('SIGKILL'));
+if (assembled) rmSync(assembled, { recursive: true, force: true });
 
 console.log('\n=== e2e summary ===');
 for (const r of results) console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.file}`);
