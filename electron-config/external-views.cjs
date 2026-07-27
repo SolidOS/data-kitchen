@@ -426,4 +426,7 @@ class ExternalViews {
   readerReload()  { if (this.readerContent) this.readerContent.webContents.reload(); }
 }
 
-module.exports = { ExternalViews };
+// hardenedExternalSession/EXTERNAL_PARTITION are exported for main's
+// window-open handler: popup-featured window.open gets a REAL window on the
+// same isolated (loopback-blocked) external session the overlay views use.
+module.exports = { ExternalViews, hardenedExternalSession, EXTERNAL_PARTITION };

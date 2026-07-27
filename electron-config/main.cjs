@@ -49,7 +49,7 @@ const CFG_PRED = {
   windowY:     'http://www.w3.org/ns/ui#windowY',
 };
 const PIM_STORAGE = 'http://www.w3.org/ns/pim/space#storage';
-const { ExternalViews } = require('./external-views.cjs');
+const { ExternalViews, hardenedExternalSession, EXTERNAL_PARTITION } = require('./external-views.cjs');
 
 // A fresh JSON-LD electron/pivot config seeded with the values this process
 // booted with: one subject (foaf:primaryTopic) carrying distinct predicates, so
@@ -554,11 +554,13 @@ class DesktopApp {
     }
   }
 
-  // Redirect window.open: OIDC login → real popup window; everything else →
-  // the native reader overlay. Installed on every webContents (app + popups).
+  // Redirect window.open: OIDC login → real popup window; popup-featured
+  // opens (pod-browser external links) → a real floating window on the
+  // isolated external session, sized by the caller; everything else → the
+  // native reader overlay. Installed on every webContents (app + popups).
   installOpenHandler(wc) {
     wc.setWindowOpenHandler(({ url, frameName, features }) => {
-      const isLogin = /login/i.test(frameName || '') || /\bpopup\b/i.test(features || '');
+      const isLogin = /login/i.test(frameName || '');
       if (isLogin) {
         return {
           action: 'allow',
@@ -570,9 +572,37 @@ class DesktopApp {
           },
         };
       }
+      if (/\bpopup\b/i.test(features || '')) {
+        // Same interface as the in-app floating page viewer, but a real window
+        // (external sites can't be iframed).
+        const dim = (k, dflt) => {
+          const m = (features || '').match(new RegExp(`\\b${k}=(\\d+)`));
+          return m ? Number(m[1]) : dflt;
+        };
+        if (url) this.openExternalWindow(url, dim('width', 1100), dim('height', 850));
+        return { action: 'deny' };
+      }
       if (this.external && url) this.external.openReader(url);
       return { action: 'deny' };
     });
+  }
+
+  // Real floating window for external content — created by hand (never via
+  // action:'allow') because a renderer-opened child ALWAYS inherits the
+  // opener's session, gate cookie included; only a main-created window can
+  // ride the isolated external partition (own cookie jar, loopback requests
+  // cancelled — same hardening as the overlay views).
+  openExternalWindow(url, width = 1100, height = 850) {
+    hardenedExternalSession();
+    const win = new BrowserWindow({
+      width, height, autoHideMenuBar: true,
+      webPreferences: {
+        contextIsolation: true, nodeIntegration: false, sandbox: true,
+        partition: EXTERNAL_PARTITION,
+      },
+    });
+    this.installOpenHandler(win.webContents);
+    win.loadURL(url);
   }
 
   wireIpc() {
