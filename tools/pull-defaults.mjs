@@ -16,6 +16,10 @@
 //          plugin DIR contents except news/feeds.ttl — repo owns code, the pod
 //            copies of podz/solidos/ia-player code may be stale
 //          favourites/, libraries/*/, scratch/     user data, never defaults
+//          POD-ONLY entries (pod-only-filter.mjs) — google-card manifests are
+//            skipped, and the pulled catalog/main-menu/settings are stripped
+//            of the Home tab, google cards, personal pod locations, and the
+//            owner's theme prefs. The pod keeps all of them.
 // REPORTS (doesn't touch): pod↔repo diffs in plugin CODE files, for hand
 //          reconciliation.
 //
@@ -27,6 +31,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { execFileSync, execSync } from 'node:child_process';
 import { homedir } from 'node:os';
+import { POD_ONLY, stripCatalog, stripMainMenu, stripSettings } from './pod-only-filter.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const pod = process.env.DK_POD || join(homedir(), 'solid', 'dk-pod', 'dk');
@@ -63,6 +68,7 @@ pull('ui-data/data-kitchen-plugins-catalog.ttl');
 pull('plugins/news/feeds.ttl', sanitizeFeeds);
 for (const f of readdirSync(join(pod, 'plugins')).sort()) {
   if (!f.endsWith('.ttl')) continue;
+  if (POD_ONLY.manifests.has(f)) continue;
   if (!statSync(join(pod, 'plugins', f)).isFile()) continue;
   pull(join('plugins', f));
 }
@@ -70,6 +76,19 @@ for (const f of readdirSync(join(pod, 'plugins')).sort()) {
 console.log(changed.length
   ? `  pulled ${changed.length} file(s):\n    ${changed.join('\n    ')}`
   : '  repo already matches the pod');
+
+// POD-ONLY strip — the pulled copies still carry owner-personal entries
+// (Home tab, google cards, personal pod locations, theme prefs); remove
+// them from the repo copies. The pod keeps them.
+if (!dry) {
+  const report = (label, names) => {
+    if (names.length) console.log(`  pod-only stripped from ${label}: ${names.join(', ')}`);
+  };
+  report('catalog', await stripCatalog(
+    join(root, 'ui-data', 'data-kitchen-plugins-catalog.ttl'), join(root, 'plugins')));
+  report('main-menu', await stripMainMenu(join(root, 'ui-data', 'data-kitchen-main-menu.ttl')));
+  report('settings', await stripSettings(join(root, 'ui-data', 'data-kitchen-settings.ttl')));
+}
 
 // Report (never copy) code drift the releases would otherwise mask.
 const CODE_REPORT = ['plugins/podz', 'plugins/solidos', 'plugins/home'];

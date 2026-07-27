@@ -4,11 +4,6 @@
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix dk: <../../>.
 @prefix loc: </>.
-@prefix lo: <http://localhost:3101/>.
-@prefix jeff: <https://jeff-zucker.solidcommunity.net/>.
-@prefix jef: <https://jeff-zucker.solidcommunity.net:8443/>.
-@prefix je: <https://jeffzucker.inrupt.net/>.
-@prefix sol: <https://solidproject.solidcommunity.net/>.
 @prefix wd: <http://www.wikidata.org/entity/>.
 
 <> a wd:Q1193846; foaf:primaryTopic :Settings.
@@ -47,34 +42,9 @@
     schema:item loc:;
     schema:name "Local Root";
     schema:position 2 .
-:loc3
-    a schema:ListItem;
-    schema:item lo:;
-    schema:name "localhost:3101";
-    schema:position 3 .
-:loc4
-    a schema:ListItem;
-    schema:item jeff:;
-    schema:name "jeff-zucker.solidcommunity.net";
-    schema:position 4 .
-:loc5
-    a schema:ListItem;
-    schema:item jef:;
-    schema:name "jeff-zucker.solidcommunity.net:8443";
-    schema:position 5 .
-:loc6
-    a schema:ListItem;
-    schema:item je:;
-    schema:name "jeffzucker.inrupt.net";
-    schema:position 6 .
-:loc7
-    a schema:ListItem;
-    schema:item sol:;
-    schema:name "solidproject.solidcommunity.net";
-    schema:position 7 .
 :Locations
     a schema:ItemList;
-    schema:itemListElement :loc1, :loc2, :loc3, :loc4, :loc5, :loc6, :loc7;
+    schema:itemListElement :loc1, :loc2;
     schema:name "Pod locations".
 :Settings
     ui:colorScheme ui:SystemColorScheme;

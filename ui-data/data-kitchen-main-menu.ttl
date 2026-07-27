@@ -187,15 +187,17 @@ a schema:ListItem; schema:item data:Synara-AI; schema:position 5 .
 :Pods-2
     a ui:Menu;
     schema:itemListElement
-        :Pods-2-Data-Kitchen-Pod-Browser, :Pods-2-Penny, :Pods-2-PodOS-Browser,
-        :Pods-2-SolidOS-data-browser;
+        :Pods-2-Data-Kitchen-Pod-Browser, :Pods-2-item-3, :Pods-2-Penny,
+        :Pods-2-PodOS-Browser, :Pods-2-SolidOS-data-browser;
     ui:label "Pods".
 :Pods-2-Data-Kitchen-Pod-Browser
 a schema:ListItem; schema:item data:Data-Kitchen-Pod-Browser; schema:position 1 .
-:Pods-2-Penny a schema:ListItem; schema:item data:Penny; schema:position 4 .
+:Pods-2-item-3
+a schema:ListItem; schema:item plu:solidos-remote.ttl; schema:position 3 .
+:Pods-2-Penny a schema:ListItem; schema:item data:Penny; schema:position 5 .
 
 :Pods-2-PodOS-Browser
-a schema:ListItem; schema:item data:PodOS-Browser; schema:position 3 .
+a schema:ListItem; schema:item data:PodOS-Browser; schema:position 4 .
 :Pods-2-SolidOS-data-browser
 a schema:ListItem; schema:item data:SolidOS-data-browser; schema:position 2 .
 :Tabs

@@ -10,10 +10,6 @@
 @prefix cry: <https://cryptpad.fr/>.
 @prefix we: </node_modules/sol-components/web/>.
 @prefix app: <https://app.element.io/>.
-@prefix n0: <https://mail.google.com/mail/u/0/>.
-@prefix n1: <https://calendar.google.com/calendar/u/0/>.
-@prefix maps: <https://www.google.com/maps/>.
-@prefix n2: <https://messages.google.com/web/u/0/>.
 @prefix hom: <https://homevault.apps.privatedatapod.com/>.
 @prefix chat: <https://huggingface.co/chat/>.
 @prefix pla: <https://json-ld.github.io/json-ld.org/playground/>.
@@ -62,7 +58,8 @@
 @prefix inte: <../plugins/ia-player/libraries/internet_archive_spoken_word/>.
 @prefix dat: </node_modules/sol-components/data/>.
 @prefix data: <data-kitchen-commands.ttl#>.
-@prefix n4: <https://timbl.solidcommunity.net/2023/03%20EWADA/>.
+@prefix dist: <https://unpkg.com/mashlib@2.2.2/dist/>.
+@prefix n0: <https://timbl.solidcommunity.net/2023/03%20EWADA/>.
 
 :0data-Hello
     a ui:Plugin;
@@ -78,16 +75,14 @@
     schema:itemListElement
         :Available-0data-Hello, :Available-BilliPod, :Available-Bluesky,
         :Available-Booklice, :Available-Calendar, :Available-Clock,
-        :Available-CryptPad, :Available-Customize, :Available-Home,
+        :Available-CryptPad, :Available-Customize,
         :Available-Data-Kitchen-Pod-Browser, :Available-dokieli,
         :Available-Duck-ai, :Available-Element, :Available-FilePod,
-        :Available-GeoPod, :Available-Gmail, :Available-Google-Calendar,
-        :Available-Google-Maps, :Available-Google-Messages,
-        :Available-HealthPod, :Available-HomeVault, :Available-HuggingFace-Chat,
-        :Available-Images-Wikimedia, :Available-InnerPod,
-        :Available-JSON-LD-Playground, :Available-KeyPod, :Available-KonaPod,
-        :Available-Lemmy, :Available-LibreTranslate, :Available-Mastodon,
-        :Available-Matrix-Chat, :Available-Media-Kraken,
+        :Available-GeoPod, :Available-HealthPod, :Available-HomeVault,
+        :Available-HuggingFace-Chat, :Available-Images-Wikimedia,
+        :Available-InnerPod, :Available-JSON-LD-Playground, :Available-KeyPod,
+        :Available-KonaPod, :Available-Lemmy, :Available-LibreTranslate,
+        :Available-Mastodon, :Available-Matrix-Chat, :Available-Media-Kraken,
         :Available-Movies-Internet-Archive, :Available-MovieStar,
         :Available-MSFatigue, :Available-Music-Internet-Archive,
         :Available-News-three-panel-feeds, :Available-NotePod,
@@ -108,12 +103,11 @@
         :Available-SolidOS-Chat, :Available-SolidOS-data-browser,
         :Available-SolidOS-Meeting, :Available-SolidOS-Notes,
         :Available-SolidOS-remote, :Available-SolidOS-Tasks,
-        :Available-SPARQL-Playground,
-        :Available-Spoken-Word-Internet-Archive, :Available-Standard-Notes,
-        :Available-Synara-AI, :Available-Tag-Explainer, :Available-Text-size,
-        :Available-Theme, :Available-Tired-Bike, :Available-TodoPod,
-        :Available-Tuta, :Available-Umai, :Available-VitalStats,
-        :Available-Weather;
+        :Available-SPARQL-Playground, :Available-Spoken-Word-Internet-Archive,
+        :Available-Standard-Notes, :Available-Synara-AI,
+        :Available-Tag-Explainer, :Available-Text-size, :Available-Theme,
+        :Available-Tired-Bike, :Available-TodoPod, :Available-Tuta,
+        :Available-Umai, :Available-VitalStats, :Available-Weather;
     rdfs:comment
         "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it.";
     ui:label "Plugins Available".
@@ -133,8 +127,6 @@ a schema:ListItem; schema:item :0data-Hello; schema:position 1 .
 
 :Available-Customize
 a schema:ListItem; schema:item :Customize; schema:position 86 .
-:Available-Home
-a schema:ListItem; schema:item :Home; schema:position 89 .
 :Available-Data-Kitchen-Pod-Browser
 a schema:ListItem; schema:item :Data-Kitchen-Pod-Browser; schema:position 8 .
 :Available-dokieli a schema:ListItem; schema:item :dokieli; schema:position 9 .
@@ -147,14 +139,6 @@ a schema:ListItem; schema:item :Data-Kitchen-Pod-Browser; schema:position 8 .
 
 :Available-GeoPod a schema:ListItem; schema:item :GeoPod; schema:position 13 .
 
-:Available-Gmail a schema:ListItem; schema:item :Gmail; schema:position 14 .
-
-:Available-Google-Calendar
-a schema:ListItem; schema:item :Google-Calendar; schema:position 15 .
-:Available-Google-Maps
-a schema:ListItem; schema:item :Google-Maps; schema:position 16 .
-:Available-Google-Messages
-a schema:ListItem; schema:item :Google-Messages; schema:position 17 .
 :Available-HealthPod
 a schema:ListItem; schema:item :HealthPod; schema:position 18 .
 :Available-HomeVault
@@ -465,45 +449,6 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     schema:url <https://geopod.solidcommunity.au>;
     ui:icon "https://geopod.solidcommunity.au/geopod/icons/Icon-192.png";
     ui:label "GeoPod".
-:Gmail
-    a ui:Plugin;
-    dct:publisher "Google";
-    dct:source plug:gmail.ttl;
-    schema:additionalType ui:Link;
-    schema:description "Google email.";
-    schema:url n0:;
-    ui:icon "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico";
-    ui:label "Gmail".
-:Google-Calendar
-    a ui:Plugin;
-    dct:publisher "Google";
-    dct:source plug:google-calendar.ttl;
-    schema:additionalType ui:Link;
-    schema:description "Your Google calendar.";
-    schema:url n1:r;
-    ui:icon
-        "https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_22.ico";
-    ui:label "Google Calendar".
-:Google-Maps
-    a ui:Plugin;
-    dct:publisher "Google";
-    dct:source plug:google-maps.ttl;
-    schema:additionalType ui:Link;
-    schema:description "Maps and directions.";
-    schema:url maps:;
-    ui:icon
-    "https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico";
-    ui:label "Google Maps".
-:Google-Messages
-    a ui:Plugin;
-    dct:publisher "Google";
-    dct:source plug:google-messages.ttl;
-    schema:additionalType ui:Link;
-    schema:description "Text messaging on the web.";
-    schema:url n2:conversations;
-    ui:icon
-        "https://ssl.gstatic.com/android-messages-web/images/2022.3/1x/messages_2022_96dp.png";
-    ui:label "Google Messages".
 :Health
     a skos:Collection;
     skos:member :HealthPod, :InnerPod, :MSFatigue, :SecureDialog, :VitalStats;
@@ -536,20 +481,6 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     schema:url chat:;
     ui:icon "https://huggingface.co/chat/huggingchat/apple-touch-icon.png";
     ui:label "HuggingFace Chat".
-:Home
-    a ui:Plugin;
-    schema:additionalProperty
-            [
-                schema:name "source";
-                schema:value "./dk-pod/dk/pages/home.html"
-            ],
-        [ schema:name "trusted"; schema:value "" ];
-    schema:additionalType ui:Component;
-    schema:description "Clock, weather, calendar and news topics, with articles in the centre.";
-    schema:keywords "UI Controls";
-    schema:url we:sol-include.js;
-    ui:icon "\U0001F3E0";
-    ui:label "Home".
 :Images-Wikimedia
     a ui:Plugin;
     dct:publisher "Jeff Zucker";
@@ -773,8 +704,7 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
 :Other-Services
     a skos:Collection;
     skos:member
-        :Bluesky, :CryptPad, :Duck-ai, :Element, :Gmail, :Google-Calendar,
-        :Google-Maps, :Google-Messages, :HuggingFace-Chat, :Lemmy,
+        :Bluesky, :CryptPad, :Duck-ai, :Element, :HuggingFace-Chat, :Lemmy,
         :LibreTranslate, :Mastodon, :Matrix-Chat, :OpenStreetMap, :Pixelfed,
         :Proton-Calendar, :Proton-Drive, :Proton-Mail, :SearXNG, :SepiaSearch,
         :Standard-Notes, :Tuta;
@@ -1177,8 +1107,8 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     dct:source plug:solidos-remote.ttl;
     schema:additionalType ui:Link;
     schema:description
-    "The upstream SolidOS data browser, with its own Solid login — browse any pod on the web.";
-    schema:url <https://unpkg.com/mashlib@2.2.2/dist/browse.html>;
+        "The upstream SolidOS data browser, with its own Solid login — browse any pod on the web.";
+    schema:url dist:browse.html;
     ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
     ui:label "SolidOS Remote".
 :SolidOS-Tasks
@@ -1253,7 +1183,7 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     dct:source plug:solid-tag-explainer.ttl;
     schema:additionalType ui:Link;
     schema:description "How Solid works, explained.";
-    schema:url n4:TAGExplainerforSolid.html;
+    schema:url n0:TAGExplainerforSolid.html;
     ui:icon "https://timbl.solidcommunity.net/favicon.ico";
     ui:label "Tag Explainer".
 :Tech
