@@ -31,6 +31,7 @@ const MIME = {
   '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf',
   '.wasm': 'application/wasm', '.ttl': 'text/turtle', '.txt': 'text/plain',
   '.shacl': 'text/turtle', '.jsonld': 'application/ld+json',
+  '.mp4': 'video/mp4',
 };
 
 // Serve an ENGINE file from engineDir, refusing any path that escapes it

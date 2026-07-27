@@ -1502,11 +1502,12 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   triggered CI smokes to conclusion.** Publishing a release fires mac-smoke,
   win-smoke, and android-smoke on real runners. The release is NOT DONE until
   all three conclude and their results are reported — never publish and walk
-  away (`gh run list --repo SolidOS/data-kitchen --limit 5`). Known flake:
-  mac-smoke's Movies-room probe streams a film from archive.org, which times
-  out often (v2.1.9 AND v2.2.0 both first-failed there); on that signature,
-  `gh run rerun <id> --failed` and keep watching. A real regression (boot,
-  seed, generic playback) is a stop-the-line failure.
+  away (`gh run list --repo SolidOS/data-kitchen --limit 5`). Since
+  2026-07-27 the video probe's gating checks are external-free: section B
+  plays the SHIPPED clip (`assets/smoke/test-clip.mp4`, app origin) and the
+  Movies-room drive (archive.org) is ADVISORY — logged with ⚠, never fails
+  the run (IA outages first-failed both v2.1.9 and v2.2.0). Any red run is
+  therefore a real regression: stop the line.
 
 ## Release variants (2026-07-06) — PARKED
 

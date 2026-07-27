@@ -37,9 +37,10 @@
 //             (usable on any OS — the win statics are plain file checks).
 //         SMOKE_VIDEO=1  additionally boots with a CDP port and runs the
 //             video-playback probe (tools/video-playback-probe.mjs)
-//             against the booted app — codec matrix + a real
-//             archive.org h.264 stream (+ DRIVE_MOVIES=1 drives the Movies
-//             room). Added for the "videos do not play on macOS" reports
+//             against the booted app — codec matrix + the SHIPPED test clip
+//             played from the app's own origin (+ DRIVE_MOVIES=1 drives the
+//             Movies room, ADVISORY only — archive.org outages don't gate).
+//             Added for the "videos do not play on macOS" reports
 //             (2026-07-16). Needs node ≥22 (global WebSocket) — the
 //             mac-smoke workflow's node 24 qualifies. On darwin this mode
 //             boots WITHOUT --disable-gpu so the decode path matches what

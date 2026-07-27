@@ -2,15 +2,20 @@
 // reports (2026-07-16). Connects to a running dk instance over CDP and:
 //   A. reports the renderer's codec support matrix (canPlayType) — tells a
 //      missing-ffmpeg / proprietary-codec problem apart from a render one,
-//   B. plays a known-good archive.org h.264 mp4 in a synthetic muted <video>
-//      and asserts currentTime advances AND videoWidth > 0 (frames decoded),
+//   B. plays the SHIPPED h.264 test clip (assets/smoke/test-clip.mp4, served
+//      from the app's own origin — no external network) in a synthetic muted
+//      <video> and asserts currentTime advances AND videoWidth > 0,
 //   C. (DRIVE_MOVIES=1) drives the real Movies room: clicks a film row and
-//      measures the app's own .ia-video element the same way.
+//      measures the app's own .ia-video element the same way. ADVISORY —
+//      the room streams from archive.org, whose outages are not our bug
+//      (both v2.1.9 and v2.2.0 first-failed on IA downtime), so C is
+//      reported but never fails the probe. A+B gate; C informs.
 // Platform-neutral: run on Linux for a baseline, on the mac-smoke runner for
 // the real answer. Exit 0 = video pipeline works, 1 = something failed.
 //
 // Usage: node tools/video-playback-probe.mjs
 //   env CDP_PORT=9222 (default)  DRIVE_MOVIES=1 (optional section C)
+//   TEST_MP4=<url> overrides the clip (default: the app origin's shipped copy)
 //   The app must be running with --remote-debugging-port=$CDP_PORT.
 //   Run standalone against any live instance, or via packaged-smoke.mjs
 //   SMOKE_VIDEO=1 (how the mac-smoke workflow runs it). Lives in tools/
@@ -18,10 +23,16 @@
 //   Needs node ≥22 (global WebSocket/fetch) — locally use
 //   `ELECTRON_RUN_AS_NODE=1 npx electron tools/video-playback-probe.mjs`.
 
+import { createServer } from 'node:http';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+
 const PORT = process.env.CDP_PORT || 9222;
 const DRIVE = process.env.DRIVE_MOVIES === '1';
-// h.264 + AAC, public item, streams via range requests (we need ~3s of it).
-const TEST_MP4 = 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4';
+// Shipped with the app (assets/ is an engine path — see server-core.cjs);
+// resolved against the page's own origin once the CDP target is known.
+const TEST_MP4_PATH = '/assets/smoke/test-clip.mp4';
 
 const targets = await (await fetch(`http://localhost:${PORT}/json`)).json();
 const page = targets.find(t => t.type === 'page' && /index\.html/.test(t.url)) || targets.find(t => t.type === 'page');
@@ -44,10 +55,35 @@ async function evalJS(expr) {
   return r.result?.value;
 }
 let fails = 0;
+let warns = 0;
 const check = (label, ok, detail = '') => { console.log(`${ok ? '✔' : '✘'} ${label}${detail ? ' — ' + detail : ''}`); if (!ok) fails++; };
+// Advisory: reported, but never fails the probe (section C — archive.org's
+// availability is not our bug).
+const advise = (label, ok, detail = '') => { console.log(`${ok ? '✔' : '⚠'} ${label}${detail ? ' — ' + detail : ''}`); if (!ok) warns++; };
 
 const ver = await send('Browser.getVersion').catch(() => null);
 console.log('BROWSER:', ver ? `${ver.product} on ${ver.userAgent.match(/\((.*?)\)/)?.[1]}` : 'unknown');
+
+// Pick the test clip: the app's shipped copy when present; for release zips
+// that predate it, serve the checkout's copy on loopback (the shell CSP
+// allows media from http://127.0.0.1:*). Either way: no external network.
+let TEST_MP4 = process.env.TEST_MP4;
+let clipServer = null;
+if (!TEST_MP4) {
+  const shippedUrl = new URL(TEST_MP4_PATH, page.url).href;
+  const shippedOk = await evalJS(`const r = await fetch(${JSON.stringify(shippedUrl)}, { method: 'HEAD' }); return r.ok;`).catch(() => false);
+  if (shippedOk) TEST_MP4 = shippedUrl;
+  else {
+    const clip = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'assets', 'smoke', 'test-clip.mp4'));
+    clipServer = createServer((req, res) => {
+      res.writeHead(200, { 'content-type': 'video/mp4', 'content-length': clip.length });
+      res.end(clip);
+    });
+    await new Promise(r => clipServer.listen(0, '127.0.0.1', r));
+    TEST_MP4 = `http://127.0.0.1:${clipServer.address().port}/test-clip.mp4`;
+    console.log('shipped clip absent (older release) — serving the checkout copy on loopback');
+  }
+}
 
 // ---- A. codec support matrix -------------------------------------------
 const codecs = await evalJS(`
@@ -68,9 +104,9 @@ console.log('CODECS:', JSON.stringify(codecs, null, 1));
 check('h.264 mp4 decodable (proprietary codecs present)', /probably|maybe/.test(codecs['mp4 h.264+aac']), codecs['mp4 h.264+aac']);
 check('mp3 decodable', /probably|maybe/.test(codecs['audio mp3']), codecs['audio mp3']);
 
-// ---- B. synthetic playback of a known-good h.264 mp4 --------------------
-// archive.org's /download/ endpoint 500s transiently — retry once before
-// calling the pipeline broken.
+// ---- B. synthetic playback of the shipped h.264 clip --------------------
+// Served from the app's own origin — a failure here is OURS (codec, CSP,
+// server, or decode), never external weather. One retry for CI slowness.
 console.log('SYNTHETIC PLAY:', TEST_MP4);
 const playOnce = () => evalJS(`
   const v = document.createElement('video');
@@ -113,9 +149,9 @@ if (play.ok) {
   check('decoder produced frames', play.decodedFrames === null || play.decodedFrames > 0, `decoded=${play.decodedFrames} dropped=${play.droppedFrames}`);
 }
 
-// ---- C. optional: drive the real Movies room ----------------------------
+// ---- C. optional, ADVISORY: drive the real Movies room ------------------
 if (DRIVE) {
-  console.log('DRIVING the Movies room…');
+  console.log('DRIVING the Movies room (advisory — streams from archive.org)…');
   const nav = await evalJS(`
     function deepQueryAll(sel, root = document) {
       const hits = [...root.querySelectorAll(sel)];
@@ -162,7 +198,7 @@ if (DRIVE) {
       console.log(`  …not mounted after ${Math.round((Date.now() - t0) / 1000)}s (present=${st.present}) — ${re}`);
     }
   }
-  check('movies room mounted', mounted, `after ${Math.round((Date.now() - t0) / 1000)}s`);
+  advise('movies room mounted', mounted, `after ${Math.round((Date.now() - t0) / 1000)}s`);
   if (mounted) {
     // Drive the browse cascade: (All film types) → first collection → first
     // film. In movies each film (album row) plays on click — loaded paused
@@ -194,15 +230,17 @@ if (DRIVE) {
     `);
     console.log('  room:', JSON.stringify(room, null, 1));
     if (room.loaded) {
-      check('film plays (currentTime > 0)', room.t > 0 && !room.error && !room.playRejected,
+      advise('film plays (currentTime > 0)', room.t > 0 && !room.error && !room.playRejected,
         `t=${room.t?.toFixed?.(2)} err=${JSON.stringify(room.error)} rejected=${room.playRejected || 'no'}`);
-      check('film frames decoded', room.videoWidth > 0, `videoWidth=${room.videoWidth}`);
+      advise('film frames decoded', room.videoWidth > 0, `videoWidth=${room.videoWidth}`);
     } else {
-      check('film loaded a src', false, JSON.stringify(room));
+      advise('film loaded a src', false, JSON.stringify(room));
     }
   }
 }
 
-console.log(fails ? `FAILED: ${fails} check(s)` : 'ALL CHECKS PASSED');
+if (warns) console.log(`ADVISORY: ${warns} Movies-room (archive.org) check(s) failed — external service, not gating`);
+console.log(fails ? `FAILED: ${fails} check(s)` : 'ALL GATING CHECKS PASSED');
 ws.close();
+clipServer?.close();
 process.exit(fails ? 1 : 0);
