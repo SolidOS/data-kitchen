@@ -24,7 +24,24 @@ These shapes are meant to support host apps in which
 The UI shapes are also available as [SHACLC](https://github.com/jeff-zucker/sol-components/blob/main/shapes/ui.shaclc)
 
 See also
-* [An example plugin catalog following the shape](https://github.com/SolidOS/data-kitchen/blob/main/ui-data/data-kitchen-plugins-catalog.ttl)
+* [An example plugin catalog](https://github.com/SolidOS/data-kitchen/blob/main/ui-data/data-kitchen-plugins-catalog.ttl)
+* [An example app layout definition](https://github.com/SolidOS/data-kitchen/blob/main/ui-data/data-kitchen-shell.ttl)
+
+Here's an abbreviated overview of the relationships between major UI entities:
+
+![Using the ui: ontology to build apps](overview.png)
+
+## The Layout Shape
+
+### `ui:Layout`
+  A rectangular page/screen container whose contained elements can be expected to render stacked or side by side as determined by its ui:orientation.
+
+### `ui:layout`
+  Links a thing (e.g. a schema:WebApplication) to its root ui:Layout.
+
+### `ui:columns`
+  On a ui:Layout: provides hint to render the parts as a grid with this many columns.
+
 
 ## The Menu Shape
 
@@ -86,8 +103,6 @@ Zero or one - IRI of the plugin's RDF data storage. When provided, the storage l
 
 ### `dcterms:source`
 Zero or one - IRI of the plugin's manifest, if it has one.
-
-## How the shapes can be used
 
 A plugin record matching the shape described above can be used to
 
