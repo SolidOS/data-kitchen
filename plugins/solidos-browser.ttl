@@ -5,13 +5,12 @@
 <>
   a ui:Plugin ;
   schema:additionalType ui:Component ;
-  ui:label "SolidOS (data browser)" ;
+  ui:label "SolidOS Local" ;
   ui:icon "https://solidproject.org/assets/img/solid-emblem.svg" ;
   schema:url </dk-pod/dk/plugins/solidos/dk-solidos.js> ;
-  schema:description "The SolidOS data browser, embedded." ;
+  schema:description "The SolidOS data browser, embedded on the local pod." ;
   dct:publisher "SolidOS Team" ;
   schema:keywords "Pods" ;
   schema:additionalProperty
     [ schema:name "source" ; schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html" ] ,
-    [ schema:name "has-location-bar" ; schema:value "true" ] ,
     [ schema:name "defer" ; schema:value "" ] .

@@ -158,6 +158,22 @@
       // 2) give the parent a brief moment to hand auth in before the first fetch
       if (window.top !== window) await new Promise(r => setTimeout(r, 300));
 
+      // 2b) local-owner overlay: the local pod is allow-all behind dk's gate
+      //     (the real auth), so no OIDC session ever exists in this frame.
+      //     Report the pod owner as the logged-in user so the banner and the
+      //     panes render owner affordances; traffic already rides the adopted
+      //     fetch. Done before mounting so the header renders logged-in.
+      try {
+        const SL = window.SolidLogic && window.SolidLogic.solidLogicSingleton;
+        const sess = SL && SL.authn && SL.authn.authSession;
+        if (sess && sess.info && !sess.info.isLoggedIn) {
+          sess.info.isLoggedIn = true;
+          sess.info.webId = `${location.origin}/dk-pod/profile/card#me`;
+          if (!sess.info.sessionId) sess.info.sessionId = 'dk-owner';
+          sess.fetch = (input, init) => window.fetch(input, init);
+        }
+      } catch (_) { /* mashlib absent — banner just shows logged out */ }
+
       // 3) register + mount the (fixed) sol-solidos for the requested subject.
       //    Imported by absolute path; its `../core/*` imports resolve by URL and its
       //    bare deps (rdflib, …) resolve through the importmap above.
@@ -169,11 +185,14 @@
       if (params.get('bar')) el.setAttribute('has-location-bar', 'true');
       document.getElementById('solHost').appendChild(el);
 
-      // dk shell guard: never let SolidOS open the app shell (/index.html or the
-      // server root /) — that would load the whole app recursively (a "wormhole").
-      // Redirect such navigation to the /dk-pod/ container so the user gets the
-      // SolidOS folder view instead. Hook the outliner's GotoSubject (used by both
-      // link clicks and programmatic navigation).
+      // dk shell guard: never let SolidOS open the app shell /index.html — an
+      // HTML document that would load the whole app inside the pane's preview
+      // iframe (a "wormhole"). Redirect that navigation to the /dk-pod/
+      // container instead. The server root '/' is FINE as a subject: the
+      // parent's adopted fetch forces Accept: text/turtle on containers, so
+      // '/' renders as the root folder pane (it is also a declared storage in
+      // the owner's card). Hook the outliner's GotoSubject (used by both link
+      // clicks and programmatic navigation).
       try {
         const outliner = window.panes.getOutliner(document);
         if (outliner && outliner.GotoSubject && !outliner.__dkShellGuard) {
@@ -183,13 +202,7 @@
             let subj = subject;
             try {
               const uri = subject && subject.uri;
-              // Both the server root '/' and the app shell '/index.html'
-              // content-negotiate to dk's own index.html (a "wormhole" that
-              // loads the whole app inside the frame and blanks the SolidOS
-              // view). Divert BOTH to the /dk-pod/ container so navigation —
-              // e.g. clicking the Solid logo to go "home" — lands on the
-              // SolidOS folder view instead.
-              if (uri === location.origin + '/index.html' || uri === location.origin + '/') {
+              if (uri === location.origin + '/index.html') {
                 subj = window.$rdf.sym(location.origin + '/dk-pod/');
               }
             } catch (_) {}

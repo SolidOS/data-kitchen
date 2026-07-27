@@ -1,26 +1,21 @@
 <div class="help-body">
   <div class="help-section">
-    <h2>Solidos</h2>
-    <p>A two-pane workspace for browsing your Solid pod with the
+    <h2>SolidOS Local</h2>
+    <p>Your local pod, browsed with the
        <a href="https://github.com/SolidOS/mashlib">SolidOS data
-       browser</a>. The left pane is a pod tree (the same
-       <code>&lt;sol-pod&gt;</code> file browser Podz uses). The right
-       pane is an iframe hosting SolidOS panes — header with login,
-       a left side-menu, the outline view, and a footer.</p>
+       browser</a> — header, side-menu and outline view, exactly as if
+       the local server used SolidOS as its front end. It opens at the
+       pod root; click into folders and resources from there.</p>
   </div>
   <div class="help-section">
-    <h2>Opening a resource</h2>
-    <p>Each row in the pod tree has a Solid-logo icon
-       (formerly a ⚙ in dk-podz). Click it to load that resource into
-       the right pane via SolidOS's <code>GotoSubject</code> — the
-       same pipeline a fresh SolidOS browser would use, just driven by
-       a JS call from dk instead of a URL navigation. No iframe reload
-       between clicks.</p>
-    <p>On first paint the right pane is blank. Once
-       <code>&lt;sol-pod&gt;</code> finishes discovering pods, dk
-       automatically primes the iframe with your pod root so the
-       SolidOS banner appears immediately. Clicking another item
-       replaces the outline without redrawing the banner.</p>
+    <h2>Logging in</h2>
+    <p>There is nothing to log into locally: the local pod belongs to
+       you, and the banner shows you signed in as its owner. Reads and
+       writes ride Data Kitchen's own authenticated access to the pod.</p>
+    <p>To browse <em>other</em> pods with a real Solid login, use the
+       <strong>SolidOS Remote</strong> plugin instead — the upstream
+       SolidOS web app in its own window, with its own login button
+       that works against any identity provider.</p>
   </div>
   <div class="help-section">
     <h2>Why an iframe</h2>
@@ -31,31 +26,5 @@
        Home and Podz pages — different theme, distorted layouts,
        coloured borders around panels. Confining SolidOS to an iframe
        keeps every one of those side effects inside its own document.</p>
-    <p>The iframe page is hosted under dk's own origin
-       (<code>plugins/solidos/solidos-host.html</code>), so:</p>
-    <ul>
-      <li><strong>Auth is shared.</strong> Solid-client-authn keeps
-          its session in IndexedDB scoped to the origin. One login
-          covers both panes.</li>
-      <li><strong>Theme and font size are shared.</strong> When dk's
-          settings change, the iframe's
-          <code>&lt;html&gt;</code> gets the new
-          <code>data-theme</code> and <code>--font-size</code>
-          pushed in directly. No flash on iframe load because the
-          host page also reads dk's settings from
-          <code>localStorage</code> on first paint.</li>
-      <li><strong>Standalone use.</strong>
-          <code>plugins/solidos/solidos-host.html?uri=https://your.pod/foo</code>
-          works on its own in a new tab — same code path, no dk shell
-          needed.</li>
-    </ul>
-  </div>
-  <div class="help-section">
-    <h2>Logging in</h2>
-    <p>Two login paths land you in the same session: the pod-side
-       <code>&lt;sol-login&gt;</code> button in the left pane's
-       header, or the SolidOS banner's login button on the right.
-       Whichever you use, both panes see you as logged in for
-       subsequent fetches.</p>
   </div>
 </div>

@@ -78,7 +78,7 @@
     schema:itemListElement
         :Available-0data-Hello, :Available-BilliPod, :Available-Bluesky,
         :Available-Booklice, :Available-Calendar, :Available-Clock,
-        :Available-CryptPad, :Available-Customize,
+        :Available-CryptPad, :Available-Customize, :Available-Home,
         :Available-Data-Kitchen-Pod-Browser, :Available-dokieli,
         :Available-Duck-ai, :Available-Element, :Available-FilePod,
         :Available-GeoPod, :Available-Gmail, :Available-Google-Calendar,
@@ -107,7 +107,8 @@
         :Available-SolidFocus, :Available-SolidOS-AddressBook,
         :Available-SolidOS-Chat, :Available-SolidOS-data-browser,
         :Available-SolidOS-Meeting, :Available-SolidOS-Notes,
-        :Available-SolidOS-Tasks, :Available-SPARQL-Playground,
+        :Available-SolidOS-remote, :Available-SolidOS-Tasks,
+        :Available-SPARQL-Playground,
         :Available-Spoken-Word-Internet-Archive, :Available-Standard-Notes,
         :Available-Synara-AI, :Available-Tag-Explainer, :Available-Text-size,
         :Available-Theme, :Available-Tired-Bike, :Available-TodoPod,
@@ -132,6 +133,8 @@ a schema:ListItem; schema:item :0data-Hello; schema:position 1 .
 
 :Available-Customize
 a schema:ListItem; schema:item :Customize; schema:position 86 .
+:Available-Home
+a schema:ListItem; schema:item :Home; schema:position 89 .
 :Available-Data-Kitchen-Pod-Browser
 a schema:ListItem; schema:item :Data-Kitchen-Pod-Browser; schema:position 8 .
 :Available-dokieli a schema:ListItem; schema:item :dokieli; schema:position 9 .
@@ -264,6 +267,8 @@ a schema:ListItem; schema:item :SolidOS-data-browser; schema:position 66 .
 a schema:ListItem; schema:item :SolidOS-Meeting; schema:position 69 .
 :Available-SolidOS-Notes
 a schema:ListItem; schema:item :SolidOS-Notes; schema:position 70 .
+:Available-SolidOS-remote
+a schema:ListItem; schema:item :SolidOS-remote; schema:position 90 .
 :Available-SolidOS-Tasks
 a schema:ListItem; schema:item :SolidOS-Tasks; schema:position 71 .
 :Available-SPARQL-Playground
@@ -531,6 +536,20 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     schema:url chat:;
     ui:icon "https://huggingface.co/chat/huggingchat/apple-touch-icon.png";
     ui:label "HuggingFace Chat".
+:Home
+    a ui:Plugin;
+    schema:additionalProperty
+            [
+                schema:name "source";
+                schema:value "./dk-pod/dk/pages/home.html"
+            ],
+        [ schema:name "trusted"; schema:value "" ];
+    schema:additionalType ui:Component;
+    schema:description "Clock, weather, calendar and news topics, with articles in the centre.";
+    schema:keywords "UI Controls";
+    schema:url we:sol-include.js;
+    ui:icon "\U0001F3E0";
+    ui:label "Home".
 :Images-Wikimedia
     a ui:Plugin;
     dct:publisher "Jeff Zucker";
@@ -829,7 +848,7 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     skos:member
         :Data-Kitchen-Pod-Browser, :FilePod, :ODI-Solid-File-Manager, :Penny,
         :Pod-Drive, :Pod-Pro, :PodOS-Browser, :Sign-in, :Solid-File-Manager,
-        :SolidOS-data-browser;
+        :SolidOS-data-browser, :SolidOS-remote;
     skos:prefLabel "Pods".
 :Portable-LibreChat
     a ui:Plugin;
@@ -1111,17 +1130,16 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     dct:source plug:solidos-browser.ttl;
     schema:additionalProperty
         [ schema:name "defer"; schema:value "" ],
-        [ schema:name "has-location-bar"; schema:value "true" ],
             [
                 schema:name "source";
                 schema:value "./dk-pod/dk/plugins/solidos/dk-solidos.html"
             ];
     schema:additionalType ui:Component;
-    schema:description "The SolidOS data browser, embedded.";
+    schema:description "The SolidOS data browser, embedded on the local pod.";
     schema:softwareHelp sol2:help.html;
     schema:url sol2:dk-solidos.js;
     ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
-    ui:label "SolidOS (data browser)".
+    ui:label "SolidOS Local".
 :SolidOS-Meeting
     a ui:Plugin;
     dct:publisher "SolidOS Team";
@@ -1153,6 +1171,16 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     schema:url sol2:dk-solidos.js;
     ui:icon "📝";
     ui:label "SolidOS Notes".
+:SolidOS-remote
+    a ui:Plugin;
+    dct:publisher "SolidOS Team";
+    dct:source plug:solidos-remote.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+    "The upstream SolidOS data browser, with its own Solid login — browse any pod on the web.";
+    schema:url <https://unpkg.com/mashlib@2.2.2/dist/browse.html>;
+    ui:icon "https://solidproject.org/assets/img/solid-emblem.svg";
+    ui:label "SolidOS Remote".
 :SolidOS-Tasks
     a ui:Plugin;
     dct:publisher "SolidOS Team";

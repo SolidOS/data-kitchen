@@ -1,0 +1,92 @@
+<!-- Home — a three-column dashboard that mounts like any other plugin page.
+     Left: clock, weather, the Google Calendar month view, then one tab per
+     news topic. Centre: where a clicked article opens. Right: reserved. -->
+<section class="dk-home">
+
+  <div class="dk-home-col dk-home-left">
+    <sol-time></sol-time>
+    <sol-weather></sol-weather>
+
+    <!-- Google's own month view. dk swaps an external iframe for a hardened
+         native WebContentsView over this same box (electron-config/preload.cjs),
+         and that view's session persists, so the Google login sticks. -->
+    <iframe class="dk-home-calendar"
+            src="https://calendar.google.com/calendar/u/0/r/month"
+            title="Google Calendar — month"
+    ></iframe>
+
+    <!-- One tab per topic in the news feed catalogue; each mounts sol-feed's
+         single-topic view over that topic's feeds. Labels are the topic names
+         from plugins/news/feeds.ttl. -->
+    <sol-tabs variant="sub" keep-alive class="dk-home-topics">
+      <a href="./dk-pod/dk/plugins/news/feeds.ttl#News"
+         data-handler="sol-feed" data-view="threePanel" data-reader="inline">News</a>
+      <a href="./dk-pod/dk/plugins/news/feeds.ttl#SciTech"
+         data-handler="sol-feed" data-view="threePanel" data-reader="inline">Sci/Tech</a>
+      <a href="./dk-pod/dk/plugins/news/feeds.ttl#Culture"
+         data-handler="sol-feed" data-view="threePanel" data-reader="inline">Culture</a>
+    </sol-tabs>
+  </div>
+
+  <div class="dk-home-col dk-home-centre"></div>
+
+  <div class="dk-home-col dk-home-right"></div>
+
+</section>
+
+<style>
+  /* Three columns, side columns the same width, centre takes the rest.
+     The page never scrolls — each column scrolls its own content. */
+  /* The include wrapper is display:contents, so this element is the flex item
+     inside #dk-content — it has to claim the width itself or the grid shrinks
+     to its own content and starves the centre. */
+  .dk-home {
+    display: grid;
+    /* Side columns stay equal and bounded; the centre takes what's left and
+       never collapses, however narrow the window gets. */
+    grid-template-columns:
+      minmax(12rem, var(--dk-home-side, 22rem))
+      minmax(0, 1fr)
+      minmax(12rem, var(--dk-home-side, 22rem));
+    gap: .75rem;
+    flex: 1 1 auto;
+    width: 100%; min-width: 0;
+    height: 100%; min-height: 0;
+    padding: .5rem;
+  }
+  .dk-home-col { min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+
+  .dk-home-left { gap: .5rem; }
+  .dk-home-left > sol-time,
+  .dk-home-left > sol-weather { flex: none; }
+
+  .dk-home-calendar {
+    flex: none; width: 100%; height: 18rem;
+    border: 1px solid var(--border, #cfcfcf); border-radius: 8px;
+  }
+
+  /* The topic tabs take whatever height is left; the feed list scrolls inside. */
+  .dk-home-topics { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+  .dk-home-topics > .sol-tabs-content { flex: 1 1 auto; min-height: 0; display: flex; overflow: hidden; }
+  .dk-home-topics .sol-tabs-pane { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .dk-home-topics .sol-tabs-pane > * { flex: 1 1 auto; min-height: 0; }
+
+  .dk-home-centre,
+  .dk-home-right {
+    border: 1px solid var(--border, #cfcfcf); border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* Article clicks land in the centre column. sol-feed exposes its reading
+     pane as a shadow part, so it can be anchored to the centre column's box
+     from here — and dk glues the native article view to that same box. */
+  .dk-home-centre { anchor-name: --dk-home-centre; }
+  .dk-home sol-feed::part(article-pane) {
+    position: fixed;
+    position-anchor: --dk-home-centre;
+    top: anchor(top); left: anchor(left);
+    right: anchor(right); bottom: anchor(bottom);
+    width: auto; height: auto;
+    border: 0; border-radius: 8px;
+  }
+</style>
