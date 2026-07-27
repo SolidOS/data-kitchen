@@ -1498,6 +1498,15 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   printed command yourself). Tags are `v<semver>` going forward. `release/`
   itself stays gitignored — GitHub Releases is the distribution channel (the
   old Pages URL was never configured; README now points at releases/latest).
+- **MANDATORY final release step (Jeff, 2026-07-27): watch the release-
+  triggered CI smokes to conclusion.** Publishing a release fires mac-smoke,
+  win-smoke, and android-smoke on real runners. The release is NOT DONE until
+  all three conclude and their results are reported — never publish and walk
+  away (`gh run list --repo SolidOS/data-kitchen --limit 5`). Known flake:
+  mac-smoke's Movies-room probe streams a film from archive.org, which times
+  out often (v2.1.9 AND v2.2.0 both first-failed there); on that signature,
+  `gh run rerun <id> --failed` and keep watching. A real regression (boot,
+  seed, generic playback) is a stop-the-line failure.
 
 ## Release variants (2026-07-06) — PARKED
 
