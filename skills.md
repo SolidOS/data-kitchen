@@ -527,6 +527,33 @@ state, so any step can be re-entered and re-opening an app just works.
   `pod._persistEditorKeys?.()`). Probe:
   `claude/smoke-tests/verify-podz-single-panel.mjs` (27 checks, needs the app
   running with `--remote-debugging-port=9222`).
+- **HTML preview links → floating page viewer (2026-07-26, sc sol-pod-ops):**
+  the View tab renders `.html` as an INERT srcdoc iframe —
+  `sandbox="allow-same-origin"` with NO `allow-scripts` (dk's `script-src
+  'self'` CSP is inherited by srcdoc frames and blocks injected inline script,
+  so link wiring is parent-side via `contentDocument`; scripts-off also makes
+  previewed content safer than the old `allow-scripts`, and same-origin means
+  preview assets fetch WITH credentials instead of cookieless-401).
+  `prepareHtmlPreview` injects `<base href>` so relative links/assets resolve.
+  Clicked links: same-pod → `openPageViewer` (one shared draggable, resizable
+  `position:fixed` window, `.sol-page-viewer`, z 1200, with − + ✕ window
+  controls: − collapses to the title bar, + fills the app window — the
+  `.minimized`/`.maximized` classes carry `!important` geometry to beat the
+  dragged/resized inline styles; header dblclick also toggles maximize;
+  navigates in place —
+  HTML re-renders through the authed fetch, images/pdf/media via blob URL,
+  other types as `<pre>` text, `!ok` shows "404 Not Found — url"); external →
+  `openExternalWindow` = `window.open(href,'_blank','popup=yes,…,width,height')`
+  at the viewer's size — SAME interface, but a real window since external
+  sites can't be iframed. dk main's `installOpenHandler` routes popup-featured
+  opens to `openExternalWindow()` (main.cjs): a main-created `BrowserWindow` on
+  `persist:external` (loopback BLOCKED, own cookie jar). **TRAP: never
+  `action:'allow'` such opens — a renderer-opened child ALWAYS inherits the
+  opener's session (gate cookie included), the partition override is ignored.**
+  Featureless `window.open` (feeds, search) still goes to the reader overlay;
+  login popups are detected by frameName `/login/i` only. Fixtures
+  `dk-pod/link-test.html` + `link-target.html`; probe
+  `claude/smoke-tests/cdp-verify-html-link-viewer.mjs` (8 checks).
 - **SolidOS app containers live under `dk-pod/solidos-apps/`** (Jeff,
   2026-07-09, dk 24cc2f7): chat, contacts, meetings, notes, tasks, dokieli
   (+ dokieli's `scripts/` and `media/` satellites). In lockstep everywhere:
@@ -553,13 +580,27 @@ state, so any step can be re-entered and re-opening an app just works.
   (`sol-solidos-host.html`, created by `dk-solidos.js`) running the fixed upstream
   `<sol-solidos>` on mashlib 2.2.2; mash.css is scoped inside the iframe (zero leak).
   **Folders MUST be fetched as turtle** (the server serves `/` as the app under
-  text/html); the host's `GotoSubject` guard diverts both `/` and `/index.html` to
-  `/dk-pod/` (wormhole guard), and shows a loading spinner until content renders.
-  The browser def sets `has-location-bar` → `?bar=1` → a sticky location bar
-  (Home / Back / URL box + a **Locations ▾** dropdown of discovered pods). The bar
-  is `z-index:120` and `sol-solidos._fitBar` drops mashlib's `position:fixed` banner
-  below it (else the banner paints over the bar). Locations come from the shared pod
-  registry (`core/pod-registry.js`): `dk-solidos` subscribes to it and discovers on
+  text/html); the host's `GotoSubject` guard diverts `/index.html` to `/dk-pod/`
+  (wormhole guard — 2026-07-26 it no longer diverts `/`: the forced-turtle
+  container fetch makes the server root render as the root folder pane, and `/`
+  is a declared `space:storage` in the owner card alongside `/dk-pod/`), and
+  shows a loading spinner until content renders.
+  **Two catalog plugins (2026-07-26):** **SolidOS Local** (`:SolidOS-data-browser`,
+  this embed pinned to the local pod, NO location bar) and **SolidOS Remote**
+  (`:SolidOS-remote`, a plain `ui:Link` to `unpkg.com/mashlib@2.2.2/dist/browse.html`
+  that opens in the persistent trusted-guest native view — its own untouched OIDC
+  login, for remote pods). The host page overlays the local OWNER as the logged-in
+  session (banner + panes render owner affordances; mashlib's own OIDC can never
+  complete in the frame — localStorage shim + reseat guard). The location bar +
+  `?bar=1` machinery still exists in `sol-solidos`/`dk-solidos` for any def that
+  sets `has-location-bar`; no shipped def sets it any more. `sol-solidos._fitChrome`
+  (2026-07-26, ex-`_fitBar`, runs bar or no bar) gives `#MainContent` a top margin
+  clearing the fixed banner, drops the banner below the bar when one exists (bar is
+  `z-index:120`), and sets `window.SolidAppContext.scroll` = banner(+bar) height so
+  solid-ui's `getEyeFocus` (default 52) lands focused rows below the banner — the
+  embed lacks mashlib's own `.app-main` offset wrapper, so without this the content
+  top hides under the banner. Locations come from the shared pod registry
+  (`core/pod-registry.js`): `dk-solidos` subscribes to it and discovers on
   open + login (same `discoverOwnerWebIds → getStoragesFromWebIds` path as sol-pod),
   forwarding the list into the iframe via `window.solSetLocations`.
 - **Pod locations persist in RDF (2026-07-10):** the pod list behind every pod
@@ -1291,7 +1332,7 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
     un-floors mashlib's 375px body min-width + pads outline rows. sc also
     gained defensive bar survival: `_barEl` handle + `_keepBarAlive()`
     re-seats the wired bar at body level if solid-ui's mobile layout
-    rebuilds the body, bar CSS selectors location-independent, `_fitBar`
+    rebuilds the body, bar CSS selectors location-independent, `_fitChrome`
     document fallbacks.
   - **dk-dokieli** injects coarse-gated overflow guards + 44px buttons
     into its same-origin doc iframe (`_injectPhoneCss`; best-effort —
