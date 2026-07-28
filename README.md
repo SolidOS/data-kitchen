@@ -92,13 +92,17 @@ either the dk shell or the SolidOS/mashlib databrowser in a WebView. See
 
 The previous run is kept alongside as `dk.log.old`, so a crash-then-relaunch doesn't destroy the evidence.
 
-## Acknowledgements
+## History
 
-Many thanks to Alain Bourgeois (@bourgeoa) and Robert Kahn for debugging assistance.
+The Data Kitchen project was started by Tim Berners-Lee and Reuben Verborgh in 2019.  Jeff Zucker took over as maintainer in 2020 and released a series of versions using a variety of backends (Solid-Rest, NSS, CSS, and finally CSS/Pivot). In addition to growing the pod server and electron underpinnings, the releases increasingly refined an RDF-based approach to the app's settings and user interface. Some of this prior work is captured in Jeff's now archived repos for [solid-uix](https://github.com/jeff-zucker/solid-uix), [solid-ui-components](https://github.com/jeff-zucker/solid-ui-components), [solid-file-client](https://github.com/jeff-zucker/solid-file-client) and [solid-content-manager](https://github.com/jeff-zucker/solid-content-manager), originally released in 2018 as "Solid IDE".
 
 ## Transparency
 
 Although most of this app was designed prior to my use of AI, this version includes refactoring and new code created using a carefully monitored claude Opus 4.8.
+
+## Acknowledgements
+
+Many thanks to Alain Bourgeois (@bourgeoa) and Robert Kahn for debugging assistance.
 
 ## License
 
