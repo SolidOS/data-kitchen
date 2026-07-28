@@ -10,7 +10,7 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "postinstall": "cd pivot && npm install",
+    "postinstall": "cd pivot && npm install && cd ../ap-agent && npm install",
     "start": "electron .",
     "start-css": "cd pivot && node run-server.cjs .. 8000",
     "build-pivot-config": "bash pivot/build-compiled-config.sh",

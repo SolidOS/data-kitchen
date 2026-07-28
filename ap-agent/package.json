@@ -1,0 +1,9 @@
+{
+  "name": "dk-ap-agent",
+  "private": true,
+  "type": "module",
+  "description": "data-kitchen ActivityPub actor agent (6c remote-pod-as-relay). Own npm island, like pivot/ — keeps its dependency tree out of the app root. Spawned by electron-config/servers.cjs.",
+  "dependencies": {
+    "@fedify/fedify": "^1.9.0"
+  }
+}

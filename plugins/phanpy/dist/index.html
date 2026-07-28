@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Phanpy</title>
+    <meta
+      name="description"
+      content="Minimalistic opinionated Mastodon web client"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <style>
+      :root {
+        --csstools-color-scheme--light: initial;
+        color-scheme: light dark;
+      }
+@media (prefers-color-scheme: dark) {
+      :root:where(:not(.is-light)) {
+        --csstools-color-scheme--light:  ;
+      }
+}
+:root:where(.is-dark) {
+        --csstools-color-scheme--light:  ;
+      }
+    </style>
+    <link rel="stylesheet" crossorigin href="./assets/style-B1iLPTPR.css"><link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Phanpy" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name=""
+      data-theme-setting="manual"
+      content="#242526"
+      data-theme-light-color="#fff"
+      data-theme-light-color-temp="#ffff"
+      data-theme-dark-color="#242526"
+      data-theme-dark-color-temp="#242526ff"
+    />
+    <meta
+      name="theme-color"
+      data-theme-setting="auto"
+      content="#fff"
+      data-content="#fff"
+      data-content-temp="#fffa"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      data-theme-setting="auto"
+      content="#242526"
+      data-content="#242526"
+      data-content-temp="#242526aa"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta name="google" content="notranslate" />
+    <link rel="me" href="https://hachyderm.io/@phanpy" />
+    <meta name="referrer" content="origin">
+    <script type="module" crossorigin src="./assets/main-BdqNbG-a.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/chunk-aKtaBQYM.js">
+    <link rel="modulepreload" crossorigin href="./assets/pwa-viewport-ogKbF51K.js">
+    <link rel="modulepreload" crossorigin href="./assets/ICONS-DIPJeU0C.js">
+    <link rel="modulepreload" crossorigin href="./assets/ScheduledAtField-D-Abfo4J.js">
+    
+  <link rel="manifest" href="./manifest.webmanifest"><script id="vite-plugin-pwa:inline-sw">if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('./sw.js', { scope: './' })})}</script></head>
+  <body>
+    <div id="app"></div>
+    <div id="modal-container"></div>
+  </body>
+</html>

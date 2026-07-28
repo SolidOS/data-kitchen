@@ -120,6 +120,16 @@ function isExternalUrl(url) {
   }
 }
 
+// A URL on this machine's loopback — never routable to the external session,
+// whose hardening cancels all loopback requests (external-views.cjs).
+function isLoopbackUrl(url) {
+  try {
+    return /^(localhost|.+\.localhost|127\.\d+\.\d+\.\d+|\[::1?\])$/i.test(new URL(url).hostname);
+  } catch {
+    return false;
+  }
+}
+
 // Content-Type for a local media file served by installFileProtocol(). Covers
 // the audio formats the importer scans; falls back to a generic stream so an
 // unknown extension still downloads rather than 415s.
@@ -573,6 +583,11 @@ class DesktopApp {
         };
       }
       if (/\bpopup\b/i.test(features || '')) {
+        // A loopback popup could only land on the external session, which
+        // cancels all loopback requests — deny it with no window at all, so
+        // the caller's window.open returns null and it can fall back to an
+        // in-frame redirect (the vendored Phanpy's OAuth hop does exactly that).
+        if (isLoopbackUrl(url)) return { action: 'deny' };
         // Same interface as the in-app floating page viewer, but a real window
         // (external sites can't be iframed).
         const dim = (k, dflt) => {

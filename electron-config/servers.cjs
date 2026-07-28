@@ -14,7 +14,7 @@ const http = require('http');
 const path = require('path');
 const { app } = require('electron');
 const {
-  REPO_ROOT, PUBLIC_PORT, CSS_INTERNAL_PORT, PROXY_PORT,
+  REPO_ROOT, PUBLIC_PORT, CSS_INTERNAL_PORT, PROXY_PORT, AP_PORT,
   PUBLIC_ORIGIN, ENGINE_DIR, POD_ROOT,
 } = require('./config.cjs');
 const { seedDefinition, seedMediaPlugins } = require('./seed.cjs');
@@ -112,6 +112,25 @@ class Servers {
     await waitForPort(CSS_INTERNAL_PORT, { tries: 90 });
   }
 
+  // ActivityPub actor agent (ap-agent/run-agent.mjs): loopback admin API +
+  // outbound federation via the remote pod. Best-effort like the proxy — it
+  // idles unconfigured and must never delay startup.
+  async ensureAp() {
+    if (await portAnswers(AP_PORT)) { this.log(`[ap] already up on :${AP_PORT} — reusing`); return; }
+    const cwd = path.join(REPO_ROOT, 'ap-agent');
+    this._spawn('ap', process.execPath, [path.join(cwd, 'run-agent.mjs')], {
+      cwd,
+      env: {
+        ...process.env, ELECTRON_RUN_AS_NODE: '1',
+        DK_GATE_TOKEN: getGateToken(),
+        DK_AP_PORT: String(AP_PORT),
+        DK_AP_HOME: path.join(app.getPath('userData'), 'ap'),
+        DK_LOCAL_POD: `${PUBLIC_ORIGIN}/dk-pod/`,
+      },
+    });
+    await waitForPort(AP_PORT, { tries: 30 });
+  }
+
   async ensureRouter() {
     if (await portAnswers(PUBLIC_PORT)) { this.log(`[router] already up on :${PUBLIC_PORT} — reusing`); return; }
     this._spawn('router', process.execPath, [path.join(REPO_ROOT, 'router', 'index.cjs')], {
@@ -120,6 +139,7 @@ class Servers {
         ...process.env, ELECTRON_RUN_AS_NODE: '1', DK_GATE_TOKEN: getGateToken(),
         DK_PUBLIC_PORT: String(PUBLIC_PORT),
         DK_CSS_INTERNAL_PORT: String(CSS_INTERNAL_PORT),
+        DK_AP_PORT: String(AP_PORT),
         DK_ENGINE_DIR: ENGINE_DIR,
       },
     });
@@ -166,6 +186,7 @@ class Servers {
     this.startupError = null;
     this.seed();
     this.ensureProxy().catch((e) => this.log(`[proxy] not started: ${e.message}`));
+    this.ensureAp().catch((e) => this.log(`[ap] not started: ${e.message}`));
     try {
       await this.ensureCss();
       await this.ensureRouter();

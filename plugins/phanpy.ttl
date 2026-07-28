@@ -1,0 +1,13 @@
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix ui:     <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
+
+<>
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
+  ui:label "Phanpy" ;
+  ui:icon <http://127.0.0.1:8000/plugins/phanpy/dist/logo-192.png> ;
+  schema:url <http://127.0.0.1:8000/plugins/phanpy/dist/index.html> ;
+  schema:description "Full-featured fediverse client (vendored Phanpy) over the pod's ActivityPub agent." ;
+  dct:publisher "Chee Aun (Phanpy, MIT); dk Mastodon-API facade" ;
+  schema:keywords "Other Services" .

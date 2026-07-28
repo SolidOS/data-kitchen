@@ -111,6 +111,8 @@ const PUBLIC_PORT = Number(process.env.DK_PUBLIC_PORT) || cfgVal('publicPort') |
 const CSS_INTERNAL_PORT = Number(process.env.DK_CSS_INTERNAL_PORT) || cfgVal('privatePort') || 8010;
 // CORS proxy (unchanged role).
 const PROXY_PORT = Number(process.env.DK_PROXY_PORT) || cfgVal('proxyPort') || 8001;
+// ActivityPub actor agent's loopback admin API (ap-agent/run-agent.mjs).
+const AP_PORT = Number(process.env.DK_AP_PORT) || 8020;
 
 module.exports = {
   REPO_ROOT,
@@ -123,6 +125,7 @@ module.exports = {
   PUBLIC_PORT,
   CSS_INTERNAL_PORT,
   PROXY_PORT,
+  AP_PORT,
   PUBLIC_ORIGIN: `http://localhost:${PUBLIC_PORT}`,
   PROXY_ORIGIN:  `http://localhost:${PROXY_PORT}`,
 
