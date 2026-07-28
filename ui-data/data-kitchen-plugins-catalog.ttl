@@ -59,7 +59,11 @@
 @prefix dat: </node_modules/sol-components/data/>.
 @prefix data: <data-kitchen-commands.ttl#>.
 @prefix dist: <https://unpkg.com/mashlib@2.2.2/dist/>.
-@prefix n0: <https://timbl.solidcommunity.net/2023/03%20EWADA/>.
+@prefix ma: <https://mastopod.com/>.
+@prefix mut: <https://mutual-aid.app/>.
+@prefix mypod: <https://mypod.store/>.
+@prefix n1: <https://timbl.solidcommunity.net/2023/03%20EWADA/>.
+@prefix wel: <https://welcometomyplace.org/>.
 
 :0data-Hello
     a ui:Plugin;
@@ -107,7 +111,8 @@
         :Available-Standard-Notes, :Available-Synara-AI,
         :Available-Tag-Explainer, :Available-Text-size, :Available-Theme,
         :Available-Tired-Bike, :Available-TodoPod, :Available-Tuta,
-        :Available-Umai, :Available-VitalStats, :Available-Weather;
+        :Available-Umai, :Available-VitalStats, :Available-Weather, :Mastopod,
+        :Mutual-Aid, :MyPod-store, :Welcome-to-my-place;
     rdfs:comment
         "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it.";
     ui:label "Plugins Available".
@@ -567,6 +572,17 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     ui:icon
         "https://mastodon.social/packs/assets/apple-touch-icon-1024x1024-B3Tu3EqI.png";
     ui:label "Mastodon".
+:Mastopod
+    a ui:Plugin;
+    dct:publisher "ActivityPods";
+    dct:source plug:mastopod.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+        "Mastodon-compatible social app that stores all data in your pod (ActivityPods).";
+    schema:keywords "Other Services";
+    schema:url ma:;
+    ui:icon "https://mastopod.com/favicon.ico";
+    ui:label "Mastopod".
 :Matrix-Chat
     a ui:Plugin;
     dct:publisher "Matrix";
@@ -655,6 +671,28 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     schema:url dis:ia-player.esm.js;
     ui:icon "🎵";
     ui:label "Music (Internet Archive)".
+:Mutual-Aid
+    a ui:Plugin;
+    dct:publisher "ActivityPods";
+    dct:source plug:mutual-aid.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+        "Classified ads for mutual aid within a trusted network; data stored in your pod (ActivityPods).";
+    schema:keywords "Other Services";
+    schema:url mut:;
+    ui:icon "https://mutual-aid.app/logo192.png";
+    ui:label "Mutual Aid".
+:MyPod-store
+    a ui:Plugin;
+    dct:publisher "Virtual Assembly";
+    dct:source plug:mypod-store.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+    "ActivityPods pod provider — create a pod and manage its apps.";
+    schema:keywords "Other Services";
+    schema:url mypod:;
+    ui:icon "https://app.mypod.store/logo192.png";
+    ui:label "MyPod.store".
 :News-three-panel-feeds
     a ui:Plugin;
     dct:publisher "Jeff Zucker";
@@ -705,9 +743,10 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     a skos:Collection;
     skos:member
         :Bluesky, :CryptPad, :Duck-ai, :Element, :HuggingFace-Chat, :Lemmy,
-        :LibreTranslate, :Mastodon, :Matrix-Chat, :OpenStreetMap, :Pixelfed,
-        :Proton-Calendar, :Proton-Drive, :Proton-Mail, :SearXNG, :SepiaSearch,
-        :Standard-Notes, :Tuta;
+        :LibreTranslate, :Mastodon, :Mastopod, :Matrix-Chat, :Mutual-Aid,
+        :MyPod-store, :OpenStreetMap, :Pixelfed, :Proton-Calendar,
+        :Proton-Drive, :Proton-Mail, :SearXNG, :SepiaSearch, :Standard-Notes,
+        :Tuta, :Welcome-to-my-place;
     skos:prefLabel "Other Services".
 :Penny
     a ui:Plugin;
@@ -1183,7 +1222,7 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     dct:source plug:solid-tag-explainer.ttl;
     schema:additionalType ui:Link;
     schema:description "How Solid works, explained.";
-    schema:url n0:TAGExplainerforSolid.html;
+    schema:url n1:TAGExplainerforSolid.html;
     ui:icon "https://timbl.solidcommunity.net/favicon.ico";
     ui:label "Tag Explainer".
 :Tech
@@ -1276,3 +1315,14 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     schema:url we:sol-weather.js;
     ui:icon "🌤";
     ui:label "Weather".
+:Welcome-to-my-place
+    a ui:Plugin;
+    dct:publisher "ActivityPods";
+    dct:source plug:welcome-to-my-place.ttl;
+    schema:additionalType ui:Link;
+    schema:description
+        "Community events and hospitality app that stores all data in your pod (ActivityPods).";
+    schema:keywords "Other Services";
+    schema:url wel:;
+    ui:icon "https://welcometomyplace.org/logo192.png";
+    ui:label "Welcome to my place".

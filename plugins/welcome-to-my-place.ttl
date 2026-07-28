@@ -1,0 +1,13 @@
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix ui:   <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://schema.org/> .
+
+<>
+  a ui:Plugin ;
+  schema:additionalType ui:Link ;
+  ui:label "Welcome to my place" ;
+  ui:icon <https://welcometomyplace.org/logo192.png> ;
+  schema:url <https://welcometomyplace.org/> ;
+  schema:description "Community events and hospitality app that stores all data in your pod (ActivityPods)." ;
+  dct:publisher "ActivityPods" ;
+  schema:keywords "Other Services" .
