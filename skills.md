@@ -162,17 +162,63 @@ could through `:PluginShape`). Shared blocks are node-level mixins
 helper shapes: `:OrderedItemShape` (positioned ListItem wrapper) /
 `:UnorderedItemShape` (direct member + the reachable-label rule).
 
-MENU VARIANTS (2026-07-25): `:TabbedMenuShape` (1+ items, any may be a
-submenu) / `:ButtonMenuShape` (exactly 1 item, and it IS a submenu — the ☰
-trigger and the list it drops) / `:ButtonBarShape` (1+ items, NONE a
-submenu). Each is `sh:node :MenuShape` plus its own membership property —
+MENU VIEWS + VARIANTS (2026-07-27, replacing the 07-25 three): a menu may
+declare its presentation as `ui:view <View>` where the value is a subclass
+of the new `ui:View` class (ui-vocab.ttl) — menu-capable set (ALL renderable,
+2026-07-27): `ui:Menubar` `ui:MenuButton` `ui:Tablist` `ui:Tree` `ui:Toolbar`.
+`ui:Accordion`/`ui:Select` were DROPPED from the menu-capable set (no
+renderers yet) and `ui:Breadcrumb` RECLASSIFIED (a breadcrumb is derived
+location state, NOT a curated menu of actions — Jeff's call); all three
+remain ui:View subclasses on the collection side with `ui:Table` `ui:List`
+`ui:DefinitionList` `ui:Carousel` `ui:Combobox` `ui:Feed` (sol-query
+registry, RDF-named only for now). Names follow ARIA roles/APG patterns; `ui:Tab` /
+`ui:Dropdown` were NOT reused (they are ui:Region instances). A view-less
+menu = renderer's choice (all legacy heuristics intact). FIVE variant
+shapes, one per menu-capable view, each `sh:node :MenuShape` + a `ui:view`
+`sh:hasValue` + its membership rule: `:MenubarMenuShape` / `:TreeMenuShape`
+(any nesting), `:MenuButtonMenuShape` (exactly 1 item, a submenu),
+`:TablistMenuShape` / `:ToolbarMenuShape` (flat only — Tablist TIGHTENED
+from the old TabbedMenuShape).
 `effectiveProperties()` dedups by path so the strict rule replaces the
-permissive one in forms, while validation intersects both. Their member
-helpers: `:FlatMemberShape` / `:SubmenuMemberShape` and the ordered wrappers
-`:OrderedFlatItemShape` / `:OrderedSubmenuItemShape`. NO `sh:targetClass` —
-all three are `ui:Menu`, so they are reached BY NAME:
+permissive one in forms, while validation intersects both. Member helpers:
+`:FlatMemberShape` / `:SubmenuMemberShape` / `:SectionShape` and the ordered
+wrappers `:OrderedFlatItemShape` / `:OrderedSubmenuItemShape` /
+`:OrderedSectionItemShape`. Still NO `sh:targetClass` — all are `ui:Menu`,
+reached BY NAME:
 
-    shape="…/shapes/ui.shacl#ButtonBarShape"
+    shape="…/shapes/ui.shacl#ToolbarMenuShape"
+
+The ui:view → mount mapping lives in ONE place, `MENU_VIEW_MOUNTS`
+(core/menu-rdf.js): Menubar→sol-menu, MenuButton→sol-dropdown-button,
+Tablist→sol-tabs, Toolbar→sol-menu+class=app-bar, Tree→sol-menu (the doc's
+ui:view drives sol-menu's presentation: Toolbar = app-bar styling, Tree =
+inline collapse/expand `.sol-menu-branch`/`.sol-menu-subtree` instead of
+popups). layout-generate
+mounts a bare ui:Menu member by its view (region-role inference is the
+fallback); the app builder's chips/managers/chip-icons key off the menu
+doc's ui:view (`MENU_VIEWS` table in sol-app-builder.js; class=app-bar
+sniff kept as the view-less fallback); menu-rdf/menu-serialize/manager
+round-trip the triple and never invent one.
+
+The variant shapes' ui:view property carries the FULL field contract —
+`sh:hasValue` (the shape's assertion) + `sh:maxCount 1` + the 8-value
+`sh:in` — because `effectiveProperties()` dedups by path FIRST-WINS: the
+variant's own field shadows MenuShape's, so it must be complete or the
+Customize form loses the dropdown and single-valuedness (2026-07-27 bug).
+The dropdown is a live VIEW SWITCHER: on a form save that changes ui:view,
+`_remountMenuView` (sol-app-builder.js) rewrites the layout leaf to the new
+view's module/label/params (from-rdf, region and custom classes ride
+through; label/keep-alive/app-bar are view-owned), saves + regenerates the
+page, and reopens the editor re-keyed. A no-renderer view keeps the mount.
+Menu-head form labels: the view field's sh:name is **"shown as"** (MenuShape
++ all 8 variants) and MenuShape's region is **"shown in"** (PluginShape's
+region field keeps "region"). The form's "menu items" field is stripped BY
+THE APP — `_stripFormField(form, 'itemListElement')` in sol-app-builder.js
+(MutationObserver, survives form re-renders) — because the drag-drop manager
+below owns the items; sol-form itself stays generic (Jeff explicitly
+declined a sol-form fields/ordering attribute — do NOT add one). Verified
+live by `claude/smoke-tests/cdp-verify-menu-views.mjs` (isolated pod via
+bin/standalone-pod.sh, 21 checks).
 
 `parseShape` (core/shape-to-form.js) now takes a FRAGMENT as selection rule
 0 — it names the shape outright; the document is still what gets parsed.
