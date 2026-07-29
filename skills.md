@@ -1594,3 +1594,30 @@ manifests (`seed-plugins-catalog.mjs --plugins-dir/--out`).
   **authoritative** — don't flag them in RDF audits. A genuinely new term needs
   an explicit OK and goes in `ui-vocab`. (See `jeff-skills.md`: never introduce
   an RDF term or HTML attribute on your own initiative.)
+
+## ActivityPub: dk's `ap-agent` and the standalone `activitypod-js`
+
+- **`ap-agent/`** is dk's in-app ActivityPub actor (loopback admin API on `:8020`,
+  spawned by `electron-config/servers.cjs`, state under `userData/ap`). It backs
+  the dk-fediverse pane and the `/ap-admin` router route.
+- **`~/Dropbox/Web/solid/activitypod-js`** is the standalone sibling: the same
+  idea with no Electron, its pod the only durable half, Phanpy bundled. As of
+  2026-07-29 it federates for real from a public pod
+  (`@jeff@jeff-zucker.teamid.live`) — discovery, follow, post and Mastodon's
+  signature verification all verified end to end.
+- **solidcommunity.net's operators filed a retry-storm incident report naming
+  both agents** (2026-07-29). `activitypod-js` was hardened in six commits —
+  `Retry-After` honoured, token grants single-flight behind a circuit breaker,
+  conditional GETs, a per-pod request ceiling, jittered timers, a real
+  User-Agent, notification channels reused rather than re-created. Full account,
+  including what was *not* ours: `activitypod-js/claude/scn-incident-2026-07-29.md`.
+- **dk's `ap-agent` has none of those fixes** and shares the storm-prone shapes:
+  a 2 s notification-channel resubscribe loop, a forced token grant per 401, no
+  request ceiling, 45–60 s timeouts. Porting them is the outstanding item with
+  outside impact.
+- **`plugins/phanpy/dist` still ships the PWA service worker** and its inline
+  registration script. In activitypod-js that worker was replaced with a
+  self-removing kill-switch, because a registered worker replays the response
+  headers it cached at install time — which made a CSP fix invisible to any
+  browser that had it. dk serves that dist with no CSP at all (engine path), so
+  it is latent rather than broken there.
