@@ -27,7 +27,6 @@ const { isEnginePath, serveEngine, proxyToCss, forwardUpgrade } = require('../se
 
 const publicPort = Number(process.env.DK_PUBLIC_PORT) || 8000;
 const cssPort = Number(process.env.DK_CSS_INTERNAL_PORT) || 8010;
-const apPort = Number(process.env.DK_AP_PORT) || 8020;
 const engineDir = path.resolve(process.env.DK_ENGINE_DIR || path.join(__dirname, '..'));
 
 const gate = makeGate(process.env.DK_GATE_TOKEN, {
@@ -99,32 +98,9 @@ function serveShell(req, res) {
   req.pipe(up);
 }
 
-// Routes to the ActivityPub actor agent (:8020), same-origin so no CORS and
-// the gate token is injected as on all app traffic; the agent re-gates on
-// the forwarded headers.
-//   /ap-admin/*        → agent admin API (prefix stripped)
-//   /api/*, /oauth/*   → agent's Mastodon client-API facade (path intact —
-//                        Mastodon clients served from this origin, e.g. the
-//                        vendored Phanpy, expect these exact paths)
-function proxyToAp(req, res, { stripAdmin = false } = {}) {
-  const upstreamPath = stripAdmin ? (req.url.replace(/^\/ap-admin\/?/, '/') || '/') : req.url;
-  const up = http.request(
-    { host: '127.0.0.1', port: apPort, method: req.method, path: upstreamPath, headers: req.headers },
-    (r) => { res.writeHead(r.statusCode, r.headers); r.pipe(res); },
-  );
-  up.on('error', (e) => { res.writeHead(502); res.end(`ap-agent unreachable: ${e.message}`); });
-  req.pipe(up);
-}
-
 const server = http.createServer((req, res) => {
   if (gate(req, res)) return;
   const pathname = new URL(req.url, 'http://localhost').pathname;
-  if (pathname === '/ap-admin' || pathname.startsWith('/ap-admin/')) {
-    return proxyToAp(req, res, { stripAdmin: true });
-  }
-  if (pathname.startsWith('/api/') || pathname.startsWith('/oauth/')) {
-    return proxyToAp(req, res);
-  }
   if ((req.method === 'GET' || req.method === 'HEAD') && isEnginePath(pathname)) {
     return serveEngine(req, res, pathname, engineDir);
   }

@@ -26,7 +26,6 @@
   // into the settings doc.
   await import('./dk-locations-feed.js');
   await import('../plugins/podz/dk-podz.js');
-  await import('../plugins/fediverse/dk-fediverse.js');
   await import('../plugins/solidos/dk-solidos.js');
   await import('../plugins/solidos/dk-dokieli.js');
   await import('./dk-settings-applier.js');

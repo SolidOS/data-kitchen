@@ -63,8 +63,6 @@
 @prefix mut: <https://mutual-aid.app/>.
 @prefix mypod: <https://mypod.store/>.
 @prefix wel: <https://welcometomyplace.org/>.
-@prefix fed: <../plugins/fediverse/>.
-@prefix di: <http://127.0.0.1:8000/plugins/phanpy/dist/>.
 @prefix n1: <https://timbl.solidcommunity.net/2023/03%20EWADA/>.
 
 :0data-Hello
@@ -113,8 +111,8 @@
         :Available-Standard-Notes, :Available-Synara-AI,
         :Available-Tag-Explainer, :Available-Text-size, :Available-Theme,
         :Available-Tired-Bike, :Available-TodoPod, :Available-Tuta,
-        :Available-Umai, :Available-VitalStats, :Available-Weather, :Fediverse,
-        :Mastopod, :Mutual-Aid, :MyPod-store, :Phanpy, :Welcome-to-my-place;
+        :Available-Umai, :Available-VitalStats, :Available-Weather,
+        :Mastopod, :Mutual-Aid, :MyPod-store, :Welcome-to-my-place;
     rdfs:comment
         "Every plugin and app the catalog knows, generated from the flat manifests in plugins/. In use means ui-data/data-kitchen-main-menu.ttl mounts it.";
     ui:label "Plugins Available".
@@ -437,19 +435,6 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     schema:url app:;
     ui:icon "https://app.element.io/vector-icons/180.30b915f.png";
     ui:label "Element".
-:Fediverse
-    a ui:Plugin;
-    dct:publisher "Jeff Zucker";
-    dct:source plug:fediverse.ttl;
-    schema:additionalProperty
-    [ schema:name "source"; schema:value "/dk-pod/fediverse/timeline/" ];
-    schema:additionalType ui:Component;
-    schema:description
-        "Follow, read, and post on the fediverse (Mastodon and friends) from your pod.";
-    schema:keywords "Other Services";
-    schema:url fed:dk-fediverse.js;
-    ui:icon "🐘";
-    ui:label "Fediverse".
 :FilePod
     a ui:Plugin;
     dct:publisher "Software Innovation Institute, ANU";
@@ -757,9 +742,9 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
 :Other-Services
     a skos:Collection;
     skos:member
-        :Bluesky, :CryptPad, :Duck-ai, :Element, :Fediverse, :HuggingFace-Chat,
+        :Bluesky, :CryptPad, :Duck-ai, :Element, :HuggingFace-Chat,
         :Lemmy, :LibreTranslate, :Mastodon, :Mastopod, :Matrix-Chat,
-        :Mutual-Aid, :MyPod-store, :OpenStreetMap, :Phanpy, :Pixelfed,
+        :Mutual-Aid, :MyPod-store, :OpenStreetMap, :Pixelfed,
         :Proton-Calendar, :Proton-Drive, :Proton-Mail, :SearXNG, :SepiaSearch,
         :Standard-Notes, :Tuta, :Welcome-to-my-place;
     skos:prefLabel "Other Services".
@@ -772,17 +757,6 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     schema:url penny:;
     ui:icon "https://penny.vincenttunru.com/favicon.ico";
     ui:label "Penny".
-:Phanpy
-    a ui:Plugin;
-    dct:publisher "Chee Aun (Phanpy, MIT); dk Mastodon-API facade";
-    dct:source plug:phanpy.ttl;
-    schema:additionalType ui:Link;
-    schema:description
-        "Full-featured fediverse client (vendored Phanpy) over the pod's ActivityPub agent.";
-    schema:keywords "Other Services";
-    schema:url di:index.html;
-    ui:icon "http://127.0.0.1:8000/plugins/phanpy/dist/logo-192.png";
-    ui:label "Phanpy".
 :Pixelfed
     a ui:Plugin;
     dct:publisher "Pixelfed";
