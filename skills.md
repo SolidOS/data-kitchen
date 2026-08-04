@@ -2,7 +2,7 @@
 
 What a future Claude session needs to know about Data Kitchen (dk) and its two
 key dependencies, sol-components (sc) and component-interop (ci). Current state,
-not history. Pairs with the (gitignored) `jeff-skills.md` for how to work with
+not history. Pairs with `~/.claude/jeff-skills.md` for how to work with
 the user.
 
 ## What dk is
@@ -1592,7 +1592,7 @@ manifests (`seed-plugins-catalog.mjs --plugins-dir/--out`).
   stay where they are.
 - Vocabularies `ui:` (`ui-vocab.ttl`, upstreamed to W3C `ui:`) and `ci:` are
   **authoritative** — don't flag them in RDF audits. A genuinely new term needs
-  an explicit OK and goes in `ui-vocab`. (See `jeff-skills.md`: never introduce
+  an explicit OK and goes in `ui-vocab`. (See `~/.claude/jeff-skills.md`: never introduce
   an RDF term or HTML attribute on your own initiative.)
 
 ## ActivityPub — REMOVED from dk, 2026-07-31
