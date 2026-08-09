@@ -13,9 +13,6 @@ tools/conversion/shell.html
 # (regenerating needs an isolated build — see pivot/build-compiled-config.sh)
 !pivot/dist/
 !pivot/dist/create-app.cjs
-# vendored Phanpy client (hand-patched for the loopback http origin —
-# claude/backups/*.pre-http-patch is the provenance) — a required artifact
-!plugins/phanpy/dist/
 
 # Community Solid Server runtime storage state (POD_ROOT = repo root)
 .internal/

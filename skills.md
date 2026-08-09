@@ -17,8 +17,8 @@ and plugins are described in RDF, not hard-coded.
 
 - **dk** — `/home/jeff/Dropbox/Web/solid/data-kitchen` (also `~/s`, a symlink).
   Remote: `github.com/SolidOS/data-kitchen` (push needs an explicit per-task go).
-- **sc — sol-components** (v2.7.2 in-tree — npm still has 2.7.1 (2026-07-08);
-  the 2.7.2 publish is OWED, needs Jeff's OTP) — `../sol-components`,
+- **sc — sol-components** (v2.9.0, published on npm; nothing owed there. Git
+  TAGS lag — latest is v2.4.3, five releases behind) — `../sol-components`,
   symlinked into `node_modules/`. ~40 `sol-*` web components (web/), Node tools
   (node/), shared core (core/). **dk loads the raw `web/*.js`** — a component
   edit needs only a reload, no build. dk's own `src/` does need `npm run build`.
@@ -1610,9 +1610,9 @@ one piece with outside impact. Its actor
 (`@jeff@dk-ap.solidcommunity.net`) was retired on 2026-07-31 with a Delete to its
 follower and a Tombstone over the actor document, so nothing is federating.
 
-**The live project is `~/solid/solid-activitypub`** (renamed from
-`activitypod-js` on 2026-07-30): the same idea with no Electron, its pod the only
-durable half, Phanpy bundled, and all six hardening commits. Everything
+**The live project is `~/solid/FediPod`** (renamed from `solid-activitypub`,
+itself renamed from `activitypod-js`): the same idea with no Electron, its pod
+the only durable half, Phanpy bundled, and all its hardening commits. Everything
 ActivityPub belongs there now — including `claude/scn-incident-2026-07-29.md`,
 which is the full account of the incident and what was *not* ours.
 
