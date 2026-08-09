@@ -15,12 +15,41 @@ const { makeGate } = require('../electron-config/gate.cjs');
 const { assertProxyTarget, makeAllowHosts } = require('../server-core.cjs');
 const ALLOW_HOSTS = makeAllowHosts(process.env.DK_PROXY_ALLOW_HOSTS);
 
+// A remote host must not be able to hold a socket open or hand back an
+// unbounded body: this proxy buffers what it fetches.
+const TIMEOUT_MS = 30_000;
+const MAX_BYTES = 25 * 1024 * 1024;
+
+// Read a response body, giving up past the cap rather than buffering whatever
+// arrives.
+async function readCapped(response, max = MAX_BYTES) {
+  if (!response.body) return Buffer.alloc(0);
+  const declared = Number(response.headers.get('content-length'));
+  if (Number.isFinite(declared) && declared > max) {
+    const e = new Error('response too large');
+    e.tooLarge = true;
+    throw e;
+  }
+  const chunks = [];
+  let total = 0;
+  for await (const chunk of response.body) {
+    total += chunk.length;
+    if (total > max) {
+      const e = new Error('response too large');
+      e.tooLarge = true;
+      throw e;
+    }
+    chunks.push(Buffer.from(chunk));
+  }
+  return Buffer.concat(chunks);
+}
+
 // fetch() that follows redirects manually so every hop is re-validated.
 async function fetchGuarded(uri, max = 5) {
   let url = uri;
   for (let hop = 0; hop <= max; hop++) {
     assertProxyTarget(url, ALLOW_HOSTS);
-    const r = await fetch(url, { redirect: 'manual' });
+    const r = await fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(TIMEOUT_MS) });
     if (r.status >= 300 && r.status < 400) {
       const loc = r.headers.get('location');
       if (loc) { url = new URL(loc, url).href; continue; }
@@ -68,13 +97,25 @@ const server = http.createServer(async (req, res) => {
     // view that loads the live page directly, so there is no in-iframe framing
     // problem to work around. The proxy's remaining job is letting the app READ
     // cross-origin feed XML / RDF / images the browser would otherwise block.
-    const buf = Buffer.from(await response.arrayBuffer());
-    res.writeHead(response.status || 200, { ...CORS, ...(type ? { 'content-type': type } : {}) });
+    const buf = await readCapped(response);
+    res.writeHead(response.status || 200, {
+      ...CORS,
+      ...(type ? { 'content-type': type } : {}),
+      // The body is what the app asked for; it must never become a live
+      // document on this origin. Cookies are not port-scoped, so a page
+      // rendered here would sit alongside the app's own localhost cookies.
+      'x-content-type-options': 'nosniff',
+      ...(/^text\/html\b|^application\/xhtml\+xml\b/i.test(type)
+        ? { 'content-security-policy': 'sandbox', 'content-disposition': 'attachment' }
+        : {}),
+    });
     return res.end(buf);
   } catch (error) {
     console.log(error);
-    res.writeHead(error && error.blocked ? 403 : 500, CORS);
-    res.end(String(error));
+    const status = error && error.blocked ? 403 : (error && error.tooLarge ? 502 : 500);
+    res.writeHead(status, { ...CORS, 'content-type': 'text/plain; charset=utf-8' });
+    // The detail is in the log; the caller gets the shape of the failure only.
+    res.end(status === 403 ? 'blocked' : (status === 502 ? 'upstream response rejected' : 'proxy error'));
   }
 });
 

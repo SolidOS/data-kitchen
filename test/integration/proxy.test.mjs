@@ -20,10 +20,16 @@ const TOKEN = 'proxy-test-token';
 let proc, origin, proxyBase, originBase;
 
 const PAGE = '<html><head><title>t</title></head><body>hi<script>alert(1)</script></body></html>';
+const FEED = '<?xml version="1.0"?><rss version="2.0"><channel><title>t</title></channel></rss>';
 
 before(async () => {
-  // Upstream origin: /frameok serves freely; /frameno refuses framing.
+  // Upstream origin: /frameok serves freely; /frameno refuses framing;
+  // /feed.xml is the non-HTML case the proxy exists for.
   origin = http.createServer((req, res) => {
+    if (req.url === '/feed.xml') {
+      res.setHeader('content-type', 'application/rss+xml');
+      return res.end(FEED);
+    }
     if (req.url === '/frameno') res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('content-type', 'text/html');
     res.end(PAGE);
@@ -55,6 +61,20 @@ test('HTML is passed through verbatim with permissive CORS (no rewriting)', asyn
   assert.equal(r.headers.get('access-control-allow-origin'), '*');
   const html = await r.text();
   assert.equal(html, PAGE, 'returned unchanged — scripts kept, no <base> injected');
+});
+
+test('proxied HTML cannot become a live document on the proxy origin', async () => {
+  const r = await get(`/proxy?uri=${encodeURIComponent(originBase + '/frameok')}`);
+  assert.equal(r.headers.get('x-content-type-options'), 'nosniff');
+  assert.equal(r.headers.get('content-security-policy'), 'sandbox');
+  assert.equal(r.headers.get('content-disposition'), 'attachment');
+});
+
+test('a non-HTML response is not marked as an attachment', async () => {
+  const r = await get(`/proxy?uri=${encodeURIComponent(originBase + '/feed.xml')}`);
+  assert.equal(r.headers.get('x-content-type-options'), 'nosniff');
+  assert.equal(r.headers.get('content-disposition'), null);
+  assert.equal(await r.text(), FEED);
 });
 
 test('SSRF: a non-allowlisted internal target is refused (403)', async () => {

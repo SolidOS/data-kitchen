@@ -53,3 +53,9 @@ test('releasesLatestUrl: owner/repo → GitHub API; http base → mock passthrou
   assert.equal(releasesLatestUrl('http://127.0.0.1:9911/'),
     'http://127.0.0.1:9911/releases/latest');
 });
+
+test('releasesLatestUrl refuses a plain-http update source off loopback', () => {
+  assert.throws(() => releasesLatestUrl('http://updates.example.com'), /must be https/);
+  assert.equal(releasesLatestUrl('https://updates.example.com'),
+    'https://updates.example.com/releases/latest');
+});

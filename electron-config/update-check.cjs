@@ -58,10 +58,22 @@ function pickAsset(assets, platform = process.platform) {
   return (assets || []).find((a) => a && a.name && a.name.endsWith(suffix)) || null;
 }
 
+// A release base may be given as a full URL. It must be https, since what
+// comes back decides which binary replaces the running app — loopback
+// excepted, which is how the test harness serves a mock release.
+function isLoopback(host) {
+  return host === 'localhost' || host === '127.0.0.1' || host === '[::1]' || host === '::1';
+}
+
 function releasesLatestUrl(repo) {
-  return /^https?:\/\//.test(repo)
-    ? repo.replace(/\/$/, '') + '/releases/latest'
-    : `https://api.github.com/repos/${repo}/releases/latest`;
+  if (/^https?:\/\//.test(repo)) {
+    const u = new URL(repo);
+    if (u.protocol !== 'https:' && !isLoopback(u.hostname)) {
+      throw new Error(`update source must be https: ${repo}`);
+    }
+    return repo.replace(/\/$/, '') + '/releases/latest';
+  }
+  return `https://api.github.com/repos/${repo}/releases/latest`;
 }
 
 async function fetchJson(url, ua) {
@@ -151,13 +163,12 @@ async function checkForUpdates(baseWindow) {
     await downloadTo(asset.browser_download_url, dest, ua, progress);
     try { baseWindow.setProgressBar(-1); } catch {}
 
+    // No checksum, no install: an unverified binary is the one thing an
+    // attacker who can answer for the release host would want us to run.
     const want = await expectedSha512(release, process.platform, ua);
-    if (want) {
-      const got = await sha512Hex(dest);
-      if (got !== want) throw new Error('checksum mismatch — download discarded');
-    } else {
-      console.warn('[update] no latest.json checksum in release; skipping verification');
-    }
+    if (!want) throw new Error('release carries no checksum — download discarded');
+    const got = await sha512Hex(dest);
+    if (got !== want) throw new Error('checksum mismatch — download discarded');
 
     if (inPlace) {
       fs.chmodSync(dest, 0o755);

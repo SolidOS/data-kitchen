@@ -27,6 +27,7 @@ const { LibraryRoots } = require('./library-roots.cjs');
 const { checkForUpdates } = require('./update-check.cjs');
 const idpVault = require('./idp-vault.cjs');
 const { mintCredential, createGrantSession, revokeCredentialViaAccount } = require('./idp-grant.cjs');
+const { isShellCaller } = require('./shell-caller.cjs');
 const { OWNER_EMAIL, OWNER_PASSWORD } = require('./seed-account.cjs');
 
 // The local pod owner WebID (see seed-account.cjs) — the identity the local-pod
@@ -825,7 +826,11 @@ class DesktopApp {
     // Per-request proxy for MainProxySession.fetch (src/dk-idp-proxy-session.js):
     // run the request under the issuer's headless session in main, return a
     // serialized response. The token/DPoP key never cross to the renderer.
-    ipcMain.handle('dk:idp-fetch', async (_e, { issuer, url, init } = {}) => {
+    // Only the shell may ask: the session reaches every pod that grants the
+    // signed-in WebID access, so the bridge is confined to dk's own document
+    // rather than to any set of target origins.
+    ipcMain.handle('dk:idp-fetch', async (e, { issuer, url, init } = {}) => {
+      if (!isShellCaller(e, APP_ORIGIN)) return { error: 'not-the-shell' };
       const sess = this._grantSessions.get(idpVault.issuerKey(issuer || ''));
       if (!sess) return { error: 'no-session' };
       try {
