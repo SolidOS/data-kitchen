@@ -112,6 +112,15 @@ test('public endpoints pass un-gated (OIDC + WebID docs)', () => {
   }
 });
 
+test('RP-initiated logout under /.oidc/ is gated, not public', () => {
+  const gate = makeGate(TOKEN);
+  for (const url of ['/.oidc/session/end', '/.oidc/session/end/success?client_id=x']) {
+    const res = makeRes();
+    assert.equal(gate(makeReq({ url }), res), true, `${url} should be gated`);
+    assert.equal(res.statusCode, 401);
+  }
+});
+
 test('non-GET to a profile/card is still gated', () => {
   const gate = makeGate(TOKEN);
   const res = makeRes();

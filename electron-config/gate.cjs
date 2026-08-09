@@ -56,9 +56,23 @@ function isPublicEndpoint(req) {
   let p;
   try { p = new URL(req.url, 'http://localhost').pathname; } catch { return false; }
   if (p === '/.well-known/openid-configuration') return true;
-  if (p.startsWith('/.oidc/')) return true;
+  // RP-initiated logout is not part of third-party login and reflects an
+  // attacker-registered client_name into an unescaped page on the pod origin;
+  // keep it behind the gate. The rest of /.oidc/ (auth, token, jwks, reg) is
+  // how any external Solid app authenticates and stays public.
+  if (p.startsWith('/.oidc/') && !p.startsWith('/.oidc/session/end')) return true;
   if (req.method === 'GET' && /\/profile\/card$/.test(p)) return true;   // any pod's public WebID doc
   return false;
+}
+
+// Compare a presented secret with the real one in constant time. Digesting
+// first keeps the comparison fixed-width, so neither the value nor its length
+// is readable from how long the answer takes.
+function sameToken(given, token) {
+  if (typeof given !== 'string' || given === '') return false;
+  const a = crypto.createHash('sha256').update(given).digest();
+  const b = crypto.createHash('sha256').update(String(token)).digest();
+  return crypto.timingSafeEqual(a, b);
 }
 
 function cookieValue(header, name) {
@@ -73,14 +87,14 @@ function makeGate(token, { allowOrigins = [] } = {}) {
   // gate(req, res) → true when the gate handled the response (caller stops).
   function gate(req, res) {
     if (!token) return false;
-    if (req.headers[HEADER] === token) return false;
-    if (cookieValue(req.headers.cookie, COOKIE) === token) return false;
+    if (sameToken(req.headers[HEADER], token)) return false;
+    if (sameToken(cookieValue(req.headers.cookie, COOKIE), token)) return false;
 
     const url = new URL(req.url, 'http://localhost');
     // Bless a browser via ?dk-token=<secret> (legacy) or the leak-free
     // ?dk-bless=<nonce> — either way, answer with the cookie and strip the param.
     const blessParam = url.searchParams.get('dk-bless');
-    if (url.searchParams.get(COOKIE) === token || validBless(token, blessParam)) {
+    if (sameToken(url.searchParams.get(COOKIE), token) || validBless(token, blessParam)) {
       url.searchParams.delete(COOKIE);
       url.searchParams.delete('dk-bless');
       res.writeHead(302, {
@@ -103,8 +117,8 @@ function makeGate(token, { allowOrigins = [] } = {}) {
 
   // Websocket upgrades have no res to answer with — just allowed or not.
   gate.upgradeOk = (req) => !token
-    || req.headers[HEADER] === token
-    || cookieValue(req.headers.cookie, COOKIE) === token;
+    || sameToken(req.headers[HEADER], token)
+    || sameToken(cookieValue(req.headers.cookie, COOKIE), token);
 
   return gate;
 }
