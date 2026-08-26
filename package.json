@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "electron-reloader": "^1.2.3",
+    "jose": "^5.10.0",
     "mashlib": "^2.2.2",
     "music-metadata": "^11.13.0",
     "open-media-player": "^0.3.0",
