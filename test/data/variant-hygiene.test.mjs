@@ -54,6 +54,54 @@ if (!process.env.DK_VARIANTS) {
     assert.deepEqual(missing, [], `reachable parts with excluded manifests: ${missing.join(', ')}`);
   });
 
+  // The netlify variant carries the same static-host contracts as web, plus
+  // its pod browser and news: no machine-absolute literals (its proxy value
+  // is the same-origin /proxy Function), and every reachable manifest ships.
+  const netlify = resolveVariantFiles('netlify');
+
+  test('netlify: no localhost/127.0.0.1 in shipped ui-data or plugin TTL', () => {
+    const offenders = [];
+    for (const [dest, src] of netlify) {
+      if (!/\.(ttl|shacl)$/.test(dest)) continue;
+      if (!dest.includes(`${sep}ui-data${sep}`) && !dest.includes(`${sep}plugins${sep}`)) continue;
+      const body = readFileSync(src, 'utf8');
+      if (/localhost|127\.0\.0\.1/.test(body)) offenders.push(dest);
+    }
+    assert.deepEqual(offenders, [], `machine-absolute literals in: ${offenders.join(', ')}`);
+  });
+
+  test('netlify: no startup.ttl ships', () => {
+    const hit = [...netlify.keys()].find((d) => d.includes('data-kitchen-startup.ttl'));
+    assert.equal(hit, undefined);
+  });
+
+  test('netlify: every REACHABLE menu part with a manifest source resolves in the set', () => {
+    const store = loadGraph(netlify.get(MENU_DEST), MENU_DOC);
+    const missing = [];
+    for (const node of reachableParts(store)) {
+      const src = store.any(node, sym(NS.dct + 'source'))?.value;
+      if (!src || !/\/plugins\/[^/]+\.ttl$/.test(src)) continue;
+      const manifest = join('dk-pod', 'dk', 'plugins', src.split('/').pop());
+      if (!netlify.has(manifest)) missing.push(`${node.value.split('#').pop()} → ${src.split('/').pop()}`);
+    }
+    assert.deepEqual(missing, [], `reachable parts with excluded manifests: ${missing.join(', ')}`);
+  });
+
+  test('netlify: the pod browser ships (podz content + workspaces manifest)', () => {
+    assert.ok(netlify.has(join('dk-pod', 'dk', 'plugins', 'workspaces.ttl')),
+      'workspaces.ttl must ship');
+    assert.ok(netlify.has(join('dk-pod', 'dk', 'plugins', 'podz', 'dk-podz.html')),
+      'podz content must ship');
+  });
+
+  test('netlify: index.html overlay drops the solid-kitchen dev-write flag', () => {
+    const idx = netlify.get('index.html');
+    assert.ok(idx.includes(join('variants', 'netlify')), 'index.html must come from the overlay');
+    const markup = readFileSync(idx, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+    assert.ok(!/\bsolid-kitchen\b/.test(markup),
+      'the hosted shell must not carry solid-kitchen');
+  });
+
   test('mobile: ships the full base plugin set', () => {
     const plugins = (m) => [...m.keys()].filter((d) => /plugins[/\\][^/\\]+\.ttl$/.test(d)).sort();
     assert.deepEqual(plugins(mobile), plugins(base));

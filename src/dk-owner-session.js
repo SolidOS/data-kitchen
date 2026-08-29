@@ -54,9 +54,15 @@ function register() {
   return true;
 }
 
+// The synthetic owner belongs only to the KITCHEN case — the app served over
+// its own local pod, declared by the solid-kitchen marker on <sol-default>.
+// A hosted build (variants/netlify) ships no marker, so visitors there stay
+// signed out until a real Solid-OIDC login.
+const isKitchen = !!document.querySelector('sol-default[solid-kitchen]');
+
 // The swc bundle (hence AuthManager) is ready by the time dk-shell imports this
 // (after solLoadReady); retry briefly in case the namespace alias lags.
-if (!register()) {
+if (isKitchen && !register()) {
   let tries = 0;
   const timer = setInterval(() => {
     if (register() || ++tries > 20) clearInterval(timer);

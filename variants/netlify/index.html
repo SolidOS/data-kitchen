@@ -1,0 +1,102 @@
+<!doctype html>
+<!-- NETLIFY VARIANT overlay of index.html — identical to the base except that
+     <sol-default> carries NO solid-kitchen marker: this page is hosted, not
+     the kitchen over its own local pod, so visitors are signed out until a
+     real Solid-OIDC login (no synthetic owner session, no dev write flag). -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- viewport-fit=cover lets the mobile look's env(safe-area-inset-*) rules
+       (in dk-chrome.css, behind a touch media query) read the notch / home-bar
+       insets on phones. Inert on desktop Electron (no insets → env() is 0). -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!-- Wormhole guard (must run first): the app shell must never run inside a
+       frame — opening /index.html from a SolidOS listing would load the whole app
+       recursively. Externalized to src/ so this page can carry a strict CSP with
+       no inline scripts; still a classic parser-blocking script, so it runs before
+       anything else. -->
+  <script src="src/dk-wormhole-guard.js"></script>
+  <title>data-kitchen</title>
+
+  <link rel="icon" href="assets/dk-logo.ico">
+  <link rel="stylesheet" href="node_modules/sol-components/web/styles/root.css">
+  <link rel="stylesheet" href="src/dk-styles.css">
+  <link rel="stylesheet" href="assets/dk-chrome.css">
+  <!-- The omp theme tokens (--ia-*) are the app-wide light/dark palette:
+       dk-chrome.css bridges the swc tokens onto them, so the SHELL needs
+       them from first paint — not only once a media room has imported the
+       ia-player bundle (which injects this same sheet). -->
+  <link rel="stylesheet" href="dk-pod/dk/plugins/ia-player/assets/ia.css">
+
+  <!-- Pre-paint boot: apply saved theme / text size before first paint. -->
+  <script src="src/dk-boot.js"></script>
+
+  <!-- sol-login imports the inrupt auth library through sc's
+       core/inrupt-global (resolved by the import map to the vendored ESM
+       build — one shared instance, no window global since 2026-07-14). -->
+
+  <!-- sol-load (sol-components' ci-free bootstrap, 2026-07-14): injects the
+       import map (every specifier dk uses — rdflib, solid-logic, solid-ui,
+       sol-components/* — resolved relative to the sol-components package,
+       nonce-propagated for this shell's CSP) and imports the components
+       named below. Pane widgets not listed (sol-time, sol-weather,
+       sol-query) lazy-load on first mount via ensureHandler; the media
+       player loads via its menu entries' schema:url modules. dk's OWN bundle is loaded
+       directly as a module below and resolves its externals through the
+       same map. component-interop is no longer on this page — the dokieli
+       identity adapter it brokered is PARKED (dokieli runs as an external
+       app; see plugins/solidos/dokieli-adapter.js). -->
+  <script src="node_modules/sol-components/web/sol-load.js"
+          data-components="sol-basic sol-pod-bundle sol-form-bundle sol-calendar sol-search sol-feed sol-gallery sol-login sol-menu-manager sol-button-bar-manager sol-plugin-manager"
+  ></script>
+  <script type="module" src="dist/dk.bundle.js"></script>
+</head>
+<body>
+
+  <!-- Skip link: first focusable element, hidden until focused (see dk-styles.css),
+       so keyboard users can jump past the chrome bar straight to the content. -->
+  <a class="dk-skip-link" href="#dk-content">Skip to content</a>
+
+  <!-- The shared-defaults singleton, RDF-driven like the rest of the shell: its
+       VALUES (color scheme, text size, CORS proxy) come from the `source` RDF —
+       sol-default reads each ui: predicate into a kebab attribute
+       (ui:colorScheme→color-scheme, ui:fontSize→font-size, ui:proxy→proxy). The
+       markup names ONLY the structural anchors: `source` (what it loads),
+       `shape` (the SHACL that drives the editable form), `label` (the form's
+       title). No inline value overrides — so nothing here shadows the RDF.
+       data-settings-skip: preferences render as the open form at the top of the
+       settings page (pages/settings.html), not as an accordion panel. -->
+  <sol-default
+      data-settings-skip
+      label="Preferences"
+      shape="node_modules/sol-components/shapes/data-kitchen-settings.shacl"
+      source="dk-pod/dk/ui-data/data-kitchen-settings.ttl#Settings"
+  ></sol-default>
+
+  <!-- shell:begin — mirrors the base index.html's generated shell layout
+       (tools/build-shell.mjs); regenerate the base and re-copy here if the
+       shell layout RDF changes. -->
+  <nav class="omp-chrome-bar app-col" aria-label="Controls">
+    <sol-include
+       source="dk-pod/dk/plugins/ia-player/assets/mini-player.html"
+       trusted
+    ></sol-include>
+  </nav>
+
+  <main class="omp-panels app-col" id="dk-content" tabindex="-1" aria-label="Content">
+    <!-- Topmost tabset; tabs come from data-kitchen-main-menu.ttl#Tabs at runtime (menu-from-rdf), #Bar/#Chrome injected by src/dk-tabs-rdf.js. data-settings-skip keeps its editor out of the Customize accordion. -->
+    <sol-tabs
+       id="dk-tabs"
+       keep-alive
+       from-rdf="./dk-pod/dk/ui-data/data-kitchen-main-menu.ttl#Tabs"
+       data-settings-skip
+    ></sol-tabs>
+  </main>
+
+  <!-- The ☰ menu's items display here while open (the menu binds to this region via ui:region :MenuPane); dk-tabs-shell re-homes it into the tabset at runtime. -->
+  <section class="dk-menu-pane app-col" id="dk-menu-pane" hidden aria-label="Menu">
+  </section>
+  <!-- shell:end -->
+
+</body>
+</html>

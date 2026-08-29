@@ -38,3 +38,6 @@ drafts/
 # Claude's notes on working with Jeff (personal; skills.md IS committed)
 jeff-skills.md
 test/e2e/unified-shell.png
+
+# netlify CLI per-repo link state (site id) — local, never committed
+.netlify/

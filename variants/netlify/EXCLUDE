@@ -1,0 +1,14 @@
+# NETLIFY VARIANT EXCLUDES (base-relative paths omitted from the assembled
+# tree). Users sign in to their own remote pods here, so the pod browser,
+# news (proxied by the /proxy Function), and the health apps all ship —
+# unlike the read-only web demo. What stays out is the LOCAL-pod surface:
+# the embedded SolidOS browser and its app panes point at /dk-pod data and a
+# mashlib copy this build does not carry (the SolidOS Remote link covers
+# remote pods), and dokieli likewise edits local-pod docs.
+plugins/solidos-browser.ttl
+plugins/addressbook.ttl
+plugins/chat.ttl
+plugins/meeting.ttl
+plugins/notes.ttl
+plugins/task-manager.ttl
+plugins/dokieli.ttl

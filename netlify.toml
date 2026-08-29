@@ -1,0 +1,32 @@
+# Netlify deployment of the netlify variant (assembled by
+# tools/build-netlify.mjs — `npm run dist:netlify` → release/netlify/).
+#
+# Deploys are BUILT LOCALLY and pushed with the Netlify CLI
+# (`netlify deploy --prod`); no build.command is set on purpose — the dev
+# tree resolves sol-components / open-media-player through local symlinks
+# that a CI `npm install` would replace with registry copies.
+
+[build]
+  publish = "release/netlify"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# RDF content types the shell depends on (mirrors server-core.cjs MIME):
+# the menu loader parses turtle explicitly, but the rdflib-Fetcher paths
+# (settings, locations, shapes) content-negotiate and need the real types.
+[[headers]]
+  for = "/*.ttl"
+  [headers.values]
+    Content-Type = "text/turtle; charset=utf-8"
+
+[[headers]]
+  for = "/*.shacl"
+  [headers.values]
+    Content-Type = "text/turtle; charset=utf-8"
+
+[[headers]]
+  for = "/*.jsonld"
+  [headers.values]
+    Content-Type = "application/ld+json"

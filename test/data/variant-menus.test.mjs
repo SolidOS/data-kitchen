@@ -17,7 +17,7 @@ if (!process.env.DK_VARIANTS) {
 
   const MENU_DEST = join('dk-pod', 'dk', 'ui-data', 'data-kitchen-main-menu.ttl');
 
-  for (const variant of ['web', 'mobile']) {
+  for (const variant of ['web', 'netlify', 'mobile']) {
     const files = resolveVariantFiles(variant);
     const menuSrc = files.get(MENU_DEST);
     test(`${variant}: variant resolves a main menu`, () => {
