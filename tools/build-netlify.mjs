@@ -10,7 +10,7 @@
 // the publish dir and the /proxy Function). Shell-definition writes still
 // 405 on the static host; the user's own pod is the writable surface.
 
-import { cpSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, readFileSync, writeFileSync, readdirSync, rmSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -21,12 +21,18 @@ const out = join(root, 'release', 'netlify');
 // Engine trees, pruned like electron-builder's dist (tests/docs/etc stay home).
 const PRUNE = new Set(['node_modules', 'tests', 'tests-disabled', 'coverage',
   'docs', 'examples', 'drafts', 'claude', '.git', '.claude']);
+// Editor autosave/lock scratch (#x#, x~, .#x) — Netlify refuses '#' in
+// deployed filenames, and none of it belongs in a shipped tree.
+const SCRATCH = /^#.*#$|~$|^\.#/;
 const copyPruned = (fromRel, toRel = fromRel) => {
   const from = join(root, fromRel);
   if (!existsSync(from)) { console.warn(`[netlify] missing ${fromRel} — skipped`); return; }
   cpSync(from, join(out, toRel), {
     recursive: true, dereference: true,
-    filter: (src) => !PRUNE.has(src.split('/').pop()) && !src.endsWith('.map'),
+    filter: (src) => {
+      const base = src.split('/').pop();
+      return !PRUNE.has(base) && !SCRATCH.test(base) && !src.endsWith('.map');
+    },
   });
 };
 
@@ -46,6 +52,17 @@ copyPruned('assets');
 for (const p of ['ia-player', 'omp-images']) {
   copyPruned(`plugins/${p}/dist`);
 }
+
+// The assembled seeded content can carry the same scratch names — sweep the
+// whole output before it goes anywhere.
+const sweepScratch = (dir) => {
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, e.name);
+    if (SCRATCH.test(e.name)) { rmSync(p, { recursive: true, force: true }); continue; }
+    if (e.isDirectory()) sweepScratch(p);
+  }
+};
+sweepScratch(out);
 
 // The News entry ships reader="inline" for Electron, where a native view
 // paints the article pane; a plain browser has no painter for it, so the
