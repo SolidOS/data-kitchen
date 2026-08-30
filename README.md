@@ -82,6 +82,16 @@ CSS/pivot pod + router + proxy on the phone (via nodejs-mobile) and renders
 either the dk shell or the SolidOS/mashlib databrowser in a WebView. See
 [`mobile/README.md`](mobile/README.md).
 
+<!-- CLAUDE 2026-08-29 — new section: the hosted web build at dk.fedipod.net; delete these markers when reviewed -->
+## Data Kitchen on the web (no install)
+
+A hosted Data Kitchen runs at [dk.fedipod.net](https://dk.fedipod.net). There is
+no local pod there: sign in with any Solid account (solidcommunity.net,
+solidweb.me, solidweb.org, inrupt.com) and use the pod browser, apps, news, and
+media rooms against your own pod. The app's own menus and settings are fixed in
+the hosted version — your pod is the writable surface.
+<!-- /CLAUDE -->
+
 ## Troubleshooting
 
 ** The main log file is `dk.log`.** Every line the app and its bundled servers print is mirrored here, timestamped — this is the file to attach to any bug report. Locations:

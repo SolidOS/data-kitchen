@@ -1555,6 +1555,57 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   the run (IA outages first-failed both v2.1.9 and v2.2.0). Any red run is
   therefore a real regression: stop the line.
 
+## Netlify variant (2026-08-29) — LIVE at dk.fedipod.net
+
+The hosted dk: users sign in to their OWN remote pods and use the shell
+against that storage. Built on the variant system (Jeff's go un-parked it for
+this use). Phase 3 — homing the shell's ui-data on the user's pod with a
+re-rooting seam so Customize/Settings persist — is PARKED pending its own
+design round; the full design is
+`claude/plans/netlify-remote-pod-install-plan.md`.
+
+- **Build/deploy:** `npm run dist:netlify` (tools/build-netlify.mjs →
+  release/netlify) then `netlify deploy --prod`. ALWAYS build locally — no CI
+  build on purpose (registry `npm install` would clobber the sc/omp
+  symlinks); netlify.toml carries publish dir, functions dir, and the RDF
+  MIME headers (`/*.ttl` globs DO match nested paths). Site `dk-fedipod` in
+  jeff-zucker's team, primary domain dk.fedipod.net (a CNAME `dk` in the
+  fedipod.net Netlify DNS zone; the alias API 422s, primary custom_domain
+  works). The fedipod.net front is a SEPARATE site — never touched by dk
+  deploys.
+- **variants/netlify/** = the web overlay plus: Pods tab back (podz un-
+  EXCLUDEd, SolidOS Remote / PodOS Browser / Penny), Health back, News back,
+  chrome-login WITHOUT the popup-callback attribute (falls back to
+  sol-login's packaged callback — the web variant still points at a
+  nonexistent file, left unfixed), `ui:proxy "/proxy?uri={url}"` (the {url}
+  placeholder form — the append form truncates targets containing &), and an
+  index.html overlay with NO solid-kitchen. Still excluded: SolidOS local
+  browser + five app panes + dokieli (local-pod data, unshipped mashlib).
+- **Owner session is gated on `sol-default[solid-kitchen]`**
+  (src/dk-owner-session.js): present in the base/Electron index.html →
+  registers as before; absent in the netlify overlay → visitors are signed
+  out until a real login. In the bundle — rebuild + restart to change.
+- **/proxy Function** (netlify/functions/proxy.mjs, served at /proxy):
+  SAME-ORIGIN CALLERS ONLY — sec-fetch-site first, then Origin, then
+  Referer, judged against the request's own origin; no CORS headers at all.
+  SSRF guard imported from server-core.cjs, per-redirect-hop; 5MB/8s caps
+  (Netlify sync functions buffer ~6MB, 10s). Contract tests:
+  test/unit/netlify-proxy.test.mjs (stubbed global fetch).
+- **build-netlify quirks:** sweeps editor scratch names out of the tree
+  (Netlify refuses `#` in deployed filenames — both the engine copy filter
+  and a post-assembly sweep); rewrites the News entry's reader param
+  inline→window in the assembled catalog via rdflib (the inline article pane
+  is painted by the Electron preload only) — the graph term on store.add
+  matters, the serializer emits only the document's graph.
+- **Tests/probes:** netlify is in the DK_VARIANTS=1 variant contracts
+  (menus + hygiene incl. no-solid-kitchen and podz-ships checks);
+  claude/smoke-tests/verify-netlify-variant.mjs (serves release/netlify on
+  :18082, 11 checks) and verify-live-dk-fedipod.mjs (live site, incl. News
+  through the real /proxy). Playwright's pinned chromium isn't installed —
+  run probes with `CHROME_BIN=/usr/bin/google-chrome`. e2e gotcha: pivot's
+  FIRST boot of the day can exceed the runner's 30s wait (cold file cache on
+  CSS's module graph); a rerun passes.
+
 ## Release variants (2026-07-06) — PARKED
 
 **PARKED by Jeff 2026-07-06 — do not extend or ship without his go.** The
