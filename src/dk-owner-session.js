@@ -37,19 +37,17 @@ const ownerSession = {
 function register() {
   const am = window.SolidWebComponents?.AuthManager?.shared;
   if (!am) return false;
-  // 'default' is the tag AuthManager.getWebId()/dkFetch use when no
-  // `#auth=` tag is set. Embedded logins (podz, SolidOS) register under their
-  // own side tags, so this never clobbers a real session the user establishes —
-  // and we only seed 'default' if nothing logged-in already holds it.
-  if (!am.sessions.get('default')?.info?.isLoggedIn) {
-    am.sessions.set('default', ownerSession);
-  }
-  // dk mounts no <sol-login>, so the chrome (dk-auth-indicator) and any pod
-  // discovery that waits on a login event need an explicit nudge.
+  // The owner sits on its own 'local' tag, separate from the single remote
+  // OIDC session (which lives on 'default'). Routing is by request origin, so
+  // local-pod requests resolve to this session and remote-pod requests to the
+  // OIDC one — the app can be "logged in" to both at once.
+  am.sessions.set('local', ownerSession);
+  // dk mounts no chrome <sol-login>, so the chrome (dk-auth-indicator) and any
+  // pod discovery that waits on a login event need an explicit nudge.
   document.dispatchEvent(new CustomEvent('sol-login', {
     bubbles: true,
     composed: true,
-    detail: { webId: OWNER_WEBID, issuer: ownerSession.info.issuer, side: 'default' },
+    detail: { webId: OWNER_WEBID, issuer: ownerSession.info.issuer },
   }));
   return true;
 }

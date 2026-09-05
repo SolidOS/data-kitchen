@@ -23,7 +23,7 @@ const options = {
     'ical.js',
     'marked',
     '@comunica/query-sparql',
-    '@inrupt/solid-client-authn-browser',
+    '@uvdsl/solid-oidc-client-browser',
     'solid-ui',
     'solid-logic',
     'rdf-validate-shacl',

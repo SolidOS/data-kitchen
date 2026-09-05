@@ -90,10 +90,12 @@ build-web / packaged-smoke / the mobile packer no longer ship ci.
 `window.ComponentInterop` still EXISTS at runtime — it's sc's services
 surface aliasing itself to both names (core/services.js), not the broker.
 data-handler needs no ci: sol-button consumes it natively.
-The inrupt auth library is published onto `window.solidClientAuthn` by a small
-`<script type=module>` from sol-components' ESM build
-(`dist/vendor/@inrupt-solid-client-authn-browser.js`) — consumed lazily at
-session creation, so no separate UMD bundle is vendored.
+The Solid-OIDC auth library is `@uvdsl/solid-oidc-client-browser` (single
+account at a time; replaced inrupt in sc 3.0.0). sc imports it through
+`core/oidc-global.js`, resolved by the import map to the vendored worker-free
+ESM build (`dist/vendor/@uvdsl-solid-oidc-client-browser.js` — SessionCore +
+SessionIDB; refreshes on demand inside authFetch, restores from the refresh
+token in IndexedDB, no SharedWorker). No window global.
 
 ## component-interop = a capability broker (not just a loader)
 
@@ -815,15 +817,11 @@ state, so any step can be re-entered and re-opening an app just works.
   sibling-ensure. KEEP-EAGER reasons: managers+form stack are raw tags in
   included pages (no ensure pass); omp's bundle uses sol-feed/sol-gallery as
   page-provided tags; bar-calendar's conjure path doesn't ensure.
-- **Window globals gone (all but dkElectron):** dkFetch/dkActiveAuthTag are
-  dk-auth-router MODULE EXPORTS (dk-solidos/dk-dokieli import them);
-  dkPodRegistry replaced by the `dk-diag-pod-registry` request-event (the
-  registry is bundle-internal — console import() gets a second instance).
-  window.solidClientAuthn is REMOVED too (same day): sol-login/sol-form
-  import inrupt via sc core/inrupt-global exports; dk-inrupt-global.js
-  deleted from bundle + both shells; VERIFIED by a driven interactive popup
-  login (CSS form → Authorize → "Log out"). inrupt's own
-  solidClientAuthn:* localStorage keys are untouched.
+- **Window globals gone (all but dkElectron):** `dkFetch` is a dk-auth-router
+  MODULE EXPORT (dk-solidos/dk-dokieli import it); dkPodRegistry replaced by the
+  `dk-diag-pod-registry` request-event (the registry is bundle-internal —
+  console import() gets a second instance). No window.solidClientAuthn:
+  sol-login imports the auth library via sc `core/oidc-global` exports.
 - **sol-weather units:** ui:temperatureUnit is REPEATABLE (ui:Both is gone
   from vocab/shapes/data/code — both units listed = show both; shape [1..2]
   renders as one multiselect Choice via the existing ui:multiselect path).
@@ -870,6 +868,22 @@ state, so any step can be re-entered and re-opening an app just works.
   `--remote-debugging-port=9223`) so Jeff's session is never touched.
 
 ## Pod / server / auth model
+
+**Single-account Solid-OIDC (sc 3.0.0 / dk 2.3.0 swap — supersedes the
+popup/side/multi-session details later in this file).** sc replaced inrupt with
+stock `@uvdsl/solid-oidc-client-browser`; one remote account at a time,
+interactive login is a full-page REDIRECT (no popup, no `mode`/`side`/
+`popup-callback` attributes, no popup-auth-callback page — all deleted).
+`AuthManager.sessions` holds at most two: dk's synthetic owner on tag **`local`**
+(`src/dk-owner-session.js`, plain window.fetch + gate header) and the single
+remote OIDC session (or a remembered-IdP proxy) on **`default`**. Routing is by
+request ORIGIN via `sessionCoversOrigin` — a localhost request resolves to the
+owner, a remote-pod request to the OIDC session, so a pod browser (podz) can be
+"logged in" to the local pod AND one remote pod at once. Both podz panels share
+this routing (their `side="left"`/`"right"` is now just a per-panel last-path
+key, not an auth tag). The remember-hook (`dk-issuers-feed`) seats its proxy on
+`default`. Session restore across restarts now works (uvdsl refresh token in
+IndexedDB) — the old "redirect sessions don't survive restart" gap is closed.
 
 - `POD_ROOT` = `~/solid/`; the home pod is `~/solid/dk-pod`, served at `/dk-pod/`;
   dk content lives under `/dk-pod/dk/`. **Don't run with

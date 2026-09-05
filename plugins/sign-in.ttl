@@ -8,8 +8,6 @@
   ui:label "Sign in" ;
   ui:icon "🔑" ;
   schema:url </node_modules/sol-components/web/sol-login.js> ;
-  schema:description "Solid sign-in button (popup flow)." ;
+  schema:description "Solid sign-in button." ;
   dct:publisher "Jeff Zucker" ;
-  schema:keywords "Pods" ;
-  schema:additionalProperty
-    [ schema:name "mode" ; schema:value "popup" ] .
+  schema:keywords "Pods" .

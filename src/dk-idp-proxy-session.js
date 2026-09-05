@@ -2,9 +2,9 @@
 //
 // Backs "remember this IdP": when the user picks a previously-remembered issuer,
 // main holds a durable, headless DPoP session (electron-config/idp-grant.cjs) and
-// we register THIS object under the right side tag so AuthManager routes that
-// issuer's requests through it. Every .fetch() is proxied over IPC to main, which
-// attaches the auth; the renderer never sees the access token or DPoP key.
+// we register THIS object as the single remote session so AuthManager routes that
+// issuer's requests through it (by origin). Every .fetch() is proxied over IPC to
+// main, which attaches the auth; the renderer never sees the access token or DPoP key.
 //
 // Same shape AuthManager expects as dk-owner-session.js:
 //   { info: { isLoggedIn, webId, issuer, sessionId }, fetch, logout }.

@@ -20,11 +20,11 @@ export class SolidFileBrowser {
     );
 
     this.elements = initializeElements();
-    // Each <sol-pod> renders its own popup-mode <sol-login> in its header
-    // (configured via the side / login-mode attributes in index.html; the
-    // popup callback page defaults to sol-login's own packaged copy). Grab
-    // those built-in login elements — they share one
-    // module-level AuthManager, with sessions keyed by side.
+    // Each <sol-pod> renders its own <sol-login> in its header. Grab those
+    // built-in login elements — they share one module-level AuthManager. Auth
+    // is routed by request origin: the local pod resolves to dk's owner
+    // session, a remote pod to the single OIDC session, so both panels can
+    // show a local and a remote pod at once.
     this.leftLogin  = this.elements.leftPod.login;
     this.rightLogin = this.elements.rightPod.login;
     this.authManager = this.leftLogin.auth;   // shared singleton (=== rightLogin.auth)
@@ -71,11 +71,6 @@ export class SolidFileBrowser {
         });
       });
     }
-
-    // Wire each side's login events independently — a login/logout on one
-    // side only reloads that side's panel.
-    this._wireLoginEvents('left',  this.leftLogin);
-    this._wireLoginEvents('right', this.rightLogin);
 
     // Wire collapse buttons
     document.getElementById('collapse-left-btn').addEventListener('click', (e) => {
@@ -141,9 +136,6 @@ export class SolidFileBrowser {
   _wirePodEvents(side, pod) {
     pod.addEventListener('sol-navigate', (e) => {
       this.currentPaths[side] = e.detail.url;
-      // NB: do not call authManager.setSideOrigin() here — in popup mode
-      // it would replace this side's PopupProxySession with a fresh empty
-      // Inrupt Session. The popup owns the session for this side.
       this.saveState();
     });
 
@@ -179,16 +171,6 @@ export class SolidFileBrowser {
   // messages with action buttons, e.g. Undo) still use the popup via setStatus.
   _panelError(message, pods) {
     for (const p of pods) { try { p?.showMessage?.(message, true); } catch (_) { /* pod not ready */ } }
-  }
-
-  _wireLoginEvents(side, loginEl) {
-    // The pod re-discovers pods and reloads its container on login —
-    // sol-pod owns both. podz only needs to surface a blocked popup.
-    loginEl.addEventListener('sol-popup-blocked', () => {
-      this._panelError(
-        `Popup blocked \u2014 allow popups for this site, then click Log in for the ${side} panel again.`,
-        [this.elements[side === 'left' ? 'leftPod' : 'rightPod']]);
-    });
   }
 
   _clearDragState() {

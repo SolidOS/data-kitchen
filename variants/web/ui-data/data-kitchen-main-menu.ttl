@@ -48,11 +48,6 @@
                 schema:name "issuers";
                 schema:value
                     "https://solidcommunity.net,https://solidweb.me,https://solidweb.org,https://login.inrupt.com"
-            ],
-        [ schema:name "mode"; schema:value "popup" ],
-            [
-                schema:name "popup-callback";
-                schema:value "dk-pod/dk/plugins/podz/popup-auth-callback.html"
             ];
     ui:label "Sign in";
     schema:url </node_modules/sol-components/web/sol-login.js>.

@@ -67,30 +67,31 @@ function installRememberHook(el) {
   if (!dk || !dk.silentLogin || hooked.has(el) || typeof el.login !== 'function') return;
   hooked.add(el);
   const orig = el.login.bind(el);
-  el.login = async (issuerUrl, tag) => {
+  el.login = async (issuerUrl) => {
     try {
       const origin = new URL(issuerUrl).origin;
       const remembered = await dk.getRememberedIdps();
       if (remembered.includes(origin)) {
         const r = await dk.silentLogin(origin);
         if (r && r.status === 'ok') {
-          const side = el._side || 'default';
+          // The remembered-IdP proxy is THE single remote session — seat it on
+          // 'default' (the local owner has its own 'local' tag).
           const am = window.SolidWebComponents?.AuthManager?.shared;
-          am?.sessions.set(side, createMainProxySession(r.issuer, r.webId));
+          am?.sessions.set('default', createMainProxySession(r.issuer, r.webId));
           // Repaint the button to its logged-in state and wire the authed fetch
-          // into rdflib — the interactive popup path does both (sol-login.js
-          // _onPopupMessage); the silent path bypasses login(), so do it here too.
+          // into rdflib — the redirect path does both via initialize(); the
+          // silent path bypasses login(), so do it here too.
           try { el._updateUI?.(); } catch { /* shadow not ready */ }
           try { el._integrateWithRdflib?.(); } catch { /* optional */ }
           el.dispatchEvent(new CustomEvent('sol-login', {
             bubbles: true, composed: true,
-            detail: { webId: r.webId, issuer: r.issuer, side },
+            detail: { webId: r.webId, issuer: r.issuer },
           }));
-          return;   // skip the interactive popup — we're authed
+          return;   // skip the interactive redirect — we're authed
         }
       }
     } catch { /* fall through to the normal login */ }
-    return orig(issuerUrl, tag);
+    return orig(issuerUrl);
   };
 }
 

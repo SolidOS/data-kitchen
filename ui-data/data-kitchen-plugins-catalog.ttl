@@ -965,9 +965,8 @@ a schema:ListItem; schema:item :VitalStats; schema:position 81 .
     a ui:Plugin;
     dct:publisher "Jeff Zucker";
     dct:source plug:sign-in.ttl;
-    schema:additionalProperty [ schema:name "mode"; schema:value "popup" ];
     schema:additionalType ui:Component;
-    schema:description "Solid sign-in button (popup flow).";
+    schema:description "Solid sign-in button.";
     schema:url we:sol-login.js;
     ui:icon "🔑";
     ui:label "Sign in".
