@@ -6,11 +6,12 @@
 // that. The doc's editor (dokie.li runtime, same-origin) receives dk's identity +
 // authenticated fetch from the component-interop frame-sweep adapter
 // (plugins/solidos/dokieli-adapter.js), so saves ride dk's session.
-// solid-panes ships this as CommonJS (exports.default = <html string>). Depending on
-// the interop, the default import can arrive as the module namespace object
-// ({default: "...", __esModule: true}) rather than the string — which would PUT
-// "[object Object]" as the doc body. Coerce to the actual template string.
-import DOKIELI_NEW from 'solid-panes/dist/dokieli/new.js';
+// The new-document template is solid-panes' dist/dokieli/new.esm.js (default
+// export: the HTML string). solid-panes' export list names only its main entry, so
+// the bundle reaches the file by path; if solid-panes moves it, the build fails.
+// Coerce in case an interop hands over the module namespace instead of the string,
+// which would PUT "[object Object]" as the doc body.
+import DOKIELI_NEW from '../../node_modules/solid-panes/dist/dokieli/new.esm.js';
 import { dkFetch } from '../../src/dk-auth-router.js';
 const DOKIELI_TEMPLATE =
   typeof DOKIELI_NEW === 'string' ? DOKIELI_NEW : (DOKIELI_NEW && DOKIELI_NEW.default) || DOKIELI_NEW;

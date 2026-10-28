@@ -648,7 +648,13 @@ state, so any step can be re-entered and re-opening an app just works.
   (`/799.js`); the router serves any top-level non-HTML file that exists in
   `node_modules/mashlib/dist` from there, so no list of chunk names is kept. The
   unpkg copy has no such help, hence the GitHub Pages link (built with
-  `PUBLIC_PATH=/mashlib/dist/`). Dependabot keeps mashlib at latest. The host page overlays the local OWNER as the logged-in
+  `PUBLIC_PATH=/mashlib/dist/`). Dependabot keeps mashlib at latest. mashlib 3
+  brings solid-panes 5, whose export list names only its main entry, so
+  `plugins/solidos/dk-dokieli.js` imports the new-document template by path
+  (`../../node_modules/solid-panes/dist/dokieli/new.esm.js`). After any install,
+  `npm run build` before trusting an app test, and check a clean `npm ci` in a
+  scratch worktree before a push: a lockfile written with --legacy-peer-deps
+  fails `npm ci`. The host page overlays the local OWNER as the logged-in
   session (banner + panes render owner affordances; mashlib's own OIDC can never
   complete in the frame — localStorage shim + reseat guard). The location bar +
   `?bar=1` machinery still exists in `sol-solidos`/`dk-solidos` for any def that
