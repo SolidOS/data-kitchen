@@ -35,7 +35,8 @@ import { spawnSync } from 'node:child_process';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const releaseDir = join(root, 'release');
-const version = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version;
+const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
+const version = pkg.version;
 const checkOnly = process.argv.includes('--check');
 const stem = `Solid_Data_Kitchen-${version}`;
 
@@ -56,6 +57,13 @@ async function sha512(file, encoding = 'hex') {
   const h = createHash('sha512');
   await pipeline(createReadStream(file), h);
   return h.digest(encoding);
+}
+
+// A mac .app keeps its frameworks as symlinks; a zip that stores none was
+// flattened and the app will not start on a Mac.
+function macZipKeepsLinks(zip) {
+  const r = spawnSync('zipinfo', [zip], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+  return r.status === 0 && /^l/m.test(r.stdout);
 }
 
 if (!existsSync(releaseDir)) fail(`release/ does not exist — build first (npm run dist:cross / dist:android)`);
@@ -98,6 +106,9 @@ for (const [key, p] of Object.entries(PLATFORMS)) {
   }
   found[key] = f;
 }
+if (checkOnly && !macZipKeepsLinks(join(releaseDir, found.mac))) {
+  fail(`${found.mac} stores no symlinks — its app cannot start on a Mac`);
+}
 
 // ── 1.5 mac zip: ship the first-launch guide next to the .app ───────────────
 // The mac build is unsigned (cross-built on linux — signing needs a mac or
@@ -112,6 +123,19 @@ if (!checkOnly) {
   const readmeSrc = join(root, 'tools', 'mac-first-open.txt');
   if (!existsSync(readmeSrc)) fail('tools/mac-first-open.txt missing — cannot ship the mac first-launch guide');
   const macZip = join(releaseDir, found.mac);
+  // electron-builder 26 zips with a 7-Zip that follows symlinks, which flattens
+  // the .app's frameworks. Re-zip from the unpacked .app with `zip -y`, which
+  // stores links as links.
+  const appName = `${pkg.build.productName}.app`;
+  if (existsSync(join(releaseDir, 'mac', appName))) {
+    rmSync(macZip, { force: true });
+    const z = spawnSync('zip', ['-qry', '-X', macZip, appName], { cwd: join(releaseDir, 'mac'), stdio: 'inherit' });
+    if (z.status !== 0) fail(`could not re-zip ${found.mac} (is \`zip\` installed?)`);
+    console.log(`[release] re-zipped ${found.mac} keeping the .app's symlinks`);
+  }
+  if (!macZipKeepsLinks(macZip)) {
+    fail(`${found.mac} stores no symlinks and release/mac is gone — rebuild it with \`npx electron-builder --mac dir --x64\`, then re-run`);
+  }
   const staging = mkdtempSync(join(tmpdir(), 'dk-mac-readme-'));
   copyFileSync(readmeSrc, join(staging, 'READ ME FIRST.txt'));
   const r = spawnSync('zip', ['-X', macZip, 'READ ME FIRST.txt'], { cwd: staging, stdio: 'inherit' });
