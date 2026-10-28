@@ -42,7 +42,7 @@
   "dependencies": {
     "electron-reloader": "^1.2.3",
     "jose": "^5.10.0",
-    "mashlib": "^2.2.2",
+    "mashlib": "^3.0.0",
     "music-metadata": "^11.13.0",
     "open-media-player": "^0.3.0",
     "sol-components": "^2.4.1"

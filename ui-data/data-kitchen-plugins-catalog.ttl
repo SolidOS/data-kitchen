@@ -58,7 +58,7 @@
 @prefix inte: <../plugins/ia-player/libraries/internet_archive_spoken_word/>.
 @prefix dat: </node_modules/sol-components/data/>.
 @prefix data: <data-kitchen-commands.ttl#>.
-@prefix dist: <https://unpkg.com/mashlib@2.2.2/dist/>.
+@prefix dist: <https://solidos.github.io/mashlib/dist/>.
 @prefix ma: <https://mastopod.com/>.
 @prefix mut: <https://mutual-aid.app/>.
 @prefix mypod: <https://mypod.store/>.

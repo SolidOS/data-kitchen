@@ -8,6 +8,7 @@ import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { readdirSync, readFileSync } from 'node:fs';
 import { freePort, startServer, waitForServer, stopServer } from '../helpers/spawn-server.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -52,6 +53,22 @@ test('the blessing query redirects and sets a strict cookie', async () => {
 test('404 for an engine path that does not exist (still gated-through)', async () => {
   const r = await fetch(`${base}/src/does-not-exist.js`, { headers: { 'x-dk-token': TOKEN } });
   assert.equal(r.status, 404);
+});
+
+test("mashlib's pieces are served at the site top, from its dist folder", async () => {
+  const dist = join(root, 'node_modules', 'mashlib', 'dist');
+  const piece = readdirSync(dist).find((f) => f.endsWith('.js') && !f.startsWith('mashlib'));
+  assert.ok(piece, 'mashlib ships at least one on-demand piece');
+  const r = await fetch(`${base}/${piece}`, { headers: { 'x-dk-token': TOKEN } });
+  assert.equal(r.status, 200);
+  assert.equal(await r.text(), readFileSync(join(dist, piece), 'utf8'));
+});
+
+test("mashlib's pages are not taken over at the site top", async () => {
+  // browse.html ships in mashlib's dist too, but a top-level page is pod content:
+  // it goes to CSS (not running here, so a 502), never to mashlib's copy.
+  const r = await fetch(`${base}/browse.html`, { headers: { 'x-dk-token': TOKEN } });
+  assert.equal(r.status, 502);
 });
 
 test('a public WebID endpoint passes the gate un-authenticated', async () => {

@@ -1,0 +1,11 @@
+# Version updates for mashlib only: a pull request whenever a new mashlib is
+# published. Security updates for every other package come from the repo's
+# Dependabot security setting, not from this file.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+    allow:
+      - dependency-name: mashlib

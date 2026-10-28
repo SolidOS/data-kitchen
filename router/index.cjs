@@ -9,6 +9,7 @@
 //
 // This server is that single origin (default :8000). It routes per request:
 //   - engine path prefixes  -> served statically from the executable dir (read-only)
+//   - mashlib's own pieces   -> served from its engine folder (see mashlibPiece)
 //   - everything else        -> reverse-proxied to the pivot CSS (the pod root),
 //                               which listens on an internal loopback port
 // CSS keeps Solid semantics (LDP/PATCH/POST) on the pod; the engine is plain files.
@@ -19,6 +20,7 @@
 'use strict';
 
 const http = require('node:http');
+const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const { makeGate } = require('../electron-config/gate.cjs');
@@ -66,6 +68,19 @@ function isAppShell(pathname) {
   return pathname === '/' || pathname === '/index.html';
 }
 
+// mashlib's npm build fetches its on-demand pieces (the SolidOS file editor among
+// them) from the site top, e.g. /799.js, though they ship in its dist folder. A
+// top-level request naming one of those files gets it from there; pages stay pod.
+let mashlibPieces = new Set();
+try {
+  mashlibPieces = new Set(fs.readdirSync(path.join(engineDir, 'node_modules', 'mashlib', 'dist'))
+    .filter((f) => !f.endsWith('.html')));
+} catch (_) { /* no mashlib in this engine */ }
+function mashlibPiece(pathname) {
+  const m = /^\/([^/]+)$/.exec(pathname);
+  return m && mashlibPieces.has(m[1]) ? `/node_modules/mashlib/dist/${m[1]}` : null;
+}
+
 // Serve the app shell: buffer the pod's index.html, stamp a fresh per-response
 // nonce onto every <script> tag, and return it with a matching nonce-based CSP.
 // (accept-encoding is dropped upstream so the body is plaintext to rewrite.)
@@ -104,6 +119,8 @@ const server = http.createServer((req, res) => {
   if ((req.method === 'GET' || req.method === 'HEAD') && isEnginePath(pathname)) {
     return serveEngine(req, res, pathname, engineDir);
   }
+  const piece = (req.method === 'GET' || req.method === 'HEAD') && mashlibPiece(pathname);
+  if (piece) return serveEngine(req, res, piece, engineDir);
   // The app shell (pod-served) gets a per-response nonce + nonce-based CSP.
   if ((req.method === 'GET' || req.method === 'HEAD') && isAppShell(pathname)) {
     return serveShell(req, res);
