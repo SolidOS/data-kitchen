@@ -7,7 +7,7 @@ the user.
 
 ## What dk is
 
-An Electron "pod-in-a-box": it bundles a Solid server (Pivot/CSS, mashlib 2.2.2),
+An Electron (45) "pod-in-a-box": it bundles a Solid server (Pivot/CSS, mashlib 3),
 a CORS proxy, and an **RDF-first shell** for Solid & federated apps. v2.1.4, ESM.
 Consolidated from three former repos (electron, old data-kitchen,
 open_media_player). The UI is fully customizable through forms — menus, buttons,
@@ -17,12 +17,18 @@ and plugins are described in RDF, not hard-coded.
 
 - **dk** — `/home/jeff/Dropbox/Web/solid/data-kitchen` (also `~/s`, a symlink).
   Remote: `github.com/SolidOS/data-kitchen` (push needs an explicit per-task go).
-- **sc — sol-components** (v2.9.0, published on npm; nothing owed there. Git
-  TAGS lag — latest is v2.4.3, five releases behind) — `../sol-components`,
+- **sc — sol-components** (v3.0.0 on main: single-account uvdsl sign-in, and
+  bundles rdflib 2.4.1, solid-logic 6, solid-ui 5 in `dist/vendor/`, kept current by
+  Dependabot + `tests/core/vendor-current.test.js`; v2.9.1 on the `2.x` branch is
+  the 2.9.0 code plus DOMPurify 3.4.17 and two security fixes. Git TAGS lag —
+  latest is v2.4.3) — `../sol-components`,
   symlinked into `node_modules/`. ~40 `sol-*` web components (web/), Node tools
   (node/), shared core (core/). **dk loads the raw `web/*.js`** — a component
   edit needs only a reload, no build. dk's own `src/` does need `npm run build`.
-- **ci — component-interop** (v0.5.0, published on npm) — `../component-interop`,
+  solid-ui 5's ESM no longer sets `window.UI`; `core/solid-ui-global.js` does, for
+  sol-form. solid-logic 6 imports `@uvdsl/solid-oidc-client-browser/core`, so that
+  subpath is in sc's importmaps and in dk's two hand-written SolidOS host maps.
+- **ci — component-interop** (v0.5.4 locally, 0.5.3 on npm) — `../component-interop`,
   symlinked into `node_modules/`. Single-file zero-dep broker + loader.
 
 > Solid stack order is always foundational → higher-level:
@@ -626,7 +632,7 @@ state, so any step can be re-entered and re-opening an app just works.
   `~/solid/dk-pod/solidos-apps/{…}`.
 - **dk-solidos** (`plugins/solidos/`) — SolidOS via a thin same-origin iframe
   (`sol-solidos-host.html`, created by `dk-solidos.js`) running the fixed upstream
-  `<sol-solidos>` on mashlib 2.2.2; mash.css is scoped inside the iframe (zero leak).
+  `<sol-solidos>` on mashlib 3; mash.css is scoped inside the iframe (zero leak).
   **Folders MUST be fetched as turtle** (the server serves `/` as the app under
   text/html); the host's `GotoSubject` guard diverts `/index.html` to `/dk-pod/`
   (wormhole guard — 2026-07-26 it no longer diverts `/`: the forced-turtle
@@ -635,9 +641,14 @@ state, so any step can be re-entered and re-opening an app just works.
   shows a loading spinner until content renders.
   **Two catalog plugins (2026-07-26):** **SolidOS Local** (`:SolidOS-data-browser`,
   this embed pinned to the local pod, NO location bar) and **SolidOS Remote**
-  (`:SolidOS-remote`, a plain `ui:Link` to `unpkg.com/mashlib@2.2.2/dist/browse.html`
-  that opens in the persistent trusted-guest native view — its own untouched OIDC
-  login, for remote pods). The host page overlays the local OWNER as the logged-in
+  (`:SolidOS-remote`, a plain `ui:Link` to `solidos.github.io/mashlib/dist/browse.html`,
+  SolidOS's own latest build, that opens in the persistent trusted-guest native
+  view — its own untouched OIDC login, for remote pods). mashlib 3's npm build
+  fetches its on-demand pieces (the source-pane file editor) from the site top
+  (`/799.js`); the router serves any top-level non-HTML file that exists in
+  `node_modules/mashlib/dist` from there, so no list of chunk names is kept. The
+  unpkg copy has no such help, hence the GitHub Pages link (built with
+  `PUBLIC_PATH=/mashlib/dist/`). Dependabot keeps mashlib at latest. The host page overlays the local OWNER as the logged-in
   session (banner + panes render owner affordances; mashlib's own OIDC can never
   complete in the frame — localStorage shim + reseat guard). The location bar +
   `?bar=1` machinery still exists in `sol-solidos`/`dk-solidos` for any def that
