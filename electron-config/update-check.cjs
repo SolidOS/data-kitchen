@@ -46,16 +46,30 @@ function compareVersions(a, b) {
   return 0;
 }
 
-// The release asset for this platform, by the Solid_Data_Kitchen-<ver>-<platform>
-// naming convention. Returns the asset object or null.
-function pickAsset(assets, platform = process.platform) {
-  const suffix = {
-    linux: '-linux.AppImage',
-    darwin: '-mac-x64.zip',
-    win32: '-win-x64.zip',
+// The chip this machine has. An Intel (x64) build running on Apple Silicon
+// under Rosetta reports x64, so ask Electron whether it is being translated —
+// that copy should move to the native arm64 one.
+function hostArch() {
+  if (process.arch === 'arm64') return 'arm64';
+  return app && app.runningUnderARM64Translation ? 'arm64' : process.arch;
+}
+
+// The release asset for this platform and chip, by the
+// Solid_Data_Kitchen-<ver>-<platform> naming convention. Apple Silicon takes
+// the arm64 zip; an older release without one falls back to the x64 zip.
+// Returns the asset object or null.
+function pickAsset(assets, platform = process.platform, arch = hostArch()) {
+  const suffixes = {
+    linux: ['-linux.AppImage'],
+    darwin: arch === 'arm64' ? ['-mac-arm64.zip', '-mac-x64.zip'] : ['-mac-x64.zip'],
+    win32: ['-win-x64.zip'],
   }[platform];
-  if (!suffix) return null;
-  return (assets || []).find((a) => a && a.name && a.name.endsWith(suffix)) || null;
+  if (!suffixes) return null;
+  for (const suffix of suffixes) {
+    const hit = (assets || []).find((a) => a && a.name && a.name.endsWith(suffix));
+    if (hit) return hit;
+  }
+  return null;
 }
 
 // A release base may be given as a full URL. It must be https, since what
@@ -105,18 +119,23 @@ async function sha512Hex(file) {
   return h.digest('hex');
 }
 
-// The expected sha512 (hex) for this platform from the release's latest.json
+// The expected sha512 (hex) for this asset from the release's latest.json
 // asset — null when the release doesn't carry one (older releases).
-async function expectedSha512(release, platform, ua) {
+async function expectedSha512(release, assetName, ua) {
   const manifest = (release.assets || []).find((a) => a.name === 'latest.json');
   if (!manifest) return null;
   try {
     const m = await fetchJson(manifest.browser_download_url, ua);
-    const key = { linux: 'linux', darwin: 'mac', win32: 'win' }[platform];
-    return m?.files?.[key]?.sha512 || null;
+    return manifestSha512(m, assetName);
   } catch {
     return null;
   }
+}
+
+// latest.json's sha512 for the file of that name, whichever platform key holds it.
+function manifestSha512(manifest, assetName) {
+  const entry = Object.values(manifest?.files || {}).find((f) => f && f.name === assetName);
+  return entry?.sha512 || null;
 }
 
 async function checkForUpdates(baseWindow) {
@@ -165,7 +184,7 @@ async function checkForUpdates(baseWindow) {
 
     // No checksum, no install: an unverified binary is the one thing an
     // attacker who can answer for the release host would want us to run.
-    const want = await expectedSha512(release, process.platform, ua);
+    const want = await expectedSha512(release, asset.name, ua);
     if (!want) throw new Error('release carries no checksum — download discarded');
     const got = await sha512Hex(dest);
     if (got !== want) throw new Error('checksum mismatch — download discarded');
@@ -205,5 +224,5 @@ async function checkForUpdates(baseWindow) {
 module.exports = {
   checkForUpdates,
   // exported for unit tests
-  parseVersion, compareVersions, pickAsset, releasesLatestUrl,
+  parseVersion, compareVersions, pickAsset, manifestSha512, releasesLatestUrl,
 };

@@ -22,12 +22,13 @@ function scratchRepo(version = '9.9.9') {
   return dir;
 }
 
-// electron-builder's unpacked mac app, with one framework symlink — prep
-// re-zips from it and must keep the link.
-function macApp(rel) {
-  const fw = join(rel, 'mac', 'Solid Data Kitchen.app', 'Contents', 'Frameworks');
+// electron-builder's unpacked mac app (release/mac for Intel, release/mac-arm64
+// for Apple Silicon), with one framework symlink — prep re-zips from it and
+// must keep the link.
+function macApp(rel, dir = 'mac') {
+  const fw = join(rel, dir, 'Solid Data Kitchen.app', 'Contents', 'Frameworks');
   mkdirSync(fw, { recursive: true });
-  writeFileSync(join(fw, 'Current'), 'F');
+  writeFileSync(join(fw, 'Current'), dir);   // differs per build, so the zips do
   symlinkSync('Current', join(fw, 'Link'));
 }
 
@@ -49,39 +50,52 @@ test('prep normalizes stems, prunes intermediates, writes latest.json; check pas
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-linux-x86_64.AppImage'), 'L');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip'), EMPTY_ZIP);
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip.blockmap'), 'B');
+  writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-arm64.zip'), EMPTY_ZIP);
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-win-x64.zip'), 'W');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-android.apk'), 'A');
   writeFileSync(join(rel, 'builder-debug.yml'), 'junk');
-  writeFileSync(join(rel, 'latest-mac.yml'),
-    'url: Solid_Data_Kitchen-9.9.9-mac-x64.zip\nsha512: FAKEHASH==\nsize: 1\n');
+  writeFileSync(join(rel, 'latest-mac.yml'), [
+    'version: 9.9.9', 'files:',
+    '  - url: Solid_Data_Kitchen-9.9.9-mac-x64.zip', '    sha512: FAKEX64==', '    size: 1',
+    '  - url: Solid_Data_Kitchen-9.9.9-mac-arm64.zip', '    sha512: FAKEARM==', '    size: 2',
+    'path: Solid_Data_Kitchen-9.9.9-mac-x64.zip', 'sha512: FAKEX64==', '',
+  ].join('\n'));
   mkdirSync(join(rel, 'linux-unpacked'));
   macApp(rel);
+  macApp(rel, 'mac-arm64');
 
   const out = run(dir);
   assert.ok(existsSync(join(rel, 'Solid_Data_Kitchen-9.9.9-linux.AppImage')), 'linux stem normalized');
   assert.ok(!existsSync(join(rel, 'builder-debug.yml')), 'intermediates pruned');
   assert.ok(!existsSync(join(rel, 'linux-unpacked')), 'unpacked dir pruned');
   assert.ok(!existsSync(join(rel, 'mac')), 'unpacked mac app pruned');
+  assert.ok(!existsSync(join(rel, 'mac-arm64')), 'unpacked Apple Silicon app pruned');
 
-  // the mac zip was rebuilt from the .app and kept its symlink
-  assert.match(out, /re-zipped .* keeping the \.app's symlinks/);
-  assert.match(execFileSync('zipinfo', [join(rel, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip')],
-    { encoding: 'utf8' }), /^l.*Frameworks\/Link$/m);
-
-  // step 1.5 — the mac first-launch guide landed in the zip, yml follows
-  assert.match(out, /added READ ME FIRST\.txt/);
-  assert.match(execFileSync('unzip', ['-l', join(rel, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip')],
-    { encoding: 'utf8' }), /READ ME FIRST\.txt/);
+  // each mac zip was rebuilt from its .app, kept its symlink and got the
+  // first-launch guide (step 1.5)
+  for (const zip of ['Solid_Data_Kitchen-9.9.9-mac-x64.zip', 'Solid_Data_Kitchen-9.9.9-mac-arm64.zip']) {
+    assert.match(out, new RegExp(`re-zipped ${zip} keeping the \\.app's symlinks`));
+    assert.match(execFileSync('zipinfo', [join(rel, zip)], { encoding: 'utf8' }), /^l.*Frameworks\/Link$/m);
+    assert.match(execFileSync('unzip', ['-l', join(rel, zip)], { encoding: 'utf8' }), /READ ME FIRST\.txt/);
+  }
+  // latest-mac.yml: each zip's own sha512/size, the top-level pair follows the x64 one
   const yml = readFileSync(join(rel, 'latest-mac.yml'), 'utf8');
-  assert.ok(!yml.includes('FAKEHASH=='), 'latest-mac.yml sha512 refreshed');
-  assert.ok(!yml.includes('size: 1\n'), 'latest-mac.yml size refreshed');
+  assert.ok(!/FAKE(X64|ARM)==/.test(yml), 'latest-mac.yml sha512s refreshed');
+  assert.ok(!/size: [12]\n/.test(yml), 'latest-mac.yml sizes refreshed');
+  const hashes = [...yml.matchAll(/sha512: (\S+)/g)].map((x) => x[1]);
+  assert.equal(hashes.length, 3);
+  assert.notEqual(hashes[0], hashes[1], 'each zip keeps its own sha512');
+  assert.equal(hashes[2], hashes[0], 'top-level sha512 is the x64 zip\'s');
   const m = JSON.parse(readFileSync(join(rel, 'latest.json'), 'utf8'));
   assert.equal(m.version, '9.9.9');
-  for (const key of ['linux', 'mac', 'win', 'android']) {
+  assert.equal(m.files.mac.name, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip');
+  assert.equal(m.files['mac-arm64'].name, 'Solid_Data_Kitchen-9.9.9-mac-arm64.zip');
+  for (const key of ['linux', 'mac', 'mac-arm64', 'win', 'android']) {
     assert.ok(m.files[key].sha512.length === 128, `${key} sha512 hex present`);
     assert.ok(m.files[key].size > 0);
   }
   assert.match(out, /gh release create v9\.9\.9/);
+  assert.match(out, /release\/Solid_Data_Kitchen-9\.9\.9-mac-arm64\.zip/);
 
   // --check is green right after prep
   assert.match(run(dir, '--check'), /OK — release\/ is current/);
@@ -94,6 +108,7 @@ test('prep fails when the mac first-launch guide source is missing', () => {
   const rel = join(dir, 'release');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-linux.AppImage'), 'L');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip'), EMPTY_ZIP);
+  writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-arm64.zip'), EMPTY_ZIP);
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-win-x64.zip'), 'W');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-android.apk'), 'A');
   assert.throws(() => run(dir), /mac-first-open\.txt missing|Command failed|status 1/);
@@ -105,6 +120,7 @@ test('prep refuses a mac zip without symlinks when there is no .app to re-zip', 
   const rel = join(dir, 'release');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-linux.AppImage'), 'L');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip'), EMPTY_ZIP);
+  writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-arm64.zip'), EMPTY_ZIP);
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-win-x64.zip'), 'W');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-android.apk'), 'A');
   assert.throws(() => run(dir), /stores no symlinks|Command failed|status 1/);
@@ -115,11 +131,12 @@ test('check fails when an artifact is missing or latest.json is for another vers
   const dir = scratchRepo();
   const rel = join(dir, 'release');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-linux.AppImage'), 'L');
-  // missing mac/win/android → check must exit 1
+  // missing mac/mac-arm64/win/android → check must exit 1
   assert.throws(() => run(dir, '--check'), /STALE|Command failed|status 1/);
 
   // now complete the set but plant a stale manifest
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip'), 'M');
+  writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-arm64.zip'), 'M');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-win-x64.zip'), 'W');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-android.apk'), 'A');
   writeFileSync(join(rel, 'latest.json'), JSON.stringify({ version: '9.9.8', files: {} }));

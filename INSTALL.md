@@ -27,9 +27,15 @@ local pod. Any existing or new folder. You can change this later if needed.
 
 ## macOS
 
-1. Download
-   [Solid_Data_Kitchen-<version>-mac-x64.zip](https://github.com/SolidOS/data-kitchen/releases/download/v<version>/Solid_Data_Kitchen-<version>-mac-x64.zip),
-   unzip it, and drag **Solid Data Kitchen.app** into Applications
+1. Download the file for your Mac's chip. To check which chip you have,
+   open the Apple menu → **About This Mac**: "Chip: Apple M…" means Apple
+   Silicon, "Processor: … Intel" means Intel.
+   - **Apple Silicon (M1 and later):**
+     [Solid_Data_Kitchen-<version>-mac-arm64.zip](https://github.com/SolidOS/data-kitchen/releases/download/v<version>/Solid_Data_Kitchen-<version>-mac-arm64.zip)
+   - **Intel:**
+     [Solid_Data_Kitchen-<version>-mac-x64.zip](https://github.com/SolidOS/data-kitchen/releases/download/v<version>/Solid_Data_Kitchen-<version>-mac-x64.zip)
+
+   Unzip it, and drag **Solid Data Kitchen.app** into Applications
    (or run it from anywhere).
 2. The app is unsigned, so macOS blocks the first launch — that's
    expected, and the **READ ME FIRST.txt** beside the app in the zip has
@@ -44,11 +50,12 @@ local pod. Any existing or new folder. You can change this later if needed.
      `xattr -cr "/path/to/Solid Data Kitchen.app"`.
 
    macOS remembers the choice; later launches are normal double-clicks.
-3. On Apple Silicon (M-series) Macs the first launch may offer to
-   install Rosetta — accept; this Intel build runs fine under it.
-4. When a newer release exists, the app downloads it to your Downloads
-   folder, verifies it, and shows you where it is — quit and replace the
-   app to update.
+3. On an Apple Silicon Mac, use the Apple Silicon file. The Intel file
+   runs there only through Apple's Rosetta translation, which is too slow
+   for the app to start.
+4. When a newer release exists, the app downloads the file for your Mac's
+   chip to your Downloads folder, verifies it, and shows you where it is —
+   quit and replace the app to update.
 
 ## Windows
 

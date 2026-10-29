@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const { parseVersion, compareVersions, pickAsset, releasesLatestUrl } =
+const { parseVersion, compareVersions, pickAsset, manifestSha512, releasesLatestUrl } =
   require('../../electron-config/update-check.cjs');
 
 test('parseVersion handles clean, prefixed, and malformed legacy tags', () => {
@@ -43,6 +43,32 @@ test('pickAsset selects the platform artifact by naming convention', () => {
   assert.ok(!pickAsset(assets, 'darwin').name.endsWith('.blockmap'));
   assert.equal(pickAsset(assets, 'freebsd'), null);
   assert.equal(pickAsset([], 'linux'), null);
+});
+
+test('pickAsset gives Apple Silicon the arm64 zip, Intel the x64 one', () => {
+  const assets = [
+    { name: 'Solid_Data_Kitchen-2.5.0-mac-arm64.zip' },
+    { name: 'Solid_Data_Kitchen-2.5.0-mac-x64.zip' },
+    { name: 'Solid_Data_Kitchen-2.5.0-win-x64.zip' },
+  ];
+  assert.equal(pickAsset(assets, 'darwin', 'arm64').name, 'Solid_Data_Kitchen-2.5.0-mac-arm64.zip');
+  assert.equal(pickAsset(assets, 'darwin', 'x64').name, 'Solid_Data_Kitchen-2.5.0-mac-x64.zip');
+  // the Windows pick does not change with the chip
+  assert.equal(pickAsset(assets, 'win32', 'arm64').name, 'Solid_Data_Kitchen-2.5.0-win-x64.zip');
+  // an older release with only the x64 zip still gives Apple Silicon that one
+  const old = [{ name: 'Solid_Data_Kitchen-2.2.0-mac-x64.zip' }];
+  assert.equal(pickAsset(old, 'darwin', 'arm64').name, 'Solid_Data_Kitchen-2.2.0-mac-x64.zip');
+});
+
+test('manifestSha512 finds the checksum by file name, whichever key holds it', () => {
+  const m = { files: {
+    mac: { name: 'Solid_Data_Kitchen-2.5.0-mac-x64.zip', sha512: 'aaa' },
+    'mac-arm64': { name: 'Solid_Data_Kitchen-2.5.0-mac-arm64.zip', sha512: 'bbb' },
+  } };
+  assert.equal(manifestSha512(m, 'Solid_Data_Kitchen-2.5.0-mac-arm64.zip'), 'bbb');
+  assert.equal(manifestSha512(m, 'Solid_Data_Kitchen-2.5.0-mac-x64.zip'), 'aaa');
+  assert.equal(manifestSha512(m, 'Solid_Data_Kitchen-2.5.0-win-x64.zip'), null);
+  assert.equal(manifestSha512(null, 'x'), null);
 });
 
 test('releasesLatestUrl: owner/repo → GitHub API; http base → mock passthrough', () => {

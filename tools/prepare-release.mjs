@@ -4,21 +4,23 @@
 //   node tools/prepare-release.mjs --check    verify only (exit 1 when stale)
 //
 // For the CURRENT package.json version this script:
-//   1. finds the four user-download artifacts in release/ and normalizes their
+//   1. finds the five user-download artifacts in release/ and normalizes their
 //      names to the convention  Solid_Data_Kitchen-<ver>-<platform>.<ext>
 //      (electron-builder emits arch-suffixed stems for some targets — e.g.
-//      -linux-x86_64.AppImage — which we strip; mac/win keep their -x64);
-//      a renamed mac zip also renames its .blockmap and rewrites latest-mac.yml
-//      in lockstep;
-//   1.5 injects "READ ME FIRST.txt" (tools/mac-first-open.txt — the
-//      Gatekeeper first-launch guide for the unsigned app) into the mac zip
-//      and refreshes latest-mac.yml's sha512/size;
+//      -linux-x86_64.AppImage — which we strip; mac/win keep their -x64, the
+//      Apple Silicon zip its -arm64); a renamed mac zip also renames its
+//      .blockmap and rewrites latest-mac.yml in lockstep;
+//   1.5 re-zips each mac .app keeping its symlinks, injects "READ ME
+//      FIRST.txt" (tools/mac-first-open.txt — the Gatekeeper first-launch
+//      guide for the unsigned app) into each mac zip and refreshes that
+//      zip's sha512/size in latest-mac.yml;
 //   2. prunes electron-builder intermediates (unpacked dirs, nsis.7z,
 //      builder-debug.yml, a stray data-kitchen-home/) so release/ holds ONLY
 //      user downloads + updater metadata;
-//   3. writes release/latest.json — { version, date, files: { linux|mac|win|
-//      android: { name, size, sha512 } } } (hex sha512; the updater's
-//      checksum source);
+//   3. writes release/latest.json — { version, date, files: { linux|mac|
+//      mac-arm64|win|android: { name, size, sha512 } } } (hex sha512; the
+//      updater's checksum source; "mac" is the Intel zip, as older updaters
+//      expect);
 //   4. prints the gh release create command to publish — NOT run here:
 //      publishing is always an explicit, separate action.
 //
@@ -42,13 +44,16 @@ const stem = `Solid_Data_Kitchen-${version}`;
 
 // platform key → { canonical name, patterns electron-builder may emit }
 const PLATFORMS = {
-  linux:   { name: `${stem}-linux.AppImage`, alt: new RegExp(`^${stem}-linux(-[\\w_]+)?\\.AppImage$`) },
-  mac:     { name: `${stem}-mac-x64.zip`,    alt: new RegExp(`^${stem}-mac(-[\\w_]+)?\\.zip$`) },
-  win:     { name: `${stem}-win-x64.zip`,    alt: new RegExp(`^${stem}-win(-[\\w_]+)?\\.zip$`) },
-  android: { name: `${stem}-android.apk`,    alt: new RegExp(`^${stem}(-[\\w_]+)?\\.apk$`) },
+  linux:       { name: `${stem}-linux.AppImage`,  alt: new RegExp(`^${stem}-linux(-[\\w_]+)?\\.AppImage$`) },
+  mac:         { name: `${stem}-mac-x64.zip`,     alt: new RegExp(`^${stem}-mac(-x64)?\\.zip$`) },
+  'mac-arm64': { name: `${stem}-mac-arm64.zip`,   alt: new RegExp(`^${stem}-mac-arm64\\.zip$`) },
+  win:         { name: `${stem}-win-x64.zip`,     alt: new RegExp(`^${stem}-win(-[\\w_]+)?\\.zip$`) },
+  android:     { name: `${stem}-android.apk`,     alt: new RegExp(`^${stem}(-[\\w_]+)?\\.apk$`) },
 };
+// mac platform key → the folder electron-builder unpacks that .app into
+const MAC_DIRS = { mac: 'mac', 'mac-arm64': 'mac-arm64' };
 
-const PRUNE = [/-unpacked$/, /^mac$/, /\.nsis\.7z$/, /^builder-debug\.yml$/,
+const PRUNE = [/-unpacked$/, /^mac(-arm64)?$/, /\.nsis\.7z$/, /^builder-debug\.yml$/,
                /^data-kitchen-home$/, /\.(deb|rpm|dmg|exe)\.blockmap$/];
 
 function fail(msg) { console.error(`[release] STALE: ${msg}`); process.exit(1); }
@@ -98,7 +103,7 @@ for (const [key, p] of Object.entries(PLATFORMS)) {
       renameSync(join(releaseDir, `${f}.blockmap`), join(releaseDir, `${p.name}.blockmap`));
     }
     const yml = join(releaseDir, 'latest-mac.yml');
-    if (key === 'mac' && existsSync(yml)) {
+    if (key in MAC_DIRS && existsSync(yml)) {
       writeFileSync(yml, readFileSync(yml, 'utf8').replaceAll(f, p.name));
     }
     console.log(`[release] renamed ${f} → ${p.name}`);
@@ -106,8 +111,19 @@ for (const [key, p] of Object.entries(PLATFORMS)) {
   }
   found[key] = f;
 }
-if (checkOnly && !macZipKeepsLinks(join(releaseDir, found.mac))) {
-  fail(`${found.mac} stores no symlinks — its app cannot start on a Mac`);
+for (const key of Object.keys(MAC_DIRS)) {
+  if (checkOnly && !macZipKeepsLinks(join(releaseDir, found[key]))) {
+    fail(`${found[key]} stores no symlinks — its app cannot start on a Mac`);
+  }
+}
+
+// latest-mac.yml lists each mac zip with its own sha512/size (and the first
+// one again as path/sha512); set those for one file, leaving the others alone.
+function setMacYmlEntry(text, file, b64, size) {
+  const esc = file.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  text = text.replace(new RegExp(`(url: ${esc}\\n\\s*sha512: )\\S+(\\n\\s*size: )\\d+`), `$1${b64}$2${size}`);
+  if (new RegExp(`^path: ${esc}$`, 'm').test(text)) text = text.replace(/^sha512: \S+$/m, `sha512: ${b64}`);
+  return text;
 }
 
 // ── 1.5 mac zip: ship the first-launch guide next to the .app ───────────────
@@ -122,33 +138,35 @@ if (checkOnly && !macZipKeepsLinks(join(releaseDir, found.mac))) {
 if (!checkOnly) {
   const readmeSrc = join(root, 'tools', 'mac-first-open.txt');
   if (!existsSync(readmeSrc)) fail('tools/mac-first-open.txt missing — cannot ship the mac first-launch guide');
-  const macZip = join(releaseDir, found.mac);
-  // electron-builder 26 zips with a 7-Zip that follows symlinks, which flattens
-  // the .app's frameworks. Re-zip from the unpacked .app with `zip -y`, which
-  // stores links as links.
   const appName = `${pkg.build.productName}.app`;
-  if (existsSync(join(releaseDir, 'mac', appName))) {
-    rmSync(macZip, { force: true });
-    const z = spawnSync('zip', ['-qry', '-X', macZip, appName], { cwd: join(releaseDir, 'mac'), stdio: 'inherit' });
-    if (z.status !== 0) fail(`could not re-zip ${found.mac} (is \`zip\` installed?)`);
-    console.log(`[release] re-zipped ${found.mac} keeping the .app's symlinks`);
-  }
-  if (!macZipKeepsLinks(macZip)) {
-    fail(`${found.mac} stores no symlinks and release/mac is gone — rebuild it with \`npx electron-builder --mac dir --x64\`, then re-run`);
-  }
-  const staging = mkdtempSync(join(tmpdir(), 'dk-mac-readme-'));
-  copyFileSync(readmeSrc, join(staging, 'READ ME FIRST.txt'));
-  const r = spawnSync('zip', ['-X', macZip, 'READ ME FIRST.txt'], { cwd: staging, stdio: 'inherit' });
-  rmSync(staging, { recursive: true, force: true });
-  if (r.status !== 0) fail(`could not add READ ME FIRST.txt to ${found.mac} (is \`zip\` installed?)`);
-  console.log(`[release] added READ ME FIRST.txt to ${found.mac}`);
-  const yml = join(releaseDir, 'latest-mac.yml');
-  if (existsSync(yml)) {
-    const b64 = await sha512(macZip, 'base64');
-    writeFileSync(yml, readFileSync(yml, 'utf8')
-      .replace(/sha512: \S+/g, `sha512: ${b64}`)
-      .replace(/size: \d+/, `size: ${statSync(macZip).size}`));
-    console.log('[release] latest-mac.yml sha512/size updated for the modified zip');
+  for (const [key, dir] of Object.entries(MAC_DIRS)) {
+    const file = found[key];
+    const macZip = join(releaseDir, file);
+    // electron-builder 26 zips with a 7-Zip that follows symlinks, which flattens
+    // the .app's frameworks. Re-zip from the unpacked .app with `zip -y`, which
+    // stores links as links.
+    if (existsSync(join(releaseDir, dir, appName))) {
+      rmSync(macZip, { force: true });
+      const z = spawnSync('zip', ['-qry', '-X', macZip, appName], { cwd: join(releaseDir, dir), stdio: 'inherit' });
+      if (z.status !== 0) fail(`could not re-zip ${file} (is \`zip\` installed?)`);
+      console.log(`[release] re-zipped ${file} keeping the .app's symlinks`);
+    }
+    if (!macZipKeepsLinks(macZip)) {
+      const arch = key === 'mac-arm64' ? 'arm64' : 'x64';
+      fail(`${file} stores no symlinks and release/${dir} is gone — rebuild it with \`npx electron-builder --mac dir --${arch}\`, then re-run`);
+    }
+    const staging = mkdtempSync(join(tmpdir(), 'dk-mac-readme-'));
+    copyFileSync(readmeSrc, join(staging, 'READ ME FIRST.txt'));
+    const r = spawnSync('zip', ['-X', macZip, 'READ ME FIRST.txt'], { cwd: staging, stdio: 'inherit' });
+    rmSync(staging, { recursive: true, force: true });
+    if (r.status !== 0) fail(`could not add READ ME FIRST.txt to ${file} (is \`zip\` installed?)`);
+    console.log(`[release] added READ ME FIRST.txt to ${file}`);
+    const yml = join(releaseDir, 'latest-mac.yml');
+    if (existsSync(yml)) {
+      const b64 = await sha512(macZip, 'base64');
+      writeFileSync(yml, setMacYmlEntry(readFileSync(yml, 'utf8'), file, b64, statSync(macZip).size));
+      console.log(`[release] latest-mac.yml sha512/size updated for ${file}`);
+    }
   }
 }
 
@@ -208,6 +226,7 @@ To publish (explicit step — run it yourself when ready):
 
   gh release create v${version} \\
     release/${PLATFORMS.linux.name} release/${PLATFORMS.mac.name} \\
+    release/${PLATFORMS['mac-arm64'].name} \\
     release/${PLATFORMS.win.name} release/${PLATFORMS.android.name} \\
     release/latest.json \\
     --repo SolidOS/data-kitchen --title "v${version}" --notes-file release/RELEASE_NOTES.md

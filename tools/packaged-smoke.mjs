@@ -121,47 +121,51 @@ if (!MAC_APP && !WIN_APP) {
 // release:prep prune; when it's absent the mac build simply wasn't (re)built,
 // which deserves a loud warning, not a fail. In SMOKE_MAC_APP mode the .app
 // was named explicitly, so missing IS a failure.
-const macApp = MAC_APP || join(root, 'release', 'mac', `${pkg.build.productName}.app`);
-if (WIN_APP) {
-  // windows-artifact mode — the mac tree is not on this runner
-} else if (!existsSync(macApp)) {
-  if (MAC_APP) fail(`SMOKE_MAC_APP points at ${macApp} but it does not exist`);
-  console.warn(`[smoke] WARNING: ${macApp} missing — mac checks SKIPPED (run dist:cross to re-verify the mac build)`);
-} else {
-  const macAppDir = join(macApp, 'Contents', 'Resources', 'app');
-  const macMissing = REQUIRED.filter((r) => !existsSync(join(macAppDir, r)));
-  if (macMissing.length) fail(`mac .app is missing:\n  ${macMissing.join('\n  ')}\n→ check build.files in package.json`);
-  ok(`mac: all ${REQUIRED.length} boot-critical files present in the .app`);
+// Locally both builds are checked: release/mac (Intel) and release/mac-arm64
+// (Apple Silicon).
+const macApps = MAC_APP ? [[MAC_APP, 'mac']]
+  : [['mac', 'mac'], ['mac-arm64', 'mac-arm64']]
+    .map(([dir, label]) => [join(root, 'release', dir, `${pkg.build.productName}.app`), label]);
+for (const [macApp, label] of WIN_APP ? [] : macApps) {
+  if (!existsSync(macApp)) {
+    if (MAC_APP) fail(`SMOKE_MAC_APP points at ${macApp} but it does not exist`);
+    console.warn(`[smoke] WARNING: ${macApp} missing — mac checks SKIPPED (run dist:cross to re-verify the mac build)`);
+  } else {
+    const macAppDir = join(macApp, 'Contents', 'Resources', 'app');
+    const macMissing = REQUIRED.filter((r) => !existsSync(join(macAppDir, r)));
+    if (macMissing.length) fail(`${label} .app is missing:\n  ${macMissing.join('\n  ')}\n→ check build.files in package.json`);
+    ok(`${label}: all ${REQUIRED.length} boot-critical files present in the .app`);
 
-  // extraResources — the linux BOOT test covers this implicitly; mac never boots
-  // here, so assert the CSS install landed where servers.cjs expects it.
-  const cssPkg = join(macAppDir, 'pivot', 'node_modules', '@solid', 'community-server', 'package.json');
-  if (!existsSync(cssPkg)) fail('mac .app has no pivot/node_modules — extraResources did not land');
-  ok('mac: pivot/node_modules (extraResources) present');
+    // extraResources — the linux BOOT test covers this implicitly; mac never boots
+    // here, so assert the CSS install landed where servers.cjs expects it.
+    const cssPkg = join(macAppDir, 'pivot', 'node_modules', '@solid', 'community-server', 'package.json');
+    if (!existsSync(cssPkg)) fail(`${label} .app has no pivot/node_modules — extraResources did not land`);
+    ok(`${label}: pivot/node_modules (extraResources) present`);
 
-  // The launchable binary must exist and be executable — a zip/copy step that
-  // drops mode bits produces an .app that finder refuses to open.
-  const macBin = join(macApp, 'Contents', 'MacOS', pkg.build.productName);
-  if (!existsSync(macBin)) fail(`mac .app has no Contents/MacOS/${pkg.build.productName} binary`);
-  if (!(statSync(macBin).mode & 0o111)) fail('mac main binary is not executable — mode bits were lost');
-  ok('mac: main binary present and executable');
+    // The launchable binary must exist and be executable — a zip/copy step that
+    // drops mode bits produces an .app that finder refuses to open.
+    const macBin = join(macApp, 'Contents', 'MacOS', pkg.build.productName);
+    if (!existsSync(macBin)) fail(`${label} .app has no Contents/MacOS/${pkg.build.productName} binary`);
+    if (!(statSync(macBin).mode & 0o111)) fail(`${label} main binary is not executable — mode bits were lost`);
+    ok(`${label}: main binary present and executable`);
 
-  // Framework symlinks (Versions/A indirection) must survive as REAL symlinks —
-  // a copy that materializes or drops them yields a corrupt bundle after unzip.
-  const fwLink = join(macApp, 'Contents', 'Frameworks',
-    'Electron Framework.framework', 'Electron Framework');
-  if (!existsSync(fwLink)) fail('Electron Framework symlink is missing or dangling in the mac .app');
-  if (!lstatSync(fwLink).isSymbolicLink()) fail('Electron Framework is not a symlink — bundle structure was flattened');
-  ok('mac: framework symlinks intact');
+    // Framework symlinks (Versions/A indirection) must survive as REAL symlinks —
+    // a copy that materializes or drops them yields a corrupt bundle after unzip.
+    const fwLink = join(macApp, 'Contents', 'Frameworks',
+      'Electron Framework.framework', 'Electron Framework');
+    if (!existsSync(fwLink)) fail(`Electron Framework symlink is missing or dangling in the ${label} .app`);
+    if (!lstatSync(fwLink).isSymbolicLink()) fail(`${label}: Electron Framework is not a symlink — bundle structure was flattened`);
+    ok(`${label}: framework symlinks intact`);
 
-  // Version stamp — a stale release/mac/ from a previous build otherwise
-  // passes every file check and ships the WRONG app.
-  const expectVersion = process.env.SMOKE_EXPECT_VERSION || pkg.version;
-  const plist = readFileSync(join(macApp, 'Contents', 'Info.plist'), 'utf8');
-  const m = plist.match(/<key>CFBundleShortVersionString<\/key>\s*<string>([^<]+)<\/string>/);
-  if (!m) fail('mac Info.plist has no CFBundleShortVersionString');
-  if (m[1] !== expectVersion) fail(`mac .app is v${m[1]}, expected v${expectVersion} — stale build/artifact`);
-  ok(`mac: Info.plist version ${m[1]} matches expected v${expectVersion}`);
+    // Version stamp — a stale release/mac/ from a previous build otherwise
+    // passes every file check and ships the WRONG app.
+    const expectVersion = process.env.SMOKE_EXPECT_VERSION || pkg.version;
+    const plist = readFileSync(join(macApp, 'Contents', 'Info.plist'), 'utf8');
+    const m = plist.match(/<key>CFBundleShortVersionString<\/key>\s*<string>([^<]+)<\/string>/);
+    if (!m) fail(`${label} Info.plist has no CFBundleShortVersionString`);
+    if (m[1] !== expectVersion) fail(`${label} .app is v${m[1]}, expected v${expectVersion} — stale build/artifact`);
+    ok(`${label}: Info.plist version ${m[1]} matches expected v${expectVersion}`);
+  }
 }
 
 // ── 1c. win static: same holes against the win tree ─────────────────────────
@@ -205,7 +209,7 @@ if (process.env.SKIP_BOOT === '1') { console.log('[smoke] SKIP_BOOT=1 — boot t
 // SMOKE_MAC_APP mode: the bundle's Contents/MacOS/<productName> binary.
 const appName = pkg.name;
 const bin = MAC_APP
-  ? join(macApp, 'Contents', 'MacOS', pkg.build.productName)
+  ? join(MAC_APP, 'Contents', 'MacOS', pkg.build.productName)
   : WIN_APP
     ? join(winDir, `${pkg.build.productName}.exe`)
     : [appName, appName.toLowerCase()].map((n) => join(unpacked, n)).find((f) => existsSync(f));

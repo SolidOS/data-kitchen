@@ -36,11 +36,14 @@ flag in Terminal:
 Tip: type  xattr -cr  followed by a space, then drag the app icon
 into the Terminal window to fill in the path, and press Return.
 
-Apple Silicon (M1/M2/M3/M4) Macs
---------------------------------
-This build is Intel (x64). The first launch may offer to install
-Rosetta - accept, it's a quick one-time Apple download and the app
-runs fine under it.
+Apple Silicon or Intel
+----------------------
+There are two Mac downloads: the one ending -mac-arm64.zip is for
+Apple Silicon Macs (M1 and later), the one ending -mac-x64.zip is for
+Intel Macs. To check which you have, open the Apple menu > About This
+Mac: "Chip: Apple M..." means Apple Silicon. The Intel download runs
+on an Apple Silicon Mac only through Rosetta, which is too slow for
+the app to start - use the Apple Silicon one there.
 
 What the app does on your machine
 ---------------------------------

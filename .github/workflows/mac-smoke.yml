@@ -7,6 +7,12 @@
 # same static file checks as the local gate, then a real boot against a
 # throwaway pod home — seed plants files, WebID card exists, app page loads,
 # router answers.
+#
+# A release carries two mac zips: -mac-arm64 (Apple Silicon) and -mac-x64
+# (Intel). The runner is Apple Silicon, so it boots the arm64 one natively;
+# the x64 one gets the static checks only, since under Rosetta it is too slow
+# to start (2026-10-28) and no Intel runner is used. A release from before the
+# arm64 zip existed boots its x64 zip, as this check always did.
 name: mac-smoke
 
 on:
@@ -21,16 +27,15 @@ on:
 
 jobs:
   boot:
-    # Apple Silicon — the x64 app runs under Rosetta here, same as real users.
     runs-on: macos-14
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4        # for tools/packaged-smoke.mjs + package.json
       - uses: actions/setup-node@v4
         with:
           node-version: 24
 
-      - name: Download the release's mac zip
+      - name: Download the release's mac zips
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -41,17 +46,34 @@ jobs:
           echo "testing release $TAG"
           echo "TAG=$TAG" >> "$GITHUB_ENV"
           gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
-            --pattern '*-mac-x64.zip' --dir "$RUNNER_TEMP/dk"
+            --pattern '*-mac-*.zip' --dir "$RUNNER_TEMP/dk"
+          ls -l "$RUNNER_TEMP/dk"
 
       - name: Unzip like a user
         run: |
-          ditto -x -k "$RUNNER_TEMP"/dk/*-mac-x64.zip "$RUNNER_TEMP/dk/unzipped"
-          xattr -cr "$RUNNER_TEMP/dk/unzipped" || true
+          for zip in "$RUNNER_TEMP"/dk/*-mac-*.zip; do
+            arch=$(basename "$zip" .zip | sed 's/.*-mac-//')
+            ditto -x -k "$zip" "$RUNNER_TEMP/dk/unzipped-$arch"
+            xattr -cr "$RUNNER_TEMP/dk/unzipped-$arch" || true
+          done
+          # the app this runner boots: Apple Silicon when the release has it
+          if [ -d "$RUNNER_TEMP/dk/unzipped-arm64" ]; then BOOT=arm64; else BOOT=x64; fi
+          echo "BOOT_APP=$RUNNER_TEMP/dk/unzipped-$BOOT/Solid Data Kitchen.app" >> "$GITHUB_ENV"
+          echo "booting the $BOOT app"
 
       - name: Static checks + boot the packaged app
         run: |
-          SMOKE_EXPECT_VERSION="${TAG#v}" \
-          SMOKE_MAC_APP="$RUNNER_TEMP/dk/unzipped/Solid Data Kitchen.app" \
+          SMOKE_EXPECT_VERSION="${TAG#v}" SMOKE_MAC_APP="$BOOT_APP" \
+          node tools/packaged-smoke.mjs
+
+      - name: Static checks of the Intel app
+        if: always()
+        run: |
+          if [ ! -d "$RUNNER_TEMP/dk/unzipped-arm64" ]; then
+            echo "no Apple Silicon zip in $TAG — its Intel app was the one booted above"; exit 0
+          fi
+          SKIP_BOOT=1 SMOKE_EXPECT_VERSION="${TAG#v}" \
+          SMOKE_MAC_APP="$RUNNER_TEMP/dk/unzipped-x64/Solid Data Kitchen.app" \
           node tools/packaged-smoke.mjs
 
       # Video-playback probe (the 2026-07-16 "videos do not play on macOS"
@@ -67,31 +89,30 @@ jobs:
             lsof -nP -iTCP:18400 -iTCP:18410 -iTCP:18401 -sTCP:LISTEN >/dev/null 2>&1 || break
             sleep 2
           done
-          SMOKE_EXPECT_VERSION="${TAG#v}" \
-          SMOKE_MAC_APP="$RUNNER_TEMP/dk/unzipped/Solid Data Kitchen.app" \
+          SMOKE_EXPECT_VERSION="${TAG#v}" SMOKE_MAC_APP="$BOOT_APP" \
           SMOKE_VIDEO=1 DRIVE_MOVIES=1 \
           node tools/packaged-smoke.mjs
 
       # Server startup timing, pass or fail (2026-10-28: 2.4.0's bundled server
-      # quit at startup here on a 6 s lock while starting in under 2 s on
-      # Linux). Starts the .app's own server on a fresh pod twice: with the
-      # app's binary (x64 under Rosetta, as users run it) and with this
-      # runner's native arm64 node, so a Rosetta slowdown shows as the gap
-      # between the two. Informational — the boot step above is the verdict.
+      # quit at startup here on a 6 s lock under Rosetta while starting in
+      # 0.4 s natively). Starts each .app's own server on a fresh pod with the
+      # app's own binary, then the booted app's server with this runner's
+      # native node. Informational — the boot step above is the verdict.
       - name: Server startup timing
         if: always()
         run: |
-          APP="$RUNNER_TEMP/dk/unzipped/Solid Data Kitchen.app"
-          PIVOT="$APP/Contents/Resources/app/pivot"
-          echo "::group::app binary (x64, Rosetta)"
-          ELECTRON_RUN_AS_NODE=1 PROBE_PORT=18555 \
-            "$APP/Contents/MacOS/Solid Data Kitchen" tools/server-timing-probe.cjs "$PIVOT" || true
-          echo "::endgroup::"
-          echo "::group::runner node (arm64)"
-          PROBE_PORT=18556 node tools/server-timing-probe.cjs "$PIVOT" || true
+          for APP in "$RUNNER_TEMP"/dk/unzipped-*/"Solid Data Kitchen.app"; do
+            echo "::group::$(basename "$(dirname "$APP")") app binary"
+            ELECTRON_RUN_AS_NODE=1 PROBE_PORT=18555 \
+              "$APP/Contents/MacOS/Solid Data Kitchen" tools/server-timing-probe.cjs "$APP/Contents/Resources/app/pivot" || true
+            echo "::endgroup::"
+          done
+          echo "::group::runner node ($(uname -m))"
+          PROBE_PORT=18556 node tools/server-timing-probe.cjs "$BOOT_APP/Contents/Resources/app/pivot" || true
           echo "::endgroup::"
           echo "--- summary ---"
-          ELECTRON_RUN_AS_NODE=1 PROBE_PORT=18557 PROBE_LOG_LEVEL=warn \
-            "$APP/Contents/MacOS/Solid Data Kitchen" tools/server-timing-probe.cjs "$PIVOT" 2>&1 | grep '\[probe\]' || true
-          PROBE_PORT=18558 PROBE_LOG_LEVEL=warn \
-            node tools/server-timing-probe.cjs "$PIVOT" 2>&1 | grep '\[probe\]' || true
+          for APP in "$RUNNER_TEMP"/dk/unzipped-*/"Solid Data Kitchen.app"; do
+            ELECTRON_RUN_AS_NODE=1 PROBE_PORT=18557 PROBE_LOG_LEVEL=warn \
+              "$APP/Contents/MacOS/Solid Data Kitchen" tools/server-timing-probe.cjs "$APP/Contents/Resources/app/pivot" 2>&1 \
+              | grep -E '\[probe\].*(runtime|server is up|server failed|still not up)' || true
+          done

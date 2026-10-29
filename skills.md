@@ -1132,8 +1132,20 @@ retired `sol-full`).
      Contents/MacOS *inside* it → pod died with every "replace the app"
      update, and translocated bundles are read-only), and window-all-closed
      quits on every platform (no activate handler → mac dock zombie).
-  Next rungs when wanted: ad-hoc signing via `rcodesign` (works on linux, no
-  Apple account; prerequisite for an arm64 zip), then notarization ($99/yr).
+  Next rung when wanted: notarization ($99/yr).
+- **Apple Silicon zip (2026-10-28):** 2.4.0's x64 zip could not start on
+  Apple Silicon — under Rosetta the bundled server took ~30 s to start (0.4 s
+  natively; `tools/server-timing-probe.cjs`, now a mac-smoke step) and its
+  6 s `v6-migration` lock expired. Releases now carry `-mac-arm64.zip` beside
+  `-mac-x64.zip` (`dist:cross` builds both; release:prep re-zips both, keeping
+  symlinks; latest.json key `mac-arm64`, while `mac` stays the x64 zip that
+  older updaters look up). The update check gives an Apple Silicon Mac the
+  arm64 zip, also when it runs the x64 copy (`app.runningUnderARM64Translation`).
+  No signing step is needed: Electron's arm64 binaries are linker-signed
+  ad-hoc with no Info.plist slot, so electron-builder's renames keep them
+  valid. mac-smoke boots the arm64 zip natively and gives the x64 one static
+  checks only (no Intel runner). Old updaters (2.4.0 and before) still offer
+  an Apple Silicon Mac the x64 zip.
 - **win-smoke + android-smoke workflows (2026-07-20):** mac-smoke's siblings,
   both on release publish + manual dispatch. `win-smoke.yml` (windows-latest):
   `SMOKE_WIN_APP=<unzipped zip dir>` mode in packaged-smoke.mjs — REQUIRED

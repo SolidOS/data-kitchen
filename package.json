@@ -29,7 +29,7 @@
     "test:e2e": "node test/e2e/run.mjs",
     "test:mobile": "node --test \"mobile/test/node/**/*.test.mjs\"",
     "dist": "electron-builder",
-    "dist:cross": "electron-builder --linux AppImage --mac zip --win zip",
+    "dist:cross": "electron-builder --linux AppImage --win zip && electron-builder --mac zip --x64 --arm64",
     "dist:web": "node --preserve-symlinks tools/build-web.mjs",
     "dist:netlify": "node --preserve-symlinks tools/build-netlify.mjs",
     "serve:web": "node tools/serve-static.mjs",
