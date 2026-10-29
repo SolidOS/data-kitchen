@@ -5,7 +5,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, mkdirSync, writeFileSync, cpSync, readFileSync, existsSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, cpSync, readFileSync, existsSync, rmSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -18,8 +18,17 @@ function scratchRepo(version = '9.9.9') {
   mkdirSync(join(dir, 'release'));
   cpSync(join(repoRoot, 'tools', 'prepare-release.mjs'), join(dir, 'tools', 'prepare-release.mjs'));
   cpSync(join(repoRoot, 'tools', 'mac-first-open.txt'), join(dir, 'tools', 'mac-first-open.txt'));
-  writeFileSync(join(dir, 'package.json'), JSON.stringify({ version }));
+  writeFileSync(join(dir, 'package.json'), JSON.stringify({ version, build: { productName: 'Solid Data Kitchen' } }));
   return dir;
+}
+
+// electron-builder's unpacked mac app, with one framework symlink — prep
+// re-zips from it and must keep the link.
+function macApp(rel) {
+  const fw = join(rel, 'mac', 'Solid Data Kitchen.app', 'Contents', 'Frameworks');
+  mkdirSync(fw, { recursive: true });
+  writeFileSync(join(fw, 'Current'), 'F');
+  symlinkSync('Current', join(fw, 'Link'));
 }
 
 // A minimal VALID (empty) zip — bare end-of-central-directory record. Step 1.5
@@ -46,11 +55,18 @@ test('prep normalizes stems, prunes intermediates, writes latest.json; check pas
   writeFileSync(join(rel, 'latest-mac.yml'),
     'url: Solid_Data_Kitchen-9.9.9-mac-x64.zip\nsha512: FAKEHASH==\nsize: 1\n');
   mkdirSync(join(rel, 'linux-unpacked'));
+  macApp(rel);
 
   const out = run(dir);
   assert.ok(existsSync(join(rel, 'Solid_Data_Kitchen-9.9.9-linux.AppImage')), 'linux stem normalized');
   assert.ok(!existsSync(join(rel, 'builder-debug.yml')), 'intermediates pruned');
   assert.ok(!existsSync(join(rel, 'linux-unpacked')), 'unpacked dir pruned');
+  assert.ok(!existsSync(join(rel, 'mac')), 'unpacked mac app pruned');
+
+  // the mac zip was rebuilt from the .app and kept its symlink
+  assert.match(out, /re-zipped .* keeping the \.app's symlinks/);
+  assert.match(execFileSync('zipinfo', [join(rel, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip')],
+    { encoding: 'utf8' }), /^l.*Frameworks\/Link$/m);
 
   // step 1.5 — the mac first-launch guide landed in the zip, yml follows
   assert.match(out, /added READ ME FIRST\.txt/);
@@ -81,6 +97,17 @@ test('prep fails when the mac first-launch guide source is missing', () => {
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-win-x64.zip'), 'W');
   writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-android.apk'), 'A');
   assert.throws(() => run(dir), /mac-first-open\.txt missing|Command failed|status 1/);
+  rmSync(dir, { recursive: true, force: true });
+});
+
+test('prep refuses a mac zip without symlinks when there is no .app to re-zip', () => {
+  const dir = scratchRepo();
+  const rel = join(dir, 'release');
+  writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-linux.AppImage'), 'L');
+  writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-mac-x64.zip'), EMPTY_ZIP);
+  writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-win-x64.zip'), 'W');
+  writeFileSync(join(rel, 'Solid_Data_Kitchen-9.9.9-android.apk'), 'A');
+  assert.throws(() => run(dir), /stores no symlinks|Command failed|status 1/);
   rmSync(dir, { recursive: true, force: true });
 });
 
