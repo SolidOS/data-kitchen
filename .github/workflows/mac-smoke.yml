@@ -71,3 +71,27 @@ jobs:
           SMOKE_MAC_APP="$RUNNER_TEMP/dk/unzipped/Solid Data Kitchen.app" \
           SMOKE_VIDEO=1 DRIVE_MOVIES=1 \
           node tools/packaged-smoke.mjs
+
+      # Server startup timing, pass or fail (2026-10-28: 2.4.0's bundled server
+      # quit at startup here on a 6 s lock while starting in under 2 s on
+      # Linux). Starts the .app's own server on a fresh pod twice: with the
+      # app's binary (x64 under Rosetta, as users run it) and with this
+      # runner's native arm64 node, so a Rosetta slowdown shows as the gap
+      # between the two. Informational — the boot step above is the verdict.
+      - name: Server startup timing
+        if: always()
+        run: |
+          APP="$RUNNER_TEMP/dk/unzipped/Solid Data Kitchen.app"
+          PIVOT="$APP/Contents/Resources/app/pivot"
+          echo "::group::app binary (x64, Rosetta)"
+          ELECTRON_RUN_AS_NODE=1 PROBE_PORT=18555 \
+            "$APP/Contents/MacOS/Solid Data Kitchen" tools/server-timing-probe.cjs "$PIVOT" || true
+          echo "::endgroup::"
+          echo "::group::runner node (arm64)"
+          PROBE_PORT=18556 node tools/server-timing-probe.cjs "$PIVOT" || true
+          echo "::endgroup::"
+          echo "--- summary ---"
+          ELECTRON_RUN_AS_NODE=1 PROBE_PORT=18557 PROBE_LOG_LEVEL=warn \
+            "$APP/Contents/MacOS/Solid Data Kitchen" tools/server-timing-probe.cjs "$PIVOT" 2>&1 | grep '\[probe\]' || true
+          PROBE_PORT=18558 PROBE_LOG_LEVEL=warn \
+            node tools/server-timing-probe.cjs "$PIVOT" 2>&1 | grep '\[probe\]' || true
