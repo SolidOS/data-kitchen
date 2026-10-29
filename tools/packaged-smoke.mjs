@@ -235,6 +235,7 @@ const childEnv = {
   DK_PUBLIC_PORT: String(PORT),
   DK_CSS_INTERNAL_PORT: String(CSS_PORT),
   DK_PROXY_PORT: String(PROXY_PORT),
+  DK_ROSETTA_NOTICE: '0',   // an x64 app booted on Apple Silicon must not wait on its notice
 };
 // When packaged-smoke itself runs under `ELECTRON_RUN_AS_NODE=1 electron`
 // (the local node is too old for the probe's WebSocket), that variable must

@@ -1144,8 +1144,11 @@ retired `sol-full`).
   No signing step is needed: Electron's arm64 binaries are linker-signed
   ad-hoc with no Info.plist slot, so electron-builder's renames keep them
   valid. mac-smoke boots the arm64 zip natively and gives the x64 one static
-  checks only (no Intel runner). Old updaters (2.4.0 and before) still offer
-  an Apple Silicon Mac the x64 zip.
+  checks only (no Intel runner). Old updaters (2.2.0 and before) still offer
+  an Apple Silicon Mac the x64 zip, so the x64 build itself, on Apple Silicon,
+  says so before any server starts and offers the releases page
+  (`electron-config/rosetta-notice.cjs`; "Don't show this again" is a marker
+  file in userData; `DK_ROSETTA_NOTICE=0` skips it, as packaged-smoke does).
 - **win-smoke + android-smoke workflows (2026-07-20):** mac-smoke's siblings,
   both on release publish + manual dispatch. `win-smoke.yml` (windows-latest):
   `SMOKE_WIN_APP=<unzipped zip dir>` mode in packaged-smoke.mjs — REQUIRED

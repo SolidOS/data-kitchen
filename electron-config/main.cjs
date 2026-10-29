@@ -25,6 +25,7 @@ const { initFileLog, getLogPath } = require('./log.cjs');
 const { blessNonce } = require('./gate.cjs');
 const { LibraryRoots } = require('./library-roots.cjs');
 const { checkForUpdates } = require('./update-check.cjs');
+const { rosettaNotice } = require('./rosetta-notice.cjs');
 const idpVault = require('./idp-vault.cjs');
 const { mintCredential, createGrantSession, revokeCredentialViaAccount } = require('./idp-grant.cjs');
 const { isShellCaller } = require('./shell-caller.cjs');
@@ -198,6 +199,9 @@ class DesktopApp {
     Menu.setApplicationMenu(process.platform === 'darwin'
       ? Menu.buildFromTemplate([{ role: 'appMenu' }, { role: 'editMenu' }, { role: 'windowMenu' }])
       : null);
+    // The Intel mac build on an Apple Silicon Mac: point at the native build
+    // before any server starts (rosetta-notice.cjs). True means it is quitting.
+    if (await rosettaNotice()) return;
     // dkfile: allow-list (imported music folders); persisted in userData.
     this._libraryRoots = new LibraryRoots(app.getPath('userData'));
     this.installGateHeader();
