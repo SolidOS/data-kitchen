@@ -61,6 +61,8 @@ need(NP + 'package.json');
 need(NP + 'dist/create-app.cjs', 10_000);      // compiled CSS config
 need(NP + 'connect-agent.js');
 need(NP + 'pod-template.cjs');
+need(NP + 'seed-core.cjs');
+need(NP + 'seed.cjs');                         // media seeder — ia.css theme tokens (issue #74)
 need(NP + 'pod-template/profile/card$.ttl');   // the WebID seed (v2.1.5 hole)
 need(NP + 'engine.nmz', 1_000_000);
 need(NP + 'node_modules.nmz', 10_000_000);

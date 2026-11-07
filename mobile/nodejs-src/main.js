@@ -205,6 +205,21 @@ async function main() {
     log('pod template seed FAILED: ' + e.message);
   }
 
+  // Media plugins (ia-player / omp-images) — the SAME seeding desktop runs
+  // (electron-config/seed.cjs, staged as a sibling): their pod content lives
+  // under dk-pod/dk/plugins/… and ships in the engine's open-media-player
+  // package. ia.css in there is the app's THEME TOKENS — without this seed the
+  // pod served no ia.css and the whole app rendered in fallback colours.
+  try {
+    const { seedMediaPlugins } = require('./seed.cjs');
+    const ompDir = path.join(ENGINE_DIR, 'node_modules', 'open-media-player');
+    const baselineFile = path.resolve(PROJECT_DIR, '..', 'media-seed-baseline.json');
+    const m = seedMediaPlugins(ompDir, POD_ROOT, baselineFile);
+    log(`media plugins: ${m.written} new, ${m.updated} updated, ${m.kept} kept`);
+  } catch (e) {
+    log('media plugin seed FAILED: ' + e.message);
+  }
+
   // The mashlib-databrowser config (create-app-mobile.cjs) has relative
   // filePaths like ./node_modules/mashlib/dist/databrowser.html — resolved
   // against cwd at runtime. Point cwd at the project dir so they resolve.

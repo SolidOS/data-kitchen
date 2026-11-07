@@ -34,12 +34,14 @@ cp "$SRC/main.js" "$SRC/untar.cjs" "$SRC/proxy.js" "$SRC/router.js" "$SRC/connec
 # proxy.js require it as a sibling ('./server-core.cjs'). Copy the REAL file (not
 # the nodejs-src symlink, which would break in the flat bundle).
 cp "$REPO/server-core.cjs" "$PROJ/"
-# Personal-pod seeder — the SAME code desktop runs (electron-config/): main.js
-# requires './pod-template.cjs', which requires './seed-core.cjs' as a sibling;
-# the template tree ships alongside. Without these the phone pod had no
-# profile/card#me / pim:storage / root owner .meta → podz said "no pods"
-# (v2.1.2 report).
-cp "$REPO/electron-config/pod-template.cjs" "$REPO/electron-config/seed-core.cjs" "$PROJ/"
+# Personal-pod + media seeders — the SAME code desktop runs (electron-config/):
+# main.js requires './pod-template.cjs' and './seed.cjs', which require
+# './seed-core.cjs' as a sibling; the template tree ships alongside. Without
+# pod-template the phone pod had no profile/card#me / pim:storage / root owner
+# .meta → podz said "no pods" (v2.1.2 report). Without seed.cjs the pod had no
+# plugins/ia-player content — ia.css above all, the app's THEME TOKENS — and
+# every colour fell back to its hard-coded default (issue #74).
+cp "$REPO/electron-config/pod-template.cjs" "$REPO/electron-config/seed-core.cjs" "$REPO/electron-config/seed.cjs" "$PROJ/"
 cp -rL "$REPO/pod-template" "$PROJ/pod-template"
 cp "$CREATE_APP" "$PROJ/dist/create-app.cjs"
 mkdir -p "$PROJ/patches"
@@ -56,9 +58,10 @@ if [ -e "$REPO/dist/dk.bundle.js" ] && [ -e "$REPO/node_modules/sol-components" 
   # open-media-player: the media tabs' package since the 2026-07-02 cutover
   # (index.html data-manifest loads node_modules/open-media-player/…) — the
   # engine must carry its manifest + dist bundle + src (runtime-fetched
-  # assets: help/about pages, shell fragments). Symlinked in dev like
-  # sol-components; tar -h dereferences.
-  OMP="node_modules/open-media-player/omp.manifest.json node_modules/open-media-player/dist node_modules/open-media-player/src"
+  # assets: help/about pages, shell fragments), plus libraries + shapes:
+  # seed.cjs seeds those into the pod on boot (dk-pod/dk/plugins/…), same as
+  # desktop. Symlinked in dev like sol-components; tar -h dereferences.
+  OMP="node_modules/open-media-player/omp.manifest.json node_modules/open-media-player/dist node_modules/open-media-player/src node_modules/open-media-player/libraries node_modules/open-media-player/shapes"
   # mashlib: the SolidOS plugin's iframe hosts (plugins/solidos/*-host.html) load
   # /node_modules/mashlib/dist/mashlib.min.js + mash.css, and the router serves
   # /node_modules/ from THIS engine — without it SolidOS 404s on-device (the
