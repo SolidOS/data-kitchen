@@ -27,7 +27,9 @@ on:
 
 jobs:
   boot:
-    runs-on: macos-14
+    # macos-14 was retired by GitHub (runs cancel in seconds with "configuration
+    # not supported"); macos-15 is the current Apple Silicon runner.
+    runs-on: macos-15
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4        # for tools/packaged-smoke.mjs + package.json
