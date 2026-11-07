@@ -216,6 +216,14 @@
       padding: 1.5rem clamp(1rem, 5vw, 3.5rem) 2.5rem;
     }
     #dk-tabs > .sol-tabs-content > .sol-inline-panel .omp-help-doc { max-width: 56rem; margin: 0 auto; }
+    /* The included doc is part of the panel, not a surface of its own — the
+       panel's themed background and text colour are the one surface (the
+       global `sol-include` rule in dk-styles.css paints swc tokens, which
+       follow a different switch than the ia theme around it). */
+    #dk-tabs > .sol-tabs-content > .sol-inline-panel sol-include {
+      background: transparent;
+      color: inherit;
+    }
     /* The ☰ menu pane (#dk-menu-pane, declared in index.html; claimed items
        mount into it as keep-alive [data-menu-item] wrappers) replaces the tab
        content the same way help does; picking a tab dismisses it.
