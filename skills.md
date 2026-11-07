@@ -664,7 +664,19 @@ state, so any step can be re-entered and re-opening an app just works.
   `z-index:120`), and sets `window.SolidAppContext.scroll` = banner(+bar) height so
   solid-ui's `getEyeFocus` (default 52) lands focused rows below the banner — the
   embed lacks mashlib's own `.app-main` offset wrapper, so without this the content
-  top hides under the banner. Locations come from the shared pod registry
+  top hides under the banner.
+  **HOST_CSS forces `[hidden]` to win inside the embed (2026-11-06, issue #73):**
+  mash.css 3 ships a blanket `article, aside, section { display: block }`
+  ("Semantic HTML5 improvements"), an author rule that defeats the UA's
+  `[hidden] { display: none }` — the empty `#NavMenu` scaffold (mashlib 3
+  references NONE of NavMenu/MenuToggleBtn/MenuOverlay; dead mashlib-2
+  contract) painted as a fixed 300px `.app-nav` rail (z-110, the
+  max-width:768 block) covering the whole app on a phone, and a blank
+  in-flow rail beside the desktop view. `sol-solidos [hidden]
+  { display: none !important }` in HOST_CSS fixes both; jest-guarded in
+  sc tests/web/sol-solidos.test.js, live-probed by dk
+  `claude/smoke-tests/cdp-verify-solidos-phone-menu.mjs` (phone metrics on an
+  isolated instance — launch recipe in claude/README.md). Locations come from the shared pod registry
   (`core/pod-registry.js`): `dk-solidos` subscribes to it and discovers on
   open + login (same `discoverOwnerWebIds → getStoragesFromWebIds` path as sol-pod),
   forwarding the list into the iframe via `window.solSetLocations`.
@@ -1324,9 +1336,22 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
   form needed `flex: 1 1 0` + `min-width:0` (its desktop min-width kept the
   toolbar overflowing).
 - **Engine packer fix:** `mobile/tool/prepare-node-project.sh` now packs
-  `node_modules/open-media-player` (manifest + dist + src) into engine.nmz —
+  `node_modules/open-media-player` (manifest + dist + src + libraries +
+  shapes) into engine.nmz —
   the media tabs had been DEAD on the phone since the 2026-07-02 cutover
   (only verified headless desktop back then).
+- **The phone seeds the MEDIA pod content at boot (2026-11-06, issue #74):**
+  `mobile/nodejs-src/main.js` runs the SAME `seedMediaPlugins` desktop runs
+  (`electron-config/seed.cjs`, staged by the packer beside pod-template.cjs /
+  seed-core.cjs; source = the extracted engine's `node_modules/open-media-player`;
+  baseline `<filesDir>/media-seed-baseline.json`). Before this, Android pods
+  never got `dk-pod/dk/plugins/ia-player/assets/ia.css` — the app's THEME
+  TOKENS, which index.html links from the pod — so EVERY colour fell back to
+  its hard-coded default (dark chrome + cream sheet + white panels, m5x5's
+  #73–#76 screenshots). The pod-seed tarball could not carry it: the repo's
+  `plugins/ia-player/` holds only `dist/` (pruned). Guards:
+  `mobile/test/node/media-seed.test.mjs` (in `npm run test:mobile`) +
+  `tools/android-apk-smoke.mjs` requires the staged seed.cjs/seed-core.cjs.
 - **mashlib in engine.nmz (v2.1.2, 2026-07-09):** the SolidOS iframe hosts
   load `/node_modules/mashlib/dist/mashlib.min.js` + `mash.css` from the
   ENGINE, which never shipped mashlib → SolidOS 404'd on-device (the v2.1.1
@@ -1400,7 +1425,13 @@ yet live-verified. Files: `electron-config/{idp-vault,idp-grant,remember-idp-pre
     x<0 — was the calendar at x=−146 over the dock); sol-calendar phone
     rows wrap (date+time line, `.cal-row-body` full-width beneath).
   - **sol-search**: panel viewport cap, 44px controls; input bg moved to
-    the `--input-*` tokens (standing rule — UNGATED, desktop too).
+    the `--input-*` tokens (standing rule — UNGATED, desktop too). On a
+    coarse pointer the panel OPENS AT THE TOP of the viewport (2026-11-06,
+    issue #75) — the trigger sits in the bottom dock and the soft keyboard
+    covered a bottom-placed panel the moment the input took focus.
+  - **Nav-sheet group headers are normal-cased** (2026-11-06, issue #76 —
+    the uppercase transform is gone from `.sol-tabs-sheet-grouphead` in sc
+    sol-tabs-css.js; weight + letterspacing still mark them as headers).
   - **sol-pod**: 44px tree rows + item/crumb gears. **sol-feed**: phone
     title `max-height: calc(3lh + .55rem)` — line-clamp only paints the
     ellipsis, the CLIP is the box bottom, so any box taller than 3 lines
