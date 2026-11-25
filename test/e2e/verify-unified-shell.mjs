@@ -5,8 +5,9 @@
 //
 // Asserts: the shell boots, the tab row is exactly the menus the shipped
 // main-menu.ttl declares (no pod-only Home tab), the shipped catalog carries
-// no pod-only entries, a tab menu opens and mounts the pod browser, and no
-// app-internal request or fatal console error fires.
+// no pod-only entries, a tab menu opens and mounts the pod browser, the Music
+// room fills on its first showing, and no app-internal request or fatal
+// console error fires.
 import { chromium } from 'playwright-core';
 import { rdf } from '../../node_modules/sol-components/core/rdf.js';
 
@@ -15,9 +16,10 @@ const BASE = `http://localhost:${PORT}`;
 const URL = `${BASE}/index.html`;
 
 // App-internal = our own origin. Everything else (news sites, CDNs, the
-// machine's proxy) fails for its own reasons and is not ours.
+// machine's proxy) fails for its own reasons and is not ours. A media
+// library's favourites/ folder does not exist until something is favourited.
 const EXTERNAL = { test: (u) => !u.startsWith(BASE + '/')
-  || /\.well-known\/solid|\.acl|\.meta/.test(u) };
+  || /\.well-known\/solid|\.acl|\.meta|\/favourites\/$/.test(u) };
 const errors = [], failed = [];
 const fails = [];
 const check = (name, ok, detail = '') => { console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? '  — ' + detail : '')); if (!ok) fails.push(name); };
@@ -97,12 +99,51 @@ check('pod browser menu item clicks', podz.clicked);
 check('dk-podz mounts', !!podz.mounted);
 check('dk-podz shows both pod panes', (podz.pods || 0) >= 2, `sol-pods=${podz.pods}`);
 
+await page.screenshot({ path: 'test/e2e/unified-shell.png', fullPage: false });
+
+// --- a media room fills on its FIRST showing (its code arrives after its tag) ---
+const music = await page.evaluate(async () => {
+  const dd = document.querySelector('sol-tabs sol-dropdown-button[title="Media"]');
+  dd?.shadowRoot?.querySelector('.sol-dd-trigger')?.click();
+  await new Promise((r) => setTimeout(r, 1500));
+  const item = [...(dd?.shadowRoot?.querySelectorAll('[role="menuitem"]') || [])]
+    .find((b) => /^music/i.test(b.title || b.textContent.trim()));
+  if (!item) return { clicked: false };
+  item.click();
+  await new Promise((r) => setTimeout(r, 8000));
+  const el = document.getElementById('panel-music');
+  const text = ((el?.shadowRoot?.textContent || '') + ' ' + (el?.textContent || '')).replace(/\s+/g, ' ').trim();
+  return { clicked: true, mounted: !!el, playlists: /Playlists/i.test(text), chars: text.length };
+});
+check('Music menu item clicks', music.clicked);
+check('Music fills on its first showing', !!music.mounted && !!music.playlists, `chars=${music.chars}`);
+
+// Images on a FRESH page — the Music pick above already loaded its code.
+const page2 = await browser.newPage();
+await page2.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
+await page2.waitForTimeout(6000);
+const images = await page2.evaluate(async () => {
+  const dd = document.querySelector('sol-tabs sol-dropdown-button[title="Media"]');
+  dd?.shadowRoot?.querySelector('.sol-dd-trigger')?.click();
+  await new Promise((r) => setTimeout(r, 1500));
+  const item = [...(dd?.shadowRoot?.querySelectorAll('[role="menuitem"]') || [])]
+    .find((b) => /^images/i.test(b.title || b.textContent.trim()));
+  if (!item) return { clicked: false };
+  item.click();
+  await new Promise((r) => setTimeout(r, 8000));
+  const el = document.querySelector('omp-images');
+  const libs = el?.shadowRoot?.querySelector('.browser .pane .list')?.children.length || 0;
+  return { clicked: true, mounted: !!el, libs };
+});
+await page2.close();
+check('Images menu item clicks', images.clicked);
+check('Images lists its libraries on its first showing', !!images.mounted && images.libs > 0, `libraries=${images.libs}`);
+
 // --- no app-internal failures / fatal errors ---
 check('no failed app-internal requests', failed.length === 0, failed.slice(0, 5).join(' | '));
 const fatal = errors.filter(e => !/favicon|net::ERR_|Failed to fetch|Failed to load resource|CORS|Worker registration failed|report-only Content Security Policy/.test(e));
 check('no unexpected console errors', fatal.length === 0, fatal.slice(0, 3).join(' | '));
 
-await page.screenshot({ path: 'test/e2e/unified-shell.png', fullPage: false });
 await browser.close();
 console.log(fails.length ? `\n${fails.length} FAILURE(S)` : '\nALL PASS');
 process.exit(fails.length ? 1 : 0);

@@ -44,7 +44,7 @@
     "jose": "^5.10.0",
     "mashlib": "^3.0.0",
     "music-metadata": "^11.13.0",
-    "open-media-player": "^0.3.6",
+    "open-media-player": "^0.3.7",
     "sol-components": "^3.0.0"
   },
   "devDependencies": {
