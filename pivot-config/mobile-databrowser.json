@@ -23,7 +23,7 @@
       }
     },
     {
-      "comment": "Serve mashlib's dist files at the root (databrowser.html loads /mashlib.min.js and /mash.css; the bundle loads its chunks from /). A root folder entry is expanded at startup to one mapping per file in the folder, so mashlib's chunk file names need no listing here.",
+      "comment": "Serve mashlib static files (databrowser.html loads /mashlib.min.js and /mash.css).",
       "@type": "Override",
       "overrideInstance": { "@id": "urn:solid-server:default:StaticAssetHandler" },
       "overrideParameters": {
@@ -31,7 +31,16 @@
         "options_expires": 86400,
         "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
         "assets": [
-          { "@type": "StaticAssetEntry", "relativeUrl": "/", "filePath": "./node_modules/mashlib/dist/" }
+          { "@type": "StaticAssetEntry", "relativeUrl": "/browse.html", "filePath": "./node_modules/mashlib/dist/browse.html" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mash.css", "filePath": "./node_modules/mashlib/dist/mash.css" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mashlib.js", "filePath": "./node_modules/mashlib/dist/mashlib.js" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mashlib.js.map", "filePath": "./node_modules/mashlib/dist/mashlib.js.map" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mashlib.min.js", "filePath": "./node_modules/mashlib/dist/mashlib.min.js" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/mashlib.min.js.map", "filePath": "./node_modules/mashlib/dist/mashlib.min.js.map" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/841.mashlib.js", "filePath": "./node_modules/mashlib/dist/841.mashlib.js" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/841.mashlib.map", "filePath": "./node_modules/mashlib/dist/841.mashlib.map" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/841.mashlib.min.js", "filePath": "./node_modules/mashlib/dist/841.mashlib.min.js" },
+          { "@type": "StaticAssetEntry", "relativeUrl": "/841.mashlib.min.js.map", "filePath": "./node_modules/mashlib/dist/841.mashlib.min.js.map" }
         ]
       }
     }
