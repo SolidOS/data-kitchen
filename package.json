@@ -41,20 +41,20 @@
   },
   "dependencies": {
     "electron-reloader": "^1.2.3",
-    "jose": "^5.10.0",
-    "mashlib": "^3.0.0",
-    "music-metadata": "^11.13.0",
+    "jose": "^6.2.18",
+    "mashlib": "^3.1.2",
+    "music-metadata": "^13.0.1",
     "open-media-player": "^0.3.7",
     "sol-components": "^3.0.0"
   },
   "devDependencies": {
-    "component-interop": "^0.3.0",
-    "electron": "^45.1.0",
-    "electron-builder": "^26.15.3",
-    "esbuild": "^0.28.1",
-    "n3": "^2.0.4",
-    "playwright-core": "^1.61.0",
-    "rdf-validate-shacl": "^0.6.5"
+    "component-interop": "^0.5.3",
+    "electron": "^45.5.0",
+    "electron-builder": "^26.18.0",
+    "esbuild": "^0.28.2",
+    "n3": "^2.13.12",
+    "playwright-core": "^1.65.1",
+    "rdf-validate-shacl": "^0.7.0"
   },
   "build": {
     "appId": "com.data-kitchen",
